@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,7 @@ import org.eclipse.kura.management.backend.domain.CommandStatus;
 import org.eclipse.kura.management.backend.service.CommandService;
 import org.eclipse.kura.management.backend.service.GatewayService;
 import org.eclipse.kura.management.backend.service.MqttDispatchService;
+import org.eclipse.kura.management.backend.service.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/commands")
 public class CommandController {
+
+    /**
+     * Types the gateway agent is able to execute; keep in sync with the agent's
+     * DefaultCommandExecutor dispatch table.
+     */
+    private static final Set<String> SUPPORTED_TYPES = Set.of(
+            "system.info",
+            "config.list", "config.get", "config.put",
+            "firewall.get", "network.get",
+            "snapshot.list", "snapshot.rollback");
 
     private final CommandService commandService;
     private final GatewayService gatewayService;
@@ -58,17 +70,21 @@ public class CommandController {
 
     @PostMapping
     public Map<String, Object> createCommand(@Valid @RequestBody CreateCommandRequest request) {
+        if (!SUPPORTED_TYPES.contains(request.type())) {
+            throw new IllegalArgumentException("Unsupported command type: " + request.type());
+        }
+        TokenService.AuthContext auth = currentAuth();
         gatewayService.requireEnabledGateway(request.gatewayId());
         CommandEntity command = new CommandEntity();
         command.setCommandId("cmd-" + UUID.randomUUID().toString().substring(0, 8));
-        command.setTenantId("t-001");
+        command.setTenantId(auth.tenantId());
         command.setGatewayId(request.gatewayId());
         command.setType(request.type());
         command.setStatus(CommandStatus.QUEUED);
         command.setRequestPayload(request.payload());
         command.setRequestedAt(Instant.now());
         command.setTimeoutAt(Instant.now().plus(commandTimeoutSec, ChronoUnit.SECONDS));
-        command.setInitiator("console");
+        command.setInitiator(auth.username());
         CommandEntity saved = commandService.createCommand(command);
         try {
             mqttDispatchService.publishCommand(saved);
@@ -76,6 +92,15 @@ public class CommandController {
         } catch (IllegalStateException e) {
             return Map.of("commandId", saved.getCommandId(), "status", "queued");
         }
+    }
+
+    private TokenService.AuthContext currentAuth() {
+        var authentication = org.springframework.security.core.context.SecurityContextHolder.getContext()
+                .getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof TokenService.AuthContext context) {
+            return context;
+        }
+        throw new IllegalStateException("No authenticated console user in request context");
     }
 
     @GetMapping("/{commandId}")

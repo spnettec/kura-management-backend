@@ -19,6 +19,24 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class DemoDataInitializer {
 
     @Bean
+    CommandLineRunner seedConsoleUser(
+            org.eclipse.kura.management.backend.repository.ConsoleUserRepository userRepository) {
+        // Runs for every profile (dev rebuilds an in-memory db, prod stays idempotent).
+        return args -> {
+            if (!userRepository.existsByUsername("admin")) {
+                org.eclipse.kura.management.backend.domain.ConsoleUserEntity admin = new org.eclipse.kura.management.backend.domain.ConsoleUserEntity();
+                admin.setUsername("admin");
+                admin.setPasswordHash(new BCryptPasswordEncoder().encode("admin"));
+                admin.setTenantId("t-001");
+                admin.setDisplayName("Administrator");
+                admin.setEnabled(true);
+                admin.setCreatedAt(Instant.now());
+                userRepository.save(admin);
+            }
+        };
+    }
+
+    @Bean
     CommandLineRunner seedDemoData(
             TenantRepository tenantRepository,
             GatewayRepository gatewayRepository,
