@@ -5,6 +5,7 @@ import java.time.Instant;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +31,8 @@ public class ConfigSnapshotEntity {
     private long revision;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    private Object payload;
+    @Column(name = "payload", columnDefinition = "jsonb", nullable = false)
+    private java.util.Map<String, Object> payload = new java.util.HashMap<>();
 
     private Instant createdAt;
 
@@ -74,11 +76,11 @@ public class ConfigSnapshotEntity {
         this.revision = revision;
     }
 
-    public Object getPayload() {
+    public java.util.Map<String, Object> getPayload() {
         return payload;
     }
 
-    public void setPayload(Object payload) {
+    public void setPayload(java.util.Map<String, Object> payload) {
         this.payload = payload;
     }
 

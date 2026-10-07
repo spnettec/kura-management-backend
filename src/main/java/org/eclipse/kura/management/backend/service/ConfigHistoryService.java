@@ -64,6 +64,14 @@ public class ConfigHistoryService {
 
     private Long extractSnapshotId(Object replyPayload) {
         if (replyPayload instanceof Map<?, ?> payload) {
+            // replies are stored as full envelopes: the snapshot id lives in payload.snapshotId
+            Object nested = payload.get("payload");
+            if (nested instanceof Map<?, ?> inner) {
+                Object id = inner.get("snapshotId");
+                if (id instanceof Number number) {
+                    return number.longValue();
+                }
+            }
             Object id = payload.get("snapshotId");
             if (id instanceof Number number) {
                 return number.longValue();
