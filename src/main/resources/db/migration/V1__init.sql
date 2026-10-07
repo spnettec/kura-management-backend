@@ -109,14 +109,16 @@ create table config_template_versions (
 );
 
 create table config_snapshots (
-  snapshot_id bigint primary key,
+  snapshot_pk bigserial primary key,
   tenant_id varchar(64) not null references tenants(tenant_id),
   gateway_id varchar(64) not null references gateways(gateway_id) on delete cascade,
-  revision bigint not null,
+  gateway_snapshot_id bigint not null,
+  revision bigint not null default 0,
   payload jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   created_by varchar(255),
-  source_command_id varchar(64)
+  source_command_id varchar(64),
+  unique (gateway_id, gateway_snapshot_id)
 );
 
 create table audit_events (

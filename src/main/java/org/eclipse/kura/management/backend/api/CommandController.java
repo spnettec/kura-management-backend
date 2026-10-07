@@ -40,7 +40,7 @@ public class CommandController {
             "system.info",
             "config.list", "config.get", "config.put",
             "firewall.get", "network.get",
-            "snapshot.list", "snapshot.rollback");
+            "snapshot.list", "snapshot.take", "snapshot.rollback");
 
     private final CommandService commandService;
     private final GatewayService gatewayService;
@@ -77,6 +77,7 @@ public class CommandController {
         gatewayService.requireEnabledGateway(request.gatewayId());
         CommandEntity command = new CommandEntity();
         command.setCommandId("cmd-" + UUID.randomUUID().toString().substring(0, 8));
+        command.setCorrelationId("corr-" + UUID.randomUUID().toString().substring(0, 8));
         command.setTenantId(auth.tenantId());
         command.setGatewayId(request.gatewayId());
         command.setType(request.type());

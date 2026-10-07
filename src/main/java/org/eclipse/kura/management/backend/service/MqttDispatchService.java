@@ -32,6 +32,7 @@ public class MqttDispatchService {
     private final CommandService commandService;
     private final GatewayService gatewayService;
     private final GatewayCredentialService gatewayCredentialService;
+    private final ConfigHistoryService configHistoryService;
     private final ObjectMapper objectMapper;
     private final String brokerUri;
     private final String clientId;
@@ -44,6 +45,7 @@ public class MqttDispatchService {
             CommandService commandService,
             GatewayService gatewayService,
             GatewayCredentialService gatewayCredentialService,
+            ConfigHistoryService configHistoryService,
             ObjectMapper objectMapper,
             @Value("${mqtt.broker-uri}") String brokerUri,
             @Value("${mqtt.client-id}") String clientId,
@@ -52,6 +54,7 @@ public class MqttDispatchService {
         this.commandService = commandService;
         this.gatewayService = gatewayService;
         this.gatewayCredentialService = gatewayCredentialService;
+        this.configHistoryService = configHistoryService;
         this.objectMapper = objectMapper;
         this.brokerUri = brokerUri;
         this.clientId = clientId;
@@ -125,6 +128,9 @@ public class MqttDispatchService {
         envelope.put("version", 1);
         envelope.put("tenantId", command.getTenantId());
         envelope.put("gatewayId", command.getGatewayId());
+        if (command.getCorrelationId() != null) {
+            envelope.put("correlationId", command.getCorrelationId());
+        }
         envelope.put("payload", command.getRequestPayload());
         envelope.put("meta", Map.of("source", "backend"));
 
@@ -171,6 +177,7 @@ public class MqttDispatchService {
         String status = String.valueOf(reply.get("status"));
         if ("success".equals(status)) {
             commandService.markSuccess(commandId, reply);
+            this.configHistoryService.recordFromReply(commandId);
             return;
         }
 

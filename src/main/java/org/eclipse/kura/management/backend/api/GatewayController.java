@@ -33,10 +33,15 @@ public class GatewayController {
 
     private final GatewayService gatewayService;
     private final GatewayCredentialService gatewayCredentialService;
+    private final org.eclipse.kura.management.backend.repository.ConfigSnapshotRepository configSnapshotRepository;
 
-    public GatewayController(GatewayService gatewayService, GatewayCredentialService gatewayCredentialService) {
+    public GatewayController(
+            GatewayService gatewayService,
+            GatewayCredentialService gatewayCredentialService,
+            org.eclipse.kura.management.backend.repository.ConfigSnapshotRepository configSnapshotRepository) {
         this.gatewayService = gatewayService;
         this.gatewayCredentialService = gatewayCredentialService;
+        this.configSnapshotRepository = configSnapshotRepository;
     }
 
     @GetMapping
@@ -94,6 +99,22 @@ public class GatewayController {
     public Map<String, Object> listHeartbeats(@PathVariable String gatewayId) {
         List<GatewayHeartbeatDto> items = gatewayService.listRecentHeartbeats(gatewayId).stream()
                 .map(this::toHeartbeatDto)
+                .collect(Collectors.toList());
+        return Map.of("items", items, "total", items.size());
+    }
+
+    @GetMapping("/{gatewayId}/snapshots")
+    public Map<String, Object> listSnapshots(@PathVariable String gatewayId) {
+        List<org.eclipse.kura.management.backend.api.dto.GatewaySnapshotDto> items = this.configSnapshotRepository
+                .findTop50ByGatewayIdOrderByGatewaySnapshotIdDesc(gatewayId).stream()
+                .map(snapshot -> new org.eclipse.kura.management.backend.api.dto.GatewaySnapshotDto(
+                        snapshot.getSnapshotPk(),
+                        snapshot.getGatewayId(),
+                        snapshot.getGatewaySnapshotId(),
+                        snapshot.getPayload(),
+                        snapshot.getCreatedAt(),
+                        snapshot.getCreatedBy(),
+                        snapshot.getSourceCommandId()))
                 .collect(Collectors.toList());
         return Map.of("items", items, "total", items.size());
     }
