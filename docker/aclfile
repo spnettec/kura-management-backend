@@ -1,0 +1,9 @@
+user backend
+topic read mgmt/+/+/reply
+topic read mgmt/+/+/status
+topic write mgmt/+/+/cmd
+
+user gw-001
+topic read mgmt/t-001/gw-001/cmd
+topic write mgmt/t-001/gw-001/reply
+topic write mgmt/t-001/gw-001/status

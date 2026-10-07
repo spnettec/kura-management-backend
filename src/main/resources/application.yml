@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: kura-management-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kura_management
+    username: kura
+    password: kura
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  gateway-offline-timeout-sec: 90
+  gateway-offline-check-delay-ms: 15000
+  command-timeout-sec: 30
+  command-timeout-check-delay-ms: 5000
+
+mqtt:
+  broker-uri: tcp://localhost:1883
+  client-id: kura-management-backend
+  username: backend
+  password: backend-secret
