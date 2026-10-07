@@ -16,6 +16,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -37,6 +38,7 @@ public class MqttDispatchService {
     private final String username;
     private final String password;
     private MqttClient client;
+    private MqttConnectOptions connectOptions;
 
     public MqttDispatchService(
             CommandService commandService,
@@ -58,7 +60,7 @@ public class MqttDispatchService {
     }
 
     @PostConstruct
-    public void connect() {
+    public void initClient() {
         try {
             this.client = new MqttClient(brokerUri, clientId, new MemoryPersistence());
             this.client.setCallback(new MqttCallbackExtended() {
@@ -73,7 +75,7 @@ public class MqttDispatchService {
                 }
 
                 @Override
-                public void messageArrived(String topic, MqttMessage message) throws Exception {
+                public void messageArrived(String topic, MqttMessage message) {
                     handleInboundMessage(topic, new String(message.getPayload(), StandardCharsets.UTF_8));
                 }
 
@@ -90,10 +92,26 @@ public class MqttDispatchService {
                 options.setUserName(username);
                 options.setPassword(password == null ? new char[0] : password.toCharArray());
             }
-            this.client.connect(options);
+            this.connectOptions = options;
         } catch (MqttException e) {
-            logger.warn("Unable to connect to MQTT broker {}: {}", brokerUri, e.getMessage());
-            this.client = null;
+            logger.warn("Unable to create MQTT client for {}: {}", brokerUri, e.getMessage());
+        }
+    }
+
+    /**
+     * Paho automaticReconnect only engages after a first successful connect; if the broker is
+     * down at startup this scheduled probe keeps retrying until the first connect succeeds.
+     */
+    @Scheduled(fixedDelay = 10_000)
+    public void ensureConnection() {
+        if (this.client == null || this.connectOptions == null || this.client.isConnected()) {
+            return;
+        }
+        try {
+            this.client.connect(this.connectOptions);
+        } catch (MqttException e) {
+            // 32110 = connect already in progress (e.g. automatic reconnect racing with this probe)
+            logger.debug("MQTT connect retry pending: {}", e.getMessage());
         }
     }
 
@@ -119,16 +137,23 @@ public class MqttDispatchService {
         }
     }
 
-    private void handleInboundMessage(String topic, String payload) throws Exception {
-        if (topic.endsWith("/reply")) {
-            handleReply(payload);
-            return;
+    private void handleInboundMessage(String topic, String payload) {
+        // Paho disconnects the client if messageArrived throws, so every inbound path
+        // (unknown gateway, unknown command id, malformed json, credential store failure)
+        // must be absorbed here.
+        try {
+            if (topic.endsWith("/reply")) {
+                handleReply(payload);
+                return;
+            }
+            if (topic.endsWith("/status")) {
+                handleStatusReport(payload);
+                return;
+            }
+            logger.debug("Ignoring MQTT message on topic {}", topic);
+        } catch (Exception e) {
+            logger.warn("Error handling MQTT message on topic {}: {}", topic, e.getMessage());
         }
-        if (topic.endsWith("/status")) {
-            handleStatusReport(payload);
-            return;
-        }
-        logger.debug("Ignoring MQTT message on topic {}", topic);
     }
 
     private void handleReply(String messagePayload) throws Exception {
