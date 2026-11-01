@@ -91,3 +91,26 @@ guard fixture 中复制合法 encrypted result 到不同 task ID 后，列表接
 证据：`docs/evidence/center-package-browser-20261102.json`，
 `target/center-package-browser-20261102.json` 和三张截图。此为包 payload focused live
 smoke；既有开发中心专用完整浏览器集合不宣称被替代。
+
+## remove / reinstall / purge 恢复契约
+
+在同一 fixture 上先用包内 `task-key-backup/restore` 建立恢复 proof：task key 原件、
+restored key SHA256 均为 `70c37409a084bd63039d410e41a1effe298b48da60ecace1decaf7b313435b92`，
+Argon2id/AES-GCM backup SHA256 为
+`76e89cc684d8501c5dfe3e613699b2e17dee7c88b7b44e176a45345a587033f7`。错误 passphrase restore
+返回 1 且没有创建目标文件。backup/restored/passphrase 文件均为 yofc-console 0600。
+
+`dpkg -r` 成功：包状态 `rc`，service not-found，10 个包 payload 全部 absent；operator 配置、
+TLS、task key、key backup/restored、agent fixture SQLite 和外部 PostgreSQL 数据保留。逐项
+SHA256 与 baseline 一致，数据库 1 gateway / 5 tasks / 32 audit / 180 events 及 task digest
+不变。同版本重装后 postinst 保持 inactive/disabled；显式 migrate 返回 `migrated_tasks=0`、
+check 通过、activate 后 health ready，包文件与保留文件均匹配 baseline。
+
+`dpkg -P` 成功：包 payload 10/10 absent，包状态 not-installed；postrm 明确保留 PostgreSQL
+数据和 task key。operator 的 `/etc` 配置、TLS、task key、backup、agent SQLite 与数据库逐项
+SHA256/digest 不变。随后恢复安装同一 deb，postinst 仍不启动；显式 migrate/check/activate 后
+service active/enabled、health ready，包文件与保留数据再次全部匹配。最终未终结任务为 0。
+
+证据：`docs/evidence/center-package-lifecycle-20261102.json` 和
+`target/package/lifecycle-20261102-005558/`。本轮没有删除外部 PostgreSQL 数据或 task key；
+`/etc` operator 配置不是包 conffile，purge 后按合同保留。

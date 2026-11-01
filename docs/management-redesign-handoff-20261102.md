@@ -50,3 +50,15 @@ postinst 保持不启动，显式 activate 后恢复 active/enabled。证据见
 gateway Online、operator status、Tasks Completed、reload/中文切换、logout、无 pageerror。
 测试端口 28443 只为绕开宿主开发中心 18443；测试后服务已恢复 18443。临时账号禁用、agent
 停止但 state 保留。证据见 `docs/evidence/center-package-browser-20261102.json`。
+
+## 2026-11-02 补充：remove/purge 恢复契约
+
+`dpkg -r`、同版本重装、`dpkg -P` 和 purge 后恢复安装均已实测。remove 后包 payload 全部
+移除但 operator 配置、TLS、task key、key backup 和外部 PostgreSQL 保留；purge 后同样保留，
+不删除数据库或 key。每次基线比较覆盖包文件、保留文件 SHA256、数据库行数和 task digest。
+packaged `task-key-backup/restore` 也通过，错误 passphrase 拒绝且不创建目标文件。
+
+purge 后重装可显式 migrate/check/activate 并恢复 health ready。证据见
+`docs/evidence/center-package-lifecycle-20261102.json` 和
+`target/package/lifecycle-20261102-005558/`。下一批继续 console/agent 独立归属流程、
+发行矩阵和剩余 deferred 边界；不把本 fixture 结果推广到物理网关或 amd64/26.04。

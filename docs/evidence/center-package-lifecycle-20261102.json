@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "scope": "Formal console package remove/reinstall/purge/recovery and packaged task-key backup/restore smoke",
+  "vm": "yofc-management-network-20261101",
+  "database": "console_pkg_20261102_005558",
+  "package": {
+    "name": "kura-management-console",
+    "version": "0.1.0~package20261102-11",
+    "sha256": "c9f20f293ba3038966fa1d5a9856e6af464f1800d0ab4bb5786991a84645c12b"
+  },
+  "packagedTaskKeyRecovery": {
+    "backupCreated": true,
+    "backupSha256": "76e89cc684d8501c5dfe3e613699b2e17dee7c88b7b44e176a45345a587033f7",
+    "originalTaskKeySha256": "70c37409a084bd63039d410e41a1effe298b48da60ecace1decaf7b313435b92",
+    "restoredTaskKeySha256": "70c37409a084bd63039d410e41a1effe298b48da60ecace1decaf7b313435b92",
+    "restoredMatchesOriginal": true,
+    "wrongPassphraseRejected": true,
+    "wrongRestoreCreatedNoFile": true,
+    "commandContract": "kura-console-setup backup-key/restore-key; files mode 0600; service inactive during operations"
+  },
+  "baseline": {
+    "packageStatus": "ii",
+    "service": {
+      "active": "active",
+      "enabled": "enabled",
+      "mainPid": 39303
+    },
+    "packageFiles": 10,
+    "database": {
+      "rows": {
+        "gateways": 1,
+        "tasks": 5,
+        "audit": 32,
+        "events": 180
+      },
+      "taskDigest": "0331fc10e62a009ddb421d8782a072bd"
+    },
+    "retainedPathCount": 11
+  },
+  "remove": {
+    "exitCode": 0,
+    "dpkgStatusAfter": "rc",
+    "service": {
+      "active": "not-found",
+      "enabled": "not-found"
+    },
+    "packageFilesAbsent": 10,
+    "packageFilesExpected": 10,
+    "retainedMatches": true,
+    "databaseMatches": true
+  },
+  "reinstall": {
+    "exitCode": 0,
+    "dpkgStatusAfter": "ii",
+    "initialServiceInactive": true,
+    "explicitMigrate": "migrated_tasks=0",
+    "explicitCheck": "ok/assets=1",
+    "explicitActivate": true,
+    "service": {
+      "active": "active",
+      "enabled": "enabled",
+      "mainPid": 40062
+    },
+    "packageMatches": true,
+    "retainedMatches": true,
+    "databaseMatches": true,
+    "health": {
+      "protocolMajor": 1,
+      "status": "ready"
+    }
+  },
+  "purge": {
+    "exitCode": 0,
+    "dpkgStatusAfter": "not-installed",
+    "packageFilesAbsent": 10,
+    "packageFilesExpected": 10,
+    "retainedMatches": true,
+    "databaseMatches": true,
+    "retained": [
+      "/etc/kura-management-console/console.env",
+      "/etc/kura-management-console/tls",
+      "/var/lib/kura-management-console/task-data.key",
+      "/var/lib/kura-management-console/lifecycle-evidence-20261102/task-data.key.backup",
+      "agent fixture state",
+      "external PostgreSQL data"
+    ],
+    "postrmMessage": "Retaining PostgreSQL data and task data key; remove them only after verified recovery."
+  },
+  "recoveryAfterPurge": {
+    "exitCode": 0,
+    "dpkgStatusAfter": "ii",
+    "initialServiceInactive": true,
+    "explicitMigrate": "migrated_tasks=0",
+    "explicitCheck": "ok/assets=1",
+    "explicitActivate": true,
+    "service": {
+      "active": "active",
+      "enabled": "enabled",
+      "mainPid": 40900
+    },
+    "packageMatches": true,
+    "retainedMatches": true,
+    "databaseMatches": true,
+    "health": {
+      "protocolMajor": 1,
+      "status": "ready"
+    }
+  },
+  "finalUnsettledTasks": 0,
+  "artifacts": [
+    "target/package/lifecycle-20261102-005558/baseline.json",
+    "target/package/lifecycle-20261102-005558/after-remove.json",
+    "target/package/lifecycle-20261102-005558/after-reinstall.json",
+    "target/package/lifecycle-20261102-005558/after-purge.json",
+    "target/package/lifecycle-20261102-005558/recovered.json",
+    "target/package/lifecycle-20261102-005558/remove.out",
+    "target/package/lifecycle-20261102-005558/reinstall.out",
+    "target/package/lifecycle-20261102-005558/purge.out",
+    "target/package/lifecycle-20261102-005558/recovery-install.out",
+    "target/package/lifecycle-20261102-005558/wrong-restore.err"
+  ],
+  "limits": [
+    "Disposable Ubuntu 24.04 arm64 fixture only",
+    "operator-provisioned /etc config is intentionally not a package conffile and was retained through purge",
+    "production backup archiving/off-host recovery and amd64/26.04 remain deferred"
+  ],
+  "safety": {
+    "oldFixtureStateDeleted": false,
+    "resetOrCleanUsed": false,
+    "pushed": false,
+    "connected1921682125": false,
+    "externalPostgresqlDeleted": false,
+    "taskDataKeyDeleted": false
+  }
+}
