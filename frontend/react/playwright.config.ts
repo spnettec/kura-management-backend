@@ -20,6 +20,7 @@ const liveProfiles: Record<string, string> = {
   takeover: "**/takeover-live.spec.ts",
   configuration: "**/configuration-live.spec.ts",
   "configuration-update": "**/configuration-update-live.spec.ts",
+  "outcome-snapshot": "**/configuration-outcome-snapshot-live.spec.ts",
 };
 const liveProfile = process.env.KURA_BROWSER_LIVE_PROFILE;
 if (liveProfile && !liveProfiles[liveProfile]) {

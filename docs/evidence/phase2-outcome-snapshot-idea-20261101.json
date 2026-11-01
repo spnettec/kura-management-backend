@@ -1,0 +1,250 @@
+{
+  "generatedAt": "2026-11-01T21:35:00+08:00",
+  "fixture": "configuration-outcome-snapshot-idea-20261101",
+  "fixtureOnly": true,
+  "stateInventorySha256": "7669c41edf32d5a9a15fa13774a8acf0c29b7ceb8ff967a8a0b8ce2dfc6cb554",
+  "runtime": {
+    "inventoryChecked": 282,
+    "inventoryAllMatch": true,
+    "bundleCountAfterRestart": 281
+  },
+  "observerProofs": {
+    "initial": "passed/9",
+    "keep": "passed/9",
+    "set": "passed/9",
+    "preFixErrorPreserved": "observer-error.pre-outcome-marker-fix.json"
+  },
+  "postRollbackRead": {
+    "taskId": "323b6f32-3dc2-4787-8444-75f57bd333c3",
+    "count": "1",
+    "enabled": false
+  },
+  "outcomeRecords": [
+    {
+      "file": "5c90caa0-b8b1-45ae-9ecd-c5e2df7dd8d6.json",
+      "mode": "0o600",
+      "sha256": "8fce637afa4f6d4ccfb97b9f002e6ee10f0b06452a96886a72a0ed3972803cf7",
+      "record": {
+        "source": "configuration.journal.v1",
+        "commandId": "5c90caa0-b8b1-45ae-9ecd-c5e2df7dd8d6",
+        "operation": 12,
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "dd7c90b412f5508e3713e64528a1dcef0b00ae91d1c349c6833b22ccc2067193",
+        "submitted": true,
+        "paramsSha256": "ef329c67218a11cbc2a1a8303a64cfc553ee91f159960ba63146c1ccd0cf5fb8"
+      }
+    },
+    {
+      "file": "f2475073-79b5-48a8-b2a3-5213a75c8f99.json",
+      "mode": "0o600",
+      "sha256": "a976b40a1b3a66c054f772bbfd819581233458dabd9f1df94301cfa13548fe88",
+      "record": {
+        "source": "configuration.journal.v1",
+        "commandId": "f2475073-79b5-48a8-b2a3-5213a75c8f99",
+        "operation": 12,
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "7db18131aebf6b57acc040f714d33915e545e69f205de33b5dacce84ba7a1436",
+        "submitted": true,
+        "paramsSha256": "f9c5544c45433158652c21fdf9438c7a79345c8a4832f66d0335a9ea45290203"
+      }
+    }
+  ],
+  "writeAndSnapshotTasks": [
+    {
+      "id": "5c90caa0-b8b1-45ae-9ecd-c5e2df7dd8d6",
+      "operation": 12,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:08:00.1742+08"
+    },
+    {
+      "id": "f2475073-79b5-48a8-b2a3-5213a75c8f99",
+      "operation": 12,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:08:34.332843+08"
+    },
+    {
+      "id": "9e0fdedd-a606-4bcb-894a-0667c99855bd",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:14:44.03907+08"
+    },
+    {
+      "id": "9390c756-d948-45b1-85e0-2a7ee2d812af",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:16:14.500332+08"
+    },
+    {
+      "id": "7f183e5a-e424-432a-bd42-d35116d4d4b7",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:16:15.708455+08"
+    },
+    {
+      "id": "c9b41c58-8ac7-4172-ab54-fb1aca66daa9",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:16:54.084169+08"
+    },
+    {
+      "id": "f3c50ceb-bfaa-48c7-9caf-5bf6c60ded7e",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:16:54.394511+08"
+    },
+    {
+      "id": "8ef26adb-67cc-4814-87a2-254064d777c0",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:17:43.182167+08"
+    },
+    {
+      "id": "6e79ad93-d9b9-4c73-9336-188124a01645",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:17:44.377432+08"
+    },
+    {
+      "id": "9042b11f-42e4-4fa9-bff5-ef0aa4a28c19",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:18:39.097159+08"
+    },
+    {
+      "id": "2daafbeb-7b7e-45cc-bd4e-ad2cf1f0d64d",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:18:39.413515+08"
+    },
+    {
+      "id": "90b5fae6-76a2-4961-b2a4-60234648b4de",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:19:43.412454+08"
+    },
+    {
+      "id": "c2fa243b-2a70-4cd6-87cc-b23b7bebb8a2",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:19:44.615088+08"
+    },
+    {
+      "id": "49e5f52e-9716-48b7-a3b8-531eeb2c2607",
+      "operation": 13,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:20:21.161109+08"
+    },
+    {
+      "id": "1d656fea-ff73-4f40-81c7-f6a193f2c69a",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:20:21.466923+08"
+    },
+    {
+      "id": "655b9009-949c-432f-b51d-3d42d42a96fd",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:23:34.064297+08"
+    },
+    {
+      "id": "fb367958-1225-4245-9529-aec85d60fe4e",
+      "operation": 14,
+      "state": "FAILED",
+      "error": "INVALID_ARGUMENT",
+      "createdAt": "2026-11-01 21:23:36.907023+08"
+    },
+    {
+      "id": "71a676a6-1163-4d5a-8db6-1e69d2984c6a",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:26:32.005209+08"
+    },
+    {
+      "id": "80b5938f-d27d-4438-837f-437759d0949f",
+      "operation": 14,
+      "state": "FAILED",
+      "error": "INVALID_ARGUMENT",
+      "createdAt": "2026-11-01 21:26:34.860132+08"
+    },
+    {
+      "id": "61ad9327-6102-4430-8a41-f62a5f2ec5c0",
+      "operation": 13,
+      "state": "FAILED",
+      "error": "CONFLICT",
+      "createdAt": "2026-11-01 21:29:37.587346+08"
+    },
+    {
+      "id": "506c9948-940e-423e-8b0e-c2c0e5076c2f",
+      "operation": 14,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-01 21:29:39.915637+08"
+    }
+  ],
+  "summary": {
+    "operation12": {
+      "SUCCEEDED": 2
+    },
+    "operation13": {
+      "SUCCEEDED": 7,
+      "CONFLICT": 9
+    },
+    "operation14": {
+      "SUCCEEDED": 1,
+      "INVALID_ARGUMENT": 2
+    }
+  },
+  "testEvidence": {
+    "protocol": 8,
+    "agent": 65,
+    "consoleWorkspace": {
+      "passed": 9,
+      "ignoredExplicitPostgres": 2,
+      "ignoredMtls": 3
+    },
+    "javaBridge": 33,
+    "reactDefaultBrowser": 26,
+    "reactBuild": "passed",
+    "chunkKib": 1013
+  },
+  "sourceSha256": {
+    "kura-management-console/crates/management-protocol/src/lib.rs": "81608efbf8d7c6cac7f22a7ac58bf753fb7895417a3406a69746c92726960e12",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/SnapshotCommand.java": "cf82c7b9d1c22540d221a5a0adaea8be621f15ffa2fef076ef089d1d6c29ac50",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/SnapshotCommandTest.java": "1194b4b0e6f9fdf9f52e048ab2a991429861743d6a8f4235a28238b5df0bdd04",
+    "kura/kura/org.eclipse.kura.core.configuration/src/test/java/org/eclipse/kura/core/configuration/probe/ConfigurationRemoteProbe.java": "40fa71b3599dfb3ef882ba3166e60b8421997b00c25903b222f8387701ec57d0",
+    "kura-management-console/frontend/react/tests/configuration-outcome-snapshot-live.spec.ts": "ddd367140f2af728733d756f2856fdcaec454251e21fc20d20bb1582ab1da216",
+    "kura-management-console/frontend/react/playwright.config.ts": "9bcc61dd297fc5d66052572a1081afbf91323695cec2e0b3279ac7c9bf820c4e"
+  },
+  "snapshotZeroRepair": {
+    "bridgePreviousSha256": "a452a03e7bc1dea3bab731050fdee36483620023149a9fddb405baa38735b024",
+    "bridgeRepairedSha256": "ff052dbf68a2ca12c124fe9741b9d38f07aefc8b961c9f6445754c4d31b2a116",
+    "repairedAt": "2026-11-01T21:25:35+08:00"
+  },
+  "probeMarkerRepair": {
+    "repairedAt": "2026-11-01T21:01:05+08:00",
+    "acceptedMarkers": [
+      ".configuration-update-owned",
+      ".outcome-snapshot-owned"
+    ],
+    "previousJarSha256": "107f85bfa892547347a059cdd6c36d39c3190e6b4393c72369da322e4bd8bad8",
+    "repairedJarSha256": "954903ee865489417b335ad3e49df43d0eac3bf79e43abbccb069b5010ddf085",
+    "previousObserverErrorPreservedAs": "observer-error.pre-outcome-marker-fix.json"
+  }
+}

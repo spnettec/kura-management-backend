@@ -10,6 +10,7 @@ Java 只有 `-Dkura.management.snapshot.enabled=true` 才登记 `kura.snapshot.s
 另一个中心的普通注册不能凭此操作抢占归属。
 
 操作 13 为保存，操作 14 为指定 ID 回滚。两者都是写，不重新租约。
+回滚目标是严格早于 `expectedLatestId` 的十进制快照 ID；Kura 初始快照 `0` 合法。
 它们与配置更新共用 agent 的 `configuration_write_lock`。任一操作 12/13/14 处于 RUNNING 或 UNKNOWN 时，其余新的配置或快照写入被拒绝。
 查询只取原回执，不能凭当前快照列表相同判断原动作成功，也不能换 key 重发。
 

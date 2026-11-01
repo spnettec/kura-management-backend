@@ -1,10 +1,11 @@
 # YOFC Kura 管理体系会话交接台账
 
-更新：2026-11-01 续接。用户已要求恢复实施。本地保存点仍是各仓库 ahead 1 的提交，之后的配置适用性、显式快照保存/回滚与配置 UNKNOWN 核定仍未提交。
-最新契约与验证见 `snapshot-actions-v1.md`、`phase2-snapshot-actions-20261101.md`，
-以及配置 UNKNOWN 核定的 `configuration-outcome-reconciliation-v1.md`、`phase2-configuration-outcome-20261101.md`。
-IDEA/OrbStack 尚未复验快照与配置核定两个增量。
-整个改造未完成，不能将 goal 标记 complete。禁止 reset/clean、推送或覆盖旧远端。
+更新：2026-11-01 晚间续接。配置适用性、显式快照保存/回滚与配置 UNKNOWN 核定已有本地保存点；
+其后又发现并修复 snapshot `0` 回滚协议/bridge 缺陷与新夹具 probe marker 缺陷，并完成 IDEA
+React 真实两次写入、outcome 记录、save/CONFLICT/rollback。最新证据见
+`phase2-snapshot-actions-20261101.md` 和 `phase2-configuration-outcome-20261101.md`。
+当前新夹具保持数据保留，OrbStack 尚未复验本增量。整个改造未完成，不能将 goal 标记 complete。
+禁止 reset/clean、推送或覆盖旧远端。
 
 历史暂停交接保留如下，不能覆盖本续接状态。
 

@@ -14,11 +14,13 @@ pub fn has_side_effect(operation: i32) -> bool {
     !matches!(operation, 1 | 2 | 3 | 4 | 8 | 9 | 11)
 }
 
+fn decimal_snapshot_id(value: &str) -> Option<i64> {
+    let parsed = value.parse::<i64>().ok()?;
+    ((parsed == 0 || parsed > 0) && value == parsed.to_string() && value.len() <= 18).then_some(parsed)
+}
+
 fn snapshot_id(value: &str, zero_allowed: bool) -> bool {
-    let Ok(parsed) = value.parse::<i64>() else { return false; };
-    (zero_allowed && parsed == 0 || parsed > 0)
-        && value == parsed.to_string()
-        && value.len() <= 18
+    decimal_snapshot_id(value).is_some_and(|parsed| zero_allowed || parsed > 0)
 }
 pub const READ_METHODS: &[&str] = &[
     "agent.status",
@@ -45,9 +47,10 @@ impl v1::KuraSnapshotSave {
 }
 impl v1::KuraSnapshotRollback {
     pub fn valid(&self) -> bool {
-        snapshot_id(&self.snapshot_id, false)
-            && snapshot_id(&self.expected_latest_id, true)
-            && self.snapshot_id != self.expected_latest_id
+        match (decimal_snapshot_id(&self.snapshot_id), decimal_snapshot_id(&self.expected_latest_id)) {
+            (Some(target), Some(latest)) => target >= 0 && latest > 0 && target < latest,
+            _ => false,
+        }
     }
     pub fn parameters(&self, expires_at_unix_ms: i64) -> Option<serde_json::Value> {
         if !self.valid() || expires_at_unix_ms <= 0 { return None; }
@@ -268,7 +271,9 @@ mod tests {
         let rollback = v1::KuraSnapshotRollback { snapshot_id: "2".into(), expected_latest_id: "4".into() };
         assert!(rollback.valid());
         assert!(!v1::KuraSnapshotRollback { snapshot_id: "4".into(), expected_latest_id: "4".into() }.valid());
-        assert!(!v1::KuraSnapshotRollback { snapshot_id: "0".into(), expected_latest_id: "4".into() }.valid());
+        assert!(v1::KuraSnapshotRollback { snapshot_id: "0".into(), expected_latest_id: "4".into() }.valid());
+        assert!(!v1::KuraSnapshotRollback { snapshot_id: "5".into(), expected_latest_id: "4".into() }.valid());
+        assert!(!v1::KuraSnapshotRollback { snapshot_id: "0".into(), expected_latest_id: "0".into() }.valid());
         assert!(v1::ReadCommand {
             operation: 13,
             expires_at_unix_ms: 10,
