@@ -316,8 +316,12 @@ RUNNING/UNKNOWN 副作用事务、无 writer 授权；验证新链/key 后备份
 任务标记 `EXPIRED/BINDING_GENERATION_CHANGED`，后续 dispatch/reconciliation 只匹配当前
 代次。agent 从 identity env 发送该代次，缺失/零值拒绝启动；任务 admission 记录当时
 gateway generation。UNKNOWN 历史仍保留原处，不迁移到新代次；只有同代次 receipt/query
-可终结它。签名引导、外部审批和真正独立双中心 transfer 仍未实施；不能把该握手基础宣称
-完成完整转移验收。
+可终结它。
+
+同日实现 original-center signed token 基础：console 可生成/持有 Ed25519 signer 并签发一次性
+15 分钟内 token；agent 只接受已注册 signer，且 token 绑定新旧代次、gateway、endpoint、新
+CA/client hash。外部审批 UI/流程和真正独立双中心 transfer 仍未实施；不能把签名 token 基础
+宣称完成完整转移验收。
 
 ### 6.2 重连与执行语义
 
