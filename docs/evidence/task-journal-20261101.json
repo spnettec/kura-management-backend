@@ -1,0 +1,794 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T22:52:34.629780+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Durable execution admission, encrypted new agent plans/receipts, query-only UNKNOWN reconciliation and bilingual late receipts",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura-management-agent/Cargo.lock",
+      "sha256": "ca2aca39eaf6e4801eb1c19d6b728e66bd09e8592e69d1a889c2ca6c8520f57d",
+      "bytes": 54040
+    },
+    {
+      "path": "kura-management-agent/Cargo.toml",
+      "sha256": "8923cb8d0788d2d1fb15e40e1dfed447997b68dd1da20a4b6aed56b3127d7bf2",
+      "bytes": 1001
+    },
+    {
+      "path": "kura-management-agent/packaging/README.md",
+      "sha256": "eb9f48c6384264c19bcae342e172167c7df2a96d956544d30009742f8d98ded1",
+      "bytes": 5014
+    },
+    {
+      "path": "kura-management-agent/packaging/build.py",
+      "sha256": "2fd4560b9a08c979bb7a1339b4fe7b6175ce0bb23a63d8e8acd9dd9b3a9d5c4a",
+      "bytes": 8067
+    },
+    {
+      "path": "kura-management-agent/packaging/kura-management-agent.service",
+      "sha256": "e64bd646f04177e07762d7c83779fd34755fcbe4f4a75e36ab22d7549b6f703f",
+      "bytes": 912
+    },
+    {
+      "path": "kura-management-agent/packaging/lifecycle.py",
+      "sha256": "f2e1e4b5d7b9027a8ee1a2f2738d28ec4306ef91feb3a728b91a2c53188c54d2",
+      "bytes": 1794
+    },
+    {
+      "path": "kura-management-agent/packaging/setup.py",
+      "sha256": "2d1e1bcc4d5408a37d52def0d51bcd03c53e56ee14ecc3aba4edc7fd9f0e410c",
+      "bytes": 14746
+    },
+    {
+      "path": "kura-management-agent/packaging/test_packaging.py",
+      "sha256": "067f32905e827eebcc8744c4a8ffd40cf584ffb742bfe5f85664bb6ccad2184d",
+      "bytes": 13161
+    },
+    {
+      "path": "kura-management-agent/rust-toolchain.toml",
+      "sha256": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+      "bytes": 86
+    },
+    {
+      "path": "kura-management-agent/src/journal.rs",
+      "sha256": "cf562ec4fe8ab43c1e2d2585e306caa896296885a2e65295e96608e104c59571",
+      "bytes": 17543
+    },
+    {
+      "path": "kura-management-agent/src/local.rs",
+      "sha256": "c7984553c86000cafee1665689e149a8a498ff1c027f790f1caf5af5ecbd6231",
+      "bytes": 31339
+    },
+    {
+      "path": "kura-management-agent/src/main.rs",
+      "sha256": "ebcafdb7ba9c3ac0cca06149ec41d66e2839d3c804169bd64bfafff71afc76c0",
+      "bytes": 3146
+    },
+    {
+      "path": "kura-management-agent/src/network/kura.rs",
+      "sha256": "0a0b43ff744bbc3c4f2a1458b1fdaf404b7181907ab244979a0f08c700d2eba0",
+      "bytes": 25996
+    },
+    {
+      "path": "kura-management-agent/src/network/takeover.rs",
+      "sha256": "b59f011f8a6081790a8bed15b9ef013680025490afeabdc3cbfda110e799abba",
+      "bytes": 16579
+    },
+    {
+      "path": "kura-management-agent/src/network/writers.rs",
+      "sha256": "3bb267aa9fc1d661cc02a4908601a7ac371759160a39ce2e918ca1ee991efb87",
+      "bytes": 13379
+    },
+    {
+      "path": "kura-management-agent/src/network.rs",
+      "sha256": "137c12332d960c3e2f9b611d99485da3029db8c3de82a8ca12e61c2a48fa6e94",
+      "bytes": 62774
+    },
+    {
+      "path": "kura-management-agent/src/secure.rs",
+      "sha256": "2667f4f11ecc9b781ed12df3c67af35d30cc614ec5acda3c8a957883a10177d5",
+      "bytes": 2858
+    },
+    {
+      "path": "kura-management-agent/src/transport.rs",
+      "sha256": "2d045c75b0266018ecd46dbd8dc5cc55f2f354df9d4865997d1553ca148a5f14",
+      "bytes": 20382
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "5e2324ac018f8b538a7390f240b0c385e5ef019e42f2c1235efc006108a8d5ac",
+      "bytes": 5710
+    },
+    {
+      "path": "kura-management-console/Cargo.lock",
+      "sha256": "fa8187a0fe798f7385f88df7f4f60ec2a97d917e7814da9078925ee3d0d911c3",
+      "bytes": 80949
+    },
+    {
+      "path": "kura-management-console/Cargo.toml",
+      "sha256": "6f784b5c827bd9369da43979e281069d9ca34271f24d8d2d0a6fe2c5f1b65110",
+      "bytes": 652
+    },
+    {
+      "path": "kura-management-console/crates/console/Cargo.toml",
+      "sha256": "f54163abd6a1d9d9401117d6d9a304f297f8bc23c4ede4a1d8e1c57ec26bd7f8",
+      "bytes": 1272
+    },
+    {
+      "path": "kura-management-console/crates/console/src/auth.rs",
+      "sha256": "ef08d54db86fd043d44e6948652f55444482a465afda0bc64a2c20a5fb021893",
+      "bytes": 3740
+    },
+    {
+      "path": "kura-management-console/crates/console/src/config.rs",
+      "sha256": "afcb93a5f2f7d6e6ee6a7308414c7df49c6bdec0c33b948706a026b1746345ce",
+      "bytes": 1255
+    },
+    {
+      "path": "kura-management-console/crates/console/src/db.rs",
+      "sha256": "57a436d9f498424488cd6fe11a3480bff519f19f461c18c007821f9cfee71aae",
+      "bytes": 1228
+    },
+    {
+      "path": "kura-management-console/crates/console/src/grpc.rs",
+      "sha256": "493a8b13eeb720d3147ab7e0d25ac99fc8152f666ad1629cdb268499a1138d35",
+      "bytes": 23682
+    },
+    {
+      "path": "kura-management-console/crates/console/src/http.rs",
+      "sha256": "c5f471d83bc17e2bcbf7d99fe498d1743f96acd78af3c7c4e5da9a55fba7775d",
+      "bytes": 21308
+    },
+    {
+      "path": "kura-management-console/crates/console/src/main.rs",
+      "sha256": "73c5056963b59ef15a3cb029f708f1da40c0ff720495b5622bc955e614824423",
+      "bytes": 6546
+    },
+    {
+      "path": "kura-management-console/crates/console/tests/mtls.rs",
+      "sha256": "b5778ae35e4d68546413b3e5ecdad9bbeb98d86f4b460e00a1b14ee5e326eadd",
+      "bytes": 4561
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/Cargo.toml",
+      "sha256": "e2cca428a0610bbe16d75af4a3be416074f06652c2dfdc67f7b7f2ba1d636cf5",
+      "bytes": 472
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/build.rs",
+      "sha256": "2c86eed17f7b89228206752ff3bcaa4e4bbe18a24dd6711201fdb1b78fd61302",
+      "bytes": 1442
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/proto/management/v1/control.proto",
+      "sha256": "33975f4bbdf1a4c1dbcd3bc9d172eb78898cd42eed84c414d5ba332cea0b206c",
+      "bytes": 3231
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/src/lib.rs",
+      "sha256": "fd89cd9e78027dd4e6c283cbbb426cec497ad728552f5e50893fef490fe822d8",
+      "bytes": 6388
+    },
+    {
+      "path": "kura-management-console/docs/console-i18n-20261101.md",
+      "sha256": "96e8e5ff36b26ff28ed90db06c1dc7d04ae5cf22eb93ec339bcad4a3f5955042",
+      "bytes": 6003
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "8449f5ce13ecf7eaff7953a0ca628abd9e2d0d61ea7847e1072b3846e4a2d651",
+      "bytes": 53147
+    },
+    {
+      "path": "kura-management-console/docs/openapi-v1.json",
+      "sha256": "cb2330c88dd58544e870c0fd454ccbdf09c2324759d27dc2a1b86e49d2ff07c0",
+      "bytes": 49634
+    },
+    {
+      "path": "kura-management-console/docs/phase2-task-journal-validation-20261101.md",
+      "sha256": "d1b0a885d6184a931e5079f1b50979931d72eb8a1e60306b314887bad122eb81",
+      "bytes": 11253
+    },
+    {
+      "path": "kura-management-console/frontend/react/package-lock.json",
+      "sha256": "c512ef433b51c3db3ab174ca6ab45dbe81918f0675ce992b164d3730448c3ec2",
+      "bytes": 80651
+    },
+    {
+      "path": "kura-management-console/frontend/react/package.json",
+      "sha256": "33559399f509e04ec196fe05d60e574706d9ce4f3a7e7ac52023a293d52a2cc1",
+      "bytes": 739
+    },
+    {
+      "path": "kura-management-console/frontend/react/playwright.config.ts",
+      "sha256": "8afac03084a3ae54fea1b6607eb3b27cfdd0e1a70833270aea0f5e7a0b5158eb",
+      "bytes": 1672
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/client.ts",
+      "sha256": "755af96c07648e58c62d296e3c5cc17c5dbf9883b253461a5f52422904755137",
+      "bytes": 1011
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/schema.d.ts",
+      "sha256": "221d08925967f284a3476ab01d774ea14296b41c900bef99ed7dfc37de1e9719",
+      "bytes": 49153
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/access/Login.tsx",
+      "sha256": "55de411a8c339e099efaf6037993e3ce1ade38bcfd5b483e2eadfffb045833df",
+      "bytes": 3067
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/commands/Commands.tsx",
+      "sha256": "31f9a93d13063ff98f1b6f5d2f8d41f764b95089f038df46bf1539a818ec9303",
+      "bytes": 2462
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/ConfigurationPanel.tsx",
+      "sha256": "20c78dd2608b3d330df27a981f6ce277ad0076d2395315db4dac46d80e1c5a90",
+      "bytes": 4242
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/model.ts",
+      "sha256": "efbc563c470fc8239d0dc23678aa81156b89245be3c55851ecafe07544521165",
+      "bytes": 3120
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/Gateways.tsx",
+      "sha256": "ef7cecb3c534aa590301010aa7391953ae3b53e7930facd71419438435c758fe",
+      "bytes": 4044
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/NetworkPanel.tsx",
+      "sha256": "4b34082846cdb898a0b8a4a0ecced76644f2a41323227f0ad4a2e6fc45538e51",
+      "bytes": 18232
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/I18n.tsx",
+      "sha256": "85d7677017b3b6337c8277c86b125db61aecbd8907269451e8802f8c9f02257c",
+      "bytes": 3639
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/core.ts",
+      "sha256": "eb1a41004c9bcf809da538d1fd5cdf0ec2bc69a5fbeba2e9f3b7f74c205b1676",
+      "bytes": 1846
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/messages.ts",
+      "sha256": "389c543e1c8eec3696b349e1b6e5c7f27fd27578a7715e1daa2154f3a06ed75a",
+      "bytes": 15455
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/main.tsx",
+      "sha256": "9413172ff6c2d70c0eca57c28d94b91cfec0e8bb5646369933ac288797479fba",
+      "bytes": 9514
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/i18n.spec.ts",
+      "sha256": "6b72eb575afc9c7a8831cf372e8d8400f9717486f1050658c2c314c4c216bb9b",
+      "bytes": 10296
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/task-reconciliation.spec.ts",
+      "sha256": "b229ad0269171eea3b35a4d87970bbdc379c2a1006510a5c66bb45d3586512be",
+      "bytes": 3292
+    },
+    {
+      "path": "kura-management-console/migrations/0006_task_reconciliation.sql",
+      "sha256": "782331b9b46afbe1f01b5dd66ec04ad14a2421dd0cfe5593e7cb5a8ee587220c",
+      "bytes": 199
+    },
+    {
+      "path": "kura-management-console/rust-toolchain.toml",
+      "sha256": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+      "bytes": 86
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-contract.py",
+      "sha256": "254b3379939558b4879c816218347b0945ce78458a5da8a3d5c8799c2f789805",
+      "bytes": 14716
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-package-smoke.py",
+      "sha256": "a7f49d73f5522285423b651eb851720c0b5746171a17046a8caf2b377e8a5221",
+      "bytes": 6310
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-package-vm.py",
+      "sha256": "f1690e3e4529bd5e60efa57377a973b10f0603cf3766584c0b61b55cd3c1f142",
+      "bytes": 10005
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "kura-management-console/target/kura-management-agent_0.1.0~taskjournal20261101-1_arm64.deb",
+      "sha256": "522a4a9f33c134e2798df887cebe4f940d9f356baefae1b0bf64ec0543d16f02",
+      "bytes": 20057640
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-agent-20261101",
+      "sha256": "d928d36e0f38c066059f595ea292bcc87e13a48ec302860f4072e7f5aaa269f1",
+      "bytes": 104623360
+    },
+    {
+      "path": "kura-management-console/target/task-journal-protocol-package-20261101/package/yofc-management-protocol-0.1.0.crate",
+      "sha256": "4d973417d5eab84270e441ace98434ec0c6f1e6a86c288a055b1b9018f2f82ee",
+      "bytes": 13867
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/task-journal-agent-build-20261101.log",
+      "sha256": "572217e90032fda87f63901eff933dfffd8cfec8adfbe748c0046bdf24780910",
+      "bytes": 466
+    },
+    {
+      "path": "kura-management-console/target/task-journal-agent-fifty-20261101.log",
+      "sha256": "45445a0badbfd436a613b084f1915578313905f02db0ce60285f09b39a72e284",
+      "bytes": 4733
+    },
+    {
+      "path": "kura-management-console/target/task-journal-agent-final-20261101.log",
+      "sha256": "aa40b1aae91bfbaf7d9f7dfdc9818e98c297ad95241b6cd6c606631553b0566a",
+      "bytes": 4834
+    },
+    {
+      "path": "kura-management-console/target/task-journal-agent-first-20261101.log",
+      "sha256": "863adce7279dce0a73f9e7d082f304b59676f9c3dba1fc6d773063887433fb4a",
+      "bytes": 1397
+    },
+    {
+      "path": "kura-management-console/target/task-journal-agent-second-20261101.log",
+      "sha256": "5aa6a7ae7995d78db1f9f5b0ec0ff59076e8d7c4d6960ae7853aabfdc47ec3b7",
+      "bytes": 4678
+    },
+    {
+      "path": "kura-management-console/target/task-journal-agent-verified-20261101.log",
+      "sha256": "021451734a5342e0a8bec30782411aa8759e84811a0af4bf452bddc190ba5702",
+      "bytes": 32
+    },
+    {
+      "path": "kura-management-console/target/task-journal-agent-verified-final-20261101.log",
+      "sha256": "64617d35417409af042a7d88d3722ad50c3fc17745f437663d020ef52a5f2bc1",
+      "bytes": 4808
+    },
+    {
+      "path": "kura-management-console/target/task-journal-browser-20261101.json",
+      "sha256": "ca4ed07d194b744402e9615fe0af1bcb32e2ad962893065ec4f893004dfb6e49",
+      "bytes": 21243
+    },
+    {
+      "path": "kura-management-console/target/task-journal-browser-final-20261101.json",
+      "sha256": "9bde3c9172c3d7f99f1639c9f93a54c3ff7ddff488ae89a3eb99793837b156f4",
+      "bytes": 21243
+    },
+    {
+      "path": "kura-management-console/target/task-journal-browser-first-20261101.json",
+      "sha256": "328ee2d5086a31f61579f800371bf00f89ca45168ceafa213f1b328e2571404f",
+      "bytes": 21322
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-build-20261101.log",
+      "sha256": "0818ad7681df5b6ba584518024abbc5fc6bd95c45de1505ae53b103801b8f4b7",
+      "bytes": 863
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-discovery-20261101.json",
+      "sha256": "e187b164b8d5b70cb017c60eac28f833b58f1c1f919597e10ba3d7624f783c78",
+      "bytes": 278
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-final-20261101.log",
+      "sha256": "403a9735c4c705ec4ca8ed981d9a8d27b56fd3f79e13e69afee83d8d70c73a5a",
+      "bytes": 2220
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-first-20261101.log",
+      "sha256": "da7820b499c0e06faf43f339f484c8cfd64c48d6a62c96068c53b3f80d4fb953",
+      "bytes": 1665
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-fourth-20261101.log",
+      "sha256": "d4d2b6d4240df1856c479a28228e33c487973ad0a06ed4872abc45e5e4f118e1",
+      "bytes": 1799
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-second-20261101.log",
+      "sha256": "ae7d18f22445f3835b8848492a55d82e74cfd995697847d1e37eea2c9f005538",
+      "bytes": 33340
+    },
+    {
+      "path": "kura-management-console/target/task-journal-console-third-20261101.log",
+      "sha256": "6aaf28f09965410b1a399989fd8e0f4267726f162056144100e14fe63d12b12b",
+      "bytes": 1530
+    },
+    {
+      "path": "kura-management-console/target/task-journal-coverage-agent-20261101.json",
+      "sha256": "e74d999f815ff2e34097cfb994d414008ae7d937e9ccec85f58db93af0473131",
+      "bytes": 1856
+    },
+    {
+      "path": "kura-management-console/target/task-journal-coverage-agent-final-20261101.json",
+      "sha256": "4b032220ed157c38bf5e022beaf1947539ad26bfad60a74a3e01d7ff2a376ae2",
+      "bytes": 2093
+    },
+    {
+      "path": "kura-management-console/target/task-journal-coverage-console-20261101.json",
+      "sha256": "51018cb19dba23dfc52a3b40aa37adc3e16102a6d3f7bd792d5bf464fd860344",
+      "bytes": 3769
+    },
+    {
+      "path": "kura-management-console/target/task-journal-coverage-console-final-20261101.json",
+      "sha256": "68ed9de144532a08c33378b322bedee7f7f5cd635bbca01fb5e10f7ca47ace71",
+      "bytes": 4034
+    },
+    {
+      "path": "kura-management-console/target/task-journal-graph-agent-final-20261101.log",
+      "sha256": "c07fa94fd1f9a8661925df0db6887e4011209e26e831859310f544f7d4bb3bd5",
+      "bytes": 582
+    },
+    {
+      "path": "kura-management-console/target/task-journal-graph-console-final-20261101.log",
+      "sha256": "09cfdf5930c5e42e91293b335a2379e1d262569ccbc800ca80b023c400a618b9",
+      "bytes": 1535
+    },
+    {
+      "path": "kura-management-console/target/task-journal-idea-browser-20261101.json",
+      "sha256": "942f4e52e88c99c4dde84f3d8c16731cd5504b7ba768e888260784462e225a56",
+      "bytes": 4231
+    },
+    {
+      "path": "kura-management-console/target/task-journal-idea-configuration-ui-20261101.png",
+      "sha256": "2ccffbe6b05060f7fe8698fac1f89b79c2818849aa65cbefc091b67b7626ab47",
+      "bytes": 209957
+    },
+    {
+      "path": "kura-management-console/target/task-journal-idea-gate-20261101.json",
+      "sha256": "f984d3ec45d28c145fb4c818c3b5be6906fb8b965a94aae7909981ee1ef69117",
+      "bytes": 530
+    },
+    {
+      "path": "kura-management-console/target/task-journal-idea-live-20261101.log",
+      "sha256": "5b50fa79135bc35a6b53cf6c2dd73d252fb1d7ec882671a0021c4f9d2b489229",
+      "bytes": 682
+    },
+    {
+      "path": "kura-management-console/target/task-journal-idea-live-retry-20261101.json",
+      "sha256": "0220d685929312d19de2e779b2ba0d5a38c949b2549fe46335f3b19975dfb444",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/task-journal-idea-live-retry-20261101.log",
+      "sha256": "0220d685929312d19de2e779b2ba0d5a38c949b2549fe46335f3b19975dfb444",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-absent-20261101.json",
+      "sha256": "093eaf0cc8900c18a677fb422d5489f35c0754aa897d9b32f507fd450ab0f684",
+      "bytes": 1196
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-absent-20261101.log",
+      "sha256": "093eaf0cc8900c18a677fb422d5489f35c0754aa897d9b32f507fd450ab0f684",
+      "bytes": 1196
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-build-20261101.log",
+      "sha256": "b65619a657f5f4c5f86076c5ca7c845304fd905f708cc6d84d86ae9e4b8ebbfc",
+      "bytes": 183
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/guard.json",
+      "sha256": "59d1ed4754ffe7cd6dbb1449ad6bde5995e8429418dd9faee3040ce49a64f711",
+      "bytes": 501
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/identity.json",
+      "sha256": "daa7b693340292fe705b1ce0c9005f74ee6e074362260cba0c60599a28b960fe",
+      "bytes": 384
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/install.json",
+      "sha256": "c25ec905f34629319965fa8332fb0151db395dd56bebfd31e70b0e98a7f94ba9",
+      "bytes": 377
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/inventory.json",
+      "sha256": "98f7c57955bd933797a8cdd162bde9621c184e47214b092db954b8ca8d50d6b8",
+      "bytes": 292
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/purge.json",
+      "sha256": "1c94d4161f5eeb554d12fbac4da6edef960ea30b6ec512b40cd8445c7c380d0a",
+      "bytes": 381
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/reinstall.json",
+      "sha256": "34d39da340db3394b8b3d051628f1c2310b213e7269d4cbc98322db20e2e0406",
+      "bytes": 379
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/remove.json",
+      "sha256": "d2febea6a0c3e607c080145da499c4f8b89e5fd48033db3ffd5e995d8c448182",
+      "bytes": 392
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/resume.json",
+      "sha256": "fcfe360462fc4921a95a3d0e69261c964f15f55243b62e5bbd3310a7913ec9dc",
+      "bytes": 350
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/settle.json",
+      "sha256": "ece10aabdaf28cb2a97bcb441eee7386ad6063731a0e3b0eb1e58c9163589a8d",
+      "bytes": 1477
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/stop.json",
+      "sha256": "796f72f33628d5aaff7ae63d6bc5944e64ffbdb101c9bd19403c6dda9d8e5889",
+      "bytes": 1477
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-receipts-20261101/upgrade.json",
+      "sha256": "10f15ce9816805dfc399b334b796853585db6ac2f72d5d1ed3d05a2e038e22d2",
+      "bytes": 376
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-reconcile-20261101.json",
+      "sha256": "9941bf128e27a0f212f27738861bab55b985e9661b0246c1876e0b880e82ac99",
+      "bytes": 2090
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-reconcile-20261101.log",
+      "sha256": "6cb267816b24f776719364bddbc4250bba21b2a5fe98fb7a74fb84536142ad8a",
+      "bytes": 80
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-reinstalled-20261101.json",
+      "sha256": "cc80ed043691a19882dc0718b9fed6f4af267fab0d1ef03c62b224f2de3f1aa2",
+      "bytes": 2090
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-reinstalled-20261101.log",
+      "sha256": "8ea2112c2282759bb45496800d27fc9f58d06d4395bd5f49216efe7ad8eee32f",
+      "bytes": 82
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-stage-20261101.log",
+      "sha256": "2956aa8a78269b5a1d7680ce4686b4eeaf5a1ecf88b392683f34a3e24bb80ac2",
+      "bytes": 1942
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-tests-20261101.log",
+      "sha256": "1ca0e6cf94bc9efcabf504b2eec622034b8af808b333b4df179d418c68ffd635",
+      "bytes": 44
+    },
+    {
+      "path": "kura-management-console/target/task-journal-linux-tests-isolated-20261101.log",
+      "sha256": "464f2a0048f1b64b2feba9e98157463a30114025664d38bb1fda520f5135bcc1",
+      "bytes": 11148
+    },
+    {
+      "path": "kura-management-console/target/task-journal-live-contract-first-20261101.json",
+      "sha256": "3f930249df7784fcc2b2a19ad2926fc81ed3f129544d92fd338ab9bd17af77df",
+      "bytes": 1742
+    },
+    {
+      "path": "kura-management-console/target/task-journal-live-contract-first-20261101.log",
+      "sha256": "c38f2a98ba03823721ff81b61f2e59618b84070eae519c39012d54b887ed9408",
+      "bytes": 145
+    },
+    {
+      "path": "kura-management-console/target/task-journal-mtls-20261101.log",
+      "sha256": "92853c6e2df3c39802d02e5c1976b15d4af8b5df30194eba066dae7db4fb0a5f",
+      "bytes": 1010
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-20261101.json",
+      "sha256": "1ccb19d004236422d7603ccc91cfc0d9f0bee248d1c8b86603bc0ffcccd48d3b",
+      "bytes": 457
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-guard-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-guard-20261101.json",
+      "sha256": "59d1ed4754ffe7cd6dbb1449ad6bde5995e8429418dd9faee3040ce49a64f711",
+      "bytes": 501
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-identity-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-identity-20261101.json",
+      "sha256": "daa7b693340292fe705b1ce0c9005f74ee6e074362260cba0c60599a28b960fe",
+      "bytes": 384
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-install-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-install-20261101.json",
+      "sha256": "c25ec905f34629319965fa8332fb0151db395dd56bebfd31e70b0e98a7f94ba9",
+      "bytes": 377
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-inventory-20261101.json",
+      "sha256": "98f7c57955bd933797a8cdd162bde9621c184e47214b092db954b8ca8d50d6b8",
+      "bytes": 292
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-purge-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-purge-20261101.json",
+      "sha256": "1c94d4161f5eeb554d12fbac4da6edef960ea30b6ec512b40cd8445c7c380d0a",
+      "bytes": 381
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-reinstall-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-reinstall-20261101.json",
+      "sha256": "34d39da340db3394b8b3d051628f1c2310b213e7269d4cbc98322db20e2e0406",
+      "bytes": 379
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-remove-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-remove-20261101.json",
+      "sha256": "d2febea6a0c3e607c080145da499c4f8b89e5fd48033db3ffd5e995d8c448182",
+      "bytes": 392
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-resume-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-resume-20261101.json",
+      "sha256": "fcfe360462fc4921a95a3d0e69261c964f15f55243b62e5bbd3310a7913ec9dc",
+      "bytes": 350
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-settle-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-settle-20261101.json",
+      "sha256": "ece10aabdaf28cb2a97bcb441eee7386ad6063731a0e3b0eb1e58c9163589a8d",
+      "bytes": 1477
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-stop-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-stop-20261101.json",
+      "sha256": "796f72f33628d5aaff7ae63d6bc5944e64ffbdb101c9bd19403c6dda9d8e5889",
+      "bytes": 1477
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-upgrade-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-journal-package-upgrade-20261101.json",
+      "sha256": "10f15ce9816805dfc399b334b796853585db6ac2f72d5d1ed3d05a2e038e22d2",
+      "bytes": 376
+    },
+    {
+      "path": "kura-management-console/target/task-journal-packaging-unit-20261101.log",
+      "sha256": "814250e7d30b3ab5eb1aeb99240e29ae869bd314ba648ce227f6c2cc121c5582",
+      "bytes": 148
+    },
+    {
+      "path": "kura-management-console/target/task-journal-postgres-contract-20261101.log",
+      "sha256": "208c56b94d37af163cc72a66c7aa7656f589c4253a9828fa656325ac03e32bb4",
+      "bytes": 1467
+    },
+    {
+      "path": "kura-management-console/target/task-journal-protocol-package-20261101.log",
+      "sha256": "adc7ce6b4d0f0b5d1a3ef3cb8deef41f64672ae970a509b40b897f123e359fc9",
+      "bytes": 367
+    },
+    {
+      "path": "kura-management-console/target/task-journal-react-build-20261101.log",
+      "sha256": "0a65188855572ac8d40531476bf8cd34cecd04fc77f25a4f18fa633a73ceb62f",
+      "bytes": 842
+    },
+    {
+      "path": "kura-management-console/target/task-journal-react-build-final-20261101.log",
+      "sha256": "1fdbd0d5a51dcac7bcf0a39af1d4aeeb715d19f8d5bfa39f4e0e71f2823b332e",
+      "bytes": 842
+    },
+    {
+      "path": "kura-management-console/target/task-journal-react-build-verified-20261101.log",
+      "sha256": "047ce844da9a0d804eb18925cc4087f96bf2aeb6fe939703c4d497a0c494cee1",
+      "bytes": 842
+    },
+    {
+      "path": "kura-management-console/target/task-journal-reconciled-ui-20261101.png",
+      "sha256": "2ed029b7271fbf0b8d6015e7387147650178e2cccbe0fe0144f7349c96de430f",
+      "bytes": 102600
+    },
+    {
+      "path": "kura-management-console/target/task-journal-uncertain-ui-20261101.png",
+      "sha256": "3a75dd5a66196fdafa9586c003e45908af3d1070172a7230823ac4acf651d99a",
+      "bytes": 93545
+    },
+    {
+      "path": "kura-management-console/target/task-journal-uncertain-ui-first-20261101.json",
+      "sha256": "7058831112df98fedbb14e038e170453f2ba7b28f40edbd0a0d7b17156ad5988",
+      "bytes": 4728
+    }
+  ],
+  "acceptance": {
+    "agentMacOS": 50,
+    "agentStagedLinux": 50,
+    "consoleUnit": 2,
+    "protocol": 6,
+    "postgresExplicit": 1,
+    "mtlsExplicit": 3,
+    "packagingUnit": 17,
+    "defaultBrowser": 16,
+    "liveDisconnectContract": 19,
+    "ideaLiveHttp": 31,
+    "ideaLiveBrowser": 1,
+    "ideaInventoryHashMatches": 281,
+    "linuxAbsentHttp": 26,
+    "linuxPackageReconcile": 13,
+    "linuxReinstalledReconcile": 13,
+    "packageFixture": "purged",
+    "packageGateway": "disabled",
+    "hostFixture": "stopped-data-retained",
+    "hostGateway": "disabled",
+    "systemNetworkWrites": 0
+  },
+  "stagedAgentInputsMatch": 12,
+  "protocolCrateSha256": "4d973417d5eab84270e441ace98434ec0c6f1e6a86c288a055b1b9018f2f82ee",
+  "graph": {
+    "chatTransport": "closed",
+    "officialCLI": "available",
+    "consoleNodes": 4388,
+    "consoleEdges": 9594,
+    "agentNodes": 706,
+    "agentEdges": 2904,
+    "criticalPaths": 21,
+    "metadataMatch": 21,
+    "caveat": "Best effort signal; existing SQL/config parse gaps remain"
+  },
+  "limitations": [
+    "Stages 2-5 remain open",
+    "Center input/result and legacy agent results storage not yet encrypted",
+    "Network UNKNOWN business outcome and audited closure pending",
+    "New package with real Linux Kura/UID combination pending",
+    "Upgrade from revision5 pending; same-candidate upgrade maintenance path tested",
+    "Ubuntu26.04 new-version regression pending",
+    "Full systemd filesystem sandbox on OrbStack deferred",
+    "amd64 physical wired and hard power interruption deferred",
+    "Protocol0.1.0 is a local candidate, not registry publication"
+  ],
+  "privacy": "Private identity, agent.env contents, passwords, configuration values, VM private archives and browser error-context excluded"
+}

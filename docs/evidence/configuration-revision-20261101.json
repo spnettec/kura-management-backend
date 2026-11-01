@@ -1,0 +1,582 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-01T00:10:49.356834+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Configuration conditional-update core and unadvertised Java bridge foundation; remote writer not connected",
+  "goalStatus": "active",
+  "remoteWriteValidated": false,
+  "repoHeads": {
+    "kura": "b7f72c0e64c44156dd4b00783526871281ad096b",
+    "kura-networking": "d9bc0190f1f3cb4dc90fc1f4ba4392851ed894e6",
+    "kura-container": "eea0829b9e340e4fa73f1960db550570f13c6da7",
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura-container/bundles/org.eclipse.kura.container.provider/META-INF/MANIFEST.MF",
+      "sha256": "dbc0bd9cff7cb34792d846084178a826bbf233e6c2716ead3412092059923c7b",
+      "bytes": 841
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "a6b2ce0824d05cc82110d6b0ea6e97208489542f4afdbf3e4e6684247abf8b85",
+      "bytes": 7278
+    },
+    {
+      "path": "kura-management-console/docs/configuration-conditional-update-v1.md",
+      "sha256": "399210c541c39497cd108008338d057e8185dd73437c587d96957775bb2f4e6b",
+      "bytes": 4775
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "5e1b0f79eab219ad7e8f8fd5812bf6438280fc53bfb9f2e6c031517771f1f656",
+      "bytes": 54352
+    },
+    {
+      "path": "kura-management-console/docs/phase2-configuration-revision-validation-20261101.md",
+      "sha256": "05193aacfd721ea3d1d97b3f9a186fea01f95a26e45fc9e2057d86f9d15452c8",
+      "bytes": 10460
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-revision-browser.mjs",
+      "sha256": "433402fc45f634707b4a1621fa107428398c8368df9c7da8ad8fc7cb0ee0717e",
+      "bytes": 1512
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-revision-read-smoke.py",
+      "sha256": "c569cc60cb8dd60bfcdba48a3855b92c5d284eadc9d002389bc33d4dfaadadd6",
+      "bytes": 2651
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-revision-runtime.py",
+      "sha256": "b9573460c50c6451e7eb7d2b6f647da96c823cf526f917d99d4345e8d4b32fb9",
+      "bytes": 11251
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-revision-vm.py",
+      "sha256": "4b062575fce675288c2713c0136f4d7d80e49e0acb2a46dbc224a439451398f1",
+      "bytes": 7430
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/META-INF/MANIFEST.MF",
+      "sha256": "d3bf70a6b292a38a78badb23aaab8477ac00fd6256579332d8064636de254cdf",
+      "bytes": 622
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/OSGI-INF/management-bridge.xml",
+      "sha256": "97ad3c182d4bf20f00b8645c71bf5729aa972ad7d1923c0b59b419baaf353f7f",
+      "bytes": 851
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/pom.xml",
+      "sha256": "2bc28c5d7b14ef8f8b55e958f9d3c4f360386869918a456bca528cea254bd32b",
+      "bytes": 4227
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/ConfigurationPatch.java",
+      "sha256": "f063acc34a9c4d983faaa8d471fffad2346ed4b0349aaaa059bb5db7903023a9",
+      "bytes": 7411
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/ConfigurationView.java",
+      "sha256": "4daf7d038455ef1a5f5a0c1838ca4b6a2c0434e7944b1298b45c7cdbf375b5ea",
+      "bytes": 7980
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/FrameCodec.java",
+      "sha256": "c1ce66b91f99d9d66100fec18b3a7831f7c9a8d66d7f4f6077dac4009ef580bc",
+      "bytes": 2707
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/LocalAgentException.java",
+      "sha256": "9f4c1b28ead2077312f6a7967fdbf8e8b92c8f55c36d7d6627221b085336f512",
+      "bytes": 608
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/LocalAgentService.java",
+      "sha256": "6ca69a0d3386203416cd6e7ade3a6e89bd59a168e3303201e39e5762e01f55f9",
+      "bytes": 484
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/ManagementBridge.java",
+      "sha256": "45998c73a7234d0e01eff4c37c4dea8f82dc9ffa89c36b50d606007336c37e74",
+      "bytes": 16918
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/ConfigurationPatchTest.java",
+      "sha256": "eff1e36c0b8ea8843b939abdbc556e2f4de71e8f00adaeaff752e079ce9ceba9",
+      "bytes": 9589
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/ConfigurationViewTest.java",
+      "sha256": "0a176655a1fb9ef402ae2947e4239a185267aa5c5371eef6f9cc8800c244a595",
+      "bytes": 8590
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/LocalAgentServiceTest.java",
+      "sha256": "9f76bdbcd060a8ee17a900585782460703899528d67644b853e87ec7c26423a7",
+      "bytes": 14283
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/ManagementBridgeTest.java",
+      "sha256": "550e3d01222c74c14f76c53fa0c383e21c6f4803f6276ff0121331041a274447",
+      "bytes": 2152
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.api/META-INF/MANIFEST.MF",
+      "sha256": "b90af9b3790936e044d9297dfad115f05f2418f453e15f4775a0f4950dab3d3a",
+      "bytes": 4734
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.api/src/main/java/org/eclipse/kura/configuration/ConfigurationRevisionService.java",
+      "sha256": "902b9ff9a3b222c58bf435dace7b4e39645aea77856b6f78047480633260fa4e",
+      "bytes": 2544
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/META-INF/MANIFEST.MF",
+      "sha256": "62c262195c6fc6388111d4cfb5ca463e421465524846fc5f9a1a047a41cf527b",
+      "bytes": 1939
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/OSGI-INF/configuration.xml",
+      "sha256": "95d8689ee07ee4bdace6f11cd99aa6273c5dd0e908e7b2f080f66fefd5fd6c99",
+      "bytes": 3868
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/pom.xml",
+      "sha256": "a29a82904ffa5050c303c84756a865d25787dc17127ea7f6f196d210381202e5",
+      "bytes": 7709
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/main/java/org/eclipse/kura/core/configuration/ConfigurationRevision.java",
+      "sha256": "56ca4c8a14a7b6ec2ae4fc6c62c87dd4944ba7d546911bc9cdf9cfd6d84c5193",
+      "bytes": 12207
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/main/java/org/eclipse/kura/core/configuration/ConfigurationServiceAuditFacade.java",
+      "sha256": "44a5940a0d65bed808ee0ac241fb72eb103bfa0ed147e5a4f05d31e9170b4afe",
+      "bytes": 6958
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/main/java/org/eclipse/kura/core/configuration/ConfigurationServiceImpl.java",
+      "sha256": "7009aeb077709459246c858bc8355eb5a48e1f88317a5dfabf75165bdf7b6021",
+      "bytes": 104050
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/java/org/eclipse/kura/core/configuration/ConfigurationRevisionAdmissionTest.java",
+      "sha256": "7c98ac61f879ed1b872c399a9cd83155e7be3e9b974b4e067ca7f84720caec5f",
+      "bytes": 7332
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/java/org/eclipse/kura/core/configuration/ConfigurationRevisionTest.java",
+      "sha256": "864ce3124702d3e11e10fa80b6c96e937a73c048c8db1a82e01dde67bf3b9875",
+      "bytes": 5726
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/java/org/eclipse/kura/core/configuration/ExternalConfigurationRoutingTest.java",
+      "sha256": "e44b21e0442e0f82ce018fd28fa5fecc0c9d6456830de765ce2b7a8fa1c3f836",
+      "bytes": 15249
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/java/org/eclipse/kura/core/configuration/PasswordTypePreservationTest.java",
+      "sha256": "06539e4eb4ba0cefd61b8fca39b6d064fcb5e9f5944876cd9e8953d41523465a",
+      "bytes": 20587
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/java/org/eclipse/kura/core/configuration/probe/ConfigurationRevisionRuntimeProbe.java",
+      "sha256": "030e87b4cdf478603cde822defb052ef0a519aa88b0c9175c1f7d9e9a6199c7e",
+      "bytes": 12384
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/resources/configuration-revision/fixture.xml",
+      "sha256": "e1bb4bb4afc39d82bf1dee87622f8628be29fa506ddca8f034c1531025a95faf",
+      "bytes": 682
+    },
+    {
+      "path": "kura/kura/org.eclipse.kura.core.configuration/src/test/resources/configuration-revision/metatype.xml",
+      "sha256": "5b1379286b2c6a2df23c2f4fab3316f69dac7e82b693b078073f592ff3d2e1d7",
+      "bytes": 769
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "kura-management-console/.phase1-dev/configuration-revision-final-20261101/runtime/plugins/org.eclipse.kura-org.eclipse.kura.api-3.0.0-SNAPSHOT.jar",
+      "sha256": "2177eb2e25c574afd48138671eee1d4c2429d4b2185aa098852fe1cbc58ac80c",
+      "bytes": 539665
+    },
+    {
+      "path": "kura-management-console/.phase1-dev/configuration-revision-final-20261101/runtime/plugins/org.eclipse.kura-org.eclipse.kura.container.provider-3.0.0-SNAPSHOT.jar",
+      "sha256": "2096ba1e488524cceb30e6e304053b585e9f5d564bfca7f10d09fd601b32948b",
+      "bytes": 31209
+    },
+    {
+      "path": "kura-management-console/.phase1-dev/configuration-revision-final-20261101/runtime/plugins/org.eclipse.kura-org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "sha256": "69fbce99408e24875883d7966007456106a295419ca29a5baa26238170ae6190",
+      "bytes": 132442
+    },
+    {
+      "path": "kura-management-console/.phase1-dev/configuration-revision-final-20261101/runtime/plugins/org.eclipse.kura.management.bridge-1.0.0-SNAPSHOT.jar",
+      "sha256": "fdf348fd02a72dba49cbeea0e5b21ac243eb8b897c869b6132306614764fcec8",
+      "bytes": 33043
+    },
+    {
+      "path": "kura-management-console/.phase1-dev/configuration-revision-final-20261101/runtime/plugins/yofc-configuration-revision-probe.jar",
+      "sha256": "98f97ef79b9417d08e3540cba794ae58c32b428b339d00966fac4fa95b2374ee",
+      "bytes": 26807
+    },
+    {
+      "path": "kura-management-console/frontend/dist/assets/index-BM-DFAC1.css",
+      "sha256": "589e0bc4305b28ba0a4f50762a5843050aedf380b1838e395f61eba6617e07e2",
+      "bytes": 9581
+    },
+    {
+      "path": "kura-management-console/frontend/dist/assets/index-CpGnPVvo.js",
+      "sha256": "583256a4c809a429d162523721a43e32204446d2f949a7e4e0af1481657ac3da",
+      "bytes": 1664964
+    },
+    {
+      "path": "kura-management-console/frontend/dist/index.html",
+      "sha256": "6e13574eb157321038f18974143678ea7310d915f8c562b00b9414ad47bb7d59",
+      "bytes": 407
+    }
+  ],
+  "evidence": [
+    {
+      "path": "kura-management-console/target/configuration-revision-bridge-final-20261101.log",
+      "sha256": "db1af105fbce263972a19d2efa0cfae01866ca35564dd05452c8c2eb6992e69a",
+      "bytes": 7535
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-bridge-first-20261101.log",
+      "sha256": "988b7eb4aa4056a040d9a3dde93c87f5863abc185c8d1286f651224763025968",
+      "bytes": 9981
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-bridge-second-20261101.log",
+      "sha256": "6b45a8c797b840a26458d4f2351864971ace496f55ac5a37b7ea7e8b280de790",
+      "bytes": 6362
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-browser-20261101.json",
+      "sha256": "f87f8180e7e47f9f46ad35f038fd04661303fae00ff6a015d9eb50ff498a03fb",
+      "bytes": 22431
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-browser-final-20261101.json",
+      "sha256": "2ec93e1beabfb3c0d27aa8a87e0aa009b0a8c90e19f679dd324cefc24a605f34",
+      "bytes": 22332
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-browser-reviewed-20261101.json",
+      "sha256": "4bde4fcf121fea352cb9bc546be603682fc3f4a94023e097530aa250433d139a",
+      "bytes": 22340
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-container-20261101.log",
+      "sha256": "90d9c50af622512417cf823d4cddabf1bbe979b8acbefb0b00c75bb6289a5776",
+      "bytes": 28883
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-fifth-20261101.log",
+      "sha256": "d2fb65d15960fac11d45e544123b07e4fdbdb307ecf51cfef762b943392a75d9",
+      "bytes": 9745
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-final-20261101.log",
+      "sha256": "8af1c558ccfb967b7229e6778f385a02778e2d3a969b0509d2a458b18cffaad0",
+      "bytes": 54089
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-first-20261101.log",
+      "sha256": "31b9dd2c7ea0c9e5b346863a408ff0d40a30bcb96bf56408e7f50bb999003505",
+      "bytes": 49572
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-fourth-20261101.log",
+      "sha256": "d1901d0dc20391d4f9d8cb6cb8be253000f1cd717807f054d83112df434835b8",
+      "bytes": 9648
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-metadata-final-20261101.log",
+      "sha256": "1d26bb196cfe5e8e8e895cae16b3ccebe9bbf978fe288a83b01a4344ac5e4afc",
+      "bytes": 52958
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-reviewed-20261101.log",
+      "sha256": "c181ed079fa2b1cf6764c1f82964837be91351457d8ce54620c91e6763f66af6",
+      "bytes": 54089
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-second-20261101.log",
+      "sha256": "9e0f09d677d91c9bb59848fae656f9336233b0ee5dda185005a8e177e0b7088b",
+      "bytes": 48274
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-core-third-20261101.log",
+      "sha256": "f5ae3a07b839b0734a5d47eaf11f77c52c6d36c0690fa0165ee670ff3ff478d1",
+      "bytes": 22929
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-bridge-20261101.json",
+      "sha256": "487de3f90b5d1f226435a18179de6ca748eb8de25683c547cb1be184f612bfe8",
+      "bytes": 756
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-bridge-methods-20261101.json",
+      "sha256": "98a4d3d7867240df7e517cea4219e3953f4da128035a29473f34fc3afce52487",
+      "bytes": 3066
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-core-trace-20261101.json",
+      "sha256": "3ec0f93fe46ed904793b724e3b2a677bfecf1e79c289327387d14b0155414199",
+      "bytes": 2772
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-20261101.coverage.json",
+      "sha256": "ff62f57b7a58da9d19b2b9b85390a394f72073bb5ffa46bca5a864ca110944b6",
+      "bytes": 4353
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-20261101.index.json",
+      "sha256": "6758cafbdda85b4ac604ce0cbc0196cdd81f86f25486670bdd8f0a444f7334dc",
+      "bytes": 2152
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-20261101.status.json",
+      "sha256": "c903bcc667e0fb0d7ebc9305a9b647e424bf6c7702ab8e1f4d23bef4820fe6d2",
+      "bytes": 2485
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-20261101.symbols.json",
+      "sha256": "8faff5b5fcefba20152326486830cadea44bf750d30141955307aa7701bea5b2",
+      "bytes": 3315
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-container-20261101.coverage.json",
+      "sha256": "0666467d95318707ab97a3f8accf395fdccdc2a32c9b36b2dd8e0b1ceb0ae6d1",
+      "bytes": 993
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-container-20261101.index.json",
+      "sha256": "69a6246b7ad09db9b7fb00f28fbb96b15bc77469ce24c49cc9debd7d4276da75",
+      "bytes": 1369
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-container-20261101.status.json",
+      "sha256": "82e1b978cc9e6f1fc5314e7cbb756f4d38b017f4cd35dd4af15175bb45ef59ca",
+      "bytes": 1556
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-container-20261101.symbols.json",
+      "sha256": "e187b164b8d5b70cb017c60eac28f833b58f1c1f919597e10ba3d7624f783c78",
+      "bytes": 278
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-management-console-20261101.coverage.json",
+      "sha256": "e9c3e026407c910a513d27eaf97365dc2a29dea3d113d0abffbe1680c0e8f9ee",
+      "bytes": 1752
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-management-console-20261101.index.json",
+      "sha256": "9dc4e5ce7cbca1ad6b4ad511ae34d5fd988967b6e8604d9e8511fb188e5c0781",
+      "bytes": 1478
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-management-console-20261101.status.json",
+      "sha256": "99bf03fab3b55fa5c5372829a1bebd61b39e2b88e78b48a91050096984932475",
+      "bytes": 1990
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-management-console-20261101.symbols.json",
+      "sha256": "6f3bf5fc2c7ba7dfb531f00600b08972e35f5cc7e1f9c59a628741b5fa6cb16d",
+      "bytes": 7202
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-networking-20261101.coverage.json",
+      "sha256": "f6cafc32bd05c3fb7f9a224426a603b79364a5d275aaf4a1fd22f6620fb69613",
+      "bytes": 2079
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-networking-20261101.index.json",
+      "sha256": "f6cdd292c4542913a937385d6a6688b3102a9f4ffdc83172305f022c314e4056",
+      "bytes": 1142
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-networking-20261101.status.json",
+      "sha256": "3ae59eb8bd00d9d1deeca7c084929ba88395eaeac95e6458abbedc889336b77d",
+      "bytes": 1374
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-graph-kura-networking-20261101.symbols.json",
+      "sha256": "0f94b5b94a928068765ce2135747e90686f7af157c35ee9e383ce2d561db3989",
+      "bytes": 3108
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-console-verified-20261101.json",
+      "sha256": "bb65481d670427b2d055945a68baf5a8c58f4310e7d3ea963648b9c7fce4ddbe",
+      "bytes": 175
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-finish-20261101.json",
+      "sha256": "68692ab3ddf002e26d9e349c5626b776ab0b66b3d3f262e567bc2153a560d1bf",
+      "bytes": 2995
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-first-osgi-1793490540987.log",
+      "sha256": "c6841cd70d98964ef7f331f0f9a755c0258e3dad2911a3e9a5c356ee7b4ab316",
+      "bytes": 1775
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-http-final-20261101.json",
+      "sha256": "91714f12c977bcdbcca22bc657aa3a3542bf2fd51e017a9038490e060f3af401",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-prepare-20261101.json",
+      "sha256": "e478925068fae51c9bea1a40a5e7990a9e37567e7624e14904c017d5d868137f",
+      "bytes": 1416
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-prepare-final-20261101.json",
+      "sha256": "4d14b388ec6c90bd71aa7bec196a8475574187ba065460eb5337de61f3c6df6f",
+      "bytes": 1660
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-prepare-reviewed-20261101.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-probe-first-20261101.json",
+      "sha256": "f4cdefb1593ee14fb346054095c2e2d45ac9eb92cd807034f22888492a495839",
+      "bytes": 101
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-probe-restart-20261101.json",
+      "sha256": "35187fe3ee0c9cca2488d37196f05c9bf3b9fb99ecd4233bbcf8b8043bf2bd96",
+      "bytes": 146
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-probe-second-20261101.json",
+      "sha256": "f4cdefb1593ee14fb346054095c2e2d45ac9eb92cd807034f22888492a495839",
+      "bytes": 101
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-probe-write-20261101.json",
+      "sha256": "9a8fd830e9dbc0be86c1828d5dc2cfc3f44dd0ccb018b6f7388dfee2b94b3a6a",
+      "bytes": 144
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-react-live-20261101.json",
+      "sha256": "121dcfff430c595acf730ba971d8aefd52ad2edebcaa6e564efef12e61a9c205",
+      "bytes": 4231
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-read-20261101.json",
+      "sha256": "ebed92d87d60ae18f47a252ba9c82d5c5352e2eefffd52b3beaf75db90a9097a",
+      "bytes": 506
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-restart-console-20261101.json",
+      "sha256": "bb65481d670427b2d055945a68baf5a8c58f4310e7d3ea963648b9c7fce4ddbe",
+      "bytes": 175
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-restart-http-20261101.json",
+      "sha256": "8522d52e5b5d96247af893bbde6f3be888bd9b493c91991f7bbb3a2ac69be55d",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-resume-ports-20261101.json",
+      "sha256": "2eef26ea05d86b39376fa711cf00065a842b349353859b3e6c6d972a033d7aed",
+      "bytes": 815
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-idea-stage-restart-20261101.json",
+      "sha256": "594baa8263a8b3376d23dab5c3c5777f542071c4d51198a72f32e6101cfa4829",
+      "bytes": 2779
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-jar-compare-20261101.json",
+      "sha256": "34ab15027c883d4b27d10173bfad5915971ca515c43a0496324559a41993d02a",
+      "bytes": 817
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-final-audit-20261101.json",
+      "sha256": "8fcafe89880ae9086fe2ce7d3e3e28d1e516a2489bd1505bf939a776c1aab075",
+      "bytes": 514
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-finish-20261101.json",
+      "sha256": "7a883218025307c4081f0e48efb6952889c21a0cda3e395fbe49a060ca515cd4",
+      "bytes": 277
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-prepare-20261101.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-prepare-reviewed-20261101.json",
+      "sha256": "0132ea7e0f78340f39c0fec577a0ecc70991b19e81cb59613a38deafd5881af2",
+      "bytes": 264
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-restart-20261101.json",
+      "sha256": "36240ee262557ecf595d27a92d1b045197e58f9f3891fdfc6681a3815ee5aeb4",
+      "bytes": 323
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-write-20261101.json",
+      "sha256": "ad1c11f216e8018f90daf5a1b836ee364396a918ba371cbc6120cdf54d8c0e94",
+      "bytes": 321
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-react-build-20261101.log",
+      "sha256": "c3f76d9c5d7f1667ee961dfb266c5108bea3446398177f10b551ec493418d31f",
+      "bytes": 842
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/finish.json",
+      "sha256": "7a883218025307c4081f0e48efb6952889c21a0cda3e395fbe49a060ca515cd4",
+      "bytes": 277
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/prepare.json",
+      "sha256": "0132ea7e0f78340f39c0fec577a0ecc70991b19e81cb59613a38deafd5881af2",
+      "bytes": 264
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/restart-result.json",
+      "sha256": "35187fe3ee0c9cca2488d37196f05c9bf3b9fb99ecd4233bbcf8b8043bf2bd96",
+      "bytes": 146
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/restart.json",
+      "sha256": "36240ee262557ecf595d27a92d1b045197e58f9f3891fdfc6681a3815ee5aeb4",
+      "bytes": 323
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/start.json",
+      "sha256": "ad1c11f216e8018f90daf5a1b836ee364396a918ba371cbc6120cdf54d8c0e94",
+      "bytes": 321
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/state.json",
+      "sha256": "d51738c816fbc3477d825fb42b9faaf31e72272cf67ad68274261c82f946d75c",
+      "bytes": 1524
+    },
+    {
+      "path": "kura-management-console/target/configuration-revision-linux-receipts-20261101/write-result.json",
+      "sha256": "9a8fd830e9dbc0be86c1828d5dc2cfc3f44dd0ccb018b6f7388dfee2b94b3a6a",
+      "bytes": 144
+    }
+  ],
+  "boundaries": [
+    "No new Protobuf operation, agent write method, HTTP write route or React editor in this increment",
+    "Host first write-phase API/core manifests preceded final metadata-only rebuild; all class bytes matched; final artifacts also validated on Linux",
+    "Stopped fixtures retained; baseline and inventory audited without repeating business actions",
+    "Manifest files use direct file and jar checks; graph freshness is not_tracked",
+    "No hardware, power-loss, disk-full or full systemd filesystem-sandbox acceptance"
+  ]
+}

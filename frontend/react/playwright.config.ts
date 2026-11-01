@@ -1,0 +1,50 @@
+import { defineConfig } from "@playwright/test";
+import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { resolve } from "node:path";
+const dev = resolve(import.meta.dirname, "../../.phase1-dev");
+const pubkey = execFileSync("openssl", [
+  "x509",
+  "-in",
+  `${dev}/server.pem`,
+  "-pubkey",
+  "-noout",
+]);
+const der = execFileSync("openssl", ["pkey", "-pubin", "-outform", "DER"], {
+  input: pubkey,
+});
+const spki = createHash("sha256").update(der).digest("base64");
+const liveProfiles: Record<string, string> = {
+  network: "**/network-write.spec.ts",
+  parallels: "**/parallels-observe.spec.ts",
+  takeover: "**/takeover-live.spec.ts",
+  configuration: "**/configuration-live.spec.ts",
+  "configuration-update": "**/configuration-update-live.spec.ts",
+};
+const liveProfile = process.env.KURA_BROWSER_LIVE_PROFILE;
+if (liveProfile && !liveProfiles[liveProfile]) {
+  throw new Error(`KURA_BROWSER_LIVE_PROFILE must be one of ${Object.keys(liveProfiles).join(", ")}`);
+}
+export default defineConfig({
+  testDir: "tests",
+  // Live fixtures have distinct lifecycle/preconditions and are explicitly selected after the local gate.
+  ...(liveProfile
+    ? { testMatch: liveProfiles[liveProfile] }
+    : { testIgnore: Object.values(liveProfiles) }),
+  workers: 1,
+  fullyParallel: false,
+  use: {
+    locale: "zh-CN",
+    baseURL: "https://localhost:18443",
+    viewport: { width: 1440, height: 980 },
+    launchOptions: {
+      executablePath:
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      args: [`--ignore-certificate-errors-spki-list=${spki}`],
+    },
+  },
+  reporter: [
+    ["list"],
+    ["json", { outputFile: "../../target/phase1-browser.json" }],
+  ],
+});

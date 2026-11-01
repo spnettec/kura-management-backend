@@ -1,0 +1,31 @@
+import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+test("real Kura configuration read and password redaction over HTTPS/mTLS/UDS", async ({ page }) => {
+  const errors: string[] = []; page.on("pageerror", e => errors.push(e.message));
+  await page.goto("/login");
+  await page.getByLabel("账号", { exact: true }).fill("admin");
+  await page.getByLabel("密码", { exact: true }).fill(readFileSync(resolve(import.meta.dirname, "../../../.phase1-dev/admin.password"), "utf8"));
+  await page.getByRole("button", { name: /登\s*录/ }).click();
+  await page.getByRole("button", { name: process.env.KURA_CONFIGURATION_GATEWAY_LABEL ?? "本机开发网关 dev-gateway", exact: true }).click();
+  const panel = page.getByRole("region", { name: /Kura (配置浏览|configuration browser)/ });
+  await panel.getByRole("button", { name: "列出 Kura 配置" }).click();
+  const pid = panel.getByRole("combobox", { name: "配置 PID" });
+  await pid.fill("org.eclipse.kura.clock.ClockService");
+  await pid.press("ArrowDown"); await pid.press("Enter");
+  await panel.getByRole("button", { name: "读取配置详情" }).click();
+  await expect(panel.getByRole("table")).toBeVisible();
+  await expect(panel.getByRole("columnheader", { name: "当前值", exact: true })).toBeVisible();
+  await pid.fill("HttpsKeystore");
+  await pid.press("ArrowDown"); await pid.press("Enter");
+  await panel.getByRole("button", { name: "读取配置详情" }).click();
+  await expect(panel.getByText("已脱敏", { exact: true }).first()).toBeVisible();
+  await page.getByRole("dialog").getByRole("combobox", { name: "语言 / Language" }).selectOption("en-US");
+  await expect(panel.getByText("Redacted", { exact: true }).first()).toBeVisible();
+  await panel.getByRole("button", { name: "Read configuration details" }).click();
+  await expect(panel.getByText("Redacted", { exact: true }).first()).toBeVisible();
+  await expect(panel.getByText(/Component metadata language: English/)).toBeVisible();
+  await page.screenshot({ path: process.env.KURA_CONFIGURATION_SCREENSHOT ?? "../../target/configuration-read-live-browser-20261101.png", fullPage: true });
+  expect(errors).toEqual([]);
+});

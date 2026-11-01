@@ -1,0 +1,301 @@
+{
+  "date": "2026-11-01 Asia/Shanghai",
+  "status": "controlled read-only prototype; full redesign active",
+  "baseHeads": {
+    "kura": "b7f72c0e64c44156dd4b00783526871281ad096b",
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e",
+    "kura-networking": "d9bc0190f1f3cb4dc90fc1f4ba4392851ed894e6"
+  },
+  "uncommitted": true,
+  "tests": {
+    "consoleProtocolUnit": 4,
+    "agentUnitMacLinuxEach": 4,
+    "javaBridgeUnit": 2,
+    "mtlsLive": 3
+  },
+  "reports": {
+    "smoke": {
+      "passed": 37,
+      "checks": [
+        "unauthenticated is 401",
+        "unsupported HTTP method uses typed error",
+        "invalid UTF-8 path uses typed error",
+        "login rejects foreign origin",
+        "bad password is 401",
+        "admin login",
+        "invalid query uses typed error",
+        "malformed JSON uses typed error",
+        "unknown JSON field rejected with typed error",
+        "oversized HTTP body uses typed error",
+        "cookie Secure HttpOnly Strict",
+        "certificate bound agent is online",
+        "Kura absence truthfully reported",
+        "CSRF required",
+        "write operation unsupported",
+        "agent.status accepted",
+        "agent.status accepted",
+        "same idempotency key returns same persisted task",
+        "idempotency key cannot change operation",
+        "agent remains manageable without Kura",
+        "kura.configuration.list accepted",
+        "Kura unavailable is typed error, no offline fallback",
+        "viewer login",
+        "viewer reads gateway",
+        "viewer cannot submit tasks",
+        "other login",
+        "cross tenant list filtered",
+        "cross tenant gateway hidden",
+        "cross tenant task denied",
+        "cross tenant tasks filtered",
+        "SSE content type",
+        "SSE contains durable event id",
+        "unknown API remains 404",
+        "missing static asset remains 404",
+        "explicit SPA route supported",
+        "logout succeeds",
+        "logout invalidates server session"
+      ],
+      "database": "PostgreSQL",
+      "transport": "HTTPS + mTLS gRPC",
+      "kura": "absent; isolation verified"
+    },
+    "resilience": {
+      "passed": 15,
+      "checks": [
+        "gateway becomes offline after stopped agent",
+        "queued task survives agent restart",
+        "connection epoch changes on agent restart",
+        "UDS status works while console is stopped",
+        "server session survives console restart",
+        "agent reconnects after console restart",
+        "same idempotency receipt survives both restarts",
+        "persisted terminal result is unchanged",
+        "disabled gateway becomes offline",
+        "disabled certificate cannot update last_seen",
+        "enabled agent reconnects",
+        "old active certificate stream revoked on rotation",
+        "UDS remains available during identity rejection",
+        "original isolated identity restored",
+        "task terminal event and audit committed"
+      ],
+      "scope": "isolated PostgreSQL and phase1 processes; Kura stopped"
+    },
+    "queue": {
+      "passed": 5,
+      "checks": [
+        "concurrent admission accepts exactly gateway quota",
+        "overflow returns typed capacity error",
+        "idempotent replay succeeds while queue is full",
+        "all offline tasks expire at bounded TTL",
+        "every expiry has committed audit"
+      ],
+      "gatewayQuota": 100,
+      "concurrentRequests": 110,
+      "workers": 12,
+      "scope": "isolated dev gateway only; does not prove 100-gateway throughput"
+    },
+    "login-limit": {
+      "passed": 2,
+      "checks": [
+        "IP throttle returns typed 429",
+        "spoofed X-Forwarded-For and rotated usernames cannot bypass IP throttle"
+      ],
+      "statuses": [
+        401,
+        401,
+        401,
+        401,
+        401,
+        401,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429
+      ]
+    },
+    "orbstack": {
+      "passed": 14,
+      "checks": [
+        "actual Ubuntu 24.04 arm64",
+        "fixture service is enabled",
+        "Linux mTLS heartbeat reaches console",
+        "Linux agent is manageable without Kura",
+        "Linux missing Kura has typed failure",
+        "Linux credential-checked UDS status works",
+        "systemd restarts independent agent",
+        "restarted Linux agent reconnects",
+        "VM reboot changes boot ID",
+        "agent starts automatically after VM reboot",
+        "auto-started agent reaches console",
+        "post-reboot read task succeeds",
+        "service applies empty capability set",
+        "all agent threads enforce no_new_privs"
+      ],
+      "vm": "kura-package-validation-20261029",
+      "platform": "Ubuntu 24.04.5 arm64",
+      "serviceStats": "MemoryCurrent=2031616\nCPUUsageNSec=24446000\nTasksCurrent=8\nCapabilityBoundingSet=\nNoNewPrivileges=no",
+      "limitations": [
+        "OrbStack LXC drop-in disables systemd NoNewPrivileges/ProtectSystem/ProtectHome/PrivateTmp; agent enforces process no_new_privs itself; remaining sandbox acceptance deferred to non-container Ubuntu."
+      ],
+      "scope": "Rust read-only agent fixture; Kura not installed; no Netplan/firewall mutations; no deb lifecycle claim"
+    },
+    "kura-live": {
+      "agent.status": {
+        "createdAt": "2026-10-31T16:06:28.108739Z",
+        "error": null,
+        "gatewayId": "dev-gateway",
+        "id": "f5ad9da1-b111-4af8-aa08-7afaa88eaa5c",
+        "operation": 1,
+        "result": {
+          "agentAvailable": true,
+          "kuraAvailable": true,
+          "uptimeSeconds": 586,
+          "version": "0.1.0"
+        },
+        "state": "SUCCEEDED"
+      },
+      "kura.configuration.list": {
+        "createdAt": "2026-10-31T16:06:28.379973Z",
+        "error": null,
+        "gatewayId": "dev-gateway",
+        "id": "f3a58a22-b1ce-480e-9d71-4242793af993",
+        "operation": 2,
+        "result": [
+          "HttpsKeystore",
+          "SSLKeystore",
+          "com.yofc.vertx.osgi.VertxActivator",
+          "org.eclipse.kura.broker.artemis.simple.mqtt.BrokerInstance",
+          "org.eclipse.kura.broker.artemis.xml.BrokerInstance",
+          "org.eclipse.kura.clock.ClockService",
+          "org.eclipse.kura.cloud.CloudService",
+          "org.eclipse.kura.container.orchestration.provider.ContainerOrchestrationService",
+          "org.eclipse.kura.core.data.transport.mqtt.MqttDataTransport",
+          "org.eclipse.kura.core.deployment.CloudDeploymentHandlerV2",
+          "org.eclipse.kura.core.token.jwt.issuer.JwtIssuingService",
+          "org.eclipse.kura.core.token.jwt.verifier.JwtVerificationService",
+          "org.eclipse.kura.data.DataService",
+          "org.eclipse.kura.deployment.agent",
+          "org.eclipse.kura.http.server.manager.HttpService",
+          "org.eclipse.kura.identity.LoginBannerService",
+          "org.eclipse.kura.identity.PasswordStrengthVerificationService",
+          "org.eclipse.kura.internal.rest.provider.RestService",
+          "org.eclipse.kura.internal.useradmin.store.RoleRepositoryStoreImpl",
+          "org.eclipse.kura.position.PositionService",
+          "org.eclipse.kura.ssl.SslManagerService",
+          "org.eclipse.kura.watchdog.WatchdogService",
+          "org.eclipse.kura.web.Console",
+          "org.eclipse.kura.wire.graph.WireGraphService"
+        ],
+        "state": "SUCCEEDED"
+      },
+      "kura.snapshot.list": {
+        "createdAt": "2026-10-31T16:06:29.468531Z",
+        "error": null,
+        "gatewayId": "dev-gateway",
+        "id": "e0bdd2f1-a6bb-4442-97bd-d92a34de3c2e",
+        "operation": 3,
+        "result": [
+          0
+        ],
+        "state": "SUCCEEDED"
+      }
+    },
+    "browser": {
+      "startTime": "2026-10-31T16:18:26.979Z",
+      "duration": 5835.015,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "npmAudit": {
+    "production": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "full": {
+      "info": 0,
+      "low": 0,
+      "moderate": 3,
+      "high": 0,
+      "critical": 0,
+      "total": 3
+    }
+  },
+  "sourceSha256": {
+    "kura-management-console/Cargo.lock": "fa8187a0fe798f7385f88df7f4f60ec2a97d917e7814da9078925ee3d0d911c3",
+    "kura-management-console/Cargo.toml": "6f784b5c827bd9369da43979e281069d9ca34271f24d8d2d0a6fe2c5f1b65110",
+    "kura-management-console/crates/console/Cargo.toml": "f54163abd6a1d9d9401117d6d9a304f297f8bc23c4ede4a1d8e1c57ec26bd7f8",
+    "kura-management-console/crates/console/src/auth.rs": "ef08d54db86fd043d44e6948652f55444482a465afda0bc64a2c20a5fb021893",
+    "kura-management-console/crates/console/src/config.rs": "afcb93a5f2f7d6e6ee6a7308414c7df49c6bdec0c33b948706a026b1746345ce",
+    "kura-management-console/crates/console/src/db.rs": "57a436d9f498424488cd6fe11a3480bff519f19f461c18c007821f9cfee71aae",
+    "kura-management-console/crates/console/src/grpc.rs": "958fe29f1c941140efe601ba9c15c122907f6d4464c94032ec7ecbf89e0f3bea",
+    "kura-management-console/crates/console/src/http.rs": "2b43fca930bdad251ec7ed850808ccda1a659b1f1cd6d90f0005591f4487a8de",
+    "kura-management-console/crates/console/src/main.rs": "73c5056963b59ef15a3cb029f708f1da40c0ff720495b5622bc955e614824423",
+    "kura-management-console/crates/console/tests/mtls.rs": "b5778ae35e4d68546413b3e5ecdad9bbeb98d86f4b460e00a1b14ee5e326eadd",
+    "kura-management-console/crates/management-protocol/Cargo.toml": "e2cca428a0610bbe16d75af4a3be416074f06652c2dfdc67f7b7f2ba1d636cf5",
+    "kura-management-console/crates/management-protocol/build.rs": "0c2ac175b26d69eed17a8eed21d4b0add98a953e277014670ff7c1539f834790",
+    "kura-management-console/crates/management-protocol/proto/management/v1/control.proto": "1a545c156e70d18c4946363434b9d5bfa5e8a9a72ec29f706e5d99654bcb45e5",
+    "kura-management-console/crates/management-protocol/src/lib.rs": "8cfd5b4b367ca06a42a7819b67e060878c42e266a0e0896ed8954a74ad462407",
+    "kura-management-console/frontend/react/.gitignore": "463b5f9362420aaa6bbf70c200b7cef361af47f34e60e6767851406f3091a39a",
+    "kura-management-console/frontend/react/.node-version": "b911698dc3cf3227d34d0ad6727f1c4408791203c9665de99ab959331a1fb07d",
+    "kura-management-console/frontend/react/index.html": "82d727d5aeaba0d42e08a1076ec6d862ce2a99f9c84e96473b2230de286026e7",
+    "kura-management-console/frontend/react/package-lock.json": "c512ef433b51c3db3ab174ca6ab45dbe81918f0675ce992b164d3730448c3ec2",
+    "kura-management-console/frontend/react/package.json": "33559399f509e04ec196fe05d60e574706d9ce4f3a7e7ac52023a293d52a2cc1",
+    "kura-management-console/frontend/react/playwright.config.ts": "37b3fd5657ca94b729f416c3c5cde2a192e04064f0a799cdd5c115b741355232",
+    "kura-management-console/frontend/react/src/api/client.ts": "d0982daf8da5db746e8a32c65d7b8f2dac7f9a206d2031beaf10528a9446a07c",
+    "kura-management-console/frontend/react/src/api/schema.d.ts": "fb7f906389917ccbdd5d4391ae89db60d232624e786fa292e76b13e0633b23f4",
+    "kura-management-console/frontend/react/src/features/access/Login.tsx": "c0eee43742695ab116607836accaf33a0e19d46056843f5517a445d13f091681",
+    "kura-management-console/frontend/react/src/features/commands/Commands.tsx": "975bd1e118136c3a1145d4eae07346ab45d501566186cd06c013a399ec49f440",
+    "kura-management-console/frontend/react/src/features/gateways/Gateways.tsx": "2bd6a7c89e39c73226bc7696663016769d3fd4703c38cc9dcb5760881e9f04a6",
+    "kura-management-console/frontend/react/src/main.tsx": "52532547d2de855b319c8f7c9553b0c13e06989c9b0a20c48e6f62425b61e69d",
+    "kura-management-console/frontend/react/src/style.css": "3e91873863fd97620f6972c9786bf3753a967ac64454eee6ee500031879b6861",
+    "kura-management-console/frontend/react/tests/console.spec.ts": "c2b125bfe4604a1bf81d672564b2baef9e7d4954f40823bfc71556eff8a63921",
+    "kura-management-console/frontend/react/tsconfig.json": "63616155e76a6a112a1b559784eef0528bde6cce985785c1e1b8ce7f9dcecd92",
+    "kura-management-console/frontend/react/vite.config.ts": "21eba396999afe6e4fa3dbd7ac6908caa56aa3e4109ee755dfffaba5be9b2d96",
+    "kura-management-console/migrations/0001_management.sql": "5fdf89b110ca57d898dc1b7b400f8029831e0ef3d85ed75cb63788c071c9e401",
+    "kura-management-console/migrations/0002_active_tasks.sql": "cc70cd8370850107867901ef879dcfd5ed699239d84fc176db0af6519691cc95",
+    "kura-management-console/rust-toolchain.toml": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+    "kura-management-console/scripts/phase1-dev.py": "0374666acb69790fd4b6f2319979d2bbcb07a9fff9512285857527c7f8939239",
+    "kura-management-console/scripts/phase1-kura-prepare.py": "22e46659201296bf30404014d6a82cd68cfdbf49c91a3a75b9eaf3916154a8d6",
+    "kura-management-console/scripts/phase1-login-limit.py": "62374086d86434106818e91f2422c830f3de047bdd4a5466f517d28a4bbfffeb",
+    "kura-management-console/scripts/phase1-orbstack-install.py": "5823cf97024a2ce1909420e4a8883deadf309c4ac878fd4bc899c78b858daaab",
+    "kura-management-console/scripts/phase1-orbstack-smoke.py": "0119f3197adcb3329e7f869874cf1ee8b27e5db4701efdf14ba8e7b54371423b",
+    "kura-management-console/scripts/phase1-queue-smoke.py": "62a481695eb8f8720e819fe0d248512214ee8c942c0530a798eb34216a7a6ce4",
+    "kura-management-console/scripts/phase1-resilience.py": "341915655c1ec48675f90610aa562be4c0135e9f44123e4bb6a943834a68a0f6",
+    "kura-management-console/scripts/phase1-smoke.py": "c5e8677fa6d2c8987dc862dcbc9121c159d76cd2ddd25ae92b32aa43ee02b3a4",
+    "kura-management-agent/Cargo.lock": "d06684b328873956118d5bd8efa505d8f8b5e499864674859537746c1188bf2c",
+    "kura-management-agent/Cargo.toml": "d9b19283c7f62a5ef1c0e286fcb567ffa402a2cd9200021096dff8ba646b9c66",
+    "kura-management-agent/packaging/agent.env.example": "7a71123a66aa84934d1bac21edb39efd0e3414f5dd1a1cc5380a31686d20f455",
+    "kura-management-agent/packaging/kura-management-agent.service": "221d4cebad66976ce156c10eece0e10b754872612a811e2091e52752516e2329",
+    "kura-management-agent/rust-toolchain.toml": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+    "kura-management-agent/src/local.rs": "63971e36730f7f96e0d61d2c30c10142fdda37c157c10ce1ceef3eb607beb73c",
+    "kura-management-agent/src/main.rs": "0b236a855a8703b9329fe13f05bdb1f02cc6b095c7c0cbff8778a013c6465a73",
+    "kura-management-agent/src/secure.rs": "2667f4f11ecc9b781ed12df3c67af35d30cc614ec5acda3c8a957883a10177d5",
+    "kura-management-agent/src/transport.rs": "3e825167e0519e1918ba438c002e5d06310b2a2438b78a4a368cfe7c69aa274e",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/META-INF/MANIFEST.MF": "2dda626de2b02adedf999c45a003377971d297eb633bab52f8b77bda6da454b9",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/OSGI-INF/management-bridge.xml": "d410eb79060cd2d74aabbe318c9e983abfc1dd57464d7a8f4cf189b4d36886ef",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/pom.xml": "c94b9f1fc91173d95c3100a5bfd26dc84eeb8b120dff54094dc96e97b3f26575",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/FrameCodec.java": "6d646b160ee3196f61f2cd70e41c2de5c9c45415e0f433109594194e2d13b887",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/ManagementBridge.java": "6db4e9254ab08902b2db02e8349b501d6e51c37f0d8ec3f6f1c2b5a0abe10a31",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/ManagementBridgeTest.java": "550e3d01222c74c14f76c53fa0c383e21c6f4803f6276ff0121331041a274447"
+  },
+  "limitations": [
+    "Not a release or full stage 0/1 acceptance",
+    "No Linux Kura installed in current fixture VM",
+    "OrbStack overrides part of systemd sandbox",
+    "100-gateway load and physical/network/deb matrix deferred",
+    "Remaining implementation and follow-up: phase1-validation-20261101.md"
+  ],
+  "artifactSha256": {
+    "javaBridgeJar": "cc025d64bc72e130a2089cb43d3e8401f46b7b84297ffbbffeac19ea10e65933"
+  }
+}

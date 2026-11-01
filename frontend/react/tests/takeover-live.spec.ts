@@ -1,0 +1,37 @@
+import { test, expect } from "@playwright/test";
+import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+test("real Linux takeover review, candidate and rollback from the browser", async ({ page }) => {
+  test.setTimeout(90000);
+  const vm = "yofc-management-network-20261101";
+  const original = () => execFileSync("orb", ["run", "-m", vm, "-u", "root", "sha256sum", "/etc/netplan/40-yofc-existing-fixture.yaml"], { encoding: "utf8" });
+  const before = original();
+  const errors: string[] = [];
+  page.on("pageerror", e => errors.push(e.message));
+  await page.goto("/login");
+  await page.getByLabel("账号", { exact: true }).fill("admin");
+  await page.getByLabel("密码", { exact: true }).fill(readFileSync(resolve(import.meta.dirname, "../../../.phase1-dev/admin.password"), "utf8"));
+  await page.getByRole("button", { name: /登\s*录/ }).click();
+  await page.getByRole("button", { name: "网络事务隔离验证 network-gateway" }).click();
+  const panel = page.getByRole("region", { name: "有线网络管理" });
+  await panel.getByRole("button", { name: "读取网络状态" }).click();
+  await panel.getByLabel("待接管接口").fill("yofc-adopt0");
+  await panel.getByRole("button", { name: "预览接管计划" }).click();
+  await expect(panel.getByText(/来源：etc\/netplan\/40-yofc-existing-fixture.yaml/)).toBeVisible({ timeout: 35000 });
+  await expect(panel.getByText(/保留其他接口：yofc-preserve0/)).toBeVisible();
+  const apply = panel.getByRole("button", { name: "应用接管候选" });
+  await expect(apply).toBeDisabled();
+  await panel.getByRole("checkbox", { name: /我已核对接口与来源/ }).check();
+  await expect(apply).toBeEnabled();
+  await page.screenshot({ path: "../../target/takeover-live-review.png", fullPage: true });
+  await apply.click();
+  await expect(panel.getByText("WAIT_CONFIRM", { exact: true })).toBeVisible({ timeout: 35000 });
+  expect(original()).toBe(before);
+  await page.screenshot({ path: "../../target/takeover-live-candidate.png", fullPage: true });
+  await panel.getByRole("button", { name: "立即回滚" }).click();
+  await expect(panel.getByText("ROLLED_BACK", { exact: true })).toBeVisible({ timeout: 35000 });
+  expect(original()).toBe(before);
+  expect(errors).toEqual([]);
+});

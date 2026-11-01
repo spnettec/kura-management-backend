@@ -1,0 +1,20 @@
+{
+  "name": "yofc-management-react",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": "24.15.0" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "generate": "openapi-typescript ../../docs/openapi-v1.json -o src/api/schema.d.ts",
+    "build": "npm run typecheck && vite build",
+    "test:browser": "playwright test"
+  },
+  "dependencies": { "react": "19.3.1", "react-dom": "19.3.1", "antd": "6.6.8" },
+  "devDependencies": {
+    "@types/react": "^19.0.0", "@types/react-dom": "^19.0.0", "@types/node": "^24.0.0",
+    "@vitejs/plugin-react": "^6.0.0", "typescript": "5.9.3", "vite": "8.3.5",
+    "openapi-typescript": "^7.0.0", "@playwright/test": "^1.58.0"
+  }
+}

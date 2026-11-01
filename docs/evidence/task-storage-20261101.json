@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T23:07:20.143386+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Console encrypted task input/result, keyed atomic legacy backfill and fail-closed recovery",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "78ba689231dcd98c489e52b98382132bc55e85b75fc20f713ea32102651978d0",
+      "bytes": 6150
+    },
+    {
+      "path": "kura-management-console/Cargo.lock",
+      "sha256": "5891eff03323b4b79f6ebb4447a14c378b2f02f5d4587891d864c1fa7752fcc5",
+      "bytes": 83404
+    },
+    {
+      "path": "kura-management-console/Cargo.toml",
+      "sha256": "6f784b5c827bd9369da43979e281069d9ca34271f24d8d2d0a6fe2c5f1b65110",
+      "bytes": 652
+    },
+    {
+      "path": "kura-management-console/README.md",
+      "sha256": "4ca8b2e6de959fd6e5297ec8095f47a808fe90d4e59d15a4f76afcad315910e2",
+      "bytes": 4419
+    },
+    {
+      "path": "kura-management-console/crates/console/Cargo.toml",
+      "sha256": "cf4f2fce4d378c29b01b58dd705e16242606bf0e5aedf79f3a05003abcec62a0",
+      "bytes": 1317
+    },
+    {
+      "path": "kura-management-console/crates/console/src/auth.rs",
+      "sha256": "ef08d54db86fd043d44e6948652f55444482a465afda0bc64a2c20a5fb021893",
+      "bytes": 3740
+    },
+    {
+      "path": "kura-management-console/crates/console/src/config.rs",
+      "sha256": "afcb93a5f2f7d6e6ee6a7308414c7df49c6bdec0c33b948706a026b1746345ce",
+      "bytes": 1255
+    },
+    {
+      "path": "kura-management-console/crates/console/src/db.rs",
+      "sha256": "57a436d9f498424488cd6fe11a3480bff519f19f461c18c007821f9cfee71aae",
+      "bytes": 1228
+    },
+    {
+      "path": "kura-management-console/crates/console/src/grpc.rs",
+      "sha256": "7182314ba479b317cec8a255214f542677ae175c649d3d38a249c382ae92a2db",
+      "bytes": 24720
+    },
+    {
+      "path": "kura-management-console/crates/console/src/http.rs",
+      "sha256": "6472cd6bf3ac5861ba7db915a755254e238a78979d7e6eaa5e5c0a5a70125fda",
+      "bytes": 22308
+    },
+    {
+      "path": "kura-management-console/crates/console/src/main.rs",
+      "sha256": "2a5628fde36cabf2f39d24f0bd572b1997cb509536f54d4513cf1462d0481c04",
+      "bytes": 7124
+    },
+    {
+      "path": "kura-management-console/crates/console/src/task_crypto.rs",
+      "sha256": "44c98586fd9ca0d04ffc9bb2b62dc8c591bc9cf6cca6d2b81875e9c06b8d8d6b",
+      "bytes": 19032
+    },
+    {
+      "path": "kura-management-console/crates/console/tests/mtls.rs",
+      "sha256": "b5778ae35e4d68546413b3e5ecdad9bbeb98d86f4b460e00a1b14ee5e326eadd",
+      "bytes": 4561
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/Cargo.toml",
+      "sha256": "e2cca428a0610bbe16d75af4a3be416074f06652c2dfdc67f7b7f2ba1d636cf5",
+      "bytes": 472
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/build.rs",
+      "sha256": "2c86eed17f7b89228206752ff3bcaa4e4bbe18a24dd6711201fdb1b78fd61302",
+      "bytes": 1442
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/proto/management/v1/control.proto",
+      "sha256": "33975f4bbdf1a4c1dbcd3bc9d172eb78898cd42eed84c414d5ba332cea0b206c",
+      "bytes": 3231
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/src/lib.rs",
+      "sha256": "fd89cd9e78027dd4e6c283cbbb426cec497ad728552f5e50893fef490fe822d8",
+      "bytes": 6388
+    },
+    {
+      "path": "kura-management-console/docs/console-i18n-20261101.md",
+      "sha256": "96e8e5ff36b26ff28ed90db06c1dc7d04ae5cf22eb93ec339bcad4a3f5955042",
+      "bytes": 6003
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "bbf9ae293daa24ad67ba66b651f47ab3cae066ce4dc02bf8aae4b76ca21e2be1",
+      "bytes": 53498
+    },
+    {
+      "path": "kura-management-console/docs/openapi-v1.json",
+      "sha256": "cb2330c88dd58544e870c0fd454ccbdf09c2324759d27dc2a1b86e49d2ff07c0",
+      "bytes": 49634
+    },
+    {
+      "path": "kura-management-console/docs/phase2-task-journal-validation-20261101.md",
+      "sha256": "d1b0a885d6184a931e5079f1b50979931d72eb8a1e60306b314887bad122eb81",
+      "bytes": 11253
+    },
+    {
+      "path": "kura-management-console/docs/phase2-task-storage-validation-20261101.md",
+      "sha256": "5c94e4c0b8fc4d5f6e004e68e8de67ab99773be2c390cacfc60dbe0ff6b45f9d",
+      "bytes": 8215
+    },
+    {
+      "path": "kura-management-console/docs/task-payload-storage-v1.md",
+      "sha256": "d3a0b59a359abb3b34cc719afc33d8152abf27b00cd83825284263fd19aca8a4",
+      "bytes": 3454
+    },
+    {
+      "path": "kura-management-console/frontend/react/package-lock.json",
+      "sha256": "c512ef433b51c3db3ab174ca6ab45dbe81918f0675ce992b164d3730448c3ec2",
+      "bytes": 80651
+    },
+    {
+      "path": "kura-management-console/frontend/react/package.json",
+      "sha256": "33559399f509e04ec196fe05d60e574706d9ce4f3a7e7ac52023a293d52a2cc1",
+      "bytes": 739
+    },
+    {
+      "path": "kura-management-console/frontend/react/playwright.config.ts",
+      "sha256": "8afac03084a3ae54fea1b6607eb3b27cfdd0e1a70833270aea0f5e7a0b5158eb",
+      "bytes": 1672
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/client.ts",
+      "sha256": "755af96c07648e58c62d296e3c5cc17c5dbf9883b253461a5f52422904755137",
+      "bytes": 1011
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/schema.d.ts",
+      "sha256": "221d08925967f284a3476ab01d774ea14296b41c900bef99ed7dfc37de1e9719",
+      "bytes": 49153
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/access/Login.tsx",
+      "sha256": "55de411a8c339e099efaf6037993e3ce1ade38bcfd5b483e2eadfffb045833df",
+      "bytes": 3067
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/commands/Commands.tsx",
+      "sha256": "31f9a93d13063ff98f1b6f5d2f8d41f764b95089f038df46bf1539a818ec9303",
+      "bytes": 2462
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/ConfigurationPanel.tsx",
+      "sha256": "20c78dd2608b3d330df27a981f6ce277ad0076d2395315db4dac46d80e1c5a90",
+      "bytes": 4242
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/model.ts",
+      "sha256": "efbc563c470fc8239d0dc23678aa81156b89245be3c55851ecafe07544521165",
+      "bytes": 3120
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/Gateways.tsx",
+      "sha256": "ef7cecb3c534aa590301010aa7391953ae3b53e7930facd71419438435c758fe",
+      "bytes": 4044
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/NetworkPanel.tsx",
+      "sha256": "4b34082846cdb898a0b8a4a0ecced76644f2a41323227f0ad4a2e6fc45538e51",
+      "bytes": 18232
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/I18n.tsx",
+      "sha256": "85d7677017b3b6337c8277c86b125db61aecbd8907269451e8802f8c9f02257c",
+      "bytes": 3639
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/core.ts",
+      "sha256": "eb1a41004c9bcf809da538d1fd5cdf0ec2bc69a5fbeba2e9f3b7f74c205b1676",
+      "bytes": 1846
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/messages.ts",
+      "sha256": "389c543e1c8eec3696b349e1b6e5c7f27fd27578a7715e1daa2154f3a06ed75a",
+      "bytes": 15455
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/main.tsx",
+      "sha256": "9413172ff6c2d70c0eca57c28d94b91cfec0e8bb5646369933ac288797479fba",
+      "bytes": 9514
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/i18n.spec.ts",
+      "sha256": "6b72eb575afc9c7a8831cf372e8d8400f9717486f1050658c2c314c4c216bb9b",
+      "bytes": 10296
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/task-reconciliation.spec.ts",
+      "sha256": "b229ad0269171eea3b35a4d87970bbdc379c2a1006510a5c66bb45d3586512be",
+      "bytes": 3292
+    },
+    {
+      "path": "kura-management-console/migrations/0001_management.sql",
+      "sha256": "5fdf89b110ca57d898dc1b7b400f8029831e0ef3d85ed75cb63788c071c9e401",
+      "bytes": 2188
+    },
+    {
+      "path": "kura-management-console/migrations/0002_active_tasks.sql",
+      "sha256": "cc70cd8370850107867901ef879dcfd5ed699239d84fc176db0af6519691cc95",
+      "bytes": 108
+    },
+    {
+      "path": "kura-management-console/migrations/0003_network_tasks.sql",
+      "sha256": "9463e092ea093bb6d76cb5209c6259e509d69e1e3d3625b5fa7cfa7be8f5589e",
+      "bytes": 292
+    },
+    {
+      "path": "kura-management-console/migrations/0004_network_takeover.sql",
+      "sha256": "fb7e751d41ed39e71d89e65e138752fe8a9fce3b4c043dd1f68eacad4b766c05",
+      "bytes": 167
+    },
+    {
+      "path": "kura-management-console/migrations/0005_configuration_read.sql",
+      "sha256": "aa82e4a29eec73e619fa963b3029ceb378d2f35e1ccf8a888aee0d5b7604b16d",
+      "bytes": 254
+    },
+    {
+      "path": "kura-management-console/migrations/0006_task_reconciliation.sql",
+      "sha256": "782331b9b46afbe1f01b5dd66ec04ad14a2421dd0cfe5593e7cb5a8ee587220c",
+      "bytes": 199
+    },
+    {
+      "path": "kura-management-console/migrations/0007_task_payload_encryption.sql",
+      "sha256": "cc5b3078a040f95026f5f2a19d4f2a7d146e98d31be7fb4bbd2d0a0aafe33641",
+      "bytes": 323
+    },
+    {
+      "path": "kura-management-console/packaging/console.env.example",
+      "sha256": "37bc8592a5c9de6b68e7c1075337b21a70a3744b31e036d64beab8c8379a6094",
+      "bytes": 489
+    },
+    {
+      "path": "kura-management-console/rust-toolchain.toml",
+      "sha256": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+      "bytes": 86
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-contract.py",
+      "sha256": "ccf97d0b67092f31b851d6a6dcaad2e319e6e6ad0b1239075b35721e6d73a08e",
+      "bytes": 16230
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-package-smoke.py",
+      "sha256": "a7f49d73f5522285423b651eb851720c0b5746171a17046a8caf2b377e8a5221",
+      "bytes": 6310
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-package-vm.py",
+      "sha256": "f1690e3e4529bd5e60efa57377a973b10f0603cf3766584c0b61b55cd3c1f142",
+      "bytes": 10005
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-storage-smoke.py",
+      "sha256": "a316578d77d18924bc0facbfd01bd9b3d01f2036c5e3914da4b64dc121a70364",
+      "bytes": 4280
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "kura-management-console/target/debug/yofc-management-console",
+      "sha256": "b073501843c8ebd8343b11d9f2aac54f3e0a64cc726a018552ae4a7b9d3755ad",
+      "bytes": 30891784
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-console-20261101",
+      "sha256": "1a7a67bb61a04da839e6c4ca7b4950f3d22401a4ea12f0db3db462af92d2cba2",
+      "bytes": 123100816
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/task-storage-browser-20261101.json",
+      "sha256": "bebd6744ba502ab0729fecdf9790424f346520bd877d097a37d1da4c38585691",
+      "bytes": 21260
+    },
+    {
+      "path": "kura-management-console/target/task-storage-build-20261101.log",
+      "sha256": "4429451337b4bd31108de425c359bf0a98bc12918b8295ae1bbacdee686b6000",
+      "bytes": 707
+    },
+    {
+      "path": "kura-management-console/target/task-storage-coverage-before-20261101.json",
+      "sha256": "ca11011f9cccc1508a5ec6e4e02402297d0e6c3f00ef12b000ce559b799a9399",
+      "bytes": 2701
+    },
+    {
+      "path": "kura-management-console/target/task-storage-coverage-console-20261101.json",
+      "sha256": "6b9472958cf74c874497108b2e97a3f6f0398d28572b37b7c0363f33cd7da412",
+      "bytes": 2638
+    },
+    {
+      "path": "kura-management-console/target/task-storage-dev-upgrade-20261101.log",
+      "sha256": "73da18d7849a47ca9d8db709eaa0561f65f8a9ece0983dc933fd3b1eb1ab513c",
+      "bytes": 656
+    },
+    {
+      "path": "kura-management-console/target/task-storage-dispatch-snippet-20261101.txt",
+      "sha256": "18a2b6ea122efad8ec1aa2951af6d1800ef94cf29f0fac5d8617977bab490bd7",
+      "bytes": 6609
+    },
+    {
+      "path": "kura-management-console/target/task-storage-fmt-20261101.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/task-storage-graph-console-20261101.txt",
+      "sha256": "b3ab8c8835263e9a79b1c0820c0518acc645947b07990375ab674dd90d59c71e",
+      "bytes": 1611
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-browser-20261101.json",
+      "sha256": "765afc13556ce45b7bee225219d5fb160e1aaa6ef9a598dab60b9e81654c416a",
+      "bytes": 4239
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-gate-20261101.json",
+      "sha256": "bbd932dc84c57195d6ad73e92d0d55d1406fa4b8493d6b3dbcd06920240e18c4",
+      "bytes": 441
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-http-20261101.log",
+      "sha256": "c2d849935047066407c76b833e08c7c321d9b073f96ac88bc4f09650ed9f05d6",
+      "bytes": 650
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-http-retry-20261101.json",
+      "sha256": "e3d678defe49e30f9a958d9f8bc1912440f5228b97050db4efadef5586c6ab8e",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-http-retry-20261101.log",
+      "sha256": "e3d678defe49e30f9a958d9f8bc1912440f5228b97050db4efadef5586c6ab8e",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-react-20261101.png",
+      "sha256": "2d2f09665190618a56b028aa8ad8af1a83d08f521f0118bb0a76fc7b6f0a9688",
+      "bytes": 234552
+    },
+    {
+      "path": "kura-management-console/target/task-storage-idea-runtime-inventory-20261101.json",
+      "sha256": "bd3f4e85c23d4cff1612c266f801798dcdcd70b0bcff66ed9a8336624f19603b",
+      "bytes": 167
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-agent-20261101.json",
+      "sha256": "d0ea4c970020c67f650538eeb238a3093f824f9ca4eb891547c03a2e41c9044c",
+      "bytes": 996
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-agent-20261101.log",
+      "sha256": "6fdc950516137cdbdfc8ffdf7e73b18ae4efd5878b9c244c5c34f93577d678d4",
+      "bytes": 137
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-baseline-20261101.json",
+      "sha256": "537e73d51d35ce170844c2b254c4eb869cd297eb98e69132fad15f66804f011d",
+      "bytes": 349
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-build-20261101.log",
+      "sha256": "37788ea6dfe012b373a565ea6d02dacad0adac0de416185b8ca91a63806b059e",
+      "bytes": 1159
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-unit-20261101.log",
+      "sha256": "ed7b652eeba682a4d6e4db7b0f5928fa2cbaec1abbf1c1c9096eb7d8a6b70082",
+      "bytes": 13437
+    },
+    {
+      "path": "kura-management-console/target/task-storage-live-contract-20261101.json",
+      "sha256": "be2f5871ff57b1df4a11761ae449747eff942acc3d6a98495ffadc24f74c2dde",
+      "bytes": 1970
+    },
+    {
+      "path": "kura-management-console/target/task-storage-live-contract-20261101.log",
+      "sha256": "9079498de083698d0ba5437067a70b9c7b6e7e40db55379b2605083f2a7f1bd5",
+      "bytes": 139
+    },
+    {
+      "path": "kura-management-console/target/task-storage-mtls-20261101.log",
+      "sha256": "59bad9455f744a8a3b7c38936e8fdc78c88c8a2cb70a97ef633d5135e7f6e3e7",
+      "bytes": 1138
+    },
+    {
+      "path": "kura-management-console/target/task-storage-postgres-first-20261101.log",
+      "sha256": "2756b14ea6cb39073bfeedb9c492307499e9948b7cb9afd3eead20f8036e037c",
+      "bytes": 1414
+    },
+    {
+      "path": "kura-management-console/target/task-storage-restart-20261101.json",
+      "sha256": "18c017eda1e636916dcfc3b0af7599771c5ef32b3685c5d2be35b7d743220e9d",
+      "bytes": 165
+    },
+    {
+      "path": "kura-management-console/target/task-storage-symbols-20261101.json",
+      "sha256": "2273ca67d86de1b0e499abda14a863b5127875bc6ce6e507ce7a71e907518be4",
+      "bytes": 3119
+    },
+    {
+      "path": "kura-management-console/target/task-storage-unit-build-20261101.log",
+      "sha256": "bd7012cdbbe04b5e3544b7155c3d434b6a3e284d61e993ae595177e471d2bf3c",
+      "bytes": 67
+    },
+    {
+      "path": "kura-management-console/target/task-storage-unit-final-20261101.log",
+      "sha256": "fbb182427c09470cd2fd3e8c8c7ed3efe4dab017f6aa08f1ec0169b57529fbf9",
+      "bytes": 2540
+    },
+    {
+      "path": "kura-management-console/target/task-storage-unit-first-20261101.log",
+      "sha256": "021451734a5342e0a8bec30782411aa8759e84811a0af4bf452bddc190ba5702",
+      "bytes": 32
+    },
+    {
+      "path": "kura-management-console/target/task-storage-unit-toolchain-20261101.log",
+      "sha256": "863af47f30377ef477f1a86f3a75aa53df222f9106edc4b2fcf63338b28a28da",
+      "bytes": 4186
+    },
+    {
+      "path": "kura-management-console/target/task-storage-upgrade-20261101.json",
+      "sha256": "cdeb398df1d18636cf5a75aefc211aa5e91654df1e27199c3b85fb10d085962d",
+      "bytes": 494
+    },
+    {
+      "path": "kura-management-console/target/task-storage-linux-console-source-20261101/source-manifest.json",
+      "sha256": "49bbc443065651ffb532385242744bf0bccfb2efb639c97a5923f2bddc2e4af8",
+      "bytes": 3383
+    }
+  ],
+  "validation": {
+    "hostConsoleUnitPassed": 7,
+    "protocolUnitPassed": 6,
+    "explicitPostgresPassed": 2,
+    "explicitMtlsPassed": 3,
+    "defaultBrowserPassed": 16,
+    "liveProtocolFaultChecksPassed": 22,
+    "ideaHttpChecksPassed": 31,
+    "ideaReactLiveBrowserPassed": 1,
+    "ideaRuntimeInventoryMatches": 281,
+    "linuxAgentChecksPassed": 16,
+    "linuxConsoleUnitPassed": 7,
+    "linuxProtocolUnitPassed": 6,
+    "linuxDefaultIgnored": {
+      "postgres": 2,
+      "mtls": 3
+    },
+    "stagedLinuxInputMatches": 23,
+    "historicalTasksMigrated": 610,
+    "historicalTaskMetadataUnchanged": true,
+    "restartCiphertextUnchangedTaskRows": 614
+  },
+  "limits": [
+    "No Linux center deployment or Linux PostgreSQL run",
+    "No network writes or new agent package lifecycle tests in this increment",
+    "Private database backups and keys excluded",
+    "Old database pages/WAL/backups and legacy agent results are not scrubbed",
+    "Key rotation and formal center packaging pending",
+    "No graph full parse guarantee; chat MCP Transport closed, official CLI available"
+  ]
+}

@@ -1,0 +1,57 @@
+import { test, expect } from "@playwright/test";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+test("real bilingual conditional update keeps and explicitly sets a synthetic password", async ({ page }) => {
+  test.setTimeout(120000);
+  const fixture = resolve(import.meta.dirname, "../../../.phase1-dev/configuration-update-idea-20261101");
+  const resumed = process.env.KURA_BROWSER_RESUME_NO_TASKS === "1";
+  if (resumed) {
+    expect(existsSync(resolve(fixture, "browser-resume-authorized"))).toBe(true);
+    expect(existsSync(resolve(fixture, "keep-proof.json"))).toBe(false);
+    expect(readFileSync(resolve(fixture, "stage"), "utf8").trim()).toBe("initial");
+  }
+  writeFileSync(resolve(fixture, resumed ? "browser-resumed" : "browser-started"), "one-use fixture\n", { flag: "wx" });
+  expect(JSON.parse(readFileSync(resolve(fixture, "initial-proof.json"), "utf8")).status).toBe("passed");
+  const errors: string[] = []; page.on("pageerror", e => errors.push(e.message));
+  await page.goto("/login");
+  await page.getByLabel("账号", { exact: true }).fill("admin");
+  await page.getByLabel("密码", { exact: true }).fill(readFileSync(resolve(fixture, "../admin.password"), "utf8"));
+  await page.getByRole("button", { name: /登\s*录/ }).click();
+  await page.getByRole("button", { name: "Configuration update IDEA fixture configuration-update-idea-20261101", exact: true }).click();
+  const outer = page.getByRole("dialog", { name: "Configuration update IDEA fixture", exact: true });
+  const panel = page.getByRole("region", { name: /Kura (配置浏览|configuration browser)/ });
+  await panel.getByRole("button", { name: "列出 Kura 配置" }).click();
+  const pid = panel.getByRole("combobox", { name: "配置 PID" });
+  await pid.fill("org.eclipse.kura.management.revisionFixture"); await pid.press("ArrowDown"); await pid.press("Enter");
+  await panel.getByRole("button", { name: "读取配置详情" }).click();
+  await panel.getByRole("button", { name: "修改配置", exact: true }).click();
+  const editor = page.getByRole("dialog", { name: /^(修改配置|Edit configuration)$/ });
+  await editor.getByRole("checkbox", { name: /count.*设置新值/ }).check();
+  await editor.getByLabel("count", { exact: true }).fill("9223372036854775807");
+  await editor.getByRole("checkbox", { name: /我确认修改.*的 1 项属性/ }).check();
+  await editor.getByRole("button", { name: "确认并提交" }).click();
+  await expect(panel.getByText(/配置提交完成/)).toBeVisible({ timeout: 35000 });
+  writeFileSync(resolve(fixture, "stage"), "keep\n");
+  await expect.poll(() => existsSync(resolve(fixture, "keep-proof.json"))).toBe(true);
+  const keep = JSON.parse(readFileSync(resolve(fixture, "keep-proof.json"), "utf8"));
+  expect(keep.passwordMatchesExpected).toBe(true);
+  await page.screenshot({ path: "../../target/configuration-update-idea-zh-20261101.png", fullPage: true });
+  await outer.getByRole("combobox", { name: "语言 / Language" }).selectOption("en-US");
+  await panel.getByRole("button", { name: "Read configuration details" }).click();
+  await panel.getByRole("button", { name: "Edit configuration", exact: true }).click();
+  await editor.getByRole("checkbox", { name: /password.*Set new value/ }).check();
+  await editor.getByLabel("password", { exact: true }).fill("fixture-remote-set");
+  await editor.getByRole("checkbox", { name: /I confirm updating 1 properties/ }).check();
+  await editor.getByRole("button", { name: "Confirm and submit" }).click();
+  await expect(panel.getByText(/Configuration submission completed/)).toBeVisible({ timeout: 35000 });
+  writeFileSync(resolve(fixture, "stage"), "set\n");
+  await expect.poll(() => existsSync(resolve(fixture, "set-proof.json"))).toBe(true);
+  const set = JSON.parse(readFileSync(resolve(fixture, "set-proof.json"), "utf8"));
+  expect(set.passwordMatchesExpected).toBe(true); expect(set.countMatchesExpected).toBe(true);
+  expect(set.cmChangeCount).toBe(keep.cmChangeCount + 1);
+  await page.screenshot({ path: "../../target/configuration-update-idea-en-20261101.png", fullPage: true });
+  expect(await panel.innerText()).not.toContain("fixture-remote-set");
+  expect(errors).toEqual([]);
+  writeFileSync(resolve(fixture, "browser-completed"), "two real remote writes\n", { flag: "wx" });
+});

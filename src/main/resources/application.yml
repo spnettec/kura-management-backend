@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: kura-management-backend
+    name: kura-management-console
   datasource:
     url: jdbc:postgresql://localhost:5432/kura_management
     username: kura
@@ -27,6 +27,6 @@ management:
 
 mqtt:
   broker-uri: tcp://localhost:1883
-  client-id: kura-management-backend
+  client-id: kura-management-console
   username: backend
   password: backend-secret

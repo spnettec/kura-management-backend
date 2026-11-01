@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T21:38:22.172770+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Explicit Netplan core/network adapter deb and controlled package lifecycle",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura": "b7f72c0e64c44156dd4b00783526871281ad096b",
+    "kura-networking": "d9bc0190f1f3cb4dc90fc1f4ba4392851ed894e6",
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e",
+    "kura-management-ui": "a69382fca59d2b9757f62f4200254180ca886f15"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/README.md",
+      "sha256": "83e5f2aa0817cbe0ca800551958eb9c544c28d94f6d3318f309bc7d68af0720d",
+      "bytes": 3725
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/pom.xml",
+      "sha256": "d168b702c97cd7483573ef7809d97429132db7d6c68a3e4b4059304f20e09a56",
+      "bytes": 3882
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/resources/kura-netplan.service",
+      "sha256": "89ba575506dca6a9ba2f3e30d78f3714f4f9158f1b210e8343ea947ddbebc332",
+      "bytes": 801
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/resources/launch-netplan.py",
+      "sha256": "849a935020e8b0ad18dfc2ed9dfe5f02d5e06f164ff8bd3dc4bb671b8b768c90",
+      "bytes": 4021
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/resources/runtime.json",
+      "sha256": "ddd6f488d2fdadbbaa91d8843946eb4ae9077e098f7442b1aebf4bf4d4003932",
+      "bytes": 101
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/tools/lifecycle.py",
+      "sha256": "b90191034c04b5500bf8316dd5df89e50eb289eedb3f47221b6c168329790aad",
+      "bytes": 8217
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/tools/stage.py",
+      "sha256": "5f59e80d8557e04dc3a3c4662a294f4023b6b23a7ef4904b62c9ecbf2132f0ba",
+      "bytes": 7046
+    },
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/tools/test_package.py",
+      "sha256": "3bf08aa76bb7ad1f1f77d99d1926d00192ef4449a4f5f9a524ace010ff9cb8b0",
+      "bytes": 8198
+    },
+    {
+      "path": "kura/kura/distrib/pom.xml",
+      "sha256": "422557a5db63b263367c5dbcdb1fe56f413e3f27d9a34e68839bb2951b0706f5",
+      "bytes": 138882
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "e377d79b0531c07ec1b9ee2a2a9699d5697f874fa6ea77484e1b1714aeb1b92c",
+      "bytes": 4277
+    },
+    {
+      "path": "kura-management-console/docs/codebase-graph-repair-20261101.md",
+      "sha256": "c022a1fb96251fcb289ec54b50286677e966346c57caca379142e8426b84ca02",
+      "bytes": 6757
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "19649730d401d5423e8f4315bba82a6c572938333fca237e909d37780c26ea96",
+      "bytes": 51808
+    },
+    {
+      "path": "kura-management-console/docs/phase2-netplan-package-validation-20261101.md",
+      "sha256": "e9d34cfd51ea9d36df231aaeb28ea87e4404454f1ecfc6252ca7319d858c6d65",
+      "bytes": 10053
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-netplan-package-inspect.py",
+      "sha256": "5ed5fe9d34fca61b9e9df1574bc3718ef1eb9e72fee73aeb2e3202622d5cd8d6",
+      "bytes": 4549
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-netplan-package-vm.py",
+      "sha256": "34672c3f82c811cdc829a780c805324aef4deacdaa8926a2ba5e9c7af76e5ba0",
+      "bytes": 13787
+    },
+    {
+      "path": "kura-networking/distrib-netplan/README.md",
+      "sha256": "22eebb603dca06aabf636b56ef992244620e0317799462216f2a3f6e820343ee",
+      "bytes": 1721
+    },
+    {
+      "path": "kura-networking/distrib-netplan/pom.xml",
+      "sha256": "2b39667858656a07188487f1aacd11809ec4d7bdd977012bececa0bb9244679e",
+      "bytes": 3535
+    },
+    {
+      "path": "kura-networking/distrib-netplan/stage.py",
+      "sha256": "0e39f8cc228d8b744ab3c3d9fe399153a94eb4fa796c99e63f7dd720ce5e722f",
+      "bytes": 2697
+    },
+    {
+      "path": "kura-networking/pom.xml",
+      "sha256": "31cbd2e1de71c9cf83af28cdcb7c367412e082cc765249a9a7ceb0e0100b5222",
+      "bytes": 1736
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "kura/kura/distrib/kura-netplan-core/target/kura-core-netplan_6.0.0~netplan20261101-3_arm64.deb",
+      "sha256": "b72b7009fd71005d577b387df351a6058e4c1cffe5b6aa9b85afb237e857e3e9",
+      "bytes": 193839592
+    },
+    {
+      "path": "kura-networking/distrib-netplan/target/kura-networking-netplan_3.0.0~netplan3_all.deb",
+      "sha256": "d03423942fe0cbc83ce30b4313e50b9be888fb2f2b63d97365256742c17c1a4c",
+      "bytes": 104682
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/netplan-package-archive-check-20261101.json",
+      "sha256": "f5da4712de747a893a8fb4c96c763c8d79ab367a219d2d0fde03f3e95bfdeaa1",
+      "bytes": 1936
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-archive-final-20261101.json",
+      "sha256": "75bed998f5e5b27832355ffa4fdd2733ec93918237273ed4b142ce1fe665eef6",
+      "bytes": 1912
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-archive-fixed-20261101.json",
+      "sha256": "e6a2b795dc46e46e18c7f831e79cb776736514c4823156daa0779b3c24a5cf45",
+      "bytes": 1912
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-archive-revision3-20261101.json",
+      "sha256": "cd6f193aa39acdafc87e6ee9c2c4fa8f583777297683a9c675ced4844722549c",
+      "bytes": 1912
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-build-20261101.log",
+      "sha256": "6ee5320cd968c62224a1ea8c7bc758647483a1b807926b94befba2accd6f6141",
+      "bytes": 4945
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-build-final-20261101.log",
+      "sha256": "6ce2c65b0462843c9bdbbb8687a9db83478a1918180811f41cfb91ad814a3042",
+      "bytes": 50809
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-build-v2-20261101.log",
+      "sha256": "721f5fa237316840d2920f926b231be3bf71068c4236a337dd69c85776e03d92",
+      "bytes": 37384
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-build-v3-20261101.log",
+      "sha256": "2e212d733469d529af206c5a5cfec1dc3476d0381f74fc75a11273eb6ab875b0",
+      "bytes": 25909
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-build-v4-20261101.log",
+      "sha256": "dfa6cfda27e1840977d0b31c8176989798e6db57d1c39da326d9515c2dc3d7cb",
+      "bytes": 25910
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-final-build-20261101.log",
+      "sha256": "f06e00c69ab543c34dfa4eec09a122ca8a5644acac3a6a0dc869b3ff29dcfd56",
+      "bytes": 25895
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-fixed-upgrade-build-20261101.log",
+      "sha256": "9ff384247e6dd4f57ffca0c9cece5d0485215a791f739ac3501978bd9c2e2f7f",
+      "bytes": 25895
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-prefix-build-20261101.log",
+      "sha256": "060220abf9f9e2770efa693932bf4592b53ae01d896dfa9667c3392f8f3ca468",
+      "bytes": 25895
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-core-upgrade-build-20261101.log",
+      "sha256": "948c7d462214d377dab6f8f458f491ff73d76d6130b77acc854c40ef5002c6dd",
+      "bytes": 25910
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-coverage-console-final-20261101.json",
+      "sha256": "fbdca41ab15f7df95347745ab24c8b063240999b96c2f42c6a3e4eb708547f51",
+      "bytes": 1202
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-coverage-console-initial-20261101.json",
+      "sha256": "a77c870b13a40bcf85a91b8a90038da4023851a0fd43cf13d481dfc6d358b124",
+      "bytes": 1194
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-coverage-core-20261101.json",
+      "sha256": "2fac3e202857c5cb24c17fe54c194293b580715a7ec3d3589ccadd07427b101c",
+      "bytes": 2738
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-coverage-networking-20261101.json",
+      "sha256": "56d337c400121b353a90a2e1c155818b5a2c1862bc4adde8851cd3d07a28b73d",
+      "bytes": 1311
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-gateways-en.png",
+      "sha256": "8adb739d0d43acef20d337cb548a65b51e00460dbfe107df83674e691d65d7bc",
+      "bytes": 117341
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-gateways.png",
+      "sha256": "d0837f6ce530fedd82c57bc157b745cc28504f185eeb10139eaf2f629115dd30",
+      "bytes": 112932
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-login-mobile-en.png",
+      "sha256": "fe705c350ccfab7247841e956a6b99b315e60d85753ea48c33f6759932e2ca24",
+      "bytes": 26928
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-login.png",
+      "sha256": "46bb3b9142a90f30e7f390fdfca725d8f97de1ffa650e8d4b8b7fd8cb64cfbcb",
+      "bytes": 219073
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-network-observe.png",
+      "sha256": "0991756491b7b633970bd71897285f5e0b59f24a46adbbcc01099978efb67f8e",
+      "bytes": 128941
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-network-zh.png",
+      "sha256": "3774079cda5a262b67bbd62cfd76fcd1c623f7e4e6cd1c601b23fcc3d5052be6",
+      "bytes": 129003
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-current-transaction-zh.png",
+      "sha256": "103d3d9921a76ecce83e8625f6b1ef12b237bc6f0eafcc53e255ae9402fad6a8",
+      "bytes": 130516
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-graph-console-final-20261101.json",
+      "sha256": "e19fb5160563f278ae6137d5a2b6fe409a227dc80a050bf39f99adc2a2d60623",
+      "bytes": 1822
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-graph-core-20261101.json",
+      "sha256": "b452993c4d05bc520316b847d8f1a05660c6f1a88e38b2f2cb4d47a9e332864f",
+      "bytes": 218
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-graph-core-final-20261101.json",
+      "sha256": "2697ade415c971d09d23728aef9bc138066855f31caa653fa357968b60e6f061",
+      "bytes": 2485
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-graph-networking-final-20261101.json",
+      "sha256": "8358bde03b18e2466cda82c737207292bb986d7dd06faea0ad5c4b3ea6f640c6",
+      "bytes": 1374
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-handoff-20261101.md",
+      "sha256": "302c0e211aee0b71f01eca6865409ad6a52c506b6b77dffd523ef53c42e3eab0",
+      "bytes": 4684
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-idea-console-20261101.png",
+      "sha256": "685c34c35423043d82b5c3cedd394566a78ef2fb338b73f7b706389e18b29f0f",
+      "bytes": 79424
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-kb-readback-20261101.md",
+      "sha256": "464228ea139f850a84ffb525f317bb50c992f29deb60a3aef1901905ba0809cb",
+      "bytes": 5057
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-kb-save-20261101.txt",
+      "sha256": "69c11e3b05ddff135800c83da03838de1b67423ad20e7df917704411c24327f5",
+      "bytes": 127
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-network-build-20261101.log",
+      "sha256": "7437d176cfc69d488611793c70a6d8997213946d4ebe50044e32a43f0f0dd7ff",
+      "bytes": 3198
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-network-build-final-20261101.log",
+      "sha256": "313c10e63b90ef124c683173013565121cc2f50c3699dd5035047506151a7325",
+      "bytes": 2703
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-network-fixed-upgrade-build-20261101.log",
+      "sha256": "29522fe7f92ee323c4cfb7e1da80f0f16bd10469ee68df2f4189b74c820a840d",
+      "bytes": 2703
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-network-upgrade-build-20261101.log",
+      "sha256": "546a81f7b2bcb2621cb06686a6c10f02a271d3a22cfad411f90400bab07a522e",
+      "bytes": 2703
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-parallels-final-20261101.txt",
+      "sha256": "b1ac42532b7702544fab3ec3176b779d70786decbc63b7a75d81d7a207a5e70b",
+      "bytes": 242
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-previous-evidence-check-20261101.json",
+      "sha256": "2a0f16a7a130e0d29a2d87f5a055bd24ce5270aef488c97b56a98ff63e36c3d3",
+      "bytes": 166
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-react-browser-20261101.json",
+      "sha256": "94b75f8b92eed010cb3a412e83bac9402363260d6818480d3ec1da632204b7cc",
+      "bytes": 15520
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-react-browser-20261101.log",
+      "sha256": "25cd6cd45fe57d142aa6d32cb2bfef4c3807b03639f2195ad12ba1d2642613f6",
+      "bytes": 1586
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-tasks-before-20261101.md",
+      "sha256": "20fb0051204a19dcf484fe54ef293e36ac0e617b5c4fa43dbb4bc0603f3fa5ac",
+      "bytes": 1728
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-tasks-readback-20261101.md",
+      "sha256": "831f7996954cf78fc76b70c69e634618b13c6bf91cbd3ec0f5dbf0d3bc678448",
+      "bytes": 1702
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-tasks-write-20261101.txt",
+      "sha256": "48c27757f2bc15454060d23438ed7e7732a60da52ec64558075980700844eb86",
+      "bytes": 20
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-unit-final-20261101.log",
+      "sha256": "d8e580ee0690650e5e48f9c635e17ea833259c9cc6566400ef4e0f36a092e0bd",
+      "bytes": 157
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-failure-archived-20261101.json",
+      "sha256": "ac18a4bc4dd6b48fc14a08fb829e08416362664de5362bbed812e91b02ffedee",
+      "bytes": 242
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-final-20261101.json",
+      "sha256": "d6e0000ee8003b8d7ca1ec12e425ec6fa973af388657e39cb93d03aafd77b4c1",
+      "bytes": 1123
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-install-20261101.json",
+      "sha256": "85da198a403cf5535704618d84fff11128e839a44ba67fbd73e404e18b2c9173",
+      "bytes": 644
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-install-fixed-20261101.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-install-verified-20261101.json",
+      "sha256": "01e76f84d12cc9c2218863abe53a964e679ca1bbb63e6a7d0fac97539b65ed99",
+      "bytes": 652
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-inventory-20261101.json",
+      "sha256": "dba6f023b74434e4a56316e4a14880b3755021ed81acf1bfaa284e663a983b40",
+      "bytes": 128
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-prefix-repair-20261101.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-purge-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-purge-20261101.json",
+      "sha256": "a9900869e7a4d6fa8e6fc269b46339454c91d276f64042cdd7c02b22550096f0",
+      "bytes": 206
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-reinstall-20261101.json",
+      "sha256": "2f052859b101b4e27b381e1a597c2e344452613a2ade63d27a939aa7cf14393c",
+      "bytes": 649
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-remove-20261101.json",
+      "sha256": "8a60a5ed3ac3f8f56e83e513d0bab17bf8c0b0123f9d9c0f3f8867c0ce13f8ea",
+      "bytes": 121
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-service-stop-final-20261101.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-service-stop-final-20261101.json",
+      "sha256": "80cc02406aa075422c0d737df2bdff0e1b54e0a723e626185db920811cb053b2",
+      "bytes": 635
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-start-20261101.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-start-fixed-20261101.err",
+      "sha256": "7ebfee65ca73b7b0697516a5171ecda7d7799508bfca8b8b6354a985aa9371b3",
+      "bytes": 532
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-start-fixed-20261101.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-start-verified-20261101.json",
+      "sha256": "c8721ffc81dde0140a6afab0b275f47a553ea10014c99332c1726ca083c5269c",
+      "bytes": 390
+    },
+    {
+      "path": "kura-management-console/target/netplan-package-vm-upgrade-20261101.json",
+      "sha256": "b7e498d090195a96f6eea0477faf0620fe99ba6cf54673383393b02e1fd8fb82",
+      "bytes": 644
+    }
+  ],
+  "verification": {
+    "localPackageTests": 13,
+    "reactBrowserChecks": 11,
+    "ideaCompleteIsolatedKuraLogin": true,
+    "ideaPidStopped": 12745,
+    "archiveChecks": "passed",
+    "vmLifecycle": "passed with successive candidates",
+    "finalCoreRevision": 3,
+    "finalCandidateActions": [
+      "upgrade",
+      "start",
+      "stop",
+      "purge"
+    ],
+    "finalVmPhase": "purged",
+    "oldEvidenceFilesUnchanged": 33,
+    "graphPathsChecked": 13,
+    "graphMetadataMatch": 12,
+    "graphUnitSourceFallback": true
+  },
+  "boundaries": {
+    "productionReleaseAccepted": false,
+    "newPackageBusinessFlow": "pending",
+    "agentPackageAndUidSocketAuthorization": "pending",
+    "snapshotWithExternalOwnerUnavailable": "rejected by existing contract; offline policy pending",
+    "fullSystemdHardening": "deferred: OrbStack global LXC override",
+    "otherOsArchAndHardware": "deferred",
+    "systemNetworkWritesByThisPackageTest": 0,
+    "existingAgentRemainsActive": true,
+    "parallelsStarted": false,
+    "originalChatMcpTransportRestored": false
+  },
+  "failuresPreserved": {
+    "initialXmlPrefix": "failed-bootstrap archive retained in VM; original start failed",
+    "normalJavaExit143": "fixed in candidate revision3 and verified",
+    "initialAgentEnvBaselineTypo": "corrected only after verifying restored fixture SHA; no env change"
+  },
+  "knowledgeHandoff": "Experience/2026-11-01-Kura管理体系Netplan包生命周期与停止修正交接-52ba935f.md"
+}

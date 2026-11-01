@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T21:55:13.550529+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Independent observation-only agent deb and actual Kura UID bridge package lifecycle",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e",
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura": "b7f72c0e64c44156dd4b00783526871281ad096b",
+    "kura-networking": "d9bc0190f1f3cb4dc90fc1f4ba4392851ed894e6"
+  },
+  "sourceFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3ebd7ebba79ff41cede2b7e50e66ae4a120786e3a2cf4cf8c953cd8db207f9e7",
+      "bytes": 15298
+    },
+    {
+      "path": "kura-management-agent/README.md",
+      "sha256": "5fb6242eacbf367e3f4f70f16f1266f840e1520608a395a2d15602b45b45fdde",
+      "bytes": 3558
+    },
+    {
+      "path": "kura-management-agent/packaging/build.py",
+      "sha256": "2fd4560b9a08c979bb7a1339b4fe7b6175ce0bb23a63d8e8acd9dd9b3a9d5c4a",
+      "bytes": 8067
+    },
+    {
+      "path": "kura-management-agent/packaging/lifecycle.py",
+      "sha256": "f2e1e4b5d7b9027a8ee1a2f2738d28ec4306ef91feb3a728b91a2c53188c54d2",
+      "bytes": 1794
+    },
+    {
+      "path": "kura-management-agent/packaging/setup.py",
+      "sha256": "e77d365c346300fed2603e9edadb31c4e2a54326b43ad2da1938745b3ac27213",
+      "bytes": 13862
+    },
+    {
+      "path": "kura-management-agent/packaging/test_packaging.py",
+      "sha256": "fba0f7a930fc4d4d529a040f512fc8eb8ddb1238177ddda99144762b358ae79c",
+      "bytes": 11474
+    },
+    {
+      "path": "kura-management-agent/packaging/README.md",
+      "sha256": "eb9f48c6384264c19bcae342e172167c7df2a96d956544d30009742f8d98ded1",
+      "bytes": 5014
+    },
+    {
+      "path": "kura-management-agent/packaging/agent.env.example",
+      "sha256": "32216c521811064ffc381936a55cbe9f60c15000818f29c421f20779f8cdf3b5",
+      "bytes": 921
+    },
+    {
+      "path": "kura-management-agent/packaging/kura-management-agent.service",
+      "sha256": "e64bd646f04177e07762d7c83779fd34755fcbe4f4a75e36ab22d7549b6f703f",
+      "bytes": 912
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-agent-package-vm.py",
+      "sha256": "ed3cff089a7624a0c65fbb0ec56dd52c53dcc220377a8f468a6f8b4604e9f69c",
+      "bytes": 11824
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-agent-package-smoke.py",
+      "sha256": "6b6e53e42b379779f10154eb17ea43bd9565e5bebef9028dfdbee80f42c2ff97",
+      "bytes": 4342
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "3b452b22737b84c0731653256132f287d121615325cc3b7feb0d033155d64ad9",
+      "bytes": 4770
+    },
+    {
+      "path": "kura-management-console/docs/phase2-agent-package-validation-20261101.md",
+      "sha256": "1380f7fe081411156ee23d798b5dd34c95345bda1903f3d4a68a8e0ff8335d21",
+      "bytes": 10242
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "0758b1a1011659a097e2d40bcd38734ba66f0afcc2c7549ccc67ebd1e0b85428",
+      "bytes": 52350
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/agent-package-after-kura-stop-20261101.json",
+      "sha256": "427feb8a2b02433e962b231c850708b7fffc39c58733fe59bda7b90768ddc337",
+      "bytes": 7818
+    },
+    {
+      "path": "kura-management-console/target/agent-package-before-kura-20261101.json",
+      "sha256": "1545c44116bbe3c52d81f68cd7afe69704b883c355ed8ebb509e7829bf007b95",
+      "bytes": 7817
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-gateways-en.png",
+      "sha256": "169894f7d47fc0efa3cd53849bed8f59d5a24e3f7c47989063d5f0afafe2ad7b",
+      "bytes": 118496
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-gateways.png",
+      "sha256": "d319bc380fc9ece5e520a34f0f756a4ee3b448e6ab214670d43f1bf1969a45ce",
+      "bytes": 113083
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-login-mobile-en.png",
+      "sha256": "fe705c350ccfab7247841e956a6b99b315e60d85753ea48c33f6759932e2ca24",
+      "bytes": 26928
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-login.png",
+      "sha256": "46bb3b9142a90f30e7f390fdfca725d8f97de1ffa650e8d4b8b7fd8cb64cfbcb",
+      "bytes": 219073
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-network-observe.png",
+      "sha256": "777bd9340c078177b3e33760c82f90b6088b9bd374913b64653e1aca01032dad",
+      "bytes": 128768
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-network-zh.png",
+      "sha256": "070f1c90ef9eeb796e912b746b0f71077e6316b4be792effa42e71c18bba85b8",
+      "bytes": 128848
+    },
+    {
+      "path": "kura-management-console/target/agent-package-current-transaction-zh.png",
+      "sha256": "94f37aeda799fc6d3a62432595b0f193ecac1f5fa85a3e5285c2730337961861",
+      "bytes": 130457
+    },
+    {
+      "path": "kura-management-console/target/agent-package-deb2-20261101.json",
+      "sha256": "82430f50b73f6d97becb064f76d01b4e6eb05a68cdbdb96250979d4ce153aa23",
+      "bytes": 454
+    },
+    {
+      "path": "kura-management-console/target/agent-package-deb4-20261101.json",
+      "sha256": "e14e647f40ce1163450a472f6ab78ef49917382d147de473a2e78a31e161d571",
+      "bytes": 454
+    },
+    {
+      "path": "kura-management-console/target/agent-package-deb5-20261101.json",
+      "sha256": "7cfcc7ec5297b0f8c05514c417acece5804f6eab491e429f74fa3108086a4d6e",
+      "bytes": 454
+    },
+    {
+      "path": "kura-management-console/target/agent-package-deb5-inspect-20261101.log",
+      "sha256": "91a6c4bde72e4148dfdf6c821cf486ed3e7de93655314092a09fee3c87b45680",
+      "bytes": 2286
+    },
+    {
+      "path": "kura-management-console/target/agent-package-deb5-static-20261101.json",
+      "sha256": "a10ff04efa2ed944b6207409cd63f1f1fa0b13b801b9d7253d46b49c7a471de8",
+      "bytes": 3441
+    },
+    {
+      "path": "kura-management-console/target/agent-package-final-state-20261101.json",
+      "sha256": "b259b35daa49495324b6899addcd2828ca88effce40f8d192f673d196129cd6f",
+      "bytes": 694
+    },
+    {
+      "path": "kura-management-console/target/agent-package-gateway-disabled-20261101.log",
+      "sha256": "a3f26f218f6a4724c8300bd821b2d69efc9a81955fb1cc9d841750895edc5cd3",
+      "bytes": 111
+    },
+    {
+      "path": "kura-management-console/target/agent-package-graph-agent-check_index_coverage-20261101.json",
+      "sha256": "0b57e36bdf291924f59c5dba853326b1ce4415389ffacdbc1871527f50631544",
+      "bytes": 3151
+    },
+    {
+      "path": "kura-management-console/target/agent-package-graph-agent-index_status-20261101.json",
+      "sha256": "ff1297e815bdb5ab0b1d610fe5bbeca172bcf4e213172abbfd27998f555661f5",
+      "bytes": 1232
+    },
+    {
+      "path": "kura-management-console/target/agent-package-graph-console-check_index_coverage-20261101.json",
+      "sha256": "559187833ee023456415291cff7b1263fb4fc6e88e22f2b4bf6cec6ebc3c05ce",
+      "bytes": 1965
+    },
+    {
+      "path": "kura-management-console/target/agent-package-graph-console-index_status-20261101.json",
+      "sha256": "dd01501e1e1ad39fa1127dfc8dc921bbb9f377ebf4119cfeb4993f2c22959abe",
+      "bytes": 2272
+    },
+    {
+      "path": "kura-management-console/target/agent-package-idea-console-20261101.png",
+      "sha256": "b3d4c2d844725a6bfe20ef0b61cdf41c038ee03f490d30a86e46b1ecc5d1d70a",
+      "bytes": 79409
+    },
+    {
+      "path": "kura-management-console/target/agent-package-protocol-0.1.0-20261101.crate",
+      "sha256": "1412d0c81462c29538a2d5133bd9b544b5bac85cb11f70d6e40fde5097a80c7b",
+      "bytes": 12998
+    },
+    {
+      "path": "kura-management-console/target/agent-package-protocol-20261101.log",
+      "sha256": "021451734a5342e0a8bec30782411aa8759e84811a0af4bf452bddc190ba5702",
+      "bytes": 32
+    },
+    {
+      "path": "kura-management-console/target/agent-package-protocol-linux-20261101.log",
+      "sha256": "bf17e7f53ebfa31b4b331baf7c9ca4118bf9c8e15e3344fe931977cd79077903",
+      "bytes": 433
+    },
+    {
+      "path": "kura-management-console/target/agent-package-protocol-pinned-20261101.log",
+      "sha256": "bd7012cdbbe04b5e3544b7155c3d434b6a3e284d61e993ae595177e471d2bf3c",
+      "bytes": 67
+    },
+    {
+      "path": "kura-management-console/target/agent-package-react-browser-20261101.json",
+      "sha256": "c46c5b4dca8010ca04eb18c512e7a8660cf3a0582856a96af3aa927aaed0a6df",
+      "bytes": 15483
+    },
+    {
+      "path": "kura-management-console/target/agent-package-react-browser-20261101.log",
+      "sha256": "cc6c530ea753843048b5f64a5552a0be3efafa0503170b6da4fa800f4869da9c",
+      "bytes": 1561
+    },
+    {
+      "path": "kura-management-console/target/agent-package-reconnect-20261101.json",
+      "sha256": "94c82408adb8f32e3d4c2ae1a4ee4afac277650819dec802b8f954d6ab7ec97e",
+      "bytes": 4084
+    },
+    {
+      "path": "kura-management-console/target/agent-package-reinstalled-kura-20261101.json",
+      "sha256": "ca7f640af545eeaf7effdf1bc425d16b23b66ac19579535accdc305f7675124b",
+      "bytes": 8812
+    },
+    {
+      "path": "kura-management-console/target/agent-package-rust-linux-build-20261101.log",
+      "sha256": "47ae4018b5cb95d13107d910f36b14cad0b1b98b19296c54faf2e6b413849e83",
+      "bytes": 184
+    },
+    {
+      "path": "kura-management-console/target/agent-package-rust-linux-tests-20261101.log",
+      "sha256": "42af6ee7a2e101b182b045a43ab13ab04376b960ce8d9d3d3d4758c493986a5d",
+      "bytes": 4006
+    },
+    {
+      "path": "kura-management-console/target/agent-package-source-stage-20261101.json",
+      "sha256": "412db798ec10b4eea1e185ba36283e1962e3a9285d38fde6b3b4f92ffaf4e6e0",
+      "bytes": 1814
+    },
+    {
+      "path": "kura-management-console/target/agent-package-unit-final-20261101.log",
+      "sha256": "6c99c52e807af1d208b4d4766ddb0434507d4b030177593e09c462d262dd94db",
+      "bytes": 2069
+    },
+    {
+      "path": "kura-management-console/target/agent-package-unit-first-20261101.log",
+      "sha256": "a64aa83eb7c04a96503d45dde4343e7caa591d0e792dcf29b14a7adf385766ee",
+      "bytes": 1314
+    },
+    {
+      "path": "kura-management-console/target/agent-package-unit-linux-20261101.log",
+      "sha256": "71904e0660ac0b458481e66a51b54c28ba2a3c6c4a00a3b1f16b7ac88abbffeb",
+      "bytes": 2069
+    },
+    {
+      "path": "kura-management-console/target/agent-package-unit-lock-fixed-20261101.log",
+      "sha256": "8bb81c1fab29ed5b53463c61a06c9a86de9193f3c38b05dfd74be05fd86c26e1",
+      "bytes": 146
+    },
+    {
+      "path": "kura-management-console/target/agent-package-unit-lock-fixed-linux-20261101.log",
+      "sha256": "84c677887e67f6eaff6b1771948adada5b01f5020109741a3af0456570749ef9",
+      "bytes": 146
+    },
+    {
+      "path": "kura-management-console/target/agent-package-unit-pinned-first-20261101.log",
+      "sha256": "da4af4fa783153aac7d2920b9cafcc003bcff3620992a84e47855b462c522d0f",
+      "bytes": 2390
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-activate-fixed.log",
+      "sha256": "bc3cbd2137f72fcb9e04e82f68d76320434a03142e8830c95b441cca9ada74e5",
+      "bytes": 32
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-activate.log",
+      "sha256": "bc3cbd2137f72fcb9e04e82f68d76320434a03142e8830c95b441cca9ada74e5",
+      "bytes": 32
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-activation-fix-upgrade.log",
+      "sha256": "53570b369f54035156af93ad6ae5bf9cf9831cccaf0fcdd961df6365c615d692",
+      "bytes": 416
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-apt-simulation.log",
+      "sha256": "5f515f380153c97c9185355296ced0682881ac1a9a555815e99c0e09295fa13b",
+      "bytes": 658
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-check-authorized.log",
+      "sha256": "c39fb2bc0c2c8f8880c83735cef0e354c34eba07bd3c035df109d5e5928a0a01",
+      "bytes": 29
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-failed-activation-journal.log",
+      "sha256": "43da80553037008fc08506b07ee1d4e293f570eb14dcbe418c6f55979898d982",
+      "bytes": 550
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-identity-import.log",
+      "sha256": "1bf08e8fa7249db855d08e7b788355914772937d52c141ac869111dab3a92d0f",
+      "bytes": 39
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-identity-repeat.log",
+      "sha256": "1bf08e8fa7249db855d08e7b788355914772937d52c141ac869111dab3a92d0f",
+      "bytes": 39
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-install.log",
+      "sha256": "3aa1abb76c6c9d3fc61615e24e95d344ebf792433eb471ad4db99c6b3d9241a4",
+      "bytes": 3363
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-purge.log",
+      "sha256": "d9b5a513ccc2883c69e8d3747025708fa49c96fa3a94f5ec06c0a337b00dd845",
+      "bytes": 493
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-reinstall.log",
+      "sha256": "951921d3a63f5d5df35bb1904c800d017bb790af9323e8282851eb2ef01f5f09",
+      "bytes": 1046
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-reinstalled-activate.log",
+      "sha256": "bc3cbd2137f72fcb9e04e82f68d76320434a03142e8830c95b441cca9ada74e5",
+      "bytes": 32
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-reinstalled-check.log",
+      "sha256": "c39fb2bc0c2c8f8880c83735cef0e354c34eba07bd3c035df109d5e5928a0a01",
+      "bytes": 29
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-remove.log",
+      "sha256": "68523f246e2abfbd7504c6434eca97ef884170e4b65b7114d5ccbf703ca14a64",
+      "bytes": 240
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-second-console-refused.log",
+      "sha256": "1ef7e3a16643d9af43f80ac74fcad072c3fb03062baec937bfa5da0ddf102c66",
+      "bytes": 91
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-state-20261101.json",
+      "sha256": "c1bfef470903116a42187f14d9a87dd658ff49ef5ed120eb425b4eddd9d5bf82",
+      "bytes": 6896
+    },
+    {
+      "path": "kura-management-console/target/agent-package-vm-upgrade.log",
+      "sha256": "6b51a5d8f859cbd580e06656bd478174634aaca7534595b0d7cd1a6bb57e33f5",
+      "bytes": 416
+    },
+    {
+      "path": "kura-management-console/target/agent-package-with-kura-20261101.json",
+      "sha256": "da77d9c9f92331630add47591af8378284a4e3637f6e645aa53977249993ef9e",
+      "bytes": 8812
+    },
+    {
+      "path": "kura-management-console/target/kura-management-agent_0.1.0~package20261101-5_arm64.deb",
+      "sha256": "b67c055f7bf71edf8c3d437379334ca9c5d828b674e6018b3bdc6a1cbd20ffdb",
+      "bytes": 19798402
+    }
+  ],
+  "stagedRustSourceUnchanged": {
+    "files": 11,
+    "matches": true
+  },
+  "acceptance": {
+    "pythonPackagingPerPlatform": 15,
+    "stagedRustLinux": 40,
+    "reactBrowser": 11,
+    "ideaConsoleLogin": true,
+    "beforeKuraChecks": 11,
+    "withKuraChecks": 12,
+    "reconnectGroups": 6,
+    "afterKuraStopChecks": 11,
+    "reinstalledKuraChecks": 12,
+    "vmLifecyclePhase": "purged",
+    "existingNetworkWrites": 0
+  },
+  "limitations": [
+    "Whole redesign stages 2-5 remain open",
+    "Observation-only package; no network writer authorization",
+    "Full OrbStack systemd filesystem sandbox deferred",
+    "Only actual Ubuntu 24.04 arm64 package validation",
+    "First install revision2; activation fix revision4; final upgrade and reinstall revision5",
+    "GWT/REST/bootstrap password new-package acceptance pending",
+    "Production enrollment transfer rotation workflows incomplete",
+    "Debug ELF, optimized release/performance acceptance pending",
+    "Original chat graph MCP transport closed; official CLI available"
+  ]
+}

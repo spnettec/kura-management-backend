@@ -1,0 +1,102 @@
+syntax = "proto3";
+package yofc.management.v1;
+
+// Additive v1 operations. Network writes have typed, bounded payloads.
+service Control { rpc Connect(stream AgentFrame) returns (stream ConsoleFrame); }
+message AgentFrame {
+  oneof payload { Hello hello = 1; Heartbeat heartbeat = 2; TaskResult result = 3; }
+}
+message Hello {
+  uint32 protocol_major = 1;
+  string gateway_id = 2; // Must match the registered TLS certificate, never grants identity.
+  string agent_version = 3;
+  string boot_id = 4;
+  repeated string capabilities = 5;
+}
+message Heartbeat { uint64 sequence = 1; bool kura_available = 2; uint64 uptime_seconds = 3; }
+message ConsoleFrame {
+  oneof payload { Welcome welcome = 1; ReadCommand command = 2; TaskQuery task_query = 3; }
+}
+// Read receipts only. Never authorizes starting or replaying an action.
+// Requires the agent capability task.reconcile.v1; at most 16 UUIDs per frame.
+message TaskQuery { repeated string command_ids = 1; }
+message Welcome { string connection_epoch = 1; uint32 heartbeat_seconds = 2; }
+enum Operation { OPERATION_UNSPECIFIED = 0; AGENT_STATUS = 1; KURA_CONFIGURATION_LIST = 2; KURA_SNAPSHOT_LIST = 3;
+  NETWORK_INSPECT = 4; NETWORK_PREPARE = 5; NETWORK_CONFIRM = 6; NETWORK_ROLLBACK = 7; NETWORK_TRANSACTION = 8;
+  NETWORK_TAKEOVER_PLAN = 9; NETWORK_TAKEOVER_PREPARE = 10;
+  KURA_CONFIGURATION_GET = 11;
+  KURA_CONFIGURATION_UPDATE = 12;
+}
+message ReadCommand {
+  string command_id = 1;
+  Operation operation = 2;
+  int64 expires_at_unix_ms = 3;
+  string idempotency_key = 4;
+  NetworkChange network_change = 5;
+  NetworkAction network_action = 6;
+  NetworkTakeover network_takeover = 7;
+  KuraConfigurationTarget kura_configuration = 8;
+  KuraConfigurationUpdate kura_configuration_update = 9;
+}
+message KuraConfigurationTarget { string pid = 1; string locale = 2; }
+// Set-only patch. Omitted properties (including passwords) remain unchanged.
+// Numbers are decimal text, interpreted using Kura's current metatype, never doubles.
+message KuraConfigurationUpdate {
+  string pid = 1;
+  string expected_revision = 2;
+  repeated KuraConfigurationProperty properties = 3;
+}
+message KuraConfigurationProperty {
+  string id = 1;
+  oneof value {
+    string text = 2;
+    bool boolean = 3;
+    KuraTextArray text_array = 4;
+    KuraBooleanArray boolean_array = 5;
+  }
+}
+message KuraTextArray { repeated string values = 1; }
+message KuraBooleanArray { repeated bool values = 1; }
+// PLAN accepts only interface; PREPARE binds the exact reviewed plan and sources.
+message NetworkTakeover {
+  string interface = 1;
+  uint64 expected_revision = 2;
+  string source_digest = 3;
+  string plan_digest = 4;
+  uint32 confirm_seconds = 5;
+}
+message StaticRoute { string to = 1; string via = 2; uint32 metric = 3; }
+message WiredConfig {
+  string interface = 1;
+  bool dhcp4 = 2;
+  repeated string addresses = 3;
+  repeated StaticRoute routes = 4;
+  repeated string nameservers = 5;
+  repeated string search_domains = 6;
+  uint32 mtu = 7;
+  bool optional = 8;
+  uint32 dhcp_metric = 9;
+}
+message NetworkChange {
+  uint64 expected_revision = 1;
+  WiredConfig config = 2;
+  uint32 confirm_seconds = 3;
+  string source_digest = 4;
+}
+message NetworkAction { string transaction_id = 1; string confirmation_token = 2; }
+enum TaskState {
+  TASK_STATE_UNSPECIFIED = 0; QUEUED = 1; ACCEPTED = 2; RUNNING = 3;
+  SUCCEEDED = 4; FAILED = 5; EXPIRED = 6; UNKNOWN = 7;
+  WAIT_CONFIRM = 8; ROLLED_BACK = 9; RECOVERY_REQUIRED = 10; CANCELLED = 11;
+}
+enum ErrorCode {
+  ERROR_CODE_UNSPECIFIED = 0; INVALID_ARGUMENT = 1; UNAUTHENTICATED = 2; FORBIDDEN = 3;
+  NOT_FOUND = 4; CONFLICT = 5; UNSUPPORTED = 6; KURA_UNAVAILABLE = 7; TIMEOUT = 8;
+  RESOURCE_EXHAUSTED = 9; INTERNAL = 10; PROTOCOL_MISMATCH = 11; OUTCOME_UNKNOWN = 12;
+}
+message TaskResult {
+  string command_id = 1;
+  TaskState state = 2;
+  ErrorCode error = 3;
+  bytes result_json = 4; // bounded structured result, never arbitrary command execution.
+}

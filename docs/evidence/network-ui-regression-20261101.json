@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T21:13:56.944727+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Netplan GWT hardware type and bilingual transaction state UI regression",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura": "b7f72c0e64c44156dd4b00783526871281ad096b",
+    "kura-management-ui": "a69382fca59d2b9757f62f4200254180ca886f15",
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e",
+    "kura-networking": "d9bc0190f1f3cb4dc90fc1f4ba4392851ed894e6"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/net2/configuration/NetplanNetworkEdit.java",
+      "sha256": "222a5c91f4d08cbfea0db856fa206bc5743899bb5c7202f0c1662dceb57a14e0",
+      "bytes": 11342
+    },
+    {
+      "path": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/net2/configuration/NetplanNetworkSession.java",
+      "sha256": "e81c86b368ec7566a50e7b915564349113bfaa310c5301b6963c0b44d27ad021",
+      "bytes": 6109
+    },
+    {
+      "path": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/client/ui/network/NetworkButtonBarUi.java",
+      "sha256": "ed233b62b16933f3296972dd5a2cfd844ec22e697b8d0810cf18aa510f3b458b",
+      "bytes": 16679
+    },
+    {
+      "path": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/resources/org/eclipse/kura/web/client/messages/Messages.properties",
+      "sha256": "83b5143b54f32458bff7b84a49790c15b3cd0473ba45e73b4654e792e27f4703",
+      "bytes": 71353
+    },
+    {
+      "path": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/resources/org/eclipse/kura/web/client/messages/Messages_zh_CN.properties",
+      "sha256": "c032598d87fa8582b724a354a2777df1dbb52b9fa433326828b8546acfedfb50",
+      "bytes": 96786
+    },
+    {
+      "path": "kura-management-ui/bundles/org.eclipse.kura.web2.test/src/test/java/org/eclipse/kura/web/server/net2/configuration/NetplanNetworkEditTest.java",
+      "sha256": "a73f07006a1931fd420639a34827e4f2d1000a542951d35462dfd7d7c61bf292",
+      "bytes": 15796
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-network-gwt-runtime.py",
+      "sha256": "10f68e43097086bcd44a2e1028bde1c673a8980cc096fb97cad91881242179fc",
+      "bytes": 9209
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-network-ui-evidence.py",
+      "sha256": "bd5aea14c951339a4904f0538893b04c9d8cd8ebab0618f7aca99f7e50c55bee",
+      "bytes": 3525
+    },
+    {
+      "path": "kura-management-console/frontend/react/gwt.playwright.config.ts",
+      "sha256": "b00ba0be93ef59e76b4a2a714986367535112c6256156a4fd92e02e35ef089c3",
+      "bytes": 675
+    },
+    {
+      "path": "kura-management-console/frontend/react/gwt-tests/network.spec.ts",
+      "sha256": "415f9bc715da382850f4d1c5af7eb47a8ea66ce2b4b03ad03bc6076ec7dd07ac",
+      "bytes": 8858
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/i18n.spec.ts",
+      "sha256": "6b72eb575afc9c7a8831cf372e8d8400f9717486f1050658c2c314c4c216bb9b",
+      "bytes": 10296
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "d2bcddb411e2ecbcfbf5a13315ae1e9c5cda68d26d2f16cf2685155b0e4d323e",
+      "bytes": 3628
+    },
+    {
+      "path": "kura-management-console/docs/phase2-network-ui-regression-20261101.md",
+      "sha256": "3b9437b8e6f9b2dc1961ba9d43c8f1136909e91fb51fefc5095be6e2b679db36",
+      "bytes": 5049
+    },
+    {
+      "path": "kura-management-console/docs/console-i18n-20261101.md",
+      "sha256": "99e1d006425b3ad0088d9232154ec6d735805343b798c32549b4419ab7595b3f",
+      "bytes": 4959
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "a7094a452f0cc2bfa39ac701bdf9124aa1b24f25936b2d3bb67c544b68e956e2",
+      "bytes": 51228
+    },
+    {
+      "path": "kura-management-console/docs/codebase-graph-repair-20261101.md",
+      "sha256": "09db3bc8b6ce274d1aa21326ee1f9c7c9fd479ab6e0e235510383f19af03d8b7",
+      "bytes": 5853
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-browser.json",
+      "sha256": "812c3dff85679140baedaf49c6bc598d9d48e844e7b30879620d6f695a18b949",
+      "bytes": 11339
+    },
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-confirmed-en.png",
+      "sha256": "756c8d21069917628b130aae002a826eb23a868e1ec09d4d845f52d1f1d522e8",
+      "bytes": 149946
+    },
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-fixture.txt",
+      "sha256": "1e9d606a99d025b3a8e7ac1ddaa2ddfeabb44d2b09c1ebddad9381adaf2472ac",
+      "bytes": 723
+    },
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-lost-receipt-en.png",
+      "sha256": "60d577e9bc443fd8a55f4ec03f6ca1ce17a24457b141d081a9ae95d353cf16bb",
+      "bytes": 142620
+    },
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-readonly-zh.png",
+      "sha256": "93c186f2aa42de68ff9bd79fab6c623ea23245baffd971aba4d54ecdf959ba2d",
+      "bytes": 147406
+    },
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-restoration.json",
+      "sha256": "ff8f36d6c647bd8b394de672d68a86c08d62b296ccbc851abc3c4d9d98d3d2e6",
+      "bytes": 136
+    },
+    {
+      "path": "kura-management-console/target/gwt-network-ui-regression-20261101-rolled-back-zh.png",
+      "sha256": "d6bd80af74b2cee1df8509e98581f503ab7dd3929cf621f6808a3486e4d9be1e",
+      "bytes": 135177
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-coverage-console.json",
+      "sha256": "013d19e688e1f12ee2c4d2ec345f176a6e82e52587a1be155d54f85668f6786e",
+      "bytes": 1903
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-coverage-ui.json",
+      "sha256": "ed663d91972bcfeba26e8523ccee5167173ea338b9129ea987729cf176583a14",
+      "bytes": 3041
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-gateways-en.png",
+      "sha256": "14f77e92ada306f81f1f817a092465c608b0635c112f0b048c26a5fd6b63ee9f",
+      "bytes": 117841
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-gateways.png",
+      "sha256": "2594a2a72988c4c8f9c64159b0b71bb1d8468204a9c91b2180a65556cc583cdf",
+      "bytes": 113058
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-login-mobile-en.png",
+      "sha256": "fe705c350ccfab7247841e956a6b99b315e60d85753ea48c33f6759932e2ca24",
+      "bytes": 26928
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-login.png",
+      "sha256": "46bb3b9142a90f30e7f390fdfca725d8f97de1ffa650e8d4b8b7fd8cb64cfbcb",
+      "bytes": 219073
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-network-observe.png",
+      "sha256": "ecf80acebc58d6e9383e8d57e8cd06614c7b255c69ee291471047d4cc2f5a44e",
+      "bytes": 128775
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-network-zh.png",
+      "sha256": "bcaaa8c37307384167d67312b278083df7044a9f48a714018586f848967c63cf",
+      "bytes": 128560
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-current-transaction-zh.png",
+      "sha256": "cabb63e698af227bfee0444dfb53e70459ba0056ac3c4b419d2c8397e0a9affd",
+      "bytes": 130812
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-final-check.json",
+      "sha256": "658c15899aad7155e849e3d1d1b355878302461f400bfcc3608b37df07dd81f3",
+      "bytes": 2505
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-final-check.log",
+      "sha256": "658c15899aad7155e849e3d1d1b355878302461f400bfcc3608b37df07dd81f3",
+      "bytes": 2505
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-graph-console-final.txt",
+      "sha256": "7c8371be37c9f4f432c9f42b0a699d1d8e26d18c6c704b1abdb2a07a222eb2ea",
+      "bytes": 1318
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-graph-console.txt",
+      "sha256": "57082aa69349639e0b3c1e1e5f857c4f09307d681d4ef1f6d7fe247c8e45060e",
+      "bytes": 1453
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-graph-ui.txt",
+      "sha256": "de30ff60a89becfa4791fea5ee0c7bf4197906fc64c787b2b864c705f1f67358",
+      "bytes": 2098
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-gwt-browser.log",
+      "sha256": "43b69eca9c740c81f3e1ef6efff0f016b4358e1f07fac5e33ab6e60e1593337b",
+      "bytes": 983
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-handoff.md",
+      "sha256": "23deff3b4e5b5fe7397f9dcd86197cc90bb1aa99266e9a5d96566ec724472ce5",
+      "bytes": 4326
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-idea-kura.log",
+      "sha256": "d5587d8778dcb8d0998c30928a9a082fe2d3f67e5f2255d6990c57b06f9ee7ac",
+      "bytes": 75684
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-idea.png",
+      "sha256": "3b642a11825bc39da86575dfc4ee87c44b2e4f1aa86678927e06b5e28b9a01aa",
+      "bytes": 691117
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-react-browser-final.json",
+      "sha256": "4468299d7cb9db116fe11941954ef457cab24b4782d175804c23f3316b082a2d",
+      "bytes": 15511
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-react-browser-final.log",
+      "sha256": "3be697c76049c1306c03dda189c778e056a0a89eacfee23a6a9f460194bfb59a",
+      "bytes": 1670
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-react-browser.json",
+      "sha256": "e6cb5015677f165b3065ac26c4a076479e9fa7850c55b06539942fd1f647b73f",
+      "bytes": 15511
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-react-browser.log",
+      "sha256": "11b4e1eb6bc4fedeb15fdaf7bf661007d90068851d3f3321fbce008cce6ebfa9",
+      "bytes": 1670
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-regression-before.log",
+      "sha256": "05293373e1313584ae90cc775f14cac165151928f13ed9fbf848cf1927d3f77b",
+      "bytes": 7494
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-regression-build.log",
+      "sha256": "41966acec12e1193803c6c85bf33e6f4ee9e3df93c155f0852270696ed547dd1",
+      "bytes": 30243
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-status-en.png",
+      "sha256": "be82b7fba8b27f719682fbcca4c0ad0978070ea1d74df0f1224bbff1ce3e1849",
+      "bytes": 168467
+    },
+    {
+      "path": "kura-management-console/target/netplan-ui-tasks-readback.md",
+      "sha256": "2248b6b7e598343b9b855a951b43ef02962eab1680dc614f00ac605336232d69",
+      "bytes": 1700
+    }
+  ],
+  "verification": {
+    "gwtServerTests": 65,
+    "reactBrowserChecks": 11,
+    "gwtBrowserChecks": 4,
+    "finalEvidenceChecks": 21,
+    "graphPaths": 11
+  },
+  "boundaries": {
+    "testOnlyNetworkOwner": true,
+    "systemNetworkWrites": 0,
+    "linuxUiRegression": "pending",
+    "productionPackageValidated": false,
+    "originalChatMcpTransportRestored": false
+  },
+  "knowledgeHandoff": "Experience/2026-11-01-Kura管理体系Rust-React双语与GWT终态修正交接-4618ad03.md"
+}

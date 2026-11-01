@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T22:22:56.956267+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Typed read-only Kura configuration get and bilingual React browser over HTTPS/mTLS/UDS",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e",
+    "kura-networking": "d9bc0190f1f3cb4dc90fc1f4ba4392851ed894e6",
+    "kura": "b7f72c0e64c44156dd4b00783526871281ad096b"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura-management-agent/src/local.rs",
+      "sha256": "c7984553c86000cafee1665689e149a8a498ff1c027f790f1caf5af5ecbd6231",
+      "bytes": 31339
+    },
+    {
+      "path": "kura-management-agent/src/transport.rs",
+      "sha256": "986d564c35579506d26e50e1d8c5a7cddf1ea538af7cc3fb274edf257fffd405",
+      "bytes": 19433
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "c6863676cb7cabc46a35be249199d8861f7c68f25f291fb9d857b74ce881f1f1",
+      "bytes": 5235
+    },
+    {
+      "path": "kura-management-console/crates/console/src/grpc.rs",
+      "sha256": "a217aa0edbf5bd63a3f700011f80db1f53a6ced47bce87b9aabcd916183b29ab",
+      "bytes": 12587
+    },
+    {
+      "path": "kura-management-console/crates/console/src/http.rs",
+      "sha256": "41f2056e246f730f42f3197f0a36960980aeb9045cbc02dd075968713b7d82a6",
+      "bytes": 20865
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/build.rs",
+      "sha256": "2c86eed17f7b89228206752ff3bcaa4e4bbe18a24dd6711201fdb1b78fd61302",
+      "bytes": 1442
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/proto/management/v1/control.proto",
+      "sha256": "ad656bf1364e22328f6862a872b0eec16cfba9f187d058a411d181467984ca17",
+      "bytes": 2975
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/src/lib.rs",
+      "sha256": "ae3e864fffbb23597483ef4bf0397b6b310201d34d61c3b7a0ef6b246fa11d09",
+      "bytes": 5407
+    },
+    {
+      "path": "kura-management-console/docs/console-i18n-20261101.md",
+      "sha256": "d327e9e3a626cfb4a6aecb8c4608bffd30ba58a4b3f9834169d4146f01b4e79d",
+      "bytes": 5551
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "9f1452adef8c22a870d6acf77e61c186cdcb9d217518b78dbda9e36447107ed4",
+      "bytes": 52796
+    },
+    {
+      "path": "kura-management-console/docs/openapi-v1.json",
+      "sha256": "4e2f16b348766b8ba174d6a7a9f1e51e90480d73da84cc85618cdd727a3d63ec",
+      "bytes": 49511
+    },
+    {
+      "path": "kura-management-console/docs/phase2-configuration-read-validation-20261101.md",
+      "sha256": "46fe14bc0f72d24a78930d900435452e8316b2fd209c8bbcdb9e64773f4081aa",
+      "bytes": 10328
+    },
+    {
+      "path": "kura-management-console/frontend/react/playwright.config.ts",
+      "sha256": "8afac03084a3ae54fea1b6607eb3b27cfdd0e1a70833270aea0f5e7a0b5158eb",
+      "bytes": 1672
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/client.ts",
+      "sha256": "755af96c07648e58c62d296e3c5cc17c5dbf9883b253461a5f52422904755137",
+      "bytes": 1011
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/schema.d.ts",
+      "sha256": "bcba6a3f3123e505691fba4752a58fe5e69c3815aa99abdabe48edd204ff497f",
+      "bytes": 49089
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/ConfigurationPanel.tsx",
+      "sha256": "20c78dd2608b3d330df27a981f6ce277ad0076d2395315db4dac46d80e1c5a90",
+      "bytes": 4242
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/model.ts",
+      "sha256": "efbc563c470fc8239d0dc23678aa81156b89245be3c55851ecafe07544521165",
+      "bytes": 3120
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/Gateways.tsx",
+      "sha256": "ef7cecb3c534aa590301010aa7391953ae3b53e7930facd71419438435c758fe",
+      "bytes": 4044
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/core.ts",
+      "sha256": "311c11e49ca32594cca1d8f36eede6394930bdb2dd4cda59a494ef79a4b8bc2d",
+      "bytes": 1770
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/messages.ts",
+      "sha256": "f3c441727fa47ea6d85be88622931597f5ae49592dc144af439d2a5f81ecb8de",
+      "bytes": 15031
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/style.css",
+      "sha256": "4e937593cdb4459c5be4283b5456e7906f5acbedffece20e840b94e1ac3dffea",
+      "bytes": 7735
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/configuration-live.spec.ts",
+      "sha256": "d9eae516bbb05ff5a8f1cd1443734b71cd41d52a0437807e70d374007bd8eb50",
+      "bytes": 2241
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/configuration.spec.ts",
+      "sha256": "437906bf6653f7d0151d385eb5ed6a65373e77b6902f7e35cf7b9cdc8279c486",
+      "bytes": 6429
+    },
+    {
+      "path": "kura-management-console/migrations/0005_configuration_read.sql",
+      "sha256": "aa82e4a29eec73e619fa963b3029ceb378d2f35e1ccf8a888aee0d5b7604b16d",
+      "bytes": 254
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-read-smoke.py",
+      "sha256": "9015c0858c302512dc9c9701aed5f5240acecfa1552ff480181c4e9fe9d66a93",
+      "bytes": 6223
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-read-vm.py",
+      "sha256": "bb20576c52225c9d42ff8e24d22ec1f90843dae1baa59ef925ace409edf28320",
+      "bytes": 14118
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-configuration-reconnect-smoke.py",
+      "sha256": "17512d7ce48e15f9ff72a0fdc439608d38908d6cedfabdd966a38b4a31dcb819",
+      "bytes": 4121
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/META-INF/MANIFEST.MF",
+      "sha256": "64db0e114dbfb2dc116eb20c2627208b08dffba2dc39ca15b24148fd9b101182",
+      "bytes": 622
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/ConfigurationView.java",
+      "sha256": "4daf7d038455ef1a5f5a0c1838ca4b6a2c0434e7944b1298b45c7cdbf375b5ea",
+      "bytes": 7980
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/FrameCodec.java",
+      "sha256": "c1ce66b91f99d9d66100fec18b3a7831f7c9a8d66d7f4f6077dac4009ef580bc",
+      "bytes": 2707
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/LocalAgentException.java",
+      "sha256": "9f4c1b28ead2077312f6a7967fdbf8e8b92c8f55c36d7d6627221b085336f512",
+      "bytes": 608
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/LocalAgentService.java",
+      "sha256": "6ca69a0d3386203416cd6e7ade3a6e89bd59a168e3303201e39e5762e01f55f9",
+      "bytes": 484
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/ManagementBridge.java",
+      "sha256": "440601674d5297f028bedb2c41466cd94532c9d1362aca9e80ef9eab53115a9e",
+      "bytes": 14657
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/ConfigurationViewTest.java",
+      "sha256": "0a176655a1fb9ef402ae2947e4239a185267aa5c5371eef6f9cc8800c244a595",
+      "bytes": 8590
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/LocalAgentServiceTest.java",
+      "sha256": "9f76bdbcd060a8ee17a900585782460703899528d67644b853e87ec7c26423a7",
+      "bytes": 14283
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/src/test/java/org/eclipse/kura/management/bridge/ManagementBridgeTest.java",
+      "sha256": "550e3d01222c74c14f76c53fa0c383e21c6f4803f6276ff0121331041a274447",
+      "bytes": 2152
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "kura-management-console/target/configuration-read-linux-agent-20261101",
+      "sha256": "ca33df2696c833594359f5a20f35f8132b37d08c03120ef19d715694a6fa16ed",
+      "bytes": 103520832
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-protocol-0.1.0-20261101.crate",
+      "sha256": "e30950f8731f4959ee24610d5cf87dd5fbba97550625766baa11013e9a5e0f59",
+      "bytes": 13412
+    },
+    {
+      "path": "kura-networking/bundles/org.eclipse.kura.management.bridge/target/org.eclipse.kura.management.bridge-1.0.0-SNAPSHOT.jar",
+      "sha256": "59e7c347646d305308718b8a8c52de2a34ed96c4015261745fb86c1ab3ca06be",
+      "bytes": 25853
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/configuration-read-absent-20261101.json",
+      "sha256": "7c2cf0c8130dcef0117638c00c1f94e5a7e8a1abe354730fe2685d4d79f76060",
+      "bytes": 1170
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-agent-build-20261101.log",
+      "sha256": "4a59074a599b7345bc2cb3b23e43d54ccf1d8005bc9bac6a35216b6e6256ecff",
+      "bytes": 175
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-agent-tests-final-20261101.log",
+      "sha256": "25decca10623844387e83da0cba476ce0d94ea9c7c15164247df565a0c067dac",
+      "bytes": 4462
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-browser-wirefix-20261101.json",
+      "sha256": "e0d9417aa66496b2571d4c5180b5e019ca76739d63107995fc31a2da4f6f79ee",
+      "bytes": 20110
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-console-build-20261101.log",
+      "sha256": "c4ebc6df04f3031fbd82ee52585e490dc4473b86ba2494e8af9fbd5b742a0eda",
+      "bytes": 329
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-console-tests-final-20261101.log",
+      "sha256": "0af77b449079c180c05a428b629b670bccd6d1f52f4c97214a458e7b2d917b75",
+      "bytes": 1880
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-coverage-agent-20261101.log",
+      "sha256": "45a29e5813385d714cbbd6ad48b07764c948e83964fc0bf433c1676bccb00c82",
+      "bytes": 1177
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-coverage-console-20261101.log",
+      "sha256": "3791f0cb7dd74dda54e70edbde45a83b3e7e679ef4e500f7b2f98ffd80251006",
+      "bytes": 2992
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-coverage-networking-20261101.log",
+      "sha256": "7db68890982dd2565c4c13ae69ea27698e684716c6c945a20f2318a13084c0b4",
+      "bytes": 2169
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-final-state-20261101.json",
+      "sha256": "9a5fa25fd8a951b4806c15a4127191a23e999fa97437281b4424718d50b56d6c",
+      "bytes": 197
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-gateway-disabled-20261101.log",
+      "sha256": "11d70a7506e486257fb9dd1f916afac10e12c1514f5dc1818ea32ad074873b54",
+      "bytes": 111
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-graph-console-retry-20261101.log",
+      "sha256": "eb496fd584a5e9a4c623eb425e813b86f88eddd442049804d9ab9dacf8c74c18",
+      "bytes": 1535
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-graph-kura-management-agent-20261101.log",
+      "sha256": "dbb7026cfa54c30130a2e3edc810a57ce7b428508cd79a7bec4a56396b1e532b",
+      "bytes": 625
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-graph-kura-management-console-20261101.log",
+      "sha256": "e3d6ac237f0ed9a850947d864d25058f18638c30370e13726e5ce7dbf47c9e33",
+      "bytes": 348
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-graph-kura-networking-20261101.log",
+      "sha256": "338251dbe8c05916d75370f7811787a5c154837cc0f63990a7bbeafacbbd5a32",
+      "bytes": 1142
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-idea-console-final-20261101.png",
+      "sha256": "3cb6f3d28851d0124d0da3bbca8fb4a82028f049f5b87340e4fe9789fe750a26",
+      "bytes": 79423
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-idea-inventory-before-20261101.json",
+      "sha256": "5f51e2e5951929e7d5c7e010870617402671350f6e00dc63df91543795fd79f5",
+      "bytes": 132346
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-idea-live-20261101.json",
+      "sha256": "c849e68cd1f1e759bfb366dc83af33ca0ebc50c75147b6207547c1ea7e6d65e3",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-java-wirefix-20261101.log",
+      "sha256": "f413e703509fc63c0918df7ee1645df6192fb7edaddf9cb48cd4104eda186988",
+      "bytes": 5287
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-absent-20261101.json",
+      "sha256": "686db450d6636e36d9ba5f5fcf96d21ecc3dfdd8d062edd5f5c899002fe8991e",
+      "bytes": 1187
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-build-20261101.log",
+      "sha256": "90c393c80544a4d9a74ab60ac34194551903da63b1f04c455c24a4d68fa950da",
+      "bytes": 182
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-finish-20261101.json",
+      "sha256": "c9b9cb7793184e18eceed2c809b06af1c15faefe68aead0086cce43c476a0646",
+      "bytes": 380
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-live-20261101.json",
+      "sha256": "d5f9598c0adb1cd456c444becfb4449ac25fe7a717c65575b4ac9589243947ae",
+      "bytes": 1423
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-live-browser-20261101.json",
+      "sha256": "fd0e74c3e63922a9f5fedf544b1b6b506a51c400faf3f0204339ac031bdd227c",
+      "bytes": 4331
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-live-browser-20261101.png",
+      "sha256": "92013535a540b5ea0a576c30241ebe21a8fc956c34e71eaa016b189ec01ad534",
+      "bytes": 200541
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-prepare-20261101.err",
+      "sha256": "ecd55cb514e7306eef2970e9eec7cdfdc2b6a5bcd2be833cc4ad9b5cdf2f8096",
+      "bytes": 1049
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-receipts-20261101/finish.json",
+      "sha256": "c9b9cb7793184e18eceed2c809b06af1c15faefe68aead0086cce43c476a0646",
+      "bytes": 380
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-receipts-20261101/restart-agent.json",
+      "sha256": "ac43b6a009e2c601dcd4ff1e82cd5e8a7a77997ea8cd74dd9e2c0a4a680862e8",
+      "bytes": 621
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-receipts-20261101/resume-runtime.json",
+      "sha256": "f0f6a438b0835e9374b7674fb6889901852e67cee815e68f0e7215bdfb26b823",
+      "bytes": 563
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-receipts-20261101/start-kura.json",
+      "sha256": "ce69f5bd3683dfdad6797dbdf26ee72633e48c6d90ba8649649806a814e3bfce",
+      "bytes": 615
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-receipts-20261101/state.json",
+      "sha256": "6e570e8a7321fbd5516426444c4569de28d6be08c169f5d5f6d3f721314eadc9",
+      "bytes": 1017
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-receipts-20261101/stop-kura.json",
+      "sha256": "4ab1a4b98b4cef71ff42d0492139b93833c19a1609f3e1ca5becd92f2662a319",
+      "bytes": 566
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-reconnect-20261101.json",
+      "sha256": "0d1e645586d5f4500cced5738e8fbafe1bc0c8d0aa81ccb9f622256191e294fc",
+      "bytes": 2190
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-restart-agent-20261101.json",
+      "sha256": "ac43b6a009e2c601dcd4ff1e82cd5e8a7a77997ea8cd74dd9e2c0a4a680862e8",
+      "bytes": 621
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-resume-20261101.err",
+      "sha256": "6984409638a2a1ae6fcfe0e0fa0a1fcbc9b704f324fcc8649741f20b52152d4e",
+      "bytes": 1684
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-resume-runtime-20261101.json",
+      "sha256": "f0f6a438b0835e9374b7674fb6889901852e67cee815e68f0e7215bdfb26b823",
+      "bytes": 563
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-stage-20261101.log",
+      "sha256": "061f678bd1e5803a5ec4f1af2627fdf7d39f4667729464e5cd1cd5227a1a1c06",
+      "bytes": 1826
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-start-kura-20261101.json",
+      "sha256": "ce69f5bd3683dfdad6797dbdf26ee72633e48c6d90ba8649649806a814e3bfce",
+      "bytes": 615
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-tests-20261101.log",
+      "sha256": "58887a253495006137d1692a4468dbabd814ef05c3557b19132bc64c8ee2b831",
+      "bytes": 2534
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-linux-tests-isolated-20261101.log",
+      "sha256": "a20a41c3054c68c21081699e468832fb3f15d7c54dc3e9e0a68588878127cb54",
+      "bytes": 10583
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-live-browser-20261101.png",
+      "sha256": "eff82763563bd2f31e514585e4a5f0b4aeb942e24f78d86d7ca07b3309cd46c7",
+      "bytes": 191425
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-live-browser-wirefix-20261101.json",
+      "sha256": "c0a52b9684035546202dfbd28892e288056472fce13c18a74b2c910b8b92be35",
+      "bytes": 4337
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-mtls-20261101.log",
+      "sha256": "aa0100215c047ae9a9d3e7509ccde3e46713a1fb6c12af7f7f5e8203505135b4",
+      "bytes": 438
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-protocol-package-20261101.log",
+      "sha256": "5a31af3cee34bfe88951c283febd4acb25c61a7a9a2af0d9737541e4000958e3",
+      "bytes": 396
+    },
+    {
+      "path": "kura-management-console/target/configuration-read-react-build-final-20261101.log",
+      "sha256": "91f070d65f8c8251252411a0abc72df9030ca41218b743dc1cf67edb265d1910",
+      "bytes": 842
+    }
+  ],
+  "acceptance": {
+    "javaBridge": 18,
+    "consoleUnit": 1,
+    "protocol": 4,
+    "mtlsExplicit": 3,
+    "agentMacOS": 44,
+    "agentStagedLinux": 44,
+    "defaultBrowser": 15,
+    "ideaLiveHttp": 31,
+    "ideaLiveBrowser": 1,
+    "linuxAbsentHttp": 26,
+    "linuxLiveHttp": 31,
+    "linuxLiveBrowser": 1,
+    "linuxReconnect": 15,
+    "fixturePhase": "stopped-data-retained",
+    "networkWrites": 0
+  },
+  "stagedAgentInputsMatch": 11,
+  "graph": {
+    "chatTransport": "closed",
+    "officialCLI": "available",
+    "criticalPaths": 18,
+    "metadataMatch": 18,
+    "parseUnusable": [
+      "migrations/0005_configuration_read.sql"
+    ]
+  },
+  "limitations": [
+    "Stages 2-5 remain open",
+    "Configuration update and snapshot save/rollback pending",
+    "No new deb/package lifecycle acceptance",
+    "Actual Linux scope is Ubuntu24.04 arm64 development runtime and debug agent",
+    "Full systemd filesystem sandbox deferred",
+    "Ubuntu26.04/amd64 new-version acceptance deferred",
+    "Physical wired and hard power interruption deferred",
+    "Protocol0.1.0 is a local changed candidate, not registry publication"
+  ],
+  "privacy": "Private identity, agent.env, passwords, configuration values and browser error-context excluded"
+}

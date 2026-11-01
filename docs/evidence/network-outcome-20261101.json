@@ -1,0 +1,835 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-31T23:31:52.173348+00:00",
+  "workspace": "/Users/heyoulin/iot-kura-develop/git",
+  "scope": "Authenticated UNKNOWN network outcome reconciliation without replay, durable once-only audit, and bilingual console result presentation",
+  "goalStatus": "active",
+  "repoHeads": {
+    "kura-management-console": "1ca46851af05ff3150aec49a3a0b3853062e6406",
+    "kura-management-agent": "0fcde96d3762726094d9f312d049e56725842e3e"
+  },
+  "sourceFiles": [
+    {
+      "path": "kura-management-agent/Cargo.lock",
+      "sha256": "ca2aca39eaf6e4801eb1c19d6b728e66bd09e8592e69d1a889c2ca6c8520f57d",
+      "bytes": 54040
+    },
+    {
+      "path": "kura-management-agent/Cargo.toml",
+      "sha256": "8923cb8d0788d2d1fb15e40e1dfed447997b68dd1da20a4b6aed56b3127d7bf2",
+      "bytes": 1001
+    },
+    {
+      "path": "kura-management-agent/README.md",
+      "sha256": "e615b9ca124135b6114de2294ebb13536c813bd3f33d3cd8b33ff81396ec72be",
+      "bytes": 4116
+    },
+    {
+      "path": "kura-management-agent/rust-toolchain.toml",
+      "sha256": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+      "bytes": 86
+    },
+    {
+      "path": "kura-management-agent/src/journal.rs",
+      "sha256": "de804f95ca388646862988a46047254e786eec681f24a70ca6cab58fafce6cd1",
+      "bytes": 23329
+    },
+    {
+      "path": "kura-management-agent/src/local.rs",
+      "sha256": "c7984553c86000cafee1665689e149a8a498ff1c027f790f1caf5af5ecbd6231",
+      "bytes": 31339
+    },
+    {
+      "path": "kura-management-agent/src/main.rs",
+      "sha256": "ebcafdb7ba9c3ac0cca06149ec41d66e2839d3c804169bd64bfafff71afc76c0",
+      "bytes": 3146
+    },
+    {
+      "path": "kura-management-agent/src/network/kura.rs",
+      "sha256": "0a0b43ff744bbc3c4f2a1458b1fdaf404b7181907ab244979a0f08c700d2eba0",
+      "bytes": 25996
+    },
+    {
+      "path": "kura-management-agent/src/network/outcome.rs",
+      "sha256": "a8aef43ba6108aa540c6d538068c71413811a7b6d6b8603d51d461e10d6aa22a",
+      "bytes": 5568
+    },
+    {
+      "path": "kura-management-agent/src/network/takeover.rs",
+      "sha256": "b59f011f8a6081790a8bed15b9ef013680025490afeabdc3cbfda110e799abba",
+      "bytes": 16579
+    },
+    {
+      "path": "kura-management-agent/src/network/writers.rs",
+      "sha256": "3bb267aa9fc1d661cc02a4908601a7ac371759160a39ce2e918ca1ee991efb87",
+      "bytes": 13379
+    },
+    {
+      "path": "kura-management-agent/src/network.rs",
+      "sha256": "fc1ae50363115d85e7345cd93735062b58809748c0fc7f2fa180326884d86be8",
+      "bytes": 72987
+    },
+    {
+      "path": "kura-management-agent/src/secure.rs",
+      "sha256": "2667f4f11ecc9b781ed12df3c67af35d30cc614ec5acda3c8a957883a10177d5",
+      "bytes": 2858
+    },
+    {
+      "path": "kura-management-agent/src/transport.rs",
+      "sha256": "ac2c7ae7e60487e2aeea711797aeaec2ce14f3ed245bd6330e4e4334db42fa3a",
+      "bytes": 20913
+    },
+    {
+      "path": "kura-management-console/AGENTS.md",
+      "sha256": "376f715bc1bec82037fd57cf275bca4aa93d9f1523f5fac4010cfc651821c422",
+      "bytes": 6784
+    },
+    {
+      "path": "kura-management-console/Cargo.lock",
+      "sha256": "5891eff03323b4b79f6ebb4447a14c378b2f02f5d4587891d864c1fa7752fcc5",
+      "bytes": 83404
+    },
+    {
+      "path": "kura-management-console/Cargo.toml",
+      "sha256": "6f784b5c827bd9369da43979e281069d9ca34271f24d8d2d0a6fe2c5f1b65110",
+      "bytes": 652
+    },
+    {
+      "path": "kura-management-console/README.md",
+      "sha256": "5d3992b5b1cda5e4e933fcda6f769f344b4504585e2103f8647084f248573079",
+      "bytes": 4687
+    },
+    {
+      "path": "kura-management-console/crates/console/Cargo.toml",
+      "sha256": "cf4f2fce4d378c29b01b58dd705e16242606bf0e5aedf79f3a05003abcec62a0",
+      "bytes": 1317
+    },
+    {
+      "path": "kura-management-console/crates/console/src/auth.rs",
+      "sha256": "ef08d54db86fd043d44e6948652f55444482a465afda0bc64a2c20a5fb021893",
+      "bytes": 3740
+    },
+    {
+      "path": "kura-management-console/crates/console/src/config.rs",
+      "sha256": "afcb93a5f2f7d6e6ee6a7308414c7df49c6bdec0c33b948706a026b1746345ce",
+      "bytes": 1255
+    },
+    {
+      "path": "kura-management-console/crates/console/src/db.rs",
+      "sha256": "57a436d9f498424488cd6fe11a3480bff519f19f461c18c007821f9cfee71aae",
+      "bytes": 1228
+    },
+    {
+      "path": "kura-management-console/crates/console/src/grpc.rs",
+      "sha256": "76004a70414249e8f4a22966eea46fda42dc938f3a1438cc2f1e77fa146936cb",
+      "bytes": 27523
+    },
+    {
+      "path": "kura-management-console/crates/console/src/http.rs",
+      "sha256": "6472cd6bf3ac5861ba7db915a755254e238a78979d7e6eaa5e5c0a5a70125fda",
+      "bytes": 22308
+    },
+    {
+      "path": "kura-management-console/crates/console/src/main.rs",
+      "sha256": "2a5628fde36cabf2f39d24f0bd572b1997cb509536f54d4513cf1462d0481c04",
+      "bytes": 7124
+    },
+    {
+      "path": "kura-management-console/crates/console/src/task_crypto.rs",
+      "sha256": "44c98586fd9ca0d04ffc9bb2b62dc8c591bc9cf6cca6d2b81875e9c06b8d8d6b",
+      "bytes": 19032
+    },
+    {
+      "path": "kura-management-console/crates/console/tests/mtls.rs",
+      "sha256": "b5778ae35e4d68546413b3e5ecdad9bbeb98d86f4b460e00a1b14ee5e326eadd",
+      "bytes": 4561
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/Cargo.toml",
+      "sha256": "e2cca428a0610bbe16d75af4a3be416074f06652c2dfdc67f7b7f2ba1d636cf5",
+      "bytes": 472
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/build.rs",
+      "sha256": "2c86eed17f7b89228206752ff3bcaa4e4bbe18a24dd6711201fdb1b78fd61302",
+      "bytes": 1442
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/proto/management/v1/control.proto",
+      "sha256": "33975f4bbdf1a4c1dbcd3bc9d172eb78898cd42eed84c414d5ba332cea0b206c",
+      "bytes": 3231
+    },
+    {
+      "path": "kura-management-console/crates/management-protocol/src/lib.rs",
+      "sha256": "fd89cd9e78027dd4e6c283cbbb426cec497ad728552f5e50893fef490fe822d8",
+      "bytes": 6388
+    },
+    {
+      "path": "kura-management-console/docs/console-i18n-20261101.md",
+      "sha256": "442182f75a39a61334581ad0c92b6bc8b3bb56a4bfd0cedca37d98b6004f368b",
+      "bytes": 6423
+    },
+    {
+      "path": "kura-management-console/docs/management-redesign-plan.md",
+      "sha256": "3e362fcea8baafef700384baffdd54f65615e25ed2db229b021548d3f1918b64",
+      "bytes": 53957
+    },
+    {
+      "path": "kura-management-console/docs/network-outcome-reconciliation-v1.md",
+      "sha256": "419f37586aaeef158e0cad3f9e5d6feb2899e0576d98e492b2c01995b23d3773",
+      "bytes": 3855
+    },
+    {
+      "path": "kura-management-console/docs/openapi-v1.json",
+      "sha256": "cb2330c88dd58544e870c0fd454ccbdf09c2324759d27dc2a1b86e49d2ff07c0",
+      "bytes": 49634
+    },
+    {
+      "path": "kura-management-console/docs/phase2-network-outcome-validation-20261101.md",
+      "sha256": "4050ae6e4d564f1e9240adbe245ed372c281a57e2c8570452d98df5a6f394958",
+      "bytes": 9378
+    },
+    {
+      "path": "kura-management-console/docs/phase2-task-journal-validation-20261101.md",
+      "sha256": "d1b0a885d6184a931e5079f1b50979931d72eb8a1e60306b314887bad122eb81",
+      "bytes": 11253
+    },
+    {
+      "path": "kura-management-console/docs/phase2-task-storage-validation-20261101.md",
+      "sha256": "5c94e4c0b8fc4d5f6e004e68e8de67ab99773be2c390cacfc60dbe0ff6b45f9d",
+      "bytes": 8215
+    },
+    {
+      "path": "kura-management-console/docs/task-payload-storage-v1.md",
+      "sha256": "d3a0b59a359abb3b34cc719afc33d8152abf27b00cd83825284263fd19aca8a4",
+      "bytes": 3454
+    },
+    {
+      "path": "kura-management-console/frontend/react/gwt.playwright.config.ts",
+      "sha256": "b00ba0be93ef59e76b4a2a714986367535112c6256156a4fd92e02e35ef089c3",
+      "bytes": 675
+    },
+    {
+      "path": "kura-management-console/frontend/react/index.html",
+      "sha256": "82d727d5aeaba0d42e08a1076ec6d862ce2a99f9c84e96473b2230de286026e7",
+      "bytes": 319
+    },
+    {
+      "path": "kura-management-console/frontend/react/package-lock.json",
+      "sha256": "c512ef433b51c3db3ab174ca6ab45dbe81918f0675ce992b164d3730448c3ec2",
+      "bytes": 80651
+    },
+    {
+      "path": "kura-management-console/frontend/react/package.json",
+      "sha256": "33559399f509e04ec196fe05d60e574706d9ce4f3a7e7ac52023a293d52a2cc1",
+      "bytes": 739
+    },
+    {
+      "path": "kura-management-console/frontend/react/playwright.config.ts",
+      "sha256": "8afac03084a3ae54fea1b6607eb3b27cfdd0e1a70833270aea0f5e7a0b5158eb",
+      "bytes": 1672
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/client.ts",
+      "sha256": "755af96c07648e58c62d296e3c5cc17c5dbf9883b253461a5f52422904755137",
+      "bytes": 1011
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/api/schema.d.ts",
+      "sha256": "221d08925967f284a3476ab01d774ea14296b41c900bef99ed7dfc37de1e9719",
+      "bytes": 49153
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/access/Login.tsx",
+      "sha256": "55de411a8c339e099efaf6037993e3ce1ade38bcfd5b483e2eadfffb045833df",
+      "bytes": 3067
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/commands/Commands.tsx",
+      "sha256": "10c893c8964200cf7ba621e3515ebc999c5314e47d1204f3c47901d751dac687",
+      "bytes": 3247
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/ConfigurationPanel.tsx",
+      "sha256": "20c78dd2608b3d330df27a981f6ce277ad0076d2395315db4dac46d80e1c5a90",
+      "bytes": 4242
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/configuration/model.ts",
+      "sha256": "efbc563c470fc8239d0dc23678aa81156b89245be3c55851ecafe07544521165",
+      "bytes": 3120
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/Gateways.tsx",
+      "sha256": "ef7cecb3c534aa590301010aa7391953ae3b53e7930facd71419438435c758fe",
+      "bytes": 4044
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/features/gateways/NetworkPanel.tsx",
+      "sha256": "4b34082846cdb898a0b8a4a0ecced76644f2a41323227f0ad4a2e6fc45538e51",
+      "bytes": 18232
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/I18n.tsx",
+      "sha256": "85d7677017b3b6337c8277c86b125db61aecbd8907269451e8802f8c9f02257c",
+      "bytes": 3639
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/core.ts",
+      "sha256": "282ea182ed94f601fed104d70fe2e1fbb178350edff786a642e784fd7d46453f",
+      "bytes": 1933
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/i18n/messages.ts",
+      "sha256": "485af3ec5528a7b16963502cc7ea3229cddbd80a56be624fad93264557f08b3e",
+      "bytes": 15983
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/main.tsx",
+      "sha256": "9413172ff6c2d70c0eca57c28d94b91cfec0e8bb5646369933ac288797479fba",
+      "bytes": 9514
+    },
+    {
+      "path": "kura-management-console/frontend/react/src/style.css",
+      "sha256": "4e937593cdb4459c5be4283b5456e7906f5acbedffece20e840b94e1ac3dffea",
+      "bytes": 7735
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/configuration-live.spec.ts",
+      "sha256": "d9eae516bbb05ff5a8f1cd1443734b71cd41d52a0437807e70d374007bd8eb50",
+      "bytes": 2241
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/configuration.spec.ts",
+      "sha256": "437906bf6653f7d0151d385eb5ed6a65373e77b6902f7e35cf7b9cdc8279c486",
+      "bytes": 6429
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/console.spec.ts",
+      "sha256": "bfbdb0550baf7edfdbf56d7ee76030076feb434775d26fb42e2d458577fbfead",
+      "bytes": 3788
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/i18n-core.spec.ts",
+      "sha256": "08b00aa5b974ca13e5008686c33fafcc19939eb6621b13f77d4824607b861294",
+      "bytes": 2568
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/i18n.spec.ts",
+      "sha256": "6b72eb575afc9c7a8831cf372e8d8400f9717486f1050658c2c314c4c216bb9b",
+      "bytes": 10296
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/network-write.spec.ts",
+      "sha256": "18f5d8ea052ef98513ef2637fdfa3b3edc12bd610e317309770d6bd33e8705a7",
+      "bytes": 1884
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/parallels-observe.spec.ts",
+      "sha256": "5a3a470dd0d50018be81a51f664ead5133ac84be0b80e4a744bc093c672d778f",
+      "bytes": 1544
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/takeover-live.spec.ts",
+      "sha256": "a96846e2e9102d9f58a8742e1372f47e95e5b88c77cb1bc56d6429ef2fc64be6",
+      "bytes": 2338
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/takeover-ui.spec.ts",
+      "sha256": "515af06e5129199d236803eec10550509d6422ebc862c5ea0d0b66bd3b344d2e",
+      "bytes": 2597
+    },
+    {
+      "path": "kura-management-console/frontend/react/tests/task-reconciliation.spec.ts",
+      "sha256": "1cbf9ebec3d0303e13da60fa851758fc5ec0ea0af19017d939c377db83798fdf",
+      "bytes": 5897
+    },
+    {
+      "path": "kura-management-console/frontend/react/tsconfig.json",
+      "sha256": "63616155e76a6a112a1b559784eef0528bde6cce985785c1e1b8ce7f9dcecd92",
+      "bytes": 284
+    },
+    {
+      "path": "kura-management-console/frontend/react/vite.config.ts",
+      "sha256": "21eba396999afe6e4fa3dbd7ac6908caa56aa3e4109ee755dfffaba5be9b2d96",
+      "bytes": 166
+    },
+    {
+      "path": "kura-management-console/migrations/0001_management.sql",
+      "sha256": "5fdf89b110ca57d898dc1b7b400f8029831e0ef3d85ed75cb63788c071c9e401",
+      "bytes": 2188
+    },
+    {
+      "path": "kura-management-console/migrations/0002_active_tasks.sql",
+      "sha256": "cc70cd8370850107867901ef879dcfd5ed699239d84fc176db0af6519691cc95",
+      "bytes": 108
+    },
+    {
+      "path": "kura-management-console/migrations/0003_network_tasks.sql",
+      "sha256": "9463e092ea093bb6d76cb5209c6259e509d69e1e3d3625b5fa7cfa7be8f5589e",
+      "bytes": 292
+    },
+    {
+      "path": "kura-management-console/migrations/0004_network_takeover.sql",
+      "sha256": "fb7e751d41ed39e71d89e65e138752fe8a9fce3b4c043dd1f68eacad4b766c05",
+      "bytes": 167
+    },
+    {
+      "path": "kura-management-console/migrations/0005_configuration_read.sql",
+      "sha256": "aa82e4a29eec73e619fa963b3029ceb378d2f35e1ccf8a888aee0d5b7604b16d",
+      "bytes": 254
+    },
+    {
+      "path": "kura-management-console/migrations/0006_task_reconciliation.sql",
+      "sha256": "782331b9b46afbe1f01b5dd66ec04ad14a2421dd0cfe5593e7cb5a8ee587220c",
+      "bytes": 199
+    },
+    {
+      "path": "kura-management-console/migrations/0007_task_payload_encryption.sql",
+      "sha256": "cc5b3078a040f95026f5f2a19d4f2a7d146e98d31be7fb4bbd2d0a0aafe33641",
+      "bytes": 323
+    },
+    {
+      "path": "kura-management-console/packaging/console.env.example",
+      "sha256": "37bc8592a5c9de6b68e7c1075337b21a70a3744b31e036d64beab8c8379a6094",
+      "bytes": 489
+    },
+    {
+      "path": "kura-management-console/rust-toolchain.toml",
+      "sha256": "7d21c66a15f41bad66b82ed06a289f5dc8a6e3751951d2696bbf20ce296f2b0f",
+      "bytes": 86
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-network-outcome-continue.py",
+      "sha256": "24f254036236cb536d9dece4a19d2544dcfb8c1a9ac4e4ca8e94dea9ad718452",
+      "bytes": 7658
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-network-outcome-smoke.py",
+      "sha256": "ba9aebf64e2be0644d7796b3f0307afb8ab678ecaca9753dee1cec94930a0156",
+      "bytes": 13447
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-network-outcome-vm.py",
+      "sha256": "9265188ffe471b8ff2318115c979c32ba124fd9ef26361f8c93d65a470c83a90",
+      "bytes": 14829
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-contract.py",
+      "sha256": "ccf97d0b67092f31b851d6a6dcaad2e319e6e6ad0b1239075b35721e6d73a08e",
+      "bytes": 16230
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-package-smoke.py",
+      "sha256": "a7f49d73f5522285423b651eb851720c0b5746171a17046a8caf2b377e8a5221",
+      "bytes": 6310
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-journal-package-vm.py",
+      "sha256": "f1690e3e4529bd5e60efa57377a973b10f0603cf3766584c0b61b55cd3c1f142",
+      "bytes": 10005
+    },
+    {
+      "path": "kura-management-console/scripts/phase2-task-storage-smoke.py",
+      "sha256": "a316578d77d18924bc0facbfd01bd9b3d01f2036c5e3914da4b64dc121a70364",
+      "bytes": 4280
+    },
+    {
+      "path": "kura-management-console/scripts/trace-exec.c",
+      "sha256": "6bd9a95a539317e3dfb76add6c049859caa965e42446f763e8625eb616de6256",
+      "bytes": 2647
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "kura-management-agent/target/debug/yofc-management-agent",
+      "sha256": "d065ed4fca39b14f127b353e9f918e0879014ceb5fbd9184a9d98795943b8bcc",
+      "bytes": 27995992
+    },
+    {
+      "path": "kura-management-console/frontend/react/dist/assets/index-BTB1FCX2.js",
+      "sha256": "021e3ba9f375178660aa79bcbcb49dc905fbded8295ac4930a6eccf27f44062d",
+      "bytes": 970249
+    },
+    {
+      "path": "kura-management-console/frontend/react/dist/assets/index-jiS9RGqX.css",
+      "sha256": "db2c040ae690fa75960674787327a55ba819bff1751765c1a94767f68b1bb081",
+      "bytes": 6002
+    },
+    {
+      "path": "kura-management-console/frontend/react/dist/index.html",
+      "sha256": "75052ee94ac8f7f7451e9a46d35860034cbdf2f134503d06801e6af0b0b676cd",
+      "bytes": 418
+    },
+    {
+      "path": "kura-management-console/target/debug/yofc-management-console",
+      "sha256": "81e4ec575d708ba16ea3f1493750abe8f1809a00e311ac4c799eb033b4f840fb",
+      "bytes": 30898056
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-agent-20261101",
+      "sha256": "8db9e0d900e1b38a3941c9627ab499d8e5d875da0f59668153e8b7afd62ec18a",
+      "bytes": 105144248
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-trace-exec-20261101",
+      "sha256": "39009787cb406c496cb17d716f17edb5bff96846c6c6c0150891115be742484b",
+      "bytes": 70984
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "kura-management-console/target/network-outcome-agent-build-20261101.log",
+      "sha256": "3f7d25467230e71173bd064605580dcb7fe811c35f87dd13d23980ec9e9ee965",
+      "bytes": 175
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-fmt-20261101.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-fmt-first-20261101.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-source-20261101/source-manifest.json",
+      "sha256": "36b992e1efe29a8fdcd9e906a1cbaffdecc6aa80c228712e0abbde0029072834",
+      "bytes": 2078
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-unit-20261101.log",
+      "sha256": "291c0c630d58f75ed6b0229529ce3feafd21337d88787db1064a55ba00daabeb",
+      "bytes": 7219
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-unit-final-20261101.log",
+      "sha256": "a349b9c9b1e94e02167c60689d69e6e007b5efb05b243fec6fd21681b0557c3e",
+      "bytes": 5906
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-unit-final2-20261101.log",
+      "sha256": "34516a459a98a35ca3cadc4ede9381dfea8236bd27142f5e28840431b951122b",
+      "bytes": 5426
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-agent-unit-retry-20261101.log",
+      "sha256": "d231842df9cf605e657b846715e0b8176f885f1ddb3eda29fc715cf3e843af8d",
+      "bytes": 5227
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-browser-final-20261101.json",
+      "sha256": "012427690136f38a87267709adc054013593f8dd992a49414a8e57d7fba3d977",
+      "bytes": 22340
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-browser-final-20261101.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-browser-first-20261101.log",
+      "sha256": "9693f1e827850e1b15fc21091c682d4b52ae4518d2f350e01279fd00442308a7",
+      "bytes": 3933
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-browser-first-summary-20261101.json",
+      "sha256": "3bfbced3a131816cae137939cbfb7b2c9282cb0ae8cd947175c0b9fc5a2dddc9",
+      "bytes": 381
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-console-build-20261101.log",
+      "sha256": "01a1629294a200e9e48dc526a41da7e5cd756d70e525092b131f463b05e6e30c",
+      "bytes": 579
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-console-fmt-20261101.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-console-fmt-first-20261101.log",
+      "sha256": "0c0f92058c4fda4adea488307141aed1f88837f3bfb621f905eb0424124b48a1",
+      "bytes": 1797
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-console-unit-20261101.log",
+      "sha256": "0d1c2e5ecd64d36548fa57655a1fdd0b039530384da8f22a64c68f840c078d88",
+      "bytes": 3216
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-coverage-agent-20261101.json",
+      "sha256": "499e2139e9271679a9aca10ce5040c33b14068b60800875813aa5f3264cd90ab",
+      "bytes": 1500
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-coverage-console-20261101.json",
+      "sha256": "906e72b7141c0532b6ee208c98f7272807bf8a1a1ccf88db335b3003812b2983",
+      "bytes": 2827
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-coverage-i18n-20261101.json",
+      "sha256": "311a8622794991562c7054873d3756af6e8b51e8df73ee4e2d1668e377af0355",
+      "bytes": 2126
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-exec-tracer-probe-20261101.json",
+      "sha256": "63074b41fadadc4528b16e0fdaec41885f7fee39d4438b584badeb5f8c01a18c",
+      "bytes": 389
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-graph-agent-20261101.txt",
+      "sha256": "783401afdf194dabb17fd3af18df9470f18c46f3ee8aa1a75be32ac730b54ba3",
+      "bytes": 625
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-graph-agent-final-20261101.txt",
+      "sha256": "783401afdf194dabb17fd3af18df9470f18c46f3ee8aa1a75be32ac730b54ba3",
+      "bytes": 625
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-graph-console-20261101.txt",
+      "sha256": "09302acf3ce44738a6b1692b7256347809eaad9f88007f9fe4163fc1249ec008",
+      "bytes": 1611
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-graph-console-final-20261101.txt",
+      "sha256": "f620f914a38a560ee873d0a3c61851a54c1f061d701c12bf0ed922f160911100",
+      "bytes": 1613
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-idea-browser-20261101.json",
+      "sha256": "0139e00527ac4cf41eadc20ed69772f43931a4493c8c27817ff880b191b7f652",
+      "bytes": 4231
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-idea-browser-20261101.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-idea-gate-20261101.json",
+      "sha256": "79abb130156372e705ef4245da1cfc088d376a8f467552a22b259e3b434551c3",
+      "bytes": 510
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-idea-http-20261101.json",
+      "sha256": "fd28029192198310f5e3aa2fce4d33e0fd565ca128134c973c803ceabf913bc1",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-idea-http-20261101.log",
+      "sha256": "fd28029192198310f5e3aa2fce4d33e0fd565ca128134c973c803ceabf913bc1",
+      "bytes": 1406
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-idea-react-20261101.png",
+      "sha256": "ce8b88c4b54130994998b1b9c0bdbe1007e5d68770d6daffa071410440ca4405",
+      "bytes": 236362
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-agent-build-20261101.log",
+      "sha256": "55a53ce855fffc06d7912ad4e2bb2ed76ff4eb27f77823e9a1b5a09c32451387",
+      "bytes": 157
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-agent-unit-20261101.log",
+      "sha256": "7a1a08c95845be85ffa8e28cd2be21b04ff82111d4122a9142e082cf90915d96",
+      "bytes": 11790
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-build-20261101.json",
+      "sha256": "7a7250703169b0d4a2ca937ebad6f81bb1efd51cc14bd23605ab2998ab675b63",
+      "bytes": 334
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-final-check-20261101.json",
+      "sha256": "9bedfc80696dfc7ebac25c47227ddd5eeee0dfaac5d059f73787c6db95c815fe",
+      "bytes": 987
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-live-20261101.json",
+      "sha256": "1a5a8844448315e03480cbe46287c39e76fe2a249a99e54f0313f6294b9bbe83",
+      "bytes": 13814
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-live-continued-20261101.log",
+      "sha256": "acf0175239ea8eb3d7b899fcebee25e9d41d36d5debbbb93a6e6166c5ba54f18",
+      "bytes": 1547
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-live-final-20261101.log",
+      "sha256": "0dc482d71fcbcb650c564238b54e4c297a582fd919e9d03aa523eed16d5bb586",
+      "bytes": 139
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-live-first-20261101.log",
+      "sha256": "daed8bce73806bd2ff63e8a2afb3e23fadd32bfca1375772ee6344abfdfe0410",
+      "bytes": 5209
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-live-resumed-20261101.log",
+      "sha256": "99078d72d08fc7edf39a9642af8cc5b3320de0aa097e6a688d048f7e6d2bed60",
+      "bytes": 1539
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/execve.log",
+      "sha256": "80004764a0c223230806023af5f4bca6d983e0b1299542c5c4b0433406ba6e41",
+      "bytes": 21915
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/final-state.json",
+      "sha256": "b0e2c94922fa4c96bfdfe85ce10c3bf6fb288a9fdbde291482feb8688cb120ec",
+      "bytes": 240
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/query-after-prepare-recovery.json",
+      "sha256": "e08d6ec13c99456f74d465a5ab6c9b707f6078573b718193306f0c4b9f5f91f4",
+      "bytes": 1218
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/query-after-rollback-receipt.json",
+      "sha256": "18a2ea8523efe78e1de8c992c688617057ef7379d84c9f1c0819711c6909e72c",
+      "bytes": 1392
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/query-before-prepare-recovery.json",
+      "sha256": "bfc4f1c807ef4bc7ce9b8ebfe420a9cb9a1557b62e53d336e6da806351b797aa",
+      "bytes": 6535
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/query-before-rollback-receipt.json",
+      "sha256": "4bd1697651e81e073afc733fb95affff412b52916f84980e41515d05c4698639",
+      "bytes": 7237
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/query-execve-prepare-recovery.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-linux-receipts-20261101/query-execve-rollback-receipt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-mtls-20261101.log",
+      "sha256": "ba6be23a29d4d263a30f805a8e03f32981e7f6a797a866f9d7735df4c6733d7e",
+      "bytes": 438
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-postgres-20261101.log",
+      "sha256": "9530ae9dd89cdb0d0094cb5c199907bca9f2023362a6c949be104e95a86c702d",
+      "bytes": 475
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-react-build-20261101.log",
+      "sha256": "e842bba0b7096f9f8b736dbd493d3d28b4185796f70287365c5d3e08d96a57ed",
+      "bytes": 842
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-react-build-final-20261101.log",
+      "sha256": "2906b071669b1247af79e4ce32aff4c7106fcfd1f1f445f4e99426d862a17f60",
+      "bytes": 842
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-reconciled-ui-20261101.png",
+      "sha256": "c0516f2f420a94257e6f616eb0128711b37797d0873d8ebbb392bdbf76be4a31",
+      "bytes": 138962
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-source-stage-20261101.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-source-stage-retry-20261101.log",
+      "sha256": "36b992e1efe29a8fdcd9e906a1cbaffdecc6aa80c228712e0abbde0029072834",
+      "bytes": 2078
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-strace-install-20261101.log",
+      "sha256": "868855deee9baa944d1107c7dc4ac2cc86cf0f2f3625325467c7af51e9720c36",
+      "bytes": 389
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-trace-agent-20261101.txt",
+      "sha256": "d092e85dadd85cd9f3afba0780b44463375c1783af0c6b6db1fcc13f6658376c",
+      "bytes": 906
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-trace-console-20261101.txt",
+      "sha256": "d35d5ca82c4cd454f40d298f9713e4b0780faef98867a034a16c0e087646dc00",
+      "bytes": 872
+    },
+    {
+      "path": "kura-management-console/target/network-outcome-uncertain-ui-20261101.png",
+      "sha256": "3a75dd5a66196fdafa9586c003e45908af3d1070172a7230823ac4acf651d99a",
+      "bytes": 93545
+    }
+  ],
+  "validation": {
+    "hostAgentUnitPassed": 57,
+    "hostConsoleUnitPassed": 8,
+    "protocolUnitPassed": 6,
+    "explicitPostgresPassed": 2,
+    "explicitMtlsPassed": 3,
+    "defaultBrowserPassed": 17,
+    "defaultBrowserSkipped": 0,
+    "defaultBrowserUnexpected": 0,
+    "defaultBrowserFlaky": 0,
+    "ideaHttpChecksPassed": 31,
+    "ideaReactLiveBrowserPassed": 1,
+    "ideaRuntimeInventoryMatches": 281,
+    "linuxAgentUnitPassed": 57,
+    "linuxAgentBuildPassed": true,
+    "stagedLinuxInputMatches": 13,
+    "linuxLiveChecksPassed": 23,
+    "execTracerProbePassed": 4,
+    "queryExecAttempts": [
+      0,
+      0
+    ],
+    "networkBusinessJournalsUnchangedDuringQueries": true,
+    "firstQuerySystemBaselineUnchanged": false,
+    "firstQueryInitialBaselineEventuallyRestored": true,
+    "secondQuerySystemBaselineUnchanged": true,
+    "finalInitialBaselineMatches": true,
+    "retainedExecutionStates": {
+      "FAILED": 1,
+      "SUCCEEDED": 9
+    },
+    "agentResolutionRows": 2,
+    "centerNetworkAuditRows": 2,
+    "fixture": "/opt/yofc-network-outcome-20261101",
+    "fixtureState": "stopped-data-retained",
+    "gatewayDisabled": true,
+    "oldAgentPidRetained": 8391,
+    "oldAgentActive": true,
+    "candidateAbsent": true,
+    "protocolSha256": "4d973417d5eab84270e441ace98434ec0c6f1e6a86c288a055b1b9018f2f82ee"
+  },
+  "limits": [
+    "Linux live verification is receipt-loss injection after real dummy-link actions, not actual power loss or an exact crash point",
+    "Linux live paths cover recovered prepare rollback and explicit remote rollback; commit and takeover outcome have unit evidence only",
+    "First query window observed delayed return of the original global IPv6 SLAAC address; no exec attempts or business-log changes were recorded, but full system state was not constant",
+    "Prior failed attempts and all original execution records retained; no state deletion or replay to manufacture a clean run",
+    "No new Linux center deployment, agent deb build, or package lifecycle acceptance in this increment",
+    "Private identities, keys, databases and database backups excluded; hashed baseline references are not private file contents",
+    "network-outcome-stale-report-copy-20261101.json is a stale copied report and explicitly excluded",
+    "Kura unavailable during this increment Linux live test; new agent with packaged Linux Kura, old revision5 upgrade and Ubuntu26.04 regression remain pending",
+    "Full OrbStack filesystem sandbox, amd64, physical wired network and hard power loss remain deferred",
+    "Graph ready and metadata_match are best-effort, not full parsing guarantees; console has 3 partial and 3 unusable files",
+    "Static macro and same-name method traces overmatch; they do not prove absence of execution",
+    "Old unmarked network logs, RECOVERY_REQUIRED and insufficient evidence remain UNKNOWN; audited manual recovery pending",
+    "Configuration update, snapshot save/rollback, key rotation, formal center packaging and overall stages2-5 remain pending",
+    "Production React bundle is about 970kB; Vite chunk warning remains",
+    "Historical task-storage and task-journal manifests are immutable snapshots and do not assert current source hashes"
+  ],
+  "counts": {
+    "sourceFiles": 86,
+    "artifacts": 7,
+    "evidenceFiles": 58
+  }
+}
