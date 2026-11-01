@@ -74,3 +74,15 @@ purge 后重装可显式 migrate/check/activate 并恢复 health ready。证据�
 required；agent env、CA、cert 和 key SHA256 全部不变。随后原中心连接恢复 online。证据见
 agent `docs/evidence/binding-generation-package-runtime-20261102.json`。这证明普通另一中心
 登记不会抢占归属，但签名转移、审批和代次递增仍未实施。
+
+## 2026-11-02 补充：gateway-local rebind 基础
+
+agent 新增显式 `transfer-identity`：必须精确匹配旧 `bindingGeneration`、提供 operator、
+服务停止，且 writer 授权、未决 network transaction、RUNNING/UNKNOWN 副作用执行任一存在都
+拒绝。通过后验证新 mTLS chain/key，备份旧 identity 和 receipt，再把
+`AGENT_BINDING_GENERATION` 从 1 递增到 2。第二中心普通 import 仍然拒绝。
+
+formal agent candidate 已升级到 `0.1.0~package20261102-7`；Linux staged 66 项 Rust 测试通过，
+release build 通过，本机 rebind 实测成功并恢复在线。证据见 agent
+`docs/evidence/local-rebind-20261102.json`。由于 fixture 使用同一逻辑中心的两个本机名，
+这只证明本机 rebind 机制，不宣称独立双中心运营；签名授权/审批仍未实现。
