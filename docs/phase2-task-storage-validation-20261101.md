@@ -117,3 +117,16 @@ IDEA 门槛之后，既有 OrbStack Ubuntu24.04 arm64 的 `network-gateway` 通�
 旧 key 再次轮换被版本保护拒绝，无写入。轮换后原 dev-gateway `agent.status` 真实任务
 `f060cc15-5921-40a2-9417-d1db18a45111` 成功。本方案只轮换 PostgreSQL payload key；
 旧介质/WAL/备份/agent历史和文件系统恢复仍不在本轮范围。
+
+
+## 2026-11-02 任务 key 加密备份与恢复
+
+新增 `task-key-backup` / `task-key-restore`。备份由独立 0600 passphrase 文件经 Argon2id 派生保护，
+AES-256-GCM AAD 绑定格式、版本、salt 和 nonce；备份 0600、不覆盖。恢复要求私有目录、0600、
+单硬链接、不覆盖现有 key，并认证完整备份；错误 passphrase 不生成文件。
+单元覆盖精确恢复、错误 passphrase、尾字节篡改、弱 passphrase、公开 passphrase 和拒绝覆盖。
+
+开发中心 version 2 key 已真实备份到
+`.phase1-dev/key-recovery-20261102/task-data-key-2.backup`；恢复到独立文件后用其执行 `migrate`，
+成功认证 version 2 数据库绑定。错误 passphrase 恢复失败且未生成 key。
+该流程保护 key 文件恢复；仍不覆盖数据库旧 WAL/备份、agent历史或整机恢复。

@@ -2,6 +2,7 @@ use aes_gcm::{
     Aes256Gcm, KeyInit, Nonce,
     aead::{Aead, Payload},
 };
+use argon2::{Algorithm, Argon2, Params, Version};
 use anyhow::{Context, Result, bail, ensure};
 use rand_core::{OsRng, RngCore};
 use serde_json::{Value, json};
@@ -18,6 +19,12 @@ use uuid::Uuid;
 const LIMIT: usize = 1024 * 1024;
 const CHECK_AAD: &[u8] = b"yofc-console-task-key-check-v1";
 const CHECK_VALUE: &[u8] = b"yofc-console-task-storage-v1";
+const BACKUP_MAGIC: &[u8] = b"YOFCTASKKEYBK\0";
+const BACKUP_VERSION: u32 = 1;
+const BACKUP_SALT_LEN: usize = 16;
+const BACKUP_NONCE_LEN: usize = 12;
+const PASSPHRASE_MIN: usize = 16;
+const PASSPHRASE_MAX: usize = 1024;
 
 // Deliberately no Debug: neither key material nor plaintext belongs in logs.
 #[derive(Clone)]
@@ -52,6 +59,141 @@ impl TaskContext {
             field
         ]))?)
     }
+}
+
+fn private_file(path: &Path) -> Result<Vec<u8>> {
+    private_parent(path)?;
+    let mut file = OpenOptions::new()
+        .read(true)
+        .custom_flags(libc::O_NOFOLLOW | libc::O_CLOEXEC | libc::O_NONBLOCK)
+        .open(path)
+        .context("private file unavailable")?;
+    let metadata = file.metadata()?;
+    ensure!(
+        metadata.is_file()
+            && metadata.uid() == unsafe { libc::geteuid() }
+            && metadata.mode() & 0o777 == 0o600
+            && metadata.nlink() == 1,
+        "private file must be a single owned regular file with mode 0600"
+    );
+    let mut value = Vec::new();
+    file.read_to_end(&mut value)?;
+    Ok(value)
+}
+
+fn read_passphrase(path: &Path) -> Result<Vec<u8>> {
+    let value = private_file(path)?;
+    ensure!(
+        (PASSPHRASE_MIN..=PASSPHRASE_MAX).contains(&value.len()),
+        "passphrase file must contain {PASSPHRASE_MIN}..={PASSPHRASE_MAX} bytes"
+    );
+    Ok(value)
+}
+
+fn backup_kdf(passphrase: &[u8], salt: &[u8]) -> Result<[u8; 32]> {
+    let params = Params::new(19_456, 2, 1, Some(32))?;
+    let mut derived = [0u8; 32];
+    Argon2::new(Algorithm::Argon2id, Version::V0x13, params)
+        .hash_password_into(passphrase, salt, &mut derived)?;
+    Ok(derived)
+}
+
+fn backup_parent(path: &Path) -> Result<&Path> {
+    ensure!(path.is_absolute(), "task key backup path must be absolute");
+    private_parent(path)
+}
+
+pub fn backup_key(key_path: &Path, backup_path: &Path, passphrase_path: &Path) -> Result<()> {
+    let key = private_file(key_path)?;
+    ensure!(key.len() == 32, "task data key must contain exactly 32 bytes");
+    let passphrase = read_passphrase(passphrase_path)?;
+    backup_parent(backup_path)?;
+    let mut salt = [0u8; BACKUP_SALT_LEN];
+    OsRng.fill_bytes(&mut salt);
+    let derived = backup_kdf(&passphrase, &salt)?;
+    let cipher = Aes256Gcm::new_from_slice(&derived)
+        .map_err(|_| anyhow::anyhow!("invalid backup derivation"))?;
+    let mut nonce = [0u8; BACKUP_NONCE_LEN];
+    OsRng.fill_bytes(&mut nonce);
+    let mut aad = Vec::new();
+    aad.extend_from_slice(BACKUP_MAGIC);
+    aad.extend_from_slice(&BACKUP_VERSION.to_be_bytes());
+    aad.extend_from_slice(&salt);
+    aad.extend_from_slice(&nonce);
+    let encrypted = cipher
+        .encrypt(Nonce::from_slice(&nonce), Payload { msg: &key, aad: &aad })
+        .map_err(|_| anyhow::anyhow!("task key backup encryption failed"))?;
+    let mut file = OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .mode(0o600)
+        .custom_flags(libc::O_NOFOLLOW | libc::O_CLOEXEC)
+        .open(backup_path)?;
+    file.write_all(BACKUP_MAGIC)?;
+    file.write_all(&BACKUP_VERSION.to_be_bytes())?;
+    file.write_all(&salt)?;
+    file.write_all(&nonce)?;
+    file.write_all(&(encrypted.len() as u32).to_be_bytes())?;
+    file.write_all(&encrypted)?;
+    file.sync_all()?;
+    File::open(backup_path.parent().context("backup needs a parent")?)?.sync_all()?;
+    Ok(())
+}
+
+pub fn restore_key(
+    backup_path: &Path,
+    key_path: &Path,
+    passphrase_path: &Path,
+) -> Result<()> {
+    let backup = private_file(backup_path)?;
+    let prefix_len = BACKUP_MAGIC.len() + 4 + BACKUP_SALT_LEN + BACKUP_NONCE_LEN + 4;
+    ensure!(
+        backup.len() > prefix_len && backup.starts_with(BACKUP_MAGIC),
+        "invalid task key backup format"
+    );
+    let mut cursor = BACKUP_MAGIC.len();
+    let version = u32::from_be_bytes(backup[cursor..cursor + 4].try_into()?);
+    cursor += 4;
+    ensure!(version == BACKUP_VERSION, "unsupported task key backup version");
+    let salt = backup[cursor..cursor + BACKUP_SALT_LEN].to_vec();
+    cursor += BACKUP_SALT_LEN;
+    let nonce = backup[cursor..cursor + BACKUP_NONCE_LEN].to_vec();
+    cursor += BACKUP_NONCE_LEN;
+    let length = u32::from_be_bytes(backup[cursor..cursor + 4].try_into()?) as usize;
+    cursor += 4;
+    ensure!(
+        backup.len() == cursor + length && length == 48,
+        "invalid task key backup length"
+    );
+    let encrypted = &backup[cursor..];
+    let passphrase = read_passphrase(passphrase_path)?;
+    let derived = backup_kdf(&passphrase, &salt)?;
+    let cipher = Aes256Gcm::new_from_slice(&derived)
+        .map_err(|_| anyhow::anyhow!("invalid backup derivation"))?;
+    let mut aad = Vec::new();
+    aad.extend_from_slice(BACKUP_MAGIC);
+    aad.extend_from_slice(&version.to_be_bytes());
+    aad.extend_from_slice(&salt);
+    aad.extend_from_slice(&nonce);
+    let key = cipher
+        .decrypt(Nonce::from_slice(&nonce), Payload { msg: encrypted, aad: &aad })
+        .map_err(|_| anyhow::anyhow!("task key backup authentication failed"))?;
+    ensure!(key.len() == 32, "restored task data key has invalid length");
+    let parent = private_parent(key_path)?;
+    ensure!(
+        !key_path.exists(),
+        "refusing to overwrite an existing task data key"
+    );
+    let mut file = OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .mode(0o600)
+        .custom_flags(libc::O_NOFOLLOW | libc::O_CLOEXEC)
+        .open(key_path)?;
+    file.write_all(&key)?;
+    file.sync_all()?;
+    File::open(parent)?.sync_all()?;
+    Ok(())
 }
 
 fn private_parent(path: &Path) -> Result<&Path> {
@@ -432,6 +574,72 @@ mod tests {
         fs::set_permissions(d.path(), fs::Permissions::from_mode(0o755)).unwrap();
         assert!(create_key(&d.path().join("new")).is_err());
         assert!(TaskCipher::load(&p).is_err());
+    }
+
+    fn private_text(path: &Path, content: &[u8]) {
+        fs::write(path, content).unwrap();
+        fs::set_permissions(path, fs::Permissions::from_mode(0o600)).unwrap();
+    }
+
+    #[test]
+    fn encrypted_key_backup_recovers_exact_key_and_rejects_tampering() {
+        let d = tempfile::tempdir().unwrap();
+        fs::set_permissions(d.path(), fs::Permissions::from_mode(0o700)).unwrap();
+        let key = d.path().join("task.key");
+        let original = b"0123456789abcdef0123456789abcdef";
+        private_text(&key, original);
+        let passphrase = d.path().join("passphrase");
+        private_text(&passphrase, b"backup-passphrase-16");
+        let backup = d.path().join("task.key.backup");
+        backup_key(&key, &backup, &passphrase).unwrap();
+        let encoded = fs::read(&backup).unwrap();
+        assert_eq!(encoded.len(), 98);
+        assert!(encoded.starts_with(BACKUP_MAGIC));
+        assert_eq!(fs::metadata(&backup).unwrap().mode() & 0o777, 0o600);
+
+        let wrong = d.path().join("passphrase-wrong");
+        private_text(&wrong, b"wrong-passphrase-16");
+        let failed = d.path().join("failed.key");
+        assert!(restore_key(&backup, &failed, &wrong).is_err());
+        assert!(!failed.exists());
+
+        let restored = d.path().join("restored.key");
+        restore_key(&backup, &restored, &passphrase).unwrap();
+        assert_eq!(fs::read(&restored).unwrap(), original);
+        assert_eq!(fs::metadata(&restored).unwrap().mode() & 0o777, 0o600);
+
+        let mut encoded = fs::read(&backup).unwrap();
+        let index = encoded.len() - 1;
+        encoded[index] ^= 1;
+        fs::write(&backup, encoded).unwrap();
+        fs::set_permissions(&backup, fs::Permissions::from_mode(0o600)).unwrap();
+        let tampered = d.path().join("tampered.key");
+        assert!(restore_key(&backup, &tampered, &passphrase).is_err());
+        assert!(!tampered.exists());
+    }
+
+    #[test]
+    fn key_backup_rejects_weak_or_unsafe_private_inputs() {
+        let d = tempfile::tempdir().unwrap();
+        fs::set_permissions(d.path(), fs::Permissions::from_mode(0o700)).unwrap();
+        let key = d.path().join("task.key");
+        private_text(&key, b"0123456789abcdef0123456789abcdef");
+        let backup = d.path().join("task.key.backup");
+        let short = d.path().join("short-passphrase");
+        private_text(&short, b"short");
+        assert!(backup_key(&key, &backup, &short).is_err());
+        assert!(!backup.exists());
+        let public = d.path().join("public-passphrase");
+        private_text(&public, b"backup-passphrase-16");
+        fs::set_permissions(&public, fs::Permissions::from_mode(0o644)).unwrap();
+        assert!(backup_key(&key, &backup, &public).is_err());
+        assert!(!backup.exists());
+        fs::set_permissions(&public, fs::Permissions::from_mode(0o600)).unwrap();
+        backup_key(&key, &backup, &public).unwrap();
+        let existing = d.path().join("existing.key");
+        private_text(&existing, b"existing");
+        assert!(restore_key(&backup, &existing, &public).is_err());
+        assert_eq!(fs::read(&existing).unwrap(), b"existing");
     }
 
     #[tokio::test]

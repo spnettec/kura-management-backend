@@ -24,6 +24,28 @@ async fn main() -> Result<()> {
         ensure!(args.len() == 3, "usage: task-key-init ABSOLUTE_KEY_PATH");
         return task_crypto::create_key(std::path::Path::new(&args[2]));
     }
+    if args.get(1).map(String::as_str) == Some("task-key-backup") {
+        ensure!(
+            args.len() == 5,
+            "usage: task-key-backup KEY_FILE BACKUP_FILE PASSPHRASE_FILE"
+        );
+        return task_crypto::backup_key(
+            std::path::Path::new(&args[2]),
+            std::path::Path::new(&args[3]),
+            std::path::Path::new(&args[4]),
+        );
+    }
+    if args.get(1).map(String::as_str) == Some("task-key-restore") {
+        ensure!(
+            args.len() == 5,
+            "usage: task-key-restore BACKUP_FILE KEY_FILE PASSPHRASE_FILE"
+        );
+        return task_crypto::restore_key(
+            std::path::Path::new(&args[2]),
+            std::path::Path::new(&args[3]),
+            std::path::Path::new(&args[4]),
+        );
+    }
     if args.get(1).map(String::as_str) == Some("task-key-rotate") {
         ensure!(
             args.len() == 4,

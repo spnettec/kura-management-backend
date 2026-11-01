@@ -7,7 +7,8 @@ React 真实两次写入、outcome 记录、save/CONFLICT/rollback。最新证�
 macOS IDEA 与 OrbStack 均已复验两次写入、outcome 记录、save/CONFLICT/rollback；OrbStack 新夹具已
 stopped-data-retained 且 gateway 禁用。2026-11-02 又在 IDEA 真实注入回执损失：UNKNOWN 持久后仅用原
 outcome 记录核定成功，无重发；同时发现并修复 resolution source 硬编码缺陷。开发中心任务数据 key
-已通过 `task-key-rotate` 单事务轮换到 version 2 并真实重启验证；正式发行、旧介质恢复和后续阶段仍未完成。整个改造未完成，不能将 goal 标记 complete。
+已通过 `task-key-rotate` 单事务轮换到 version 2 并真实重启验证；key 也有 Argon2id+AES-GCM 加密
+备份/恢复流程，并用恢复 key 认证真实 version 2 数据库。正式发行、旧介质恢复和后续阶段仍未完成。整个改造未完成，不能将 goal 标记 complete。
 禁止 reset/clean、推送或覆盖旧远端。
 
 历史暂停交接保留如下，不能覆盖本续接状态。

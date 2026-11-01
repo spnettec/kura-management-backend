@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-11-02T00:36:00+08:00",
+  "scope": "console task data key encrypted backup/recovery",
+  "commands": {
+    "backup": "task-key-backup KEY BACKUP PASSPHRASE",
+    "restore": "task-key-restore BACKUP KEY PASSPHRASE"
+  },
+  "format": {
+    "magic": [
+      89,
+      79,
+      70,
+      67,
+      84,
+      65,
+      83,
+      75,
+      75,
+      69,
+      89,
+      66,
+      75,
+      0
+    ],
+    "version": 1,
+    "argon2id": {
+      "memoryKib": 19456,
+      "iterations": 2,
+      "parallelism": 1,
+      "outputBytes": 32
+    },
+    "aead": "AES-256-GCM",
+    "backupBytes": 98
+  },
+  "files": {
+    "/Users/heyoulin/iot-kura-develop/git/kura-management-console/.phase1-dev/key-recovery-20261102/task-data-key-2.backup": {
+      "mode": "0o600",
+      "sha256": "d255e3ea657746d178a9ee9cab020db742340c6fc21c26f374e5b345c1751491"
+    },
+    "/Users/heyoulin/iot-kura-develop/git/kura-management-console/.phase1-dev/key-recovery-20261102/task-data-key-2.restored": {
+      "mode": "0o600",
+      "sha256": "dbbd9e56e76fc3ae432710c75b51191f3181936787fe233e0e28cba9591cf361"
+    },
+    "/Users/heyoulin/iot-kura-develop/git/kura-management-console/.phase1-dev/key-recovery-20261102/passphrase": {
+      "mode": "0o600",
+      "sha256": "27f0aedfbef2992e1b83c32d1ddb1dc83dd982831052f4dbfa0c16f91a9dd3e8"
+    }
+  },
+  "liveVersion2Database": {
+    "restoreKeyMigrate": "passed",
+    "version": 2
+  },
+  "negative": {
+    "wrongPassphrase": "authentication failed; no key created",
+    "tamperUnit": "passed",
+    "overwriteUnit": "passed",
+    "weakOrPublicPassphraseUnit": "passed"
+  },
+  "unitTests": {
+    "taskCrypto": "8 total, 7 passed, explicit PostgreSQL ignored in filtered run",
+    "agent": "66 passed prior turn"
+  },
+  "sourceSha256": {
+    "task_crypto.rs": "f4cc580b127503e73ccfca4054f1d7b41c39b252dfab519e1f8e02e97a198083",
+    "main.rs": "f9c96cb6619ace4d00d2fb30310859b306d91ccdee9f29fddd268def67bda902"
+  },
+  "boundary": {
+    "doesNotCover": [
+      "old WAL/pages",
+      "database backups",
+      "agent history",
+      "full machine recovery"
+    ]
+  }
+}

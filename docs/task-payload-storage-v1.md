@@ -38,7 +38,12 @@ yofc-management-console task-key-init /var/lib/kura-management-console/task-data
 ## 故障与保留范围
 
 缺少或错误密钥时服务不会启动监听；不生成替代密钥。恢复时必须使用与数据库一致的原 key，
-分别保护数据库备份和密钥备份。本版本尚未提供密钥轮换或多密钥流程。
+分别保护数据库备份和密钥备份。`task-key-rotate` 可在单事务中将数据库绑定到新 key。
+
+`task-key-backup` 使用独立的 0600 passphrase 文件和 Argon2id（19 MiB/t=2/p=1）派生保护，
+AES-256-GCM AAD 绑定备份格式、版本、salt 和 nonce；输出 0600 新文件，不覆盖。
+`task-key-restore` 认证备份后恢复 32 字节 key，要求私有目录、0600、单硬链接且拒绝覆盖现有 key。
+passphrase 文件也必须为当前 UID 的 0600 单链接普通文件，至少 16 字节；错误 passphrase 不生成 key。
 
 运行中密文认证失败返回原有 `INTERNAL` 类型，HTTP 为 503，gRPC 为 unavailable；
 不返回或记录明文。分发先在事务内解密验证，再提交 RUNNING 和发送执行请求。
