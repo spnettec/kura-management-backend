@@ -309,8 +309,15 @@ Web/REST 会话和 Kura 密钥库；Kura 停止不影响注册、心跳和主机
 
 同日新增有权限网关本机 rebind：`transfer-identity` 要求精确旧代次、operator 身份、无
 RUNNING/UNKNOWN 副作用事务、无 writer 授权；验证新链/key 后备份旧 identity 和 receipt，
-再将 `AGENT_BINDING_GENERATION` 递增。这不是自动抢占，也不是签名授权流程。签名引导、
-外部审批和真正的跨中心 transfer 仍未实施；不能把本机 rebind 基础宣称完成完整转移验收。
+再将 `AGENT_BINDING_GENERATION` 递增。这不是自动抢占，也不是签名授权流程。
+
+同日把持久代次接入握手和任务租约：Hello 携带 `binding_generation`，零代次或与
+`mgmt_gateways.binding_generation` 不一致都拒绝；新代次 connect 会将旧 QUEUED/RUNNING
+任务标记 `EXPIRED/BINDING_GENERATION_CHANGED`，后续 dispatch/reconciliation 只匹配当前
+代次。agent 从 identity env 发送该代次，缺失/零值拒绝启动；任务 admission 记录当时
+gateway generation。UNKNOWN 历史仍保留原处，不迁移到新代次；只有同代次 receipt/query
+可终结它。签名引导、外部审批和真正独立双中心 transfer 仍未实施；不能把该握手基础宣称
+完成完整转移验收。
 
 ### 6.2 重连与执行语义
 
