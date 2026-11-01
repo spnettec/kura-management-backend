@@ -320,8 +320,9 @@ gateway generation。UNKNOWN 历史仍保留原处，不迁移到新代次；只
 
 同日实现 original-center signed token 基础：console 可生成/持有 Ed25519 signer 并签发一次性
 15 分钟内 token；agent 只接受已注册 signer，且 token 绑定新旧代次、gateway、endpoint、新
-CA/client hash。外部审批 UI/流程和真正独立双中心 transfer 仍未实施；不能把签名 token 基础
-宣称完成完整转移验收。
+CA/client hash。旧 identity 可通过 generation-bound `register-transfer-signer` 显式登记公钥；
+不同 signer 与代次漂移都会拒绝。外部审批 UI/流程和真正独立双中心 transfer 仍未实施；不能把
+签名 token 基础宣称完成完整转移验收。
 
 ### 6.2 重连与执行语义
 
