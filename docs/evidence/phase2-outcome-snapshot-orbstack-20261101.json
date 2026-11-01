@@ -1,0 +1,198 @@
+{
+  "generatedAt": "2026-11-01T21:55:00+08:00",
+  "fixture": "outcome-snapshot-linux-20261101",
+  "fixtureOnly": true,
+  "platform": {
+    "vm": "yofc-management-network-20261101",
+    "os": "Ubuntu|24.04|",
+    "profile": "Ubuntu 24.04 arm64"
+  },
+  "runtime": {
+    "agentSha256": null,
+    "inventoryChecked": 282,
+    "inventoryAllMatch": true,
+    "baselineUnchanged": true,
+    "networkWrites": 0
+  },
+  "serviceSecurityAtStart": {
+    "retroactive": true,
+    "observedAt": "2026-11-01T21:49:00+08:00",
+    "recordedAt": "2026-11-01T21:54:30+08:00",
+    "reason": "start flow reached started/initial-proof; original start.json was not emitted because a status serializer bug failed before top-level marker creation",
+    "yofc-outcome-snapshot-agent": {
+      "pid": 11333,
+      "uid": 0,
+      "capEff": "0000000000000000",
+      "noNewPrivs": true
+    },
+    "yofc-outcome-snapshot-kura": {
+      "pid": 11349,
+      "uid": 992,
+      "capEff": "0000000000000000",
+      "noNewPrivs": false
+    }
+  },
+  "fullSystemdSandbox": "deferred: existing OrbStack service override",
+  "terminalState": {
+    "phase": "stopped-data-retained",
+    "agentPid": 0,
+    "kuraPid": 0,
+    "baselineUnchanged": true
+  },
+  "proofs": {
+    "initial-proof.json": {
+      "status": "passed",
+      "stage": "initial",
+      "checks": 9,
+      "passwordMatchesExpected": true,
+      "countMatchesExpected": true,
+      "readOnlyObserver": true,
+      "snapshotSecretAbsent": true,
+      "snapshotMode600": true,
+      "revision": "53439cac320afe51ef73e77718a18b192a695bc1b98669589283d0b0d02339c3",
+      "cmChangeCount": 1,
+      "bundleCount": 281
+    },
+    "keep-proof.json": {
+      "status": "passed",
+      "stage": "keep",
+      "checks": 9,
+      "passwordMatchesExpected": true,
+      "countMatchesExpected": true,
+      "readOnlyObserver": true,
+      "snapshotSecretAbsent": true,
+      "snapshotMode600": true,
+      "revision": "ab4004f8fb4d63d2578d37167e05ef70e2ec2315983adeca81b47f609b629ab5",
+      "cmChangeCount": 2,
+      "bundleCount": 281
+    },
+    "set-proof.json": {
+      "status": "passed",
+      "stage": "set",
+      "checks": 9,
+      "passwordMatchesExpected": true,
+      "countMatchesExpected": true,
+      "readOnlyObserver": true,
+      "snapshotSecretAbsent": true,
+      "snapshotMode600": true,
+      "revision": "293a9c55bb785d658b7dd9ffd919c320357eb8ecbbb54389a641f0a5ff0abfd0",
+      "cmChangeCount": 3,
+      "bundleCount": 281
+    }
+  },
+  "taskReceipts": {
+    "firstWrite": {
+      "createdAt": "2026-11-01T13:50:45.798245Z",
+      "error": null,
+      "gatewayId": "outcome-snapshot-linux-20261101",
+      "id": "6672f66d-dacf-41c8-b050-fb7350002196",
+      "operation": 12,
+      "result": {
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "53439cac320afe51ef73e77718a18b192a695bc1b98669589283d0b0d02339c3",
+        "submitted": true
+      },
+      "state": "SUCCEEDED"
+    },
+    "secondWrite": {
+      "createdAt": "2026-11-01T13:50:47.747584Z",
+      "error": null,
+      "gatewayId": "outcome-snapshot-linux-20261101",
+      "id": "8a106b06-06cb-4beb-8337-b56291465b20",
+      "operation": 12,
+      "result": {
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "ab4004f8fb4d63d2578d37167e05ef70e2ec2315983adeca81b47f609b629ab5",
+        "submitted": true
+      },
+      "state": "SUCCEEDED"
+    },
+    "save": {
+      "createdAt": "2026-11-01T13:51:52.624394Z",
+      "error": null,
+      "gatewayId": "outcome-snapshot-linux-20261101",
+      "id": "744bde25-34c0-4d1d-bb70-9536247fcda8",
+      "operation": 13,
+      "result": {
+        "networkRewound": false,
+        "previousLatestId": "1793541048612",
+        "saved": true,
+        "snapshotId": "1793541113600"
+      },
+      "state": "SUCCEEDED"
+    },
+    "staleConflict": {
+      "createdAt": "2026-11-01T13:51:53.746724Z",
+      "error": "CONFLICT",
+      "gatewayId": "outcome-snapshot-linux-20261101",
+      "id": "ff9bc729-c461-4f76-984b-1750eb76d7d8",
+      "operation": 13,
+      "result": {},
+      "state": "FAILED"
+    },
+    "rollback": {
+      "createdAt": "2026-11-01T13:51:54.871004Z",
+      "error": null,
+      "gatewayId": "outcome-snapshot-linux-20261101",
+      "id": "efe96f8f-99d5-4449-9458-f48bbf254438",
+      "operation": 14,
+      "result": {
+        "networkRewound": false,
+        "previousLatestId": "1793541113600",
+        "rolledBack": true,
+        "snapshotId": "0"
+      },
+      "state": "SUCCEEDED"
+    }
+  },
+  "postRollbackRead": {
+    "taskId": "41cdecc0-8042-4e77-b6a8-a600a7d90d7b",
+    "state": "SUCCEEDED",
+    "count": "1",
+    "enabled": false
+  },
+  "outcomeRecords": [
+    {
+      "file": "6672f66d-dacf-41c8-b050-fb7350002196.json",
+      "mode": "0o600",
+      "record": {
+        "source": "configuration.journal.v1",
+        "commandId": "6672f66d-dacf-41c8-b050-fb7350002196",
+        "operation": 12,
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "53439cac320afe51ef73e77718a18b192a695bc1b98669589283d0b0d02339c3",
+        "submitted": true,
+        "paramsSha256": "7a693a83430984227d190e667787c70e1ebdea9f1cd3a24b9eea687e90720e97"
+      }
+    },
+    {
+      "file": "8a106b06-06cb-4beb-8337-b56291465b20.json",
+      "mode": "0o600",
+      "record": {
+        "source": "configuration.journal.v1",
+        "commandId": "8a106b06-06cb-4beb-8337-b56291465b20",
+        "operation": 12,
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "ab4004f8fb4d63d2578d37167e05ef70e2ec2315983adeca81b47f609b629ab5",
+        "submitted": true,
+        "paramsSha256": "84319786666dc0df44f303516011858db472619e1dfb11326824bf8cf5142efe"
+      }
+    }
+  ],
+  "gatewayIdentity": {
+    "registerAuditId": 2182,
+    "disableAuditId": 2213,
+    "enabledAfterFinish": false
+  },
+  "testEvidence": {
+    "agentReleaseBuilt": "aarch64 Linux",
+    "protocolRegression": "previous local 8 passed",
+    "javaBridge": "previous local 33 passed",
+    "reactDefaultBrowser": "previous local 26 passed"
+  },
+  "sourceSha256": {
+    "kura-management-console/scripts/phase2-outcome-snapshot-vm.py": "42d9d2586189bff1068cd38c77bb420baf5db8272f26fe99694d675e0765ad18",
+    "kura-management-console/crates/management-protocol/src/lib.rs": "81608efbf8d7c6cac7f22a7ac58bf753fb7895417a3406a69746c92726960e12",
+    "kura-networking/bundles/org.eclipse.kura.management.bridge/src/main/java/org/eclipse/kura/management/bridge/SnapshotCommand.java": "cf82c7b9d1c22540d221a5a0adaea8be621f15ffa2fef076ef089d1d6c29ac50"
+  }
+}

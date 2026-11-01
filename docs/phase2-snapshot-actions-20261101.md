@@ -42,4 +42,22 @@ React 默认浏览器 26 项和生产构建通过。chunk 约 1013 kB 提示保�
 
 由于测试辅助代码曾失败重试，夹具内还保留多次成功 save 和 9 次 CONFLICT、2 次 INVALID_ARGUMENT
 任务记录；这些是证据的一部分，不删除也不算成一次理想流程。最终成功 save/rollback 如上。
-OrbStack 仍未复验本增量。
+当时 OrbStack 尚未复验本增量；下方同日晚间增量已复验。
+
+
+## 2026-11-01 OrbStack 真实运行增量
+
+复用 `yofc-management-network-20261101`，新一次性目录
+`/opt/yofc-outcome-snapshot-20261101`。Linux aarch64 agent 以 1.95 release 重建，SHA
+`7054c35beba2068bfec6a5c563dbf1ef4ca8b38eb96b9269b3cd662d3e45f72f`；282 项 inventory 全匹配；
+8 项旧 fixture/netplan 基线不变。新 agent `NoNewPrivs:1/CapEff:0`，Kura UID 992 且 `CapEff:0`。
+既有 OrbStack 全局 service 覆盖仍使 Kura `NoNewPrivs:0`，完整 systemd 沙箱继续 deferred。
+
+真实流程：两次受限写入成功，initial/keep/set 观察器各 9 项通过；2 条 outcome 记录 0600 且无属性值。
+显式 save 成功；expected latest `0` 的 stale 任务按终态 `CONFLICT` 拒绝；随后回滚 snapshot `0` 成功，
+回执 `networkRewound:false`。回滚后重新读取当前配置，count 回到 `1`、enabled 为 false。
+关键回执：save `744bde25-34c0-4d1d-bb70-9536247fcda8`，rollback
+`efe96f8f-99d5-4449-9458-f48bbf254438`。完成后两个新 unit 停止、gateway 已禁用，
+状态 `stopped-data-retained`；旧 network fixture agent 仍 active，数据未清理。
+start 安全属性以 retroactive observation 记录：原 start.json 因当时 status 序列化 bug 未写出，
+initial proof 与服务 PID/安全属性在失败前已经实际观察到。

@@ -158,9 +158,11 @@ def status():
         assert sha(RUNTIME / entry['path']) == entry['sha256'], entry['path']
     assert int((dev.DEV / 'agent.pid').read_text()) == state['originalHostAgentPid']
     os.kill(state['originalHostAgentPid'], 0)
-    return {'phase': state['phase'], 'gateway': GATEWAY, 'kuraPid': java_pid(), 'agentPid': state['agentPid'],
+    actual_agent = state.get('unknownLiveAgentPid', state['agentPid'])
+    return {'phase': state['phase'], 'gateway': GATEWAY, 'kuraPid': java_pid(), 'agentPid': actual_agent,
             'inventoryChecked': len(inventory), 'inventoryAllMatch': True,
-            'originalHostAgentPreserved': True, 'networkWrites': 0, 'fixtureOnly': True}
+            'originalHostAgentPreserved': True, 'networkWrites': 0, 'fixtureOnly': True,
+            'unknownLiveMode': bool(state.get('unknownLiveAgentPid'))}
 
 
 def finish():

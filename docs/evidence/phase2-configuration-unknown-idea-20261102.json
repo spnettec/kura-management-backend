@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-11-02T00:18:00+08:00",
+  "fixture": "configuration-outcome-snapshot-idea-20261101",
+  "fixtureOnly": true,
+  "commandId": "43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a",
+  "task": {
+    "createdAt": "2026-11-01T16:11:47.883937Z",
+    "error": null,
+    "gatewayId": "configuration-outcome-snapshot-idea-20261101",
+    "id": "43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a",
+    "operation": 12,
+    "result": {
+      "pid": "org.eclipse.kura.management.revisionFixture",
+      "previousRevision": "811744b5bbc892f2e79be0e077e58c16c4e752313c7ad5f817edeccbe74c1a13",
+      "reconciliation": {
+        "commandId": "43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a",
+        "journalSha256": "8102e0ef6457d5a8f5ea590f548cfaeaf211ccb1720ac79a8355e62b9a8d22b4",
+        "operation": 12,
+        "paramsSha256": "02113bd0fad9ea577e8c09ca594961b76d77ed4e206fc4dbb78cd45e57584d87",
+        "pid": "org.eclipse.kura.management.revisionFixture",
+        "previousRevision": "811744b5bbc892f2e79be0e077e58c16c4e752313c7ad5f817edeccbe74c1a13",
+        "source": "configuration.journal.v1"
+      },
+      "submitted": true
+    },
+    "state": "SUCCEEDED"
+  },
+  "outcomeRecord": {
+    "source": "configuration.journal.v1",
+    "commandId": "43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a",
+    "operation": 12,
+    "pid": "org.eclipse.kura.management.revisionFixture",
+    "previousRevision": "811744b5bbc892f2e79be0e077e58c16c4e752313c7ad5f817edeccbe74c1a13",
+    "submitted": true,
+    "paramsSha256": "02113bd0fad9ea577e8c09ca594961b76d77ed4e206fc4dbb78cd45e57584d87"
+  },
+  "outcomeMode": "0o600",
+  "outcomeSha256": "8102e0ef6457d5a8f5ea590f548cfaeaf211ccb1720ac79a8355e62b9a8d22b4",
+  "actualFlow": [
+    "write accepted",
+    "RUNNING while receipt lost",
+    "UNKNOWN persisted",
+    "SUCCEEDED reconciled from original record",
+    "no retry/write"
+  ],
+  "audit": [
+    "2282|a085d55b-1e1a-4e41-963c-04d68fbd9e7f|kura.configuration.update|43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a|ACCEPTED|2026-11-02 00:11:47.883937+08",
+    "2283|console|task.uncertain|43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a|UNKNOWN|2026-11-02 00:12:02.304837+08",
+    "2284|configuration-outcome-snapshot-idea-20261101|task.result|43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a|SUCCEEDED|2026-11-02 00:12:02.788428+08",
+    "2285|configuration-outcome-snapshot-idea-20261101|task.reconcile.configuration|43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a|SUCCEEDED|2026-11-02 00:12:02.788428+08"
+  ],
+  "agentResolutionBeforeSourceFix": [
+    "command_id                     source                                 journal_sha256                            resolved_at",
+    "------------------------------------  ------------------  ----------------------------------------------------------------  -------------",
+    "43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a  network.journal.v1  8102e0ef6457d5a8f5ea590f548cfaeaf211ccb1720ac79a8355e62b9a8d22b4  1793549522786"
+  ],
+  "sourceStorageBug": {
+    "found": "execution_resolutions.source was hardcoded network.journal.v1",
+    "fix": "store the source bound to the supplied proof",
+    "unitTest": "configuration_resolution_preserves_its_own_journal_source"
+  },
+  "releaseAgentSha256": "2eb0ccb30320f557192fb0fee02fb238658f511d894fa4f34981ad4b4a823f7a",
+  "terminal": {
+    "phase": "stopped-data-retained",
+    "gatewayDisabled": true,
+    "fixtureProcessesStopped": true,
+    "originalHostAgentPidPreserved": 9456
+  },
+  "outcomes": [
+    {
+      "file": "43d44fee-3e9c-4fc6-b6d8-842c3fc7dd2a.json",
+      "mode": "0o600",
+      "sha256": "8102e0ef6457d5a8f5ea590f548cfaeaf211ccb1720ac79a8355e62b9a8d22b4"
+    },
+    {
+      "file": "5c90caa0-b8b1-45ae-9ecd-c5e2df7dd8d6.json",
+      "mode": "0o600",
+      "sha256": "8fce637afa4f6d4ccfb97b9f002e6ee10f0b06452a96886a72a0ed3972803cf7"
+    },
+    {
+      "file": "f2475073-79b5-48a8-b2a3-5213a75c8f99.json",
+      "mode": "0o600",
+      "sha256": "a976b40a1b3a66c054f772bbfd819581233458dabd9f1df94301cfa13548fe88"
+    }
+  ]
+}

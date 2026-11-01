@@ -4,7 +4,9 @@
 其后又发现并修复 snapshot `0` 回滚协议/bridge 缺陷与新夹具 probe marker 缺陷，并完成 IDEA
 React 真实两次写入、outcome 记录、save/CONFLICT/rollback。最新证据见
 `phase2-snapshot-actions-20261101.md` 和 `phase2-configuration-outcome-20261101.md`。
-当前新夹具保持数据保留，OrbStack 尚未复验本增量。整个改造未完成，不能将 goal 标记 complete。
+macOS IDEA 与 OrbStack 均已复验两次写入、outcome 记录、save/CONFLICT/rollback；OrbStack 新夹具已
+stopped-data-retained 且 gateway 禁用。2026-11-02 又在 IDEA 真实注入回执损失：UNKNOWN 持久后仅用原
+outcome 记录核定成功，无重发；同时发现并修复 resolution source 硬编码缺陷。正式发行和后续阶段仍未完成。整个改造未完成，不能将 goal 标记 complete。
 禁止 reset/clean、推送或覆盖旧远端。
 
 历史暂停交接保留如下，不能覆盖本续接状态。
