@@ -321,8 +321,12 @@ gateway generation。UNKNOWN 历史仍保留原处，不迁移到新代次；只
 同日实现 original-center signed token 基础：console 可生成/持有 Ed25519 signer 并签发一次性
 15 分钟内 token；agent 只接受已注册 signer，且 token 绑定新旧代次、gateway、endpoint、新
 CA/client hash。旧 identity 可通过 generation-bound `register-transfer-signer` 显式登记公钥；
-不同 signer 与代次漂移都会拒绝。外部审批 UI/流程和真正独立双中心 transfer 仍未实施；不能把
-签名 token 基础宣称完成完整转移验收。
+不同 signer 与代次漂移都会拒绝。
+
+同日独立逻辑中心 fixture E2E：同一 VM 上使用独立 PostgreSQL database、独立 CA/TLS、独立
+console process 和 28443/28444 端口；original-center signed token 将 agent generation 3→4
+转入 center2，center1 保留历史并心跳超时离线，agent 重启仍回连 center2。该验证覆盖独立逻辑
+状态/信任/process，但不覆盖独立物理主机、网络分区、外部审批 UI 或 token 撤销。
 
 ### 6.2 重连与执行语义
 

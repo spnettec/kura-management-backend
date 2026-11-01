@@ -122,3 +122,16 @@ host/macOS console 11 项、protocol 8 项；Linux staged console 11 项、proto
 agent Linux Rust 66 项、packaging Python 25 项全部通过。证据见 agent
 `docs/evidence/signed-transfer-e2e-20261102.json`。这仍是同一逻辑 center 的两个本机 endpoint，
 不宣称独立双中心运营；外部审批和 token 撤销仍未实现。
+
+## 2026-11-02 补充：独立逻辑中心 signed transfer E2E
+
+同一 OrbStack VM 内建立 center1 / center2：独立 PostgreSQL database、独立 CA/TLS、独立
+console process 和 18443/18444、28443/28444 端口。center1 使用 Ed25519 signer 签发
+generation 3→4 token，绑定新 endpoint/gateway/CA/client hash；formal agent 包 13 成功转入
+center2。center2 generation 4 online，agent 重启仍回连 center2；center1 generation 3 history
+保留并心跳超时 offline。
+
+runtime evidence 位于 agent
+`target/package/independent-center-e2e-20261102/runtime/`，机器可核对证据为 agent
+`docs/evidence/independent-center-e2e-20261102.json`。该结果覆盖独立逻辑 state/trust/process；
+独立物理主机、网络分区、外部审批 UI 和 token 撤销仍 deferred。
