@@ -12,6 +12,8 @@ message Hello {
   string agent_version = 3;
   string boot_id = 4;
   repeated string capabilities = 5;
+  // Durable cross-center binding generation; zero is pre-handshake and rejected.
+  uint64 binding_generation = 6;
 }
 message Heartbeat { uint64 sequence = 1; bool kura_available = 2; uint64 uptime_seconds = 3; }
 message ConsoleFrame {

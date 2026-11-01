@@ -45,7 +45,7 @@ impl Control for ControlService {
             .ok_or(Status::unauthenticated("UNAUTHENTICATED"))?;
         let fingerprint = auth::hash(leaf.as_ref());
         let row = sqlx::query(
-            "SELECT id,tenant_id FROM mgmt_gateways WHERE certificate_sha256=$1 AND enabled",
+            "SELECT id,tenant_id,binding_generation FROM mgmt_gateways WHERE certificate_sha256=$1 AND enabled",
         )
         .bind(&fingerprint)
         .fetch_optional(&self.pool)
@@ -54,6 +54,7 @@ impl Control for ControlService {
         .ok_or(Status::permission_denied("FORBIDDEN"))?;
         let gateway: String = row.get("id");
         let tenant: String = row.get("tenant_id");
+        let binding_generation: i64 = row.get("binding_generation");
         let mut input = request.into_inner();
         let frame = tokio::time::timeout(Duration::from_secs(5), input.message())
             .await
@@ -68,6 +69,14 @@ impl Control for ControlService {
         if hello.gateway_id != gateway {
             return Err(Status::permission_denied("FORBIDDEN"));
         }
+        // A durable binding generation must be positive and exactly match the
+        // registered generation. Zero identifies a pre-handshake agent and is rejected.
+        if hello.binding_generation == 0 || hello.binding_generation > i64::MAX as u64
+            || hello.binding_generation as i64 != binding_generation
+        {
+            return Err(Status::permission_denied("FORBIDDEN"));
+        }
+        let binding_generation = hello.binding_generation as i64;
         if hello.agent_version.len() > 64
             || hello.boot_id.len() > 64
             || hello.capabilities.len() > 32
@@ -77,7 +86,15 @@ impl Control for ControlService {
         }
         let reconcile = hello.capabilities.iter().any(|s| s == "task.reconcile.v1");
         let epoch = Uuid::new_v4();
-        sqlx::query("UPDATE mgmt_gateways SET connection_epoch=$2,agent_version=$3,boot_id=$4,capabilities=$5,sequence=0 WHERE id=$1").bind(&gateway).bind(epoch).bind(hello.agent_version).bind(hello.boot_id).bind(json!(hello.capabilities)).execute(&self.pool).await.map_err(internal)?;
+        let mut transaction=self.pool.begin().await.map_err(internal)?;
+        // Old queued or running work is not leased by a newer binding generation.
+        sqlx::query("UPDATE mgmt_tasks SET state='EXPIRED',error='BINDING_GENERATION_CHANGED',lease_until=NULL WHERE gateway_id=$1 AND binding_generation=$2 AND state IN ('QUEUED','RUNNING')").bind(&gateway).bind(binding_generation).execute(&mut *transaction).await.map_err(internal)?;
+        let owned=sqlx::query("UPDATE mgmt_gateways SET connection_epoch=$2,agent_version=$3,boot_id=$4,capabilities=$5,sequence=0 WHERE id=$1 AND binding_generation=$6 RETURNING id").bind(&gateway).bind(epoch).bind(hello.agent_version).bind(hello.boot_id).bind(json!(hello.capabilities)).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
+        if owned.is_none() {
+            return Err(Status::permission_denied("FORBIDDEN"));
+        }
+        transaction.commit().await.map_err(internal)?;
+        let binding_generation = hello.binding_generation as i64;
         let (tx, rx) = mpsc::channel(8);
         let pool = self.pool.clone();
         let cipher = self.cipher.clone();
@@ -90,6 +107,7 @@ impl Control for ControlService {
                 &tenant,
                 &fingerprint,
                 epoch,
+                binding_generation,
                 reconcile,
                 &mut input,
                 &tx,
@@ -109,6 +127,7 @@ async fn run_stream(
     tenant: &str,
     fingerprint: &str,
     epoch: Uuid,
+    binding_generation: i64,
     reconcile: bool,
     input: &mut Streaming<AgentFrame>,
     tx: &mpsc::Sender<Result<ConsoleFrame, Status>>,
@@ -129,7 +148,7 @@ async fn run_stream(
             frame=input.message()=>{
                 let Some(frame)=frame? else{return Ok(())};
                 // Every message checks current certificate assignment, disablement and connection ownership.
-                let current:bool=sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE id=$1 AND enabled AND connection_epoch=$2 AND certificate_sha256=$3)").bind(gateway).bind(epoch).bind(fingerprint).fetch_one(pool).await.map_err(internal)?;
+                let current:bool=sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE id=$1 AND enabled AND connection_epoch=$2 AND certificate_sha256=$3 AND binding_generation=$4)").bind(gateway).bind(epoch).bind(fingerprint).bind(binding_generation).fetch_one(pool).await.map_err(internal)?;
                 if !current{return Err(Status::permission_denied("FORBIDDEN"));}
                 match frame.payload {
                     Some(agent_frame::Payload::Heartbeat(h))=>{
@@ -153,7 +172,7 @@ async fn run_stream(
                 if !current{return Err(Status::permission_denied("FORBIDDEN"));}
                 // Only reads may be leased again. Uncertain writes use receipt queries.
                 let mut transaction=pool.begin().await.map_err(internal)?;
-                let row=sqlx::query("UPDATE mgmt_tasks SET state='RUNNING',lease_until=now()+interval '10 seconds',dispatch_epoch=$2 WHERE id=(SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2) AND (operation<>12 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.configuration.update')) AND (operation NOT IN (13,14) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.snapshot.write')) AND (state='QUEUED' OR (state='RUNNING' AND operation IN (1,2,3,4,8,9,11))) AND expires_at>now() AND (SELECT count(*) FROM mgmt_tasks current_tasks WHERE current_tasks.gateway_id=$1 AND current_tasks.state='RUNNING' AND current_tasks.lease_until>now() AND current_tasks.dispatch_epoch=$2)<2 AND (lease_until IS NULL OR lease_until<now()) ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,tenant_id,gateway_id,operation,expires_at,idempotency_key,input").bind(gateway).bind(epoch).fetch_optional(&mut *transaction).await.map_err(internal)?;
+                let row=sqlx::query("UPDATE mgmt_tasks SET state='RUNNING',lease_until=now()+interval '10 seconds',dispatch_epoch=$2 WHERE id=(SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND binding_generation=$3 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2 AND g.binding_generation=$3) AND (operation<>12 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.configuration.update')) AND (operation NOT IN (13,14) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.snapshot.write')) AND (state='QUEUED' OR (state='RUNNING' AND operation IN (1,2,3,4,8,9,11))) AND expires_at>now() AND (SELECT count(*) FROM mgmt_tasks current_tasks WHERE current_tasks.gateway_id=$1 AND current_tasks.state='RUNNING' AND current_tasks.lease_until>now() AND current_tasks.dispatch_epoch=$2)<2 AND (lease_until IS NULL OR lease_until<now()) ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,tenant_id,gateway_id,operation,expires_at,idempotency_key,input").bind(gateway).bind(epoch).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
                 let payload = row.as_ref().map(|r| cipher.open_row(r,"input")).transpose().map_err(internal)?;
                 if let Some(ref r)=row {
                     db::event(&mut *transaction,tenant,"task",&r.get::<Uuid,_>("id").to_string(),0,json!({"state":"RUNNING"})).await.map_err(internal)?;
@@ -164,7 +183,7 @@ async fn run_stream(
                     tx.try_send(Ok(ConsoleFrame{payload:Some(console_frame::Payload::Command(command))})).map_err(|_|Status::resource_exhausted("RESOURCE_EXHAUSTED"))?;
                 }
                 if reconcile {
-                    let ids=reconciliation_batch(pool,gateway,epoch).await.map_err(internal)?;
+                    let ids=reconciliation_batch(pool,gateway,epoch,binding_generation).await.map_err(internal)?;
                     if !ids.is_empty() {
                         tx.try_send(Ok(ConsoleFrame{payload:Some(console_frame::Payload::TaskQuery(TaskQuery{command_ids:ids}))})).map_err(|_|Status::resource_exhausted("RESOURCE_EXHAUSTED"))?;
                     }
@@ -329,9 +348,10 @@ async fn reconciliation_batch(
     pool: &PgPool,
     gateway: &str,
     epoch: Uuid,
+    binding_generation: i64,
 ) -> anyhow::Result<Vec<String>> {
-    let rows=sqlx::query("UPDATE mgmt_tasks SET dispatch_epoch=$2,lease_until=now()+interval '10 seconds' WHERE id IN (SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2) AND state='UNKNOWN' AND (lease_until IS NULL OR lease_until<now()) ORDER BY lease_until NULLS FIRST,created_at LIMIT 2 FOR UPDATE SKIP LOCKED) RETURNING id")
-        .bind(gateway).bind(epoch).fetch_all(pool).await?;
+    let rows=sqlx::query("UPDATE mgmt_tasks SET dispatch_epoch=$2,lease_until=now()+interval '10 seconds' WHERE id IN (SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND binding_generation=$3 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2 AND g.binding_generation=$3) AND state='UNKNOWN' AND (lease_until IS NULL OR lease_until<now()) ORDER BY lease_until NULLS FIRST,created_at LIMIT 2 FOR UPDATE SKIP LOCKED) RETURNING id")
+        .bind(gateway).bind(epoch).bind(binding_generation).fetch_all(pool).await?;
     Ok(rows
         .iter()
         .map(|r| r.get::<Uuid, _>("id").to_string())
@@ -499,7 +519,7 @@ mod tests {
         let user = Uuid::new_v4();
         let epoch = Uuid::new_v4();
         sqlx::query("INSERT INTO mgmt_users(id,tenant_id,username,password_hash,role) VALUES($1,'test','test','unused','admin')").bind(user).execute(&db).await.unwrap();
-        sqlx::query("INSERT INTO mgmt_gateways(id,tenant_id,name,certificate_sha256,connection_epoch) VALUES('test','test','test','unused',$1)").bind(epoch).execute(&db).await.unwrap();
+        sqlx::query("INSERT INTO mgmt_gateways(id,tenant_id,name,certificate_sha256,connection_epoch,binding_generation) VALUES('test','test','test','unused',$1,1)").bind(epoch).execute(&db).await.unwrap();
         let write = Uuid::new_v4();
         let read = Uuid::new_v4();
         let queued = Uuid::new_v4();
@@ -508,7 +528,7 @@ mod tests {
             (read, 1, "RUNNING"),
             (queued, 5, "QUEUED"),
         ] {
-            sqlx::query("INSERT INTO mgmt_tasks(id,gateway_id,tenant_id,actor_id,operation,idempotency_key,state,expires_at,lease_until,dispatch_epoch) VALUES($1,'test','test',$2,$3,$4,$5,now()-interval '1 second',now()-interval '1 second',$6)")
+            sqlx::query("INSERT INTO mgmt_tasks(id,gateway_id,tenant_id,actor_id,operation,idempotency_key,state,binding_generation,expires_at,lease_until,dispatch_epoch) VALUES($1,'test','test',$2,$3,$4,$5,1,now()-interval '1 second',now()-interval '1 second',$6)")
                 .bind(id).bind(user).bind(op).bind(id.to_string()).bind(state).bind(epoch).execute(&db).await.unwrap();
         }
         let keydir = tempfile::tempdir().unwrap();
@@ -533,7 +553,7 @@ mod tests {
             assert_eq!(state, expected);
         }
         assert_eq!(
-            reconciliation_batch(&db, "test", epoch).await.unwrap(),
+            reconciliation_batch(&db, "test", epoch, 1).await.unwrap(),
             vec![write.to_string()]
         );
         let running = TaskResult {
@@ -577,13 +597,13 @@ mod tests {
             .await
             .unwrap();
         assert!(
-            reconciliation_batch(&db, "test", epoch)
+            reconciliation_batch(&db, "test", epoch, 1)
                 .await
                 .unwrap()
                 .is_empty()
         );
         assert_eq!(
-            reconciliation_batch(&db, "test", fresh).await.unwrap(),
+            reconciliation_batch(&db, "test", fresh, 1).await.unwrap(),
             vec![write.to_string()]
         );
         assert!(

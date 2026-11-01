@@ -453,6 +453,8 @@ async fn create_task(
     let r = if let Some(previous) = previous {
         previous
     } else {
+        let gateway_row=sqlx::query("SELECT binding_generation FROM mgmt_gateways WHERE id=$1 AND tenant_id=$2 AND enabled FOR SHARE").bind(&id).bind(&p.tenant_id).fetch_optional(&mut *tx).await.map_err(|_| ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "INTERNAL"))?.ok_or(ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"))?;
+        let binding_generation: i64 = gateway_row.get("binding_generation");
         let context = TaskContext {
             id: Uuid::new_v4(),
             tenant: p.tenant_id.clone(),
@@ -460,8 +462,8 @@ async fn create_task(
             operation,
         };
         let encrypted = app.cipher.seal(&context, "input", &payload)?;
-        sqlx::query("INSERT INTO mgmt_tasks(id,gateway_id,tenant_id,actor_id,operation,idempotency_key,expires_at,input) VALUES($1,$2,$3,$4,$5,$6,now()+interval '30 seconds',$7) RETURNING id,tenant_id,gateway_id,operation,state,input")
-        .bind(context.id).bind(&id).bind(&p.tenant_id).bind(p.id).bind(operation).bind(input.idempotency_key).bind(encrypted).fetch_one(&mut *tx).await?
+        sqlx::query("INSERT INTO mgmt_tasks(id,gateway_id,tenant_id,actor_id,operation,idempotency_key,binding_generation,expires_at,input) VALUES($1,$2,$3,$4,$5,$6,$7,now()+interval '30 seconds',$8) RETURNING id,tenant_id,gateway_id,operation,state,input")
+        .bind(context.id).bind(&id).bind(&p.tenant_id).bind(p.id).bind(operation).bind(input.idempotency_key).bind(binding_generation).bind(encrypted).fetch_one(&mut *tx).await?
     };
     let previous_input = app.cipher.open_row(&r, "input")?;
     // Additive optional payloads do not invalidate pre-upgrade idempotency receipts.

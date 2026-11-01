@@ -139,21 +139,26 @@ async fn main() -> Result<()> {
             .await?;
             return Ok(());
         }
-        "set-gateway-enabled" | "rotate-gateway-certificate" => {
+        "set-gateway-enabled" | "rotate-gateway-certificate" | "set-gateway-binding-generation" => {
             ensure!(
                 args.len() == 4,
-                "usage: set-gateway-enabled GATEWAY_ID true|false OR rotate-gateway-certificate GATEWAY_ID CERT_PEM"
+                "usage: set-gateway-enabled GATEWAY_ID true|false OR rotate-gateway-certificate GATEWAY_ID CERT_PEM OR set-gateway-binding-generation GATEWAY_ID GENERATION"
             );
             let mut tx = pool.begin().await?;
             let row=if args[1]=="set-gateway-enabled" {
                   let enabled=args[3].parse::<bool>().context("expected true or false")?;
                   sqlx::query("UPDATE mgmt_gateways SET enabled=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 WHERE id=$1 RETURNING tenant_id,revision")
                       .bind(&args[2]).bind(enabled).fetch_optional(&mut *tx).await?
-              } else {
+              } else if args[1]=="rotate-gateway-certificate" {
                   let data=fs::read(&args[3])?;
                   let cert=rustls_pemfile::certs(&mut data.as_slice()).next().context("no certificate")??;
                   sqlx::query("UPDATE mgmt_gateways SET certificate_sha256=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 WHERE id=$1 RETURNING tenant_id,revision")
                       .bind(&args[2]).bind(auth::hash(cert.as_ref())).fetch_optional(&mut *tx).await?
+              } else {
+                  let generation=args[3].parse::<i64>().context("expected positive binding generation")?;
+                  ensure!(generation >= 1, "binding generation must be positive");
+                  sqlx::query("UPDATE mgmt_gateways SET binding_generation=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 WHERE id=$1 RETURNING tenant_id,revision")
+                      .bind(&args[2]).bind(generation).fetch_optional(&mut *tx).await?
               }.context("gateway not found")?;
             use sqlx::Row;
             let tenant = row.get::<String, _>("tenant_id");
