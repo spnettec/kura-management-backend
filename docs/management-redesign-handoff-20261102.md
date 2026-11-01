@@ -109,3 +109,16 @@ transfer-signer；`transfer-identity --authorization-token` 只接受精确 clai
 agent packaging 23/23、Linux staged Rust 66/66 通过；formal agent candidate 9 已构建。
 证据见 agent `docs/evidence/signed-transfer-20261102.json`。外部审批流程和独立双中心运营
 仍未实施；console 包也尚未重建到该 CLI 版本。
+
+## 2026-11-02 补充：signed transfer E2E
+
+formal console candidate 14 / agent candidate 12 已交叉升级。console 14 可生成/签发 Ed25519
+one-time token；agent 12 可显式登记 original-center signer 并验证 unpadded token payload。
+token 绑定 generation 2→3、gateway、endpoint、新 CA/client hash。签名 transfer 成功后，center
+仍 generation 2 时 agent reconnect 被 FORBIDDEN；center 显式对齐 generation 3 后恢复在线。
+旧 generation 0 SUCCEEDED history 保持不变。
+
+host/macOS console 11 项、protocol 8 项；Linux staged console 11 项、protocol 8 项；
+agent Linux Rust 66 项、packaging Python 25 项全部通过。证据见 agent
+`docs/evidence/signed-transfer-e2e-20261102.json`。这仍是同一逻辑 center 的两个本机 endpoint，
+不宣称独立双中心运营；外部审批和 token 撤销仍未实现。
