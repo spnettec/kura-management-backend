@@ -21,7 +21,10 @@ const CHECK_VALUE: &[u8] = b"yofc-console-task-storage-v1";
 
 // Deliberately no Debug: neither key material nor plaintext belongs in logs.
 #[derive(Clone)]
-pub struct TaskCipher(Arc<Aes256Gcm>);
+pub struct TaskCipher {
+    cipher: Arc<Aes256Gcm>,
+    key: Arc<[u8; 32]>,
+}
 
 pub struct TaskContext {
     pub id: Uuid,
@@ -99,10 +102,11 @@ impl TaskCipher {
         );
         let mut key = [0u8; 32];
         file.read_exact(&mut key)?;
-        Ok(Self(Arc::new(
+        let cipher = Arc::new(
             Aes256Gcm::new_from_slice(&key)
                 .map_err(|_| anyhow::anyhow!("invalid task data key"))?,
-        )))
+        );
+        Ok(Self { cipher, key: Arc::new(key) })
     }
 
     fn seal_bytes(&self, aad: &[u8], clear: &[u8]) -> Result<Value> {
@@ -110,7 +114,7 @@ impl TaskCipher {
         let mut nonce = [0u8; 12];
         OsRng.fill_bytes(&mut nonce);
         let encrypted = self
-            .0
+            .cipher
             .encrypt(Nonce::from_slice(&nonce), Payload { msg: clear, aad })
             .map_err(|_| anyhow::anyhow!("task payload encryption failed"))?;
         Ok(json!({"$yofcTask":1,"nonce":hex::encode(nonce),"ciphertext":hex::encode(encrypted)}))
@@ -138,7 +142,7 @@ impl TaskCipher {
         );
         let nonce = hex::decode(nonce).context("invalid task nonce")?;
         let data = hex::decode(data).context("invalid task ciphertext")?;
-        self.0
+        self.cipher
             .decrypt(Nonce::from_slice(&nonce), Payload { msg: &data, aad })
             .map_err(|_| anyhow::anyhow!("task payload authentication failed"))
     }
@@ -236,6 +240,80 @@ impl TaskCipher {
             .await?;
         tx.commit().await?;
         Ok(migrated)
+    }
+
+    /// Rotate the bound storage key in one transaction. The old cipher proves
+    /// every retained payload, the new cipher rekeys it, and the binding is
+    /// updated only after all rows have been converted and verified.
+    pub async fn rotate_storage(&self, new: &TaskCipher, pool: &PgPool) -> Result<u64> {
+        let mut tx = pool.begin().await?;
+        sqlx::query("SET LOCAL lock_timeout='10s'")
+            .execute(&mut *tx)
+            .await?;
+        sqlx::query("SELECT pg_advisory_xact_lock(794654,3)")
+            .execute(&mut *tx)
+            .await?;
+        sqlx::query("LOCK TABLE mgmt_tasks IN ACCESS EXCLUSIVE MODE")
+            .execute(&mut *tx)
+            .await?;
+        let binding: (i32, Value) = sqlx::query_as(
+            "SELECT version,key_check FROM mgmt_task_crypto WHERE singleton",
+        )
+        .fetch_one(&mut *tx)
+        .await
+        .context("task storage is not initialized")?;
+        let (version, check) = binding;
+        ensure!(
+            version == 1,
+            "task storage key version must be 1 before rotation"
+        );
+        ensure!(
+            self.open_bytes(CHECK_AAD, &check)? == CHECK_VALUE,
+            "incorrect current task data key"
+        );
+        ensure!(
+            self.key != new.key,
+            "new task data key must differ from the current key"
+        );
+        let mut last: Option<Uuid> = None;
+        let mut rotated = 0;
+        loop {
+            let rows = sqlx::query("SELECT id,tenant_id,gateway_id,operation,input,result FROM mgmt_tasks WHERE ($1::uuid IS NULL OR id>$1) ORDER BY id LIMIT 100")
+                .bind(last).fetch_all(&mut *tx).await?;
+            if rows.is_empty() {
+                break;
+            }
+            for row in rows {
+                let context = TaskContext::from_row(&row)?;
+                let input: Value = row.try_get("input")?;
+                let result: Option<Value> = row.try_get("result")?;
+                ensure!(
+                    input.get("$yofcTask").is_some()
+                        && result
+                            .as_ref()
+                            .is_none_or(|r| r.get("$yofcTask").is_some()),
+                    "task payload is not fully encrypted; restore the current key"
+                );
+                let input = new.seal(&context, "input", &self.open(&context, "input", &input)?)?;
+                let result = result
+                    .map(|r| new.seal(&context, "result", &self.open(&context, "result", &r)?))
+                    .transpose()?;
+                sqlx::query("UPDATE mgmt_tasks SET input=$2,result=$3 WHERE id=$1")
+                    .bind(context.id)
+                    .bind(input)
+                    .bind(result)
+                    .execute(&mut *tx)
+                    .await?;
+                last = Some(context.id);
+                rotated += 1;
+            }
+        }
+        sqlx::query("UPDATE mgmt_task_crypto SET version=2,key_check=$1 WHERE singleton")
+            .bind(new.seal_bytes(CHECK_AAD, CHECK_VALUE)?)
+            .execute(&mut *tx)
+            .await?;
+        tx.commit().await?;
+        Ok(rotated)
     }
 }
 
@@ -468,9 +546,46 @@ mod tests {
         let (_wrong_dir, wrong) = fixture();
         assert!(wrong.prepare_storage(&pool).await.is_err());
         assert_eq!(cipher.prepare_storage(&pool).await.unwrap(), 0);
-        let restarted:Value=sqlx::query_scalar("SELECT jsonb_agg(jsonb_build_object('input',input,'result',result) ORDER BY id) FROM mgmt_tasks")
-            .fetch_one(&pool).await.unwrap();
-        assert_eq!(stored, restarted);
+        let rotated_dir = tempfile::tempdir().unwrap();
+        fs::set_permissions(rotated_dir.path(), fs::Permissions::from_mode(0o700)).unwrap();
+        let rotated_path = rotated_dir.path().join("task.key");
+        create_key(&rotated_path).unwrap();
+        let rotated = TaskCipher::load(&rotated_path).unwrap();
+        let tasks = rotated.rotate_storage(&cipher, &pool).await;
+        assert!(tasks.is_err(), "rotation arguments were reversed");
+        let migrated = cipher.rotate_storage(&rotated, &pool).await.unwrap();
+        assert_eq!(migrated, 102);
+        let version: i32 =
+            sqlx::query_scalar("SELECT version FROM mgmt_task_crypto WHERE singleton")
+                .fetch_one(&pool)
+                .await
+                .unwrap();
+        assert_eq!(version, 2);
+        assert!(cipher.prepare_storage(&pool).await.is_err());
+        assert_eq!(rotated.prepare_storage(&pool).await.unwrap(), 0);
+        for row in sqlx::query(
+            "SELECT id,tenant_id,gateway_id,operation,input,result FROM mgmt_tasks WHERE id<>$1",
+        )
+        .bind(bad)
+        .fetch_all(&pool)
+        .await
+        .unwrap()
+        {
+            assert_eq!(
+                rotated.open_row(&row, "input").unwrap(),
+                json!({"private":"test-only-input-secret"})
+            );
+            if row.get::<Option<Value>, _>("result").is_some() {
+                assert_eq!(
+                    rotated.open_row(&row, "result").unwrap(),
+                    json!({"private":"test-only-result-secret"})
+                );
+            }
+        }
+        let restarted_history:Value = sqlx::query_scalar(
+            "SELECT jsonb_agg(to_jsonb(t)-'input'-'result' ORDER BY id) FROM mgmt_tasks t",
+        ).fetch_one(&pool).await.unwrap();
+        assert_eq!(after, restarted_history);
         pool.close().await;
         sqlx::query(&format!("DROP SCHEMA {schema} CASCADE"))
             .execute(&admin)

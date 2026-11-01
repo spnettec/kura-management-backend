@@ -95,9 +95,25 @@ IDEA 门槛之后，既有 OrbStack Ubuntu24.04 arm64 的 `network-gateway` 通�
 - 加密范围是中心任务 input/result，业务标识及状态等元数据仍可查询。旧 WAL、旧数据页、备份和旧 agent
   results 历史未清除；不能声明整库加密、历史介质擦除或全系统敏感存储验收。正式中心包的 key备份/恢复/
   轮换/保留和细粒度敏感结果权限仍需继续实施。
-- 网络 UNKNOWN 业务结果证明及可审计结案仍 pending，随后才能继续配置 update、snapshot save/rollback。
+- 网络 UNKNOWN 业务结果证明已在 2026-11-01/02 补齐；配置 update、snapshot save/rollback 也已完成真实IDEA验证。
 - 新agent包与真实Linux Kura组合、旧revision5升级、26.04新版回归仍pending；完整OrbStack文件系统沙箱、
   amd64/物理有线/硬断电仍deferred。本轮没有重做包生命周期或更改网络provider。
 - 本轮 shell 的 cargo 不在 PATH，原 `~/.cargo/bin` 链接目标缺失；使用已经安装的
   `~/.rustup/toolchains/1.95.0-aarch64-apple-darwin/bin` 完成构建，未修改全局链接或重装工具链。
   两份127失败日志保留。代码未提交、推送或reset/clean，未触碰个人 ~/.kura-dev。
+
+
+## 2026-11-02 任务数据 key 轮换
+
+新增 `task-key-rotate CURRENT_KEY_FILE NEW_KEY_FILE`、`TaskCipher::rotate_storage`
+和迁移 `0010_task_key_rotation.sql`。轮换在单事务中排他锁定任务表，逐页用旧 key 解密、
+新 key 重加密并更新 AAD 密文；最后才把 `mgmt_task_crypto` 绑定升到 version 2。新 key
+必须已存在且与当前 key 不同，两个方向不同 key 拒绝可证明；失败整体回滚。
+
+显式 PostgreSQL 契约在既有 102 条任务基础上轮换：102 条全部转换，任务元数据历史一致，
+新旧 key 双向验证、错误方向拒绝、旧 key 失效、新 key 重启校验 0 条重写。
+开发中心实际停服轮换：原 key 文件保留未改，新 key 0600；version 升为 2，
+审计 `task.key.rotate/singleton/SUCCEEDED`，中心用新 key 重启后 `migrated_tasks=0`。
+旧 key 再次轮换被版本保护拒绝，无写入。轮换后原 dev-gateway `agent.status` 真实任务
+`f060cc15-5921-40a2-9417-d1db18a45111` 成功。本方案只轮换 PostgreSQL payload key；
+旧介质/WAL/备份/agent历史和文件系统恢复仍不在本轮范围。

@@ -24,6 +24,35 @@ async fn main() -> Result<()> {
         ensure!(args.len() == 3, "usage: task-key-init ABSOLUTE_KEY_PATH");
         return task_crypto::create_key(std::path::Path::new(&args[2]));
     }
+    if args.get(1).map(String::as_str) == Some("task-key-rotate") {
+        ensure!(
+            args.len() == 4,
+            "usage: task-key-rotate CURRENT_KEY_FILE NEW_KEY_FILE"
+        );
+        let old_path = std::path::Path::new(&args[2]);
+        let new_path = std::path::Path::new(&args[3]);
+        let old_bytes = fs::read(old_path).context("current task data key unavailable")?;
+        let new_bytes = fs::read(new_path).context("new task data key unavailable")?;
+        ensure!(
+            old_bytes != new_bytes,
+            "new task data key must differ from the current key"
+        );
+        let old = task_crypto::TaskCipher::load(old_path)?;
+        let new = task_crypto::TaskCipher::load(new_path)?;
+        let pool = db::connect(&env::var("DATABASE_URL").context("DATABASE_URL is required")?).await?;
+        let rotated = old.rotate_storage(&new, &pool).await?;
+        db::audit(
+            &pool,
+            "dev",
+            "local-admin",
+            "task.key.rotate",
+            "singleton",
+            "SUCCEEDED",
+        )
+        .await?;
+        tracing::info!(rotated_tasks = rotated, "task storage key rotated");
+        return Ok(());
+    }
     let cipher = task_crypto::TaskCipher::load(std::path::Path::new(
         &env::var("CONSOLE_DATA_KEY_FILE").context("CONSOLE_DATA_KEY_FILE is required")?,
     ))?;

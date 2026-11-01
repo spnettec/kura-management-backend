@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-11-02T00:30:00+08:00",
+  "scope": "console PostgreSQL task payload key rotation",
+  "implementation": {
+    "cli": "task-key-rotate CURRENT NEW",
+    "migration": "0010_task_key_rotation.sql",
+    "storageVersion": 2
+  },
+  "live": {
+    "centerStoppedForRotation": true,
+    "oldKeyFilePreserved": true,
+    "newKeyMode": "0o600",
+    "audit": [
+      "2288|dev|local-admin|task.key.rotate|singleton|SUCCEEDED|2026-11-02 00:27:19.794262+08",
+      "2"
+    ],
+    "postRotationTask": {
+      "createdAt": "2026-11-01T16:27:49.211107Z",
+      "error": null,
+      "gatewayId": "dev-gateway",
+      "id": "f060cc15-5921-40a2-9417-d1db18a45111",
+      "operation": 1,
+      "result": {
+        "agentAvailable": true,
+        "kuraAvailable": false,
+        "uptimeSeconds": 17379,
+        "version": "0.1.0"
+      },
+      "state": "SUCCEEDED"
+    },
+    "oldKeyReuseRejected": {
+      "exit": 1,
+      "reason": "task storage key version must be 1 before rotation"
+    },
+    "newKeyStartup": {
+      "migratedTasks": 0
+    }
+  },
+  "tests": {
+    "agentUnit": "66 passed",
+    "consoleTaskCryptoUnit": "5 passed",
+    "explicitPostgresRotationTest": "passed; 102 rows rekeyed"
+  },
+  "release": {
+    "debugConsoleBuilt": true
+  },
+  "boundary": {
+    "covers": "PostgreSQL input/result key only",
+    "doesNotCover": [
+      "WAL",
+      "old pages",
+      "backups",
+      "agent result history",
+      "filesystem recovery"
+    ]
+  },
+  "sourceSha256": {
+    "task_crypto.rs": "0ede0d261f306d966b8001ed8b5fe4f5357aa22ac425868bd34b6ca9c9e4a1a3",
+    "main.rs": "c27e57641c311a28fed9c7945bb96d46777fd884265690646db1e585146eb238",
+    "migration": "88c88902f06a7e17cde8037c9de710de79a38c022447dcd411158189f458d208"
+  }
+}
