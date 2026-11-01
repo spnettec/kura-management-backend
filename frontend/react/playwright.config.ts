@@ -3,10 +3,11 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { resolve } from "node:path";
 const dev = resolve(import.meta.dirname, "../../.phase1-dev");
+const tlsCert = process.env.KURA_BROWSER_TLS_CERT || `${dev}/server.pem`;
 const pubkey = execFileSync("openssl", [
   "x509",
   "-in",
-  `${dev}/server.pem`,
+  tlsCert,
   "-pubkey",
   "-noout",
 ]);
@@ -21,6 +22,7 @@ const liveProfiles: Record<string, string> = {
   configuration: "**/configuration-live.spec.ts",
   "configuration-update": "**/configuration-update-live.spec.ts",
   "outcome-snapshot": "**/configuration-outcome-snapshot-live.spec.ts",
+  "package-center": "**/package-center-live.spec.ts",
 };
 const liveProfile = process.env.KURA_BROWSER_LIVE_PROFILE;
 if (liveProfile && !liveProfiles[liveProfile]) {
@@ -36,16 +38,19 @@ export default defineConfig({
   fullyParallel: false,
   use: {
     locale: "zh-CN",
-    baseURL: "https://localhost:18443",
+    baseURL: process.env.KURA_BROWSER_BASE_URL || "https://localhost:18443",
     viewport: { width: 1440, height: 980 },
+    ignoreHTTPSErrors: !!process.env.KURA_BROWSER_IGNORE_TLS_ERRORS,
     launchOptions: {
       executablePath:
         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      args: [`--ignore-certificate-errors-spki-list=${spki}`],
+      args: process.env.KURA_BROWSER_IGNORE_TLS_ERRORS
+        ? ["--ignore-certificate-errors"]
+        : [`--ignore-certificate-errors-spki-list=${spki}`],
     },
   },
   reporter: [
     ["list"],
-    ["json", { outputFile: "../../target/phase1-browser.json" }],
+    ["json", { outputFile: process.env.KURA_BROWSER_REPORT_JSON || "../../target/phase1-browser.json" }],
   ],
 });

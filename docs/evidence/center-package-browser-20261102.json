@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "scope": "Installed console package React payload bilingual browser smoke over HTTPS",
+  "config": {
+    "playwrightProfile": "package-center",
+    "baseURLDuringTest": "https://localhost:28443",
+    "reason": "Host port 18443 is occupied by the separate always-running development center; package service was temporarily exposed through OrbStack on 28443",
+    "certificate": "package fixture server.pem",
+    "serverCertificateSha256Fingerprint": "43:D0:A7:61:1E:02:5B:AA:F7:75:C8:AF:F9:A5:67:86:AA:7A:FA:02:2B:48:21:98:18:04:FA:A0:08:EB:63:E7",
+    "tlsPolicy": "Chrome SPKI pin only; KURA_BROWSER_IGNORE_TLS_ERRORS was not set in the passing run"
+  },
+  "test": {
+    "file": "frontend/react/tests/package-center-live.spec.ts",
+    "title": "installed package payload supports bilingual login, gateway status and task history",
+    "expected": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "durationMs": 1972.049,
+    "typecheck": "tsc --noEmit passed"
+  },
+  "coverage": [
+    "Chinese login page title and labels",
+    "localized incorrect-password error then English error update",
+    "English login and Gateways heading",
+    "tenant-scoped gateway row with online tag and heartbeat",
+    "operator agent.status query",
+    "Tasks history shows Completed",
+    "reload and switch back to Chinese Tasks heading",
+    "logout returns to Chinese login",
+    "no uncaught browser page errors"
+  ],
+  "gateway": {
+    "id": "console-pkg-agent-20261102-005558",
+    "name": "console package fixture",
+    "online": true,
+    "agentVersion": "0.1.0",
+    "kuraAvailable": false
+  },
+  "evidence": [
+    "target/center-package-browser-20261102.json",
+    "target/center-package-browser-20261102-login-zh.png",
+    "target/center-package-browser-20261102-gateways-en.png",
+    "target/center-package-browser-20261102-tasks-en.png"
+  ],
+  "observedBehavior": {
+    "encryptedResultContextBinding": "Copying a valid encrypted result into controlled task rows with different task IDs made gateway/task list reporting fail closed; clearing those copied results restored normal API behavior. This is correct context binding, not a production defect."
+  },
+  "cleanup": {
+    "temporaryBrowserUsers": [
+      "package-browser",
+      "package-browser2"
+    ],
+    "temporaryUsersDisabled": true,
+    "temporaryPasswordFilesRemoved": true,
+    "temporaryAgentStopped": true,
+    "agentStateRetained": true,
+    "serviceRestored": "https=127.0.0.1:18443 grpc=127.0.0.1:18444 origin=https://localhost:18443",
+    "finalService": "active/enabled",
+    "finalUnsettledTasks": 0
+  },
+  "limits": [
+    "This is a focused package payload live smoke, not replacement of the full existing default browser collection.",
+    "Default console/i18n suites remain tied to the separate development-center fixture and were not rerun here."
+  ]
+}

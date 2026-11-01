@@ -43,3 +43,10 @@ postinst 保持不启动，显式 activate 后恢复 active/enabled。证据见
 `target/package/upgrade-guard-20261102-005558/`。
 
 下一步优先级不变：包 payload Playwright 中英文集合、remove/purge 契约、恢复矩阵和发行矩阵。
+
+## 2026-11-02 补充：包 payload 浏览器
+
+已新增 package-center profile 并通过双语 HTTPS browser smoke：登录错误文案、英文登录、
+gateway Online、operator status、Tasks Completed、reload/中文切换、logout、无 pageerror。
+测试端口 28443 只为绕开宿主开发中心 18443；测试后服务已恢复 18443。临时账号禁用、agent
+停止但 state 保留。证据见 `docs/evidence/center-package-browser-20261102.json`。

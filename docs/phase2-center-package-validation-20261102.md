@@ -74,3 +74,20 @@ SUCCEEDED，数据库未终结任务为 0。
 原始输出在 `target/package/upgrade-guard-20261102-005558/`；机器可核对记录在
 `docs/evidence/center-package-upgrade-guard-20261102.json`。该验证不清理 state，只变更
 本轮新建 fixture 的受控 task 状态，并把 guard 建/重置/终结写入 fixture audit。
+
+## 包 payload 浏览器烟测
+
+新增 `package-center` Playwright profile 和 `package-center-live.spec.ts`。因宿主 18443
+被独立开发中心占用，测试期把包 fixture 临时放到 OrbStack `localhost:28443`，使用包内
+React payload、包证书 SPKI pin 和临时 operator。测试通过中文登录页、错误文案切英文、
+英文登录、gateway Online、operator `agent.status`、Tasks Completed、reload、切回中文、
+logout 和无 pageerror。1 expected passed，0 failed/skipped/unexpected/flaky。
+
+测试后停掉临时 agent，保留其 SQLite state；禁用临时 browser 账号并清理密码文件；包服务
+恢复为 `127.0.0.1:18443`、origin `https://localhost:18443`，PostgreSQL 未终结任务为 0。
+guard fixture 中复制合法 encrypted result 到不同 task ID 后，列表接口正确 fail closed；
+清空这些复制 result 后恢复。这是 context binding 生效的证据，不是生产缺陷。
+
+证据：`docs/evidence/center-package-browser-20261102.json`，
+`target/center-package-browser-20261102.json` 和三张截图。此为包 payload focused live
+smoke；既有开发中心专用完整浏览器集合不宣称被替代。
