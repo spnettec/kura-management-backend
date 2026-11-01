@@ -127,7 +127,7 @@ async fn main() -> Result<()> {
                         .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_'),
                 "invalid gateway id"
             );
-            sqlx::query("INSERT INTO mgmt_gateways(id,tenant_id,name,certificate_sha256) VALUES($1,$2,$3,$4)").bind(&args[2]).bind(&args[3]).bind(&args[4]).bind(auth::hash(cert.as_ref())).execute(&pool).await?;
+            sqlx::query("INSERT INTO mgmt_gateways(id,tenant_id,name,certificate_sha256,binding_generation) VALUES($1,$2,$3,$4,1)").bind(&args[2]).bind(&args[3]).bind(&args[4]).bind(auth::hash(cert.as_ref())).execute(&pool).await?;
             db::audit(
                 &pool,
                 &args[3],

@@ -253,7 +253,7 @@ struct Page {
     offset: Option<i64>,
 }
 fn gateway_json(r: sqlx::postgres::PgRow) -> Value {
-    json!({"id":r.get::<String,_>("id"),"name":r.get::<String,_>("name"),"online":r.get::<bool,_>("online"),"enabled":r.get::<bool,_>("enabled"),"kuraAvailable":r.get::<bool,_>("kura_available"),"lastSeen":r.get::<Option<DateTime<Utc>>,_>("last_seen"),"agentVersion":r.get::<Option<String>,_>("agent_version"),"capabilities":r.get::<Value,_>("capabilities"),"revision":r.get::<i64,_>("revision"),"uptimeSeconds":r.get::<i64,_>("uptime_seconds")})
+    json!({"id":r.get::<String,_>("id"),"name":r.get::<String,_>("name"),"online":r.get::<bool,_>("online"),"enabled":r.get::<bool,_>("enabled"),"kuraAvailable":r.get::<bool,_>("kura_available"),"lastSeen":r.get::<Option<DateTime<Utc>>,_>("last_seen"),"agentVersion":r.get::<Option<String>,_>("agent_version"),"capabilities":r.get::<Value,_>("capabilities"),"revision":r.get::<i64,_>("revision"),"uptimeSeconds":r.get::<i64,_>("uptime_seconds"),"bindingGeneration":r.get::<i64,_>("binding_generation")})
 }
 const GATEWAYS: &str = "SELECT *,coalesce(last_seen>now()-interval '15 seconds' AND enabled,false) AS online FROM mgmt_gateways";
 async fn gateways(

@@ -300,8 +300,13 @@ Web/REST 会话和 Kura 密钥库；Kura 停止不影响注册、心跳和主机
 连接 epoch 不能替代跨中心绑定代次。未决有副作用事务须先完成、回退或明确进入
 人工恢复状态，不能将旧中心未决任务直接交给新中心。旧中心可保留历史，失联时按
 心跳超时标离线；旧中心不可达不妨碍有权限的本机恢复，但不承诺同步删除其数据库记录。
-这是实施约束；首次引导、审批及跨中心转移仍为 pending，不能用当前预登记证书和
-单中心连接 epoch 的测试宣称已完成转移验收。
+
+2026-11-02 实施基础：center Gateway API 暴露 `bindingGeneration`，数据库持久化
+`mgmt_gateways.binding_generation >= 1`；agent identity 持久化
+`AGENT_BINDING_GENERATION=1`，pre-generation same-center identity 只能通过显式
+`migrate-binding-generation` 补齐。缺失、变更或第二中心 import 仍会拒绝，普通注册不会
+抢占归属。签名引导、审批和真正的跨中心 transfer 仍未实施；不能把该持久代次基础宣称
+为完整转移验收。
 
 ### 6.2 重连与执行语义
 

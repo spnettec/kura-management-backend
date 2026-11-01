@@ -1253,6 +1253,11 @@ export interface components {
             capabilities: string[];
             revision: number;
             uptimeSeconds: number;
+            /**
+             * Format: int64
+             * @description Cross-center binding generation. This persists across same-center reconnects and certificate renewal; it is not a connection epoch.
+             */
+            bindingGeneration: number;
         };
         Session: {
             id: string;
@@ -1287,7 +1292,7 @@ export interface components {
         LoginResult: {
             csrf: string;
         };
-        /** @description network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. */
+        /** @description network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed. */
         CreateTask: {
             /** @enum {string} */
             operation: "agent.status" | "kura.configuration.list" | "kura.snapshot.list" | "network.inspect" | "network.prepare" | "network.confirm" | "network.rollback" | "network.transaction" | "network.takeover.plan" | "network.takeover.prepare" | "kura.configuration.get" | "kura.configuration.update" | "kura.snapshot.save" | "kura.snapshot.rollback";
@@ -1353,7 +1358,7 @@ export interface components {
             /** @enum {string} */
             locale: "en" | "zh";
         };
-        /** @description Numeric values are decimal strings to preserve Java long precision. A redacted property has no value. Defaults and options are never exported. This projection cannot identify arbitrary secrets embedded in user scripts. */
+        /** @description Numeric values are decimal strings to preserve Java long precision. A redacted property has no value. Defaults and secret option lists are never exported. Non-secret option values are exported only so a reviewed component can be edited. This projection cannot identify arbitrary secrets embedded in user scripts. */
         KuraConfigurationProperty: {
             id: string;
             /** @enum {string} */
@@ -1376,7 +1381,7 @@ export interface components {
                 label?: string;
             }[];
         };
-        /** @description Successful operation 11 task result; bounded to 200 KiB by the local bridge. Online read through the OSGi ConfigurationService, independent of Kura Web credentials. */
+        /** @description Successful operation 11 task result; bounded to 200 KiB by the local bridge. Online read through the OSGi ConfigurationService, independent of Kura Web credentials. This is not a generic configuration editor. directConfigAdminCas is always false: direct ConfigurationAdmin writers are not atomically locked. */
         KuraConfigurationView: {
             pid: string;
             /** @enum {string} */
@@ -1392,11 +1397,14 @@ export interface components {
             componentKind?: "CONFIGURABLE" | "SELF_CONFIGURING";
             /** @enum {string} */
             conditionalWrite?: "PROVIDER_MONITOR" | "COMPONENT_VIEW";
+            /** @constant */
             directConfigAdminCas?: false;
         };
+        /** @description Saves the current Kura snapshot. expectedLatestId is 0 when none exist. Does not rewind confirmed system network. */
         KuraSnapshotSave: {
             expectedLatestId: string;
         };
+        /** @description Rolls back to an explicit older snapshot. Does not rewind confirmed system network. Components absent from that snapshot may return to defaults through the existing Kura rollback path. */
         KuraSnapshotRollback: {
             snapshotId: string;
             expectedLatestId: string;

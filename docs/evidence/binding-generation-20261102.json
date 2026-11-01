@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "scope": "Persistent cross-center binding generation foundation; explicit local migration; normal second-center registration remains non-preemptive",
+  "implementation": {
+    "console": {
+      "migration": "migrations/0011_binding_generation.sql",
+      "column": "mgmt_gateways.binding_generation bigint NOT NULL DEFAULT 1 CHECK >= 1",
+      "registration": "register-gateway inserts binding_generation=1",
+      "api": "Gateway responses expose bindingGeneration",
+      "certificateRenewal": "rotate-gateway-certificate preserves the binding row/generation"
+    },
+    "agent": {
+      "identity": "AGENT_BINDING_GENERATION=1 persisted in root-owned agent.env",
+      "check": "missing or changed generation blocks startup",
+      "migration": "migrate-binding-generation only upgrades a proven same-center pre-generation identity",
+      "secondCenter": "existing different identity import remains rejected without force"
+    }
+  },
+  "tests": {
+    "agentPackaging": {
+      "framework": "packaging/test_packaging.py",
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "coverage": [
+        "second console import rejected without identity change",
+        "same-center generation migration is explicit",
+        "generation persisted after import",
+        "missing generation blocks check"
+      ],
+      "log": "target/package/console-deb-20261102-binding-generation/agent-tests.log"
+    },
+    "consoleHostRust": {
+      "passed": 11,
+      "failed": 0,
+      "ignored": 2,
+      "protocolPassed": 8,
+      "protocolIgnored": 0
+    },
+    "consoleLinuxStaged": {
+      "suite": "cargo test --locked; cargo build --release --locked",
+      "consolePassed": 11,
+      "consoleIgnored": 2,
+      "mtlsIgnoredEnvironment": 3,
+      "protocolPassed": 8,
+      "releaseBinarySha256": "d00e9be780f6e67b280b4efda24717e4f925746238db084e57701c9980e0dd23",
+      "maximumGlibc": "2.34",
+      "log": "target/package/console-deb-20261102-binding-generation/rust-linux-build.log"
+    },
+    "react": {
+      "openapiGenerate": "passed",
+      "typecheck": "passed",
+      "build": "passed; unchanged validated asset hashes"
+    }
+  },
+  "packageCandidate": {
+    "version": "0.1.0~package20261102-12",
+    "architecture": "arm64",
+    "sha256": "27677754c48509793603040d50eba03fc7cf14f40c85742a1990466665767479",
+    "binarySha256": "d00e9be780f6e67b280b4efda24717e4f925746238db084e57701c9980e0dd23",
+    "maximumGlibc": "2.34",
+    "webFiles": 3,
+    "sourceManifestSha256": "f5da87752200d6defc52fa0ad45c5bdf87aecb15a6a8934462603b1c3c4c68b0"
+  },
+  "installedContract": {
+    "vm": "yofc-management-network-20261101",
+    "upgradeFrom": "0.1.0~package20261102-11",
+    "upgradeTo": "0.1.0~package20261102-12",
+    "installExitCode": 0,
+    "migrate": "migrated_tasks=0",
+    "check": "ok/assets=1",
+    "activate": "active/enabled",
+    "health": "protocolMajor=1 status=ready",
+    "databaseColumn": "binding_generation|bigint|1",
+    "gatewayRow": {
+      "id": "console-pkg-agent-20261102-005558",
+      "bindingGeneration": 1,
+      "connected": true
+    },
+    "authenticatedApi": {
+      "temporaryUser": "binding-contract",
+      "login": 200,
+      "gatewayBindingGeneration": 1,
+      "sessionDeleted": true,
+      "temporaryUserDisabled": true,
+      "evidence": "target/package/console-deb-20261102-binding-generation/gateways.json"
+    }
+  },
+  "limits": {
+    "signedTransferImplemented": false,
+    "approvalWorkflowImplemented": false,
+    "crossCenterTransferAccepted": false,
+    "normalSecondCenterRegistrationCannotPreempt": "agent identity import remains explicit and refuses existing different identity; console registration in another database does not mutate the agent",
+    "agentPackageCandidateRebuildDeferred": "agent packaging source changed; a new Linux agent deb is required before formal release",
+    "platforms": ["Ubuntu 24.04 arm64 fixture only"]
+  },
+  "safety": {
+    "oldFixtureStateDeleted": false,
+    "resetOrCleanUsed": false,
+    "pushed": false,
+    "connected1921682125": false
+  }
+}

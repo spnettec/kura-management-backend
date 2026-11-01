@@ -1355,6 +1355,12 @@
           },
           "uptimeSeconds": {
             "type": "integer"
+          },
+          "bindingGeneration": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "Cross-center binding generation. This persists across same-center reconnects and certificate renewal; it is not a connection epoch."
           }
         },
         "required": [
@@ -1367,7 +1373,8 @@
           "agentVersion",
           "capabilities",
           "revision",
-          "uptimeSeconds"
+          "uptimeSeconds",
+          "bindingGeneration"
         ]
       },
       "Session": {
