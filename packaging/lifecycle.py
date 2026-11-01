@@ -16,21 +16,33 @@ def lifecycle(script, action):
             user = pwd.getpwnam(SERVICE_USER)
         if user.pw_uid == 0:
             raise RuntimeError('Console service user must not be root')
-        for name in [CONFIG, STATE, LOGDIR]:
+        config = setup.path(CONFIG)
+        config.mkdir(parents=True, exist_ok=True, mode=0o700)
+        service_gid = grp.getgrnam(SERVICE_USER).gr_gid
+        info = config.stat()
+        group_private = info.st_mode & 0o070 == 0 or (info.st_gid == service_gid and info.st_mode & 0o020 == 0)
+        if info.st_uid != 0 or info.st_mode & 0o007 or not group_private:
+            raise RuntimeError('Console configuration directory must be root-owned and inaccessible to other identities')
+        for name in [STATE, LOGDIR]:
             path = setup.path(name)
             path.mkdir(parents=True, exist_ok=True, mode=0o700)
-            if path.stat().st_uid != user.pw_uid or path.stat().st_mode & 0o077:
-                raise RuntimeError('Console retained directories must be service-user owned and private')
+            info = path.stat()
+            if info.st_uid != user.pw_uid:
+                if info.st_uid != 0:
+                    raise RuntimeError('Console state directory has an unexpected owner')
+                setup.run(['/usr/bin/chown', f'{SERVICE_USER}:{SERVICE_USER}', str(path)], check=True)
+            if path.stat().st_mode & 0o077:
+                raise RuntimeError('Console state directories must be private')
         marker = setup.path(STATE + '/.package-v1')
         if not marker.exists():
             setup.put(marker, 'kura-management-console-v1\n', 0o600)
             setup.run(['chown', f'{SERVICE_USER}:{SERVICE_USER}', str(marker)], check=True)
         setup.systemctl('daemon-reload')
-        print('Installed without starting. Configure PostgreSQL, TLS and task key, migrate, then explicitly activate.')
+        print('Installed without starting. Configure TLS and task key, migrate, then explicitly activate.')
     elif script == 'prerm' and action in ('remove', 'upgrade', 'deconfigure'):
+        setup.systemctl('stop', UNIT)
         setup.guard_tasks()
         setup.inactive()
-        setup.systemctl('stop', UNIT)
         if action == 'remove':
             setup.systemctl('disable', UNIT)
     elif script == 'postrm':

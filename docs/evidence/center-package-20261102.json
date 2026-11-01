@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "scope": "Formal kura-management-console Debian package build and Ubuntu 24.04 arm64 OrbStack install/start/API validation",
+  "source": {
+    "stage": "target/package/console-source-20261102-012012",
+    "sourceManifest": "target/package/console-deb-20261102-012012/source-manifest.json",
+    "sourceManifestSha256": "25adbad43d8639c4b395104b22fdfd8c331861206b192a3db1f05ecfa6e66b40",
+    "sourceFiles": 65,
+    "protocolSourceIncluded": "crates/management-protocol/proto/management/v1/control.proto"
+  },
+  "build": {
+    "react": "staged source npm ci; tsc --noEmit; vite build",
+    "reactLog": "target/package/console-deb-20261102-012012/react-build.log",
+    "reactAssets": [
+      "assets/index-BiVbv8M2.js",
+      "assets/index-jiS9RGqX.css",
+      "index.html"
+    ],
+    "rustLinux": "staged source cargo test --locked followed by cargo build --release --locked in OrbStack Ubuntu 24.04 arm64",
+    "rustLog": "target/package/console-deb-20261102-012012/rust-linux-build-and-test.log",
+    "cargoTests": {
+      "executedPassed": 19,
+      "ignored": 5,
+      "failed": 0
+    },
+    "binarySha256": "6a69ce0443a20b31be145acd206639ad969e739f9ff10af2d7a279f7e5e821b9",
+    "binaryMaximumGlibc": "2.34"
+  },
+  "package": {
+    "version": "0.1.0~package20261102-11",
+    "architecture": "arm64",
+    "path": "target/package/console-deb-20261102-012012/kura-management-console_0.1.0~package20261102-11_arm64.deb",
+    "sha256": "c9f20f293ba3038966fa1d5a9856e6af464f1800d0ab4bb5786991a84645c12b",
+    "webFiles": 3,
+    "staticAudit": "maintainer scripts compile; preinst/prerm runtime checks; init wrapper mapping; stop-before-guard order; no destructive PostgreSQL path"
+  },
+  "installation": {
+    "vm": "yofc-management-network-20261101",
+    "os": "Ubuntu 24.04.5 LTS arm64",
+    "fixture": "console_pkg_20261102_005558 / console_role_20261102_005558",
+    "preinstalledPostgresql": "postgresql 16.15",
+    "initialInstall": {
+      "candidate": "0.1.0~package20261102-4",
+      "preinst": "passed on newly migrated-empty database",
+      "postinst": "failed at marker write because Setup.put received Path",
+      "reinstall": "0.1.0~package20261102-5 succeeded; inactive and disabled"
+    },
+    "upgrades": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "finalVersion": "0.1.0~package20261102-11",
+    "finalState": "target/package/console-package-final-state-20261102-012012.json"
+  },
+  "configuration": {
+    "databaseUrlCredential": "present in root-owned 0600 env; omitted from evidence",
+    "consoleEnv": "root:root 0600 in root:yofc-console 0750 directory",
+    "tlsKey": "root:yofc-console 0640",
+    "taskKey": "yofc-console:yofc-console 0600",
+    "migrate": "migrated_tasks=0",
+    "check": {
+      "ok": true,
+      "assets": 1
+    }
+  },
+  "service": {
+    "active": true,
+    "enabled": true,
+    "pid": 37299,
+    "uidGid": "990/983",
+    "capEff": "0000000000000000",
+    "orbstackEffectiveNoNewPrivileges": false,
+    "orbstackEffectiveProtectSystem": "no",
+    "orbstackEffectiveProtectHome": "no",
+    "note": "OrbStack global LXC drop-in overrides hardening values; production unit retains its own settings"
+  },
+  "businessSmoke": {
+    "healthReady": "GET /health/ready returned protocolMajor=1 status=ready",
+    "login": "created temporary package-validator accounts; HTTPS login returned 200; session/gateways reads authenticated",
+    "gatewayId": "console-pkg-agent-20261102-005558",
+    "gatewayOnline": true,
+    "agentVersion": "0.1.0",
+    "gatewayEvidence": [
+      "target/package/console-deb-20261102-012012/gateways.json",
+      "target/package/console-deb-20261102-012012/gateway-detail.json"
+    ],
+    "agentStatusTask": {
+      "id": "df4e9e44-f10d-4a35-802f-d2110f5e1416",
+      "operation": "agent.status",
+      "state": "SUCCEEDED",
+      "result": {
+        "agentAvailable": true,
+        "kuraAvailable": false,
+        "uptimeSeconds": 77,
+        "version": "0.1.0"
+      },
+      "evidence": "target/package/console-deb-20261102-012012/agent-status-task.json"
+    },
+    "agentStopAfterSmoke": "stopped with state retained; old phase2 fixture agent and link remained active"
+  },
+  "defectsFoundAndFixed": [
+    "staging omitted protocol .proto input",
+    "web manifest rejected required directories",
+    "preinst task guard used a parsed psql form that ignored URL credentials and failed before initial migration",
+    "preinst runtime checks made fresh install impossible without already-installed payload/key",
+    "postinst marker write passed Path to Setup.path",
+    "wrapper command names and arity did not match task-key-* CLI; key commands now run as yofc-console through runuser",
+    "activate held setup lock while ExecStartPre check waited for same lock",
+    "prerm checked inactive before stopping, allowing auto-restart upgrade race",
+    "TLS/config permission contract corrected to root:yofc-console traversal and 0640 private key"
+  ],
+  "limitsAndDeferred": [
+    "Ubuntu 24.04 arm64 only; amd64 and 26.04 deferred",
+    "VM reboot, physical gateway, real NM/cloud-init handoff deferred",
+    "OrbStack global LXC drop-in overrides systemd hardening; full production hardening deferred",
+    "package upgrade guard with real QUEUED/RUNNING/UNKNOWN task not exercised in this center fixture",
+    "browser UI login on installed package payload not re-run in this increment; React build/typecheck and HTTPS payload/API checks passed"
+  ],
+  "safety": {
+    "noPush": true,
+    "noResetOrClean": true,
+    "oldFixtureStateDeleted": false,
+    "connected1921682125": false,
+    "devCenterOrKuraRuntimeCleaned": false
+  }
+}

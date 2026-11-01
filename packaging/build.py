@@ -23,6 +23,7 @@ def source_files(root):
     sources += [root / 'Cargo.toml', root / 'Cargo.lock', root / 'rust-toolchain.toml']
     sources += sorted((root / 'crates').glob('**/*.rs'))
     sources += sorted((root / 'crates').glob('**/Cargo.toml'))
+    sources += sorted((root / 'crates').glob('**/*.proto'))
     sources += sorted((root / 'migrations').glob('*.sql'))
     react = root / 'frontend/react'
     sources += [react / 'package.json', react / 'package-lock.json', react / 'index.html', react / 'tsconfig.json', react / 'vite.config.ts']
@@ -40,7 +41,7 @@ def stage(destination):
     destination.mkdir(parents=True)
     for source in source_files(ROOT):
         if source.is_symlink() or not source.is_file():
-            if source.suffix in {'.rs', '.sql', '.ts', '.tsx'} or source.name in {'Cargo.toml', 'package.json', 'package-lock.json', 'index.html', 'tsconfig.json', 'vite.config.ts'}:
+            if source.suffix in {'.rs', '.sql', '.ts', '.tsx', '.proto'} or source.name in {'Cargo.toml', 'package.json', 'package-lock.json', 'index.html', 'tsconfig.json', 'vite.config.ts'}:
                 raise RuntimeError(f'Missing release source: {source}')
             continue
         relative = source.relative_to(ROOT)
@@ -62,8 +63,10 @@ def web_manifest(web_dist):
         raise RuntimeError('Web distribution is missing index.html')
     records = []
     for path in sorted(web_dist.rglob('*')):
+        if path.is_dir():
+            continue
         if path.is_symlink() or not path.is_file():
-            raise RuntimeError('Web distribution must contain only regular files')
+            raise RuntimeError('Web distribution must contain only regular files and directories')
         records.append({'path': str(path.relative_to(web_dist)), 'sha256': sha(path)})
     if not any(record['path'].startswith('assets/') and record['path'].endswith('.js') for record in records):
         raise RuntimeError('Web distribution has no JavaScript assets')
