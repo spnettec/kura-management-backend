@@ -99,3 +99,13 @@ console package candidate 13 和 agent candidate 8 已交叉实装。先观测 a
 center generation 1 被 FORBIDDEN 拒绝；将 fixture center 行显式对齐 2 后 agent 立即连接。
 host/macOS 与 Linux staged Rust 全部通过。证据见 agent
 `docs/evidence/binding-handshake-20261102.json`。
+
+## 2026-11-02 补充：signed transfer token 基础
+
+console 新增 `generate-transfer-key` / `issue-gateway-transfer`，使用 Ed25519 签发一次性
+`YOFC-AGENT-TRANSFER-v1` token，有效期不超过 900 秒，并绑定新旧 binding generation、
+gateway、endpoint 和新 CA/client hash。agent identity 可显式导入 registered
+transfer-signer；`transfer-identity --authorization-token` 只接受精确 claim 和有效签名。
+agent packaging 23/23、Linux staged Rust 66/66 通过；formal agent candidate 9 已构建。
+证据见 agent `docs/evidence/signed-transfer-20261102.json`。外部审批流程和独立双中心运营
+仍未实施；console 包也尚未重建到该 CLI 版本。
