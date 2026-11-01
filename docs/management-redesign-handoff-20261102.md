@@ -62,3 +62,15 @@ purge 后重装可显式 migrate/check/activate 并恢复 health ready。证据�
 `docs/evidence/center-package-lifecycle-20261102.json` 和
 `target/package/lifecycle-20261102-005558/`。下一批继续 console/agent 独立归属流程、
 发行矩阵和剩余 deferred 边界；不把本 fixture 结果推广到物理网关或 amd64/26.04。
+
+## 2026-11-02 补充：formal agent 包与归属非抢占
+
+重新生成当前 protocol crate 后，formal agent 包推进到
+`kura-management-agent_0.1.0~package20261102-6_arm64.deb`。Linux staged source 66 项 Rust
+测试全部通过，release build 通过。安装后不自动启动；对 console package candidate 12 显式
+导入 identity，`AGENT_BINDING_GENERATION=1` 持久化，activate 后 online。
+
+再次以另一 endpoint、相同 gateway 和相同证书导入被拒绝，返回 explicit transfer/recovery
+required；agent env、CA、cert 和 key SHA256 全部不变。随后原中心连接恢复 online。证据见
+agent `docs/evidence/binding-generation-package-runtime-20261102.json`。这证明普通另一中心
+登记不会抢占归属，但签名转移、审批和代次递增仍未实施。
