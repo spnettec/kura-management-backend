@@ -86,3 +86,16 @@ formal agent candidate 已升级到 `0.1.0~package20261102-7`；Linux staged 66 
 release build 通过，本机 rebind 实测成功并恢复在线。证据见 agent
 `docs/evidence/local-rebind-20261102.json`。由于 fixture 使用同一逻辑中心的两个本机名，
 这只证明本机 rebind 机制，不宣称独立双中心运营；签名授权/审批仍未实现。
+
+## 2026-11-02 补充：binding generation 握手与任务隔离
+
+protocol Hello 新增 `binding_generation=6`；console connect 要求正数且精确匹配
+`mgmt_gateways.binding_generation`，任务 admission 保存当时 gateway generation。generation
+变化时，旧 QUEUED/RUNNING 标记 `EXPIRED/BINDING_GENERATION_CHANGED`；dispatch 和 UNKNOWN
+reconciliation 只匹配当前 generation。agent 从 identity env 发送 generation，缺失或零值
+拒绝启动。UNKNOWN 历史保留原 generation，不迁移。
+
+console package candidate 13 和 agent candidate 8 已交叉实装。先观测 agent generation 2 对
+center generation 1 被 FORBIDDEN 拒绝；将 fixture center 行显式对齐 2 后 agent 立即连接。
+host/macOS 与 Linux staged Rust 全部通过。证据见 agent
+`docs/evidence/binding-handshake-20261102.json`。
