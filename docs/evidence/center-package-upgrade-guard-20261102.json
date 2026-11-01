@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "scope": "Final console package preinst/prerm maintenance guard with controlled QUEUED/RUNNING/UNKNOWN rows and settled reinstall",
+  "vm": "yofc-management-network-20261101",
+  "package": {
+    "name": "kura-management-console",
+    "versionBeforeAndAfter": "0.1.0~package20261102-11",
+    "sha256": "c9f20f293ba3038966fa1d5a9856e6af464f1800d0ab4bb5786991a84645c12b"
+  },
+  "database": "console_pkg_20261102_005558",
+  "controlledTasks": [
+    {
+      "id": "55f0ae60-0001-4a10-9a01-000000000001",
+      "idempotencyKey": "upgrade-guard-queued-20261102-005558",
+      "statesTested": [
+        "QUEUED"
+      ],
+      "finalState": "SUCCEEDED"
+    },
+    {
+      "id": "55f0ae60-0002-4a10-9a01-000000000002",
+      "idempotencyKey": "upgrade-guard-running-20261102-005558",
+      "statesTested": [
+        "RUNNING"
+      ],
+      "finalState": "SUCCEEDED"
+    },
+    {
+      "id": "55f0ae60-0003-4a10-9a01-000000000003",
+      "idempotencyKey": "upgrade-guard-unknown-20261102-005558",
+      "statesTested": [
+        "UNKNOWN"
+      ],
+      "finalState": "SUCCEEDED"
+    }
+  ],
+  "directScriptChecks": {
+    "preinstUnsettled": {
+      "exitCode": 1,
+      "messageMatched": "Settle queued, running or unknown console tasks before package maintenance",
+      "evidence": "target/package/upgrade-guard-20261102-005558/preinst-unsettled.err"
+    },
+    "prermUnsettled": {
+      "exitCode": 1,
+      "serviceAfter": "inactive",
+      "messageMatched": "Settle queued, running or unknown console tasks before package maintenance",
+      "evidence": "target/package/upgrade-guard-20261102-005558/prerm-unsettled.err"
+    },
+    "preinstSettled": {
+      "exitCode": 0,
+      "evidence": "target/package/upgrade-guard-20261102-005558/preinst-settled.rc"
+    },
+    "prermSettled": {
+      "exitCode": 0,
+      "evidence": "target/package/upgrade-guard-20261102-005558/prerm-settled.rc"
+    }
+  },
+  "actualDpkgReinstall": {
+    "rearmedStates": [
+      "QUEUED",
+      "RUNNING",
+      "UNKNOWN"
+    ],
+    "dpkgExitCode": 1,
+    "versionRemained": "0.1.0~package20261102-11",
+    "oldPrermRejected": true,
+    "newPreinstRejected": true,
+    "evidence": [
+      "target/package/upgrade-guard-20261102-005558/dpkg/rejected.rc",
+      "target/package/upgrade-guard-20261102-005558/dpkg/rejected.err"
+    ],
+    "settledDpkgExitCode": 0,
+    "postInstallService": "inactive",
+    "explicitActivate": {
+      "active": true,
+      "enabled": true,
+      "pid": 38389
+    },
+    "acceptedEvidence": [
+      "target/package/upgrade-guard-20261102-005558/dpkg/accepted.rc",
+      "target/package/upgrade-guard-20261102-005558/dpkg/accepted.out"
+    ]
+  },
+  "finalUnsettledCount": 0,
+  "auditOperations": {
+    "package.guard.create": 3,
+    "package.guard.rearm": 3,
+    "package.guard.settle": 6
+  },
+  "safety": {
+    "oldFixtureStateChanged": false,
+    "resetOrCleanUsed": false,
+    "stateDeleted": false,
+    "pushed": false,
+    "connected1921682125": false
+  }
+}

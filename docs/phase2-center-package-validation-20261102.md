@@ -58,3 +58,19 @@ gateway JSON、agent.status receipt 和最终 service state 保存在
 生产 systemd hardening 和带真实 QUEUED/RUNNING/UNKNOWN 任务的升级 guard 仍 deferred/pending。
 浏览器 UI 在包 payload 的静态资源可达和 API smoke 通过；完整浏览器登录本轮未重复，
 不记为通过。
+
+## 升级 guard 复验
+
+在同一 fixture 中用三个受控 task 分别进入 QUEUED/RUNNING/UNKNOWN，再执行维护入口。
+`preinst install` 与 `prerm upgrade` 均拒绝并返回 1；`prerm` 先停止服务后 guard 仍拒绝，
+符合“先停止运行进程，再禁止未终结业务进入维护”的顺序。随后受控 task 全部落为
+SUCCEEDED，两个脚本均接受。
+
+再执行真实 `dpkg -i` 同版本包：未终结状态下 old prerm 与 new preinst 均拒绝，包版本保持
+`0.1.0~package20261102-11` 未被替换；task settle 后重新 `dpkg -i` 成功，postinst 保持
+inactive，随后显式 `activate` 恢复 active/enabled。最终 PID 38389，三个受控 task 都是
+SUCCEEDED，数据库未终结任务为 0。
+
+原始输出在 `target/package/upgrade-guard-20261102-005558/`；机器可核对记录在
+`docs/evidence/center-package-upgrade-guard-20261102.json`。该验证不清理 state，只变更
+本轮新建 fixture 的受控 task 状态，并把 guard 建/重置/终结写入 fixture audit。

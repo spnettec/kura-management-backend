@@ -33,3 +33,13 @@ save/rollback、UNKNOWN 持久业务结果核定、任务 key rotation/backup/re
 3. 在已安装包 payload 上跑 Playwright 中英文浏览器登录/网关/配置读取集合；不改旧 fixture。
 4. 验证普通 remove/重装和 purge 的保留/归档契约；PostgreSQL 与 task key 只做可恢复性检查。
 5. 之后进入 console/agent 独立归属、正式发行矩阵和剩余阶段；缺失环境继续 deferred。
+
+## 2026-11-02 补充：升级 guard 已复验
+
+正式包 preinst/prerm 已用受控 QUEUED/RUNNING/UNKNOWN task 拒绝维护；真实 `dpkg -i`
+同版本包也在 old prerm 与 new preinst 两处拒绝且版本未变。task settle 后同版本重装通过，
+postinst 保持不启动，显式 activate 后恢复 active/enabled。证据见
+`docs/evidence/center-package-upgrade-guard-20261102.json` 和
+`target/package/upgrade-guard-20261102-005558/`。
+
+下一步优先级不变：包 payload Playwright 中英文集合、remove/purge 契约、恢复矩阵和发行矩阵。
