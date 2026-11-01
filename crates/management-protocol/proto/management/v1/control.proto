@@ -26,6 +26,8 @@ enum Operation { OPERATION_UNSPECIFIED = 0; AGENT_STATUS = 1; KURA_CONFIGURATION
   NETWORK_TAKEOVER_PLAN = 9; NETWORK_TAKEOVER_PREPARE = 10;
   KURA_CONFIGURATION_GET = 11;
   KURA_CONFIGURATION_UPDATE = 12;
+  KURA_SNAPSHOT_SAVE = 13;
+  KURA_SNAPSHOT_ROLLBACK = 14;
 }
 message ReadCommand {
   string command_id = 1;
@@ -37,7 +39,13 @@ message ReadCommand {
   NetworkTakeover network_takeover = 7;
   KuraConfigurationTarget kura_configuration = 8;
   KuraConfigurationUpdate kura_configuration_update = 9;
+  // Explicit snapshot actions. They do not rewind a confirmed system network.
+  KuraSnapshotSave kura_snapshot_save = 10;
+  KuraSnapshotRollback kura_snapshot_rollback = 11;
 }
+message KuraSnapshotSave { string expected_latest_id = 1; }
+message KuraSnapshotRollback { string snapshot_id = 1; string expected_latest_id = 2; }
+
 message KuraConfigurationTarget { string pid = 1; string locale = 2; }
 // Set-only patch. Omitted properties (including passwords) remain unchanged.
 // Numbers are decimal text, interpreted using Kura's current metatype, never doubles.

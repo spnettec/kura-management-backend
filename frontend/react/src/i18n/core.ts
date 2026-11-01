@@ -42,6 +42,8 @@ export function translatedCode(
 export function capabilityLabel(t: Translate, capability: string): string {
   if (capability === "task.reconcile.v1") return t("capability.reconcile");
   if (capability === "task.network-outcome.v1") return t("capability.networkOutcome");
+  if (capability === "task.configuration-outcome.v1") return t("capability.configurationOutcome");
+  if (capability === "kura.snapshot.write") return t("capability.snapshotWrite");
   const operations: Record<string, number> = {
     "agent.status": 1,
     "kura.configuration.list": 2,
@@ -55,6 +57,8 @@ export function capabilityLabel(t: Translate, capability: string): string {
     "network.takeover.prepare": 10,
     "kura.configuration.get": 11,
       "kura.configuration.update": 12,
+    "kura.snapshot.save": 13,
+    "kura.snapshot.rollback": 14,
   };
   return Object.hasOwn(operations, capability)
     ? translatedCode(t, "operation", operations[capability])

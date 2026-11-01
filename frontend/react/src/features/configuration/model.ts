@@ -15,12 +15,18 @@ export function configuration(value: unknown, pid: string): Configuration {
       [value.name, value.description].some(v => v !== undefined && typeof v !== "string")) throw invalid();
   if ((value.revision !== undefined && (typeof value.revision !== "string" || !/^[0-9a-f]{64}$/.test(value.revision))) ||
       [value.writable, value.updateEnabled].some(v => v !== undefined && typeof v !== "boolean")) throw invalid();
+  if (value.componentKind !== undefined && !["CONFIGURABLE", "SELF_CONFIGURING"].includes(String(value.componentKind))) throw invalid();
+  if (value.conditionalWrite !== undefined && !["PROVIDER_MONITOR", "COMPONENT_VIEW"].includes(String(value.conditionalWrite))) throw invalid();
+  if (value.directConfigAdminCas !== undefined && value.directConfigAdminCas !== false) throw invalid();
   const keys = new Set<string>();
   for (const field of value.properties) {
     if (!object(field) || typeof field.id !== "string" || keys.has(field.id) || !types.has(String(field.type)) ||
         typeof field.present !== "boolean" || typeof field.redacted !== "boolean" ||
         (field.editable !== undefined && typeof field.editable !== "boolean") ||
-        [field.name, field.description].some(v => v !== undefined && typeof v !== "string")) throw invalid();
+        [field.name, field.description, field.min, field.max].some(v => v !== undefined && typeof v !== "string") ||
+        (field.options !== undefined && (!Array.isArray(field.options) || field.options.length > 64 ||
+          field.options.some((option: unknown) => !object(option) || typeof option.value !== "string" ||
+            (option.label !== undefined && typeof option.label !== "string"))))) throw invalid();
     keys.add(field.id);
     if (field.redacted) {
       if (Object.hasOwn(field, "value") || !["SECRET", "UNSUPPORTED"].includes(String(field.redaction))) throw invalid();
@@ -30,12 +36,47 @@ export function configuration(value: unknown, pid: string): Configuration {
   return value as Configuration;
 }
 
+
+function enforce(field: Property, text: string) {
+  const array = field.cardinality !== undefined && field.cardinality !== 0;
+  if (array) {
+    let values: unknown;
+    try { values = JSON.parse(text); } catch { throw new ApiError("INVALID_ARGUMENT", 0); }
+    if (!Array.isArray(values)) throw new ApiError("INVALID_ARGUMENT", 0);
+    for (const value of values) enforceScalar(field, String(value));
+    return;
+  }
+  enforceScalar(field, text);
+}
+
+function enforceScalar(field: Property, text: string) {
+  if (field.options?.length && !field.options.some(option => option.value === text)) throw new ApiError("INVALID_ARGUMENT", 0);
+  if (field.type === "STRING" || field.type === "PASSWORD") {
+    if (field.min !== undefined && text.length < Number(field.min)) throw new ApiError("INVALID_ARGUMENT", 0);
+    if (field.max !== undefined && text.length > Number(field.max)) throw new ApiError("INVALID_ARGUMENT", 0);
+  } else if (field.type === "CHAR") {
+    if (field.min !== undefined && text < field.min) throw new ApiError("INVALID_ARGUMENT", 0);
+    if (field.max !== undefined && text > field.max) throw new ApiError("INVALID_ARGUMENT", 0);
+  } else if (["BYTE", "SHORT", "INTEGER", "LONG"].includes(field.type)) {
+    if (!/^[-+]?\d+$/.test(text)) throw new ApiError("INVALID_ARGUMENT", 0);
+    const value = BigInt(text);
+    if (field.min !== undefined && value < BigInt(field.min)) throw new ApiError("INVALID_ARGUMENT", 0);
+    if (field.max !== undefined && value > BigInt(field.max)) throw new ApiError("INVALID_ARGUMENT", 0);
+  } else if (field.type === "FLOAT" || field.type === "DOUBLE") {
+    const value = Number(text);
+    if (!Number.isFinite(value)) throw new ApiError("INVALID_ARGUMENT", 0);
+    if (field.min !== undefined && value < Number(field.min)) throw new ApiError("INVALID_ARGUMENT", 0);
+    if (field.max !== undefined && value > Number(field.max)) throw new ApiError("INVALID_ARGUMENT", 0);
+  }
+}
+
 export function configurationPatch(view: Configuration, selected: Record<string, string>): ConfigurationUpdate {
   if (!view.writable || !view.updateEnabled || !view.revision || !/^[0-9a-f]{64}$/.test(view.revision)) throw invalid();
   const properties: ConfigurationUpdate["properties"] = [];
   for (const [id, text] of Object.entries(selected)) {
     const field = view.properties.find(p => p.id === id);
     if (!field?.editable || field.type === "UNKNOWN" || new TextEncoder().encode(text).length > 16384) throw invalid();
+    enforce(field, text);
     const array = field.cardinality !== undefined && field.cardinality !== 0;
     const boolean = field.type === "BOOLEAN";
     if (array) {

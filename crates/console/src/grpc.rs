@@ -153,14 +153,14 @@ async fn run_stream(
                 if !current{return Err(Status::permission_denied("FORBIDDEN"));}
                 // Only reads may be leased again. Uncertain writes use receipt queries.
                 let mut transaction=pool.begin().await.map_err(internal)?;
-                let row=sqlx::query("UPDATE mgmt_tasks SET state='RUNNING',lease_until=now()+interval '10 seconds',dispatch_epoch=$2 WHERE id=(SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2) AND (operation<>12 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.configuration.update')) AND (state='QUEUED' OR (state='RUNNING' AND operation IN (1,2,3,4,8,9,11))) AND expires_at>now() AND (SELECT count(*) FROM mgmt_tasks current_tasks WHERE current_tasks.gateway_id=$1 AND current_tasks.state='RUNNING' AND current_tasks.lease_until>now() AND current_tasks.dispatch_epoch=$2)<2 AND (lease_until IS NULL OR lease_until<now()) ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,tenant_id,gateway_id,operation,expires_at,idempotency_key,input").bind(gateway).bind(epoch).fetch_optional(&mut *transaction).await.map_err(internal)?;
+                let row=sqlx::query("UPDATE mgmt_tasks SET state='RUNNING',lease_until=now()+interval '10 seconds',dispatch_epoch=$2 WHERE id=(SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2) AND (operation<>12 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.configuration.update')) AND (operation NOT IN (13,14) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.snapshot.write')) AND (state='QUEUED' OR (state='RUNNING' AND operation IN (1,2,3,4,8,9,11))) AND expires_at>now() AND (SELECT count(*) FROM mgmt_tasks current_tasks WHERE current_tasks.gateway_id=$1 AND current_tasks.state='RUNNING' AND current_tasks.lease_until>now() AND current_tasks.dispatch_epoch=$2)<2 AND (lease_until IS NULL OR lease_until<now()) ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,tenant_id,gateway_id,operation,expires_at,idempotency_key,input").bind(gateway).bind(epoch).fetch_optional(&mut *transaction).await.map_err(internal)?;
                 let payload = row.as_ref().map(|r| cipher.open_row(r,"input")).transpose().map_err(internal)?;
                 if let Some(ref r)=row {
                     db::event(&mut *transaction,tenant,"task",&r.get::<Uuid,_>("id").to_string(),0,json!({"state":"RUNNING"})).await.map_err(internal)?;
                 }
                 transaction.commit().await.map_err(internal)?;
                 if let (Some(r),Some(payload))=(row,payload) {
-                    let command=ReadCommand{kura_configuration_update:payload.get("kuraConfigurationUpdate").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration:payload.get("kuraConfiguration").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_takeover:payload.get("networkTakeover").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_change:payload.get("networkChange").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_action:payload.get("networkAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,command_id:r.get::<Uuid,_>("id").to_string(),operation:r.get("operation"),expires_at_unix_ms:r.get::<DateTime<Utc>,_>("expires_at").timestamp_millis(),idempotency_key:r.get("idempotency_key")};
+                    let command=ReadCommand{kura_snapshot_rollback:payload.get("kuraSnapshotRollback").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_snapshot_save:payload.get("kuraSnapshotSave").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration_update:payload.get("kuraConfigurationUpdate").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration:payload.get("kuraConfiguration").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_takeover:payload.get("networkTakeover").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_change:payload.get("networkChange").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_action:payload.get("networkAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,command_id:r.get::<Uuid,_>("id").to_string(),operation:r.get("operation"),expires_at_unix_ms:r.get::<DateTime<Utc>,_>("expires_at").timestamp_millis(),idempotency_key:r.get("idempotency_key")};
                     tx.try_send(Ok(ConsoleFrame{payload:Some(console_frame::Payload::Command(command))})).map_err(|_|Status::resource_exhausted("RESOURCE_EXHAUSTED"))?;
                 }
                 if reconcile {
@@ -195,6 +195,27 @@ fn valid_result(result: &TaskResult) -> Result<(TaskState, ErrorCode, Value), St
     let data = serde_json::from_slice(&result.result_json)
         .map_err(|_| Status::invalid_argument("INVALID_ARGUMENT"))?;
     Ok((state, error, data))
+}
+
+fn configuration_proof(data: &Value, id: Uuid, operation: i32) -> bool {
+    let proof = &data["reconciliation"];
+    operation == 12
+        && proof["source"] == "configuration.journal.v1"
+        && proof["commandId"] == id.to_string()
+        && proof["operation"] == operation
+        && proof["pid"].as_str().is_some_and(|v| !v.is_empty() && v.len() <= 512)
+        && proof["previousRevision"]
+            .as_str()
+            .is_some_and(|v| v.len() == 64 && v.bytes().all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b)))
+        && ["paramsSha256", "journalSha256"].iter().all(|key| proof[key]
+            .as_str()
+            .is_some_and(|v| v.len() == 64 && v.bytes().all(|b| b.is_ascii_hexdigit())))
+        && data["submitted"] == true
+        && data.get("properties").is_none()
+}
+
+fn outcome_proof(data: &Value, id: Uuid, operation: i32) -> bool {
+    network_proof(data, id, operation) || configuration_proof(data, id, operation)
 }
 
 fn network_proof(data: &Value, id: Uuid, operation: i32) -> bool {
@@ -236,7 +257,7 @@ async fn apply_result(
     let previous=sqlx::query("SELECT id,tenant_id,gateway_id,operation,state FROM mgmt_tasks WHERE id=$1 AND gateway_id=$2 AND tenant_id=$3 AND dispatch_epoch=$4 AND state IN ('RUNNING','UNKNOWN') FOR UPDATE")
         .bind(id).bind(gateway).bind(tenant).bind(epoch).fetch_optional(&mut *tx).await.map_err(internal)?;
     if let Some(previous) = previous {
-        let proved = network_proof(&data, id, previous.get("operation"));
+        let proved = outcome_proof(&data, id, previous.get("operation"));
         let data = cipher
             .seal(
                 &TaskContext::from_row(&previous).map_err(internal)?,
@@ -255,7 +276,7 @@ async fn apply_result(
         // Only a terminal receipt resolves uncertainty. The original TTL cannot
         // turn an already completed side effect into an expiry.
         sqlx::query("UPDATE mgmt_tasks SET state=$2,error=$3,result=$4,lease_until=CASE WHEN $2 IN ('RUNNING','UNKNOWN') THEN now()+interval '10 seconds' ELSE NULL END WHERE id=$1")
-            .bind(id).bind(state.as_str_name()).bind(if error==ErrorCode::Unspecified{None}else{Some(error.as_str_name())}).bind(data)
+            .bind(id).bind(state.as_str_name()).bind(if error==ErrorCode::Unspecified{None}else{Some(error.as_str_name())})    .bind(&data)
             .execute(&mut *tx).await.map_err(internal)?;
         if previous != state.as_str_name() {
             db::event(
@@ -284,7 +305,11 @@ async fn apply_result(
                     tenant,
                     gateway,
                     if proved {
-                        "task.reconcile.network"
+                        if data["reconciliation"]["source"] == "network.journal.v1" {
+                            "task.reconcile.network"
+                        } else {
+                            "task.reconcile.configuration"
+                        }
                     } else {
                         "task.reconcile.receipt"
                     },
@@ -400,6 +425,31 @@ mod tests {
             let mut changed = data.clone();
             changed["reconciliation"][key] = value;
             assert!(!network_proof(&changed, id, 6));
+        }
+    }
+    #[test]
+    fn configuration_outcome_annotation_requires_the_recorded_submission_identity() {
+        let id = Uuid::new_v4();
+        let data = json!({"pid":"fixture","submitted":true,"previousRevision":"a".repeat(64),
+            "reconciliation":{"source":"configuration.journal.v1","commandId":id,"operation":12,
+                "pid":"fixture","previousRevision":"a".repeat(64),"paramsSha256":"ab".repeat(32),
+                "journalSha256":"cd".repeat(32)}});
+        assert!(configuration_proof(&data, id, 12));
+        assert!(!configuration_proof(&data, Uuid::new_v4(), 12));
+        assert!(!configuration_proof(&data, id, 11));
+        let mut with_properties = data.clone();
+        with_properties["properties"] = json!({"secret":"x"});
+        assert!(!configuration_proof(&with_properties, id, 12));
+        for (key, value) in [
+            ("source", json!("network.journal.v1")),
+            ("pid", json!("")),
+            ("previousRevision", json!("short")),
+            ("paramsSha256", json!("bad")),
+            ("journalSha256", json!("bad")),
+        ] {
+            let mut changed = data.clone();
+            changed["reconciliation"][key] = value;
+            assert!(!configuration_proof(&changed, id, 12));
         }
     }
     #[test]

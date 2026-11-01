@@ -1425,7 +1425,10 @@
               8,
               9,
               10,
-              11
+              11,
+              12,
+              13,
+              14
             ]
           },
           "state": {
@@ -1556,7 +1559,9 @@
               "network.takeover.plan",
               "network.takeover.prepare",
               "kura.configuration.get",
-              "kura.configuration.update"
+              "kura.configuration.update",
+              "kura.snapshot.save",
+              "kura.snapshot.rollback"
             ]
           },
           "idempotencyKey": {
@@ -1578,14 +1583,16 @@
           },
           "kuraConfigurationUpdate": {
             "$ref": "#/components/schemas/KuraConfigurationUpdate"
-          }
+          },
+          "kuraSnapshotSave": { "$ref": "#/components/schemas/KuraSnapshotSave" },
+          "kuraSnapshotRollback": { "$ref": "#/components/schemas/KuraSnapshotRollback" }
         },
         "required": [
           "operation",
           "idempotencyKey"
         ],
         "additionalProperties": false,
-        "description": "network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed."
+        "description": "network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed."
       },
       "TaskReceipt": {
         "type": "object",
@@ -1884,7 +1891,22 @@
           },
           "editable": {
             "type": "boolean",
-            "description": "Declared field has a supported set representation without constraints requiring further validation."
+            "description": "Reviewed component field whose min, max and options can be enforced. Uninterpretable constraints stay closed."
+          },
+          "min": { "type": "string", "maxLength": 64 },
+          "max": { "type": "string", "maxLength": 64 },
+          "options": {
+            "type": "array",
+            "maxItems": 64,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["value"],
+              "properties": {
+                "value": { "type": "string", "maxLength": 16384 },
+                "label": { "type": "string" }
+              }
+            }
           }
         },
         "required": [
@@ -1894,7 +1916,7 @@
           "redacted"
         ],
         "additionalProperties": false,
-        "description": "Numeric values are decimal strings to preserve Java long precision. A redacted property has no value. Defaults and options are never exported. This projection cannot identify arbitrary secrets embedded in user scripts."
+        "description": "Numeric values are decimal strings to preserve Java long precision. A redacted property has no value. Defaults and secret option lists are never exported. Non-secret option values are exported only so a reviewed component can be edited. This projection cannot identify arbitrary secrets embedded in user scripts."
       },
       "KuraConfigurationView": {
         "type": "object",
@@ -1932,7 +1954,10 @@
           "updateEnabled": {
             "type": "boolean",
             "description": "Explicit audited PID policy is enabled on the Kura bridge; independent agent and admin permission also required."
-          }
+          },
+          "componentKind": { "type": "string", "enum": ["CONFIGURABLE", "SELF_CONFIGURING"] },
+          "conditionalWrite": { "type": "string", "enum": ["PROVIDER_MONITOR", "COMPONENT_VIEW"] },
+          "directConfigAdminCas": { "type": "boolean", "const": false }
         },
         "required": [
           "pid",
@@ -1940,7 +1965,24 @@
           "properties"
         ],
         "additionalProperties": false,
-        "description": "Successful operation 11 task result; bounded to 200 KiB by the local bridge. Online read through the OSGi ConfigurationService, independent of Kura Web credentials."
+        "description": "Successful operation 11 task result; bounded to 200 KiB by the local bridge. Online read through the OSGi ConfigurationService, independent of Kura Web credentials. This is not a generic configuration editor. directConfigAdminCas is always false: direct ConfigurationAdmin writers are not atomically locked."
+      },
+      "KuraSnapshotSave": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["expectedLatestId"],
+        "properties": { "expectedLatestId": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,17})$" } },
+        "description": "Saves the current Kura snapshot. expectedLatestId is 0 when none exist. Does not rewind confirmed system network."
+      },
+      "KuraSnapshotRollback": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["snapshotId", "expectedLatestId"],
+        "properties": {
+          "snapshotId": { "type": "string", "pattern": "^[1-9][0-9]{0,17}$" },
+          "expectedLatestId": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,17})$" }
+        },
+        "description": "Rolls back to an explicit older snapshot. Does not rewind confirmed system network. Components absent from that snapshot may return to defaults through the existing Kura rollback path."
       },
       "KuraConfigurationUpdate": {
         "type": "object",

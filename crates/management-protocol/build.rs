@@ -12,6 +12,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .type_attribute("NetworkTakeover", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields, default)]")
         .type_attribute("KuraConfigurationTarget", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields)]")
         .type_attribute("KuraConfigurationUpdate", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields)]")
+        .type_attribute("KuraSnapshotSave", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields)]")
+        .type_attribute("KuraSnapshotRollback", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields)]")
         .type_attribute("KuraConfigurationProperty", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields)]")
         .type_attribute("KuraConfigurationProperty.value", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\")]")
         .type_attribute("KuraTextArray", "#[derive(serde::Serialize, serde::Deserialize)] #[serde(rename_all=\"camelCase\", deny_unknown_fields)]")

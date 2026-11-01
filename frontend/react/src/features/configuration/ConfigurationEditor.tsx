@@ -76,6 +76,7 @@ export function ConfigurationEditor({ view, gateway, user }: { view: Configurati
   const pending = receipt && ["QUEUED", "RUNNING"].includes(receipt.state);
   return <div className="configuration-editor">
     <p className="muted">{allowed ? t("configuration.writeScope") : t("configuration.writeDisabled")}</p>
+    {view.componentKind === "SELF_CONFIGURING" && <p className="muted">{t("configuration.writeSelf")}</p>}
     {error != null && <Alert type="error" showIcon title={errorText(error, t)} />}
     {(receipt || unknown) && <Alert showIcon type={unknown || pending ? "warning" : receipt?.state === "SUCCEEDED" ? "success" : "error"}
       title={unknown ? t("configuration.writeUnknown") : pending ? t("configuration.writePending") : receipt?.state === "SUCCEEDED"
@@ -99,10 +100,13 @@ export function ConfigurationEditor({ view, gateway, user }: { view: Configurati
           }}>{field.name || field.id} · {field.id} · {t("configuration.setValue")}</Checkbox>
           {Object.hasOwn(values, field.id) && (isArray(field)
             ? <Input.TextArea aria-label={field.id} disabled={busy} value={values[field.id]} onChange={e => change(field.id, e.target.value)} />
+            : field.options?.length ? <Select aria-label={field.id} disabled={busy} value={values[field.id]} style={{ width: "100%" }}
+              options={field.options.map(option => ({ value: option.value, label: option.label || option.value }))} onChange={value => change(field.id, value)} />
             : field.type === "BOOLEAN" ? <Select aria-label={field.id} disabled={busy} value={values[field.id]} style={{ width: "100%" }}
               options={[{ value: "true", label: "true" }, { value: "false", label: "false" }]} onChange={value => change(field.id, value)} />
               : field.redacted ? <Input.Password aria-label={field.id} autoComplete="new-password" disabled={busy} value={values[field.id]} onChange={e => change(field.id, e.target.value)} />
                 : <Input aria-label={field.id} disabled={busy} value={values[field.id]} onChange={e => change(field.id, e.target.value)} />)}
+          {(field.min || field.max) && <p className="muted">{t("configuration.bounds", { min: field.min ?? "", max: field.max ?? "" })}</p>}
         </div>)}
       </div>
       <Checkbox checked={confirmed} disabled={busy || selected.length === 0} onChange={e => setConfirmed(e.target.checked)}>

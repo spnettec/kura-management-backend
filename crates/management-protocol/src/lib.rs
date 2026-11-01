@@ -13,6 +13,13 @@ pub const MAX_FRAME: usize = 1_048_576;
 pub fn has_side_effect(operation: i32) -> bool {
     !matches!(operation, 1 | 2 | 3 | 4 | 8 | 9 | 11)
 }
+
+fn snapshot_id(value: &str, zero_allowed: bool) -> bool {
+    let Ok(parsed) = value.parse::<i64>() else { return false; };
+    (zero_allowed && parsed == 0 || parsed > 0)
+        && value == parsed.to_string()
+        && value.len() <= 18
+}
 pub const READ_METHODS: &[&str] = &[
     "agent.status",
     "kura.configuration.list",
@@ -29,6 +36,24 @@ impl v1::KuraConfigurationTarget {
     }
 }
 
+impl v1::KuraSnapshotSave {
+    pub fn valid(&self) -> bool { snapshot_id(&self.expected_latest_id, true) }
+    pub fn parameters(&self, expires_at_unix_ms: i64) -> Option<serde_json::Value> {
+        if !self.valid() || expires_at_unix_ms <= 0 { return None; }
+        Some(serde_json::json!({"expectedLatestId": self.expected_latest_id, "expiresAtUnixMs": expires_at_unix_ms}))
+    }
+}
+impl v1::KuraSnapshotRollback {
+    pub fn valid(&self) -> bool {
+        snapshot_id(&self.snapshot_id, false)
+            && snapshot_id(&self.expected_latest_id, true)
+            && self.snapshot_id != self.expected_latest_id
+    }
+    pub fn parameters(&self, expires_at_unix_ms: i64) -> Option<serde_json::Value> {
+        if !self.valid() || expires_at_unix_ms <= 0 { return None; }
+        Some(serde_json::json!({"snapshotId": self.snapshot_id, "expectedLatestId": self.expected_latest_id, "expiresAtUnixMs": expires_at_unix_ms}))
+    }
+}
 impl v1::KuraConfigurationUpdate {
     /// The OS bridge performs the final metatype/revision check. This boundary
     /// rejects ambiguous inputs and bounds work before durable admission.
@@ -87,11 +112,15 @@ impl v1::ReadCommand {
             && matches!(self.operation, 9 | 10) == self.network_takeover.is_some()
             && (self.operation == 11) == self.kura_configuration.is_some()
             && (self.operation == 12) == self.kura_configuration_update.is_some()
+            && (self.operation == 13) == self.kura_snapshot_save.is_some()
+            && (self.operation == 14) == self.kura_snapshot_rollback.is_some()
             && self.kura_configuration.as_ref().is_none_or(|v| v.valid())
             && self
                 .kura_configuration_update
                 .as_ref()
                 .is_none_or(|v| v.parameters(self.expires_at_unix_ms).is_some())
+            && self.kura_snapshot_save.as_ref().is_none_or(|v| v.parameters(self.expires_at_unix_ms).is_some())
+            && self.kura_snapshot_rollback.as_ref().is_none_or(|v| v.parameters(self.expires_at_unix_ms).is_some())
     }
 }
 
@@ -230,8 +259,38 @@ mod tests {
         assert!(update.parameters(0).is_none());
     }
     #[test]
+    fn snapshot_actions_require_decimal_ids_and_do_not_target_the_current_snapshot() {
+        let save = v1::KuraSnapshotSave { expected_latest_id: "0".into() };
+        assert!(save.parameters(10).unwrap()["expectedLatestId"] == "0");
+        assert!(save.parameters(0).is_none());
+        assert!(!v1::KuraSnapshotSave { expected_latest_id: "01".into() }.valid());
+        assert!(!v1::KuraSnapshotSave { expected_latest_id: "9223372036854775807".into() }.valid());
+        let rollback = v1::KuraSnapshotRollback { snapshot_id: "2".into(), expected_latest_id: "4".into() };
+        assert!(rollback.valid());
+        assert!(!v1::KuraSnapshotRollback { snapshot_id: "4".into(), expected_latest_id: "4".into() }.valid());
+        assert!(!v1::KuraSnapshotRollback { snapshot_id: "0".into(), expected_latest_id: "4".into() }.valid());
+        assert!(v1::ReadCommand {
+            operation: 13,
+            expires_at_unix_ms: 10,
+            kura_snapshot_save: Some(save),
+            ..Default::default()
+        }.valid_payload());
+        assert!(!v1::ReadCommand {
+            operation: 14,
+            expires_at_unix_ms: 10,
+            kura_snapshot_save: Some(v1::KuraSnapshotSave { expected_latest_id: "0".into() }),
+            ..Default::default()
+        }.valid_payload());
+        assert!(v1::ReadCommand {
+            operation: 14,
+            expires_at_unix_ms: 10,
+            kura_snapshot_rollback: Some(rollback),
+            ..Default::default()
+        }.valid_payload());
+    }
+    #[test]
     fn side_effects_require_explicit_read_classification() {
-        for operation in [5, 6, 7, 10, 12, 99] {
+        for operation in [5, 6, 7, 10, 12, 13, 14, 99] {
             assert!(has_side_effect(operation));
         }
         for operation in [1, 2, 3, 4, 8, 9, 11] {

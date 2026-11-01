@@ -17,9 +17,11 @@ Java 另需 `-Dkura.management.configuration.update.pids=<审核后的逗号分�
 
 get 中 `writable` 表示核心条件更新可用；`updateEnabled` 表示 PID 已显式开放，属性 `editable`
 表示该字段符合本轮受限规则。React 还检查 admin、online、agent capability 和有效 revision。
-仅声明过类型的非系统字段可编辑；带 min/max/options 的字段暂不开放。
-必填 string/password、数组和 Vector 不能设为空。完整元数据约束与 SelfConfiguringComponent
-适配仍待实施；不得通过扩大 allowlist 绕过审核。
+已声明类型且约束可解释的非系统字段可编辑。min/max 为闭区间；字符串和密码按 UTF-16 码元长度，
+数值按对应 Java 类型。options 必须精确匹配；无法解释的约束、超过 64 项选项、密码选项列表保持关闭。
+必填 string/password、数组和 Vector 不能设为空。SelfConfiguringComponent 的未勾选字段按当前自有视图保留，
+不回退到元数据默认值。直接 ConfigurationAdmin 写入仍不参与 provider monitor，不承诺原子 CAS。
+这仍不是通用配置编辑器，不得通过扩大 allowlist 绕过审核。删除/reset/factory 仍未实现；配置 UNKNOWN 核定另有后续契约。
 
 ## HTTP 输入
 
@@ -56,7 +58,8 @@ booleanArray（`{"values":[true]}`）。数值以字符串发送，避免浏览�
 已知未交付的拒绝可确定失败；进入发送队列之后的断流/超时/不合法成功响应均为 UNKNOWN。
 agent 重启后仍以持久的 RUNNING/UNKNOWN 阻挡新配置写入，不能靠重启 Java 清除。
 中心同样阻挡未决写入。查询 `/api/v1/tasks/{id}` 只取原回执，不能用新任务或重新读取当前值冒充结果核定。
-配置 UNKNOWN 的持久业务结果核定尚未实现；不能套用网络事务的特定业务证明。
+配置 UNKNOWN 的持久业务核定由 `configuration-outcome-reconciliation-v1.md` 约束：
+查询只读取与原命令绑定的提交记录，不能套用网络事务的特定业务证明，也不能凭当前值相同结案。
 
 React 使用中英文确认界面，只提交用户选择字段；提交后清空草稿、禁用旧视图修改，要求重新读取。
 UNKNOWN 或 HTTP 准入结果不明时不自动重试，显示任务查询/阻挡状态。切换语言保留未提交草稿。

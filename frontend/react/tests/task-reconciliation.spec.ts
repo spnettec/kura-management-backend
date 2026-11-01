@@ -82,3 +82,36 @@ test("rolled-back preparation stays failed and unrelated proof is not labelled (
   await page.getByRole("button", { name: /Apply network candidate 40000000/ }).click();
   await expect(page.getByRole("dialog").getByText(/Resolved from the gateway transaction journal/)).toHaveCount(0);
 });
+
+test("configuration outcome proof is distinct from a live-value receipt (stubbed task)", async ({ page }) => {
+  const id = "50000000-0000-4000-8000-000000000005";
+  await page.route("**/api/v1/session", route => route.fulfill({ json: {
+    id: "config-proof-ui", username: "admin", tenantId: "fixture", role: "admin", csrf: "fixture",
+  } }));
+  await page.route("**/api/v1/gateways?*", route => route.fulfill({ json: { items: [] } }));
+  await page.addInitScript(() => {
+    class OpenEventSource extends EventTarget {
+      onopen: (() => void) | null = null;
+      constructor(_url: string) { super(); setTimeout(() => this.onopen?.(), 0); }
+      close() {}
+    }
+    Object.defineProperty(window, "EventSource", { value: OpenEventSource });
+  });
+  const digest = "ab".repeat(32);
+  await page.route(/\/api\/v1\/tasks(?:\?.*)?$/, route => route.fulfill({ json: { items: [
+    { id, gatewayId: "fixture", operation: 12, state: "SUCCEEDED", error: null,
+      result: { pid: "fixture.pid", submitted: true, previousRevision: "a".repeat(64), reconciliation: {
+        source: "configuration.journal.v1", commandId: id, operation: 12, pid: "fixture.pid",
+        previousRevision: "a".repeat(64), paramsSha256: digest, journalSha256: digest,
+      } }, createdAt: "2026-11-01T00:00:00Z" },
+  ] } }));
+  await page.goto("/commands");
+  await page.getByRole("button", { name: /更新 Kura 配置 50000000/ }).click();
+  await expect(page.getByRole("dialog").getByText("已依据配置提交日志核定", { exact: true })).toBeVisible();
+  await expect(page.getByRole("dialog").getByText(/未再次执行配置写入/)).toBeVisible();
+  await expect(page.getByRole("dialog").getByText(/Resolved from the configuration submission journal/)).toHaveCount(0);
+  await page.getByRole("dialog").getByRole("combobox", { name: "语言 / Language" }).selectOption("en-US");
+  await expect(page.getByRole("dialog").getByText("Resolved from the configuration submission journal", { exact: true })).toBeVisible();
+  await expect(page.getByRole("dialog").getByText(/did not execute the configuration write again/)).toBeVisible();
+  await expect(page.getByRole("dialog").locator("pre")).toContainText('"submitted": true');
+});

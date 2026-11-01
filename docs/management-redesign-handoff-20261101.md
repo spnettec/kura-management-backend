@@ -1,5 +1,13 @@
 # YOFC Kura 管理体系会话交接台账
 
+更新：2026-11-01 续接。用户已要求恢复实施。本地保存点仍是各仓库 ahead 1 的提交，之后的配置适用性、显式快照保存/回滚与配置 UNKNOWN 核定仍未提交。
+最新契约与验证见 `snapshot-actions-v1.md`、`phase2-snapshot-actions-20261101.md`，
+以及配置 UNKNOWN 核定的 `configuration-outcome-reconciliation-v1.md`、`phase2-configuration-outcome-20261101.md`。
+IDEA/OrbStack 尚未复验快照与配置核定两个增量。
+整个改造未完成，不能将 goal 标记 complete。禁止 reset/clean、推送或覆盖旧远端。
+
+历史暂停交接保留如下，不能覆盖本续接状态。
+
 更新：2026-11-01，Asia/Shanghai。本轮完成后按用户要求暂停目标，等待明确续接。
 整个改造未完成，不能将goal标记complete。所有迁移与实施改动仍未提交/推送，禁止reset/clean。
 权威方案为 `management-redesign-plan.md`，目录整合事实见 `project-consolidation-20261031.md`。

@@ -307,6 +307,10 @@ struct CreateTask {
     kura_configuration: Option<yofc_management_protocol::v1::KuraConfigurationTarget>,
     #[serde(default)]
     kura_configuration_update: Option<yofc_management_protocol::v1::KuraConfigurationUpdate>,
+    #[serde(default)]
+    kura_snapshot_save: Option<yofc_management_protocol::v1::KuraSnapshotSave>,
+    #[serde(default)]
+    kura_snapshot_rollback: Option<yofc_management_protocol::v1::KuraSnapshotRollback>,
 }
 async fn create_task(
     State(app): State<App>,
@@ -344,6 +348,8 @@ async fn create_task(
         "network.takeover.prepare" => 10,
         "kura.configuration.get" => 11,
         "kura.configuration.update" => 12,
+        "kura.snapshot.save" => 13,
+        "kura.snapshot.rollback" => 14,
         _ => {
             return Err(ApiError::new(
                 StatusCode::UNPROCESSABLE_ENTITY,
@@ -351,7 +357,7 @@ async fn create_task(
             ));
         }
     };
-    if matches!(operation, 5..=7 | 10 | 12) && p.role != "admin" {
+    if matches!(operation, 5..=7 | 10 | 12..=14) && p.role != "admin" {
         db::audit(
             &app.pool,
             &p.tenant_id,
@@ -369,6 +375,10 @@ async fn create_task(
         || matches!(operation, 9 | 10) != input.network_takeover.is_some()
         || (operation == 11) != input.kura_configuration.is_some()
         || (operation == 12) != input.kura_configuration_update.is_some()
+        || (operation == 13) != input.kura_snapshot_save.is_some()
+        || (operation == 14) != input.kura_snapshot_rollback.is_some()
+        || input.kura_snapshot_save.as_ref().is_some_and(|v| v.parameters(i64::MAX).is_none())
+        || input.kura_snapshot_rollback.as_ref().is_some_and(|v| v.parameters(i64::MAX).is_none())
         || input
             .kura_configuration_update
             .as_ref()
@@ -380,7 +390,7 @@ async fn create_task(
     {
         return Err(ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"));
     }
-    let payload = json!({"networkChange":input.network_change,"networkAction":input.network_action,"networkTakeover":input.network_takeover,"kuraConfiguration":input.kura_configuration,"kuraConfigurationUpdate":input.kura_configuration_update});
+    let payload = json!({"networkChange":input.network_change,"networkAction":input.network_action,"networkTakeover":input.network_takeover,"kuraConfiguration":input.kura_configuration,"kuraConfigurationUpdate":input.kura_configuration_update,"kuraSnapshotSave":input.kura_snapshot_save,"kuraSnapshotRollback":input.kura_snapshot_rollback});
     if serde_json::to_vec(&payload)
         .map_err(|_| ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"))?
         .len()
@@ -412,9 +422,10 @@ async fn create_task(
     let previous=sqlx::query("SELECT id,tenant_id,gateway_id,operation,state,input FROM mgmt_tasks WHERE actor_id=$1 AND gateway_id=$2 AND idempotency_key=$3").bind(p.id).bind(&id).bind(&input.idempotency_key).fetch_optional(&mut *tx).await?;
     let replay = previous.is_some();
     if !replay {
-        if operation == 12 {
-            let capable: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE id=$1 AND capabilities ? 'kura.configuration.update' AND last_seen>now()-interval '15 seconds')")
-                .bind(&id).fetch_one(&mut *tx).await?;
+        if operation == 12 || matches!(operation, 13 | 14) {
+            let capability = if operation == 12 { "kura.configuration.update" } else { "kura.snapshot.write" };
+            let capable: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE id=$1 AND capabilities ? $2 AND last_seen>now()-interval '15 seconds')")
+                .bind(&id).bind(capability).fetch_one(&mut *tx).await?;
             if !capable {
                 return Err(ApiError::new(
                     StatusCode::UNPROCESSABLE_ENTITY,

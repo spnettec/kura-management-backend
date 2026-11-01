@@ -1266,7 +1266,7 @@ export interface components {
             id: string;
             gatewayId: string;
             /** @enum {integer} */
-            operation: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+            operation: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14;
             /** @enum {string} */
             state: "QUEUED" | "RUNNING" | "SUCCEEDED" | "FAILED" | "EXPIRED" | "UNKNOWN";
             /** @enum {string|null} */
@@ -1287,16 +1287,18 @@ export interface components {
         LoginResult: {
             csrf: string;
         };
-        /** @description network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. */
+        /** @description network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. */
         CreateTask: {
             /** @enum {string} */
-            operation: "agent.status" | "kura.configuration.list" | "kura.snapshot.list" | "network.inspect" | "network.prepare" | "network.confirm" | "network.rollback" | "network.transaction" | "network.takeover.plan" | "network.takeover.prepare" | "kura.configuration.get" | "kura.configuration.update";
+            operation: "agent.status" | "kura.configuration.list" | "kura.snapshot.list" | "network.inspect" | "network.prepare" | "network.confirm" | "network.rollback" | "network.transaction" | "network.takeover.plan" | "network.takeover.prepare" | "kura.configuration.get" | "kura.configuration.update" | "kura.snapshot.save" | "kura.snapshot.rollback";
             idempotencyKey: string;
             networkChange?: components["schemas"]["NetworkChange"];
             networkAction?: components["schemas"]["NetworkAction"];
             networkTakeover?: components["schemas"]["NetworkTakeover"];
             kuraConfiguration?: components["schemas"]["KuraConfigurationTarget"];
             kuraConfigurationUpdate?: components["schemas"]["KuraConfigurationUpdate"];
+            kuraSnapshotSave?: components["schemas"]["KuraSnapshotSave"];
+            kuraSnapshotRollback?: components["schemas"]["KuraSnapshotRollback"];
         };
         TaskReceipt: {
             /** Format: uuid */
@@ -1365,8 +1367,14 @@ export interface components {
             /** @enum {string} */
             redaction?: "SECRET" | "UNSUPPORTED";
             value?: (string | boolean | null) | (string | boolean | null)[];
-            /** @description Declared field has a supported set representation without constraints requiring further validation. */
+            /** @description Reviewed component field whose min, max and options can be enforced. Uninterpretable constraints stay closed. */
             editable?: boolean;
+            min?: string;
+            max?: string;
+            options?: {
+                value: string;
+                label?: string;
+            }[];
         };
         /** @description Successful operation 11 task result; bounded to 200 KiB by the local bridge. Online read through the OSGi ConfigurationService, independent of Kura Web credentials. */
         KuraConfigurationView: {
@@ -1380,6 +1388,18 @@ export interface components {
             writable?: boolean;
             /** @description Explicit audited PID policy is enabled on the Kura bridge; independent agent and admin permission also required. */
             updateEnabled?: boolean;
+            /** @enum {string} */
+            componentKind?: "CONFIGURABLE" | "SELF_CONFIGURING";
+            /** @enum {string} */
+            conditionalWrite?: "PROVIDER_MONITOR" | "COMPONENT_VIEW";
+            directConfigAdminCas?: false;
+        };
+        KuraSnapshotSave: {
+            expectedLatestId: string;
+        };
+        KuraSnapshotRollback: {
+            snapshotId: string;
+            expectedLatestId: string;
         };
         KuraConfigurationUpdate: {
             pid: string;

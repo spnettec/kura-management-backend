@@ -5,6 +5,7 @@ import { NetworkPanel } from "./NetworkPanel";
 import { LanguageSwitcher, useI18n } from "../../i18n/I18n";
 import { capabilityLabel } from "../../i18n/core";
 import { ConfigurationPanel } from "../configuration/ConfigurationPanel";
+import { SnapshotPanel } from "../snapshots/SnapshotPanel";
 export function Gateways({
   items,
   user,
@@ -108,6 +109,7 @@ export function Gateways({
             </Space>
               {selected.capabilities.includes("kura.configuration.list") && <ConfigurationPanel
                 key={`configuration:${user.id}:${selected.id}`} gateway={selected} user={user} />}
+            {selected.capabilities.includes("kura.snapshot.write") && <SnapshotPanel key={`snapshot:${user.id}:${selected.id}`} gateway={selected} user={user} />}
             {selected.capabilities.includes("network.inspect") && (
               <NetworkPanel
                 key={`${user.id}:${selected.id}`}
