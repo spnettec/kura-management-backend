@@ -5,11 +5,52 @@ mod grpc;
 mod http;
 mod task_crypto;
 use anyhow::{Context, Result, ensure};
-use std::{env, fs, sync::Arc};
+use std::{env, fs, io::Write, path::Path, sync::Arc, time::{SystemTime, UNIX_EPOCH}};
+use ring::signature::{Ed25519KeyPair, KeyPair};
 use tokio::sync::Semaphore;
 use tonic::transport::{Certificate, Identity, Server, ServerTlsConfig};
 use uuid::Uuid;
 use yofc_management_protocol::{MAX_FRAME, v1::control_server::ControlServer};
+
+fn base64_url_no_pad(value: &[u8]) -> String {
+    const ALPHABET: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    let mut out = String::new();
+    for chunk in value.chunks(3) {
+        let byte = |index: usize| -> u32 { *chunk.get(index).unwrap_or(&0) as u32 };
+        let number = (byte(0) << 16) | (byte(1) << 8) | byte(2);
+        out.push(ALPHABET[(number >> 18) as usize & 63] as char);
+        out.push(ALPHABET[(number >> 12) as usize & 63] as char);
+        if chunk.len() > 1 { out.push(ALPHABET[(number >> 6) as usize & 63] as char); }
+        if chunk.len() > 2 { out.push(ALPHABET[number as usize & 63] as char); }
+    }
+    out
+}
+
+fn write_new(path: &Path, value: &[u8], mode: u32) -> Result<()> {
+    use std::os::unix::fs::PermissionsExt;
+    if path.exists() {
+        anyhow::bail!("refusing to overwrite {}", path.display());
+    }
+    let mut file = fs::OpenOptions::new().write(true).create_new(true).open(path)
+        .with_context(|| format!("create {}", path.display()))?;
+    file.write_all(value)?;
+    file.sync_all()?;
+    fs::set_permissions(path, fs::Permissions::from_mode(mode))?;
+    Ok(())
+}
+
+fn certificate_hash(path: &str) -> Result<String> {
+    let data = fs::read(path)?;
+    let cert = rustls_pemfile::certs(&mut data.as_slice()).next()
+        .context("no certificate")??;
+    Ok(auth::hash(cert.as_ref()))
+}
+
+fn transfer_key_pair(path: &str) -> Result<Ed25519KeyPair> {
+    let document = fs::read(path)?;
+    Ed25519KeyPair::from_pkcs8_maybe_unchecked(&document)
+        .map_err(|_| anyhow::anyhow!("read Ed25519 transfer signer {}", path))
+}
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -20,6 +61,20 @@ async fn main() -> Result<()> {
         .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
         .init();
     let args: Vec<String> = env::args().collect();
+    if args.get(1).map(String::as_str) == Some("generate-transfer-key") {
+        ensure!(args.len() == 4, "usage: generate-transfer-key PRIVATE_KEY_PEM PUBLIC_KEY_PEM");
+        let rng = ring::rand::SystemRandom::new();
+        let document = ring::signature::Ed25519KeyPair::generate_pkcs8(&rng)
+            .map_err(|_| anyhow::anyhow!("generate Ed25519 transfer signer"))?;
+        write_new(Path::new(&args[2]), document.as_ref(), 0o600)?;
+        let key = Ed25519KeyPair::from_pkcs8_maybe_unchecked(document.as_ref())
+            .map_err(|_| anyhow::anyhow!("read generated Ed25519 transfer signer"))?;
+        let mut public = vec![0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x03, 0x21, 0x00];
+        public.extend_from_slice(key.public_key().as_ref());
+        write_new(Path::new(&args[3]), &public, 0o644)?;
+        println!("Transfer signer generated; import the public key with agent import-identity");
+        return Ok(());
+    }
     if args.get(1).map(String::as_str) == Some("task-key-init") {
         ensure!(args.len() == 3, "usage: task-key-init ABSOLUTE_KEY_PATH");
         return task_crypto::create_key(std::path::Path::new(&args[2]));
@@ -108,6 +163,43 @@ async fn main() -> Result<()> {
                 "SUCCEEDED",
             )
             .await?;
+            return Ok(());
+        }
+        "issue-gateway-transfer" => {
+            ensure!(
+                args.len() == 12,
+                "usage: issue-gateway-transfer CURRENT_ENDPOINT GATEWAY_ID EXPECTED_GENERATION NEW_ENDPOINT NEW_GATEWAY_ID NEW_CA_PEM NEW_CERT_PEM EXPIRES_IN_SECONDS PRIVATE_KEY_PEM TOKEN_FILE"
+            );
+            let _current_endpoint=&args[2]; let gateway_id=&args[3];
+            let expected_generation=args[4].parse::<i64>().context("expected generation must be an integer")?;
+            ensure!(expected_generation >= 1, "expected generation must be positive");
+            let new_endpoint=&args[5]; let new_gateway=&args[6];
+            let expires_in=args[9].parse::<u64>().context("expires seconds must be an integer")?;
+            ensure!(expires_in > 0 && expires_in <= 900, "transfer token validity must be 1..=900 seconds");
+            let ca_hash=certificate_hash(&args[7])?;
+            let cert_hash=certificate_hash(&args[8])?;
+            let key_pair=transfer_key_pair(&args[10])?;
+            let now_ms=SystemTime::now().duration_since(UNIX_EPOCH)?.as_millis() as i64;
+            let expires_ms=now_ms + expires_in as i64;
+            let transfer_id=Uuid::new_v4();
+            let payload=serde_json::json!({
+                "schema":"yofc.agent.transfer.v1",
+                "transferId":transfer_id,
+                "gatewayId":gateway_id,
+                "fromBindingGeneration":expected_generation,
+                "toBindingGeneration":expected_generation+1,
+                "newEndpoint":new_endpoint,
+                "newGatewayId":new_gateway,
+                "newClientCertificateSha256":cert_hash,
+                "newClientCaSha256":ca_hash,
+                "expiresAtUnixMs":expires_ms
+            });
+            let payload_bytes=serde_json::to_vec(&payload)?;
+            let signature=key_pair.sign(&payload_bytes);
+            let token=format!("YOFC-AGENT-TRANSFER-v1\n{}\n{}\n",
+                base64_url_no_pad(&payload_bytes), hex::encode(signature.as_ref()));
+            write_new(Path::new(&args[11]), token.as_bytes(), 0o600)?;
+            println!("One-time transfer token written; deliver out of logs and command history");
             return Ok(());
         }
         "register-gateway" => {
