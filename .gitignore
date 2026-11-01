@@ -4,3 +4,4 @@ target/
 .phase1-dev/
 __pycache__/
 *.py[cod]
+.codebase-memory/
