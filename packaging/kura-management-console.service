@@ -1,26 +1,28 @@
 [Unit]
-Description=YOFC Kura management console
+Description=YOFC independent Kura management console
 After=network.target
+ConditionPathExists=/etc/kura-management-console/console.env
 
 [Service]
 Type=simple
-User=kura-console
-Group=kura-console
-WorkingDirectory=/usr/share/kura-management-console
+User=yofc-console
+Group=yofc-console
 EnvironmentFile=/etc/kura-management-console/console.env
+WorkingDirectory=/usr/share/kura-management-console
+ExecStartPre=/usr/bin/python3 /usr/lib/kura-management-console/setup.py check
 ExecStart=/usr/bin/yofc-management-console serve
 Restart=on-failure
 RestartSec=3
 UMask=0077
 NoNewPrivileges=yes
+CapabilityBoundingSet=
 ProtectSystem=strict
 ProtectHome=yes
 PrivateTmp=yes
-StateDirectory=kura-management-console
-StateDirectoryMode=0700
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 TasksMax=128
-MemoryMax=512M
+MemoryMax=768M
+CPUWeight=50
 
 [Install]
 WantedBy=multi-user.target
