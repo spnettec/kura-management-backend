@@ -34,6 +34,7 @@ async fn probe(
         payload: Some(agent_frame::Payload::Hello(Hello {
             gateway_id: gateway.into(),
             protocol_major: version,
+            binding_generation: 1,
             agent_version: "contract-test".into(),
             boot_id: "test".into(),
             capabilities: vec![],
@@ -121,6 +122,7 @@ async fn expired_client_certificate_is_rejected() {
             payload: Some(agent_frame::Payload::Hello(Hello {
                 gateway_id: "dev-gateway".into(),
                 protocol_major: 1,
+                binding_generation: 1,
                 agent_version: "test".into(),
                 boot_id: "test".into(),
                 capabilities: vec![],
