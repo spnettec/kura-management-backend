@@ -305,8 +305,12 @@ Web/REST 会话和 Kura 密钥库；Kura 停止不影响注册、心跳和主机
 `mgmt_gateways.binding_generation >= 1`；agent identity 持久化
 `AGENT_BINDING_GENERATION=1`，pre-generation same-center identity 只能通过显式
 `migrate-binding-generation` 补齐。缺失、变更或第二中心 import 仍会拒绝，普通注册不会
-抢占归属。签名引导、审批和真正的跨中心 transfer 仍未实施；不能把该持久代次基础宣称
-为完整转移验收。
+抢占归属。
+
+同日新增有权限网关本机 rebind：`transfer-identity` 要求精确旧代次、operator 身份、无
+RUNNING/UNKNOWN 副作用事务、无 writer 授权；验证新链/key 后备份旧 identity 和 receipt，
+再将 `AGENT_BINDING_GENERATION` 递增。这不是自动抢占，也不是签名授权流程。签名引导、
+外部审批和真正的跨中心 transfer 仍未实施；不能把本机 rebind 基础宣称完成完整转移验收。
 
 ### 6.2 重连与执行语义
 
