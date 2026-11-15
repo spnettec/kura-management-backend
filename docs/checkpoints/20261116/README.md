@@ -12,6 +12,8 @@
 - Core12/GWT6 的独立只读恢复资料 RPC 与登录分支已修复，既有 303 个服务端/共享/RPC policy 条目保持原接受边界；本轮没有再执行旧写验收。
 - 独立 PostgreSQL 合成 schema9 库的 103 条历史密文任务，真实 dump/restore、9→26 迁移、rekey 与旧备份再次恢复验证通过，17 条 UNKNOWN 保持；这不是客户备份或完整 GUI 数据库恢复验收。
 - 新增多代密钥读取、新密文认证代号、严格凭据校验和认证后才返回明文的流；临时文件只保存密文。尚未发布 Root 轮换凭据，没有实际换钥。具体合同见 [key-generation-contract.md](key-generation-contract.md)。
+- 清理后继续的最新core本地检查点为 `bb5e7523534f128cd461f4b6cd646d975fdb886c`（前序离线reader `047a47b496`）；增加Root多代备份/严格原集合恢复、显式启动门禁、不切换现用钥的代准备、不可变暂存历史和原加密备份上传核验。Linux原生132项通过（65服务、15启动、32凭据、20生命周期）；未正式发布凭据或启用轮换。
+- 离线和Java受控reader支持显式多代指纹绑定，修复logical-V1形似密文的合法密码恢复值错误；70测试及macOS/Linux实际打包JAR通过。agent仍需Core保管下的显式委托，完整cohort/正式单元、Root明确发布提交及GUI仍为内部pending；不得让agent直接读取Root原钥或把原UNKNOWN换ID重做。
 - 最新 JDK21 加解密 46 项、配置/快照边界 27 项、CI 入口 5 项通过；两个故意退回旧行为的反例分别产生预期断言失败。`kura.snapshots.encrypt=false` 继续写明文 XML，`kura_custom.properties` 的覆盖语义不变。
 - JDK 最低要求是 **21，允许更高版本**，编译目标保持 Java21，GWT 保持既有 Java11 字节码目标。CI 候选入口已去除“恰好21”限制。用户要求后不再追加27验证；当时已经发起的27进程已终态。个人 `~/.mavenrc` 仍默认21，没有改动；旧的仅设置 JAVA_HOME=27 的 Maven 记录实际为21，不得误用。更高版本全平台兼容不据此宣布完成。
 
