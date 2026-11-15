@@ -487,7 +487,7 @@ This allows the runtime proof to carry forward without repeating the original
 mutations. Actual installed-cache handling across package maintenance remains
 part of the complete Root/provider release review.
 
-The current ARM64 deb is 203325118 bytes, SHA-256
+The prior 2282426e47 ARM64 deb was 203325118 bytes, SHA-256
 `e99555c4378d86f93056e3c39eb6621f7960823aa13cad33f9a3084a62058fa3`.
 Forty-three actual payload files, current preinst embedding and the extracted
 standalone JAR on JDK21 pass. Six superseded deb/changes intermediates were
@@ -502,3 +502,45 @@ complete provider inventory/atomic re-encryption, maintenance start authorizatio
 interrupted-original-operation recovery and formal six-component/platform gates.
 No original UNKNOWN was redispatched or inferred successful. All twelve original
 internal groups and three external deferred boundaries remain open.
+
+## Core-owned agent validation candidate (2026-11-16, 0d77355a0d / 499bc64)
+
+The new Root read-only protocol accepts one private regular O_RDONLY snapshot FD,
+owned by the authenticated caller or the server-resolved Core UID. It verifies the
+artifact and stable metadata, copies into Root's PrivateTmp, runs the actual paired
+standalone worker with canonical single/ring credentials, checks the exact binding
+again and removes the temporary copy. It emits only the existing bounded redacted
+report and credential/cohort fingerprints. No operation UUID or journal settlement,
+key publication or Core start/stop occurs through this protocol.
+
+Agent schema 2 stores no Java/JAR/key paths. Its private proof includes Core's exact
+binding; configuration loading does not contact Core. Controlled-start manifests
+can select fixed PID1-loaded credentials with complete key/ring fingerprints,
+exclusive of legacy key selections. Missing/wrong/unexpected rings fail closed,
+including an active credential inconsistent with the ring writer. Legacy grants
+are retained and are not silently migrated.
+
+There are 104 distinct related checks: native validation/FD 12, Java 33, macOS Rust
+6, source packaging 6, selected cohort/writer/publication regressions 46, and one
+fresh real systemd fixture. The latter uses the actual Root unit/JARs and a Linux
+Rust test executable in the packaged agent sandbox with explicit recovery/test
+overrides. It verifies Root-stopped configuration loading, hidden private directories,
+kurad-owned input FD transfer, old/new password keys and plaintext/old/new encrypted
+artifacts, rejected administrative backup access, and unchanged keys/Root journals.
+Main Core is never started; controlled Java loading from actual PID1 credentials is
+still pending. Historical ignored Linux takeover fixtures were compiled after a
+missing deadline parameter was corrected; they were not executed.
+
+The new ARM64 candidate is 203330752 bytes, SHA-256
+`a971167dbe641640cb916be7145076e41de88f1efdc7945f70953101456f0992`.
+Its 45 actual payload files, current preinst embedding and extracted JDK21 reader
+probe pass. It is not installed on retained scenes. The prior 333-entry payload
+equivalence applies only to the historical package above, not this changed candidate.
+
+The agent unit hides canonical key/Root state paths and protects cgroups; Root's
+socket rejects administrative requests from the agent's fixed cgroup and descendants.
+The existing Root agent UID/other host administrative interfaces remain part of the
+unfinished least-privilege work. Publication with any installed agent is still
+blocked. Effective runtime/binary/grant admission, privileged broker, complete
+controlled startup, Root interrupted-intent recovery, staged history/cancellation,
+GUI and all provider/re-encryption/release gates remain internal pending.

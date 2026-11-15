@@ -8,12 +8,13 @@
 
 ## 已保存的最新工作
 
+- 最新 Core/agent 本地源码为 `0d77355a0d` / `499bc64`：新增 Core 保管密钥的只读快照验证，agent 只传快照只读 FD；新私有证明绑定配置、原钥/代集合及实际包指纹。Java 受控恢复支持 systemd 凭据及严格原指纹，未自动迁移旧配置。104项相关有限检查通过，包括一次全新 systemd/实际 Rust 客户端/Root worker 联调；原/新代密码及外层密文可验证，`kurad` 所有的目标文件可用，agent 私有目录隔离和管理备份拒绝通过，Root 未运行也可加载 agent 配置。当前 ARM64 deb 45项载荷及提取JAR通过，未部署。安装了 agent 时仍拒绝代发布，完整运行时能力/权限 broker、受控主Kura启动、GUI、provider和正式发行仍pending。准确计数与边界见 [core-validation-checkpoint.json](core-validation-checkpoint.json)。
 - 旧密钥迁移、旧加密数据连续性、独立 Root 密钥服务、普通 GWT 加密备份/严格原钥恢复及冷恢复的有限范围结果保留；闭环写操作不重放。
 - Core12/GWT6 的独立只读恢复资料 RPC 与登录分支已修复，既有 303 个服务端/共享/RPC policy 条目保持原接受边界；本轮没有再执行旧写验收。
 - 独立 PostgreSQL 合成 schema9 库的 103 条历史密文任务，真实 dump/restore、9→26 迁移、rekey 与旧备份再次恢复验证通过，17 条 UNKNOWN 保持；这不是客户备份或完整 GUI 数据库恢复验收。
-- 新增多代密钥读取、新密文认证代号、严格凭据校验和认证后才返回明文的流；临时文件只保存密文。尚未发布 Root 轮换凭据，没有实际换钥。具体合同见 [key-generation-contract.md](key-generation-contract.md)。
-- 最新core本地检查点为 `2282426e4782093aa978b0ada7231823dd35082f`。真实安装测试发现并修复了安装器删除代模板的问题：模板已移到持久 `share/key-management/`；发行资源排除宿主Python缓存。195项原生检查、2种权限配置的真实systemd/JDK21锁交接，以及1项实际Core安装/停机/换钥/独立重启闭环通过。真实Crypto、配置审计facade及快照reader已参与验证；旧密文原字节保留且重启后可解密，新密文代号匹配新钥。当前ARM64包43项载荷核对通过，其333项非缓存载荷与实际运行过的29890a9包完全一致，仅删除5项宿主缓存；没有为更新提交号重放已闭环操作。完整provider盘点/原子重加密、agent委托、GUI、原UNKNOWN恢复和正式发行仍pending，详见 [key-generation-contract.md](key-generation-contract.md)。
-- 离线和Java受控reader支持显式多代指纹绑定，修复logical-V1形似密文的合法密码恢复值错误；70测试及macOS/Linux实际打包JAR通过。agent仍需Core保管下的显式委托，完整cohort/正式单元、Root明确发布提交及GUI仍为内部pending；不得让agent直接读取Root原钥或把原UNKNOWN换ID重做。
+- 新增多代密钥读取、新密文认证代号、严格凭据校验和认证后才返回明文的流；解密输出的暂存文件只保存密文。已在一次合成隔离Core中完成发布/独立重启；三个保留网关及客户数据未换钥，旧钥未退役。具体合同见 [key-generation-contract.md](key-generation-contract.md)。
+- 此前core检查点 `2282426e4782093aa978b0ada7231823dd35082f` 已修复安装器删除代模板的问题：模板移到持久 `share/key-management/`；发行资源排除宿主Python缓存。195项原生检查、2种权限配置的真实systemd/JDK21锁交接，以及1项实际Core安装/停机/换钥/独立重启闭环通过。真实Crypto、配置审计facade及快照reader已参与验证；旧密文原字节保留且重启后可解密，新密文代号匹配新钥。当时ARM64包43项载荷核对通过，333项非缓存载荷与实际运行过的29890a9包完全一致，仅删除5项宿主缓存。这是原Core闭环的历史范围；新增委托候选通过上条列出的独立检查，没有重放原闭环，也不把旧包一致性结论套在新改动上。详见 [key-generation-contract.md](key-generation-contract.md)。
+- 离线和Java受控reader支持显式多代指纹绑定，修复logical-V1形似密文的合法密码恢复值错误；70测试及macOS/Linux实际打包JAR的原范围保留。Core保管下的agent委托已有上条候选，完整运行时准入/cohort/正式单元及GUI仍为内部pending；不得让agent直接读取Root原钥或把原UNKNOWN换ID重做。
 - 最新 JDK21 加解密 46 项、配置/快照边界 27 项、CI 入口 5 项通过；两个故意退回旧行为的反例分别产生预期断言失败。`kura.snapshots.encrypt=false` 继续写明文 XML，`kura_custom.properties` 的覆盖语义不变。
 - JDK 最低要求是 **21，允许更高版本**，编译目标保持 Java21，GWT 保持既有 Java11 字节码目标。CI 候选入口已去除“恰好21”限制。用户要求后不再追加27验证；当时已经发起的27进程已终态。个人 `~/.mavenrc` 仍默认21，没有改动；旧的仅设置 JAVA_HOME=27 的 Maven 记录实际为21，不得误用。更高版本全平台兼容不据此宣布完成。
 

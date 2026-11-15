@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16",
+  "branch": "wip/management-close-20261116",
+  "sources": {
+    "core": "0d77355a0d82478f084195ee169b1eec098da7c4",
+    "agent": "499bc64dc97cbc9018f8ba1cfc531d715310d06f",
+    "linuxTestFixtureFix": "9029a0c"
+  },
+  "validation": {
+    "jdk": 21,
+    "jdk27Tested": false,
+    "linuxNativeValidationAndFd": 12,
+    "javaCryptoLoaderRecovery": 33,
+    "macRustProtocolConfigStartup": 6,
+    "sourceArtifactPackaging": 6,
+    "linuxCohortWriterPublicationRegressions": 46,
+    "totalDistinctCases": 104,
+    "actualSystemdFixture": {
+      "cases": 1,
+      "actualRootUnitAndWorker": true,
+      "actualRustFdClient": true,
+      "agentSandbox": "packaged unit with test executable, recovery capabilities and fixture writable path",
+      "agentConfigurationStartsWithRootStopped": true,
+      "privateCredentialAndRootStateHidden": true,
+      "kuradOwnedInputFdAccepted": true,
+      "plainAndOldAndNewOuterCiphertexts": true,
+      "agentAdminBackupRejected": true,
+      "keysAndRootStateMetadataUnchanged": true,
+      "mainCoreStarted": false,
+      "fullControlledJavaBoot": false,
+      "removed": true
+    },
+    "linuxAgentTestBinaryCompiled": true,
+    "linuxIgnoredHistoricalTakeoverFixturesExecuted": false
+  },
+  "package": {
+    "architecture": "arm64",
+    "file": "kura_6.0.0~git202611152217.0d77355-1_arm64.deb",
+    "bytes": 203330752,
+    "sha256": "a971167dbe641640cb916be7145076e41de88f1efdc7945f70953101456f0992",
+    "actualPayloadFilesVerified": 45,
+    "currentPreinstEmbedded": true,
+    "extractedJdk21ReaderProbe": true,
+    "runtimeInstalled": false
+  },
+  "boundaries": {
+    "coreModeKeepsKeysCoreOwned": true,
+    "noRawKeyOrRingInAgentProtocol": true,
+    "preparedProofBindsExactCoreCredentialsAndCohort": true,
+    "legacyProfileAutoMigrated": false,
+    "publicationWithInstalledAgentAllowed": false,
+    "finalLeastPrivilegeComplete": false,
+    "fullSixComponentRelease": false,
+    "customerOrAllProviderDataValidated": false,
+    "weakLegacyKeyRetired": false,
+    "guiComplete": false,
+    "originalUnknownRedispatched": false,
+    "closedOneShotReplayed": false,
+    "retainedRuntimeMutations": 0,
+    "remoteWrites": 0,
+    "internalGroupsRemain": 12,
+    "externalDeferredRemain": 3,
+    "goalActive": true
+  },
+  "next": [
+    "effective runtime/binary/grant capability admission and privileged broker",
+    "managed controlled Java startup with actual loaded credentials",
+    "Root interrupted-operation recovery and staged history/cancellation",
+    "authenticated GUI preparation/backup download/re-upload/confirmation/start",
+    "provider inventory and atomic re-encryption before old-key retirement"
+  ],
+  "runtimeContinuity": {
+    "verifiedAt": "2026-11-15T22:19:16.662063+00:00",
+    "retainedGateways": 3,
+    "originalProcesses": 7,
+    "protectedPrivateFiles": 38,
+    "oldDataFiles": 6,
+    "allExact": true,
+    "journalsChanged": false
+  },
+  "cleanup": {
+    "removedSupersededPackageAndChangesBytes": 203325937,
+    "backupsCreated": false,
+    "retainedCandidate": "kura_6.0.0~git202611152217.0d77355-1_arm64.deb",
+    "candidateHasNoHostPythonCaches": true,
+    "archiveEntriesChecked": 335,
+    "ownedTransientContainersRemoved": true,
+    "retainedRuntimeMutation": false,
+    "newImagesOrPermanentVolumes": 0,
+    "removedReadLogsAndTemporaryReadbackFiles": 14,
+    "removedReadLogBytes": 2190577,
+    "removedConfirmedEmptyOrLiteralSocketFixtures": 2
+  }
+}
