@@ -438,3 +438,67 @@ actions are not an end-user deployment procedure. No key retirement, retained
 gateway mutation, original UNKNOWN redispatch or closed one-shot replay occurred.
 All twelve original internal groups and the three external deferred boundaries
 remain in the open ledger.
+
+
+## Actual installed Core handoff and persistent templates (2026-11-16)
+
+Current local source: `2282426e4782093aa978b0ada7231823dd35082f`.
+The real Core run exercised package `29890a9f547bca29e9ed6ce1657f8c5e61159d8d`.
+Its first pre-fix run exposed a real packaging defect: postinst removes the whole
+`install/` tree, which also removed the generation template required by admission.
+A negative control reproduces this; the template now lives in durable protected
+`share/key-management/key-generations.conf`. The installed-tree cleanup regression
+passes. Core starts normally with that directory removed.
+
+A fresh Ubuntu24.04 ARM64 systemd container installed the archive and its actual
+declared dependencies. The original baseline archive supplied only its legacy
+unit as a verified old-key input; that old unit was never started. The installer
+retained the original weak key. The actual packaged Core unit then ran with a
+bounded 256 MiB heap and no management agent. A small test-only DS consumer used
+the real CryptoService and audited ConfigurationService, and required the actual
+snapshot reader to be active. Its provider class resources match the installed
+package. ConfigurationService intentionally returns ConfigurationServiceAuditFacade;
+the verifier now checks that wrapper instead of requiring the internal implementation
+object. Production audit behavior was not changed.
+
+The one-shot flow prepared a generation, downloaded/re-uploaded its encrypted
+archive for verification, stopped Core through the actual Root/systemd path,
+verified cgroup/writer exclusion, published the retained set and required its
+separate typed start. The new actual JVM decrypted the original ciphertext with
+its original bytes unchanged; new ciphertext carries the published active key ID.
+Original/new JVM PIDs were 5189/5597. All four original operation receipts succeeded.
+Their IDs are recorded in README and are history-only; the disposable fixture was
+removed. These closed operations are not replayed to refresh evidence.
+
+Source validation now includes 195 native cases plus two real systemd/JDK21 lease
+profiles (no capabilities/NNP1, actual Core capabilities/NNP0) and one actual Core
+flow: 198 distinct cases. This proves one standalone Core/crypto/configuration/
+snapshot profile with synthetic provider data. It does not prove all providers,
+customer data, the agent, the GUI, all packaging modes or key retirement.
+
+Archive comparison also found host Python caches in the distribution. Common
+and variant unfiltered resources now exclude pyc/pyo/__pycache__, and the builder
+uses Python -B. The current archive has no host caches. All 333 remaining payload
+entries match the actually exercised package in contents, modes, owners and links;
+only tar timestamps are normalized. Five cache entries were removed. Normalized
+runtime payload SHA-256:
+`dd2c19b8b233a39a7635ef7ce793700cefed5a443219ac04a67e8564923f1566`.
+This allows the runtime proof to carry forward without repeating the original
+mutations. Actual installed-cache handling across package maintenance remains
+part of the complete Root/provider release review.
+
+The current ARM64 deb is 203325118 bytes, SHA-256
+`e99555c4378d86f93056e3c39eb6621f7960823aa13cad33f9a3084a62058fa3`.
+Forty-three actual payload files, current preinst embedding and the extracted
+standalone JAR on JDK21 pass. Six superseded deb/changes intermediates were
+removed without backups (610195021 bytes). Only the distinct legacy baseline and
+latest candidate remain; no new image, permanent volume or repository copy was
+created. The retained three scenes still have seven original processes, 38 exact
+private-file metadata records, six original data contents and unchanged journals.
+
+Next: explicit staged-history/cancellation disposition, Core-owned agent
+delegation and authenticated GUI preparation/download/upload/confirm/start;
+complete provider inventory/atomic re-encryption, maintenance start authorization,
+interrupted-original-operation recovery and formal six-component/platform gates.
+No original UNKNOWN was redispatched or inferred successful. All twelve original
+internal groups and three external deferred boundaries remain open.

@@ -12,7 +12,7 @@
 - Core12/GWT6 的独立只读恢复资料 RPC 与登录分支已修复，既有 303 个服务端/共享/RPC policy 条目保持原接受边界；本轮没有再执行旧写验收。
 - 独立 PostgreSQL 合成 schema9 库的 103 条历史密文任务，真实 dump/restore、9→26 迁移、rekey 与旧备份再次恢复验证通过，17 条 UNKNOWN 保持；这不是客户备份或完整 GUI 数据库恢复验收。
 - 新增多代密钥读取、新密文认证代号、严格凭据校验和认证后才返回明文的流；临时文件只保存密文。尚未发布 Root 轮换凭据，没有实际换钥。具体合同见 [key-generation-contract.md](key-generation-contract.md)。
-- 最新core本地检查点为 `d19fe030e573aa9894c659a55b2c1d326f308238`（JVM运行期锁 `0cd253dbcf`）。已增加绑定包指纹的运行期内核锁、核验原备份后的原生发布事务和独立多代启动授权，完整合同见 [key-generation-contract.md](key-generation-contract.md)。Linux194项原生检查及1项真实systemd/无额外权限JDK21锁交接通过；新ARM64 deb核对43个实际载荷文件、当前preinst内嵌及提取JAR。原生发布用例的systemd/进程边界仍为明确替身，真实systemd补验仅证明Root服务、凭据、只读挂载和JVM锁交接，不代表完整Core/provider轮换。现有安装现场未改；实际Core drain/发布/重启、完整provider/agent/runtime消费者和GUI仍pending。安装旧单钥agent时拒绝发布，旧DTO未复用为多代启动授权，原UNKNOWN不重发。
+- 最新core本地检查点为 `2282426e4782093aa978b0ada7231823dd35082f`。真实安装测试发现并修复了安装器删除代模板的问题：模板已移到持久 `share/key-management/`；发行资源排除宿主Python缓存。195项原生检查、2种权限配置的真实systemd/JDK21锁交接，以及1项实际Core安装/停机/换钥/独立重启闭环通过。真实Crypto、配置审计facade及快照reader已参与验证；旧密文原字节保留且重启后可解密，新密文代号匹配新钥。当前ARM64包43项载荷核对通过，其333项非缓存载荷与实际运行过的29890a9包完全一致，仅删除5项宿主缓存；没有为更新提交号重放已闭环操作。完整provider盘点/原子重加密、agent委托、GUI、原UNKNOWN恢复和正式发行仍pending，详见 [key-generation-contract.md](key-generation-contract.md)。
 - 离线和Java受控reader支持显式多代指纹绑定，修复logical-V1形似密文的合法密码恢复值错误；70测试及macOS/Linux实际打包JAR通过。agent仍需Core保管下的显式委托，完整cohort/正式单元、Root明确发布提交及GUI仍为内部pending；不得让agent直接读取Root原钥或把原UNKNOWN换ID重做。
 - 最新 JDK21 加解密 46 项、配置/快照边界 27 项、CI 入口 5 项通过；两个故意退回旧行为的反例分别产生预期断言失败。`kura.snapshots.encrypt=false` 继续写明文 XML，`kura_custom.properties` 的覆盖语义不变。
 - JDK 最低要求是 **21，允许更高版本**，编译目标保持 Java21，GWT 保持既有 Java11 字节码目标。CI 候选入口已去除“恰好21”限制。用户要求后不再追加27验证；当时已经发起的27进程已终态。个人 `~/.mavenrc` 仍默认21，没有改动；旧的仅设置 JAVA_HOME=27 的 Maven 记录实际为21，不得误用。更高版本全平台兼容不据此宣布完成。
@@ -29,7 +29,7 @@
 
 必须保留的原 UNKNOWN：管理操作 `767863a9-fe6b-4135-9783-ddcb131030af`；startup.stop 意图 `a87d94d52839e316845b7c831b265daf928f0bfd5fb0a883fb49b721cba5f63c`。只读原记录；不重发、不换 ID、不手动 stop、不重导出，不从 PID、耗时、空日志或新环境推断结算。
 
-以下闭环 ID 永远只读：`965a1c8b-5acb-40ce-854e-b5592df80239`、`75d62ca7-cec5-47de-b136-9415e59dc226`、`fd78f9ad-d41d-4651-98bd-7a664f167255`、`5a7dfd2d-51bf-4431-bb67-7995643b0c4b`、`8fee5e2b-343e-4d71-b09d-7388af348ed9`、`f4115360-1598-4e2d-98ff-29978639936c`、`57d19ee1-a8e8-4fc6-8dba-36cd4cc6bcd9`、`10296cdc-4a25-46e9-b4b4-8993fb31bac6`。新 RPC 现场的空 journal 不能结算旧现场原记录。V36v1 不做 live query/inverse/reissue，既有 GWT 三次保存等旧 CLOSED 验收不重放。
+以下闭环 ID 永远只读：`965a1c8b-5acb-40ce-854e-b5592df80239`、`75d62ca7-cec5-47de-b136-9415e59dc226`、`fd78f9ad-d41d-4651-98bd-7a664f167255`、`5a7dfd2d-51bf-4431-bb67-7995643b0c4b`、`8fee5e2b-343e-4d71-b09d-7388af348ed9`、`f4115360-1598-4e2d-98ff-29978639936c`、`57d19ee1-a8e8-4fc6-8dba-36cd4cc6bcd9`、`10296cdc-4a25-46e9-b4b4-8993fb31bac6`。新 RPC 现场的空 journal 不能结算旧现场原记录。 本轮新隔离Core闭环的4个原ID也只保留历史：preparation `2d77ed82-8dd7-453c-88f8-cd1806d66393`、verification `6ef48b02-7d5c-430e-9162-871783efce9d`、publication `ab04d2bc-be23-4ff0-85f1-6a6abe03000e`、startup `4bbdae4a-df31-4296-a280-dcd5f1dd7332`。该一次性夹具已删除，不恢复/重发，不在其他Root状态中查询来推断结果。V36v1 不做 live query/inverse/reissue，既有 GWT 三次保存等旧 CLOSED 验收不重放。
 
 ## 从干净环境继续
 

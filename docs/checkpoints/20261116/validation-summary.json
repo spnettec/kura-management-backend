@@ -231,6 +231,69 @@
     "unknownRedispatched": false,
     "oneShotAcceptanceReplayed": false,
     "newImagesOrPersistentVolumesOrRepositoryCopies": 0,
-    "disposableContainersRemoved": true
+    "disposableContainersRemoved": true,
+    "supersededBySourceHead": "2282426e4782093aa978b0ada7231823dd35082f"
+  },
+  "installedCoreGenerations20261116": {
+    "sourceHead": "2282426e4782093aa978b0ada7231823dd35082f",
+    "runtimeTestedPackageHead": "29890a9f547bca29e9ed6ce1657f8c5e61159d8d",
+    "runtimeTestedPackageSha256": "c0505d09dc86e806be35d897ee33d1e6645c59a9b3f9bb6a25476054e39cb1ba",
+    "linuxArm64DistinctNativeCasesPassed": 195,
+    "suites": {
+      "service": 65,
+      "startup": 27,
+      "credentialPolicy": 32,
+      "lifecycle": 20,
+      "launcher": 5,
+      "realJarCohort": 17,
+      "writerLease": 13,
+      "publication": 16
+    },
+    "realSystemdLeaseCasesPassed": 2,
+    "leaseProfiles": [
+      "no capabilities and NNP1",
+      "actual Core ambient/bounding capabilities and NNP0"
+    ],
+    "actualInstalledCoreCasesPassed": 1,
+    "totalDistinctCasesPassed": 198,
+    "actualInstalledProfile": "Ubuntu24.04 ARM64, declared deps installed, original baseline unit used as key input only, standalone Core, synthetic provider data",
+    "currentPackageSha256": "e99555c4378d86f93056e3c39eb6621f7960823aa13cad33f9a3084a62058fa3",
+    "currentPackageBytes": 203325118,
+    "actualArchiveFilesVerified": 43,
+    "actualCoreJava": "Ubuntu packaged OpenJDK21; declared dependency installed explicitly",
+    "nativeJava": "Temurin21.0.12.1",
+    "hostExtractedReaderJava": "Temurin21.0.13",
+    "actualPackagedUnitAndRootServiceUsed": true,
+    "realCryptoConfigurationAuditFacadeAndSnapshotBundleActive": true,
+    "oldCipherBytesUnchangedAndDecryptedAfterRestart": true,
+    "newCipherKeyIdMatchesPublishedActiveKey": true,
+    "originalCorePid": 5189,
+    "newCorePid": 5597,
+    "originalOperationIds": {
+      "preparation": "2d77ed82-8dd7-453c-88f8-cd1806d66393",
+      "verification": "6ef48b02-7d5c-430e-9162-871783efce9d",
+      "publication": "ab04d2bc-be23-4ff0-85f1-6a6abe03000e",
+      "startup": "4bbdae4a-df31-4296-a280-dcd5f1dd7332"
+    },
+    "oneShotReplay": false,
+    "remainingRuntimePayloadEntriesExact": 333,
+    "removedHostCacheEntries": 5,
+    "normalizedRuntimePayloadSha256": "dd2c19b8b233a39a7635ef7ce793700cefed5a443219ac04a67e8564923f1566",
+    "templateCleanupNegativeControlReproduced": true,
+    "persistentTemplate": "share/key-management/key-generations.conf",
+    "auditFacadeTestCorrectionDidNotChangeProductionService": true,
+    "fullProviderAgentGuiAndPlatformAcceptance": false,
+    "weakLegacyKeyRetired": false,
+    "customerDataValidated": false,
+    "retainedSceneMutations": 0,
+    "unknownRedispatched": false,
+    "disposableFixturesRemoved": true,
+    "newImagesOrPersistentVolumesOrRepositoryCopies": 0,
+    "cleanup": {
+      "removedIntermediatePackagesAndChanges": 6,
+      "removedIntermediateBytes": 610195021,
+      "retainedLegacyBaselineAndCurrentCandidate": true,
+      "noBackupsCreated": true
+    }
   }
 }
