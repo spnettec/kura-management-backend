@@ -12,7 +12,7 @@
 - Core12/GWT6 的独立只读恢复资料 RPC 与登录分支已修复，既有 303 个服务端/共享/RPC policy 条目保持原接受边界；本轮没有再执行旧写验收。
 - 独立 PostgreSQL 合成 schema9 库的 103 条历史密文任务，真实 dump/restore、9→26 迁移、rekey 与旧备份再次恢复验证通过，17 条 UNKNOWN 保持；这不是客户备份或完整 GUI 数据库恢复验收。
 - 新增多代密钥读取、新密文认证代号、严格凭据校验和认证后才返回明文的流；临时文件只保存密文。尚未发布 Root 轮换凭据，没有实际换钥。具体合同见 [key-generation-contract.md](key-generation-contract.md)。
-- 最新core本地检查点为 `e4d89bada197b50d5808cf1a19af46ec0f447d50`（包文件配对 `2dd1b74249`、普通启动门禁 `5a24b5ed4e`、代准备 `bb5e752353`、离线reader `047a47b496`）。Linux165项通过（65服务、27启动、32凭据、20生命周期、5 launcher、16实际JAR配对）；当前ARM64 deb已核对41个实际载荷文件、最新preinst内嵌与从deb提取的真实JAR。冷恢复基础校验独立于损坏/缺失的主Kura reader，代启动拒绝未配对组合。现有安装场景未改；实际drain、明确发布提交、新generation-start合同、完整provider/agent/runtime消费者及GUI仍pending。包文件配对不替代完整发行，旧check-loaded不能绕过原UNKNOWN。
+- 最新core本地检查点为 `d19fe030e573aa9894c659a55b2c1d326f308238`（JVM运行期锁 `0cd253dbcf`）。已增加绑定包指纹的运行期内核锁、核验原备份后的原生发布事务和独立多代启动授权，完整合同见 [key-generation-contract.md](key-generation-contract.md)。Linux194项原生检查及1项真实systemd/无额外权限JDK21锁交接通过；新ARM64 deb核对43个实际载荷文件、当前preinst内嵌及提取JAR。原生发布用例的systemd/进程边界仍为明确替身，真实systemd补验仅证明Root服务、凭据、只读挂载和JVM锁交接，不代表完整Core/provider轮换。现有安装现场未改；实际Core drain/发布/重启、完整provider/agent/runtime消费者和GUI仍pending。安装旧单钥agent时拒绝发布，旧DTO未复用为多代启动授权，原UNKNOWN不重发。
 - 离线和Java受控reader支持显式多代指纹绑定，修复logical-V1形似密文的合法密码恢复值错误；70测试及macOS/Linux实际打包JAR通过。agent仍需Core保管下的显式委托，完整cohort/正式单元、Root明确发布提交及GUI仍为内部pending；不得让agent直接读取Root原钥或把原UNKNOWN换ID重做。
 - 最新 JDK21 加解密 46 项、配置/快照边界 27 项、CI 入口 5 项通过；两个故意退回旧行为的反例分别产生预期断言失败。`kura.snapshots.encrypt=false` 继续写明文 XML，`kura_custom.properties` 的覆盖语义不变。
 - JDK 最低要求是 **21，允许更高版本**，编译目标保持 Java21，GWT 保持既有 Java11 字节码目标。CI 候选入口已去除“恰好21”限制。用户要求后不再追加27验证；当时已经发起的27进程已终态。个人 `~/.mavenrc` 仍默认21，没有改动；旧的仅设置 JAVA_HOME=27 的 Maven 记录实际为21，不得误用。更高版本全平台兼容不据此宣布完成。

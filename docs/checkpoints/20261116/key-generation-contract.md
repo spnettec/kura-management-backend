@@ -359,3 +359,82 @@ dynamic provider/runtime/optional-agent readers, typed generation start and GUI
 confirmation remain internal pending. A bounded literal inventory is not full
 provider coverage. No existing key was published/retired, no retained Core was
 restarted, and no UNKNOWN or closed write was replayed.
+
+## JVM lease, guarded publication and independent generation start (2026-11-16)
+
+Source checkpoint: `d19fe030e573aa9894c659a55b2c1d326f308238`, following
+`0cd253dbcfd075ce3294c103fa5c1e57c77e8f85`. These are local WIP commits.
+
+All three packaged launchers now enter the shared `exec-java` guard. After
+validating loaded credentials, Root validates the actual package and passes one
+empty, read-only, Root-owned coordination descriptor over authenticated
+SCM_RIGHTS. The JVM inherits descriptor 9 and the shared kernel flock across
+exec, preserving the systemd/PIDFile PID. Root releases its copy. Private runtime
+registrations bind kernel PID/start ticks, boot ID, UID, original fingerprints,
+lock inode and the exact package/launcher cohort. Stale runtime cache may be
+pruned during a new lease acquisition; operation/start journals are never pruned
+or settled by that cache. A reused live registration is refused. The package
+requires writer protocol 1, and the main unit makes the runtime socket directory
+read-only even though it can connect to the socket and receive the descriptor.
+
+`generation-publication-plan` is read-only. `generation-publish` binds the
+original preparation UUID, successful uploaded-backup verification UUID, expected
+ring and exact package cohort. Before INTENT it requires the protected managed
+unit, active registered Core PID, matching loaded-source/package binding, cgroup
+v2 and no same-UID processes outside the managed control group. A registered or
+installed old single-key agent is explicitly refused until Core-owned generation
+delegation exists.
+
+After the durable original INTENT, publication preserves exact source key and
+receipt bytes privately, requests synchronous fixed `StopUnit` once, then checks
+inactive/dead, zero main/control PIDs, an empty descendant cgroup and an exclusive
+lock on the original lease inode. It rechecks package, staged set and unchanged
+source before replacing canonical credentials. Every retained key stays in the
+prepared ring. A fixed package-owned drop-in loads both mandatory generation
+credentials; no operator environment switch is introduced. Daemon reload, final
+stopped state, canonical set and package are checked before immutable publication
+and final success receipts. Any ambiguous failure from INTENT stays UNKNOWN,
+including partial canonical files or a lost final journal. Original reads do not
+stop, reload, publish or start again. A successful publication leaves Core stopped
+and requires explicit start.
+
+`generation-core-start` has its own typed contract binding the original
+publication, ring and package. It accepts one fixed `StartUnit`, with a durable
+receipt scoped only to `SYSTEMD_JOB_ACCEPTED`. This is not Core health. Ordinary
+single-key/generation admission and writer leases require the matching accepted
+generation-start authorization after publication. Neither missing ring halves
+nor a missing convenience marker can downgrade a successful publication to a
+single-key backup/boot. The old restore/start DTOs are unchanged. Lazy helpers now
+share the actual service entrypoint's protocol exception classes; the independent
+cold base remains usable without the generation helper. Attested helper source
+is executed directly, without trusting a pyc cache.
+
+Linux ARM64 validation passes 194 distinct native cases: service65, startup27,
+credential32, lifecycle20, launcher5, real-JAR cohort16, writer13 and publication16.
+Publication tests use real Argon2id/AES-GCM, storage, package JARs and kernel locks;
+their systemd/process boundary is an explicit fake. Failure injection covers lost
+stop/start/final receipts, surviving locks, nonempty descendants, partial writes,
+changed packages, missing registrations, optional-agent and cold-peer fences.
+A separate fresh systemd container passes one real unprivileged JDK21 lease test:
+actual Root socket/credential transfer, effective read-only runtime mount, stable
+PID, no extra JVM capabilities, kernel exclusion until stop and helper-error
+survival without Root restart. This is a JVM probe, not a full Core/provider boot.
+Both temporary containers and their private fixture keys/data were removed.
+
+The canonical three-module ARM64 distribution build succeeds. Its actual deb is
+203397206 bytes, SHA-256
+`a0a435ba7e46d0c72fc4609f78874d8ecb08f5de0e065a0e7f2c5a86274ca02e`.
+Forty-three actual payload files, the current lifecycle embedded in preinst and
+the real extracted standalone JAR on JDK21 are verified. It was not installed in
+a retained gateway. The superseded e4d89ba candidate is disposable; the original
+legacy baseline and this current candidate serve different upgrade-test roles.
+
+Remaining internal work includes actual full Core/systemd publication and
+restart/reconciliation, full provider/runtime inventory and atomic re-encryption,
+Core-owned agent delegation, authenticated GUI preparation/download/upload/confirm
+and cold generation-start, package-maintenance start authorization, interrupted
+publication recovery and staged-history/cancellation disposition. These native
+actions are not an end-user deployment procedure. No key retirement, retained
+gateway mutation, original UNKNOWN redispatch or closed one-shot replay occurred.
+All twelve original internal groups and the three external deferred boundaries
+remain in the open ledger.
