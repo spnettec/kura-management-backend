@@ -1,3 +1,13 @@
+# 当前续接入口已迁移（2026-11-16）
+
+请先读 [干净源码检查点](../checkpoints/20261116/README.md)、[未验收台账](../checkpoints/20261116/OPEN-TASKS.md) 和 [447路径归并判断](../checkpoints/20261116/CANDIDATE-REVIEW.md)。后续不依赖旧target、构建副本或大型证据恢复链，不要按下文旧路径重建闭环验收。
+
+按用户最后确认，不能合入主线的代码只保留本地。18仓本地分支为 `wip/management-close-20261116`；447路径已存Git，其中仅2个独立CI/JDK最低版本文件合入 `spnettec/kura` 的 `heyoulin-kura`，提交 `dc788aa2361d2c14971c0b45533848e83f17aadd`。其余445路径仍本地，未推WIP分支，完整目标未完成。只清理可重建中间产物，保留密钥、加密数据、运行现场及原UNKNOWN；收尾状态见新检查点。JDK最低21，暂不追加27验证。
+
+以下为历史记录；旧源数目、PID、证据依赖、提交/清理限制和“下一步”均须以新检查点及用户最新授权核对，不能据此重放旧动作。
+
+---
+
 # 当前续接：中心历史密文库真实备份恢复及迁移已作有限验证（2026-11-16）
 
 目标active，G034未封签，最后接受G033/V61、完整封签V51、apply0、未提交推送。源/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/nm-role-authority-20261112/registered-runtime-v52/agent-identity-renewal-v2/source-checkpoint-identity-renewal-v62-center-db-upgrade-wip.json，SHA e70765c8c8d60325441165afd2a98dd0eea6d151c9771e3417c60fbccf659a82；候选SHA 430f417b142b8d627c50265527ee5bcef7cae7f86317b270ea70989448dca4d5。2303源+4夹具、V51后251、439候选未应用、130快照。核验/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/nm-role-authority-20261112/registered-runtime-v52/agent-identity-renewal-v2/center-encrypted-db-upgrade-v1/verification-center-db-upgrade-wip.json。

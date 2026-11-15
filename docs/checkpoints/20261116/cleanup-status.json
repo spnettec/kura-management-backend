@@ -1,0 +1,149 @@
+{
+  "recordedAt": "2026-11-15T17:38:50.222786+00:00",
+  "directory": "/Users/heyoulin/iot-kura-develop",
+  "beforeBytesApproximate": 483487498240,
+  "afterAllocatedBytes": 96385380352,
+  "directoryMeasurement": "du -x -k; directory allocation accounting can count shared APFS extents multiple times",
+  "directorySizeReductionBytes": 387102117888,
+  "availableAtThisStorageTurnStartBytes": 118933110784,
+  "availableAtCloseBytes": 424956026880,
+  "availableNetIncreaseThisStorageTurnBytes": 306022916096,
+  "availableAtFullPhaseStartBytes": 19377643520,
+  "largestRemainingDirectories": [
+    {
+      "path": "/Users/heyoulin/iot-kura-develop",
+      "allocatedBytes": 96385380352
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git",
+      "allocatedBytes": 96385359872
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console",
+      "allocatedBytes": 81428078592
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/target",
+      "allocatedBytes": 78761119744
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/nm-role-authority-20261112",
+      "allocatedBytes": 49118605312
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/nm-role-authority-20261112/registered-runtime-v52",
+      "allocatedBytes": 40277590016
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/upstream-logical-sync-20261112",
+      "allocatedBytes": 17727381504
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura",
+      "allocatedBytes": 7536529408
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/upstream-logical-sync-20261112/build-plugins-functional-v17",
+      "allocatedBytes": 6164762624
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura",
+      "allocatedBytes": 3432239104
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib",
+      "allocatedBytes": 2561138688
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/.phase1-dev-20261101-retained",
+      "allocatedBytes": 2096881664
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura-dev-runtime",
+      "allocatedBytes": 1808691200
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura-dev-runtime/target",
+      "allocatedBytes": 1808019456
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-console/target/upstream-logical-sync-20261112/upstream-utility-factory-v18",
+      "allocatedBytes": 1767387136
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui",
+      "allocatedBytes": 1688268800
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles",
+      "allocatedBytes": 1596485632
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2",
+      "allocatedBytes": 1594384384
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-netplan-core",
+      "allocatedBytes": 1570193408
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116",
+      "allocatedBytes": 1484451840
+    }
+  ],
+  "cargoBuildRootsRemoved": 11,
+  "inactiveJarAndFrameworkCacheDirectoriesRemoved": 643,
+  "additionalMavenCacheRootsRemoved": 1,
+  "additionalMavenBuildFilesAndDirectoriesRemoved": 161,
+  "confirmedDisposableBackupCopiesRemoved": {
+    "volumeArchives": 72,
+    "personalDebugArchive": 1,
+    "taskContainerLayerArchives": 52,
+    "generatedEvidenceCopies": 107
+  },
+  "unconfirmedVolumeArchivesRetained": 60,
+  "unconfirmedVolumeArchiveBytesRetained": 1479707586,
+  "docker": {
+    "containersBefore": 170,
+    "containersAfter": 6,
+    "containersRemoved": 164,
+    "volumesRemoved": 132,
+    "volumesRetained": 17,
+    "buildCacheBytes": 0
+  },
+  "personalKuraDev": {
+    "removedDebugFiles": 15,
+    "removedMigrationProfiles": 3,
+    "retainedDataFiles": 25,
+    "retainedProfiles": [
+      "macos",
+      "macos-before-eclipse-import-20261009-151119"
+    ],
+    "confirmedDisposableBackupRemoved": true
+  },
+  "runningFixtures": {
+    "containers": 3,
+    "originalProcesses": 7,
+    "originalPrivateFilesExact": 38,
+    "oldRuntimeDataFilesContentsExact": 6
+  },
+  "mainline": {
+    "remote": "spnettec/kura",
+    "branch": "heyoulin-kura",
+    "commit": "dc788aa2361d2c14971c0b45533848e83f17aadd",
+    "candidatePathsMerged": 2
+  },
+  "localCandidates": {
+    "branch": "wip/management-close-20261116",
+    "repositories": 18,
+    "unmergedCandidatePaths": 445,
+    "remoteWipPushed": false
+  },
+  "unknownRedispatched": false,
+  "closedAcceptanceReplayed": false,
+  "goalCompleted": false,
+  "originalUnknownContextPreserved": true,
+  "weeklyUsagePercent": 59,
+  "ordinaryUsageAllowed": true,
+  "extraCreditsOrResetsUsed": false
+}

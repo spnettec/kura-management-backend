@@ -1,3 +1,13 @@
+# 当前续接入口已迁移（2026-11-16）
+
+请先读 [干净源码检查点](../checkpoints/20261116/README.md)、[未验收台账](../checkpoints/20261116/OPEN-TASKS.md) 和 [447路径归并判断](../checkpoints/20261116/CANDIDATE-REVIEW.md)。后续不依赖旧target、构建副本或大型证据恢复链，不要按下文旧路径重建闭环验收。
+
+按用户最后确认，不能合入主线的代码只保留本地。18仓本地分支为 `wip/management-close-20261116`；447路径已存Git，其中仅2个独立CI/JDK最低版本文件合入 `spnettec/kura` 的 `heyoulin-kura`，提交 `dc788aa2361d2c14971c0b45533848e83f17aadd`。其余445路径仍本地，未推WIP分支，完整目标未完成。只清理可重建中间产物，保留密钥、加密数据、运行现场及原UNKNOWN；收尾状态见新检查点。JDK最低21，暂不追加27验证。
+
+以下为历史记录；旧源数目、PID、证据依赖、提交/清理限制和“下一步”均须以新检查点及用户最新授权核对，不能据此重放旧动作。
+
+---
+
 /goal 恢复 YOFC Kura 管理体系改造，继续实际实施。
 
 工作空间：/Users/heyoulin/iot-kura-develop/git。上一会话按用户要求于 2026-11-07

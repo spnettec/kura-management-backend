@@ -9,3 +9,6 @@ __pycache__/
 # Local retained development copies and generated TLS credentials
 /.phase*/
 /docker/tls/
+
+# Finder metadata is not project source
+.DS_Store

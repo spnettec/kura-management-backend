@@ -48,13 +48,13 @@
       "repo": "kura-management-agent",
       "originalHead": "0b99202903a44531873e61df188f87ccb6b4953b",
       "baselineCommit": "d1f9a62e2256db7585e7afb2476b98fee65d89cf",
-      "finalCommit": "8ab5f69270fd7d68422d35c33217587c9b1bed05"
+      "finalCommit": "b7a025021971c3221cfa0a421c31bfa632f017f7"
     },
     {
       "repo": "kura-management-console",
       "originalHead": "5f5b1ab6af03200e05e580fab27b8270347414b6",
       "baselineCommit": "731d56220e3a0280b2d630a8e16566708b194bd1",
-      "finalCommit": "a199ca7afb09238464caa7739237a7985a61bb25"
+      "finalCommit": "bd36399b3fd11c5a1c245189dd99fa42b90cdc3b"
     },
     {
       "repo": "kura-management-ui",

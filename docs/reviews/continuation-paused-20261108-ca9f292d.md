@@ -1,3 +1,13 @@
+# 当前续接入口已迁移（2026-11-16）
+
+请先读 [干净源码检查点](../checkpoints/20261116/README.md)、[未验收台账](../checkpoints/20261116/OPEN-TASKS.md) 和 [447路径归并判断](../checkpoints/20261116/CANDIDATE-REVIEW.md)。后续不依赖旧target、构建副本或大型证据恢复链，不要按下文旧路径重建闭环验收。
+
+按用户最后确认，不能合入主线的代码只保留本地。18仓本地分支为 `wip/management-close-20261116`；447路径已存Git，其中仅2个独立CI/JDK最低版本文件合入 `spnettec/kura` 的 `heyoulin-kura`，提交 `dc788aa2361d2c14971c0b45533848e83f17aadd`。其余445路径仍本地，未推WIP分支，完整目标未完成。只清理可重建中间产物，保留密钥、加密数据、运行现场及原UNKNOWN；收尾状态见新检查点。JDK最低21，暂不追加27验证。
+
+以下为历史记录；旧源数目、PID、证据依赖、提交/清理限制和“下一步”均须以新检查点及用户最新授权核对，不能据此重放旧动作。
+
+---
+
 # 周额度100%触发暂停 — ca9f292d
 
 2026-11-08，用户要求周额度耗尽即暂停，仅允许少量额外credits做必要收尾。get_usage_limits现返回 usedPercent=100（周10080分钟，reset1794408709 = Asia/Shanghai 2026-11-11 22:51:49）。ordinaryUsageAllowed=true不改变本次用户暂停条件；不使用reset券，不继续功能开发/新验收。此记录落盘后调用update_goal(paused)，最终状态以工具返回为准。整体未完成，无自动唤醒安排。
