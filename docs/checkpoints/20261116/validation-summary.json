@@ -14,5 +14,22 @@
     "actualJavaHome": "/Library/Java/JavaVirtualMachines/temurin-27.jdk/Contents/Home"
   },
   "fullRotationActivationAccepted": false,
-  "productionKeyOrDataMutations": 0
+  "productionKeyOrDataMutations": 0,
+  "rootGenerationBackup20261116": {
+    "newCasesPassed": 14,
+    "existingServiceCasesPassed": 26,
+    "lifecycleCasesPassed": 20,
+    "existingLinuxCasesSkippedOnMac": 2,
+    "realCipherJavaVersion": "21.0.13",
+    "workerBuild": "standalone canonical Maven target, offline, explicit existing shared Maven cache",
+    "rotationOrRestoreEnabled": false,
+    "runtimeDeployed": false,
+    "existingOneShotAcceptanceReplayed": false,
+    "sourceRepository": "kura",
+    "files": [
+      "kura/distrib/src/main/resources/unfiltered/pkg/bin/kura_key_service.py",
+      "kura/distrib/src/main/resources/unfiltered/pkg/bin/kura_key_service_lifecycle.py",
+      "kura/distrib/src/test/test_key_service.py"
+    ]
+  }
 }
