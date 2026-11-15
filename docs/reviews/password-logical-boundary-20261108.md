@@ -1,0 +1,25 @@
+# 2026-11-08 101967da 逻辑密码边界实证与未修复回归
+
+从821a895f续接，全部父指纹/18仓工作树/原Orb四服务与两台已停Parallels实时匹配。此轮没有生产修复或install；193项最终生产JAR保持原字节。新增5项边界回归当前3失败、2通过，不能把当前工作树称作全绿。旧完整193通过证据仍是上轮精确产物的历史证据，不能代替本轮失败。
+
+## 已取得的实证
+
+全新IDEA实际Kura PID25402/HTTP18622，283 inventory逐一验SHA且Core为193测试原产物。新唯一characterize-corrected-once在自有SCC公布Password逻辑值，其字符恰好为实际CryptoService生成的有效AES密文；标量、数组、Vector均使用独立副本。没有业务CM写入，没有rollback，只有自有服务注册和新snapshot。
+
+真实loadEncryptedSnapshotFileContent经XML适配器得到原逻辑密码（true），公开getSnapshot随后把该逻辑值再次当密文解密而改变值（false）。收据仅布尔值，无秘密内容。publicViewPreservesLogicalPassword=true仅对本夹具成立：其getConfigurationProperties每次返回新map，Core对临时map的解密不回写下一次getter结果；不能提升为所有SCC公开边界都正确。真正稳定map的SCC边界另需验证，仍pending。
+
+首个PID25334同类夹具在已完成snapshot之后，错误地在AuditFacade子类直接getDeclaredMethod，未遍历superclass而失败；已分类为夹具反射错误，保留收据与现场，不重发。修正夹具通过coreField的声明类定位实际父类方法。两个实例已停止，现场完整保留。
+
+## 回归与兼容约束
+
+SnapshotLogicalPasswordBoundaryTest使用实际XmlConfigPropertiesAdapter marshal/unmarshal再进入实际Core.getSnapshot。旧路径5项中3失败（逻辑标量/数组/Vector被二次解密），2项legacy兼容通过。特意保留legacy Base64(CM AES ciphertext)仍需后续解密的案例。它与Base64(恰为有效AES的逻辑密码)可具有完全一样的旧wire bytes，不能靠“能否解密”区分。
+
+因此不能简单删除所有getSnapshot解密：会破坏既有CM快照。下一实施必须给新快照明确表示边界，保留无标记旧格式路径；不静默重解释旧字节，也不写新格式后声称所有旧SCC/CM恢复已兼容。
+
+## 下一具体实施
+
+采用新快照root显式密码编码版本（建议BASE64_LOGICAL_V1），存储前按来源将CM密文解一次、SCC逻辑值不解；rollback已经准备的logical快照输入必须显式标记，避免重复归一化。XmlComponentConfigurations保存版本，XmlJavaComponentConfigurationsMapper写/读版本并让XmlConfigPropertiesAdapter只按标记decode Base64，不再对标记逻辑值做AES试探；getSnapshot对标记logical结果不再二次解密。未知显式版本fail closed；没有标记继续旧路径。writeSnapshot内部copy、snapshot/updateConfigurationsInternal/rollback三个saveSnapshot调用者都需检查，特别是混合SCC与加密提交值的更新快照，不能仅用当前PID猜输入表示。
+
+相关改动涉及Core配置和XML marshaller provider（同属kura monorepo），动前要保存XML provider所有旧指纹，构建install配置模块和XML provider并测试真实native新目标。当前只新增失败回归和实证，协议实现尚未开始；不应直接跑全reactor淹没已定位错误。先修到明确版本及legacy兼容均过，再以新逻辑值目标验证真实CM/回滚/paired/快照。
+
+完整14项内部pending保留，外部NM/cloud-init/物理、amd64、磁盘满/硬断电deferred不变；无提交推送、UNKNOWN不重发、原Orb/个人runtime未改。证据target/password-logical-boundary-20261108；机器清单docs/evidence/password-logical-boundary-20261108.json。目标active。

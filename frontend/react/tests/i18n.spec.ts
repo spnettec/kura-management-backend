@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 test.use({ locale: "en-US" });
 const password = () =>
   readFileSync(
-    resolve(import.meta.dirname, "../../../.phase1-dev/admin.password"),
+    resolve(process.env.KURA_BROWSER_FIXTURE || resolve(import.meta.dirname, "../../../.phase1-dev"), "admin.password"),
     "utf8",
   );
 const switcher = (page: Page) =>

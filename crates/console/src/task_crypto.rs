@@ -2,8 +2,8 @@ use aes_gcm::{
     Aes256Gcm, KeyInit, Nonce,
     aead::{Aead, Payload},
 };
-use argon2::{Algorithm, Argon2, Params, Version};
 use anyhow::{Context, Result, bail, ensure};
+use argon2::{Algorithm, Argon2, Params, Version};
 use rand_core::{OsRng, RngCore};
 use serde_json::{Value, json};
 use sqlx::{PgPool, Row, postgres::PgRow};
@@ -93,8 +93,11 @@ fn read_passphrase(path: &Path) -> Result<Vec<u8>> {
 fn backup_kdf(passphrase: &[u8], salt: &[u8]) -> Result<[u8; 32]> {
     let params = Params::new(19_456, 2, 1, Some(32))?;
     let mut derived = [0u8; 32];
-    Argon2::new(Algorithm::Argon2id, Version::V0x13, params)
-        .hash_password_into(passphrase, salt, &mut derived)?;
+    Argon2::new(Algorithm::Argon2id, Version::V0x13, params).hash_password_into(
+        passphrase,
+        salt,
+        &mut derived,
+    )?;
     Ok(derived)
 }
 
@@ -105,7 +108,10 @@ fn backup_parent(path: &Path) -> Result<&Path> {
 
 pub fn backup_key(key_path: &Path, backup_path: &Path, passphrase_path: &Path) -> Result<()> {
     let key = private_file(key_path)?;
-    ensure!(key.len() == 32, "task data key must contain exactly 32 bytes");
+    ensure!(
+        key.len() == 32,
+        "task data key must contain exactly 32 bytes"
+    );
     let passphrase = read_passphrase(passphrase_path)?;
     backup_parent(backup_path)?;
     let mut salt = [0u8; BACKUP_SALT_LEN];
@@ -121,7 +127,13 @@ pub fn backup_key(key_path: &Path, backup_path: &Path, passphrase_path: &Path) -
     aad.extend_from_slice(&salt);
     aad.extend_from_slice(&nonce);
     let encrypted = cipher
-        .encrypt(Nonce::from_slice(&nonce), Payload { msg: &key, aad: &aad })
+        .encrypt(
+            Nonce::from_slice(&nonce),
+            Payload {
+                msg: &key,
+                aad: &aad,
+            },
+        )
         .map_err(|_| anyhow::anyhow!("task key backup encryption failed"))?;
     let mut file = OpenOptions::new()
         .write(true)
@@ -140,11 +152,7 @@ pub fn backup_key(key_path: &Path, backup_path: &Path, passphrase_path: &Path) -
     Ok(())
 }
 
-pub fn restore_key(
-    backup_path: &Path,
-    key_path: &Path,
-    passphrase_path: &Path,
-) -> Result<()> {
+pub fn restore_key(backup_path: &Path, key_path: &Path, passphrase_path: &Path) -> Result<()> {
     let backup = private_file(backup_path)?;
     let prefix_len = BACKUP_MAGIC.len() + 4 + BACKUP_SALT_LEN + BACKUP_NONCE_LEN + 4;
     ensure!(
@@ -154,7 +162,10 @@ pub fn restore_key(
     let mut cursor = BACKUP_MAGIC.len();
     let version = u32::from_be_bytes(backup[cursor..cursor + 4].try_into()?);
     cursor += 4;
-    ensure!(version == BACKUP_VERSION, "unsupported task key backup version");
+    ensure!(
+        version == BACKUP_VERSION,
+        "unsupported task key backup version"
+    );
     let salt = backup[cursor..cursor + BACKUP_SALT_LEN].to_vec();
     cursor += BACKUP_SALT_LEN;
     let nonce = backup[cursor..cursor + BACKUP_NONCE_LEN].to_vec();
@@ -176,7 +187,13 @@ pub fn restore_key(
     aad.extend_from_slice(&salt);
     aad.extend_from_slice(&nonce);
     let key = cipher
-        .decrypt(Nonce::from_slice(&nonce), Payload { msg: encrypted, aad: &aad })
+        .decrypt(
+            Nonce::from_slice(&nonce),
+            Payload {
+                msg: encrypted,
+                aad: &aad,
+            },
+        )
         .map_err(|_| anyhow::anyhow!("task key backup authentication failed"))?;
     ensure!(key.len() == 32, "restored task data key has invalid length");
     let parent = private_parent(key_path)?;
@@ -226,6 +243,58 @@ pub fn create_key(path: &Path) -> Result<()> {
 }
 
 impl TaskCipher {
+    pub fn fingerprint(&self) -> String {
+        crate::auth::hash(self.key.as_ref())
+    }
+
+    pub fn persist_new(&self, path: &Path) -> Result<()> {
+        let parent = private_parent(path)?;
+        let mut file = OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .mode(0o600)
+            .custom_flags(libc::O_NOFOLLOW | libc::O_CLOEXEC)
+            .open(path)?;
+        file.write_all(self.key.as_ref())?;
+        file.sync_all()?;
+        File::open(parent)?.sync_all()?;
+        Ok(())
+    }
+
+    /// Take this before gateway/task locks and retain it until transaction end.
+    /// A second console or a CLI with a stale key cannot publish ciphertext.
+    pub async fn lock_storage(&self, tx: &mut sqlx::Transaction<'_, sqlx::Postgres>) -> Result<()> {
+        let check: Value =
+            sqlx::query_scalar("SELECT key_check FROM mgmt_task_crypto WHERE singleton FOR SHARE")
+                .fetch_one(&mut **tx)
+                .await?;
+        ensure!(
+            self.open_bytes(CHECK_AAD, &check)? == CHECK_VALUE,
+            "incorrect task data key"
+        );
+        Ok(())
+    }
+
+    pub async fn matches_storage(&self, pool: &PgPool) -> Result<bool> {
+        let check: Option<Value> =
+            sqlx::query_scalar("SELECT key_check FROM mgmt_task_crypto WHERE singleton")
+                .fetch_optional(pool)
+                .await?;
+        Ok(check.is_some_and(|c| {
+            self.open_bytes(CHECK_AAD, &c)
+                .is_ok_and(|v| v == CHECK_VALUE)
+        }))
+    }
+
+    // Construct from in-memory key material (runtime rotation); the caller is
+    // responsible for persisting the same bytes before any restart.
+    pub fn from_key_bytes(key: &[u8; 32]) -> Self {
+        Self {
+            cipher: Arc::new(Aes256Gcm::new_from_slice(key).expect("valid key length")),
+            key: Arc::new(*key),
+        }
+    }
+
     pub fn load(path: &Path) -> Result<Self> {
         private_parent(path)?;
         let mut file = OpenOptions::new()
@@ -248,7 +317,10 @@ impl TaskCipher {
             Aes256Gcm::new_from_slice(&key)
                 .map_err(|_| anyhow::anyhow!("invalid task data key"))?,
         );
-        Ok(Self { cipher, key: Arc::new(key) })
+        Ok(Self {
+            cipher,
+            key: Arc::new(key),
+        })
     }
 
     fn seal_bytes(&self, aad: &[u8], clear: &[u8]) -> Result<Value> {
@@ -293,6 +365,34 @@ impl TaskCipher {
         self.seal_bytes(&context.aad(field)?, &serde_json::to_vec(clear)?)
     }
 
+    // Identity-bundle private keys use their own AAD domain so that task storage
+    // envelopes and bundle envelopes can never be substituted for each other.
+    fn bundle_aad(gateway: &str, issued_at: i64) -> Result<Vec<u8>> {
+        Ok(serde_json::to_vec(&json!([
+            "yofc-console-identity-bundle-v1",
+            gateway,
+            issued_at
+        ]))?)
+    }
+
+    pub fn seal_identity_bundle(
+        &self,
+        gateway: &str,
+        issued_at: i64,
+        clear: &[u8],
+    ) -> Result<Value> {
+        self.seal_bytes(&Self::bundle_aad(gateway, issued_at)?, clear)
+    }
+
+    pub fn open_identity_bundle(
+        &self,
+        gateway: &str,
+        issued_at: i64,
+        encrypted: &Value,
+    ) -> Result<Vec<u8>> {
+        self.open_bytes(&Self::bundle_aad(gateway, issued_at)?, encrypted)
+    }
+
     pub fn open(&self, context: &TaskContext, field: &str, encrypted: &Value) -> Result<Value> {
         Ok(serde_json::from_slice(
             &self.open_bytes(&context.aad(field)?, encrypted)?,
@@ -318,11 +418,8 @@ impl TaskCipher {
         sqlx::query("SELECT pg_advisory_xact_lock(794654,2)")
             .execute(&mut *tx)
             .await?;
-        sqlx::query("LOCK TABLE mgmt_tasks IN ACCESS EXCLUSIVE MODE")
-            .execute(&mut *tx)
-            .await?;
         let check: Option<Value> =
-            sqlx::query_scalar("SELECT key_check FROM mgmt_task_crypto WHERE singleton")
+            sqlx::query_scalar("SELECT key_check FROM mgmt_task_crypto WHERE singleton FOR UPDATE")
                 .fetch_optional(&mut *tx)
                 .await?;
         if let Some(check) = check {
@@ -333,6 +430,9 @@ impl TaskCipher {
             tx.commit().await?;
             return Ok(0);
         }
+        sqlx::query("LOCK TABLE mgmt_tasks IN ACCESS EXCLUSIVE MODE")
+            .execute(&mut *tx)
+            .await?;
         let mut last: Option<Uuid> = None;
         let mut migrated = 0;
         loop {
@@ -392,22 +492,19 @@ impl TaskCipher {
         sqlx::query("SET LOCAL lock_timeout='10s'")
             .execute(&mut *tx)
             .await?;
-        sqlx::query("SELECT pg_advisory_xact_lock(794654,3)")
-            .execute(&mut *tx)
-            .await?;
-        sqlx::query("LOCK TABLE mgmt_tasks IN ACCESS EXCLUSIVE MODE")
+        sqlx::query("SELECT pg_advisory_xact_lock(794654,2)")
             .execute(&mut *tx)
             .await?;
         let binding: (i32, Value) = sqlx::query_as(
-            "SELECT version,key_check FROM mgmt_task_crypto WHERE singleton",
+            "SELECT version,key_check FROM mgmt_task_crypto WHERE singleton FOR UPDATE",
         )
         .fetch_one(&mut *tx)
         .await
         .context("task storage is not initialized")?;
         let (version, check) = binding;
         ensure!(
-            version == 1,
-            "task storage key version must be 1 before rotation"
+            matches!(version, 1 | 2),
+            "unsupported task storage key version"
         );
         ensure!(
             self.open_bytes(CHECK_AAD, &check)? == CHECK_VALUE,
@@ -417,6 +514,10 @@ impl TaskCipher {
             self.key != new.key,
             "new task data key must differ from the current key"
         );
+        // Non-crypto lifecycle writers use gateway -> task lock order too.
+        sqlx::query("LOCK TABLE mgmt_gateways,mgmt_tasks IN ACCESS EXCLUSIVE MODE")
+            .execute(&mut *tx)
+            .await?;
         let mut last: Option<Uuid> = None;
         let mut rotated = 0;
         loop {
@@ -431,9 +532,7 @@ impl TaskCipher {
                 let result: Option<Value> = row.try_get("result")?;
                 ensure!(
                     input.get("$yofcTask").is_some()
-                        && result
-                            .as_ref()
-                            .is_none_or(|r| r.get("$yofcTask").is_some()),
+                        && result.as_ref().is_none_or(|r| r.get("$yofcTask").is_some()),
                     "task payload is not fully encrypted; restore the current key"
                 );
                 let input = new.seal(&context, "input", &self.open(&context, "input", &input)?)?;
@@ -449,6 +548,21 @@ impl TaskCipher {
                 last = Some(context.id);
                 rotated += 1;
             }
+        }
+        let bundles = sqlx::query("SELECT id,identity_bundle_issued_at,identity_bundle_ciphertext FROM mgmt_gateways WHERE identity_bundle_ciphertext IS NOT NULL")
+            .fetch_all(&mut *tx).await?;
+        for row in bundles {
+            let id: String = row.try_get("id")?;
+            let issued: chrono::DateTime<chrono::Utc> = row.try_get("identity_bundle_issued_at")?;
+            let encrypted: String = row.try_get("identity_bundle_ciphertext")?;
+            let encrypted: Value = serde_json::from_str(&encrypted)?;
+            let clear = self.open_identity_bundle(&id, issued.timestamp_millis(), &encrypted)?;
+            let rekeyed = new.seal_identity_bundle(&id, issued.timestamp_millis(), &clear)?;
+            sqlx::query("UPDATE mgmt_gateways SET identity_bundle_ciphertext=$2 WHERE id=$1")
+                .bind(id)
+                .bind(serde_json::to_string(&rekeyed)?)
+                .execute(&mut *tx)
+                .await?;
         }
         sqlx::query("UPDATE mgmt_task_crypto SET version=2,key_check=$1 WHERE singleton")
             .bind(new.seal_bytes(CHECK_AAD, CHECK_VALUE)?)
@@ -790,9 +904,12 @@ mod tests {
                 );
             }
         }
-        let restarted_history:Value = sqlx::query_scalar(
+        let restarted_history: Value = sqlx::query_scalar(
             "SELECT jsonb_agg(to_jsonb(t)-'input'-'result' ORDER BY id) FROM mgmt_tasks t",
-        ).fetch_one(&pool).await.unwrap();
+        )
+        .fetch_one(&pool)
+        .await
+        .unwrap();
         assert_eq!(after, restarted_history);
         pool.close().await;
         sqlx::query(&format!("DROP SCHEMA {schema} CASCADE"))

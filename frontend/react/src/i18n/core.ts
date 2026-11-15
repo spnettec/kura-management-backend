@@ -40,6 +40,8 @@ export function translatedCode(
 }
 
 export function capabilityLabel(t: Translate, capability: string): string {
+  if (capability === "firewall.remote.v1") return t("firewall.title");
+  if (capability === "ordinary.boot.v1") return t("boot.capability");
   if (capability === "task.reconcile.v1") return t("capability.reconcile");
   if (capability === "task.network-outcome.v1") return t("capability.networkOutcome");
   if (capability === "task.configuration-outcome.v1") return t("capability.configurationOutcome");

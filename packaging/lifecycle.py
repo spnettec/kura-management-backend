@@ -6,7 +6,7 @@ import pwd
 def lifecycle(script, action):
     setup = Setup()
     if script == 'preinst' and action in ('install', 'upgrade'):
-        setup.guard_tasks()
+        setup.guard_all_instances()
     elif script == 'postinst' and action == 'configure':
         try:
             user = pwd.getpwnam(SERVICE_USER)
@@ -40,9 +40,13 @@ def lifecycle(script, action):
         setup.systemctl('daemon-reload')
         print('Installed without starting. Configure TLS and task key, migrate, then explicitly activate.')
     elif script == 'prerm' and action in ('remove', 'upgrade', 'deconfigure'):
-        setup.systemctl('stop', UNIT)
-        setup.guard_tasks()
+        setup.stop_all_instances()
+        setup.guard_all_instances()
         setup.inactive()
+        for unit in setup.template_units():
+            setup.systemctl('stop', unit)
+            instance = unit.removeprefix('kura-management-console@').removesuffix('.service')
+            Setup(setup.root, setup.run, instance).inactive()
         if action == 'remove':
             setup.systemctl('disable', UNIT)
     elif script == 'postrm':

@@ -1,7 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-const dev = resolve(import.meta.dirname, "../../../.phase1-dev");
+const dev = process.env.KURA_BROWSER_FIXTURE || resolve(import.meta.dirname, "../../../.phase1-dev");
 async function login(page: Page, user: string) {
   await page.goto("/login");
   await page.getByLabel("账号", { exact: true }).fill(user);

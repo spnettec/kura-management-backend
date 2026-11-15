@@ -5,3 +5,7 @@ target/
 __pycache__/
 *.py[cod]
 .codebase-memory/
+
+# Local retained development copies and generated TLS credentials
+/.phase*/
+/docker/tls/

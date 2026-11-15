@@ -1,0 +1,9 @@
+# Ordinary profile readiness above the controlled recovery level
+
+2026-11-08,7bcf4d3d. A fresh ordinary JVM actually reached framework level6. Its selected component and unique health provider were present, but the Java observer and both Rust validators required exactly5, so it stayed not-ready until the ordinary deadline. The issued attempt was retained as RECOVERY_REQUIRED and stopped, without retry. Original RECOVERED receipt query and current-instance observation passed; browser acknowledgement and ordinary snapshot write were not performed in that failed scene.
+
+Ordinary readiness now requires framework level at least5, within Java's positive signed-int range. Java observation, agent shape validation and center completion validation agree. Selected components and unique declared providers remain required; actual health callbacks retain their bounded execution and one-shot failure behavior. A higher framework level alone proves no business health. Missing providers, wrong PID/profile/nonce/snapshot identity, lower levels, malformed level values and failed checks cannot gain success.
+
+Controlled forward/guarded-normal recovery remains explicitly at level5; its strict CM comparison, selected-health and release checks are unchanged. This change concerns independent ordinary startup only. Ordinary bridge, agent and center must be deployed as a reviewed pair/set: old validators can reject a new level6 ready report and old observers can remain not-ready. Profiles still pin exact artifacts. No automatic upgrade, formal distribution compatibility or full Kura readiness is implied.
+
+Regression checks and the post-fix native scene are recorded in the associated review/evidence, with explicit completion status. Historical issued starts/receipts are never reinterpreted into successful new handoffs.

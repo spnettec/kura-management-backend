@@ -10,6 +10,9 @@ pub struct Config {
     pub tls_key: String,
     pub client_ca: String,
     pub web_dir: String,
+    // Writable state directory for pending settings (TLS/client CA/task key)
+    // and other runtime state; deployed under /var/lib/kura-management-console.
+    pub state_dir: String,
 }
 fn required(name: &str) -> Result<String> {
     env::var(name).with_context(|| format!("missing {name}"))
@@ -33,6 +36,7 @@ impl Config {
             tls_key: required("CONSOLE_TLS_KEY")?,
             client_ca: required("CONSOLE_CLIENT_CA")?,
             web_dir: env::var("CONSOLE_WEB_DIR").unwrap_or("frontend/react/dist".into()),
+            state_dir: env::var("CONSOLE_STATE_DIR").unwrap_or("/var/lib/kura-management-console".into()),
         })
     }
 }

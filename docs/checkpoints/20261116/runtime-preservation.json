@@ -1,0 +1,129 @@
+{
+  "recordedAt": "2026-11-15T16:41:56.559024+00:00",
+  "fixtures": [
+    {
+      "privateFilesExactMetadata": 7,
+      "runtimeDataContentsExact": 0,
+      "processes": {
+        "kura.service": {
+          "pid": 3792,
+          "startTicks": "4469038",
+          "status": {
+            "Uid": "997\t997\t997\t997",
+            "Gid": "991\t991\t991\t991",
+            "CapEff": "0000000406413426",
+            "CapBnd": "00000004064134e6",
+            "CapAmb": "0000000406413426",
+            "NoNewPrivs": "0"
+          }
+        },
+        "kura-key-service.service": {
+          "pid": 4229,
+          "startTicks": "4480291",
+          "status": {
+            "Uid": "0\t0\t0\t0",
+            "Gid": "0\t0\t0\t0",
+            "CapEff": "0000000000000000",
+            "CapBnd": "0000000000000000",
+            "CapAmb": "0000000000000000",
+            "NoNewPrivs": "1"
+          }
+        },
+        "kura-key-recovery.service": {
+          "pid": 0
+        }
+      },
+      "rootJournalCounts": {
+        "operations": 0,
+        "startups": 0
+      },
+      "containerId": "863ea5ecfeb0558eabe4c110a5973efd26fbad58e076c48080b2e9bba5a40f0a"
+    },
+    {
+      "privateFilesExactMetadata": 10,
+      "runtimeDataContentsExact": 0,
+      "processes": {
+        "kura.service": {
+          "pid": 5174,
+          "startTicks": "4319777",
+          "status": {
+            "Uid": "997\t997\t997\t997",
+            "Gid": "991\t991\t991\t991",
+            "CapEff": "0000000406413426",
+            "CapBnd": "00000004064134e6",
+            "CapAmb": "0000000406413426",
+            "NoNewPrivs": "0"
+          }
+        },
+        "kura-key-service.service": {
+          "pid": 4735,
+          "startTicks": "4311323",
+          "status": {
+            "Uid": "0\t0\t0\t0",
+            "Gid": "0\t0\t0\t0",
+            "CapEff": "0000000000000000",
+            "CapBnd": "0000000000000000",
+            "CapAmb": "0000000000000000",
+            "NoNewPrivs": "1"
+          }
+        },
+        "kura-key-recovery.service": {
+          "pid": 4893,
+          "startTicks": "4319768",
+          "status": {
+            "Uid": "995\t995\t995\t995",
+            "Gid": "990\t990\t990\t990",
+            "CapEff": "0000000000000000",
+            "CapBnd": "0000000000000000",
+            "CapAmb": "0000000000000000",
+            "NoNewPrivs": "1"
+          }
+        }
+      },
+      "rootJournalCounts": {
+        "operations": 1,
+        "startups": 2
+      },
+      "containerId": "a04bfb08590b93fa3351447ded42c24b576c676699216f3636ff3ff658190c07"
+    },
+    {
+      "privateFilesExactMetadata": 21,
+      "runtimeDataContentsExact": 6,
+      "processes": {
+        "kura.service": {
+          "pid": 10430,
+          "startTicks": "3504160",
+          "status": {
+            "Uid": "997\t997\t997\t997",
+            "Gid": "991\t991\t991\t991",
+            "CapEff": "0000000406413426",
+            "CapBnd": "00000004064134e6",
+            "CapAmb": "0000000406413426",
+            "NoNewPrivs": "0"
+          }
+        },
+        "kura-key-service.service": {
+          "pid": 10576,
+          "startTicks": "3506794",
+          "status": {
+            "Uid": "0\t0\t0\t0",
+            "Gid": "0\t0\t0\t0",
+            "CapEff": "0000000000000000",
+            "CapBnd": "0000000000000000",
+            "CapAmb": "0000000000000000",
+            "NoNewPrivs": "1"
+          }
+        }
+      },
+      "rootJournalCounts": {
+        "operations": 4
+      },
+      "containerId": "5f6b45125fa35903f4c725aeadfdaa22025c4f2b62e33d156309fe09baf629bd"
+    }
+  ],
+  "allSevenOriginalProcessIdsAndTicksExact": true,
+  "allProtectedPrivateFileMetadataExact": 38,
+  "oldKeyWritersReplayed": false,
+  "remoteUnknownRedispatch": false,
+  "readOnly": true
+}

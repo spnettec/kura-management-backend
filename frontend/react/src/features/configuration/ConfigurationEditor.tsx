@@ -2,7 +2,7 @@ import { Alert, Button, Checkbox, Input, Modal, Select, Space } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { ApiError, api, type Gateway, type Session, type Task } from "../../api/client";
 import { errorText, useI18n } from "../../i18n/I18n";
-import { configurationPatch, configurationSubmission, type Configuration, type Property } from "./model";
+import { configurationPatch, configurationSubmission, isArrayProperty, type Configuration, type Property } from "./model";
 
 export function ConfigurationEditor({ view, gateway, user }: { view: Configuration; gateway: Gateway; user: Session }) {
   const { t } = useI18n();
@@ -21,7 +21,7 @@ export function ConfigurationEditor({ view, gateway, user }: { view: Configurati
     view.writable === true && view.updateEnabled === true && !!view.revision;
   const fields = view.properties.filter(field => field.editable === true && field.type !== "UNKNOWN");
   const selected = Object.keys(values);
-  const isArray = (field: Property) => field.cardinality !== undefined && field.cardinality !== 0;
+  const isArray = isArrayProperty;
   function initial(field: Property): string {
     if (field.redacted || !field.present) return isArray(field) ? "[]" : field.type === "BOOLEAN" ? "false" : "";
     return isArray(field) ? JSON.stringify(field.value) : String(field.value ?? "");

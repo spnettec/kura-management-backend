@@ -1,7 +1,15 @@
+import { RegisterGateway } from "./RegisterGateway";
+import { RotateCertificate } from "./RotateCertificate";
 import { Button, Drawer, Empty, Space, Table, Tag } from "antd";
 import { useState } from "react";
 import type { Gateway, Session } from "../../api/client";
+import { BootPanel } from "./BootPanel";
+import { HandoffPanel } from "./HandoffPanel";
+import { FirewallPanel } from "./FirewallPanel";
+import { NmPanel } from "./NmPanel";
+import { SystemControlPanel } from "./SystemControlPanel";
 import { NetworkPanel } from "./NetworkPanel";
+import { TransferPanel } from "./TransferPanel";
 import { LanguageSwitcher, useI18n } from "../../i18n/I18n";
 import { capabilityLabel } from "../../i18n/core";
 import { ConfigurationPanel } from "../configuration/ConfigurationPanel";
@@ -10,7 +18,9 @@ export function Gateways({
   items,
   user,
   onCommand,
+  onRegistered,
 }: {
+  onRegistered: () => void;
   items: Gateway[];
   user: Session;
   onCommand: (id: string, op: string) => void;
@@ -21,6 +31,7 @@ export function Gateways({
   const canOperate = ["operator", "admin"].includes(user.role);
   return (
     <>
+      <RegisterGateway key={user.id} user={user} onRegistered={onRegistered} />
       <Table<Gateway>
         rowKey="id"
         dataSource={items}
@@ -99,13 +110,16 @@ export function Gateways({
               Agent {selected.agentVersion ?? t("gateway.disconnected")} ·{" "}
               {t("gateway.revision")} {selected.revision}
             </p>
-            <Space direction="vertical">
+            <Space wrap>
               <Button
                 disabled={!canOperate || !selected.online}
                 onClick={() => onCommand(selected.id, "kura.snapshot.list")}
               >
                 {t("gateway.snapshots")}
               </Button>
+              {user.role === "admin" && (
+                <RotateCertificate key={`rotate:${user.id}:${selected.id}`} gateway={selected} user={user} />
+              )}
             </Space>
               {selected.capabilities.includes("kura.configuration.list") && <ConfigurationPanel
                 key={`configuration:${user.id}:${selected.id}`} gateway={selected} user={user} />}
@@ -114,6 +128,18 @@ export function Gateways({
               <NetworkPanel
                 key={`${user.id}:${selected.id}`}
                 gatewayId={selected.id}
+                user={user}
+              />
+            )}
+            {user.role === "admin" && selected.capabilities.includes("ordinary.boot.v1") && <BootPanel key={`boot:${user.id}:${selected.id}`} gateway={selected} user={user} />}
+            {user.role === "admin" && selected.capabilities.includes("recovery.ordinary.v1") && <HandoffPanel key={`handoff:${user.id}:${selected.id}`} gateway={selected} user={user} />}
+            {user.role === "admin" && selected.capabilities.includes("firewall.remote.v1") && <FirewallPanel key={`firewall:${user.id}:${selected.id}:${selected.bindingGeneration}`} gateway={selected} user={user} />}
+            {user.role === "admin" && selected.capabilities.includes("nm.remote.v1") && <NmPanel key={`nm:${user.id}:${selected.id}:${selected.bindingGeneration}`} gateway={selected} user={user} />}
+            {user.role === "admin" && selected.capabilities.includes("system.control.v1") && <SystemControlPanel key={`system:${user.id}:${selected.id}`} gateway={selected} user={user} />}
+            {user.role === "admin" && (
+              <TransferPanel
+                key={`transfer:${user.id}:${selected.id}`}
+                gateway={selected}
                 user={user}
               />
             )}

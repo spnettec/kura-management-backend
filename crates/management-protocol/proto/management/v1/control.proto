@@ -2,7 +2,12 @@ syntax = "proto3";
 package yofc.management.v1;
 
 // Additive v1 operations. Network writes have typed, bounded payloads.
-service Control { rpc Connect(stream AgentFrame) returns (stream ConsoleFrame); }
+service Control {
+  rpc Connect(stream AgentFrame) returns (stream ConsoleFrame);
+  // mTLS gateway identity only. A transfer token consumer checks revocation
+  // before consuming the one-time authorization; unknown ids are never ACTIVE.
+  rpc CheckTransferRevocation(TransferRevocationCheck) returns (TransferRevocationStatus);
+}
 message AgentFrame {
   oneof payload { Hello hello = 1; Heartbeat heartbeat = 2; TaskResult result = 3; }
 }
@@ -23,6 +28,9 @@ message ConsoleFrame {
 // Requires the agent capability task.reconcile.v1; at most 16 UUIDs per frame.
 message TaskQuery { repeated string command_ids = 1; }
 message Welcome { string connection_epoch = 1; uint32 heartbeat_seconds = 2; }
+message TransferRevocationCheck { string transfer_id = 1; }
+// ACTIVE means a recorded, non-revoked issuance that belongs to the caller.
+message TransferRevocationStatus { string status = 1; }
 enum Operation { OPERATION_UNSPECIFIED = 0; AGENT_STATUS = 1; KURA_CONFIGURATION_LIST = 2; KURA_SNAPSHOT_LIST = 3;
   NETWORK_INSPECT = 4; NETWORK_PREPARE = 5; NETWORK_CONFIRM = 6; NETWORK_ROLLBACK = 7; NETWORK_TRANSACTION = 8;
   NETWORK_TAKEOVER_PLAN = 9; NETWORK_TAKEOVER_PREPARE = 10;
@@ -30,6 +38,29 @@ enum Operation { OPERATION_UNSPECIFIED = 0; AGENT_STATUS = 1; KURA_CONFIGURATION
   KURA_CONFIGURATION_UPDATE = 12;
   KURA_SNAPSHOT_SAVE = 13;
   KURA_SNAPSHOT_ROLLBACK = 14;
+  ORDINARY_BOOT_STATUS = 15;
+  ORDINARY_BOOT_PREPARE = 16;
+  ORDINARY_BOOT_EXECUTE = 17;
+  ORDINARY_BOOT_CANCEL = 18;
+  ORDINARY_BOOT_RECONCILE = 19;
+  ORDINARY_HANDOFF_STATUS = 20;
+  ORDINARY_HANDOFF_PREPARE = 21;
+  ORDINARY_HANDOFF_EXECUTE = 22;
+  SERVICE_STATUS = 23;
+  SERVICE_RESTART_PREPARE = 24;
+  SERVICE_RESTART = 25;
+  SYSTEM_REBOOT_PREPARE = 26;
+  SYSTEM_REBOOT = 27;
+  SYSTEM_CONTROL_CANCEL = 28;
+  ORDINARY_HANDOFF_CANCEL = 29;
+  FIREWALL_VIEW = 30;
+  FIREWALL_PREPARE = 31;
+  FIREWALL_CONFIRM = 32;
+  FIREWALL_ROLLBACK = 33;
+  NM_VIEW = 34;
+  NM_PREPARE = 35;
+  NM_CONFIRM = 36;
+  NM_ROLLBACK = 37;
 }
 message ReadCommand {
   string command_id = 1;
@@ -44,7 +75,41 @@ message ReadCommand {
   // Explicit snapshot actions. They do not rewind a confirmed system network.
   KuraSnapshotSave kura_snapshot_save = 10;
   KuraSnapshotRollback kura_snapshot_rollback = 11;
+  OrdinaryBootAction ordinary_boot_action = 12;
+  OrdinaryHandoffAction ordinary_handoff_action = 13;
+  SystemControlAction system_control_action = 14;
+  FirewallChange firewall_change = 15;
+  FirewallAction firewall_action = 16;
+  NmChange nm_change = 17;
+  NmAction nm_action = 18;
 }
+// Only the bounded structured V3 candidate grammar. Never nft/iptables text.
+// JSON bytes preserve nullable numeric protocols and all legacy rule fields.
+message FirewallChange {
+  uint64 expected_revision = 1;
+  string source_digest = 2;
+  uint32 confirm_seconds = 3;
+  bytes candidate_json = 4;
+}
+// The agent checks its actual authenticated connection after apply. A token
+// alone does not prove that a new affected management connection was established.
+message FirewallAction { string transaction_id = 1; string confirmation_token = 2; }
+// Typed joint NM/firewall proposal: the bounded preview input grammar (typed
+// changes plus an optional automatic NAT set) as JSON bytes. No raw NM settings,
+// D-Bus arguments or profile text cross this grammar.
+message NmChange {
+  string source_digest = 1;
+  uint32 confirm_seconds = 2;
+  bytes changes_json = 3;
+  bytes nat_json = 4;
+}
+message NmAction { string operation_id = 1; string confirmation_token = 2; }
+// Reviewed local fixed Kura mapping only. No unit, command, shell or path.
+message SystemControlAction { string transaction_id = 1; string confirmation_token = 2; }
+// Execute a reviewed, fixed ordinary-profile handoff; no caller-supplied launcher.
+message OrdinaryHandoffAction { string transaction_id = 1; string confirmation_token = 2; }
+// No caller-supplied command, unit, path, or desired policy. Local fixed grant only.
+message OrdinaryBootAction { string transaction_id = 1; string confirmation_token = 2; }
 message KuraSnapshotSave { string expected_latest_id = 1; }
 message KuraSnapshotRollback { string snapshot_id = 1; string expected_latest_id = 2; }
 

@@ -1,0 +1,27 @@
+# Persisted read-only identities for independent operation receipts
+
+2026-11-08; checkpoint 936572c2, extends 5dc22468 generic GWT receipts. The overall redesign and original operation remain unfinished.
+
+## Authentication availability
+
+An actual factory creation entered CM and activated its business instance, then returned UNKNOWN with an unfinished intent. Independent ordinary Core startup correctly rejected the pending journal, but the existing role store's static required ConfigurationService reference made its persisted identities unavailable. The login page opened and the original fixture credentials were rejected. An independent receipt DS alone was insufficient for usable authenticated GWT receipt queries.
+
+`org.eclipse.kura.useradmin.store` now includes a separate `ReadOnlyRoleRepositoryStore` DS component, configured by the same required persisted CM PID as the normal store. It has no ConfigurationService reference, supplies no defaults, and does not register a ConfigurableComponent or a writer. After strict decoding it manually registers only RoleRepositoryStore with fixed Integer.MIN_VALUE rank and `identity.persistence.mode=read-only`; CM properties cannot raise that rank. The existing normal store and its mandatory writer dependency remain unchanged. Felix's actual RoleRepositoryStoreHelper selects the highest-ranked service on each lookup. A fresh healthy native control verified the selected provider is the original RoleRepositoryStoreImpl, and original GWT login/services work.
+
+The read-only view accepts explicit roles.config/users.config/groups.config strings only, bounded to 2,000,000 total characters and 10,000 roles. Missing/malformed data, duplicate role names/JSON keys, invalid byte values, or unknown basic/required members reject the view; no default administrator or permission is synthesized. An invalid update clears the lookup view before rejection, without logging parser messages or credentials. It preserves the existing credential and membership decoding semantics for supported valid records, with stricter ambiguity rejection. Byte-array reads and member arrays are detached.
+
+All returned roles are immutable through direct and actual Felix observable wrappers: properties, credentials, members, required members, add/remove role calls reject before mutation. Deactivation clears the view and unregisters it. This is a read-only role backend, not a claim that every custom IdentityService extension/third-party role store/other security endpoint is side-effect free or that all stale consumer/session references are revoked. Those ownership and provider boundaries remain pending. No authentication check is bypassed and no credentials are changed by this feature.
+
+## GWT startup behavior
+
+When a retained operation is pending, normal service-list fetches are skipped. Receipt queries continue through the independent endpoint with the original admin/XSRF checks. This avoids a Core-null exception dialog covering the degraded flow. It does not declare a complete degraded console, suppress errors for users without a retained reference, or enable mutations. UNKNOWN still disables observation, acknowledgement and unreserved cancellation. RECOVERED does not mean original success.
+
+## Proof and remaining work
+
+Final Maven3.10/JDK21 useradmin store install:17 tests (10 existing +7 new), actual Felix wrappers/authorization, mutation negatives, ambiguity negatives, registration/lifecycle tests. Final Web2 install compiles Java11 GWT EN/ZH/JA;226 existing selected Web2 tests pass. No public API/Core writer change this round.
+
+New no-agent native fixture `postcm-receipt-45ded12b`: one original browser create `op-c4cca347-40ff-415b-bc0a-911754697f28`, PID fixture.postcm.one. Snapshot-directory write permission was denied only after normal login and restored after stopping the first JVM. Actual CM and one first-JVM business activation occurred; no complete record/new snapshot. Exact original exception chain was not captured, so the precise snapshot I/O cause is not established. This is a real post-CM UNKNOWN proof under an armed local permission fault, not disk-full/power/hardware acceptance.
+
+The same request/dispatch/intent, CM target file and baseline snapshot bytes stayed exact across first, blocked, authread and receiptui JVMs. Before fix login failed; after fix the same persisted identity logged in, independently queried original UNKNOWN, survived refresh, and retained the gate. Final receiptui has no normal-list exception. Existing CM causes one normal business activation in each independent JVM; these are not repeated create requests. A second new healthy fixture verified normal backend priority/login/services and zero intents. Five IDEA phases and both proxy processes are stopped; all state remains.
+
+No recovery, release, inverse or original replay has occurred. The browser retains the unresolved correlation. Next derive an explicitly authorized forward candidate that preserves the already-created CM/business instance, using the controlled recovery source/typing/password contracts; do not replay creation, clear journal files, or restore the pre-create snapshot to remove the instance. Then validate full managed CM/business state, exact original receipt/release linkage, RECOVERED semantics, ordinary handoff, and normal role-store selection. All14 internal pending and3 external deferred groups remain.

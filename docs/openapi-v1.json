@@ -302,6 +302,121 @@
             }
           }
         ]
+      },
+      "post": {
+        "summary": "Register a public client leaf certificate in the authenticated administrator tenant; does not change agent ownership or remote state",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-CSRF-Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterGateway"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayRegistration"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/tasks": {
@@ -1310,6 +1425,1058 @@
           }
         }
       }
+    },
+    "/api/v1/transfer/signers": {
+      "get": {
+        "description": "List active and revoked transfer signers for the administrator tenant.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferSignerList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Register an exact tenant Ed25519 transfer-signer public key. This does not issue or deliver a token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterTransferSigner"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferSignerReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/signers/{keyId}/revoke": {
+      "post": {
+        "description": "Revoke an active tenant signer; future issuance is rejected.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferSignerReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/approvals": {
+      "get": {
+        "description": "List transfer approvals and their separate requester/approver identity.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferApprovalList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gateways/{id}/transfer-approval": {
+      "post": {
+        "description": "Record an exact cross-center transfer request for an enabled gateway at its current binding generation.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferApprovalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferApprovalReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/approvals/{id}/approve": {
+      "post": {
+        "description": "Approve an open transfer approval. Approval requires another enabled tenant administrator.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferApprovalReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/approvals/{id}/reject": {
+      "post": {
+        "description": "Reject an open transfer approval. Approval requires another enabled tenant administrator.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferApprovalReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/approvals/{id}/revoke": {
+      "post": {
+        "description": "Revoke an open transfer approval. Approval requires another enabled tenant administrator.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferApprovalReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Authority already registered, revoked, or approval is not open",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/issuances": {
+      "get": {
+        "description": "List issued one-time transfer authorizations with their revocation state for the administrator tenant.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferIssuanceList"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transfer/issuances/{transferId}/revoke": {
+      "post": {
+        "description": "Revoke a recorded, not-yet-consumed one-time transfer authorization. Already-revoked issuances answer 409; unknown or other-tenant ids answer 404. Revocation never re-opens the approval.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferIssuanceReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Admin, same-origin and CSRF are required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown or other-tenant issuance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Issuance already revoked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/password": {
+      "post": {
+        "description": "Set the password in an authenticated forced first-login session, or rotate it by proving the current password. Enforces strength, clears must_change_password atomically and revokes other sessions. The verified current session remains usable.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rotated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "ok"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "enum": [
+                        true
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error (new password below strength floor)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Current password mismatch or no session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "CSRF/origin required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gateways/{id}/task-intents/{key}": {
+      "get": {
+        "description": "Admin-only read of the original task ID for this same actor, tenant, gateway and idempotency key. Does not create, replay or relabel a task. A 404 is not proof of non-admission while the original request may still be in flight.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Original task ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid key"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Admin required"
+          },
+          "404": {
+            "description": "No original task visible to this actor"
+          },
+          "503": {
+            "description": "Storage unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/gateways/{id}/identity-bundle": {
+      "get": {
+        "operationId": "downloadIdentityBundle",
+        "summary": "Download the one-time identity bundle (tar) for a gateway registered with an uploaded client private key.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "One-time token returned by the registration response."
+          },
+          {
+            "name": "endpoint",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Plain HTTPS console endpoint (host:port) for the agent to connect to."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ustar archive: manifest.json / ca.pem / agent.pem / agent.key",
+            "content": {
+              "application/x-tar": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown token, unknown gateway, or bundle already delivered."
+          }
+        }
+      }
+    },
+    "/api/v1/settings/tls": {
+      "get": {
+        "operationId": "getTlsSettings",
+        "summary": "Server certificate status (live and pending fingerprints).",
+        "responses": {
+          "200": {
+            "description": "Status"
+          }
+        }
+      },
+      "put": {
+        "operationId": "uploadTlsSettings",
+        "summary": "Stage a new server certificate+key; applied on next console restart.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TlsUpload"
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Staged"
+          }
+        }
+      }
+    },
+    "/api/v1/settings/client-ca": {
+      "get": {
+        "operationId": "getClientCaSettings",
+        "summary": "Client CA status and registered gateway count.",
+        "responses": {
+          "200": {
+            "description": "Status"
+          }
+        }
+      },
+      "put": {
+        "operationId": "uploadClientCaSettings",
+        "summary": "Stage a new client CA; applied on next console restart.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientCaUpload"
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Staged"
+          }
+        }
+      }
+    },
+    "/api/v1/settings/task-key": {
+      "get": {
+        "operationId": "getTaskKeyStatus",
+        "summary": "Task data key status.",
+        "responses": {
+          "200": {
+            "description": "Status"
+          }
+        }
+      },
+      "post": {
+        "operationId": "backupTaskKey",
+        "summary": "Download a passphrase-encrypted task data key backup (octet-stream).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskKeyPassphrase"
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Backup file",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/settings/task-key/restore": {
+      "post": {
+        "operationId": "restoreTaskKey",
+        "summary": "Stage a task data key restore from a backup; applied on next console restart.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskKeyRestore"
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Staged"
+          }
+        }
+      }
+    },
+    "/api/v1/gateways/{id}/certificate": {
+      "post": {
+        "operationId": "rotateGatewayCertificate",
+        "summary": "Register a new client certificate fingerprint for a gateway and reset its connection; optionally seal a one-time rotation bundle when the new private key is uploaded.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RotateGatewayCertificate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New fingerprint registered; identityBundleToken present when a rotation package was sealed."
+          },
+          "409": {
+            "description": "previousCertificateSha256 does not match the current certificate, or the new certificate is identical."
+          }
+        }
+      }
+    },
+    "/api/v1/settings/task-key/rotate": {
+      "post": {
+        "operationId": "rotateTaskKey",
+        "summary": "Rotate the task data key at runtime: re-encrypt every task row, stage the replacement key for the next restart, swap the live cipher, and return the replacement key as a passphrase-encrypted backup.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskKeyRotate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Encrypted replacement-key backup",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1361,6 +2528,10 @@
             "format": "int64",
             "minimum": 1,
             "description": "Cross-center binding generation. This persists across same-center reconnects and certificate renewal; it is not a connection epoch."
+          },
+          "certificateSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
           }
         },
         "required": [
@@ -1400,6 +2571,10 @@
           },
           "csrf": {
             "type": "string"
+          },
+          "mustChangePassword": {
+            "type": "boolean",
+            "description": "True until the seeded bootstrap administrator rotates admin/admin."
           }
         },
         "required": [
@@ -1407,7 +2582,8 @@
           "tenantId",
           "username",
           "role",
-          "csrf"
+          "csrf",
+          "mustChangePassword"
         ]
       },
       "Task": {
@@ -1435,7 +2611,30 @@
               11,
               12,
               13,
-              14
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37
             ]
           },
           "state": {
@@ -1505,7 +2704,8 @@
                   "RESOURCE_EXHAUSTED",
                   "INTERNAL",
                   "PROTOCOL_MISMATCH",
-                  "OUTCOME_UNKNOWN"
+                  "OUTCOME_UNKNOWN",
+                  "PASSWORD_CHANGE_REQUIRED"
                 ]
               }
             },
@@ -1542,10 +2742,14 @@
         "properties": {
           "csrf": {
             "type": "string"
+          },
+          "mustChangePassword": {
+            "type": "boolean"
           }
         },
         "required": [
-          "csrf"
+          "csrf",
+          "mustChangePassword"
         ],
         "additionalProperties": false
       },
@@ -1568,7 +2772,30 @@
               "kura.configuration.get",
               "kura.configuration.update",
               "kura.snapshot.save",
-              "kura.snapshot.rollback"
+              "kura.snapshot.rollback",
+              "ordinary.boot.status",
+              "ordinary.boot.prepare",
+              "ordinary.boot.execute",
+              "ordinary.boot.cancel",
+              "ordinary.boot.reconcile",
+              "recovery.ordinary.status",
+              "recovery.ordinary.prepare",
+              "recovery.ordinary.execute",
+              "service.status",
+              "service.restart.prepare",
+              "service.restart",
+              "system.reboot.prepare",
+              "system.reboot",
+              "system.control.cancel",
+              "recovery.ordinary.cancel",
+              "firewall.view",
+              "firewall.prepare",
+              "firewall.confirm",
+              "firewall.rollback",
+              "nm.view",
+              "nm.prepare",
+              "nm.confirm",
+              "nm.rollback"
             ]
           },
           "idempotencyKey": {
@@ -1591,15 +2818,52 @@
           "kuraConfigurationUpdate": {
             "$ref": "#/components/schemas/KuraConfigurationUpdate"
           },
-          "kuraSnapshotSave": { "$ref": "#/components/schemas/KuraSnapshotSave" },
-          "kuraSnapshotRollback": { "$ref": "#/components/schemas/KuraSnapshotRollback" }
+          "kuraSnapshotSave": {
+            "$ref": "#/components/schemas/KuraSnapshotSave"
+          },
+          "kuraSnapshotRollback": {
+            "$ref": "#/components/schemas/KuraSnapshotRollback"
+          },
+          "ordinaryBootAction": {
+            "$ref": "#/components/schemas/OrdinaryBootAction"
+          },
+          "ordinaryHandoffAction": {
+            "$ref": "#/components/schemas/OrdinaryHandoffAction"
+          },
+          "systemControlAction": {
+            "$ref": "#/components/schemas/SystemControlAction"
+          },
+          "firewallChange": {
+            "$ref": "#/components/schemas/FirewallChange"
+          },
+          "firewallAction": {
+            "$ref": "#/components/schemas/FirewallAction"
+          },
+          "nmChange": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NmChange"
+              }
+            ],
+            "description": "Typed joint NM/firewall proposal (sourceDigest + confirmSeconds + typed changes + optional automatic NAT set). Only nm.prepare accepts it.",
+            "nullable": true
+          },
+          "nmAction": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NmAction"
+              }
+            ],
+            "description": "Original NM operation UUID plus the confirmation token. Only nm.confirm/nm.rollback accept it.",
+            "nullable": true
+          }
         },
         "required": [
           "operation",
           "idempotencyKey"
         ],
         "additionalProperties": false,
-        "description": "network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed."
+        "description": "network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed. ordinary.boot.status/prepare/execute/cancel/reconcile require admin and fresh ordinary.boot.v1 capability. Only execute/cancel accept ordinaryBootAction. The gateway uses its fixed local grant; callers cannot supply command/unit/path. Status separates latest transaction and confirmed policy. Policy completion is not boot or business certification; UNKNOWN is never replayed. recovery.ordinary.status/prepare/execute require admin and fresh recovery.ordinary.v1 capability, disabled by default on the gateway. Prepare selects only the current locally committed completion and fixed profile. Execute and cancel accept ordinaryHandoffAction with the original handoff UUID and confirmation token. Cancellation additionally requires recovery.ordinary.cancel.v1, the live connection epoch and a 30-second deadline; older agents do not imply this support. It only abandons an unissued prepared handoff, preserves the approved parent and its original command evidence, and never clears RECOVERY_REQUIRED or invokes a unit. Expiry alone leaves an otherwise unchanged unissued plan prepared for explicit cancellation. Execution starts the fixed ordinary Kura once after stopping old recovery services; administrator-selected checks do not certify full recovery or reboot. Unknown requests are only queried and never replayed. service.status/restart.prepare/restart and system.reboot.prepare/reboot plus system.control.cancel require admin and fresh system.control.v1. Restart and host reboot require distinct local grants and advertised service.restart.v1/system.reboot.v1; all are off by default. Only restart, reboot and cancel accept systemControlAction. New writes are bound to the live connection epoch, with fixed 5-minute execution deadlines and 30-second other task deadlines. Stale unleased writes expire on reconnect; issued writes become UNKNOWN and are only queried. The agent controls the installation-fixed Kura unit and bounded cgroup; no caller shell/unit/path is accepted. Reboot acceptance is UNKNOWN until an actual changed boot identity is observed. Process transition and optional administrator-selected business checks are reported separately and never certify full Kura recovery. Cancellation only applies to unissued plans. Pending managed transactions and RECOVERY_REQUIRED block new writes. Firewall operations30-33 require admin and fresh firewall.remote.v1 capability. Only prepare accepts firewallChange, only confirm/rollback accept firewallAction. Writes are bound to the live connection epoch; unleased writes from an old connection expire, delivered writes remain UNKNOWN and are never requeued. Actual agent post-apply fresh authenticated connection is required for confirm. Prepare task success means applied WAIT_CONFIRM, not final confirmation. Query the original task after UNKNOWN. Input/result use existing encrypted storage. Non-admin task queries remove confirmationToken."
       },
       "TaskReceipt": {
         "type": "object",
@@ -1900,20 +3164,52 @@
             "type": "boolean",
             "description": "Reviewed component field whose min, max and options can be enforced. Uninterpretable constraints stay closed."
           },
-          "min": { "type": "string", "maxLength": 64 },
-          "max": { "type": "string", "maxLength": 64 },
+          "min": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "max": {
+            "type": "string",
+            "maxLength": 64
+          },
           "options": {
             "type": "array",
             "maxItems": 64,
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["value"],
+              "required": [
+                "value"
+              ],
               "properties": {
-                "value": { "type": "string", "maxLength": 16384 },
-                "label": { "type": "string" }
+                "value": {
+                  "type": "string",
+                  "maxLength": 16384
+                },
+                "label": {
+                  "type": "string"
+                }
               }
             }
+          },
+          "readOnlyReason": {
+            "type": "string",
+            "enum": [
+              "NO_METATYPE",
+              "LOCALIZATION_MISMATCH",
+              "SECRET_OPTIONS",
+              "UNSUPPORTED_CONTRACT"
+            ],
+            "description": "Present only when editable=false. Base metatype controls type, constraints and redaction; localization supplies presentation only."
+          },
+          "valueShape": {
+            "type": "string",
+            "enum": [
+              "SCALAR",
+              "ARRAY",
+              "COLLECTION"
+            ],
+            "description": "Effective value representation, including redacted or absent values. Capacity remains cardinality. Legacy Kura +/-1 scalar values are preserved; native OSGi +/-1 stays a bounded container."
           }
         },
         "required": [
@@ -1962,9 +3258,24 @@
             "type": "boolean",
             "description": "Explicit audited PID policy is enabled on the Kura bridge; independent agent and admin permission also required."
           },
-          "componentKind": { "type": "string", "enum": ["CONFIGURABLE", "SELF_CONFIGURING"] },
-          "conditionalWrite": { "type": "string", "enum": ["PROVIDER_MONITOR", "COMPONENT_VIEW"] },
-          "directConfigAdminCas": { "type": "boolean", "const": false }
+          "componentKind": {
+            "type": "string",
+            "enum": [
+              "CONFIGURABLE",
+              "SELF_CONFIGURING"
+            ]
+          },
+          "conditionalWrite": {
+            "type": "string",
+            "enum": [
+              "PROVIDER_MONITOR",
+              "COMPONENT_VIEW"
+            ]
+          },
+          "directConfigAdminCas": {
+            "type": "boolean",
+            "const": false
+          }
         },
         "required": [
           "pid",
@@ -1977,17 +3288,33 @@
       "KuraSnapshotSave": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["expectedLatestId"],
-        "properties": { "expectedLatestId": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,17})$" } },
+        "required": [
+          "expectedLatestId"
+        ],
+        "properties": {
+          "expectedLatestId": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,17})$"
+          }
+        },
         "description": "Saves the current Kura snapshot. expectedLatestId is 0 when none exist. Does not rewind confirmed system network."
       },
       "KuraSnapshotRollback": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["snapshotId", "expectedLatestId"],
+        "required": [
+          "snapshotId",
+          "expectedLatestId"
+        ],
         "properties": {
-          "snapshotId": { "type": "string", "pattern": "^[1-9][0-9]{0,17}$" },
-          "expectedLatestId": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,17})$" }
+          "snapshotId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,17}$"
+          },
+          "expectedLatestId": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]{0,17})$"
+          }
         },
         "description": "Rolls back to an explicit older snapshot. Does not rewind confirmed system network. Components absent from that snapshot may return to defaults through the existing Kura rollback path."
       },
@@ -2111,6 +3438,1096 @@
                 }
               }
             ]
+          }
+        }
+      },
+      "Empty": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TransferSigner": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "keyId",
+          "publicKeySha256",
+          "status",
+          "createdAt",
+          "revokedAt"
+        ],
+        "properties": {
+          "keyId": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "publicKeySha256": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "ACTIVE",
+              "REVOKED"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "revokedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "TransferSignerList": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferSigner"
+            }
+          }
+        }
+      },
+      "RegisterTransferSigner": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "keyId",
+          "publicKeyPem"
+        ],
+        "properties": {
+          "keyId": {
+            "type": "string",
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "publicKeyPem": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        }
+      },
+      "TransferSignerReceipt": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "keyId",
+          "publicKeySha256",
+          "status"
+        ],
+        "properties": {
+          "keyId": {
+            "type": "string"
+          },
+          "publicKeySha256": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "ACTIVE",
+              "REVOKED"
+            ]
+          }
+        }
+      },
+      "TransferApproval": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "gatewayId",
+          "expectedGeneration",
+          "toGeneration",
+          "newGatewayId",
+          "newEndpoint",
+          "newClientCaSha256",
+          "newClientCertificateSha256",
+          "requestedBy",
+          "requestedByName",
+          "approvedBy",
+          "approvedByName",
+          "status",
+          "createdAt",
+          "approvedAt",
+          "closedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "gatewayId": {
+            "type": "string"
+          },
+          "expectedGeneration": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "toGeneration": {
+            "type": "integer",
+            "minimum": 2
+          },
+          "newGatewayId": {
+            "type": "string"
+          },
+          "newEndpoint": {
+            "type": "string"
+          },
+          "newClientCaSha256": {
+            "type": "string"
+          },
+          "newClientCertificateSha256": {
+            "type": "string"
+          },
+          "requestedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "requestedByName": {
+            "type": "string"
+          },
+          "approvedBy": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "approvedByName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "REJECTED",
+              "ISSUED",
+              "REVOKED"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "approvedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "closedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "TransferApprovalList": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferApproval"
+            }
+          }
+        }
+      },
+      "TransferApprovalRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "newEndpoint",
+          "newGatewayId",
+          "newClientCaPem",
+          "newClientCertificatePem"
+        ],
+        "properties": {
+          "newEndpoint": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "newGatewayId": {
+            "type": "string",
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "newClientCaPem": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "newClientCertificatePem": {
+            "type": "string",
+            "maxLength": 65536
+          }
+        }
+      },
+      "TransferApprovalReceipt": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "gatewayId": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "REJECTED",
+              "ISSUED",
+              "REVOKED"
+            ]
+          }
+        }
+      },
+      "TransferIssuance": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transferId",
+          "approvalId",
+          "gatewayId",
+          "expectedGeneration",
+          "toGeneration",
+          "newGatewayId",
+          "newEndpoint",
+          "signerKeyId",
+          "issuedBy",
+          "issuedByName",
+          "issuedAt",
+          "status",
+          "revokedAt",
+          "revokedByName"
+        ],
+        "properties": {
+          "transferId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "approvalId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "gatewayId": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "expectedGeneration": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "toGeneration": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 2
+          },
+          "newGatewayId": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "newEndpoint": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "signerKeyId": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "issuedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "issuedByName": {
+            "type": "string"
+          },
+          "issuedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "enum": [
+              "ACTIVE",
+              "REVOKED"
+            ]
+          },
+          "revokedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "revokedByName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "TransferIssuanceList": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferIssuance"
+            }
+          }
+        }
+      },
+      "TransferIssuanceReceipt": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transferId",
+          "signerKeyId",
+          "status"
+        ],
+        "properties": {
+          "transferId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "signerKeyId": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "status": {
+            "enum": [
+              "REVOKED"
+            ]
+          }
+        }
+      },
+      "ChangePasswordRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "newPassword"
+        ],
+        "properties": {
+          "currentPassword": {
+            "type": "string",
+            "maxLength": 256,
+            "description": "Required for ordinary password changes; may be omitted only by an authenticated forced first-login setup session."
+          },
+          "newPassword": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 12,
+            "description": "12..256 bytes; ends the forced first-login rotation."
+          }
+        }
+      },
+      "RegisterGateway": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "clientCertificatePem"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,128}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "clientCertificatePem": {
+            "type": "string",
+            "maxLength": 32768
+          },
+          "clientKeyPem": {
+            "type": "string",
+            "description": "Optional client private key (PEM). Scheme A provisioning: sealed once, returned only inside the one-time identity bundle, wiped at first download."
+          }
+        }
+      },
+      "GatewayRegistration": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "certificateSha256",
+          "bindingGeneration"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "certificateSha256": {
+            "type": "string"
+          },
+          "bindingGeneration": {
+            "type": "integer",
+            "const": 1
+          },
+          "identityBundleToken": {
+            "type": "string",
+            "description": "One-time identity bundle token; present only when the registration uploaded a client private key. Never shown again after delivery."
+          }
+        }
+      },
+      "OrdinaryBootAction": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transactionId",
+          "confirmationToken"
+        ],
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "pattern": "^boot-[0-9a-f-]{36}$"
+          },
+          "confirmationToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "OrdinaryHandoffAction": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transactionId",
+          "confirmationToken"
+        ],
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "pattern": "^handoff-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "confirmationToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "description": "Execute or explicitly cancel the previously reviewed fixed ordinary-profile handoff. No caller unit, path or command."
+      },
+      "SystemControlAction": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transactionId",
+          "confirmationToken"
+        ],
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "pattern": "^system-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "confirmationToken": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "description": "Original fixed-system plan and confirmation token. No target, path, command or reboot arguments are accepted."
+      },
+      "FirewallPorts": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "last": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          }
+        },
+        "required": [
+          "first",
+          "last"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallFamilyPolicy": {
+        "type": "object",
+        "properties": {
+          "inputPolicy": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "drop"
+            ]
+          },
+          "forwardPolicy": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "drop"
+            ]
+          },
+          "allowIcmp": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "inputPolicy",
+          "forwardPolicy",
+          "allowIcmp"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallInput": {
+        "type": "object",
+        "properties": {
+          "family": {
+            "type": "string",
+            "enum": [
+              "ipv4",
+              "ipv6"
+            ]
+          },
+          "protocol": {
+            "type": "string",
+            "enum": [
+              "tcp",
+              "udp"
+            ]
+          },
+          "ports": {
+            "$ref": "#/components/schemas/FirewallPorts"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "inputInterface": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 15
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "excludedInterface": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 15
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sourceMac": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 17
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sourcePorts": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FirewallPorts"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "family",
+          "protocol",
+          "ports"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallPortForward": {
+        "type": "object",
+        "properties": {
+          "family": {
+            "type": "string",
+            "enum": [
+              "ipv4",
+              "ipv6"
+            ]
+          },
+          "protocol": {
+            "type": "string",
+            "enum": [
+              "tcp",
+              "udp"
+            ]
+          },
+          "inputInterface": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 15
+          },
+          "outputInterface": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 15
+          },
+          "address": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "inPort": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "outPort": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          },
+          "masquerade": {
+            "type": "boolean"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sourceMac": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 17
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sourcePorts": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FirewallPorts"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "family",
+          "protocol",
+          "inputInterface",
+          "outputInterface",
+          "address",
+          "inPort",
+          "outPort",
+          "masquerade"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallNat": {
+        "type": "object",
+        "properties": {
+          "family": {
+            "type": "string",
+            "enum": [
+              "ipv4",
+              "ipv6"
+            ]
+          },
+          "inputInterface": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 15
+          },
+          "outputInterface": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 15
+          },
+          "protocol": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "all",
+                  "tcp",
+                  "udp",
+                  "icmp",
+                  "icmpv6",
+                  "gre",
+                  "esp",
+                  "ah",
+                  "sctp"
+                ]
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 255
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "masquerade": {
+            "type": "boolean"
+          },
+          "automatic": {
+            "type": "boolean"
+          },
+          "ruleType": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "GENERIC",
+                  "IP_FORWARDING",
+                  "PORT_FORWARDING"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "destination": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "family",
+          "inputInterface",
+          "outputInterface",
+          "masquerade",
+          "automatic"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallCandidate": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "const": 3
+          },
+          "ipv4": {
+            "$ref": "#/components/schemas/FirewallFamilyPolicy"
+          },
+          "ipv6": {
+            "$ref": "#/components/schemas/FirewallFamilyPolicy"
+          },
+          "input": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallInput"
+            }
+          },
+          "portForward": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallPortForward"
+            }
+          },
+          "nat": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallNat"
+            }
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "ipv4",
+          "ipv6",
+          "input",
+          "portForward",
+          "nat"
+        ],
+        "additionalProperties": false,
+        "description": "Complete V3 structured grammar. Total across all rule arrays <=256; first<=last; canonical serialized candidate <=16384 bytes. Agent performs address/interface/NAT compilation and system forwarding/ownership checks. No raw nft/iptables expressions."
+      },
+      "FirewallChange": {
+        "type": "object",
+        "properties": {
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854775807
+          },
+          "sourceDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "confirmSeconds": {
+            "type": "integer",
+            "minimum": 30,
+            "maximum": 300
+          },
+          "candidate": {
+            "$ref": "#/components/schemas/FirewallCandidate"
+          }
+        },
+        "required": [
+          "expectedRevision",
+          "sourceDigest",
+          "confirmSeconds",
+          "candidate"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallAction": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "pattern": "^fw-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "confirmationToken": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{32}$"
+          }
+        },
+        "required": [
+          "transactionId",
+          "confirmationToken"
+        ],
+        "additionalProperties": false
+      },
+      "NmChange": {
+        "type": "object",
+        "description": "Typed joint NM/firewall proposal. The agent coordinator recompiles and validates under its shared writer boundary and authoritative 1.44+ version checks; the center never recompiles NM proposals.",
+        "required": [
+          "sourceDigest",
+          "confirmSeconds",
+          "changes"
+        ],
+        "properties": {
+          "sourceDigest": {
+            "type": "string",
+            "description": "64 lowercase hex digest of the two-pass NM source observation returned by nm.view.",
+            "minLength": 64,
+            "maxLength": 64,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "confirmSeconds": {
+            "type": "integer",
+            "description": "NM checkpoint confirmation window in seconds; zero is never accepted (it would disable the version check guard).",
+            "minimum": 30,
+            "maximum": 300
+          },
+          "changes": {
+            "type": "string",
+            "format": "json",
+            "description": "Typed changes JSON array (1..16 objects) in the preview grammar: interface plus optional ipv4/ipv6/ethernet patches. Legacy aliases of edited fields are removed by the agent."
+          },
+          "nat": {
+            "type": "string",
+            "format": "json",
+            "description": "Optional automatic NAT set {wan,lan[]} with at most 16 downstream interfaces; omitted means no automatic NAT composition."
+          }
+        },
+        "additionalProperties": false
+      },
+      "NmAction": {
+        "type": "object",
+        "description": "Original NM operation UUID and the 32-hex confirmation token from the prepare receipt.",
+        "required": [
+          "operationId",
+          "confirmationToken"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "confirmationToken": {
+            "type": "string",
+            "minLength": 32,
+            "maxLength": 32,
+            "pattern": "^[0-9a-f]{32}$"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TlsUpload": {
+        "type": "object",
+        "required": [
+          "serverPem",
+          "serverKey"
+        ],
+        "properties": {
+          "serverPem": {
+            "type": "string",
+            "description": "Server certificate PEM (exactly one certificate)."
+          },
+          "serverKey": {
+            "type": "string",
+            "description": "Server private key PEM; stored in the pending area 0600, never echoed."
+          }
+        }
+      },
+      "ClientCaUpload": {
+        "type": "object",
+        "required": [
+          "clientCaPem"
+        ],
+        "properties": {
+          "clientCaPem": {
+            "type": "string",
+            "description": "Client CA certificate PEM."
+          }
+        }
+      },
+      "TaskKeyPassphrase": {
+        "type": "object",
+        "required": [
+          "passphrase"
+        ],
+        "properties": {
+          "passphrase": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 1024
+          }
+        }
+      },
+      "TaskKeyRestore": {
+        "type": "object",
+        "required": [
+          "backupBase64",
+          "passphrase"
+        ],
+        "properties": {
+          "backupBase64": {
+            "type": "string",
+            "description": "Base64 of the task-key backup file."
+          },
+          "passphrase": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 1024
+          }
+        }
+      },
+      "RotateGatewayCertificate": {
+        "type": "object",
+        "required": [
+          "previousCertificateSha256",
+          "clientCertificatePem"
+        ],
+        "properties": {
+          "previousCertificateSha256": {
+            "type": "string",
+            "description": "Current registered fingerprint; acts as an optimistic lock."
+          },
+          "clientCertificatePem": {
+            "type": "string",
+            "description": "New client leaf certificate PEM."
+          },
+          "clientKeyPem": {
+            "type": "string",
+            "description": "Optional new private key; when present a one-time rotation bundle is sealed for download."
+          }
+        }
+      },
+      "TaskKeyRotate": {
+        "type": "object",
+        "required": [
+          "passphrase",
+          "confirmed"
+        ],
+        "properties": {
+          "passphrase": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 1024
+          },
+          "confirmed": {
+            "type": "boolean",
+            "description": "Must be true; rotation re-encrypts all task rows and resets in-flight streams."
           }
         }
       }

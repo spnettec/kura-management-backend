@@ -8,6 +8,13 @@ const types = new Set(["STRING", "BOOLEAN", "BYTE", "SHORT", "INTEGER", "LONG", 
 const object = (v: unknown): v is Record<string, unknown> => !!v && typeof v === "object" && !Array.isArray(v);
 const scalar = (v: unknown) => v === null || typeof v === "string" || typeof v === "boolean";
 const invalid = () => new ApiError("PROTOCOL_MISMATCH", 0);
+const readOnlyReasons = new Set(["NO_METATYPE", "LOCALIZATION_MISMATCH", "SECRET_OPTIONS", "UNSUPPORTED_CONTRACT"]);
+
+export function isArrayProperty(field: Property): boolean {
+  if (field.valueShape !== undefined) return field.valueShape !== "SCALAR";
+  if (field.present && !field.redacted && field.value !== null && field.value !== undefined) return Array.isArray(field.value);
+  return field.cardinality !== undefined && field.cardinality !== 0;
+}
 
 export function configuration(value: unknown, pid: string): Configuration {
   if (!object(value) || value.pid !== pid || !["en", "zh"].includes(String(value.locale)) ||
@@ -23,10 +30,21 @@ export function configuration(value: unknown, pid: string): Configuration {
     if (!object(field) || typeof field.id !== "string" || keys.has(field.id) || !types.has(String(field.type)) ||
         typeof field.present !== "boolean" || typeof field.redacted !== "boolean" ||
         (field.editable !== undefined && typeof field.editable !== "boolean") ||
+        (field.readOnlyReason !== undefined && (!readOnlyReasons.has(String(field.readOnlyReason)) || field.editable !== false)) ||
         [field.name, field.description, field.min, field.max].some(v => v !== undefined && typeof v !== "string") ||
         (field.options !== undefined && (!Array.isArray(field.options) || field.options.length > 64 ||
           field.options.some((option: unknown) => !object(option) || typeof option.value !== "string" ||
             (option.label !== undefined && typeof option.label !== "string"))))) throw invalid();
+    if (field.cardinality !== undefined && (!Number.isInteger(field.cardinality) ||
+        Number(field.cardinality) < -2147483648 || Number(field.cardinality) > 2147483647)) throw invalid();
+    if (field.valueShape !== undefined) {
+      if (!["SCALAR", "ARRAY", "COLLECTION"].includes(String(field.valueShape)) || field.cardinality === undefined ||
+          (field.valueShape === "SCALAR" && Math.abs(Number(field.cardinality)) > 1) ||
+          (field.valueShape === "ARRAY" && Number(field.cardinality) <= 0) ||
+          (field.valueShape === "COLLECTION" && Number(field.cardinality) >= 0) ||
+          (field.present && !field.redacted && field.value !== null &&
+            Array.isArray(field.value) !== (field.valueShape !== "SCALAR"))) throw invalid();
+    }
     keys.add(field.id);
     if (field.redacted) {
       if (Object.hasOwn(field, "value") || !["SECRET", "UNSUPPORTED"].includes(String(field.redaction))) throw invalid();
@@ -38,7 +56,7 @@ export function configuration(value: unknown, pid: string): Configuration {
 
 
 function enforce(field: Property, text: string) {
-  const array = field.cardinality !== undefined && field.cardinality !== 0;
+  const array = isArrayProperty(field);
   if (array) {
     let values: unknown;
     try { values = JSON.parse(text); } catch { throw new ApiError("INVALID_ARGUMENT", 0); }
@@ -77,7 +95,7 @@ export function configurationPatch(view: Configuration, selected: Record<string,
     const field = view.properties.find(p => p.id === id);
     if (!field?.editable || field.type === "UNKNOWN" || new TextEncoder().encode(text).length > 16384) throw invalid();
     enforce(field, text);
-    const array = field.cardinality !== undefined && field.cardinality !== 0;
+    const array = isArrayProperty(field);
     const boolean = field.type === "BOOLEAN";
     if (array) {
       let values: unknown;

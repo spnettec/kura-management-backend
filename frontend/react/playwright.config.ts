@@ -16,6 +16,17 @@ const der = execFileSync("openssl", ["pkey", "-pubin", "-outform", "DER"], {
 });
 const spki = createHash("sha256").update(der).digest("base64");
 const liveProfiles: Record<string, string> = {
+  "firewall-stream-loss": "**/firewall-stream-loss-live.spec.ts",
+  "firewall-linux": "**/firewall-linux-live.spec.ts",
+  "firewall-host": "**/firewall-host-live.spec.ts",
+  "ordinary-handoff-cancel": "**/ordinary-handoff-cancel-live.spec.ts",
+  "system-control": "**/system-control-live.spec.ts",
+  "handoff-outcome": "**/handoff-outcome-live.spec.ts",
+  "ordinary-handoff": "**/ordinary-handoff-live.spec.ts",
+  "boot-outcome": "**/boot-outcome-live.spec.ts",
+  "ordinary-boot": "**/ordinary-boot-live.spec.ts",
+  "registration": "**/gateway-registration-live.spec.ts",
+  "initial-setup": "**/initial-setup-live.spec.ts",
   network: "**/network-write.spec.ts",
   parallels: "**/parallels-observe.spec.ts",
   takeover: "**/takeover-live.spec.ts",
@@ -23,6 +34,7 @@ const liveProfiles: Record<string, string> = {
   "configuration-update": "**/configuration-update-live.spec.ts",
   "outcome-snapshot": "**/configuration-outcome-snapshot-live.spec.ts",
   "package-center": "**/package-center-live.spec.ts",
+  "transfer-revocation": "**/transfer-revocation-live.spec.ts",
 };
 const liveProfile = process.env.KURA_BROWSER_LIVE_PROFILE;
 if (liveProfile && !liveProfiles[liveProfile]) {

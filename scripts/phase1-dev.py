@@ -19,8 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEV = ROOT / '.phase1-dev'
 AGENT = ROOT.parent / 'kura-management-agent'
 PG = Path(os.environ.get('PHASE1_PG_BIN', '/opt/homebrew/opt/postgresql@17/bin'))
-HTTP_PORT = 18443
-GRPC_PORT = 18444
+HTTP_PORT = 39443
+GRPC_PORT = 39444
 PG_PORT = 15432
 
 def run(args, **kw):
@@ -30,8 +30,8 @@ def env():
     return dict(
         DATABASE_URL=f'postgresql://{getpass.getuser()}@localhost/management?host={urllib.parse.quote(str(DEV / "pgsock"), safe="")}&port={PG_PORT}',
         CONSOLE_DATA_KEY_FILE=str(DEV/'task-data.key'),
-        CONSOLE_ORIGIN=f'https://localhost:{HTTP_PORT}', CONSOLE_HTTP_ADDR=f'127.0.0.1:{HTTP_PORT}',
-        CONSOLE_GRPC_ADDR=f'127.0.0.1:{GRPC_PORT}', CONSOLE_TLS_CERT=str(DEV/'server.pem'),
+        CONSOLE_ORIGIN=f'https://localhost:{HTTP_PORT}', CONSOLE_HTTP_ADDR=f'0.0.0.0:{HTTP_PORT}',
+        CONSOLE_GRPC_ADDR=f'0.0.0.0:{GRPC_PORT}', CONSOLE_TLS_CERT=str(DEV/'server.pem'),
         CONSOLE_TLS_KEY=str(DEV/'server.key'), CONSOLE_CLIENT_CA=str(DEV/'ca.pem'),
         CONSOLE_WEB_DIR=str(ROOT/'frontend/react/dist'),
         AGENT_CONSOLE_ENDPOINT=f'https://localhost:{GRPC_PORT}', AGENT_GATEWAY_ID='dev-gateway',
@@ -47,10 +47,11 @@ def certificates():
         return
     run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','7','-subj','/CN=YOFC phase1 local CA',
          '-addext','basicConstraints=critical,CA:TRUE','-addext','keyUsage=critical,keyCertSign,cRLSign',
+         '-addext','subjectKeyIdentifier=hash','-addext','authorityKeyIdentifier=keyid:always',
          '-keyout',DEV/'ca.key','-out',DEV/'ca.pem'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for name,usage in [('server','serverAuth'),('agent','clientAuth'),('unregistered','clientAuth')]:
         ext=DEV/f'{name}.ext'
-        ext.write_text(f'basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage={usage}\nsubjectAltName=DNS:localhost,DNS:host.orb.internal,IP:127.0.0.1\n')
+        ext.write_text(f'basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage={usage}\nsubjectKeyIdentifier=hash\nauthorityKeyIdentifier=keyid:always,issuer\nsubjectAltName=DNS:localhost,DNS:host.orb.internal,IP:127.0.0.1,IP:10.211.55.2\n')
         run(['openssl','req','-newkey','rsa:2048','-nodes','-subj',f'/CN={name}', '-keyout',DEV/f'{name}.key','-out',DEV/f'{name}.csr'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         run(['openssl','x509','-req','-in',DEV/f'{name}.csr','-CA',DEV/'ca.pem','-CAkey',DEV/'ca.key','-CAserial',DEV/'ca-serial','-CAcreateserial','-days','7','-extfile',ext,'-out',DEV/f'{name}.pem'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     expired_certificate()
@@ -80,6 +81,8 @@ commonName=supplied
 basicConstraints=critical,CA:FALSE
 keyUsage=critical,digitalSignature,keyEncipherment
 extendedKeyUsage=clientAuth
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer
 ''')
     now=datetime.datetime.utcnow()
     run(['openssl','req','-newkey','rsa:2048','-nodes','-subj','/CN=expired-fixture','-keyout',DEV/'expired.key','-out',DEV/'expired.csr'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -144,7 +147,9 @@ def up():
     run([binary,'migrate'],env=env())
     for user,tenant,role in [('admin','dev','admin'),('viewer','dev','viewer'),('other','other','operator')]:
         pwfile=DEV/f'{user}.password'
-        if not pwfile.exists():
+        exists=run([PG/'psql','-h',DEV/'pgsock','-p',PG_PORT,'-d','management','-Atc',
+                    "SELECT 1 FROM pg_roles WHERE rolname IS NULL UNION ALL SELECT 1 FROM mgmt_users WHERE username='"+user+"'"],capture_output=True,text=True)
+        if not pwfile.exists() and not exists.stdout.strip():
             pwfile.write_text(secrets.token_urlsafe(24));pwfile.chmod(0o600)
             run([binary,'create-user',user,tenant,role,pwfile],env=env())
     exists=run([PG/'psql','-h',DEV/'pgsock','-p',PG_PORT,'-d','management','-Atc',"SELECT id FROM mgmt_gateways WHERE id='dev-gateway'"],capture_output=True,text=True)

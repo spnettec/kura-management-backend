@@ -21,7 +21,7 @@ test("takeover review and explicit consent UI contract (stubbed task results)", 
   });
   await page.goto("/login");
   await page.getByLabel("账号", { exact: true }).fill("admin");
-  await page.getByLabel("密码", { exact: true }).fill(readFileSync(resolve(import.meta.dirname, "../../../.phase1-dev/admin.password"), "utf8"));
+  await page.getByLabel("密码", { exact: true }).fill(readFileSync(resolve(process.env.KURA_BROWSER_FIXTURE || resolve(import.meta.dirname, "../../../.phase1-dev"), "admin.password"), "utf8"));
   await page.getByRole("button", { name: /登\s*录/ }).click();
   await page.getByRole("button", { name: /本机开发网关 dev-gateway/ }).click();
   const panel = page.getByRole("region", { name: "有线网络管理" });

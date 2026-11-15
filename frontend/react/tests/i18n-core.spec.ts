@@ -37,9 +37,7 @@ test("the authored HTTP contract's errors, roles, task states and operations all
     ),
   ).components.schemas;
   const groups = {
-    error: schema.Task.properties.error.enum.filter(
-      (code: unknown) => code !== null,
-    ),
+    error: [...new Set([...schema.Task.properties.error.enum.filter((code: unknown) => code !== null), ...schema.Error.properties.error.properties.code.enum])],
     state: schema.Task.properties.state.enum,
     operation: schema.Task.properties.operation.enum,
     role: schema.Session.properties.role.enum,

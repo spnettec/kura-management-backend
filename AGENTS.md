@@ -1,5 +1,9 @@
 # Management Console
 
+## 2026-11-05 最新用户核定
+
+保留 NM 为系统网络后端，Kura 不装 agent 仍独立可用；agent 增加远程与故障管理，不继续默认迁移 Netplan 或删除 NM。详见 `docs/management-network-nm-decision-20261105.md`，替代本文件后文相关历史目标。旧 Netplan 代码/状态/夹具/证据保留，不重放、不自动切现网。原 GWT 远程管理菜单仅在正式安装 agent 后显示；Kura 后端独立生成私钥/CSR，agent 不作为 Kura 启动依赖。agent 始终运行，远程开关仅控制中心通道。
+
 本仓库是多网关管理中心，包含服务端与 `frontend/`。2026-10-31 从原
 `kura-management-backend` 改名，并吸收原独立前端；不要重新建立同级 backend 项目。
 

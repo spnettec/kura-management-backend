@@ -1,0 +1,30 @@
+import { test,expect } from "@playwright/test";
+import { readFileSync,openSync,closeSync,writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+test("fresh real host mTLS dispatch is read-only and rejects the one explicitly recorded default-off probe",async({page})=>{
+  const path=process.env.YOFC_FIREWALL_HOST_STACK;
+  if(!path)throw new Error("A new explicit host stack is required");
+  const stack=JSON.parse(readFileSync(path,"utf8"));const fixture=stack.fixture;
+  closeSync(openSync(resolve(fixture,"host-browser.started"),"wx",0o600));
+  const password=readFileSync(stack.passwordFile,"utf8").trim();
+  await page.goto("/login");await page.getByLabel("账号",{exact:true}).fill(stack.reviewUser);await page.getByLabel("密码",{exact:true}).fill(password);await page.getByRole("button",{name:/登\s*录/}).click();
+  await expect(page.getByRole("heading",{name:"网关总览",exact:true})).toBeVisible();
+  await page.getByRole("button",{name:"Remote firewall host fixture fw-host-gateway",exact:true}).click();
+  const panel=page.getByRole("region",{name:"防火墙事务",exact:true});await panel.getByRole("button",{name:/^读取确认值与原任务/}).click();await expect(panel).toContainText("网关未授权防火墙写入");
+  await expect(panel.getByRole("button",{name:"临时应用已审阅规则",exact:true})).toBeDisabled();
+  const key=crypto.randomUUID();const descriptor=openSync(resolve(fixture,"default-off-probe.json"),"wx",0o600);writeFileSync(descriptor,JSON.stringify({key,state:"before-one-post"}));closeSync(descriptor);
+  const probe=await page.evaluate(async({key})=>{
+    const session=await(await fetch("/api/v1/session")).json();
+    const all=await(await fetch("/api/v1/tasks")).json();const original=all.items.find((v:any)=>v.operation===30&&v.gatewayId==="fw-host-gateway"&&v.state==="SUCCEEDED");
+    if(!original)throw new Error("original view receipt missing");
+    const view=original.result;
+    const candidate={schemaVersion:3,ipv4:{inputPolicy:"accept",forwardPolicy:"drop",allowIcmp:false},ipv6:{inputPolicy:"accept",forwardPolicy:"drop",allowIcmp:false},input:[],portForward:[],nat:[]};
+    const response=await fetch("/api/v1/gateways/fw-host-gateway/tasks",{method:"POST",headers:{"content-type":"application/json","x-csrf-token":session.csrf},body:JSON.stringify({operation:"firewall.prepare",idempotencyKey:key,firewallChange:{expectedRevision:view.revision,sourceDigest:view.sourceDigest,confirmSeconds:180,candidate}})});
+    return {status:response.status,body:await response.json(),view};
+  },{key});
+  writeFileSync(resolve(fixture,"default-off-probe.json"),JSON.stringify({key,id:probe.body.id,state:"post-returned",httpStatus:probe.status},null,2),{mode:0o600});
+  expect(probe.status).toBe(202);let result:any;
+  await expect.poll(async()=>{result=await page.evaluate(async id=>await(await fetch(`/api/v1/tasks/${id}`)).json(),probe.body.id);return result.state;},{timeout:20000}).toBe("FAILED");expect(result.error).toBe("FORBIDDEN");
+  await page.screenshot({path:resolve(fixture,"host-firewall-read-zh.png"),animations:"disabled"});
+  writeFileSync(resolve(fixture,"host-browser-result.json"),JSON.stringify({view:probe.view,probe:{id:result.id,state:result.state,error:result.error},writePostCount:1,noOriginalReplay:true,noAgentNftWriteGrant:true,productionTransport:true,kuraNotRequiredForFirewallRead:true},null,2),{mode:0o600});
+});

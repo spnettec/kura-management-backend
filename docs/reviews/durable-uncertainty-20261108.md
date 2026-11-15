@@ -1,0 +1,35 @@
+# 2026-11-08 af09be80 派发日志与 UNKNOWN 跨进程启动门禁
+
+从4a8845f3续接，全部39252父指纹、18仓HEAD/branch/status、原Orb四服务及两台已停Parallels核对一致；233个将变化的旧source/artifact动前复制。未提交推送、重置清理、改原服务或个人runtime。Core索引按真实子仓库更新成功，未索引父目录。
+
+## 实施
+
+Core新增私有ConfigurationIntentJournal，位于SystemService实际data目录的configuration-dispatch-journal-v1。新目录0700、记录0600、CREATE_NEW、NOFOLLOW、实际FileLock，文件force和父目录force均在派发前完成。二进制V1有界记录只保存随机operation UUID、类别、PID范围和之前恢复完成ID，不保存配置值、密码、旧token或业务payload。目录拒绝未知文件、残缺记录、重复/不匹配决议及超界输入；已有记录不覆盖、不删除。
+
+single conditional update、conditional batch、typed plan（包括所有guards/new targets）与rollback在首个writer/apply前记录intent。正常返回并保存所需快照后追加complete，SHA256绑定intent。异常/Error或完成落盘失败留下intent与内存门禁，不重放业务。未决时普通写入/快照全部挡住，不能给其他PID发可编辑token。默认旧legacy API自身的新派发暂未全部日志化，直接CA/第三方writer仍在全目标pending范围。
+
+activate先打开/验证日志，再决定是否允许loadLatestSnapshotInConfigAdmin。普通启动发现未决intent就失败，不能通过旧snapshot或损坏snapshot回退掩盖真实CM结果。只有已验证的ControlledRecovery admission可保留闸门进入既有恢复启动流程；普通写释放后，新的CompletionEvidence可追加resolved决议，绑定恢复completionId/snapshotSha256/decisionSha256。intent记录其创建前已有completionId，旧恢复决定不能清除后来产生的UNKNOWN。此关联有真实文件与公共ControlledRecovery入口单测，但本轮没有重放既有一次性恢复入口或宣称完整实际业务恢复/对账已验收。
+
+未改变org.eclipse.kura.api或Core导出DTO签名，本轮新增实现/初始化方法为私有或package可见。原Core/XML语义能力约束保留，XML8/Asset38/NM1497及GWT210/helper12/Camel8旧通过证据未重跑。
+
+## 测试与真实场景
+
+Core最终227项全部通过/install，含13项新journal测试：未决跨对象重开、成功决议链接、残缺/篡改文件、真实文件锁和symlink、空rollback、完整activate前零CM交互、完成落盘失败后1writer、计划首个变更前intent与全scope、恢复完成代次不复用、未决时其他PID无可编辑token。首8、225、226中间报告和产物保留，最终实际场景均Core227。
+
+四个新IDEA完整隔离runtime各283 inventory匹配。PID32097正常启动、admin/admin原英文GWT登录与Status已观察；其首个durable-dispatch-once在baseline NOT_FOUND前置失败：夹具把SCC/ManagedService分成同PID两个服务，Core现有枚举可能被后者null覆盖。只有journal.lock、0intent、0业务callback、0业务写/故障注入。保留该行为作为provider兼容性待审计，不称产品已修复。
+
+全新PID32205将两个接口公布为同一服务，新durable-v2-once恰好一次真实CM更新name=after，changeCount=1、一次ManagedService callback，之后XML marshaller故障。留下唯一intent，无complete/resolved。原receipt在后置“全部snapshot成员不变”断言失败：旧snapshot_0字节仍在，但现有saveSnapshot先创建了一个零字节新文件；不能把该原回执改写为通过。随后一个只读命令误缺factory触发夹具NPE（无业务写），另一独立只读inspect-uncertain成功读取目标UNKNOWN、前后CM值/changeCount一致。全部原回执保留，未重发真实写。
+
+停止32205后冻结308个home/OSGi数据文件，再向全新runtime复制完整home（含未决journal与两个snapshot）和真正的Equinox CM store（逐文件SHA相等），不复制命令/admitted文件。PID32312已观察到Core FAILED_ACTIVATION并明确命中journal；其观察器错误断言“service reference不存在”失败。DS失败激活仍可留reference，故此失败不代表Core可用，未补造原后续CM检查。
+
+全新只读观察PID32381使用相同冻结输入，检查实际getService返回null而不是仅reference：Core state16，激活异常cause明确journal。真实CA目标name仍after、changeCount仍1；唯一intent、0终态决议。两个snapshot逐字节保持（零字节文件也没改名.bad），证明未先进入损坏snapshot回退/CM重放；原冻结308文件也全部未变。此selected boundary由最终observer和独立hash核对成立，不依赖将先前失败receipt算pass。四进程全停，所有CM、partial snapshot、intent、日志与夹具保留。
+
+OrbStack新/tmp/kura-dispatch-journal-v2-4de7a48d使用冻结生产Core/API/log4j-api与真实Java21，4个独立JVM依次写未决→新进程挡startup/write/revision、写complete→新进程可进入，全部通过；真实文件锁/force均由生产journal执行，业务服务/系统网络写0。首个独立/tmp/kura-dispatch-journal-cc69b831现场缺log4j-api，在错误类初始化失败；原日志保留，不复用该seed作最终场景。仅属Linux文件持久化合同，不冒称完整Linux Kura、systemd沙箱、断电/磁盘满或新Parallels验收。
+
+## 仍待推进
+
+完整14项内部pending继续：client operationId/receipt查询、lost-reply业务结果对账、真正非幂等creation/deletion与完整受控恢复后的实际对账/释放、所有legacy/directCA/provider覆盖、完整server deadline与生命周期仍未闭环。新普通启动门禁是持久UNKNOWN保护的一部分，不能宣称全部durable协议完成。新增provider同PID多服务枚举兼容性和故障snapshot零字节文件策略保留内部pending；不静默删除损坏材料。
+
+外部真实NM/cloud-init/有线、物理硬件、amd64、磁盘满/硬断电deferred不变，历史初始GWT CONFLICT精确持有者及证据gap不变。没有UNKNOWN业务重发或旧一次性恢复/验收重放。原Orb四服务原PID/包与两VM状态在最终清单再核对。目标active。
+
+审查docs/reviews/durable-uncertainty-20261108.md；机器清单docs/evidence/durable-uncertainty-20261108.json；证据target/durable-uncertainty-20261108。下一步核对日志与受控恢复完整交接及公开receipt/reconcile合同，再推进全部原台账；不能删除intent来解除门禁。

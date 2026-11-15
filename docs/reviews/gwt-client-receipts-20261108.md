@@ -1,0 +1,33 @@
+# GWT retained receipt implementation and native review
+
+2026-11-08; round **5dc22468**, prior **40141a77**. Goal remains active. No commit/push, reset/clean, original UNKNOWN replay, old acceptance replay or existing Linux service modification.
+
+## Entry and production changes
+
+Entry verified all 49,340 prior pins and all 18 repository HEAD/branch/worktree states, original Orb four services/packages and stopped Parallels VMs. Before edits, 3,844 existing Web2/test/docs files were copied; the Core receipt contract was additionally copied before its dated appendix. See `target/gwt-client-receipts-20261108/entry.json`, `before-copies.json` and final manifest. Core/API sources and sealed pair remain unchanged this round.
+
+See [selected contract](../gwt-client-receipts-v1.md). New shared value-free receipt DTO, identified generic create/delete RPCs, XSRF-first admin endpoint methods, independent receipt mapper/current observation utility, persisted client correlation model and write-gating dialog are implemented. Only the default generic component backend is integrated. No specialized backend silently falls back from a recorded call. API1.8/receipt1.x is declared in the packaged Web2 manifest.
+
+The client keeps a fixed operation ID before submission and never persists a runnable request. It queries that ID after lost response/refresh/re-login. It separates original Core result from explicit current instance evidence and does not label either business health. A one-time explicit unreserved seal records its issued flag before dispatch; subsequent reload/query cannot resubmit it. Missing Web Locks/UUID/storage is fail-closed. Original failures and unknown outcomes keep the gate; only matching evidence can clear it.
+
+## Validation
+
+- Final offline Maven Web2 package/install succeeds with Maven3.10/JDK21, Java11 GWT target; EN/ZH/JA permutations and login modules compile. Final `gwt-tests-render-final.log`: **226 tests, zero failures/errors/skips**, 16 new model/utility/servlet cases. Unchanged Core253/API24/tool62/packaged receiptDS1 and XML8/Asset38/NM1497 remain prior evidence, not rerun claims.
+- Actual no-agent Kura launched only through four new one-shot IDEA phases of owned `receipt-lifecycle-9d909a77`; passive DS witness never calls a Core mutation. Default fixture login bypass is confined to this owned historical-baseline clone. Loopback proxy stores method/ID/status/count metadata, never credentials, cookies or request payloads.
+- English creation `fixture.receipt.one`, ID `op-db589f68-3d3d-4b90-9128-d37491b10059`: one browser recorded-create submission, successful upstream200 reply discarded. Refresh kept reference; independent JVM and later UI upgrade kept the original request/intent/dispatch/complete bytes. Original receipt plus current factory/SCR/registration readiness explicitly reviewed, then fresh view showed count1, name/description and disabled Apply. Normal JVM boot reactivation is not a repeated create RPC.
+- Read budget: one 22-second delayed receipt response produced the 15-second client unavailable state; late callback did not resurrect success. Delayed response arrived before the subsequent manual read/observation; do not claim a cross-new-query ordering case.
+- Chinese deletion of the same owned PID, ID `op-76234fbf-9815-425c-8cab-b7d135d25803`: one browser recorded-delete, successful upstream200 reply discarded, refresh retained ID. Original receipt and current Core/registry/SCR absence reviewed; one business deactivation in resume phase. Explicit acknowledgement/refreshed view showed no component.
+- Chinese late original `fixture.receipt.late`, ID `op-b04b7b56-e54b-4ad0-ac19-f14cd1ae8ad5`: proxy held one original before Core. NOT_FOUND did not auto-cancel or resend. Explicit seal once produced a durable cancelled request tombstone, then that held original was forwarded once. No corresponding intent or business activation. Reload and final independent JVM showed CANCELLED; seal disabled, acknowledgement enabled. Exact late-request backend rejection reason is unproved because compressed response body was neither retained nor decoded.
+- Final packaged UI rendered a white dialog above the glass layer, width678 with client/scrollWidth676 and all four buttons contained, zIndex20001. Original cancelled reference survived the upgrade; explicit acknowledgement refreshed and removed the gate. Screenshots are visible in the CUA conversation only, not a separately pinned image file.
+
+## Failures preserved and fixed
+
+Initial GWT compilation rejected JSNI Promise `.catch` as an ES3 keyword; bracket access fixes it. First new pure-client model JVM test did not compile because client classes are excluded from the server artifact; tests now compile the actual source and fixture with `--release11`, following the existing baseline-test pattern. Neither required production fallback.
+
+Native actual UI exposed the inherited gwt-DialogBox root under the glass (auto z-index/transparent background), blocking controls. Added explicit opaque layer/z-index and buttons. Then inherited width400 clipped the 600-wide content; a dedicated style class removes that legacy width rule. Both earlier source/JAR scenes are preserved, and the final built JAR was launched and visually checked. A first mouse query after one reload did not dispatch; later keyboard/mouse queries worked. The first input cause is unproved and is not reported as a diagnosed product defect.
+
+## Remaining ledger and continuation
+
+All 14 internal pending entries carry forward in the manifest with explicit child dispositions; three external groups remain: real NM/cloud-init/physical hardware, amd64, disk-full/hard-power. In particular real post-CM create/delete UNKNOWN recovery and business reconciliation, query with ConfigurationService unavailable in actual full GWT, non-idempotent partial recovery, dedicated domains, audit/directCA/non-DS ownership, backup/receipt relocation, full deadlines/deployment/upgrade remain pending. Historical initial GWT CONFLICT exact holder, same-PID SCC/null overwrite and failed zero-byte snapshot policy are not fixed by this change. The historical terminal-countdown child remains closed and was not rerun.
+
+Next: reconcile this checkpoint, then use a distinct new retained fixture to exercise a single non-idempotent post-CM UNKNOWN and independent original-ID query/restart plus explicitly authorized controlled forward recovery handoff. Never submit that original writer again. Extend dedicated-domain correlation only with its actual dependency/typing contracts. Preserve all worktrees and scenes. Read `docs/evidence/gwt-client-receipts-20261108.json` for authoritative fingerprints, pending and external boundaries.

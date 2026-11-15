@@ -289,7 +289,105 @@ export interface paths {
             };
         };
         put?: never;
-        post?: never;
+        /** Register a public client leaf certificate in the authenticated administrator tenant; does not change agent ownership or remote state */
+        post: {
+            parameters: {
+                query?: never;
+                header: {
+                    "X-CSRF-Token": string;
+                };
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["RegisterGateway"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["GatewayRegistration"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                413: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                415: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                422: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                503: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -1238,6 +1336,1062 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/transfer/signers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List active and revoked transfer signers for the administrator tenant. */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferSignerList"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        /** @description Register an exact tenant Ed25519 transfer-signer public key. This does not issue or deliver a token. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["RegisterTransferSigner"];
+                };
+            };
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferSignerReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/signers/{keyId}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Revoke an active tenant signer; future issuance is rejected. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferSignerReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/approvals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List transfer approvals and their separate requester/approver identity. */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferApprovalList"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gateways/{id}/transfer-approval": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Record an exact cross-center transfer request for an enabled gateway at its current binding generation. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["TransferApprovalRequest"];
+                };
+            };
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferApprovalReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/approvals/{id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Approve an open transfer approval. Approval requires another enabled tenant administrator. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["Empty"];
+                };
+            };
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferApprovalReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/approvals/{id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Reject an open transfer approval. Approval requires another enabled tenant administrator. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["Empty"];
+                };
+            };
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferApprovalReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/approvals/{id}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Revoke an open transfer approval. Approval requires another enabled tenant administrator. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["Empty"];
+                };
+            };
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferApprovalReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Authority already registered, revoked, or approval is not open */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/issuances": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List issued one-time transfer authorizations with their revocation state for the administrator tenant. */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferIssuanceList"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin session required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/transfer/issuances/{transferId}/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Revoke a recorded, not-yet-consumed one-time transfer authorization. Already-revoked issuances answer 409; unknown or other-tenant ids answer 404. Revocation never re-opens the approval. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Success */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["TransferIssuanceReceipt"];
+                    };
+                };
+                /** @description Typed API error */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Typed API error */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Admin, same-origin and CSRF are required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Unknown or other-tenant issuance */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Issuance already revoked */
+                409: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/auth/password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Set the password in an authenticated forced first-login session, or rotate it by proving the current password. Enforces strength, clears must_change_password atomically and revokes other sessions. The verified current session remains usable. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["ChangePasswordRequest"];
+                };
+            };
+            responses: {
+                /** @description Rotated */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {unknown} */
+                            ok: true;
+                        };
+                    };
+                };
+                /** @description Typed API error (new password below strength floor) */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description Current password mismatch or no session */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+                /** @description CSRF/origin required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Error"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gateways/{id}/task-intents/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Admin-only read of the original task ID for this same actor, tenant, gateway and idempotency key. Does not create, replay or relabel a task. A 404 is not proof of non-admission while the original request may still be in flight. */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                    key: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Original task ID */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** Format: uuid */
+                            id: string;
+                        };
+                    };
+                };
+                /** @description Invalid key */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Authentication required */
+                401: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Admin required */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description No original task visible to this actor */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                /** @description Storage unavailable */
+                503: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gateways/{id}/identity-bundle": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Download the one-time identity bundle (tar) for a gateway registered with an uploaded client private key. */
+        get: operations["downloadIdentityBundle"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/tls": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Server certificate status (live and pending fingerprints). */
+        get: operations["getTlsSettings"];
+        /** Stage a new server certificate+key; applied on next console restart. */
+        put: operations["uploadTlsSettings"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/client-ca": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Client CA status and registered gateway count. */
+        get: operations["getClientCaSettings"];
+        /** Stage a new client CA; applied on next console restart. */
+        put: operations["uploadClientCaSettings"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/task-key": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Task data key status. */
+        get: operations["getTaskKeyStatus"];
+        put?: never;
+        /** Download a passphrase-encrypted task data key backup (octet-stream). */
+        post: operations["backupTaskKey"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/task-key/restore": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Stage a task data key restore from a backup; applied on next console restart. */
+        post: operations["restoreTaskKey"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gateways/{id}/certificate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Register a new client certificate fingerprint for a gateway and reset its connection; optionally seal a one-time rotation bundle when the new private key is uploaded. */
+        post: operations["rotateGatewayCertificate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/task-key/rotate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Rotate the task data key at runtime: re-encrypt every task row, stage the replacement key for the next restart, swap the live cipher, and return the replacement key as a passphrase-encrypted backup. */
+        post: operations["rotateTaskKey"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1258,6 +2412,7 @@ export interface components {
              * @description Cross-center binding generation. This persists across same-center reconnects and certificate renewal; it is not a connection epoch.
              */
             bindingGeneration: number;
+            certificateSha256?: string;
         };
         Session: {
             id: string;
@@ -1266,12 +2421,14 @@ export interface components {
             /** @enum {string} */
             role: "viewer" | "operator" | "admin" | "recovery";
             csrf: string;
+            /** @description True until the seeded bootstrap administrator rotates admin/admin. */
+            mustChangePassword: boolean;
         };
         Task: {
             id: string;
             gatewayId: string;
             /** @enum {integer} */
-            operation: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14;
+            operation: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37;
             /** @enum {string} */
             state: "QUEUED" | "RUNNING" | "SUCCEEDED" | "FAILED" | "EXPIRED" | "UNKNOWN";
             /** @enum {string|null} */
@@ -1282,7 +2439,7 @@ export interface components {
         Error: {
             error: {
                 /** @enum {string} */
-                code: "INVALID_ARGUMENT" | "UNAUTHENTICATED" | "FORBIDDEN" | "NOT_FOUND" | "CONFLICT" | "UNSUPPORTED" | "KURA_UNAVAILABLE" | "TIMEOUT" | "RESOURCE_EXHAUSTED" | "INTERNAL" | "PROTOCOL_MISMATCH" | "OUTCOME_UNKNOWN";
+                code: "INVALID_ARGUMENT" | "UNAUTHENTICATED" | "FORBIDDEN" | "NOT_FOUND" | "CONFLICT" | "UNSUPPORTED" | "KURA_UNAVAILABLE" | "TIMEOUT" | "RESOURCE_EXHAUSTED" | "INTERNAL" | "PROTOCOL_MISMATCH" | "OUTCOME_UNKNOWN" | "PASSWORD_CHANGE_REQUIRED";
             };
         };
         Login: {
@@ -1291,11 +2448,12 @@ export interface components {
         };
         LoginResult: {
             csrf: string;
+            mustChangePassword: boolean;
         };
-        /** @description network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed. */
+        /** @description network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed. ordinary.boot.status/prepare/execute/cancel/reconcile require admin and fresh ordinary.boot.v1 capability. Only execute/cancel accept ordinaryBootAction. The gateway uses its fixed local grant; callers cannot supply command/unit/path. Status separates latest transaction and confirmed policy. Policy completion is not boot or business certification; UNKNOWN is never replayed. recovery.ordinary.status/prepare/execute require admin and fresh recovery.ordinary.v1 capability, disabled by default on the gateway. Prepare selects only the current locally committed completion and fixed profile. Execute and cancel accept ordinaryHandoffAction with the original handoff UUID and confirmation token. Cancellation additionally requires recovery.ordinary.cancel.v1, the live connection epoch and a 30-second deadline; older agents do not imply this support. It only abandons an unissued prepared handoff, preserves the approved parent and its original command evidence, and never clears RECOVERY_REQUIRED or invokes a unit. Expiry alone leaves an otherwise unchanged unissued plan prepared for explicit cancellation. Execution starts the fixed ordinary Kura once after stopping old recovery services; administrator-selected checks do not certify full recovery or reboot. Unknown requests are only queried and never replayed. service.status/restart.prepare/restart and system.reboot.prepare/reboot plus system.control.cancel require admin and fresh system.control.v1. Restart and host reboot require distinct local grants and advertised service.restart.v1/system.reboot.v1; all are off by default. Only restart, reboot and cancel accept systemControlAction. New writes are bound to the live connection epoch, with fixed 5-minute execution deadlines and 30-second other task deadlines. Stale unleased writes expire on reconnect; issued writes become UNKNOWN and are only queried. The agent controls the installation-fixed Kura unit and bounded cgroup; no caller shell/unit/path is accepted. Reboot acceptance is UNKNOWN until an actual changed boot identity is observed. Process transition and optional administrator-selected business checks are reported separately and never certify full Kura recovery. Cancellation only applies to unissued plans. Pending managed transactions and RECOVERY_REQUIRED block new writes. Firewall operations30-33 require admin and fresh firewall.remote.v1 capability. Only prepare accepts firewallChange, only confirm/rollback accept firewallAction. Writes are bound to the live connection epoch; unleased writes from an old connection expire, delivered writes remain UNKNOWN and are never requeued. Actual agent post-apply fresh authenticated connection is required for confirm. Prepare task success means applied WAIT_CONFIRM, not final confirmation. Query the original task after UNKNOWN. Input/result use existing encrypted storage. Non-admin task queries remove confirmationToken. */
         CreateTask: {
             /** @enum {string} */
-            operation: "agent.status" | "kura.configuration.list" | "kura.snapshot.list" | "network.inspect" | "network.prepare" | "network.confirm" | "network.rollback" | "network.transaction" | "network.takeover.plan" | "network.takeover.prepare" | "kura.configuration.get" | "kura.configuration.update" | "kura.snapshot.save" | "kura.snapshot.rollback";
+            operation: "agent.status" | "kura.configuration.list" | "kura.snapshot.list" | "network.inspect" | "network.prepare" | "network.confirm" | "network.rollback" | "network.transaction" | "network.takeover.plan" | "network.takeover.prepare" | "kura.configuration.get" | "kura.configuration.update" | "kura.snapshot.save" | "kura.snapshot.rollback" | "ordinary.boot.status" | "ordinary.boot.prepare" | "ordinary.boot.execute" | "ordinary.boot.cancel" | "ordinary.boot.reconcile" | "recovery.ordinary.status" | "recovery.ordinary.prepare" | "recovery.ordinary.execute" | "service.status" | "service.restart.prepare" | "service.restart" | "system.reboot.prepare" | "system.reboot" | "system.control.cancel" | "recovery.ordinary.cancel" | "firewall.view" | "firewall.prepare" | "firewall.confirm" | "firewall.rollback" | "nm.view" | "nm.prepare" | "nm.confirm" | "nm.rollback";
             idempotencyKey: string;
             networkChange?: components["schemas"]["NetworkChange"];
             networkAction?: components["schemas"]["NetworkAction"];
@@ -1304,6 +2462,15 @@ export interface components {
             kuraConfigurationUpdate?: components["schemas"]["KuraConfigurationUpdate"];
             kuraSnapshotSave?: components["schemas"]["KuraSnapshotSave"];
             kuraSnapshotRollback?: components["schemas"]["KuraSnapshotRollback"];
+            ordinaryBootAction?: components["schemas"]["OrdinaryBootAction"];
+            ordinaryHandoffAction?: components["schemas"]["OrdinaryHandoffAction"];
+            systemControlAction?: components["schemas"]["SystemControlAction"];
+            firewallChange?: components["schemas"]["FirewallChange"];
+            firewallAction?: components["schemas"]["FirewallAction"];
+            /** @description Typed joint NM/firewall proposal (sourceDigest + confirmSeconds + typed changes + optional automatic NAT set). Only nm.prepare accepts it. */
+            nmChange?: components["schemas"]["NmChange"] | null;
+            /** @description Original NM operation UUID plus the confirmation token. Only nm.confirm/nm.rollback accept it. */
+            nmAction?: components["schemas"]["NmAction"] | null;
         };
         TaskReceipt: {
             /** Format: uuid */
@@ -1380,6 +2547,16 @@ export interface components {
                 value: string;
                 label?: string;
             }[];
+            /**
+             * @description Present only when editable=false. Base metatype controls type, constraints and redaction; localization supplies presentation only.
+             * @enum {string}
+             */
+            readOnlyReason?: "NO_METATYPE" | "LOCALIZATION_MISMATCH" | "SECRET_OPTIONS" | "UNSUPPORTED_CONTRACT";
+            /**
+             * @description Effective value representation, including redacted or absent values. Capacity remains cardinality. Legacy Kura +/-1 scalar values are preserved; native OSGi +/-1 stays a bounded container.
+             * @enum {string}
+             */
+            valueShape?: "SCALAR" | "ARRAY" | "COLLECTION";
         };
         /** @description Successful operation 11 task result; bounded to 200 KiB by the local bridge. Online read through the OSGi ConfigurationService, independent of Kura Web credentials. This is not a generic configuration editor. directConfigAdminCas is always false: direct ConfigurationAdmin writers are not atomically locked. */
         KuraConfigurationView: {
@@ -1430,6 +2607,268 @@ export interface components {
                 };
             };
         };
+        Empty: Record<string, never>;
+        TransferSigner: {
+            keyId: string;
+            publicKeySha256: string;
+            /** @enum {unknown} */
+            status: "ACTIVE" | "REVOKED";
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            revokedAt: string | null;
+        };
+        TransferSignerList: {
+            items: components["schemas"]["TransferSigner"][];
+        };
+        RegisterTransferSigner: {
+            keyId: string;
+            publicKeyPem: string;
+        };
+        TransferSignerReceipt: {
+            keyId: string;
+            publicKeySha256: string;
+            /** @enum {unknown} */
+            status: "ACTIVE" | "REVOKED";
+        };
+        TransferApproval: {
+            /** Format: uuid */
+            id: string;
+            gatewayId: string;
+            expectedGeneration: number;
+            toGeneration: number;
+            newGatewayId: string;
+            newEndpoint: string;
+            newClientCaSha256: string;
+            newClientCertificateSha256: string;
+            /** Format: uuid */
+            requestedBy: string;
+            requestedByName: string;
+            /** Format: uuid */
+            approvedBy: string | null;
+            approvedByName: string | null;
+            /** @enum {unknown} */
+            status: "PENDING" | "APPROVED" | "REJECTED" | "ISSUED" | "REVOKED";
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            approvedAt: string | null;
+            /** Format: date-time */
+            closedAt: string | null;
+        };
+        TransferApprovalList: {
+            items: components["schemas"]["TransferApproval"][];
+        };
+        TransferApprovalRequest: {
+            newEndpoint: string;
+            newGatewayId: string;
+            newClientCaPem: string;
+            newClientCertificatePem: string;
+        };
+        TransferApprovalReceipt: {
+            /** Format: uuid */
+            id: string;
+            gatewayId?: string;
+            /** @enum {unknown} */
+            status: "PENDING" | "APPROVED" | "REJECTED" | "ISSUED" | "REVOKED";
+        };
+        TransferIssuance: {
+            /** Format: uuid */
+            transferId: string;
+            /** Format: uuid */
+            approvalId: string;
+            gatewayId: string;
+            /** Format: int64 */
+            expectedGeneration: number;
+            /** Format: int64 */
+            toGeneration: number;
+            newGatewayId: string;
+            newEndpoint: string;
+            signerKeyId: string;
+            /** Format: uuid */
+            issuedBy: string;
+            issuedByName: string;
+            /** Format: date-time */
+            issuedAt: string;
+            /** @enum {unknown} */
+            status: "ACTIVE" | "REVOKED";
+            /** Format: date-time */
+            revokedAt: string | null;
+            revokedByName: string | null;
+        };
+        TransferIssuanceList: {
+            items: components["schemas"]["TransferIssuance"][];
+        };
+        TransferIssuanceReceipt: {
+            /** Format: uuid */
+            transferId: string;
+            signerKeyId: string;
+            /** @enum {unknown} */
+            status: "REVOKED";
+        };
+        ChangePasswordRequest: {
+            /** @description Required for ordinary password changes; may be omitted only by an authenticated forced first-login setup session. */
+            currentPassword?: string;
+            /** @description 12..256 bytes; ends the forced first-login rotation. */
+            newPassword: string;
+        };
+        RegisterGateway: {
+            id: string;
+            name: string;
+            clientCertificatePem: string;
+            /** @description Optional client private key (PEM). Scheme A provisioning: sealed once, returned only inside the one-time identity bundle, wiped at first download. */
+            clientKeyPem?: string;
+        };
+        GatewayRegistration: {
+            id: string;
+            name: string;
+            certificateSha256: string;
+            /** @constant */
+            bindingGeneration: 1;
+            /** @description One-time identity bundle token; present only when the registration uploaded a client private key. Never shown again after delivery. */
+            identityBundleToken?: string;
+        };
+        OrdinaryBootAction: {
+            transactionId: string;
+            /** Format: uuid */
+            confirmationToken: string;
+        };
+        /** @description Execute or explicitly cancel the previously reviewed fixed ordinary-profile handoff. No caller unit, path or command. */
+        OrdinaryHandoffAction: {
+            transactionId: string;
+            /** Format: uuid */
+            confirmationToken: string;
+        };
+        /** @description Original fixed-system plan and confirmation token. No target, path, command or reboot arguments are accepted. */
+        SystemControlAction: {
+            transactionId: string;
+            /** Format: uuid */
+            confirmationToken: string;
+        };
+        FirewallPorts: {
+            first: number;
+            last: number;
+        };
+        FirewallFamilyPolicy: {
+            /** @enum {string} */
+            inputPolicy: "accept" | "drop";
+            /** @enum {string} */
+            forwardPolicy: "accept" | "drop";
+            allowIcmp: boolean;
+        };
+        FirewallInput: {
+            /** @enum {string} */
+            family: "ipv4" | "ipv6";
+            /** @enum {string} */
+            protocol: "tcp" | "udp";
+            ports: components["schemas"]["FirewallPorts"];
+            source?: string | null;
+            inputInterface?: string | null;
+            excludedInterface?: string | null;
+            sourceMac?: string | null;
+            sourcePorts?: components["schemas"]["FirewallPorts"] | null;
+        };
+        FirewallPortForward: {
+            /** @enum {string} */
+            family: "ipv4" | "ipv6";
+            /** @enum {string} */
+            protocol: "tcp" | "udp";
+            inputInterface: string;
+            outputInterface: string;
+            address: string;
+            inPort: number;
+            outPort: number;
+            masquerade: boolean;
+            source?: string | null;
+            sourceMac?: string | null;
+            sourcePorts?: components["schemas"]["FirewallPorts"] | null;
+        };
+        FirewallNat: {
+            /** @enum {string} */
+            family: "ipv4" | "ipv6";
+            inputInterface: string;
+            outputInterface: string;
+            protocol?: ("all" | "tcp" | "udp" | "icmp" | "icmpv6" | "gre" | "esp" | "ah" | "sctp") | number | null;
+            masquerade: boolean;
+            automatic: boolean;
+            ruleType?: ("GENERIC" | "IP_FORWARDING" | "PORT_FORWARDING") | null;
+            source?: string | null;
+            destination?: string | null;
+        };
+        /** @description Complete V3 structured grammar. Total across all rule arrays <=256; first<=last; canonical serialized candidate <=16384 bytes. Agent performs address/interface/NAT compilation and system forwarding/ownership checks. No raw nft/iptables expressions. */
+        FirewallCandidate: {
+            /** @constant */
+            schemaVersion: 3;
+            ipv4: components["schemas"]["FirewallFamilyPolicy"];
+            ipv6: components["schemas"]["FirewallFamilyPolicy"];
+            input: components["schemas"]["FirewallInput"][];
+            portForward: components["schemas"]["FirewallPortForward"][];
+            nat: components["schemas"]["FirewallNat"][];
+        };
+        FirewallChange: {
+            expectedRevision: number;
+            sourceDigest: string;
+            confirmSeconds: number;
+            candidate: components["schemas"]["FirewallCandidate"];
+        };
+        FirewallAction: {
+            transactionId: string;
+            confirmationToken: string;
+        };
+        /** @description Typed joint NM/firewall proposal. The agent coordinator recompiles and validates under its shared writer boundary and authoritative 1.44+ version checks; the center never recompiles NM proposals. */
+        NmChange: {
+            /** @description 64 lowercase hex digest of the two-pass NM source observation returned by nm.view. */
+            sourceDigest: string;
+            /** @description NM checkpoint confirmation window in seconds; zero is never accepted (it would disable the version check guard). */
+            confirmSeconds: number;
+            /**
+             * Format: json
+             * @description Typed changes JSON array (1..16 objects) in the preview grammar: interface plus optional ipv4/ipv6/ethernet patches. Legacy aliases of edited fields are removed by the agent.
+             */
+            changes: string;
+            /**
+             * Format: json
+             * @description Optional automatic NAT set {wan,lan[]} with at most 16 downstream interfaces; omitted means no automatic NAT composition.
+             */
+            nat?: string;
+        };
+        /** @description Original NM operation UUID and the 32-hex confirmation token from the prepare receipt. */
+        NmAction: {
+            /** Format: uuid */
+            operationId: string;
+            confirmationToken: string;
+        };
+        TlsUpload: {
+            /** @description Server certificate PEM (exactly one certificate). */
+            serverPem: string;
+            /** @description Server private key PEM; stored in the pending area 0600, never echoed. */
+            serverKey: string;
+        };
+        ClientCaUpload: {
+            /** @description Client CA certificate PEM. */
+            clientCaPem: string;
+        };
+        TaskKeyPassphrase: {
+            passphrase: string;
+        };
+        TaskKeyRestore: {
+            /** @description Base64 of the task-key backup file. */
+            backupBase64: string;
+            passphrase: string;
+        };
+        RotateGatewayCertificate: {
+            /** @description Current registered fingerprint; acts as an optimistic lock. */
+            previousCertificateSha256: string;
+            /** @description New client leaf certificate PEM. */
+            clientCertificatePem: string;
+            /** @description Optional new private key; when present a one-time rotation bundle is sealed for download. */
+            clientKeyPem?: string;
+        };
+        TaskKeyRotate: {
+            passphrase: string;
+            /** @description Must be true; rotation re-encrypts all task rows and resets in-flight streams. */
+            confirmed: boolean;
+        };
     };
     responses: never;
     parameters: never;
@@ -1479,6 +2918,239 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    downloadIdentityBundle: {
+        parameters: {
+            query: {
+                /** @description One-time token returned by the registration response. */
+                token: string;
+                /** @description Plain HTTPS console endpoint (host:port) for the agent to connect to. */
+                endpoint: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description ustar archive: manifest.json / ca.pem / agent.pem / agent.key */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/x-tar": string;
+                };
+            };
+            /** @description Unknown token, unknown gateway, or bundle already delivered. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getTlsSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Status */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    uploadTlsSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TlsUpload"];
+            };
+        };
+        responses: {
+            /** @description Staged */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getClientCaSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Status */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    uploadClientCaSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ClientCaUpload"];
+            };
+        };
+        responses: {
+            /** @description Staged */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getTaskKeyStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Status */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    backupTaskKey: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TaskKeyPassphrase"];
+            };
+        };
+        responses: {
+            /** @description Backup file */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/octet-stream": string;
+                };
+            };
+        };
+    };
+    restoreTaskKey: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TaskKeyRestore"];
+            };
+        };
+        responses: {
+            /** @description Staged */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    rotateGatewayCertificate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RotateGatewayCertificate"];
+            };
+        };
+        responses: {
+            /** @description New fingerprint registered; identityBundleToken present when a rotation package was sealed. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description previousCertificateSha256 does not match the current certificate, or the new certificate is identical. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    rotateTaskKey: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TaskKeyRotate"];
+            };
+        };
+        responses: {
+            /** @description Encrypted replacement-key backup */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/octet-stream": string;
+                };
             };
         };
     };

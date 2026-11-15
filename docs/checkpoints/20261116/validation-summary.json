@@ -1,0 +1,18 @@
+{
+  "jdkMinimum": 21,
+  "jdk27FurtherValidationStoppedAtUserRequest": true,
+  "cryptoJdk21Tests": 46,
+  "configurationBoundaryTests": 27,
+  "ciEntryTests": 5,
+  "newCryptoCases": 16,
+  "newConfigurationCases": 6,
+  "negativeControlsExpectedFailures": 2,
+  "finalJdk27AlreadyRunningAtStopRequestTerminal": {
+    "exitCode": 0,
+    "elapsedSeconds": 2.11,
+    "actualJavaSpecificationVersion": "27",
+    "actualJavaHome": "/Library/Java/JavaVirtualMachines/temurin-27.jdk/Contents/Home"
+  },
+  "fullRotationActivationAccepted": false,
+  "productionKeyOrDataMutations": 0
+}

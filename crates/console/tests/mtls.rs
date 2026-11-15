@@ -8,7 +8,9 @@ use tonic::{
 use yofc_management_protocol::v1::{agent_frame, control_client::ControlClient, *};
 
 fn dev() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../.phase1-dev")
+    std::env::var_os("KURA_MTLS_FIXTURE")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../.phase1-dev"))
 }
 async fn probe(
     cert_name: &str,
@@ -17,17 +19,27 @@ async fn probe(
 ) -> Result<tonic::Response<tonic::Streaming<ConsoleFrame>>, tonic::Status> {
     let d = dev();
     let tls = ClientTlsConfig::new()
-        .ca_certificate(Certificate::from_pem(fs::read(d.join("ca.pem")).unwrap()))
+        .ca_certificate(Certificate::from_pem(
+            fs::read(
+                std::env::var_os("KURA_MTLS_CA")
+                    .map(PathBuf::from)
+                    .unwrap_or_else(|| d.join("ca.pem")),
+            )
+            .unwrap(),
+        ))
         .identity(Identity::from_pem(
             fs::read(d.join(format!("{cert_name}.pem"))).unwrap(),
             fs::read(d.join(format!("{cert_name}.key"))).unwrap(),
         ));
-    let channel = Endpoint::from_static("https://localhost:18444")
-        .tls_config(tls)
-        .unwrap()
-        .connect()
-        .await
-        .unwrap();
+    let channel = Endpoint::from_shared(
+        std::env::var("KURA_MTLS_ENDPOINT").unwrap_or_else(|_| "https://localhost:18444".into()),
+    )
+    .unwrap()
+    .tls_config(tls)
+    .unwrap()
+    .connect()
+    .await
+    .unwrap();
     let mut client = ControlClient::new(channel);
     let (tx, rx) = tokio::sync::mpsc::channel(2);
     tx.send(AgentFrame {
@@ -69,22 +81,35 @@ async fn registered_ca_is_insufficient_without_gateway_binding() {
 #[tokio::test]
 #[ignore = "requires isolated phase1-dev stack"]
 async fn no_client_certificate_and_wrong_hostname_are_rejected() {
-    let ca = Certificate::from_pem(fs::read(dev().join("ca.pem")).unwrap());
-    let result = Endpoint::from_static("https://localhost:18444")
-        .tls_config(
-            ClientTlsConfig::new()
-                .ca_certificate(ca.clone())
-                .domain_name("wrong.invalid"),
+    let ca = Certificate::from_pem(
+        fs::read(
+            std::env::var_os("KURA_MTLS_CA")
+                .map(PathBuf::from)
+                .unwrap_or_else(|| dev().join("ca.pem")),
         )
-        .unwrap()
-        .connect()
-        .await;
+        .unwrap(),
+    );
+    let result = Endpoint::from_shared(
+        std::env::var("KURA_MTLS_ENDPOINT").unwrap_or_else(|_| "https://localhost:18444".into()),
+    )
+    .unwrap()
+    .tls_config(
+        ClientTlsConfig::new()
+            .ca_certificate(ca.clone())
+            .domain_name("wrong.invalid"),
+    )
+    .unwrap()
+    .connect()
+    .await;
     assert!(result.is_err(), "hostname checking must remain enabled");
-    let result = Endpoint::from_static("https://localhost:18444")
-        .tls_config(ClientTlsConfig::new().ca_certificate(ca))
-        .unwrap()
-        .connect()
-        .await;
+    let result = Endpoint::from_shared(
+        std::env::var("KURA_MTLS_ENDPOINT").unwrap_or_else(|_| "https://localhost:18444".into()),
+    )
+    .unwrap()
+    .tls_config(ClientTlsConfig::new().ca_certificate(ca))
+    .unwrap()
+    .connect()
+    .await;
     if let Ok(channel) = result {
         let mut client = ControlClient::new(channel);
         let (_tx, rx) = tokio::sync::mpsc::channel::<AgentFrame>(1);
@@ -105,16 +130,26 @@ async fn no_client_certificate_and_wrong_hostname_are_rejected() {
 async fn expired_client_certificate_is_rejected() {
     let d = dev();
     let tls = ClientTlsConfig::new()
-        .ca_certificate(Certificate::from_pem(fs::read(d.join("ca.pem")).unwrap()))
+        .ca_certificate(Certificate::from_pem(
+            fs::read(
+                std::env::var_os("KURA_MTLS_CA")
+                    .map(PathBuf::from)
+                    .unwrap_or_else(|| d.join("ca.pem")),
+            )
+            .unwrap(),
+        ))
         .identity(Identity::from_pem(
             fs::read(d.join("expired.pem")).unwrap(),
             fs::read(d.join("expired.key")).unwrap(),
         ));
-    if let Ok(channel) = Endpoint::from_static("https://localhost:18444")
-        .tls_config(tls)
-        .unwrap()
-        .connect()
-        .await
+    if let Ok(channel) = Endpoint::from_shared(
+        std::env::var("KURA_MTLS_ENDPOINT").unwrap_or_else(|_| "https://localhost:18444".into()),
+    )
+    .unwrap()
+    .tls_config(tls)
+    .unwrap()
+    .connect()
+    .await
     {
         let mut client = ControlClient::new(channel);
         let (tx, rx) = tokio::sync::mpsc::channel(1);

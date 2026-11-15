@@ -15,6 +15,13 @@ pub fn random_token() -> String {
 pub fn hash(value: &[u8]) -> String {
     hex::encode(Sha256::digest(value))
 }
+/// Seeding-only hash: the well-known initial password is intentionally short and
+/// every session that uses it is forced through a real password change.
+pub fn password_hash_unchecked(value: &str) -> anyhow::Result<String> {
+    Ok(Argon2::default()
+        .hash_password(value.as_bytes(), &SaltString::generate(&mut OsRng))?
+        .to_string())
+}
 pub fn password_hash(value: &str) -> anyhow::Result<String> {
     anyhow::ensure!(
         value.len() >= 12 && value.len() <= 256,
@@ -39,6 +46,7 @@ pub struct Principal {
     pub username: String,
     pub role: String,
     pub csrf: String,
+    pub must_change_password: bool,
 }
 impl Principal {
     pub fn can_query(&self) -> bool {
@@ -61,7 +69,7 @@ pub async fn principal(pool: &PgPool, headers: &HeaderMap) -> Result<Principal, 
     if token.len() != 64 {
         return Err(ApiError::unauthorized());
     }
-    let row=sqlx::query("SELECT u.id,u.tenant_id,u.username,u.role,s.csrf FROM mgmt_sessions s JOIN mgmt_users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now() AND u.enabled")
+    let row=sqlx::query("SELECT u.id,u.tenant_id,u.username,u.role,s.csrf,u.must_change_password FROM mgmt_sessions s JOIN mgmt_users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now() AND u.enabled")
         .bind(hash(token.as_bytes())).fetch_optional(pool).await?.ok_or(ApiError::unauthorized())?;
     Ok(Principal {
         id: row.get("id"),
@@ -69,6 +77,7 @@ pub async fn principal(pool: &PgPool, headers: &HeaderMap) -> Result<Principal, 
         username: row.get("username"),
         role: row.get("role"),
         csrf: row.get("csrf"),
+        must_change_password: row.get("must_change_password"),
     })
 }
 pub fn origin(headers: &HeaderMap, expected: &str) -> Result<(), ApiError> {
@@ -84,9 +93,52 @@ pub fn csrf(headers: &HeaderMap, p: &Principal, expected: &str) -> Result<(), Ap
     }
     Ok(())
 }
+/// Seed the well-known bootstrap administrator exactly once: only when the
+/// deployment has no enabled admin at all. admin/admin must be rotated at first
+/// login (must_change_password) before the session is allowed to do anything.
+pub async fn ensure_bootstrap_admin(pool: &PgPool) -> anyhow::Result<()> {
+    let existing: i64 =
+        sqlx::query_scalar("SELECT count(*) FROM mgmt_users WHERE enabled AND role='admin'")
+            .fetch_one(pool)
+            .await?;
+    if existing > 0 {
+        return Ok(());
+    }
+    let encoded = tokio::task::spawn_blocking(|| password_hash_unchecked("admin"))
+        .await
+        .map_err(|_| anyhow::anyhow!("bootstrap hash join"))??;
+    let mut tx = pool.begin().await?;
+    let inserted: Option<Uuid> = sqlx::query_scalar(
+        "INSERT INTO mgmt_users(id,tenant_id,username,password_hash,role,must_change_password) \
+         VALUES($1,'default','admin',$2,'admin',true) \
+         ON CONFLICT (username) DO NOTHING RETURNING id",
+    )
+    .bind(Uuid::new_v4())
+    .bind(&encoded)
+    .fetch_optional(&mut *tx)
+    .await?;
+    if inserted.is_some() {
+        sqlx::query("INSERT INTO mgmt_audit(tenant_id,actor,operation,target,outcome) VALUES('default','system','user.bootstrap','admin','SUCCEEDED')")
+            .execute(&mut *tx)
+            .await?;
+    }
+    tx.commit().await?;
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn bootstrap_seed_uses_unchecked_hash() {
+        // "admin" is far below the normal strength floor by design and must
+        // never pass the regular hashing path.
+        assert!(password_hash("admin").is_err());
+        let seeded = password_hash_unchecked("admin").unwrap();
+        assert!(password_valid("admin", &seeded));
+        assert!(!password_valid("Admin", &seeded));
+    }
+
     #[test]
     fn passwords_and_roles() {
         assert!(password_hash("short").is_err());
@@ -99,6 +151,7 @@ mod tests {
             username: "v".into(),
             role: "viewer".into(),
             csrf: "x".into(),
+            must_change_password: false,
         };
         assert!(p.can_query());
         assert!(!p.can_command());

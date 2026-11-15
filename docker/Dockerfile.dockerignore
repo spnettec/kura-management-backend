@@ -1,0 +1,22 @@
+# Dockerfile is invoked with the repository root as its context.
+**
+!Cargo.toml
+!Cargo.lock
+!rust-toolchain.toml
+!crates/
+!crates/**
+!migrations/
+!migrations/**
+!docs/
+!docs/openapi-v1.json
+!frontend/
+!frontend/react/
+!frontend/react/package.json
+!frontend/react/package-lock.json
+!frontend/react/index.html
+!frontend/react/tsconfig.json
+!frontend/react/vite.config.ts
+!frontend/react/src/
+!frontend/react/src/**
+!docker/
+!docker/entrypoint.sh

@@ -1,0 +1,37 @@
+# 2026-11-08 bc82f837 精确恢复释放回执与派发日志交接
+
+从af09be80续接，41307父source/artifact/evidence指纹、18仓HEAD/branch/dirty、原Orb四服务和两台已停Parallels实时匹配。295个相关旧source/artifact及工具target文件动前复制；未重放旧一次性正向/逆向/文件集/完成验收入口，未重发UNKNOWN，没有提交推送或清理现场。Core图谱按真实子仓库重建成功，不索引父目录。
+
+## 发现与实现
+
+上一轮journal在下一次普通写入时才依据CompletionEvidence追加resolved。因此，现有协议允许的“完成后不再普通写、立即关闭受控JVM并转普通profile”会留下未决intent，导致新的普通进程仍挡住。新增完整回归在原实现1失败，原测试、日志、报告均归档。
+
+Core导出ControlledRecovery新增带固定receipt Path/SHA256的commitOrdinaryWriteRelease重载。ConfigurationServiceImpl初始化时注册当前private journal，deactivate/失败激活时先注销再关闭。旧重载保留：无未决journal时兼容；存在未决journal时在调用publisher前拒绝，不能通过旧发布器跳过新合同。
+
+释放先为每个未决intent写create-only、文件/目录force的release-link，再调用原create-only发布器。link绑定intent SHA、completionId、snapshot SHA、decision SHA、精确receipt绝对路径和receipt SHA；不保存配置值或密码。发布器和receipt exact bytes通过后，才清当前内存门禁并发布CompletionEvidence。释放后无需再提交任何普通写。
+
+新进程读取intent与link时重新校验精确不可变receipt：缺失时保留未决；错hash/非普通文件/损坏记录拒绝；正确receipt才解除该intent。发布成功但回复丢失时，link与真正发布的receipt足以在新进程认可原决定，不再发送原释放。准备link后发布失败不能冒充完成；即使先前完成文件曾到盘，未完成的release-link仍保持闸门。新的恢复尝试用不同completionId留独立link，不覆盖旧材料；旧完成代次不能清除后来UNKNOWN。原v1 intent/complete/resolved格式继续读取。
+
+RecoveryWriteRelease改用新重载，将已有私有固定normal write-release路径和实际最终bytes SHA传入，回执内容、agent绑定和scope=administrator-selected-checks保持原合同；仍不宣称整个Kura恢复完成。Core提供dispatch.release 1.0.0语义能力（uses Core导出包），bootstrap要求1.x，Core不反向依赖bootstrap，Kura仍可无agent独立使用。org.eclipse.kura.api模块未改；Core导出类新增公开重载，属于公开API增量，不能记作完全无API变化。
+
+另调整Ticket构造在赋予dispatchThread权限之前，防止极端分配失败遗留同线程派发权限。它不是完整OOM/Error或所有I/O期限验收。
+
+## 验证与失败保留
+
+Core233项全过/install，含原handoff负向回归转绿、新增发布前失败、发布后丢回复、错回执、旧发布器不进入callback、完成文件与未完成link并存等6项handoff测试，以及调整后的13项journal测试。恢复工具58项全过/install：真实RecoveryWriteRelease/RecoveryBootstrap发布代码、实际journal/Core对象参与；CM与业务health为明确mock合同。7种独立JVM模式包含journal-handoff和journal-publish-failure；handoff发布后不普通写，另起子JVM读取同journal。不能把这些mock合同算实际授权恢复链或全业务健康。
+
+工具首build因fixture初始化文本插入未命中导致successMode未定义，保留编译失败日志；第二build新实际Core对象需要原provided DS/Event API，测试classpath缺ComponentException，保留58项中1失败报告。只为测试加入component1.5.1/event1.4.1依赖；第三build58项全过并install。没有将首两次记为通过。
+
+真实Equinox只init/install/resolve、不启动业务bundle，3场景通过：新Core233+新bootstrap可解析；新bootstrap+旧Core227因release capability0拒绝；旧bootstrap+新Core233仍可解析（其未决时旧发布调用由独立Core回归证明在发布前拒绝）。后者不能宣称整个混合版本都被resolver拒绝。无热刷新、全安装/降级或发行验收。
+
+新IDEA完整普通runtime PID34369/HTTP18632，283 inventory以及Core233/工具58 JAR exact SHA匹配。新版bootstrap ACTIVE，实际Core配置与Clock paired revision可读；无kura.recovery.request、无completion/verification服务注册、未安装agent。原英文GWT admin/admin进入Status并可见ClockService。仅普通启动与只读观察，业务命令0，没有新受控恢复admission。进程已停，现场、日志、CM、快照保留。
+
+OrbStack /tmp/kura-release-link-b354d1d6使用冻结生产Core233和工具runtime依赖、Java21。6个独立JVM覆盖成功发布→新进程放行、实际文件发布后抛失回复→新进程按原receipt放行、发布前失败→新进程继续挡住。每个发布器只调用一次，释放后普通写0、业务服务/CM写0。此探针直接创建自己隔离的admission夹具，明确fullAuthenticatedRecoveryClaimed=false，不冒称真实agent授权/health/正常启动全链或系统沙箱/硬件验证。所有JVM已退出，目录保留。
+
+## 未闭环范围
+
+完整14项内部pending继续，真实授权恢复链在新journal存在时的normal/health/explicit completion/ordinary handoff及业务逐值核定仍需新用途入口验证，不重放旧完成入口。客户端operationId/receipt查询、creation/deletion lost-reply对账、真实非幂等失败与全恢复、所有legacy/directCA/provider和服务器时限未完成。
+
+新增journal及固定release receipt需要纳入一致备份/恢复，绝对路径迁移和正式发行合同仍pending；不能删除intent解除门禁，不能丢掉绑定receipt后声称恢复成功。af09be80观察到的同PID多个服务枚举问题和零字节故障snapshot策略仍未修复，内部pending不抹掉。原初始GWT CONFLICT精确holder及历史证据gap原样保留。外部真实NM/cloud-init/物理有线、硬件、amd64、磁盘满/硬断电deferred不变，原Orb/个人runtime未改，两VM保持stopped。
+
+证据target/durable-recovery-contract-20261108，清单docs/evidence/durable-recovery-contract-20261108.json。知识库父scope更新并精确读回，Home不改；目标active，不宣称全目标完成。

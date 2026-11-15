@@ -1,5 +1,9 @@
 # YOFC Kura 管理体系完整改造方案
 
+2026-11-05 用户最新网络方向：**保留 NetworkManager 作为系统后端，Kura 可不安装 agent 独立使用；agent 增加远程和故障管理能力。** 此决定替代下文历史章节中默认迁往 Netplan/systemd-networkd、移除 NM/Java NM 依赖的目标，不等于维护两种同等正式后端。旧代码/状态/证据保留，不自动切换现网。具体实施边界见 `management-network-nm-decision-20261105.md`。原GWT远程管理菜单按agent安装情况显示；私钥/CSR由Kura后端生成，agent始终运行，远程开关仅控制中心通道。
+
+2026-11-05 当前核定：从本会话交接开始的后续任务已完成代码质量/架构 Review，原 F01–F14 与系统回归新增 F15–F19 已修复；受影响单元/契约、浏览器、IDEA 完整 Kura、OrbStack 和 Parallels 实际验证完成。详细矩阵、范围与候选 SHA 见 `reviews/quality-architecture-refactor-20261104.md`。整体阶段 2–5 仍开放，最新续接入口为 `reviews/continuation-prompt-20261105.md`。默认管理员 admin/admin 与首登强制设置新密码是用户确认的产品要求；首次认证后只填新密码和确认，成功直接进入控制台，服务端在完成前挡住其他 API。此条替代下文对应历史状态，不重做已闭环迁移。
+
 2026-11-01 当前最新配置增量：受限typed远程update与中英文React编辑器已接通，默认关闭、审核PID显式开放。
 中心/agent持久去重、加密、权限和UNKNOWN挡写已接线，IDEA真实双语写入与Linux远程写/重启有独立证据，
 见 `phase2-configuration-update-validation-20261101.md` 和 `configuration-remote-update-v1.md`。

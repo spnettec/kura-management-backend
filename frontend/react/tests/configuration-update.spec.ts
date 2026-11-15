@@ -5,7 +5,8 @@ const revision = "a".repeat(64);
 const view = () => ({ pid: "test.pid", locale: "zh", writable: true, updateEnabled: true, revision, properties: [
   { id: "counter", name: "counter", type: "LONG", cardinality: 0, present: true, redacted: false, value: "1", editable: true },
   { id: "password", name: "password", type: "PASSWORD", cardinality: 0, present: true, redacted: true, redaction: "SECRET", editable: true },
-  { id: "constrained", name: "constrained", type: "STRING", present: true, redacted: false, value: "fixed", editable: false },
+  { id: "constrained", name: "constrained", type: "STRING", present: true, redacted: false, value: "fixed", editable: false,
+    readOnlyReason: "LOCALIZATION_MISMATCH" },
 ] });
 
 test("typed patch preserves precision and password omission, rejects unsupported or ambiguous fields", () => {
@@ -17,6 +18,16 @@ test("typed patch preserves precision and password omission, rejects unsupported
   const array = configuration({ ...view(), properties: [{ ...view().properties[0], cardinality: 2, value: ["1"] }] }, "test.pid");
   expect(() => configurationPatch(array, { counter: "[9223372036854775807]" })).toThrow("INVALID_ARGUMENT");
   expect(configurationPatch(array, { counter: '["9223372036854775807"]' }).properties[0].value).toEqual({ textArray: { values: ["9223372036854775807"] } });
+});
+
+test("read-only applicability reasons cannot grant editing and unknown reasons are rejected", () => {
+  for (const readOnlyReason of ["NO_METATYPE", "LOCALIZATION_MISMATCH", "SECRET_OPTIONS", "UNSUPPORTED_CONTRACT"]) {
+    const field = { ...view().properties[2], readOnlyReason };
+    const current = configuration({ ...view(), properties: [field] }, "test.pid");
+    expect(() => configurationPatch(current, { constrained: "changed" })).toThrow("PROTOCOL_MISMATCH");
+    expect(() => configuration({ ...view(), properties: [{ ...field, editable: true }] }, "test.pid")).toThrow("PROTOCOL_MISMATCH");
+  }
+  expect(() => configuration({ ...view(), properties: [{ ...view().properties[2], readOnlyReason: "future" }] }, "test.pid")).toThrow("PROTOCOL_MISMATCH");
 });
 
 async function fixture(page: Page, role = "admin", capability = true, ambiguous = false) {
@@ -56,6 +67,7 @@ async function fixture(page: Page, role = "admin", capability = true, ambiguous 
 
 test("bilingual editor confirms only selected fields and keeps password unchanged (stubbed tasks)", async ({ page }) => {
   const f = await fixture(page);
+  await expect(f.panel.getByText("只读：本地化定义与基准合同不一致", { exact: true })).toBeVisible();
   await f.panel.getByRole("button", { name: "修改配置", exact: true }).click();
   const editor = page.getByRole("dialog", { name: /^(修改配置|Edit configuration)$/ });
   await expect(editor.getByLabel("password", { exact: true })).toHaveCount(0);
@@ -66,6 +78,7 @@ test("bilingual editor confirms only selected fields and keeps password unchange
   await page.getByRole("dialog", { name: "Write fixture", exact: true }).getByRole("combobox", { name: "语言 / Language" }).selectOption("en-US");
   await expect(editor.getByLabel("counter", { exact: true })).toHaveValue("9223372036854775807");
   await expect(editor.getByText(/Unchecked properties and passwords keep their values/)).toBeVisible();
+  await expect(f.panel.getByText("Read only: localized definition differs from the base contract", { exact: true })).toBeVisible();
   await editor.getByRole("checkbox", { name: "I confirm updating 1 properties of test.pid" }).check();
   await editor.getByRole("button", { name: "Confirm and submit" }).click();
   await expect(f.panel.getByText(/Configuration submission completed/)).toBeVisible();

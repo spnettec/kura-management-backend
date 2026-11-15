@@ -24,12 +24,14 @@ def source_files(root):
     sources += sorted((root / 'crates').glob('**/*.rs'))
     sources += sorted((root / 'crates').glob('**/Cargo.toml'))
     sources += sorted((root / 'crates').glob('**/*.proto'))
+    sources += sorted((root / 'crates/console/tests/fixtures').glob('*.pem'))
     sources += sorted((root / 'migrations').glob('*.sql'))
     react = root / 'frontend/react'
     sources += [react / 'package.json', react / 'package-lock.json', react / 'index.html', react / 'tsconfig.json', react / 'vite.config.ts']
     sources += sorted((react / 'src').glob('**/*'))
     sources += sorted((react / 'tests').glob('**/*.ts'))
-    sources += [root / 'packaging/kura-management-console.service', root / 'packaging/console.env.example',
+    sources += [root / 'packaging/kura-management-console.service', root / 'packaging/kura-management-console@.service',
+                root / 'packaging/console.env.example', root / 'packaging/console-instance.env.example',
                 root / 'packaging/setup.py', root / 'packaging/lifecycle.py', root / 'packaging/build.py']
     return sources
 
@@ -98,7 +100,9 @@ def deb(binary, expected, architecture, version, destination, source_manifest, w
         (binary, 'usr/bin/yofc-management-console', 0o755),
         (PACKAGING / 'setup.py', 'usr/lib/kura-management-console/setup.py', 0o644),
         (PACKAGING / 'kura-management-console.service', 'usr/lib/systemd/system/kura-management-console.service', 0o644),
+        (PACKAGING / 'kura-management-console@.service', 'usr/lib/systemd/system/kura-management-console@.service', 0o644),
         (PACKAGING / 'console.env.example', 'usr/share/doc/kura-management-console/console.env.example', 0o644),
+        (PACKAGING / 'console-instance.env.example', 'usr/share/doc/kura-management-console/console-instance.env.example', 0o644),
         (source_manifest, 'usr/share/kura-management-console/source-manifest.json', 0o644),
     ]
     for source, path, mode in entries:

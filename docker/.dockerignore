@@ -1,0 +1,7 @@
+target
+.git
+.phase1-dev
+frontend/node_modules
+frontend/dist
+docs/manual
+docs/evidence

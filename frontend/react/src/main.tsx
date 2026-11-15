@@ -16,6 +16,8 @@ import {
   type Task,
 } from "./api/client";
 import { Login } from "./features/access/Login";
+import { Settings } from "./features/settings/Settings";
+import { ChangePassword } from "./features/access/ChangePassword";
 import { Gateways } from "./features/gateways/Gateways";
 import { Commands } from "./features/commands/Commands";
 import "./style.css";
@@ -39,6 +41,7 @@ function App() {
     setError(null);
   }, []);
   const commands = location.pathname === "/commands";
+  const settings = location.pathname === "/settings";
   const loadSession = useCallback(async () => {
     clearSessionData();
     const generation = sessionGeneration.current;
@@ -86,7 +89,7 @@ function App() {
     void loadSession();
   }, [loadSession]);
   useEffect(() => {
-    if (!user) return;
+    if (!user || user.mustChangePassword) return;
     void refresh();
     const source = new EventSource("/api/v1/events");
     let closed = false;
@@ -151,6 +154,13 @@ function App() {
       </div>
     );
   if (!user) return <Login onLogin={loadSession} />;
+  if (user.mustChangePassword)
+    return (
+      <ChangePassword
+        user={user}
+        onDone={loadSession}
+      />
+    );
   const online = gateways.filter((g) => g.online).length;
   return (
     <div className="app-shell">
@@ -168,6 +178,12 @@ function App() {
             <span>≡</span>
             {t("app.tasks")}
           </a>
+          {user.role === "admin" && (
+            <a className={settings ? "active" : ""} href="/settings">
+              <span>⚙</span>
+              {t("app.settings")}
+            </a>
+          )}
         </nav>
         <div className="sidebar-bottom">
           <span className="connection-dot" />
@@ -179,7 +195,7 @@ function App() {
         <header className="topbar">
           <span>
             {t("app.operations")} <span className="slash">/</span>{" "}
-            {commands ? t("app.tasks") : t("app.gateways")}
+            {settings ? t("app.settings") : commands ? t("app.tasks") : t("app.gateways")}
           </span>
           <Space>
             <LanguageSwitcher />
@@ -194,14 +210,14 @@ function App() {
           <div className="page-heading">
             <div>
               <p className="eyebrow">
-                  {t(commands ? "page.tasksEyebrow" : "page.gatewaysEyebrow")}
+                  {t(settings ? "page.settingsEyebrow" : commands ? "page.tasksEyebrow" : "page.gatewaysEyebrow")}
               </p>
-              <h1>{commands ? t("app.tasks") : t("app.gateways")}</h1>
+              <h1>{settings ? t("app.settings") : commands ? t("app.tasks") : t("app.gateways")}</h1>
               <p className="muted">
-                {commands ? t("tasks.description") : t("overview.description")}
+                {settings ? t("settings.description") : commands ? t("tasks.description") : t("overview.description")}
               </p>
             </div>
-            <Button onClick={() => void refresh()}>{t("app.refresh")}</Button>
+            {!settings && <Button onClick={() => void refresh()}>{t("app.refresh")}</Button>}
           </div>
           {error != null && (
             <Alert
@@ -247,13 +263,16 @@ function App() {
           </div>
           <section className="data-card">
             <div className="section-heading">
-              <h2>{commands ? t("table.tasks") : t("table.gateways")}</h2>
+              <h2>{settings ? t("app.settings") : commands ? t("table.tasks") : t("table.gateways")}</h2>
               <span className="muted">{t(`stream.${stream}`)}</span>
             </div>
-            {commands ? (
+            {settings ? (
+              <Settings user={user} />
+            ) : commands ? (
               <Commands items={tasks} />
             ) : (
               <Gateways
+                onRegistered={() => void refresh()}
                 items={gateways}
                 user={user}
                 onCommand={(id, op) => void command(id, op)}

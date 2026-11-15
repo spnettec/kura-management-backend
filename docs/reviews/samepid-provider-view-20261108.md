@@ -1,0 +1,32 @@
+# Same-PID SCC selection and unique filtered GWT views
+
+2026-11-08, **8c51aa2d**, after7bcf4d3d. Goal active, complete redesign unfinished.18 exact HEAD/branch/worktrees, original Orb four services/PIDs/packages and stopped prior owned runtimes rechecked. Entry reuses the immediately preceding185,727-pin seal in this same active session and says so explicitly; final seal rehashes previous pins. Parent-vault Tasks/Sessions exact-match and latest handoff read through official CLI.371 Core module files plus the later delivery-ledger pre-edit bytes retained. No commit/push/reset/clean or UNKNOWN/old one-time acceptance replay.
+
+Entry initially expected both Parallels VMs stopped. Read-only recheck found Ubuntu stopped but Windows running, with no source attribution. No VM action was taken; the actual changed external state is retained. Orb services/packages and all18 Git states still matched. This assertion failure occurred before source/build changes and is retained.
+
+## Original GWT CONFLICT reconciliation
+
+Full review of firewall-read-countdown-20261107 confirms the already-fixed production path: GWT findFirewallEdit→authenticated FirewallSession.read→AgentFirewall→Firewall.observe→Guard shared observation. The former nonblocking exclusive observation rejected overlapping readers. Existing deterministic red/green OS-lock regression, fresh complete IDEA first-load, Orb and Parallels read-only observations established the functional fix; terminal countdown was separately fixed. Current graph/source still uses LOCK_SH with bounded wait through observe_shared. Those closed tests were not rerun.
+
+The native-v3/Parallels historical warning has no lock-holder trace. Its exact past holder cannot be inferred from a later reproduced mechanism or new warning. This remains a historical evidence limitation, separate from internal implementation and external deferred groups. No new deployment/replay was undertaken to manufacture that missing past trace.
+
+## Production fixes and regressions
+
+The actual af09be80 fixture with separate SCC/ManagedService registrations failed baseline NOT_FOUND before any writer. Current source read every matching registration, assigning its configuration each time. An unrelated service returned null and erased a live SCC view. An unavailable reference's stored CM fallback could overwrite the live view as well.
+
+Four new regressions against the old source yielded **three failures/one pass**: SCC then ManagedService lost the view; unavailable-reference fallback replaced live data with current CM; later unrelated null erased the fallback. Invalid SCC rejection already passed. Exact negative source/report bytes retained. Private SelfConfigurationRead now distinguishes SCC from fallback; valid SCC wins, unrelated null cannot erase it, fallback remains available without a valid SCC and invalid SCC still rejects. No public signature/capability change. Core257 initially passed all tests/install.
+
+The first native scene exposed a related issue: filtered enumeration returned one copy per matching service registration, giving four GWT items for two logical PIDs. Two additional regressions yielded **one failure/five passes**, expected1 actual2; the nonmatching-before-matching case already passed. Exact negative bytes retained. Core now deduplicates logical PID **after** filter matching, reading it once while preserving filter semantics. Final Core259 tests/install all pass. API/Core consumers were not broadly rebuilt because public interfaces are unchanged; current API/complete runtime pairing is separately pinned. [Selection contract](../samepid-self-view-selection-v1.md).
+
+## Actual new native scenes
+
+1. `samepid-view-e2739e85`, IDEA PID22945, intermediate Core257. New probe registers two logical PIDs, each with separate SCC and ManagedService. Actual reference orders were SCC→ManagedService and ManagedService→SCC. Public views, paired revision views, stable revision and SELF_CONFIGURING/componentOwnsView all passed. Target CM count before/after0, non-null managed callbacks0, exactly two normal updated(null) initialization notifications. No configuration update/lifecycle RPC. Original admin/admin GWT login and both live values passed; four menu links for the two PIDs observed and retained, motivating filtered deduplication. Stopped, unchanged intermediate jar/source/reports preserved.
+2. `samepid-filter-0abd118d`, IDEA PID24054, final Core259. New probe adds real filtered enumeration: exactly two logical configurations, both actual reference orders and all prior read-only assertions pass. Original GWT login and menu show exactly two links; pages show live-managed-first and live-self-first, unchanged Apply and disabled Delete, no error dialog. Operator writes0, target CM count0, non-null callbacks0, zero journal intents. Stopped after observation; full runtime/home/CM/key/plugin inventories retained. No agent/proxy/VM was started this round; the metadata's proxy port is unused.
+
+Each runtime has283 inventory artifacts; this is an inventory, not a full-provider coverage claim. The fresh probe and launchers are distinct from old one-time entries. Both homes were newly prepared, with development-only first-password bypass and original authentication unchanged. No old request, fixture, source UNKNOWN or partial snapshot was mutated. Browser screenshots were not independently saved/pinned.
+
+## Remaining work
+
+Core graph refreshed with current metadata-match/best-effort coverage for implementation and new test; no completeness claim. Same-PID non-SCC/null/stored-fallback and duplicate filtered/GWT children close. Arbitrary multiple actual SCC owners, dynamic/unregister races, broader provider typing/default/password and deadlines remain pending. Complete creation/deletion/partial/dedicated-domain recovery and all other14 parent groups remain; the six-group delivery view is updated without removing requirements. External deferred remain real NM/cloud-init/physical hardware, amd64 and disk-full/hard-power.
+
+Next advance missing dedicated-domain operation IDs/receipts and generic deletion recovery, then editor/ownership/network/remote/lifecycle/backup/release deliveries. Do not repeat already-closed selected creation recovery, read-lock/countdown or this same-PID read scene. Historical exact-holder and missing-original-evidence limits stay explicit; they do not justify inventing new implementation work or retroactive pass claims.

@@ -65,6 +65,9 @@ export function ConfigurationPanel({ gateway, user }: { gateway: Gateway; user: 
               <strong>{field.name || field.id}</strong><div className="muted">{field.id}</div><div>{field.description}</div>
             </div> },
             { title: t("configuration.type"), dataIndex: "type", width: 110 },
+            { title: t("configuration.applicability"), key: "applicability", width: 200, render: (_, field) =>
+              field.readOnlyReason ? <span className="muted">{t(`configuration.readOnly.${field.readOnlyReason}`)}</span>
+                : <span>{t(field.editable === true ? "configuration.fieldSupported" : "configuration.fieldReadOnly")}</span> },
             { title: t("configuration.value"), key: "value", render: (_, field) => field.redacted
               ? <Tag>{t(field.redaction === "SECRET" ? "configuration.redacted" : "configuration.unsupported")}</Tag>
               : !field.present ? <span className="muted">{t("configuration.absent")}</span>
