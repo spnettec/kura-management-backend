@@ -114,5 +114,40 @@
     "newImagesOrVolumes": 0,
     "newSourceCopies": 0,
     "disposableContainersRemoved": true
+  },
+  "managedCredentialStartup20261116": {
+    "linuxArm64DistinctCasesPassed": 149,
+    "suites": {
+      "service": 65,
+      "startup": 27,
+      "credentialPolicy": 32,
+      "lifecycle": 20,
+      "launcher": 5
+    },
+    "newStartupCases": 12,
+    "newLauncherCases": 1,
+    "existingLauncherCasesIncluded": 4,
+    "realRootPeerAndIsolatedPythonEntry": true,
+    "singleKeyUnknownNegativeControlReproduced": true,
+    "finalLauncherFollowupAfterThreeEntrypointExpansion": {
+      "linuxPassed": 5,
+      "macosPassed": 5,
+      "rootTransportMockedOnlyInLauncherTestCopy": true
+    },
+    "sourceDefaultUnitUsesManagedAdmission": true,
+    "sourceDirectLauncherEntrypointsGuarded": [
+      "background",
+      "foreground/detached",
+      "debug"
+    ],
+    "retainedInstalledUnitChanged": false,
+    "actualCoreBootOrPublicationAccepted": false,
+    "productionKeyOrDataMutations": 0,
+    "newImagesOrVolumes": 0,
+    "unknownRedispatched": false,
+    "oneShotAcceptanceReplayed": false,
+    "disposableContainersRemoved": true,
+    "newRepositoryCopies": 0,
+    "temporaryLauncherFixtures": "only shipped scripts/reader/helper and a test-only Root transport shim, removed by TemporaryDirectory"
   }
 }

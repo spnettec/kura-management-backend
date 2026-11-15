@@ -233,9 +233,10 @@ verify or export these proposed generations.
 Any interrupted ring/history write, failed worker or lost final receipt remains
 INTENT/UNKNOWN. Present staging files never establish success. Original UUIDs
 are query-only; new key-operation IDs, Root generation-start admission and package
-checks remain fenced by the same validated journals. Ordinary single-key boot is
-not claimed to have the new mandatory generation gate; the unchanged old key may
-still be used while preparation is staged. No new canonical key/ring, provisioning receipt, unit,
+checks remain fenced by the same validated journals. At the earlier preparation
+checkpoint, ordinary single-key boot did not have this Root journal gate. The
+later managed-source startup change below closes that gap; retained installed
+units remain unchanged. No new canonical key/ring, provisioning receipt, unit,
 running process or application data is changed by these two actions.
 
 Linux ARM64 validation now passes 132 distinct native cases: service 65 (14 new),
@@ -251,3 +252,50 @@ Actual canonical publication, multi-step commit/recovery, full capable package/
 provider/agent cohort and installed generation mode, provider re-encryption,
 GUI download/upload/confirm and subsequent key retirement remain internal pending.
 These internal native actions are not a released manual deployment procedure.
+
+## Managed admission for ordinary single-key and generation startup (2026-11-16)
+
+Publication review found that the historical single-key `check-loaded` only
+checked the loaded file. An unresolved Root operation could therefore coexist
+with that valid file and still pass the ordinary pre-start check. A real isolated
+negative control reproduces that result; the old command remains a compatibility
+reader and is not an accepted rotation-cohort startup gate.
+
+The current source default unit now requires/orders the fixed key-service socket
+and invokes `check-loaded-managed`. The shared credential shell helper invokes
+the same entrypoint, covering background, foreground/detached and debug scripts
+before runtime configuration generation or Java. The gate is package-wired;
+enabling it adds no agent dependency, operator environment switch or manual
+script step. The three
+retained installed gateway units/processes have not been changed or restarted.
+
+The managed entrypoint validates private loaded files and makes one bounded,
+read-only `credential-start-admission` request to the fixed Root socket. The only
+payload is schema, action, key SHA-256 and the explicit optional ring SHA-256.
+Root checks maintenance and the original key/start journals, then matches both
+fingerprints to its complete canonical receipt(s) under the existing locks.
+Missing loaded generation extras cannot fall back when Root has a generation
+set. A missing/unbound Root set, mismatched key/ring, unavailable/older service,
+untrusted peer, ambiguous frame or original INTENT refuses startup. There is no
+retry, key publication, journal rewrite or UNKNOWN settlement in this request.
+
+The legacy explicit generation RPC keeps its exact contract and shares only the
+strict transport. A cold recovery peer cannot call the new boot-admission action.
+The new capable launcher and Root service must be packaged together; package
+capability/asset attestation, required generation credential loading and actual
+publication/drain/commit are still internal pending. The source unit change is
+not evidence that a retained gateway has the new gate installed.
+
+Linux ARM64 passes 149 distinct cases: service 65, startup 27, credential policy
+32, lifecycle 20 and launcher 5. The 27 startup cases include actual Root peer
+communication and the real Python -I managed entrypoint succeeding for the
+original single key then refusing an original UNKNOWN without changing files.
+Strict mode/key/schema/peer/framing errors and missing loaded/canonical generation
+halves are covered. Launcher tests preserve the real three scripts/helper/reader
+and replace only the Root transport in a temporary test copy; they verify refusal
+before generator/JVM/PID output for all three entrypoints. Their transport is not
+claimed to be a second real Root exchange. The final expanded five-case launcher
+suite passed on macOS and Linux without rerunning unrelated slow suites. No
+image, persistent volume or source tree copy was created; disposable containers
+were removed. These are isolated native/launcher contracts, not installed full
+Core/OSGi/provider or systemd release acceptance.
