@@ -299,3 +299,63 @@ suite passed on macOS and Linux without rerunning unrelated slow suites. No
 image, persistent volume or source tree copy was created; disposable containers
 were removed. These are isolated native/launcher contracts, not installed full
 Core/OSGi/provider or systemd release acceptance.
+
+## Package reader/launcher pairing and independent cold base (2026-11-16)
+
+Core packaging now includes the standalone recovery JAR and its private classpath,
+ordered by an explicit provided Maven dependency. Private Crypto, configuration
+and XML mapper libraries must be byte-identical to the actual Core plugins.
+Mandatory capabilities, class presence and Java21 class headers are checked;
+duplicate reader BSNs, missing classes/capabilities, unsafe files and foreign
+classpath entries are refused. Main JAR attributes are bounded to 64 KiB;
+signed-JAR named digest sections grant no capabilities and need not be
+decompressed. Byte-counted UTF-8 folding is joined before decoding.
+
+The unreleased protocol-2 manifest separates two checks. Top-level files/units
+retain the protected backup/cold-recovery base. Its nested `generation` section
+binds the main Core unit, reader JARs/private libraries, cohort helper, credential
+shell helper and three launcher templates. Base `assets()` does not read/execute
+the generation group. A missing/broken main reader, main unit or cohort helper
+cannot disable an otherwise intact independent cold base. Protocol-1 base
+profiles remain supported without claiming generation capability.
+
+`generation_assets()` verifies the full file group, managed first pre-start check,
+socket ordering, Core owner and control-group kill policy. It loads only attested
+validator source bytes, never an unverified pyc. Installer RAM tuning may change
+only the one numeric Xms/Xmx pair; all other launcher bytes must match their
+protected templates. The binding uses exact validated launcher bytes and the
+complete manifest hash, without a second unvalidated read. The fixed INSTALL_DIR
+token is resolved before hashing the installed main unit. This is package wiring;
+it needs no new operator environment switch or manual script step.
+
+Both generation-start admission and managed credential admission when Root has
+a ring require this pairing. Failure returns `COHORT_UNAVAILABLE`, without key or
+journal changes. Base backup/strict original-set restore remains independent of
+the main Kura reader.
+
+Linux ARM64: 165 distinct cases pass (service65/startup27/credential32/lifecycle20/
+launcher5/cohort16). Storage and Root transport suites isolate the package check
+at that boundary; the cohort suite uses real built JARs and real Manager admission
+without mocking pairing. It covers good/bad generation admission and cold-base
+independence, same-version mixed artifacts, missing classes, duplicate BSNs,
+forged outer hashes, classpath escape, main-unit bypass, RAM transforms, read-only
+binding and a second-read race. This is not full installed systemd/OSGi/provider
+acceptance.
+
+The canonical eleven-module reader dependency install and independent
+three-module ARM64 distribution reactor succeed with the existing shared cache.
+Final source: `e4d89bada197b50d5808cf1a19af46ec0f447d50`.
+Actual deb: 203385690 bytes, SHA-256
+`6cfd7e1ece25c9ed2eab4f5e9b402f9cf0a6c117c34acf403fff292b04cc844f`.
+Forty-one actual archive files, exact current preinst embedding and the standalone
+JAR extracted from that deb were checked. Its real JDK21 `java -jar` validates
+mixed old/new encrypted passwords. The candidate was not installed. Two superseded
+debs and their changes files were deleted without backups (406762610 bytes);
+one verified current package remains. Git source can rebuild it; old binary or
+evidence directories are not a continuation prerequisite.
+
+This is package-file pairing. Actual drain, durable publication/commit recovery,
+dynamic provider/runtime/optional-agent readers, typed generation start and GUI
+confirmation remain internal pending. A bounded literal inventory is not full
+provider coverage. No existing key was published/retired, no retained Core was
+restarted, and no UNKNOWN or closed write was replayed.

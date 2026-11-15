@@ -149,5 +149,42 @@
     "disposableContainersRemoved": true,
     "newRepositoryCopies": 0,
     "temporaryLauncherFixtures": "only shipped scripts/reader/helper and a test-only Root transport shim, removed by TemporaryDirectory"
+  },
+  "generationPackagePairing20261116": {
+    "sourceHead": "e4d89bada197b50d5808cf1a19af46ec0f447d50",
+    "linuxArm64DistinctCasesPassed": 165,
+    "suites": {
+      "service": 65,
+      "startup": 27,
+      "credentialPolicy": 32,
+      "lifecycle": 20,
+      "launcher": 5,
+      "realJarCohort": 16
+    },
+    "canonicalReaderModulesBuilt": 11,
+    "distributionModulesBuilt": 3,
+    "independentColdBase": true,
+    "generationAdmissionRequiresActualPairedFiles": true,
+    "storageAndTransportSuitesMockOnlyPackageBoundary": true,
+    "cohortSuiteUsesRealBuiltJarsAndRealManagerAdmission": true,
+    "manifestSchema": 2,
+    "manifestProtocol": 2,
+    "manifestGenerationSectionSeparatedFromColdBase": true,
+    "packageSha256": "6cfd7e1ece25c9ed2eab4f5e9b402f9cf0a6c117c34acf403fff292b04cc844f",
+    "packageBytes": 203385690,
+    "actualArchiveFilesVerified": 41,
+    "exactCurrentLifecycleEmbedded": true,
+    "extractedDebReaderProbeJdk21": "PACKAGED_GENERATION_CLI_OK",
+    "fullInstalledSystemdOsgiProviderAcceptance": false,
+    "actualDrainPublicationOrGuiImplemented": false,
+    "supersededIntermediatePackagesRemoved": 4,
+    "intermediateBytesRemoved": 406762610,
+    "currentPackageRetained": true,
+    "runtimeInstalled": false,
+    "productionKeyOrDataMutations": 0,
+    "unknownRedispatched": false,
+    "oneShotAcceptanceReplayed": false,
+    "newImagesOrPersistentVolumesOrRepositoryCopies": 0,
+    "disposableContainersRemoved": true
   }
 }
