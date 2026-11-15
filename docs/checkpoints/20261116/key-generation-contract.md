@@ -4,8 +4,8 @@ This WIP introduces the reader needed for an interrupted key rotation. It does n
 rotate a gateway, publish root credentials, enable a rotation button, or remove
 any original key. Core12 and all three retained gateway fixtures remain unchanged.
 
-The minimum runtime is JDK 21. Java sources keep `--release 21`; JDK 27 is also
-tested. GWT keeps its existing Java 11 bytecode target on a JDK >=21 build/runtime.
+The minimum runtime is JDK 21. Java sources keep `--release 21`; additional JDK 27
+validation has stopped at the user's request. GWT keeps its existing Java 11 bytecode target on a JDK >=21 build/runtime.
 The candidate CI guard accepts a parsed Java major >=21, including early access
 suffixes, and rejects older/unparseable versions before a build starts.
 
@@ -166,3 +166,36 @@ atomic re-encryption and authenticated GUI download/upload/start confirmation.
 No automatic key retirement, no UNKNOWN redispatch, and no old acceptance replay.
 The full original internal pending ledger and three external deferred boundaries
 remain open.
+
+## Offline and controlled readers (2026-11-16)
+
+Standalone validation and the controlled Java bootstrap now share a bounded
+private key/ring reader. A generation selection explicitly includes the complete
+binary ring and its independently supplied SHA-256. Exactly one of ring,
+single-key or explicit historical default may be selected. Missing/ambiguous,
+linked, public, oversized, unstable or mismatched material is rejected without
+fallback. Both the ordinary AES IV prefix and a versioned KURA prefix require
+authentication, even under the explicit legacy-password policy.
+
+The controlled reader previously treated logical password text that happened to
+be valid ciphertext as already encrypted. This changed the restored value. The
+logical-V1 marker now forces exactly one encryption of the literal value while
+preserving scalar/array/Vector/List shapes and the source objects. Existing
+unmarked authenticated ciphertext retains its bytes through CM conversion.
+
+The offline bundle requires `kura.crypto.key.generations` 1.x, now provided by
+the capable Crypto bundle. Built manifests and exact packaged class bytes were
+checked. The canonical eleven-module dependency build succeeds; 70 offline
+tests pass on JDK21, including eight new generation/logical recovery cases. A
+negative control reproduced the logical-value defect before its fix. The actual
+packaged `java -jar` validates old/new mixed passwords on macOS JDK21.0.13 and
+Linux ARM64 JDK21.0.12.1. Linux used the existing read-only image/toolchain, with
+no network, new image, data volume or source copy; its temporary container was
+removed. These checks do not establish complete OSGi/package/provider acceptance.
+
+The agent still accepts an explicitly supplied single-key validation source and
+its controlled-startup allowlist does not emit ring fields. It must use a typed,
+Core-owned delegation path before generation publication; do not grant the agent
+raw access to the canonical Root key/ring or infer an adjacent ring. This gap is
+internal pending, as are the complete capable cohort and actual installed unit.
+No retained gateway was changed, restarted or rotated.

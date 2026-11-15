@@ -60,5 +60,29 @@
     },
     "unknownRedispatched": false,
     "oneShotAcceptanceReplayed": false
+  },
+  "offlineGenerationReaders20261116": {
+    "canonicalDependencyModulesBuilt": 11,
+    "offlineTestsPassed": 70,
+    "newGenerationAndLogicalCases": 8,
+    "logicalValueNegativeControlExpectedFailures": 1,
+    "targetedFinalCasesAfterListExtension": 8,
+    "packagedJarProbes": {
+      "macosJdk21_0_13": "PACKAGED_GENERATION_CLI_OK",
+      "linuxArm64Jdk21_0_12_1": "PACKAGED_GENERATION_CLI_OK"
+    },
+    "packagedClassBytesMatch": true,
+    "cryptoCapabilityManifestPresent": true,
+    "offlineRequirementManifestPresent": true,
+    "fullOsgiProviderCohortAccepted": false,
+    "agentGenerationDelegationImplemented": false,
+    "newImagesOrVolumes": 0,
+    "newSourceCopies": 0,
+    "disposableLinuxContainerRemoved": true,
+    "productionKeyOrDataMutations": 0,
+    "unknownRedispatched": false,
+    "oneShotAcceptanceReplayed": false,
+    "runtimeDeployed": false,
+    "jdk27Validated": false
   }
 }
