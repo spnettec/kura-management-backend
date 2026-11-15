@@ -1,0 +1,115 @@
+{
+  "branch": "wip/management-close-20261116",
+  "remoteWipPushed": false,
+  "repositories": [
+    {
+      "repo": "kura",
+      "originalHead": "dd073cb077a324a5abde07a7682783b4f221238d",
+      "baselineCommit": "ec8e7d8ae4b86188ae9a6d953853877a32aaeb55",
+      "finalCommit": "9e365695e763a096093d779bca8f13b01a64865f"
+    },
+    {
+      "repo": "kura-artemis",
+      "originalHead": "cae3e97a6c0189aeed0261fdee6339c0f6b663c4",
+      "baselineCommit": "ff6a181e6208af0eee8ffdb66195a87e796079a7",
+      "finalCommit": "ff6a181e6208af0eee8ffdb66195a87e796079a7"
+    },
+    {
+      "repo": "kura-camel",
+      "originalHead": "97e20378d2d597873ad45385972b20d8d5a14d1b",
+      "baselineCommit": "e7e9b3ee00fa4918ab30a85ded95acf862a1e56a",
+      "finalCommit": "e7e9b3ee00fa4918ab30a85ded95acf862a1e56a"
+    },
+    {
+      "repo": "kura-cloud",
+      "originalHead": "3a8361bc10020511b7e9135b4031d64125ccb2c3",
+      "baselineCommit": "b3e01ef0ef01246991993cf6caaee13b885a1658",
+      "finalCommit": "b3e01ef0ef01246991993cf6caaee13b885a1658"
+    },
+    {
+      "repo": "kura-container",
+      "originalHead": "000835d908b39dc6d629f7dd08c896cd101a4f76",
+      "baselineCommit": "6ae4843800bcc325ba8e2e86c5df3d1980e08d4b",
+      "finalCommit": "6ae4843800bcc325ba8e2e86c5df3d1980e08d4b"
+    },
+    {
+      "repo": "kura-deployment",
+      "originalHead": "a56b6bca6d0e73695347db4e32830ea4640ad811",
+      "baselineCommit": "334732c28e3c76aef258b9cdfce5be70d43ffb1a",
+      "finalCommit": "334732c28e3c76aef258b9cdfce5be70d43ffb1a"
+    },
+    {
+      "repo": "kura-docker",
+      "originalHead": "4eb7f793c7bb2aa2ff5d084bec2ef43034bfda8a",
+      "baselineCommit": "4eb7f793c7bb2aa2ff5d084bec2ef43034bfda8a",
+      "finalCommit": "676e91a77d5b3151095caeb14a8a812560a4e433"
+    },
+    {
+      "repo": "kura-management-agent",
+      "originalHead": "0b99202903a44531873e61df188f87ccb6b4953b",
+      "baselineCommit": "d1f9a62e2256db7585e7afb2476b98fee65d89cf",
+      "finalCommit": "8ab5f69270fd7d68422d35c33217587c9b1bed05"
+    },
+    {
+      "repo": "kura-management-console",
+      "originalHead": "5f5b1ab6af03200e05e580fab27b8270347414b6",
+      "baselineCommit": "731d56220e3a0280b2d630a8e16566708b194bd1",
+      "finalCommit": "a199ca7afb09238464caa7739237a7985a61bb25"
+    },
+    {
+      "repo": "kura-management-ui",
+      "originalHead": "573a2c4200ddb4bf9a49915407ab3ed422203327",
+      "baselineCommit": "8bb638ec0fb25f0feda38715a957203bd37f4d13",
+      "finalCommit": "b14336856fdbe62815f913553d7c34f9ed7ab272"
+    },
+    {
+      "repo": "kura-networking",
+      "originalHead": "81534f10be4424b8722e6ec63c4518e2c6120ab1",
+      "baselineCommit": "01fe15f46f6ede006159a4c0f791e7e60468e278",
+      "finalCommit": "894d6c351c9e6c84c6e6e3a412a0d1775a4b9aa9"
+    },
+    {
+      "repo": "kura-opcua",
+      "originalHead": "d47a582020c2331b5b7b923082c9d72bf4b97f83",
+      "baselineCommit": "f0885fa1690c306538438916bf51778cf5e0f841",
+      "finalCommit": "f0885fa1690c306538438916bf51778cf5e0f841"
+    },
+    {
+      "repo": "kura-position",
+      "originalHead": "9d0c55427b173500b3bd228e64fe8b8775f8450a",
+      "baselineCommit": "ed8f42b0ea29e9982902f35e2f090864e8584f30",
+      "finalCommit": "ed8f42b0ea29e9982902f35e2f090864e8584f30"
+    },
+    {
+      "repo": "kura-triton",
+      "originalHead": "0ca38fc7463e9a56b17fac2ef369013ca23754b8",
+      "baselineCommit": "053ace042b129db489962cf7f7432475dc68d441",
+      "finalCommit": "053ace042b129db489962cf7f7432475dc68d441"
+    },
+    {
+      "repo": "kura-wires",
+      "originalHead": "8ea05a1ab7981533d3bb25869b8a01b0cad39136",
+      "baselineCommit": "c28f7b18dbcd5499543d316c6da94cd8d4dd6218",
+      "finalCommit": "c28f7b18dbcd5499543d316c6da94cd8d4dd6218"
+    },
+    {
+      "repo": "kura-yofc-runtime",
+      "originalHead": "800c02a6fe783e2122f53027160f42eb3404dfa5",
+      "baselineCommit": "800c02a6fe783e2122f53027160f42eb3404dfa5",
+      "finalCommit": "800c02a6fe783e2122f53027160f42eb3404dfa5"
+    },
+    {
+      "repo": "plc4x-yofc",
+      "originalHead": "8651820d6af4e297ceffebcc190818f92d4db626",
+      "baselineCommit": "e7bc97c97f0dbdacdcddf5a2a80281a35531ea31",
+      "finalCommit": "e7bc97c97f0dbdacdcddf5a2a80281a35531ea31"
+    },
+    {
+      "repo": "yofc-iot",
+      "originalHead": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+      "baselineCommit": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+      "finalCommit": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7"
+    }
+  ],
+  "consoleCommitRecordedBeforeThisHandoffUpdate": true
+}
