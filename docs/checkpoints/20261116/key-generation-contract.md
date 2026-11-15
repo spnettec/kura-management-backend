@@ -73,7 +73,7 @@ silently selects a default key. The new optional reader alone is not permission
 to install or synthesize a ring in a retained fixture.
 
 The next work remains the root rotation operation and immutable generation
-receipt, complete encrypted multi-key backup/strict matching recovery, a guarded
+receipt, released GUI backup/recovery and startup integration, a guarded
 quiescence/startup handoff, per-provider inventory and atomic re-encryption with
 original bytes retained, post-restart reconciliation, and the authenticated GUI
 download/verify/confirm flow. UNKNOWN dispatches remain fenced and query-only;
@@ -81,64 +81,88 @@ new IDs, package maintenance or a present key never settle them. A key may be
 retired only after all dependent retained data/backups and provider boundaries
 have an explicit preservation/re-encryption disposition. No automatic purge.
 
-The old single-key backup/restore and its accepted RPC DTOs remain unchanged;
+The existing v1 backup format and accepted RPC DTOs remain available for single-key state;
 they must not be reused to claim multi-generation backup or full weak-key rotation.
 The original internal pending ledger and its three external deferred boundaries
 remain intact.
 
-## Root generation-set backup and receipt matching (2026-11-16)
+## Root generation backup, original-set restore and startup admission (2026-11-16)
 
-The new Root actions `generation-backup-create` and `generation-backup-inspect`
-use the same bounded private cipher worker, admission/provision locks, HMAC request
-bindings and durable INTENT/result journal as existing backup operations. They
-accept no paths, key bytes, replacement generation sets or arbitrary commands.
-The existing v1 backup/restore DTOs and all gateway fixtures remain untouched.
+The native actions now include `generation-backup-create`,
+`generation-backup-inspect`, `generation-restore`, and the read-only
+`generation-start-admission`. The binary codec and retained-binding parser are
+shared in `kura_key_store.py` by backup/recovery and the credential startup gate.
+There are no user-supplied paths, commands, keys or replacement generation sets.
 
-Creation requires the fixed private `kura_encryption_keyring` credential and a
-pre-existing Root-owned `/etc/kura/credentials/key-generations.json` binding. Its
-exact schema is `schema:1`, purpose `yofc-kura-gateway-key-generations-v1`, plus
-`ringSha256`, `activeKeySha256`, `legacyKeySha256`, and ordered `keySha256s`. The
-binary credential must match every field, and its active key must match the
-existing single-key canonical credential and provisioning receipt. Files must
-satisfy the existing owner/mode/link/stability/bounded-read policy. Missing or
-malformed state is refused before INTENT; no binding or key is synthesized.
-Publication of this binding is part of the still-pending Root rotation
-transaction. This work does not authorize manual credential publication.
+Backup creation requires the fixed private `kura_encryption_keyring` credential
+and a pre-existing Root-owned `/etc/kura/credentials/key-generations.json`
+binding: exact `schema:1`, purpose `yofc-kura-gateway-key-generations-v1`,
+`ringSha256`, `activeKeySha256`, `legacyKeySha256` and ordered `keySha256s`.
+The complete credential, active canonical key and original provisioning receipt
+must match. Missing or corrupt state is refused before INTENT. Backup/status
+never invent a key or binding; Root publication of a newly prepared set remains
+pending. Do not manually create these production credentials to bypass that gate.
 
-The encrypted payload contains the complete, validated 2–8 entry credential,
-active-key provisioning receipt, purpose, original operation ID and creation
-time. All retained 16/24/32-byte generations survive; only the active generation
-must be 32 bytes. The external envelope has the distinct format above. Both
-authenticated payload purpose and original ID are checked, so relabelling the
-envelope cannot substitute a single-key artifact. No raw key or ring appears in
-public replies or the journal.
+The encrypted payload preserves all 2–8 retained generations, provisioning
+receipt, purpose, original UUID and creation time. Purpose and UUID inside the
+authenticated payload are checked; relabelling an envelope cannot turn a
+single-key artifact into a generation-set backup. Public results and journals
+contain encrypted backup bytes and fingerprints, never raw keys.
 
-Inspection compares the decrypted full set against the retained Root binding,
-even if the ring/current key is missing. `matchesRetainedReceipt` describes
-that comparison; `activeKeyReady` only describes the validated canonical active
-key, not all runtime data or generation files. `restoreSupported` remains false.
-There is no generation restore action or GUI activation yet; the restricted cold
-recovery peer cannot call the new export/inspection actions.
+Inspection can match an uploaded archive and passphrase against the retained
+Root binding even when original key files are missing. `matchesRetainedReceipt`
+describes that check; `activeKeyReady` and `keyringReady` describe existing
+matching files. They never settle a prior UNKNOWN. `restoreSupported` requires
+Linux renameat2; `restoreAllowed` also respects original-set matching, unresolved
+key/start operations and the restricted recovery peer's missing-file condition.
+`restoreBlockedByUnresolvedOperation` reports that fence explicitly.
 
-Once either the generation credential or retained binding exists, legacy v1
-backup/restore paths refuse fresh work rather than producing an incomplete
-single-key artifact. A missing ring still cannot bypass the retained binding.
-Known historical operation reads remain read-only. A generation backup that
-loses its final result stays UNKNOWN and fences new IDs; reads never encrypt
-again. Lifecycle admission validates the distinct journal format and does not
-treat generation backups as restores.
+Restore accepts only the encrypted file/passphrase and expected original ring
+fingerprint. Both the uploaded complete set and its active key must match the
+retained generation/provisioning receipts. An existing key or ring must already
+be byte-identical. Only absent files may be published, with 0400 mode and
+renameat2 RENAME_NOREPLACE; no existing file is replaced, and neither receipt is
+rewritten. A partial pair or lost final result stays INTENT/UNKNOWN and blocks
+new IDs, boot admission and package transitions. Present keys are not evidence
+of success. Original-result reads never publish again. The cold recovery peer
+may inspect/restore with matching material and read its original restore result;
+it cannot export the generation set or request the boot-admission RPC.
 
-Validation uses fresh temporary fixtures and the real JDK21 Argon2id/AES-GCM
-worker: all 14 added cases pass, covering three-generation round-trip, absent
-keys, mandatory retained binding, mismatch with the same active key, incorrect
-password, tampering, swapped ID/purpose, original-result reads, UNKNOWN fencing,
-journal downgrade, single-key fallback, symlinks, malformed credentials and
-restricted-peer admission. The unchanged service cases and 20 lifecycle cases
-also pass; two existing Linux-only cases remain skipped on macOS. No installed
-key was changed, no retained acceptance was replayed, no gateway restarted, and
-no new package was deployed.
+Startup has an explicit `check-loaded-generations` mode. It requires loaded
+active key, binary ring and generation binding, verifies private owner/ACL/link/
+size/stability constraints, then checks the exact pair of public fingerprints
+against the Root service over the fixed local socket. Linux SO_PEERCRED must
+identify Root; errors, wrong hashes, duplicate/trailing fields, noninteger schema
+or unresolved operations refuse admission. No raw key travels in that request.
+The ordinary loader also validates a generation file if either extra is present;
+explicit generation mode prevents fallback when both are absent. Generation-aware
+prepare refuses incomplete credentials or unsafe/unresolved records and preserves
+retired legacy key sources instead of selecting/regenerating from them.
 
-Next: implement and review the recoverable Root generation publication/restore
-transaction and its immutable history, then provider inventory/re-encryption and
-the authenticated GUI download/upload/confirmation flow. The full original
-internal pending ledger remains open.
+The installed default unit has not been switched to generation mode. Controlled
+publication still must install/attest the mandatory generation credential and
+startup mode, the capable Crypto/launcher/offline-reader/provider cohort, and
+actual safe Core drain. `check-loaded-generations` is a package-managed gate,
+not a manual environment-variable deployment flow. The old recovery-start DTOs
+have not been reused as generation-start authorization. GUI and typed generation
+start integration remain pending; no existing gateway has rotated or restarted.
+
+Validation used the real JDK21 Argon2id/AES-GCM worker and fresh temporary
+credentials only. Linux ARM64: service 51, startup 15, credential policy 32 and
+package lifecycle 20 distinct cases pass (118 total). The 15 startup cases were
+rerun after fixing sibling loading under the actual Python -I mode. Tests include
+both missing files, either missing half, no-op inode preservation, a concurrent
+foreign-file publication, lost second write/final result, UNKNOWN startup/new-ID
+fences, retired-key preservation, explicit-mode absence, Root peer authentication
+and a real local Root socket exchange. The disposable container used an existing
+base image, read-only source/toolchain mounts, no network/capabilities and bounded
+tmpfs; it was removed. It did not boot Kura or replace full gateway/platform
+acceptance. The three retained scenes still have their seven original processes,
+38 private-file metadata records and six old data contents exactly preserved.
+
+Next: recoverable Root preparation/publication with immutable generation history,
+verified backup and explicit commit; complete actual cohort/provider inventory,
+atomic re-encryption and authenticated GUI download/upload/start confirmation.
+No automatic key retirement, no UNKNOWN redispatch, and no old acceptance replay.
+The full original internal pending ledger and three external deferred boundaries
+remain open.

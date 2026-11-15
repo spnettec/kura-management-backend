@@ -31,5 +31,34 @@
       "kura/distrib/src/main/resources/unfiltered/pkg/bin/kura_key_service_lifecycle.py",
       "kura/distrib/src/test/test_key_service.py"
     ]
+  },
+  "rootGenerationRestoreAndStartup20261116": {
+    "linuxArm64DistinctCasesPassed": 118,
+    "suites": {
+      "service": 51,
+      "startup": 15,
+      "credentialPolicy": 32,
+      "lifecycle": 20
+    },
+    "startupFollowupAfterIsolatedPythonFix": {
+      "passed": 15,
+      "scope": "startup suite only; original 117-case native run plus one added isolated-interpreter case"
+    },
+    "linuxJava": "21.0.12.1",
+    "hostJava": "21.0.13",
+    "linuxRootPeerAndRenameNoReplace": true,
+    "disposableContainerRemoved": true,
+    "newImagesOrVolumes": 0,
+    "newSourceCopies": 0,
+    "installedUnitGenerationModeEnabled": false,
+    "rootGenerationPublicationImplemented": false,
+    "guiGenerationRestoreOrStartAccepted": false,
+    "existingScenesPreserved": {
+      "originalProcesses": 7,
+      "privateFilesExactMetadata": 38,
+      "oldDataFilesExactContents": 6
+    },
+    "unknownRedispatched": false,
+    "oneShotAcceptanceReplayed": false
   }
 }
