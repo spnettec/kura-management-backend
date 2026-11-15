@@ -160,8 +160,8 @@ tmpfs; it was removed. It did not boot Kura or replace full gateway/platform
 acceptance. The three retained scenes still have their seven original processes,
 38 private-file metadata records and six old data contents exactly preserved.
 
-Next: recoverable Root preparation/publication with immutable generation history,
-verified backup and explicit commit; complete actual cohort/provider inventory,
+Next: guarded Root publication and explicit commit using the prepared generation
+and verified backup; complete actual cohort/provider inventory,
 atomic re-encryption and authenticated GUI download/upload/start confirmation.
 No automatic key retirement, no UNKNOWN redispatch, and no old acceptance replay.
 The full original internal pending ledger and three external deferred boundaries
@@ -199,3 +199,55 @@ Core-owned delegation path before generation publication; do not grant the agent
 raw access to the canonical Root key/ring or infer an adjacent ring. This gap is
 internal pending, as are the complete capable cohort and actual installed unit.
 No retained gateway was changed, restarted or rotated.
+
+## Root preparation and uploaded-backup verification (2026-11-16)
+
+`generation-prepare` now stages a fresh 32-byte generation under the fixed Root
+state directory. The request binds the expected existing key and exact optional
+ring fingerprint. A present ring/binding must be complete and match; both absent
+selects the explicitly bound canonical single key. Every original key stays in
+order, the untagged legacy selector stays fixed, and the new key is appended as
+active in the proposed ring. Eight retained generations is a hard limit;
+preparation never retires a key to make space.
+
+After a durable original INTENT, preparation writes a private 0700 directory with
+0400, single-link, no-replace ring and history files. An existing source ring is
+retained byte-for-byte separately. The immutable history binds the original
+provisioning/generation receipts, proposed receipts and exact encrypted archive
+fingerprint. The encrypted downloadable archive includes every proposed retained
+key and uses the existing real Argon2id/AES-GCM worker. No passphrase/raw key is
+stored in a public response or operation journal. The private ring is Root-owned
+material and is not given to the agent.
+
+`generation-backup-verify` takes the original preparation UUID, expected ring
+fingerprint, uploaded encrypted archive and passphrase. It authenticates the
+exact original archive, checks the complete private staged set and unchanged
+source receipts, and writes a separate durable verification result. It does not
+claim that a user has stored an offline copy. Both results say `published:false`
+and `requiresExplicitCommit:true`. A second preparation is fenced while the
+first staged history exists; cancellation/committed-history disposition is not
+implemented or inferred. Original exact-request/result reads do not generate,
+encrypt, verify again or change staging. The cold recovery peer may not prepare,
+verify or export these proposed generations.
+
+Any interrupted ring/history write, failed worker or lost final receipt remains
+INTENT/UNKNOWN. Present staging files never establish success. Original UUIDs
+are query-only; new key-operation IDs, Root generation-start admission and package
+checks remain fenced by the same validated journals. Ordinary single-key boot is
+not claimed to have the new mandatory generation gate; the unchanged old key may
+still be used while preparation is staged. No new canonical key/ring, provisioning receipt, unit,
+running process or application data is changed by these two actions.
+
+Linux ARM64 validation now passes 132 distinct native cases: service 65 (14 new),
+startup 15, credential policy 32 and package lifecycle 20. The first run lacked
+the disposable private `/run` socket directory and skipped one startup case;
+rerunning only the 15-case startup suite with that bounded tmpfs passed all 15,
+including an actual Root peer exchange. Failure injection covers partial and
+lost-final preparation/verification, bad password/tamper/relabel/wrong backup,
+stale source receipts, linked/changed staging, immutable result reads, capacity
+and UNKNOWN fences. No retained scene or old one-shot acceptance was used.
+
+Actual canonical publication, multi-step commit/recovery, full capable package/
+provider/agent cohort and installed generation mode, provider re-encryption,
+GUI download/upload/confirm and subsequent key retirement remain internal pending.
+These internal native actions are not a released manual deployment procedure.

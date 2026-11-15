@@ -84,5 +84,35 @@
     "oneShotAcceptanceReplayed": false,
     "runtimeDeployed": false,
     "jdk27Validated": false
+  },
+  "rootGenerationPreparation20261116": {
+    "linuxArm64DistinctCasesPassed": 132,
+    "suites": {
+      "service": 65,
+      "startup": 15,
+      "credentialPolicy": 32,
+      "lifecycle": 20
+    },
+    "newServiceCases": 14,
+    "startupFollowup": {
+      "initialSkipped": 1,
+      "reason": "disposable private /run socket directory absent",
+      "boundedTmpfsFollowupPassed": 15,
+      "actualRootPeerExchange": true
+    },
+    "linuxJava": "21.0.12.1",
+    "hostJava": "21.0.13",
+    "preparationAndUploadedArchiveVerificationImplemented": true,
+    "immutableRootStagingHistoryImplemented": true,
+    "canonicalGenerationPublicationImplemented": false,
+    "explicitCommitOrCancellationImplemented": false,
+    "guiAccepted": false,
+    "runtimeDeployed": false,
+    "productionKeyOrDataMutations": 0,
+    "unknownRedispatched": false,
+    "oneShotAcceptanceReplayed": false,
+    "newImagesOrVolumes": 0,
+    "newSourceCopies": 0,
+    "disposableContainersRemoved": true
   }
 }
