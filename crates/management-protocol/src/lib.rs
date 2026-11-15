@@ -3,6 +3,7 @@ pub mod v1 {
 }
 pub mod firewall;
 pub mod nm;
+pub mod imported;
 
 use anyhow::{Result, ensure};
 use serde::{Deserialize, Serialize};
@@ -13,7 +14,7 @@ pub const PROTOCOL_MAJOR: u32 = 1;
 pub const MAX_FRAME: usize = 1_048_576;
 // Unrecognized future operations are conservative until explicitly classified.
 pub fn has_side_effect(operation: i32) -> bool {
-    !matches!(operation, 1 | 2 | 3 | 4 | 8 | 9 | 11 | 15 | 20 | 23 | 30 | 34)
+    !matches!(operation, 1 | 2 | 3 | 4 | 8 | 9 | 11 | 15 | 20 | 23 | 30 | 34 | 38 | 39 | 45 | 46 | 48)
 }
 
 fn decimal_snapshot_id(value: &str) -> Option<i64> {
@@ -136,6 +137,8 @@ impl v1::OrdinaryBootAction {
 impl v1::ReadCommand {
     pub fn valid_payload(&self) -> bool {
         (self.operation == 5) == self.network_change.is_some()
+            && matches!(self.operation, 38..=48) == self.imported_firewall.is_some()
+            && self.imported_firewall.as_ref().is_none_or(|v| imported::Envelope::from_wire(v, self.operation).is_ok())
             && (self.operation == 31) == self.firewall_change.is_some()
             && matches!(self.operation, 32 | 33) == self.firewall_action.is_some()
             && self.firewall_change.as_ref().is_none_or(|v| v.valid())

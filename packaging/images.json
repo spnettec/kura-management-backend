@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "images": [
+    {
+      "key": "v52-fenced-exec-20261114-arm64",
+      "title": "YOFC Console V52 ARM64 维护与正常停止版 2026-11-14",
+      "imageId": "sha256:b0de8c4f8d8770db0543d05dfbcdec4b1c010978dec8e0ed6cdb44afbcefb1e8",
+      "manifestId": "sha256:838b41a3b81395dac98970d2effbfabc39f2009d6b6536534f9a4bf5769936b7",
+      "architecture": "arm64",
+      "archiveSha256": "975b5ecf81aac9bc164e9f2f36a3f31050d6af7ac51a252ec4e6284d29ede5f3",
+      "archiveSize": 41350318,
+      "binarySha256": "1bb7b4fcc8df594fb19a645e037c53751518a113ecd74d2d09619989f01b9c66",
+      "maintenanceProtocolVersion": 2,
+      "fencedStartupCommand": "serve-maintenance"
+    },
+    {
+      "key": "v52-20261114-arm64",
+      "title": "YOFC Console V52 ARM64 2026-11-14",
+      "imageId": "sha256:1c087e91f7c38a60a88e884100b1b373fa863b14a880b981dc6811c50ad4daec",
+      "architecture": "arm64",
+      "archiveSha256": "1ae50caae9b7cb9e34296b976abbc655442116d32b155859bf22938c2deacbcb",
+      "archiveSize": 41331192,
+      "binarySha256": "3e934cb9c25bf2eb2c1ca7a76d6f5b9db0ead6178475920a177f61d331287823",
+      "maintenanceProtocolVersion": 1,
+      "manifestId": "sha256:1382c1f6b3002e036ef5e1180e100e834565f5754170a351d4bf17cef70a70e9"
+    },
+    {
+      "key": "v52-fenced-20261114-arm64",
+      "title": "YOFC Console V52 ARM64 维护启动版 2026-11-14",
+      "imageId": "sha256:d64168f11baa9caff70f05ec800daed2efa2f197caa00083819ab85b70d422a2",
+      "manifestId": "sha256:37c36a4c166f683e7c67ce06d9e06d9b826b5b285d31afcc7ef14e617f389e35",
+      "architecture": "arm64",
+      "archiveSha256": "6b7ced5abd7a7395adcb2a077d40151b1b494c9cc7a3e7efa90d5c9ab493440c",
+      "archiveSize": 41351283,
+      "binarySha256": "1bb7b4fcc8df594fb19a645e037c53751518a113ecd74d2d09619989f01b9c66",
+      "maintenanceProtocolVersion": 2,
+      "fencedStartupCommand": "serve-maintenance"
+    }
+  ]
+}

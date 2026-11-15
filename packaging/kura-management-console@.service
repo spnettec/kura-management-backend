@@ -1,15 +1,19 @@
 [Unit]
 Description=YOFC independent Kura management console (%i)
 After=network.target
-ConditionPathExists=/etc/kura-management-console-%i/console.env
+ConditionPathExists=!/var/lib/yofc-console-maintenance/active.json
 
 [Service]
 Type=simple
 User=yofc-console
 Group=yofc-console
-EnvironmentFile=/etc/kura-management-console-%i/console.env
+Environment=CONSOLE_STATE_DIR=/var/lib/kura-management-console-%i
+Environment=CONSOLE_WEB_DIR=/usr/share/kura-management-console/react
+EnvironmentFile=-/etc/kura-management-console-%i/console.env
+StateDirectory=kura-management-console-%i
+StateDirectoryMode=0700
 WorkingDirectory=/usr/share/kura-management-console
-ExecStartPre=+/usr/bin/python3 /usr/lib/kura-management-console/setup.py --instance %i check
+ExecStartPre=+/usr/bin/python3 /usr/lib/kura-management-console/setup.py --instance %i launch-check
 ExecStart=/usr/bin/yofc-management-console serve
 Restart=on-failure
 RestartSec=3

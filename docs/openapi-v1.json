@@ -604,6 +604,9 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Setup is not complete or the normal service is not ready"
           }
         }
       }
@@ -2304,7 +2307,7 @@
       },
       "put": {
         "operationId": "uploadTlsSettings",
-        "summary": "Stage a new server certificate+key; applied on next console restart.",
+        "summary": "Stage a server certificate and key. Explicit joint activation from the settings UI is required; restarting does not approve pending material.",
         "requestBody": {
           "required": true,
           "content": {
@@ -2335,7 +2338,7 @@
       },
       "put": {
         "operationId": "uploadClientCaSettings",
-        "summary": "Stage a new client CA; applied on next console restart.",
+        "summary": "Stage a public client CA. Explicit joint activation from the settings UI is required. CA private keys are never accepted.",
         "requestBody": {
           "required": true,
           "content": {
@@ -2441,7 +2444,14 @@
         },
         "responses": {
           "200": {
-            "description": "New fingerprint registered; identityBundleToken present when a rotation package was sealed."
+            "description": "Original operation accepted or definitively rejected; only an APPLIED receipt proves the credential transaction. Legacy refusal can still return an HTTP error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayCertificateRotationResponse"
+                }
+              }
+            }
           },
           "409": {
             "description": "previousCertificateSha256 does not match the current certificate, or the new certificate is identical."
@@ -2474,6 +2484,738 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/v1/settings/tls-activation": {
+      "get": {
+        "operationId": "getTlsActivationStatus",
+        "summary": "Review the joint HTTPS/mTLS generation and pending selection. Administrator only.",
+        "responses": {
+          "200": {
+            "description": "Current observation of the original operation; UNKNOWN is never retried",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TlsActivationStatus"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Authentication, authorization, CSRF, input, operation binding or storage error"
+          }
+        }
+      },
+      "post": {
+        "operationId": "activateTlsGeneration",
+        "summary": "Activate exactly one approved joint HTTPS/mTLS generation. Save the original operationId before dispatch; duplicates only observe and never replay. Requires administrator and CSRF. Old connections are closed.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TlsActivationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Current observation of the original operation; UNKNOWN is never retried",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TlsActivationOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Authentication, authorization, CSRF, input, operation binding or storage error"
+          }
+        }
+      }
+    },
+    "/api/v1/settings/tls-activation/{id}": {
+      "get": {
+        "operationId": "getTlsActivationOperation",
+        "summary": "Read original activation. No receipt means UNKNOWN, even if its selected generation is currently observable.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current observation of the original operation; UNKNOWN is never retried",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TlsActivationOperation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No original record found; this does not authorize redispatch"
+          },
+          "default": {
+            "description": "Authentication, authorization, CSRF, input, operation binding or storage error"
+          }
+        }
+      }
+    },
+    "/api/setup/status": {
+      "get": {
+        "operationId": "getInitialSetupStatus",
+        "summary": "Before configuration, public bootstrap metadata and authenticated setup session status. After configuration, public non-secret configured status.",
+        "responses": {
+          "200": {
+            "description": "Current original record; no automatic replay",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InitialSetupStatus"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed authentication, authorization, input or storage error"
+          }
+        }
+      }
+    },
+    "/api/setup/pair": {
+      "post": {
+        "operationId": "pairInitialSetup",
+        "summary": "Installer credential, exact HTTPS Origin/authority, and bounded attempts. Sets a Secure HttpOnly SameSite Strict setup cookie. Never exposes installer token in API responses.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitialSetupPair"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Paired setup session with CSRF token"
+          },
+          "default": {
+            "description": "Typed error"
+          }
+        }
+      }
+    },
+    "/api/setup/operations": {
+      "post": {
+        "operationId": "initializeConsole",
+        "summary": "Authorize with installer session, HTTPS Origin/authority and X-Setup-CSRF. Durably accept one original request before background validation and database writes. Only a dedicated empty schema may be initialized. Duplicate ids only observe; existing accepted/intent blocks other ids.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitialSetupInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Current original record; no automatic replay",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InitialSetupOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or record does not authorize replay"
+          }
+        }
+      }
+    },
+    "/api/setup/operations/{id}": {
+      "get": {
+        "operationId": "getOriginalSetupOperation",
+        "summary": "Installer session required before normal service starts. A live tracked job may be PENDING; after loss of its handle a missing receipt is UNKNOWN.",
+        "responses": {
+          "200": {
+            "description": "Current original record; no automatic replay",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InitialSetupOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed authentication, authorization, input or storage error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/settings/initial-setup/{id}": {
+      "get": {
+        "operationId": "getConfiguredSetupOperation",
+        "summary": "After initialization, only a signed-in organization administrator may read the original setup record. No initializer write endpoint is active.",
+        "responses": {
+          "200": {
+            "description": "Current original record; no automatic replay",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InitialSetupOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed authentication, authorization, input or storage error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/health/live": {
+      "get": {
+        "summary": "Local process liveness, including setup waiting before a database is configured",
+        "responses": {
+          "200": {
+            "description": "HTTPS listener alive; does not prove readiness, certificate trust or database connectivity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "setup-required",
+                        "running"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/setup/server-csr": {
+      "get": {
+        "operationId": "SetupCurrentServerCsr",
+        "summary": "Paired installer session with HTTPS Origin/authority and X-Setup-CSRF for writes. Observe any unresolved original request without creating material.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrCurrent"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        }
+      },
+      "post": {
+        "operationId": "SetupCreateServerCsr",
+        "summary": "Paired installer session with HTTPS Origin/authority and X-Setup-CSRF for writes. Durably accept one request ID and generate one local P-256 leaf key/CSR. Never regenerate incomplete identities.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerCsrRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/setup/server-csr/{id}": {
+      "get": {
+        "operationId": "SetupReadServerCsr",
+        "summary": "Paired installer session with HTTPS Origin/authority and X-Setup-CSRF for writes. Read the original record, including a missing-receipt UNKNOWN.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/setup/server-csr/{id}/certificate": {
+      "put": {
+        "operationId": "SetupImportServerCsrCertificate",
+        "summary": "Paired installer session with HTTPS Origin/authority and X-Setup-CSRF for writes. Validate key match, SAN, validity, leaf constraints and server usage before immutable import intent. A definite pre-intent validation failure returns READY with certificateRejected=true.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerCsrCertificate"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/setup/server-csr/{id}/retire": {
+      "post": {
+        "operationId": "SetupRetireServerCsr",
+        "summary": "Paired installer session with HTTPS Origin/authority and X-Setup-CSRF for writes. Retire only a confirmed READY/SIGNED CSR; preserve keys/history and leave active TLS unchanged. UNKNOWN is never retired.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/settings/server-csr": {
+      "get": {
+        "operationId": "SettingsCurrentServerCsr",
+        "summary": "Administrator session; same-origin CSRF protection on all writes. Observe any unresolved original request without creating material.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrCurrent"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        }
+      },
+      "post": {
+        "operationId": "SettingsCreateServerCsr",
+        "summary": "Administrator session; same-origin CSRF protection on all writes. Durably accept one request ID and generate one local P-256 leaf key/CSR. Never regenerate incomplete identities.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerCsrRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/settings/server-csr/{id}": {
+      "get": {
+        "operationId": "SettingsReadServerCsr",
+        "summary": "Administrator session; same-origin CSRF protection on all writes. Read the original record, including a missing-receipt UNKNOWN.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/settings/server-csr/{id}/certificate": {
+      "put": {
+        "operationId": "SettingsImportServerCsrCertificate",
+        "summary": "Administrator session; same-origin CSRF protection on all writes. Validate key match, SAN, validity, leaf constraints and server usage before immutable import intent. A definite pre-intent validation failure returns READY with certificateRejected=true.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerCsrCertificate"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/settings/server-csr/{id}/retire": {
+      "post": {
+        "operationId": "SettingsRetireServerCsr",
+        "summary": "Administrator session; same-origin CSRF protection on all writes. Retire only a confirmed READY/SIGNED CSR; preserve keys/history and leave active TLS unchanged. UNKNOWN is never retired.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/settings/server-csr/{id}/stage": {
+      "post": {
+        "operationId": "SettingsStageServerCsr",
+        "summary": "Administrator session; same-origin CSRF protection on all writes. Stage the exact signed local identity once. Explicit existing joint TLS review/activation is still required. A lost receipt fences activation.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/setup/server-csr/{id}/imports/{operation}": {
+      "get": {
+        "operationId": "SetupReadServerCsrImport",
+        "summary": "Read only the original certificate-upload decision, including a durable validation rejection or the exact signed-certificate business receipt. Never validate, import, regenerate or reconstruct an absent receipt.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/settings/server-csr/{id}/imports/{operation}": {
+      "get": {
+        "operationId": "SettingsReadServerCsrImport",
+        "summary": "Read only the original certificate-upload decision, including a durable validation rejection or the exact signed-certificate business receipt. Never validate, import, regenerate or reconstruct an absent receipt.",
+        "responses": {
+          "200": {
+            "description": "Original public CSR record; no private key. UNKNOWN permits observation only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerCsrRecord"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Typed error; missing response or 404 never authorizes another write."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gateways/{id}/certificate-operations/{operation}": {
+      "get": {
+        "operationId": "gatewayCertificateOperation",
+        "summary": "Read the original certificate rotation without resending it",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operation",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tenant-bound administrator-only public receipt; missing intent/receipt remains UNKNOWN. No bundle token or private material.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayCertificateRotationReceipt"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Administrator role required"
+          },
+          "404": {
+            "description": "Gateway not owned by tenant"
           }
         }
       }
@@ -2634,7 +3376,18 @@
               34,
               35,
               36,
-              37
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48
             ]
           },
           "state": {
@@ -2795,7 +3548,18 @@
               "nm.view",
               "nm.prepare",
               "nm.confirm",
-              "nm.rollback"
+              "nm.rollback",
+              "firewall.imported.view",
+              "firewall.imported.review",
+              "firewall.imported.prepare",
+              "firewall.imported.apply",
+              "firewall.imported.confirm",
+              "firewall.imported.rollback",
+              "firewall.imported.cancel",
+              "firewall.imported.outcome",
+              "firewall.imported.source.review",
+              "firewall.imported.source.observe",
+              "firewall.imported.source.outcome"
             ]
           },
           "idempotencyKey": {
@@ -2856,6 +3620,9 @@
             ],
             "description": "Original NM operation UUID plus the confirmation token. Only nm.confirm/nm.rollback accept it.",
             "nullable": true
+          },
+          "importedFirewall": {
+            "$ref": "#/components/schemas/ImportedFirewallRequest"
           }
         },
         "required": [
@@ -2863,7 +3630,7 @@
           "idempotencyKey"
         ],
         "additionalProperties": false,
-        "description": "network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed. ordinary.boot.status/prepare/execute/cancel/reconcile require admin and fresh ordinary.boot.v1 capability. Only execute/cancel accept ordinaryBootAction. The gateway uses its fixed local grant; callers cannot supply command/unit/path. Status separates latest transaction and confirmed policy. Policy completion is not boot or business certification; UNKNOWN is never replayed. recovery.ordinary.status/prepare/execute require admin and fresh recovery.ordinary.v1 capability, disabled by default on the gateway. Prepare selects only the current locally committed completion and fixed profile. Execute and cancel accept ordinaryHandoffAction with the original handoff UUID and confirmation token. Cancellation additionally requires recovery.ordinary.cancel.v1, the live connection epoch and a 30-second deadline; older agents do not imply this support. It only abandons an unissued prepared handoff, preserves the approved parent and its original command evidence, and never clears RECOVERY_REQUIRED or invokes a unit. Expiry alone leaves an otherwise unchanged unissued plan prepared for explicit cancellation. Execution starts the fixed ordinary Kura once after stopping old recovery services; administrator-selected checks do not certify full recovery or reboot. Unknown requests are only queried and never replayed. service.status/restart.prepare/restart and system.reboot.prepare/reboot plus system.control.cancel require admin and fresh system.control.v1. Restart and host reboot require distinct local grants and advertised service.restart.v1/system.reboot.v1; all are off by default. Only restart, reboot and cancel accept systemControlAction. New writes are bound to the live connection epoch, with fixed 5-minute execution deadlines and 30-second other task deadlines. Stale unleased writes expire on reconnect; issued writes become UNKNOWN and are only queried. The agent controls the installation-fixed Kura unit and bounded cgroup; no caller shell/unit/path is accepted. Reboot acceptance is UNKNOWN until an actual changed boot identity is observed. Process transition and optional administrator-selected business checks are reported separately and never certify full Kura recovery. Cancellation only applies to unissued plans. Pending managed transactions and RECOVERY_REQUIRED block new writes. Firewall operations30-33 require admin and fresh firewall.remote.v1 capability. Only prepare accepts firewallChange, only confirm/rollback accept firewallAction. Writes are bound to the live connection epoch; unleased writes from an old connection expire, delivered writes remain UNKNOWN and are never requeued. Actual agent post-apply fresh authenticated connection is required for confirm. Prepare task success means applied WAIT_CONFIRM, not final confirmation. Query the original task after UNKNOWN. Input/result use existing encrypted storage. Non-admin task queries remove confirmationToken."
+        "description": "network.prepare requires networkChange; network.confirm/rollback/transaction require networkAction. Other operations reject these fields. Writes require admin. Task success reports execution of the request; inspect result.state for the independent network transaction outcome. Takeover plan/prepare require networkTakeover; takeover.prepare is admin-only. kura.configuration.get requires kuraConfiguration with pid and en/zh locale; all other operations reject that target. It is a read operation available to operator/admin. kura.configuration.update requires admin and kuraConfigurationUpdate, a current revision and typed set-only properties. Gateway capability must be enabled. Omitted fields and passwords stay unchanged. Unknown writes are never automatically replayed. kura.snapshot.save and kura.snapshot.rollback require admin, the matching typed payload, and gateway capability kura.snapshot.write. They do not rewind confirmed system network. Rollback is not a selective PID restore; components absent from the snapshot may return to defaults. Unknown snapshot actions are never automatically replayed. ordinary.boot.status/prepare/execute/cancel/reconcile require admin and fresh ordinary.boot.v1 capability. Only execute/cancel accept ordinaryBootAction. The gateway uses its fixed local grant; callers cannot supply command/unit/path. Status separates latest transaction and confirmed policy. Policy completion is not boot or business certification; UNKNOWN is never replayed. recovery.ordinary.status/prepare/execute require admin and fresh recovery.ordinary.v1 capability, disabled by default on the gateway. Prepare selects only the current locally committed completion and fixed profile. Execute and cancel accept ordinaryHandoffAction with the original handoff UUID and confirmation token. Cancellation additionally requires recovery.ordinary.cancel.v1, the live connection epoch and a 30-second deadline; older agents do not imply this support. It only abandons an unissued prepared handoff, preserves the approved parent and its original command evidence, and never clears RECOVERY_REQUIRED or invokes a unit. Expiry alone leaves an otherwise unchanged unissued plan prepared for explicit cancellation. Execution starts the fixed ordinary Kura once after stopping old recovery services; administrator-selected checks do not certify full recovery or reboot. Unknown requests are only queried and never replayed. service.status/restart.prepare/restart and system.reboot.prepare/reboot plus system.control.cancel require admin and fresh system.control.v1. Restart and host reboot require distinct local grants and advertised service.restart.v1/system.reboot.v1; all are off by default. Only restart, reboot and cancel accept systemControlAction. New writes are bound to the live connection epoch, with fixed 5-minute execution deadlines and 30-second other task deadlines. Stale unleased writes expire on reconnect; issued writes become UNKNOWN and are only queried. The agent controls the installation-fixed Kura unit and bounded cgroup; no caller shell/unit/path is accepted. Reboot acceptance is UNKNOWN until an actual changed boot identity is observed. Process transition and optional administrator-selected business checks are reported separately and never certify full Kura recovery. Cancellation only applies to unissued plans. Pending managed transactions and RECOVERY_REQUIRED block new writes. Firewall operations30-33 require admin and fresh firewall.remote.v1 capability. Only prepare accepts firewallChange, only confirm/rollback accept firewallAction. Writes are bound to the live connection epoch; unleased writes from an old connection expire, delivered writes remain UNKNOWN and are never requeued. Actual agent post-apply fresh authenticated connection is required for confirm. Prepare task success means applied WAIT_CONFIRM, not final confirmation. Query the original task after UNKNOWN. Input/result use existing encrypted storage. Non-admin task queries remove confirmationToken. Imported operations 38–48 use only importedFirewall and require the matching kind. Original actions and queries must belong to the same creator, gateway and binding generation. Imported queries verify the exact original and parent command hashes and immutable phase markers before resolving uncertainty; absent ACK/decision/history proof keeps UNKNOWN. A different committed phase marker resolves the unentered command as FAILED without redispatch. Confirmation requires an authenticated management connection established after the original forward ACK; the agent reconnects automatically, and the UI queries the original operation before enabling its countdown. A recovered confirm additionally requires its command-bound encrypted connection proof. Imported proposals retain source, revision, cohort and explicit destination prefixes."
       },
       "TaskReceipt": {
         "type": "object",
@@ -4285,49 +5052,14 @@
         "additionalProperties": false
       },
       "FirewallCandidate": {
-        "type": "object",
-        "properties": {
-          "schemaVersion": {
-            "const": 3
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/FirewallCandidateV3"
           },
-          "ipv4": {
-            "$ref": "#/components/schemas/FirewallFamilyPolicy"
-          },
-          "ipv6": {
-            "$ref": "#/components/schemas/FirewallFamilyPolicy"
-          },
-          "input": {
-            "type": "array",
-            "maxItems": 256,
-            "items": {
-              "$ref": "#/components/schemas/FirewallInput"
-            }
-          },
-          "portForward": {
-            "type": "array",
-            "maxItems": 256,
-            "items": {
-              "$ref": "#/components/schemas/FirewallPortForward"
-            }
-          },
-          "nat": {
-            "type": "array",
-            "maxItems": 256,
-            "items": {
-              "$ref": "#/components/schemas/FirewallNat"
-            }
+          {
+            "$ref": "#/components/schemas/FirewallCandidateV4"
           }
-        },
-        "required": [
-          "schemaVersion",
-          "ipv4",
-          "ipv6",
-          "input",
-          "portForward",
-          "nat"
-        ],
-        "additionalProperties": false,
-        "description": "Complete V3 structured grammar. Total across all rule arrays <=256; first<=last; canonical serialized candidate <=16384 bytes. Agent performs address/interface/NAT compilation and system forwarding/ownership checks. No raw nft/iptables expressions."
+        ]
       },
       "FirewallChange": {
         "type": "object",
@@ -4510,6 +5242,16 @@
           "clientKeyPem": {
             "type": "string",
             "description": "Optional new private key; when present a one-time rotation bundle is sealed for download."
+          },
+          "operationId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Public canonical UUID saved before dispatch by new clients. Never resend an uncertain POST; query its original operation. Legacy omitted IDs are assigned by the server and cannot restore a previously lost client ID."
+          },
+          "previousBindingGeneration": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Explicit opt-in to the generation-aware renewal contract: this reviewed generation must match and is incremented by exactly one on APPLIED. Omitted pins retain legacy certificate-only rotation and do not change the binding generation."
           }
         }
       },
@@ -4530,6 +5272,1196 @@
             "description": "Must be true; rotation re-encrypts all task rows and resets in-flight streams."
           }
         }
+      },
+      "FirewallFamilyPolicyV4": {
+        "type": "object",
+        "properties": {
+          "inputPolicy": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "drop"
+            ]
+          },
+          "forwardPolicy": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "drop"
+            ]
+          },
+          "allowIcmp": {
+            "type": "boolean"
+          },
+          "outputPolicy": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "drop"
+            ]
+          }
+        },
+        "required": [
+          "inputPolicy",
+          "forwardPolicy",
+          "allowIcmp",
+          "outputPolicy"
+        ],
+        "additionalProperties": false
+      },
+      "FirewallCandidateV3": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "const": 3
+          },
+          "ipv4": {
+            "$ref": "#/components/schemas/FirewallFamilyPolicy"
+          },
+          "ipv6": {
+            "$ref": "#/components/schemas/FirewallFamilyPolicy"
+          },
+          "input": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallInput"
+            }
+          },
+          "portForward": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallPortForward"
+            }
+          },
+          "nat": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallNat"
+            }
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "ipv4",
+          "ipv6",
+          "input",
+          "portForward",
+          "nat"
+        ],
+        "additionalProperties": false,
+        "description": "Complete V3 structured grammar. Total across all rule arrays <=256; first<=last; canonical serialized candidate <=16384 bytes. Agent performs address/interface/NAT compilation and system forwarding/ownership checks. No raw nft/iptables expressions."
+      },
+      "FirewallCandidateV4": {
+        "type": "object",
+        "properties": {
+          "schemaVersion": {
+            "const": 4
+          },
+          "ipv4": {
+            "$ref": "#/components/schemas/FirewallFamilyPolicyV4"
+          },
+          "ipv6": {
+            "$ref": "#/components/schemas/FirewallFamilyPolicyV4"
+          },
+          "input": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallInput"
+            }
+          },
+          "portForward": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallPortForward"
+            }
+          },
+          "nat": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "$ref": "#/components/schemas/FirewallNat"
+            }
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "ipv4",
+          "ipv6",
+          "input",
+          "portForward",
+          "nat"
+        ],
+        "additionalProperties": false,
+        "description": "Exact legacy Kura ICMP semantics and explicit per-family OUTPUT policies. Same bounded structured rules; no raw expressions. Version3 retains its historical meaning."
+      },
+      "ImportedReview": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sourceDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "candidate": {
+            "$ref": "#/components/schemas/FirewallCandidate"
+          },
+          "destinationPrefixes": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ipv4": {
+                "type": "array",
+                "maxItems": 256,
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 32
+                }
+              },
+              "ipv6": {
+                "type": "array",
+                "maxItems": 256,
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 128
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "operationId",
+          "expectedRevision",
+          "sourceDigest",
+          "candidate",
+          "destinationPrefixes"
+        ]
+      },
+      "ImportedProposal": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sourceDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "candidate": {
+            "$ref": "#/components/schemas/FirewallCandidate"
+          },
+          "destinationPrefixes": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ipv4": {
+                "type": "array",
+                "maxItems": 256,
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 32
+                }
+              },
+              "ipv6": {
+                "type": "array",
+                "maxItems": 256,
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 128
+                }
+              }
+            }
+          },
+          "cohortDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "confirmSeconds": {
+            "type": "integer",
+            "minimum": 30,
+            "maximum": 300
+          }
+        },
+        "required": [
+          "operationId",
+          "expectedRevision",
+          "sourceDigest",
+          "candidate",
+          "destinationPrefixes",
+          "cohortDigest",
+          "confirmSeconds"
+        ]
+      },
+      "ImportedSourceReview": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sourceDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "operationId",
+          "expectedRevision",
+          "sourceDigest"
+        ]
+      },
+      "ImportedSourceObservation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sourceDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "cohortDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "observedNativeSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "operationId",
+          "expectedRevision",
+          "sourceDigest",
+          "cohortDigest",
+          "observedNativeSha256"
+        ]
+      },
+      "ImportedFirewallRequest": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "view"
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "review"
+                ]
+              },
+              "review": {
+                "$ref": "#/components/schemas/ImportedReview"
+              }
+            },
+            "required": [
+              "kind",
+              "review"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "prepare"
+                ]
+              },
+              "proposal": {
+                "$ref": "#/components/schemas/ImportedProposal"
+              }
+            },
+            "required": [
+              "kind",
+              "proposal"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "apply"
+                ]
+              },
+              "originalTaskId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "kind",
+              "originalTaskId"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "confirm"
+                ]
+              },
+              "originalTaskId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "kind",
+              "originalTaskId"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "rollback"
+                ]
+              },
+              "originalTaskId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "kind",
+              "originalTaskId"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "cancel"
+                ]
+              },
+              "originalTaskId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "kind",
+              "originalTaskId"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "outcome"
+                ]
+              },
+              "originalTaskId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "kind",
+              "originalTaskId"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "sourceReview"
+                ]
+              },
+              "review": {
+                "$ref": "#/components/schemas/ImportedSourceReview"
+              }
+            },
+            "required": [
+              "kind",
+              "review"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "sourceObserve"
+                ]
+              },
+              "observation": {
+                "$ref": "#/components/schemas/ImportedSourceObservation"
+              }
+            },
+            "required": [
+              "kind",
+              "observation"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "sourceOutcome"
+                ]
+              },
+              "originalTaskId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "kind",
+              "originalTaskId"
+            ]
+          }
+        ],
+        "description": "Strict imported operation request. No owner key, confirmation token, UID, unit, path or native command is accepted. The center generates owner capabilities and stores them only inside encrypted task inputs. Original queries and pre-dispatch cancellation remain available without new write authorization. UNKNOWN never creates a replacement operation."
+      },
+      "TlsActivationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "operationId",
+          "expectedGeneration",
+          "pendingRevision"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedGeneration": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "pendingRevision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "TlsActivationStatus": {
+        "type": "object",
+        "required": [
+          "generation",
+          "healthy",
+          "certificateFingerprint",
+          "caFingerprint",
+          "pendingTlsFingerprint",
+          "pendingCaFingerprint",
+          "pendingRevision",
+          "activationRequired",
+          "registeredGateways",
+          "blockingOperationId"
+        ],
+        "properties": {
+          "generation": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "healthy": {
+            "type": "boolean"
+          },
+          "certificateFingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "caFingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "pendingTlsFingerprint": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pendingCaFingerprint": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pendingRevision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "activationRequired": {
+            "type": "boolean"
+          },
+          "registeredGateways": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockingOperationId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A missing original receipt blocks all later activation requests, including requests by another administrator."
+          },
+          "blockingCsrRequestId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "Original CSR staging has no valid receipt; manual staging and activation are blocked."
+          }
+        }
+      },
+      "TlsActivationOperation": {
+        "type": "object",
+        "required": [
+          "operationId",
+          "state",
+          "actor",
+          "request",
+          "observedActive"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "APPLIED",
+              "UNKNOWN",
+              "REJECTED"
+            ]
+          },
+          "actor": {
+            "type": "string"
+          },
+          "request": {
+            "$ref": "#/components/schemas/TlsActivationRequest"
+          },
+          "targetGeneration": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "observedActive": {
+            "type": "boolean"
+          },
+          "reasonCode": {
+            "type": "string",
+            "enum": [
+              "PRECONDITION_FAILED"
+            ]
+          }
+        }
+      },
+      "InitialSetupPair": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "installationId",
+          "token"
+        ],
+        "properties": {
+          "installationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "token": {
+            "type": "string",
+            "writeOnly": true,
+            "minLength": 64,
+            "maxLength": 64
+          }
+        }
+      },
+      "InitialSetupInput": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "operationId",
+          "origin",
+          "grpcAddress",
+          "databaseUrl",
+          "username",
+          "tenantId",
+          "password",
+          "serverPem",
+          "clientCaPem"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "origin": {
+            "type": "string",
+            "maxLength": 256
+          },
+          "grpcAddress": {
+            "type": "string"
+          },
+          "databaseUrl": {
+            "type": "string",
+            "writeOnly": true,
+            "maxLength": 4096
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "tenantId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "password": {
+            "type": "string",
+            "writeOnly": true,
+            "minLength": 12,
+            "maxLength": 256
+          },
+          "serverPem": {
+            "type": "string",
+            "writeOnly": true,
+            "maxLength": 65536
+          },
+          "serverKey": {
+            "type": "string",
+            "writeOnly": true,
+            "maxLength": 32768
+          },
+          "clientCaPem": {
+            "type": "string",
+            "writeOnly": true,
+            "maxLength": 65536
+          },
+          "serverCsrId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Use an exactly matching SIGNED local CSR. serverKey must be empty or absent; the leaf key never leaves the server."
+          }
+        }
+      },
+      "InitialSetupStatus": {
+        "type": "object",
+        "required": [
+          "configured"
+        ],
+        "properties": {
+          "configured": {
+            "type": "boolean"
+          },
+          "authenticated": {
+            "type": "boolean"
+          },
+          "installationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "certificateFingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "listenAddress": {
+            "type": "string"
+          },
+          "csrf": {
+            "type": "string"
+          },
+          "blockingOperationId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "operationId": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "origin": {
+            "type": "string"
+          }
+        }
+      },
+      "InitialSetupOperation": {
+        "type": "object",
+        "required": [
+          "operationId",
+          "state",
+          "origin",
+          "username",
+          "observedConfiguration"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "APPLIED",
+              "UNKNOWN",
+              "REJECTED"
+            ]
+          },
+          "origin": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "observedConfiguration": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ServerCsrRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "origin"
+        ],
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "origin": {
+            "type": "string",
+            "maxLength": 256,
+            "description": "Exact HTTPS center origin; the DNS name or IP is placed in the CSR SAN."
+          }
+        }
+      },
+      "ServerCsrCertificate": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "serverPem"
+        ],
+        "properties": {
+          "serverPem": {
+            "type": "string",
+            "maxLength": 65536,
+            "description": "Signed server leaf and optional public certificate chain. Never a CA private key."
+          },
+          "operationId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "New clients persist this non-nil per-upload identity and the PEM SHA-256 before dispatch. Omission preserves the legacy import contract; an unresolved original cannot be bypassed."
+          }
+        }
+      },
+      "ServerCsrRecord": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "state"
+        ],
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "READY",
+              "SIGNED",
+              "STAGED",
+              "RETIRED",
+              "REJECTED",
+              "UNKNOWN",
+              "INSTALLED"
+            ]
+          },
+          "origin": {
+            "type": "string"
+          },
+          "csrPem": {
+            "type": "string",
+            "readOnly": true
+          },
+          "csrSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "certificatePem": {
+            "type": "string",
+            "readOnly": true
+          },
+          "certificateFingerprint": {
+            "type": "string"
+          },
+          "blockingRequestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "certificateRejected": {
+            "type": "boolean",
+            "description": "Positive original validation rejection. New upload queries bind this decision to importOperation.operationId and certificateSha256; no missing receipt or current file state authorizes another upload."
+          },
+          "installationOperationId": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true,
+            "description": "Original installation has an applied receipt bound to this exact leaf and local key. This is derived without changing installation records."
+          },
+          "importOperation": {
+            "$ref": "#/components/schemas/ServerCsrImportOperation"
+          },
+          "importOperations": {
+            "type": "array",
+            "maxItems": 1024,
+            "items": {
+              "$ref": "#/components/schemas/ServerCsrImportOperation"
+            }
+          },
+          "blockingImportOperationId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ServerCsrCurrent": {
+        "type": "object",
+        "required": [
+          "current"
+        ],
+        "properties": {
+          "current": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ServerCsrRecord"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "ServerCsrImportOperation": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requestId",
+          "operationId",
+          "certificateSha256",
+          "state"
+        ],
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "certificateSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "APPLIED",
+              "REJECTED",
+              "UNKNOWN"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "INVALID_ARGUMENT",
+              "CSR_NOT_READY"
+            ]
+          },
+          "receiptSource": {
+            "type": "string",
+            "enum": [
+              "SIGNED_CERTIFICATE_RECEIPT"
+            ]
+          }
+        }
+      },
+      "GatewayCertificateRotationReceipt": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Original public operation result. UNKNOWN, including missing history, never settles from current gateway fingerprint. APPLIED must match the saved operation, gateway, previous/new fingerprints, public PEM hash and bundle mode. GET never returns or reissues a private bundle token. Historical APPLIED remains valid after later rotations. Version 2 records immutable previous/next generations. For version 2, certificate fingerprint, generation increment, connection reset and applied receipt commit together. Version 1 legacy operations preserve the generation and are not renewal authorizations. The public JSON file uses a strict allowlist and never includes a token or private key.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN",
+              "REJECTED",
+              "APPLIED"
+            ]
+          },
+          "previousCertificateSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "certificateSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "certificatePemSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bundleRequested": {
+            "type": "boolean"
+          },
+          "revision": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "rejectionCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "identityBundleTokenRecoverable": {
+            "type": "boolean",
+            "const": false
+          },
+          "receiptVersion": {
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ],
+            "description": "Version 1 original receipts have no generation evidence. Existing rows are never backfilled from current gateway state."
+          },
+          "previousBindingGeneration": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "description": "Original reviewed generation for an explicit version 2 request. Null for historical and legacy certificate-only operations. REJECTED does not prove a credential change."
+          },
+          "bindingGeneration": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 2,
+            "description": "Version 2 proposed generation, exactly previous + 1. Only APPLIED proves it was committed. Null for old version 1 receipts or exhausted generation rejections."
+          }
+        },
+        "required": [
+          "id",
+          "operationId",
+          "state"
+        ]
+      },
+      "GatewayCertificateRotationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Original public operation result. UNKNOWN, including missing history, never settles from current gateway fingerprint. APPLIED must match the saved operation, gateway, previous/new fingerprints, public PEM hash and bundle mode. GET never returns or reissues a private bundle token. Historical APPLIED remains valid after later rotations. Version 2 records immutable previous/next generations. For version 2, certificate fingerprint, generation increment, connection reset and applied receipt commit together. Version 1 legacy operations preserve the generation and are not renewal authorizations. The public JSON file uses a strict allowlist and never includes a token or private key.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "UNKNOWN",
+              "REJECTED",
+              "APPLIED"
+            ]
+          },
+          "previousCertificateSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "certificateSha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "certificatePemSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bundleRequested": {
+            "type": "boolean"
+          },
+          "revision": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "rejectionCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "identityBundleTokenRecoverable": {
+            "type": "boolean",
+            "const": false
+          },
+          "identityBundleToken": {
+            "type": "string",
+            "description": "Original POST only; never available from receipt GET."
+          },
+          "identityBundleUrl": {
+            "type": "string"
+          },
+          "receiptVersion": {
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ],
+            "description": "Version 1 original receipts have no generation evidence. Existing rows are never backfilled from current gateway state."
+          },
+          "previousBindingGeneration": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "description": "Original reviewed generation for an explicit version 2 request. Null for historical and legacy certificate-only operations. REJECTED does not prove a credential change."
+          },
+          "bindingGeneration": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 2,
+            "description": "Version 2 proposed generation, exactly previous + 1. Only APPLIED proves it was committed. Null for old version 1 receipts or exhausted generation rejections."
+          }
+        },
+        "required": [
+          "id",
+          "operationId",
+          "state"
+        ]
       }
     },
     "securitySchemes": {

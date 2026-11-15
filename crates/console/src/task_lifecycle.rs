@@ -21,7 +21,7 @@ pub(crate) async fn on_connect(
     gateway: &str,
     generation: i64,
 ) -> anyhow::Result<()> {
-    let changed = sqlx::query("UPDATE mgmt_tasks SET state=CASE WHEN state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30) THEN 'UNKNOWN' ELSE 'EXPIRED' END,error=CASE WHEN state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30) THEN 'OUTCOME_UNKNOWN' ELSE 'BINDING_GENERATION_CHANGED' END,lease_until=NULL WHERE gateway_id=$1 AND ((binding_generation<>$2 AND state IN ('QUEUED','RUNNING')) OR (binding_generation=$2 AND state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30))) RETURNING id,tenant_id,state")
+    let changed = sqlx::query("UPDATE mgmt_tasks SET state=CASE WHEN state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48) THEN 'UNKNOWN' ELSE 'EXPIRED' END,error=CASE WHEN state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48) THEN 'OUTCOME_UNKNOWN' ELSE 'BINDING_GENERATION_CHANGED' END,lease_until=NULL WHERE gateway_id=$1 AND ((binding_generation<>$2 AND state IN ('QUEUED','RUNNING')) OR (binding_generation=$2 AND state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48))) RETURNING id,tenant_id,state")
         .bind(gateway).bind(generation).fetch_all(&mut **tx).await?;
     for row in changed {
         let id = row.get::<Uuid, _>("id").to_string();
@@ -45,7 +45,7 @@ pub(crate) async fn on_connect(
     // Reads can be leased again; queued writes retain their original deadline.
     // A system action is approved for the currently live connection, not an
     // offline queue. Unleased work from another epoch is definitively expired.
-    let stale=sqlx::query("UPDATE mgmt_tasks SET state='EXPIRED',error='TIMEOUT',lease_until=NULL WHERE gateway_id=$1 AND binding_generation=$2 AND state='QUEUED' AND (operation BETWEEN 24 AND 29 OR operation BETWEEN 31 AND 33) AND dispatch_epoch IS DISTINCT FROM (SELECT connection_epoch FROM mgmt_gateways WHERE id=$1) RETURNING id,tenant_id")
+    let stale=sqlx::query("UPDATE mgmt_tasks SET state='EXPIRED',error='TIMEOUT',lease_until=NULL WHERE gateway_id=$1 AND binding_generation=$2 AND state='QUEUED' AND (operation BETWEEN 24 AND 29 OR operation BETWEEN 31 AND 33 OR operation BETWEEN 35 AND 37 OR operation IN (40,41,42,43,47)) AND dispatch_epoch IS DISTINCT FROM (SELECT connection_epoch FROM mgmt_gateways WHERE id=$1) RETURNING id,tenant_id")
         .bind(gateway).bind(generation).fetch_all(&mut **tx).await?;
     for row in stale {
         let id = row.get::<Uuid, _>("id").to_string();
@@ -69,7 +69,7 @@ pub(crate) async fn on_connect(
         )
         .await?;
     }
-    sqlx::query("UPDATE mgmt_tasks SET lease_until=NULL WHERE gateway_id=$1 AND binding_generation=$2 AND state='RUNNING' AND operation IN (1,2,3,4,8,9,11,15,20,23,30)")
+    sqlx::query("UPDATE mgmt_tasks SET lease_until=NULL WHERE gateway_id=$1 AND binding_generation=$2 AND state='RUNNING' AND operation IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48)")
         .bind(gateway).bind(generation).execute(&mut **tx).await?;
     Ok(())
 }
@@ -549,7 +549,7 @@ pub(crate) async fn apply_result(
     if owned.is_none() {
         return Err(Status::permission_denied("FORBIDDEN"));
     }
-    let previous=sqlx::query("SELECT id,tenant_id,gateway_id,operation,state,input,idempotency_key,expires_at FROM mgmt_tasks WHERE id=$1 AND gateway_id=$2 AND tenant_id=$3 AND dispatch_epoch=$4 AND state IN ('RUNNING','UNKNOWN') FOR UPDATE")
+    let previous=sqlx::query("SELECT id,tenant_id,gateway_id,operation,state,input,idempotency_key,expires_at,actor_id,binding_generation FROM mgmt_tasks WHERE id=$1 AND gateway_id=$2 AND tenant_id=$3 AND dispatch_epoch=$4 AND state IN ('RUNNING','UNKNOWN') FOR UPDATE")
         .bind(id).bind(gateway).bind(tenant).bind(epoch).fetch_optional(&mut *tx).await.map_err(internal)?;
     if let Some(previous) = previous {
         let operation: i32 = previous.get("operation");
@@ -561,6 +561,13 @@ pub(crate) async fn apply_result(
         let nm_reconciliation = data["reconciliation"]["source"] == "nm.coordinator.journal.v1";
         if nm_reconciliation && !matches!(operation, 34..=37) {
             return Err(Status::invalid_argument("INVALID_ARGUMENT"));
+        }
+        if matches!(operation,38..=48) {
+            let payload=cipher.open_row(&previous,"input").map_err(internal)?;
+            let command=crate::imported_tasks::command(id.to_string(),operation,previous.get("idempotency_key"),
+                previous.get::<chrono::DateTime<chrono::Utc>,_>("expires_at").timestamp_millis(),&payload).map_err(internal)?;
+            if !crate::imported_tasks::valid_receipt(&data,&command,state,error) {return Err(Status::invalid_argument("INVALID_ARGUMENT"));}
+            if state==TaskState::Succeeded {crate::imported_tasks::check_original(&mut tx,cipher,&previous,&data).await.map_err(|_|Status::invalid_argument("INVALID_ARGUMENT"))?;}
         }
         if matches!(operation, 34..=37) {
             let payload = cipher.open_row(&previous, "input").map_err(internal)?;
@@ -754,7 +761,7 @@ pub(crate) async fn reconciliation_batch(
 pub(crate) async fn expire_tasks(
     tx: &mut sqlx::Transaction<'_, sqlx::Postgres>,
 ) -> anyhow::Result<()> {
-    let uncertain=sqlx::query("UPDATE mgmt_tasks SET state='UNKNOWN',error='OUTCOME_UNKNOWN',lease_until=NULL WHERE state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30) AND (expires_at<now() OR lease_until<now()) RETURNING id,tenant_id")
+    let uncertain=sqlx::query("UPDATE mgmt_tasks SET state='UNKNOWN',error='OUTCOME_UNKNOWN',lease_until=NULL WHERE state='RUNNING' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48) AND (expires_at<now() OR lease_until<now()) RETURNING id,tenant_id")
         .fetch_all(&mut **tx).await?;
     for r in uncertain {
         let tenant: String = r.get("tenant_id");

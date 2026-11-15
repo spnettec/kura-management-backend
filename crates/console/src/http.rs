@@ -1,3 +1,5 @@
+#[path = "server_csr_http.rs"]
+mod server_csr_http;
 use crate::{
     auth,
     config::Config,
@@ -36,26 +38,38 @@ use tower_http::{
 };
 use uuid::Uuid;
 
+#[cfg(test)]
+#[path = "http_tls_tests.rs"]
+mod http_tls_tests;
+
 #[derive(Clone)]
 pub struct App {
     pub pool: PgPool,
     // Shared so the runtime task-key rotation swaps it without a restart.
     pub cipher: Arc<tokio::sync::RwLock<TaskCipher>>,
     pub config: Config,
+    pub(crate) tls: Option<Arc<crate::tls_runtime::TlsRuntime>>,
+    pub(crate) gate: Arc<crate::maintenance::Gate>,
     pub login_slots: Arc<Semaphore>,
     pub attempts: Arc<Mutex<HashMap<String, VecDeque<Instant>>>>,
     pub sse_slots: Arc<Semaphore>,
 }
 impl App {
-    pub fn new(pool: PgPool, config: Config, cipher: TaskCipher) -> Self {
-        Self {
+    pub fn new(pool: PgPool, config: Config, cipher: TaskCipher) -> anyhow::Result<Self> {
+        let gate = Arc::new(crate::maintenance::Gate::for_state(std::path::Path::new(&config.state_dir))?);
+        Ok(Self {
             pool,
             cipher: Arc::new(tokio::sync::RwLock::new(cipher)),
             config,
+            tls: None,
+            gate,
             login_slots: Arc::new(Semaphore::new(4)),
             attempts: Default::default(),
             sse_slots: Arc::new(Semaphore::new(128)),
-        }
+        })
+    }
+    fn effective_config(&self) -> Config {
+        self.tls.as_ref().map(|runtime| runtime.config()).unwrap_or_else(|| self.config.clone())
     }
 }
 pub struct ApiError(StatusCode, &'static str);
@@ -115,7 +129,10 @@ impl From<PathRejection> for ApiError {
 pub fn router(app: App) -> Router {
     let index = ServeFile::new(format!("{}/index.html", app.config.web_dir));
     Router::new()
+        .route("/health/live",get(||async{axum::Json(serde_json::json!({"status":"running"}))}))
         .route("/health/ready",get(ready))
+          .route("/api/setup/status",get(configured_setup_status))
+          .route("/api/v1/settings/initial-setup/{id}",get(configured_setup_operation))
         .route("/api/v1/auth/login",post(login))
         .route("/api/v1/auth/password",post(change_password))
         .route("/api/v1/auth/logout",post(logout))
@@ -124,8 +141,17 @@ pub fn router(app: App) -> Router {
         .route("/api/v1/gateways/{id}",get(gateway))
         .route("/api/v1/gateways/{id}/identity-bundle",get(identity_bundle))
         .route("/api/v1/gateways/{id}/certificate",post(rotate_gateway_certificate))
+          .route("/api/v1/gateways/{id}/certificate-operations/{operation}",get(gateway_certificate_operation))
         .route("/api/v1/settings/tls",get(settings_tls).put(settings_tls_put))
+        .route("/api/v1/settings/server-csr",get(server_csr_http::current).post(server_csr_http::create))
+        .route("/api/v1/settings/server-csr/{id}",get(server_csr_http::read))
+        .route("/api/v1/settings/server-csr/{id}/imports/{operation}",get(server_csr_http::read_import))
+        .route("/api/v1/settings/server-csr/{id}/certificate",axum::routing::put(server_csr_http::import))
+        .route("/api/v1/settings/server-csr/{id}/retire",post(server_csr_http::retire))
+        .route("/api/v1/settings/server-csr/{id}/stage",post(server_csr_http::stage))
         .route("/api/v1/settings/client-ca",get(settings_client_ca).put(settings_client_ca_put))
+          .route("/api/v1/settings/tls-activation",get(settings_tls_activation).post(settings_tls_activate))
+          .route("/api/v1/settings/tls-activation/{id}",get(settings_tls_operation))
         .route("/api/v1/settings/task-key",get(settings_task_key).post(settings_task_key_backup))
         .route("/api/v1/settings/task-key/rotate",post(settings_task_key_rotate))
         .route("/api/v1/settings/task-key/restore",post(settings_task_key_restore))
@@ -144,8 +170,9 @@ pub fn router(app: App) -> Router {
         .route("/api/v1/transfer/issuances/{transferId}/revoke",post(revoke_transfer_issuance))
         .route("/api/v1/events",get(events))
         .layer(axum::middleware::from_fn_with_state(app.clone(), enforce_password_change))
+        .layer(axum::middleware::from_fn_with_state(app.gate.clone(), crate::maintenance::admit))
         .route_service("/",index.clone()).route_service("/login",index.clone())
-        .route_service("/gateways",index.clone()).route_service("/commands",index.clone()).route_service("/settings",index)
+          .route_service("/gateways",index.clone()).route_service("/commands",index.clone()).route_service("/setup",index.clone()).route_service("/settings",index)
         .nest_service("/assets",ServeDir::new(format!("{}/assets",app.config.web_dir)))
         .fallback(||async{ApiError::new(StatusCode::NOT_FOUND,"NOT_FOUND")})
         .method_not_allowed_fallback(||async{ApiError::new(StatusCode::METHOD_NOT_ALLOWED,"UNSUPPORTED")})
@@ -156,8 +183,27 @@ pub fn router(app: App) -> Router {
         .with_state(app)
 }
 async fn ready(State(app): State<App>) -> Result<Json<Value>, ApiError> {
+    if app.tls.as_ref().is_some_and(|runtime| !runtime.healthy()) {
+        return Err(ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "CONFLICT"));
+    }
     sqlx::query("SELECT 1").execute(&app.pool).await?;
     Ok(Json(json!({"status":"ready","protocolMajor":1})))
+}
+
+async fn configured_setup_status(State(app): State<App>) -> Result<Json<Value>, ApiError> {
+    let saved = crate::console_settings::load_at(std::path::Path::new(&app.config.state_dir))?;
+    Ok(Json(json!({"configured":true,"maintenance":app.gate.status()?.is_some(),"origin":app.config.origin,
+        "operationId":saved.as_ref().map(|s|s.settings.operation_id),
+        "installationId":saved.map(|s|s.settings.installation_id)})))
+}
+
+async fn configured_setup_operation(State(app): State<App>, headers: HeaderMap,
+    path: Result<Path<Uuid>, PathRejection>) -> Result<Json<Value>, ApiError> {
+    let p = auth::principal(&app.pool, &headers).await?;
+    require_admin(&p)?;
+    let Path(id) = path?;
+    Ok(Json(crate::initial_setup::operation(std::path::Path::new(&app.config.state_dir),id,false)?
+        .ok_or(ApiError::new(StatusCode::NOT_FOUND,"NOT_FOUND"))?))
 }
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
@@ -188,6 +234,8 @@ async fn enforce_password_change(
             | "/api/v1/auth/logout"
             | "/api/v1/session"
             | "/health/ready"
+            | "/health/live"
+              | "/api/setup/status"
     );
     if exempt {
         return Ok(next.run(req).await);
@@ -960,7 +1008,7 @@ async fn identity_bundle(
         .get("keyPem")
         .and_then(Value::as_str)
         .ok_or(ApiError::new(StatusCode::INTERNAL_SERVER_ERROR, "INTERNAL"))?;
-    let ca = crate::settings::live_client_ca(&app.config)?;
+    let ca = crate::settings::live_client_ca(&app.effective_config())?;
     // Plain HTTPS endpoint for the agent; mirrors identity_settings on the agent
     // (scheme, host/port characters only, at most scheme://host:port, no path).
     let endpoint_ok = |endpoint: &str| {
@@ -1043,7 +1091,16 @@ async fn settings_tls(
 ) -> Result<Json<Value>, ApiError> {
     let p = auth::principal(&app.pool, &headers).await?;
     require_admin(&p)?;
-    Ok(Json(crate::settings::tls_status(&app.config)?))
+    if let Some(runtime) = &app.tls {
+        let status = runtime.status()?;
+        return Ok(Json(json!({"origin":app.effective_config().origin,"certificateFingerprint":status["certificateFingerprint"],
+            "pendingFingerprint":status["pendingTlsFingerprint"],"restartRequired":false,
+            "activationRequired":status["pendingTlsFingerprint"].is_string()})));
+    }
+    let config=app.effective_config();
+    let mut value=crate::settings::tls_status(&config)?;
+    value["origin"]=json!(config.origin);
+    Ok(Json(value))
 }
 
 #[derive(Deserialize)]
@@ -1062,13 +1119,17 @@ async fn settings_tls_put(
     require_admin(&p)?;
     auth::csrf(&headers, &p, &app.config.origin)?;
     let Json(input) = input?;
+    crate::server_csr::ensure_no_uncertain_stage(std::path::Path::new(&app.config.state_dir))?;
     crate::tls_store::validate_pair(&input.server_pem, &input.server_key)
         .map_err(|_| ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"))?;
-    crate::tls_store::stage(&app.config, &input.server_pem, &input.server_key, &p.username)?;
+    let _guard = match &app.tls { Some(runtime) => Some(runtime.changes.lock().await), None => None };
+    let config = match &app.tls { Some(runtime) => runtime.prepare_stage()?, None => app.config.clone() };
+    db::audit(&app.pool, &p.tenant_id, &p.username, "settings.tls.stage", "tls-server", "REQUESTED").await?;
+    crate::tls_store::stage(&config, &input.server_pem, &input.server_key, &p.username)?;
     db::audit(&app.pool, &p.tenant_id, &p.username, "settings.tls.update", "tls-server", "SUCCEEDED")
         .await?;
     Ok(Json(
-        json!({"staged":true,"restartRequired":true,"pendingFingerprint":crate::settings::tls_status(&app.config)?.get("pendingFingerprint")}),
+        json!({"staged":true,"restartRequired":app.tls.is_none(),"activationRequired":app.tls.is_some(),"pendingFingerprint":crate::settings::tls_status(&config)?.get("pendingFingerprint")}),
     ))
 }
 
@@ -1078,7 +1139,11 @@ async fn settings_client_ca(
 ) -> Result<Json<Value>, ApiError> {
     let p = auth::principal(&app.pool, &headers).await?;
     require_admin(&p)?;
-    let mut status = crate::settings::client_ca_status(&app.config)?;
+    let mut status = if let Some(runtime) = &app.tls {
+        let status = runtime.status()?;
+        json!({"caFingerprint":status["caFingerprint"],"pendingFingerprint":status["pendingCaFingerprint"],
+            "restartRequired":false,"activationRequired":status["pendingCaFingerprint"].is_string()})
+    } else { crate::settings::client_ca_status(&app.effective_config())? };
     let affected: i64 = sqlx::query_scalar("SELECT count(*) FROM mgmt_gateways")
         .fetch_one(&app.pool)
         .await?;
@@ -1106,10 +1171,54 @@ async fn settings_client_ca_put(
     let affected: i64 = sqlx::query_scalar("SELECT count(*) FROM mgmt_gateways")
         .fetch_one(&app.pool)
         .await?;
-    crate::client_ca_store::stage(&app.config, &input.client_ca_pem, &p.username)?;
+    let _guard = match &app.tls { Some(runtime) => Some(runtime.changes.lock().await), None => None };
+    let config = match &app.tls { Some(runtime) => runtime.prepare_stage()?, None => app.config.clone() };
+    db::audit(&app.pool, &p.tenant_id, &p.username, "settings.client-ca.stage", "client-ca", "REQUESTED").await?;
+    crate::client_ca_store::stage(&config, &input.client_ca_pem, &p.username)?;
     db::audit(&app.pool, &p.tenant_id, &p.username, "settings.client-ca.update", "client-ca", "SUCCEEDED")
         .await?;
-    Ok(Json(json!({"staged":true,"restartRequired":true,"pendingFingerprint":fingerprint,"registeredGateways":affected})))
+    Ok(Json(json!({"staged":true,"restartRequired":app.tls.is_none(),"activationRequired":app.tls.is_some(),"pendingFingerprint":fingerprint,"registeredGateways":affected})))
+}
+
+async fn settings_tls_activation(State(app): State<App>, headers: HeaderMap) -> Result<Json<Value>, ApiError> {
+    let p = auth::principal(&app.pool, &headers).await?;
+    require_admin(&p)?;
+    let runtime = app.tls.as_ref().ok_or(ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "UNSUPPORTED"))?;
+    let _guard = runtime.changes.lock().await;
+    let mut status = runtime.status()?;
+    status["registeredGateways"] = json!(sqlx::query_scalar::<_, i64>("SELECT count(*) FROM mgmt_gateways")
+        .fetch_one(&app.pool).await?);
+    Ok(Json(status))
+}
+
+async fn settings_tls_operation(State(app): State<App>, headers: HeaderMap,
+    path: Result<Path<Uuid>, PathRejection>) -> Result<Json<Value>, ApiError> {
+    let p = auth::principal(&app.pool, &headers).await?;
+    require_admin(&p)?;
+    let Path(id) = path?;
+    let runtime = app.tls.as_ref().ok_or(ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "UNSUPPORTED"))?;
+    Ok(Json(runtime.operation(id)?.ok_or(ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"))?))
+}
+
+async fn settings_tls_activate(State(app): State<App>, headers: HeaderMap,
+    input: Result<Json<crate::tls_runtime::ActivationRequest>, JsonRejection>) -> Result<Json<Value>, ApiError> {
+    let p = auth::principal(&app.pool, &headers).await?;
+    require_admin(&p)?;
+    auth::csrf(&headers, &p, &app.config.origin)?;
+    let Json(input) = input?;
+    let runtime = app.tls.as_ref().ok_or(ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "UNSUPPORTED"))?;
+    let _guard = runtime.changes.lock().await;
+    // Duplicate ids are observation only and do not append a second action audit.
+    if let Some(record) = runtime.operation(input.operation_id)? {
+        if record["request"] != serde_json::to_value(&input).map_err(anyhow::Error::from)? {
+            return Err(ApiError::new(StatusCode::CONFLICT, "CONFLICT"));
+        }
+        return Ok(Json(record));
+    }
+    db::audit(&app.pool, &p.tenant_id, &p.username, "settings.tls.activate", &input.operation_id.to_string(), "REQUESTED").await?;
+    let result = runtime.activate(input, &p.username)
+        .map_err(|_| ApiError::new(StatusCode::CONFLICT, "CONFLICT"))?;
+    Ok(Json(result))
 }
 
 async fn settings_task_key(
@@ -1257,7 +1366,11 @@ async fn settings_task_key_restore(
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 struct RotateGatewayCertificate {
+    #[serde(default)]
+    operation_id: Option<String>,
     previous_certificate_sha256: String,
+    #[serde(default)]
+    previous_binding_generation: Option<i64>,
     client_certificate_pem: String,
     #[serde(default)]
     client_key_pem: Option<String>,
@@ -1272,6 +1385,7 @@ async fn rotate_gateway_certificate(
     let Json(input) = input?;
     let Path(id) = path?;
     if input.previous_certificate_sha256.len() != 64
+        || input.previous_binding_generation.is_some_and(|value| value < 1)
         || !input.previous_certificate_sha256.chars().all(|c| c.is_ascii_hexdigit())
     {
         return Err(ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"));
@@ -1279,13 +1393,38 @@ async fn rotate_gateway_certificate(
     let p = auth::principal(&app.pool, &headers).await?;
     require_admin(&p)?;
     auth::csrf(&headers, &p, &app.config.origin)?;
-    let new_fingerprint =
-        crate::gateway_registration::certificate_sha256(&input.client_certificate_pem)
-            .map_err(|_| ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"))?;
-    // Same-key uploads are refused: rotation must change the credential.
+    let client_operation = input.operation_id.is_some();
+    let operation = match &input.operation_id {
+        Some(value) => crate::gateway_certificate::operation(value)?,
+        None => Uuid::new_v4(),
+    };
+    let certificate = crate::gateway_registration::certificate_sha256(&input.client_certificate_pem).ok();
+    let invalid = if certificate.is_none() || input.client_key_pem.as_ref().is_some_and(|key|
+        crate::tls_store::validate_pair(&input.client_certificate_pem, key).is_err()) {
+        Some("INVALID_ARGUMENT")
+    } else { None };
+    let original = crate::gateway_certificate::Request {
+        operation, gateway:id.clone(), tenant:p.tenant_id.clone(),
+        previous:input.previous_certificate_sha256.to_ascii_lowercase(),
+          previous_generation:input.previous_binding_generation,
+        certificate, pem_hash:auth::hash(input.client_certificate_pem.as_bytes()),
+        bundle:input.client_key_pem.is_some(),
+    };
+    if !crate::gateway_certificate::reserve(&app.pool, &original, &p.username, invalid).await? {
+        let receipt=crate::gateway_certificate::read(&app.pool,&p.tenant_id,&id,operation).await?;
+        if client_operation { return Ok(Json(receipt)); }
+        return Err(ApiError::new(StatusCode::CONFLICT,"CONFLICT"));
+    }
+    let new_fingerprint=original.certificate.clone().ok_or_else(||ApiError::new(StatusCode::BAD_REQUEST,"INVALID_ARGUMENT"))?;
     let cipher = app.cipher.read().await;
     let mut tx = app.pool.begin().await?;
     cipher.lock_storage(&mut tx).await?;
+    if !crate::gateway_certificate::begin_application(&mut tx,&original).await? {
+        db::audit(&mut *tx,&p.tenant_id,&p.username,"gateway.certificate.rotate",&id,"REJECTED").await?;
+        tx.commit().await?;
+        // Legacy clients do not inspect a state field. A refused credential transaction must stay non-2xx.
+        return Err(ApiError::new(StatusCode::CONFLICT,"CONFLICT"));
+    }
     let mut bundle = None;
     if let Some(key) = &input.client_key_pem {
         crate::tls_store::validate_pair(&input.client_certificate_pem, key)
@@ -1296,7 +1435,7 @@ async fn rotate_gateway_certificate(
             "kind": "rotation",
             "certificatePem": input.client_certificate_pem,
             "keyPem": key,
-            "previousCertificateSha256": input.previous_certificate_sha256,
+            "previousCertificateSha256": original.previous,
         });
         let sealed = cipher.seal_identity_bundle(
                 &id,
@@ -1320,11 +1459,12 @@ async fn rotate_gateway_certificate(
     .bind(&id)
     .bind(&new_fingerprint)
     .bind(&p.tenant_id)
-    .bind(&input.previous_certificate_sha256)
+    .bind(&original.previous)
     .fetch_optional(&mut *tx)
     .await?
     .ok_or(ApiError::new(StatusCode::CONFLICT, "CONFLICT"))?;
     let revision: i64 = row.get("revision");
+    crate::gateway_certificate::applied(&mut tx,&original,revision).await?;
     db::audit(&mut *tx, &p.tenant_id, &p.username, "gateway.certificate.rotate", &id, "SUCCEEDED").await?;
     db::event(&mut *tx, &p.tenant_id, "gateway", &id, revision, json!({"online":false,"identityChanged":true})).await?;
     let mut issued_token = None;
@@ -1345,12 +1485,22 @@ async fn rotate_gateway_certificate(
         .await?;
     }
     tx.commit().await?;
-    let mut response = json!({"id":id,"certificateSha256":new_fingerprint,"revision":revision});
+    let mut response = crate::gateway_certificate::read(&app.pool,&p.tenant_id,&id,operation).await?;
     if let Some(token) = issued_token {
         response["identityBundleToken"] = json!(token);
         response["identityBundleUrl"] = json!(format!("/api/v1/gateways/{}/identity-bundle", id));
     }
     Ok(Json(response))
+}
+
+async fn gateway_certificate_operation(
+    State(app):State<App>, headers:HeaderMap,
+    path:Result<Path<(String,String)>,PathRejection>,
+)->Result<Json<Value>,ApiError> {
+    let Path((gateway,operation))=path?;
+    let p=auth::principal(&app.pool,&headers).await?;require_admin(&p)?;
+    let operation=crate::gateway_certificate::operation(&operation)?;
+    Ok(Json(crate::gateway_certificate::read(&app.pool,&p.tenant_id,&gateway,operation).await?))
 }
 
 #[derive(Deserialize)]
@@ -1455,6 +1605,8 @@ async fn gateway(
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 struct CreateTask {
     #[serde(default)]
+    imported_firewall: Option<yofc_management_protocol::imported::Request>,
+    #[serde(default)]
     firewall_change: Option<yofc_management_protocol::firewall::Change>,
     #[serde(default)]
     firewall_action: Option<yofc_management_protocol::v1::FirewallAction>,
@@ -1509,6 +1661,17 @@ async fn create_task(
         return Err(ApiError::forbidden());
     }
     let operation = match input.operation.as_str() {
+          "firewall.imported.view" => 38,
+          "firewall.imported.review" => 39,
+          "firewall.imported.prepare" => 40,
+          "firewall.imported.apply" => 41,
+          "firewall.imported.confirm" => 42,
+          "firewall.imported.rollback" => 43,
+          "firewall.imported.cancel" => 44,
+          "firewall.imported.outcome" => 45,
+          "firewall.imported.source.review" => 46,
+          "firewall.imported.source.observe" => 47,
+          "firewall.imported.source.outcome" => 48,
         "firewall.view" => 30,
         "firewall.prepare" => 31,
         "firewall.confirm" => 32,
@@ -1553,7 +1716,7 @@ async fn create_task(
             ));
         }
     };
-    if matches!(operation, 5..=7 | 10 | 12..=37) && p.role != "admin" {
+    if matches!(operation, 5..=7 | 10 | 12..=48) && p.role != "admin" {
         db::audit(
             &app.pool,
             &p.tenant_id,
@@ -1566,7 +1729,9 @@ async fn create_task(
         .map_err(|_| ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "INTERNAL"))?;
         return Err(ApiError::forbidden());
     }
-    if (operation == 31) != input.firewall_change.is_some()
+    if matches!(operation,38..=48) != input.imported_firewall.is_some()
+          || input.imported_firewall.as_ref().is_some_and(|v|v.operation()!=operation || !v.valid())
+          || (operation == 31) != input.firewall_change.is_some()
         || matches!(operation, 32 | 33) != input.firewall_action.is_some()
         || (operation == 35) != input.nm_change.is_some()
         || matches!(operation, 36 | 37) != input.nm_action.is_some()
@@ -1621,11 +1786,11 @@ async fn create_task(
     {
         return Err(ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"));
     }
-    let payload = json!({"firewallChange":input.firewall_change,"firewallAction":input.firewall_action,"nmChange":input.nm_change,"nmAction":input.nm_action,"networkChange":input.network_change,"networkAction":input.network_action,"networkTakeover":input.network_takeover,"kuraConfiguration":input.kura_configuration,"kuraConfigurationUpdate":input.kura_configuration_update,"kuraSnapshotSave":input.kura_snapshot_save,"kuraSnapshotRollback":input.kura_snapshot_rollback,"ordinaryBootAction":input.ordinary_boot_action,"ordinaryHandoffAction":input.ordinary_handoff_action,"systemControlAction":input.system_control_action});
+    let mut payload = json!({"importedFirewall":input.imported_firewall.as_ref().map(|request|json!({"request":request})),"firewallChange":input.firewall_change,"firewallAction":input.firewall_action,"nmChange":input.nm_change,"nmAction":input.nm_action,"networkChange":input.network_change,"networkAction":input.network_action,"networkTakeover":input.network_takeover,"kuraConfiguration":input.kura_configuration,"kuraConfigurationUpdate":input.kura_configuration_update,"kuraSnapshotSave":input.kura_snapshot_save,"kuraSnapshotRollback":input.kura_snapshot_rollback,"ordinaryBootAction":input.ordinary_boot_action,"ordinaryHandoffAction":input.ordinary_handoff_action,"systemControlAction":input.system_control_action});
     if serde_json::to_vec(&payload)
         .map_err(|_| ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"))?
         .len()
-        > 16384
+        > if matches!(operation,38..=48) {yofc_management_protocol::imported::MAX_PAYLOAD+512} else {16384}
     {
         return Err(ApiError::new(
             StatusCode::PAYLOAD_TOO_LARGE,
@@ -1648,15 +1813,22 @@ async fn create_task(
     if !exists {
         return Err(ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"));
     }
+    if yofc_management_protocol::has_side_effect(operation) {
+        crate::gateway_certificate::maintenance_guard(&mut tx,&p.tenant_id,&id).await?;
+    }
     // Serialize admission only, not task execution, so limits hold under concurrent requests.
     sqlx::query("SELECT pg_advisory_xact_lock(794654,1)")
         .execute(&mut *tx)
         .await?;
     let previous=sqlx::query("SELECT id,tenant_id,gateway_id,operation,state,input FROM mgmt_tasks WHERE actor_id=$1 AND gateway_id=$2 AND idempotency_key=$3").bind(p.id).bind(&id).bind(&input.idempotency_key).fetch_optional(&mut *tx).await?;
     let replay = previous.is_some();
+    let previous_payload=previous.as_ref().map(|row|cipher.open_row(row,"input")).transpose()?;
+    crate::imported_tasks::materialize(&mut payload,previous_payload.as_ref()).map_err(|_|ApiError::new(StatusCode::CONFLICT,"CONFLICT"))?;
     if !replay {
-        if operation == 12 || matches!(operation, 13..=37) {
-            let capability = if matches!(operation, 30..=33) {
+        if operation == 12 || matches!(operation, 13..=48) {
+            let capability = if matches!(operation,38..=48) {
+                  if matches!(operation,40..=43|47) {yofc_management_protocol::imported::WRITE_CAPABILITY} else {yofc_management_protocol::imported::CAPABILITY}
+              } else if matches!(operation, 30..=33) {
                 "firewall.remote.v1"
             } else if matches!(operation, 34..=37) {
                 "nm.remote.v1"
@@ -1693,12 +1865,20 @@ async fn create_task(
             }
         }
         if yofc_management_protocol::has_side_effect(operation)
-            && !matches!(operation, 7 | 18 | 19 | 28 | 33)
+            && !matches!(operation, 7 | 18 | 19 | 28 | 33 | 43 | 44)
         {
-            let unresolved: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_tasks WHERE gateway_id=$1 AND state='UNKNOWN' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30))").bind(&id).fetch_one(&mut *tx).await?;
+            let unresolved: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_tasks WHERE gateway_id=$1 AND state='UNKNOWN' AND operation NOT IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48))").bind(&id).fetch_one(&mut *tx).await?;
             if unresolved {
                 return Err(ApiError::new(StatusCode::CONFLICT, "OUTCOME_UNKNOWN"));
             }
+        }
+        if let Some(original)=input.imported_firewall.as_ref().and_then(|request|request.original_task()) {
+            let generation:i64=sqlx::query_scalar("SELECT binding_generation FROM mgmt_gateways WHERE id=$1 AND tenant_id=$2 AND enabled FOR SHARE")
+                .bind(&id).bind(&p.tenant_id).fetch_one(&mut *tx).await?;
+            let original_operation:Option<i32>=sqlx::query_scalar("SELECT operation FROM mgmt_tasks WHERE id=$1 AND actor_id=$2 AND gateway_id=$3 AND tenant_id=$4 AND binding_generation=$5")
+                .bind(original).bind(p.id).bind(&id).bind(&p.tenant_id).bind(generation).fetch_optional(&mut *tx).await?;
+            let allowed=match operation {45=>original_operation.is_some_and(|v|matches!(v,40..=44)),48=>original_operation==Some(47),_=>original_operation==Some(40)};
+            if !allowed {return Err(ApiError::new(StatusCode::NOT_FOUND,"NOT_FOUND"));}
         }
         let counts=sqlx::query("SELECT count(*) AS total,count(*) FILTER(WHERE tenant_id=$1) AS tenant,count(*) FILTER(WHERE gateway_id=$2) AS gateway FROM mgmt_tasks WHERE state IN ('QUEUED','RUNNING','UNKNOWN')").bind(&p.tenant_id).bind(&id).fetch_one(&mut *tx).await?;
         if counts.get::<i64, _>("total") >= 10000
@@ -1716,7 +1896,7 @@ async fn create_task(
     } else {
         let gateway_row=sqlx::query("SELECT binding_generation,connection_epoch,online_reported,last_seen FROM mgmt_gateways WHERE id=$1 AND tenant_id=$2 AND enabled FOR SHARE").bind(&id).bind(&p.tenant_id).fetch_optional(&mut *tx).await.map_err(|_| ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "INTERNAL"))?.ok_or(ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"))?;
         let binding_generation: i64 = gateway_row.get("binding_generation");
-        let power_epoch = if matches!(operation, 24..=29 | 31..=37) {
+        let power_epoch = if matches!(operation, 24..=29 | 31..=37 | 40..=43 | 47) {
             let online: bool = gateway_row.get("online_reported");
             let seen: Option<DateTime<Utc>> = gateway_row.get("last_seen");
             let epoch: Option<Uuid> = gateway_row.get("connection_epoch");
@@ -1970,7 +2150,7 @@ mod password_setup_tests {
             web_dir: String::new(),
             state_dir: String::new(),
         };
-        let app = App::new(pool.clone(), config, TaskCipher::load(&key).unwrap());
+        let app = App::new(pool.clone(), config, TaskCipher::load(&key).unwrap()).unwrap();
         let mut sessions = Vec::new();
         for _ in 0..2 {
             let token = auth::random_token();
@@ -2111,7 +2291,7 @@ mod gateway_registration_tests {
             web_dir: String::new(),
             state_dir: String::new(),
         };
-        let app = App::new(pool.clone(), config, TaskCipher::load(&key).unwrap());
+        let app = App::new(pool.clone(), config, TaskCipher::load(&key).unwrap()).unwrap();
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
         let base = format!("http://{}", listener.local_addr().unwrap());
         let server = tokio::spawn(async move {

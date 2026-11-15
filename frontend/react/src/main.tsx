@@ -16,6 +16,7 @@ import {
   type Task,
 } from "./api/client";
 import { Login } from "./features/access/Login";
+import { InitialSetup } from "./features/access/InitialSetup";
 import { Settings } from "./features/settings/Settings";
 import { ChangePassword } from "./features/access/ChangePassword";
 import { Gateways } from "./features/gateways/Gateways";
@@ -313,7 +314,7 @@ function TagRole({ role }: { role: string }) {
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <I18nProvider>
-      <App />
+        {location.pathname === "/setup" ? <InitialSetup /> : <App />}
     </I18nProvider>
   </React.StrictMode>,
 );

@@ -57,6 +57,32 @@ pub(crate) fn read_private(path: &Path) -> Result<Vec<u8>> {
     Ok(bytes)
 }
 
+pub(crate) fn lease(state: &Path) -> Result<File> {
+    directory(state)?;
+    let file = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .mode(0o600)
+        .custom_flags(libc::O_NOFOLLOW | libc::O_CLOEXEC | libc::O_NONBLOCK)
+        .open(state.join("tls-runtime.lock"))?;
+    let meta = file.metadata()?;
+    ensure!(
+        meta.is_file() && meta.uid() == unsafe { libc::geteuid() } && meta.mode() & 0o077 == 0,
+        "invalid console state lease"
+    );
+    ensure!(
+        unsafe {
+            libc::flock(
+                std::os::fd::AsRawFd::as_raw_fd(&file),
+                libc::LOCK_EX | libc::LOCK_NB,
+            )
+        } == 0,
+        "console state is already in use"
+    );
+    Ok(file)
+}
+
 /// Publish only complete bytes, without replacing an existing pending action.
 pub(crate) fn publish_new(path: &Path, bytes: &[u8]) -> Result<()> {
     let temporary = path.with_file_name(format!(".settings-new-{}", uuid::Uuid::new_v4()));

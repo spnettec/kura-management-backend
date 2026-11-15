@@ -24,6 +24,8 @@ axum = "0.8"
 axum-server = { version = "0.8", features = ["tls-rustls-no-provider"] }
 rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
 rustls-pemfile = "2"
+tokio-rustls = { version = "=0.26.6", default-features = false, features = ["ring", "tls12"] }
+tokio-util = { version = "=0.7.20", features = ["rt"] }
 sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "tls-rustls-ring", "postgres", "uuid", "chrono", "json", "migrate", "macros"] }
 chrono = { version = "0.4", features = ["serde"] }
 argon2 = { version = "0.5", features = ["std"] }
@@ -32,9 +34,11 @@ ring = "0.17"
 async-stream = "0.3"
 aes-gcm = "0.10"
 libc = "0.2"
+socket2 = "=0.6.5"
 x509-cert = { version = "=0.3.0", default-features = false, features = ["std"] }
 tower-http = { version = "0.6", features = ["fs", "set-header", "trace"] }
 
 [dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
 tempfile = "3"
 reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "cookies", "stream"] }

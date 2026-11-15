@@ -45,7 +45,7 @@ async fn postgres_nm_http_admission_contract_mirrors_the_firewall_family() {
         web_dir: String::new(),
         state_dir: String::new(),
     };
-    let app = App::new(pool.clone(), config, cipher.clone());
+    let app = App::new(pool.clone(), config, cipher.clone()).unwrap();
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
     let base = format!("http://{}", listener.local_addr().unwrap());
     struct Stop(tokio::task::JoinHandle<()>);

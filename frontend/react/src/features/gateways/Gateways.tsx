@@ -7,6 +7,7 @@ import { BootPanel } from "./BootPanel";
 import { HandoffPanel } from "./HandoffPanel";
 import { FirewallPanel } from "./FirewallPanel";
 import { NmPanel } from "./NmPanel";
+import { ImportedFirewallPanel } from "./ImportedFirewallPanel";
 import { SystemControlPanel } from "./SystemControlPanel";
 import { NetworkPanel } from "./NetworkPanel";
 import { TransferPanel } from "./TransferPanel";
@@ -135,6 +136,7 @@ export function Gateways({
             {user.role === "admin" && selected.capabilities.includes("recovery.ordinary.v1") && <HandoffPanel key={`handoff:${user.id}:${selected.id}`} gateway={selected} user={user} />}
             {user.role === "admin" && selected.capabilities.includes("firewall.remote.v1") && <FirewallPanel key={`firewall:${user.id}:${selected.id}:${selected.bindingGeneration}`} gateway={selected} user={user} />}
             {user.role === "admin" && selected.capabilities.includes("nm.remote.v1") && <NmPanel key={`nm:${user.id}:${selected.id}:${selected.bindingGeneration}`} gateway={selected} user={user} />}
+              {user.role === "admin" && selected.capabilities.includes("firewall.imported.original.v1") && <ImportedFirewallPanel key={`imported:${user.id}:${selected.id}:${selected.bindingGeneration}`} gateway={selected} user={user} />}
             {user.role === "admin" && selected.capabilities.includes("system.control.v1") && <SystemControlPanel key={`system:${user.id}:${selected.id}`} gateway={selected} user={user} />}
             {user.role === "admin" && (
               <TransferPanel

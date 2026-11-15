@@ -1,9 +1,12 @@
-import { Alert, Button, Card, Checkbox, Input, Space, Tag, Typography } from "antd";
+import { Alert, Button, Card, Checkbox, Input, Radio, Space, Tag, Typography } from "antd";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, apiDownload, ApiError, certificateFingerprint, saveBlob, type Session } from "../../api/client";
 import { errorText, LanguageSwitcher, useI18n } from "../../i18n/I18n";
+import { TlsActivation } from "./TlsActivation";
+import { ServerCsr, type CsrSelection } from "./ServerCsr";
 
 type TlsStatus = {
+  origin?: string;
   certificateFingerprint?: string | null;
   pendingFingerprint?: string | null;
   restartRequired?: boolean;
@@ -39,15 +42,18 @@ function Fingerprint({ label, value }: { label: string; value?: string | null })
   );
 }
 
-function RestartHint({ staged }: { staged: boolean }) {
+function RestartHint({ staged, activation = false }: { staged: boolean; activation?: boolean }) {
   const { t } = useI18n();
   if (!staged) return null;
-  return <Alert type="success" title={t("settings.staged")} description={t("settings.restart")} />;
+  return <Alert type="success" title={t(activation ? "settings.activation.staged" : "settings.staged")} description={t(activation ? "settings.activation.next" : "settings.restart")} />;
 }
 
-function TlsCard({ user }: { user: Session }) {
+function TlsCard({ user, revision: refreshRevision, onStaged }: { user: Session; revision: number; onStaged: () => void }) {
   const { t } = useI18n();
   const [status, setStatus] = useState<TlsStatus>();
+  const [identityMode, setIdentityMode] = useState("generated");
+  const [csrBlocked, setCsrBlocked] = useState(true);
+  const csrChanged = useCallback((_selection: CsrSelection | undefined, blocked: boolean) => setCsrBlocked(blocked), []);
   const [pem, setPem] = useState("");
   const [key, setKey] = useState("");
   const [fingerprint, setFingerprint] = useState("");
@@ -65,7 +71,7 @@ function TlsCard({ user }: { user: Session }) {
   }, []);
   useEffect(() => {
     void refresh();
-  }, [refresh]);
+  }, [refresh, refreshRevision]);
   async function review() {
     setError(undefined);
     setConfirmed(false);
@@ -85,6 +91,7 @@ function TlsCard({ user }: { user: Session }) {
       setFingerprint("");
       setConfirmed(false);
       await refresh();
+        onStaged();
     } catch (e) {
       setError(e);
     } finally {
@@ -96,6 +103,10 @@ function TlsCard({ user }: { user: Session }) {
       <p className="muted">{t("settings.tls.description")}</p>
       <Fingerprint label={t("settings.current")} value={status?.certificateFingerprint} />
       <Fingerprint label={t("settings.pending")} value={status?.pendingFingerprint} />
+      <Radio.Group aria-label={t("csr.mode")} value={identityMode} disabled={busy || csrBlocked} onChange={e => { setIdentityMode(e.target.value); setPem(""); setKey(""); setFingerprint(""); setConfirmed(false); revision.current++; }}>
+        <Radio.Button value="generated">{t("csr.generated")}</Radio.Button><Radio.Button value="import">{t("csr.existing")}</Radio.Button>
+      </Radio.Group>
+      {identityMode === "generated" ? <ServerCsr scope={`${location.origin}:${user.username}`} origin={status?.origin ?? location.origin} csrf={user.csrf} disabled={busy || !status || !!status.pendingFingerprint} onChange={csrChanged} onStaged={() => { setStaged(true); void refresh(); onStaged(); }} /> :
       <Space direction="vertical" style={{ width: "100%" }}>
         <PemFileInput label={`${t("settings.selectFile")}: ${t("settings.tls.cert")}`} disabled={busy} onStart={() => { setBusy(true); revision.current++; setFingerprint(""); setConfirmed(false); setError(undefined); }} onEnd={() => setBusy(false)} onRead={value => { revision.current++; setPem(value); setFingerprint(""); setConfirmed(false); setError(undefined); }} onError={setError} />
         <PemFileInput label={`${t("settings.selectFile")}: ${t("settings.tls.key")}`} disabled={busy} onStart={() => { setBusy(true); revision.current++; setFingerprint(""); setConfirmed(false); setError(undefined); }} onEnd={() => setBusy(false)} onRead={value => { revision.current++; setKey(value); setConfirmed(false); setError(undefined); }} onError={setError} />
@@ -121,14 +132,15 @@ function TlsCard({ user }: { user: Session }) {
         <Button aria-label={t("settings.tls.submit")} type="primary" disabled={busy || !confirmed || !fingerprint || !key} loading={busy} onClick={() => void submit()}>
           {t("settings.tls.submit")}
         </Button>
-        <RestartHint staged={staged} />
+          <RestartHint staged={staged && !!status?.pendingFingerprint} activation />
         {error !== undefined && <Alert type="error" title={errorText(error, t)} />}
-      </Space>
+      </Space>}
+      {identityMode === "generated" && <RestartHint staged={staged && !!status?.pendingFingerprint} activation />}
     </Card>
   );
 }
 
-function CaCard({ user }: { user: Session }) {
+function CaCard({ user, revision: refreshRevision, onStaged }: { user: Session; revision: number; onStaged: () => void }) {
   const { t } = useI18n();
   const [status, setStatus] = useState<CaStatus>();
   const [pem, setPem] = useState("");
@@ -147,7 +159,7 @@ function CaCard({ user }: { user: Session }) {
   }, []);
   useEffect(() => {
     void refresh();
-  }, [refresh]);
+  }, [refresh, refreshRevision]);
   async function review() {
     setError(undefined);
     setConfirmed(false);
@@ -166,6 +178,7 @@ function CaCard({ user }: { user: Session }) {
       setFingerprint("");
       setConfirmed(false);
       await refresh();
+        onStaged();
     } catch (e) {
       setError(e);
     } finally {
@@ -202,7 +215,7 @@ function CaCard({ user }: { user: Session }) {
         <Button aria-label={t("settings.ca.submit")} type="primary" disabled={busy || !confirmed || !fingerprint} loading={busy} onClick={() => void submit()}>
           {t("settings.ca.submit")}
         </Button>
-        <RestartHint staged={staged} />
+          <RestartHint staged={staged && !!status?.pendingFingerprint} activation />
         {error !== undefined && <Alert type="error" title={errorText(error, t)} />}
       </Space>
     </Card>
@@ -364,12 +377,15 @@ function TaskKeyCard({ user }: { user: Session }) {
 
 export function Settings({ user }: { user: Session }) {
   const { t } = useI18n();
+  const [revision, setRevision] = useState(0);
+  const changed = useCallback(() => setRevision(value => value + 1), []);
   if (user.role !== "admin") return <Alert type="warning" title={t("settings.adminOnly")} />;
   return (
     <Space direction="vertical" style={{ width: "100%" }}>
       <Alert type="info" title={t("settings.description")} />
-      <TlsCard user={user} />
-      <CaCard user={user} />
+      <TlsCard user={user} revision={revision} onStaged={changed} />
+      <CaCard user={user} revision={revision} onStaged={changed} />
+      <TlsActivation user={user} revision={revision} onApplied={changed} />
       <TaskKeyCard user={user} />
     </Space>
   );

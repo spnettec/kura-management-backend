@@ -10,12 +10,48 @@ use std::{
     path::{Path, PathBuf},
 };
 
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
-struct Generation {
+pub(crate) struct Generation {
     id: uuid::Uuid,
     fingerprint: String,
     actor: String,
+}
+
+/// Read a selection without activating pending material. Runtime activation owns
+/// the joint HTTPS/mTLS manifest; the legacy startup helper remains for migration.
+pub(crate) fn selection(config: &Config, staged: bool) -> Result<Option<Generation>> {
+    reject_legacy(config)?;
+    let path = if staged { pending(config) } else {
+        Path::new(&config.state_dir).join("tls-active.json")
+    };
+    if !path.try_exists()? { return Ok(None); }
+    let generation: Generation = serde_json::from_slice(&read_private(&path)?)?;
+    generation_paths(config, &generation)?;
+    Ok(Some(generation))
+}
+
+pub(crate) fn reject_legacy(config: &Config) -> Result<()> {
+    for name in ["tls-server.pem", "tls-server.key"] {
+        ensure!(!Path::new(&config.state_dir).join("pending").join(name).exists(),
+            "legacy TLS pending files require explicit review");
+    }
+    Ok(())
+}
+
+pub(crate) fn select(config: &mut Config, generation: &Generation) -> Result<()> {
+    let (cert, key) = generation_paths(config, generation)?;
+    config.tls_cert = cert.to_str().context("non-UTF8 TLS path")?.into();
+    config.tls_key = key.to_str().context("non-UTF8 TLS path")?.into();
+    Ok(())
+}
+
+pub(crate) fn consume(config: &Config, selected: &Option<Generation>) -> Result<()> {
+    if selected.is_some() && &selection(config, true)? == selected {
+        fs::remove_file(pending(config))?;
+        sync_parent(&pending(config))?;
+    }
+    Ok(())
 }
 
 pub fn validate_pair(cert: &str, key: &str) -> Result<String> {
@@ -49,6 +85,51 @@ pub(crate) fn validate_leaf_certificate(pem: &str) -> Result<String> {
     }
     Ok(fingerprint)
 }
+
+/// Validate a server leaf against its intended origin before importing or staging it.
+pub(crate) fn validate_server_identity(cert: &str, key: &str, origin: &str) -> Result<String> {
+    let fingerprint = validate_pair(cert, key)?;
+    let certs = rustls_pemfile::certs(&mut cert.as_bytes()).collect::<std::io::Result<Vec<_>>>()?;
+    let origin: axum::http::Uri = origin.parse()?;
+    ensure!(
+        origin.scheme_str() == Some("https") && origin.path() == "/" && origin.query().is_none(),
+        "console origin must be an HTTPS origin"
+    );
+    let host = origin
+        .host()
+        .context("console origin host required")?
+        .trim_start_matches('[')
+        .trim_end_matches(']');
+    let name = rustls::pki_types::ServerName::try_from(host.to_owned())?;
+    let leaf = certs.first().context("server certificate required")?;
+    let parsed = rustls::server::ParsedCertificate::try_from(leaf)?;
+    rustls::client::verify_server_name(&parsed, &name)?;
+    {
+        use x509_cert::der::Decode;
+        let leaf = x509_cert::Certificate::from_der(leaf.as_ref())?;
+        if let Some((_, usage)) = leaf
+            .tbs_certificate()
+            .get_extension::<x509_cert::ext::pkix::ExtendedKeyUsage>()?
+        {
+            ensure!(
+                usage
+                    .0
+                    .iter()
+                    .any(|oid| oid.to_string() == "1.3.6.1.5.5.7.3.1"),
+                "server certificate extended key usage does not allow server authentication"
+            );
+        }
+        let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH)?;
+        let validity = leaf.tbs_certificate().validity();
+        ensure!(
+            validity.not_before.to_unix_duration() <= now
+                && now <= validity.not_after.to_unix_duration(),
+            "server certificate is outside its validity period"
+        );
+    }
+    Ok(fingerprint)
+}
+
 fn generation_paths(config: &Config, g: &Generation) -> Result<(PathBuf, PathBuf)> {
     let root = Path::new(&config.state_dir).join("tls-generations");
     for path in [&root, &root.join(g.id.to_string())] {
@@ -121,6 +202,7 @@ pub fn pending_fingerprint(config: &Config) -> Result<Option<String>> {
     Ok(Some(g.fingerprint))
 }
 
+#[cfg(test)]
 pub fn activate(config: &mut Config) -> Result<()> {
     let state = PathBuf::from(&config.state_dir);
     // Do not replay old, potentially half-staged updates from the shell path.

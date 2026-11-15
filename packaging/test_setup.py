@@ -141,7 +141,7 @@ class ConsoleInstanceTests(unittest.TestCase):
     def test_activation_targets_the_selected_instance(self):
         setup = console_setup.Setup(instance='center2')
         calls = []
-        with patch.object(setup, 'check'), patch.object(setup, 'systemctl', side_effect=lambda *args: calls.append(args)):
+        with patch.object(setup, 'launch_check'), patch.object(setup, 'systemctl', side_effect=lambda *args: calls.append(args)):
             setup.activate()
         self.assertEqual(calls, [('daemon-reload',), ('enable', setup.unit), ('start', setup.unit)])
 

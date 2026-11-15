@@ -1,25 +1,15 @@
 #!/bin/sh
 # Root entrypoint: prepare state, then drop privileges for the console itself.
-#   - serve (default): prepare private bootstrap TLS, init
-#     the task key if missing, migrate (+ seed bootstrap admin/admin when no
-#     admin exists), then exec the server as `console`.
+#   - serve (default): start the HTTPS setup wizard as `console`.
+#     The server owns configuration, key creation and database initialization.
 #   - anything else: forward to the binary as `console` (migrate, create-user, ...).
 set -e
 STATE=/var/lib/kura-management-console
 BINARY=/usr/local/bin/yofc-management-console
 CONSOLE_USER=console
 run() {
-  setpriv --reuid "$CONSOLE_USER" --regid "$CONSOLE_USER" --clear-groups \
-    env DATABASE_URL="$DATABASE_URL" \
-        CONSOLE_DATA_KEY_FILE="$CONSOLE_DATA_KEY_FILE" \
-        CONSOLE_ORIGIN="$CONSOLE_ORIGIN" \
-        CONSOLE_HTTP_ADDR="$CONSOLE_HTTP_ADDR" \
-        CONSOLE_GRPC_ADDR="$CONSOLE_GRPC_ADDR" \
-        CONSOLE_TLS_CERT="$CONSOLE_TLS_CERT" \
-        CONSOLE_TLS_KEY="$CONSOLE_TLS_KEY" \
-        CONSOLE_CLIENT_CA="$CONSOLE_CLIENT_CA" \
-        CONSOLE_STATE_DIR="$STATE" \
-        CONSOLE_WEB_DIR="$CONSOLE_WEB_DIR" \
+  exec setpriv --reuid "$CONSOLE_USER" --regid "$CONSOLE_USER" --clear-groups \
+    env CONSOLE_STATE_DIR="$STATE" \
         "$BINARY" "$@"
 }
 prepare_tls() {
@@ -35,30 +25,30 @@ prepare_tls() {
   CONSOLE_TLS_CERT="$BOOTSTRAP_TLS/server.pem"
   CONSOLE_TLS_KEY="$BOOTSTRAP_TLS/server.key"
   CONSOLE_CLIENT_CA="$BOOTSTRAP_TLS/client-ca.pem"
+  export CONSOLE_TLS_CERT CONSOLE_TLS_KEY CONSOLE_CLIENT_CA
   # Pending TLS/CA generations and DB-bound keys are resolved by the server
   # after dropping privileges. Root never copies console-writable pending data.
 }
 case "${1:-serve}" in
   serve)
+    [ "$#" -le 1 ] || { echo 'Unexpected serve arguments' >&2; exit 2; }
+    [ ! -L "$STATE" ] || { echo 'State directory must not be a symlink' >&2; exit 1; }
     mkdir -p "$STATE"
+    OWNER=$(stat -c '%u' "$STATE")
+    EXPECTED=$(id -u "$CONSOLE_USER")
+    [ "$OWNER" = "$EXPECTED" ] || [ "$OWNER" = 0 ] || { echo 'Unexpected state directory owner' >&2; exit 1; }
+    # A new named volume is root-owned. Never take over retained files or
+    # recursively rewrite ownership in a prior installation.
+    if [ "$OWNER" = 0 ] && [ -n "$(find "$STATE" -mindepth 1 -maxdepth 1 -print -quit)" ]; then
+      echo 'Nonempty root-owned state requires explicit recovery' >&2; exit 1
+    fi
     chown "$CONSOLE_USER:$CONSOLE_USER" "$STATE"
     chmod 0700 "$STATE"
-    if [ ! -f "$CONSOLE_DATA_KEY_FILE" ]; then
-      run task-key-init "$CONSOLE_DATA_KEY_FILE"
+    if [ -n "${CONSOLE_TLS_CERT:-}" ] && [ -n "${CONSOLE_TLS_KEY:-}" ] && [ -n "${CONSOLE_CLIENT_CA:-}" ]; then
+      prepare_tls
     fi
-    run migrate
-    prepare_tls
     exec setpriv --reuid "$CONSOLE_USER" --regid "$CONSOLE_USER" --clear-groups \
-      env DATABASE_URL="$DATABASE_URL" \
-          CONSOLE_DATA_KEY_FILE="$CONSOLE_DATA_KEY_FILE" \
-          CONSOLE_ORIGIN="$CONSOLE_ORIGIN" \
-          CONSOLE_HTTP_ADDR="$CONSOLE_HTTP_ADDR" \
-          CONSOLE_GRPC_ADDR="$CONSOLE_GRPC_ADDR" \
-          CONSOLE_TLS_CERT="$CONSOLE_TLS_CERT" \
-          CONSOLE_TLS_KEY="$CONSOLE_TLS_KEY" \
-          CONSOLE_CLIENT_CA="$CONSOLE_CLIENT_CA" \
-          CONSOLE_STATE_DIR="$STATE" \
-          CONSOLE_WEB_DIR="$CONSOLE_WEB_DIR" \
+      env CONSOLE_STATE_DIR="$STATE" \
           "$BINARY" serve
     ;;
   *)

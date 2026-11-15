@@ -18,6 +18,7 @@ use yofc_management_protocol::{
 
 #[derive(Clone)]
 pub struct ControlService {
+    pub(crate) gate: Arc<crate::maintenance::Gate>,
     pub pool: PgPool,
     // Shared with HTTP. Each DB operation holds a read guard through commit;
     // rotation takes the exclusive guard and durable DB binding lock.
@@ -36,6 +37,19 @@ fn internal(e: impl std::fmt::Display) -> Status {
     tracing::error!(error=%e,"control operation failed");
     Status::unavailable("INTERNAL")
 }
+fn transport_identity<T>(request: &Request<T>) -> Result<(Arc<Vec<rustls::pki_types::CertificateDer<'static>>>, tokio_util::sync::CancellationToken), Status> {
+    if let Some(info) = request.extensions().get::<crate::tls_transport::GatewayTls>() {
+        if info.epoch.is_cancelled() { return Err(Status::permission_denied("FORBIDDEN")); }
+        return Ok((info.tls.peer_certs().ok_or(Status::unauthenticated("UNAUTHENTICATED"))?, info.epoch.clone()));
+    }
+    // Compatibility for explicit test servers using tonic's static TLS adapter.
+    // The production incoming stream always supplies GatewayTls.
+    #[cfg(test)]
+    if let Some(certs) = request.peer_certs() {
+        return Ok((certs, tokio_util::sync::CancellationToken::new()));
+    }
+    Err(Status::unauthenticated("UNAUTHENTICATED"))
+}
 #[tonic::async_trait]
 impl Control for ControlService {
     type ConnectStream = Pin<Box<dyn Stream<Item = Result<ConsoleFrame, Status>> + Send>>;
@@ -48,9 +62,7 @@ impl Control for ControlService {
             .clone()
             .try_acquire_owned()
             .map_err(|_| Status::resource_exhausted("RESOURCE_EXHAUSTED"))?;
-        let certs = request
-            .peer_certs()
-            .ok_or(Status::unauthenticated("UNAUTHENTICATED"))?;
+        let (certs, transport_epoch) = transport_identity(&request)?;
         let leaf = certs
             .first()
             .ok_or(Status::unauthenticated("UNAUTHENTICATED"))?;
@@ -98,6 +110,7 @@ impl Control for ControlService {
         }
         let reconcile = hello.capabilities.iter().any(|s| s == "task.reconcile.v1");
         let epoch = Uuid::new_v4();
+        let admission = self.gate.enter().map_err(|_|Status::unavailable("MAINTENANCE"))?;
         let mut transaction = self.pool.begin().await.map_err(internal)?;
         // Old queued or running work is not leased by a newer binding generation.
         let owned=sqlx::query("UPDATE mgmt_gateways SET connection_epoch=$2,agent_version=$3,boot_id=$4,capabilities=$5,sequence=0 WHERE id=$1 AND binding_generation=$6 RETURNING id").bind(&gateway).bind(epoch).bind(hello.agent_version).bind(hello.boot_id).bind(json!(hello.capabilities)).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
@@ -108,15 +121,18 @@ impl Control for ControlService {
             .await
             .map_err(internal)?;
         transaction.commit().await.map_err(internal)?;
+        drop(admission);
         let binding_generation = hello.binding_generation as i64;
         let (tx, rx) = mpsc::channel(8);
         let pool = self.pool.clone();
         let cipher = self.cipher.clone();
+        let gate = self.gate.clone();
         tokio::spawn(async move {
             let _permit = permit;
-            let result = run_stream(
+            let work = run_stream(
                 &pool,
                 &cipher,
+                &gate,
                 GatewaySession {
                     gateway,
                     tenant,
@@ -127,8 +143,12 @@ impl Control for ControlService {
                 },
                 &mut input,
                 &tx,
-            )
-            .await;
+            );
+            let result = tokio::select! {
+                biased;
+                _ = transport_epoch.cancelled() => Err(Status::permission_denied("FORBIDDEN")),
+                result = work => result,
+            };
             if let Err(error) = result {
                 let _ = tx.try_send(Err(error));
             }
@@ -141,9 +161,7 @@ impl Control for ControlService {
         request: Request<TransferRevocationCheck>,
     ) -> Result<Response<TransferRevocationStatus>, Status> {
         // Gateway identity comes from the mTLS leaf certificate, never from the payload.
-        let certs = request
-            .peer_certs()
-            .ok_or(Status::unauthenticated("UNAUTHENTICATED"))?;
+        let (certs, _transport_epoch) = transport_identity(&request)?;
         let leaf = certs
             .first()
             .ok_or(Status::unauthenticated("UNAUTHENTICATED"))?;
@@ -199,6 +217,7 @@ impl Control for ControlService {
 async fn run_stream(
     pool: &PgPool,
     ciphers: &Arc<tokio::sync::RwLock<TaskCipher>>,
+    gate: &crate::maintenance::Gate,
     session: GatewaySession,
     input: &mut Streaming<AgentFrame>,
     tx: &mpsc::Sender<Result<ConsoleFrame, Status>>,
@@ -224,6 +243,7 @@ async fn run_stream(
             _=tx.closed()=>return Ok(()),
             frame=input.message()=>{
                 let Some(frame)=frame? else{return Ok(())};
+                let _admission=gate.wait_enter().await.map_err(|_|Status::unavailable("MAINTENANCE"))?;
                 // Every message checks current certificate assignment, disablement and connection ownership.
                 let current:bool=sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE id=$1 AND enabled AND connection_epoch=$2 AND certificate_sha256=$3 AND binding_generation=$4)").bind(gateway).bind(epoch).bind(fingerprint).bind(binding_generation).fetch_one(pool).await.map_err(internal)?;
                 if !current{return Err(Status::permission_denied("FORBIDDEN"));}
@@ -245,6 +265,11 @@ async fn run_stream(
                 }
             }
             _=tick.tick()=>{
+                let _admission=match gate.enter(){
+                    Ok(permit)=>permit,
+                    Err(error) if matches!(error.downcast_ref::<crate::maintenance::Blocked>(),Some(crate::maintenance::Blocked::Busy))=>continue,
+                    Err(_)=>return Err(Status::unavailable("MAINTENANCE")),
+                };
                 if last_heartbeat.elapsed()>Duration::from_secs(15){return Err(Status::deadline_exceeded("TIMEOUT"));}
                 let current:bool=sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE id=$1 AND enabled AND connection_epoch=$2 AND certificate_sha256=$3)").bind(gateway).bind(epoch).bind(fingerprint).fetch_one(pool).await.map_err(internal)?;
                 if !current{return Err(Status::permission_denied("FORBIDDEN"));}
@@ -257,14 +282,14 @@ async fn run_stream(
                 let owned=sqlx::query("SELECT id FROM mgmt_gateways WHERE id=$1 AND enabled AND connection_epoch=$2 AND binding_generation=$3 FOR SHARE")
                     .bind(gateway).bind(epoch).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
                 if owned.is_none(){return Err(Status::permission_denied("FORBIDDEN"));}
-                let row=sqlx::query("UPDATE mgmt_tasks SET state='RUNNING',lease_until=now()+interval '10 seconds',dispatch_epoch=$2 WHERE id=(SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND binding_generation=$3 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2 AND g.binding_generation=$3) AND (operation<>12 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.configuration.update')) AND (operation NOT IN (13,14) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.snapshot.write')) AND (operation NOT BETWEEN 15 AND 19 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'ordinary.boot.v1')) AND (operation NOT BETWEEN 20 AND 22 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'recovery.ordinary.v1')) AND (operation<>29 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'recovery.ordinary.cancel.v1' AND g.capabilities ? 'recovery.ordinary.v1')) AND (operation NOT BETWEEN 23 AND 28 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'system.control.v1')) AND (operation NOT IN (24,25) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'service.restart.v1')) AND (operation NOT IN (26,27) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'system.reboot.v1')) AND ((operation NOT BETWEEN 24 AND 29 AND operation NOT BETWEEN 31 AND 33 AND operation NOT BETWEEN 34 AND 37) OR dispatch_epoch=$2) AND (operation NOT BETWEEN 30 AND 33 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'firewall.remote.v1')) AND (operation NOT BETWEEN 34 AND 37 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'nm.remote.v1')) AND (state='QUEUED' OR (state='RUNNING' AND operation IN (1,2,3,4,8,9,11,15,20,23,30,34))) AND expires_at>now() AND (SELECT count(*) FROM mgmt_tasks current_tasks WHERE current_tasks.gateway_id=$1 AND current_tasks.state='RUNNING' AND current_tasks.lease_until>now() AND current_tasks.dispatch_epoch=$2)<2 AND (lease_until IS NULL OR lease_until<now()) ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,tenant_id,gateway_id,operation,expires_at,idempotency_key,input").bind(gateway).bind(epoch).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
+                let row=sqlx::query("UPDATE mgmt_tasks SET state='RUNNING',lease_until=now()+interval '10 seconds',dispatch_epoch=$2 WHERE id=(SELECT id FROM mgmt_tasks WHERE gateway_id=$1 AND binding_generation=$3 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.enabled AND g.connection_epoch=$2 AND g.binding_generation=$3) AND (operation<>12 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.configuration.update')) AND (operation NOT IN (13,14) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'kura.snapshot.write')) AND (operation NOT BETWEEN 15 AND 19 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'ordinary.boot.v1')) AND (operation NOT BETWEEN 20 AND 22 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'recovery.ordinary.v1')) AND (operation<>29 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'recovery.ordinary.cancel.v1' AND g.capabilities ? 'recovery.ordinary.v1')) AND (operation NOT BETWEEN 23 AND 28 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'system.control.v1')) AND (operation NOT IN (24,25) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'service.restart.v1')) AND (operation NOT IN (26,27) OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'system.reboot.v1')) AND ((operation NOT BETWEEN 24 AND 29 AND operation NOT BETWEEN 31 AND 33 AND operation NOT BETWEEN 34 AND 37) OR dispatch_epoch=$2) AND (operation NOT BETWEEN 30 AND 33 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'firewall.remote.v1')) AND (operation NOT BETWEEN 34 AND 37 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'nm.remote.v1')) AND (operation NOT BETWEEN 38 AND 48 OR EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'firewall.imported.original.v1')) AND (operation NOT IN (40,41,42,43,47) OR (dispatch_epoch=$2 AND EXISTS(SELECT 1 FROM mgmt_gateways g WHERE g.id=$1 AND g.capabilities ? 'firewall.imported.write.v1'))) AND (state='QUEUED' OR (state='RUNNING' AND operation IN (1,2,3,4,8,9,11,15,20,23,30,34,38,39,45,46,48))) AND expires_at>now() AND (SELECT count(*) FROM mgmt_tasks current_tasks WHERE current_tasks.gateway_id=$1 AND current_tasks.state='RUNNING' AND current_tasks.lease_until>now() AND current_tasks.dispatch_epoch=$2)<2 AND (lease_until IS NULL OR lease_until<now()) ORDER BY created_at LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,tenant_id,gateway_id,operation,expires_at,idempotency_key,input").bind(gateway).bind(epoch).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
                 let payload = row.as_ref().map(|r| cipher.open_row(r,"input")).transpose().map_err(internal)?;
                 if let Some(ref r)=row {
                     db::event(&mut *transaction,tenant,"task",&r.get::<Uuid,_>("id").to_string(),0,json!({"state":"RUNNING"})).await.map_err(internal)?;
                 }
                 transaction.commit().await.map_err(internal)?;
                 if let (Some(r),Some(payload))=(row,payload) {
-                    let command=ReadCommand{firewall_change:payload.get("firewallChange").filter(|v|!v.is_null()).map(crate::firewall_tasks::wire_change).transpose().map_err(internal)?,firewall_action:payload.get("firewallAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,nm_change:payload.get("nmChange").filter(|v|!v.is_null()).map(crate::nm_tasks::wire_change).transpose().map_err(internal)?,nm_action:payload.get("nmAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,system_control_action:payload.get("systemControlAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,ordinary_handoff_action:payload.get("ordinaryHandoffAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,ordinary_boot_action:payload.get("ordinaryBootAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_snapshot_rollback:payload.get("kuraSnapshotRollback").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_snapshot_save:payload.get("kuraSnapshotSave").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration_update:payload.get("kuraConfigurationUpdate").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration:payload.get("kuraConfiguration").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_takeover:payload.get("networkTakeover").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_change:payload.get("networkChange").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_action:payload.get("networkAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,command_id:r.get::<Uuid,_>("id").to_string(),operation:r.get("operation"),expires_at_unix_ms:r.get::<DateTime<Utc>,_>("expires_at").timestamp_millis(),idempotency_key:r.get("idempotency_key")};
+                    let command=ReadCommand{imported_firewall:payload.get("importedFirewall").filter(|v|!v.is_null()).map(|v|serde_json::from_value::<yofc_management_protocol::imported::Envelope>(v.clone()).and_then(|v|v.to_wire().map_err(serde::de::Error::custom))).transpose().map_err(internal)?,firewall_change:payload.get("firewallChange").filter(|v|!v.is_null()).map(crate::firewall_tasks::wire_change).transpose().map_err(internal)?,firewall_action:payload.get("firewallAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,nm_change:payload.get("nmChange").filter(|v|!v.is_null()).map(crate::nm_tasks::wire_change).transpose().map_err(internal)?,nm_action:payload.get("nmAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,system_control_action:payload.get("systemControlAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,ordinary_handoff_action:payload.get("ordinaryHandoffAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,ordinary_boot_action:payload.get("ordinaryBootAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_snapshot_rollback:payload.get("kuraSnapshotRollback").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_snapshot_save:payload.get("kuraSnapshotSave").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration_update:payload.get("kuraConfigurationUpdate").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,kura_configuration:payload.get("kuraConfiguration").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_takeover:payload.get("networkTakeover").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_change:payload.get("networkChange").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,network_action:payload.get("networkAction").filter(|v|!v.is_null()).map(|v|serde_json::from_value(v.clone())).transpose().map_err(internal)?,command_id:r.get::<Uuid,_>("id").to_string(),operation:r.get("operation"),expires_at_unix_ms:r.get::<DateTime<Utc>,_>("expires_at").timestamp_millis(),idempotency_key:r.get("idempotency_key")};
                     tx.try_send(Ok(ConsoleFrame{payload:Some(console_frame::Payload::Command(command))})).map_err(|_|Status::resource_exhausted("RESOURCE_EXHAUSTED"))?;
                 }
                 if reconcile {
@@ -277,10 +302,11 @@ async fn run_stream(
         }
     }
 }
-pub async fn maintenance(pool: PgPool) {
+pub async fn maintenance(pool: PgPool, gate: Arc<crate::maintenance::Gate>) {
     let mut tick = tokio::time::interval(Duration::from_secs(5));
     loop {
         tick.tick().await;
+        let Ok(_admission)=gate.enter() else{continue};
         let result: anyhow::Result<()>=async {
             let mut transaction=pool.begin().await?;
             let rows=sqlx::query("UPDATE mgmt_gateways SET online_reported=false,revision=revision+1 WHERE online_reported AND (NOT enabled OR last_seen<now()-interval '15 seconds') RETURNING id,tenant_id,revision").fetch_all(&mut *transaction).await?;

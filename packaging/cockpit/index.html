@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YOFC Console Setup</title><link rel="stylesheet" href="installer.css"><script src="../base1/cockpit.js"></script><script defer src="native-packages.js"></script><script defer src="installer.js"></script></head>
+<body><main>
+  <button id="language" type="button">English</button>
+  <h1 id="title"></h1><p id="intro"></p>
+  <section><h2 id="targetTitle"></h2>
+    <label><span id="modeLabel"></span><select id="mode"><option value="native" id="nativeOption"></option><option value="docker" id="dockerOption"></option></select></label>
+    <div id="containerRow" hidden><button id="refresh" type="button"></button><label><span id="containerLabel"></span><select id="container"></select></label></div>
+  </section>
+  <section id="nativePackages"><h2 id="nativeTitle"></h2><p id="nativeHelp"></p>
+    <button id="nativeRefresh" type="button"></button><p id="nativeInstalledState" role="status"></p><p id="nativeHostState" role="status"></p><p id="nativeScope"></p>
+    <label><span id="nativePackageLabel"></span><select id="nativePackage"></select></label><p id="nativePackageInfo"></p>
+    <label><span id="nativeFileLabel"></span><input id="nativeFile" type="file" accept=".deb"></label>
+    <button id="nativeUpload" type="button" disabled></button>
+    <label class="approval"><input id="nativeApprove" type="checkbox" disabled><span id="nativeApproveLabel"></span></label>
+    <button id="nativeInstall" type="button" disabled></button><button id="nativeObserve" type="button" disabled></button>
+    <button id="nativeRetire" type="button" disabled></button><button id="nativeVerify" type="button" disabled></button>
+    <button id="nativeFinalize" type="button" disabled></button><button id="nativeFinish" type="button" disabled></button>
+    <p id="nativeResult" role="status" aria-live="polite"></p>
+  </section>
+  <section id="nativeLaunch"><h2 id="nativeLaunchTitle"></h2>
+    <label id="instanceRow"><span id="instanceLabel"></span><input id="instance" maxlength="32" autocomplete="off"><small id="instanceHelp"></small></label>
+    <div id="nativeActions"><label><span id="portLabel"></span><input id="port" type="number" min="1024" max="65535" value="18443"></label><button id="status" type="button" disabled></button><button id="start" type="button" disabled></button></div>
+  </section>
+  <section id="dockerActions" hidden><h2 id="dockerTitle"></h2><p id="dockerHelp"></p>
+    <button id="dockerRefresh" type="button"></button><p id="dockerEngine" role="status"></p>
+    <label><span id="dockerImageLabel"></span><select id="dockerImage"></select></label>
+    <label><span id="dockerArchiveLabel"></span><input id="dockerArchive" type="file" accept=".tar.gz,.tgz"></label>
+    <button id="dockerUpload" type="button"></button><button id="dockerImport" type="button" disabled></button>
+    <button id="dockerVerifyImport" type="button" disabled></button>
+    <label><span id="dockerNameLabel"></span><input id="dockerName" maxlength="32" autocomplete="off"></label>
+    <label><span id="dockerHttpLabel"></span><input id="dockerHttp" type="number" min="1024" max="65535" value="18443"></label>
+    <label><span id="dockerGrpcLabel"></span><input id="dockerGrpc" type="number" min="1024" max="65535" value="18444"></label>
+    <button id="dockerDeploy" type="button" disabled></button><button id="dockerObserve" type="button"></button>
+    <button id="dockerStatus" type="button"></button><p id="dockerResult" role="status" aria-live="polite"></p>
+    <h2 id="dockerMaintenanceTitle"></h2><p id="dockerMaintenanceHelp"></p>
+    <button id="dockerFreeze" type="button"></button><button id="dockerStop" type="button" disabled></button>
+    <button id="dockerResume" type="button" disabled></button><button id="dockerUpgrade" type="button" disabled></button>
+    <button id="dockerMaintenanceObserve" type="button"></button><p id="dockerMaintenanceResult" role="status" aria-live="polite"></p>
+    <button id="dockerVerifyStarted" type="button" disabled></button>
+  </section>
+  <p id="service" role="status"></p>
+  <section><h2 id="credentialTitle"></h2><p id="credentialHelp"></p>
+    <button id="read" type="button"></button>
+    <dl><dt id="identityLabel"></dt><dd id="identity">—</dd><dt id="fingerprintLabel"></dt><dd id="fingerprint">—</dd></dl>
+    <button id="download" type="button" disabled></button><p id="privateNotice"></p>
+  </section>
+  <section><h2 id="openTitle"></h2><label><span id="urlLabel"></span><input id="url" type="url" maxlength="512"></label>
+    <p id="trustNotice"></p><button id="open" type="button"></button>
+  </section>
+  <p id="message" role="status" aria-live="polite"></p>
+  <section id="maintenanceActions"><h2 id="maintenanceTitle"></h2><p id="maintenanceHelp"></p>
+    <button id="maintenanceObserve" type="button"></button><button id="maintenanceBegin" type="button"></button>
+    <button id="maintenanceStop" type="button" disabled></button><button id="maintenanceComplete" type="button" disabled></button>
+    <button id="maintenanceCancel" type="button" disabled></button>
+    <p id="maintenanceResult" role="status"></p>
+  </section>
+</main></body></html>

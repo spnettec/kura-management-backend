@@ -1,12 +1,19 @@
 """Embedded in Debian maintainer scripts."""
 import grp
 import pwd
+import uuid
+if 'HostControl' not in globals():
+    from host_control import HostControl
 
 
 def lifecycle(script, action):
     setup = Setup()
+    control = HostControl(setup)
     if script == 'preinst' and action in ('install', 'upgrade'):
-        setup.guard_all_instances()
+        active=control.status()['active']
+        identity=active['operationId'] if active else str(uuid.uuid4())
+        control.begin(identity)
+        control.stop(identity)
     elif script == 'postinst' and action == 'configure':
         try:
             user = pwd.getpwnam(SERVICE_USER)
@@ -38,15 +45,16 @@ def lifecycle(script, action):
             setup.put(marker, 'kura-management-console-v1\n', 0o600)
             setup.run(['chown', f'{SERVICE_USER}:{SERVICE_USER}', str(marker)], check=True)
         setup.systemctl('daemon-reload')
-        print('Installed without starting. Configure TLS and task key, migrate, then explicitly activate.')
+        active=control.status()['active']
+        if active is None:
+            raise RuntimeError('Original package maintenance operation missing; preserve state')
+        control.complete(active['operationId'],PACKAGE_BINARY_SHA256,PACKAGE_SOURCE_SHA256)
+        print('Installed without starting. Open the host installer page to start the HTTPS setup wizard.')
     elif script == 'prerm' and action in ('remove', 'upgrade', 'deconfigure'):
-        setup.stop_all_instances()
-        setup.guard_all_instances()
-        setup.inactive()
-        for unit in setup.template_units():
-            setup.systemctl('stop', unit)
-            instance = unit.removeprefix('kura-management-console@').removesuffix('.service')
-            Setup(setup.root, setup.run, instance).inactive()
+        active=control.status()['active']
+        identity=active['operationId'] if active else str(uuid.uuid4())
+        control.begin(identity)
+        control.stop(identity)
         if action == 'remove':
             setup.systemctl('disable', UNIT)
     elif script == 'postrm':

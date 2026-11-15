@@ -1,9 +1,16 @@
 mod auth;
 mod config;
+mod console_settings;
+mod listeners;
+mod maintenance;
+mod cli;
+mod initial_setup;
 mod db;
 mod firewall_tasks;
 mod nm_tasks;
+mod imported_tasks;
 mod gateway_registration;
+mod gateway_certificate;
 mod grpc;
 mod http;
 mod provisioning;
@@ -11,8 +18,13 @@ mod settings;
 mod settings_files;
 mod client_ca_store;
 mod tls_store;
+mod server_csr;
+mod tls_runtime;
+mod tls_transport;
 mod task_crypto;
 mod task_key_store;
+#[cfg(test)]
+mod task_storage_upgrade_tests;
 mod task_lifecycle;
 mod transfer;
 use anyhow::{Context, Result, ensure};
@@ -26,7 +38,7 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 use tokio::sync::Semaphore;
-use tonic::transport::{Certificate, Identity, Server, ServerTlsConfig};
+use tonic::transport::Server;
 use transfer::{ed25519_public_der, ed25519_public_from_pem_path, ed25519_public_raw};
 use uuid::Uuid;
 use yofc_management_protocol::{MAX_FRAME, v1::control_server::ControlServer};
@@ -115,6 +127,52 @@ async fn main() -> Result<()> {
         .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
         .init();
     let args: Vec<String> = env::args().collect();
+    let command = cli::validate(&args)?;
+    // Read-only host probes remain available while the coordinator owns the
+    // exclusive lease. Validate every command before touching state or the DB.
+    if command == cli::Kind::Maintenance {
+        let root=console_settings::state_dir()?;
+        let gate=maintenance::Gate::for_state(&root)?;
+        let value=match args[1].as_str(){
+            "maintenance-status"=>serde_json::json!({"active":gate.status()?}),
+            "maintenance-begin"=>gate.freeze_standalone(&root,Uuid::parse_str(&args[2])?).await?,
+            "maintenance-complete"=>gate.complete_standalone(&root,Uuid::parse_str(&args[2])?).await?,
+            _=>unreachable!(),
+        };
+        println!("{}",serde_json::to_string(&value)?);return Ok(());
+    }
+    if args.get(1).map(String::as_str) == Some("installation-credential") {
+        ensure!(args.len()==2,"usage: installation-credential");
+        let credential=initial_setup::installer_credential(&console_settings::state_dir()?)?;
+        println!("{}",serde_json::to_string(&credential)?);
+        return Ok(());
+    }
+    if args.get(1).map(String::as_str) == Some("installation-maintenance-check") {
+        ensure!(args.len()==2,"usage: installation-maintenance-check");
+        initial_setup::maintenance_check(&console_settings::state_dir()?).await?;
+        println!("{{\"ok\":true}}");
+        return Ok(());
+    }
+    if args.get(1).map(String::as_str) == Some("installation-status") {
+        ensure!(args.len()==2,"usage: installation-status");
+        let status=initial_setup::installation_status(&console_settings::state_dir()?)?;
+        println!("{}",serde_json::to_string(&status)?);
+        return Ok(());
+    }
+    let gate_root = if command==cli::Kind::Offline && config::setting("CONSOLE_STATE_DIR")?.is_none(){
+        // Standalone offline tools without an installation selection coordinate
+        // in their output directory. Native executables always join the host gate.
+        let output=match args[1].as_str(){"task-key-backup"|"task-key-restore"=>&args[3],"issue-transfer-signer-rotation"=>&args[9],_=>&args[2]};
+        fs::canonicalize(Path::new(output).parent().filter(|p|!p.as_os_str().is_empty()).unwrap_or(Path::new(".")))?
+    }else{console_settings::state_dir()?};
+    if command==cli::Kind::ServeMaintenance {
+        ensure!(console_settings::load_at(&gate_root)?.is_some(),
+            "maintenance startup requires an existing initialized installation");
+    }
+    let gate=Arc::new(maintenance::Gate::for_state(&gate_root)?);
+    let mut startup_permit=Some(if command==cli::Kind::ServeMaintenance {
+        gate.startup_standalone(Uuid::parse_str(&args[2])?)?
+    }else{gate.enter()?});
     if args.get(1).map(String::as_str) == Some("generate-transfer-key") {
         ensure!(
             args.len() == 4,
@@ -257,13 +315,27 @@ async fn main() -> Result<()> {
         tracing::info!(rotated_tasks = rotated, "task storage key rotated");
         return Ok(());
     }
-    let key_path = env::var("CONSOLE_DATA_KEY_FILE").context("CONSOLE_DATA_KEY_FILE is required")?;
-    let pool = db::connect(&env::var("DATABASE_URL").context("DATABASE_URL is required")?).await?;
-    let state = env::var("CONSOLE_STATE_DIR").unwrap_or("/var/lib/kura-management-console".into());
-    let cipher = task_key_store::recover(&pool, Path::new(&key_path), Path::new(&state)).await?;
+    let is_serve = matches!(command,cli::Kind::Serve|cli::Kind::ServeMaintenance);
+    let (setup_listener, state_lease) = if is_serve {
+        let root = console_settings::state_dir()?;
+        let lease = settings_files::lease(&root)?;
+        if command==cli::Kind::ServeMaintenance {
+            // An initialized generation warms up under EX without entering the
+            // bootstrap/pairing server or releasing its original durable fence.
+            (None,Some(lease))
+        }else{
+            drop(startup_permit.take());
+            (initial_setup::run_if_needed(root).await?, Some(lease))
+        }
+    } else { (None, None) };
+    if startup_permit.is_none(){startup_permit=Some(gate.enter()?);}
+    let (database_url, key_path, saved_settings) = console_settings::connection()?;
+    let pool = console_settings::connect_database(&database_url,saved_settings.as_ref()).await?;
+    let state = console_settings::state_dir()?;
+    let cipher = task_key_store::recover(&pool, Path::new(&key_path), &state).await?;
     let migrated = cipher.prepare_storage(&pool).await?;
     tracing::info!(migrated_tasks = migrated, "task storage key verified");
-    auth::ensure_bootstrap_admin(&pool).await?;
+    if saved_settings.is_none() { auth::ensure_bootstrap_admin(&pool).await?; }
     match args.get(1).map(String::as_str).unwrap_or("serve") {
         "migrate" => return Ok(()),
         "create-user" => {
@@ -618,21 +690,53 @@ async fn main() -> Result<()> {
             .await?;
             return Ok(());
         }
-        "set-gateway-enabled" | "rotate-gateway-certificate" | "set-gateway-binding-generation" => {
+        "rotate-gateway-certificate" => {
+            ensure!(matches!(args.len(),4|5),"usage: rotate-gateway-certificate GATEWAY_ID CERT_PEM [EXPECTED_BINDING_GENERATION]");
+            let pem=fs::read_to_string(&args[3])?;
+            let fingerprint=gateway_registration::certificate_sha256(&pem)?;
+            let gateway=sqlx::query("SELECT tenant_id,certificate_sha256 FROM mgmt_gateways WHERE id=$1")
+                .bind(&args[2]).fetch_optional(&pool).await?.context("gateway not found")?;
+            let original=gateway_certificate::Request { operation:Uuid::new_v4(),gateway:args[2].clone(),
+                tenant:gateway.get("tenant_id"),previous:gateway.get("certificate_sha256"),
+                previous_generation:args.get(4).map(|value|value.parse::<i64>()).transpose()?,
+                certificate:Some(fingerprint.clone()),pem_hash:auth::hash(pem.as_bytes()),bundle:false };
+            println!("{}",serde_json::json!({"operationId":original.operation}));
+            let accepted=gateway_certificate::reserve(&pool,&original,"local-admin",None).await
+                .map_err(|_|anyhow::anyhow!("certificate rotation refused; inspect original operation history"))?;
+            ensure!(accepted,"certificate rotation not accepted; no credential changed");
+            let mut tx=pool.begin().await?;cipher.lock_storage(&mut tx).await?;
+            let ready=gateway_certificate::begin_application(&mut tx,&original).await
+                .map_err(|_|anyhow::anyhow!("certificate rotation outcome uncertain; do not resend"))?;
+            if !ready { tx.commit().await?;anyhow::bail!("certificate rotation rejected before credential change"); }
+            let row=sqlx::query("UPDATE mgmt_gateways SET certificate_sha256=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 WHERE id=$1 AND tenant_id=$3 AND certificate_sha256=$4 RETURNING revision")
+                .bind(&original.gateway).bind(&fingerprint).bind(&original.tenant).bind(&original.previous)
+                .fetch_one(&mut *tx).await?;
+            let revision:i64=row.get("revision");
+            gateway_certificate::applied(&mut tx,&original,revision).await
+                .map_err(|_|anyhow::anyhow!("certificate rotation outcome uncertain; do not resend"))?;
+            db::audit(&mut *tx,&original.tenant,"local-admin","gateway.certificate.rotate",&original.gateway,"SUCCEEDED").await?;
+            db::event(&mut *tx,&original.tenant,"gateway",&original.gateway,revision,serde_json::json!({"online":false,"identityChanged":true})).await?;
+            tx.commit().await?;
+            println!("{}",gateway_certificate::read(&pool,&original.tenant,&original.gateway,original.operation).await
+                .map_err(|_|anyhow::anyhow!("read original certificate rotation receipt failed; do not resend"))?);
+            return Ok(());
+        }
+        "set-gateway-enabled" | "set-gateway-binding-generation" => {
             ensure!(
                 args.len() == 4,
                 "usage: set-gateway-enabled GATEWAY_ID true|false OR rotate-gateway-certificate GATEWAY_ID CERT_PEM OR set-gateway-binding-generation GATEWAY_ID GENERATION"
             );
             let mut tx = pool.begin().await?;
+            if args[1]=="set-gateway-binding-generation" {
+                let tenant:String=sqlx::query_scalar("SELECT tenant_id FROM mgmt_gateways WHERE id=$1")
+                    .bind(&args[2]).fetch_one(&mut *tx).await?;
+                gateway_certificate::maintenance_guard(&mut tx,&tenant,&args[2]).await
+                    .map_err(|_|anyhow::anyhow!("certificate history requires recovery; binding generation unchanged"))?;
+            }
             let row=if args[1]=="set-gateway-enabled" {
                   let enabled=args[3].parse::<bool>().context("expected true or false")?;
                   sqlx::query("UPDATE mgmt_gateways SET enabled=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 WHERE id=$1 RETURNING tenant_id,revision")
                       .bind(&args[2]).bind(enabled).fetch_optional(&mut *tx).await?
-              } else if args[1]=="rotate-gateway-certificate" {
-                  let data=fs::read(&args[3])?;
-                  let cert=rustls_pemfile::certs(&mut data.as_slice()).next().context("no certificate")??;
-                  sqlx::query("UPDATE mgmt_gateways SET certificate_sha256=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 WHERE id=$1 RETURNING tenant_id,revision")
-                      .bind(&args[2]).bind(auth::hash(cert.as_ref())).fetch_optional(&mut *tx).await?
               } else {
                   let generation=args[3].parse::<i64>().context("expected positive binding generation")?;
                   ensure!(generation >= 1, "binding generation must be positive");
@@ -662,46 +766,46 @@ async fn main() -> Result<()> {
             tx.commit().await?;
             return Ok(());
         }
-        "serve" => {}
+        "serve"|"serve-maintenance" => {}
         _ => anyhow::bail!("unknown subcommand"),
     }
-    let mut cfg = config::Config::load()?;
-    tls_store::activate(&mut cfg)?;
-    client_ca_store::activate(&mut cfg)?;
+    let cfg = config::Config::load()?;
+    let tls_runtime = tls_runtime::TlsRuntime::open_leased(cfg.clone(), state_lease.context("console lease missing")?)?;
     ensure!(
         std::path::Path::new(&cfg.web_dir)
             .join("index.html")
             .is_file(),
         "React build missing; run frontend/react npm ci and npm run build"
     );
-    let tls = ServerTlsConfig::new()
-        .identity(Identity::from_pem(
-            fs::read(&cfg.tls_cert)?,
-            fs::read(&cfg.tls_key)?,
-        ))
-        .client_ca_root(Certificate::from_pem(fs::read(&cfg.client_ca)?));
-    let http_tls =
-        axum_server::tls_rustls::RustlsConfig::from_pem_file(&cfg.tls_cert, &cfg.tls_key).await?;
-    let app = http::App::new(pool.clone(), cfg.clone(), cipher);
+    let mut app = http::App::new(pool.clone(), cfg.clone(), cipher)?;
+    app.gate=gate.clone();
+    app.tls = Some(tls_runtime.clone());
+    let grpc_listener = tokio::net::TcpListener::from_std(listeners::bind(cfg.grpc_addr)?)?;
     let control = grpc::ControlService {
+        gate: gate.clone(),
         pool: pool.clone(),
         cipher: app.cipher.clone(),
         slots: Arc::new(Semaphore::new(128)),
     };
     let grpc = Server::builder()
-        .tls_config(tls)?
         .concurrency_limit_per_connection(2)
         .add_service(
             ControlServer::new(control)
                 .max_decoding_message_size(MAX_FRAME)
                 .max_encoding_message_size(MAX_FRAME),
         )
-        .serve(cfg.grpc_addr);
-    let web = axum_server::bind_rustls(cfg.http_addr, http_tls).serve(
+        .serve_with_incoming(tls_transport::grpc_incoming(grpc_listener, tls_runtime.clone()));
+    let web_server = match setup_listener {
+        Some(listener) => axum_server::from_tcp(listener)?,
+        None => axum_server::from_tcp(listeners::bind(cfg.http_addr)?)?,
+    };
+    let web = web_server
+        .acceptor(tls_transport::WebAcceptor(tls_runtime)).serve(
         http::router(app)
             .into_make_service_with_connect_info::<std::net::SocketAddr>(),
     );
-    tokio::spawn(grpc::maintenance(pool));
+    drop(startup_permit);
+    tokio::spawn(grpc::maintenance(pool,gate));
     tracing::info!(https=%cfg.http_addr,grpc=%cfg.grpc_addr,"console ready");
     tokio::select! {result=grpc=>result?,result=web=>result?,_=tokio::signal::ctrl_c()=>{}}
     Ok(())

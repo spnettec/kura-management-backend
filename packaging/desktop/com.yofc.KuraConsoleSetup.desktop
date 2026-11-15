@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=YOFC Console Setup
+Name[zh_CN]=YOFC 管理中心安装设置
+Comment=Open the authenticated host installer for the YOFC management console
+Comment[zh_CN]=打开需要主机管理员登录的 YOFC 管理中心安装器
+Exec=/usr/bin/python3 /usr/lib/kura-management-console/host_ui.py gui
+TryExec=/usr/bin/python3
+Icon=preferences-system-network
+Terminal=false
+Categories=System;Settings;
+StartupNotify=false

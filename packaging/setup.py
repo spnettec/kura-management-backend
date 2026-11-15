@@ -3,6 +3,7 @@
 import argparse
 import grp
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -12,7 +13,9 @@ import shutil
 import stat
 import subprocess
 import sys
+from contextlib import nullcontext
 from urllib.parse import parse_qsl, unquote, urlencode, urlsplit, urlunsplit
+from host_control import HostControl
 
 CONFIG = '/etc/kura-management-console'
 STATE = '/var/lib/kura-management-console'
@@ -75,8 +78,10 @@ class Setup:
                 break
         return path
 
-    def settings(self, runtime=True):
+    def overrides(self, missing_ok=False):
         path = self.path(self.config + '/console.env')
+        if missing_ok and not path.exists():
+            return {}
         info = path.lstat()
         if not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or info.st_mode & 0o077:
             raise RuntimeError('Console env must be a root-owned regular file with mode 0600')
@@ -88,6 +93,12 @@ class Setup:
             if not separator or not re.fullmatch(r'[A-Z_]+', key) or key in settings or '\x00' in value:
                 raise RuntimeError('Invalid or duplicate console setting')
             settings[key] = value
+        if settings.get('CONSOLE_STATE_DIR','').strip() and settings['CONSOLE_STATE_DIR']!=self.state:
+            raise RuntimeError('Packaged state directory must match the selected instance')
+        return settings
+
+    def settings(self, runtime=True):
+        settings = self.overrides()
         required = ['DATABASE_URL', 'CONSOLE_DATA_KEY_FILE', 'CONSOLE_ORIGIN', 'CONSOLE_HTTP_ADDR',
                     'CONSOLE_GRPC_ADDR', 'CONSOLE_TLS_CERT', 'CONSOLE_TLS_KEY', 'CONSOLE_CLIENT_CA',
                     'CONSOLE_WEB_DIR']
@@ -178,6 +189,10 @@ class Setup:
             self.systemctl('stop', unit)
 
     def guard_tasks(self):
+        state = self.path(self.state)
+        if any((state / name).exists() for name in ['console-config-active.json', 'setup', 'setup-operations']):
+            self.bound_command('installation-maintenance-check', include_overrides=True)
+            return
         if not self.path(self.config + '/console.env').exists():
             # A clean install and a never-configured package marker have no DB.
             # Retained credentials or data without their env cannot be checked.
@@ -206,7 +221,7 @@ class Setup:
         if unsettled:
             raise RuntimeError('Settle queued, running or unknown console tasks before package maintenance')
 
-    def init_instance(self):
+    def init_instance(self, quiet=False):
         """Create only instance directories and marker; configuration remains explicit."""
         service_user = pwd.getpwnam(SERVICE_USER)
         service_gid = grp.getgrnam(SERVICE_USER).gr_gid
@@ -234,7 +249,8 @@ class Setup:
             self.put(marker, 'kura-management-console-v1\n', 0o600)
             self.run(['/usr/bin/chown', f'{SERVICE_USER}:{SERVICE_USER}', str(marker)], check=True)
         self.systemctl('daemon-reload')
-        print('Instance directories created without config, migrate, or activation.')
+        if not quiet:
+            print('Instance directories created without config, migrate, or activation.')
 
     def check(self):
         self.settings()
@@ -246,6 +262,100 @@ class Setup:
         if not assets:
             raise RuntimeError('Console web payload has no JavaScript assets')
         return {'ok': True, 'assets': len(assets)}
+
+    def launch_check(self):
+        """Check installed payload and private state without requiring a database."""
+        control=HostControl(self)
+        control.provision()
+        if control.status()['active'] is not None:
+            raise RuntimeError('Maintenance is frozen; preserve the original operation')
+        overrides = self.overrides(missing_ok=True)
+        state_override = overrides.get('CONSOLE_STATE_DIR', '')
+        if state_override.strip() and state_override != self.state:
+            raise RuntimeError('Packaged state directory must match the selected instance')
+        binary = self.path(BINARY)
+        if not binary.is_file() or not os.access(binary, os.X_OK):
+            raise RuntimeError('Console binary is missing')
+        state = self.path(self.state)
+        info = state.lstat()
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid != pwd.getpwnam(SERVICE_USER).pw_uid or info.st_mode & 0o077:
+            raise RuntimeError('Console state must be owned by its service identity with mode 0700')
+        web_override = overrides.get('CONSOLE_WEB_DIR', '')
+        web = self.path(web_override if web_override.strip() else '/usr/share/kura-management-console/react')
+        assets = list((web/'assets').glob('*.js'))
+        if not (web/'index.html').is_file() or not assets:
+            raise RuntimeError('Console web payload is incomplete')
+        return {'ok': True, 'assets': len(assets)}
+
+    def initial_listener(self, port, allow_unpaired=False):
+        if not isinstance(port, int) or not 1024 <= port <= 65535:
+            raise RuntimeError('Setup port must be between 1024 and 65535')
+        overrides = self.overrides(missing_ok=True)
+        address = overrides.get('CONSOLE_HTTP_ADDR', '').strip()
+        current_port = address.rsplit(':', 1)[-1] if address else overrides.get('CONSOLE_SETUP_PORT','18443')
+        if current_port == str(port):
+            return
+        if self.path(self.config+'/console.env').exists():
+            raise RuntimeError('Existing launch settings cannot be replaced by first setup')
+        state = self.path(self.state)
+        if state.exists() and any(entry.name != '.package-v1' for entry in state.iterdir()):
+            if not allow_unpaired:
+                raise RuntimeError('Existing installation identity requires its original listener')
+            # A known stopped, never-paired bootstrap can recover from a port
+            # collision without replacing its certificate or installation ID.
+            # Any session, operation, generation, unknown file or symlink keeps
+            # the original listener binding and requires explicit review.
+            allowed_files = {'.package-v1', 'tls-runtime.lock', 'setup/bootstrap.key',
+                             'setup/bootstrap-request.cnf', 'setup/bootstrap.pem',
+                             'setup/installation-credential.json'}
+            allowed_dirs = {'setup', 'setup-operations', 'installation-generations'}
+            entries = list(state.rglob('*'))
+            files = {str(entry.relative_to(state)) for entry in entries if entry.is_file()}
+            if files != allowed_files or any(entry.is_symlink() or
+                    (entry.is_dir() and str(entry.relative_to(state)) not in allowed_dirs)
+                    or not (entry.is_file() or entry.is_dir()) for entry in entries):
+                raise RuntimeError('Existing installation identity requires its original listener')
+            self.bound_command('installation-credential')  # Validate the existing identity; never generate one.
+        config = self.path(self.config)
+        config.mkdir(parents=True, exist_ok=True, mode=0o700)
+        info = config.lstat()
+        if info.st_uid != 0 or info.st_mode & 0o027:
+            raise RuntimeError('Unsafe host configuration directory')
+        self.put(self.config+'/console.env', 'CONSOLE_SETUP_PORT='+str(port)+'\n', 0o600)
+
+    def bound_command(self, command, include_overrides=False):
+        if command not in ['installation-credential', 'installation-maintenance-check', 'installation-status']:
+            raise RuntimeError('Unsupported installation helper action')
+        self.verify_local_command(command)
+        environment = {'PATH': '/usr/sbin:/usr/bin:/sbin:/bin'}
+        if include_overrides:
+            environment.update(self.overrides(missing_ok=True))
+        environment['CONSOLE_STATE_DIR'] = self.state
+        result = self.run([RUNUSER, '-u', SERVICE_USER, '--', BINARY, command], env=environment,
+                            capture_output=True, text=True, timeout=5 if command=='installation-status' else 15)
+        if result.returncode:
+            raise RuntimeError('Installation operation cannot be verified; preserve state and use the original record')
+        return json.loads(result.stdout)
+
+    def verify_local_command(self, command):
+        """Do not probe an old executable with an unknown argument: old startup
+        dispatch may migrate before it reports an unsupported command."""
+        base='/usr/share/kura-management-console/'
+        provenance=self.path(base+'local-command-provenance.json')
+        source=self.path(base+'source-manifest.json')
+        binary=self.path(BINARY)
+        for path in [provenance,source,binary]:
+            if not path.is_file():
+                raise RuntimeError('Verified local command provenance is required before invoking the console')
+            info=path.lstat()
+            if info.st_uid!=0 or info.st_mode & 0o022:
+                raise RuntimeError('Local command provenance and executable must be protected by root')
+        record=json.loads(provenance.read_text())
+        if record.get('schemaVersion')!=1 or command not in record.get('localReadCommands',[]) \
+                or record.get('binarySha256')!=hashlib.sha256(binary.read_bytes()).hexdigest() \
+                or record.get('sourceManifestSha256')!=hashlib.sha256(source.read_bytes()).hexdigest():
+            raise RuntimeError('Console does not have verified support for this local command')
+        return record
 
     def key_command(self, command, arguments):
         self.inactive()
@@ -270,7 +380,7 @@ class Setup:
         print(output or 'Database migrations verified')
 
     def activate(self):
-        self.check()
+        self.launch_check()
         self.systemctl('daemon-reload')
         self.systemctl('enable', self.unit)
         self.systemctl('start', self.unit)
@@ -281,6 +391,8 @@ def main():
     parser.add_argument('--instance')
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('check')
+    sub.add_parser('launch-check')
+    sub.add_parser('installation-credential')
     sub.add_parser('migrate')
     sub.add_parser('init-instance')
     for command, arity in [('init-key', 1), ('rotate-key', 2), ('backup-key', 3), ('restore-key', 3)]:
@@ -292,10 +404,14 @@ def main():
         raise RuntimeError('Run console setup as root')
     setup = Setup(instance=args.instance)
     if args.command == 'activate':
-        setup.activate()
+        with HostControl(setup).starting(): setup.activate()
+        return
+    if args.command == 'installation-credential':
+        print(json.dumps(setup.bound_command('installation-credential')))
         return
     lock = setup.path('/run/lock/kura-management-console-setup.lock')
-    with os.fdopen(os.open(lock, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600), 'r+') as stream:
+    admission=HostControl(setup).starting() if args.command not in ['check','launch-check'] else nullcontext()
+    with admission, os.fdopen(os.open(lock, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600), 'r+') as stream:
         fcntl.flock(stream, fcntl.LOCK_EX)
         if args.command == 'init-instance':
             if not args.instance:
@@ -308,6 +424,8 @@ def main():
             print(setup.key_command(args.command, args.arguments), end='')
         elif args.command == 'check':
             print(json.dumps(setup.check(), indent=2))
+        elif args.command == 'launch-check':
+            print(json.dumps(setup.launch_check(), indent=2))
         elif args.command == 'migrate':
             setup.migrate()
 

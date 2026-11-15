@@ -48,7 +48,7 @@ async fn fixture() -> Fixture {
         web_dir: String::new(),
         state_dir: dir.to_string_lossy().into(),
     };
-    let app = App::new(pool, config, cipher);
+    let app = App::new(pool, config, cipher).unwrap();
     let mut headers = HeaderMap::new();
     headers.insert(
         header::COOKIE,

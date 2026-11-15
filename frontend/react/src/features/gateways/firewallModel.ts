@@ -6,14 +6,18 @@ export type Receipt={id:string;state:string;deadlineUnixMs:number;revision:numbe
 export type View={schemaVersion:1;revision:number;sourceDigest:string;initialized:boolean;projectable:boolean;candidate:Candidate|null;writeEnabled:boolean;confirmationReady:boolean;transaction:Receipt|null};
 export type Pending={operation:31|32|33;key:string;id?:string};
 export const operations={31:"firewall.prepare",32:"firewall.confirm",33:"firewall.rollback"} as const;
-export const emptyCandidate=():Candidate=>({schemaVersion:3,ipv4:{inputPolicy:"accept",forwardPolicy:"drop",allowIcmp:false},ipv6:{inputPolicy:"accept",forwardPolicy:"drop",allowIcmp:false},input:[],portForward:[],nat:[]});
+export const emptyCandidate=():Candidate=>({schemaVersion:4,ipv4:{inputPolicy:"accept",forwardPolicy:"drop",outputPolicy:"accept",allowIcmp:false},ipv6:{inputPolicy:"accept",forwardPolicy:"drop",outputPolicy:"accept",allowIcmp:false},input:[],portForward:[],nat:[]});
 const object=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==="object"&&!Array.isArray(v);
 const ports=(v:unknown)=>object(v)&&Number.isInteger(v.first)&&Number.isInteger(v.last)&&Number(v.first)>0&&Number(v.first)<=Number(v.last)&&Number(v.last)<=65535;
 const optional=(v:unknown,check:(v:unknown)=>boolean)=>v==null||check(v);
 const text=(v:unknown)=>typeof v==="string"&&v.length<=128&&!/[\s"'`;\\]/.test(v);
 const iface=(v:unknown)=>typeof v==="string"&&v.length<=15&&/^(?:\+|[a-zA-Z0-9_.:-]+\+?)$/.test(v);
 export function candidateValid(value:unknown):value is Candidate {
-  if(!object(value)||value.schemaVersion!==3||!["ipv4","ipv6"].every(f=>object(value[f])&&["accept","drop"].includes(String(value[f].inputPolicy))&&["accept","drop"].includes(String(value[f].forwardPolicy))&&typeof value[f].allowIcmp==="boolean")||!["input","portForward","nat"].every(k=>Array.isArray(value[k])))return false;
+  if(!object(value)||![3,4].includes(Number(value.schemaVersion))||!Number.isInteger(value.schemaVersion)||!["ipv4","ipv6"].every(f=>{
+    const p=value[f];if(!object(p))return false;
+    const keys=value.schemaVersion===4?["inputPolicy","forwardPolicy","outputPolicy","allowIcmp"]:["inputPolicy","forwardPolicy","allowIcmp"];
+    return Object.keys(p).length===keys.length&&keys.every(k=>Object.hasOwn(p,k))&&["accept","drop"].includes(String(p.inputPolicy))&&["accept","drop"].includes(String(p.forwardPolicy))&&typeof p.allowIcmp==="boolean"&&(value.schemaVersion!==4||["accept","drop"].includes(String(p.outputPolicy)));
+  })||!["input","portForward","nat"].every(k=>Array.isArray(value[k])))return false;
   const groups=[value.input,value.portForward,value.nat] as unknown[][];
   if(groups.reduce((sum,v)=>sum+v.length,0)>256)return false;
   for(const [category,rows] of [["input",groups[0]],["portForward",groups[1]],["nat",groups[2]]] as const)for(const r of rows) {

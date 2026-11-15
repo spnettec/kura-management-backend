@@ -9,35 +9,36 @@ COPY frontend/react/index.html frontend/react/tsconfig.json frontend/react/vite.
 COPY frontend/react/src ./frontend/react/src
 RUN cd frontend/react && npm ci --no-audit --no-fund && npm run build
 
-FROM rust:1.95 AS rust
+FROM rust:1.95-bookworm AS rust
 WORKDIR /build
+ENV CARGO_BUILD_JOBS=2 CARGO_INCREMENTAL=0
 COPY Cargo.toml Cargo.lock rust-toolchain.toml ./
 COPY crates ./crates
 COPY migrations ./migrations
-RUN cargo build --release --workspace --locked
+RUN cargo build --release --workspace --locked --message-format=json
 
 FROM ubuntu:24.04
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ca-certificates curl openssl \
+ && apt-get install -y --no-install-recommends ca-certificates curl openssl util-linux \
  && rm -rf /var/lib/apt/lists/*
 RUN groupadd -r console && useradd -r -g console -d /var/lib/kura-management-console -s /usr/sbin/nologin console
 COPY --from=rust /build/target/release/yofc-management-console /usr/local/bin/yofc-management-console
 COPY --from=web /build/frontend/react/dist /usr/share/kura-management-console/react
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod 0755 /usr/local/bin/entrypoint.sh /usr/local/bin/yofc-management-console \
- && mkdir -p /var/lib/kura-management-console /etc/kura-management-console/tls \
- && chown -R console:console /var/lib/kura-management-console /etc/kura-management-console \
- && chmod 0750 /etc/kura-management-console
-ENV CONSOLE_HTTP_ADDR=0.0.0.0:18443 \
-    CONSOLE_GRPC_ADDR=0.0.0.0:18444 \
+ && mkdir -p /var/lib/kura-management-console \
+ && chown console:console /var/lib/kura-management-console \
+ && chmod 0700 /var/lib/kura-management-console
+ENV CONSOLE_SETUP_PORT=18443 \
     CONSOLE_WEB_DIR=/usr/share/kura-management-console/react \
-    CONSOLE_STATE_DIR=/var/lib/kura-management-console \
-    CONSOLE_DATA_KEY_FILE=/var/lib/kura-management-console/task-data.key \
-    CONSOLE_TLS_CERT=/etc/kura-management-console/tls/server.pem \
-    CONSOLE_TLS_KEY=/etc/kura-management-console/tls/server.key \
-    CONSOLE_CLIENT_CA=/etc/kura-management-console/tls/ca.pem
-VOLUME ["/var/lib/kura-management-console", "/etc/kura-management-console/tls"]
+    CONSOLE_STATE_DIR=/var/lib/kura-management-console
+LABEL com.yofc.console.installation="1"
+RUN binary_sha=$(sha256sum /usr/local/bin/yofc-management-console | cut -d' ' -f1) \
+ && printf '{"schemaVersion":1,"binarySha256":"%s","maintenanceProtocolVersion":2,"fencedStartupCommand":"serve-maintenance","maintenanceCommands":["maintenance-status","maintenance-begin","maintenance-complete"],"localReadCommands":["installation-credential","installation-maintenance-check","installation-status"]}\n' "$binary_sha" > /usr/share/kura-management-console/local-command-provenance.json \
+ && chmod 0644 /usr/share/kura-management-console/local-command-provenance.json
+VOLUME ["/var/lib/kura-management-console"]
 EXPOSE 18443 18444
+STOPSIGNAL SIGINT
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 HEALTHCHECK --interval=10s --timeout=5s --start-period=20s --retries=5 \
-  CMD curl -sk -f https://127.0.0.1:18443/health/ready || exit 1
+  CMD curl -sk -f https://127.0.0.1:18443/health/live || exit 1

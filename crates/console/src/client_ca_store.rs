@@ -3,7 +3,7 @@
 use crate::{
     config::Config,
     settings_files::{
-        directory, publish_new, publish_replace, read_private, sync_parent, write_new,
+        directory, publish_new, read_private, sync_parent, write_new,
     },
 };
 use anyhow::{Context, Result, ensure};
@@ -18,14 +18,48 @@ use x509_cert::{
     ext::pkix::{BasicConstraints, KeyUsage},
 };
 
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
-struct Generation {
+pub(crate) struct Generation {
     schema_version: u8,
     id: uuid::Uuid,
     fingerprint: String,
     previous_fingerprint: String,
     actor: String,
+}
+
+pub(crate) fn selection(config: &Config, staged: bool) -> Result<Option<Generation>> {
+    reject_legacy(config)?;
+    let path = if staged { pending(config) } else { active(config) };
+    if !path.try_exists()? { return Ok(None); }
+    let generation: Generation = serde_json::from_slice(&read_private(&path)?)?;
+    generation_path(config, &generation)?;
+    Ok(Some(generation))
+}
+
+pub(crate) fn reject_legacy(config: &Config) -> Result<()> {
+    ensure!(!legacy(config).exists(), "legacy CA pending entry requires explicit review");
+    Ok(())
+}
+
+pub(crate) fn select(config: &mut Config, generation: &Generation) -> Result<()> {
+    config.client_ca = generation_path(config, generation)?
+        .to_str().context("non-UTF8 CA path")?.into();
+    Ok(())
+}
+
+pub(crate) fn approved_for(generation: &Generation, fingerprint: &str) -> Result<()> {
+    ensure!(generation.previous_fingerprint == fingerprint,
+        "CA update was approved against a different active trust anchor");
+    Ok(())
+}
+
+pub(crate) fn consume(config: &Config, selected: &Option<Generation>) -> Result<()> {
+    if selected.is_some() && &selection(config, true)? == selected {
+        fs::remove_file(pending(config))?;
+        sync_parent(&pending(config))?;
+    }
+    Ok(())
 }
 
 pub fn validate(pem: &str) -> Result<String> {
@@ -152,6 +186,7 @@ pub fn pending_fingerprint(config: &Config) -> Result<Option<String>> {
     Ok(Some(generation.fingerprint))
 }
 
+#[cfg(test)]
 pub fn activate(config: &mut Config) -> Result<()> {
     ensure!(
         !legacy(config).exists(),
@@ -181,7 +216,7 @@ pub fn activate(config: &mut Config) -> Result<()> {
             current == generation.previous_fingerprint,
             "CA update was approved against a different active trust anchor"
         );
-        publish_replace(&live, &bytes)?;
+            crate::settings_files::publish_replace(&live, &bytes)?;
     }
     fs::remove_file(&pending)?;
     sync_parent(&pending)?;

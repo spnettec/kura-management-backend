@@ -1,4 +1,4 @@
-//! Remote firewall wire admission. The agent's existing V3 compiler remains the
+//! Remote firewall wire admission. The agent's version-specific compiler remains the
 //! authority for address/interface/NAT semantics before any system mutation.
 //! No raw command, expression, chain or table name crosses this grammar.
 use crate::v1;
@@ -38,9 +38,24 @@ pub struct Candidate {
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(deny_unknown_fields, rename_all = "camelCase")]
-pub struct FamilyPolicy {
+#[serde(untagged)]
+pub enum FamilyPolicy {
+    V4(ExactFamilyPolicy),
+    V3(LegacyFamilyPolicy),
+}
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+pub struct LegacyFamilyPolicy {
     pub input_policy: Policy,
     pub forward_policy: Policy,
+    pub allow_icmp: bool,
+}
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+pub struct ExactFamilyPolicy {
+    pub input_policy: Policy,
+    pub forward_policy: Policy,
+    pub output_policy: Policy,
     pub allow_icmp: bool,
 }
 #[derive(Clone, Copy, Debug, Serialize, Deserialize)]
@@ -136,7 +151,8 @@ pub struct Nat {
 }
 impl Candidate {
     pub fn valid(&self) -> bool {
-        self.schema_version == 3
+        matches!((self.schema_version, &self.ipv4, &self.ipv6),
+            (3, FamilyPolicy::V3(_), FamilyPolicy::V3(_)) | (4, FamilyPolicy::V4(_), FamilyPolicy::V4(_)))
             && self.input.len() + self.port_forward.len() + self.nat.len() <= 256
             && self
                 .input
@@ -299,4 +315,22 @@ mod tests {
             .valid()
         );
     }
+    #[test]
+    fn v4_requires_both_output_policies_and_never_downgrades_a_mixed_family() {
+        let original=change();let mut value:serde_json::Value=serde_json::from_slice(&original.candidate_json).unwrap();
+        value["schemaVersion"]=serde_json::json!(4);value["ipv4"]["outputPolicy"]=serde_json::json!("drop");value["ipv6"]["outputPolicy"]=serde_json::json!("accept");
+        let exact=FirewallChange{candidate_json:serde_json::to_vec(&value).unwrap(),..original.clone()};assert!(exact.valid());
+        assert_eq!(serde_json::to_value(exact.candidate().unwrap()).unwrap()["ipv4"]["outputPolicy"],"drop");
+        for defect in ["missing4","missing6","legacy","null","expression"] {
+            let mut changed=value.clone();match defect {
+                "missing4"=>{changed["ipv4"].as_object_mut().unwrap().remove("outputPolicy");},
+                "missing6"=>{changed["ipv6"].as_object_mut().unwrap().remove("outputPolicy");},
+                "legacy"=>changed["schemaVersion"]=serde_json::json!(3),
+                "null"=>changed["ipv4"]["outputPolicy"]=serde_json::Value::Null,
+                "expression"=>changed["ipv6"]["expression"]=serde_json::json!("accept"),_=>unreachable!(),
+            }
+            assert!(!FirewallChange{candidate_json:serde_json::to_vec(&changed).unwrap(),..original.clone()}.valid(),"{defect}");
+        }
+    }
+
 }

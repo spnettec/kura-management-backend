@@ -1,58 +1,17 @@
-# YOFC management console + PostgreSQL, for evaluation and small deployments.
-#   docker/tls-gen.sh && docker compose up -d
-# First login: admin / admin -> the console forces a real password rotation.
+# Default deployment: open the setup page and select PostgreSQL there.
+# No database password, TLS bind mount or application credential is required.
 services:
-  postgres:
-    image: postgres:16-alpine
-    environment:
-      POSTGRES_USER: console
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-console-change-me}
-      POSTGRES_DB: console
-    volumes:
-      - pg-data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U console -d console"]
-      interval: 5s
-      timeout: 3s
-      retries: 20
-    restart: unless-stopped
-
   console:
     build:
       context: ..
       dockerfile: docker/Dockerfile
     image: yofc-management-console:latest
-    depends_on:
-      postgres:
-        condition: service_healthy
-    environment:
-      DATABASE_URL: postgres://console:${POSTGRES_PASSWORD:-console-change-me}@postgres:5432/console
-      CONSOLE_ORIGIN: ${CONSOLE_ORIGIN:-https://localhost:18443}
-      RUST_LOG: info
     ports:
       - "18443:18443"
       - "18444:18444"
     volumes:
-      # Bootstrap trust/certificate files only. CA and gateway private keys stay
-      # outside the container; updates are stored in the private state volume.
-      - type: bind
-        source: ./tls/server.pem
-        target: /etc/kura-management-console/tls/server.pem
-        read_only: true
-        bind: { create_host_path: false }
-      - type: bind
-        source: ./tls/server.key
-        target: /etc/kura-management-console/tls/server.key
-        read_only: true
-        bind: { create_host_path: false }
-      - type: bind
-        source: ./tls/ca.pem
-        target: /etc/kura-management-console/tls/ca.pem
-        read_only: true
-        bind: { create_host_path: false }
       - console-data:/var/lib/kura-management-console
     restart: unless-stopped
 
 volumes:
-  pg-data:
   console-data:

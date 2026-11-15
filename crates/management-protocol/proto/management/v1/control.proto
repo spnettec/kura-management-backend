@@ -61,6 +61,17 @@ enum Operation { OPERATION_UNSPECIFIED = 0; AGENT_STATUS = 1; KURA_CONFIGURATION
   NM_PREPARE = 35;
   NM_CONFIRM = 36;
   NM_ROLLBACK = 37;
+  IMPORTED_FIREWALL_VIEW = 38;
+  IMPORTED_FIREWALL_REVIEW = 39;
+  IMPORTED_FIREWALL_PREPARE = 40;
+  IMPORTED_FIREWALL_APPLY = 41;
+  IMPORTED_FIREWALL_CONFIRM = 42;
+  IMPORTED_FIREWALL_ROLLBACK = 43;
+  IMPORTED_FIREWALL_CANCEL = 44;
+  IMPORTED_FIREWALL_OUTCOME = 45;
+  IMPORTED_SOURCE_REVIEW = 46;
+  IMPORTED_SOURCE_OBSERVE = 47;
+  IMPORTED_SOURCE_OUTCOME = 48;
 }
 message ReadCommand {
   string command_id = 1;
@@ -82,7 +93,11 @@ message ReadCommand {
   FirewallAction firewall_action = 16;
   NmChange nm_change = 17;
   NmAction nm_action = 18;
+  // Bounded, strictly typed imported::Envelope. Separate from the private
+  // firewall/NM lifecycles. No caller UID, path, unit or native command.
+  ImportedFirewallPayload imported_firewall = 19;
 }
+message ImportedFirewallPayload { bytes json = 1; }
 // Only the bounded structured V3 candidate grammar. Never nft/iptables text.
 // JSON bytes preserve nullable numeric protocols and all legacy rule fields.
 message FirewallChange {
