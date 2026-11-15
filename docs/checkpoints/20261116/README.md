@@ -8,7 +8,8 @@
 
 ## 已保存的最新工作
 
-- 最新 Core/agent 本地源码为 `0d77355a0d` / `499bc64`：新增 Core 保管密钥的只读快照验证，agent 只传快照只读 FD；新私有证明绑定配置、原钥/代集合及实际包指纹。Java 受控恢复支持 systemd 凭据及严格原指纹，未自动迁移旧配置。104项相关有限检查通过，包括一次全新 systemd/实际 Rust 客户端/Root worker 联调；原/新代密码及外层密文可验证，`kurad` 所有的目标文件可用，agent 私有目录隔离和管理备份拒绝通过，Root 未运行也可加载 agent 配置。当前 ARM64 deb 45项载荷及提取JAR通过，未部署。安装了 agent 时仍拒绝代发布，完整运行时能力/权限 broker、受控主Kura启动、GUI、provider和正式发行仍pending。准确计数与边界见 [core-validation-checkpoint.json](core-validation-checkpoint.json)。
+- 最新 Core 本地源码为 `f718cbf799`（agent仍`499bc64`）。真实PID1凭据联调发现并修复了Java把systemd的ACL掩码`0440`误判为普通组可读的问题：复用现有原生精确ACL校验，只回传文件身份/元数据及摘要，再由Java核对；传统私钥文件权限未放宽。新增配对Crypto/managed-loader能力与native proof v1声明，旧组件即使刷新外层文件hash也不能混入。80项相关检查通过，其中一项真实systemd测试含2种权限/32次JVM场景，涵盖旧新密文、缺钥、错误代集合与失效inode/version/digest回执。新ARM64包45项载荷及提取JAR通过，未部署；主Kura受控启动/CM应用、agent准入/privileged broker、GUI和完整provider仍pending。详见 [managed-credentials-checkpoint.json](managed-credentials-checkpoint.json)。
+- 此前 Core/agent `0d77355a0d` / `499bc64` 新增 Core 保管密钥的只读快照验证，agent 只传快照只读 FD；新私有证明绑定配置、原钥/代集合及实际包指纹。104项相关有限检查通过，包括一次全新 systemd/实际 Rust 客户端/Root worker 联调；原/新代密码及外层密文可验证，`kurad` 所有的目标文件可用，agent 私有目录隔离和管理备份拒绝通过，Root 未运行也可加载 agent 配置。当时的 Java 受控凭据路径仍缺少真实ACL适配，由上条修复补齐；没有把直接私有文件的单元结果当成受控Main已通过。准确原范围见 [core-validation-checkpoint.json](core-validation-checkpoint.json)。
 - 旧密钥迁移、旧加密数据连续性、独立 Root 密钥服务、普通 GWT 加密备份/严格原钥恢复及冷恢复的有限范围结果保留；闭环写操作不重放。
 - Core12/GWT6 的独立只读恢复资料 RPC 与登录分支已修复，既有 303 个服务端/共享/RPC policy 条目保持原接受边界；本轮没有再执行旧写验收。
 - 独立 PostgreSQL 合成 schema9 库的 103 条历史密文任务，真实 dump/restore、9→26 迁移、rekey 与旧备份再次恢复验证通过，17 条 UNKNOWN 保持；这不是客户备份或完整 GUI 数据库恢复验收。

@@ -296,5 +296,6 @@
       "noBackupsCreated": true
     }
   },
-  "latestCoreOwnedAgentValidationCheckpoint": "core-validation-checkpoint.json"
+  "latestCoreOwnedAgentValidationCheckpoint": "core-validation-checkpoint.json",
+  "latestManagedCredentialReaderCheckpoint": "managed-credentials-checkpoint.json"
 }

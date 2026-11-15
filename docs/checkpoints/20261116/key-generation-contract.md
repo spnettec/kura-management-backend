@@ -544,3 +544,29 @@ unfinished least-privilege work. Publication with any installed agent is still
 blocked. Effective runtime/binary/grant admission, privileged broker, complete
 controlled startup, Root interrupted-intent recovery, staged history/cancellation,
 GUI and all provider/re-encryption/release gates remain internal pending.
+
+## Actual PID1 ACL correction (2026-11-16, f718cbf799)
+
+The actual systemd credential reader exposed a production defect: root-owned
+`0440` credentials use an exact named service-UID ACL, but Java rejected the mask
+bits as owning-group access. Java now reuses the native ACL policy through a fixed,
+bounded read-only child, verifies the returned file identity/timestamps/permissions
+and content digest, and retains strict legacy file rules. No raw key is returned
+by this helper; it makes no Root RPC and creates no operation or receipt journal.
+The native protocol declaration and paired Crypto/managed-reader capabilities
+also reject incompatible components after an outer-manifest hash refresh.
+
+Current relevant checks: native lifecycle/ACL/proof 33, actual JAR cohort 20, Java
+crypto/recovery 26, and one fresh systemd integration test with 32 JVM scenarios
+across empty-capabilities/NNP1 and actual Core-capabilities/NNP0 profiles. All pass.
+The reader verifies single/ring credentials, old/new data, credential failures and
+stale inode/version/digest receipts. Every scenario must pass before the test can
+emit its success marker. Main Core/CM application is not part of this reader test.
+
+The new 203332744-byte ARM64 candidate, SHA-256
+`1efb07dc1063dbead9f0fe0779cf03ff590d9c4591c93b91ce3dd0a2b88d8d69`,
+passes 45 actual-file checks, current preinst embedding and the extracted JDK21
+reader probe. It has not been installed on retained scenes. The superseded
+0d77355 candidate was removed without a backup; the legacy baseline and current
+candidate remain. Main controlled startup, agent admission/broker, the GUI and
+complete provider/release work remain pending. Full original scope is unchanged.
