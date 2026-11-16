@@ -2,7 +2,7 @@
   "schema": 1,
   "recordedAt": "2026-11-16T00:49:39.522844+00:00",
   "sourceHeads": {
-    "kura": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
+    "kura": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d"
   },
@@ -88,14 +88,15 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
-    "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
-    "bytes": 203338026,
-    "sha256": "23e7acb8863b93ed1441cd931318beef5b8bc2f64080c6604362ec032c80a7c4",
+    "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
+    "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
+    "bytes": 203338152,
+    "sha256": "7a44d726ae58f46074e2f195504a3f29070241059914585889377a0aec0caa28",
     "verifiedFiles": 45,
     "extractedReader": "PACKAGED_GENERATION_CLI_OK",
     "originalGatewayDeployed": false,
-    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true
+    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true,
+    "allNineNativeKeyScriptsExactlyMatchGit": true
   },
   "unacceptedSyntheticStart": {
     "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
@@ -154,5 +155,38 @@
     "remainingContainers": 6,
     "currentPackageRetained": true,
     "legacyInstallBaselineRetained": true
+  },
+  "updatedAt": "2026-11-16T01:15:01.618247+00:00",
+  "previousPackageBeforePreparationRead": {
+    "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
+    "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
+    "bytes": 203338026,
+    "sha256": "23e7acb8863b93ed1441cd931318beef5b8bc2f64080c6604362ec032c80a7c4",
+    "verifiedFiles": 45,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "originalGatewayDeployed": false,
+    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true
+  },
+  "preparationRead": {
+    "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
+    "action": "generation-preparation-read",
+    "scope": "IMMUTABLE_PREPARATION_ONLY",
+    "linuxModelTests": 6,
+    "skipped": 0,
+    "jdk": 21,
+    "uid": 65534,
+    "emptyCaps": true,
+    "noNewPrivileges": true,
+    "network": "none",
+    "actualCipherJar": true,
+    "installedCoreCohortMocked": true,
+    "actualRootServiceOrGuiAccepted": false,
+    "returnsNoRawKeysOrEncryptedBackup": true,
+    "noKeyGenerationEncryptionOrStateWrites": true,
+    "originalIntentRemainsUnknown": true,
+    "missingCanonicalKeysDoNotAuthorizeStartup": true,
+    "recoveryAndAgentPeersRefused": true,
+    "currentPublicationOrStartStateNotInferred": true,
+    "cancellationAndHistoryPagingImplemented": false
   }
 }

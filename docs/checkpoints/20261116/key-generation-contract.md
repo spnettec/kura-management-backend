@@ -605,3 +605,25 @@ recovery, stage history/cancel, maintenance startup, GUI, all providers and form
 six-component release remain pending. Installed-agent generation publication
 still fails closed; old keys are not retired. Continue from Git and OPEN-TASKS,
 without restoring old evidence trees or replaying closed operations.
+
+## Immutable preparation read (2026-11-16, d20f4b56eb)
+
+The new internal generation-preparation-read request takes only schema, action
+and preparationId. It returns metadata from the original immutable preparation
+receipt, with scope IMMUTABLE_PREPARATION_ONLY. It emits RECORDED, UNKNOWN or
+NOT_FOUND; RECORDED does not mean published, current, started or ready to commit.
+No key bytes, encrypted backup, passphrase or private path is returned. An
+original INTENT is never completed or used to load candidate material.
+
+Six isolated Linux/JDK21 filesystem/crypto model tests pass under UID65534,
+empty capabilities, NNP1 and no network. The actual packaged cipher is used;
+Core cohort admission is mocked as in the existing storage fixture. Tests cover
+metadata and exact file preservation, missing canonical keys/other UNKNOWN,
+missing/changed/linked history, strict fields and recovery/agent peer refusal.
+These are not live Root-service, full runtime or GUI acceptance.
+
+The candidate package has 45 payload checks and the extracted reader passes.
+All nine native key scripts exactly match Git and distribution sources. The
+existing nonempty preparation-directory guard remains: cancellation, complete
+history, second-round admission and GUI must be implemented explicitly without
+deleting original history or retrying unresolved operations.
