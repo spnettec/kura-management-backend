@@ -79,3 +79,16 @@ Core `35cf6e953d8c5ec64bee353c74c90e6bda298cf8`、GWT `37f2fb04232fbc97d82c215d4
 28模块533项去重检查通过，含新增24项归档/安装器和1项配对导出检查；另普通UID安装器/旧恢复/模块33项通过，不重复增加去重总数。真实恢复三UID59连接、生产JAR旧GWT50连接和围栏26连接通过，Root及客户端空能力/NNP1，Root拒绝两私有目录读取，元数据链路native/cipher/启动写入0。实际内核/传输/锁/HMAC/生产处理器和独立安装器state入口已验证；Main/systemd/账号映射/历史填充分别保留模型边界。最初旧安装策略测试的零参数替身不匹配已有接口，修复单列 `239fc4c74d`；另一个夹具错误地把未使用已撤销授权上的continuation当NoAd，产品正确拒绝，改用有原成功发布的历史正面INTAKE。未放宽产品门禁来迎合夹具。
 
 新ARM64包46项配套、11脚本/3资产/3独立单元、336成员无pyc、两个preinst精确嵌入和提取reader检查通过；源码对应实际传输6个Python输入SHA，未部署原3现场。现阶段不解决旧已安装prerm调用旧helper的问题；正确迁移路径、完整实际安装/升级/移除/卸载、全部provider/API/网络/六组件及完整12父项均保持内部pending。详情见 [恢复端归档检查点](../checkpoints/20261116/recovery-private-history-archive-checkpoint.json)。
+
+## 2026-11-17 包升级与原密钥保留（Core be66a9f954）
+
+当前有限结果以[升级检查点](../checkpoints/20261116/package-upgrade-key-preservation-checkpoint.json)为准；8a和更早报告各自保留历史范围，旧候选二进制已清理。
+
+- 新preinst的Store不再把`<stdin>`工作目录加入搜索路径。配对的Lifecycle/Journal原始字节有界嵌入；安装后读取受保护同伴源码，拒绝不完整配对、可写/硬链接来源及同名缓存替代。
+- postinst的内部package上下文只消费原已置备凭据及有效维护围栏；普通auto启动仍拒绝未完成维护。多代恢复安装通过现有generation_source严格验证完整ring/proof/current，冷单密钥缺失不生成替代；有发布痕迹或半套多代凭据时不降级。
+- 移除后安装复用原remove围栏编号及firstAction。仅postinst正面完成、配对manifest和停止Main证据写入包历史，移除本身没有完成回执。显式新启动仍需原成功restore/start前驱、当前包证明及无UNKNOWN；不更改已有编号，也不自动启动Main。
+- 当前111项Linux定向检查与3个真实dpkg/systemd隔离场景通过：新装、模型多代起点的c369升级及移除后重装/purge、模型UNKNOWN的解包前拒绝。实际安装/维修链没有Root密钥RPC或Main启动；新装正常置备独立随机钥；原一次性安装换钥闭环未重放。模型历史起点、临时单元夹具和实际安装钩子的范围分开，不能宣称完整provider/运行Main验收。
+- 旧c369 prerm拒绝新格式后，新prerm的failed-upgrade零退出将检查交给新preinst；预检查成功或UNKNOWN拒绝均实测。失败新包配置留下的原副本未被清除绕过：核对停机、无排队job、原围栏、全部旧/新cohort、相同postinst后，仅从校验新包配套替换5份Root代码及manifest，再沿原编号配置并正常升级。14份私有元数据和8份用户文件保留，记录已结算后清理该隔离夹具。该受控人工修复不作为自动产品恢复验收。
+- 原3运行现场、7进程身份/caps、38私有完整元数据及6旧数据摘要不变。所有新测试容器和临时JDK卷已移除；清理2,238,463,456字节可重建中间包，无新增备份，保留当前be66包/stage及b7/c369升级输入。目录du约92GiB，6容器/17卷。源码只本地保存，无推送。
+
+完整旧版本/六组件/平台/provider/模式与中断配置恢复、完整密钥生命周期和GUI仍内部pending；G034不封签。12父项与仅3外部边界的冻结块SHA仍为`4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7`。界面使用modern-web-guidance随功能逐步处理，视觉改造仍次要。UNKNOWN不得重发或换ID，不依赖已清理的旧target/日志才能开始下一步。

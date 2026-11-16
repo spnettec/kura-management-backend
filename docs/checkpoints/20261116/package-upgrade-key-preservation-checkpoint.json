@@ -1,0 +1,201 @@
+{
+  "recordedAt": "2026-11-16T21:39:51.685924+00:00",
+  "status": "bounded-package-compatibility-candidate; full goal active",
+  "sourceHeads": {
+    "core": "be66a9f95445ef6b848076f8675422ed01500cc0",
+    "gwt": "37f2fb04232fbc97d82c215d4bed5d47f7a515f6",
+    "consoleDocsParent": "5e262f553604d86cbc9cee547a2c46a4c62b79d9"
+  },
+  "localProductionCommits": [
+    "4cf9f25084fc8004238703d1d29bd25c5022df2b",
+    "47fedb681af81c63e57e45163398c19a489926c0",
+    "be66a9f95445ef6b848076f8675422ed01500cc0"
+  ],
+  "changes": [
+    "Incoming key policy executes its own bounded lifecycle and journal source; installed reader rejects unsafe companions and bypasses pyc/CWD imports",
+    "Post-unpack package context consumes only complete original provisioned credentials under the existing maintenance fence; auto startup fence remains strict",
+    "Recovery installer validates complete generations with generation_source(allow_missing=True); only missing single-key cold state may remain missing",
+    "Reinstall records positive package completion under the original remove fence ID/firstAction; removal alone cannot authorize start; explicit startup still needs original successful predecessor and a matching completed package receipt"
+  ],
+  "currentValidation": {
+    "targetedLinuxChecks": 111,
+    "skipped": 0,
+    "modules": [
+      "test_key_journal_archive.py",
+      "test_key_preunpack_policy.py",
+      "test_key_recovery_maintenance.py",
+      "test_key_service_lifecycle.py",
+      "test_key_generation_recovery_setup.py",
+      "test_key_generation_startup.py"
+    ],
+    "actualDpkgCases": [
+      {
+        "case": "fresh",
+        "upgrade": true,
+        "reinstall": true,
+        "remove": true,
+        "purge": true,
+        "oldPrermFallback": false,
+        "originalBytesAndCredentialsPreserved": true,
+        "retainedUserBytesVerifiedBeforeExplicitPurge": true,
+        "nativeKeyDispatches": 0,
+        "coreStarts": 0,
+        "retainedReinstall": true,
+        "originalRemovalFenceId": "62fa3090-15a7-4839-a73c-eb8c5b239b16",
+        "startingStateModeled": false,
+        "cipherDecryptionAcceptance": false,
+        "fullPlatformAcceptance": false,
+        "sourceHead": "be66a9f95445ef6b848076f8675422ed01500cc0",
+        "packageSha256": "fb97be16c991ca870679fb8e85b4eb05badd2c1ce2616c42a32ce8d946562820",
+        "actualPackageHooks": true
+      },
+      {
+        "case": "generation",
+        "upgrade": true,
+        "reinstall": true,
+        "remove": true,
+        "purge": true,
+        "oldPrermFallback": true,
+        "originalBytesAndCredentialsPreserved": true,
+        "retainedUserBytesVerifiedBeforeExplicitPurge": true,
+        "nativeKeyDispatches": 0,
+        "coreStarts": 0,
+        "retainedReinstall": true,
+        "originalRemovalFenceId": "e602a790-a403-4637-ab99-5e765011a1c8",
+        "startingStateModeled": true,
+        "cipherDecryptionAcceptance": false,
+        "fullPlatformAcceptance": false,
+        "sourceHead": "be66a9f95445ef6b848076f8675422ed01500cc0",
+        "packageSha256": "fb97be16c991ca870679fb8e85b4eb05badd2c1ce2616c42a32ce8d946562820",
+        "actualPackageHooks": true
+      },
+      {
+        "case": "unknown",
+        "upgradeRefused": true,
+        "oldPrermFallback": true,
+        "originalUnknownId": "c82d9b18-c52a-4f0d-972a-bcd011fafc40",
+        "originalBytesAndCredentialsPreserved": true,
+        "nativeKeyDispatches": 0,
+        "coreStarts": 0,
+        "startingStateModeled": true,
+        "cipherDecryptionAcceptance": false,
+        "fullPlatformAcceptance": false,
+        "sourceHead": "be66a9f95445ef6b848076f8675422ed01500cc0",
+        "packageSha256": "fb97be16c991ca870679fb8e85b4eb05badd2c1ce2616c42a32ce8d946562820",
+        "actualPackageHooks": true
+      }
+    ],
+    "packageMatrixScope": "Ubuntu 24.04 ARM64, Core only, actual dpkg/systemd/dependencies, JDK21. Generation credentials/new-format empty archive and UNKNOWN are explicitly modeled starting states; opaque user bytes are preservation checks, not decryption acceptance.",
+    "fullHistoricalPrermMatrixAccepted": false,
+    "oldClosedOneTimeGatewayAcceptanceReplayed": false,
+    "actualInstalledMainStarted": false,
+    "humanGwtAccepted": false,
+    "fullProvidersAccepted": false,
+    "provisioningClarification": "Fresh installation really provisions a new random canonical key. Zero nativeKeyDispatches means no Root journaled backup/restore/generation-publication/start RPC, not zero fresh provisioning writes."
+  },
+  "controlledFailureResume": {
+    "originalMaintenanceId": "9bace64c-51c2-4d65-b6bb-01f45c6249ec",
+    "packageSha256": "fb97be16c991ca870679fb8e85b4eb05badd2c1ce2616c42a32ce8d946562820",
+    "changedRootCode": [
+      "bin/kura_key_recovery_setup.py",
+      "bin/kura_key_recovery_start.py",
+      "bin/kura_key_service.py",
+      "bin/kura_key_service_lifecycle.py",
+      "bin/kura_key_store.py"
+    ],
+    "pairedManifestChanged": true,
+    "privateFilesExactMetadata": 14,
+    "preservedUserFilesRestored": 8,
+    "originalConfigurationResumed": true,
+    "subsequentNormalUpgrade": true,
+    "originalCompletionRetained": true,
+    "nativeKeyDispatches": 0,
+    "coreStarts": 0,
+    "unknownRedispatched": false,
+    "manualOperatorRepair": true,
+    "automaticProductRecoveryAccepted": false,
+    "sourceHead": "be66a9f95445ef6b848076f8675422ed01500cc0",
+    "ownedFixtureRemoved": true
+  },
+  "artifact": {
+    "sourceHead": "be66a9f95445ef6b848076f8675422ed01500cc0",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611162125.be66a9f-1_arm64.deb",
+    "bytes": 203481054,
+    "sha256": "fb97be16c991ca870679fb8e85b4eb05badd2c1ce2616c42a32ce8d946562820",
+    "verifiedFiles": 47,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "currentJournalReaderEmbedded": true,
+    "currentPolicyReadersEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "unknownRedispatched": false,
+    "packageSha256": "fb97be16c991ca870679fb8e85b4eb05badd2c1ce2616c42a32ce8d946562820",
+    "membersChecked": 336,
+    "pythonScriptsExactlyMatchSourceAndStage": 12,
+    "recoveryAssetsExactlyMatchSourceAndStage": 3,
+    "pythonBytecodeExcluded": true,
+    "runtimeInstalledInDisposableFixtures": true,
+    "originalGatewayDeployed": false
+  },
+  "protectedSourceMaximumBytes": 131072,
+  "protectedSourceCurrentBytes": {
+    "service": 117025,
+    "lifecycle": 115985,
+    "journal": 68930,
+    "recovery": 84142,
+    "setup": 17630
+  },
+  "sourceLimitRaised": false,
+  "preserved": {
+    "gateways": 3,
+    "processes": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContents": 6,
+    "originalGatewayDeployed": false,
+    "mainPrivileges": "original Main still 11 ambient/13 bounding capabilities and NNP0; unchanged, not least-privilege acceptance"
+  },
+  "cleanup": {
+    "bytesReleased": 2238463456,
+    "backupCreated": false,
+    "oldIntermediateCandidatesRemoved": true,
+    "currentDebStageAndB7C369UpgradeInputsRetained": true,
+    "allNewOwnedContainersAndTemporaryJdkVolumeRemoved": true,
+    "retainedContainerCount": 6,
+    "retainedVolumeCount": 17,
+    "allocatedWorkspaceUsageApproxGiB": 92,
+    "usageCommand": "du -h -d 1 /Users/heyoulin/iot-kura-develop"
+  },
+  "remainingInternal": [
+    "Complete all package versions/providers/modes/six-component installation and interrupted-configuration product recovery; controlled manual code repair is not automatic GUI recovery",
+    "Full key lifecycle, provider inventory and atomic re-encryption; no actual rotation enablement or old-key deletion",
+    "Public archive preview/confirm/original query/original metadata continuation with ADMIN-XSRF or independent recovery authorization; modern-web-guidance as secondary incremental work",
+    "Current installed Main/HTTPS/GWT joint acceptance without replaying closed original transactions",
+    "Legal original UNKNOWN recovery, full networking/API/database/CA custody/upstream relation and release gates in all 12 parents"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "g034Sealed": false,
+  "lastAccepted": "G033/V61",
+  "lastFullCodeSeal": "V51",
+  "pushed": false,
+  "ordinaryWeeklyUsedPercent": 95,
+  "ordinaryUsageAllowed": true,
+  "creditsUnchanged": true,
+  "sourceTests": [
+    "kura/kura/distrib/src/test/test_key_preunpack_policy.py",
+    "kura/kura/distrib/src/test/test_key_generation_recovery_setup.py",
+    "kura/kura/distrib/src/test/test_key_package_upgrade_systemd.py",
+    "kura/kura/distrib/src/test/test_key_recovery_maintenance.py",
+    "kura/kura/distrib/src/test/test_key_journal_archive.py"
+  ]
+}
