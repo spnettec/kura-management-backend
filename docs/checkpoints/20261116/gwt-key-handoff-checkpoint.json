@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T07:02:40.112828+00:00",
-  "uiSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
+  "recordedAt": "2026-11-16T07:31:24.254010+00:00",
+  "uiSourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
   "nativeCurrentHead": "a2770c21e90842e2630493bf49171183c46dc85e",
   "nativeServiceSourceHead": "a2770c21e90842e2630493bf49171183c46dc85e",
   "nativeCodeChanged": false,
@@ -53,24 +53,66 @@
     "nativeFormValidationAndErrorFocus": true,
     "guides": [
       "forms",
-      "privacy"
+      "accessibility"
     ],
     "incrementalSecondaryToMainGoal": true,
-    "recoveryLinkContainsBearer": false
+    "recoveryLinkContainsBearer": false,
+    "explicitNewAttemptOnlyAfterOriginalNoDispatchReceipt": true,
+    "closedAttemptsPreserveAllFiveIds": 32,
+    "unknownMayReplaceIds": false,
+    "noDispatchMayResendItsOriginalId": false
   },
   "build": {
     "jdk": 21,
     "runtimeMinimum": 21,
-    "unitTests": 90,
+    "unitTests": 103,
     "failures": 0,
     "skipped": 0,
     "gwtModules": 2,
     "gwtPermutations": 12,
     "artifact": {
-      "sourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
-      "bytes": 33991757,
-      "sha256": "456e28d28c3a497580eef47e6cff13eabf65f449e8e3eb3d870027ee0c05611a",
-      "verifiedServerClasses": 29,
+      "bytes": 34016525,
+      "sha256": "5060aac669f76b77450c1a4d9007a441299ee44cea954b5f7fe1590332ab81cd",
+      "verifiedServerSharedClasses": 37,
+      "classSha256": {
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$Preflight.class": "f9c08963955dad506c5ae65b3aa7cc6db3fa783b1cc6cff4917f2df43122140c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal$Boundary.class": "b6b0c900d1fb9dc61ce315db04f4c7caa8d81c3fa20e3483af9258340c540f0f",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal$Writer.class": "6f43cb7edb8b2cb021cfb325add3dfd9324cffedeeca19eca8761fdf88e84013",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyProtocol.class": "c18202616691cdd528c30bf980e34a7609c198c2ef8eb2e3452e11b25b8c1b41",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal$Boundary.class": "233f43e5f2b4c5bdf3bdf542633dea4c9b28ad4326e4b1047941e562f5b43a48",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport.class": "164781c8d98a09596ac884f9d1d40bdfd9b8bcad5f4c3d57c894d6ec2125a931",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol$1.class": "c4b9e74395266394f23267cfee252532da9683bcf98519dee99a97109c56893d",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffClient.class": "412534f6f4c96a5f4c23e664c62b6a50274d7b3d4199b48956f468198ffcd1cf",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$Kind.class": "567d3f627cd5dc04aea0c24a2dde9dba04d9a0632c81831d9b30b8b649f5be2c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal.class": "4c3c8ad508c276ced7bb8ad8164a9b4de4acbf686ce45110f6121534a1d07a3e",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal$Boundary.class": "f1cfb4558ba4ebef90dafd06a997b191cbaecd8009c5f1d3d1de15613a58cb44",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$BeforeDispatch.class": "5df831a73fe48d7ee18ecb54e043b2550037d6e61cb13aa2a17ba95c0d8e8787",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal.class": "305e276455116b4b703733f64c8c25785a52e6ef4eb217a62e58daddb949fc90",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal$OriginalReader.class": "62a9312fea8b93ee6238ec0a1115f9922d2a89466de530eb7a580c0101370352",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal.class": "09d87a603876185bbc300cdcf4a5c2563fbe9b7209c056dd77dc141e6f42968f",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal$1.class": "ff5b8bf61e85ddabfdcf79c5d1ea99e4550d5264ea659d5417d053db4c640867",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationClient.class": "e3b347c1b77f76467eab582e73341a2b269c708be7b8ee9447597bbe699749f5",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol.class": "3aacc973446b1624c9f86b42b5fa390cbc57c4343813919d87286f30e5dc02bc",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal$Caller.class": "5807b6ed77921ffb0230dc408f62c9ad22fb3b86fecec0b6c2da7503dfe48abe",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient.class": "9a59babecbf841eac212c73ea8fa9a22deb42ba8465c05c4c2435a4ce931333d",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffProtocol$1.class": "f545eca970100dd72259d0a6c12950cc3699e07522292eac7f59dbbe5bce76ef",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal.class": "67239496e95d15dc5a85d13017029ddeba5807f06355ab0350c30f69f6e96e70",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$Starter.class": "dd576173b13358d751574d02c5298075c72f1349fdd39e4d56410b23ab1a45cd",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$NotDispatched.class": "b1d7fb146ce8b3e2b63a3fb5f25a124a30c548fbb30903a9517b7ce7656f465c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.class": "1991aa926daa1f9ef08aa2070134c6debeb2f1d29cb2093cadd4c8f5dff9f00b",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffProtocol.class": "95c7f9cef39af61ea69a6a43e8b80e6cd07507be66a5455a4448e9f9ea47e4c4",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$Preflight.class": "83f494fe389bb3f19510efa01d578e758bdf195bcb712534d60cda32b5e0315a",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$PeerCheck.class": "f2e2590123e659b7fc3eb1cfafdb1a511cbf7f70655ad7f44f77bb70b055f94e",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyProtocol$1.class": "93e546e9fd41f5d05c9998d60506802976d5d4990c7db5c4e68cb202d3e42052",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal$Caller.class": "ed342d2811e3d375095d529e65bbaecf26038cd7f435b685a1049abee6f49875",
+        "org/eclipse/kura/web/server/GwtGatewayKeyServiceImpl.class": "e2ab2e68ab3c61f328018db17304ffd0aafe0cd2b63af9e39a42f80bd33467eb",
+        "org/eclipse/kura/web/server/GwtGatewayKeyHandoffServiceImpl.class": "bba2c061731700291ebe3a0531a2f5dc4645f40ec0ae3ea17cd8ac43edc96e0c",
+        "org/eclipse/kura/web/shared/model/GwtGatewayKeyResult.class": "99dc85d22618f5bba4bd2eda4fb66a1e3d5ef5b4db26477e437c70e98b10f37b",
+        "org/eclipse/kura/web/shared/model/GwtGatewayKeyGeneration.class": "97f57a3ca2a3669cd2368a336530109436ef756f7a435428bd23dd1063f2fed8",
+        "org/eclipse/kura/web/shared/model/GwtGatewayKeyHandoff.class": "bdbea06f87edd581c02ef68591ea9f5ed388950b43507c71bb99d8705b849000",
+        "org/eclipse/kura/web/shared/service/GwtGatewayKeyService.class": "f53c572c7ffea904b25a5d79d3056c9b615d399ab0be7338c37d9a0e8d574726",
+        "org/eclipse/kura/web/shared/service/GwtGatewayKeyHandoffService.class": "c8f3fd835358686f34ec3deabc5319b20099159c97a8ccd14b30501920d524ab"
+      },
       "bytecodeRelease": 11,
       "gwtModules": 2,
       "gwtPermutations": 12,
@@ -78,14 +120,18 @@
         "login": 6,
         "denali": 6
       },
-      "unitTests": 90,
-      "unitSkipped": 0,
-      "browserCases": 7,
-      "linuxKernelCases": 6,
+      "unitTests": 103,
+      "browserCases": 11,
+      "linuxNoDispatchCases": 12,
+      "linuxCasesSubsetOfUnitCases": true,
       "rootAndHumanSessionSynthetic": true,
       "actualInstalledMainAcceptance": false,
-      "linuxKernelClassesMatchJar": true,
+      "compiledClassesUnmodifiedAfterLinuxRun": true,
       "fixtureExcludedFromJar": true,
+      "linuxInputClassHashesMatchJar": true,
+      "crossKindIdCollisionFirstReceiptRefused": true,
+      "collisionBeforeFixFailures": 1,
+      "sourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
       "generatedAssetsCleanupHistory": {
         "beforeMainCacheJs": {
           "login": 24,
@@ -139,10 +185,10 @@
     "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
   },
   "remaining": [
-    "cross-UID admission with the independent recovery receiver and upgrade gate for every sender journal; Core-owned three-GWT-sender admission is implemented only",
-    "bind actual configured data directory and Root namespace across reconfiguration, JVM/bundle restart and package upgrade",
-    "durable no-dispatch original receipt and explicit UI recovery when cross-sender admission denies before an owning intent exists; absence is never a Root rejection or resend permit",
-    "actual installed Main / human ADMIN / XSRF / HTTPS / independent page joint acceptance",
+    "cross-UID admission with the independent recovery receiver and upgrade gate for every sender journal, including no-dispatch receipts; Core-owned three-GWT-sender admission is implemented only",
+    "bind actual configured data directory and Root namespace across reconfiguration, JVM/bundle restart and package upgrade; a single RPC now pins its data directory",
+    "legitimate original recovery for lock BUSY, capacity, unsafe/torn local state, unavailable Root and native preflight; immutable no-dispatch receipts cover only proven pre-callback GWT admission denial with an exact missing-original reply",
+    "actual installed Main / human ADMIN / XSRF / HTTPS / independent page joint acceptance, including the classic backup UI acknowledgement branch",
     "encrypted authorization material download/upload; same-original renewal/revocation/archive; expired first start and uncertain continuation recovery",
     "all provider rekey/restart/retirement, full broker/runtime/cohort and all 12 internal pending groups"
   ],
@@ -162,7 +208,8 @@
     "generationUi": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/client/ui/security/GatewayKeyGenerationUi.java",
     "generationJournal": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal.java",
     "generationProtocol": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol.java",
-    "workflowAdmission": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.java"
+    "workflowAdmission": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.java",
+    "noDispatchJournal": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal.java"
   },
   "previousD83Increment": {
     "uiSourceHead": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40",
@@ -220,7 +267,7 @@
       "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
     }
   },
-  "uiCodeTestedSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
+  "uiCodeTestedSourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
   "nativeGenerationAlgorithmSourceRemains": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
   "generationSenderIntent": {
     "limit": 64,
@@ -239,12 +286,16 @@
     "sharedAdmissionWithinCoreOwnedGwtJournalsImplemented": true
   },
   "browserModel": {
-    "tests": 7,
+    "tests": 11,
     "cases": [
       "native forms, validation, actual GWT RPC, download/reordered upload/verify/plan/consent/issuance, secret lifecycle",
       "wrong encrypted upload does not create a verification intent and can be corrected",
       "lost response recovers only the original prepared result across reload",
       "missing Root original after response loss stays query-only across reload",
+      "preparationId: original no-dispatch receipt across reload, explicit new intent, original ID history and keyboard focus; no automatic writer",
+      "verificationId: original no-dispatch receipt across reload, explicit new intent, original ID history and keyboard focus; no automatic writer",
+      "handoffId: original no-dispatch receipt across reload, explicit new intent, original ID history and keyboard focus; no automatic writer",
+      "storage failure while replacing an unsent step preserves its original identifiers and never writes",
       "browser storage failure blocks the first mutating RPC",
       "two browser tabs share one fixed workflow and send at most once",
       "Chinese labels and mobile native form layout"
@@ -254,7 +305,7 @@
     "actualHttps": true,
     "rootReplies": "synthetic",
     "humanMainSessionAcceptance": false,
-    "testedSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
+    "testedSourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
     "reproducibleFromCurrentGit": "kura-management-ui/bundles/org.eclipse.kura.web2.test/src/browser/run_generation_browser.py"
   },
   "goalStatus": "active",
@@ -274,7 +325,9 @@
     "crossUidIndependentReceiverAccepted": false,
     "allSenderUpgradeGateAccepted": false,
     "dataDirectoryAndRootNamespaceReconfigurationBindingAccepted": false,
-    "durablePreIntentNoDispatchReceiptAndUiRecoveryAccepted": false
+    "durablePreIntentNoDispatchReceiptAndUiRecoveryAccepted": false,
+    "noDispatchReceiptAndUiRecoveryImplemented": true,
+    "noDispatchActualInstalledMainAccepted": false
   },
   "journalCorrections": {
     "posixLocksReleasedBySecondSameInodeFdFixed": true,
@@ -312,12 +365,126 @@
     },
     "subsetOf90UnitCases": true,
     "independentProcessLockProbes": 10,
-    "allFourTestedClassesMatchProductionJar": true,
-    "sourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31"
+    "sourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
+    "productionJarMatchVerifiedAtSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31"
   },
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
     "amd64",
     "disk full/hard power loss"
-  ]
+  ],
+  "singleRpcDataDirectoryPinned": true,
+  "noDispatch": {
+    "sourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
+    "scope": "proven pre-callback Core-owned GWT admission denial only",
+    "senderCallbackNeverEntered": true,
+    "exactRootMissingReplyAlsoRequired": true,
+    "missingReplyAloneIsProof": false,
+    "genericErrorMaySettleUnknown": false,
+    "rootOperationResult": false,
+    "sameOriginalIdNeverDispatchesLater": true,
+    "capacity": 64,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "singleHardLinkAndOwnerRequired": true,
+    "receiptAndCompletionHashForcedAndDirectorySynced": true,
+    "tornSlotConsumesIdAndBlocksNewWriters": true,
+    "boundTo": [
+      "kind",
+      "original ID",
+      "authenticated operator",
+      "redacted request metadata",
+      "canonical configured data directory",
+      "data directory device and inode"
+    ],
+    "storesPassphraseBackupRawKeyOrBearer": false,
+    "singleRpcDataDirectoryPinned": true,
+    "wholeNamespaceAcrossReconfigurationAndRestartAccepted": false,
+    "newAttempt": [
+      "explicit original receipt re-read under browser Web Lock",
+      "preserve old five IDs",
+      "persist new IDs before any future mutating RPC",
+      "do not invoke a writer when creating the new attempt"
+    ],
+    "preparationVerificationIssuanceBrowserCases": 3,
+    "classicBackupUiAcknowledgementImplemented": true,
+    "classicBackupUiActualBrowserAccepted": false,
+    "rootUnavailableOrLockBusyConvertedToProof": false,
+    "wholeCrossUidOrUpgradeAdmissionAccepted": false,
+    "workflowImplementationSourceHead": "8cb27cca0db6a45da61c79af8d81cb4b58bfc51f",
+    "allSenderKindsCheckedForIdOccupancyBeforeFirstReceipt": true,
+    "accessErrorsNotTreatedAsAbsence": true,
+    "collisionRegressionBeforeFix": {
+      "tests": 12,
+      "failures": 1,
+      "sourceHead": "8cb27cca0db6a45da61c79af8d81cb4b58bfc51f"
+    }
+  },
+  "linuxNoDispatch": {
+    "actualJavaStatus": {
+      "Uid": "65534\t65534\t65534\t65534",
+      "CapEff": "0000000000000000",
+      "CapBnd": "0000000000000000",
+      "CapAmb": "0000000000000000",
+      "NoNewPrivs": "1"
+    },
+    "output": "GWT_NO_DISPATCH_NATIVE_OK tests=12 nativeKeyOperations=0\n",
+    "exitCode": 0,
+    "nativeKeyOperations": 0,
+    "testedInputClassSha256": {
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$Preflight.class": "f9c08963955dad506c5ae65b3aa7cc6db3fa783b1cc6cff4917f2df43122140c",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal$Boundary.class": "b6b0c900d1fb9dc61ce315db04f4c7caa8d81c3fa20e3483af9258340c540f0f",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal$Writer.class": "6f43cb7edb8b2cb021cfb325add3dfd9324cffedeeca19eca8761fdf88e84013",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyProtocol.class": "c18202616691cdd528c30bf980e34a7609c198c2ef8eb2e3452e11b25b8c1b41",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal$Boundary.class": "233f43e5f2b4c5bdf3bdf542633dea4c9b28ad4326e4b1047941e562f5b43a48",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport.class": "164781c8d98a09596ac884f9d1d40bdfd9b8bcad5f4c3d57c894d6ec2125a931",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol$1.class": "c4b9e74395266394f23267cfee252532da9683bcf98519dee99a97109c56893d",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffClient.class": "412534f6f4c96a5f4c23e664c62b6a50274d7b3d4199b48956f468198ffcd1cf",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$Kind.class": "567d3f627cd5dc04aea0c24a2dde9dba04d9a0632c81831d9b30b8b649f5be2c",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal.class": "4c3c8ad508c276ced7bb8ad8164a9b4de4acbf686ce45110f6121534a1d07a3e",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal$Boundary.class": "f1cfb4558ba4ebef90dafd06a997b191cbaecd8009c5f1d3d1de15613a58cb44",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$BeforeDispatch.class": "5df831a73fe48d7ee18ecb54e043b2550037d6e61cb13aa2a17ba95c0d8e8787",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal.class": "305e276455116b4b703733f64c8c25785a52e6ef4eb217a62e58daddb949fc90",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal$OriginalReader.class": "62a9312fea8b93ee6238ec0a1115f9922d2a89466de530eb7a580c0101370352",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal.class": "09d87a603876185bbc300cdcf4a5c2563fbe9b7209c056dd77dc141e6f42968f",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal$1.class": "ff5b8bf61e85ddabfdcf79c5d1ea99e4550d5264ea659d5417d053db4c640867",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationClient.class": "e3b347c1b77f76467eab582e73341a2b269c708be7b8ee9447597bbe699749f5",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol.class": "3aacc973446b1624c9f86b42b5fa390cbc57c4343813919d87286f30e5dc02bc",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal$Caller.class": "5807b6ed77921ffb0230dc408f62c9ad22fb3b86fecec0b6c2da7503dfe48abe",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyClient.class": "9a59babecbf841eac212c73ea8fa9a22deb42ba8465c05c4c2435a4ce931333d",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffProtocol$1.class": "f545eca970100dd72259d0a6c12950cc3699e07522292eac7f59dbbe5bce76ef",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyJournal.class": "67239496e95d15dc5a85d13017029ddeba5807f06355ab0350c30f69f6e96e70",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$Starter.class": "dd576173b13358d751574d02c5298075c72f1349fdd39e4d56410b23ab1a45cd",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$NotDispatched.class": "b1d7fb146ce8b3e2b63a3fb5f25a124a30c548fbb30903a9517b7ce7656f465c",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.class": "1991aa926daa1f9ef08aa2070134c6debeb2f1d29cb2093cadd4c8f5dff9f00b",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffProtocol.class": "95c7f9cef39af61ea69a6a43e8b80e6cd07507be66a5455a4448e9f9ea47e4c4",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$Preflight.class": "83f494fe389bb3f19510efa01d578e758bdf195bcb712534d60cda32b5e0315a",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$PeerCheck.class": "f2e2590123e659b7fc3eb1cfafdb1a511cbf7f70655ad7f44f77bb70b055f94e",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyProtocol$1.class": "93e546e9fd41f5d05c9998d60506802976d5d4990c7db5c4e68cb202d3e42052",
+      "org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal$Caller.class": "ed342d2811e3d375095d529e65bbaecf26038cd7f435b685a1049abee6f49875",
+      "org/eclipse/kura/web/server/GwtGatewayKeyServiceImpl.class": "e2ab2e68ab3c61f328018db17304ffd0aafe0cd2b63af9e39a42f80bd33467eb",
+      "org/eclipse/kura/web/server/GwtGatewayKeyHandoffServiceImpl.class": "bba2c061731700291ebe3a0531a2f5dc4645f40ec0ae3ea17cd8ac43edc96e0c",
+      "org/eclipse/kura/web/shared/model/GwtGatewayKeyResult.class": "99dc85d22618f5bba4bd2eda4fb66a1e3d5ef5b4db26477e437c70e98b10f37b",
+      "org/eclipse/kura/web/shared/model/GwtGatewayKeyGeneration.class": "97f57a3ca2a3669cd2368a336530109436ef756f7a435428bd23dd1063f2fed8",
+      "org/eclipse/kura/web/shared/model/GwtGatewayKeyHandoff.class": "bdbea06f87edd581c02ef68591ea9f5ed388950b43507c71bb99d8705b849000",
+      "org/eclipse/kura/web/shared/service/GwtGatewayKeyService.class": "f53c572c7ffea904b25a5d79d3056c9b615d399ab0be7338c37d9a0e8d574726",
+      "org/eclipse/kura/web/shared/service/GwtGatewayKeyHandoffService.class": "c8f3fd835358686f34ec3deabc5319b20099159c97a8ccd14b30501920d524ab"
+    },
+    "tests": 12,
+    "jdk": 21,
+    "architecture": "aarch64",
+    "rootReplies": "synthetic",
+    "network": "none",
+    "readOnlyHostInputs": true,
+    "sourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
+    "subsetOf103UnitCases": true
+  },
+  "incrementCleanup": {
+    "retainedBecauseMounted": [],
+    "logicalBytesDeleted": 239733186,
+    "backupsCreated": false,
+    "currentJarRetained": true,
+    "personalRuntimeDeleted": false,
+    "remainingContainers": 6
+  }
 }
