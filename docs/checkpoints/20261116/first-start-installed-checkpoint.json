@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T17:04:52.148317+00:00",
+  "productionSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+  "testSourceHead": "43e3ad899e75f3983d336ac536607e7ac0ff400d",
+  "productionFilesUnchanged": true,
+  "artifact": {
+    "sourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161614.b36afab-1_arm64.deb",
+    "bytes": 203400558,
+    "sha256": "2e0d4ead0ea78f1c0e49b4438085d3421aa873798fadcd1d67e11632ae134387",
+    "verifiedFiles": 45,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "runtimeInstalled": false,
+    "unknownRedispatched": false,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+    "pythonBytecodeExcluded": true,
+    "archiveMembersChecked": 335,
+    "nativeInputPythonSourcesExact": 4,
+    "actualCipherInputJarMatchesPackage": true,
+    "nativeUidConnections": 179,
+    "gwtRetainedIntentNativeKinds": [
+      "LEGACY",
+      "GENERATION",
+      "HANDOFF"
+    ],
+    "originalGatewayDeployed": false,
+    "actualInstalledMainBrowserAcceptance": false,
+    "newUnusedHandoffNativeTransportAcceptance": false,
+    "newStartLeaseNativeTransportWriteAcceptance": false,
+    "newStartLeaseInstalledMainAcceptance": false
+  },
+  "installedScenario": {
+    "actualNativeLeaseWrite": true,
+    "actualSystemdRootAndRecoveryMain": true,
+    "allFiveNativeOperationsSucceeded": true,
+    "allProvidersAccepted": false,
+    "currentCipherUsesPublishedKey": true,
+    "fullBrokerAccepted": false,
+    "gwtHumanSessionAcceptance": false,
+    "issuer": "local Root; GWT ADMIN/XSRF not exercised",
+    "leaseOperationId": "061d187d-8c17-4702-9df1-fd716c228010",
+    "newCorePid": 6980,
+    "ordinaryStartupStillFencedUntilExplicitRequest": true,
+    "originalCipherPreservedAndDecrypted": true,
+    "originalCorePid": 5214,
+    "originalGrantExactMetadataPreserved": true,
+    "originalIds": {
+      "handoffId": "160c7873-7e4a-4d89-bdb8-bf0ab9097d76",
+      "preparationId": "180b21c4-be8c-47f9-a2f8-9097b3ca1b46",
+      "publicationId": "9fc45ff6-ac19-4b3a-8f02-27f76a52e5f6",
+      "startOperationId": "d2f39ad9-39b2-4f82-b425-ef5d670385ac",
+      "verificationId": "e2f4f6f2-d2f3-4928-a764-c2e33e06c0c9"
+    },
+    "originalStartupIdUnchanged": true,
+    "packageSha256": "2e0d4ead0ea78f1c0e49b4438085d3421aa873798fadcd1d67e11632ae134387",
+    "peers": {
+      "core": {
+        "CapAmb": "0000000406413426",
+        "CapBnd": "00000004064134e6",
+        "CapEff": "0000000406413426",
+        "Gid": "991\t991\t991\t991",
+        "NoNewPrivs": "0",
+        "Uid": "997\t997\t997\t997",
+        "pid": 5214,
+        "startTicks": "12657597"
+      },
+      "recovery": {
+        "CapAmb": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "Gid": "990\t990\t990\t990",
+        "NoNewPrivs": "1",
+        "Uid": "995\t995\t995\t995",
+        "pid": 4804,
+        "startTicks": "12657134"
+      },
+      "root": {
+        "CapAmb": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "Gid": "0\t0\t0\t0",
+        "NoNewPrivs": "1",
+        "Uid": "0\t0\t0\t0",
+        "pid": 4953,
+        "startTicks": "12657583"
+      }
+    },
+    "realGrantExpirySeconds": 900,
+    "rootAndRecoveryPidsAndTicksUnchanged": true,
+    "runtimeProfile": {
+      "extraBundle": "generation DS probe",
+      "heapMiB": 256,
+      "legacyServiceUnitSeed": true
+    },
+    "sameRecoveryUidOtherProcessDeniedBeforeReservation": true,
+    "schema": 1,
+    "scope": "actual-installed-single-Core-profile-original-first-start-lease",
+    "sourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "unknownRedispatched": false,
+    "actualHttpsAndProductionBrowser": true,
+    "browserWriterCommands": [
+      "publish",
+      "start-renew",
+      "start",
+      "complete"
+    ],
+    "certificateFingerprintPinned": true,
+    "browserBearerPersisted": false,
+    "networkInterfaces": [
+      "lo"
+    ]
+  },
+  "harnessInputSha256": {
+    "test_key_start_lease_systemd.py": "4ded7e901ea062e9b00da74c285f10b561d57fda69ac555bb7cf82b0bb1b7424",
+    "run_key_start_lease_systemd.mjs": "849ac72f89a09c7c7ae6cdb1efdd1e519b06e1df0c9152a755df0806ee1da931"
+  },
+  "oneActualScenario": true,
+  "actualScenarioDurationSeconds": 997.044,
+  "realExpiryNotClockPatch": true,
+  "network": {
+    "guestInterfaces": [
+      "lo"
+    ],
+    "hostForwarding": "opaque end-to-end TLS via docker exec",
+    "responseSubstitution": false,
+    "certificateFingerprintPinned": true
+  },
+  "initialHarnessFailure": {
+    "stage": "before worker spawn or package installation",
+    "cause": "asynchronous WriteStream descriptor not open for spawn stdio",
+    "fixed": "synchronous numeric descriptor",
+    "keyRequestDispatched": false,
+    "ownedContainerAndJdkVolumeRemoved": true
+  },
+  "cleanup": {
+    "containerRemoved": true,
+    "jdkVolumeRemoved": true,
+    "originalGatewaysUntouched": true,
+    "backupCreated": false
+  },
+  "capacityHeadroomReview": {
+    "priority": "P1",
+    "fixed": false,
+    "review": "docs/reviews/handoff-archive-capacity-review-20261117.md",
+    "diagnostic": {
+      "scope": "disposable source diagnostic; no production gateway or native scenario altered",
+      "cases": [
+        {
+          "bound": "shared-admissions",
+          "successfulRenewalConsumedLastSlot": true,
+          "startupError": "CAPACITY",
+          "startupErrorStage": "reserve",
+          "originalStartupNativeMissing": true,
+          "startupAdmissionState": null,
+          "sharedRows": 256,
+          "nativeRows": 4,
+          "systemdCore": "modeled",
+          "actualCipher": true
+        },
+        {
+          "bound": "native-operations",
+          "successfulRenewalConsumedLastSlot": true,
+          "startupError": "CAPACITY",
+          "startupErrorStage": "native-after-intake",
+          "originalStartupNativeMissing": true,
+          "startupAdmissionState": "INTAKE",
+          "sharedRows": 2,
+          "nativeRows": 256,
+          "systemdCore": "modeled",
+          "actualCipher": true
+        }
+      ]
+    }
+  },
+  "notAccepted": [
+    "GWT human ADMIN/XSRF authority issuance; this fixture used local Root issuance",
+    "all providers, all deployment profiles and full broker",
+    "startup with original backup/password rather than dedicated handoff authority",
+    "formal six-component pairing, all upgrade/uninstall combinations",
+    "capacity headroom and completed-authority archival"
+  ],
+  "originalRetainedGateways": {
+    "count": 3,
+    "processes": 7,
+    "exactPrivateMetadata": 38,
+    "oldDataContents": 6,
+    "unknownRedispatched": false
+  },
+  "oldClosedScenariosReplayed": false,
+  "goalStatus": "active",
+  "ordinaryWeeklyUsedPercent": 90,
+  "ordinaryUsageAllowed": true,
+  "creditsUnchanged": true
+}

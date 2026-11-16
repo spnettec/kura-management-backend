@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T16:17:53.454800+00:00",
+  "recordedAt": "2026-11-16T17:04:52.148317+00:00",
   "sourceHeads": {
-    "kura": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "kura": "43e3ad899e75f3983d336ac536607e7ac0ff400d",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
     "kura-management-ui": "be67271d039bb20f23c17576f5c19f4257dafddd"
@@ -145,12 +145,12 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "new start-lease actual native write/peer and installed Main acceptance, full human ADMIN/XSRF/GWT/HTTPS joint acceptance, legacy backup-tab joint browser flow and startup actual-backup authorization remain internal pending",
-    "a published grant whose fixed startup already has any reservation, permanent NOT_ADMITTED closure, private intent or UNKNOWN cannot be renewed by this unattempted-first-start path; legal original-record recovery for those cases, absent grants, previous boot and replaced writer locks remains pending",
-    "completed grant archival, historical/shared-admission capacity, uncertain native lease metadata intent recovery and the complete authorization lifecycle remain pending; original records are retained and capacity is still counted",
-    "Root INTAKE without native originals, torn/changed/foreign/missing namespace attempts and private startup children of cold restoration remain query-only and cannot be bypassed",
-    "legacy namespace discovery/migration, all preparations/handoffs/current-generation lifecycle combinations and formal six-component versions/binary/cohort/install order remain pending; initialization state allowlists were not relaxed",
-    "complete providers, privileged broker, actual takeover/network matrices, release and all unchanged 12 parent groups remain pending; only the original 3 external boundaries are deferred"
+    "P1 reproduced: renewing can consume the last shared-admission or native-operation slot and starve the fixed original startup; the native-full case reaches INTAKE without a native startup original. Implement atomic end-to-end capacity commitments before archive work; no original resend or ID substitution",
+    "completed grant archival, historical/shared-admission capacity, uncertain native lease intent recovery and complete authorization lifecycle remain internal pending; retain all original bytes, IDs and fences",
+    "the successful installed b36 scenario covers local-Root-issued dedicated authority plus actual recovery Main/HTTPS/browser and one Core profile. Full GWT human ADMIN/XSRF issuer joint acceptance, all providers/full broker, legacy backup-tab joint flow and startup actual-backup authorization remain pending",
+    "a published grant with any prior fixed-start reservation, permanent NOT_ADMITTED, private intent or UNKNOWN cannot use unattempted-first-start renewal; legal recovery for these originals, missing grants, previous boot and replaced writer locks remains pending",
+    "legacy namespace discovery/migration, all preparations/handoffs/current-generation/sender state combinations and formal six-component versions/binary/cohort/install order remain pending; no blind initialization allowlist expansion",
+    "complete takeover/network matrices, API/R017/database/upstream/release work and all unchanged 12 parent groups remain pending; only the original 3 boundaries are external deferred"
   ],
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
@@ -217,7 +217,7 @@
     "diskFreeBefore": 415516758016,
     "diskFreeAfter": 415747825664
   },
-  "updatedAt": "2026-11-16T16:17:53.454800+00:00",
+  "updatedAt": "2026-11-16T17:04:52.148317+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -2563,5 +2563,18 @@
     "originalGatewayDeployed": false,
     "actualInstalledMainBrowserAcceptance": false,
     "newUnusedHandoffNativeTransportAcceptance": false
+  },
+  "installedFirstStartLease": {
+    "checkpoint": "first-start-installed-checkpoint.json",
+    "productionSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "testSourceHead": "43e3ad899e75f3983d336ac536607e7ac0ff400d",
+    "actualNativeLeaseWrite": true,
+    "actualRootRecoveryMainAndHttpsBrowser": true,
+    "issuer": "local Root",
+    "gwtHumanSessionAcceptance": false,
+    "oneActualCoreProfile": true,
+    "originalCipherPreservedAndDecrypted": true,
+    "capacityHeadroomP1Unfixed": true,
+    "scopeOnlyAtDeclaredProductionSource": true
   }
 }

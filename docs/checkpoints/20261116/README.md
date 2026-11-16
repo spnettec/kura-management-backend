@@ -8,6 +8,12 @@
 
 ## 已保存的最新工作
 
+- 2026-11-17 已在全新隔离安装场景验证 Core `b36afab0d6` 的**实际原首次启动续期**；可复现测试源码本地提交 `43e3ad899e`，生产文件未变。当前包及声明依赖真实安装，使用实际PID1/Core、Root和恢复Main；浏览器经实际HTTPS/生产页面与Handler执行且固定证书指纹。授权由本地Root签发，**不是GWT人类ADMIN/XSRF联合验收**。原授权按真实boot时钟等待900秒，不修改时钟或原授权。页面只各发送一次publish、start-renew、start和complete；原生准备/核验/发布/续期/启动5项均成功，原启动编号不变；续期后普通启动门禁仍拒绝，明确启动后实际新JVM的Crypto、配置审计facade及快照bundle就绪，合成旧密文原字节保留且解密成功，新密文使用发布钥。原grant完整元数据及Root/恢复PID/ticks保持，Root/恢复全能力集0、NNP1，同恢复UID的其他进程在预留前被拒。Core仍保留原11 ambient/13 bounding、NNP0，完整broker未完成；运行profile声明256MiB堆、DS探针和旧unit种子，不能外推全部provider/平台。
+
+这一新场景1项自动化997.044秒通过，6个原编号已闭环只读；专用容器和JDK卷已删，不恢复或在其他Root中查询这些编号。首次host测试脚本在启动worker/安装前因stdio描述符未打开失败，修正后新夹具完整通过，未分发密钥请求、未重放旧闭环。内部Docker网络端口探测不可达，最终采用断开网卡、仅lo及透明TLS字节转发，没有替换Root/HTTPS回复。原3现场/7进程/38私有元数据/6旧数据仍精确，UNKNOWN未重发；仍6容器/17卷，无备份、无推送。
+
+同时独立模型复现两个**P1容量缺口**：255个共同准入后续期占满256，原启动预留被CAPACITY拒绝；255个原生操作后续期占满256，原启动进入INTAKE后才因CAPACITY被拒，原生启动原件缺失。没有启动Kura，也未改动实际场景。此问题未修复，不能以普通路径实测通过封签；先在共同锁内保证固定发布/启动的双侧容量承诺，再做完成授权归档/历史容量，不能仅提上限、删历史或换ID。详见 [容量审查](../../reviews/handoff-archive-capacity-review-20261117.md) 和 [实际场景检查点](first-start-installed-checkpoint.json)。完整12父项和仅3外部deferred原文不变，目标active；周普通额度90%仍可用，credits未变。界面本次复用既有生产组件，modern-web-guidance仍为次要；JDK最低21，不追加27。
+
 - 2026-11-17 Core `b36afab0d6` 已接**发布确认后、尚未申请的原首次启动授权续期**。仅原交接凭据和恢复Main peer（或本地Root）可申请；Root核对原成功发布及request tag、不可变发布、原停止写者/source/generation/cohort、同boot和原writer锁、Core inactive、无agent及无其他未决操作。原固定启动编号须在全部原生目录严格缺失，且从未有任何阶段的启动预留，包括已永久关闭的NOT_ADMITTED。续期另存带Root命名空间、原grant/发布摘要和固定编号的分域HMAC回执；只给原首次启动15分钟单调时间窗口，不重写原grant、不延长发布窗口、不换原启动ID，不发布、不启动。
 
 恢复端新增持久handoff-renewal准入，Root先预留，再保存所属binding并进入首次续期调用；INTAKE先于原生续期意图。浏览器先保留续期UUID/意图，之后才发送HTTPS。回复丢失只读原结果；INTAKE/缺原件不准再发或另起续期。仅正面未受理可显式关闭旧续期预留，再由用户手动新建；原字节、编号、回执及容量全部保留。独立恢复页新增中英文续期和原预留关闭确认，用户仍须另行确认启动；Web Locks、存储失败拒绝、取消焦点/返回值清空和下一步焦点均保留。
@@ -80,6 +86,8 @@ JDK21/Maven3.10.1离线ARM64构建成功，新包203,386,874字节，45项及提
 新增实际EBUSY/原发布续接场景也已清理，仅保留原3个已结算ID：prepare `7a0e15dd-2de9-4dba-a2b7-653d2348b47c`、verify `8109c566-5ea9-416a-9943-f528aaeae3e3`、publish `54634dff-3e8d-420a-92ba-87710631f789`。原发布仅分发一次；故障仍在时的本地续接被阻止，经只读核对原状态、解除同一夹具故障后完成剩余文件。没有重发Stop/Start，也没有用新ID绕过。不要重放整轮来替换首次自动化失败的记录，或在其他Root中查询这些ID来推断结果。
 
 新增native交接身份场景已清理：prepare `93d3a62f-4f02-4c51-a02f-7710946e1213`、verify `9b241ea6-af70-4981-ac19-c2b29598b94a` 已结算；handoff `c4d6f1cd-c728-4ee1-8eca-059bf12573c8` 仅签发测试授权。预选publication `c3486dcc-a89a-43bc-8280-e664afd40c93`、start `cd6f4621-8415-4011-9478-adf510b4a5fa` 从未分发，不存在相应操作记录。不要重建或在其他Root查询来推断结果。
+
+实际900秒首次启动续期场景也已闭环并删除专用环境：handoffId `160c7873-7e4a-4d89-bdb8-bf0ab9097d76`、preparationId `180b21c4-be8c-47f9-a2f8-9097b3ca1b46`、publicationId `9fc45ff6-ac19-4b3a-8f02-27f76a52e5f6`、startOperationId `d2f39ad9-39b2-4f82-b425-ef5d670385ac`、verificationId `e2f4f6f2-d2f3-4928-a764-c2e33e06c0c9`，续期操作 `061d187d-8c17-4702-9df1-fd716c228010`。只保留原结果历史，不重建、重发或在其他Root状态查询来推断结果。
 
 ## 从干净环境继续
 
