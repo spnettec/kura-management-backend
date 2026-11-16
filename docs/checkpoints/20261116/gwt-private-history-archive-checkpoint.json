@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T20:06:33.177248+00:00",
+  "scope": "ALL_GWT_PRIVATE_KEY_HISTORY_ARCHIVE_CANDIDATE",
+  "goalStatus": "active",
+  "sourceHeads": {
+    "kura": "35cf6e953d8c5ec64bee353c74c90e6bda298cf8",
+    "kura-management-ui": "37f2fb04232fbc97d82c215d4bed5d47f7a515f6"
+  },
+  "implemented": {
+    "gwtLegacyGenerationHandoffPrivateArchives": true,
+    "gwtOrdinarySenderPrivateArchive": true,
+    "gwtOrdinaryNotAdmittedNoDispatchArchive": true,
+    "independentPackageGwtPrivateReader": true,
+    "rootReadOnlyRedactedArchiveReference": true,
+    "pairedStandaloneJournalModule": true,
+    "newPreinstExactEmbeddedJournal": true,
+    "publicGuiArchiveAction": false,
+    "recoveryPrivateArchives": false,
+    "oldInstalledPrermCompatibility": false,
+    "actualInstalledMainAndHumanGwtAcceptance": false
+  },
+  "format": {
+    "privatePath": "gateway-key-archives/<KIND>-<original UUID>.json",
+    "purpose": "yofc.kura.gwt-private-archive.v1",
+    "privateIntentBeforeRootMutation": true,
+    "rootOriginalReferenceAndRawSha": true,
+    "exactOriginalPrivateFileSha": true,
+    "currentRootAndDataIdentityBinding": true,
+    "noBackupPassphraseBearerOrRequestTagInPublicCorrelation": true,
+    "allOriginalFilesRetained": true,
+    "queryNeverWritesOrRebinds": true,
+    "existingRootArchiveUsesOriginalArchiveId": true,
+    "existingPrivateIntentQueryOnly": true,
+    "explicitSameMetadataContinuationRequiresExistingRootIntent": true,
+    "missingRootIntentNeverBecomesLateFirstSend": true,
+    "ordinaryNotAdmittedNeverAliasesNoRootPrivateFence": true,
+    "negativeOwningIntentMustBeClosedBeforeArchive": true,
+    "rootReadsPrivateDirectories": false
+  },
+  "intake": {
+    "positiveMatchingNativeSuccessRequired": true,
+    "claimedPhysicalOriginalNeverRewritten": true,
+    "logicalTerminalReadOnly": true,
+    "missingOrUncertainNativeCannotBeArchived": true,
+    "keyUnknownClosedOrResent": false
+  },
+  "capacity": {
+    "gwtLegacy": 64,
+    "gwtGeneration": 64,
+    "gwtHandoff": 32,
+    "gwtSender": 256,
+    "gwtNotDispatched": 64,
+    "limitsRaised": false,
+    "positiveRootArchiveReceiptRequired": true,
+    "pendingMetadataStaysActive": true,
+    "allOldIdCollisionsRetained": true,
+    "completedHandoffPreparationOwnershipRetained": true,
+    "originalDiskBytesReclaimed": false
+  },
+  "module": {
+    "path": "bin/kura_key_journal.py",
+    "manifestPinned": true,
+    "embeddedAsExactBytesInNewPreinst": true,
+    "oldAssetProfilesReadOnly": true,
+    "unpinnedSourceFallback": false,
+    "cwdOrPycFallback": false,
+    "protectedSourceMaximumBytes": 131072,
+    "currentBytes": {
+      "service": 116946,
+      "lifecycle": 115144,
+      "journal": 43983
+    },
+    "limitRaised": false
+  },
+  "codec": {
+    "archiveMaximumBytes": 65536,
+    "archiveMaxEntries": 128,
+    "archiveMaxDepth": 8,
+    "archiveMaxFieldName": 128,
+    "keyRpcParserLimitsUnchanged": true
+  },
+  "checks": {
+    "linuxModules": 19,
+    "linuxTests": 403,
+    "linuxPassed": true,
+    "scopedJvmTests": 103,
+    "skipped": 0,
+    "productionJarNewHistoryThreeUidConnections": 50,
+    "productionJarPrivateFenceCompatibilityConnections": 26,
+    "rootAndClientsCaps": "Eff/Bnd/Amb=0; NoNewPrivs=1",
+    "rootPrivateReadDenialsPerScene": 2,
+    "nativeKeyOperations": 0,
+    "cipherCalls": 0,
+    "latePrivateWriterCallbacks": 0,
+    "mainSystemdHistoricalNativeAndEncryptedBackup": "modeled; actual Java/Root metadata handlers, Unix transport, kernel UIDs/PIDs/caps, locks and HMAC",
+    "oldClosedInstalledAcceptanceReplayed": false,
+    "temporaryContainersAndJdkVolumesRemoved": true
+  },
+  "regressionModules": [
+    "test_key_journal_archive.py",
+    "test_key_gwt_main_loader.py",
+    "test_key_handoff_capacity.py",
+    "test_key_start_lease.py",
+    "test_key_handoff.py",
+    "test_key_handoff_revocation.py",
+    "test_key_generation_publication.py",
+    "test_key_publication_recovery.py",
+    "test_key_service.py",
+    "test_key_preparation_history.py",
+    "test_key_journal_module.py",
+    "test_key_private_fences.py",
+    "test_key_gwt_private_archive.py",
+    "test_key_sender_admissions.py",
+    "test_key_gwt_sender_namespace.py",
+    "test_key_service_lifecycle.py",
+    "test_key_generation_startup.py",
+    "test_key_recovery_maintenance.py",
+    "test_key_start_lease_receiver.py"
+  ],
+  "testSources": {
+    "root": "kura/kura/distrib/src/test/test_key_archive_linux.py --private-history --java <JDK21> --classpath <production web2 jar and dependencies>",
+    "javaPeer": "kura-management-ui/bundles/org.eclipse.kura.web2.test/src/test/resources/key-handoff-transport/PrivateArchivePeerProbe.java",
+    "newReader": "kura/kura/distrib/src/test/test_key_gwt_private_archive.py",
+    "newModule": "kura/kura/distrib/src/test/test_key_journal_module.py",
+    "newJvm": "kura-management-ui/bundles/org.eclipse.kura.web2.test/src/test/java/org/eclipse/kura/web/server/keybackup/GatewayKeyPrivateArchiveTest.java"
+  },
+  "artifacts": {
+    "core": {
+      "sourceHead": "35cf6e953d8c5ec64bee353c74c90e6bda298cf8",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611162003.35cf6e9-1_arm64.deb",
+      "bytes": 203430882,
+      "sha256": "780562a0d72ffdf9e644e72e46c659d8a77e542ff580bc4e11b995e41d4cdd42",
+      "verifiedFiles": 46,
+      "readerRoles": {
+        "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+        "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+        "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+        "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "currentLifecycleEmbedded": true,
+      "currentJournalReaderEmbedded": true,
+      "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+      "runtimeInstalled": false,
+      "unknownRedispatched": false,
+      "allNativeKeyScriptsExactlyMatchGitAndStage": 11,
+      "recoveryAssetsExactlyMatchGitAndStage": 3,
+      "threeIndependentUnitsExactlyMatchGitAndStage": 3,
+      "pythonBytecodeExcluded": true,
+      "archiveMembersChecked": 336,
+      "metadataNativeInputPythonSourcesExact": 4,
+      "actualJavaMetadataConnections": 50,
+      "actualPrivateFenceCompatibilityConnections": 26,
+      "oldInstalledPrermPairingAccepted": false,
+      "originalGatewayDeployed": false
+    },
+    "ui": {
+      "sourceHead": "37f2fb04232fbc97d82c215d4bed5d47f7a515f6",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "bytes": 34087374,
+      "sha256": "22dddf59890ce03ba281064213e571fcbd17a45624713bffda204fa91150c1f1",
+      "verifiedAllServerSharedClasses": 322,
+      "bytecodeRelease": 11,
+      "gwtPermutations": 12,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "productionJarUsedByActualUidPeer": true,
+      "actualJavaThreeUidMetadataUdsConnections": 50,
+      "humanGwtSessionAccepted": false
+    }
+  },
+  "preserved": {
+    "gateways": 3,
+    "processes": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContents": 6
+  },
+  "cleanup": {
+    "recordedAt": "2026-11-16T20:05:19.945424+00:00",
+    "files": [
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux.zip",
+        "bytes": 203552072,
+        "sha256": "5e17e40915b150d3d22d4f9f53c7288ba19762daf9fc8ef63afe86cea134213c"
+      },
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux_installer.sh",
+        "bytes": 203581265,
+        "sha256": "ac333aa6d5f4b9b3c2d2fa25c3e96acfa9cf46b6321bfeb6b51a7314acad2e61"
+      }
+    ],
+    "reclaimedBytes": 407133337,
+    "backupCreated": false,
+    "currentDebAndStageRetained": true,
+    "priorUpgradeInputsRetained": true,
+    "sourceAndLiveBindsUntouched": true
+  },
+  "remainingInternal": [
+    "Independent recovery operation/start/handoff/admission private archives and paired package/offline readers",
+    "GUI preview/confirm/original query and explicit metadata continuation with ADMIN-XSRF or original recovery authorization",
+    "Actual installed Main/human GWT and independent HTTPS joint acceptance for changed candidate",
+    "Old installed prerm migration and complete real install/upgrade/remove/purge matrix",
+    "Full providers/key lifecycle/network/API/six-component release and all 12 unchanged parent groups"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "pushed": false,
+  "ordinaryWeeklyUsedPercent": 94,
+  "ordinaryUsageAllowed": true,
+  "creditsUnchanged": true
+}

@@ -11,7 +11,7 @@ Root 原生 operations / startups / handoffs / sender-admissions / package-histo
 只允许明确的同一元数据归档续接，重新核对原条目摘要和正面结果。任何归档步骤不调用密码、
 StopUnit、StartUnit或其他key writer。其他UNKNOWN不被改判或关闭。
 
-operations/startups须SUCCEEDED；共同准入须TERMINAL或永久NOT_ADMITTED并核对原件；
+operations/startups须SUCCEEDED；共同准入须永久NOT_ADMITTED，或严格匹配原生成功/授权的TERMINAL或历史物理INTAKE；后者没有正面原件则拒绝，归档引用后不能改写原字节；
 授权须正面未用撤销且相关预留已经永久关闭，或原固定发布与启动都成功且匹配授权HMAC、
 不可变发布、原密钥代/cohort。旧Core PID不再是历史归档的前提。现用代仍读原发布/启动文件。
 归档中或损坏的状态在初始化、包门禁、普通启动和运行期读取中按相同合同处理。
@@ -57,3 +57,13 @@ GWT纯本地未发送回执的 `archive.json` 先保存原围栏UUID，再调用
 Root基线359项回归在私有包读取器加入前通过；当前49项（26新Root/私有分支＋23既有GWT读取器）与90项JVM通过。打包JAR经真实Java/Root三UID26连接核验，64原回执归档1份后可新增第65份；中文原件SHA匹配，原4份Root准入字节/元数据不变，Root不能读Core/恢复私有目录。全部参与进程空能力/NNP1，密钥/cipher/Start/Stop写入0。Core/systemd和Main角色仍为模型，没有实际安装Main/人类GWT通过结论。初次模型未声明agent-cgroup替身、初次独立JVM runner选错JUnit launcher版本，均已修正夹具后通过，不计为产品修复或正式验收。
 
 普通Root NOT_ADMITTED原件对应的私有回执不能走“无Root原件”围栏，仍需另一条Root归档证明路径。其他三类owning日志/共同发送方/独立恢复私有历史、公开GUI和全部安装升级移除矩阵均保持内部pending。旧prerm对新格式的配对问题未解决；新包不部署到原3现场。当前实现和产物见 [私有未发送归档检查点](../checkpoints/20261116/private-no-dispatch-archive-checkpoint.json)。
+
+## 全部 GWT 私有历史候选 — 35cf / 37f2
+
+Core `35cf6e953d8c5ec64bee353c74c90e6bda298cf8`、GWT `37f2fb04232fbc97d82c215d4bed5d47f7a515f6` 已替代上节“其他 GWT 尚未接入”的缺项：三类 owning、共同发送方、已有普通 Root NOT_ADMITTED 的私有未发送回执都使用所属 UID 的 `gateway-key-archives/<KIND>-<UUID>.json`。新只读 `journal-archive-reference-read` 提供脱敏关联和原归档回执；不得返回 requestTag、备份内容、口令或 bearer，不以缺失作为完成证明。已有 Root 归档直接采用原编号和请求，避免重复元数据 ID；已有私有意图普通调用只读，只有明确的同一原归档元数据续接可补原回执，不产生迟到首次发送。
+
+私有标记绑定全部原文件 SHA、Root/data 身份和精确原生关联；只有匹配的 Root 回执才释放64/64/32/256/64活动容量。原路径、字节、结果、全部旧编号及完成授权的准备占用保留；普通未准入回执与无原件围栏的 purpose 不能混用。负准入的 owning 文件必须先保留准确 closed 回执，避免归档后再追加文件；真实缺原件的 INTAKE 不能被归档。已有明确原生成功的历史物理 INTAKE 一旦被归档意图引用，普通读只返回逻辑终态，不改写原件破坏 SHA。
+
+大 helper 拆出 manifest 固定的 `kura_key_journal.py`；新 preinst 内嵌同一精确源码，在 unpack 前读取旧状态，无旧模块/pyc/工作目录回退。旧资产 profile 只读兼容不能借用未固定的新模块。当前受保护源码均低于原131072字节上限。归档元数据有独立有界 JSON 解析器（65536字节、128条引用、深度8、字段名128）；原密钥 RPC 的更小约束保持原样。
+
+403项 Linux、103项 JVM 通过，无skip；生产JAR三UID新历史50连接、原未发送围栏兼容26连接通过。实际 Unix socket/内核UID/PID/能力/锁/HMAC/Java与Root元数据路径已核验，Root两私有目录读取被拒；native/cipher/启动写入为0。Main/systemd及预置历史加密结果明确为模型，不是已安装Main/人类GWT/旧数据解密的新增验收。新包46项配套、11脚本和提取reader通过，新preinst的两个源码嵌入已核对；旧已安装prerm兼容及真实完整升级矩阵仍未完成。当前产物与下一步见 [GWT全私有历史检查点](../checkpoints/20261116/gwt-private-history-archive-checkpoint.json)。独立恢复私有历史、公开GUI、完整发行和全部12父项继续内部pending。

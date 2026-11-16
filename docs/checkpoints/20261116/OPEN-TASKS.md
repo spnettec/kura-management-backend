@@ -1,5 +1,13 @@
 # 未验收与剩余实施台账
 
+2026-11-17 最新本地候选 Core `35cf6e953d`、GWT `37f2fb0423` 已将 LEGACY / GENERATION / HANDOFF、共同发送方和已有普通 Root NOT_ADMITTED 的未发送回执接入私有历史归档。所属 UID 先持久保存绑定原文件 SHA 与 data/Root 身份的意图，再进行一次 Root 元数据归档；已存在意图一律只查原编号，有明确原意图才允许显式续接原归档元数据。原文件和旧编号永久保留，活动上限未提高；没有正面证明的 UNKNOWN/缺原件不能释放容量或重发。
+
+独立包读取器按同一合同核对全部私有历史。已完成原生结果对应的旧物理 INTAKE 可作历史证明，但归档意图一经建立，普通查询只返回逻辑终态，不改写原字节。真正缺原件/结果不明的 INTAKE 仍拒绝归档。Root 两个大 helper 已拆分为经 manifest 配对的 `kura_key_journal.py`；新 preinst 内嵌同一 reader，在 unpack 前即可校验旧状态，不执行旧环境或缓存代码，131072 字节上限未扩大。
+
+当前 403 项 Linux / 103 项 JVM 检查通过，无 skip；生产 JAR 的三 UID 实际 UDS 检查为新分支 50 连接、旧未发送围栏兼容 26 连接。原 Root/私有记录字节与元数据保留，密钥/cipher/启动调用为0；Main/systemd/历史加密结果仍是模型，不能替代实际安装/人类会话验收。ARM64 包46项配套、11个原生脚本、322个 Java11 类和双 GWT 模块12变体已核对，未部署；可重建 zip/SFX 已删除407,133,337字节，不备份。原3现场/7进程/38份私有元数据/6份旧数据精确不变，无推送。详见 [GWT 全私有历史归档检查点](gwt-private-history-archive-checkpoint.json)。独立恢复私有历史、公开 GUI、旧 prerm 升级与完整发行矩阵和以下12父项仍内部 pending；界面按 modern-web-guidance 渐进改造，仍是次要任务。
+
+以下 cd82 / 3b8 记录为此前较窄分支的历史范围；其“其他 GWT 尚未接入”由上段当前候选替代。
+
 2026-11-17 最新本地候选 Core `cd82fd0118`、GWT `3b8b5fe168` 已补齐**没有Root原件的本地未发送记录**的永久Root围栏，并接入GWT该分支私有归档及独立包读取器。围栏使用单独purpose/HMAC，绑定原回执字节SHA、脱敏元数据、data路径/dev/inode/UID和Root命名空间；不是伪造普通准入，也不能关闭任何已有RESERVED/INTAKE/UNKNOWN。签发相关未来固定ID、未物化签发预留及归档ID冲突继续拒绝。
 
 私有原编号归档意图先于Root元数据写入；回复不明或缺Root证明时只读原编号，不能重发、换ID或释放名额。只有Root正面证明精确匹配原私有回执才退出64活动计数；原文件和旧编号围栏始终保留。实际打包JAR、三UID/26连接及65份私有回执检查通过，Root仍不能读两方私有目录，cipher/key/Start/Stop调用均为0。90项JVM、49项当前私有/包读取检查及此前359项Root相关回归通过；Main/systemd仍为模型，不是人类GWT/实际安装Main验收。新ARM64包45项载荷、318个Java11类和双GWT模块12变体已核对，未部署。已清理本轮zip/SFX共407,123,531字节；原3现场/7进程/38私有元数据/6旧数据不变，无推送。详见 [私有未发送归档检查点](private-no-dispatch-archive-checkpoint.json)。
@@ -111,6 +119,6 @@ JDK21/Maven3.10.1离线ARM64构建成功，新包203,386,874字节，45项及提
 
 ## 下一步建议顺序
 
-Root基础层及GWT纯本地未发送分支已分别保存在fb47和cd82/3b8候选，详见 [Root归档检查点](root-journal-archive-checkpoint.json) 及 [私有未发送归档检查点](private-no-dispatch-archive-checkpoint.json)。优先将三类owning日志、已有普通Root NOT_ADMITTED原件的未发送回执、共同发送方及独立恢复私有历史接入同一Root正面证明。所有原字节和编号保留，由所属UID写私有意图；本地完成标记或Root缺失都不能替代Root证明。
+Root基础层、无原件的私有未发送围栏和全部 GWT 私有历史已分别保存在 fb47、cd82/3b8 与35cf/37f2候选，最新见 [GWT 全私有历史归档检查点](gwt-private-history-archive-checkpoint.json)。下一步优先接独立恢复私有历史及其包/离线消费者，再接 GUI 预览/确认、原编号查询与明确的原元数据续接。所有原字节和编号保留，由所属 UID 写私有意图；本地完成标记或 Root 缺失都不能替代 Root 证明。
 
-随后接GUI预览/确认、只查原归档和明确的原元数据续接，沿用ADMIN/XSRF或独立恢复授权；界面按modern-web-guidance渐进改造，仍为次要。补齐全部包/私有读取、初始化、重配置、升级/卸载/移除与正式六组件/cohort。旧版本prerm仍调用旧helper，需先做受审的旧格式迁移和真实升级矩阵，不得藏起旧状态、扩大白名单或重放旧UNKNOWN。Root两个大helper现分别129456/129482字节，仍在131072受保护读取上限以内；继续扩展时须合理拆分并配对全部读取器/发行消费者，不能再扩大上限。
+GUI 沿用 ADMIN/XSRF 或独立恢复授权；界面按 modern-web-guidance 渐进改造，仍为次要。补齐全部包/私有读取、初始化、重配置、升级/卸载/移除与正式六组件/cohort。旧版本 prerm 仍调用旧 helper，需先做受审的旧格式迁移和真实升级矩阵，不得藏起旧状态、扩大白名单或重放旧 UNKNOWN。当前 service/lifecycle/journal 分别116946/115144/43983字节，仍在131072受保护读取上限以内；新 preinst 与包内模块的当前配对通过，不代表旧已安装 prerm 兼容已经解决。

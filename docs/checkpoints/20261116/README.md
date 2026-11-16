@@ -1,5 +1,9 @@
 # YOFC Kura 阶段性源码检查点 — 2026-11-16
 
+2026-11-17 最新本地候选为 Core `35cf6e953d` / GWT `37f2fb0423`：全部 GWT owning、发送方和普通 Root 未准入回执已接入正面证明驱动的私有归档，原字节和编号保留，UNKNOWN 不重发；独立包 reader 与新 preinst 使用同一受保护 journal 模块，未扩大131072字节上限。403 项 Linux /103 项 JVM 与生产 JAR 三 UID 新分支50连接、旧围栏兼容26连接通过；Main/systemd/历史加密结果仍是模型。ARM64 包46项载荷、11脚本、322个Java11类/12个GWT变体核对通过，未部署。原3现场/7进程/38份私有元数据/6份旧数据不变，新增 zip/SFX 清理407,133,337字节，无推送。详见 [当前归档检查点](gwt-private-history-archive-checkpoint.json)。独立恢复私有历史、公开GUI、旧prerm/完整发行矩阵及 [完整12父项](OPEN-TASKS.md) 仍内部pending；目标保持active。
+
+以下 cd82/3b8 及更早记录只保留各自历史范围，当前差异以上段和当前检查点为准。
+
 2026-11-17 最新本地候选 Core `cd82fd0118`、GWT `3b8b5fe168` 已补齐**没有Root原件的本地未发送记录**的永久Root围栏，并接入GWT该分支私有归档及独立包读取器。围栏使用单独purpose/HMAC，绑定原回执字节SHA、脱敏元数据、data路径/dev/inode/UID和Root命名空间；不是伪造普通准入，也不能关闭任何已有RESERVED/INTAKE/UNKNOWN。签发相关未来固定ID、未物化签发预留及归档ID冲突继续拒绝。
 
 私有原编号归档意图先于Root元数据写入；回复不明或缺Root证明时只读原编号，不能重发、换ID或释放名额。只有Root正面证明精确匹配原私有回执才退出64活动计数；原文件和旧编号围栏始终保留。实际打包JAR、三UID/26连接及65份私有回执检查通过，Root仍不能读两方私有目录，cipher/key/Start/Stop调用均为0。90项JVM、49项当前私有/包读取检查及此前359项Root相关回归通过；Main/systemd仍为模型，不是人类GWT/实际安装Main验收。新ARM64包45项载荷、318个Java11类和双GWT模块12变体已核对，未部署。已清理本轮zip/SFX共407,123,531字节；原3现场/7进程/38私有元数据/6旧数据不变，无推送。详见 [私有未发送归档检查点](private-no-dispatch-archive-checkpoint.json)。
