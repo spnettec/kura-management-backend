@@ -1,0 +1,253 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T20:44:32.788836+00:00",
+  "scope": "RECOVERY_PRIVATE_HISTORY_AND_CURRENT_INSTALLER_ARCHIVE_CANDIDATE",
+  "goalStatus": "active",
+  "sourceHeads": {
+    "kura": "8a2326e28d5784b96638a14152d2c4959748ff34",
+    "kura-management-ui": "37f2fb04232fbc97d82c215d4bed5d47f7a515f6"
+  },
+  "testRestorationCommit": "239fc4c74d",
+  "implemented": {
+    "recoveryRestoreArchive": true,
+    "recoveryStartArchive": true,
+    "recoveryHandoffArchive": true,
+    "recoveryAllSixAdmissionKinds": true,
+    "rootRecoveryOnlyRedactedReference": true,
+    "sharedRuntimeAndIndependentPackageFormat": true,
+    "currentInstallerStateConsumer": true,
+    "currentInstallerResumeConsumer": true,
+    "currentPreinstEmbeddedReader": true,
+    "httpsBackendAuthorizationAndRoute": true,
+    "userGuiButtons": false,
+    "oldInstalledPrermCompatibility": false,
+    "actualInstalledMainAndHumanSessionAcceptance": false
+  },
+  "format": {
+    "path": "/var/lib/kura-key-recovery/archives/<KIND>-<original UUID>[-<senderKind>].json",
+    "purpose": "yofc.kura.recovery-private-archive.v1",
+    "kinds": [
+      "RESTORE",
+      "START",
+      "HANDOFF",
+      "ADMISSION"
+    ],
+    "senderKinds": [
+      "restore",
+      "start",
+      "publish",
+      "continue",
+      "handoff-start",
+      "handoff-renewal"
+    ],
+    "privateDirectoryDevInodeUidGidAndRootIdentity": true,
+    "originalRawFileSha": true,
+    "rootPositiveMetadataCorrelation": true,
+    "noBearerBackupPassphraseOrRequestTagInPublicCorrelation": true,
+    "privateIntentBeforeSingleFirstMetadataSend": true,
+    "existingPrivateIntentQueryOnly": true,
+    "existingRootArchiveAdoptedWithoutNewId": true,
+    "explicitContinuationRequiresExistingSameRootMetadataIntent": true,
+    "missingRootIntentNeverBecomesLateFirstSend": true,
+    "unknownCanBeClosedOrResent": false,
+    "originalPathsFilesAndIdFencesRetained": true,
+    "rootDaemonReadsPrivateDirectories": false
+  },
+  "capacity": {
+    "privateRestores": 32,
+    "privateStarts": 32,
+    "privateHandoffs": 32,
+    "privateSenderAdmissions": 256,
+    "limitsRaised": false,
+    "positiveRootArchiveReceiptRequired": true,
+    "pendingArchiveStillActive": true,
+    "archiveReclaimsOriginalDiskBytes": false,
+    "allOriginalAssociationsRetained": true
+  },
+  "installer": {
+    "fullFormatAndOriginalRootReceiptRequiredBeforeAcceptingArchiveDirectory": true,
+    "retainedHistoryCountCanExceed32OnlyWithPositiveMatchingArchives": true,
+    "restorePendingRetirementRequiredForNegativeOwningAdmission": true,
+    "resumeSkipsOnlyAuthenticatedClosedRestoreWithRetiredMarker": true,
+    "presentKeyNeverUsedAsSettlement": true,
+    "fullRealInstallUpgradeRemovePurgeMatrixAccepted": false,
+    "oldInstalledPrermSolved": false
+  },
+  "authorization": {
+    "reads": "current receiver process/UID; HTTPS reads retain Origin/CSRF/cookie gates",
+    "restoreAndStartArchiveWrites": "original encrypted backup plus passphrase, exact backup SHA and Root same-key fingerprint",
+    "handoffArchiveWrites": "original valid bearer for the exact same authority",
+    "secretsPersisted": false,
+    "httpsProductionRouteCheckedWithModeledBackupInspection": true,
+    "guiImplemented": false
+  },
+  "checks": {
+    "linuxModules": 28,
+    "uniqueTestSelections": 533,
+    "allPassed": true,
+    "skipped": 0,
+    "newArchiveAndInstallerCases": 24,
+    "newPairedExportCase": 1,
+    "ordinaryUidAdditionalRun": 33,
+    "ordinaryUidRunAlreadyIncludedInUniqueTotal": true,
+    "recoveryActualThreeUidConnections": 59,
+    "gwtProductionJarCompatibilityConnections": 50,
+    "privateFenceCompatibilityConnections": 26,
+    "rootAndClientsCaps": "Eff/Bnd/Amb=0; NoNewPrivs=1",
+    "rootPrivateReadDenialsPerScene": 2,
+    "metadataNativeKeyOperations": 0,
+    "metadataCipherCalls": 0,
+    "metadataStartWrites": 0,
+    "latePrivateWriterCallbacks": 0,
+    "independentFullRecoveryPackageEntrypoint": true,
+    "installerStateEntrypoint": true,
+    "mainSystemdAccountMappingsAndHistoricalPadding": "explicit models; actual kernel UID/PID/caps, transport, locks, HMAC and production archive handlers",
+    "httpsBackupInspection": "modeled; no new installed old-data decryption acceptance",
+    "oldClosedOneTimeGatewayAcceptanceReplayed": false,
+    "temporaryContainersAndVolumesRemoved": true
+  },
+  "validationNotes": {
+    "initialTestMockFailure": "Old policy test mock had obsolete zero-argument journal_admission; restored separately in 239fc4c74d",
+    "continuationModelCorrection": "NOT_ADMITTED continuation under an unused revoked grant was correctly refused; replaced with original successful publication and modeled positive INTAKE",
+    "laterSourceChecks": "Only paired-export guard, installer state/resume and test harness changed later; current module/installer/legacy recovery 33 checks and actual UID final proof cover them",
+    "jvm103": "prior UI source remains unchanged at 37f2fb0423; current production JAR 50/26 connection compatibility checked"
+  },
+  "testModules": [
+    "test_key_recovery_handoff_archive.py",
+    "test_key_journal_archive.py",
+    "test_key_gwt_main_loader.py",
+    "test_key_handoff_capacity.py",
+    "test_key_start_lease.py",
+    "test_key_handoff.py",
+    "test_key_handoff_revocation.py",
+    "test_key_generation_publication.py",
+    "test_key_publication_recovery.py",
+    "test_key_service.py",
+    "test_key_preparation_history.py",
+    "test_key_recovery_archive.py",
+    "test_key_recovery.py",
+    "test_key_recovery_handoff.py",
+    "test_key_recovery_install.py",
+    "test_key_recovery_setup_handoff.py",
+    "test_key_receiver_admission_recovery.py",
+    "test_key_handoff_recovery.py",
+    "test_key_journal_module.py",
+    "test_key_private_fences.py",
+    "test_key_gwt_private_archive.py",
+    "test_key_sender_admissions.py",
+    "test_key_gwt_sender_namespace.py",
+    "test_key_service_lifecycle.py",
+    "test_key_generation_startup.py",
+    "test_key_recovery_maintenance.py",
+    "test_key_start_lease_receiver.py",
+    "test_key_recovery_setup_archive.py"
+  ],
+  "sourceTests": {
+    "private": "kura/kura/distrib/src/test/test_key_recovery_archive.py",
+    "handoff": "kura/kura/distrib/src/test/test_key_recovery_handoff_archive.py --repository <kura> --java <JDK21> --cipher-jar <current cipher jar>",
+    "installer": "kura/kura/distrib/src/test/test_key_recovery_setup_archive.py; ordinary disposable Linux UID",
+    "actualUds": "kura/kura/distrib/src/test/test_key_archive_linux.py --repository <kura> --recovery-history; fresh disposable Linux container"
+  },
+  "artifacts": {
+    "core": {
+      "sourceHead": "8a2326e28d5784b96638a14152d2c4959748ff34",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611162039.8a2326e-1_arm64.deb",
+      "bytes": 203440508,
+      "sha256": "50d6d31527ab6bf9d1654a1ce3464535412d95c5bad5c1f2f9f7d93093437db7",
+      "verifiedFiles": 46,
+      "readerRoles": {
+        "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+        "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+        "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+        "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "currentLifecycleEmbedded": true,
+      "currentJournalReaderEmbedded": true,
+      "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+      "runtimeInstalled": false,
+      "unknownRedispatched": false,
+      "allNativeKeyScriptsExactlyMatchGitAndStage": 11,
+      "recoveryAssetsExactlyMatchGitAndStage": 3,
+      "threeIndependentUnitsExactlyMatchGitAndStage": 3,
+      "pythonBytecodeExcluded": true,
+      "archiveMembersChecked": 336,
+      "metadataNativeInputPythonSourcesExact": 6,
+      "actualUidConnections": {
+        "recovery-private-final-uds": 59,
+        "recovery-gwt-compat-java-uds": 50,
+        "recovery-fence-compat-java-uds": 26
+      },
+      "oldInstalledPrermCompatibilityAccepted": false,
+      "originalGatewayDeployed": false
+    },
+    "ui": {
+      "sourceHead": "37f2fb04232fbc97d82c215d4bed5d47f7a515f6",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "bytes": 34087374,
+      "sha256": "22dddf59890ce03ba281064213e571fcbd17a45624713bffda204fa91150c1f1",
+      "verifiedAllServerSharedClasses": 322,
+      "bytecodeRelease": 11,
+      "gwtPermutations": 12,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "productionJarUsedByActualUidPeer": true,
+      "actualJavaThreeUidMetadataUdsConnections": 50,
+      "humanGwtSessionAccepted": false
+    }
+  },
+  "protectedSourceMaximumBytes": 131072,
+  "protectedSourceCurrentBytes": {
+    "service": 116988,
+    "lifecycle": 115935,
+    "journal": 68930,
+    "recovery": 84142,
+    "setup": 17514
+  },
+  "sourceLimitRaised": false,
+  "preserved": {
+    "gateways": 3,
+    "processes": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContents": 6
+  },
+  "cleanup": {
+    "recordedAt": "2026-11-16T20:41:47.972078+00:00",
+    "files": [
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux.zip",
+        "bytes": 203558023,
+        "sha256": "d041808e55d3ebd079a713e4d374e89e6a342adb0fe4763bf22f58f4b2bfe411"
+      },
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux_installer.sh",
+        "bytes": 203587627,
+        "sha256": "3f174f84e21a007cd183c660d3e4a4104804761b7a07b4793691a3c61236d2fe"
+      }
+    ],
+    "reclaimedBytes": 407145650,
+    "backupCreated": false,
+    "currentDebAndStageRetained": true,
+    "priorUpgradeInputsRetained": true,
+    "sourceAndLiveBindsUntouched": true
+  },
+  "remainingInternal": [
+    "Review old installed prerm and a correct source-paired upgrade migration; complete real install/upgrade/remove/purge matrix",
+    "GUI preview/confirm/original query/explicit original metadata continuation with ADMIN-XSRF or receiver authorization; modern-web-guidance secondary",
+    "Actual installed Main/human HTTPS/GWT joint acceptance for changed candidate",
+    "Legal recovery of unresolved original key/start/metadata attempts without resend or replacing IDs",
+    "Full providers/key lifecycle/network/API/six-component release and all 12 unchanged parent groups"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "pushed": false,
+  "ordinaryWeeklyUsedPercent": 95,
+  "ordinaryUsageAllowed": true,
+  "creditsUnchanged": true
+}

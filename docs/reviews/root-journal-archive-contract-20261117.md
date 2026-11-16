@@ -67,3 +67,15 @@ Core `35cf6e953d8c5ec64bee353c74c90e6bda298cf8`、GWT `37f2fb04232fbc97d82c215d4
 大 helper 拆出 manifest 固定的 `kura_key_journal.py`；新 preinst 内嵌同一精确源码，在 unpack 前读取旧状态，无旧模块/pyc/工作目录回退。旧资产 profile 只读兼容不能借用未固定的新模块。当前受保护源码均低于原131072字节上限。归档元数据有独立有界 JSON 解析器（65536字节、128条引用、深度8、字段名128）；原密钥 RPC 的更小约束保持原样。
 
 403项 Linux、103项 JVM 通过，无skip；生产JAR三UID新历史50连接、原未发送围栏兼容26连接通过。实际 Unix socket/内核UID/PID/能力/锁/HMAC/Java与Root元数据路径已核验，Root两私有目录读取被拒；native/cipher/启动写入为0。Main/systemd及预置历史加密结果明确为模型，不是已安装Main/人类GWT/旧数据解密的新增验收。新包46项配套、11脚本和提取reader通过，新preinst的两个源码嵌入已核对；旧已安装prerm兼容及真实完整升级矩阵仍未完成。当前产物与下一步见 [GWT全私有历史检查点](../checkpoints/20261116/gwt-private-history-archive-checkpoint.json)。独立恢复私有历史、公开GUI、完整发行和全部12父项继续内部pending。
+
+## 独立恢复私有历史候选 — 8a2326e28d
+
+当前Core `8a2326e28d5784b96638a14152d2c4959748ff34` 接入恢复端 RESTORE / START / HANDOFF / ADMISSION；准入覆盖restore、start、publish、continue、handoff-start和handoff-renewal。所属UID保存 `archives/<KIND>-<原UUID>[-<senderKind>].json`，固定当前Root与私有目录dev/inode/UID/GID、全部原文件SHA及精确原生关联。Root新增受限只读 `journal-archive-recovery-reference-read`，核对恢复源/当前Main身份和原准入元数据；公开关联不含备份、口令、bearer或requestTag。32/32/32/256活动窗口未提高，原件、原编号和全部跨历史关联保留。只有正面Root回执才能释放名额；已有私有意图只读，必须有已存在的原Root归档意图才允许明确同ID元数据续接。
+
+`RecoveryPrivateFormat` 同时用于恢复服务和独立包读取器，新安装器也调用受保护源读取器。合法归档的旧物理INTAKE不因普通查询改写原字节，真正缺原件的UNKNOWN不能归档。负准入有owning文件时须先完成准确关闭；restore的原pending还须已退休，避免归档后追加文件或重新建立待恢复状态。安装器原先的旧目录/总数检查及resume_marker旧扫描已修正：全格式和Root原件核对后按活动计数读取全部历史，跳过的永久未准入restore必须有完整Root/私有退休证明。不能靠目录白名单、本地完成或现有密钥猜测结算。
+
+恢复端HTTPS新增归档接口与固定授权归档命令；确认/原元数据续接须严格匹配原备份＋口令及Root指纹，或原固定授权。预览/查询保持只读，CSRF、cookie、Origin门禁沿用。真实HTTPS路由已在隔离模型中检查，备份检查结果仍明确为替身；没有新增人工会话/实际安装解密验收。GWT/独立页按钮、实际Main/人工HTTPS/GWT联合验收仍pending，界面按modern-web-guidance渐进改造且为次要任务。
+
+28模块533项去重检查通过，含新增24项归档/安装器和1项配对导出检查；另普通UID安装器/旧恢复/模块33项通过，不重复增加去重总数。真实恢复三UID59连接、生产JAR旧GWT50连接和围栏26连接通过，Root及客户端空能力/NNP1，Root拒绝两私有目录读取，元数据链路native/cipher/启动写入0。实际内核/传输/锁/HMAC/生产处理器和独立安装器state入口已验证；Main/systemd/账号映射/历史填充分别保留模型边界。最初旧安装策略测试的零参数替身不匹配已有接口，修复单列 `239fc4c74d`；另一个夹具错误地把未使用已撤销授权上的continuation当NoAd，产品正确拒绝，改用有原成功发布的历史正面INTAKE。未放宽产品门禁来迎合夹具。
+
+新ARM64包46项配套、11脚本/3资产/3独立单元、336成员无pyc、两个preinst精确嵌入和提取reader检查通过；源码对应实际传输6个Python输入SHA，未部署原3现场。现阶段不解决旧已安装prerm调用旧helper的问题；正确迁移路径、完整实际安装/升级/移除/卸载、全部provider/API/网络/六组件及完整12父项均保持内部pending。详情见 [恢复端归档检查点](../checkpoints/20261116/recovery-private-history-archive-checkpoint.json)。
