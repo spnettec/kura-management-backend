@@ -698,3 +698,80 @@ baseline remain. Original three scenes were only read: seven processes/ticks,
 remain exact. Continue the complete 12 internal groups and three external
 boundaries; original publication recovery, maintenance startup, broker/runtime
 admission, complete provider rekey/retirement and authenticated GUI remain pending.
+
+## Original publication continuation (2026-11-16, 7e1415b02c)
+
+After the original synchronous StopUnit succeeds, the unit/descendant checks pass
+and the original kernel writer lock is held exclusively, publication now writes
+an immutable 0400 `publication-recovery.json`. Its dedicated journal-key HMAC
+binds the original publication metadata, writer UID and full identities of the
+six fixed destination files before replacement. The metadata also binds the
+original preparation, verified archive, source, cohort and stopped writer.
+No caller supplies paths, commands, keys, replacement sets or another intent.
+A crash before this original stop/lock proof remains UNKNOWN; recovery never
+manufactures a proof from a present key, inactive unit or elapsed time.
+
+`generation-publication-read` accepts schema, action and the original publication
+operationId. It returns ORIGINAL_PUBLICATION_ONLY, the original result and the
+authenticated continuation receipt hash (or null), never key/backup material.
+It reports startupAuthorized:false even for historical SUCCEEDED: it is not a
+current-state/start grant. It does not modify a record or inspect another Root
+namespace to infer an outcome.
+
+`generation-publication-recover` takes that same operationId and the expected
+receipt hash. It revalidates the original request HMAC, immutable preparation and
+backup verification, old source copies, unchanged package/cohort, same boot and
+kernel lock inode, stopped Core/empty descendants/no foreign writer, and all
+other operation/startup/package records. Only this original publication INTENT
+may be excluded from the general unresolved fence. Another publication INTENT
+still blocks. Installed agent, cold recovery peer and Core UID cannot dispatch
+the continuation; typed independent GUI/grant/broker work is still required.
+
+Each fixed destination must be either its exact original identity or the exact
+proposed private bytes/mode. The proposed destinations must form a valid durable
+prefix. Foreign content, an identical old file in a new inode, or a later commit
+with an earlier gap is refused. Existing completed files retain their inodes;
+only unfinished canonical files, the fixed drop-in and original publication/
+current markers are completed. Paired daemon configuration is reconciled, then
+the original operation alone becomes SUCCEEDED. No key generation, archive
+encryption, StopUnit or StartUnit is dispatched. Source copies/old generations
+are retained, and independent generation-core-start authorization is still
+mandatory. Lost local continuation progress remains the same original INTENT.
+
+252 related Linux/JDK21 storage/crypto/flock models passed without skips: the
+earlier eight suites total 219, plus 33 new continuation cases. The latter cover
+each fixed write boundary/final result, interrupted continuation, missing proof,
+foreign/stale files, other UNKNOWNs, same-action exclusion, changed boot/lock/
+cohort, agent arrival, loaded drop-in/reload state and the next publication from
+an existing generation set. A real new writer process holds the second-round
+flock; systemd/process authority is still explicitly modeled.
+
+One new installed ARM64 Core/actual Root-worker scenario reached real EBUSY on
+rename-over-active-key, with the staged ring durable, old active key retained,
+Core stopped and original publication UNKNOWN. A fixture mount-namespace error
+left that injected bind active during its first local continuation. The whole
+automated script therefore failed; it has not been rerun or relabelled green.
+The corrected after-sandbox bind mechanics were separately verified without key
+operations. In the same retained original fixture, restarting only its key worker
+released the fault; original checkpoint info and canonical key/ring metadata
+were exact, with the original state still UNKNOWN. A read-only prefix/source
+audit then permitted explicit completion of the remaining original local files.
+The continuation checker passed, all three original operations settled, the
+worker had empty capabilities/NNP1, and ordinary startup still returned
+GENERATION_START_REQUIRED. Original publication/Stop/Start were not redispatched.
+
+The existing ring/staged files and old cipher full metadata were unchanged during
+the successful continuation; old cipher bytes also match the original live Core
+probe output. The first script's in-memory pre-scenario cipher metadata baseline
+was not retained, so full-metadata continuity for that entire initial scenario
+is not claimed. No Main restart, customer-provider recovery, GUI, disk-full or
+hard-power acceptance follows. The synthetic fixture was removed only after its
+three records were terminal and startup records empty. Its three original IDs
+remain historical only in README; do not replay it to replace the failed script.
+
+The 7e ARM64 archive has 45 verified payloads, an extracted-reader pass and nine
+native scripts identical to Git/staging. The unbound f68 archive was removed
+without a backup. Continue from Git and the full ledger: missing original stop
+proof, cross-boot/runtime-lock reconstruction, maintenance startup, typed grants/
+privileged broker, complete provider rekey/retirement and GUI remain internal
+pending. Neither retained gateway UNKNOWN is settled by this separate fixture.

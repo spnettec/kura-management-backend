@@ -2,7 +2,7 @@
   "schema": 1,
   "recordedAt": "2026-11-16T00:49:39.522844+00:00",
   "sourceHeads": {
-    "kura": "861352a3a3715bceb6bea004c41733d543c61d55",
+    "kura": "ec76d14b3ce9210b3508f0db59a9aecc40b91d41",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d"
   },
@@ -88,16 +88,18 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "sourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563",
-    "file": "kura_6.0.0~git202611160147.f68fa1c-1_arm64.deb",
-    "bytes": 203342968,
-    "sha256": "dfa651a2b812bd16711f67a672df1cf95c247131f786fe5185875cc866ed3634",
+    "sourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
+    "file": "kura_6.0.0~git202611160224.7e1415b-1_arm64.deb",
+    "bytes": 203345960,
+    "sha256": "b4b05cc178693c764f86cd224fb57bf41636185190764f34987d5170cfb3fc46",
     "verifiedFiles": 45,
     "extractedReader": "PACKAGED_GENERATION_CLI_OK",
     "originalGatewayDeployed": false,
-    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true,
     "allNineNativeKeyScriptsExactlyMatchGit": true,
-    "currentHeadDiffIsTestOnly": true
+    "currentHeadDiffIsTestOnly": true,
+    "actualInstalledPartialPublicationContinuationVerified": true,
+    "fullFreshScriptAutomationPassed": false,
+    "controlledMainCmProofRemainsEarlier4c6d50c": true
   },
   "unacceptedSyntheticStart": {
     "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
@@ -123,11 +125,10 @@
   },
   "remainingInternal": [
     "agent runtime/binary/grant admission and privileged broker",
-    "Root original publication UNKNOWN recovery and maintenance startup",
-    "GUI prepare/download/upload/verify/cancel/confirm/start with independent original-result handoff",
-    "complete indirect provider inventory and immutable operation-bound artifacts",
-    "per-provider atomic rekey, restart validation, retirement policy",
-    "formal six-component installation and complete OPEN-TASKS.md"
+    "Root legacy/missing stop-proof UNKNOWN and cross-boot/runtime-lock reconstruction, maintenance startup",
+    "independent authenticated GUI prepare/download/upload/verify/cancel/confirm/start and original-result handoff",
+    "complete provider inventory, per-provider atomic rekey, restart validation and retirement policy",
+    "formal six-component installation and complete 12-group OPEN-TASKS.md"
   ],
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
@@ -157,7 +158,7 @@
     "currentPackageRetained": true,
     "legacyInstallBaselineRetained": true
   },
-  "updatedAt": "2026-11-16T02:03:44.894191+00:00",
+  "updatedAt": "2026-11-16T02:46:23.217162+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -191,7 +192,7 @@
     "cancellationAndHistoryPagingImplemented": false,
     "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
   },
-  "servicePayloadSourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563",
+  "servicePayloadSourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
   "previousPackageBeforePreparationHistory": {
     "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
@@ -291,5 +292,103 @@
     "legacyInstallBaselineRetained": true,
     "originalContainersRemoved": false,
     "remainingContainers": 6
+  },
+  "previousPackageBeforePublicationRecovery": {
+    "sourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563",
+    "file": "kura_6.0.0~git202611160147.f68fa1c-1_arm64.deb",
+    "bytes": 203342968,
+    "sha256": "dfa651a2b812bd16711f67a672df1cf95c247131f786fe5185875cc866ed3634",
+    "verifiedFiles": 45,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "originalGatewayDeployed": false,
+    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true,
+    "allNineNativeKeyScriptsExactlyMatchGit": true,
+    "currentHeadDiffIsTestOnly": true
+  },
+  "publicationRecovery": {
+    "serviceSourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
+    "testSourceHead": "ec76d14b3ce9210b3508f0db59a9aecc40b91d41",
+    "actions": [
+      "generation-publication-read",
+      "generation-publication-recover"
+    ],
+    "proofFile": "publication-recovery.json",
+    "proofCreatedOnlyAfterOriginalStopAndExclusiveWriterHandoff": true,
+    "originalRequestAndCheckpointHmacValidated": true,
+    "originalAndProposedFileIdentitiesRequired": true,
+    "durablePrefixRequired": true,
+    "originalPublicationStopStartNeverRedispatched": true,
+    "noNewKeysOrArchivesDuringContinuation": true,
+    "otherUnknownStillBlocks": true,
+    "missingStopProofRemainsUnknown": true,
+    "crossBootAndNewLockRefused": true,
+    "recoveryAndAgentAndCoreUidCommitRefused": true,
+    "linuxModelTests": 252,
+    "newContinuationModelTests": 33,
+    "skipped": 0,
+    "systemdProcessAuthorityModeledInNativeSuites": true,
+    "actualInstalledOriginalContinuation": {
+      "schema": 1,
+      "scope": "same-original-installed-fixture-local-publication-continuation",
+      "sourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
+      "packageSha256": "b4b05cc178693c764f86cd224fb57bf41636185190764f34987d5170cfb3fc46",
+      "actualInstalledCore": true,
+      "actualRootWorker": true,
+      "actualKernelBindRenameFailure": true,
+      "originalUnknownObserved": true,
+      "continuationBlockedWhileFaultRemained": true,
+      "originalAuthenticatedCheckpointSurvivesWorkerRestart": true,
+      "sameOriginalPublicationCompleted": true,
+      "originalOperationIds": [
+        {
+          "operationId": "7a0e15dd-2de9-4dba-a2b7-653d2348b47c",
+          "action": "generation-prepare"
+        },
+        {
+          "operationId": "8109c566-5ea9-416a-9943-f528aaeae3e3",
+          "action": "generation-backup-verify"
+        },
+        {
+          "operationId": "54634dff-3e8d-420a-92ba-87710631f789",
+          "action": "generation-publish"
+        }
+      ],
+      "originalOperations": 3,
+      "coreStopRedispatched": false,
+      "coreStartDispatched": false,
+      "newKeyGeneratedDuringContinuation": false,
+      "oldWorkerPid": 4942,
+      "newWorkerPid": 5392,
+      "existingRingFullMetadataUnchangedDuringSuccessfulContinuation": true,
+      "allExistingStagedMaterialFullMetadataUnchangedDuringSuccessfulContinuation": true,
+      "oldCipherBytesMatchOriginalCoreOutput": true,
+      "oldCipherFullMetadataUnchangedDuringSuccessfulContinuation": true,
+      "initialWholeScenarioCipherMetadataSnapshotUnavailable": true,
+      "oldKeyRetained": true,
+      "startupStillRequiresSeparateAuthorization": true,
+      "rootWorkerCapabilitiesEmpty": true,
+      "noNewPrivileges": true,
+      "initialAutomatedScenarioPassed": false,
+      "sameOriginalFixtureContinuationCheckPassed": true,
+      "correctedFaultBindMechanicsValidatedWithoutKeyOperations": true,
+      "wholeScenarioReplayed": false,
+      "hardPowerOrDiskFullAccepted": false,
+      "customerProvidersAccepted": false,
+      "guiAccepted": false
+    },
+    "correctedAutomationWholeScenarioNotReplayed": true,
+    "originalRetainedGatewayUnknownSettled": false,
+    "ownedSyntheticFixtureRemoved": true
+  },
+  "publicationRecoveryCleanup": {
+    "deleted": "kura_6.0.0~git202611160147.f68fa1c-1_arm64.deb",
+    "logicalBytes": 203342968,
+    "sha256": "dfa651a2b812bd16711f67a672df1cf95c247131f786fe5185875cc866ed3634",
+    "backupsCreated": false,
+    "currentPackageRetained": true,
+    "legacyBaselineRetained": true,
+    "remainingContainers": 6,
+    "diskFreeBefore": 420513046528,
+    "diskFreeAfter": 420716376064
   }
 }

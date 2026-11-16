@@ -8,7 +8,8 @@
 
 ## 已保存的最新工作
 
-- 最新Core本地源码 `861352a3a3`（服务实现 `f68fa1ce91`，后一提交仅新增测试），agent/networking仍为 `3cf66e4` / `c16cf57`。已实现 `generation-history` 分页、保留全部旧材料的 `generation-cancel`，以及仅核验并结算原取消回执的 `generation-cancel-recover`；缺原回执不补造，其他UNKNOWN仍阻止。新一轮准备只在全部旧记录经原回执证明CANCELLED/PUBLISHED后准入，不删目录绕过。219项相关隔离Linux/JDK21模型检查和1次实际systemd Root worker新接口联调通过；真实服务重启后原取消结果可读、两轮暂存均保留、现用密钥完整元数据不变，实际kurad/recovery/agent cgroup权限边界符合预期。新ARM64包45项及提取reader通过，9个原生密钥脚本与当前Git/发行目录逐字一致。这次提取deb运行服务，不是完整安装/Main/GUI验收。原发布UNKNOWN恢复、维护启动、运行时准入/privileged broker、完整provider和GUI仍pending。
+- 最新Core服务实现 `7e1415b02c`，后续测试提交见 [本轮检查点](managed-core-start-checkpoint.json)；agent/networking仍为 `3cf66e4` / `c16cf57`。新增原发布的认证续接凭据、只读查询和显式本地续接：只有原StopUnit确认及独占写锁交接已完成才留凭据，原UUID/请求HMAC、旧文件完整身份、包/cohort、同boot/原锁inode及所有其他UNKNOWN均须匹配。只补齐未完成的固定文件，不重发原发布/Stop/Start、不生成钥、不替换已完成文件。252项相关隔离模型通过。一次实际新安装发生规范key原子替换EBUSY，主Kura停止且原INTENT保持；在同一夹具释放注入故障、重启仅该密钥服务并核对原凭据/前缀不变后，原3条操作结算SUCCEEDED，普通启动仍需独立授权。首次自动化因夹具挂载命名空间问题未通过；已修正夹具并在原环境验证剩余步骤，没有重建/重放整轮，不能声称整轮自动化绿色。现存ring和暂存原件在成功续接期间完整元数据不变，旧密文字节匹配原Core输出；首次进程内的整轮旧密文元数据基线未持久化，范围不外推。新ARM64包45项及提取reader通过，9个原生脚本匹配Git；三个原网关未部署。缺原停止凭据、跨boot/锁重建、维护启动、权限broker、全部provider及GUI仍pending。
+- 此前Core `861352a3a3`（服务实现 `f68fa1ce91`）已实现 `generation-history` 分页、保留全部旧材料的 `generation-cancel`，以及仅核验并结算原取消回执的 `generation-cancel-recover`；缺原回执不补造，其他UNKNOWN仍阻止。新一轮准备只在全部旧记录经原回执证明CANCELLED/PUBLISHED后准入，不删目录绕过。219项相关隔离Linux/JDK21模型检查和1次实际systemd Root worker新接口联调通过；真实服务重启后原取消结果可读、两轮暂存均保留、现用密钥完整元数据不变，实际kurad/recovery/agent cgroup权限边界符合预期。这次提取deb运行服务，不是完整安装/Main/GUI验收；其原范围保留，不重放来更新源码戳。
 - 此前Core `d20f4b56eb` 新增只读 `generation-preparation-read`，只返回经不可变历史校验的准备元数据，不返回密钥/加密备份，不推断后续发布或启动；原INTENT保持UNKNOWN。当时6项隔离Linux模型通过。暂存取消/分页的旧缺口由上条实现替代，其他边界继续保留。
 - 此前Core/agent/networking本地源码为 `0a6da0e3e0` / `3cf66e4` / `c16cf57`。受控启动先设业务屏障再校验目标级别，修复初始framework stop不能阻止后续激活的问题；完整Core隔离profile显式声明级别6。`4c6d50ce63`的一次真实Main/PID1 ring/CM联调通过：17配置、141属性一致，旧密文字节未改且可解密，普通写仍阻止，没有发布代、完成或释放写。后续0a6修复store.save直接覆盖/读失败丢条目，9类相关118项及隔离Linux6项通过。当前ARM64包45项文件及提取reader通过，Main/离线Crypto与测试类一致；实际Main证明仍精确属于4c6源码，不重放闭环来更换提交戳。
 - 18仓静态盘点还补齐Java/Rust NM模板的KURA2格式，19项Java/18项Rust相关检查通过，原nonce/实例/epoch/摘要/一次导出与UNKNOWN约束保留。成功夹具已删除；失败合成Main夹具确认仅只读源码输入且Root操作/启动为空后已删除，原请求 `rec-cae4c810-5bcf-4189-92d1-55d53bde348d` 编号/摘要及未接受状态保留，没有推断成功或重发。三个原网关未动。详见 [本轮检查点](managed-core-start-checkpoint.json) 与 [provider盘点](key-provider-inventory.md)。完整agent准入/privileged broker、原UNKNOWN恢复、GUI、全provider及正式发行继续pending。
@@ -36,6 +37,8 @@
 必须保留的原 UNKNOWN：管理操作 `767863a9-fe6b-4135-9783-ddcb131030af`；startup.stop 意图 `a87d94d52839e316845b7c831b265daf928f0bfd5fb0a883fb49b721cba5f63c`。只读原记录；不重发、不换 ID、不手动 stop、不重导出，不从 PID、耗时、空日志或新环境推断结算。
 
 以下闭环 ID 永远只读：`965a1c8b-5acb-40ce-854e-b5592df80239`、`75d62ca7-cec5-47de-b136-9415e59dc226`、`fd78f9ad-d41d-4651-98bd-7a664f167255`、`5a7dfd2d-51bf-4431-bb67-7995643b0c4b`、`8fee5e2b-343e-4d71-b09d-7388af348ed9`、`f4115360-1598-4e2d-98ff-29978639936c`、`57d19ee1-a8e8-4fc6-8dba-36cd4cc6bcd9`、`10296cdc-4a25-46e9-b4b4-8993fb31bac6`。新 RPC 现场的空 journal 不能结算旧现场原记录。 本轮新隔离Core闭环的4个原ID也只保留历史：preparation `2d77ed82-8dd7-453c-88f8-cd1806d66393`、verification `6ef48b02-7d5c-430e-9162-871783efce9d`、publication `ab04d2bc-be23-4ff0-85f1-6a6abe03000e`、startup `4bbdae4a-df31-4296-a280-dcd5f1dd7332`。该一次性夹具已删除，不恢复/重发，不在其他Root状态中查询来推断结果。V36v1 不做 live query/inverse/reissue，既有 GWT 三次保存等旧 CLOSED 验收不重放。
+
+新增实际EBUSY/原发布续接场景也已清理，仅保留原3个已结算ID：prepare `7a0e15dd-2de9-4dba-a2b7-653d2348b47c`、verify `8109c566-5ea9-416a-9943-f528aaeae3e3`、publish `54634dff-3e8d-420a-92ba-87710631f789`。原发布仅分发一次；故障仍在时的本地续接被阻止，经只读核对原状态、解除同一夹具故障后完成剩余文件。没有重发Stop/Start，也没有用新ID绕过。不要重放整轮来替换首次自动化失败的记录，或在其他Root中查询这些ID来推断结果。
 
 ## 从干净环境继续
 
