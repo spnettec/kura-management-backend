@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T00:49:39.522844+00:00",
+  "sourceHeads": {
+    "kura": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
+    "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
+    "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d"
+  },
+  "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
+  "controlledCore": {
+    "sourceHead": "4c6d50ce637e6d7c9894cd187edb286ea750a4c0",
+    "packageSha256": "735fa5142995bbe11acc9025f5ce62a8923201ccd17780118c770977bc639523",
+    "jdk": 21,
+    "frameworkTarget": 6,
+    "tests": 1,
+    "restoreId": "rec-f9259290-90d2-400f-ad68-d34b9c1d3111",
+    "cmConfigurations": 17,
+    "cmProperties": 141,
+    "actualInstalledMain": true,
+    "actualPid1Ring": true,
+    "oldCipherBytesRetained": true,
+    "oldCipherDecrypted": true,
+    "actualConfigurationAdminMatched": true,
+    "ordinaryWriteBarrierRetained": true,
+    "bootstrapProfile": "Unchanged copied optional bootstrap at level 1; full Core launcher explicitly targets 6",
+    "syntheticPreExistingKeys": true,
+    "keyPublicationInvoked": false,
+    "completionOrWriteRelease": false,
+    "fullRecoveryVerified": false,
+    "customerProviderRecovery": false,
+    "ownedFixtureRemoved": true
+  },
+  "startupFence": {
+    "sourceHead": "4c6d50ce637e6d7c9894cd187edb286ea750a4c0",
+    "unitTests": 20,
+    "targetMustBeExplicit": true,
+    "allowedTargets": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "allNonInfrastructureLevelsHeldBeforeValidation": true,
+    "frameworkStopDuringInitialLaunchIsInsufficient": true
+  },
+  "passwordStore": {
+    "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
+    "relevantJavaTests": 118,
+    "javaTestClasses": 9,
+    "linux": {
+      "platform": "Ubuntu24.04-ARM64",
+      "jdk": 21,
+      "tests": 6,
+      "failures": 0,
+      "skipped": 0,
+      "network": "none",
+      "uid": 65534,
+      "capabilities": "empty",
+      "oldGatewayTouched": false,
+      "mainCoreStarted": false,
+      "readDeniedWriteAllowedOriginalRetained": true
+    },
+    "directOverwriteRemoved": true,
+    "readErrorsNeverTreatedAsEmpty": true,
+    "privateStagingMode": "0600",
+    "fileAndDirectorySynced": true,
+    "atomicReplaceRequired": true,
+    "noNonAtomicFallback": true,
+    "sameJvmUpdatesSerialized": true,
+    "untouchedCiphertextStringsPreserved": true,
+    "testedAndPackagedCryptoClassesExact": true,
+    "crossProviderRekeyAndRetirementAccepted": false
+  },
+  "nmTemplates": {
+    "networkingSourceHead": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
+    "agentSourceHead": "3cf66e47e30461e20018187dd684c11d22f165bc",
+    "javaTests": 19,
+    "rustRelatedTests": 18,
+    "legacyAndKura2Supported": true,
+    "unknownVersionsOrMalformedTagsRefused": true,
+    "headerAuthenticatedByActualCoreCrypto": true,
+    "agentNeverDecrypts": true,
+    "originalChunksAndBindingsUnchangedOnReopen": true,
+    "missingOriginalChunkStillUnknown": true,
+    "noSecondExportOrDeposit": true,
+    "defaultWeakKeyPolicyUnchanged": true,
+    "formalRuntimeAdmission": false
+  },
+  "latestPackage": {
+    "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
+    "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
+    "bytes": 203338026,
+    "sha256": "23e7acb8863b93ed1441cd931318beef5b8bc2f64080c6604362ec032c80a7c4",
+    "verifiedFiles": 45,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "originalGatewayDeployed": false,
+    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true
+  },
+  "unacceptedSyntheticStart": {
+    "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
+    "requestSha256": "d27355326c84757bc3ee82baa1981b5706ab34b90dce94f5b1e47cdf65a221cc",
+    "sourceHead": "f718cbf79955b2361e68b6f22372597176ef16be",
+    "outcome": "REVIEW_REQUIRED",
+    "receiptPresent": false,
+    "replayed": false,
+    "fixtureRemovedAfterSyntheticInputsAndNoRootOperationsVerified": true,
+    "rootJournalCounts": {
+      "operations": 0,
+      "startups": 0
+    },
+    "successNeverInferred": true
+  },
+  "preservation": {
+    "originalGateways": 3,
+    "processes": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContentsExact": 6,
+    "originalRootJournalsUnchanged": true,
+    "originalUnknownRedispatched": false
+  },
+  "remainingInternal": [
+    "agent runtime/binary/grant admission and privileged broker",
+    "Root original UNKNOWN recovery, stage history/cancellation, maintenance startup",
+    "GUI prepare/download/upload/verify/confirm/start",
+    "complete indirect provider inventory and immutable operation-bound artifacts",
+    "per-provider atomic rekey, restart validation, retirement policy",
+    "formal six-component installation and complete OPEN-TASKS.md"
+  ],
+  "externalDeferredOnly": [
+    "real NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "goalStatus": "active",
+  "remoteWrites": false,
+  "incrementCleanup": {
+    "recordedAt": "2026-11-16T00:52:19.588400+00:00",
+    "deleted": [
+      {
+        "name": "kura_6.0.0~git202611152245.f718cbf-1_arm64.deb",
+        "logicalBytes": 203332744
+      },
+      {
+        "name": "kura_6.0.0~git202611152326.4c6d50c-1_arm64.deb",
+        "logicalBytes": 203332784
+      }
+    ],
+    "retained": [],
+    "backupsCreated": false,
+    "diskFreeBeforeBytes": 420950626304,
+    "diskFreeAfterBytes": 421357268992,
+    "originalContainersRemoved": false,
+    "remainingContainers": 6,
+    "currentPackageRetained": true,
+    "legacyInstallBaselineRetained": true
+  }
+}

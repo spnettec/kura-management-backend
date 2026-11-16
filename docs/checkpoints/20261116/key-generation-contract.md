@@ -570,3 +570,38 @@ reader probe. It has not been installed on retained scenes. The superseded
 0d77355 candidate was removed without a backup; the legacy baseline and current
 candidate remain. Main controlled startup, agent admission/broker, the GUI and
 complete provider/release work remain pending. Full original scope is unchanged.
+
+## Controlled Main and persistence increment (2026-11-16, 0a6da0e3e0)
+
+The optional bootstrap now fences every non-infrastructure bundle before target
+or request validation. A framework stop during initial startup alone cannot
+prevent the launcher from advancing. Controlled profiles must explicitly pin
+osgi.startLevel 5 through 9; the installed full-Core test pins 6.
+
+One fresh installed Main/PID1-ring/real-CM test passed at source 4c6d50ce63:
+17 configurations and 141 properties matched, the original synthetic ciphertext
+was unchanged and decrypted, and ordinary writes remained blocked. No generation
+publication, completion or write release was invoked. This is selected synthetic
+CM acceptance, not customer/provider recovery or formal profile installation.
+
+Source 0a6da0e3e0 separately replaces in-place store.save truncation with private
+staging, file/directory sync and mandatory atomic replacement. Read failures
+never become an empty store; same-JVM updates retain unrelated ciphertext entries.
+Nine relevant Java classes (118 tests) and six Linux/JDK21 filesystem tests pass.
+This is not cross-provider rekey or a keystore/database password-change transaction.
+
+Networking c16cf57 and agent 3cf66e4 additionally accept strict KURA2 template
+syntax. Actual Core Crypto authenticates the header/content; agent transfers only
+exact original ciphertext. Java 19 and Rust 18 related tests pass, including
+legacy reads, malformed headers, immutable reopen and original UNKNOWN/no-retry.
+The default weak-key template rejection remains.
+
+The current ARM64 package has 45 paired payload checks and the extracted reader
+probe passed. Its Main and recovery Crypto classes match the tested classes.
+The actual controlled-Main proof remains bound to 4c6, not retroactively to this
+new package. See managed-core-start-checkpoint.json and key-provider-inventory.md.
+Agent runtime/binary/grant admission, privileged broker, original UNKNOWN
+recovery, stage history/cancel, maintenance startup, GUI, all providers and formal
+six-component release remain pending. Installed-agent generation publication
+still fails closed; old keys are not retired. Continue from Git and OPEN-TASKS,
+without restoring old evidence trees or replaying closed operations.
