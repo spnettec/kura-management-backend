@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T06:06:03.754067+00:00",
-  "uiSourceHead": "3ac28e22c5b441373aeeb46845df5456b2c7edd1",
+  "recordedAt": "2026-11-16T07:02:40.112828+00:00",
+  "uiSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
   "nativeCurrentHead": "a2770c21e90842e2630493bf49171183c46dc85e",
   "nativeServiceSourceHead": "a2770c21e90842e2630493bf49171183c46dc85e",
   "nativeCodeChanged": false,
@@ -61,45 +61,32 @@
   "build": {
     "jdk": 21,
     "runtimeMinimum": 21,
-    "unitTests": 45,
-    "newUnitTests": 22,
-    "regressionTests": 23,
+    "unitTests": 90,
     "failures": 0,
     "skipped": 0,
     "gwtModules": 2,
     "gwtPermutations": 12,
     "artifact": {
-      "bytes": 33984292,
-      "sha256": "4335f29e943b8d6e8942aa8a7ccdb54bae138fee1556b7e8115985e187d6289d",
-      "verifiedServerSharedClasses": 9,
-      "verifiedClasses": [
-        "org/eclipse/kura/web/server/GwtGatewayKeyHandoffServiceImpl.class",
-        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationClient.class",
-        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal$Boundary.class",
-        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal$Caller.class",
-        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal.class",
-        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol$1.class",
-        "org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol.class",
-        "org/eclipse/kura/web/shared/model/GwtGatewayKeyGeneration.class",
-        "org/eclipse/kura/web/shared/service/GwtGatewayKeyHandoffService.class"
-      ],
+      "sourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
+      "bytes": 33991757,
+      "sha256": "456e28d28c3a497580eef47e6cff13eabf65f449e8e3eb3d870027ee0c05611a",
+      "verifiedServerClasses": 29,
       "bytecodeRelease": 11,
-      "asyncInterfaceClientOnlyPerPom": true,
-      "newGenerationRpcPolicyPresent": true,
-      "testFixtureExcludedFromProductionJar": true,
       "gwtModules": 2,
       "gwtPermutations": 12,
-      "unitTests": 45,
-      "newUnitTests": 22,
-      "regressionTests": 23,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "unitTests": 90,
+      "unitSkipped": 0,
       "browserCases": 7,
-      "actualGwtRpcAndHttps": true,
-      "browserRootReplies": "synthetic",
+      "linuxKernelCases": 6,
+      "rootAndHumanSessionSynthetic": true,
       "actualInstalledMainAcceptance": false,
-      "sourceHead": "3ac28e22c5b441373aeeb46845df5456b2c7edd1",
-      "uiCodeTestedSourceHead": "7468a511a74a625a99f50e3403af862870ba00bc",
-      "currentHeadDiffFromBrowserTestedSourceIsBuildCleanupOnly": true,
-      "generatedAssetsCleanup": {
+      "linuxKernelClassesMatchJar": true,
+      "fixtureExcludedFromJar": true,
+      "generatedAssetsCleanupHistory": {
         "beforeMainCacheJs": {
           "login": 24,
           "denali": 312
@@ -120,9 +107,11 @@
           "denali.html"
         ],
         "liveBindReferencesBeforeCleanup": 0,
-        "actualRuntimeOrPrivateDataDeleted": false
+        "actualRuntimeOrPrivateDataDeleted": false,
+        "verifiedAtSourceHead": "3ac28e22c5b441373aeeb46845df5456b2c7edd1"
       }
-    }
+    },
+    "errors": 0
   },
   "linuxTransport": {
     "tests": 6,
@@ -150,11 +139,12 @@
     "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
   },
   "remaining": [
-    "shared admission across legacy GWT, generation/handoff senders and independent receiver; upgrade gate for every sender journal",
+    "cross-UID admission with the independent recovery receiver and upgrade gate for every sender journal; Core-owned three-GWT-sender admission is implemented only",
+    "bind actual configured data directory and Root namespace across reconfiguration, JVM/bundle restart and package upgrade",
+    "durable no-dispatch original receipt and explicit UI recovery when cross-sender admission denies before an owning intent exists; absence is never a Root rejection or resend permit",
     "actual installed Main / human ADMIN / XSRF / HTTPS / independent page joint acceptance",
     "encrypted authorization material download/upload; same-original renewal/revocation/archive; expired first start and uncertain continuation recovery",
-    "all provider rekey/restart/retirement, full broker/runtime/cohort and all 12 internal pending groups",
-    "only 3 external boundaries: real NM/cloud-init/physical hardware; amd64; disk full/hard power loss"
+    "all provider rekey/restart/retirement, full broker/runtime/cohort and all 12 internal pending groups"
   ],
   "preserved": {
     "originalContainers": 3,
@@ -171,7 +161,8 @@
     "ui": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/client/ui/security/GatewayKeyHandoffHistoryUi.java",
     "generationUi": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/client/ui/security/GatewayKeyGenerationUi.java",
     "generationJournal": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationJournal.java",
-    "generationProtocol": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol.java"
+    "generationProtocol": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyGenerationProtocol.java",
+    "workflowAdmission": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.java"
   },
   "previousD83Increment": {
     "uiSourceHead": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40",
@@ -229,7 +220,7 @@
       "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
     }
   },
-  "uiCodeTestedSourceHead": "7468a511a74a625a99f50e3403af862870ba00bc",
+  "uiCodeTestedSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
   "nativeGenerationAlgorithmSourceRemains": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
   "generationSenderIntent": {
     "limit": 64,
@@ -244,7 +235,8 @@
     "missingOriginalNeverAllowsResend": true,
     "newIdCannotBypassUnknownInGenerationJournal": true,
     "sharedAdmissionWithLegacyGwtAndIndependentReceiverAccepted": false,
-    "upgradeAdmissionForAllSenderJournalsAccepted": false
+    "upgradeAdmissionForAllSenderJournalsAccepted": false,
+    "sharedAdmissionWithinCoreOwnedGwtJournalsImplemented": true
   },
   "browserModel": {
     "tests": 7,
@@ -262,8 +254,70 @@
     "actualHttps": true,
     "rootReplies": "synthetic",
     "humanMainSessionAcceptance": false,
-    "testedSourceHead": "7468a511a74a625a99f50e3403af862870ba00bc",
+    "testedSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
     "reproducibleFromCurrentGit": "kura-management-ui/bundles/org.eclipse.kura.web2.test/src/browser/run_generation_browser.py"
   },
-  "goalStatus": "active"
+  "goalStatus": "active",
+  "sharedGwtAdmission": {
+    "scope": "Core-owned legacy, generation and handoff sender journals only",
+    "lock": ".gateway-key-admission.lock in actual SystemService data directory",
+    "crossOperatorIntentsChecked": true,
+    "lockCovers": [
+      "other sender original checks",
+      "own intent persistence",
+      "first Root call"
+    ],
+    "existingLocalIdAllows": "own original read even while another sender is unresolved",
+    "cachedSuccessSufficientForNewAdmission": false,
+    "handoffGrantRecordedIsPublicationOrStartupSuccess": false,
+    "storesSecrets": false,
+    "crossUidIndependentReceiverAccepted": false,
+    "allSenderUpgradeGateAccepted": false,
+    "dataDirectoryAndRootNamespaceReconfigurationBindingAccepted": false,
+    "durablePreIntentNoDispatchReceiptAndUiRecoveryAccepted": false
+  },
+  "journalCorrections": {
+    "posixLocksReleasedBySecondSameInodeFdFixed": true,
+    "beforeFixIndependentChildLockCases": {
+      "tests": 3,
+      "failures": 3
+    },
+    "sameThreadNestedEntryRefusedBeforeSecondChannel": true,
+    "ancestorAliasesCanonicalizedForJvmLock": true,
+    "genericRootFailureAndMissingOriginalRemainUnknown": true,
+    "oldWeakRootPreflightFilesPreservedAsUnknown": true,
+    "corruptResultNotRebuiltFromMissingRootOriginal": true,
+    "provenLocalBeforeDispatchRejectionRetained": true,
+    "legacyKeyRpcNowRequiresHttps": true
+  },
+  "linuxKernelLock": {
+    "tests": 6,
+    "jdk": 21,
+    "architecture": "aarch64",
+    "actualJavaStatus": {
+      "Uid": "65534\t65534\t65534\t65534",
+      "CapEff": "0000000000000000",
+      "CapBnd": "0000000000000000",
+      "CapAmb": "0000000000000000",
+      "NoNewPrivs": "1"
+    },
+    "rootReplies": "synthetic",
+    "nativeKeyOperations": 0,
+    "result": "GWT_KERNEL_LOCK_NATIVE_OK tests=6 nativeKeyOperations=0",
+    "testedClassSha256": {
+      "GatewayKeyJournal.class": "67239496e95d15dc5a85d13017029ddeba5807f06355ab0350c30f69f6e96e70",
+      "GatewayKeyGenerationJournal.class": "861c6c2944bd5422802be5600b72d6a939e03edd557285496e2de2b59ab66029",
+      "GatewayKeyHandoffJournal.class": "09d87a603876185bbc300cdcf4a5c2563fbe9b7209c056dd77dc141e6f42968f",
+      "GatewayKeyWorkflowAdmission.class": "5ace36d5fca297b84041e354103bcb43ec137cc997366e8a214d97339ec7d8a3"
+    },
+    "subsetOf90UnitCases": true,
+    "independentProcessLockProbes": 10,
+    "allFourTestedClassesMatchProductionJar": true,
+    "sourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31"
+  },
+  "externalDeferredOnly": [
+    "real NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ]
 }

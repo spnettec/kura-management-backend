@@ -4,9 +4,9 @@
 
 ## 内部 pending
 
-最新GWT本地WIP `3ac28e22c5`（界面/服务 `7468a511a7`）已提供新代准备、加密备份下载/上传核验、发布条件检查及签发；独立发布/启动仍分开。新generation发送日志与浏览器固定5ID先存意图，已有意图只读原结果；22新用例＋23相关回归及7组真实组件/HTTPS/GWT RPC浏览器检查通过，Root与人类会话是替身。双模块12变体、两轮清理后打包通过，包由163.77 MB降为33.98 MB，9类/policy/源HTML核对通过。跨旧GWT/new generation/handoff/独立恢复的共同准入及所有发送日志的升级门禁尚未验收，须先补齐；现有各发送日志的单独检查不能替代它。实际安装Main/人类ADMIN/XSRF/HTTPS联合核验、加密授权材料文件、原授权续期/撤销/归档和完整父项继续pending。详见 [GWT交接检查点](gwt-key-handoff-checkpoint.json)。
+最新GWT本地WIP `8a2544a42e` 已为Core所有的旧密钥、generation及handoff三个发送日志增加共同准入：持锁覆盖核对其他发送方、私有意图落盘和首次Root调用；跨操作人UNKNOWN也阻止新写，已有ID仍可只读原结果。修复了打开并关闭同一锁inode的第二个FD会释放POSIX进程锁的缺陷，以及普通Root错误＋NOT_FOUND被误结算为终态拒绝的缺陷；旧弱ROOT_PREFLIGHT记录保留原字节并按UNKNOWN查询，缓存成功不能替代新准入时核对Root原件。旧密钥RPC补HTTPS门禁。90项相关单元检查、7组真实GWT组件/HTTPS/RPC浏览器检查和其中6项Linux/JDK21独立进程内核锁检查通过；Root回复与人类会话仍为替身。双模块12变体打包通过，33,991,757字节，29个服务端类匹配且为Java11，login/denali各6份主脚本。原准备/加密备份下载上传/核验/签发流程保留，Core仍a277；3原现场、7进程、38私有文件和6旧数据均未改，无远程推送。跨Unix UID独立恢复、全部日志升级门禁、实际data目录/Root命名空间绑定、准入拒绝后的持久未发送回执与界面恢复仍pending；尚不能作为完整共同协调或实际Main联合验收。详见 [GWT交接检查点](gwt-key-handoff-checkpoint.json)。
 
-最新Core本地源码 `a2770c21e9` 已实现独立HTTPS固定操作页、浏览器与接收端各自的持久发送意图，已有意图只读原结果，不因NOT_RECORDED重新发送。发布与启动分开确认，原发布续接须匹配认证回执；不确定续接不能再次转发。原钥冷恢复与交接写操作互斥；包生命周期准入除本地完成回执外，还必须核对Root原发布/启动均已成功。27项新检查在两种权限模型通过（同一27例，不计为54种），22项原恢复回归、121项Linux/JDK21模型和9项真实Chromium/HTTPS测试通过；Root回复仍为替身，新包未部署。旧8b原生身份、7e实际发布续接和4c6实际Main证明不套给此次已改的恢复/lifecycle代码。完整GWT准备/核验/签发与授权材料下载上传、实际安装Main/GWT/HTTPS联合验收、原授权续期/撤销/归档、过期首次启动及不确定续接后的合法恢复仍pending。详见 [HTTPS交接检查点](https-key-handoff-checkpoint.json)。以下12个父项和3个外部边界不变。
+最新Core本地源码 `a2770c21e9` 已实现独立HTTPS固定操作页、浏览器与接收端各自的持久发送意图，已有意图只读原结果，不因NOT_RECORDED重新发送。发布与启动分开确认，原发布续接须匹配认证回执；不确定续接不能再次转发。原钥冷恢复与交接写操作互斥；包生命周期准入除本地完成回执外，还必须核对Root原发布/启动均已成功。27项新检查在两种权限模型通过（同一27例，不计为54种），22项原恢复回归、121项Linux/JDK21模型和9项真实Chromium/HTTPS测试通过；Root回复仍为替身，新包未部署。旧8b原生身份、7e实际发布续接和4c6实际Main证明不套给此次已改的恢复/lifecycle代码。授权材料下载上传、实际安装Main/GWT/HTTPS联合验收、原授权续期/撤销/归档、过期首次启动及不确定续接后的合法恢复仍pending。详见 [HTTPS交接检查点](https-key-handoff-checkpoint.json)。以下12个父项和3个外部边界不变。
 
 以下较早增量只保留各自提交的原范围；被页首新实现替代的缺项按页首及末尾顺序继续。
 
@@ -45,4 +45,6 @@
 
 ## 下一步建议顺序
 
-下一步先补跨旧GWT、新generation/handoff及独立恢复发送方的共同准入，以及全部发送日志的升级门禁。现有generation、handoff与独立页各自先存意图，不能因此宣称跨流程并发/升级已接受。随后继续加密授权材料下载/上传和实际安装Main人类会话/ADMIN/XSRF/GWT/HTTPS与独立页联合核验；GWT准备/核验/签发已是本地候选，不重做相同模型来替代实际环境。只接固定ID凭据，不复用旧单钥DTO或扩大备份口令授权。UNKNOWN只读原结果，NOT_RECORDED不构成重发许可。原凭据续期/撤销/归档、过期后首次启动和不确定续接后的合法界面恢复仍须补齐，不以脚本替代。runtime/binary/cohort、完整privileged broker、缺原停止凭据/跨boot/旧锁重建、维护启动、全部provider原子重加密/退役及12父项继续推进；安装agent仍阻止代发布。界面随功能逐步应用modern-web-guidance，JDK最低21，暂不追加27；不重放README闭环ID，不依赖旧大型证据/缓存继续。
+先继续补跨Unix UID独立恢复与三类GWT发送方的共同准入、全部发送日志升级门禁，以及实际配置data目录/Root命名空间在重配置、JVM/bundle重启和升级中的绑定。Core所有的三GWT发送方已具备共同门禁，不等于独立恢复身份已接入；Java FileLock与Python flock也不能视为同一种锁。跨发送方准入在本地意图创建前拒绝时，仍须补持久未发送原回执和明确界面恢复，不能用Root原件缺失推断终态拒绝或发新ID。
+
+随后继续加密授权材料下载/上传和实际安装Main人类会话/ADMIN/XSRF/GWT/HTTPS与独立页联合核验；现有7组浏览器Root/人类会话替身检查不替代它。原凭据续期/撤销/归档、过期后首次启动和不确定续接后的合法界面恢复仍须补齐，不以脚本替代。UNKNOWN只读原结果，NOT_RECORDED不构成重发许可；不复用旧单钥DTO或扩大备份口令授权。runtime/binary/cohort、完整privileged broker、缺原停止凭据/跨boot/旧锁重建、维护启动、全部provider原子重加密/退役及12父项继续推进；安装agent仍阻止代发布。界面随功能逐步应用modern-web-guidance，JDK最低21，暂不追加27；不重放README闭环ID，不依赖旧大型证据/缓存继续。

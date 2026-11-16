@@ -5,7 +5,7 @@
     "kura": "a2770c21e90842e2630493bf49171183c46dc85e",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
-    "kura-management-ui": "3ac28e22c5b441373aeeb46845df5456b2c7edd1"
+    "kura-management-ui": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31"
   },
   "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
   "controlledCore": {
@@ -130,7 +130,9 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "shared admission across legacy GWT, generation/handoff senders and independent receiver; upgrade gate for every sender journal",
+    "cross-UID admission with the independent recovery receiver and upgrade gate for every sender journal; Core-owned three-GWT-sender admission is implemented only",
+    "bind actual configured data directory and Root namespace across reconfiguration, JVM/bundle restart and package upgrade",
+    "durable no-dispatch original receipt and explicit UI recovery when cross-sender admission denies before an owning intent exists; absence is never a Root rejection or resend permit",
     "actual installed Main / human ADMIN / XSRF / HTTPS / independent page joint acceptance",
     "encrypted authorization material download/upload; same-original renewal/revocation/archive; expired first start and uncertain continuation recovery",
     "all provider rekey/restart/retirement, full broker/runtime/cohort and all 12 internal pending groups"
@@ -163,7 +165,7 @@
     "currentPackageRetained": true,
     "legacyInstallBaselineRetained": true
   },
-  "updatedAt": "2026-11-16T06:06:03.754067+00:00",
+  "updatedAt": "2026-11-16T07:02:40.112828+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -277,11 +279,9 @@
     "dialogAndBackdropOverscrollRules": true,
     "customFocusTrapOrBodyScrollLockAdded": false,
     "fullSiteModernizationClaimed": false,
-    "guidesAppliedThisIncrement": [
-      "dialog",
-      "accessibility"
-    ],
-    "frontendCodeChanged": true
+    "guidesAppliedThisIncrement": [],
+    "frontendCodeChanged": false,
+    "scopeNote": "Previous UI guidance retained; this increment changes backend journals, admission and test infrastructure only"
   },
   "preparationHistoryCleanup": {
     "recordedAt": "2026-11-16T02:02:29.807475+00:00",
@@ -512,11 +512,10 @@
     "remainingContainers": 6
   },
   "gwtHandoff": {
-    "uiSourceHead": "3ac28e22c5b441373aeeb46845df5456b2c7edd1",
-    "uiCodeTestedSourceHead": "7468a511a74a625a99f50e3403af862870ba00bc",
+    "uiSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
+    "uiCodeTestedSourceHead": "8a2544a42e228f3ba0d68eda1c42fc1c9d687e31",
     "checkpoint": "gwt-key-handoff-checkpoint.json",
-    "newUnitTests": 22,
-    "relatedUnitAndRegressionTests": 45,
+    "relatedUnitAndRegressionTests": 90,
     "realGwtRpcHttpsBrowserCases": 7,
     "rootAndHumanSessionSyntheticInBrowser": true,
     "actualInstalledMainBrowserAcceptance": false,
@@ -542,8 +541,15 @@
         "denali.html"
       ],
       "liveBindReferencesBeforeCleanup": 0,
-      "actualRuntimeOrPrivateDataDeleted": false
-    }
+      "actualRuntimeOrPrivateDataDeleted": false,
+      "verifiedAtSourceHead": "3ac28e22c5b441373aeeb46845df5456b2c7edd1"
+    },
+    "linuxKernelCases": 6,
+    "linuxKernelCasesSubsetOf90": true,
+    "coreOwnedGwtSenderAdmission": true,
+    "crossUidIndependentReceiverAdmission": false,
+    "allSenderUpgradeGateAccepted": false,
+    "currentJarBytes": 33991757
   },
   "previousPackageBeforeHttpsHandoff": {
     "sourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
