@@ -2,7 +2,7 @@
   "schema": 1,
   "recordedAt": "2026-11-16T00:49:39.522844+00:00",
   "sourceHeads": {
-    "kura": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
+    "kura": "861352a3a3715bceb6bea004c41733d543c61d55",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d"
   },
@@ -88,15 +88,16 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
-    "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
-    "bytes": 203338152,
-    "sha256": "7a44d726ae58f46074e2f195504a3f29070241059914585889377a0aec0caa28",
+    "sourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563",
+    "file": "kura_6.0.0~git202611160147.f68fa1c-1_arm64.deb",
+    "bytes": 203342968,
+    "sha256": "dfa651a2b812bd16711f67a672df1cf95c247131f786fe5185875cc866ed3634",
     "verifiedFiles": 45,
     "extractedReader": "PACKAGED_GENERATION_CLI_OK",
     "originalGatewayDeployed": false,
     "controlledMainAcceptanceSourceIsEarlier4c6d50c": true,
-    "allNineNativeKeyScriptsExactlyMatchGit": true
+    "allNineNativeKeyScriptsExactlyMatchGit": true,
+    "currentHeadDiffIsTestOnly": true
   },
   "unacceptedSyntheticStart": {
     "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
@@ -122,8 +123,8 @@
   },
   "remainingInternal": [
     "agent runtime/binary/grant admission and privileged broker",
-    "Root original UNKNOWN recovery, stage history/cancellation, maintenance startup",
-    "GUI prepare/download/upload/verify/confirm/start",
+    "Root original publication UNKNOWN recovery and maintenance startup",
+    "GUI prepare/download/upload/verify/cancel/confirm/start with independent original-result handoff",
     "complete indirect provider inventory and immutable operation-bound artifacts",
     "per-provider atomic rekey, restart validation, retirement policy",
     "formal six-component installation and complete OPEN-TASKS.md"
@@ -156,7 +157,7 @@
     "currentPackageRetained": true,
     "legacyInstallBaselineRetained": true
   },
-  "updatedAt": "2026-11-16T01:15:01.618247+00:00",
+  "updatedAt": "2026-11-16T02:03:44.894191+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -187,6 +188,108 @@
     "missingCanonicalKeysDoNotAuthorizeStartup": true,
     "recoveryAndAgentPeersRefused": true,
     "currentPublicationOrStartStateNotInferred": true,
-    "cancellationAndHistoryPagingImplemented": false
+    "cancellationAndHistoryPagingImplemented": false,
+    "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
+  },
+  "servicePayloadSourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563",
+  "previousPackageBeforePreparationHistory": {
+    "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
+    "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
+    "bytes": 203338152,
+    "sha256": "7a44d726ae58f46074e2f195504a3f29070241059914585889377a0aec0caa28",
+    "verifiedFiles": 45,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "originalGatewayDeployed": false,
+    "controlledMainAcceptanceSourceIsEarlier4c6d50c": true,
+    "allNineNativeKeyScriptsExactlyMatchGit": true
+  },
+  "preparationHistoryAndCancellation": {
+    "serviceSourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563",
+    "systemdTestSourceHead": "861352a3a3715bceb6bea004c41733d543c61d55",
+    "actions": [
+      "generation-history",
+      "generation-cancel",
+      "generation-cancel-recover"
+    ],
+    "historyScope": "HISTORICAL_EVENTS_ONLY",
+    "pageLimitMaximum": 16,
+    "linuxModelTests": 219,
+    "modelSuites": {
+      "key_service": 71,
+      "key_service_lifecycle": 20,
+      "key_generation_cohort": 20,
+      "key_writer_lease": 13,
+      "key_generation_startup": 27,
+      "key_generation_publication": 20,
+      "crypto_key_lifecycle": 33,
+      "key_preparation_history": 15
+    },
+    "skipped": 0,
+    "newHistoryTests": 15,
+    "newPublicationHistoryTests": 4,
+    "newHistoryAlsoUid65534EmptyCapsNnp1": true,
+    "modelSystemdProcessBoundaryIsFake": true,
+    "actualSystemdTests": 1,
+    "actualSystemd": {
+      "actualKuradAllowed": true,
+      "actualRecoveryDenied": true,
+      "actualRootAgentCgroupDenied": true,
+      "actualRootWorker": true,
+      "archiveSha256": "dfa651a2b812bd16711f67a672df1cf95c247131f786fe5185875cc866ed3634",
+      "fullPackageInstallationAccepted": false,
+      "generationPublished": false,
+      "mainStarted": false,
+      "noNewPrivileges": true,
+      "originalCancelReadAfterWorkerRestart": true,
+      "originalCredentialsFullMetadataUnchanged": true,
+      "packagedUnitsUnmodified": true,
+      "schema": 1,
+      "scope": "archive-assets-actual-systemd-preparation",
+      "twoCancelledRoundsRetained": true,
+      "unknownRedispatched": false,
+      "workerCapabilitiesEmpty": true,
+      "sourceHead": "f68fa1ce914b436a9056372a8cc2db9b95b2d563"
+    },
+    "secondRoundRequiresAllOriginalCancellationOrPublicationReceipts": true,
+    "allOldFilesRetained": true,
+    "cancelRecoveryOnlySettlesOriginalAuthenticatedReceipt": true,
+    "missingMarkerRemainsUnknown": true,
+    "otherUnknownStillBlocks": true,
+    "originalGatewayUnknownSettled": false,
+    "guiAccepted": false,
+    "maintenanceStartupAccepted": false,
+    "publicationUnknownRecoveryAccepted": false
+  },
+  "uiModernization": {
+    "userPriority": "incremental with related functionality; secondary to main goal",
+    "guidesResearched": [
+      "dialog",
+      "accessibility"
+    ],
+    "guidesAppliedThisIncrement": [],
+    "frontendCodeChanged": false
+  },
+  "preparationHistoryCleanup": {
+    "recordedAt": "2026-11-16T02:02:29.807475+00:00",
+    "deleted": [
+      {
+        "name": "kura_6.0.0~git202611160107.0a6da0e-1_arm64.deb",
+        "bytes": 203338154,
+        "sha256": "2f4076a6f3dde7cecf100f091cf59a3ea95a6fc3df9d3130ae07b5a900af5696"
+      },
+      {
+        "name": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
+        "bytes": 203338152,
+        "sha256": "7a44d726ae58f46074e2f195504a3f29070241059914585889377a0aec0caa28"
+      }
+    ],
+    "backupsCreated": false,
+    "logicalBytesDeleted": 406676306,
+    "diskFreeBefore": 420807884800,
+    "diskFreeAfter": 421214556160,
+    "currentPackageRetained": true,
+    "legacyInstallBaselineRetained": true,
+    "originalContainersRemoved": false,
+    "remainingContainers": 6
   }
 }

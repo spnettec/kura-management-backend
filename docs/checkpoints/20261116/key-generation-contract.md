@@ -627,3 +627,74 @@ All nine native key scripts exactly match Git and distribution sources. The
 existing nonempty preparation-directory guard remains: cancellation, complete
 history, second-round admission and GUI must be implemented explicitly without
 deleting original history or retrying unresolved operations.
+
+## Retained preparation history and original cancellation (2026-11-16, f68fa1ce91)
+
+This section supersedes only the earlier missing cancellation/history/second-round
+implementation. Core 861352a3a3 adds its systemd test without changing service
+payloads. No generation publication, startup or key retirement is authorized by
+history state alone.
+
+`generation-history` accepts only schema, action, afterPreparationId (null or
+canonical UUID) and integer limit 1–16. It pages UUID order, bounds the total
+records/frame, returns HISTORICAL_EVENTS_ONLY and a history revision, and preserves
+every original file. PREPARED, VERIFIED, CANCELLED, PUBLISHED, UNKNOWN, ORPHANED
+and UNAVAILABLE are historical states, not current health or commit permission.
+Publication/cancellation status requires its original terminal operation and
+immutable receipt; a filename or present key is insufficient. Unresolved original
+operations remain visible and block mutation/startup through normal admission.
+
+`generation-cancel` binds a new original operation UUID, preparation UUID, exact
+history hash and proposed ring hash. The canonical source and all original source
+receipts must still match. Only a settled PREPARED/VERIFIED round may be cancelled.
+After durable INTENT it writes an immutable 0400 cancellation receipt, authenticated
+with the Root journal key and a dedicated context. Original material, encrypted
+backup, current credentials and units are retained. The result explicitly says
+credentialsChanged:false and historyRetained:true. A failed/lost final write is
+UNKNOWN; requesting a different ID cannot bypass that record.
+
+`generation-cancel-recover` takes that original cancellation UUID and exact
+cancellation-receipt hash. It verifies the saved intent/HMAC, unchanged source,
+original authenticated immutable marker and every other original record. It can
+sync that existing directory and finish only the original operation record. It
+never dispatches cancellation, creates a missing marker or changes its inode/bytes.
+A missing marker remains UNKNOWN; another unresolved operation still blocks it.
+This narrow receipt reconciliation does not recover interrupted publication or
+settle either retained gateway UNKNOWN.
+
+A second preparation now requires every earlier round to be provably CANCELLED
+or PUBLISHED. Missing receipts, orphans, corrupt history and UNKNOWN fail closed.
+Cancelled staging is never verified/planned/published again. Both published and
+cancelled histories remain intact. The cold recovery and agent roles gain none
+of these new actions; no agent key access or installed-agent publication gate is
+relaxed.
+
+Validation: 219 related isolated Linux/JDK21 models across eight suites passed
+without skips, including 15 new cancellation/history cases and four publication
+history cases. Cipher/file locking is real; modeled publication systemd/process
+boundaries remain substitutes. The 15 new cases also pass as UID65534 with empty
+capabilities, NNP1 and no network. A separate fresh offline Linux container ran
+the exact current archive assets and unmodified packaged Root units under actual
+PID1 systemd: prepare, uploaded-backup verification, cancel, worker restart,
+original-result reads, second prepare/cancel, paging and real UID/cgroup role
+checks passed. Its five original operations settled once; current credential
+content and full file metadata were unchanged. The Root worker had empty
+capabilities and NNP1. No Main or publication was started. This extracted-archive
+profile is not full package installation, customer data or GUI acceptance.
+
+The harness first needed the protocol's write-half-close and then a read-only
+readiness barrier: Type=simple can return before the child applies its sandbox.
+The latter diagnostic fixture's three original records were read as SUCCEEDED
+and its worker observed with empty capabilities before synthetic-only cleanup;
+none was redispatched and no failure was relabelled as an accepted run.
+
+The f68 ARM64 archive (SHA-256
+dfa651a2b812bd16711f67a672df1cf95c247131f786fe5185875cc866ed3634)
+has 45 verified payloads and a passing extracted-reader probe. All nine native
+scripts match current Git/staging bytes. Old unbound 0a/d20 intermediate archives
+were deleted without backups; only the current archive and legacy install
+baseline remain. Original three scenes were only read: seven processes/ticks,
+38 full private-file metadata records, six old data hashes and Root journals
+remain exact. Continue the complete 12 internal groups and three external
+boundaries; original publication recovery, maintenance startup, broker/runtime
+admission, complete provider rekey/retirement and authenticated GUI remain pending.

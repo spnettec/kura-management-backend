@@ -8,7 +8,8 @@
 
 ## 已保存的最新工作
 
-- 最新Core本地源码为 `d20f4b56eb`，agent/networking仍为 `3cf66e4` / `c16cf57`。新增只读 `generation-preparation-read`，只返回经不可变历史校验的准备元数据，不返回密钥/加密备份，不推断后续发布或启动；原INTENT保持UNKNOWN。6项隔离Linux/JDK21存储/加密模型检查通过，含缺现用钥、其他UNKNOWN、篡改/缺失/链接材料及拒绝recovery/agent角色；这不是实际Root服务或GUI验收。新ARM64包45项及提取reader通过，9个原生密钥脚本与Git/发行目录逐字一致。暂存取消、历史分页、运行时准入和GUI仍待完成；不删目录来绕过PREPARATION_PENDING。
+- 最新Core本地源码 `861352a3a3`（服务实现 `f68fa1ce91`，后一提交仅新增测试），agent/networking仍为 `3cf66e4` / `c16cf57`。已实现 `generation-history` 分页、保留全部旧材料的 `generation-cancel`，以及仅核验并结算原取消回执的 `generation-cancel-recover`；缺原回执不补造，其他UNKNOWN仍阻止。新一轮准备只在全部旧记录经原回执证明CANCELLED/PUBLISHED后准入，不删目录绕过。219项相关隔离Linux/JDK21模型检查和1次实际systemd Root worker新接口联调通过；真实服务重启后原取消结果可读、两轮暂存均保留、现用密钥完整元数据不变，实际kurad/recovery/agent cgroup权限边界符合预期。新ARM64包45项及提取reader通过，9个原生密钥脚本与当前Git/发行目录逐字一致。这次提取deb运行服务，不是完整安装/Main/GUI验收。原发布UNKNOWN恢复、维护启动、运行时准入/privileged broker、完整provider和GUI仍pending。
+- 此前Core `d20f4b56eb` 新增只读 `generation-preparation-read`，只返回经不可变历史校验的准备元数据，不返回密钥/加密备份，不推断后续发布或启动；原INTENT保持UNKNOWN。当时6项隔离Linux模型通过。暂存取消/分页的旧缺口由上条实现替代，其他边界继续保留。
 - 此前Core/agent/networking本地源码为 `0a6da0e3e0` / `3cf66e4` / `c16cf57`。受控启动先设业务屏障再校验目标级别，修复初始framework stop不能阻止后续激活的问题；完整Core隔离profile显式声明级别6。`4c6d50ce63`的一次真实Main/PID1 ring/CM联调通过：17配置、141属性一致，旧密文字节未改且可解密，普通写仍阻止，没有发布代、完成或释放写。后续0a6修复store.save直接覆盖/读失败丢条目，9类相关118项及隔离Linux6项通过。当前ARM64包45项文件及提取reader通过，Main/离线Crypto与测试类一致；实际Main证明仍精确属于4c6源码，不重放闭环来更换提交戳。
 - 18仓静态盘点还补齐Java/Rust NM模板的KURA2格式，19项Java/18项Rust相关检查通过，原nonce/实例/epoch/摘要/一次导出与UNKNOWN约束保留。成功夹具已删除；失败合成Main夹具确认仅只读源码输入且Root操作/启动为空后已删除，原请求 `rec-cae4c810-5bcf-4189-92d1-55d53bde348d` 编号/摘要及未接受状态保留，没有推断成功或重发。三个原网关未动。详见 [本轮检查点](managed-core-start-checkpoint.json) 与 [provider盘点](key-provider-inventory.md)。完整agent准入/privileged broker、原UNKNOWN恢复、GUI、全provider及正式发行继续pending。
 - 此前 Core 本地源码为 `f718cbf799`（agent仍`499bc64`）。真实PID1凭据联调发现并修复了Java把systemd的ACL掩码`0440`误判为普通组可读的问题：复用现有原生精确ACL校验，只回传文件身份/元数据及摘要，再由Java核对；传统私钥文件权限未放宽。新增配对Crypto/managed-loader能力与native proof v1声明，旧组件即使刷新外层文件hash也不能混入。80项相关检查通过，其中一项真实systemd测试含2种权限/32次JVM场景，涵盖旧新密文、缺钥、错误代集合与失效inode/version/digest回执。新ARM64包45项载荷及提取JAR通过，未部署；主Kura受控启动/CM应用、agent准入/privileged broker、GUI和完整provider仍pending。详见 [managed-credentials-checkpoint.json](managed-credentials-checkpoint.json)。
@@ -48,6 +49,8 @@
 ## 构建目录控制
 
 后续直接从 Git 检查点继续。隔离源码使用 Git worktree 或明确只含源码的导出，禁止递归复制旧 `target/`、`.phase*-retained`、`node_modules`、Maven/Cargo 缓存和历史运行库到新工作区。相同用途复用一套构建输出；阶段结束及时清理确认停用的编译缓存与运行库。按用户最新要求，确认可丢弃的调试文件直接删除，不为它们另建备份；真实密钥、加密数据、未确认个人数据、实际运行输入和原 UNKNOWN 记录按需保留。源码以本地 Git 保存，不再依赖旧证据链启动任务。
+
+界面随相关功能逐步应用 `modern-web-guidance`；按用户最新要求，不把全站样式/组件改造作为主任务。本轮仅研究对话框和无障碍指南，没有改动前端或扩大冷恢复授权范围。
 
 ## 2026-11-16 空间清理结果
 
