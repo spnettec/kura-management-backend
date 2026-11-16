@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T12:55:57.073861+00:00",
-  "uiSourceHead": "fb205594fb775e47ec87a9aff46065f3d11c32c9",
-  "nativeCurrentHead": "404e2446a5dcb5f4c2e877b80004788e3ee1f4ff",
+  "recordedAt": "2026-11-16T13:23:01.870932+00:00",
+  "uiSourceHead": "95d88cc4fb44200967066209a0cbafeedc1c8cbc",
+  "nativeCurrentHead": "86fe68d5eb015ec6789f7d21b1b310b32c050788",
   "nativeServiceSourceHead": "6338ad89e4a6dd08fb8b05534ae1e63d606d7e78",
   "nativeCodeChanged": true,
   "authority": "Local Git source and OPEN-TASKS.md; old outputs are not prerequisites",
@@ -150,7 +150,7 @@
       "actualInstalledMainAcceptance": false,
       "newDtoRpcModule": "denali",
       "keyServiceInLoginModule": false,
-      "sharedAdmissionNativeConnectionsInLatestReceiverTest": 24
+      "sharedAdmissionNativeConnectionsInLatestReceiverTest": 35
     }
   },
   "linuxTransport": {
@@ -179,10 +179,10 @@
     "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
   },
   "remaining": [
-    "legitimate original settlement for existing private key intents, early partial markers and Root INTAKE without replay",
-    "original handoff grant renewal/revocation/archive; fixed closed operation IDs never reused",
-    "legacy unregistered/failed/moved namespace migration, every native lifecycle state and formal paired components/versions/binary/cohort/install order",
-    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, all providers and all 12 parent groups"
+    "original settlement for cold restore/early pending and GWT or handoff private intents; Root INTAKE without a native original remains UNKNOWN",
+    "original handoff grant renewal/revocation/archive and capacity history; closed fixed IDs never reused",
+    "legacy unregistered/failed/moved namespaces, every native lifecycle state and formal paired versions/binary/cohort/install order",
+    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, real backup authorization under native identities, all providers and complete 12 parent groups"
   ],
   "preserved": {
     "originalContainers": 3,
@@ -478,50 +478,62 @@
     "subsetOf103UnitCases": true
   },
   "incrementCleanup": {
-    "recordedAt": "2026-11-16T12:54:46.171931+00:00",
+    "recordedAt": "2026-11-16T13:21:19.344003+00:00",
     "deleted": [
       {
         "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux",
-        "logicalBytes": 214318752,
+        "logicalBytes": 214322813,
         "files": 297
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161034.6338ad8-1_arm64.deb",
-        "logicalBytes": 203375896,
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161249.404e244-1_arm64.deb",
+        "logicalBytes": 203384142,
         "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-linux.log",
-        "logicalBytes": 287,
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-start-linux.log",
+        "logicalBytes": 286,
         "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-browser.log",
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-start-browser.log",
         "logicalBytes": 0,
         "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-native.log",
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-start-native.log",
         "logicalBytes": 0,
         "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-core-package.log",
-        "logicalBytes": 182875,
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-start-core-package.log",
+        "logicalBytes": 2994,
+        "files": 1
+      },
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-start-core-package-online.log",
+        "logicalBytes": 219414,
+        "files": 1
+      },
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-start-native-classpath.txt",
+        "logicalBytes": 5133,
         "files": 1
       }
     ],
-    "logicalBytesDeleted": 417877810,
+    "logicalBytesDeleted": 417934782,
     "backupsCreated": false,
     "liveMountReferences": [],
     "openFileReferences": [],
-    "currentCorePackageRetained": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161249.404e244-1_arm64.deb",
+    "currentCorePackageRetained": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161319.86fe68d-1_arm64.deb",
     "currentUiJarRetained": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
     "legacyInstallBaselineRetained": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202610290028.b7f72c0-1_arm64.deb",
+    "temporaryJdkVolumesRemoved": true,
     "personalRuntimeDeleted": false,
     "remainingContainers": 6,
-    "diskFreeBefore": 417149259776,
-    "diskFreeAfter": 417363570688
+    "remainingVolumes": 17,
+    "diskFreeBefore": 415435907072,
+    "diskFreeAfter": 415667027968
   },
   "previousBuildBeforeMainPeer": {
     "jdk": 21,
@@ -874,12 +886,13 @@
       }
     },
     "remaining": [
-      "legitimate original settlement for existing private key intents, early partial markers and Root INTAKE without replay",
-      "original handoff grant renewal/revocation/archive; fixed closed operation IDs never reused",
-      "legacy unregistered/failed/moved namespace migration, every native lifecycle state and formal paired components/versions/binary/cohort/install order",
-      "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, all providers and all 12 parent groups"
+      "original settlement for cold restore/early pending and GWT or handoff private intents; Root INTAKE without a native original remains UNKNOWN",
+      "original handoff grant renewal/revocation/archive and capacity history; closed fixed IDs never reused",
+      "legacy unregistered/failed/moved namespaces, every native lifecycle state and formal paired versions/binary/cohort/install order",
+      "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, real backup authorization under native identities, all providers and complete 12 parent groups"
     ],
-    "currentReceiverMetadataCheckpoint": "receiverOriginalReservationUi"
+    "currentReceiverMetadataCheckpoint": "receiverOriginalReservationUi",
+    "currentReceiverPrivateStartCheckpoint": "receiverPrivateStartSettlement"
   },
   "originalReservationUi": {
     "sourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
@@ -1186,6 +1199,169 @@
       "original handoff grant renewal/revocation/archive; fixed closed operation IDs never reused",
       "legacy unregistered/failed/moved namespace migration, every native lifecycle state and formal paired components/versions/binary/cohort/install order",
       "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, all providers and all 12 parent groups"
+    ],
+    "laterPrivateStartException": "receiverPrivateStartSettlement; all other private intents remain pending"
+  },
+  "receiverPrivateStartSettlement": {
+    "coreSourceHead": "86fe68d5eb015ec6789f7d21b1b310b32c050788",
+    "uiTestSourceHead": "95d88cc4fb44200967066209a0cbafeedc1c8cbc",
+    "uiProductionSourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
+    "scope": "Independent receiver original core-start/core-start-after-maintenance private intent only; no native command replay and no general private-intent settlement",
+    "implemented": true,
+    "requires": [
+      "matching original Root namespace",
+      "Root RESERVED closed explicitly to authenticated NOT_ADMITTED, or original NOT_ADMITTED",
+      "exact native startup NOT_FOUND",
+      "original encrypted restore backup and passphrase with original backup digest and retained key fingerprint",
+      "complete private startup metadata equals original attempt including maintenance fields",
+      "no competing restore/pending/handoff intent of the same UUID"
+    ],
+    "readAloneCloses": false,
+    "rootIntakeMayClose": false,
+    "missingOrTornProofMayRelease": false,
+    "privateStartupFileAndMetadataRetained": true,
+    "originalPendingRestoreRetained": true,
+    "oldIdMayDispatchAfterClosure": false,
+    "manualNewStartupOnlyAfterPositiveOriginalClosure": true,
+    "automaticNewIdOrResend": false,
+    "closedRecordsStillConsumeHistoryCapacity": true,
+    "lostCloseReplyRequiresExplicitAuthorizedMetadataCompletion": true,
+    "conflictingPrivateRecordHidesAcknowledgement": true,
+    "offlinePackageGate": {
+      "closedReceiptAndAuthenticatedRootNotAdmittedRequired": true,
+      "nativeStartupMustBeAbsent": true,
+      "completeOriginalRequestAndTargetHmacChecked": true,
+      "privateStartMustEqualOriginalFullRequest": true,
+      "ordinaryUnresolvedStartsStillRefused": true,
+      "allNativeLifecycleStatesAccepted": false
+    },
+    "browserAcknowledgement": {
+      "startSchemaMustMatch": true,
+      "maintenanceIdMustMatch": true,
+      "predecessorStartOperationIdMustMatch": true,
+      "manifestSha256MustMatch": true,
+      "malformedOrMismatchedBrowserIntentRetained": true,
+      "acknowledgementDoesNotStartKura": true
+    },
+    "validation": {
+      "recordedAt": "2026-11-16T13:21:19.344003+00:00",
+      "coreSourceHead": "86fe68d5eb015ec6789f7d21b1b310b32c050788",
+      "selectedLinuxModelTests": 186,
+      "newStartSettlementModels": 18,
+      "linuxModelSuites": [
+        "test_key_sender_admissions",
+        "test_key_receiver_sender_admission",
+        "test_key_receiver_admission_recovery",
+        "test_key_receiver_start_settlement",
+        "test_key_gwt_sender_namespace",
+        "test_key_service_lifecycle",
+        "test_key_recovery",
+        "test_key_recovery_maintenance",
+        "test_key_recovery_handoff",
+        "test_key_handoff_recovery",
+        "test_key_recovery_setup_handoff"
+      ],
+      "linuxSkipped": 0,
+      "browserTests": 23,
+      "nativeConnections": 35,
+      "initialOfflinePackage": "failed because cached Surefire 3.6.1 origin apache-releases was absent from standalone Central-only build context",
+      "normalOnlinePackage": "BUILD SUCCESS",
+      "jdk": 21,
+      "maven": "3.10.1",
+      "globalSettingsChanged": false,
+      "actualInstalledMainAcceptance": false,
+      "oldClosedWritesReplayed": false
+    },
+    "browser": {
+      "tests": 23,
+      "cases": [
+        "reservation reply loss without private key intent is UNKNOWN, never generic server preflight rejection",
+        "restore original backup/password authorization, native confirm, durable close across reload, explicit browser acknowledgement and return",
+        "start original backup/password authorization, native confirm, durable close across reload, explicit browser acknowledgement and return",
+        "wrong password never closes or saves a not-admitted receipt",
+        "wrong backup never closes or saves a not-admitted receipt",
+        "lost close reply requires fresh read and explicit authenticated metadata completion; Escape does not reuse an old confirmation",
+        "publish needs original bearer, saves close receipt and keeps all fixed operation IDs blocked",
+        "handoff-start needs original bearer, saves close receipt and keeps all fixed operation IDs blocked",
+        "original authenticated continuation is read-only, not an absent native original",
+        "{\"phase\":\"INTAKE\"} cannot enable closure or resend",
+        "{\"privateIntent\":true} cannot enable closure or resend",
+        "{\"foreignNamespace\":true} cannot enable closure or resend",
+        "same-origin CSRF and original UUID alone do not authorize a close",
+        "Chinese mobile layout, English native labels and secret clearing on cancel/pagehide",
+        "mismatched browser identity is retained, not acknowledged or silently removed",
+        "mismatched browser shape is retained, not acknowledged or silently removed",
+        "original private startup intent closes before Root intake, survives reload byte-for-byte, then explicit acknowledgement permits a manual new startup",
+        "private startup plus Root INTAKE remains query-only and its intent is retained",
+        "closed maintenance startup cannot acknowledge a browser record with a different schema",
+        "closed maintenance startup cannot acknowledge a browser record with a different maintenanceId",
+        "closed maintenance startup cannot acknowledge a browser record with a different manifestSha256",
+        "closed maintenance startup cannot acknowledge a browser record with a different predecessorStartOperationId",
+        "closed initial startup cannot acknowledge a maintenance-shaped browser record"
+      ],
+      "productionPageAndHandler": true,
+      "actualHttps": true,
+      "rootAndDecryption": "modeled",
+      "humanMainSessionAcceptance": false,
+      "nativeKeyWrites": 0,
+      "oldClosedScenariosReplayed": false
+    },
+    "nativeMetadata": {
+      "connections": 35,
+      "actualUidPeers": [
+        0,
+        65534,
+        65533
+      ],
+      "allEffectiveBoundingAmbientCapsEmpty": true,
+      "noNewPrivileges": true,
+      "rootPrivateReadsRefused": [
+        true,
+        true
+      ],
+      "privateStartupIntentClosedAndRetained": true,
+      "closedStartupAdmissionReleasedReadOnly": true,
+      "nativeKeyOperations": 0,
+      "nativeHandlerModelCalls": 1,
+      "systemdMainAndNativeHandler": "modeled",
+      "receiverControllerBackupAuthorizationInThisNativeRun": false,
+      "testedNativeSourceSha256": {
+        "kura_key_service.py": "04a58b49557c8bf2c7df8a566710dc103fad9f1733dc4ce6a840fb30142cc9a0",
+        "kura_key_service_lifecycle.py": "9e0b751de51f17d385af5ba802be9204d96960bb7be79bb156bef58f3577740a",
+        "kura_key_recovery.py": "4f1dc01b3e957729891a498e73436a2d581882f55e0ec4e203a46e4ae56f07c5"
+      },
+      "testedInputClassSha256": {
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission.class": "b23e04fb5da907ad5d25b9e183db3eb18a6a502d035cd41c2bde6d0983e91fe2",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$Preflight.class": "f9c08963955dad506c5ae65b3aa7cc6db3fa783b1cc6cff4917f2df43122140c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderNamespace$Endpoint.class": "d077d8f9cee383db0aea53e5c0acfb0f016243741dd8eb6af8860cafe07807ed",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport.class": "164781c8d98a09596ac884f9d1d40bdfd9b8bcad5f4c3d57c894d6ec2125a931",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$Attempt.class": "9790878fd9e645cdf0307cef5036025591244ffae6ec2cf5d41ab55160c9dcae",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$Kind.class": "567d3f627cd5dc04aea0c24a2dde9dba04d9a0632c81831d9b30b8b649f5be2c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal.class": "fd88fd38a44d140bd8f9cee397d14078b83c4e8f0c4bcbe98f21dbb38d5c8d90",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$BeforeDispatch.class": "bc275f481651da200f9667090c8d0a8e4555035f963b86788a244c1b24191eba",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$Exchange.class": "e7d4f56eac0b33d2a9e81e9c9ff1e8b400ffdadc8ba950653aebd40226505baa",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal$1.class": "ff5b8bf61e85ddabfdcf79c5d1ea99e4550d5264ea659d5417d053db4c640867",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$Endpoint.class": "012b04d26ee7b31e1d6201f8ec6b9f2ea3f5a8c1a485d1ead4882caf3aaa30ff",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient.class": "f6f548b20373ea04e7b36a38cddb8e64d9576ff7999f15967e6b3b92e6602563",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$Scope.class": "dd64006250a75e13d509a9855052aba12a2b48e83482a853702e3e0b80ae76fe",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderNamespace.class": "0218adab142e5d4002b24c24745fe69c4e1dfcf9c621f760bbd024cf1a689fca",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$NotDispatched.class": "b1d7fb146ce8b3e2b63a3fb5f25a124a30c548fbb30903a9517b7ce7656f465c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$NotAdmitted.class": "8188b102fd652697f518bd18dcabc32520c6e4c138ac24d77fc8773a57cff0d0",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.class": "7b4462aad645dd9ad4452e1beb518b87660ea78edffed381af53c2c642394337",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$PeerCheck.class": "f2e2590123e659b7fc3eb1cfafdb1a511cbf7f70655ad7f44f77bb70b055f94e",
+        "org/eclipse/kura/web/shared/model/GwtGatewayKeyAdmission.class": "64f7a2458f48ccd14cc9792b244885a6ba20716fa02dd3c79b5fda67f305e526"
+      }
+    },
+    "gwtProductionChanged": false,
+    "previousGwt138Jvm9BrowserAnd12PermutationsRetainedAtSourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
+    "previousGwtAcceptanceReplayed": false,
+    "original3GatewaysDeployed": false,
+    "actualInstalledMainHumanSessionXsrfAcceptance": false,
+    "remaining": [
+      "original settlement for cold restore/early pending and GWT or handoff private intents; Root INTAKE without a native original remains UNKNOWN",
+      "original handoff grant renewal/revocation/archive and capacity history; closed fixed IDs never reused",
+      "legacy unregistered/failed/moved namespaces, every native lifecycle state and formal paired versions/binary/cohort/install order",
+      "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, real backup authorization under native identities, all providers and complete 12 parent groups"
     ]
   }
 }
