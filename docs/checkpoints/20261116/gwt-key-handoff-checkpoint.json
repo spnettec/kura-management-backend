@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T17:29:13.372622+00:00",
+  "recordedAt": "2026-11-16T18:24:36.632758+00:00",
   "uiSourceHead": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab",
-  "nativeCurrentHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
-  "nativeServiceSourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+  "nativeCurrentHead": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
+  "nativeServiceSourceHead": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
   "nativeCodeChanged": true,
   "authority": "Local Git source and OPEN-TASKS.md; old outputs are not prerequisites",
   "rpc": {
@@ -124,7 +124,7 @@
   },
   "remaining": [
     "Source candidates now protect both original handoff capacity budgets and fix the GWT Main component-loader contract. Near-full actual installed Main/human GWT acceptance, UI capacity recovery and broader interrupted continuation/renewal combinations remain internal pending; old INTAKE never rewritten or resent",
-    "completed grant archival, historical/shared-admission capacity, uncertain native lease intent recovery and complete authorization lifecycle remain internal pending; retain all original bytes, IDs and fences",
+    "Root logical archive substrate now has a source candidate and paired current readers; GWT/recovery-private archive proofs and counts, GUI, no-Root-original private fences, old installed prerm migration and actual full install/upgrade/remove acceptance remain internal pending. Old bytes, IDs and UNKNOWN fences stay intact",
     "the successful installed b36 scenario covers local-Root-issued dedicated authority plus actual recovery Main/HTTPS/browser and one Core profile. Full GWT human ADMIN/XSRF issuer joint acceptance, all providers/full broker, legacy backup-tab joint flow and startup actual-backup authorization remain pending",
     "a published grant with any prior fixed-start reservation, permanent NOT_ADMITTED, private intent or UNKNOWN cannot use unattempted-first-start renewal; legal recovery for these originals, missing grants, previous boot and replaced writer locks remains pending",
     "legacy namespace discovery/migration, all preparations/handoffs/current-generation/sender state combinations and formal six-component versions/binary/cohort/install order remain pending; no blind initialization allowlist expansion",
@@ -2487,5 +2487,16 @@
     "actualUdsConnections": 179,
     "additionalNamespaceConnections": 13,
     "uiJavaProductionUnchanged": true
+  },
+  "rootJournalArchive": {
+    "checkpoint": "root-journal-archive-checkpoint.json",
+    "sourceHead": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
+    "rootBackendImplemented": true,
+    "privateJournalsAndGuiIntegrated": false,
+    "currentChecksPassed": 359,
+    "newMetadataUdsConnections": 11,
+    "legacyUdsConnections": 179,
+    "actualInstalledMainAcceptance": false,
+    "oldInstalledPrermPairingAccepted": false
   }
 }

@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T18:24:36.632758+00:00",
+  "sourceHead": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
+  "scope": "ROOT_JOURNAL_ARCHIVE_SUBSTRATE_CANDIDATE",
+  "goalStatus": "active",
+  "rootBackendImplemented": true,
+  "wholeArchiveWithPrivateJournalsAndGuiAccepted": false,
+  "sourceHeads": {
+    "kura": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
+    "kura-management-ui": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab"
+  },
+  "originalFiles": {
+    "retained": true,
+    "moved": false,
+    "byteAndMetadataPreserved": true,
+    "oldIdLookupAndLateFrameFencesRetained": true,
+    "diskBytesReclaimedByArchive": false
+  },
+  "format": {
+    "version": 1,
+    "intent": "archives/<UUID>.intent.json",
+    "receipt": "archives/<UUID>.receipt.json",
+    "signature": "separate-domain HMAC bound to Root namespace, original table, UUID and raw SHA256",
+    "chain": "one immutable predecessor receipt chain; one pending tail",
+    "states": [
+      "read-only plan",
+      "durable original intent",
+      "positive immutable receipt"
+    ],
+    "ordinaryDuplicatePending": "read UNKNOWN; no writer",
+    "continuation": "explicit same original archive metadata only",
+    "originalUnknownKeyOrStartupSettled": false,
+    "newKeyOperationOrStartDispatched": false,
+    "activeBudgetReleasedOnlyWithValidReceiptAndOriginalProof": true
+  },
+  "tables": [
+    "operations",
+    "startups",
+    "handoffs",
+    "sender-admissions",
+    "package-history"
+  ],
+  "limitsUnchanged": {
+    "operations": 256,
+    "startups": 32,
+    "handoffs": 32,
+    "sender-admissions": 256,
+    "package-history": 128
+  },
+  "eligibility": {
+    "native": "SUCCEEDED with original request/proof correlations",
+    "sender": "TERMINAL or permanent NOT_ADMITTED with exact original/absence fence",
+    "handoff": "positive completed fixed publication/start matching grant and immutable publication, or positive unused revocation with closed reservations; no old live JVM requirement",
+    "package": "validated retained maintenance record and fixed archive boundary"
+  },
+  "maintenance": {
+    "legacySchema": 1,
+    "newSchema": 2,
+    "activeStartupArrayLimit": 32,
+    "fixedArchiveHeadAndReceiptSha": true,
+    "laterArchivesOrStartsDoNotBroadenPriorMaintenance": true,
+    "currentConfiguredWriterAndReaderPassed": true,
+    "oldInstalledPackagePrermPairingAccepted": false
+  },
+  "sourceValidation": {
+    "independentGenerationAndAuthorityAndArchiveLayoutReader": true,
+    "blindDirectoryAllowlistExpansion": false,
+    "cohortAndOwnerModeLinksStillRequired": true
+  },
+  "checks": {
+    "selected": 359,
+    "passed": 359,
+    "skipped": 0,
+    "newArchiveChecks": 30,
+    "currentSourceFrozen": true,
+    "cryptoAndLocksActual": true,
+    "systemdCoreAndHistoricalPaddingModeled": true,
+    "newMetadataUdsConnections": 11,
+    "newMetadataHandlersActual": true,
+    "legacyThreeUidUdsConnections": 179,
+    "legacyMutatingHandlersModeled": true,
+    "allRootAndClientCapabilitiesZero": true,
+    "noNewPrivs": 1,
+    "rootPrivateReadsRefused": 2,
+    "newMetadataOriginalAdmissionsExact": 4,
+    "nativeKeyOperations": 0,
+    "cipherCallsForArchive": 0,
+    "humanGwtAdminXsrfAndInstalledMainAcceptance": false
+  },
+  "artifact": {
+    "sourceHead": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161820.fb47e88-1_arm64.deb",
+    "bytes": 203414164,
+    "sha256": "933bb480fa383e78bef33fa67b7ea63a4e9c79dc34c7efd1aa6ece6f28f46f5f",
+    "verifiedFiles": 45,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "runtimeInstalled": false,
+    "unknownRedispatched": false,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+    "pythonBytecodeExcluded": true,
+    "archiveMembersChecked": 335,
+    "actualCipherInputJarMatchesPackage": true,
+    "metadataNativeInputPythonSourcesExact": 3,
+    "legacyNativeInputPythonSourcesExact": 4,
+    "newMetadataUidConnections": 11,
+    "legacyNativeUidConnections": 179,
+    "privateJournalsAndUiIntegrated": false,
+    "originalGatewayDeployed": false,
+    "actualInstalledMainAcceptance": false,
+    "oldPackagePrermPairingAccepted": false
+  },
+  "productionUiJavaAndJarUnchanged": true,
+  "testedNativeSourceSha256": {
+    "kura_key_service.py": "c62df93618e2baa8b89bee381b3815d7a2e7aea5279a116d37856a048fde5c4f",
+    "kura_key_service_lifecycle.py": "2d43325427dd7688951aebfcb2fb963dd65c86ba11528fedcce7ee9bc083961b",
+    "kura_key_generation.py": "098e9f9bbe497bbde9ad355d8b1cedc04df1cb64cb83ef3b515a8a24cb4a84ff",
+    "kura_key_recovery_setup.py": "22b2411877536402f91209dc2176a787cca465b3775ee0103bb2660aae83c1d0",
+    "kura_key_store.py": "75f130555f43f9db0111327e204dcf591ff9ae59e80074d31b74767240489b8f",
+    "kura_key_recovery_start.py": "125e936882486439d9955cf712a2a29db4c148551042b57361609e104c8b2263",
+    "kura_key_validation.py": "2e4fd2c066ca4c5d304f2b0f59fcd309d5b265692aa7ade7f2400d1fd39c26ba",
+    "kura_key_cohort.py": "63e0e7177a75ddeb7697775676a33be0dac2de84694c87509daa35aae759bf62",
+    "kura_key_recovery.py": "f13f2494c10e2d1181d1e401286e0822a23a86ebdfe855f164808d817c97ff71"
+  },
+  "remainingInternal": [
+    "GWT LEGACY/GENERATION/HANDOFF, no-dispatch and sender admissions private archive readers/writers, with owner/data/Root proof bindings",
+    "recovery-private operations/startups/handoffs/admissions archive consumers and all offline/package private readers",
+    "public GUI preview/confirm/original query/explicit continuation with existing ADMIN-XSRF or recovery authorization; modern-web-guidance remains secondary",
+    "private never-dispatched records with no Root original require a permanent, legitimate Root fence, not an absence guess",
+    "old installed version prerm migration, real install/upgrade/remove/purge matrix, actual Main/human GWT and full provider/key/network/API/release scope",
+    "all unchanged 12 parent groups in OPEN-TASKS.md"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "cleanup": {
+    "removedRebuildableFiles": 2,
+    "reclaimedBytes": 407117194,
+    "backupCreated": false,
+    "currentDebAndStageRetained": true,
+    "priorC369AndLegacyB7RetainedForUpgradeReview": true,
+    "temporaryContainersAndJdkVolumesRemoved": true
+  },
+  "preserved": {
+    "gateways": 3,
+    "processes": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContents": 6,
+    "containers": 6,
+    "volumes": 17,
+    "unknownRedispatched": false
+  },
+  "oldClosedScenariosReplayed": false,
+  "pushed": false,
+  "ordinaryWeeklyUsedPercent": 92,
+  "ordinaryUsageAllowed": true,
+  "creditsUnchanged": true
+}

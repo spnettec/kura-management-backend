@@ -146,5 +146,11 @@
   "goalStatus": "active",
   "ordinaryWeeklyUsedPercent": 91,
   "ordinaryUsageAllowed": true,
-  "creditsBalanceUnchanged": true
+  "creditsBalanceUnchanged": true,
+  "subsequentRootJournalArchive": {
+    "checkpoint": "root-journal-archive-checkpoint.json",
+    "sourceHead": "fb47e88ab56b8c2a4bc7a385ae6af97a568e194b",
+    "rootBackendImplemented": true,
+    "privateJournalsAndGuiAccepted": false
+  }
 }
