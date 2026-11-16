@@ -5,7 +5,7 @@
     "kura": "a2770c21e90842e2630493bf49171183c46dc85e",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
-    "kura-management-ui": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40"
+    "kura-management-ui": "3ac28e22c5b441373aeeb46845df5456b2c7edd1"
   },
   "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
   "controlledCore": {
@@ -130,12 +130,10 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "GWT preparation, encrypted backup verification and issuance interactions; authorization material download/upload",
-    "actual installed Main human ADMIN/XSRF/GWT/HTTPS browser joint acceptance",
-    "same-original grant renewal, revocation/archive, expired first start and uncertain continuation recovery",
-    "full runtime/binary/cohort admission and privileged broker",
-    "missing original stop proof, cross boot, rebuilt lock and maintenance startup",
-    "all provider rekey/restart/retirement; all 12 parent groups in OPEN-TASKS.md"
+    "shared admission across legacy GWT, generation/handoff senders and independent receiver; upgrade gate for every sender journal",
+    "actual installed Main / human ADMIN / XSRF / HTTPS / independent page joint acceptance",
+    "encrypted authorization material download/upload; same-original renewal/revocation/archive; expired first start and uncertain continuation recovery",
+    "all provider rekey/restart/retirement, full broker/runtime/cohort and all 12 internal pending groups"
   ],
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
@@ -165,7 +163,7 @@
     "currentPackageRetained": true,
     "legacyInstallBaselineRetained": true
   },
-  "updatedAt": "2026-11-16T05:25:03.108797+00:00",
+  "updatedAt": "2026-11-16T06:06:03.754067+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -514,13 +512,38 @@
     "remainingContainers": 6
   },
   "gwtHandoff": {
-    "uiSourceHead": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40",
+    "uiSourceHead": "3ac28e22c5b441373aeeb46845df5456b2c7edd1",
+    "uiCodeTestedSourceHead": "7468a511a74a625a99f50e3403af862870ba00bc",
     "checkpoint": "gwt-key-handoff-checkpoint.json",
-    "unitTests": 51,
-    "linuxTransportTests": 6,
+    "newUnitTests": 22,
+    "relatedUnitAndRegressionTests": 45,
+    "realGwtRpcHttpsBrowserCases": 7,
+    "rootAndHumanSessionSyntheticInBrowser": true,
     "actualInstalledMainBrowserAcceptance": false,
-    "nativeCodeChanged": false,
-    "scope": "historical d83 GWT increment; native unchanged only in that increment"
+    "nativeCodeChangedInThisUiIncrement": false,
+    "generatedAssetsCleanup": {
+      "beforeMainCacheJs": {
+        "login": 24,
+        "denali": 312
+      },
+      "afterMainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "successfulDefaultPackageBuilds": 2,
+      "previousJarBytes": 163774038,
+      "currentJarBytes": 33984292,
+      "obsoleteGeneratedDirsOnly": [
+        "target/gwt-webapp",
+        "target/classes/www"
+      ],
+      "sourceRootHtmlRetained": [
+        "auth.html",
+        "denali.html"
+      ],
+      "liveBindReferencesBeforeCleanup": 0,
+      "actualRuntimeOrPrivateDataDeleted": false
+    }
   },
   "previousPackageBeforeHttpsHandoff": {
     "sourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
