@@ -1,5 +1,9 @@
 # 未验收与剩余实施台账
 
+2026-11-17 当前 Core `141e1be068` / GWT `25fd6b7328`。独立恢复页已接四类私有历史及六类发送回执的分页、预览、显式确认、原归档查询和同编号元数据续接；恢复/启动继续要求原备份＋口令及原钥指纹，交接继续绑定原授权。确认摘要绑定原字节、Root证明、目录身份和本地意图；失效确认不发送，缺Root原件/丢回复不迟到首次发送，原文件/旧编号/密钥保留。新archive.js独立纳入清单，原recovery.js逐字节不变，64KiB静态资源和131072字节helper上限均未提高；旧3资源日志profile仍保留完整维护交接和UNKNOWN门禁。127项当前Linux检查无失败/跳过，18组真实HTTPS/生产页面/私有文件及Root归档HMAC浏览器检查通过；Main、身份映射、历史结果和备份解密各有明确模型范围。新ARM64包203,492,422字节，42个唯一清单文件/单元、含manifest在内49个提取文件与stage匹配、12脚本/4资源与源码一致，提取reader通过，未部署/未完整cohort。原3现场/7进程/38私有元数据/6旧数据不变；清理旧候选、重复包和中间产物1,424,858,770字节，无备份、无推送。见[恢复端归档界面检查点](recovery-history-archive-ui-checkpoint.json)和[审查](../../reviews/recovery-key-history-archive-ui-review-20261117.md)。实际Main/Root UDS/GWT/HTTPS联合链路、全部provider及全部12父项仍内部pending，仅3外部边界不变，界面随功能渐进改造仍是次要。
+
+以下141e以前各段只保留各自历史范围；当前恢复界面与包状态以上段和新检查点为准。
+
 2026-11-17 当前 Core `be66a9f954` / GWT `25fd6b7328`。GWT 已接五类所属私有历史的分页、预览、显式确认、原归档查询和有正面原意图的同编号元数据续接。确认摘要绑定私有原字节、Root证明与本地意图；失效确认不发送，缺Root原件/丢HTTP回复不迟到首次发送，原文件、编号、密钥和活动上限保留。180项相关JVM检查无失败/跳过，19组生产组件/实际HTTPS/GWT RPC浏览器检查通过，Root和管理员会话仍为模型。当前JAR34,133,957字节，60个相关Java11类与双模块12变体核对通过，未部署或组装完整cohort；不替代实际Main/Root/人类会话联合验收。原3现场/7进程/38份私有元数据/6旧数据精确不变；清理本轮可重建浏览器/GWT目录346,164,014字节，无备份、无推送。见[归档界面检查点](gwt-history-archive-ui-checkpoint.json)和[本轮审查](../../reviews/gwt-key-history-archive-ui-review-20261117.md)。独立恢复页归档按钮、真实联合链路及全部12父项继续内部pending，仅3外部边界不变；modern-web-guidance随功能渐进应用，界面仍是次要任务。
 
 以下 be66/37f2 及更早段落保留各自历史范围，当前界面状态以本段和新检查点为准。
@@ -136,8 +140,8 @@ JDK21/Maven3.10.1离线ARM64构建成功，新包203,386,874字节，45项及提
 
 ## 下一步建议顺序
 
-当前 Core `be66a9f954` / GWT `25fd6b7328`，见[归档界面检查点](gwt-history-archive-ui-checkpoint.json)及[升级与密钥保留检查点](package-upgrade-key-preservation-checkpoint.json)。旧c369 prerm的实际失败接管、多代升级、新装与移除后重装已有有限Core/ARM64检查；其他旧版本、provider/模式、完整六组件与自动中断恢复仍内部pending。受控代码修复沿原维护编号继续配置，不等于面向用户的自动恢复能力。
+当前 Core `141e1be068` / GWT `25fd6b7328`，见[恢复端归档界面检查点](recovery-history-archive-ui-checkpoint.json)、[GWT归档界面检查点](gwt-history-archive-ui-checkpoint.json)及此前[升级与密钥保留检查点](package-upgrade-key-preservation-checkpoint.json)。旧c369 prerm的实际失败接管、多代升级、新装与移除后重装已有有限Core/ARM64检查；其他旧版本、provider/模式、完整六组件与自动中断恢复仍内部pending。受控代码修复沿原维护编号继续配置，不等于面向用户的自动恢复能力。
 
-继续完整密钥生命周期；GWT归档GUI/API候选已实现，接续独立恢复页的原归档预览/确认/查询/元数据续接按钮，并完成实际Main/Root/HTTPS/GWT联合核验，随后全部provider/网络/API及正式六组件/cohort。界面按modern-web-guidance随功能渐进处理，视觉和布局改造为次要，不做全站重写。原私有字节和编号保留；未建立Root元数据意图的尝试仍只读并占名额，不迟到首次发送。UNKNOWN不重发、不换编号。
+继续完整密钥生命周期；GWT与独立恢复页的归档GUI/API候选均已实现，接续实际Main/Root UDS/HTTPS/GWT联合核验和当前完整cohort，随后全部provider/网络/API及正式六组件发行矩阵。界面按modern-web-guidance随功能渐进处理，视觉和布局改造为次要，不做全站重写。原私有字节和编号保留；未建立Root元数据意图的尝试仍只读并占名额，不迟到首次发送。UNKNOWN不重发、不换编号。
 
-当前service/lifecycle/journal/recovery/setup分别117025/115985/68930/84142/17630字节，131072字节上限未提高。原3现场保持，旧已闭环的一次性实际密钥验收不重放；所有12父项及仅3外部边界保持。阶段测试/局部WIP提交不能代替完整主线合并/发行封签。
+当前service/lifecycle/journal/recovery/setup分别117025/116168/74595/85148/17630字节，131072字节上限未提高。原3现场保持，旧已闭环的一次性实际密钥验收不重放；所有12父项及仅3外部边界保持。阶段测试/局部WIP提交不能代替完整主线合并/发行封签。

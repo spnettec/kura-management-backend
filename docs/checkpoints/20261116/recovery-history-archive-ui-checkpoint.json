@@ -1,0 +1,400 @@
+{
+  "recordedAt": "2026-11-16T23:08:41.434061+00:00",
+  "status": "bounded independent recovery archive GUI/API candidate; full goal active",
+  "sourceHeads": {
+    "core": "141e1be06853418a8554c2f1eee73e378d848017",
+    "gwt": "25fd6b7328dc38e2df44f488b1d093dbccaf3758",
+    "consoleDocsParent": "2b8d09da1349c4d1688c693e5de8ca4532cf84e4"
+  },
+  "changes": [
+    "Independent recovery and handoff pages now list physical retained history in 20-record pages and offer original preview, explicit archive confirmation, original query and explicit same-ID metadata continuation",
+    "Cold restore/start archives require the original encrypted backup and passphrase with original fingerprint verification; handoff archives retain the original grant/token binding; grant-scoped listings cannot expose a foreign grant",
+    "Review DTOs expose bounded identifiers/state/permission flags only; confirmation digest binds private original bytes, Root proof, namespace/data identity and saved local intent; stale confirmation never dispatches",
+    "Saved metadata IDs remain original; missing Root originals and lost HTTP replies are query-only, never late first sends; only an affirmative matching original Root metadata intent permits explicit metadata continuation",
+    "Browser material stays in memory and is cleared on submit/cancel/page lifecycle changes; delayed previews cannot restore write permission after lifecycle invalidation; native dialog and native validation retain keyboard behavior",
+    "New archive.js is a separately attested static asset; recovery.js remains byte-for-byte unchanged. Each asset retains the 65536-byte bound; helper source limit remains 131072",
+    "Exact old three-static-asset JOURNAL_V1 profile remains supported alongside the new four-static-asset profile. Both still create positive package-history/startup handoffs; UNKNOWN blocks before mutating systemd actions"
+  ],
+  "validation": {
+    "linuxTests": 127,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "modules": [
+      {
+        "module": "test_key_recovery_handoff_archive.py",
+        "tests": 9
+      },
+      {
+        "module": "test_key_recovery_archive.py",
+        "tests": 17
+      },
+      {
+        "module": "test_key_service_lifecycle.py",
+        "tests": 23
+      },
+      {
+        "module": "test_key_preunpack_policy.py",
+        "tests": 12
+      },
+      {
+        "module": "test_key_recovery_maintenance.py",
+        "tests": 15
+      },
+      {
+        "module": "test_key_generation_startup.py",
+        "tests": 27
+      },
+      {
+        "module": "test_key_recovery_setup_archive.py",
+        "tests": 3
+      },
+      {
+        "module": "test_key_generation_cohort.py",
+        "tests": 21
+      }
+    ],
+    "browser": {
+      "tests": 18,
+      "cases": [
+        "native required materials, labels, safe modal autofocus, Tab, Shift+Tab, Escape and no premature metadata send",
+        "RESTORE production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "START production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "ADMISSION:restore production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "ADMISSION:start production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "HANDOFF production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "ADMISSION:publish production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "ADMISSION:handoff-start production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "ADMISSION:handoff-renewal production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "ADMISSION:continue production HTTPS archive authorization, real Root HMAC and immutable private originals survive reload",
+        "missing Root metadata original remains query-only under the same retained ID, also offline",
+        "explicit same-ID metadata continuation only after an authenticated original Root intent",
+        "lost HTTP reply is recovered by an original read without another send",
+        "incorrect backup authorization refuses before metadata intent or send and clears the passphrase",
+        "stale reviewed Root bytes cannot create a private intent or metadata send",
+        "page lifecycle changes invalidate a delayed preview and leave no write permission",
+        "20-record physical history pages preserve originals and never archive on selection or navigation",
+        "bilingual 390px layout and native cancellation without horizontal overflow"
+      ],
+      "actualHttps": true,
+      "productionAssets": true,
+      "actualRootArchiveHmac": true,
+      "actualInstalledMain": false,
+      "historicalResults": "modeled",
+      "backupInspection": "modeled",
+      "humanSessionAccepted": false,
+      "oldClosedOneTimeAcceptanceReplayed": false
+    },
+    "ownedBrowserCleanup": {
+      "containerRemoved": true,
+      "jdkVolumeRemoved": true
+    },
+    "functionalSourceHead": "6d41ab7308217a3b8eccd067d148e8ea59065470",
+    "focus": {
+      "stylesheetSha256": "32bf5badcce95d9f0cfa94a80d0a57dccec12260fdbdbb3650a872a0e8cd5246",
+      "keyboardControls": [
+        {
+          "tag": "BUTTON",
+          "focusVisible": true,
+          "outlineStyle": "auto",
+          "outlineOffset": "3px"
+        },
+        {
+          "tag": "INPUT",
+          "focusVisible": true,
+          "outlineStyle": "auto",
+          "outlineOffset": "3px"
+        },
+        {
+          "tag": "SELECT",
+          "focusVisible": true,
+          "outlineStyle": "auto",
+          "outlineOffset": "3px"
+        }
+      ],
+      "actualChromium": true,
+      "noRootOrGatewayRequests": true
+    },
+    "onlyPostFunctionalDiff": "One scoped CSS rule selecting native focus outlines; actual button/input/select keyboard focus checked"
+  },
+  "package": {
+    "sourceHead": "141e1be06853418a8554c2f1eee73e378d848017",
+    "package": "kura_6.0.0~git202611162310.141e1be-1_arm64.deb",
+    "packageBytes": 203492422,
+    "packageSha256": "8919b248b513233e3b939ae32750eaa2502242e2c35e9a93e1b0f45d0f761157",
+    "manifestEntries": 42,
+    "uniquePairedFilesAndUnits": 42,
+    "extractedReaderAccepted": true,
+    "cohortSha256": "e0043a70c0c4492b1414c8749b17436ba19dedd28ce8d07a4da2a1f17fd3dec8",
+    "manifestSha256": "6188d374b2095f86d662dd14c656a5570b669cbdb7bfd88280a93b492224ccd1",
+    "stagedAndPackagedFilesMatched": 49,
+    "embeddedReaders": [
+      "_KURA_EMBEDDED_JOURNAL_SOURCE",
+      "_KURA_EMBEDDED_LIFECYCLE_SOURCE",
+      "_KURA_EMBEDDED_JOURNAL_SOURCE"
+    ],
+    "sourceAndStageMatched": [
+      "bin/kura_key_cohort.py",
+      "bin/kura_key_generation.py",
+      "bin/kura_key_journal.py",
+      "bin/kura_key_recovery.py",
+      "bin/kura_key_recovery_setup.py",
+      "bin/kura_key_recovery_start.py",
+      "bin/kura_key_service.py",
+      "bin/kura_key_service_lifecycle.py",
+      "bin/kura_key_store.py",
+      "bin/kura_key_validation.py",
+      "bin/kura_runtime_ownership.py",
+      "bin/kura_su_pam.py",
+      "share/key-recovery/archive.js",
+      "share/key-recovery/index.html",
+      "share/key-recovery/recovery.css",
+      "share/key-recovery/recovery.js"
+    ],
+    "staticAssets": 4,
+    "allStaticAssetsAtMost65536": true,
+    "members": 337,
+    "noPyc": true,
+    "originalRuntimeTouched": false,
+    "deployed": false
+  },
+  "scopeLimits": {
+    "deployed": false,
+    "actualInstalledMain": false,
+    "actualRootUdsForNewGui": false,
+    "actualCrossUidIdentityMapping": false,
+    "humanAdminSessionAccepted": false,
+    "backupInspectionAndHistoricalOutcomes": "explicit models; handoff fixture setup uses its own temporary grant/history and real crypto support",
+    "newCipherDecryptionAcceptance": false,
+    "fullSixComponentCohort": false,
+    "fullProviders": false,
+    "oldClosedOneTimeAcceptanceReplayed": false,
+    "oldPackageDpkgMatrixReplayed": false
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "sameProcessesAndTicksAndCapabilities": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContentsExact": 6,
+    "rootJournalCountsUnchanged": true,
+    "unknownRedispatched": false,
+    "fixtureProcesses": [
+      {
+        "privateFilesExactMetadata": 7,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 3792,
+            "startTicks": "4469038",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4229,
+            "startTicks": "4480291",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 0
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 0,
+          "startups": 0
+        },
+        "containerId": "863ea5ecfeb0558eabe4c110a5973efd26fbad58e076c48080b2e9bba5a40f0a"
+      },
+      {
+        "privateFilesExactMetadata": 10,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 5174,
+            "startTicks": "4319777",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4735,
+            "startTicks": "4311323",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 4893,
+            "startTicks": "4319768",
+            "status": {
+              "Uid": "995\t995\t995\t995",
+              "Gid": "990\t990\t990\t990",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 1,
+          "startups": 2
+        },
+        "containerId": "a04bfb08590b93fa3351447ded42c24b576c676699216f3636ff3ff658190c07"
+      },
+      {
+        "privateFilesExactMetadata": 21,
+        "runtimeDataContentsExact": 6,
+        "processes": {
+          "kura.service": {
+            "pid": 10430,
+            "startTicks": "3504160",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 10576,
+            "startTicks": "3506794",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 4
+        },
+        "containerId": "5f6b45125fa35903f4c725aeadfdaa22025c4f2b62e33d156309fe09baf629bd"
+      }
+    ]
+  },
+  "cleanup": {
+    "recordedAt": "2026-11-16T23:11:51.271192+00:00",
+    "paths": [
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux.zip",
+        "bytes": 203567938,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux_installer.sh",
+        "bytes": 203597326,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0~git202611162125.be66a9f-1_arm64.deb",
+        "bytes": 203481054,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0~git202611162257.be66a9f-1_arm64.deb",
+        "bytes": 203492364,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/gateway_6.0.0~git202611162125.be66a9f_all.changes",
+        "bytes": 819,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/gateway_6.0.0~git202611162257.be66a9f_all.changes",
+        "bytes": 819,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/gateway_6.0.0~git202610290028.b7f72c0_all.changes",
+        "bytes": 819,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/gateway_6.0.0~git202611161724.c3699e2_all.changes",
+        "bytes": 819,
+        "removed": true
+      },
+      {
+        "path": ".management-close-20261116/recovery-archive-browser/archive-mobile.png",
+        "bytes": 58332,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux.zip",
+        "bytes": 203567960,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux_installer.sh",
+        "bytes": 203597337,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0~git202611162259.6d41ab7-1_arm64.deb",
+        "bytes": 203492364,
+        "removed": true
+      },
+      {
+        "path": "kura/kura/distrib/kura-core/target/gateway_6.0.0~git202611162259.6d41ab7_all.changes",
+        "bytes": 819,
+        "removed": true
+      }
+    ],
+    "bytes": 1424858770,
+    "backupsMade": false,
+    "kept": [
+      "current 141e1be deb and changes",
+      "b7/c369 old upgrade inputs",
+      "current assembly stage",
+      "current GWT 25fd6b7 JAR",
+      "rebuildable fixture base image for future tests"
+    ],
+    "wrongSourceLabelCandidateRemoved": true,
+    "originalRuntimeTouched": false,
+    "dockerContainersAndVolumesDeleted": false
+  },
+  "nextInternalPending": [
+    "Assemble current full component cohort and validate actual Main/Root UDS/GWT/independent HTTPS joint workflow without replaying closed cryptographic acceptance",
+    "Continue complete provider inventory/atomic re-encryption, legal original recovery, least privilege/broker, all package/mode/platform matrices and frozen parent groups"
+  ],
+  "localOnly": true,
+  "pushed": false,
+  "all12ParentGroupsRemainOpen": true,
+  "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "onlyExternalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ],
+  "implementationCommit": "6d41ab7308217a3b8eccd067d148e8ea59065470",
+  "focusCommit": "141e1be06853418a8554c2f1eee73e378d848017"
+}
