@@ -2,10 +2,10 @@
   "schema": 1,
   "recordedAt": "2026-11-16T05:25:03.108797+00:00",
   "sourceHeads": {
-    "kura": "770c87a8a87ff6eb4bb3af7c044157f6863206b9",
+    "kura": "156fa83cc0e6517b0fbb8f2bb4e04c6ffa3bd289",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
-    "kura-management-ui": "704d2e7617502cf4e348bc9792c919073fd69e05"
+    "kura-management-ui": "e0f77f1ba16dcaffc8c0ea35b774edd4715859cd"
   },
   "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
   "controlledCore": {
@@ -89,21 +89,22 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "recordedAt": "2026-11-16T08:39:33.633624+00:00",
-    "sourceHead": "770c87a8a87ff6eb4bb3af7c044157f6863206b9",
-    "file": "kura_6.0.0~git202611160834.770c87a-1_arm64.deb",
-    "bytes": 203359922,
-    "sha256": "54785bded4c76516818ae919e6c65cc1a24daa850697a7cd703146fda11eea19",
+    "recordedAt": "2026-11-16T09:23:16.280688+00:00",
+    "sourceHead": "156fa83cc0e6517b0fbb8f2bb4e04c6ffa3bd289",
+    "file": "kura_6.0.0~git202611160921.156fa83-1_arm64.deb",
+    "bytes": 203369528,
+    "sha256": "8c3678e8a59cc8766c4297096fd94bd4027a09e14e9e67e8f9e24441d0602321",
     "verifiedFiles": 45,
     "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
     "recoveryAssetsAndUnitExactlyMatchGitAndStage": true,
     "currentLifecycleEmbedded": true,
     "pythonBytecodeExcluded": true,
     "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "nativeNamespaceInputSourcesExact": true,
     "originalGatewayDeployed": false,
     "actualInstalledMainBrowserAcceptance": false,
-    "currentHeadDiffIsTestOnly": false,
     "allNineNativeKeyScriptsExactlyMatchGit": true,
+    "currentHeadDiffIsTestOnly": false,
     "actualInstalledNativeHandoffPeerVerified": false,
     "fullFreshScriptAutomationPassed": false,
     "controlledMainCmProofRemainsEarlier4c6d50c": true,
@@ -148,11 +149,11 @@
   "goalStatus": "active",
   "remoteWrites": false,
   "incrementCleanup": {
-    "recordedAt": "2026-11-16T08:40:18.817245+00:00",
+    "recordedAt": "2026-11-16T09:24:37.145226+00:00",
     "deleted": [
       {
         "path": "kura-management-ui/bundles/org.eclipse.kura.web2/target/gwt-webapp",
-        "logicalBytes": 121867320
+        "logicalBytes": 121885672
       },
       {
         "path": "kura-management-ui/bundles/org.eclipse.kura.web2/target/classes/www",
@@ -163,39 +164,35 @@
         "logicalBytes": 124628563
       },
       {
-        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0~git202611160515.a2770c2-1_arm64.deb",
-        "logicalBytes": 203359030
+        "path": "kura/kura/distrib/kura-core/target/kura_6.0.0~git202611160834.770c87a-1_arm64.deb",
+        "logicalBytes": 203359922
       },
       {
-        "path": ".management-close-20261116/gwt-main-peer-clean-unit.log",
-        "logicalBytes": 15738
+        "path": ".management-close-20261116/gwt-namespace-unit.log",
+        "logicalBytes": 15384
       },
       {
-        "path": ".management-close-20261116/gwt-main-peer-unit-final.log",
-        "logicalBytes": 17040
-      },
-      {
-        "path": ".management-close-20261116/gwt-main-peer-package.log",
-        "logicalBytes": 22517
-      },
-      {
-        "path": ".management-close-20261116/recovery-setup-handoff-final.log",
-        "logicalBytes": 107
-      },
-      {
-        "path": ".management-close-20261116/recovery-setup-linux-models-final.log",
-        "logicalBytes": 187
-      },
-      {
-        "path": ".management-close-20261116/recovery-setup-package.log",
+        "path": ".management-close-20261116/gwt-namespace-core-package.log",
         "logicalBytes": 159777
       },
       {
-        "path": ".management-close-20261116/gwt-main-peer-classpath.log",
-        "logicalBytes": 1146
+        "path": ".management-close-20261116/gwt-namespace-ui-package.log",
+        "logicalBytes": 22517
+      },
+      {
+        "path": ".management-close-20261116/gwt-namespace-linux-models.log",
+        "logicalBytes": 211
+      },
+      {
+        "path": ".management-close-20261116/gwt-namespace-test-classpath.log",
+        "logicalBytes": 1151
+      },
+      {
+        "path": ".management-close-20261116/gwt-namespace-native.log",
+        "logicalBytes": 0
       }
     ],
-    "logicalBytesDeleted": 469790755,
+    "logicalBytesDeleted": 469792527,
     "backupsCreated": false,
     "liveMountReferences": 0,
     "retainedBecauseMounted": [],
@@ -204,10 +201,10 @@
     "legacyInstallBaselineRetained": true,
     "personalRuntimeDeleted": false,
     "remainingContainers": 6,
-    "diskFreeBefore": 417169317888,
-    "diskFreeAfter": 417591009280
+    "diskFreeBefore": 417160093696,
+    "diskFreeAfter": 417581830144
   },
-  "updatedAt": "2026-11-16T08:41:05.320905+00:00",
+  "updatedAt": "2026-11-16T09:26:23.388447+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -241,7 +238,7 @@
     "cancellationAndHistoryPagingImplemented": false,
     "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
   },
-  "servicePayloadSourceHead": "770c87a8a87ff6eb4bb3af7c044157f6863206b9",
+  "servicePayloadSourceHead": "156fa83cc0e6517b0fbb8f2bb4e04c6ffa3bd289",
   "previousPackageBeforePreparationHistory": {
     "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
@@ -554,10 +551,10 @@
     "remainingContainers": 6
   },
   "gwtHandoff": {
-    "uiSourceHead": "704d2e7617502cf4e348bc9792c919073fd69e05",
-    "uiCodeTestedSourceHead": "704d2e7617502cf4e348bc9792c919073fd69e05",
+    "uiSourceHead": "e0f77f1ba16dcaffc8c0ea35b774edd4715859cd",
+    "uiCodeTestedSourceHead": "e0f77f1ba16dcaffc8c0ea35b774edd4715859cd",
     "checkpoint": "gwt-key-handoff-checkpoint.json",
-    "relatedUnitAndRegressionTests": 116,
+    "relatedUnitAndRegressionTests": 126,
     "realGwtRpcHttpsBrowserCases": 11,
     "rootAndHumanSessionSyntheticInBrowser": true,
     "actualInstalledMainBrowserAcceptance": false,
@@ -590,7 +587,7 @@
     "coreOwnedGwtSenderAdmission": true,
     "crossUidIndependentReceiverAdmission": false,
     "allSenderUpgradeGateAccepted": false,
-    "currentJarBytes": 34007852,
+    "currentJarBytes": 34015153,
     "linuxNoDispatchCases": 12,
     "noDispatchReceiptAndUiRecoveryImplemented": true,
     "singleRpcDataDirectoryPinned": true,
@@ -603,7 +600,8 @@
     "linuxPeerProofSourceHead": "704d2e7617502cf4e348bc9792c919073fd69e05",
     "linuxPeerProofScope": "Legacy and recovery clients, actual socket peer PID equals JVM fcntl owner, no native key mutation or installed Main",
     "linuxNoDispatchProofSourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
-    "nativeChangeScope": "Recovery installer validation/isolated source loader only; Root runtime worker unchanged"
+    "nativeChangeScope": "Root namespace registration and mandatory bound GWT request dispatch; registered GWT package reader",
+    "senderNamespaceCheckpoint": "gwt-key-handoff-checkpoint.json"
   },
   "previousPackageBeforeHttpsHandoff": {
     "sourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
@@ -668,5 +666,43 @@
     "runtimeServiceDacCapabilitiesAdded": false,
     "allGwtJournalsAndNoDispatchUpgradeGateAccepted": false,
     "installedMainJointAcceptance": false
+  },
+  "previousPackageBeforeGwtNamespace": {
+    "recordedAt": "2026-11-16T08:39:33.633624+00:00",
+    "sourceHead": "770c87a8a87ff6eb4bb3af7c044157f6863206b9",
+    "file": "kura_6.0.0~git202611160834.770c87a-1_arm64.deb",
+    "bytes": 203359922,
+    "sha256": "54785bded4c76516818ae919e6c65cc1a24daa850697a7cd703146fda11eea19",
+    "verifiedFiles": 45,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndUnitExactlyMatchGitAndStage": true,
+    "currentLifecycleEmbedded": true,
+    "pythonBytecodeExcluded": true,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "originalGatewayDeployed": false,
+    "actualInstalledMainBrowserAcceptance": false,
+    "currentHeadDiffIsTestOnly": false,
+    "allNineNativeKeyScriptsExactlyMatchGit": true,
+    "actualInstalledNativeHandoffPeerVerified": false,
+    "fullFreshScriptAutomationPassed": false,
+    "controlledMainCmProofRemainsEarlier4c6d50c": true,
+    "actualPartialPublicationProofRemainsEarlier7e1415b": true,
+    "nativeIssuerPeerProofRemainsEarlier8b0747a": true
+  },
+  "gwtSenderNamespace": {
+    "checkpoint": "gwt-key-handoff-checkpoint.json",
+    "coreSourceHead": "156fa83cc0e6517b0fbb8f2bb4e04c6ffa3bd289",
+    "uiSourceHead": "e0f77f1ba16dcaffc8c0ea35b774edd4715859cd",
+    "newLinuxModelCases": 23,
+    "linuxRelatedModelCases": 111,
+    "jvmRelatedCases": 126,
+    "nativeMetadataConnections": 13,
+    "nativeMetadataAssertions": 9,
+    "nativeKeyOperations": 0,
+    "systemdMainAndCgroupModeled": true,
+    "rootAndJavaActualEmptyCapsAndNnp1": true,
+    "registeredDirectoryInventoryOnly": true,
+    "allCrossUidDurableAdmissionAndUpgradeAccepted": false,
+    "legacyUnregisteredDataRootAndNativeStateCombinationsPending": true
   }
 }
