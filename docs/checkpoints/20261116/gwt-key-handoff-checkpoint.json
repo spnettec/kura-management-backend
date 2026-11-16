@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T14:56:52.057693+00:00",
-  "uiSourceHead": "3ef9dbff5c680252205ad7c398cc5b5fbc4c70a0",
-  "nativeCurrentHead": "3f9a81d8a2ee138193508d7cc35b18cf4e4f9382",
-  "nativeServiceSourceHead": "3f9a81d8a2ee138193508d7cc35b18cf4e4f9382",
+  "recordedAt": "2026-11-16T15:43:46.483542+00:00",
+  "uiSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+  "nativeCurrentHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+  "nativeServiceSourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
   "nativeCodeChanged": true,
   "authority": "Local Git source and OPEN-TASKS.md; old outputs are not prerequisites",
   "rpc": {
@@ -57,17 +57,20 @@
     ],
     "incrementalSecondaryToMainGoal": true,
     "recoveryLinkContainsBearer": false,
-    "explicitNewAttemptOnlyAfterOriginalNoDispatchReceipt": true,
+    "explicitNewAttemptOnlyAfterOriginalNoDispatchReceipt": false,
     "closedAttemptsPreserveAllFiveIds": 32,
     "unknownMayReplaceIds": false,
     "noDispatchMayResendItsOriginalId": false,
-    "frontendChangedThisIncrement": false,
-    "guidanceAppliedThisIncrement": []
+    "frontendChangedThisIncrement": true,
+    "guidanceAppliedThisIncrement": [
+      "accessibility"
+    ],
+    "manualReplacementRequiresPositiveOriginalNonAdmissionOrUnusedRevocation": true
   },
   "build": {
     "jdk": 21,
     "runtimeMinimum": 21,
-    "unitTests": 131,
+    "unitTests": 137,
     "unitTestScope": "GatewayKey*Test and GwtGatewayKey*Test selected suites",
     "failures": 0,
     "errors": 0,
@@ -75,25 +78,24 @@
     "gwtModules": 2,
     "gwtPermutations": 12,
     "artifact": {
-      "sourceHead": "3ef9dbff5c680252205ad7c398cc5b5fbc4c70a0",
+      "sourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
       "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
-      "bytes": 34051031,
-      "sha256": "047ae8615157942b686ca032c037399daecf143b3028c8def39a72062b624f7e",
-      "verifiedAllServerSharedClasses": 315,
+      "bytes": 34061833,
+      "sha256": "c96200c22469efcb0ae6f928cae91e94cf669b3dcfe0040dbb4a3bcc516f1284",
+      "verifiedAllServerSharedClasses": 316,
       "bytecodeRelease": 11,
       "mainCacheJs": {
         "login": 6,
         "denali": 6
       },
-      "actualGwtRpcBrowserCases": 15,
-      "receiverBrowserCases": 33,
-      "scopedJvmTests": 131,
-      "nativeInputClassHashesMatchJar": 19,
+      "scopedJvmTests": 137,
+      "actualGwtGenerationBrowserCases": 18,
+      "actualGwtAdmissionBrowserCases": 11,
+      "receiverBrowserReplayed": false,
+      "nativeInputClassHashesMatchJar": 45,
       "humanMainSessionAcceptance": false,
-      "retainedKeyFlowClassesVerified": 50,
       "gwtModules": 2,
-      "gwtPermutations": 12,
-      "file": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar"
+      "gwtPermutations": 12
     }
   },
   "linuxTransport": {
@@ -122,11 +124,11 @@
     "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
   },
   "remaining": [
-    "GWT private key-operation intents and initial handoff creation bindings after unconsumed Root reservations still need original-ID settlement; the new unused-grant retirement does not settle a missing grant",
+    "Root INTAKE without native originals, missing/torn/changed/foreign GWT attempts or namespace metadata, and private startup children of a cold restore remain unresolved and cannot be bypassed",
     "post-publication start-only renewal, completed grant archival, historical capacity and uncertain continuation recovery remain internal pending; expiry/NOT_RECORDED never permits replacement",
-    "Root INTAKE without native originals, torn/foreign/legacy metadata, and private startup children of a cold restore remain unresolved and cannot be bypassed",
     "legacy namespace discovery/migration, all native preparation/handoff/current-generation lifecycle combinations and formal paired versions/binary/cohort/install order remain pending; initialization allowlists were not relaxed",
-    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, new revocation transport/peer joint acceptance, complete providers and all unchanged 12 parent groups remain pending"
+    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, the legacy backup tab joint browser flow, new unused-grant revocation native transport/peer acceptance and startup actual-backup authorization remain pending",
+    "complete providers, broker, actual takeover/network matrices, release and every unchanged 12 parent group remain pending; only the original 3 external deferred boundaries are external"
   ],
   "preserved": {
     "originalContainers": 3,
@@ -148,7 +150,8 @@
     "noDispatchJournal": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal.java",
     "senderAdmission": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission.java",
     "admissionUi": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/client/ui/security/GatewayKeyAdmissionUi.java",
-    "admissionDto": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/shared/model/GwtGatewayKeyAdmission.java"
+    "admissionDto": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/shared/model/GwtGatewayKeyAdmission.java",
+    "retainedIntent": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyRetainedIntent.java"
   },
   "previousD83Increment": {
     "uiSourceHead": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40",
@@ -206,7 +209,7 @@
       "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
     }
   },
-  "uiCodeTestedSourceHead": "3ef9dbff5c680252205ad7c398cc5b5fbc4c70a0",
+  "uiCodeTestedSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
   "nativeGenerationAlgorithmSourceRemains": "3f9a81d8a2ee138193508d7cc35b18cf4e4f9382",
   "generationSenderIntent": {
     "limit": 64,
@@ -978,7 +981,8 @@
     ],
     "keyRpcOnlyAuthenticatedModule": "denali",
     "keyServiceInLoginModule": false,
-    "independentReceiverScope": "receiverOriginalReservationUi; existing private key intents remain pending"
+    "independentReceiverScope": "receiverOriginalReservationUi; existing private key intents remain pending",
+    "supersededForCompletePrivateUnconsumedIntentsBy": "gwtRetainedIntentSettlement"
   },
   "receiverOriginalReservationUi": {
     "coreSourceHead": "404e2446a5dcb5f4c2e877b80004788e3ee1f4ff",
@@ -1799,5 +1803,326 @@
       "sharedAdmissionNativeConnectionsInLatestReceiverTest": 73
     }
   },
-  "previousGenerationAlgorithmSourceBeforeUnusedHandoffRevocation": "8b0747a10c37dc135f0d1d817737e79dcdaba304"
+  "previousGenerationAlgorithmSourceBeforeUnusedHandoffRevocation": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
+  "gwtRetainedIntentSettlement": {
+    "recordedAt": "2026-11-16T15:43:46.483542+00:00",
+    "coreSourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+    "uiSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+    "scope": "Explicit settlement of complete retained LEGACY/GENERATION/HANDOFF private intents only after original Root positive NOT_ADMITTED; no original resend",
+    "rootProof": [
+      "same original reservation/action/native directory/namespace and authenticated Root receipt",
+      "strict same UUID absence across operations/startups/handoffs, including other native actions",
+      "Root INTAKE never closes and reads never close RESERVED"
+    ],
+    "privateProof": [
+      "exact original request metadata, operator and single owning intent kind",
+      "immutable closed.json binds original admission, native ID, kind, namespace and exact retained leaf-file SHA256 values",
+      "all original private files and IDs retained; missing/torn/changed receipts never overwritten"
+    ],
+    "publicResult": {
+      "state": "NOT_ADMITTED",
+      "resultSource": "ROOT_ADMISSION_CLOSED",
+      "error": "ORIGINAL_ADMISSION_CLOSED",
+      "nativeKeyOperationSuccess": false
+    },
+    "explicitCloseOnly": true,
+    "queryMayClose": false,
+    "oldIdCanEverDispatch": false,
+    "lateOriginalNativeSenderFramesRefused": 3,
+    "manualNewWorkflow": {
+      "preparationOrVerification": "fresh ID only after positive original proof and explicit user action",
+      "initialHandoff": "retain preparation/verification, fresh handoff/publication/start IDs, fresh plan and explicit consent",
+      "automaticKeyWriter": false,
+      "historyCapacityStillCountsAllOriginals": true
+    },
+    "packageReader": {
+      "originalRootHmacAndNamespaceChecked": true,
+      "exactRetainedPrivateBytesChecked": true,
+      "originalNativeAndAuthorityIdsStrictlyAbsent": true,
+      "legacyPosixLockCorrectedFrom": ".admission.lock",
+      "legacyPosixLockCorrectedTo": ".key.lock",
+      "actualInterprocessLegacyLockBlockingTest": true,
+      "initializationStateAllowlistRelaxed": false
+    },
+    "tests": {
+      "coreSourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+      "uiSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+      "rootFocusedCases": 75,
+      "relatedLinuxModelCases": 223,
+      "configuredHandoffCases": 51,
+      "configuredActualCipherStorageCases": 71,
+      "scopedJvmCases": 137,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "gwtModules": 2,
+      "gwtPermutations": 12,
+      "actualThreeUidUdsConnections": 179,
+      "gwtRetainedPrivateIntentNativeKinds": [
+        "LEGACY",
+        "GENERATION",
+        "HANDOFF"
+      ],
+      "lateOriginalSenderCommandsRefused": 3,
+      "nativeKeyOperations": 0,
+      "ordinaryWeeklyUsedPercent": 89,
+      "ordinaryUsageAllowed": true,
+      "extraCreditBalanceUnchanged": true,
+      "newUnusedHandoffNativeTransportAcceptance": false,
+      "actualInstalledMainBrowserAcceptance": false,
+      "legacyBackupTabJointBrowserAcceptance": false,
+      "oldClosedGatewayAcceptanceReplayed": false,
+      "remoteUnknownRedispatched": false,
+      "actualRootCodeWithModeledSystemdCore": true,
+      "temporaryJdkVolumeRemoved": true
+    },
+    "browser": {
+      "generation": {
+        "tests": 18,
+        "productionWidget": true,
+        "actualGwtRpc": true,
+        "actualHttps": true,
+        "rootReplies": "synthetic",
+        "humanMainSessionAcceptance": false
+      },
+      "admission": {
+        "tests": 11,
+        "productionWidget": true,
+        "actualGwtRpc": true,
+        "actualHttps": true,
+        "rootReplies": "synthetic",
+        "humanMainSessionAcceptance": false,
+        "nativeKeyWrites": 0,
+        "oldClosedScenariosReplayed": false
+      }
+    },
+    "actualUds": {
+      "connections": 179,
+      "uids": [
+        0,
+        65534,
+        65533
+      ],
+      "allCapabilitySetsZero": true,
+      "noNewPrivs": 1,
+      "rootPrivateReadsRefused": [
+        true,
+        true
+      ],
+      "retainedPrivateKinds": [
+        "LEGACY",
+        "GENERATION",
+        "HANDOFF"
+      ],
+      "lateOriginalSenderCommandsRefused": 3,
+      "nativeKeyOperations": 0,
+      "newGwtGrantCreated": false,
+      "retainedReceiptUnchanged": true,
+      "actualInstalledMainAcceptance": false,
+      "systemdMainAndNativeHandler": "Main/systemd and mutating handlers modeled; backup-inspect is production code with actual Java cipher",
+      "unusedGrantRevocationNativeAcceptance": false
+    },
+    "coreArtifact": {
+      "sourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161539.c226ff3-1_arm64.deb",
+      "bytes": 203393616,
+      "sha256": "e3bc84cdecb12218f478b01ab89511f4aa7a3697823921c116bf465e306a06b2",
+      "verifiedFiles": 45,
+      "readerRoles": {
+        "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+        "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+        "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+        "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "currentLifecycleEmbedded": true,
+      "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+      "runtimeInstalled": false,
+      "unknownRedispatched": false,
+      "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+      "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+      "pythonBytecodeExcluded": true,
+      "archiveMembersChecked": 335,
+      "nativeInputPythonSourcesExact": 4,
+      "actualCipherInputJarMatchesPackage": true,
+      "nativeUidConnections": 179,
+      "gwtRetainedIntentNativeKinds": [
+        "LEGACY",
+        "GENERATION",
+        "HANDOFF"
+      ],
+      "originalGatewayDeployed": false,
+      "actualInstalledMainBrowserAcceptance": false,
+      "newUnusedHandoffNativeTransportAcceptance": false
+    },
+    "uiArtifact": {
+      "sourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "bytes": 34061833,
+      "sha256": "c96200c22469efcb0ae6f928cae91e94cf669b3dcfe0040dbb4a3bcc516f1284",
+      "verifiedAllServerSharedClasses": 316,
+      "bytecodeRelease": 11,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "scopedJvmTests": 137,
+      "actualGwtGenerationBrowserCases": 18,
+      "actualGwtAdmissionBrowserCases": 11,
+      "receiverBrowserReplayed": false,
+      "nativeInputClassHashesMatchJar": 45,
+      "humanMainSessionAcceptance": false,
+      "gwtModules": 2,
+      "gwtPermutations": 12
+    },
+    "cleanup": {
+      "recordedAt": "2026-11-16T15:42:23.309234+00:00",
+      "removed": [
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux",
+          "bytes": 214353379,
+          "allocatedBytes": 214974464
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161452.3f9a81d-1_arm64.deb",
+          "bytes": 203391746,
+          "allocatedBytes": 203395072
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2.test/target/generation-ui-browser",
+          "bytes": 5406984,
+          "allocatedBytes": 5480448
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2.test/target/admission-ui-browser",
+          "bytes": 4625790,
+          "allocatedBytes": 4698112
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/gwt-webapp",
+          "bytes": 122168984,
+          "allocatedBytes": 123707392
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-admission-browser.log",
+          "bytes": 1237,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-deb.log",
+          "bytes": 182544,
+          "allocatedBytes": 200704
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-generation-browser.log",
+          "bytes": 2234,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-model.log",
+          "bytes": 323,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-native.log",
+          "bytes": 13048,
+          "allocatedBytes": 16384
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-package.log",
+          "bytes": 29300,
+          "allocatedBytes": 32768
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-root.log",
+          "bytes": 174,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-storage.log",
+          "bytes": 171,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-test_key_handoff.py.log",
+          "bytes": 130,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-test_key_handoff_revocation.py.log",
+          "bytes": 109,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-test_receiver_unused_handoff.py.log",
+          "bytes": 110,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/gwt-retained-intent-unit.log",
+          "bytes": 15046,
+          "allocatedBytes": 16384
+        }
+      ],
+      "logicalBytes": 550191309,
+      "freeBefore": 415065116672,
+      "freeAfter": 415363325952,
+      "freeDelta": 298209280,
+      "currentDebPreserved": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161539.c226ff3-1_arm64.deb",
+      "retainedUiJar": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "allSixContainerBindMountsChecked": true,
+      "openDescriptorsChecked": true,
+      "backupCreated": false,
+      "temporaryJdkVolumeRemoved": true,
+      "remainingContainers": 6,
+      "remainingVolumes": 17,
+      "personalRuntimeDeleted": false
+    },
+    "modernWebGuidance": {
+      "applied": [
+        "accessibility"
+      ],
+      "statusRolesReused": true,
+      "focusMovesToEnabledReadOrManualNextAction": true,
+      "secondaryToMainGoal": true
+    },
+    "remaining": [
+      "Root INTAKE without native originals, missing/torn/changed/foreign GWT attempts or namespace metadata, and private startup children of a cold restore remain unresolved and cannot be bypassed",
+      "post-publication start-only renewal, completed grant archival, historical capacity and uncertain continuation recovery remain internal pending; expiry/NOT_RECORDED never permits replacement",
+      "legacy namespace discovery/migration, all native preparation/handoff/current-generation lifecycle combinations and formal paired versions/binary/cohort/install order remain pending; initialization allowlists were not relaxed",
+      "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, the legacy backup tab joint browser flow, new unused-grant revocation native transport/peer acceptance and startup actual-backup authorization remain pending",
+      "complete providers, broker, actual takeover/network matrices, release and every unchanged 12 parent group remain pending; only the original 3 external deferred boundaries are external"
+    ]
+  },
+  "previousBuildBeforeGwtRetainedIntentSettlement": {
+    "jdk": 21,
+    "runtimeMinimum": 21,
+    "unitTests": 131,
+    "unitTestScope": "GatewayKey*Test and GwtGatewayKey*Test selected suites",
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "gwtModules": 2,
+    "gwtPermutations": 12,
+    "artifact": {
+      "sourceHead": "3ef9dbff5c680252205ad7c398cc5b5fbc4c70a0",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "bytes": 34051031,
+      "sha256": "047ae8615157942b686ca032c037399daecf143b3028c8def39a72062b624f7e",
+      "verifiedAllServerSharedClasses": 315,
+      "bytecodeRelease": 11,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "actualGwtRpcBrowserCases": 15,
+      "receiverBrowserCases": 33,
+      "scopedJvmTests": 131,
+      "nativeInputClassHashesMatchJar": 19,
+      "humanMainSessionAcceptance": false,
+      "retainedKeyFlowClassesVerified": 50,
+      "gwtModules": 2,
+      "gwtPermutations": 12,
+      "file": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar"
+    }
+  }
 }
