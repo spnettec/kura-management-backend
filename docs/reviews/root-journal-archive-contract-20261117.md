@@ -47,3 +47,13 @@ GWT三类和独立恢复私有历史、GUI预览/确认/原续接尚未接入，
 旧b36/c369安装器的initialize对generations/handoffs/archives有原先受限准入，且旧prerm执行旧helper；
 新Root独立读取器已增加当前格式校验，但旧版本prerm兼容及真实安装/升级/移除矩阵仍需另行推进。
 不能以当前读取器通过代替旧已安装版本的完整升级证明，也不能通过隐藏状态或盲加白名单绕过。
+
+## 后续私有未发送分支 — cd82 / 3b8
+
+Core `cd82fd011805ef71eae07e60314d2ba97e084ac2`、GWT `3b8b5fe168244d6a149f52837b6086889a033128` 已实现此前缺少的永久Root围栏：使用独立 `yofc.kura.sender-private-no-dispatch.v1` purpose及HMAC域，保存在Root原sender-admissions表，0400不可变。只作为永久元数据索引，不消耗/授予普通writer名额，也不冒充原完整请求HMAC。任何原生表、任何状态的原准入、固定授权及未物化签发预留冲突均拒绝；普通sender-attempt和read/close接口不能借用此证明。
+
+GWT纯本地未发送回执的 `archive.json` 先保存原围栏UUID，再调用Root元数据写入；既有意图一律只读。Root缺失继续占活动名额，只有精确绑定原回执字节、data身份和Root命名空间的正面证明才退出64计数。原回执/路径/字节/旧编号保留，handoff未来pub/start编号也永久禁止写入。独立包读取器按同一合同核对，不能只凭私有标记放行。Root不读取私有目录，源UID自己创建私有意图。
+
+Root基线359项回归在私有包读取器加入前通过；当前49项（26新Root/私有分支＋23既有GWT读取器）与90项JVM通过。打包JAR经真实Java/Root三UID26连接核验，64原回执归档1份后可新增第65份；中文原件SHA匹配，原4份Root准入字节/元数据不变，Root不能读Core/恢复私有目录。全部参与进程空能力/NNP1，密钥/cipher/Start/Stop写入0。Core/systemd和Main角色仍为模型，没有实际安装Main/人类GWT通过结论。初次模型未声明agent-cgroup替身、初次独立JVM runner选错JUnit launcher版本，均已修正夹具后通过，不计为产品修复或正式验收。
+
+普通Root NOT_ADMITTED原件对应的私有回执不能走“无Root原件”围栏，仍需另一条Root归档证明路径。其他三类owning日志/共同发送方/独立恢复私有历史、公开GUI和全部安装升级移除矩阵均保持内部pending。旧prerm对新格式的配对问题未解决；新包不部署到原3现场。当前实现和产物见 [私有未发送归档检查点](../checkpoints/20261116/private-no-dispatch-archive-checkpoint.json)。

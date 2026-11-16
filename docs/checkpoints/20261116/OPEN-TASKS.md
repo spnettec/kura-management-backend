@@ -1,5 +1,11 @@
 # 未验收与剩余实施台账
 
+2026-11-17 最新本地候选 Core `cd82fd0118`、GWT `3b8b5fe168` 已补齐**没有Root原件的本地未发送记录**的永久Root围栏，并接入GWT该分支私有归档及独立包读取器。围栏使用单独purpose/HMAC，绑定原回执字节SHA、脱敏元数据、data路径/dev/inode/UID和Root命名空间；不是伪造普通准入，也不能关闭任何已有RESERVED/INTAKE/UNKNOWN。签发相关未来固定ID、未物化签发预留及归档ID冲突继续拒绝。
+
+私有原编号归档意图先于Root元数据写入；回复不明或缺Root证明时只读原编号，不能重发、换ID或释放名额。只有Root正面证明精确匹配原私有回执才退出64活动计数；原文件和旧编号围栏始终保留。实际打包JAR、三UID/26连接及65份私有回执检查通过，Root仍不能读两方私有目录，cipher/key/Start/Stop调用均为0。90项JVM、49项当前私有/包读取检查及此前359项Root相关回归通过；Main/systemd仍为模型，不是人类GWT/实际安装Main验收。新ARM64包45项载荷、318个Java11类和双GWT模块12变体已核对，未部署。已清理本轮zip/SFX共407,123,531字节；原3现场/7进程/38私有元数据/6旧数据不变，无推送。详见 [私有未发送归档检查点](private-no-dispatch-archive-checkpoint.json)。
+
+其他GWT owning日志、普通Root未准入原件分支、共同发送方及独立恢复私有历史、GUI预览/确认/原查询与完整旧版本prerm/发行矩阵继续内部pending；本分支不关闭完整归档或下面12个父项。界面仍按modern-web-guidance随实际功能渐进改造，本轮没有客户端界面改动。
+
 2026-11-17 Core `fb47e88ab5` 已实现**Root日志归档基础层候选**：operations/startups/handoffs/sender-admissions/package-history 由绑定Root命名空间、原表/UUID/字节SHA的分域HMAC意图与回执形成不可变单链。原文件、路径、字节和旧编号围栏保留，仅有合法回执的正面已完成记录退出活动计数；256/32/128活动上限未提高。预览不写入，查询不完成归档；有意图缺回执时普通重复只读UNKNOWN，须明确以同一原归档编号续接元数据。未关闭、改判或重发任何key/启动UNKNOWN，归档不调用cipher/StopUnit/StartUnit，也不搬密钥。
 
 包维护快照兼容旧schema1；新schema2保留至多32个活动启动ID及当时固定归档链头/摘要，后来的归档或新启动不能扩大该次维护授权。当前独立包读取器严格核对generation/authority/archive格式和原字节，不靠盲加目录白名单。新元数据ID不能占用固定授权或旧请求，也不能用于新key操作；尚未物化的签发预留保护其后续编号。
@@ -105,10 +111,6 @@ JDK21/Maven3.10.1离线ARM64构建成功，新包203,386,874字节，45项及提
 
 ## 下一步建议顺序
 
-Root日志归档基础层已在fb47源码候选实现，详见 [Root归档检查点](root-journal-archive-checkpoint.json)。下一步将GWT三类、未发送回执、共同发送方及独立恢复私有历史接入同一Root正面证明；所有原字节和编号保留，由所属UID写私有标记，Root不获得读取其私有目录的能力。仅Root归档不能自动释放私有容量，私有本地完成标记也不能替代Root证明。没有Root原件的旧私有未发送意图需要合法的永久Root围栏，不能把缺失解释为没发送。
+Root基础层及GWT纯本地未发送分支已分别保存在fb47和cd82/3b8候选，详见 [Root归档检查点](root-journal-archive-checkpoint.json) 及 [私有未发送归档检查点](private-no-dispatch-archive-checkpoint.json)。优先将三类owning日志、已有普通Root NOT_ADMITTED原件的未发送回执、共同发送方及独立恢复私有历史接入同一Root正面证明。所有原字节和编号保留，由所属UID写私有意图；本地完成标记或Root缺失都不能替代Root证明。
 
-随后接GUI预览/确认、只查原归档和明确的原元数据续接，沿用ADMIN/XSRF或独立恢复授权；界面按modern-web-guidance渐进改造，仍为次要。补齐全部包/私有读取、初始化、重配置、升级/卸载/移除与正式六组件/cohort。旧版本prerm仍调用旧helper，需先做受审的旧格式迁移和真实升级矩阵，不得藏起旧状态、扩大白名单或重放旧UNKNOWN。
-
-固定发布/首次启动双侧容量承诺继续保持；元数据归档不等于实际启动预留，不保证无限续期或continuation。旧INTAKE/缺原件、永久NOT_ADMITTED、私有UNKNOWN、缺grant/跨boot/换锁的合法恢复、近满实际Main及完整GWT人类会话仍pending。原b36真实900秒单Core场景已闭环，不重放或外推至fb47新包。全部provider/full broker、备份密码启动授权、完整接管/网络/API/CA custody/R017/客户数据库/上游和完整12父项继续。
-
-以Git及本台账继续，不恢复旧大型证据；JDK最低21，不追加27。原3运行现场、密钥和数据保留，UNKNOWN不重发，不推送；当前普通周额度92%仍可用，耗尽时必要收尾后再暂停，不提前暂停。
+随后接GUI预览/确认、只查原归档和明确的原元数据续接，沿用ADMIN/XSRF或独立恢复授权；界面按modern-web-guidance渐进改造，仍为次要。补齐全部包/私有读取、初始化、重配置、升级/卸载/移除与正式六组件/cohort。旧版本prerm仍调用旧helper，需先做受审的旧格式迁移和真实升级矩阵，不得藏起旧状态、扩大白名单或重放旧UNKNOWN。Root两个大helper现分别129456/129482字节，仍在131072受保护读取上限以内；继续扩展时须合理拆分并配对全部读取器/发行消费者，不能再扩大上限。

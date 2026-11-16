@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T18:54:33.775843+00:00",
+  "scope": "LOCAL_NO_DISPATCH_PRIVATE_HISTORY_WITH_ROOT_FENCE_CANDIDATE",
+  "goalStatus": "active",
+  "sourceHeads": {
+    "kura": "cd82fd011805ef71eae07e60314d2ba97e084ac2",
+    "kura-management-ui": "3b8b5fe168244d6a149f52837b6086889a033128"
+  },
+  "implemented": {
+    "rootPermanentPrivateNoDispatchFence": true,
+    "gwtLocalNoDispatchArchiveWriterAndCounter": true,
+    "independentPackageReaderForThisBranch": true,
+    "allOtherPrivateHistoryArchiveConsumers": false,
+    "publicGuiArchiveAction": false,
+    "actualInstalledMainAndHumanGwtAcceptance": false
+  },
+  "format": {
+    "rootPath": "sender-admissions/<UUID>.json",
+    "purpose": "yofc.kura.sender-private-no-dispatch.v1",
+    "rootMode": "0400",
+    "rootProof": "distinct-purpose HMAC; Root namespace, original private receipt raw SHA, redacted metadata SHA, data path/dev/inode/UID and blocked IDs",
+    "privatePath": "gateway-key-not-dispatched/<original UUID>/archive.json",
+    "privateIntentBeforeRootMutation": true,
+    "queryNeverWritesOrRebinds": true,
+    "unknownOrMissingRootProof": "original UUID query only; private slot remains active; no later metadata or key resend",
+    "fencedHandoffIds": [
+      "handoffId",
+      "publicationId",
+      "startOperationId"
+    ],
+    "nativeOriginalFilesRetained": true,
+    "originalPrivateFilesRetained": true,
+    "ordinarySenderReceiptAliasForbidden": true,
+    "rootReadsPrivateDirectories": false
+  },
+  "eligibility": {
+    "privateSource": "positive local callback-never-invoked receipt",
+    "root": "no native original in any of three tables, no retained sender reservation of any state, no archive-ID collision or existing/fixed authority collision; pending unmaterialized issuer blocks",
+    "unknownRootIntakeCanBeClosed": false,
+    "ordinaryRootNoAdOriginalMustUseSeparateArchiveBranch": true,
+    "queryAuthorizedByCurrentSourceMainPidAndUid": true
+  },
+  "capacity": {
+    "gwtNoDispatchActiveLimit": 64,
+    "rootSenderActiveLimit": 256,
+    "nativeOperationsLimit": 256,
+    "nativeStartupsLimit": 32,
+    "handoffLimit": 32,
+    "limitsRaised": false,
+    "fenceCanPersistWhenOrdinarySenderBudgetIsFull": true,
+    "permanentFenceHasNoWriterCapacity": true,
+    "archiveReclaimsOriginalDiskBytes": false
+  },
+  "checks": {
+    "rootSubstrateRegression359": true,
+    "rootSubstrateRegressionBeforeFinalPrivateReaderAddition": true,
+    "currentPrivateAndGwtReaderChecks": 49,
+    "currentNewRootAndPrivateReaderChecks": 26,
+    "currentGwtLegacyReaderRegressionChecks": 23,
+    "currentScopedJvmChecks": 90,
+    "skipped": 0,
+    "productionJarActualThreeUidConnections": 26,
+    "actualPrivateRecordCountAfterCapacityRelease": 65,
+    "rootAndClientsCapabilities": "Eff/Bnd/Amb 0; NoNewPrivs 1",
+    "rootPrivateReadDenials": 2,
+    "nativeKeyOperations": 0,
+    "cipherCalls": 0,
+    "coreSystemdAndMain": "modeled; actual Java/Root handlers, PID and SO_PEERCRED, Unix transport and POSIX locks",
+    "oldClosedGatewayAcceptanceReplayed": false
+  },
+  "artifacts": {
+    "core": {
+      "sourceHead": "cd82fd011805ef71eae07e60314d2ba97e084ac2",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161850.cd82fd0-1_arm64.deb",
+      "bytes": 203419074,
+      "sha256": "d1652d576b0323659a0c83c1f6e8194cc2720b4a76d0425030a3871b80031ffd",
+      "verifiedFiles": 45,
+      "readerRoles": {
+        "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+        "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+        "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+        "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "currentLifecycleEmbedded": true,
+      "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+      "runtimeInstalled": false,
+      "unknownRedispatched": false,
+      "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+      "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+      "pythonBytecodeExcluded": true,
+      "archiveMembersChecked": 335,
+      "metadataNativeInputPythonSourcesExact": 3,
+      "newMetadataUidConnections": 26,
+      "privateNoDispatchBranchIntegrated": true,
+      "allPrivateJournalsAndGuiIntegrated": false,
+      "originalGatewayDeployed": false,
+      "actualInstalledMainAcceptance": false,
+      "oldPackagePrermPairingAccepted": false
+    },
+    "ui": {
+      "sourceHead": "3b8b5fe168244d6a149f52837b6086889a033128",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "bytes": 34070323,
+      "sha256": "a0a0e6fd32d0d52f230974d3ed03bf8d7ed93ebc2901b4bc257977094ef449d7",
+      "verifiedAllServerSharedClasses": 318,
+      "bytecodeRelease": 11,
+      "gwtModules": 2,
+      "gwtPermutations": 12,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "scopedJvmTests": 90,
+      "actualJavaThreeUidMetadataUdsConnections": 26,
+      "productionJarUsedByActualUidPeer": true,
+      "keybackupProductionClasses": 41,
+      "nativeKeyOperations": 0,
+      "humanGwtSessionAccepted": false,
+      "allPrivateHistoriesIntegrated": false,
+      "guiArchiveActionImplemented": false
+    }
+  },
+  "sourceLimits": {
+    "protectedHelperBytesMaximum": 131072,
+    "currentServiceBytes": 129456,
+    "currentLifecycleBytes": 129482,
+    "limitRaised": false
+  },
+  "remainingInternal": [
+    "GWT LEGACY/GENERATION/HANDOFF owning journals and ordinary sender-admission private archives",
+    "No-dispatch receipts already associated with an ordinary Root NOT_ADMITTED original need that distinct Root archive path",
+    "recovery-private operation/start/handoff/admission archives and paired package/offline consumers",
+    "public preview/confirm/original query/explicit metadata continuation with ADMIN-XSRF or recovery authorization; modern-web-guidance remains secondary",
+    "old installed prerm migration and complete real install/upgrade/remove/purge matrix",
+    "actual installed Main/human GWT and full provider/key/network/API/six-component release scope",
+    "all unchanged 12 parent groups in OPEN-TASKS.md"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "preserved": {
+    "gateways": 3,
+    "processes": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataContents": 6
+  },
+  "cleanup": {
+    "recordedAt": "2026-11-16T18:53:11.945223+00:00",
+    "files": [
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux.zip",
+        "bytes": 203546815,
+        "sha256": "c3f66a1a87ca8816c5ce2a95d301fc2c240d803ee1a5a516d5516d4126a7a4ee"
+      },
+      {
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux_installer.sh",
+        "bytes": 203576716,
+        "sha256": "c0f4dd8bb8be9a6bfe045c5bcb4be4614e32093bd97ce179d87f7b9773fdbe38"
+      }
+    ],
+    "reclaimedBytes": 407123531,
+    "backupCreated": false,
+    "currentDebAndStageRetained": true,
+    "priorFb47AndC369AndLegacyB7RetainedForUpgradeReview": true,
+    "sourceAndLiveBindsUntouched": true
+  },
+  "pushed": false,
+  "ordinaryWeeklyUsedPercent": 92,
+  "ordinaryUsageAllowed": true,
+  "creditsUnchanged": true
+}

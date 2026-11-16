@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-11-16T18:23:35.811981+00:00",
+  "recordedAt": "2026-11-16T18:51:16.475559+00:00",
   "fixtures": [
     {
       "privateFilesExactMetadata": 7,
@@ -122,7 +122,7 @@
     }
   ],
   "allSevenOriginalProcessIdsAndTicksExact": true,
-  "allProtectedPrivateFileMetadataExact": 38,
+  "allProtectedPrivateFileMetadataExact": true,
   "oldKeyWritersReplayed": false,
   "remoteUnknownRedispatch": false,
   "readOnly": true
