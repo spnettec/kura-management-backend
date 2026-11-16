@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T15:43:46.483542+00:00",
+  "recordedAt": "2026-11-16T16:17:53.454800+00:00",
   "sourceHeads": {
-    "kura": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+    "kura": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
     "kura-management-ui": "be67271d039bb20f23c17576f5c19f4257dafddd"
@@ -89,10 +89,10 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "sourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
-    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161539.c226ff3-1_arm64.deb",
-    "bytes": 203393616,
-    "sha256": "e3bc84cdecb12218f478b01ab89511f4aa7a3697823921c116bf465e306a06b2",
+    "sourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161614.b36afab-1_arm64.deb",
+    "bytes": 203400558,
+    "sha256": "2e0d4ead0ea78f1c0e49b4438085d3421aa873798fadcd1d67e11632ae134387",
     "verifiedFiles": 45,
     "readerRoles": {
       "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
@@ -118,7 +118,9 @@
     ],
     "originalGatewayDeployed": false,
     "actualInstalledMainBrowserAcceptance": false,
-    "newUnusedHandoffNativeTransportAcceptance": false
+    "newUnusedHandoffNativeTransportAcceptance": false,
+    "newStartLeaseNativeTransportWriteAcceptance": false,
+    "newStartLeaseInstalledMainAcceptance": false
   },
   "unacceptedSyntheticStart": {
     "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
@@ -143,11 +145,12 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "Root INTAKE without native originals, missing/torn/changed/foreign GWT attempts or namespace metadata, and private startup children of a cold restore remain unresolved and cannot be bypassed",
-    "post-publication start-only renewal, completed grant archival, historical capacity and uncertain continuation recovery remain internal pending; expiry/NOT_RECORDED never permits replacement",
-    "legacy namespace discovery/migration, all native preparation/handoff/current-generation lifecycle combinations and formal paired versions/binary/cohort/install order remain pending; initialization allowlists were not relaxed",
-    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, the legacy backup tab joint browser flow, new unused-grant revocation native transport/peer acceptance and startup actual-backup authorization remain pending",
-    "complete providers, broker, actual takeover/network matrices, release and every unchanged 12 parent group remain pending; only the original 3 external deferred boundaries are external"
+    "new start-lease actual native write/peer and installed Main acceptance, full human ADMIN/XSRF/GWT/HTTPS joint acceptance, legacy backup-tab joint browser flow and startup actual-backup authorization remain internal pending",
+    "a published grant whose fixed startup already has any reservation, permanent NOT_ADMITTED closure, private intent or UNKNOWN cannot be renewed by this unattempted-first-start path; legal original-record recovery for those cases, absent grants, previous boot and replaced writer locks remains pending",
+    "completed grant archival, historical/shared-admission capacity, uncertain native lease metadata intent recovery and the complete authorization lifecycle remain pending; original records are retained and capacity is still counted",
+    "Root INTAKE without native originals, torn/changed/foreign/missing namespace attempts and private startup children of cold restoration remain query-only and cannot be bypassed",
+    "legacy namespace discovery/migration, all preparations/handoffs/current-generation lifecycle combinations and formal six-component versions/binary/cohort/install order remain pending; initialization state allowlists were not relaxed",
+    "complete providers, privileged broker, actual takeover/network matrices, release and all unchanged 12 parent groups remain pending; only the original 3 external boundaries are deferred"
   ],
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
@@ -214,7 +217,7 @@
     "diskFreeBefore": 415516758016,
     "diskFreeAfter": 415747825664
   },
-  "updatedAt": "2026-11-16T15:43:46.483542+00:00",
+  "updatedAt": "2026-11-16T16:17:53.454800+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -248,7 +251,7 @@
     "cancellationAndHistoryPagingImplemented": false,
     "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
   },
-  "servicePayloadSourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+  "servicePayloadSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
   "previousPackageBeforePreparationHistory": {
     "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
@@ -2193,5 +2196,372 @@
     "actualInstalledMainBrowserAcceptance": false,
     "newUnusedHandoffNativeTransportAcceptance": false,
     "file": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161452.3f9a81d-1_arm64.deb"
+  },
+  "receiverStartLease": {
+    "recordedAt": "2026-11-16T16:17:53.454800+00:00",
+    "coreSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "uiSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+    "scope": "Explicit post-publication renewal only for the original fixed first startup with no prior startup reservation or intent; no publication or startup by renewal",
+    "rootRequires": [
+      "original authenticated dedicated grant and actual recovery Main peer, or local Root administration",
+      "original SUCCEEDED publication and request tag, immutable current publication and original stopped-writer/source/generation/cohort bindings",
+      "same boot, canonical generation/cohort, inactive fixed Core, original writer-lock device/inode and no optional agent",
+      "strict fixed startup UUID absence in operations/startups/handoffs and no matching sender reservation of any phase, including permanent NOT_ADMITTED",
+      "no unresolved original native operation or shared admission"
+    ],
+    "lease": {
+      "action": "generation-start-lease",
+      "scope": "ORIGINAL_FIRST_START_ONLY",
+      "seconds": 900,
+      "clock": "same-boot CLOCK_BOOTTIME",
+      "hmacDomainSeparated": true,
+      "boundTo": [
+        "original grant SHA256",
+        "original publication SHA256",
+        "Root namespace",
+        "fixed handoff/publication/start IDs",
+        "lease metadata operation ID"
+      ],
+      "originalGrantRewritten": false,
+      "originalPublicationWindowExtended": false,
+      "credentialsChanged": false,
+      "startsKura": false,
+      "mayRepublish": false,
+      "originalStartIdChanged": false
+    },
+    "sender": {
+      "kind": "handoff-renewal",
+      "durableRootReservationBeforeOwningBindingAndFirstMetadataWriter": true,
+      "rootIntakeBeforeNativeLeaseIntent": true,
+      "browserUuidAndIntentBeforeHttpsWriter": true,
+      "tokenOrBackupOrPassphrasePersisted": false,
+      "lostSuccessReplyAllowsOriginalReadOnly": true,
+      "intakeWithoutOriginalMayResendOrReplace": false,
+      "ordinaryReadExtendsLease": false,
+      "unconsumedReservationExplicitClose": true,
+      "closedLeaseIdPermanentlyFenced": true,
+      "manualNewLeaseOnlyAfterOriginalSucceededOrPositiveNotAdmitted": true
+    },
+    "gui": {
+      "page": "/handoff",
+      "explicitNativeConfirmation": true,
+      "separateStartupConfirmation": true,
+      "allPriorBrowserAndServerIdsRetained": true,
+      "noAutomaticWriter": true,
+      "webLocksSerializeTabs": true,
+      "storageFailureBlocksFirstWriter": true,
+      "renewalReplyFocus": "enabled original startup control or query",
+      "closeReplyFocus": "manual new renewal control or query",
+      "languages": [
+        "zh-CN",
+        "en"
+      ]
+    },
+    "package": {
+      "protectedExecutableSourceLimitBytes": 131072,
+      "cohortShaOwnerModeAndLinkChecksUnchanged": true,
+      "newSenderMetadataKindAndExactNativeTargetRecognized": true,
+      "initializationStateAllowlistRelaxed": false
+    },
+    "tests": {
+      "recordedAt": "2026-11-16T16:15:22.715483+00:00",
+      "coreSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+      "uiSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+      "uiJavaUnchanged": true,
+      "rootStartLeaseCases": 12,
+      "originalHandoffRegressionCases": 30,
+      "unusedHandoffRevocationRegressionCases": 21,
+      "totalConfiguredRealCipherHandoffCases": 63,
+      "relatedLinuxModelCases": 198,
+      "newReceiverCasesIncludedInModels": 8,
+      "actualThreeUidUdsRegressionConnections": 179,
+      "nativeKeyOperations": 0,
+      "newStartLeaseNativeTransportWriteAcceptance": false,
+      "newStartLeaseInstalledMainAcceptance": false,
+      "systemdMainAndNativeHandlersModeled": true,
+      "rootRepliesInBrowsersModeled": true,
+      "lateUnknownRemoteWriteRedispatched": false,
+      "oldClosedGatewayAcceptanceReplayed": false,
+      "actualRootCipherJarSha256": "3f8ea96b53c6be10f789d2df800026cafa716ec9b8e2ebc4e01ec708c12cdc52",
+      "allTemporaryJdkVolumesRemoved": true,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "ordinaryWeeklyUsedPercent": 89,
+      "ordinaryUsageAllowed": true,
+      "extraCreditBalanceUnchanged": true,
+      "initialModelInvocation": {
+        "tests": 210,
+        "errors": 12,
+        "causes": [
+          "11 configured receiver-unused-handoff cases invoked without required repository/JDK/cipher arguments",
+          "one nonexistent test_key_recovery_start module"
+        ],
+        "resolution": "11 cases passed through configured CLI; corrected related-model suite passed 198 cases"
+      },
+      "latestUsageCheck": {
+        "recordedAt": "2026-11-16T16:19:42.732406+00:00",
+        "ordinaryWeeklyUsedPercent": 90,
+        "ordinaryUsageAllowed": true,
+        "creditsBalance": "54476.0999360000",
+        "creditsUnchanged": true
+      }
+    },
+    "browser": {
+      "handoff": {
+        "tests": 17,
+        "root": "synthetic replies",
+        "realHttps": true,
+        "productionPageAndHandler": true,
+        "nativeGenerationAcceptance": false
+      },
+      "receiver": {
+        "tests": 33,
+        "productionPageAndHandler": true,
+        "actualHttps": true,
+        "receiverPlatform": "linux",
+        "rootAndDecryption": "modeled",
+        "humanMainSessionAcceptance": false,
+        "nativeKeyWrites": 0,
+        "oldClosedScenariosReplayed": false
+      }
+    },
+    "actualUdsRegression": {
+      "connections": 179,
+      "uids": [
+        0,
+        65534,
+        65533
+      ],
+      "allCapabilitySetsZero": true,
+      "noNewPrivs": 1,
+      "rootPrivateReadsRefused": [
+        true,
+        true
+      ],
+      "nativeKeyOperations": 0,
+      "newStartLeaseNativeWriteAcceptance": false,
+      "systemdMainAndNativeHandlersModeled": true,
+      "inputPythonSha256": {
+        "kura_key_service.py": "c086bf5c194c09ea545554599d76cf2d5e691c86cfb80618f835bbd6c1f1a391",
+        "kura_key_service_lifecycle.py": "bd72e96ed331b429d6cdc569830d5783914e496155ffd06109b3e37c9ea26755",
+        "kura_key_recovery.py": "f13f2494c10e2d1181d1e401286e0822a23a86ebdfe855f164808d817c97ff71",
+        "kura_key_generation.py": "f1f4319bfd9d648d1cd6cf0b51775421b5fa8fd7632f7af0310a4d099bd79003"
+      }
+    },
+    "coreArtifact": {
+      "sourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161614.b36afab-1_arm64.deb",
+      "bytes": 203400558,
+      "sha256": "2e0d4ead0ea78f1c0e49b4438085d3421aa873798fadcd1d67e11632ae134387",
+      "verifiedFiles": 45,
+      "readerRoles": {
+        "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+        "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+        "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+        "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "currentLifecycleEmbedded": true,
+      "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+      "runtimeInstalled": false,
+      "unknownRedispatched": false,
+      "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+      "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+      "pythonBytecodeExcluded": true,
+      "archiveMembersChecked": 335,
+      "nativeInputPythonSourcesExact": 4,
+      "actualCipherInputJarMatchesPackage": true,
+      "nativeUidConnections": 179,
+      "gwtRetainedIntentNativeKinds": [
+        "LEGACY",
+        "GENERATION",
+        "HANDOFF"
+      ],
+      "originalGatewayDeployed": false,
+      "actualInstalledMainBrowserAcceptance": false,
+      "newUnusedHandoffNativeTransportAcceptance": false,
+      "newStartLeaseNativeTransportWriteAcceptance": false,
+      "newStartLeaseInstalledMainAcceptance": false
+    },
+    "unchangedUiArtifact": {
+      "sourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+      "package": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "bytes": 34061833,
+      "sha256": "c96200c22469efcb0ae6f928cae91e94cf669b3dcfe0040dbb4a3bcc516f1284",
+      "verifiedAllServerSharedClasses": 316,
+      "bytecodeRelease": 11,
+      "mainCacheJs": {
+        "login": 6,
+        "denali": 6
+      },
+      "scopedJvmTests": 137,
+      "actualGwtGenerationBrowserCases": 18,
+      "actualGwtAdmissionBrowserCases": 11,
+      "nativeInputClassHashesMatchJar": 45,
+      "humanMainSessionAcceptance": false,
+      "gwtModules": 2,
+      "gwtPermutations": 12,
+      "unchangedUiSourceAndBinary": true,
+      "uiJvmAndGwtBuildNotReplayed": true,
+      "priorUiValidationSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd"
+    },
+    "cleanup": {
+      "recordedAt": "2026-11-16T16:16:30.973680+00:00",
+      "removed": [
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux",
+          "bytes": 214383080,
+          "allocatedBytes": 215003136
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161539.c226ff3-1_arm64.deb",
+          "bytes": 203393616,
+          "allocatedBytes": 203395072
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-deb.log",
+          "bytes": 182544,
+          "allocatedBytes": 200704
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-final-root-runner.log",
+          "bytes": 186,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-final-root-test_key_start_lease.py.log",
+          "bytes": 111,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-handoff-browser.log",
+          "bytes": 1590,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-models.log",
+          "bytes": 298,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-native-runner.log",
+          "bytes": 161,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-native.log",
+          "bytes": 13048,
+          "allocatedBytes": 16384
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-receiver-browser.log",
+          "bytes": 3432,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-receiver-regression.log",
+          "bytes": 163,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-receiver.log",
+          "bytes": 106,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-regression-runner.log",
+          "bytes": 384,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-regression-test_key_handoff_revocation.py.log",
+          "bytes": 109,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-regression-test_receiver_unused_handoff.py.log",
+          "bytes": 110,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-root-runner.log",
+          "bytes": 387,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-root-test_key_handoff.py.log",
+          "bytes": 130,
+          "allocatedBytes": 4096
+        },
+        {
+          "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/start-lease-root-test_key_start_lease.py.log",
+          "bytes": 111,
+          "allocatedBytes": 4096
+        }
+      ],
+      "logicalBytes": 417979566,
+      "freeBefore": 414967283712,
+      "freeAfter": 415181705216,
+      "freeDelta": 214421504,
+      "currentDebPreserved": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161614.b36afab-1_arm64.deb",
+      "unchangedUiJarPreserved": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "allSixContainerBindMountsChecked": true,
+      "openDescriptorsChecked": true,
+      "backupCreated": false,
+      "allTemporaryJdkVolumesRemoved": true,
+      "remainingContainers": 6,
+      "remainingVolumes": 17,
+      "personalRuntimeDeleted": false
+    },
+    "modernWebGuidance": {
+      "applied": [
+        "dialog",
+        "accessibility"
+      ],
+      "nativeSafeCancelAutofocus": true,
+      "dialogReturnValueCleared": true,
+      "focusMovesOnlyToEnabledNextAction": true,
+      "secondaryToMainGoal": true
+    },
+    "remaining": [
+      "new start-lease actual native write/peer and installed Main acceptance, full human ADMIN/XSRF/GWT/HTTPS joint acceptance, legacy backup-tab joint browser flow and startup actual-backup authorization remain internal pending",
+      "a published grant whose fixed startup already has any reservation, permanent NOT_ADMITTED closure, private intent or UNKNOWN cannot be renewed by this unattempted-first-start path; legal original-record recovery for those cases, absent grants, previous boot and replaced writer locks remains pending",
+      "completed grant archival, historical/shared-admission capacity, uncertain native lease metadata intent recovery and the complete authorization lifecycle remain pending; original records are retained and capacity is still counted",
+      "Root INTAKE without native originals, torn/changed/foreign/missing namespace attempts and private startup children of cold restoration remain query-only and cannot be bypassed",
+      "legacy namespace discovery/migration, all preparations/handoffs/current-generation lifecycle combinations and formal six-component versions/binary/cohort/install order remain pending; initialization state allowlists were not relaxed",
+      "complete providers, privileged broker, actual takeover/network matrices, release and all unchanged 12 parent groups remain pending; only the original 3 external boundaries are deferred"
+    ]
+  },
+  "previousPackageBeforeReceiverStartLease": {
+    "sourceHead": "c226ff396fa2674a35ebd93248754fc19c722cd7",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161539.c226ff3-1_arm64.deb",
+    "bytes": 203393616,
+    "sha256": "e3bc84cdecb12218f478b01ab89511f4aa7a3697823921c116bf465e306a06b2",
+    "verifiedFiles": 45,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "runtimeInstalled": false,
+    "unknownRedispatched": false,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+    "pythonBytecodeExcluded": true,
+    "archiveMembersChecked": 335,
+    "nativeInputPythonSourcesExact": 4,
+    "actualCipherInputJarMatchesPackage": true,
+    "nativeUidConnections": 179,
+    "gwtRetainedIntentNativeKinds": [
+      "LEGACY",
+      "GENERATION",
+      "HANDOFF"
+    ],
+    "originalGatewayDeployed": false,
+    "actualInstalledMainBrowserAcceptance": false,
+    "newUnusedHandoffNativeTransportAcceptance": false
   }
 }
