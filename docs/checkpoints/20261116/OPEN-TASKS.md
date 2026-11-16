@@ -4,6 +4,10 @@
 
 ## 内部 pending
 
+本地候选已推进到 Core `6338ad89e4`、GWT `6e83007778`：Root共同持久预留现先于三类GWT及独立恢复的本地**密钥操作意图**，此前仅登记命名空间的缺口已有实现。发送方另存不含密钥/口令/备份/bearer的准入尝试；即使预留回复丢失，原编号也不能获得迟到的首次发送。Root先落INTAKE再进入原生处理，同一请求至多进入一次；缺原件继续UNKNOWN，不能用缺失推断未发送。只有尚未进入处理的RESERVED可显式关闭为NOT_ADMITTED；普通读取不关闭。已受理的原成功结果可结算，升级也可只读核对匹配原件，无须改写旧准入。新Root包括UID0在内拒绝旧写帧，正式包版本/cohort/升级顺序及本地管理客户端配对仍pending。
+
+132项相关JVM检查通过；Linux模型分批去重共173例通过，其中19项Root准入、6项接收端准入。另一次真实UDS/三UID测试有12连接：Root UID0、GWT UID65534、恢复UID65533均空能力/NNP1，Root不能读两方私有目录，仍可在GWT预留时拒绝恢复写入，并在恢复INTAKE且原件缺失时拒绝GWT新写入；原生handler和systemd/Main仍明确为模型，真实密钥操作0。ARM64包45项及提取reader、GWT双模块12变体/48个Java11类均匹配当前源码与测试输入，尚未部署。原3现场/7进程/38份私有元数据/6份旧数据保持，UNKNOWN未重发；清理本批可重建产物及旧156包684,120,676逻辑字节，无备份、无远程推送。原预留查询/关闭的完整GUI、独立恢复未准入回执后的合法界面恢复、INTAKE缺原件恢复、旧未登记目录、全状态升级及完整12父项继续pending；不以本候选宣称全局协调或正式验收完成。详见 [GWT检查点](gwt-key-handoff-checkpoint.json)。
+
 最新本地WIP为 Core `156fa83cc0`、GWT `e0f77f1ba1`。三类GWT写请求在本地意图落盘后，使用SystemService本次有效data目录的路径/dev/inode/UID，与Root状态目录身份及journal.key分域HMAC生成的命名空间登记绑定；只存元数据，不读Core私有文件，不生成或替换密钥。Root持久登记和Core私有标记均不覆盖，重配置不匹配或Root命名空间改变时拒绝；已有标记的原件读取也携带绑定，避免向另一个Root状态取证。新Root拒绝旧GWT写帧，Core/GWT必须配套，正式版本/cohort/升级顺序门禁仍pending。升级已校验登记目录内三类GWT日志及未发送回执，匹配Root原结果或认证授权，并以Java同类POSIX锁保持到停止服务之后；缺原件、INTENT、破损、移动、跨类型ID冲突和隐藏Root预选操作均拒绝。126项JVM检查、111项Linux模型（含23项新增）通过；另一次实际UDS核对共13连接/9类断言，Root UID0与Java UID65534均空能力/NNP1，Root仍不能读Core私有目录，并拒绝错误绑定、其他目录、同UID其他PID和旧写帧；Main/systemd/cgroup仍为模型，密钥操作0次。双模块12变体新包34,015,153字节，43个Java11类及native输入逐字节匹配；ARM64包45项及提取reader通过，未部署。未登记遗留目录、登记失败目录、意图之前的跨UID共同持久预留和整个原子升级门禁仍pending；不能把本增量当成全局协调完成。旧065浏览器证明未重放，完整12父项不关闭。原3现场/7进程/38私有元数据/6旧数据保持；已清理469,792,527逻辑字节本轮中间产物和旧770c包，无备份、无远程推送。详见 [GWT检查点](gwt-key-handoff-checkpoint.json)。
 
 此前本地WIP为 Core `770c87a8a8`、GWT `704d2e7617`。旧密钥RPC和公开恢复资料RPC已改为Java进程内Unix连接，四类GWT密钥客户端共用有界传输，不再启动Python子进程或各自的管道线程池；密钥请求前后的原始字节缓冲区及时清零，原ADMIN/XSRF/HTTPS和公开资料权限边界不变。116项相关JVM检查及双模块12变体打包通过，41个服务端/共享类为Java11且与包一致；新包34,007,852字节，主缓存各6。12项新增Linux实际Unix连接检查证明普通UID65534、空能力、NNP1下，两旧客户端的peer PID与同一JVM的fcntl锁持有者一致，并拒绝不安全socket/目录/链接及非Root peer；仅发送status/recovery-info，没有密钥写操作，也不是实际安装Main验收。Core修复重新配置误拒接收端handoffs目录：空目录允许，已有交接必须由原生命周期验证器确认本地完成且Root原发布/启动成功，否则保留并拒绝。补齐python -I下受保护同目录源码加载，拒绝不安全权限/链接并绕开pyc；9项新增宿主模型和含它们的88项Linux相关模型通过。未扩大Root运行服务DAC能力。新ARM64 deb的45项载荷、9脚本/3资源/单元与Git和stage匹配，提取reader通过，尚未部署。旧065浏览器11组及NoDispatch Linux12项证明保留原提交范围，本轮未重跑。原3现场/7进程/38私有元数据/6旧数据未变；确认无运行引用后清理本轮可重建目录、日志和旧a277包，共469,790,755逻辑字节，未备份，无远程推送。跨UID持久共同准入、所有日志升级门禁及实际data/Root命名空间绑定仍未完成，完整12父项继续pending。详见 [GWT检查点](gwt-key-handoff-checkpoint.json) 和 [Core检查点](managed-core-start-checkpoint.json)。
@@ -49,8 +53,8 @@
 
 ## 下一步建议顺序
 
-已登记目录的绑定与升级读取已有候选，但登记仍发生在本地意图之后。先将Root共同持久预留放到各身份的首个本地意图之前，再接独立恢复、原结果结算及不可重发门禁，覆盖注册失败/目录切换和旧未登记目录的迁移。当前缺少登记时不能声称发现全部旧日志；Root native preparations/handoffs/current-generation 等既有状态组合仍有严格白名单拒绝，须验证完整记录再补升级/移除支持，不能仅放宽白名单。Core与GWT新协议需正式成对发行，当前WIP包未部署。
+Root共同持久预留现已接入三类GWT及独立恢复，但尚不是用户可完成的全流程。下一步先接原准入尝试的只读核对，以及仅对未进入处理的RESERVED显式关闭；Root关闭后永久拒绝迟到原请求，旧编号不能重用。GWT已能将本次Root明确未准入接入原NoDispatch回执，独立恢复仍需相同的合法界面恢复。不能把Root不可用、BUSY、容量、破损或INTAKE缺原件自动变成未发送；本次原INTAKE缺原件仍UNKNOWN。发布/取消的续接只允许原认证凭据，原生INTENT既已存在时，不生成声称原件缺失的拒绝回执。全部原UNKNOWN保持不重发。
 
-四类GWT客户端的同JVM直接Unix传输已完成，Linux peer PID与Java内核锁持有者匹配只是前提，尚不构成共同持久准入。安装器现能验证接收端handoffs，但未覆盖全部GWT日志与未发送回执。实际data目录必须从Core的SystemService有效值取得，不能由Root执行属性provider命令猜测。先继续补跨Unix UID独立恢复与三类GWT发送方的共同准入、全部发送日志升级门禁，以及实际配置data目录/Root命名空间在重配置、JVM/bundle重启和升级中的绑定。Core所有的三GWT发送方已具备共同门禁，不等于独立恢复身份已接入；Java FileLock与Python flock也不能视为同一种锁。已实现的GWT未发送回执只覆盖共同门禁中可证明未进入发送回调、且Root返回精确原件缺失的拒绝分支；原编号仍不可发送。BUSY、容量、破损、本地其他前置条件和Root不可用等分支不能据此推断终态，须继续补合法原记录恢复。所有发送日志、未发送回执及其实际data/Root命名空间都须纳入升级门禁；不能靠放宽Core私有目录权限或增加Root DAC能力代替共同协调。
+然后补旧未登记目录、登记失败/切换目录的发现及迁移，并验证所有发送日志和native preparations/handoffs/current-generation等状态组合的升级/移除。当前生命周期仍有严格白名单拒绝，不能仅放宽目录白名单。Root无需读Core或恢复私有目录，也不增加DAC能力；实际data目录继续来自SystemService，Java FileLock与Python flock不混用。Core/GWT/独立恢复/本地管理客户端新协议须正式成对发行，版本、binary/cohort及升级顺序门禁仍pending；当前WIP包不部署到原现场。
 
-随后继续加密授权材料下载/上传和实际安装Main人类会话/ADMIN/XSRF/GWT/HTTPS与独立页联合核验；现有11组浏览器Root/人类会话替身检查不替代它。原凭据续期/撤销/归档、过期后首次启动和不确定续接后的合法界面恢复仍须补齐，不以脚本替代。UNKNOWN只读原结果，NOT_RECORDED不构成重发许可；不复用旧单钥DTO或扩大备份口令授权。runtime/binary/cohort、完整privileged broker、缺原停止凭据/跨boot/旧锁重建、维护启动、全部provider原子重加密/退役及12父项继续推进；安装agent仍阻止代发布。界面随功能逐步应用modern-web-guidance，JDK最低21，暂不追加27；不重放README闭环ID，不依赖旧大型证据/缓存继续。
+随后继续授权材料下载/上传、实际安装Main人类ADMIN/XSRF/GWT/HTTPS与独立页联合核验、原授权续期/撤销/归档、过期首次启动及不确定续接后的合法恢复。原065浏览器11组及NoDispatch Linux12项等旧证明保留原源码范围，不重放更新戳。缺原停止凭据、跨boot/旧锁重建、维护启动、完整broker、全部provider原子重加密/退役及完整12父项继续推进，安装agent仍阻止代发布。用户操作从界面完成；界面随功能逐步应用modern-web-guidance，仍是次要任务。JDK最低21，暂不追加27；以Git和台账续接，不恢复旧大型证据链，不自行暂停目标。
