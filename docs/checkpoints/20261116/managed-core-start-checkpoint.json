@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T05:25:03.108797+00:00",
+  "recordedAt": "2026-11-16T12:55:57.073861+00:00",
   "sourceHeads": {
-    "kura": "6338ad89e4a6dd08fb8b05534ae1e63d606d7e78",
+    "kura": "404e2446a5dcb5f4c2e877b80004788e3ee1f4ff",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
-    "kura-management-ui": "8a4eb9fb1505194f760d410e4e203d5b5feca46f"
+    "kura-management-ui": "fb205594fb775e47ec87a9aff46065f3d11c32c9"
   },
   "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
   "controlledCore": {
@@ -89,18 +89,29 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "recordedAt": "2026-11-16T10:36:04.515395+00:00",
-    "sourceHead": "6338ad89e4a6dd08fb8b05534ae1e63d606d7e78",
-    "file": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161034.6338ad8-1_arm64.deb",
-    "bytes": 203375896,
-    "sha256": "7a59d1d629858edf611e01071d5aa117e67ad1c35e879f661a3a1e1a9014c302",
+    "sourceHead": "404e2446a5dcb5f4c2e877b80004788e3ee1f4ff",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161249.404e244-1_arm64.deb",
+    "bytes": 203384142,
+    "sha256": "6a47677c5795bcc2bc088e46eec9dc625b0cc4d579a19667c48325d3f51e1018",
     "verifiedFiles": 45,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "runtimeInstalled": false,
+    "unknownRedispatched": false,
+    "recordedAt": "2026-11-16T12:54:25.273145+00:00",
+    "file": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161249.404e244-1_arm64.deb",
     "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
     "recoveryAssetsAndUnitExactlyMatchGitAndStage": true,
-    "currentLifecycleEmbedded": true,
     "pythonBytecodeExcluded": true,
+    "archiveMembersChecked": 335,
     "extractedReader": "PACKAGED_GENERATION_CLI_OK",
-    "nativeSharedAdmissionInputSourcesExact": true,
+    "nativeReceiverAdmissionInputSourcesExact": true,
     "originalGatewayDeployed": false,
     "actualInstalledMainBrowserAcceptance": false
   },
@@ -127,10 +138,10 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "independent receiver metadata read/close with original backup/password or dedicated handoff authorization",
-    "legitimate original settlement for private key intents, INTAKE and torn/unavailable state",
-    "legacy migration, all native lifecycle states and formal paired components/cohort/install order",
-    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance and complete 12 parent groups"
+    "legitimate original settlement for existing private key intents, early partial markers and Root INTAKE without replay",
+    "original handoff grant renewal/revocation/archive; fixed closed operation IDs never reused",
+    "legacy unregistered/failed/moved namespace migration, every native lifecycle state and formal paired components/versions/binary/cohort/install order",
+    "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, all providers and all 12 parent groups"
   ],
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
@@ -140,62 +151,52 @@
   "goalStatus": "active",
   "remoteWrites": false,
   "incrementCleanup": {
-    "recordedAt": "2026-11-16T12:17:23.777423+00:00",
+    "recordedAt": "2026-11-16T12:54:46.171931+00:00",
     "deleted": [
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/gwt-webapp",
-        "logicalBytes": 122120613,
-        "files": 675
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0-SNAPSHOT_linux",
+        "logicalBytes": 214318752,
+        "files": 297
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/classes/www",
-        "logicalBytes": 19770746,
-        "files": 201
+        "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161034.6338ad8-1_arm64.deb",
+        "logicalBytes": 203375896,
+        "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/gwt-unitCache",
-        "logicalBytes": 124816222,
-        "files": 2
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-linux.log",
+        "logicalBytes": 287,
+        "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2.test/target/admission-ui-browser",
-        "logicalBytes": 97537317,
-        "files": 38
-      },
-      {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/admission-ui-native.log",
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-browser.log",
         "logicalBytes": 0,
         "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/admission-ui-jvm.log",
-        "logicalBytes": 16250,
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-native.log",
+        "logicalBytes": 0,
         "files": 1
       },
       {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/admission-ui-compile.log",
-        "logicalBytes": 7898,
-        "files": 1
-      },
-      {
-        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/admission-ui-package.log",
-        "logicalBytes": 22516,
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/receiver-admission-core-package.log",
+        "logicalBytes": 182875,
         "files": 1
       }
     ],
-    "logicalBytesDeleted": 364291562,
+    "logicalBytesDeleted": 417877810,
     "backupsCreated": false,
     "liveMountReferences": [],
     "openFileReferences": [],
-    "currentJarRetained": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
-    "corePackageUnchangedAndRetained": true,
-    "legacyInstallBaselineRetained": true,
+    "currentCorePackageRetained": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161249.404e244-1_arm64.deb",
+    "currentUiJarRetained": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+    "legacyInstallBaselineRetained": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202610290028.b7f72c0-1_arm64.deb",
     "personalRuntimeDeleted": false,
     "remainingContainers": 6,
-    "diskFreeBefore": 417104629760,
-    "diskFreeAfter": 417432170496
+    "diskFreeBefore": 417149259776,
+    "diskFreeAfter": 417363570688
   },
-  "updatedAt": "2026-11-16T12:18:22.252946+00:00",
+  "updatedAt": "2026-11-16T12:55:57.073861+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -229,7 +230,7 @@
     "cancellationAndHistoryPagingImplemented": false,
     "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
   },
-  "servicePayloadSourceHead": "6338ad89e4a6dd08fb8b05534ae1e63d606d7e78",
+  "servicePayloadSourceHead": "404e2446a5dcb5f4c2e877b80004788e3ee1f4ff",
   "previousPackageBeforePreparationHistory": {
     "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
@@ -301,8 +302,8 @@
   "uiModernization": {
     "secondaryToMainGoal": true,
     "guidesApplied": [
-      "dialog",
-      "accessibility"
+      "forms",
+      "dialog"
     ],
     "nativeModalWithSafeCancelAutofocus": true,
     "returnValueResetOnOpenAndClose": true,
@@ -310,11 +311,11 @@
     "customFocusTrapOrBodyScrollLockAdded": false,
     "fullSiteModernizationClaimed": false,
     "guidesAppliedThisIncrement": [
-      "dialog",
-      "accessibility"
+      "forms",
+      "dialog"
     ],
     "frontendCodeChanged": true,
-    "scopeNote": "Original reservation metadata panel only; key lifecycle remains the main task"
+    "scopeNote": "Independent recovery original-reservation forms and native safe confirmation only; key lifecycle remains the main task"
   },
   "preparationHistoryCleanup": {
     "recordedAt": "2026-11-16T02:02:29.807475+00:00",
@@ -545,7 +546,7 @@
     "remainingContainers": 6
   },
   "gwtHandoff": {
-    "uiSourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
+    "uiSourceHead": "fb205594fb775e47ec87a9aff46065f3d11c32c9",
     "uiCodeTestedSourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
     "checkpoint": "gwt-key-handoff-checkpoint.json",
     "relatedUnitAndRegressionTests": 138,
@@ -594,13 +595,16 @@
     "linuxPeerProofSourceHead": "704d2e7617502cf4e348bc9792c919073fd69e05",
     "linuxPeerProofScope": "Legacy and recovery clients, actual socket peer PID equals JVM fcntl owner, no native key mutation or installed Main",
     "linuxNoDispatchProofSourceHead": "065ffacc58d436ffecc7928939110334b4a4da6a",
-    "nativeChangeScope": "Current increment changes GWT metadata read/close and UI only; Root native service remains 6338ad89e4",
+    "nativeChangeScope": "Current increment changes independent HTTPS recovery, lifecycle closed-receipt validation and recovery page; GWT production byte-identical to 8a4eb9fb15 and only native test fixture changed",
     "senderNamespaceCheckpoint": "gwt-key-handoff-checkpoint.json",
     "rootSharedAdmissionCheckpoint": "gwt-key-handoff-checkpoint.json#rootSharedAdmission",
     "originalReservationBrowserCases": 9,
     "originalReservationNativeConnections": 16,
     "oldClosedBrowserRerunThisIncrement": false,
-    "rootNativeSourceChangedThisIncrement": false
+    "rootNativeSourceChangedThisIncrement": false,
+    "receiverOriginalReservationBrowserCases": 16,
+    "receiverOriginalReservationNativeConnections": 24,
+    "receiverOriginalReservationCheckpoint": "receiverOriginalReservationUi"
   },
   "previousPackageBeforeHttpsHandoff": {
     "sourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
@@ -765,8 +769,8 @@
     "continuationRequiresOriginalNativeAndAuthenticatedReceipt": true,
     "rejectedContinuationNeverCreatesFalseNativeAbsenceReceipt": true,
     "gwtRootNotAdmittedUsesExistingImmutableNoDispatch": true,
-    "receiverNoDispatchUiImplemented": false,
-    "fullOriginalAdmissionReadCloseGuiImplemented": false,
+    "receiverNoDispatchUiImplemented": true,
+    "fullOriginalAdmissionReadCloseGuiImplemented": true,
     "upgradeChecksRegisteredGwtAttemptsAndReceiverAttempts": true,
     "allLegacyUnregisteredAndNativeStateUpgradeCombinationsAccepted": false,
     "formalComponentVersionCohortUpgradeOrderAccepted": false,
@@ -864,12 +868,12 @@
       }
     },
     "remaining": [
-      "original reservation/attempt read and explicit-close GUI; legitimate independent receiver not-admitted flow",
-      "INTAKE with missing native original, BUSY/capacity/torn/unavailable legitimate recovery",
-      "unregistered legacy and failed/moved namespace migration",
-      "complete native state/lifecycle upgrade and paired local-admin clients, versions/binary/cohort/install order",
-      "installed Main/human ADMIN/XSRF/GWT/HTTPS and full provider acceptance; all 12 parent groups"
-    ]
+      "legitimate original settlement for existing private key intents, early partial markers and Root INTAKE without replay",
+      "original handoff grant renewal/revocation/archive; fixed closed operation IDs never reused",
+      "legacy unregistered/failed/moved namespace migration, every native lifecycle state and formal paired components/versions/binary/cohort/install order",
+      "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, all providers and all 12 parent groups"
+    ],
+    "currentReceiverMetadataCheckpoint": "receiverOriginalReservationUi"
   },
   "originalReservationUi": {
     "sourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
@@ -1000,7 +1004,7 @@
       }
     },
     "actualInstalledMainHumanSessionXsrfAcceptance": false,
-    "independentReceiverReadCloseGuiImplemented": false,
+    "independentReceiverReadCloseGuiImplemented": true,
     "privateKeyIntentSettlementUiImplemented": false,
     "remaining": [
       "independent receiver metadata read/close with original backup/password or dedicated handoff authorization",
@@ -1009,6 +1013,189 @@
       "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance and complete 12 parent groups"
     ],
     "keyRpcOnlyAuthenticatedModule": "denali",
-    "keyServiceInLoginModule": false
+    "keyServiceInLoginModule": false,
+    "independentReceiverScope": "receiverOriginalReservationUi; existing private key intents remain pending"
+  },
+  "previousPackageBeforeReceiverOriginalReservation": {
+    "recordedAt": "2026-11-16T10:36:04.515395+00:00",
+    "sourceHead": "6338ad89e4a6dd08fb8b05534ae1e63d606d7e78",
+    "file": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161034.6338ad8-1_arm64.deb",
+    "bytes": 203375896,
+    "sha256": "7a59d1d629858edf611e01071d5aa117e67ad1c35e879f661a3a1e1a9014c302",
+    "verifiedFiles": 45,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndUnitExactlyMatchGitAndStage": true,
+    "currentLifecycleEmbedded": true,
+    "pythonBytecodeExcluded": true,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "nativeSharedAdmissionInputSourcesExact": true,
+    "originalGatewayDeployed": false,
+    "actualInstalledMainBrowserAcceptance": false
+  },
+  "receiverOriginalReservationUi": {
+    "coreSourceHead": "404e2446a5dcb5f4c2e877b80004788e3ee1f4ff",
+    "uiTestSourceHead": "fb205594fb775e47ec87a9aff46065f3d11c32c9",
+    "uiProductionSourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
+    "scope": "Independent HTTPS receiver original reservation metadata read/authorized close before every private key intent; not installed Main or complete lifecycle acceptance",
+    "implemented": true,
+    "route": "/api/admission",
+    "coldCloseRequires": [
+      "exact original encrypted backup digest",
+      "original decryption passphrase",
+      "backup-inspect sameDeviceKey and original expected key fingerprint",
+      "current original Root namespace and positive RESERVED/NOT_ADMITTED metadata",
+      "exact native original NOT_FOUND",
+      "no private key intent, early pending marker or handoff binding of either operation kind"
+    ],
+    "handoffCloseRequires": [
+      "original dedicated bearer",
+      "authenticated original fixed operation binding",
+      "publish or first start only",
+      "same positive Root metadata and exact native original absence"
+    ],
+    "csrfOrCookieAloneAuthorizesClose": false,
+    "continueCloseAllowed": false,
+    "intakeOrPrivateIntentCloseAllowed": false,
+    "originalKeyRequestReissued": false,
+    "readMayClose": false,
+    "closedReceipt": "immutable bounded sender-not-admitted.v1 metadata; lifecycle rechecks matching authenticated Root NOT_ADMITTED and native absence",
+    "localClosedReceiptWithoutMatchingRootProofAccepted": false,
+    "lostReservationReplyWithoutKeyIntentClassified": "UNKNOWN original-only, never generic SERVER_PREFLIGHT rejection",
+    "lostCloseReplyAllows": [
+      "fresh original metadata read",
+      "explicit authorized idempotent metadata close"
+    ],
+    "browserAcknowledgement": {
+      "explicit": true,
+      "requiresMatchingCompleteRecordSchemaIdsAndHashes": true,
+      "onlyCorrespondingBrowserIntentRemoved": true,
+      "serverAttemptAndOriginalRootIdsRetained": true,
+      "automaticNewOperationOrKeyResend": false,
+      "successfulRestoreRetainedForNewManualStart": true,
+      "mismatchedOrTornRecordPreserved": true
+    },
+    "handoffClosedFixedIdsStillBlocked": true,
+    "handoffGrantRenewalRevocationArchiveAccepted": false,
+    "guidesApplied": [
+      "forms",
+      "dialog"
+    ],
+    "nativeFormsAndFilePasswordInputs": true,
+    "nativeConfirmSafeAutofocus": true,
+    "dialogReturnValueResetOnOpenAndClose": true,
+    "secretsClearedOnCancelOrPagehide": true,
+    "bearerPassphraseOrBackupPersistedInNewPanel": false,
+    "linuxRelatedModels": 187,
+    "newReceiverModelCases": 13,
+    "newRootClosedReceiptCase": 1,
+    "browser": {
+      "tests": 16,
+      "cases": [
+        "reservation reply loss without private key intent is UNKNOWN, never generic server preflight rejection",
+        "restore original backup/password authorization, native confirm, durable close across reload, explicit browser acknowledgement and return",
+        "start original backup/password authorization, native confirm, durable close across reload, explicit browser acknowledgement and return",
+        "wrong password never closes or saves a not-admitted receipt",
+        "wrong backup never closes or saves a not-admitted receipt",
+        "lost close reply requires fresh read and explicit authenticated metadata completion; Escape does not reuse an old confirmation",
+        "publish needs original bearer, saves close receipt and keeps all fixed operation IDs blocked",
+        "handoff-start needs original bearer, saves close receipt and keeps all fixed operation IDs blocked",
+        "original authenticated continuation is read-only, not an absent native original",
+        "{\"phase\":\"INTAKE\"} cannot enable closure or resend",
+        "{\"privateIntent\":true} cannot enable closure or resend",
+        "{\"foreignNamespace\":true} cannot enable closure or resend",
+        "same-origin CSRF and original UUID alone do not authorize a close",
+        "Chinese mobile layout, English native labels and secret clearing on cancel/pagehide",
+        "mismatched browser identity is retained, not acknowledged or silently removed",
+        "mismatched browser shape is retained, not acknowledged or silently removed"
+      ],
+      "productionPageAndHandler": true,
+      "actualHttps": true,
+      "rootAndDecryption": "modeled",
+      "humanMainSessionAcceptance": false,
+      "nativeKeyWrites": 0,
+      "oldClosedScenariosReplayed": false
+    },
+    "nativeMetadata": {
+      "connections": 24,
+      "actions": [
+        "gwt-sender-namespace",
+        "gwt-sender-bind",
+        "sender-reserve",
+        "sender-admission-read",
+        "gwt-sender-namespace",
+        "sender-reserve",
+        "gwt-bound-request",
+        "sender-admission-read",
+        "sender-admission-close",
+        "sender-admission-read",
+        "gwt-sender-namespace",
+        "sender-reserve",
+        "gwt-sender-namespace",
+        "sender-admission-read",
+        "gwt-sender-namespace",
+        "sender-admission-read",
+        "gwt-sender-namespace",
+        "sender-admission-close",
+        "gwt-sender-namespace",
+        "sender-reserve",
+        "sender-command",
+        "gwt-sender-namespace",
+        "gwt-sender-bind",
+        "sender-reserve"
+      ],
+      "actualUidPeers": [
+        0,
+        65534,
+        65533
+      ],
+      "allEffectiveBoundingAmbientCapsEmpty": true,
+      "noNewPrivileges": true,
+      "rootPrivateReadsRefused": [
+        true,
+        true
+      ],
+      "nativeKeyOperations": 0,
+      "systemdMainAndNativeHandler": "modeled",
+      "receiverOriginalReservedReadAndClosedReceipt": true,
+      "receiverControllerBackupAuthorizationInThisNativeRun": false,
+      "testedNativeSourceSha256": {
+        "kura_key_service.py": "04a58b49557c8bf2c7df8a566710dc103fad9f1733dc4ce6a840fb30142cc9a0",
+        "kura_key_service_lifecycle.py": "ea6ec4a3712081650185c7d6d53f57eb1f24b01ea7e33109ba6c3cef4fd1b0b0",
+        "kura_key_recovery.py": "d7a30979c2d8f25cee70c8e62bc6a4adae03673650f85e5be5a7426c58000632"
+      },
+      "testedInputClassSha256": {
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission.class": "b23e04fb5da907ad5d25b9e183db3eb18a6a502d035cd41c2bde6d0983e91fe2",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$Preflight.class": "f9c08963955dad506c5ae65b3aa7cc6db3fa783b1cc6cff4917f2df43122140c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderNamespace$Endpoint.class": "d077d8f9cee383db0aea53e5c0acfb0f016243741dd8eb6af8860cafe07807ed",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport.class": "164781c8d98a09596ac884f9d1d40bdfd9b8bcad5f4c3d57c894d6ec2125a931",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$Attempt.class": "9790878fd9e645cdf0307cef5036025591244ffae6ec2cf5d41ab55160c9dcae",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$Kind.class": "567d3f627cd5dc04aea0c24a2dde9dba04d9a0632c81831d9b30b8b649f5be2c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal.class": "fd88fd38a44d140bd8f9cee397d14078b83c4e8f0c4bcbe98f21dbb38d5c8d90",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$BeforeDispatch.class": "bc275f481651da200f9667090c8d0a8e4555035f963b86788a244c1b24191eba",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient$Exchange.class": "e7d4f56eac0b33d2a9e81e9c9ff1e8b400ffdadc8ba950653aebd40226505baa",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyNoDispatchJournal$1.class": "ff5b8bf61e85ddabfdcf79c5d1ea99e4550d5264ea659d5417d053db4c640867",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$Endpoint.class": "012b04d26ee7b31e1d6201f8ec6b9f2ea3f5a8c1a485d1ead4882caf3aaa30ff",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyClient.class": "f6f548b20373ea04e7b36a38cddb8e64d9576ff7999f15967e6b3b92e6602563",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$Scope.class": "dd64006250a75e13d509a9855052aba12a2b48e83482a853702e3e0b80ae76fe",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderNamespace.class": "0218adab142e5d4002b24c24745fe69c4e1dfcf9c621f760bbd024cf1a689fca",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission$NotDispatched.class": "b1d7fb146ce8b3e2b63a3fb5f25a124a30c548fbb30903a9517b7ce7656f465c",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeySenderAdmission$NotAdmitted.class": "8188b102fd652697f518bd18dcabc32520c6e4c138ac24d77fc8773a57cff0d0",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyWorkflowAdmission.class": "7b4462aad645dd9ad4452e1beb518b87660ea78edffed381af53c2c642394337",
+        "org/eclipse/kura/web/server/keybackup/GatewayKeyRootTransport$PeerCheck.class": "f2e2590123e659b7fc3eb1cfafdb1a511cbf7f70655ad7f44f77bb70b055f94e",
+        "org/eclipse/kura/web/shared/model/GwtGatewayKeyAdmission.class": "64f7a2458f48ccd14cc9792b244885a6ba20716fa02dd3c79b5fda67f305e526"
+      },
+      "productionUiJarClassesExact": true
+    },
+    "gwtProductionChangedThisIncrement": false,
+    "previousGwt138JvmAnd9BrowserProofRemainAtSourceHead": "8a4eb9fb1505194f760d410e4e203d5b5feca46f",
+    "previousGwtProofReplayedThisIncrement": false,
+    "actualInstalledMainHumanSessionXsrfAcceptance": false,
+    "allPrivateIntentAndLifecycleStatesAccepted": false,
+    "remaining": [
+      "legitimate original settlement for existing private key intents, early partial markers and Root INTAKE without replay",
+      "original handoff grant renewal/revocation/archive; fixed closed operation IDs never reused",
+      "legacy unregistered/failed/moved namespace migration, every native lifecycle state and formal paired components/versions/binary/cohort/install order",
+      "installed Main/human ADMIN/XSRF/GWT/HTTPS joint acceptance, all providers and all 12 parent groups"
+    ]
   }
 }
