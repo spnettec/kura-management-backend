@@ -1,0 +1,249 @@
+{
+  "recordedAt": "2026-11-16T22:33:45.969565+00:00",
+  "status": "bounded GWT archive UI/API candidate; full goal active",
+  "sourceHeads": {
+    "core": "be66a9f95445ef6b848076f8675422ed01500cc0",
+    "gwt": "25fd6b7328dc38e2df44f488b1d093dbccaf3758",
+    "consoleDocsParent": "c8a3c58c17cd412949ce53383ea99f87a18f25e5"
+  },
+  "behavior": [
+    "Owned physical LEGACY/GENERATION/HANDOFF/ADMISSION/NOT_DISPATCHED history in 20-record pages; list performs no Root request and keeps archived originals visible",
+    "ADMIN/XSRF/HTTPS and pure bounded selectors precede private I/O; operator is derived from the authenticated session; client never supplies a private path, metadata ID, or Root action",
+    "Read-only original review binds private bytes, current Root proof and saved local intent into the confirmation digest; stale confirmation creates no private archive intent or Root write",
+    "One explicit metadata dispatch after native confirmation; local original metadata IDs survive reload and offline Root; missing original Root proof and uncertain HTTP outcomes never enable a late first send",
+    "Only a matching saved Root archive intent allows explicit same-ID metadata continuation; ordinary reads never continue; standalone private non-dispatch fences have no continuation path",
+    "Native dialog with safe Cancel autofocus, cleared returnValue, browser focus ownership; labelled native controls, guarded aria-disabled actions, one result status and progress, responsive scoped styles",
+    "No key, backup, passphrase, bearer, Root path or requestTag in new archive views; no original file or old ID is removed and no activity cap is raised"
+  ],
+  "validation": {
+    "jvmTests": 180,
+    "jvmFailures": 0,
+    "jvmErrors": 0,
+    "jvmSkipped": 0,
+    "browser": {
+      "tests": 19,
+      "cases": [
+        "read-only selection and preview; native dialog, labels, safe autofocus, Tab, Shift+Tab, Escape and Cancel",
+        "LEGACY real GWT RPC archives once, keeps original bytes/IDs and survives reload",
+        "GENERATION real GWT RPC archives once, keeps original bytes/IDs and survives reload",
+        "HANDOFF real GWT RPC archives once, keeps original bytes/IDs and survives reload",
+        "ADMISSION real GWT RPC archives once, keeps original bytes/IDs and survives reload",
+        "NOT_DISPATCHED real GWT RPC archives once, keeps original bytes/IDs and survives reload",
+        "NOT_DISPATCHED_BOUND real GWT RPC archives once, keeps original bytes/IDs and survives reload",
+        "LEGACY missing Root original is query-only; aria-disabled handlers cannot resend or continue",
+        "NOT_DISPATCHED missing Root original is query-only; aria-disabled handlers cannot resend or continue",
+        "only explicit original metadata continuation finishes a retained Root intent under the same archive ID",
+        "lost HTTP reply clears write permission; only original query recovers the already recorded proof",
+        "offline Root retains the saved original archive ID and permits only query",
+        "changed proof requires a new preview; stale native dialog return value plus Escape never confirms",
+        "foreign-owner real servlet authorization denies preview and mutation",
+        "deny-admin real servlet authorization denies preview and mutation",
+        "hidden view ignores a late preview and requires selection/review after reactivation",
+        "late XSRF response cannot dispatch after the view is hidden",
+        "physical history uses 20-record pages with working previous/next and no Root metadata write",
+        "Chinese mobile layout has no horizontal overflow and uses the native safe confirmation"
+      ],
+      "productionWidget": true,
+      "actualGwtRpc": true,
+      "actualHttps": true,
+      "rootReplies": "synthetic",
+      "humanMainSessionAcceptance": false,
+      "nativeKeyWrites": 0,
+      "oldClosedScenariosReplayed": false
+    },
+    "productionJar": {
+      "sourceTree": "8ed23fa79287e166c0ce0642ab726157de319f28",
+      "jarPath": "kura-management-ui/bundles/org.eclipse.kura.web2/target/org.eclipse.kura.web2-3.0.0-SNAPSHOT.jar",
+      "jarBytes": 34133957,
+      "jarSha256": "3204cb5f68eb129de81a07993f63f7f7756067ac32b24fea7f0b9aeb87abb78b",
+      "java11ClassesMatched": 60,
+      "fixtureClassesPackaged": false,
+      "gwtPermutations": {
+        "login": 6,
+        "denali": 6
+      }
+    },
+    "jdk": 21,
+    "maven": "3.10.1",
+    "browserEngine": "Chromium",
+    "graphScope": "3 new production archive UI/dialog/catalog paths have current best-effort no-recorded-issue metadata; known unrelated denali.css/tinymce parse gaps remain"
+  },
+  "scopeLimits": {
+    "deployed": false,
+    "actualRootArchiveRpcInNewCatalog": false,
+    "actualInstalledMainSession": false,
+    "humanAdminXsrfAcceptance": false,
+    "fullCohortAssembled": false,
+    "recoveryArchiveButtons": false,
+    "fullProviderAcceptance": false,
+    "oldClosedOneTimeAcceptanceReplayed": false,
+    "browserRootAndHumanSession": "explicit synthetic models"
+  },
+  "preservation": {
+    "fixtures": [
+      {
+        "privateFilesExactMetadata": 7,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 3792,
+            "startTicks": "4469038",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4229,
+            "startTicks": "4480291",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 0
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 0,
+          "startups": 0
+        },
+        "containerId": "863ea5ecfeb0558eabe4c110a5973efd26fbad58e076c48080b2e9bba5a40f0a"
+      },
+      {
+        "privateFilesExactMetadata": 10,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 5174,
+            "startTicks": "4319777",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4735,
+            "startTicks": "4311323",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 4893,
+            "startTicks": "4319768",
+            "status": {
+              "Uid": "995\t995\t995\t995",
+              "Gid": "990\t990\t990\t990",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 1,
+          "startups": 2
+        },
+        "containerId": "a04bfb08590b93fa3351447ded42c24b576c676699216f3636ff3ff658190c07"
+      },
+      {
+        "privateFilesExactMetadata": 21,
+        "runtimeDataContentsExact": 6,
+        "processes": {
+          "kura.service": {
+            "pid": 10430,
+            "startTicks": "3504160",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 10576,
+            "startTicks": "3506794",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 4
+        },
+        "containerId": "5f6b45125fa35903f4c725aeadfdaa22025c4f2b62e33d156309fe09baf629bd"
+      }
+    ],
+    "unknownRedispatched": false,
+    "nativeKeyWrites": 0,
+    "localOnly": true,
+    "pushed": false
+  },
+  "cleanup": {
+    "recordedAt": "2026-11-16T22:32:59.073557+00:00",
+    "paths": [
+      {
+        "path": "kura-management-ui/bundles/org.eclipse.kura.web2.test/target/archive-ui-browser",
+        "bytes": 98228208,
+        "files": 38,
+        "removed": true
+      },
+      {
+        "path": "kura-management-ui/bundles/org.eclipse.kura.web2/target/gwt-webapp",
+        "bytes": 122723141,
+        "files": 687,
+        "removed": true
+      },
+      {
+        "path": "kura-management-ui/bundles/org.eclipse.kura.web2/gwt-unitCache",
+        "bytes": 125212665,
+        "files": 21,
+        "removed": true
+      }
+    ],
+    "bytes": 346164014,
+    "backupsMade": false,
+    "currentJarPreserved": true,
+    "originalRuntimePathsTouched": false,
+    "dockerTouched": false
+  },
+  "nextInternalPending": [
+    "Connect independent HTTPS recovery archive controls using existing authorization gates and original IDs",
+    "Validate the new GWT catalog against actual Root UDS/Main session and assemble current production cohort; keep synthetic browser evidence separate",
+    "Continue complete key/provider lifecycle, least privilege/broker, package/platform matrix and all frozen parent groups"
+  ],
+  "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentGroupsRemainOpen": true,
+  "onlyExternalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ]
+}
