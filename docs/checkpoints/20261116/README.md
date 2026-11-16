@@ -8,6 +8,7 @@
 
 ## 已保存的最新工作
 
+- 最新GWT本地源码 `d83ba8ee14` 新增独立交接类型协议、同JVM Unix连接和ADMIN/XSRF/HTTPS入口；发送前落盘固定ID意图，重复请求与NOT_RECORDED只查询原授权，不重发、不换ID。原操作人限定显式bearer读取，发送日志及只读页面不存bearer。原密钥页新增中英文交接申请查询区，按modern-web-guidance/accessibility使用原生标题、label/select/button、progress和完成状态提示。JDK21下双GWT模块12个编译变体、打包及51项相关单元测试通过；另6项无密钥Linux/JDK21实际UDS连接检查通过，选定9个server/shared类为Java11且与打包产物一致，新RPC序列化策略在包内。它不是实际安装Main内的GWT/XSRF/HTTPS/浏览器联合验收；页面签发、独立HTTPS交接操作与发送意图、原授权续期/撤销/归档及完整台账继续pending。Core/native源码未改，原生闭环证明仍精确属于各自旧提交，不重跑。详见 [GWT交接检查点](gwt-key-handoff-checkpoint.json)。
 - 最新Core服务实现 `8b0747a10c`，后续测试提交见 [本轮检查点](managed-core-start-checkpoint.json)；agent/networking仍为 `3cf66e4` / `c16cf57`。Root侧新增固定操作交接凭据：绑定当前已注册Core实例/源/包cohort、原准备及验证、预选发布和启动ID，15分钟boottime窗口只允许首次发布/启动；重复命令仅读匹配原请求HMAC的结果，已受理发布的认证本地续接可在窗口后继续。凭据不接受任意路径/命令/替换ID，不改变备份＋口令的原钥恢复权限，Root授权记录不存bearer。282项相关模型通过；新增真实Core Java进程及冷恢复UID/agent cgroup核验，在同一原夹具完成剩余检查，没有发布/启动新代。首次自动化漏列正确拒绝码UNMANAGED_WRITER而停止，已修正但未重跑整轮；原进程内整轮凭据元数据基线未持久化，不外推全程元数据连续。它不是GWT人类ADMIN/XSRF、HTTPS/浏览器或完整broker验收。新ARM64包45项及提取reader通过，9脚本匹配Git；旧7e包无live bind后删。下一步接GWT类型/权限、独立HTTPS与发送意图日志，以及原凭据续期/撤销/归档；界面发布未开放，完整原台账不缩项。
 - 此前Core服务实现 `7e1415b02c` 新增原发布的认证续接凭据、只读查询和显式本地续接：只有原StopUnit确认及独占写锁交接已完成才留凭据，原UUID/请求HMAC、旧文件完整身份、包/cohort、同boot/原锁inode及所有其他UNKNOWN均须匹配。252项相关隔离模型通过。实际新安装发生规范key原子替换EBUSY，主Kura停止且原INTENT保持；在同一夹具释放故障、重启仅该密钥服务并核对原凭据/前缀不变后，原3条操作结算SUCCEEDED，普通启动仍需独立授权。首次自动化因夹具挂载命名空间问题未通过，后在原环境验证剩余步骤；未重建/重放整轮。现存ring和暂存原件在成功续接期间完整元数据不变，旧密文字节匹配原Core输出；首次进程内整轮旧密文元数据基线未持久化，不外推。这是7e原范围，不套给后续已改动的native。
 - 此前Core `861352a3a3`（服务实现 `f68fa1ce91`）已实现 `generation-history` 分页、保留全部旧材料的 `generation-cancel`，以及仅核验并结算原取消回执的 `generation-cancel-recover`；缺原回执不补造，其他UNKNOWN仍阻止。新一轮准备只在全部旧记录经原回执证明CANCELLED/PUBLISHED后准入，不删目录绕过。219项相关隔离Linux/JDK21模型检查和1次实际systemd Root worker新接口联调通过；真实服务重启后原取消结果可读、两轮暂存均保留、现用密钥完整元数据不变，实际kurad/recovery/agent cgroup权限边界符合预期。这次提取deb运行服务，不是完整安装/Main/GUI验收；其原范围保留，不重放来更新源码戳。
@@ -56,7 +57,7 @@
 
 后续直接从 Git 检查点继续。隔离源码使用 Git worktree 或明确只含源码的导出，禁止递归复制旧 `target/`、`.phase*-retained`、`node_modules`、Maven/Cargo 缓存和历史运行库到新工作区。相同用途复用一套构建输出；阶段结束及时清理确认停用的编译缓存与运行库。按用户最新要求，确认可丢弃的调试文件直接删除，不为它们另建备份；真实密钥、加密数据、未确认个人数据、实际运行输入和原 UNKNOWN 记录按需保留。源码以本地 Git 保存，不再依赖旧证据链启动任务。
 
-界面随相关功能逐步应用 `modern-web-guidance`；按用户最新要求，不把全站样式/组件改造作为主任务。本轮仅研究对话框和无障碍指南，没有改动前端或扩大冷恢复授权范围。
+界面随相关功能逐步应用 `modern-web-guidance`；按用户最新要求，不把全站样式/组件改造作为主任务。最新GWT增量仅接入原交接申请的只读核对，使用accessibility指南；独立交接操作页继续属于密钥主线，备份＋口令的原钥恢复权限未扩大。
 
 ## 2026-11-16 空间清理结果
 

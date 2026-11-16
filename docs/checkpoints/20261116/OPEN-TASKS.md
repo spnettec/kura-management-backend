@@ -4,6 +4,8 @@
 
 ## 内部 pending
 
+最新GWT本地源码 `d83ba8ee14` 已接独立类型协议、同JVM Root客户端和ADMIN/XSRF/HTTPS门禁，以及32份上限、无bearer的固定ID发送意图；任何已有意图只读原结果，包括NOT_RECORDED。只读页面可读取申请列表并核对原授权，应用modern-web-guidance/accessibility；没有签发/发布/启动按钮。双GWT模块12变体、打包和51项相关单元测试通过，6项Linux实际连接检查证明同JVM PID/普通UID与非Root peer拒绝。尚无实际安装Main内的人类会话/XSRF/HTTPS/浏览器联合验收；准备/核验/签发页面、独立HTTPS发送意图、原授权续期/撤销/归档仍pending，12个内部父项均未关闭。详见 [GWT交接检查点](gwt-key-handoff-checkpoint.json)。
+
 最新Core服务实现 `8b0747a10c` 新增Root固定操作交接授权，282项相关模型通过；真实Core进程签发/读取、冷恢复UID受限查询及agent/同UID其他进程拒绝已在同一夹具核验。未发布或启动新代。首次自动化漏列UNMANAGED_WRITER正确拒绝码而失败，已修正但未重跑；整轮凭据元数据初始基线未持久化，不能标为全程元数据或完整自动化通过。当前仅native协议，不是GWT人类管理员/XSRF、HTTPS/浏览器或完整broker。GWT类型/角色接口、独立页及发送意图日志、原授权续期/撤销/归档仍pending；过期不能换ID绕过，NOT_RECORDED不能当成重发许可。现有恢复页的备份＋口令授权未扩大。
 
 最新Core服务实现 `7e1415b02c` 已加入带原停止/写锁交接认证凭据的发布本地续接，252项相关隔离模型通过。一个全新安装在实际EBUSY后保留原INTENT，重启仅该密钥服务仍保留同一原凭据，之后按原UUID完成剩余固定文件，未重发发布/Stop/Start；3条原操作结算，普通启动仍拒绝未经独立授权。首次自动化因夹具命名空间未通过，后在同一原环境核验剩余步骤；未重跑整轮，不记为完整自动化绿灯。完整边界见本轮检查点。无原停止凭据、跨boot/原锁重建、维护启动、独立GUI/权限grant、全部provider及两个保留原UNKNOWN仍pending。
@@ -37,4 +39,4 @@
 
 ## 下一步建议顺序
 
-下一步接GWT中独立的类型协议和ADMIN/XSRF入口、独立HTTPS交接页与发送意图日志；只接入本轮固定ID凭据，不复用旧单钥DTO或扩大备份口令授权。先保存意图再分发，UNKNOWN只读原结果，NOT_RECORDED不构成重发许可。原凭据续期/撤销/归档和过期后首次启动的界面恢复须补齐，不以脚本替代。runtime/binary/cohort及完整privileged broker、缺原停止凭据/跨boot/旧锁重建、维护启动、全部provider原子重加密/退役及完整台账继续推进。安装agent仍阻止代发布，不放宽门禁。界面随功能逐步应用modern-web-guidance，不另行开展全站改造。JDK最低21，暂不追加27；不重放README闭环ID，不依赖旧大型证据/缓存继续。
+下一步继续GWT准备/备份核验/签发的完整交互与实际Main内会话/XSRF/HTTPS核验，以及独立HTTPS交接页和该发送方自己的持久意图日志；不能把本次GWT签发意图日志当成发布/启动发送方日志。只接固定ID凭据，不复用旧单钥DTO或扩大备份口令授权。先保存意图再分发，UNKNOWN只读原结果，NOT_RECORDED不构成重发许可。原凭据续期/撤销/归档和过期后首次启动的界面恢复须补齐，不以脚本替代。runtime/binary/cohort及完整privileged broker、缺原停止凭据/跨boot/旧锁重建、维护启动、全部provider原子重加密/退役及完整台账继续推进。安装agent仍阻止代发布，不放宽门禁。界面随功能逐步应用modern-web-guidance，不另行开展全站改造。JDK最低21，暂不追加27；不重放README闭环ID，不依赖旧大型证据/缓存继续。

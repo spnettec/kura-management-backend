@@ -1,10 +1,11 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T00:49:39.522844+00:00",
+  "recordedAt": "2026-11-16T04:22:10.312533+00:00",
   "sourceHeads": {
     "kura": "42f1910a60796e06e3d24bf499a1557f37eb3dc5",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
-    "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d"
+    "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
+    "kura-management-ui": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40"
   },
   "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
   "controlledCore": {
@@ -499,5 +500,13 @@
     "currentPackageRetained": true,
     "legacyBaselineRetained": true,
     "remainingContainers": 6
+  },
+  "gwtHandoff": {
+    "uiSourceHead": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40",
+    "checkpoint": "gwt-key-handoff-checkpoint.json",
+    "unitTests": 51,
+    "linuxTransportTests": 6,
+    "actualInstalledMainBrowserAcceptance": false,
+    "nativeCodeChanged": false
   }
 }

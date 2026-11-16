@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T04:21:03.751562+00:00",
+  "uiSourceHead": "d83ba8ee14c7d6f853c473dc1c51b786fded6c40",
+  "nativeCurrentHead": "42f1910a60796e06e3d24bf499a1557f37eb3dc5",
+  "nativeServiceSourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
+  "nativeCodeChanged": false,
+  "authority": "Local Git source and OPEN-TASKS.md; old outputs are not prerequisites",
+  "rpc": {
+    "path": "/admin/denali/gatewayKeyHandoff",
+    "methods": [
+      "createHandoff",
+      "getHandoff",
+      "getHandoffToken",
+      "listHandoffs"
+    ],
+    "required": [
+      "ADMIN",
+      "XSRF",
+      "HTTPS"
+    ],
+    "operator": "Authenticated server session",
+    "peer": "Actual Core JVM; native owner checks unchanged",
+    "tokenRead": "Original authenticated operator only"
+  },
+  "senderIntent": {
+    "limit": 32,
+    "immutable": true,
+    "beforeFirstDispatch": "File force and parent-directory sync",
+    "storesBearer": false,
+    "existingIntentAllows": "Original read only",
+    "notRecordedAllowsResend": false,
+    "newIdsCannotBypassSamePreparationOrFixedOperations": true
+  },
+  "ui": {
+    "mode": "Read original request metadata only",
+    "createPublishOrStartButtons": false,
+    "bearerReceived": false,
+    "automaticPolling": false,
+    "guides": [
+      "accessibility"
+    ],
+    "nativeElements": [
+      "h2",
+      "label/select",
+      "button",
+      "progress",
+      "dl/dt/dd"
+    ],
+    "completionStatusOnly": true,
+    "loadingAnnouncements": false
+  },
+  "build": {
+    "jdk": 21,
+    "runtimeMinimum": 21,
+    "unitTests": 51,
+    "failures": 0,
+    "skipped": 0,
+    "gwtModules": 2,
+    "gwtPermutations": 12,
+    "artifact": {
+      "bytes": 158247652,
+      "sha256": "5052944bf5d4f496255388d732835b0923815087c32d94ba1834931ce702daf4",
+      "verifiedServerClasses": 9,
+      "bytecodeRelease": 11,
+      "newRpcPolicyPresent": true,
+      "gwtModules": 2,
+      "gwtPermutations": 12,
+      "unitTests": 51,
+      "linuxTransportTests": 6,
+      "failures": 0,
+      "skipped": 0,
+      "fullGatewayAcceptance": false,
+      "browserAcceptance": false
+    }
+  },
+  "linuxTransport": {
+    "tests": 6,
+    "cases": [
+      "same-jvm-pid-and-nonroot-core-uid",
+      "malformed-reply-is-unknown",
+      "world-writable-socket-before-dispatch",
+      "writable-parent-before-dispatch",
+      "linked-socket-before-dispatch",
+      "nonroot-peer-no-request-bytes"
+    ],
+    "runtimeMinimum": 21,
+    "bytecodeRelease": 11,
+    "nativeGenerationAcceptance": false,
+    "keyMaterialCreated": false
+  },
+  "actualAcceptance": {
+    "fullInstalledCorePeerAndRpc": false,
+    "humanAdminSession": false,
+    "xsrfOverHttp": false,
+    "httpsBrowser": false,
+    "allProviders": false,
+    "nativeGenerationMutations": false
+  },
+  "remaining": [
+    "GWT preparation / backup verification / issuance UI",
+    "Independent HTTPS handoff page and its own durable command sender journal",
+    "Real installed Main / ADMIN / XSRF / HTTPS / browser integration",
+    "Same-original renewal / revocation / archive and expired first-start UX",
+    "All 12 internal pending groups and exactly 3 external deferred boundaries"
+  ],
+  "preserved": {
+    "originalContainers": 3,
+    "originalProcesses": 7,
+    "exactPrivateFileMetadata": 38,
+    "oldRuntimeDataContents": 6,
+    "unknownRedispatch": false,
+    "newGatewayDeployment": false,
+    "remotePush": false
+  },
+  "paths": {
+    "service": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/GwtGatewayKeyHandoffServiceImpl.java",
+    "journal": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/server/keybackup/GatewayKeyHandoffJournal.java",
+    "ui": "kura-management-ui/bundles/org.eclipse.kura.web2/src/main/java/org/eclipse/kura/web/client/ui/security/GatewayKeyHandoffHistoryUi.java"
+  }
+}
