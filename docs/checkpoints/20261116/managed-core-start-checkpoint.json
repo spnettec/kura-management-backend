@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T17:04:52.148317+00:00",
+  "recordedAt": "2026-11-16T17:29:13.372622+00:00",
   "sourceHeads": {
-    "kura": "43e3ad899e75f3983d336ac536607e7ac0ff400d",
+    "kura": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d",
-    "kura-management-ui": "be67271d039bb20f23c17576f5c19f4257dafddd"
+    "kura-management-ui": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab"
   },
   "authority": "Git source and OPEN-TASKS.md; old intermediate outputs are not continuation prerequisites",
   "controlledCore": {
@@ -89,10 +89,10 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "sourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
-    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161614.b36afab-1_arm64.deb",
-    "bytes": 203400558,
-    "sha256": "2e0d4ead0ea78f1c0e49b4438085d3421aa873798fadcd1d67e11632ae134387",
+    "sourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161724.c3699e2-1_arm64.deb",
+    "bytes": 203401706,
+    "sha256": "813eb42b05cb6512f1446d77a8bd08dee58e397864984e833e646a4692577913",
     "verifiedFiles": 45,
     "readerRoles": {
       "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
@@ -111,16 +111,11 @@
     "nativeInputPythonSourcesExact": 4,
     "actualCipherInputJarMatchesPackage": true,
     "nativeUidConnections": 179,
-    "gwtRetainedIntentNativeKinds": [
-      "LEGACY",
-      "GENERATION",
-      "HANDOFF"
-    ],
+    "additionalNamespaceConnections": 13,
     "originalGatewayDeployed": false,
-    "actualInstalledMainBrowserAcceptance": false,
-    "newUnusedHandoffNativeTransportAcceptance": false,
-    "newStartLeaseNativeTransportWriteAcceptance": false,
-    "newStartLeaseInstalledMainAcceptance": false
+    "actualInstalledMainAcceptance": false,
+    "capacityInstalledMainAcceptance": false,
+    "actualInstalledGwtHumanMainAcceptance": false
   },
   "unacceptedSyntheticStart": {
     "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
@@ -145,7 +140,7 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "P1 reproduced: renewing can consume the last shared-admission or native-operation slot and starve the fixed original startup; the native-full case reaches INTAKE without a native startup original. Implement atomic end-to-end capacity commitments before archive work; no original resend or ID substitution",
+    "Source candidates now protect both original handoff capacity budgets and fix the GWT Main component-loader contract. Near-full actual installed Main/human GWT acceptance, UI capacity recovery and broader interrupted continuation/renewal combinations remain internal pending; old INTAKE never rewritten or resent",
     "completed grant archival, historical/shared-admission capacity, uncertain native lease intent recovery and complete authorization lifecycle remain internal pending; retain all original bytes, IDs and fences",
     "the successful installed b36 scenario covers local-Root-issued dedicated authority plus actual recovery Main/HTTPS/browser and one Core profile. Full GWT human ADMIN/XSRF issuer joint acceptance, all providers/full broker, legacy backup-tab joint flow and startup actual-backup authorization remain pending",
     "a published grant with any prior fixed-start reservation, permanent NOT_ADMITTED, private intent or UNKNOWN cannot use unattempted-first-start renewal; legal recovery for these originals, missing grants, previous boot and replaced writer locks remains pending",
@@ -251,7 +246,7 @@
     "cancellationAndHistoryPagingImplemented": false,
     "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
   },
-  "servicePayloadSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+  "servicePayloadSourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
   "previousPackageBeforePreparationHistory": {
     "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
@@ -2576,5 +2571,51 @@
     "originalCipherPreservedAndDecrypted": true,
     "capacityHeadroomP1Unfixed": true,
     "scopeOnlyAtDeclaredProductionSource": true
+  },
+  "previousPackageBeforeCapacityAndMainLoader": {
+    "sourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161614.b36afab-1_arm64.deb",
+    "bytes": 203400558,
+    "sha256": "2e0d4ead0ea78f1c0e49b4438085d3421aa873798fadcd1d67e11632ae134387",
+    "verifiedFiles": 45,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "runtimeInstalled": false,
+    "unknownRedispatched": false,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+    "pythonBytecodeExcluded": true,
+    "archiveMembersChecked": 335,
+    "nativeInputPythonSourcesExact": 4,
+    "actualCipherInputJarMatchesPackage": true,
+    "nativeUidConnections": 179,
+    "gwtRetainedIntentNativeKinds": [
+      "LEGACY",
+      "GENERATION",
+      "HANDOFF"
+    ],
+    "originalGatewayDeployed": false,
+    "actualInstalledMainBrowserAcceptance": false,
+    "newUnusedHandoffNativeTransportAcceptance": false,
+    "newStartLeaseNativeTransportWriteAcceptance": false,
+    "newStartLeaseInstalledMainAcceptance": false
+  },
+  "handoffCapacityAndMainLoader": {
+    "checkpoint": "handoff-capacity-checkpoint.json",
+    "sourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+    "capacitySourceHead": "ea15e5331593e8bf333b21a7974d20ec5b347671",
+    "sourceCandidateFixed": true,
+    "archiveImplemented": false,
+    "installedMainAcceptance": false,
+    "nearFullConfiguredCapacityCases": 22,
+    "actualUdsConnections": 179,
+    "additionalNamespaceConnections": 13,
+    "uiJavaProductionUnchanged": true
   }
 }

@@ -199,5 +199,13 @@
   "goalStatus": "active",
   "ordinaryWeeklyUsedPercent": 90,
   "ordinaryUsageAllowed": true,
-  "creditsUnchanged": true
+  "creditsUnchanged": true,
+  "subsequentCapacityAndMainLoaderFix": {
+    "checkpoint": "handoff-capacity-checkpoint.json",
+    "sourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+    "previousInstalledScenarioReplayed": false,
+    "installedCapacityAcceptance": false
+  },
+  "artifactRetained": false,
+  "artifactRemovedAfterCurrentReplacement": true
 }

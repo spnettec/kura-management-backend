@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "recordedAt": "2026-11-16T17:04:52.148317+00:00",
-  "uiSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
-  "nativeCurrentHead": "43e3ad899e75f3983d336ac536607e7ac0ff400d",
-  "nativeServiceSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
-  "nativeCodeChanged": false,
+  "recordedAt": "2026-11-16T17:29:13.372622+00:00",
+  "uiSourceHead": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab",
+  "nativeCurrentHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+  "nativeServiceSourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+  "nativeCodeChanged": true,
   "authority": "Local Git source and OPEN-TASKS.md; old outputs are not prerequisites",
   "rpc": {
     "path": "/admin/denali/gatewayKeyHandoff",
@@ -123,7 +123,7 @@
     "scope": "actual installed Main and Root; browserModel is separate synthetic Root and human session"
   },
   "remaining": [
-    "P1 reproduced: renewing can consume the last shared-admission or native-operation slot and starve the fixed original startup; the native-full case reaches INTAKE without a native startup original. Implement atomic end-to-end capacity commitments before archive work; no original resend or ID substitution",
+    "Source candidates now protect both original handoff capacity budgets and fix the GWT Main component-loader contract. Near-full actual installed Main/human GWT acceptance, UI capacity recovery and broader interrupted continuation/renewal combinations remain internal pending; old INTAKE never rewritten or resent",
     "completed grant archival, historical/shared-admission capacity, uncertain native lease intent recovery and complete authorization lifecycle remain internal pending; retain all original bytes, IDs and fences",
     "the successful installed b36 scenario covers local-Root-issued dedicated authority plus actual recovery Main/HTTPS/browser and one Core profile. Full GWT human ADMIN/XSRF issuer joint acceptance, all providers/full broker, legacy backup-tab joint flow and startup actual-backup authorization remain pending",
     "a published grant with any prior fixed-start reservation, permanent NOT_ADMITTED, private intent or UNKNOWN cannot use unattempted-first-start renewal; legal recovery for these originals, missing grants, previous boot and replaced writer locks remains pending",
@@ -2473,5 +2473,19 @@
     "originalCipherPreservedAndDecrypted": true,
     "capacityHeadroomP1Unfixed": true,
     "scopeOnlyAtDeclaredProductionSource": true
+  },
+  "uiTestSourceHead": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab",
+  "uiJavaProductionSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+  "handoffCapacityAndMainLoader": {
+    "checkpoint": "handoff-capacity-checkpoint.json",
+    "sourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+    "capacitySourceHead": "ea15e5331593e8bf333b21a7974d20ec5b347671",
+    "sourceCandidateFixed": true,
+    "archiveImplemented": false,
+    "installedMainAcceptance": false,
+    "nearFullConfiguredCapacityCases": 22,
+    "actualUdsConnections": 179,
+    "additionalNamespaceConnections": 13,
+    "uiJavaProductionUnchanged": true
   }
 }

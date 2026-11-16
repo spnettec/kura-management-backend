@@ -8,11 +8,19 @@
 
 ## 已保存的最新工作
 
+- 2026-11-17 Core `ea15e53315` 已修复固定发布/首次启动的共同准入与原生操作双侧容量承诺；`c3699e2cb2` 另修复 GWT Main 身份核验的加载接口错误，GWT 测试适配提交 `a1e7132a5e`，Java 生产源码仍 `be67271d03`。不新增实际启动预留：承诺从签名授权和未物化签发 RESERVED/INTAKE 推导，签发预留还为后续两个固定操作留下双侧名额；共同预留、INTAKE 前复核及所有原生 journal 写者使用同一预算。过期/缺失/UNKNOWN不释放，原件占用相应名额，正面永久未用撤销可释放未用承诺。255 边界的新续期现在在预留/INTAKE之前被拒；两侧各254条时，一次续期＋原固定启动可各达256条且成功，无关请求不能抢占。旧 INTAKE/缺原件没有被改判、关闭或重发；未删除历史、未提高上限。
+
+容量22项＋相关回归共326项选择，其中324通过、2项因新夹具未建socket目录跳过；随后仅补测这2项真实socket并通过。GWT Main 新检查使用实际受保护cohort加载器及真实内核UID/PID，修复前1项因缺name参数报错，修复后3项通过；systemd/cgroup仍明确为模型。23项命名空间检查通过；实际三UID UDS 179连接及独立命名空间13连接通过，Root/客户端零能力、NNP1及同UID异PID拒绝保持，Root仍不能读两方私有目录；原生突变handler和Main/systemd为模型，不能冒充完整人类GWT验收。
+
+新的ARM64 Core包203,401,706字节，SHA256 `813eb42b05cb6512f1446d77a8bd08dee58e397864984e833e646a4692577913`；45项配套文件及提取reader通过，9脚本/3恢复资产/3单元逐字节等同Git和stage，335归档成员无pyc；实际传输4个源码及45个Java输入类匹配包。UI生产Java未改、未重编。当前包尚未安装到原现场，b36真实900秒单Core已闭环场景仅保留其原范围，不重放或外推。
+
+本轮临时容器/JDK卷均删；删除已替换b36包与可重建zip/SFX 3文件，释放610,501,440字节（582.2MiB），无备份，保留新deb、stage和旧升级输入。仍6容器/17卷，原3现场/7进程/38私有元数据/6旧数据继续只读核对；无推送。历史/完成授权归档、界面容量处置、真实GWT人类会话及全部provider仍为内部pending；双槽承诺不保证无限续期/continuation。完整12父项与仅3外部边界不变，目标active。详见 [容量检查点](handoff-capacity-checkpoint.json)。
+
 - 2026-11-17 已在全新隔离安装场景验证 Core `b36afab0d6` 的**实际原首次启动续期**；可复现测试源码本地提交 `43e3ad899e`，生产文件未变。当前包及声明依赖真实安装，使用实际PID1/Core、Root和恢复Main；浏览器经实际HTTPS/生产页面与Handler执行且固定证书指纹。授权由本地Root签发，**不是GWT人类ADMIN/XSRF联合验收**。原授权按真实boot时钟等待900秒，不修改时钟或原授权。页面只各发送一次publish、start-renew、start和complete；原生准备/核验/发布/续期/启动5项均成功，原启动编号不变；续期后普通启动门禁仍拒绝，明确启动后实际新JVM的Crypto、配置审计facade及快照bundle就绪，合成旧密文原字节保留且解密成功，新密文使用发布钥。原grant完整元数据及Root/恢复PID/ticks保持，Root/恢复全能力集0、NNP1，同恢复UID的其他进程在预留前被拒。Core仍保留原11 ambient/13 bounding、NNP0，完整broker未完成；运行profile声明256MiB堆、DS探针和旧unit种子，不能外推全部provider/平台。
 
 这一新场景1项自动化997.044秒通过，6个原编号已闭环只读；专用容器和JDK卷已删，不恢复或在其他Root中查询这些编号。首次host测试脚本在启动worker/安装前因stdio描述符未打开失败，修正后新夹具完整通过，未分发密钥请求、未重放旧闭环。内部Docker网络端口探测不可达，最终采用断开网卡、仅lo及透明TLS字节转发，没有替换Root/HTTPS回复。原3现场/7进程/38私有元数据/6旧数据仍精确，UNKNOWN未重发；仍6容器/17卷，无备份、无推送。
 
-同时独立模型复现两个**P1容量缺口**：255个共同准入后续期占满256，原启动预留被CAPACITY拒绝；255个原生操作后续期占满256，原启动进入INTAKE后才因CAPACITY被拒，原生启动原件缺失。没有启动Kura，也未改动实际场景。此问题未修复，不能以普通路径实测通过封签；先在共同锁内保证固定发布/启动的双侧容量承诺，再做完成授权归档/历史容量，不能仅提上限、删历史或换ID。详见 [容量审查](../../reviews/handoff-archive-capacity-review-20261117.md) 和 [实际场景检查点](first-start-installed-checkpoint.json)。完整12父项和仅3外部deferred原文不变，目标active；周普通额度90%仍可用，credits未变。界面本次复用既有生产组件，modern-web-guidance仍为次要；JDK最低21，不追加27。
+同时独立模型复现两个**P1容量缺口**：255个共同准入后续期占满256，原启动预留被CAPACITY拒绝；255个原生操作后续期占满256，原启动进入INTAKE后才因CAPACITY被拒，原生启动原件缺失。没有启动Kura，也未改动实际场景。这是b36时的未修复状态；后续双侧容量承诺源码修复和GWT Main修复见页首，归档/全部生命周期仍未完成，不能以普通路径实测通过封签，不能仅提上限、删历史或换ID。详见 [容量审查](../../reviews/handoff-archive-capacity-review-20261117.md) 和 [实际场景检查点](first-start-installed-checkpoint.json)。完整12父项和仅3外部deferred原文不变，目标active；周普通额度90%仍可用，credits未变。界面本次复用既有生产组件，modern-web-guidance仍为次要；JDK最低21，不追加27。
 
 - 2026-11-17 Core `b36afab0d6` 已接**发布确认后、尚未申请的原首次启动授权续期**。仅原交接凭据和恢复Main peer（或本地Root）可申请；Root核对原成功发布及request tag、不可变发布、原停止写者/source/generation/cohort、同boot和原writer锁、Core inactive、无agent及无其他未决操作。原固定启动编号须在全部原生目录严格缺失，且从未有任何阶段的启动预留，包括已永久关闭的NOT_ADMITTED。续期另存带Root命名空间、原grant/发布摘要和固定编号的分域HMAC回执；只给原首次启动15分钟单调时间窗口，不重写原grant、不延长发布窗口、不换原启动ID，不发布、不启动。
 

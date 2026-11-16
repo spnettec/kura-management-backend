@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-16T17:28:23.045601+00:00",
+  "sourceHeads": {
+    "kura": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+    "kura-management-ui": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab"
+  },
+  "capacityImplementationHead": "ea15e5331593e8bf333b21a7974d20ec5b347671",
+  "uiJavaProductionSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+  "capacity": {
+    "sourceCandidateFixed": true,
+    "sharedLimit": 256,
+    "nativeLimit": 256,
+    "handoffLimit": 32,
+    "startupLimit": 32,
+    "limitsRaised": false,
+    "derivedFrom": "authenticated immutable Root grants and signed outstanding sender reservations; no new writer reservation or private directory",
+    "promisedOriginals": [
+      "publicationId",
+      "startOperationId"
+    ],
+    "unmaterializedReservedOrIntakeIssuer": "two native and two shared slots; own admission also counted",
+    "admittedWriters": "shared reserve, pre-INTAKE recheck, direct native journal writers and grant creation all project the same budget",
+    "release": "existing native original consumes its promised slot; permanent positive unused revocation releases missing fixed slots; time, missing files and UNKNOWN do not release",
+    "fixedStartActuallyReservedEarly": false,
+    "preFix255Shared": "renewal succeeded; fixed-start reserve CAPACITY",
+    "preFix255Native": "renewal succeeded; fixed start became INTAKE without native original",
+    "current255Boundaries": "renewal rejected before creating any admission/INTAKE; original fixed startup slot retained",
+    "current254Both": "one renewal then the unchanged fixed start succeed; each table reaches 256",
+    "oldIntakeRewrittenOrResent": false,
+    "historicalRowsDeleted": false,
+    "archiveImplemented": false,
+    "infiniteRecoveryOrRenewalCapacityClaimed": false
+  },
+  "mainPeer": {
+    "sourceCandidateFixed": true,
+    "preFix": "generation_module() omitted required name and treated the returned namespace dict as an attribute module",
+    "correctInterface": "generation_component() preserves the protected cohort loader",
+    "realLoaderBefore": {
+      "selected": 1,
+      "errors": 1
+    },
+    "realLoaderAfter": {
+      "passed": 3
+    },
+    "kernelUidAndPidActual": true,
+    "systemdAndCgroupsModeled": true,
+    "gwtHumanAdminXsrfAcceptance": false
+  },
+  "checks": {
+    "capacitySourceHead": "ea15e5331593e8bf333b21a7974d20ec5b347671",
+    "capacityConfiguredCases": 22,
+    "capacityRegressionSelected": 326,
+    "capacityRegressionPassed": 324,
+    "capacityRegressionSkipped": 2,
+    "skipReason": "standalone harness did not create /run/kura-key-service; these exact two socket cases were subsequently run with a fresh owned socket directory",
+    "subsequentSocketCasesPassed": 2,
+    "currentMainLoaderChecks": 3,
+    "currentNamespaceChecks": 23,
+    "namespaceChecksAlsoPresentInPriorRegression": true,
+    "actualUdsConnections": 179,
+    "additionalNamespaceUdsConnections": 13,
+    "nativeMutationHandlersModeled": true,
+    "nativeKeyOperations": 0,
+    "actualCipherJarSha256": "3f8ea96b53c6be10f789d2df800026cafa716ec9b8e2ebc4e01ec708c12cdc52",
+    "testedNativeSourceSha256": {
+      "kura_key_service.py": "1cb049486860635e5649533251063bcee17023316009f5692ce6ce816e7fb360",
+      "kura_key_service_lifecycle.py": "84be9ec586d0dd3db837fa38d030aa5246f4a93b09d2e6f7325dd8d354c81bbe",
+      "kura_key_recovery.py": "f13f2494c10e2d1181d1e401286e0822a23a86ebdfe855f164808d817c97ff71",
+      "kura_key_generation.py": "b10d0d9bb84d22bda1d4cb49b974a40bdd4b61f4cf78060621e7dfd25d74de6a"
+    },
+    "javaInputClassesExactlyMatchRetainedJar": 45,
+    "sameUidForeignPidRefused": true,
+    "rootCapsAllZero": true,
+    "rootNoNewPrivs": 1,
+    "rootPrivateDirectoriesReadRefused": true
+  },
+  "artifact": {
+    "sourceHead": "c3699e2cb21447b5ac833e8bebfb9753ec254698",
+    "package": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611161724.c3699e2-1_arm64.deb",
+    "bytes": 203401706,
+    "sha256": "813eb42b05cb6512f1446d77a8bd08dee58e397864984e833e646a4692577913",
+    "verifiedFiles": 45,
+    "readerRoles": {
+      "configuration": "plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "crypto": "plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+      "offline": "libexec/key-recovery/kura-offline-recovery.jar",
+      "snapshot": "plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "currentLifecycleEmbedded": true,
+    "extractedDebReaderProbe": "PACKAGED_GENERATION_CLI_OK",
+    "runtimeInstalled": false,
+    "unknownRedispatched": false,
+    "allNineNativeKeyScriptsExactlyMatchGitAndStage": true,
+    "recoveryAssetsAndThreeUnitsExactlyMatchGitAndStage": true,
+    "pythonBytecodeExcluded": true,
+    "archiveMembersChecked": 335,
+    "nativeInputPythonSourcesExact": 4,
+    "actualCipherInputJarMatchesPackage": true,
+    "nativeUidConnections": 179,
+    "additionalNamespaceConnections": 13,
+    "originalGatewayDeployed": false,
+    "actualInstalledMainAcceptance": false,
+    "capacityInstalledMainAcceptance": false,
+    "actualInstalledGwtHumanMainAcceptance": false
+  },
+  "uiArtifact": {
+    "productionJavaSourceHead": "be67271d039bb20f23c17576f5c19f4257dafddd",
+    "testSourceHead": "a1e7132a5e6fabe7ececb7c43c041be896cd96ab",
+    "bytes": 34061833,
+    "sha256": "c96200c22469efcb0ae6f928cae91e94cf669b3dcfe0040dbb4a3bcc516f1284",
+    "productionJavaUnchanged": true,
+    "newJavaCompilationPerformed": false
+  },
+  "previousInstalledAcceptance": {
+    "checkpoint": "first-start-installed-checkpoint.json",
+    "productionSourceHead": "b36afab0d61058f80f2ef1b28c52768da5d8073f",
+    "scope": "one local-Root-issued original-first-start lease, real 900 seconds, actual recovery Main/HTTPS/browser and one Core profile",
+    "replayed": false,
+    "artifactRemovedAfterReplacement": true
+  },
+  "cleanup": {
+    "temporaryModelContainersAndJdkVolumesRemoved": true,
+    "removedRebuildableFiles": 3,
+    "reclaimedBytes": 610501440,
+    "backupCreated": false,
+    "currentDebAndStageRetained": true,
+    "legacyUpgradeInputRetained": true,
+    "originalSceneContainerBindsUntouched": true
+  },
+  "remainingInternal": [
+    "completed authority and all native/shared/GWT/recovery-private history archival with permanent old-ID lookup/fences",
+    "near-full installed Main/GWT human ADMIN-XSRF acceptance, UI capacity recovery, more failure/continuation/renewal combinations",
+    "full provider inventory/re-encryption and all original key/network/API/CA-custody/deployment/database/upstream/release parents"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "oldClosedScenariosReplayed": false,
+  "unknownRedispatched": false,
+  "pushed": false,
+  "goalStatus": "active",
+  "ordinaryWeeklyUsedPercent": 91,
+  "ordinaryUsageAllowed": true,
+  "creditsBalanceUnchanged": true
+}

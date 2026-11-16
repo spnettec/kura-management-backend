@@ -1,7 +1,7 @@
 # 完成授权归档与容量审查 — 2026-11-17
 
 源码基线：Core `b36afab0d61058f80f2ef1b28c52768da5d8073f`，GWT
-`be67271d039bb20f23c17576f5c19f4257dafddd`。这是后续实施输入，不是封签或完整验收。
+`be67271d039bb20f23c17576f5c19f4257dafddd`。前半为b36复现与实现约束；后续修复候选见文末，归档未实现，不是封签或完整验收。
 以 Git 和本审查继续，无须恢复旧 target 或大型证据链。
 
 ## 已复现的 P1：续期会占满原启动需要的容量
@@ -79,3 +79,41 @@ GWT `GatewayKeyHandoffJournal.requireSettled()` 接受原 `GRANT_RECORDED` 或
 
 实际安装/Main/恢复页联合场景、归档实现、上述容量修复、全部生命周期组合及完整
 12 个父项各按真实范围继续。仅原先三项 external deferred 保持不变。
+
+## 2026-11-17 修复候选与当前范围
+
+容量实现提交 `ea15e5331593e8bf333b21a7974d20ec5b347671`，当前Core
+`c3699e2cb21447b5ac833e8bebfb9753ec254698`，详见
+[容量检查点](../checkpoints/20261116/handoff-capacity-checkpoint.json)。
+
+- 在共同锁与原生准入锁内，从不可变、签名Root授权导出固定发布/启动的未用容量。
+  尚未物化的签发RESERVED/INTAKE有两个原生及两个未来共同准入名额，自己的共同记录仍计数。
+  其他RESERVED/INTAKE原生请求也计入；未受理写回不能抢占已有承诺。
+- 共同预留、INTAKE前复核、直接原生journal写者及实际授权创建使用同一预算。
+  旧客户端已保存的过量RESERVED仍可被前置拒绝，原记录保留，不进入新的INTAKE。
+- 容量承诺不写入实际启动预留。固定请求tag/action/directory必须匹配；所有旧记录保留。
+  正面永久未用撤销可释放未用承诺，撤销后的迟到帧仍拒绝；时间、缺失、UNKNOWN不释放。
+- 22个新增边界检查通过；326项相关选择中324通过，2项新夹具缺socket目录跳过，
+  随后仅这2项在明确新建私有socket目录的新夹具补测并通过。没有重放原现场或闭环验收。
+- 两侧各254条时，一次续期与同一个固定原启动都成功并各达到256条；255条时续期
+  在共同预留/INTAKE前拒绝，原启动名额不被占走。模型历史padding、Core/systemd明确为替身。
+  当前包未作近满安装Main验收，不声明无限续期或continuation容量，归档与GUI容量处置仍pending。
+
+## GWT Main实际加载接口修正
+
+审查发现 `gwt_sender_owner()` 无参数调用要求name的 `generation_module(name)`，
+并把返回的namespace字典当作有 `Generations` 属性的模块。此前模型返回SimpleNamespace
+且无参数，掩盖了生产合同错配。当前通过已有 `generation_component()` 保持受保护cohort加载。
+
+新增检查使用实际受保护源码加载器及真实内核UID/PID：修复前正面Main检查报TypeError，
+修复后3项通过，包含同UID异PID拒绝与配套源码改动拒绝。systemd/cgroup仍是模型。
+23项命名空间、真实三UID UDS 179连接与独立命名空间13连接通过；原生突变handler
+仍是替身，没有实际密钥突变，也不是GWT人类ADMIN/XSRF联合验收。
+两个Linux测试夹具的替身已修正接口；GWT Java生产源码及34,061,833字节jar保持原be版本。
+
+新的ARM64 Core包203,401,706字节，SHA256
+`813eb42b05cb6512f1446d77a8bd08dee58e397864984e833e646a4692577913`；
+45项配套及提取reader、9脚本/3资产/3单元等同Git与stage、335成员无pyc通过。
+新包未安装到原现场，b36真实900秒的原单Core场景不重放或外推至此包。
+临时测试容器/JDK卷均删；已替换b36包及可重建zip/SFX共3文件删除，释放582.2MiB，
+无备份，保留当前deb、stage和旧升级输入。完整12父项与仅3项外部边界不缩项。
