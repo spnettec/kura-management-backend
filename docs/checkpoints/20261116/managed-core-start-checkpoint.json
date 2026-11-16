@@ -2,7 +2,7 @@
   "schema": 1,
   "recordedAt": "2026-11-16T00:49:39.522844+00:00",
   "sourceHeads": {
-    "kura": "ec76d14b3ce9210b3508f0db59a9aecc40b91d41",
+    "kura": "42f1910a60796e06e3d24bf499a1557f37eb3dc5",
     "kura-management-agent": "3cf66e47e30461e20018187dd684c11d22f165bc",
     "kura-networking": "c16cf576f2236959ff2b55912881eb9525b0cc0d"
   },
@@ -88,18 +88,19 @@
     "formalRuntimeAdmission": false
   },
   "latestPackage": {
-    "sourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
-    "file": "kura_6.0.0~git202611160224.7e1415b-1_arm64.deb",
-    "bytes": 203345960,
-    "sha256": "b4b05cc178693c764f86cd224fb57bf41636185190764f34987d5170cfb3fc46",
+    "sourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
+    "file": "kura_6.0.0~git202611160329.8b0747a-1_arm64.deb",
+    "bytes": 203347422,
+    "sha256": "a0285276b9e203c0600b05320340f34220d4cfe85487a97aa971777e945d3619",
     "verifiedFiles": 45,
     "extractedReader": "PACKAGED_GENERATION_CLI_OK",
     "originalGatewayDeployed": false,
     "allNineNativeKeyScriptsExactlyMatchGit": true,
     "currentHeadDiffIsTestOnly": true,
-    "actualInstalledPartialPublicationContinuationVerified": true,
+    "actualInstalledNativeHandoffPeerVerified": true,
     "fullFreshScriptAutomationPassed": false,
-    "controlledMainCmProofRemainsEarlier4c6d50c": true
+    "controlledMainCmProofRemainsEarlier4c6d50c": true,
+    "actualPartialPublicationProofRemainsEarlier7e1415b": true
   },
   "unacceptedSyntheticStart": {
     "restoreId": "rec-cae4c810-5bcf-4189-92d1-55d53bde348d",
@@ -124,11 +125,12 @@
     "originalUnknownRedispatched": false
   },
   "remainingInternal": [
-    "agent runtime/binary/grant admission and privileged broker",
-    "Root legacy/missing stop-proof UNKNOWN and cross-boot/runtime-lock reconstruction, maintenance startup",
-    "independent authenticated GUI prepare/download/upload/verify/cancel/confirm/start and original-result handoff",
-    "complete provider inventory, per-provider atomic rekey, restart validation and retirement policy",
-    "formal six-component installation and complete 12-group OPEN-TASKS.md"
+    "GWT typed protocol and human ADMIN/XSRF endpoint; keep v1 backup DTO strict",
+    "independent HTTPS handoff page with durable sender intent and original-only UNKNOWN reads",
+    "same-original authority renewal/revocation/archive and expired-start UI recovery",
+    "agent runtime/binary/cohort admission and full privileged broker",
+    "Root missing-stop-proof UNKNOWN/cross-boot/runtime-lock reconstruction and maintenance startup",
+    "all provider inventory/rekey/restart/retirement and complete 12-group OPEN-TASKS.md"
   ],
   "externalDeferredOnly": [
     "real NM/cloud-init/physical hardware",
@@ -158,7 +160,7 @@
     "currentPackageRetained": true,
     "legacyInstallBaselineRetained": true
   },
-  "updatedAt": "2026-11-16T02:46:23.217162+00:00",
+  "updatedAt": "2026-11-16T03:44:24.288479+00:00",
   "previousPackageBeforePreparationRead": {
     "sourceHead": "0a6da0e3e0313e0a431026165b32b74ba3b7a6a0",
     "file": "kura_6.0.0~git202611160035.0a6da0e-1_arm64.deb",
@@ -192,7 +194,7 @@
     "cancellationAndHistoryPagingImplemented": false,
     "supersededImplementationGaps": "Cancellation/history/second-round implementation is now in preparationHistoryAndCancellation; d20 acceptance remains historical."
   },
-  "servicePayloadSourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
+  "servicePayloadSourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
   "previousPackageBeforePreparationHistory": {
     "sourceHead": "d20f4b56eb9d00f0c2215bff2b50f363434ae32c",
     "file": "kura_6.0.0~git202611160109.d20f4b5-1_arm64.deb",
@@ -390,5 +392,112 @@
     "remainingContainers": 6,
     "diskFreeBefore": 420513046528,
     "diskFreeAfter": 420716376064
+  },
+  "previousPackageBeforeHandoffAuthority": {
+    "sourceHead": "7e1415b02cc2d3509dce112b5dfb9ec172ca5b6b",
+    "file": "kura_6.0.0~git202611160224.7e1415b-1_arm64.deb",
+    "bytes": 203345960,
+    "sha256": "b4b05cc178693c764f86cd224fb57bf41636185190764f34987d5170cfb3fc46",
+    "verifiedFiles": 45,
+    "extractedReader": "PACKAGED_GENERATION_CLI_OK",
+    "originalGatewayDeployed": false,
+    "allNineNativeKeyScriptsExactlyMatchGit": true,
+    "currentHeadDiffIsTestOnly": true,
+    "actualInstalledPartialPublicationContinuationVerified": true,
+    "fullFreshScriptAutomationPassed": false,
+    "controlledMainCmProofRemainsEarlier4c6d50c": true
+  },
+  "handoffAuthority": {
+    "serviceSourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
+    "testSourceHead": "42f1910a60796e06e3d24bf499a1557f37eb3dc5",
+    "actions": [
+      "generation-handoff-create",
+      "generation-handoff-read",
+      "generation-handoff-token-read",
+      "generation-handoff-command"
+    ],
+    "scope": "ORIGINAL_AUTHORIZATION_ONLY",
+    "metadataIsNotAKeyOperationResult": true,
+    "sourceCoreOwnerAndCohortRequired": true,
+    "operatorLabelIsNotHumanAdminProof": true,
+    "authorityFileMode": "0400",
+    "bearerAbsentFromAuthorityRecord": true,
+    "distinctHmacContexts": true,
+    "oneAuthorityPerPreparation": true,
+    "capacity": 32,
+    "firstDispatchWindowSeconds": 900,
+    "clock": "CLOCK_BOOTTIME and original boot ID",
+    "expiredOriginalQueriesAllowed": true,
+    "expiredAlreadyAdmittedLocalContinuationAllowed": true,
+    "expiredFirstPublishOrStartRefused": true,
+    "originalRequestTagMustMatch": true,
+    "publicationOwnerCheckedInsideAdmission": true,
+    "firstStartOriginalBootUidAndKernelLockCheckedInsideExclusivity": true,
+    "noAlternateCallerOperationIds": true,
+    "oldColdBackupPassphrasePermissionsUnchanged": true,
+    "installedAgentPublicationFenceRetained": true,
+    "linuxModelTests": 282,
+    "newHandoffModelTests": 30,
+    "modelSuites": {
+      "key_service": 71,
+      "key_service_lifecycle": 20,
+      "key_generation_cohort": 20,
+      "key_writer_lease": 13,
+      "key_generation_startup": 27,
+      "crypto_key_lifecycle": 33,
+      "key_preparation_history": 15,
+      "key_generation_publication": 20,
+      "key_publication_recovery": 33,
+      "key_handoff": 30
+    },
+    "skipped": 0,
+    "actualInstalledPeerCheck": {
+      "schema": 1,
+      "scope": "same-original-installed-native-handoff-peer-check",
+      "sourceHead": "8b0747a10c37dc135f0d1d817737e79dcdaba304",
+      "packageSha256": "a0285276b9e203c0600b05320340f34220d4cfe85487a97aa971777e945d3619",
+      "actualCorePeerPidAndUid": true,
+      "actualColdPeerUid": true,
+      "sameUidOtherProcessDenied": true,
+      "actualDenialCode": "UNMANAGED_WRITER",
+      "coldCannotIssueOrRetrieveBearer": true,
+      "actualAgentCgroupDenied": true,
+      "initialCredentialSourceBindingsStillExact": true,
+      "credentialFullMetadataUnchangedDuringContinuation": true,
+      "initialWholeScenarioCredentialMetadataBaselineUnavailable": true,
+      "coreNotRestarted": true,
+      "generationPublished": false,
+      "generationStartDispatched": false,
+      "bearerAbsentFromRootAuthorityRecord": true,
+      "initialAutomatedScenarioPassed": false,
+      "sameOriginalPeerContinuationCheckPassed": true,
+      "wholeScenarioReplayed": false,
+      "gwtAdminXsrfAccepted": false,
+      "httpOrGuiAccepted": false,
+      "fullBrokerAccepted": false,
+      "originalIds": {
+        "preparationId": "93d3a62f-4f02-4c51-a02f-7710946e1213",
+        "verificationId": "9b241ea6-af70-4981-ac19-c2b29598b94a",
+        "handoffId": "c4d6f1cd-c728-4ee1-8eca-059bf12573c8",
+        "publicationId": "c3486dcc-a89a-43bc-8280-e664afd40c93",
+        "startOperationId": "cd6f4621-8415-4011-9478-adf510b4a5fa"
+      }
+    },
+    "actualAgentBinaryTested": false,
+    "initialAutomationFailurePreserved": true,
+    "wholeScenarioNotReplayed": true,
+    "ownedSyntheticFixtureRemoved": true,
+    "gwtAdminXsrfAccepted": false,
+    "httpOrGuiAccepted": false,
+    "fullRuntimeBrokerAccepted": false
+  },
+  "handoffAuthorityCleanup": {
+    "deleted": "kura_6.0.0~git202611160224.7e1415b-1_arm64.deb",
+    "bytes": 203345960,
+    "sha256": "b4b05cc178693c764f86cd224fb57bf41636185190764f34987d5170cfb3fc46",
+    "backupsCreated": false,
+    "currentPackageRetained": true,
+    "legacyBaselineRetained": true,
+    "remainingContainers": 6
   }
 }

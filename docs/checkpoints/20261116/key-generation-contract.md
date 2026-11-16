@@ -775,3 +775,76 @@ without a backup. Continue from Git and the full ledger: missing original stop
 proof, cross-boot/runtime-lock reconstruction, maintenance startup, typed grants/
 privileged broker, complete provider rekey/retirement and GUI remain internal
 pending. Neither retained gateway UNKNOWN is settled by this separate fixture.
+
+## Fixed-operation handoff authority (2026-11-16, 8b0747a10c)
+
+The native-only generation-handoff-create/read/token-read/command family adds
+delegation for a future independent UI. Issuance requires the registered active
+Core owner, matching source/prepared history/uploaded verification and paired
+cohort. A Core-UID caller must be the actual Main peer PID; Root may administer
+the same checked owner. Operator text is an audit label, not proof of a human
+ADMIN session. The GWT ADMIN/XSRF endpoint is still to be implemented.
+
+An immutable private 0400 authority document binds the original preparation,
+verification, preselected publication and start IDs, source, proposed generation,
+history hash, owner PID/UID/start ticks/boot/invocation/kernel lock and cohort.
+One authority is allowed per preparation; another ID cannot bypass it. Capacity
+is bounded at 32 retained documents; no automatic history deletion. Request and
+document HMACs use the existing Root journal key with distinct contexts. Bearer
+bytes are derived with a separate context and never stored in this authority
+document. Recorded authority is not a key-operation result: GRANT_RECORDED and
+ORIGINAL_AUTHORIZATION_ONLY never mean published, running or safe to start.
+A lost authority reply can be resolved by its original read/token-read while
+that same owner remains valid; no new nonce/window is generated.
+
+The 15-minute first-dispatch window uses Linux CLOCK_BOOTTIME and the recorded
+boot; wall-clock timestamps are display metadata. Expired/cross-boot authority
+cannot first publish/start. Possession still allows original-result queries,
+and an already-admitted publication with its authenticated stop/lock proof may
+finish local files through the original continuation gate after the window.
+There is no blind renewal, alternate grant/preparation ID or expiry-triggered
+redispatch. Same-original renewal/revocation/archive and the UI's expired-start
+recovery remain internal pending before release.
+
+The command wrapper accepts only info, publication-read, publish, continue,
+start-read and start; IDs, ring/cohort and native requests come from the signed
+authority. No arbitrary action/path/command/key or replacement IDs are accepted.
+Recorded results must match the HMAC of that exact derived request. Repeating
+publish/start after admission only reads the original INTENT/SUCCEEDED; it never
+sends StopUnit/StartUnit again. Missing records are NOT_RECORDED, which is not a
+client retry permission. A durable sender journal is still required at the HTTP
+boundary. Publication checks the owner inside native admission; delegated first
+start additionally checks the original boot/UID/kernel lock under exclusivity.
+
+Recovery-account mutation requires the bearer. It cannot issue/read a bearer by
+ID, and its old backup/passphrase allowlist is unchanged. Core UID cannot mutate
+through the independent wrapper. Agent peers remain denied even with a token;
+installed-agent publication/start/continuation gates are retained. This is not
+the complete agent/runtime/binary/privileged-broker admission or provider review.
+
+282 Linux/JDK21 models passed without skips: the prior nine suites total 252,
+plus 30 new authority/role/expiry/original-result cases. Crypto/JAR/file/flock is
+real; Core/systemd/process authority is explicitly modeled in these suites.
+One fresh installed native-peer scenario used a disposable Java bundle in the
+actual Core process to issue/read authority over Unix transport. Actual Main
+PID/UID matched its recorded owner; the recovery UID could query only with the
+bearer, could not issue/retrieve it by ID or publish through the old API, another
+Core-UID process was denied, and an actual agent cgroup was denied even as Root.
+No generation publication/start was dispatched and Main was not restarted.
+
+The first script stopped because its expected-denial set omitted the existing
+UNMANAGED_WRITER reason. The denial itself was correct. The remaining peer
+checks passed in the same original fixture; no authority was reissued and the
+whole script was not replayed/relabelled green. Its initial full credential
+metadata baseline had been in process memory and was unavailable after failure.
+Source bindings remain exact, and full metadata is exact during continuation;
+whole-scenario full-metadata continuity is not claimed. Future test code now
+persists this small metadata baseline and accepts that existing denial code.
+Only two synthetic key operations were terminal; its reserved publication/start
+IDs were never dispatched. The unused authority and synthetic fixture were
+removed. It is not GWT/HTTP/browser, customer provider or full-broker acceptance.
+
+The 8b ARM64 package has 45 payload checks, extracted-reader success and nine
+native scripts equal to Git/staging. The unused prior 7e archive was deleted
+without backup. Continue the complete ledger and preserve the original scenes
+and both pre-existing UNKNOWNs; the new HTTPS/GWT routes are not enabled yet.
