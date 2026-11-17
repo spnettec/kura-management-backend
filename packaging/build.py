@@ -281,7 +281,7 @@ Installed-Size: {installed_size}
 Section: admin
 Priority: optional
 Maintainer: YOFC Kura maintainers
-Depends: python3, systemd, postgresql-client, passwd, adduser, openssl, ca-certificates{', cockpit-ws, cockpit-bridge, cockpit-system, xdg-utils, pkexec, python3-gi, gir1.2-gtk-3.0, dbus-user-session' if with_cockpit else ''}
+Depends: python3, systemd, postgresql-client, passwd, adduser, openssl, ca-certificates{', cockpit-ws, cockpit-bridge, cockpit-system, sudo, xdg-utils, pkexec, python3-gi, gir1.2-gtk-3.0, dbus-user-session' if with_cockpit else ''}
 Suggests: docker.io
 Replaces: kura-management-console (<< {version})
 Description: Authenticated YOFC console host installation and maintenance tools

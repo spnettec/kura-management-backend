@@ -55,7 +55,7 @@ class IndependentInstallerPackageTests(unittest.TestCase):
             self.assertIn('cockpit',dependencies)
             self.assertIn('xdg-utils',dependencies)
             names_of_dependencies={entry.strip().split()[0] for entry in dependencies.split(',')}
-            self.assertTrue({'cockpit-ws','cockpit-bridge','cockpit-system','xdg-utils','pkexec',
+            self.assertTrue({'cockpit-ws','cockpit-bridge','cockpit-system','sudo','xdg-utils','pkexec',
                              'python3-gi','gir1.2-gtk-3.0','dbus-user-session'}<=names_of_dependencies)
             self.assertNotIn('cockpit',names_of_dependencies)
             desktop='usr/share/applications/com.yofc.KuraConsoleSetup.desktop'
@@ -100,6 +100,7 @@ class IndependentInstallerPackageTests(unittest.TestCase):
             self.assertNotIn('cockpit',dependencies);self.assertNotIn('xdg-utils',dependencies)
             self.assertNotIn('pkexec',dependencies);self.assertNotIn('python3-gi',dependencies)
             self.assertNotIn('dbus-user-session',dependencies)
+            self.assertNotIn('sudo',dependencies)
             self.assertIsNone(result['desktopEntrypoint'])
             self.assertEqual(result['hostUiBootstrapProtocolVersion'],0)
             self.assertFalse(any('host_ui.py' in member.name or 'kura-console-host-ui' in member.name
