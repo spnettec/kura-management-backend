@@ -1,3 +1,15 @@
+## 2026-11-17 原运行态盘点、loader配对及当前Core实际组合
+
+agent2b2ed3c（文档6ee303f）已将原禁用remote、空构造目录、零字节锁/WAL等按含义盘点；非空WAL、原remote丢失/改变、真实恢复/网络记录、凭据及仍持写锁均拒绝，不删改/认领数据。168项Python中166通过、2历史夹具排除，含21项source方法；Core50855bc的v2可选加载及严格单标记/Root配对10项Linux通过。计数重叠不累加。
+
+同一E两次不同代码目的原操作a0365464…和a06216e8…各只准备/分发一次，均APPLIED；16停机资产与原初始化精确，安装不自动启动。第二次为Core尚未安装的独立loader指纹变化，Java JAR不变；包残留/真实Core数据/已装unit或阶段间Core出现均拒绝，普通source不放宽Java/Core门禁。前后配对进入Root不可变历史，Core安装后该窄动作已拒绝。
+
+当前Git Core50855bc已从隔离检出构建并安装到同一E，233归档JAR/loader Root、四维护脚本通过解析。初次导出缺Git元数据失败、宿主复制501:20与改属主超时、同原安装意图改用Root600校验流、NM缺file警告、WIP哈希版本dpkg降级警告均保留，不删现场/降检查。实际控制版本6.0.0~git202611171018.50855bc-1；后续候选用单调时间戳版本。真实生成配置位于Main隔离/tmp；adapter bundle216/DS53 ACTIVE，ConfigurationService/revision/CryptoService已绑定。
+
+Core Main4976/ticks18777309，UID996/GID989、11 ambient/13 bounding、NNP0仍为内部待办；native Main1562/ticks18708735，UID/GID997、groups996/997、五cap集合0、NNP1、NRestarts0。Root key4714/recovery4640 cap0/NNP1；NM4668随Core启动，不外推接管。新Core6私有及native5原文件精确，Root业务/启动计数0。显式Kura UID/control组授权仍缺，本地status agent=true/kura=false，未发CSR/材料grant/通道激活。见 [检查点](native-runtime-inventory-core-loader-checkpoint.json)及 [审查](../../reviews/native-runtime-inventory-core-loader-review-20261117.md)。
+
+原3现场7进程/38私有/6旧数据、个人25、C9私有及进程/零计数、D29私有及原进程精确；18仓本次文档提交前干净，冻结12父项SHA不变。全部12父项、完整六组件/provider/launcher/安装升级移除/恢复/R017及原生授权broker均内部pending，仅原3 external deferred。原CSR/UNKNOWN及已闭环密钥验收不重发重放。用户已明确“使用现有积分继续”，替代下文历史额度仅收尾/暂停文字；目标active，无推送。
+
 ## 2026-11-17 同现场 source 维护及非Root Main 实际续接
 
 agent e06139b 修复固定PID1挂载/root上下文的Root预检，Main隔离不放宽；原source操作26ea376c-81ff-4cdd-b8b9-3ebfcc7c4105在同一E a60111a6…44414只准备/分发一次，实际dpkg升级后APPLIED、未自动启动。旧prerm与完整源配对后私有保留；数据/配置/额外控制包项提前拒绝，原DB/计划钥/初始化回执等6输入字节及记录元数据精确，原初始化24560864…仍APPLIED/READY，没有改写/重做。
