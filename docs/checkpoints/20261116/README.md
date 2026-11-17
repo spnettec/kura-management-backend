@@ -1,3 +1,13 @@
+## 2026-11-17 保留原本地授权的source联合演进
+
+agent代码85784f2/文档8bc267b新增显式local-peer联合source动作，只接受两Main停止、原env/空业务运行态/Core unit/JAR/loader/组不变；普通source及未装Core动作仍分开拒绝。Source结果记录前后代码绑定并锚定原授权结果SHA，原UUID/权限/回执/current指针/发布回执不改；丢链拒绝当前readiness，原fate不变。185 Python中183过/2历史夹具排除，含8联合方法，focused8额外核对原回执元数据；210编译输入与上一新构建精确，Rust未改，4脚本编译，计数重叠不累加。
+
+同一E source原862826c6-67a3-4cf8-baf8-70d964f50cd6一次准备/分发APPLIED，不自动启动；16停机资产/Core6私有/原授权7资产含指针字节及元数据精确。原授权25abd835…仍APPLIED/READY，原结果SHA806ae290…25147e与全部权限/env不变，仅当前native身份哈希8609c04e…→6394f9b9…推进；原初始化24560864…APPLIED/READY，无加组/重授权/重初始化。
+
+显式启动后native6574/ticks19080145、UID/GID997、groups996/997、五cap集合0/NNP1/NRestarts0；Core6849/ticks19080165、UID996/GID989、groups20/987/989/997，既有11/13 caps/NNP0义务仍开。Key4714/recovery4640/NM4668原身份不变；首次只读status agent=true/kura=true，native当前5/Core6/原授权7私有指纹精确，Root业务/启动0。此范围仅本地初始空业务授权态，不代表TLS/材料/真实业务/UNKNOWN迁移全覆盖。
+
+见 [检查点](native-local-authority-source-checkpoint.json)及 [审查](../../reviews/native-local-authority-source-review-20261117.md)。18仓文档前干净、冻结完整12父项SHA不变，其他现场未改；原3/个人/C在phase14、D在phase13只读精确。下一步独立材料/relay与通道Root授权，原本地grant不重写/远程不开；broker/Core最小权限/完整保留态迁移/联合升级移除恢复/R017及六组件provider/launcher全矩阵和12父项均内部pending，仅原3外部deferred。原CSR/UNKNOWN/闭环密钥验收不重发重放；目标active、现有积分继续、无推送。
+
 ## 2026-11-17 固定Kura UID授权与原生真实注册
 
 agent代码d50ac96/文档6a28741新增固定Root本地peer原UUID授权、单次gpasswd与最终发布回执；回复丢失只读原状态、完成动作不重发加组，缺标记/历史阻止新号与启动，闭环fate与当前readiness分离。Root与Rust校验精确账号/组、Core unit/loader/bridge、native身份及原初始化，Core/GWT Root门禁未放宽。177项Python中175过/2历史夹具排除，含9项授权；focused9、Rust身份5/连续性1/注册续期30过，4提权互操作未执行，计数重叠不累加。
