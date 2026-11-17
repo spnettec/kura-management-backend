@@ -1,3 +1,11 @@
+## 2026-11-17 原生 peer、状态连续性及首包原失败续接
+
+networking d226b61 的精确 native peer 校验已通过160项JVM及8项Linux/JDK21检查，Root进程即使伪装socket属主仍拒绝；Core/GWT Root transport未放宽。agent 3f7c5b6 增加显式非Root包、固定账户、代码/unit/source配对、原UUID初始化及DB/计划密钥结构连续性；145项Python通过、2历史导出夹具未执行，后续32项为重叠子集；Rust身份3/连续性1/注册续期30通过。
+
+当前Git自包含230文件源码构建的ARM64 native包已在新E a60111a6…44414安装，18运行载荷精确；5份文档由基础镜像既有dpkg策略排除。原初始化24560864-f974-46aa-940a-0a97ad926118唯一完成，APPLIED/宿主READY、远程关闭、7业务表0。首次Main启动在Root预检失败，Main从未运行；24次自动预检后仅停止该新unit。只读诊断证实systemd255.4的“+”未消除TemporaryFileSystem遮蔽，Root env/admin不可见；Root helper为完整容器caps/NNP0，不能称Main cap0/NNP1已验。保留同一E、原DB/计划钥/初始化回执与失败，不重新初始化、换号、换环境或改写历史回执；继续Root检查上下文修复和有原意图的精确source/pin维护。空Root0755挂载点与真实旧数据须分别识别。
+
+见 [首包检查点](native-agent-first-package-checkpoint.json)及 [审查](../../reviews/native-agent-peer-and-first-package-review-20261117.md)。原3现场7进程/38私有/6旧数据、个人25文件、新C9私有与进程/零业务计数、中心29私有及原进程再次精确；18仓检查时干净，冻结台账SHA不变。Native实际Main/隔离、授权/提权broker、迁移/升级移除/恢复、R017及全部六组件矩阵和冻结12父项继续内部pending；仅原3 external deferred。原CSR及闭环密钥验收不重发/重放，目标active、现有积分继续、无推送。
+
 ## 2026-11-17 专用非 Root agent 与窄委托源码续接
 
 agent b893964 新增 native-nonroot-v1 的固定身份/路径/Root程序与unit及源码指纹门禁，daemon 必须 cap0/NNP1；Root 提权后台未接入时明确拒绝。新 runtime、控制 socket、Root管理/配置与公开身份分开；不复用旧目录，不让 StateDirectory 递归更改持久数据属主。只读材料经不同端点的 Kura UID/cap0 → Root/cap0窄委托 → 专用 agent UID/cap0 传递，Core Root key transport 不放宽。

@@ -1,0 +1,146 @@
+{
+  "recordedAt": "2026-11-17T08:48:40.347022+00:00",
+  "agentCodeHead": "3f7c5b65f4fe5abf82b565f006bd4aa15e0e339f",
+  "agentDocumentationHead": "e5c811307c11627f9369f4146a4c464fb5403a97",
+  "networkingHead": "d226b613fdb26beacfa156e5eecb2be461c0e3e5",
+  "stage": "fresh native package installed; original initialization applied; Main prestart namespace failure retained",
+  "package": {
+    "package": "/packages/build/kura-management-agent_0.1.0~native20261117.3f7c5b6-1_arm64.deb",
+    "sha256": "d8eff53f1fd786773d38fbc5dc08a3ce304f622ae329a3b341d28d91d41a063a",
+    "binarySha256": "f6d0920fdbbb7f381582a527625524b1237698238157a59d4039693128fc72a1",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34",
+    "sourceManifestSha256": "1350756c90363aa979cd2a04a36127d88a0736cbecd542f035a42360027d8fc7",
+    "javaBridge": {
+      "symbolicName": "org.eclipse.kura.management.bridge",
+      "version": "1.0.0.202611170813",
+      "sha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+      "path": "/usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar",
+      "coreLoaderProtocol": 1,
+      "coreLoaderSha256": "13342c8d27f928545932c0b5e062f777cbd374b98292b6a3494d9b5e3ed49313"
+    },
+    "enrollmentReader": {
+      "schemaVersion": 1,
+      "protocolVersion": 1,
+      "user": "kurad",
+      "socket": "/run/kura-management-enrollment-reader.sock",
+      "sourceRoot": "/opt/eclipse/kura/data/management-enrollment",
+      "files": {
+        "/usr/lib/kura-management-agent/enrollment_reader.py": "a263cd6c7df865956e657eac0a3e93a13dd15724d75aa5ebefcfe9b97573a506",
+        "/usr/lib/systemd/system/kura-management-enrollment-reader.socket": "da8c9d50f047b224d03be59ef1cd9d5ec580e3fb12c8f41044ed6934fb86f3ad",
+        "/usr/lib/systemd/system/kura-management-enrollment-reader@.service": "e5b747443c154454803aebc92e98911cccd6364d6cb4aca3b88ab2d81308ae2d"
+      }
+    },
+    "runtimeProfile": "native-nonroot-v1",
+    "nativeProfile": {
+      "schemaVersion": 1,
+      "profile": "native-nonroot-v1",
+      "files": {
+        "/usr/lib/kura-management-agent/enrollment_reader.py": "a263cd6c7df865956e657eac0a3e93a13dd15724d75aa5ebefcfe9b97573a506",
+        "/usr/lib/systemd/system/kura-management-enrollment-reader.socket": "da8c9d50f047b224d03be59ef1cd9d5ec580e3fb12c8f41044ed6934fb86f3ad",
+        "/usr/lib/systemd/system/kura-management-enrollment-reader@.service": "e5b747443c154454803aebc92e98911cccd6364d6cb4aca3b88ab2d81308ae2d",
+        "/usr/lib/kura-management-agent/runtime_setup.py": "9cf49ea2944ca07e8c3788054a809fd8c8eafe1c2917d95158fb3cb597756f43",
+        "/usr/lib/kura-management-agent/enrollment_relay.py": "a59d6901d9c5eefa35223079283bd73866cee64fca3ce549cfbd1282161b85d8",
+        "/usr/lib/systemd/system/kura-management-agent-v2.service": "2aa21f57534c6746b8514ff6db73d3df792923f48663f82415b34b2d03e15cda",
+        "/usr/lib/systemd/system/kura-management-agent-enrollment.socket": "fcef15c7eedf450ada15343f803b4519536f7ae7b6e505010a79288878bda4a0",
+        "/usr/lib/systemd/system/kura-management-agent-enrollment@.service": "3794c366580e12d985e41edf3af191d86f404d51fdd2b00ae31f707cf49b46db",
+        "/usr/lib/kura-management-agent/setup.py": "ed88b9c9f0a57a195681904d170f18d202cd9ed9370f2224dfee4156f5169963"
+      }
+    }
+  },
+  "nativeFixture": {
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "initializationRequestId": "24560864-f974-46aa-940a-0a97ad926118",
+    "originalInitialization": "APPLIED",
+    "hostReadiness": "READY",
+    "mainEverStarted": false,
+    "automaticPrestartRetriesObserved": 24,
+    "currentMainPid": 0,
+    "currentUnitState": "inactive",
+    "identity": {
+      "binarySha256": "f6d0920fdbbb7f381582a527625524b1237698238157a59d4039693128fc72a1",
+      "gid": 997,
+      "profile": "native-nonroot-v1",
+      "readerGid": 996,
+      "schemaVersion": 1,
+      "socket": "/run/kura-management-agent-runtime/control.sock",
+      "sourceManifestSha256": "1350756c90363aa979cd2a04a36127d88a0736cbecd542f035a42360027d8fc7",
+      "stateDirectory": "/var/lib/kura-management-agent-runtime",
+      "uid": 997,
+      "unitSha256": "2aa21f57534c6746b8514ff6db73d3df792923f48663f82415b34b2d03e15cda",
+      "user": "kura-management-agent"
+    },
+    "businessCounts": {
+      "results": 0,
+      "imported_remote_originals": 0,
+      "imported_remote_connection_barriers": 0,
+      "imported_remote_connection_confirmations": 0,
+      "firewall_execution_authorities": 0,
+      "executions": 0,
+      "execution_resolutions": 0,
+      "native_profile_generation": 1
+    },
+    "materialGrantPresent": false,
+    "remoteEnabled": false,
+    "privateFiles": 4,
+    "initializationReplayed": false,
+    "originalEnvironmentRetained": true
+  },
+  "checks": {
+    "fullBridgeJvmPassed": 160,
+    "linuxJdk21PeerCasesPassed": 8,
+    "expandedPython": {
+      "passed": 145,
+      "excludedHistoricalExportFixtures": 2,
+      "total": 147
+    },
+    "overlappingFinalPythonSubsetPassed": 32,
+    "rustIdentityPassed": 3,
+    "rustContinuityPassed": 1,
+    "changedEnrollmentPassed": 30,
+    "explicitProcessInteropExcludedFromOrdinaryRun": 4,
+    "selfContainedSourceFiles": 230,
+    "packagedPayloadFiles": 23,
+    "installedRuntimePayloadFilesExact": 18,
+    "documentationExcludedByBasePolicy": 5
+  },
+  "actualPrestartNamespaceObservation": {
+    "plusHelperUid": 0,
+    "plusHelperCapabilities": "000001ffffffffff",
+    "plusHelperNoNewPrivs": 0,
+    "privateEnvVisible": false,
+    "rootAdministrationVisible": false,
+    "agentStateBindVisible": true,
+    "publicIdentityVisible": true,
+    "actualNativeMainIsolationAccepted": false
+  },
+  "preservation": {
+    "originalScenes": 3,
+    "originalPrivateExact": 38,
+    "originalProcessIdentities": 7,
+    "originalDataContentsExact": 6,
+    "personalFilesExact": 25,
+    "combinedPrivateExact": 9,
+    "combinedProcessesExact": true,
+    "centerPrivateExact": 29,
+    "centerPid": 3135,
+    "centerStartTicks": "16649159"
+  },
+  "pending": [
+    "continue original case E through fixed Root inspection context and durable reviewed source/pin maintenance; preserve DB, key and init receipt",
+    "actual cap0/NNP1 native Main and namespace acceptance",
+    "native Root UID/material/channel authorization and typed privileged brokers",
+    "retained native upgrade/removal/purge; legacy identity/TLS/DB/UNKNOWN migration and complete state continuity/restore",
+    "R017 OS GUI flow and full six-component/provider/launcher/platform matrix",
+    "all original twelve frozen parents"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard power loss"
+  ],
+  "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "evidenceDirectory": ".management-close-20261116/source-cohort-20261117/enrollment-custody-20261117",
+  "goalStatus": "active",
+  "noPush": true
+}
