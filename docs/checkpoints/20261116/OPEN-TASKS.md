@@ -1,3 +1,13 @@
+## 2026-11-17 CSR发送前原ID留存与同E真实恢复
+
+GWT6353614新增发送前Web Lock内公开原ID/上下文/网关UNKNOWN记录及读回，缺存储/锁/安全API或损坏记录拒绝新写；超时/丢回复/刷新不重发换号，先核对Core上下文再scope读取，匹配公钥/CSR后OBSERVED并显式确认。Core原目录下0600单链接上下文仅首次授权CSR创建；读不创建、不同Root不查旧ID。native v2菜单单标记/Root保护检查，不降低原Root配对。JDK21新隔离构建、Java11 GWT目标，47 JVM和11浏览器场景通过/页面错误0，覆盖双tab/失败/超时/晚回调/中文390px；初次fixture导航及指纹换行失败保留。浏览器夹具不冒充Root验收。
+
+新GWT包3.0.0~git202611171528.6353614-1在同E仅一次安装，2 JAR Root0644/3 libexec Root0755、5脚本解析；不自动启动。显式Core停启后Main10205/ticks19592759，native9001/ticks19348899原进程保留，cap0/NNP1；Core11/13 caps/NNP0待办仍开。bundle218/DS56 ACTIVE/TLS1.3。首次登录及仅新密码/确认强制改密各一次成功；错误响应端点超时只读确认，没有重发。WAL观察器初次要求文件存在失败保留，仅探针改为缺省或空，不改产品准入。
+
+独立E CSR原7c3361b3-3073-4394-be1c-e18d359525df、上下文43d34f65-3d6c-4f98-af9d-0fd4d6e3e465在POST前已留UNKNOWN；真实公钥52a2f8af…7b6eb2/CSR验签匹配、新文件Core996:989/0700或0600，UI转OBSERVED。真实reload只读scope恢复、总CSR分发1次，原C保留请求不动。Core6/local7/material5/current2/native6私有精确，原grant/init仍APPLIED/READY、远程关。
+
+见[检查点](remote-csr-original-id-checkpoint.json)及[审查](../../reviews/remote-csr-original-id-review-20261117.md)。本次后原3/个人25/C9及进程计数/D29原Main3135只读精确，18仓文档前干净、冻结完整12父项SHA不变。正向真实native证书/FD/crypto/通道、typed broker/Core最小权限、保留态/业务/TLS/UNKNOWN/旧态迁移、完整六组件provider/launcher/安装升级移除恢复/R017及全部12父项继续内部pending，仅原3 external deferred；目标active、现有积分继续、无推送，旧UNKNOWN和闭环密钥/900秒不重放。
+
 ## 2026-11-17 保留原材料授权的source联合演进
 
 agenta3b13ea/文档3acb8b0新增独立material联合source动作：Core/native及两材料socket停用并排空、初始空业务/无stage，原env/权限/组/Core/JAR/loader保持；普通/local-only/未装Core动作仍拒绝材料能力。Source前后绑定锚定原local及material结果SHA，原local7/material5证明资产不重写；仅当前native/public与私有relay代码指纹推进。丢材料链拒绝readiness，原fate保留。原号complete只补已准入发布，不重装/重授权/启动；5项初次fixture发布失败及修正保留。210 Python中208过/2历史夹具排除，含13联合方法；Rust未改，既有7/1/30按原范围、4提权互操作未执行，计数重叠。
