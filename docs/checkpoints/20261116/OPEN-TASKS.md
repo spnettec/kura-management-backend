@@ -1,3 +1,13 @@
+## 2026-11-18 真实业务只读检查与安装维护候选
+
+agent eab6821已接入独立保留业务source事务，文档0755565；原空业务入口继续拒绝非空表/WAL。新路径仍检查原初始化、完整Root代码/unit/source配对、原local/material权限、首次完整身份、remote OFF、停止/排空及writer锁；RUNNING/UNKNOWN只保留、不重发。所有公开source prepare/status/complete增加必需--initialization-id，原pending不允许同包另换ID。只复制加密DB/WAL到新/run夹具，原钥不复制；准入/发布绑定原库存、输入摘要和全部状态指纹。续期/多候选/legacy/未知provider文件等内部pending保持。
+
+真实UID997夹具32,992字节WAL及SUCCEEDED/RUNNING/UNKNOWN各1认证通过，原目录及5文件字节和含atime元数据精确；Root/错误UID/非零cap拒绝。旧atime失败保留并修正原库SQLite打开，没有回填时间戳。当前Python284选择/282过/2历史导出合同跳过，含18新方法；选择重叠不累加，模拟检查器的事务夹具不等于真实安装。当前Git新包0.1.0~native202611171954.eab6821-1（SHA0dc111eb…3f5b0/source0a5eb472…d157c/ELFc03bbb72…3691）及4控制脚本通过，协议本次重新从声明Git1c5842a打包；新核验使用真正拥有方crates/management-protocol，旧错误路径回执不改。
+
+19:56 UTC同E完整候选配对后的实际Root Python/非Root sealed memfd检查通过：原库69,632字节、executions1/SUCCEEDED1、其余6业务表0、generation1，原字节及含atime元数据精确，无source intent/安装/服务/任务/remote写入。检查前已无WAL/SHM，不归因原因，也不冒充非空WAL现场升级；原12,392字节WAL旧观察保留。新代码仅暂存/opt/kura-retained-business-inspection-f6e198ad-6752-4d90-88f0-c6074b8787f1，未分配source request。E仍24552f6/native23882/Core24168/NRestarts0，原已知ON bc29b319…未改。19:58 UTC原3/个人25/C9原进程计数/D29原Main3135再次精确；18仓同分支，冻结完整12父项SHA不变。
+
+见[检查点](native-retained-business-checkpoint.json)、[审查](../../reviews/native-retained-business-review-20261118.md)。下一步继续同E实际source维护：独立已知ON后维护OFF目的写前留存、单次GUI确认；停止排空后重取基线，原source目的各一次prepare/install，UNKNOWN原ID/原Root查询及发布续接、不重装。随后继续完整六组件/provider/launcher/安装升级矩阵和全部12父项。最终仍0/12闭环，不等于实现0%，整体无可靠加权百分比。仅原3 external deferred；其余内部pending。闭环备份/归档/轮换/恢复/900秒不重放，无push/JDK27/活动runtime清理，界面改进仍次要，本轮未改client JS。
+
 ## 2026-11-18 Netplan能力范围与真实状态任务
 
 agent实现5f95a7e/测试修正24552f6：Hello清单复用network固定接口范围，无后端不宣告network.*；有后端/空范围仅inspect、transaction、takeover.plan；显式非空范围才宣告四个既有写能力。实际空范围E旧Hello误宣告写能力但执行门禁仍拒绝，本次只修宣告，不授新权限或认领数据。transport18过/5显式故障夹具ignored、network35过/0ignored，含4新方法；首次未引入tempfile编译失败保留，改现有临时目录方式无新增依赖。Python/Root相对3e28a44逐字节不变，沿用已验266/264过/2历史排除证据，本轮未重跑、不累加。

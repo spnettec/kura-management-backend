@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-17T19:59:44.584534+00:00",
+  "goal": "active",
+  "codeHead": "eab6821915e453b3a7251481d7ab60767f086943",
+  "agentDocumentationHead": "07555651669021de4bcb0e29b57ac480c5988b92",
+  "build": {
+    "agentHead": "eab6821915e453b3a7251481d7ab60767f086943",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/agent-root-source-eab6821",
+    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/inputs-root-business",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/package-root-business/build/kura-management-agent_0.1.0~native202611171954.eab6821-1_arm64.deb",
+    "version": "0.1.0~native202611171954.eab6821-1",
+    "packageSha256": "0dc111ebb9c95bffd6a4709f9c8560f720257124a970b2ae26be56e64243f5b0",
+    "binarySha256": "c03bbb72d05017029c9429d856c590835a268f568a127bd771b22e740c5d3691",
+    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+    "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c",
+    "generatedControlsCompiled": 4,
+    "protocolFreshFromPinnedGit": true,
+    "protocolSourceAndWorkspaceExactToCurrentGit": true,
+    "protocolOwningScope": "crates/management-protocol",
+    "rootTransactionTests": "root-controller-regression3",
+    "realRootSourceBusinessUpgrade": false,
+    "bridgeFromCurrentPairedRuntime": true,
+    "oldIntermediateUsed": false,
+    "deployed": false
+  },
+  "python": {
+    "selected": 284,
+    "passed": 282,
+    "historicalExportFixturesSkipped": 2,
+    "newMethods": 18,
+    "receipt": "root-controller-regression3",
+    "transactionInspectorExecutionMocked": true
+  },
+  "rustSelections": {
+    "journalPassed": 40,
+    "rolePassed": 15,
+    "nativeStatePassed": 1,
+    "sourceInspectorPassed": 1,
+    "overlapNotSummed": true
+  },
+  "walFixture": {
+    "initializationId": "f909047b-38fd-4c64-9eb6-62d9a591f5f0",
+    "report": {
+      "schemaVersion": 1,
+      "profile": "native-retained-state-inspection-v1",
+      "nativeUid": 997,
+      "nativeGid": 997,
+      "noNewPrivileges": true,
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "f3076e74cbc4869c4d44069a8d18505b068142d98f5015e01bd58694072ce570"
+        },
+        "results.sqlite-wal": {
+          "bytes": 32992,
+          "sha256": "618ee009771af68da44447507d24c01f8e87a054449f35f72bdf631abbc211c4"
+        }
+      },
+      "inventory": {
+        "schemaVersion": 1,
+        "profile": "native-execution-inventory-v1",
+        "initializationId": "f909047b-38fd-4c64-9eb6-62d9a591f5f0",
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 3,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "executionStates": {
+          "RUNNING": 1,
+          "SUCCEEDED": 1,
+          "UNKNOWN": 1
+        },
+        "unresolvedExecutions": 2,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "logicalSha256": "5b0a6cc9006fbbebd9a4d69e9f75e25fd7011695cc4ec6242d964d04479cec55",
+        "recordsChanged": false,
+        "replayPerformed": false
+      }
+    },
+    "originalDirectoryAndFiveFilesExactIncludingAtime": true,
+    "productionRootPairClaimed": false
+  },
+  "sameEInspection": {
+    "at": "2026-11-17T19:56:13.247763+00:00",
+    "purpose": "f6e198ad-6752-4d90-88f0-c6074b8787f1",
+    "stagedCodeDirectory": "/opt/kura-retained-business-inspection-f6e198ad-6752-4d90-88f0-c6074b8787f1",
+    "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+    "pairedCandidate": {
+      "binarySha256": "c03bbb72d05017029c9429d856c590835a268f568a127bd771b22e740c5d3691",
+      "unitSha256": "1a1579c779825aa0db1acf70422e71a13d0599fe9034cec88fa2887c9ad736ca",
+      "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c"
+    },
+    "report": {
+      "schemaVersion": 1,
+      "profile": "native-retained-state-inspection-v1",
+      "nativeUid": 997,
+      "nativeGid": 997,
+      "noNewPrivileges": true,
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+        }
+      },
+      "inventory": {
+        "schemaVersion": 1,
+        "profile": "native-execution-inventory-v1",
+        "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 1,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "executionStates": {
+          "SUCCEEDED": 1
+        },
+        "unresolvedExecutions": 0,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "logicalSha256": "acc02cf45ecff05090c225df13f43e2ae107efa3cad03c74d7aaef76b4f1a4ab",
+        "recordsChanged": false,
+        "replayPerformed": false
+      }
+    },
+    "originalBefore": {
+      "/var/lib/kura-management-agent-runtime": [
+        1048613,
+        3312149,
+        997,
+        997,
+        16832,
+        1,
+        256,
+        1794940767174554484,
+        1794942064525583976,
+        1794942064525583976,
+        null
+      ],
+      "/var/lib/kura-management-agent-runtime/results.sqlite": [
+        1048613,
+        3312153,
+        997,
+        997,
+        33152,
+        1,
+        69632,
+        1794945275758636899,
+        1794942064516584002,
+        1794942064516584002,
+        "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+      ],
+      "/var/lib/kura-management-agent-runtime/results.sqlite.plan-key": [
+        1048613,
+        3312157,
+        997,
+        997,
+        33152,
+        1,
+        32,
+        1794904535649914332,
+        1794904535646914333,
+        1794904535646914333,
+        "248720a86a99507098dfd2b9182e751ff295c02e3302fb41791b4cbc9e19f5d2"
+      ],
+      "/var/lib/kura-management-agent-runtime/.native-profile-v1": [
+        1048613,
+        3312152,
+        997,
+        997,
+        33152,
+        1,
+        73,
+        1794904535683914320,
+        1794904535576377357,
+        1794904535576914357,
+        "56a2f93dead592deb2f9a85536228a17cfc3620dc2bf156651ee71ac5524fe24"
+      ]
+    },
+    "originalAfter": {
+      "/var/lib/kura-management-agent-runtime": [
+        1048613,
+        3312149,
+        997,
+        997,
+        16832,
+        1,
+        256,
+        1794940767174554484,
+        1794942064525583976,
+        1794942064525583976,
+        null
+      ],
+      "/var/lib/kura-management-agent-runtime/results.sqlite": [
+        1048613,
+        3312153,
+        997,
+        997,
+        33152,
+        1,
+        69632,
+        1794945275758636899,
+        1794942064516584002,
+        1794942064516584002,
+        "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+      ],
+      "/var/lib/kura-management-agent-runtime/results.sqlite.plan-key": [
+        1048613,
+        3312157,
+        997,
+        997,
+        33152,
+        1,
+        32,
+        1794904535649914332,
+        1794904535646914333,
+        1794904535646914333,
+        "248720a86a99507098dfd2b9182e751ff295c02e3302fb41791b4cbc9e19f5d2"
+      ],
+      "/var/lib/kura-management-agent-runtime/.native-profile-v1": [
+        1048613,
+        3312152,
+        997,
+        997,
+        33152,
+        1,
+        73,
+        1794904535683914320,
+        1794904535576377357,
+        1794904535576914357,
+        "56a2f93dead592deb2f9a85536228a17cfc3620dc2bf156651ee71ac5524fe24"
+      ]
+    },
+    "originalExactIncludingAtime": true,
+    "sourceIntentCreated": false,
+    "packageInstalled": false,
+    "servicesChanged": false,
+    "tasksSent": 0,
+    "keysCopiedToScratchOrHost": false
+  },
+  "originalEUnits": {
+    "at": "2026-11-17T19:58:03.155088+00:00",
+    "units": {
+      "kura-management-agent-v2.service": {
+        "MainPID": "23882",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": 20724103
+      },
+      "kura.service": {
+        "MainPID": "24168",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": 20724118
+      }
+    },
+    "readOnly": true
+  },
+  "actualSourceBusinessUpgrade": false,
+  "sameENonemptyWalInstalledUpgrade": false,
+  "deployedAgentCode": "24552f60c815bbf990feeceaff53ad2cd2214688",
+  "knownRemoteRevisionUnchanged": "bc29b319-608b-4920-bef3-9a161b0f5a11",
+  "preservation": "phase24-preservation-after-live-inspection.json",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": "all remaining full parent requirements including actual source upgrade, renewal/legacy/provider/launcher/R017 and GUI",
+  "pushed": false,
+  "jdk27Added": false
+}
