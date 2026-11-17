@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-17T03:07:43.587936+00:00",
+  "status": "bounded code-ownership and source-cohort progress; full goal active",
+  "repositories": {
+    "kura": {
+      "branch": "wip/management-close-20261116",
+      "head": "0bb5f4a069a8df5704aad25a5b0020d4a81987f4",
+      "tree": "43f4cf527a7bc80150115b42fe9f6242d1bb2136",
+      "status": []
+    },
+    "kura-artemis": {
+      "branch": "wip/management-close-20261116",
+      "head": "7ac6d43ff147fec792bab94493c1ecf50e0ab129",
+      "tree": "2669815e5df997f7a736ad949b8264a6f79485a8",
+      "status": []
+    },
+    "kura-camel": {
+      "branch": "wip/management-close-20261116",
+      "head": "43bd68f1773b0e17c742213b2ca34b289a7042b7",
+      "tree": "fc40be55a0863c0a82095dbdaa97d18d00e62a89",
+      "status": []
+    },
+    "kura-cloud": {
+      "branch": "wip/management-close-20261116",
+      "head": "3a9bc83b475656d4032eaa3b7e3947b10cc3f97b",
+      "tree": "da25335af09752aeb0937d5cc7313e48aeeae416",
+      "status": []
+    },
+    "kura-container": {
+      "branch": "wip/management-close-20261116",
+      "head": "0eeb713f350c83dd81e15890dc360b1fd3e5a0db",
+      "tree": "477aa6eb5c036a6f0eb0e207c058e3a64697458b",
+      "status": []
+    },
+    "kura-deployment": {
+      "branch": "wip/management-close-20261116",
+      "head": "d1fe3e426ad93f9835113bb732562dbe9d7886e3",
+      "tree": "6a03d37a08294b097588ac750c29b7bb2c758202",
+      "status": []
+    },
+    "kura-docker": {
+      "branch": "wip/management-close-20261116",
+      "head": "676e91a77d5b3151095caeb14a8a812560a4e433",
+      "tree": "452dd291746e1eaec82525a2aaa89efe0b73b37d",
+      "status": []
+    },
+    "kura-management-agent": {
+      "branch": "wip/management-close-20261116",
+      "head": "6fbd0e442cace77eae8fd9428407b1a4bf7c930e",
+      "tree": "41b6b0dc429cb0a7d2886805a95521f66a94871a",
+      "status": []
+    },
+    "kura-management-console": {
+      "branch": "wip/management-close-20261116",
+      "head": "8401a5a39775de614e8781d57bb2cf0176947459",
+      "tree": "6d8a27c19812e13843911874b24c1c68a4300c05",
+      "status": []
+    },
+    "kura-management-ui": {
+      "branch": "wip/management-close-20261116",
+      "head": "04a2de44e0cc5b3b863bd2e3d388a0e463b84ad2",
+      "tree": "c4ce82422d04ef4d506e0b07106e3857e674c01a",
+      "status": []
+    },
+    "kura-networking": {
+      "branch": "wip/management-close-20261116",
+      "head": "7187d0c732abdc619046ea3685c52ae401e3d06f",
+      "tree": "65748c36dc57bddc473cd2ea2aec9c0ec5028161",
+      "status": []
+    },
+    "kura-opcua": {
+      "branch": "wip/management-close-20261116",
+      "head": "a8cfc825ac73ad7f529b266df6f264ab69e3bda0",
+      "tree": "a1db433084775c485561770f4ebe365c78649c32",
+      "status": []
+    },
+    "kura-position": {
+      "branch": "wip/management-close-20261116",
+      "head": "39db08421cae5d902e67d5a76683dbf232039167",
+      "tree": "11dba2e5f8a41d08a8550f5325b19714083d0082",
+      "status": []
+    },
+    "kura-triton": {
+      "branch": "wip/management-close-20261116",
+      "head": "4da955858739fd0bcf7c76109ceca3942254c79c",
+      "tree": "4a41b33573da8ee01be616b291077833069ddb1d",
+      "status": []
+    },
+    "kura-wires": {
+      "branch": "wip/management-close-20261116",
+      "head": "2842bd25ac0941d25905ef7d4ce7229e8b569cec",
+      "tree": "a4cf340ea33df380670afa3cd711291cbd92c8a9",
+      "status": []
+    },
+    "kura-yofc-runtime": {
+      "branch": "wip/management-close-20261116",
+      "head": "1c973c08d4890f1dd2d93606d4d0adbe15589901",
+      "tree": "20a7edfdfc7067a201e0167e5834d33cdbb4e10a",
+      "status": []
+    },
+    "plc4x-yofc": {
+      "branch": "wip/management-close-20261116",
+      "head": "e7bc97c97f0dbdacdcddf5a2a80281a35531ea31",
+      "tree": "483809d04736f9896fb8574e02a79a9d358f9a23",
+      "status": []
+    },
+    "yofc-iot": {
+      "branch": "wip/management-close-20261116",
+      "head": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+      "tree": "6d22a6f8a2fb85828a829a0353e048636ff5200d",
+      "status": []
+    }
+  },
+  "networking": {
+    "package": "kura-networking",
+    "version": "3.0.0~git202611170239.7187d0c-1",
+    "path": "/Users/heyoulin/iot-kura-develop/git/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611170239.7187d0c-1_all.deb",
+    "sha256": "bff6ac08e2937300fe22bbd068f2d27d834af30782fd54f7e839cdedc41056c2",
+    "bytes": 9276200,
+    "sourceHead": "7187d0c732abdc619046ea3685c52ae401e3d06f",
+    "jars": [
+      {
+        "path": "opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "sha256": "fe96b644bd581c7f46660db5d901fa15a124ceba44c4b6d2edfc5bb9c18e4d29",
+        "symbolicName": "org.eclipse.kura.linux.net"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar",
+        "sha256": "9bf3f4ca6e52f480459ccad036d8243a0d008df622f38bd3b21da31fab7ab8f2",
+        "symbolicName": "org.eclipse.kura.net.admin.firewall"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+        "sha256": "c416b2a1a11c3b4b71604186285a8674ad7642aef38d4b11953a76cc1e6df2c4",
+        "symbolicName": "org.eclipse.kura.nm"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/4s/org.eclipse.kura.rest.network.configuration.provider-3.0.0-SNAPSHOT.jar",
+        "sha256": "b628f32b700f73f7903d367e5773640d4347c6d2f7f6cf3eca6a9212b546483e",
+        "symbolicName": "org.eclipse.kura.rest.network.configuration.provider"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/5s/org.eclipse.kura.rest.network.status.provider-3.0.0-SNAPSHOT.jar",
+        "sha256": "f896668c2136f036bfe541dd9444fe4220bdd73179f3fc63383b9252d87b0bd1",
+        "symbolicName": "org.eclipse.kura.rest.network.status.provider"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+        "sha256": "bc24004d5129bc64625719dae2fe7362fd75fa8d27ae71955fa1477baf551e21",
+        "symbolicName": "org.eclipse.kura.linux.systemd.provider"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/4s/org.eclipse.kura.network.threat.manager-3.0.0-SNAPSHOT.jar",
+        "sha256": "80a3c36350188f01a7485c0e211c2d3a8c9ec8fa16249b6e725b5a091ce66010",
+        "symbolicName": "org.eclipse.kura.network.threat.manager"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/4s/org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar",
+        "sha256": "febbdc5f880e7ba06f06c87f831809e24ea2b99f10bd95a6b5f0f48256ab958b",
+        "symbolicName": "org.eclipse.kura.core.net"
+      },
+      {
+        "path": "opt/eclipse/kura/siblings/networking/4s/org.eclipse.kura.net.configuration-3.0.0-SNAPSHOT.jar",
+        "sha256": "ad1e639c53fd08b91b106d4a011daf0d076e7b2a91f793a907ade84ec403f877",
+        "symbolicName": "org.eclipse.kura.net.configuration"
+      }
+    ],
+    "installedCodeFiles": [
+      "opt/eclipse/kura/libexec/addons/networking/kura_network_install.sh",
+      "opt/eclipse/kura/libexec/addons/networking/kura_network_uninstall.sh",
+      "opt/eclipse/kura/libexec/addons/networking/manage_network_permissions.sh",
+      "opt/eclipse/kura/libexec/addons/networking/install_network_config.sh",
+      "opt/eclipse/kura/libexec/addons/networking/named.ca",
+      "opt/eclipse/kura/libexec/addons/networking/usr.sbin.named",
+      "opt/eclipse/kura/libexec/addons/networking/named.rfc1912.zones",
+      "opt/eclipse/kura/libexec/addons/networking/sibling_registry.sh",
+      "opt/eclipse/kura/libexec/addons/networking/customize_iptables.py",
+      "opt/eclipse/kura/libexec/addons/networking/customize_snapshot_network.py",
+      "opt/eclipse/kura/libexec/addons/networking/customize-installation.sh",
+      "opt/eclipse/kura/libexec/addons/networking/network_tools.py",
+      "opt/eclipse/kura/libexec/addons/networking/comment_interfaces_file.py",
+      "opt/eclipse/kura/libexec/addons/networking/dnsmasq",
+      "opt/eclipse/kura/libexec/addons/networking/iptables",
+      "opt/eclipse/kura/libexec/addons/networking/template_firewall_eth",
+      "opt/eclipse/kura/libexec/addons/networking/template_firewall_eth_wlan",
+      "opt/eclipse/kura/libexec/addons/networking/template_flooding",
+      "opt/eclipse/kura/libexec/addons/networking/template_multiple_eth_no_wlan",
+      "opt/eclipse/kura/libexec/addons/networking/template_multiple_eth_one_wlan",
+      "opt/eclipse/kura/libexec/addons/networking/template_one_eth_no_wlan",
+      "opt/eclipse/kura/libexec/addons/networking/template_one_eth_one_wlan",
+      "opt/eclipse/kura/libexec/addons/networking/kura-networking.conf",
+      "opt/eclipse/kura/libexec/addons/networking/99-kura-nm.conf",
+      "opt/eclipse/kura/libexec/addons/networking/kura_network_options.sh",
+      "opt/eclipse/kura/libexec/addons/networking/kura_network_unit.py"
+    ],
+    "additionalCodeFiles": [
+      "lib/systemd/system/firewall.service",
+      "opt/eclipse/kura/bin/firewall",
+      "usr/share/polkit-1/rules.d/52-kura-networking.rules"
+    ],
+    "sourceApiContracts": [
+      {
+        "bundle": "org.eclipse.kura.net.admin.firewall",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.nm",
+        "api": "org.eclipse.kura.crypto",
+        "clause": "org.eclipse.kura.crypto;version=\"[2.0,3.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.nm",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.1,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.rest.network.configuration.provider",
+        "api": "org.eclipse.kura.crypto",
+        "clause": "org.eclipse.kura.crypto;version=\"[2.0,3.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.rest.network.configuration.provider",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.network.threat.manager",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.core.net",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.1,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.net.configuration",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      }
+    ]
+  },
+  "core": {
+    "path": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0~git202611170253.0bb5f4a-1_arm64.deb",
+    "sha256": "9fb0f8df5e8f46a66774657a341a1e5153be68fcd399f2b98e5fe84059cf72a3",
+    "bytes": 203519864,
+    "exactEmbeddedAddonPolicyHooks": [
+      "preinst",
+      "postinst",
+      "prerm"
+    ],
+    "policySha256": "16964418f67e5ef0d057579ef191b54fe7fec0de8a9624aef83a94927266ebdd"
+  },
+  "nativeCoreUpgrade": {
+    "containerId": "8d5c8e8f493c818c9fcc1800df51af6a765482ede93fc68f988d76ea073daee2",
+    "sourcePackageVersion": "6.0.0~git202611170253.0bb5f4a-1",
+    "networkingStatus": "install ok half-configured",
+    "rootAddonFilesPreserved": 56,
+    "externalPrivateMetadataExact": 12,
+    "userPrivateBytesOwnersModesExact": 7,
+    "mainStarts": 0,
+    "explicitKeyRpcDispatches": 0,
+    "preparationFailure": "First command could not open an absent archive, exit 2; no hooks ran. Original preparation record was continued, then one real upgrade executed and returned 0.",
+    "fullRemovePurgeOrPlatformMatrixAccepted": false
+  },
+  "validation": {
+    "siblingSourceAndNativeFilesystemMethods": 22,
+    "networkingVariantMethods": 9,
+    "coreAddonCodeNativeMethods": 8,
+    "agentSourceArtifactAndBridgeMethods": 12,
+    "consoleLinuxPackagingMethods": 10,
+    "agentAuthorizationMethods": 5,
+    "jdk": 21,
+    "javaTestsReexecuted": false,
+    "coreSourceAndPackagingBuild": true,
+    "rustReleaseBuilds": {
+      "console": {
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/rust-target/release/yofc-management-console",
+        "sha256": "465526c518cb0796bf093dc996b0087bd07e095c550fd3f183f8ee823fff3fc1",
+        "bytes": 15822256,
+        "architecture": "Linux ARM64",
+        "sourceExport": {
+          "head": "6d521a3e3daaeaf4d7f1ea351abe0cb04cacdd24",
+          "tree": "c3344a7cd09b4db1960653fcc5f7515c858860f6",
+          "sourceManifestSha256": "de1ee270846a5f7a76d3429dac876ebe2e44a7cd9e2c8b3c48a86ae3f16e2980"
+        }
+      },
+      "agent": {
+        "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/rust-target/release/yofc-management-agent",
+        "sha256": "52d9c7b9a1c4ff1a2986ae6b6324f90fdcd58e87a21825cdb7fe66eea607b0c8",
+        "bytes": 20640640,
+        "architecture": "Linux ARM64",
+        "sourceExport": {
+          "head": "c03c558aacd57319cd066f361cd1fe5e39d79031",
+          "tree": "4e971e350f6cf73f445e814141f8699d90fd781d",
+          "sourceManifestSha256": "0d86509ae5fff866463df820f8fa9ab0ec9f02a0af0ec7c12bbd6ca83043d3ad"
+        }
+      }
+    },
+    "frontendTypecheckAndBuild": true,
+    "frontendWarning": "Existing minified JS chunk is 1245.69 kB; no client source changed",
+    "protocolArtifact": {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/rust-target/package/yofc-management-protocol-0.1.0.crate",
+      "sha256": "9a08d57fee53a4bd6f7dd94a44eda4601c442a3b875d719b6c28c7b8705b9d58",
+      "bytes": 27244
+    },
+    "protocolPublished": false,
+    "nativeAgentConsolePackagesAssembled": false
+  },
+  "preserved": {
+    "originalPrivateMetadataExact": 38,
+    "originalRuntimeDataContentsExact": 6,
+    "originalProcessIdentitiesExact": 7,
+    "personalFilesExact": 25
+  },
+  "currentInternalPending": [
+    "Legacy active NM policy must be retained through an explicit supported ownership migration before new networking package unpack; original failed fixture remains half-configured",
+    "Agent-first/Core-first/compatibility Java adapter location and complete package ordering matrix; current agent payload still occupies /opt/eclipse/kura/siblings/management-agent",
+    "Current native agent/console/installer/Docker six-component release pairing, installation, upgrade, removal and purge",
+    "Full privileged broker, Main capabilities/NNP, all providers and provider re-encryption",
+    "All frozen 12 parent items, lawful original UNKNOWN recovery, GUI and customer database/CA custody/upstream tasks"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "g034Sealed": false,
+  "oldClosedKeyAcceptanceReplayed": false,
+  "unknownRedispatched": false,
+  "pushed": false,
+  "usageAuthorization": "User explicitly authorized using existing credits after the live weekly quota showed 100%"
+}

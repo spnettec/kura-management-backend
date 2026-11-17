@@ -1,5 +1,11 @@
 # 未验收与剩余实施台账
 
+## 2026-11-17 继续：默认 NM、Core 保留与源码 cohort
+
+默认 networking 已取消自动系统接管/快照改写，旧活动包配置的 obsolete-file 转换会提前拒绝，安全保留迁移仍 pending。22 项 sibling、9 项变体、8 项 Core 文件系统检查通过；同一原失败夹具的一次实际 Core 升级保留 56 份 Root addon 代码、12 份外部私有完整元数据与 7 份用户文件内容/属主/权限，Main/Root 业务请求 0；networking 仍 half-configured。agent/中心源码绑定和默认 Core 显式授权已修复（12/10/5 项各有限检查），独立 ARM64 Rust/前端构建完成，实际原生组合尚未完成。
+
+见 [检查点](default-nm-core-code-cohort-checkpoint.json)与 [审查](../../reviews/default-nm-core-code-cohort-review-20261117.md)。原 3 现场及个人数据再次精确；不重放旧密钥验收或重发 UNKNOWN。用户已授权现有积分继续，目标 active。完整六组件/provider/launcher/安装升级移除及冻结 12 父项继续内部 pending，仅原 3 项 external deferred；以下 e016 及早期场景均为历史有限范围。
+
 ## 2026-11-17 继续：兼容变体及普通启动
 
 firewall-only 已补齐4个JAR Root权限、升级阶段/agent ownership保护、受限注册表与失败传播，9项独立源码/Linux原生检查通过。对应新实际systemd profile的Core＋12 sibling全部配置成功，一次普通Main启动/HTTPS通过；59个sibling JAR为Root所有且不可由group/other写入，6份凭据/TLS/HMAC元数据保持，Root业务及日志化启动请求0。Main仍11/13 caps、NNP0；MQTT默认clientId与历史额外JAXB边界分别记录，完整provider/broker没有关闭。Netplan兼容适配只完成源码及5-JAR包核对，未部署/切换NM。
