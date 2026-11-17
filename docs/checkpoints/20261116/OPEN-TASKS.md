@@ -1,3 +1,13 @@
+## 2026-11-17 保留原材料授权的source联合演进
+
+agenta3b13ea/文档3acb8b0新增独立material联合source动作：Core/native及两材料socket停用并排空、初始空业务/无stage，原env/权限/组/Core/JAR/loader保持；普通/local-only/未装Core动作仍拒绝材料能力。Source前后绑定锚定原local及material结果SHA，原local7/material5证明资产不重写；仅当前native/public与私有relay代码指纹推进。丢材料链拒绝readiness，原fate保留。原号complete只补已准入发布，不重装/重授权/启动；5项初次fixture发布失败及修正保留。210 Python中208过/2历史夹具排除，含13联合方法；Rust未改，既有7/1/30按原范围、4提权互操作未执行，计数重叠。
+
+当前Git自包含锁定离线新包0.1.0~native202611171450.a3b13ea-1，SHAd4077f2b…79f8fa、4脚本编译。宿主回执名冲突在Root分发前拒绝，失败保留；同E原source76dc94bb-fc6f-4ee3-9990-0f8809437fd3一次准备/分发APPLIED，16停机资产/Core6/local7/material5/两socket启用链接含元数据精确。原material13d50bed…结果SHA4247575e…593dbc及peer25abd835…/init24560864…仍APPLIED/READY，权限/env/数据/启用决定不变、不自动启动。
+
+显式恢复后native9001/ticks19348899 UID/GID997、groups996/997、五cap集合0/NNP1/NRestarts0，Core9276/ticks19348922保留11/13 caps/NNP0待办；key4714/recovery4640/NM4668不变。两socket启用监听/连接0，agent/kura=true、bundle216/DS53 ACTIVE；native6/Core6/local7/material5/current material2精确，7业务表及Root业务/启动0、stage缺省/远程关。现场未注入发布故障，不外推fixture到完整故障验收。
+
+见 [检查点](native-material-source-continuity-checkpoint.json)及 [审查](../../reviews/native-material-source-continuity-review-20261117.md)。本次原3/个人25/C9与进程计数/D29及原Main3135只读精确，18仓文档前干净，冻结完整12父项SHA不变。继续GWT发CSR前耐久原ID、正向native材料/通道、typed broker/Core最小权限及真实材料/TLS/业务/UNKNOWN/旧态迁移、联合升级移除恢复/R017与完整六组件provider/launcher矩阵和全部12父项；均内部pending，仅原3 external deferred。原C保留CSR/UNKNOWN及闭环密钥验收不重发重放；目标active、现有积分继续、无推送。
+
 ## 2026-11-17 原生材料授权与实际socket拒绝
 
 agent材料实现3ed06c2、Core版本链接修正269cfb3/文档71f5c2e：独立Root原UUID材料授权、严格固定UID/路径/代码配对、Rust保护能力校验；publisher隐藏/run和/proc，仅只读stage绑定。通用拒绝链接规则不变，只专门校验Root拥有的Core版本入口；data/stage拒绝链接及错误属主/权限，不创建认领/修改.data。197 Python中195过/2历史夹具排除，Rust身份材料7/连续性1/注册续期30过、4提权互操作未执行，计数重叠不累加。

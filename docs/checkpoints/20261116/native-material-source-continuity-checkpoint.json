@@ -1,0 +1,667 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-17T14:54:15.804719+00:00",
+  "goalStatus": "active",
+  "creditsAuthorization": "\u4f7f\u7528\u73b0\u6709\u79ef\u5206\u7ee7\u7eed",
+  "agentCodeHead": "a3b13ea2cc04fb66d094068d2b4f1f6062c73aa3",
+  "agentDocHead": "3acb8b06dd25f4b08ea7d3b09fa6238c6fbc5568",
+  "sourceUpdate": {
+    "at": "2026-11-17T14:51:26.230994+00:00",
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "requestId": "76dc94bb-fc6f-4ee3-9990-0f8809437fd3",
+    "folder": "/root/yofc-native-material-joint-source-76dc94bb-fc6f-4ee3-9990-0f8809437fd3",
+    "packagePath": "/root/yofc-native-material-joint-source-76dc94bb-fc6f-4ee3-9990-0f8809437fd3/candidate.deb",
+    "packageSha256": "d4077f2bf699337b9f4dba1b686bc48e030d6aa54c4d328865990ade6679f8fa",
+    "sourceHead": "a3b13ea2cc04fb66d094068d2b4f1f6062c73aa3",
+    "peerAuthorizationId": "25abd835-cf55-4871-929d-87abee746024",
+    "materialAuthorizationId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+    "initializationRequestId": "24560864-f974-46aa-940a-0a97ad926118",
+    "purpose": "evolve code binding through explicit original material and local peer authority source proofs; no regrant or business/material generation",
+    "helpers": {
+      "runtime_setup.py": "d2a97673defd877a03807458231820b49b5895c54515dc808f536640478a75f9",
+      "setup.py": "ed88b9c9f0a57a195681904d170f18d202cd9ed9370f2224dfee4156f5169963"
+    },
+    "expectedProcesses": {
+      "kura-management-agent-v2.service": [
+        7887,
+        "19257379"
+      ],
+      "kura.service": [
+        8162,
+        "19257403"
+      ]
+    }
+  },
+  "build": {
+    "agentHead": "a3b13ea2cc04fb66d094068d2b4f1f6062c73aa3",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/enrollment-custody-20261117/agent-native-material-joint-source-a3b13ea",
+    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/enrollment-custody-20261117/native-material-joint-inputs",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/enrollment-custody-20261117/native-material-joint-package/build/kura-management-agent_0.1.0~native202611171450.a3b13ea-1_arm64.deb",
+    "version": "0.1.0~native202611171450.a3b13ea-1",
+    "packageSha256": "d4077f2bf699337b9f4dba1b686bc48e030d6aa54c4d328865990ade6679f8fa",
+    "binarySha256": "334a3fb8756a9ba3068fa3c3b3e3039790c816e965a6b740ea7f08a06553877c",
+    "sourceManifestSha256": "ffae6895ff765f259420419ec772f1bba99c2576fa5956c9a14cdc45c5244e66",
+    "generatedControlsCompiled": 4
+  },
+  "stoppedPreservation": {
+    "snapshotAssetsExact": 16,
+    "corePrivateExact": 6,
+    "originalLocalProofFilesExact": 7,
+    "originalMaterialProofFilesExact": 5,
+    "socketEnableLinksExact": 2,
+    "permissionScopeExact": true,
+    "currentMaterial": {
+      "schemaVersion": 1,
+      "profile": "staged-enrollment-reader-v1",
+      "requestId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+      "peerAuthorizationId": "25abd835-cf55-4871-929d-87abee746024",
+      "nativeIdentitySha256": "042573458093cd341c802cb6a99aa50c3adb9e4276959f4ba2117e421a103e82",
+      "agentUid": 997,
+      "agentGid": 997,
+      "readerGid": 996,
+      "sourceUid": 996,
+      "sourceRoot": "/opt/eclipse/kura/data/management-enrollment",
+      "upstreamSocket": "/run/kura-management-enrollment-reader.sock",
+      "socket": "/run/kura-management-agent-enrollment.sock",
+      "publisherPairSha256": "5f0736e08ea57f2c2d88a6ec68df1356276a2f7a52b67cae33b4c25f8b658b59",
+      "relayPairSha256": "f575ee8c58a809430c8396cd2637195f89676d829b7116f4b65267b5a97ba7e8",
+      "relayGrantSha256": "2f6fad084eecf75a0887a74a10cd7db7c138d03415ce8aef8df122950ab44143",
+      "remoteEnabled": false
+    },
+    "currentPeer": {
+      "schemaVersion": 1,
+      "profile": "local-kura-v1",
+      "requestId": "25abd835-cf55-4871-929d-87abee746024",
+      "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+      "nativeIdentitySha256": "042573458093cd341c802cb6a99aa50c3adb9e4276959f4ba2117e421a103e82",
+      "controlGid": 997,
+      "kuraUid": 996,
+      "kuraGid": 989,
+      "coreUnitSha256": "a947f716c1d4fa0e3887e7e6296672c006bbeccae2a17cf26c17037006d41447",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "javaBridgeMetadataSha256": "b2cc9ee8ed37d7b8e6527707a914b79a02a12292755d09388e142b5b03ce0984"
+    },
+    "currentMaterialPublicationFingerprints": {
+      "/etc/kura-management-runtime/enrollment-reader.json": [
+        1048613,
+        3445674,
+        0,
+        0,
+        33188,
+        1,
+        783,
+        1794927093977773503,
+        1794927093977890295,
+        "d901d8894c4e8930e932b27c0f08bdfa8d664df85ce1ae72fa80c0fd26cf51f5"
+      ],
+      "/etc/kura-management-agent-runtime/enrollment-relay-grant.json": [
+        1048613,
+        3445673,
+        0,
+        0,
+        33152,
+        1,
+        508,
+        1794927093975626611,
+        1794927093975890280,
+        "2f6fad084eecf75a0887a74a10cd7db7c138d03415ce8aef8df122950ab44143"
+      ]
+    },
+    "statuses": {
+      "source": {
+        "schemaVersion": 1,
+        "requestId": "76dc94bb-fc6f-4ee3-9990-0f8809437fd3",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "replayed": false
+      },
+      "material": {
+        "schemaVersion": 1,
+        "requestId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+        "state": "APPLIED",
+        "currentReadiness": "READY",
+        "remoteEnabled": false,
+        "unitStarted": false,
+        "replayed": false
+      },
+      "localPeer": {
+        "schemaVersion": 1,
+        "requestId": "25abd835-cf55-4871-929d-87abee746024",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "kuraUid": 996,
+        "currentReadiness": "READY",
+        "remoteEnabled": false,
+        "replayed": false
+      },
+      "initialization": {
+        "schemaVersion": 1,
+        "requestId": "24560864-f974-46aa-940a-0a97ad926118",
+        "state": "APPLIED",
+        "currentReadiness": "READY",
+        "replayed": false
+      }
+    },
+    "allSelectedUnitsStopped": true,
+    "grantRedispatched": false,
+    "remoteEnabled": false,
+    "readOnly": true
+  },
+  "actualLiveObservation": {
+    "sourceRequestId": "76dc94bb-fc6f-4ee3-9990-0f8809437fd3",
+    "materialAuthorizationId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+    "units": {
+      "kura.service": {
+        "MainPID": "9276",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "19348922",
+        "status": {
+          "Uid": "996\t996\t996\t996",
+          "Gid": "989\t989\t989\t989",
+          "Groups": "20 987 989 997",
+          "CapInh": "0000000406413426",
+          "CapPrm": "0000000406413426",
+          "CapEff": "0000000406413426",
+          "CapBnd": "00000004064134e6",
+          "CapAmb": "0000000406413426",
+          "NoNewPrivs": "0"
+        }
+      },
+      "kura-management-agent-v2.service": {
+        "MainPID": "9001",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "19348899",
+        "status": {
+          "Uid": "997\t997\t997\t997",
+          "Gid": "997\t997\t997\t997",
+          "Groups": "996 997",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18777292",
+        "status": {
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18759746",
+        "status": {
+          "Uid": "995\t995\t995\t995",
+          "Gid": "988\t988\t988\t988",
+          "Groups": "987 988",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18777273",
+        "status": {
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "00000000200534e2",
+          "CapEff": "00000000200534e2",
+          "CapBnd": "00000000200534e2",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "0"
+        }
+      }
+    },
+    "socketUnits": {
+      "kura-management-enrollment-reader.socket": {
+        "NConnections": "0",
+        "NAccepted": "3",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "UnitFileState": "enabled"
+      },
+      "kura-management-agent-enrollment.socket": {
+        "NConnections": "0",
+        "NAccepted": "5",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "UnitFileState": "enabled"
+      }
+    },
+    "localStatus": {
+      "version": 1,
+      "kind": "response",
+      "requestId": "a1d49f62-1383-4e9e-b178-d3486b6414b6",
+      "method": "agent.status",
+      "result": {
+        "agentAvailable": true,
+        "kuraAvailable": true,
+        "uptimeSeconds": 31,
+        "version": "0.1.0"
+      }
+    },
+    "statusPolls": 1,
+    "statuses": {
+      "source": {
+        "schemaVersion": 1,
+        "requestId": "76dc94bb-fc6f-4ee3-9990-0f8809437fd3",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "replayed": false
+      },
+      "material": {
+        "schemaVersion": 1,
+        "requestId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+        "state": "APPLIED",
+        "currentReadiness": "READY",
+        "remoteEnabled": false,
+        "unitStarted": false,
+        "replayed": false
+      },
+      "localPeer": {
+        "schemaVersion": 1,
+        "requestId": "25abd835-cf55-4871-929d-87abee746024",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "kuraUid": 996,
+        "currentReadiness": "READY",
+        "remoteEnabled": false,
+        "replayed": false
+      },
+      "initialization": {
+        "schemaVersion": 1,
+        "requestId": "24560864-f974-46aa-940a-0a97ad926118",
+        "state": "APPLIED",
+        "currentReadiness": "READY",
+        "replayed": false
+      }
+    },
+    "nativeSelectedPrivateExact": 6,
+    "corePrivateExact": 6,
+    "originalLocalProofFilesExact": 7,
+    "originalMaterialProofFilesExact": 5,
+    "currentMaterialPublicationExact": 2,
+    "materialOriginalProof": "4247575e3b7488881e06b631df04be880eb6c0686ab0d000c43b0d1f53593dbc",
+    "nativeBusinessCounts": {
+      "results": 0,
+      "firewall_execution_authorities": 0,
+      "executions": 0,
+      "imported_remote_connection_confirmations": 0,
+      "imported_remote_originals": 0,
+      "imported_remote_connection_barriers": 0,
+      "execution_resolutions": 0
+    },
+    "rootJournalCounts": {
+      "operations": 0,
+      "startups": 0
+    },
+    "sourceAbsent": true,
+    "remoteEnabled": false,
+    "readOnly": true
+  },
+  "preservedOtherScenes": {
+    "recordedAt": "2026-11-17T14:52:58.582442+00:00",
+    "originalFixtures": [
+      {
+        "containerId": "863ea5ecfeb0558eabe4c110a5973efd26fbad58e076c48080b2e9bba5a40f0a",
+        "privateFilesExactMetadata": 7,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 3792,
+            "startTicks": "4469038",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4229,
+            "startTicks": "4480291",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 0
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 0,
+          "startups": 0
+        }
+      },
+      {
+        "containerId": "a04bfb08590b93fa3351447ded42c24b576c676699216f3636ff3ff658190c07",
+        "privateFilesExactMetadata": 10,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 5174,
+            "startTicks": "4319777",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4735,
+            "startTicks": "4311323",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 4893,
+            "startTicks": "4319768",
+            "status": {
+              "Uid": "995\t995\t995\t995",
+              "Gid": "990\t990\t990\t990",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 1,
+          "startups": 2
+        }
+      },
+      {
+        "containerId": "5f6b45125fa35903f4c725aeadfdaa22025c4f2b62e33d156309fe09baf629bd",
+        "privateFilesExactMetadata": 21,
+        "runtimeDataContentsExact": 6,
+        "processes": {
+          "kura.service": {
+            "pid": 10430,
+            "startTicks": "3504160",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 10576,
+            "startTicks": "3506794",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 4
+        }
+      }
+    ],
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "center": {
+      "privateFilesExact": 29,
+      "unit": {
+        "MainPID": "3135",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "16649159",
+        "status": {
+          "Uid": "999\t999\t999\t999",
+          "Gid": "996\t996\t996\t996",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "readOnly": true
+    },
+    "readOnly": true
+  },
+  "repositoriesBeforeConsoleCheckpoint": {
+    "recordedAt": "2026-11-17T14:53:25.731967+00:00",
+    "repositories": [
+      {
+        "name": "kura",
+        "head": "50855bca2fa1ebc7fb74725849fec4a3e8df4605",
+        "tree": "138d6f25a9a3fc1c5eff10708d3f7c16517ece81",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-artemis",
+        "head": "7ac6d43ff147fec792bab94493c1ecf50e0ab129",
+        "tree": "2669815e5df997f7a736ad949b8264a6f79485a8",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-camel",
+        "head": "43bd68f1773b0e17c742213b2ca34b289a7042b7",
+        "tree": "fc40be55a0863c0a82095dbdaa97d18d00e62a89",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-cloud",
+        "head": "3a9bc83b475656d4032eaa3b7e3947b10cc3f97b",
+        "tree": "da25335af09752aeb0937d5cc7313e48aeeae416",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-container",
+        "head": "0eeb713f350c83dd81e15890dc360b1fd3e5a0db",
+        "tree": "477aa6eb5c036a6f0eb0e207c058e3a64697458b",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-deployment",
+        "head": "d1fe3e426ad93f9835113bb732562dbe9d7886e3",
+        "tree": "6a03d37a08294b097588ac750c29b7bb2c758202",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-docker",
+        "head": "676e91a77d5b3151095caeb14a8a812560a4e433",
+        "tree": "452dd291746e1eaec82525a2aaa89efe0b73b37d",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-management-ui",
+        "head": "46a2d922358ffe8b0298b9c7c4272e6035f1f91d",
+        "tree": "673426faa388e35a70db9b6ba4ae888f9a8abba2",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-management-agent",
+        "head": "3acb8b06dd25f4b08ea7d3b09fa6238c6fbc5568",
+        "tree": "395e4d4f050a1b3d8eb434c626ff6b915bd145a8",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-management-console",
+        "head": "6c31a839c0218f120a74f393c63f7598dd2b46c0",
+        "tree": "6373c2b75c9ebddfee3fbb8874aa8e596fad84ad",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-networking",
+        "head": "d226b613fdb26beacfa156e5eecb2be461c0e3e5",
+        "tree": "4009e77b8f203da44347d6a22acc40e420c513a3",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-opcua",
+        "head": "a8cfc825ac73ad7f529b266df6f264ab69e3bda0",
+        "tree": "a1db433084775c485561770f4ebe365c78649c32",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-position",
+        "head": "39db08421cae5d902e67d5a76683dbf232039167",
+        "tree": "11dba2e5f8a41d08a8550f5325b19714083d0082",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-triton",
+        "head": "4da955858739fd0bcf7c76109ceca3942254c79c",
+        "tree": "4a41b33573da8ee01be616b291077833069ddb1d",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-wires",
+        "head": "2842bd25ac0941d25905ef7d4ce7229e8b569cec",
+        "tree": "a4cf340ea33df380670afa3cd711291cbd92c8a9",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-yofc-runtime",
+        "head": "1c973c08d4890f1dd2d93606d4d0adbe15589901",
+        "tree": "20a7edfdfc7067a201e0167e5834d33cdbb4e10a",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "yofc-iot",
+        "head": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+        "tree": "6d22a6f8a2fb85828a829a0353e048636ff5200d",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "plc4x-yofc",
+        "head": "e7bc97c97f0dbdacdcddf5a2a80281a35531ea31",
+        "tree": "483809d04736f9896fb8574e02a79a9d358f9a23",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      }
+    ],
+    "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+    "allEighteenCleanBeforeConsoleDocCheckpoint": true
+  },
+  "tests": {
+    "pythonSelected": 210,
+    "pythonPassed": 208,
+    "historicalExportFixturesExcluded": 2,
+    "newMaterialJointMethods": 13,
+    "previousRustIdentityMaterial": 7,
+    "previousRustContinuity": 1,
+    "previousRustEnrollmentRenewalOrdinary": 30,
+    "privilegedRustInteropUnexecuted": 4,
+    "countsOverlap": true,
+    "initialFocusedPublicationFailuresRetained": 5,
+    "actualPublicationFaultInjected": false
+  },
+  "evidenceSha256": {
+    "native-material-joint-focused-tests-return.json": "3a13d829c51417fed7a02ca5389f0448b3ccfa286e8ec759c2a67a539a296b77",
+    "native-material-joint-context-diagnostic.json": "2a7214ff7501aefcba0ed9a90a4d2338cd00e08d0124b6af443a65adc0cae57e",
+    "native-material-joint-context-fixed-tests-return.json": "d84998d350477e7c2ae25b1a6c1a06044e28ad0898deec16ce381b1e57330747",
+    "native-material-joint-full-tests-return.json": "d84998d350477e7c2ae25b1a6c1a06044e28ad0898deec16ce381b1e57330747",
+    "native-material-joint-build-summary.json": "d71ca8fcf3820f56f079b3763d5930eb3c3c80d2fe2fb6bca2ee347ae91b3852",
+    "native-material-joint-bootstrap-local-refusal.json": "b491e7eb24f504ce52325eb3d619198c66c6b9a153208e5f174ed97caeec1281",
+    "native-material-joint-source-preflight-observation.json": "cec65dc3db71c9209103cc97d998964ce50dc68959a35f5563b85ccd1c3f9f34",
+    "native-material-joint-source-verify-observation.json": "afc5b85891ef03a017b3fb07369eaf6d30b26260968ae047d5739ced9151f0e9",
+    "native-material-joint-live-observation.json": "341c9405a41257cc40a7b8629b0c905f683dde6e5ad0e7f80bd117557a1f550f",
+    "native-material-joint-core-observation.json": "afc7f93ac5753c4e210a2e36114427b066843931f7202bbdf03a8811e76ea835",
+    "phase17-preservation-after.json": "b02b7914a47a22508b8f748699311eda43754f7012591408fc9f7e2a8ae707ab",
+    "phase17-repositories-and-ledger.json": "48517805e62a40477be43bdcd15a1eb79e74d02a013ad6b0089f2a77d82563d5"
+  },
+  "internalPending": [
+    "positive actual Core staged CSR/crypto/channel acceptance and durable GWT pre-dispatch request ID",
+    "typed privilege brokers and Core cap/NNP reduction",
+    "retained material/TLS/credentials/business/UNKNOWN and legacy migration",
+    "complete six-component provider/launcher/install/upgrade/remove/purge/restore/GUI/resource/platform matrix",
+    "all untrimmed twelve frozen parents; G034 unsealed"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ],
+  "noReplay": {
+    "originalMaterialGrantRedispatched": false,
+    "originalLocalGrantRedispatched": false,
+    "initializationRedispatched": false,
+    "oldUnknownRedispatched": false,
+    "foreignRootQuery": false,
+    "closedKeyAcceptanceReplayed": false,
+    "remoteEnabled": false,
+    "push": false,
+    "targetRuntimeCleanup": false,
+    "jdk27": false
+  }
+}
