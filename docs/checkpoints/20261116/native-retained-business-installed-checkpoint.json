@@ -6,23 +6,13 @@
   "agentDocumentationHead": "b6d29aa7450b2477bb84e754f0d7179ba4153add",
   "deployedPackage": {
     "agentHead": "eab6821915e453b3a7251481d7ab60767f086943",
-    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/agent-root-source-eab6821",
-    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/inputs-root-business",
-    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/package-root-business/build/kura-management-agent_0.1.0~native202611171954.eab6821-1_arm64.deb",
     "version": "0.1.0~native202611171954.eab6821-1",
     "packageSha256": "0dc111ebb9c95bffd6a4709f9c8560f720257124a970b2ae26be56e64243f5b0",
     "binarySha256": "c03bbb72d05017029c9429d856c590835a268f568a127bd771b22e740c5d3691",
-    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
     "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c",
-    "generatedControlsCompiled": 4,
-    "protocolFreshFromPinnedGit": true,
-    "protocolSourceAndWorkspaceExactToCurrentGit": true,
-    "protocolOwningScope": "crates/management-protocol",
-    "rootTransactionTests": "root-controller-regression3",
-    "realRootSourceBusinessUpgrade": false,
-    "bridgeFromCurrentPairedRuntime": true,
-    "oldIntermediateUsed": false,
-    "deployed": false
+    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+    "installed": true,
+    "sourceRequestId": "b479b232-38d2-436d-9566-3f0e33c25bb3"
   },
   "actualBusinessSourceUpgrade": true,
   "sourceRequestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
@@ -779,5 +769,25 @@
   "implementationChangedThisTurn": false,
   "previousTestsNotRerunOrAccumulated": true,
   "pushed": false,
-  "jdk27Added": false
+  "jdk27Added": false,
+  "buildReceiptBeforeDeployment": {
+    "agentHead": "eab6821915e453b3a7251481d7ab60767f086943",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/agent-root-source-eab6821",
+    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/inputs-root-business",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/package-root-business/build/kura-management-agent_0.1.0~native202611171954.eab6821-1_arm64.deb",
+    "version": "0.1.0~native202611171954.eab6821-1",
+    "packageSha256": "0dc111ebb9c95bffd6a4709f9c8560f720257124a970b2ae26be56e64243f5b0",
+    "binarySha256": "c03bbb72d05017029c9429d856c590835a268f568a127bd771b22e740c5d3691",
+    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+    "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c",
+    "generatedControlsCompiled": 4,
+    "protocolFreshFromPinnedGit": true,
+    "protocolSourceAndWorkspaceExactToCurrentGit": true,
+    "protocolOwningScope": "crates/management-protocol",
+    "rootTransactionTests": "root-controller-regression3",
+    "realRootSourceBusinessUpgrade": false,
+    "bridgeFromCurrentPairedRuntime": true,
+    "oldIntermediateUsed": false,
+    "deployed": false
+  }
 }
