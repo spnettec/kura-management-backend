@@ -168,13 +168,17 @@ class FirewallTests(unittest.TestCase):
         self.assertNotIn('ip6tables', self.calls.read_text())
         self.preserved()
 
-    def test_boot_writer_propagates_ipv4_restore_failure(self):
+    def test_both_boot_writers_propagate_ipv4_restore_failure(self):
         binary = self.home / 'bin/firewall'
         binary.parent.mkdir()
-        shutil.copyfile(SOURCE / 'src/main/resources/scripts/firewall-only.init', binary)
-        result = self.execute(['bash', str(binary)])
-        self.assertEqual(37, result.returncode)
-        self.assertEqual('ipv4-restore\n', self.calls.read_text())
+        for source in (SOURCE / 'src/main/resources/scripts/firewall-only.init',
+                       REPO / 'distrib/src/main/resources/scripts/firewall.init'):
+            with self.subTest(source=source.name):
+                self.calls.unlink(missing_ok=True)
+                shutil.copyfile(source, binary)
+                result = self.execute(['bash', str(binary)])
+                self.assertEqual(37, result.returncode)
+                self.assertEqual('ipv4-restore\n', self.calls.read_text())
         self.preserved()
 
     def test_failed_systemd_reload_is_not_reported_as_success(self):

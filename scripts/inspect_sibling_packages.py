@@ -104,6 +104,18 @@ def inspect(path):
         for member in archive:
             relative = member.name.removeprefix('./')
             assert not member.name.startswith('/') and '..' not in PurePosixPath(relative).parts
+            if package == 'kura-networking' and relative.startswith('etc/NetworkManager/'):
+                raise AssertionError('Provider package must not install active global NM configuration: ' + relative)
+            if package == 'kura-networking' and relative == 'usr/share/polkit-1/rules.d/52-kura-networking.rules':
+                assert member.isfile() and (member.uid, member.gid, member.mode) == (0, 0, 0o644), relative
+                assert archive.extractfile(member).read() == (scripts / 'kura-networking.rules').read_bytes(), relative
+                additional_code.append(relative)
+                continue
+            if package == 'kura-networking' and relative == 'lib/systemd/system/firewall.service':
+                assert member.isfile() and (member.uid, member.gid, member.mode) == (0, 0, 0o644), relative
+                assert archive.extractfile(member).read() == (scripts / 'firewall.service').read_bytes(), relative
+                additional_code.append(relative)
+                continue
             if not relative.startswith('opt/eclipse/kura/'):
                 continue
             if member.isdir():
@@ -151,6 +163,8 @@ def inspect(path):
     else:
         assert len(installed_code) >= (2 if package == 'kura-firewall-only' else 3)
         assert expected + 'sibling_registry.sh' in installed_code
+    if package == 'kura-networking':
+        assert 'usr/share/polkit-1/rules.d/52-kura-networking.rules' in additional_code
     return {'package': package, 'version': metadata['Version'], 'path': str(path.resolve()),
             'sha256': sha(path), 'bytes': path.stat().st_size,
             'sourceHead': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip(),

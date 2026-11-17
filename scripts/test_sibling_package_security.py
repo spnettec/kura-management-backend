@@ -101,7 +101,10 @@ class NativePackageTests(unittest.TestCase):
         self.bin = Path(self.tmp.name) / 'bin'
         self.bin.mkdir()
         self.stub('systemd-cat', 'cat\nexit "${YOFC_LOG_STATUS:-0}"\n')
+        self.stub('systemctl', 'case "$1" in show) echo loaded;; esac\nexit 0\n')
         self.env = dict(os.environ, PATH=str(self.bin) + ':' + os.environ['PATH'])
+        unit = Path('/usr/lib/systemd/system/kura.service.d/kura-networking.conf')
+        self.addCleanup(lambda: unit.unlink(missing_ok=True))
         self.reset()
 
     def tearDown(self):
@@ -316,16 +319,16 @@ class NativePackageTests(unittest.TestCase):
         self.assertNotEqual(0, result.returncode)
         self.assertFalse(self.registry.exists())
         # Fail at the first uninstall child; no network restore is performed.
-        (dest / 'manage_network_permissions.sh').write_text('#!/bin/bash\nsleep 0.2\nexit 43\n')
+        (dest / 'kura_network_options.sh').write_text('#!/bin/bash\nsleep 0.2\nexit 43\n')
         result = self.execute(['bash', str(distrib('networking') / 'deb/control/prerm'), 'remove'])
         self.assertNotEqual(0, result.returncode)
         self.assertIn('uninstallation failed', result.stdout)
         self.preserved()
 
-    def test_missing_optional_units_do_not_mask_the_next_real_child_failure(self):
+    def test_network_options_failure_prevents_registration(self):
         dest = self.stage('networking')
         marker = Path(self.tmp.name) / 'permissions-child-entered'
-        (dest / 'manage_network_permissions.sh').write_text(
+        (dest / 'kura_network_options.sh').write_text(
             '#!/bin/bash\ntouch ' + str(marker) + '\nexit 43\n')
         self.stub('java', 'exit 0\n')
         self.stub('keytool', 'exit 0\n')
@@ -364,20 +367,100 @@ class NativePackageTests(unittest.TestCase):
             self.home.unlink()
             canonical.rename(self.home)
 
-    def test_network_requires_udev_before_any_host_configuration(self):
+    def test_network_provider_lifecycle_preserves_system_authority_and_encrypted_snapshots(self):
         self.stage('networking')
-        marker = Path(self.tmp.name) / 'systemctl-was-called'
-        self.stub('java', 'exit 0\n')
-        self.stub('keytool', 'exit 0\n')
-        self.stub('netplan', 'exit 0\n')
-        self.stub('udevadm', 'echo missing-udev-control >&2\nexit 51\n')
-        self.stub('systemctl', 'touch ' + str(marker) + '\nexit 0\n')
-        result = self.execute(['bash', str(distrib('networking') / 'deb/control/postinst'), 'configure'])
-        self.assertNotEqual(0, result.returncode)
-        self.assertIn('udev control service is unavailable', result.stdout)
-        self.assertFalse(marker.exists())
-        self.assertFalse(self.registry.exists())
+        paths = [Path(value) for value in (
+            '/etc/netplan/10-administrator.yaml',
+            '/etc/cloud/cloud.cfg.d/99-disable-network-config.cfg',
+            '/etc/NetworkManager/conf.d/administrator.conf',
+            '/etc/network/interfaces', '/etc/default/dnsmasq',
+            '/etc/sysconfig/iptables', '/etc/sysconfig/iptables.kurasave',
+            '/var/lib/dhcp/dnsmasq.leases',
+            '/opt/eclipse/kura/user/snapshots/snapshot_0.xml',
+            '/opt/eclipse/kura/user/snapshots/snapshot_1700000000000.xml')]
+        for path in paths:
+            self.assertFalse(os.path.lexists(path), str(path))
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(b'opaque administrator state; never render or decrypt\x00')
+            path.chmod(0o600)
+            self.addCleanup(lambda p=path: p.unlink(missing_ok=True))
+        # Existing system policy and resolver are equally outside package scope.
+        paths += [Path('/etc/pam.d/su'), Path('/etc/resolv.conf')]
+        before = {str(path): self.metadata(path) for path in paths}
+        calls = Path(self.tmp.name) / 'systemctl-calls'
+        self.stub('systemctl', 'printf "%s\\n" "$*" >> ' + str(calls) + '\nexit 0\n')
+        for command in ('netplan', 'udevadm', 'iptables', 'ip6tables', 'iptables-restore', 'nmcli'):
+            self.stub(command, 'echo forbidden-system-write >&2\nexit 91\n')
+        for hook, args in [('preinst', ['install']), ('postinst', ['configure']),
+                           ('preinst', ['upgrade', '1.0']), ('postinst', ['configure', '1.0'])]:
+            result = self.execute(['bash', str(distrib('networking') / 'deb/control' / hook), *args])
+            self.assertEqual(0, result.returncode, result.stderr + result.stdout)
+        self.assertEqual(['daemon-reload', 'daemon-reload'], calls.read_text().splitlines())
+        config = self.home / 'user/kura_custom.properties'
+        self.assertIn(b'kura.have.net.admin=true', config.read_bytes())
+        self.assertEqual(self.account.pw_uid, config.stat().st_uid)
+        result = self.execute(['bash', str(self.home / 'libexec/addons/networking/kura_network_uninstall.sh'),
+                               'remove', '/opt/eclipse', 'kura'])
+        self.assertEqual(0, result.returncode, result.stderr + result.stdout)
+        self.assertEqual(['daemon-reload'] * 3, calls.read_text().splitlines())
+        self.assertNotIn('networking', self.registry.read_text().splitlines())
+        self.assertIn(b'kura.have.net.admin=false', config.read_bytes())
+        self.assertEqual(before, {str(path): self.metadata(path) for path in paths})
         self.preserved()
+
+    def test_legacy_package_policy_is_retained_by_rejecting_before_unpack(self):
+        path = Path('/etc/NetworkManager/conf.d/99-kura-nm.conf')
+        self.assertFalse(os.path.lexists(path))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('[main]\nno-auto-default=*\n')
+        self.addCleanup(lambda: path.unlink(missing_ok=True))
+        before = self.metadata(path)
+        self.stub('dpkg-query', 'echo ' + str(path) + '\n')
+        result = self.execute(['bash', str(distrib('networking') / 'deb/control/preinst'), 'upgrade', '1.0'])
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn('retained-configuration migration', result.stderr)
+        self.assertEqual(before, self.metadata(path))
+        self.preserved()
+
+    def test_network_properties_reject_links_and_leave_existing_flags_unchanged_on_repeat(self):
+        dest = self.stage('networking')
+        path = self.home / 'user/kura_custom.properties'
+        for hardlink in (False, True):
+            with self.subTest(hardlink=hardlink):
+                if hardlink:
+                    os.link(self.target, path)
+                else:
+                    path.symlink_to(self.target)
+                before = self.metadata(self.target)
+                result = self.execute(['bash', str(dest / 'kura_network_options.sh'), 'true'])
+                self.assertNotEqual(0, result.returncode)
+                self.assertEqual(before, self.metadata(self.target))
+                path.unlink()
+        path.write_bytes(b'# personal configuration\ncustom.value=preserve\x00\n')
+        os.chown(path, self.account.pw_uid, self.account.pw_gid)
+        path.chmod(0o600)
+        for action in ('true', 'false'):
+            result = self.execute(['bash', str(dest / 'kura_network_options.sh'), action])
+            self.assertEqual(0, result.returncode, result.stderr)
+            before = self.metadata(path)
+            result = self.execute(['bash', str(dest / 'kura_network_options.sh'), action])
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual(before, self.metadata(path))
+            self.assertTrue(path.read_bytes().startswith(b'# personal configuration\ncustom.value=preserve\x00\n'))
+
+    def test_modified_network_dropin_blocks_install_and_removal_without_overwriting(self):
+        dest = self.stage('networking')
+        path = Path('/usr/lib/systemd/system/kura.service.d/kura-networking.conf')
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('[Service]\nEnvironment=PERSONAL=yes\n')
+        before = self.metadata(path)
+        for action in ('install', 'remove'):
+            filename = installer_name('networking', 'uninstall' if action == 'remove' else 'install')
+            result = self.execute(['bash', str(dest / filename), action, '/opt/eclipse', 'kura'])
+            self.assertNotEqual(0, result.returncode)
+            self.assertEqual(before, self.metadata(path))
+            self.assertFalse(self.registry.exists())
+            self.assertFalse((self.home / 'user/kura_custom.properties').exists())
 
 
 if __name__ == '__main__':
