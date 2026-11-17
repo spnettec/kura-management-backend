@@ -187,11 +187,13 @@ class NativeTests(unittest.TestCase):
         self.assertFalse(POLICY.exists())
 
     def test_builder_binds_exact_base_controls_and_preserves_all_other_payload(self):
-        base = self.package('3', current_controls=True)
+        base = self.package('3.0~git20261117-1', current_controls=True)
         sha = hashlib.sha256(base.read_bytes()).hexdigest()
         receipt = TRANSITION.build(base, sha, self.root / 'output')
         self.assertTrue(receipt['requiresForceConfold'])
-        self.assertEqual('3~nm-policy-retain1', receipt['transitionVersion'])
+        self.assertEqual('3.0~git20261117-1~nmpolicyretain1', receipt['transitionVersion'])
+        subprocess.run(['dpkg', '--compare-versions', receipt['transitionVersion'],
+                        'lt', receipt['normalVersion']], check=True)
         tree = self.root / 'unpacked'
         subprocess.run(['dpkg-deb', '--raw-extract', receipt['package'], str(tree)], check=True)
         self.assertEqual(str(POLICY) + '\n', (tree / 'DEBIAN/conffiles').read_text())
