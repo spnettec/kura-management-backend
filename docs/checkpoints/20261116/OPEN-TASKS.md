@@ -1,3 +1,13 @@
+## 2026-11-18 Clock 有效 unit 与完整 Core 实际首装
+
+Core9066ce7996/测试817ff3cfa2/合同a54af33949：从PID1真实UnitPath核对完整Root加载目录，拒绝control/attached/generator、前缀/类型drop-in、替代fragment与依赖目录；权限拒绝不当不存在。加载Id/Names/LoadState/FragmentPath/SourcePath/DropInPaths/NeedDaemonReload/Transient须配对，异常缺失/重复关闭准入。安装前先查全部unit输入；resume保留原维护gate直到产品reload、加载配对、启socket及复核成功。原密钥Root配对不改。49项Python全过/新增11方法，Java/manifest/DS未变，前57项不重跑/不累加。新systemd255.4 ARM64夹具60条件通过/37拒绝23接受恢复，含12实际加载目录、真实set-property/global/prefix/stale；cap0/NNP1 sleep仅After引用用于保留inactive fragment，无SYS_TIME/clock namespace/请求，actor/socket未启动，夹具停止保留。
+
+新Git/private Maven缓存完整重建support/Core/tools/distrib，ARM64包6.0.0~git202611172300.9066ce7-1/SHA c6a53072…bb918e、203543854字节。manifest文件SHA57b7f686…7e442c与协议actor cohort cc0a32d5…43efaf7分开，JAR28ea41f1…65b11b。Root7载荷/guard/维护shell/Main依赖通过；第二全新依赖齐全Ubuntu ARM64/JDK21现场完整包唯一一次dpkg首装exit0/installed，实际固定别名/两套代码/账号/已加载unit配对通过。UID995/GID988仅自己组，状态0700/空lock、无namespace/operations；Main/actor inactive/PID0/NRestarts0，socket listening/连接0。原维护目的5e33127e…实际quiesce后control override使resume明确拒绝，原gate字节及指定元数据/目的精确；仅撤销自建输入后，产品自身reload沿同一目的恢复，23份Core/密钥/账号文件及原进程保持（NOATIME自查、不断言atime），未发clock/密钥业务请求。新7fd8c6a0…现场随后仅为停放禁用Main并正常停止保留，不能重当空主机；普通boot/完整CoreOSGi/当前actor实际权限进程仍未验。
+
+原PID1/复制属主及777/stale/宿主os导入失败均留记录；os异常发生在dpkg前，核实实际分发0后沿原容器/包单次执行，无重身份或盲改真实数据。私有安装日志/指纹不进Git/知识库。23:16UTC原3/个人25/C9及进程计数/D29原Main3135、E原配对/身份20/Core6/local7/material5/switch9/transport7及原全部进程/ON revision保持，Parallels未启动/原+1ms未重放。文档前18仓仅预期Core提交、冻结完整12父项SHA不变。见[检查点](clock-effective-unit-install-checkpoint.json)、[审查](../../reviews/clock-effective-unit-install-review-20261118.md)。
+
+完整Core/OSGi/实际非Root actor、六组件/provider/launcher/模式/资源平台、升级移除purge恢复中断、RTC/Chrony/其余typed brokers、clock UNKNOWN容量及API/R017/GUI/网络/密钥/CA/数据库/上游/发行全部12父项仍内部pending；E实际Main仍11/13caps、NNP0。最终0/12闭环不等于实现0%，无整体可信加权百分比；仅原3external deferred，G034未封存/协议未正式发布。目标active/现有积分继续、无push/JDK27/活动runtime清理；旧UNKNOWN及丢失CSR不重发换号/跨Root查，闭环密钥和900秒不重放。
+
 ## 2026-11-18 Java NTP 独立时钟 actor 与新 ARM64 包
 
 Core实现b72fa0de7f、固定安装别名修复0f409edde9、合同43204a916a：Java NTP壁钟写改用独立非Root kura-clock/仅CAP_SYS_TIME/NNP1 typed actor，不加入密钥组；Root精确配对4helpers/2units/实际Clock JAR与专用只读代码，双方状态隔离。socket只准当前Main固定helper直接子进程；只传偏移，原namespace/UUID prepare/issued/commit/result持久化、最多一次commit，UNKNOWN/UNSEEN不重发换号/跨Root查，不回落date。按当前realtime补偿RPC耗时，同boot/30秒样本门禁；失败/旧恢复样本不发当前事件或写RTC。独立账号/安装目的、维护guard与保留日志路径已接入；固定canonical别名只接受Root单跳/同父匹配版本真实Root目录，不放宽其他链接/原Root配对。新前缀显式755，既有目录不自动改属主/权限。
