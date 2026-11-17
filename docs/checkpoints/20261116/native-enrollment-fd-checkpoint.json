@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-17T15:56:07.249762+00:00",
+  "goalStatus": "active",
+  "creditsAuthorization": "使用现有积分继续",
+  "deployed": {
+    "coreCodeHead": "50855bca2fa1ebc7fb74725849fec4a3e8df4605",
+    "agentCodeHead": "a3b13ea2cc04fb66d094068d2b4f1f6062c73aa3",
+    "gwtCodeHead": "63536149fa2938d8e13ef2aef7ea413fdb2c504d"
+  },
+  "externalSigning": {
+    "at": "2026-11-17T15:47:51.247001+00:00",
+    "purposeId": "168381dd-950e-4a77-b44d-8fbdc01ba69c",
+    "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+    "gatewayId": "native-e-a60111a6",
+    "leafCertificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+    "publicKeySha256": "52a2f8afb2b29d6742b1af3e456cee46ea4fa5c3608f2252ce7ac58e2f7b6eb2",
+    "chainVerification": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-enrollment-20261117/client-leaf.pem: OK\n",
+    "certificate": "subject=CN=native-e-a60111a6\nissuer=CN=YOFC native empty host fixture CA\nnotBefore=Nov 17 15:47:51 2026 GMT\nnotAfter=Dec  1 15:47:51 2026 GMT\n",
+    "externalCaFilesExact": 3,
+    "centerFilesChanged": false,
+    "newPrivateKeyGenerated": false
+  },
+  "stage": {
+    "at": "2026-11-17T15:48:50.236Z",
+    "purposeId": "530fff95-16d9-4473-9731-508b4cce03ca",
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+    "leafCertificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+    "stageDispatches": 1,
+    "csrDispatches": 1,
+    "routeErrors": [],
+    "pageErrors": [],
+    "stageSummary": "Certificates validated and staged · https://192.168.215.3:18443 · 3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a · 2026-12-01T15:47:51Z",
+    "originalId": "7c3361b3-3073-4394-be1c-e18d359525df",
+    "bindDisabled": true
+  },
+  "bind": {
+    "at": "2026-11-17T15:50:22.467Z",
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+    "stageSha256": "adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8",
+    "clientCertificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+    "rpcSuccess": true,
+    "bindDispatches": 1,
+    "stageDispatches": 1,
+    "csrDispatches": 1,
+    "acceptedSummary": "Identity accepted locally (request / staged material SHA256 / client certificate SHA256) · 7c3361b3-3073-4394-be1c-e18d359525df · adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8 · 3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+    "remoteSummary": "Remote connection disabled; local agent running · https://192.168.215.3:18443 · native-e-a60111a6 · Local Kura control has not been authorized.",
+    "routeErrors": [],
+    "pageErrors": []
+  },
+  "actualNativeObservation": {
+    "at": "2026-11-17T15:51:07.234751+00:00",
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "receipt": {
+      "schema": "yofc.agent.enrollment.v1",
+      "candidateId": "42e96468-bcf9-4940-9b81-0bc4fe70d13f",
+      "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+      "stageSha256": "adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8",
+      "material": {
+        "schema": "yofc.kura.remote.certificates.v1",
+        "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+        "gatewayId": "native-e-a60111a6",
+        "endpoint": "https://192.168.215.3:18443",
+        "publicKeySha256": "52a2f8afb2b29d6742b1af3e456cee46ea4fa5c3608f2252ce7ac58e2f7b6eb2",
+        "clientCertificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+        "issuerCaSha256": "e47a9146dc681290c920dba3c745a8f037cc5462f95ad0d03f670a0804d54513",
+        "consoleCaSha256": "e47a9146dc681290c920dba3c745a8f037cc5462f95ad0d03f670a0804d54513",
+        "notAfter": "2026-12-01T15:47:51Z"
+      },
+      "bindingGeneration": 1,
+      "sourceUid": 996,
+      "actor": "kura-uid:996",
+      "operator": "admin",
+      "acceptedAtUnixMs": 1794930599963
+    },
+    "sourceCsrAndStageExact": true,
+    "independentCopiedFiles": 10,
+    "corePrivateExact": 6,
+    "originalLocalProofExact": 7,
+    "originalMaterialProofExact": 5,
+    "currentMaterialPublicationExact": 2,
+    "nativeUnchangedSelectedPrivateExact": 5,
+    "remoteRevision": "148047bd-0da7-4b65-86a8-e75893f701ee",
+    "remoteEnabled": false,
+    "units": {
+      "kura.service": {
+        "MainPID": "10205",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "19592759",
+        "status": {
+          "Uid": "996\t996\t996\t996",
+          "Gid": "989\t989\t989\t989",
+          "Groups": "20 987 989 997",
+          "CapInh": "0000000406413426",
+          "CapPrm": "0000000406413426",
+          "CapEff": "0000000406413426",
+          "CapBnd": "00000004064134e6",
+          "CapAmb": "0000000406413426",
+          "NoNewPrivs": "0"
+        }
+      },
+      "kura-management-agent-v2.service": {
+        "MainPID": "9001",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "19348899",
+        "status": {
+          "Uid": "997\t997\t997\t997",
+          "Gid": "997\t997\t997\t997",
+          "Groups": "996 997",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      }
+    },
+    "socketUnits": {
+      "kura-management-enrollment-reader.socket": {
+        "NConnections": "0",
+        "NAccepted": "4",
+        "ActiveState": "active",
+        "SubState": "listening"
+      },
+      "kura-management-agent-enrollment.socket": {
+        "NConnections": "0",
+        "NAccepted": "6",
+        "ActiveState": "active",
+        "SubState": "listening"
+      }
+    },
+    "nativeBusinessCounts": {
+      "imported_remote_originals": 0,
+      "firewall_execution_authorities": 0,
+      "imported_remote_connection_barriers": 0,
+      "results": 0,
+      "executions": 0,
+      "execution_resolutions": 0,
+      "imported_remote_connection_confirmations": 0
+    },
+    "rootJournalCounts": {
+      "operations": 0,
+      "startups": 0
+    },
+    "preBindObservationCorrection": "nativeIdentityStoreAbsent checked unused management-enrollment path; actual enrollment absence was not established by that filesystem probe; pre-bind canEnroll/bound UI and server admission are separate evidence",
+    "readOnly": true,
+    "identityPrivateFilesCount": 20
+  },
+  "sameCenterRegistration": {
+    "at": "2026-11-17T15:53:30.497Z",
+    "purposeId": "df67f912-ee65-4742-8bc4-4003749c6ad4",
+    "status": 201,
+    "publicResponse": {
+      "bindingGeneration": 1,
+      "certificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+      "id": "native-e-a60111a6",
+      "name": "YOFC native E enrollment fixture"
+    }
+  },
+  "sameCenterDatabase": {
+    "gateway": {
+      "id": "native-e-a60111a6",
+      "name": "YOFC native E enrollment fixture",
+      "certificate_sha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+      "enabled": true,
+      "binding_generation": 1,
+      "last_seen": null,
+      "boot_id": null,
+      "connection_epoch": null,
+      "no_bundle_token": true,
+      "no_bundle_key": true
+    },
+    "registrationAudit": [
+      {
+        "actor": "599e5ee2-fc62-450a-b375-0aad028eec27",
+        "operation": "gateway.register",
+        "target": "native-e-a60111a6",
+        "outcome": "SUCCEEDED",
+        "created_at": "2026-11-17T15:53:30.481301+00:00"
+      }
+    ],
+    "gatewayCount": 1,
+    "taskCount": 0
+  },
+  "sameCenterFleet": {
+    "at": "2026-11-17T15:54:08.683Z",
+    "gatewayId": "native-e-a60111a6",
+    "postDispatches": 1,
+    "routeErrors": [],
+    "pageErrors": [],
+    "row": "YOFC native E enrollment fixture\nnative-e-a60111a6\n\tOffline\tUnavailable\tAwaiting first connection\t\nQuery status",
+    "taskCountDisplayed": "00",
+    "remoteEnableNotSent": true
+  },
+  "preservedScenes": {
+    "recordedAt": "2026-11-17T15:53:45.690719+00:00",
+    "originalFixtures": [
+      {
+        "containerId": "863ea5ecfeb0558eabe4c110a5973efd26fbad58e076c48080b2e9bba5a40f0a",
+        "privateFilesExactMetadata": 7,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 3792,
+            "startTicks": "4469038",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4229,
+            "startTicks": "4480291",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 0
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 0,
+          "startups": 0
+        }
+      },
+      {
+        "containerId": "a04bfb08590b93fa3351447ded42c24b576c676699216f3636ff3ff658190c07",
+        "privateFilesExactMetadata": 10,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 5174,
+            "startTicks": "4319777",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4735,
+            "startTicks": "4311323",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 4893,
+            "startTicks": "4319768",
+            "status": {
+              "Uid": "995\t995\t995\t995",
+              "Gid": "990\t990\t990\t990",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 1,
+          "startups": 2
+        }
+      },
+      {
+        "containerId": "5f6b45125fa35903f4c725aeadfdaa22025c4f2b62e33d156309fe09baf629bd",
+        "privateFilesExactMetadata": 21,
+        "runtimeDataContentsExact": 6,
+        "processes": {
+          "kura.service": {
+            "pid": 10430,
+            "startTicks": "3504160",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 10576,
+            "startTicks": "3506794",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 4
+        }
+      }
+    ],
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "center": {
+      "privateFilesExact": 29,
+      "unit": {
+        "MainPID": "3135",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "16649159",
+        "status": {
+          "Uid": "999\t999\t999\t999",
+          "Gid": "996\t996\t996\t996",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "readOnly": true
+    },
+    "readOnly": true
+  },
+  "repositoriesBeforeDocCheckpoint": {
+    "at": "2026-11-17T15:56:07.249073+00:00",
+    "repositories": [
+      {
+        "name": "kura",
+        "head": "50855bca2fa1ebc7fb74725849fec4a3e8df4605",
+        "tree": "138d6f25a9a3fc1c5eff10708d3f7c16517ece81",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-artemis",
+        "head": "7ac6d43ff147fec792bab94493c1ecf50e0ab129",
+        "tree": "2669815e5df997f7a736ad949b8264a6f79485a8",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-camel",
+        "head": "43bd68f1773b0e17c742213b2ca34b289a7042b7",
+        "tree": "fc40be55a0863c0a82095dbdaa97d18d00e62a89",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-cloud",
+        "head": "3a9bc83b475656d4032eaa3b7e3947b10cc3f97b",
+        "tree": "da25335af09752aeb0937d5cc7313e48aeeae416",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-container",
+        "head": "0eeb713f350c83dd81e15890dc360b1fd3e5a0db",
+        "tree": "477aa6eb5c036a6f0eb0e207c058e3a64697458b",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-deployment",
+        "head": "d1fe3e426ad93f9835113bb732562dbe9d7886e3",
+        "tree": "6a03d37a08294b097588ac750c29b7bb2c758202",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-docker",
+        "head": "676e91a77d5b3151095caeb14a8a812560a4e433",
+        "tree": "452dd291746e1eaec82525a2aaa89efe0b73b37d",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-management-agent",
+        "head": "3acb8b06dd25f4b08ea7d3b09fa6238c6fbc5568",
+        "tree": "395e4d4f050a1b3d8eb434c626ff6b915bd145a8",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-management-console",
+        "head": "aecb2732b51a01e2511c92207d5b85e2fe006cab",
+        "tree": "a4f3549f0bd91b8f56be263b9243ec1c79fa53ce",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-management-ui",
+        "head": "18c1b5eed4bf1483fb19756f6ea7ca817bd2732e",
+        "tree": "8df2724c363d402649d688aa7b7befeb26d161a7",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-networking",
+        "head": "d226b613fdb26beacfa156e5eecb2be461c0e3e5",
+        "tree": "4009e77b8f203da44347d6a22acc40e420c513a3",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-opcua",
+        "head": "a8cfc825ac73ad7f529b266df6f264ab69e3bda0",
+        "tree": "a1db433084775c485561770f4ebe365c78649c32",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-position",
+        "head": "39db08421cae5d902e67d5a76683dbf232039167",
+        "tree": "11dba2e5f8a41d08a8550f5325b19714083d0082",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-triton",
+        "head": "4da955858739fd0bcf7c76109ceca3942254c79c",
+        "tree": "4a41b33573da8ee01be616b291077833069ddb1d",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-wires",
+        "head": "2842bd25ac0941d25905ef7d4ce7229e8b569cec",
+        "tree": "a4cf340ea33df380670afa3cd711291cbd92c8a9",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "kura-yofc-runtime",
+        "head": "1c973c08d4890f1dd2d93606d4d0adbe15589901",
+        "tree": "20a7edfdfc7067a201e0167e5834d33cdbb4e10a",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "plc4x-yofc",
+        "head": "e7bc97c97f0dbdacdcddf5a2a80281a35531ea31",
+        "tree": "483809d04736f9896fb8574e02a79a9d358f9a23",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      },
+      {
+        "name": "yofc-iot",
+        "head": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+        "tree": "6d22a6f8a2fb85828a829a0353e048636ff5200d",
+        "branch": "wip/management-close-20261116",
+        "clean": true
+      }
+    ],
+    "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+    "allEighteenCleanBeforeConsoleDocCheckpoint": true
+  },
+  "evidenceSha256": {
+    "native-e-public-csr-download.json": "ca7c1c93e6fd35fbb8a39ce017c4ffe4d6474fb0503266b29178ff4ae4622416",
+    "external-sign-preflight-first-failure.json": "929e5f0ce47b591413950a32a4b134e3c36944ddf2aae0d8620d7965b2198180",
+    "external-sign-preflight-second-failure.json": "f7750cd48aca0358132bf128a90e8f559ee413c830fb00004bb7a11a5fc3d289",
+    "external-client-sign-intent.json": "3291225e9cdea6c7d39ea80a93feb2ff6479332bb541790675e507d5264c5919",
+    "external-client-sign-observation.json": "718512bd7b145a2fdb22ab385ed624c02148c1304b355a44e3c30f4252ade3a9",
+    "native-e-stage-intent.json": "0c318717089b23bd507aa29fdf4f5e9a3af5494fcae6302bc1558fce31c97ab4",
+    "native-e-stage-before-dispatch.json": "8cef34e8f554bcfc1650d14e6f326e05e91a32ae91b9cdc89dfee07143902382",
+    "native-e-stage-observed.json": "dc4f270613ab24f1f106842d84c62abd1e388ae51a65acc38a3a8ccf7ac05f93",
+    "native-e-stage-private-observation.json": "e007a569c9acf37256a7f031690260ea10d942264502dd4bde4dc8b51aa328f0",
+    "native-e-before-bind-observation.json": "6674e2cfb03cead91825c952a156ee71a8cffc14b05fdd64807eb2b0c49d6be8",
+    "native-e-before-bind-observation-correction.json": "792de9d2538416b7d5271ff791ef1e4ab7d387d8b8e0b04676976f66781901fd",
+    "native-e-bind-intent.json": "3771da5b984e2efb72e6ce531c99f2ca54453c626feb56c24a9fa95b7727fb93",
+    "native-e-bind-before-dispatch.json": "0284877c9d566f54c9820f582b15d1dac80634a4d5d6e441b98335cb5154788f",
+    "native-e-bind-response.json": "b196c23fa3af789f8511ffba1ba0ba9e4907e3b6b20050dd9251c1bd0419c673",
+    "native-e-bind-observed.json": "a327507018943ff54b2d3fccad9b6f089aa9ddba5471ff31c441d23ae87d5925",
+    "native-e-bound-private-observation.json": "72d051a7dc52bf82e2e20bc9f83b93e13239773fbb32068f17c87313bb845073",
+    "same-d-login-intent.json": "2aee608bcb7ac62ed07aef72d8b383e52b2ce4fffb485fe4dfe63f4abc6bdac9",
+    "same-d-e-registration-intent.json": "93bff7e9a9607219072f5accf545804d2c21f089172460e74f67e8413f9dd24c",
+    "same-d-e-registration-before-dispatch.json": "aa1935c9949a41ade5e00f50a3c3163eeab7225ea540c05efebdcc0e1aeded9f",
+    "same-d-e-registration-response.json": "249e1de8acde1acb1365eaf34a8664737ca06783a7f682db8d43813832d59599",
+    "same-d-e-registration-observed.json": "8c886f707135861a8085f3a19cf67598b01a4172f808a23540dd5619028a12fa",
+    "same-d-e-fleet-observation.json": "28bbe33c88194f3e72f614efa96a689e32c611a441286025ee66fba5f7381975",
+    "same-d-e-database-observation.json": "e7ac9808c0319c72609981944fdd1cbb29e7eeca7c5acbee8c5eac59fc0e9658",
+    "phase19-preservation-after-enrollment.json": "ba1a0769e3d7b7e5218b9203a5302aaf1f7ab30297cc18935bc4d48c9f89ece6",
+    "phase19-repositories-and-ledger.json": "21518a0046344464b1a600ab47881cd3104f4c0cc4a7d566d8ec08ea157c28e6"
+  },
+  "limitations": [
+    "real first enrollment over reviewed native FD route accepted; no live descriptor-loss fault injected",
+    "source helper currently refuses real staged/enrolled state; separate retained identity/source maintenance remains internal pending",
+    "independent native remote-switch Root authorization is not implemented; no environment flag edits or channel enable",
+    "actual center mTLS/heartbeat/readonly task and all complete six-component/provider/launcher/install/upgrade/remove/purge/restore/R017/resource/platform cases remain internal pending",
+    "all twelve untrimmed parents open; G034 unsealed"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ],
+  "noReplay": {
+    "csrDispatches": 1,
+    "stageDispatches": 1,
+    "firstBindDispatches": 1,
+    "centerRegistrationDispatches": 1,
+    "oldUnknownRedispatched": false,
+    "foreignRootQuery": false,
+    "reservedCCsrTouched": false,
+    "closedKeyAcceptanceReplayed": false,
+    "remoteEnabled": false,
+    "coreOrNativeRestartedForEnrollment": false,
+    "push": false,
+    "targetRuntimeCleanup": false,
+    "jdk27": false
+  }
+}

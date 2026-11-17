@@ -1,3 +1,11 @@
+## 2026-11-17 同E真实材料FD接收及中心公开证书登记
+
+Core50855bc/agent代码a3b13ea/GWT6353614保持。原E CSR7c3361b3-3073-4394-be1c-e18d359525df公开下载、外部CA一次签发，CA钥/证书/序列文件精确；两次OpenSSL4输出格式预检在签发意图/分发前失败并保留。真实GWT公开材料暂存一次、首次接收一次，叶证书3681eb86…79f1a与stage adf0acc7…76ca8匹配。实际cap0/NNP1 native通过paired relay/publisher，双方socket各新增1接收，10独立副本哈希同源/inode不同；生产Rust完成PKCS8/CSR/证书校验。候选42e96468-bcf9-4940-9b81-0bc4fe70d13f及20私有文件997:997/0600/0700，指针/完成/原回执匹配，真实操作者admin。Core原CSR/上下文/stage及Core6/local7/material5/current2/native其他5精确，仅产品remote原revision正常推进，enabled仍false。预检观察器误查未用目录的历史字段已显式更正、不改原回执。
+
+Core10205/ticks19592759、native9001/ticks19348899均未为此流重启，native五cap0/NNP1/NRestarts0；Core11/13 caps/NNP0义务保留。native7业务表/Root业务启动0。原D界面只登记公开叶证书一次201，数据库1条gateway.register成功审计、generation1、无bundle钥/token；列表1网关离线、无心跳/boot/epoch/任务。中心enabled不等于本机远程开关，后者仍关闭且因缺独立native Root授权禁用。当前source维护仍拒绝真实stage/身份；下一步显式保留身份/证书的联合source维护与独立远程开关授权，不改env绕门禁、不重初始化/重grant/换请求或身份。
+
+见[检查点](native-enrollment-fd-checkpoint.json)及[审查](../../reviews/native-enrollment-fd-review-20261117.md)。本次后原3/个人25/C9进程计数/D29原Main3135只读精确，18仓文档前干净、冻结完整12父项SHA不变。真实mTLS/只读任务/通道、typed broker/Core最小权限、保留TLS/业务/UNKNOWN/旧态迁移、完整六组件provider/launcher/安装升级移除恢复/R017与全部12父项继续内部pending，仅原3 external deferred。目标active/现有积分继续、无推送；旧UNKNOWN及闭环密钥/900秒不重放。
+
 ## 2026-11-17 CSR发送前原ID留存与同E真实恢复
 
 GWT6353614新增发送前Web Lock内公开原ID/上下文/网关UNKNOWN记录及读回，缺存储/锁/安全API或损坏记录拒绝新写；超时/丢回复/刷新不重发换号，先核对Core上下文再scope读取，匹配公钥/CSR后OBSERVED并显式确认。Core原目录下0600单链接上下文仅首次授权CSR创建；读不创建、不同Root不查旧ID。native v2菜单单标记/Root保护检查，不降低原Root配对。JDK21新隔离构建、Java11 GWT目标，47 JVM和11浏览器场景通过/页面错误0，覆盖双tab/失败/超时/晚回调/中文390px；初次fixture导航及指纹换行失败保留。浏览器夹具不冒充Root验收。
