@@ -1,3 +1,11 @@
+## 2026-11-17 注册材料 FD 与 Root 同 UID 反例续接
+
+agent 75ebf3c/9a25c91/36fff96/8a7c03e 保存只读 FD 发布/消费、精确包/源码/unit 配对、原 UUID 授权与 purge 保留候选。30 项 Rust 常规检查及一次显式 Root 跨 UID parent/child 通过；扩展 Python 116 通过/2 历史导出夹具未执行，后续 purge 相关 14 通过（重叠不累加）。未构建、安装或启用新包，未结算任何业务 CSR。
+
+公开临时探针确认：既有新组合现场中，UID0/NET_ADMIN/NNP1 可通过 Root key-service 的 /proc/PID/root 绕过直接路径遮蔽。未读任何钥/HMAC/凭据/日志，探针已移除，/var/lib 目录时间戳变化保留。此前“agent 看不到原钥/HMAC”只代表直接路径观察，不能外推完整隔离；Root-actor 候选暂停部署，继续专用非 Root 身份、窄委托及准确 peer/发行包配对。此项仍是内部工作，不新增 external deferred。
+
+见 [检查点](enrollment-custody-runtime-identity-checkpoint.json)与 [审查](../../reviews/enrollment-custody-runtime-identity-review-20261117.md)。原3现场7进程/38私有/6旧数据及个人25文件精确，新C9私有/进程/零Root业务计数、新中心29私有/原进程保持。combination-c-ebdbf564 不重生成/换号/换Root；R017 GUI、完整六组件/provider/launcher/安装升级移除与全部冻结12父项继续内部pending。仅原3 external deferred；现有积分继续、目标active、无推送。
+
 ## 2026-11-17 组合网关、首改密码及正式数据目录续接
 
 同一新 agent-first 现场新增 networking5d27fea/GWT 并实际普通启动，Core/agent/networking/GWT configured，NM/GWT/bridge ACTIVE；health 为惰性 SATISFIED，不宣称业务健康已验。GWT0d6dba8 修复首改只填新密码/确认及事件会话锁，46a2d92 改用 Core SystemService 数据目录并拒绝旧 override 冲突。最终 20 项选择检查、两模块12 GWT变体通过；当前 GWT 原生包已在同一新现场升级，9私有完整元数据/agent进程保留，Root operations/startups与agent执行表0。唯一密码更新200/服务端成功审计，现有新密码实际登录通过；一次门禁探测先使测试登录失效，XSRF403时密码写0，记录保留。
