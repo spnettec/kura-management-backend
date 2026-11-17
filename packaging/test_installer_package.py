@@ -65,7 +65,7 @@ class IndependentInstallerPackageTests(unittest.TestCase):
             self.assertIn('Exec=/usr/bin/python3 /usr/lib/kura-management-console/host_ui.py gui',contents)
             self.assertIn('Name[zh_CN]=YOFC 管理中心安装设置',contents)
             self.assertEqual(result['hostUiBootstrapProtocolVersion'],1)
-            self.assertEqual(len(result['criticalFiles']),18)
+            self.assertEqual(len(result['criticalFiles']),20)
             self.assertTrue({'usr/lib/kura-management-console/host_ui.py','usr/sbin/kura-console-host-ui',
                              'usr/share/polkit-1/actions/com.yofc.console.host-ui.policy'}<=names)
             import xml.etree.ElementTree as ET
@@ -78,6 +78,8 @@ class IndependentInstallerPackageTests(unittest.TestCase):
             self.assertIn('usr/lib/kura-management-console/native_packages.py',names)
             self.assertIn('usr/share/kura-management-console-installer/packages.json',names)
             self.assertIn('usr/share/cockpit/yofc-console-setup/native-packages.js',names)
+            self.assertIn('usr/lib/kura-management-console/agent_control.py',names)
+            self.assertIn('usr/share/cockpit/yofc-console-setup/agent-control.js',names)
             if os.geteuid()==0:
                 service=Setup(root/'package/root')
                 with patch.object(installer,'Setup',return_value=service):

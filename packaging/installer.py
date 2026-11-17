@@ -22,6 +22,7 @@ from host_control import HostControl
 from docker_control import DockerControl
 from docker_maintenance import MaintenanceControl
 from native_packages import NativePackages
+from agent_control import AgentControl
 
 DOCKER = '/usr/bin/docker'
 LABEL = 'com.yofc.console.installation'
@@ -30,7 +31,8 @@ INSTALLER_FILES={
     '/usr/lib/kura-management-console/host_control.py','/usr/sbin/kura-console-setup',
     '/usr/lib/kura-management-console/docker_control.py','/usr/lib/kura-management-console/docker_maintenance.py','/usr/share/kura-management-console-installer/images.json',
     '/usr/lib/kura-management-console/native_packages.py','/usr/share/kura-management-console-installer/packages.json',
-    *('/usr/share/cockpit/yofc-console-setup/'+name for name in ['index.html','installer.js','native-packages.js','installer.css','manifest.json'])}
+    '/usr/lib/kura-management-console/agent_control.py',
+    *('/usr/share/cockpit/yofc-console-setup/'+name for name in ['index.html','installer.js','native-packages.js','agent-control.js','installer.css','manifest.json'])}
 DESKTOP_FILES={'/usr/share/applications/com.yofc.KuraConsoleSetup.desktop'}
 HOST_UI_FILES={'/usr/lib/kura-management-console/host_ui.py','/usr/sbin/kura-console-host-ui',
                '/usr/share/polkit-1/actions/com.yofc.console.host-ui.policy'}
@@ -212,6 +214,7 @@ def probe_listener(description,readiness=False):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['status','start','credential','containers',
+        'agent-overview','agent-authorize','agent-complete','agent-status',
         'native-overview','native-operation','native-upload-prepare','native-install','native-retire','native-verify','native-finalize',
         'docker-overview','docker-operation','docker-upload-prepare','docker-import','docker-verify-import','docker-deploy','docker-status',
         'docker-maintenance-begin','docker-maintenance-stop','docker-maintenance-resume','docker-maintenance-upgrade','docker-maintenance-verify-start',
@@ -220,6 +223,7 @@ def main():
     parser.add_argument('--container')
     parser.add_argument('--port', type=int)
     parser.add_argument('--operation')
+    parser.add_argument('--initialization')
     parser.add_argument('--image')
     parser.add_argument('--name')
     parser.add_argument('--http-port',type=int)
@@ -230,6 +234,15 @@ def main():
     if os.geteuid()!=0:
         raise RuntimeError('Host administrator authorization is required')
     verify_installer_payload()
+    if args.action.startswith('agent-'):
+        supplied={key for key in ['operation','initialization','package','instance','container','port','image','name','http_port','grpc_port','deployment'] if getattr(args,key) is not None}
+        allowed=set() if args.action=='agent-overview' else {'operation','initialization'}
+        if supplied!=allowed:raise RuntimeError('Fixed local native agent action arguments required')
+        control=AgentControl()
+        value=control.overview() if args.action=='agent-overview' else control.request(
+            args.action.removeprefix('agent-'),args.operation,args.initialization)
+        print(json.dumps(value));return
+    if args.initialization is not None:raise RuntimeError('Unexpected native agent initialization context')
     if args.action.startswith('native-'):
         supplied={key for key in ['operation','package','instance','container','port','image','name','http_port','grpc_port','deployment'] if getattr(args,key) is not None}
         allowed={'native-overview':set(),'native-upload-prepare':{'operation','package'},

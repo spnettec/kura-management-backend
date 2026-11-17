@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YOFC Console Setup</title><link rel="stylesheet" href="installer.css"><script src="../base1/cockpit.js"></script><script defer src="native-packages.js"></script><script defer src="installer.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YOFC Console Setup</title><link rel="stylesheet" href="installer.css"><script src="../base1/cockpit.js"></script><script defer src="native-packages.js"></script><script defer src="agent-control.js"></script><script defer src="installer.js"></script></head>
 <body><main>
   <button id="language" type="button">English</button>
   <h1 id="title"></h1><p id="intro"></p>
@@ -22,6 +22,18 @@
   <section id="nativeLaunch"><h2 id="nativeLaunchTitle"></h2>
     <label id="instanceRow"><span id="instanceLabel"></span><input id="instance" maxlength="32" autocomplete="off"><small id="instanceHelp"></small></label>
     <div id="nativeActions"><label><span id="portLabel"></span><input id="port" type="number" min="1024" max="65535" value="18443"></label><button id="status" type="button" disabled></button><button id="start" type="button" disabled></button></div>
+  </section>
+  <section id="agentControl"><h2 id="agentTitle"></h2><p id="agentHelp"></p>
+    <button id="agentRefresh" type="button"></button><pre id="agentIdentity"></pre>
+    <p id="agentStopHelp"></p><pre id="agentServices"></pre>
+    <form id="agentGrantForm" method="post" action="." aria-labelledby="agentTitle">
+      <fieldset><legend id="agentLegend"></legend>
+        <div class="approval"><input id="agentApprove" name="approveLocalSwitch" type="checkbox" required disabled aria-describedby="agentHelp agentStopHelp"><label id="agentApproveLabel" for="agentApprove"></label></div>
+      </fieldset>
+      <button id="agentGrant" type="submit" disabled></button>
+    </form>
+    <button id="agentObserve" type="button" disabled></button><button id="agentComplete" type="button" disabled></button>
+    <p id="agentResult" role="status" aria-live="polite"></p>
   </section>
   <section id="dockerActions" hidden><h2 id="dockerTitle"></h2><p id="dockerHelp"></p>
     <button id="dockerRefresh" type="button"></button><p id="dockerEngine" role="status"></p>

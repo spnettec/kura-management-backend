@@ -69,9 +69,11 @@
   const controls=['mode','instance','port','container','refresh','status','start','read','download','open','maintenanceObserve','maintenanceBegin','maintenanceStop','maintenanceComplete','maintenanceCancel',
     'dockerRefresh','dockerImage','dockerArchive','dockerUpload','dockerImport','dockerVerifyImport','dockerName','dockerHttp','dockerGrpc','dockerDeploy','dockerObserve','dockerStatus',
     'dockerFreeze','dockerStop','dockerResume','dockerUpgrade','dockerMaintenanceObserve','dockerVerifyStarted',
-    'nativeRefresh','nativePackage','nativeFile','nativeUpload','nativeApprove','nativeInstall','nativeObserve','nativeRetire','nativeVerify','nativeFinalize','nativeFinish'];
+    'nativeRefresh','nativePackage','nativeFile','nativeUpload','nativeApprove','nativeInstall','nativeObserve','nativeRetire','nativeVerify','nativeFinalize','nativeFinish',
+    'agentRefresh','agentApprove','agentGrant','agentObserve','agentComplete'];
   const nativeUi=window.yofcNativePackages({invoke,action:fn=>action(async()=>{await fn();$('message').textContent='';}),getLanguage:()=>language,getBusy:()=>busy,
     onInstalled:()=>{clear();retireObservation();$('service').textContent='';}});
+  const agentUi=window.yofcAgentControl({invoke,action:fn=>action(async()=>{await fn();$('message').textContent='';}),getLanguage:()=>language,getBusy:()=>busy});
   const text = key => words[language][key];
   function render() {
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
@@ -81,6 +83,7 @@
     renderMaintenance();
     renderDocker();
     nativeUi.render();
+    agentUi.render();
   }
   function target() {
     if ($('mode').value === 'docker') {
@@ -142,6 +145,7 @@
       maintenanceButtons();
       dockerButtons();
       nativeUi.buttons();
+        agentUi.buttons();
     }
   }
   function changed() {

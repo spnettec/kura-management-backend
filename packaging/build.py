@@ -36,7 +36,7 @@ def source_files(root):
     sources += [root / 'packaging/kura-management-console.service', root / 'packaging/kura-management-console@.service',
                 root / 'packaging/console.env.example', root / 'packaging/console-instance.env.example',
                 root / 'packaging/setup.py', root / 'packaging/lifecycle.py', root / 'packaging/build.py',
-                  root / 'packaging/installer.py', root/'packaging/host_control.py',root/'packaging/docker_control.py',root/'packaging/docker_maintenance.py',root/'packaging/native_packages.py',root/'packaging/images.json']
+                    root / 'packaging/installer.py', root/'packaging/host_control.py',root/'packaging/docker_control.py',root/'packaging/docker_maintenance.py',root/'packaging/native_packages.py',root/'packaging/agent_control.py',root/'packaging/images.json']
     sources += sorted((root/'packaging').glob('test_*.py'))
     sources += sorted((root/'packaging/cockpit').glob('*'))
     sources += [root/'packaging/desktop/com.yofc.KuraConsoleSetup.desktop',
@@ -222,7 +222,7 @@ def installer_deb(version,destination,source_manifest,native_receipts=(),with_co
     manifest=json.loads(source_manifest.read_text())
     if manifest.get('siblingSourceRequired') is not False:raise RuntimeError('Self-contained source provenance required')
     staged={row['path']:row['sha256'] for row in manifest['sourceFiles']}
-    sources=[PACKAGING/name for name in ['setup.py','installer.py','host_control.py','docker_control.py','docker_maintenance.py','native_packages.py','images.json']]
+    sources=[PACKAGING/name for name in ['setup.py','installer.py','host_control.py','docker_control.py','docker_maintenance.py','native_packages.py','agent_control.py','images.json']]
     sources+=sorted((PACKAGING/'cockpit').glob('*'))
     if with_cockpit:
         sources+=[PACKAGING/'desktop/com.yofc.KuraConsoleSetup.desktop',
