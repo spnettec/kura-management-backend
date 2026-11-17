@@ -1,5 +1,11 @@
 # 管理体系阶段检查点
 
+## 2026-11-17 继续：中心原生 GUI 引导与独立工具更新
+
+新空主机实际 Cockpit/PAM 发现并修复 sudo 必需依赖；9 项 Root 打包/源码检查通过。中心包由 GUI 唯一上传/安装，原实际 dpkg＋postinst 回执与 9 个 Root 载荷核对，安装保持停止；之后 GUI 显式启动、可信凭据/实际 TLS 核对、中心生成 CSR、外部测试 CA 签发、GUI 专用空库初始化及管理员登录通过。TLS 切换后的原初始化 8d038ae0…仅在同一中心登录后只读取得 APPLIED/observedConfiguration=true，没有重发换号。独立工具在运行中更新，7 私有元数据和 PID/ticks 保持；中英文不同主机名帮助及无障碍关联实际验证。
+
+见 [检查点](native-console-empty-host-checkpoint.json)及 [审查](../../reviews/native-console-empty-host-review-20261117.md)。最终中心 PID3135、cap0/NNP1、29 私有文件，原 7 bootstrap 元数据精确；外部 PG16.15 应用角色无 superuser/createdb/createrole。OS 图形安装/GTK/人工证书信任、gateway mTLS 与完整六组件/provider/launcher/安装升级移除及全部冻结 12 父项仍内部 pending，原 networking inode/ctime 偏差继续保留；仅原 3 外部边界。原 3 现场/7 进程/38 私有/6 旧数据及个人 25 文件再次精确，目标 active，无推送。
+
 ## 2026-11-17 继续：旧 NM 配置保留与原失败续接
 
 原 networking 失败现场经显式 conffile 过渡及修复后正常包续接，Core＋12 sibling 全部 configured，64 个 Root/不可由 group/other 写入的 JAR，12 注册项无重复；Main 启动/Root operations/startups 0。活动 NM 文件原完整元数据、网络服务 PID/ticks 保持。首次过渡暴露空 configured-version 误判首装，给该新测试现场属性追加两标志；已严格按原前缀/已知后缀指纹撤销，字节/属主/模式/mtime 恢复，但 inode/ctime 不可恢复，偏差保留。preinst 持久安装模式及损坏准入拒绝已修复；24 项 sibling、9 项 dpkg 检查通过。最新修复版过渡归档已组合，尚未另作完整实际 Kura 路径验收。
