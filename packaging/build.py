@@ -45,19 +45,41 @@ def source_files(root):
     return sources
 
 
+def release_sources():
+    result = []
+    for source in source_files(ROOT):
+        relative = source.relative_to(ROOT)
+        if source.is_symlink() or any(parent.is_symlink() for parent in source.parents if parent != ROOT and ROOT in parent.parents):
+            raise RuntimeError('Source symlinks are not release inputs: ' + str(relative))
+        if not source.is_file():
+            if source.suffix in {'.rs', '.sql', '.ts', '.tsx', '.proto', '.desktop', '.policy', '.py'} or source.name in {'Cargo.toml', 'package.json', 'package-lock.json', 'index.html', 'tsconfig.json', 'vite.config.ts'}:
+                raise RuntimeError('Missing release source: ' + str(source))
+            continue
+        if any(part in {'target', 'node_modules', 'dist', '.phase1-dev', '.git'} for part in relative.parts):
+            raise RuntimeError('Release source includes generated path: ' + str(relative))
+        result.append(source)
+    if len(result) != len(set(result)):
+        raise RuntimeError('Duplicate release source path')
+    return result
+
+
+def verify_source_manifest(provenance):
+    if provenance.get('schemaVersion') != 1 or provenance.get('siblingSourceRequired') is not False:
+        raise RuntimeError('Self-contained source provenance required')
+    rows = provenance.get('sourceFiles', [])
+    records = {row['path']: row['sha256'] for row in rows}
+    actual = {str(path.relative_to(ROOT)): sha(path) for path in release_sources()}
+    if len(records) != len(rows) or records != actual:
+        raise RuntimeError('Release source differs from staged provenance')
+
+
 def stage(destination):
     if destination.exists():
         raise RuntimeError('Keep prior staged source; select a new destination')
     records = []
     destination.mkdir(parents=True)
-    for source in source_files(ROOT):
-        if source.is_symlink() or not source.is_file():
-            if source.suffix in {'.rs', '.sql', '.ts', '.tsx', '.proto', '.desktop', '.policy', '.py'} or source.name in {'Cargo.toml', 'package.json', 'package-lock.json', 'index.html', 'tsconfig.json', 'vite.config.ts'}:
-                raise RuntimeError(f'Missing release source: {source}')
-            continue
+    for source in release_sources():
         relative = source.relative_to(ROOT)
-        if any(part in {'target', 'node_modules', 'dist', '.phase1-dev', '.git'} for part in relative.parts):
-            raise RuntimeError(f'Release source includes generated path: {relative}')
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
@@ -98,8 +120,7 @@ def deb(binary, expected, architecture, version, destination, source_manifest, w
     if not required or max(required) > (2, 39):
         raise RuntimeError('Binary does not satisfy the Ubuntu 24.04 glibc floor')
     provenance = json.loads(source_manifest.read_text())
-    if provenance.get('siblingSourceRequired') is not False:
-        raise RuntimeError('Self-contained source provenance required')
+    verify_source_manifest(provenance)
     web = web_manifest(web_dist)
     if destination.exists():
         raise RuntimeError('Keep prior package output; select a new destination')
