@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-17T01:08:25.944407+00:00",
+  "state": "bounded-installed-main-integration-accepted-paused-at-weekly-100",
+  "coreSourceHead": "de5f4e6901324b4d14d73762b8d99b0173942db4",
+  "corePackageSourceHead": "e016f60c0330b9ffaad1def1c70d343ff86f1156",
+  "coreHeadDeltaIsTestsOnly": [
+    "kura/distrib/src/test/installed-main-archive.md",
+    "kura/distrib/src/test/test_installed_main_archive_tab.mjs"
+  ],
+  "uiSourceHead": "f135710e0038aee6224f45b6a81b29bd59f7b345",
+  "packages": {
+    "core": {
+      "name": "kura_6.0.0~git202611170024.e016f60-1_arm64.deb",
+      "sha256": "ad56fb864d90f9f95a99a5d8862c4d37377378b41fc160026a2ad5379012cb79",
+      "bytes": 203499552,
+      "cryptoContractsMatched": 15,
+      "actualPackageFilesVerified": 47
+    },
+    "ui": {
+      "name": "kura-management-ui_3.0.0~git202611170052.f135710-1_all.deb",
+      "sha256": "35b3fc08cf84c5021712eca3188128a31dab74df48f84bf5b744ff467d2f665c",
+      "bytes": 34095166,
+      "jarSha256": "a2306b5a04a322a8dcff48f1a47120821dae1e53e8b9b73a1e73534a69035e3f",
+      "rootOwnedPayloads": [
+        "opt/eclipse/kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+        "opt/eclipse/kura/siblings/management-ui/6s/commons-csv-1.14.0.jar",
+        "opt/eclipse/kura/libexec/addons/management-ui/kura_management_ui_install.sh",
+        "opt/eclipse/kura/libexec/addons/management-ui/kura_management_ui_uninstall.sh"
+      ]
+    }
+  },
+  "validation": {
+    "hostMaven": "3.10.1",
+    "hostJdk": "Temurin 21.0.13",
+    "guest": "Ubuntu 24.04 ARM64 / actual systemd / OpenJDK 21.0.13",
+    "gwtPermutations": 12,
+    "jvmTests": 181,
+    "jvmFailures": 0,
+    "jvmSkipped": 0,
+    "packageInputTests": 7,
+    "installerTests": 7,
+    "readOnlyActualUiReplies": 8,
+    "actualAdminLoginAndXsrf": true,
+    "firstLoginPasswordChangedThroughUi": true,
+    "realRootUds": true,
+    "browser": "Playwright Chromium; opaque TCP relay; isolated self-signed TLS",
+    "recoveryTlsFingerprintPinned": true,
+    "independentBackupInspection": "actual HTTPS API, read only; UI material deliberately disabled while Main is healthy",
+    "actualServiceIdentities": {
+      "kura.service": {
+        "pid": 15506,
+        "uid": 997,
+        "capAmb": "0000000406413426",
+        "capBnd": "00000004064134e6",
+        "nnp": "0"
+      },
+      "kura-key-service.service": {
+        "pid": 5538,
+        "uid": 0,
+        "capAmb": "0000000000000000",
+        "capBnd": "0000000000000000",
+        "nnp": "1"
+      },
+      "kura-key-recovery.service": {
+        "pid": 5519,
+        "uid": 995,
+        "capAmb": "0000000000000000",
+        "capBnd": "0000000000000000",
+        "nnp": "1"
+      }
+    }
+  },
+  "closedScenario": {
+    "deletedDisposableFixture": "66cde1f9a56494b35c64abae93416e42d18345b4278cde4651adc3d47c6adf92",
+    "operationId": "cd2ee5cd-1c6c-4e6f-9e82-c545231c50d8",
+    "state": "SUCCEEDED",
+    "createBackupCalls": 1,
+    "downloadBytes": 696,
+    "archives": [
+      {
+        "kind": "LEGACY",
+        "archiveId": "eb3a5a16-256f-4626-a8b4-8ee7af425b9c"
+      },
+      {
+        "kind": "ADMISSION",
+        "archiveId": "47ecb515-0524-4b6f-82b5-1eaed22ac737"
+      }
+    ],
+    "archiveRecordCalls": 2,
+    "rootArchiveFiles": 4,
+    "rootKeyRecordBytesAndMetadataUnchanged": true,
+    "mainProcessPreservedDuringNativeScenario": true,
+    "canonicalAndLoadedKeyMatch": true,
+    "privateFilesUnchanged": 6,
+    "restoreCalls": 0,
+    "rotationCalls": 0,
+    "journaledStartupCalls": 0,
+    "fixtureRemoved": true,
+    "passwordAndBackupFilesDeleted": true,
+    "replayForbidden": true,
+    "foreignRootQueriesForbidden": true
+  },
+  "preservation": {
+    "originalGatewayScenes": 3,
+    "originalProcesses": 7,
+    "privateFilesExactMetadata": 38,
+    "oldDataSha256s": 6,
+    "originalUnknownOperationId": "767863a9-fe6b-4135-9783-ddcb131030af",
+    "originalStartupStopSha256": "a87d94d52839e316845b7c831b265daf928f0bfd5fb0a883fb49b721cba5f63c",
+    "resends": 0
+  },
+  "cleanup": {
+    "deletedFileBytes": 712958966,
+    "removedContainerWritableLayerBytes": 1294621968,
+    "containerRemoved": true,
+    "newVolumes": 0,
+    "backupsCreated": false,
+    "hostAvailableBefore": 412210839552,
+    "hostAvailableAfter": 412937846784,
+    "logicalSizesAreNotPhysicalFreedBytes": true,
+    "retainedOldUpgradeInputs": [
+      "b7f72c0 Core",
+      "c3699e2 Core",
+      "a69382f GWT"
+    ]
+  },
+  "pendingSiblingOwnershipReview": [
+    {
+      "repo": "kura-artemis",
+      "daemonOwnedCodeMappings": 2,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-camel",
+      "daemonOwnedCodeMappings": 2,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-cloud",
+      "daemonOwnedCodeMappings": 8,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-container",
+      "daemonOwnedCodeMappings": 2,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-deployment",
+      "daemonOwnedCodeMappings": 4,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-networking",
+      "daemonOwnedCodeMappings": 9,
+      "daemonOwnedInstallerMappings": 0
+    },
+    {
+      "repo": "kura-opcua",
+      "daemonOwnedCodeMappings": 2,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-position",
+      "daemonOwnedCodeMappings": 4,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-triton",
+      "daemonOwnedCodeMappings": 1,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-wires",
+      "daemonOwnedCodeMappings": 14,
+      "daemonOwnedInstallerMappings": 2
+    },
+    {
+      "repo": "kura-yofc-runtime",
+      "daemonOwnedCodeMappings": 1,
+      "daemonOwnedInstallerMappings": 2
+    }
+  ],
+  "scope": {
+    "allInternalParents": 12,
+    "allParentsRemainPending": true,
+    "fullLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+    "externalDeferred": [
+      "actual NM/cloud-init/physical hardware",
+      "amd64",
+      "disk-full/hard-power-loss"
+    ],
+    "completeSixComponentRelease": false,
+    "allProviderReencryption": false,
+    "fullBroker": false,
+    "humanUsabilityAcceptance": false,
+    "mainCapsStillAmbient11Bounding13Nnp0": true,
+    "G034Sealed": false,
+    "lastAccepted": "G033/V61",
+    "lastFullSeal": "V51",
+    "pushPerformed": false
+  },
+  "quota": {
+    "weeklyUsedPercentLastObserved": 100,
+    "ordinaryUsageAllowed": true,
+    "creditsBalance": "54476.0999360000",
+    "pauseWhenWeeklyExhausted": true,
+    "creditsForNecessaryWrapOnly": true,
+    "pauseReason": "User requested pause at weekly exhaustion; interface displays 100 percent; ordinary flag remains true",
+    "newImplementationAfterBoundary": false
+  },
+  "next": [
+    "Review/fix remaining 11 sibling package code ownership and privileged installer paths without moving real runtime data",
+    "Continue complete six-component/provider/launcher/profile/upgrade matrix and full key lifecycle",
+    "Continue every frozen parent; keep only the three existing external deferred boundaries",
+    "No replay of this closed native scenario or older closed scenarios; no UNKNOWN resend or ID replacement"
+  ]
+}
