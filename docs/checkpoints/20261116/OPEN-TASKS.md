@@ -1,3 +1,13 @@
+## 2026-11-18 原首次身份与材料的联合source维护
+
+agent代码fd771f1/81c1e9b新增独立enrolled-material source动作，仅原授权/Core-native停机/两socket停用排空、远程关、业务0及单一完整首次身份。Core上下文/CSR/stage、native指针/候选/完成回执/独立副本严格只读盘点，类型/权限/链接/哈希/key-CSR-证书与到期一致；不重身份、不认领修补或清理数据。原摘要/完整指纹入不可变source意图/结果，准入核对原意图，丢摘要拒绝；控制入口锁争用立即BUSY。227 Python中225过/2历史夹具排除，含17新方法，前次计数重叠；实际只读先核32文件，不外推完整运行故障矩阵。
+
+当前Git锁定离线新包0.1.0~native202611171614.81c1e9b-1，SHAc5744ad7…b0a22d/source0ce25b5d…9de9da；协议从声明Git1c5842a重新打包且与当前源码/清单/锁一致、SHA61163caf…e70c2，未正式发布；未变bridge直接读当前配对E，非旧中间产物。ELF334a3fb8…53877c/unit1a1579c7…736ca不变，4脚本编译。首次OCI参数过长在Python启动前拒绝，后续只读缺helper失败保留；确认目录缺省/Main不变，同原source df26b4ab-9b0a-434f-a8d3-1168cc63f954改stdin流，准备/分发各一次APPLIED、不自动启动。56停机资产/原身份20/Core6/local7/material5精确、原init/grant仍APPLIED/READY，仅代码绑定推进，权限/身份/原回执不改。
+
+显式恢复后native12359/ticks19860202 UID/GID997、五cap0/NNP1/NRestarts0；Core12644/ticks19860220仍11/13 caps/NNP0待办，key4714/recovery4640/NM4668不变。身份20/材料32及现用私有精确、agent/kura=true、7业务表/Root业务启动0、remote原revision148047bd…仍OFF。现用密码GWT重登录及原CSR7c3361b3…/stage adf0acc7…/绑定回执读回；CSR/stage/bind/登记各总1次，页面错误0，不重放身份或闭环密钥验收。
+
+见[检查点](retained-enrollment-source-checkpoint.json)及[审查](../../reviews/retained-enrollment-source-review-20261118.md)。本次后原3/个人25/C9进程计数/D29原Main3135只读精确，18仓文档前干净、完整冻结12父项SHA不变。继续独立native Root远程开关授权及产品UI、实际mTLS/心跳/只读任务、保留续期/TLS/业务/UNKNOWN/旧态迁移、typed broker/Core最小权限及完整六组件provider/launcher/安装升级移除恢复/R017/平台资源矩阵与全部12父项，均内部pending，仅原3 external deferred。目标active/现有积分继续，无推送、不加27、不清active runtime、不重发旧UNKNOWN或跨Root查询。
+
 ## 2026-11-17 同E真实材料FD接收及中心公开证书登记
 
 Core50855bc/agent代码a3b13ea/GWT6353614保持。原E CSR7c3361b3-3073-4394-be1c-e18d359525df公开下载、外部CA一次签发，CA钥/证书/序列文件精确；两次OpenSSL4输出格式预检在签发意图/分发前失败并保留。真实GWT公开材料暂存一次、首次接收一次，叶证书3681eb86…79f1a与stage adf0acc7…76ca8匹配。实际cap0/NNP1 native通过paired relay/publisher，双方socket各新增1接收，10独立副本哈希同源/inode不同；生产Rust完成PKCS8/CSR/证书校验。候选42e96468-bcf9-4940-9b81-0bc4fe70d13f及20私有文件997:997/0600/0700，指针/完成/原回执匹配，真实操作者admin。Core原CSR/上下文/stage及Core6/local7/material5/current2/native其他5精确，仅产品remote原revision正常推进，enabled仍false。预检观察器误查未用目录的历史字段已显式更正、不改原回执。
