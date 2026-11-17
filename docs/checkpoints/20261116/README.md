@@ -1,3 +1,13 @@
+## 2026-11-17 原生材料授权与实际socket拒绝
+
+agent材料实现3ed06c2、Core版本链接修正269cfb3/文档71f5c2e：独立Root原UUID材料授权、严格固定UID/路径/代码配对、Rust保护能力校验；publisher隐藏/run和/proc，仅只读stage绑定。通用拒绝链接规则不变，只专门校验Root拥有的Core版本入口；data/stage拒绝链接及错误属主/权限，不创建认领/修改.data。197 Python中195过/2历史夹具排除，Rust身份材料7/连续性1/注册续期30过、4提权互操作未执行，计数重叠不累加。
+
+同E两次不同代码目的source66c36d19…/d620ab81…各准备/分发一次APPLIED，16停机资产/Core6/原local grant7精确，权限/env/初始化不变、不自动启动。首个材料预检因真实Core链接拒绝，授权前修正并保留失败。新包0.1.0~native202611171436.269cfb3-1从当前自包含Git源码锁定离线新构建，SHA277883c7…675f1，四脚本编译；JAR/loader未变。
+
+材料原13d50bed-dab2-412c-90ed-73d634258fb9一次授权APPLIED/READY、远程关、不自动启动，无CSR/钥/材料源/身份/通道。随后显式启用两socket及启动native/Core：native7887/ticks19257379 UID/GID997、groups996/997、五cap集合0/NNP1/NRestarts0；Core8162/ticks19257403保留11/13 caps/NNP0待办，key4714/recovery4640/NM4668原进程不变。agent/kura=true、bundle216/DS53 ACTIVE，native6/Core6/原local grant7私有精确、Root业务/启动0。实际socket合法UID缺材料REFUSED/no FD、错误UID拒绝、直达私有publisher EACCES13；探针解析/健康路径两次错误保留，同只读号续接，没有业务重发。
+
+见 [检查点](native-material-authority-checkpoint.json)及 [审查](../../reviews/native-material-authority-review-20261117.md)。本次原3/个人25/C9与进程计数/D29及原Main3135只读精确，18仓文档前干净、冻结完整12父项SHA不变。正向真实Core材料/crypto/通道未验；已封材料能力的原证明联合source维护、broker/Core最小权限、保留态/旧态/UNKNOWN迁移、联合升级移除恢复/R017及六组件provider/launcher完整矩阵和全部12父项均内部pending，仅原3 external deferred。旧CSR/UNKNOWN及闭环密钥验收不重发重放；目标active、现有积分继续、无推送。
+
 ## 2026-11-17 保留原本地授权的source联合演进
 
 agent代码85784f2/文档8bc267b新增显式local-peer联合source动作，只接受两Main停止、原env/空业务运行态/Core unit/JAR/loader/组不变；普通source及未装Core动作仍分开拒绝。Source结果记录前后代码绑定并锚定原授权结果SHA，原UUID/权限/回执/current指针/发布回执不改；丢链拒绝当前readiness，原fate不变。185 Python中183过/2历史夹具排除，含8联合方法，focused8额外核对原回执元数据；210编译输入与上一新构建精确，Rust未改，4脚本编译，计数重叠不累加。
