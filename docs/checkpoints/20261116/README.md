@@ -1,5 +1,15 @@
 # 管理体系阶段检查点
 
+## 2026-11-17 当前续接：sibling 代码权限与安装链路
+
+用户已明确选择在周额度 100% 时使用现有积分继续，目标 active；不兑换 reset。11 个剩余主 sibling 的 49 处 JAR 映射、提权脚本路径及失败传播已修复，GWT 补齐卸载遗漏。19 项源码/Linux 原生 test methods 通过；实际 12 个新包的 64 个 Root/0644 JAR、56 份代码/模板及 54 条 API 声明已核对。从当前源码构建，不依赖还原旧证据。
+
+新的独立 systemd fixture 已安装 Core 并完成 11 个 sibling 配置；Networking 因真实 udev 控制通道缺失而失败。新候选已在同一失败现场验证提前拒绝，19 份私有/用户文件完整元数据保持，Main 启动/Root 密钥请求均为 0。该现场继续保留，不重复 provision；此项仍内部 pending。历史 Networking 包的旧 prerm 首次升级路径、完整六组件/provider/launcher/变体/安装升级移除矩阵及全部 12 父项仍内部 pending，仅原 3 项 external deferred。原 3 现场的 7 进程/38 私有元数据/6 旧数据及个人当前 25 文件复核一致；配置/密钥/数据及运行中 target/runtime 保留；UNKNOWN 和已闭环密钥验收不重发、不换号、不重放或跨 Root 查询。
+
+见 [sibling 检查点](sibling-code-ownership-checkpoint.json)及 [本轮审查](../../reviews/sibling-package-security-review-20261117.md)。Core 新增仅为通用安装夹具的测试入口；生产包仍与 e016 源码一致。全部更改仅本地 WIP，无推送；冻结 12 父项原文不变。
+
+## 上一阶段：实际 Main 联合检查点（历史）
+
 2026-11-17 周用量已显示100%，本阶段必要交接完成后暂停目标；以下记录保留已接受的受限范围。
 
 2026-11-17 当前 Core 源码 `de5f4e6901`（生产包来自 `e016f60c03`，其后只追加测试/说明）、GWT `f135710e00`。实际 Ubuntu24.04 ARM64 / systemd / Main / Root UDS / HTTPS / ADMIN/XSRF 联调已通过一个受限新环境：正常首次登录改密，一次新随机测试钥的加密备份下载，原 LEGACY 和 ADMISSION 各一次元数据归档，独立恢复 HTTPS API 只读解密核验。Root 原密钥操作记录原字节/元数据保留；6份测试凭据/TLS/HMAC文件及现用Main PID不变，没有恢复、发布、换钥或日志化启动。浏览器由Playwright驱动；恢复页健康态按合同禁用材料，没有重放冷恢复验收。

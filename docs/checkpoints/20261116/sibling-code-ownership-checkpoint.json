@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-17T01:56:55.975603+00:00",
+  "state": "source-package-native-checks-accepted-full-systemd-install-incomplete-udev",
+  "goalStatus": "active",
+  "weekly100ExistingCreditsExplicitlyAuthorized": true,
+  "sourceBranch": "wip/management-close-20261116",
+  "coreSourceHead": "d67b91925e7fbae6c1a78986cf866b5fe75ef8f6",
+  "coreProductionPackageSource": "e016f60c0330b9ffaad1def1c70d343ff86f1156",
+  "allCoreChangesAfterProductionPackageAreTests": true,
+  "packages": [
+    {
+      "package": "kura-artemis",
+      "version": "1.0.0~git202611170136.7ac6d43-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-artemis/distrib/target/deb/kura-artemis_1.0.0~git202611170136.7ac6d43-1_all.deb",
+      "sha256": "dce1f7d752b0ce14b18fd3e283714172c2905f6f4279d0a4044099d1a53dc647",
+      "bytes": 15378462,
+      "sourceHead": "7ac6d43ff147fec792bab94493c1ecf50e0ab129"
+    },
+    {
+      "package": "kura-camel",
+      "version": "1.0.0~git202611170136.43bd68f-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-camel/distrib/target/deb/kura-camel_1.0.0~git202611170136.43bd68f-1_all.deb",
+      "sha256": "45d298f25510ff255f6eb6a5335c0acd4eff13818d6b27fac3debe604b9576c1",
+      "bytes": 31547218,
+      "sourceHead": "43bd68f1773b0e17c742213b2ca34b289a7042b7"
+    },
+    {
+      "package": "kura-cloud",
+      "version": "3.0.0~git202611170154.3a9bc83-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-cloud/distrib/target/deb/kura-cloud_3.0.0~git202611170154.3a9bc83-1_all.deb",
+      "sha256": "698ff94863fcf924c8639ead7b19adbc9e62a2eea60250275b9e50d1b30c24f1",
+      "bytes": 4173810,
+      "sourceHead": "3a9bc83b475656d4032eaa3b7e3947b10cc3f97b"
+    },
+    {
+      "package": "kura-container",
+      "version": "3.0.0~git202611170136.0eeb713-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-container/distrib/target/deb/kura-container_3.0.0~git202611170136.0eeb713-1_all.deb",
+      "sha256": "529e46f47e37a652e9220f94f2da10a4f8d96de2dd940a113bc5cf198ba445a5",
+      "bytes": 15972670,
+      "sourceHead": "0eeb713f350c83dd81e15890dc360b1fd3e5a0db"
+    },
+    {
+      "package": "kura-deployment",
+      "version": "2.0.0~git202611170136.d1fe3e4-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-deployment/distrib/target/deb/kura-deployment_2.0.0~git202611170136.d1fe3e4-1_all.deb",
+      "sha256": "3c26be6f9de1556bafc14af5b7dd0f36cf33d8e5d4445dc73a910d634083e6c1",
+      "bytes": 146886,
+      "sourceHead": "d1fe3e426ad93f9835113bb732562dbe9d7886e3"
+    },
+    {
+      "package": "kura-networking",
+      "version": "3.0.0~git202611170153.fd1f0b7-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611170153.fd1f0b7-1_all.deb",
+      "sha256": "d6f0970f26b0f2c2e61f7f52cf0c77464abd9780215dda3d7532ff481ca88dd3",
+      "bytes": 9278782,
+      "sourceHead": "fd1f0b706a5603491d77cfbb295c5c1fb41de277"
+    },
+    {
+      "package": "kura-opcua",
+      "version": "2.0.0~git202611170136.a8cfc82-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-opcua/distrib/target/deb/kura-opcua_2.0.0~git202611170136.a8cfc82-1_all.deb",
+      "sha256": "debf13d19fd9c9fde93a56362403e020827450806c2dad931b706aee7a5187c5",
+      "bytes": 5839292,
+      "sourceHead": "a8cfc825ac73ad7f529b266df6f264ab69e3bda0"
+    },
+    {
+      "package": "kura-position",
+      "version": "2.0.0~git202611170136.39db084-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-position/distrib/target/deb/kura-position_2.0.0~git202611170136.39db084-1_all.deb",
+      "sha256": "a8fbdaed120b95e78405b8754fd08970dcfb394d1052f80a05ac92a8e8196c2c",
+      "bytes": 136994,
+      "sourceHead": "39db08421cae5d902e67d5a76683dbf232039167"
+    },
+    {
+      "package": "kura-triton",
+      "version": "2.0.0~git202611170137.4da9558-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-triton/distrib/target/deb/kura-triton_2.0.0~git202611170137.4da9558-1_all.deb",
+      "sha256": "aa77c1fb8b668ed3e70d416cf0880dfd9a64a6f14969d05f115bdb809a7b83d6",
+      "bytes": 11954182,
+      "sourceHead": "4da955858739fd0bcf7c76109ceca3942254c79c"
+    },
+    {
+      "package": "kura-wires",
+      "version": "3.0.0~git202611170137.2842bd2-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-wires/distrib/target/deb/kura-wires_3.0.0~git202611170137.2842bd2-1_all.deb",
+      "sha256": "59b442dd7c94bfa1a60214956802a54350d2230d39cb75dd6fc66a72dc9c4bf5",
+      "bytes": 119523142,
+      "sourceHead": "2842bd25ac0941d25905ef7d4ce7229e8b569cec"
+    },
+    {
+      "package": "kura-yofc-runtime",
+      "version": "1.0.0~git202611170137.1c973c0-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-yofc-runtime/distrib/target/deb/kura-yofc-runtime_1.0.0~git202611170137.1c973c0-1_all.deb",
+      "sha256": "078d4ad9a197a06bec5b682f6339fe8bc4e5f97cfeb92ef1ed723bb16a7f64a7",
+      "bytes": 10533020,
+      "sourceHead": "1c973c08d4890f1dd2d93606d4d0adbe15589901"
+    },
+    {
+      "package": "kura-management-ui",
+      "version": "3.0.0~git202611170137.04a2de4-1",
+      "path": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/distrib/target/deb/kura-management-ui_3.0.0~git202611170137.04a2de4-1_all.deb",
+      "sha256": "e204c84fa04d1e2c2b20ceb142313d1c246f3a1995606974301168098f45418e",
+      "bytes": 34096522,
+      "sourceHead": "04a2de44e0cc5b3b863bd2e3d388a0e463b84ad2"
+    }
+  ],
+  "validation": {
+    "java": "Temurin 21.0.13",
+    "maven": "3.10.1",
+    "sourceAndNativeTestMethods": 19,
+    "jvmTestsExecutedInSourceBuild": false,
+    "actualPackagedJars": 64,
+    "sourceMatchedInstallerAndTemplateFiles": 56,
+    "sourceApiImportClausesMatched": 54,
+    "systemctlAndLogSinkModeledInNativeTests": true,
+    "fullSystemdInstallAccepted": false,
+    "actualGuestJdk": "OpenJDK 21.0.13 Ubuntu 24.04 ARM64"
+  },
+  "newFixture": {
+    "containerId": "8d5c8e8f493c818c9fcc1800df51af6a765482ede93fc68f988d76ea073daee2",
+    "purpose": "sibling-package-matrix",
+    "state": "same-original-network-install-rejected-before-further-host-changes-missing-udev",
+    "results": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/sibling-package-security-20261117/installed-systemd",
+    "reprovisionForbidden": true,
+    "explicitKeyRequests": 0,
+    "mainStarts": 0,
+    "otherSiblingPackagesConfigured": 11,
+    "networkingState": "half-configured",
+    "privateAndUserFilesExact": 19,
+    "rootJournalCounts": {
+      "operations": 0,
+      "startups": 0
+    },
+    "repairedPreflightSource": "fd1f0b7",
+    "nativeInstallationComplete": false,
+    "firstFailedInstallAndObserverFailureRetained": true
+  },
+  "originalPreservation": {
+    "gateways": 3,
+    "processesExact": 7,
+    "privateMetadataExact": 38,
+    "oldDataSha256Exact": 6,
+    "readOnly": true,
+    "personalCurrentFilesExact": 25
+  },
+  "all12ParentsRemainInternalPending": true,
+  "externalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ],
+  "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "rootPairingRelaxed": false,
+  "unknownResent": false,
+  "closedKeyAcceptanceReplayed": false,
+  "pushPerformed": false,
+  "parallels": {
+    "existingVm": "Ubuntu 26.04 ARM64",
+    "readOnlyInventory": true,
+    "udevReady": true,
+    "existingKuraConfigurationAndAgentData": true,
+    "jdk21Present": false,
+    "installedNewPackages": false,
+    "powerStateRestored": "stopped"
+  },
+  "next": [
+    "Review networking firewall-only and netplan compatibility variants without editing runtime data",
+    "Continue real install/upgrade/remove/purge profiles; missing container udev and legacy networking prerm remain internal pending",
+    "Continue complete six-component/provider/launcher/key lifecycle and all frozen 12 parents"
+  ]
+}
