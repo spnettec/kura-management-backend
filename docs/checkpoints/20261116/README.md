@@ -1,3 +1,11 @@
+## 2026-11-17 组合网关、首改密码及正式数据目录续接
+
+同一新 agent-first 现场新增 networking5d27fea/GWT 并实际普通启动，Core/agent/networking/GWT configured，NM/GWT/bridge ACTIVE；health 为惰性 SATISFIED，不宣称业务健康已验。GWT0d6dba8 修复首改只填新密码/确认及事件会话锁，46a2d92 改用 Core SystemService 数据目录并拒绝旧 override 冲突。最终 20 项选择检查、两模块12 GWT变体通过；当前 GWT 原生包已在同一新现场升级，9私有完整元数据/agent进程保留，Root operations/startups与agent执行表0。唯一密码更新200/服务端成功审计，现有新密码实际登录通过；一次门禁探测先使测试登录失效，XSRF403时密码写0，记录保留。
+
+CSR 自动化意图 `combination-c-ebdbf564` 原响应/客户端UUID未恢复，无申请目录/受理审计；新只读列表为空。异步错误弹窗可解释点击未触发，但不据缺失或推断结算；不再生成、不换ID/标识、不中转到其他Root重做。身份目录错误已实际修复，原意图和 GWT 发出前持久保存请求编号的缺项继续内部 pending。本机未授权的首次接收/通道按钮保持禁用；R017 本机授权/维护/独立agent GUI 未关闭。
+
+见 [检查点](combined-gateway-runtime-checkpoint.json)及 [审查](../../reviews/combined-gateway-runtime-review-20261117.md)。原3现场7进程/38私有/6旧数据、个人25文件精确；新中心29私有及原进程身份精确。方案A与后备CLI停机顺序文档已校正。完整六组件/provider/launcher/升级移除和全部冻结12父项继续内部pending，仅原3 external deferred，目标 active、现有积分继续；旧UNKNOWN及已闭环密钥验收不重发/重放，无推送。
+
 # 管理体系阶段检查点
 
 ## 2026-11-17 继续：中心原生 GUI 引导与独立工具更新

@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-17T05:44:11.195927+00:00",
+  "status": "bounded combined gateway runtime/password/data-directory progress; goal active",
+  "repositories": {
+    "kura": {
+      "branch": "wip/management-close-20261116",
+      "head": "c4da4575a7660c61df8e5456d774dc64e022a839",
+      "tree": "54a8e47e9ef9520a2d8ffa99fdf1f1b3124ad86f",
+      "status": ""
+    },
+    "kura-artemis": {
+      "branch": "wip/management-close-20261116",
+      "head": "7ac6d43ff147fec792bab94493c1ecf50e0ab129",
+      "tree": "2669815e5df997f7a736ad949b8264a6f79485a8",
+      "status": ""
+    },
+    "kura-camel": {
+      "branch": "wip/management-close-20261116",
+      "head": "43bd68f1773b0e17c742213b2ca34b289a7042b7",
+      "tree": "fc40be55a0863c0a82095dbdaa97d18d00e62a89",
+      "status": ""
+    },
+    "kura-cloud": {
+      "branch": "wip/management-close-20261116",
+      "head": "3a9bc83b475656d4032eaa3b7e3947b10cc3f97b",
+      "tree": "da25335af09752aeb0937d5cc7313e48aeeae416",
+      "status": ""
+    },
+    "kura-container": {
+      "branch": "wip/management-close-20261116",
+      "head": "0eeb713f350c83dd81e15890dc360b1fd3e5a0db",
+      "tree": "477aa6eb5c036a6f0eb0e207c058e3a64697458b",
+      "status": ""
+    },
+    "kura-deployment": {
+      "branch": "wip/management-close-20261116",
+      "head": "d1fe3e426ad93f9835113bb732562dbe9d7886e3",
+      "tree": "6a03d37a08294b097588ac750c29b7bb2c758202",
+      "status": ""
+    },
+    "kura-docker": {
+      "branch": "wip/management-close-20261116",
+      "head": "676e91a77d5b3151095caeb14a8a812560a4e433",
+      "tree": "452dd291746e1eaec82525a2aaa89efe0b73b37d",
+      "status": ""
+    },
+    "kura-management-agent": {
+      "branch": "wip/management-close-20261116",
+      "head": "01ff3675b8f5f0fedd8fb93238a5bdf8b0aa4ed7",
+      "tree": "103a17ab2cdf004d42f852cf0d006d6e7f2e3a4e",
+      "status": ""
+    },
+    "kura-management-console": {
+      "branch": "wip/management-close-20261116",
+      "head": "3ff103dcb01b490037903767dbd04e7bf0ad91d1",
+      "tree": "4e663223df8fe1c543a6576da7fecbdb249f5e6c",
+      "status": "M docs/provisioning-ui-design-v1.md"
+    },
+    "kura-management-ui": {
+      "branch": "wip/management-close-20261116",
+      "head": "46a2d922358ffe8b0298b9c7c4272e6035f1f91d",
+      "tree": "673426faa388e35a70db9b6ba4ae888f9a8abba2",
+      "status": ""
+    },
+    "kura-networking": {
+      "branch": "wip/management-close-20261116",
+      "head": "5d27feac3695f0fc034041d70c5025b212b16f75",
+      "tree": "de06a9394e200c034bc84e500bb50e7706ba3b25",
+      "status": ""
+    },
+    "kura-opcua": {
+      "branch": "wip/management-close-20261116",
+      "head": "a8cfc825ac73ad7f529b266df6f264ab69e3bda0",
+      "tree": "a1db433084775c485561770f4ebe365c78649c32",
+      "status": ""
+    },
+    "kura-position": {
+      "branch": "wip/management-close-20261116",
+      "head": "39db08421cae5d902e67d5a76683dbf232039167",
+      "tree": "11dba2e5f8a41d08a8550f5325b19714083d0082",
+      "status": ""
+    },
+    "kura-triton": {
+      "branch": "wip/management-close-20261116",
+      "head": "4da955858739fd0bcf7c76109ceca3942254c79c",
+      "tree": "4a41b33573da8ee01be616b291077833069ddb1d",
+      "status": ""
+    },
+    "kura-wires": {
+      "branch": "wip/management-close-20261116",
+      "head": "2842bd25ac0941d25905ef7d4ce7229e8b569cec",
+      "tree": "a4cf340ea33df380670afa3cd711291cbd92c8a9",
+      "status": ""
+    },
+    "kura-yofc-runtime": {
+      "branch": "wip/management-close-20261116",
+      "head": "1c973c08d4890f1dd2d93606d4d0adbe15589901",
+      "tree": "20a7edfdfc7067a201e0167e5834d33cdbb4e10a",
+      "status": ""
+    },
+    "plc4x-yofc": {
+      "branch": "wip/management-close-20261116",
+      "head": "e7bc97c97f0dbdacdcddf5a2a80281a35531ea31",
+      "tree": "483809d04736f9896fb8574e02a79a9d358f9a23",
+      "status": ""
+    },
+    "yofc-iot": {
+      "branch": "wip/management-close-20261116",
+      "head": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+      "tree": "6d22a6f8a2fb85828a829a0353e048636ff5200d",
+      "status": ""
+    }
+  },
+  "sourceCommits": {
+    "gwtPassword": "0d6dba8",
+    "gwtDataDirectory": "46a2d92",
+    "agentDocumentation": "01ff367"
+  },
+  "combinedFixture": {
+    "containerId": "ebdbf56457231cb710ae7eab759d254d8ba54d321480a0d82c0af5415b600f4a",
+    "createdOnce": true,
+    "currentPackages": "kura-core install ok installed 6.0.0~git202611170338.c4da457-1\nkura-management-agent install ok installed 0.1.0~cohort20261117.z002.4c58b0d-1\nkura-management-ui install ok installed 3.0.0~git202611170539.46a2d92-1\nkura-networking install ok installed 3.0.0~git202611170419.5d27fea-1\n",
+    "observation": {
+      "units": {
+        "ModemManager.service": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "dead"
+        },
+        "NetworkManager.service": {
+          "ActiveState": "active",
+          "ControlPID": "0",
+          "MainPID": "5468",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "running",
+          "process": {
+            "CapAmb": "0000000000000000",
+            "CapBnd": "00000000200534e2",
+            "CapEff": "00000000200534e2",
+            "Gid": "0\t0\t0\t0",
+            "Groups": "0",
+            "NoNewPrivs": "0",
+            "Uid": "0\t0\t0\t0"
+          },
+          "startTicks": "16415524"
+        },
+        "kura-key-recovery.service": {
+          "ActiveState": "active",
+          "ControlPID": "0",
+          "MainPID": "5048",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "running",
+          "process": {
+            "CapAmb": "0000000000000000",
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "Gid": "989\t989\t989\t989",
+            "Groups": "988 989",
+            "NoNewPrivs": "1",
+            "Uid": "996\t996\t996\t996"
+          },
+          "startTicks": "16372326"
+        },
+        "kura-key-service.service": {
+          "ActiveState": "active",
+          "ControlPID": "0",
+          "MainPID": "5516",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "running",
+          "process": {
+            "CapAmb": "0000000000000000",
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "Gid": "0\t0\t0\t0",
+            "Groups": "0",
+            "NoNewPrivs": "1",
+            "Uid": "0\t0\t0\t0"
+          },
+          "startTicks": "16415541"
+        },
+        "kura-management-agent.service": {
+          "ActiveState": "active",
+          "ControlPID": "0",
+          "MainPID": "5450",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "running",
+          "process": {
+            "CapAmb": "0000000000000000",
+            "CapBnd": "0000000000001000",
+            "CapEff": "0000000000001000",
+            "Gid": "993\t993\t993\t993",
+            "Groups": "993",
+            "NoNewPrivs": "1",
+            "Uid": "0\t0\t0\t0"
+          },
+          "startTicks": "16411356"
+        },
+        "kura.service": {
+          "ActiveState": "active",
+          "ControlPID": "0",
+          "MainPID": "20499",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "running",
+          "process": {
+            "CapAmb": "0000000406413426",
+            "CapBnd": "00000004064134e6",
+            "CapEff": "0000000406413426",
+            "Gid": "990\t990\t990\t990",
+            "Groups": "20 988 990 993",
+            "NoNewPrivs": "0",
+            "Uid": "997\t997\t997\t997"
+          },
+          "startTicks": "17029346"
+        },
+        "systemd-resolved.service": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "Result": "success",
+          "SubState": "dead"
+        }
+      },
+      "keyJournalCounts": {
+        "operations": 0,
+        "startups": 0
+      },
+      "agentExecutionCounts": {
+        "execution_resolutions": 0,
+        "executions": 0,
+        "firewall_execution_authorities": 0,
+        "imported_remote_connection_barriers": 0,
+        "imported_remote_connection_confirmations": 0,
+        "imported_remote_originals": 0,
+        "results": 0
+      },
+      "agentSettings": {
+        "AGENT_KURA_REMOTE_MANAGEMENT": "0",
+        "AGENT_KURA_UID": "997",
+        "AGENT_NETWORK_INTERFACES": "",
+        "AGENT_REMOTE_ENABLED": "0"
+      },
+      "agentCanSeeRootKeys": {
+        "/etc/kura/credentials/kura_encryption_key": false,
+        "/var/lib/kura-key-service/journal.key": false
+      }
+    },
+    "privateMetadataExact": 9,
+    "siblingRootJars": 11,
+    "nmAndGwtAndBridgeActive": true,
+    "networkStatusHealth": "SATISFIED lazy service; actual business health acceptance not claimed",
+    "propertiesInitialAppendBytes": 55,
+    "propertiesOriginalPrefixBytesExact": 799,
+    "resolverContentsExactButMtimeCtimeChanged": true
+  },
+  "gwtPackage": {
+    "purpose": "ordinary package repair of installed SystemService data lookup; CSR writes remain held, no resubmit/new ID",
+    "containerId": "ebdbf56457231cb710ae7eab759d254d8ba54d321480a0d82c0af5415b600f4a",
+    "sourceHead": "46a2d922358ffe8b0298b9c7c4272e6035f1f91d",
+    "packagePath": "/Users/heyoulin/iot-kura-develop/git/kura-management-ui/distrib/target/deb/kura-management-ui_3.0.0~git202611170539.46a2d92-1_all.deb",
+    "containerPath": "/candidate-gwt-system-data.deb",
+    "packageSha256": "7d67ddaa5b9855c2ce165398198c794b6df7771d17e9c7a99618ff12f0da311d",
+    "bundleSha256": "d32e344ed62533774a2f2ec358794b665fdaf6ad2fbbfb9476f806c59981c0cd",
+    "rootPayloadFiles": 9
+  },
+  "password": {
+    "originalHttpStatus": 200,
+    "acceptedWriteCount": 1,
+    "rawResponseBodyUnavailableAfterSuccessNavigation": true,
+    "serverSuccessAuditRetained": true,
+    "newPasswordAuthenticated": true,
+    "explicitRejectedManagementProbeInvalidatedTestSession": true,
+    "earlierXsrfPreparation403HadPasswordWriteCount": 0,
+    "passwordUpdateRedispatched": false
+  },
+  "csrUnverifiedAutomationIntent": {
+    "gatewayIdReserved": "combination-c-ebdbf564",
+    "originalClientUuidRecovered": false,
+    "authoritativeRpcReceiptRecovered": false,
+    "requestDirectoryObserved": false,
+    "prepareAuditObserved": false,
+    "newReadOnlyListEmpty": true,
+    "notSettledFromAbsence": true,
+    "noRegenerationOrReplacementId": true,
+    "explanationInferred": "asynchronous INTERNAL_ERROR overlay may have blocked initial click",
+    "internalPending": true
+  },
+  "validation": {
+    "finalSelectedJvmTests": 20,
+    "previous14AreIncludedNotSummed": true,
+    "original4PolicyTestsHad2FailuresBeforeRepair": true,
+    "gwtModules": 2,
+    "permutationsPerModule": 6,
+    "jdk": 21,
+    "gwtTarget": 11,
+    "noJdk27": true,
+    "noNewWholeProviderAcceptance": true
+  },
+  "preserved": {
+    "originalProcessIdentitiesExact": 7,
+    "originalPrivateMetadataExact": 38,
+    "originalDataContentsExact": 6,
+    "personalFilesExact": 25,
+    "newCenterPrivateMetadataExact": 29,
+    "newCenterProcessExact": {
+      "MainPID": "3135",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "ticks": "16649159",
+      "status": {
+        "Uid": "999\t999\t999\t999",
+        "Gid": "996\t996\t996\t996",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000",
+        "NoNewPrivs": "1"
+      }
+    }
+  },
+  "fullParentLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "all12ParentsRetained": true,
+  "g034Sealed": false,
+  "oldClosedKeyAcceptanceReplayed": false,
+  "unknownRedispatched": false,
+  "pushed": false,
+  "records": [
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/component-install-intent.json",
+      "sha256": "749b0dfd86c6f31aff4a2e26d828791d74def98845ca07aa2c6a0f6a8774439f",
+      "bytes": 1243
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/component-install-return.json",
+      "sha256": "c365161d39236fe0f1d32937fbc549796b8487d8faf65ed3879b96897c78ea5d",
+      "bytes": 17
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/component-install-independent-observation.json",
+      "sha256": "f5b21194bdab323a9fff7cc66516448dcbdcb14e85bd7f9598e8b16b1c82e486",
+      "bytes": 439
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/before-components.json",
+      "sha256": "22680d995139906464b337e74a7a44a4d8212ef560708b3a5f4ac1531ff3cc5e",
+      "bytes": 6198
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/combined-osgi-read-with-terminal.json",
+      "sha256": "12197c1022c327416201844dc7f1f85eca1843514c5bb2f37edce443b6ee2829",
+      "bytes": 17056
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-package-independent-observation.json",
+      "sha256": "a23ac85690e53661502f09819fc818220fabe3d8eb0d2215cb549a1464585dd5",
+      "bytes": 310
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-fix-upgrade-intent.json",
+      "sha256": "98f8d05aeee76e56da9293a927a15043dba17c239f25fef5dd0761f304de09b4",
+      "bytes": 820
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-password-client-validation.json",
+      "sha256": "29d084c9ac91d1fb9865e5f804d0a5f31c66f4c2a6d1a4137d7314b0a3814366",
+      "bytes": 706
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-password-preparation-denied.json",
+      "sha256": "dfa1e8f914e30ea20a1284441e916a1e563afca6a00a5391c3b73f3d52b222a4",
+      "bytes": 303
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-original-password-change-reply.json",
+      "sha256": "9d5e3273234b619e391961aaef59c48771427d3c121d8b353ed97b35a2ce871a",
+      "bytes": 157
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-post-change-login.json",
+      "sha256": "4ebd1e457ff386c454b583cf5dc73e70267843577d8f75d50c5cc376cc0e06f9",
+      "bytes": 296
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/csr-interruption-readonly-observation.json",
+      "sha256": "f52629a461670cf207dc89aa89ac553b8b5d8fbc4d8e6f74aafbff00dade3c3a",
+      "bytes": 916
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/actual-kura-data-property.json",
+      "sha256": "f87dc13c983868804624530739e5ce86c2db7be294b798651ca88fa1c387c8c8",
+      "bytes": 47
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-system-data-package-observation.json",
+      "sha256": "7cdb77c11b2313c48d32754502c9a1a82eeac9adbd9e3400fb33c351d8aa5464",
+      "bytes": 193
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/system-data-fix-upgrade-intent.json",
+      "sha256": "3bb5c8a07e850b5ef43d3aa959003b9d61dfaa1c68e17fb36de9d8c20db258f7",
+      "bytes": 675
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/system-data-fix-upgrade-return.json",
+      "sha256": "c365161d39236fe0f1d32937fbc549796b8487d8faf65ed3879b96897c78ea5d",
+      "bytes": 17
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-system-data-live-read.json",
+      "sha256": "d3e8c761529fc4774baf1a35219e8d31ac32efe7788018b2f48fa349f7fa5de3",
+      "bytes": 1277
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/combined-current-osgi-read.json",
+      "sha256": "8b55c1001b6229ac5cf061b8eca5dd2d900034fd4477f4f59dfbdc6286591193",
+      "bytes": 17056
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/combined-current-observation.json",
+      "sha256": "4c831fca049e9e6b81294083dd3972a1c344d08577be84202bf5c6d1a0cd5b39",
+      "bytes": 6254
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/preservation-and-eighteen-repositories-before-docs.json",
+      "sha256": "883163f54320a60746826b2d0e4607d6eb0f0e03630c1fa599e16d272943764e",
+      "bytes": 8118
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-gateway-csr-intent.json",
+      "sha256": "b58490534551feb24589468d629965c8aa9c90a8fc98fd3140aacf4ca05b6c23",
+      "bytes": 290
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/forced-password-session-policy-before.log",
+      "sha256": "1f98eee632c51f636aaa53d951f60668b5f3e7656251ed0577788b18d4cf063b",
+      "bytes": 8285
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/forced-password-session-policy-after.log",
+      "sha256": "69f5c091edd6fe40cbf0592fdc331c868c0c32db091b64f7e484eb1494805d88",
+      "bytes": 3799
+    },
+    {
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/component-combination-20261117/gwt-system-data-directory-tests-final.log",
+      "sha256": "d8a43bbaff9961dd634b7813951832e7f41f15424e07cb454d477268c3474dbd",
+      "bytes": 5270
+    }
+  ],
+  "internalPending": [
+    "Full six-component/provider/launcher/mode/install/upgrade/remove/purge matrix",
+    "Main privileged broker/caps/NNP and provider re-encryption",
+    "R017 native local authorization/maintenance/standalone agent GUI",
+    "Unverified CSR automation intent and durable pre-dispatch GWT request identity",
+    "CA custody/quorum, customer database/protocol/upstream and all frozen parents"
+  ],
+  "externalDeferredOnly": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ]
+}
