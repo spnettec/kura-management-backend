@@ -1,5 +1,11 @@
 # 管理体系阶段检查点
 
+## 2026-11-17 继续：agent 先装与精确 loader 配对
+
+Java adapter 已移到 agent 包自有路径，Root 保护的元数据/loader/JAR 精确绑定；agent-first 不再先占用 Core 未初始化目录。动态父目录隔离修复了启动时不存在密钥路径的漏洞，公开 CLI 支持 kurad。新原生 ARM64 agent/console/installer 已组合；同一 agent-first 失败现场原维护记录续接成功，Core 配对升级及一次普通 Main 首启通过。OSGi bridge ACTIVE、三项 Core 服务绑定，实际 kurad 只读 UDS 得到 kuraAvailable=true；6 份私有文件元数据保持，agent 看不到新原钥/HMAC，Root operations/startups 仍为 0。Main 仍 11/13 caps、NNP0；无 networking 的 health DS 和中心/安装器未实际验收。
+
+见 [检查点](agent-first-paired-loader-checkpoint.json)及 [审查](../../reviews/agent-first-paired-loader-review-20261117.md)。原失败/命令前端/parser 记录全部保留，不重新 provision、不绕过 inactive guard 或 Root 初始化检查。原 3 现场/7 进程/38 私有元数据/6 旧数据及个人 25 文件再次精确。完整六组件/provider/launcher/安装升级移除、旧活动 NM 配置迁移及冻结 12 父项继续内部 pending，仍仅原 3 项 external deferred，目标 active。
+
 ## 2026-11-17 继续：默认 NM、Core 保留与源码 cohort
 
 默认 networking 已取消自动系统接管/快照改写，旧活动包配置的 obsolete-file 转换会提前拒绝，安全保留迁移仍 pending。22 项 sibling、9 项变体、8 项 Core 文件系统检查通过；同一原失败夹具的一次实际 Core 升级保留 56 份 Root addon 代码、12 份外部私有完整元数据与 7 份用户文件内容/属主/权限，Main/Root 业务请求 0；networking 仍 half-configured。agent/中心源码绑定和默认 Core 显式授权已修复（12/10/5 项各有限检查），独立 ARM64 Rust/前端构建完成，实际原生组合尚未完成。
