@@ -1,3 +1,11 @@
+## 2026-11-17 专用非 Root agent 与窄委托源码续接
+
+agent b893964 新增 native-nonroot-v1 的固定身份/路径/Root程序与unit及源码指纹门禁，daemon 必须 cap0/NNP1；Root 提权后台未接入时明确拒绝。新 runtime、控制 socket、Root管理/配置与公开身份分开；不复用旧目录，不让 StateDirectory 递归更改持久数据属主。只读材料经不同端点的 Kura UID/cap0 → Root/cap0窄委托 → 专用 agent UID/cap0 传递，Core Root key transport 不放宽。
+
+3项Rust身份、8项Linux窄委托、9项原生预检夹具及30项受影响注册/续期检查通过；另一次显式三进程 parent/child 以真实 UID995/cap0/NNP1完成独立证书校验、创建自有0600候选，源字节/完整元数据含atime精确，没有发布身份/未决指针。其程序/源码元数据明确为文件系统夹具，不能称原生发行配对验收。既有新现场的UID0反例仍适用，任何运行服务未替换。
+
+见 [源码检查点](native-agent-identity-source-checkpoint.json) 和 agent 的 docs/native-agent-identity-v2-candidate.md。新文件尚未纳入deb映射，未构建/部署；账户创建、Root授权/恢复、Core peer映射、旧数据/凭据/UNKNOWN迁移及状态丢失保护、真实systemd与GUI仍内部pending。原CSR意图及闭环密钥验收不重发/重放；完整六组件/全部冻结12父项继续内部pending，仅原3 external deferred；目标active、现有积分继续、无推送。
+
 ## 2026-11-17 注册材料 FD 与 Root 同 UID 反例续接
 
 agent 75ebf3c/9a25c91/36fff96/8a7c03e 保存只读 FD 发布/消费、精确包/源码/unit 配对、原 UUID 授权与 purge 保留候选。30 项 Rust 常规检查及一次显式 Root 跨 UID parent/child 通过；扩展 Python 116 通过/2 历史导出夹具未执行，后续 purge 相关 14 通过（重叠不累加）。未构建、安装或启用新包，未结算任何业务 CSR。

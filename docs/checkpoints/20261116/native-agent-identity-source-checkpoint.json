@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-11-17T07:50:17.529686+00:00",
+  "agentHead": "b89396449b88769bd68da09612e9564161aaac16",
+  "stage": "source and disposable Linux processes only",
+  "newNativePackageBuilt": false,
+  "installedOrActivated": false,
+  "checks": {
+    "rustIdentityMethods": 3,
+    "pythonRelayMethods": 8,
+    "pythonNativeProfileMethods": 9,
+    "changedEnrollmentOrdinary": {
+      "passed": 30,
+      "rootInteropExcluded": true
+    },
+    "explicitNonRootThreeProcessParent": {
+      "passed": 1,
+      "nestedConsumerPassed": true,
+      "actorUid": 995,
+      "effectiveCapabilities": "0",
+      "boundingCapabilities": "0",
+      "nnp": 1,
+      "sourceUid": 997,
+      "candidateOwner": 995,
+      "sourceMetadataExactIncludingAtime": true,
+      "identityPointerPublished": false,
+      "metadataManifestIsFilesystemFixture": true
+    }
+  },
+  "roles": {
+    "publisher": "existing Kura UID/cap0; Root-only upstream peer",
+    "relay": "UID0/cap0; exact separately granted agent UID/GID; readonly FDs only",
+    "main": "dedicated non-Root identity/cap0/NNP1, fixed separate runtime path",
+    "controller": "Root-owned identity/program/unit/source checks; no implicit stop/adoption"
+  },
+  "pending": [
+    "native accounts/package profile selection and complete payload mapping",
+    "Root relay/UID/channel authorization and durable original recovery",
+    "Core adapter native peer policy",
+    "state DB/identity continuity, state-loss detection, legacy migration and interrupted upgrade",
+    "actual systemd, mount and IPC namespace checks",
+    "R017 OS GUI maintenance/authorization/activation",
+    "complete typed privileged brokers and six-component/provider/launcher/install/upgrade/remove/purge matrix",
+    "all original frozen twelve parents"
+  ],
+  "originalLiveProfilesChanged": false,
+  "oldRootActorCounterexampleStillAppliesToLiveProfiles": true,
+  "reservedBusinessIntent": "combination-c-ebdbf564 (preserved; no generation/replacement/query in another Root)",
+  "evidenceDirectory": ".management-close-20261116/source-cohort-20261117/enrollment-custody-20261117",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard power loss"
+  ],
+  "goalStatus": "active",
+  "noPush": true
+}
