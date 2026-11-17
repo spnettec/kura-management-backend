@@ -1,3 +1,13 @@
+## 2026-11-18 Java NTP 独立时钟 actor 与新 ARM64 包
+
+Core实现b72fa0de7f、固定安装别名修复0f409edde9、合同43204a916a：Java NTP壁钟写改用独立非Root kura-clock/仅CAP_SYS_TIME/NNP1 typed actor，不加入密钥组；Root精确配对4helpers/2units/实际Clock JAR与专用只读代码，双方状态隔离。socket只准当前Main固定helper直接子进程；只传偏移，原namespace/UUID prepare/issued/commit/result持久化、最多一次commit，UNKNOWN/UNSEEN不重发换号/跨Root查，不回落date。按当前realtime补偿RPC耗时，同boot/30秒样本门禁；失败/旧恢复样本不发当前事件或写RTC。独立账号/安装目的、维护guard与保留日志路径已接入；固定canonical别名只接受Root单跳/同父匹配版本真实Root目录，不放宽其他链接/原Root配对。新前缀显式755，既有目录不自动改属主/权限。
+
+新源码JDK21/Maven3.10.1重建，57项JVM/Core33+Clock24无跳过、当前Python38项和Linux固定别名8项通过；重叠不求和。既有Parallels独立新组件实际ClockServiceImpl：JVM cap0/NNP1，actor仅SYS_TIME/NNP1；一次guest-only +1ms，namespace a23fb4e9…、原请求c35584c9… APPLIED/errno0/ClockEvent1。Root/非Main peer、额外代码/标准unit override拒绝，公开canary直达与proc别名EACCES、未读真实钥；后续实际观察事务数1/原文件精确，首canary固定计数不作证明。组件quiesce正常停机，原数据/维护目的保留，VM正常poweroff回stopped，不重放该请求。新真实Git0f409检出/private Maven缓存完整重建support/Core/tools/distribution，ARM64包6.0.0~git202611172245.0f409ed-1/SHAe88f8302…a6313，7载荷/父目录Root权限摘要、内嵌guard/维护shell/Main socket和遮蔽核对通过；两生产类与VM字节相同，但完整JAR/cohort不同、完整包未安装/运行。b72旧包缺固定别名修复，仅历史保留。
+
+22:45UTC原3/个人25/C9及进程计数/D29原Main3135精确；E原配对/身份20/Core6/local7/material5/switch9/transport7与原native29323/Core29609/key4714/recovery4640/NM4668/ON revision5e6e429f…保持，未部署候选。文档前18仓仅预期Core提交/新合同，冻结完整12父项SHA不变。原预检/GECOS/父目录、Git/工具target和检查器错误均留原失败，未重身份/放宽门禁。见[检查点](core-clock-broker-checkpoint.json)、[审查](../../reviews/core-clock-broker-review-20261118.md)。
+
+完整Core/OSGi/有效unit-profile/安装升级移除恢复与真实故障矩阵、RTC/Chrony和其余typed brokers/provider/launcher、clock UNKNOWN管理/容量、六组件/资源平台/R017/GUI与全部12父项仍内部pending；实际Main仍11/13caps、NNP0。最终0/12闭环不等于实现0%，整体无可靠加权百分比，仅原3 external deferred，G034未封存/协议未正式发布。目标active/现有积分继续、无push/JDK27/活动runtime清理；旧UNKNOWN和丢失CSR意图不重发换号/跨Root查，闭环密钥及900秒不重放。
+
 ## 2026-11-18 Core 同身份普通命令前置
 
 Core本地代码84d6a58新增仅限同一OS非Root身份、进程/当前线程身份及附加组一致、五cap0/NNP1的直接普通命令路径，不信任user.name；Root/保留身份/不同用户/NNP0/非零cap/缺失异常字段仍走原su。固定env/timeout/argv、显式shell和同步异步语义保留，不自动改command user。JDK21/Maven3.10.1从Git与明确差异导出全新源码并重建test-support/API/util/Core，33项JVM全过/无跳过，含9新方法；8条Linux ARM64/JDK21真实条件通过，含实际同步/异步/参数环境/超时及Root、NNP0、CapBnd、附加Root组、用户名伪造/不符拒绝。五类cap逐项为JVM合同检查，不外推全部真实cap组合。首次只读rootfs复制夹具失败发生在Java前，保留并修正为从未运行的暂存容器封存测试镜像。

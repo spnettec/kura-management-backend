@@ -1,0 +1,383 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-17T22:49:15.944061+00:00",
+  "goal": "active",
+  "coreCode": {
+    "repo": "kura",
+    "branch": "wip/management-close-20261116",
+    "head": "43204a916a4dfffe36f369784e475cb884751e1d",
+    "tree": "35dc55f4cd24a93395c90407788f50821501992f",
+    "status": "",
+    "implementationHead": "0f409edde9d33929c4de650765c86f4aab004d0a",
+    "initialImplementationHead": "b72fa0de7f02ac36c1832c22ba06a4d37df954d5"
+  },
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-clock-broker-20261118",
+  "scope": "Java NTP realtime adjustment typed actor only; RTC/Chrony and complete Main privilege reduction remain internal pending",
+  "verification": {
+    "jvm": [
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilBoundaryTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilDirectExecutionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilExecutionTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilRunningTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilTerminationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.UnprivilegedProcessIdentityTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.linux.clock.ChronyClockSyncProviderTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.linux.clock.ClockPrivilegeClientTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.linux.clock.ClockServiceConfigRetryIntervalTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.linux.clock.ClockServiceImplTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.linux.clock.JavaNtpClockSyncProviderTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "jvmTests": 57,
+    "jvmSkipped": 0,
+    "productionSourcePair": "java-current-source-pair.json",
+    "pythonContractsAndPackageTests": 38,
+    "nativeCanonicalAliasCases": 8,
+    "newFullPackage": {
+      "at": "2026-11-17T22:47:40.368391+00:00",
+      "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/core-clock-broker-20261118/source-full-package-alias-git/kura/distrib/kura-core/target/kura_6.0.0~git202611172245.0f409ed-1_arm64.deb",
+      "sha256": "e88f83022083f033b155a76c8db00d8cc2cfe02e8cfaa0e21ceae6ba99aa6313",
+      "bytes": 203543034,
+      "packageVersion": "6.0.0~git202611172245.0f409ed-1",
+      "packagedHome": "opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+      "codeCommit": "0f409edde9d33929c4de650765c86f4aab004d0a",
+      "architecture": "arm64",
+      "clockCohortSha256": "7b87879baefa45b68cb50169aaa8787e3699747536eda0e279cecc8728f27b3f",
+      "clockBundleSha256": "a08892896ce8cda65ff77c4a1ba34b82e4d9ce46987735d6f5f299515a35b438",
+      "clockFiles": [
+        {
+          "path": "bin/kura_clock_broker.py",
+          "sha256": "b524c6381bb7a9d6be2211beb731a49fab862e703628fa6620ab6b52f882168e",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 15094
+          }
+        },
+        {
+          "path": "bin/kura_clock_client.py",
+          "sha256": "4db87e53b4b811897f2ec23e8b9b7824cad64215b004d8a92f9cae7d139887fd",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 9924
+          }
+        },
+        {
+          "path": "bin/kura_clock_journal.py",
+          "sha256": "1e8a19a4b3122651bbabf9e2098890c1ddfa706b74856333c284b047e7ceb36a",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 12837
+          }
+        },
+        {
+          "path": "bin/kura_clock_setup.py",
+          "sha256": "ce0747afcbc705401adca928058504052a171ad2a5874a6e85f2312eb042d5e7",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 14347
+          }
+        },
+        {
+          "path": "libexec/clock-broker/kura-clock-broker.service",
+          "sha256": "b73d720ea3ae273281376513c536688151c562898cc27b3e7a20432224fc30f8",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 937
+          }
+        },
+        {
+          "path": "libexec/clock-broker/kura-clock-broker.socket",
+          "sha256": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 298
+          }
+        },
+        {
+          "path": "plugins/4/org.eclipse.kura.linux.clock-2.0.0-SNAPSHOT.jar",
+          "sha256": "a08892896ce8cda65ff77c4a1ba34b82e4d9ce46987735d6f5f299515a35b438",
+          "package": {
+            "uid": 0,
+            "gid": 0,
+            "uname": "root",
+            "gname": "root",
+            "mode": 33188,
+            "type": "0",
+            "size": 39248
+          }
+        }
+      ],
+      "controlSha256": {
+        "conffiles": "82de492afe09ddd0682ad5f934f5c9f585b0b99f6f13c7fccc69e2afce493698",
+        "postinst": "c434ab3531f8fdcccec90e3649cdd0e4719da106e5e230a54b70deb617083e83",
+        "postrm": "1dcfb1c2df76e366529d2f439517e7ccc7583602df762403ce2987acfa30c23b",
+        "preinst": "84e3362133c76bc18eccd0abb93d28ca6d50b7ec2a1941012d585a514b937a6c",
+        "prerm": "c4de48dd33edf5e90e78677ad69dc083f842d973322ad8db052d5cebd37bbfa2",
+        "control": "ade599dae16e36ef15a61c9d45f7e503aad3e18b9a9959b3283516451a8a1438",
+        "md5sums": "af6ecf22a28207a25a8c00f0b1f964a737249be4035aa9f6b35df510f85b5eef"
+      },
+      "embeddedClockGuardsExact": true,
+      "maintainersShellSyntax": true,
+      "coreUnitClockDependencyAndMask": true,
+      "fixedVersionedCanonicalAliasGuardIncluded": true,
+      "productionClassBytesExactAgainstActualVm": [
+        "org/eclipse/kura/linux/clock/ClockServiceImpl.class",
+        "org/eclipse/kura/linux/clock/ClockPrivilegeClient.class"
+      ],
+      "actualVmClockJarSha256": "b3cba7f6eef762e4f59a21106246bebbb633f64d9f6e95e1a810390274e1b36a",
+      "actualVmCohort": "e2d5a2663d17c617c4c4097cefe536d02565dc7a138d20a34b191a208e46881e",
+      "nativeAliasFixtureCases": 8,
+      "fullDebInstalled": false,
+      "fullDebRuntimeVerified": false,
+      "privateCache": true,
+      "sharedProjectCacheWrites": false,
+      "jdk27Run": false,
+      "pushed": false
+    },
+    "overlappingRunsNotSummed": true
+  },
+  "actualVmComponent": {
+    "vmId": "8061d57e-0120-42ec-a9a9-5799b436c4eb",
+    "platform": "Ubuntu 26.04 ARM64 Parallels / JDK 21.0.12.1",
+    "fixturePurposeId": "8c3e125c-8203-403c-928e-da87fa8fc0a6",
+    "namespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+    "requestId": "c35584c9-c3ba-45b6-8305-673e7b576353",
+    "requestSha256": "d0552dafee426a3e0b60d0f6700b0a8664c396d4ea135d40c2729f1c2f7259cb",
+    "state": "APPLIED",
+    "errno": 0,
+    "correctionMillis": 1,
+    "clockEvents": 1,
+    "cohortSha256": "e2d5a2663d17c617c4c4097cefe536d02565dc7a138d20a34b191a208e46881e",
+    "clockJarSha256": "b3cba7f6eef762e4f59a21106246bebbb633f64d9f6e95e1a810390274e1b36a",
+    "mainBeforeStop": {
+      "pid": 155753,
+      "ticks": 228158,
+      "uid": 993,
+      "gid": 971,
+      "capabilities": 0,
+      "nnp": 1
+    },
+    "actorBeforeStop": {
+      "pid": 155844,
+      "ticks": 230673,
+      "uid": 992,
+      "gid": 970,
+      "capabilities": "CAP_SYS_TIME only",
+      "nnp": 1
+    },
+    "unauthorizedRootAndNonMainPeerRefused": true,
+    "extraCodeAndStandardUnitOverrideRefused": true,
+    "publicCanaryDirectAndProcAliasDenied": true,
+    "realKeysRead": false,
+    "operationCountAfterNegativesAndStop": 1,
+    "originalOperationFilesExact": true,
+    "componentStoppedOriginalDataRetained": true,
+    "vmReturnedToStopped": true,
+    "actualVmCanonicalHome": "physical directory; fixed alias separately checked in no-clock Linux fixture",
+    "fullCoreOsgi": false,
+    "fullDebInstalled": false,
+    "closedClockRequestNeverReplayed": true,
+    "rootNamespaceChanged": false,
+    "firstCanaryCountWasHardcoded": "Not used as proof. Actual authorization/pair-checks/after-stop snapshots prove count and original bytes."
+  },
+  "preservation": {
+    "recordedAt": "2026-11-17T22:45:17.872835+00:00",
+    "originalScenes": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "center": {
+      "privateFilesExact": 29,
+      "unit": {
+        "MainPID": "3135",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "16649159",
+        "status": {
+          "Uid": "999\t999\t999\t999",
+          "Gid": "996\t996\t996\t996",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "readOnly": true
+    }
+  },
+  "actualEPreserved": {
+    "sourceApplied": true,
+    "currentOriginalRootPairExact": true,
+    "units": {
+      "kura-management-agent-v2.service": {
+        "MainPID": "29323",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "21272446",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "kura.service": {
+        "MainPID": "29609",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "21272461",
+        "CapEff": "0000000406413426",
+        "CapBnd": "00000004064134e6",
+        "NoNewPrivs": "0"
+      }
+    },
+    "rootUnits": {
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "ticks": "18777292"
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "ticks": "18759746"
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "ticks": "18777273"
+      }
+    },
+    "remoteDecision": {
+      "version": 1,
+      "revision": "5e6e429f-13e4-4066-a61e-2bb218c51cc1",
+      "enabled": true,
+      "actor": "kura-uid:996"
+    },
+    "identityFilesExact": 20,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "switchProofExact": 9,
+    "transportProofExact": 7,
+    "readOnly": true
+  },
+  "originalScenesOrEDeployed": false,
+  "failuresRetained": [
+    "Empty pre-existing /etc/kura initial strict preflight refused before data/clock; inspected empty directory without owner/mode change",
+    "Invalid fixture GECOS rejected before clock namespace; original created group and fixture purpose reused",
+    "Fixture parent traversal failed before dispatch; inspected exact new directory ownership then corrected only self-created empty code parents",
+    "Archive export lacked .git; real-checkout distribution lacked local offline-recovery target; full Core/tools rebuilt in that checkout",
+    "Early b72 package lacked normal fixed canonical alias support, superseded by 0f409 package",
+    "Package inspector corrected version-directory, final-newline and repeated systemd list-directive assumptions without product changes"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "remainingInternal": [
+    "Complete effective-unit/profile pairing; actual full Core/OSGi and six-component package installation, upgrade, remove, restore and failure matrix",
+    "RTC/Chrony and other network/log/module/file/system typed brokers, providers and launchers; production Main remains 11 ambient/13 bounding capabilities and NNP0",
+    "Clock original-UNKNOWN administration, capacity/archive and real syscall-denial/crash lifecycle matrix",
+    "All original API/R017/GUI/network/key/CA/database/upstream/release and 12 parent obligations"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "Disk-full/hard-power"
+  ],
+  "g034Sealed": false,
+  "protocolPublished": false,
+  "sharedProjectMavenCacheModifiedByBuild": false,
+  "jdk27Run": false,
+  "pushed": false
+}
