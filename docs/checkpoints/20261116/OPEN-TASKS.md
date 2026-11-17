@@ -1,3 +1,13 @@
+## 2026-11-18 同一原身份的首次 native mTLS 通道
+
+agent 3e28a44 新增独立 Root gRPC 连接地址配置：15字段/原安装-peer-result-角色/同网关及原回执/最低generation、同HTTPS host严格端口；原材料18443保留，连接18444。Root全局原意图先存、原号补全、result/公开/current/ACK完整，停机排空/远程OFF/业务0/原完整首次身份及全部Root配对准入保持，不改.data或重身份。首次u16类型编译错误及65536端口解析缺陷修复后，266 Python中264过/2历史导出夹具排除（16新方法）；干净source Rust身份15/15、enrollment/renewal30过/4显式Root/cross-UID夹具ignored，未算通过、不累加。原失败保留。
+
+当前Git重新导出/协议重新从声明Git打包、bridge只读当前配对E；新包0.1.0~native202611171817.3e28a44-1，SHAbb3230eb…3c13/source0cfe4cdf…72135/ELFf53f7994…1bdaa，四控制脚本编译。同E source a12f9c21-c02c-4c7a-a63e-99cbfc4a6c8f仅一次准备/安装APPLIED、不自动启动；独立Root地址配置2031e3d3-a90b-4ad8-8445-f5a5138ecb0f一次APPLIED/READY。65停止态资产精确，原grant49e58164…的9证明与新配置7证明启动后精确；原init/CSR/stage/bind/register/身份材料及env保持。本地记录文件名冲突在任何Root分发前O_EXCL拒绝并保留，未覆盖旧证据。
+
+native20323/ticks20606914 UID/GID997、五cap0/NNP1/NRestarts0；Core20608/ticks20606930仍11/13 caps/NNP0内部待办，key4714/recovery4640/NM4668不变。原身份20/材料32/Core6/local7/material5精确，7业务表/Root业务启动0。沿原目的8808df94…与OFF原revision148047bd…，先核Root namespace/source/route、写前留存及单次guard，再真实GWT一次开启，HTTP200//OK；当前ON revision c693589f-03e5-4dc1-be19-56bd87363ea8/actor kura-uid:996。agent真实CONNECTED，中心同证书3681eb86…/同网关/generation1、epoch4b8e3040…、18:25:27 UTC心跳seq16在线且Kura可用，1网关/0任务。两端UI在线/截图，CSR/stage/bind/登记总各1、页面错误0；不把独立TLS探针当真实流。Root授权/config回执false仅指其动作不启服/开通，当前ON另有remote决策与live证据。
+
+见[检查点](native-first-mtls-checkpoint.json)、[审查](../../reviews/native-first-mtls-review-20261118.md)及agent地址配置合同。18:25:51 UTC原3现场/个人25/C9及进程计数/D29原Main3135只读精确，文档前18仓干净、冻结12父项SHA不变。实际受限只读任务、能力宣告与实际授权、开关跨刷新原目的/UNKNOWN和地址GUI完整生命周期、保留业务/续期/TLS/UNKNOWN/source/旧态迁移、typed brokers/Core最小权限、六组件/provider/launcher/安装升级移除恢复/R017及全部12父项仍内部pending，仅原3 external deferred。全部12父项最终闭环0/12不等于实现0%，没有可靠加权总百分比；目标active/现有积分继续，无推送、不加27、不清active runtime，旧UNKNOWN及闭环密钥/900秒不重发重放、不跨Root查询。
+
 ## 2026-11-18 独立本机开关授权与主机入口
 
 agenta7e5d3c新增 Root 原号/原意图/前后环境/公开证明/ACK/current 与同号补全，Rust严格验证13字段及环境一致，先核本机namespace再查旧号；原Root代码/peer/material/source检查保持。consolea88ad2f新增固定主机bridge及双语表单、发送前公开原号留存/Web Lock、跨Root/双tab/存储失败/确认后identity-source变化保护。250 Python中248过/2历史夹具排除，含23新方法；当前Git source Rust身份10/10；console打包129/129；最终浏览器60/60含13新场景与双语390px图。原失败均保留，计数重叠不求和。
