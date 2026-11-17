@@ -1,3 +1,15 @@
+## 2026-11-18 同E业务保留实际升级与配置读取
+
+原E已实际安装代码eab6821/包0.1.0~native202611171954.eab6821-1（SHA0dc111eb…3f5b0/source0a5eb472…d157c/ELFc03bbb72…3691）。新维护OFF目的bda873d9…在原ON bc29b319…已核后写前留存；第一次会话过期时实际RPC发送0，同目的恢复认证后单次HTTP200//OK，OFF revision03991e78…。source **b479b232-38d2-436d-9566-3f0e33c25bb3** 各一次prepare/install APPLIED，不自动启动。原加密SUCCEEDED业务及72停止态资产精确，原身份20/材料/Core6/local7/material5/switch9/transport7和所有权限范围保留，不重签/重绑定/重授权/重配。安装基线无WAL/SHM，未补造/截断/checkpoint；不能外推非空WAL或UNKNOWN安装。
+
+显式恢复后native29323/ticks21272446 UID/GID997/groups996/997/五cap0/NNP1/NRestarts0，Core29609/ticks21272461仍11/13caps/NNP0内部待办；key4714/recovery4640/NM4668原ticks不变。原socket enabled/listening/NConnections0/NAccepted4、6精确。新恢复ON目的2aa54a8d…单次GUI确认/HTTP200//OK，当前 **ON revision5e6e429f-13e4-4066-a61e-2bb218c51cc1**、CONNECTED/activeRequests0，同证书3681eb86…/generation1/11能力，新epoch771630d7-7f22-4617-a1db-3a56fc26f8ce。原Source/grant结果remoteEnabled=false只描述原动作，不能误判当前OFF。
+
+GUI一次配置清单：原keyda951403-bdcb-42e7-8733-57bd3b31349c、task2841b777-1f58-43ba-a5ef-b949c4993062，SUCCEEDED/19 PID。选ClockService时工具超时自动重置浏览器，详情purpose/dispatch/ack尚不存在，PG/Native仅原status/list2条，未重发清单。恢复原认证会话后，独立受控API一次get：key97cd0e4b-55ae-4c97-af85-6e88f10f9dbd、taskd2fc3e47-1ec4-4458-bbdc-b1f0c48eef94，SUCCEEDED/13字段/英文元数据，结果在任务GUI查看；**GUI表单提交未验**。配置选择未跨客户端恢复，继续内部pending。writable=true是组件支持，实际updateEnabled=false且不宣告update capability，未写配置；两UNKNOWN字段因NO_METATYPE隐藏，不外推所有secret/provider。
+
+PG/API/Native对齐三条原ID/op/key/SUCCEEDED/generation1。Native真实加密库存认证后，仅专用UID997/cap0/NNP1在副本读取元数据；原status7e30af94… hash78ab76b2…、加密114/153字节不变。当前真实WAL32992字节SHA4ea7fd8f…e7960承载合法新读取，schema70be30f7…/logicald1a5a1e2…，不导出载荷/密钥、不prune/recover/重放，也不把安装后WAL当安装验收。20:37:56UTC原3/个人25/C9原进程计数/D29原Main3135再次精确；文档前18仓与phase24完全一致干净、冻结12父项SHA不变，本轮只改文档，无实现/旧测试重跑。
+
+见[实际检查点](native-retained-business-installed-checkpoint.json)、[审查](../../reviews/native-retained-business-installed-review-20261118.md)。继续真实非空WAL/RUNNING/UNKNOWN/renewal/legacy source、全部provider/launcher/安装升级/移除恢复/R017/typed brokers/Core最小权限和GUI及全部12父项。仅原3 external deferred，其他内部pending；G034未封存/协议未正式发布。无push/reset/clean/JDK27/活动runtime清理，旧UNKNOWN和C丢失CSR ID不重发/换ID/跨Root查，闭环备份/归档/轮换/恢复/900秒不重放。新浏览器保留默认拒绝写入保护，私密恢复状态不进Git/知识库，Node不要reset，定位器超时短于工具超时。
+
 ## 2026-11-18 真实业务只读检查与安装维护候选
 
 agent eab6821已接入独立保留业务source事务，文档0755565；原空业务入口继续拒绝非空表/WAL。新路径仍检查原初始化、完整Root代码/unit/source配对、原local/material权限、首次完整身份、remote OFF、停止/排空及writer锁；RUNNING/UNKNOWN只保留、不重发。所有公开source prepare/status/complete增加必需--initialization-id，原pending不允许同包另换ID。只复制加密DB/WAL到新/run夹具，原钥不复制；准入/发布绑定原库存、输入摘要和全部状态指纹。续期/多候选/legacy/未知provider文件等内部pending保持。

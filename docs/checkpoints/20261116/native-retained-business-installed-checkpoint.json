@@ -1,0 +1,783 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-17T20:43:02.603152+00:00",
+  "goal": "active",
+  "codeHead": "eab6821915e453b3a7251481d7ab60767f086943",
+  "agentDocumentationHead": "b6d29aa7450b2477bb84e754f0d7179ba4153add",
+  "deployedPackage": {
+    "agentHead": "eab6821915e453b3a7251481d7ab60767f086943",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/agent-root-source-eab6821",
+    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/inputs-root-business",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-retained-business-20261118/package-root-business/build/kura-management-agent_0.1.0~native202611171954.eab6821-1_arm64.deb",
+    "version": "0.1.0~native202611171954.eab6821-1",
+    "packageSha256": "0dc111ebb9c95bffd6a4709f9c8560f720257124a970b2ae26be56e64243f5b0",
+    "binarySha256": "c03bbb72d05017029c9429d856c590835a268f568a127bd771b22e740c5d3691",
+    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+    "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c",
+    "generatedControlsCompiled": 4,
+    "protocolFreshFromPinnedGit": true,
+    "protocolSourceAndWorkspaceExactToCurrentGit": true,
+    "protocolOwningScope": "crates/management-protocol",
+    "rootTransactionTests": "root-controller-regression3",
+    "realRootSourceBusinessUpgrade": false,
+    "bridgeFromCurrentPairedRuntime": true,
+    "oldIntermediateUsed": false,
+    "deployed": false
+  },
+  "actualBusinessSourceUpgrade": true,
+  "sourceRequestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+  "maintenanceOffPurpose": {
+    "at": "2026-11-17T20:04:37.852Z",
+    "purposeId": "bda873d9-ae60-4ac4-ac95-d734dc4453f7",
+    "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+    "expectedRevision": "bc29b319-608b-4920-bef3-9a161b0f5a11",
+    "desiredEnabled": false,
+    "endpoint": "https://192.168.215.3:18444",
+    "gatewayId": "native-e-a60111a6",
+    "currentSourceManifestSha256": "44a7249847e39c38731af0dc4dd65c057f572a66c18a124aad813ff55be2ead9",
+    "candidateCodeHead": "eab6821915e453b3a7251481d7ab60767f086943",
+    "candidatePackageSha256": "0dc111ebb9c95bffd6a4709f9c8560f720257124a970b2ae26be56e64243f5b0",
+    "purpose": "Independent maintenance OFF after acknowledged current ON, before preserving original business source upgrade",
+    "dispatchesAllowed": 1,
+    "previousOnAcknowledged": true
+  },
+  "maintenanceOnPurpose": {
+    "at": "2026-11-17T20:15:41.437Z",
+    "purposeId": "2aa54a8d-5368-4fd3-8800-c6c05f4e0c78",
+    "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+    "sourceRequestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+    "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c",
+    "expectedRevision": "03991e78-95e7-4222-a77a-d214dc34ca9b",
+    "desiredEnabled": true,
+    "endpoint": "https://192.168.215.3:18444",
+    "gatewayId": "native-e-a60111a6",
+    "previousMaintenanceOffPurposeId": "bda873d9-ae60-4ac4-ac95-d734dc4453f7",
+    "previousOffAcknowledged": true,
+    "purpose": "Restore the original ON channel after verified business-preserving source upgrade and explicit local starts",
+    "dispatchesAllowed": 1
+  },
+  "sourceStatuses": {
+    "source": {
+      "schemaVersion": 1,
+      "requestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "replayed": false
+    },
+    "material": {
+      "schemaVersion": 1,
+      "requestId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "remoteEnabled": false,
+      "unitStarted": false,
+      "replayed": false
+    },
+    "peer": {
+      "schemaVersion": 1,
+      "requestId": "25abd835-cf55-4871-929d-87abee746024",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "kuraUid": 996,
+      "currentReadiness": "READY",
+      "remoteEnabled": false,
+      "replayed": false
+    },
+    "initialization": {
+      "schemaVersion": 1,
+      "requestId": "24560864-f974-46aa-940a-0a97ad926118",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "replayed": false
+    },
+    "switch": {
+      "schemaVersion": 1,
+      "requestId": "49e58164-08a1-4511-8b61-ab0e585c2467",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "canControl": true,
+      "unitStarted": false,
+      "remoteEnabled": false,
+      "replayed": false
+    },
+    "transport": {
+      "schemaVersion": 1,
+      "requestId": "2031e3d3-a90b-4ad8-8445-f5a5138ecb0f",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "unitStarted": false,
+      "remoteEnabled": false,
+      "replayed": false
+    }
+  },
+  "stoppedRetainedAssetsExact": 72,
+  "stoppedBusinessReport": {
+    "schemaVersion": 1,
+    "profile": "native-retained-state-inspection-v1",
+    "nativeUid": 997,
+    "nativeGid": 997,
+    "noNewPrivileges": true,
+    "inputFiles": {
+      "results.sqlite": {
+        "bytes": 69632,
+        "sha256": "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+      }
+    },
+    "inventory": {
+      "schemaVersion": 1,
+      "profile": "native-execution-inventory-v1",
+      "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+      "tableCounts": {
+        "execution_resolutions": 0,
+        "executions": 1,
+        "firewall_execution_authorities": 0,
+        "imported_remote_connection_barriers": 0,
+        "imported_remote_connection_confirmations": 0,
+        "imported_remote_originals": 0,
+        "native_profile_generation": 1,
+        "results": 0
+      },
+      "executionStates": {
+        "SUCCEEDED": 1
+      },
+      "unresolvedExecutions": 0,
+      "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+      "logicalSha256": "acc02cf45ecff05090c225df13f43e2ae107efa3cad03c74d7aaef76b4f1a4ab",
+      "recordsChanged": false,
+      "replayPerformed": false
+    }
+  },
+  "installationHadWal": false,
+  "installationUnresolvedExecutions": 0,
+  "nonemptyWalInstalledUpgradeVerified": false,
+  "unresolvedInstalledUpgradeVerified": false,
+  "liveRuntime": {
+    "requestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+    "sourceManifestSha256": "0a5eb4728259465f37126118a16f4bb327a0ebf37df3bbc5d1541f02db9d157c",
+    "nativeIdentitySha256": "d1c7a59acc4a0f9471163439a6e823f1a15ba9e938e9dec34b5b575a3301248f",
+    "units": {
+      "kura-management-agent-v2.service": {
+        "MainPID": "29323",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "21272446",
+        "process": {
+          "Uid": "997\t997\t997\t997",
+          "Gid": "997\t997\t997\t997",
+          "Groups": "996 997",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura.service": {
+        "MainPID": "29609",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "21272461",
+        "process": {
+          "Uid": "996\t996\t996\t996",
+          "Gid": "989\t989\t989\t989",
+          "Groups": "20 987 989 997",
+          "CapInh": "0000000406413426",
+          "CapPrm": "0000000406413426",
+          "CapEff": "0000000406413426",
+          "CapBnd": "00000004064134e6",
+          "CapAmb": "0000000406413426",
+          "NoNewPrivs": "0"
+        }
+      }
+    },
+    "rootUnits": {
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "ticks": "18777292"
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "ticks": "18759746"
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "ticks": "18777273"
+      }
+    },
+    "sockets": {
+      "kura-management-enrollment-reader.socket": {
+        "NConnections": "0",
+        "NAccepted": "4",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "enabled": "enabled"
+      },
+      "kura-management-agent-enrollment.socket": {
+        "NConnections": "0",
+        "NAccepted": "6",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "enabled": "enabled"
+      }
+    },
+    "businessReport": {
+      "schemaVersion": 1,
+      "profile": "native-retained-state-inspection-v1",
+      "nativeUid": 997,
+      "nativeGid": 997,
+      "noNewPrivileges": true,
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+        },
+        "results.sqlite-wal": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "schemaVersion": 1,
+        "profile": "native-execution-inventory-v1",
+        "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 1,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "executionStates": {
+          "SUCCEEDED": 1
+        },
+        "unresolvedExecutions": 0,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "logicalSha256": "acc02cf45ecff05090c225df13f43e2ae107efa3cad03c74d7aaef76b4f1a4ab",
+        "recordsChanged": false,
+        "replayPerformed": false
+      }
+    },
+    "summary": {
+      "schemaVersion": 1,
+      "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+      "candidateId": "42e96468-bcf9-4940-9b81-0bc4fe70d13f",
+      "identityReceiptSha256": "cdbe13d4e77c970595365be0ef74a3b4ab73dec706bf9a7df25e5bba2fddfe4e",
+      "stageSha256": "adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8",
+      "coreContextSha256": "9a96294173658048b9e1b393afb36c97ac2ff11abceec28b242173417147ae0c",
+      "bindingGeneration": 1
+    },
+    "remoteStatus": {
+      "activeRequests": 0,
+      "bindingGeneration": "1",
+      "bound": true,
+      "canControl": true,
+      "connectionState": "DISABLED",
+      "enabled": false,
+      "endpoint": "https://192.168.215.3:18444",
+      "gatewayId": "native-e-a60111a6",
+      "recoveryRequired": false,
+      "revision": "03991e78-95e7-4222-a77a-d214dc34ca9b"
+    },
+    "agentStatus": {
+      "agentAvailable": true,
+      "kuraAvailable": true,
+      "uptimeSeconds": 131,
+      "version": "0.1.0"
+    },
+    "readOnlyStatusAttempts": 1,
+    "identityFilesExact": 20,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "switchProofExact": 9,
+    "transportProofExact": 7,
+    "planKeyAndMarkerExact": true,
+    "businessLogicalInventoryExact": true,
+    "coreCapabilityObligationStillPending": true,
+    "readOnly": true
+  },
+  "connected": {
+    "requestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+    "purposeId": "2aa54a8d-5368-4fd3-8800-c6c05f4e0c78",
+    "remoteStatus": {
+      "activeRequests": 0,
+      "bindingGeneration": "1",
+      "bound": true,
+      "canControl": true,
+      "connectionState": "CONNECTED",
+      "enabled": true,
+      "endpoint": "https://192.168.215.3:18444",
+      "gatewayId": "native-e-a60111a6",
+      "recoveryRequired": false,
+      "revision": "5e6e429f-13e4-4066-a61e-2bb218c51cc1"
+    },
+    "decision": {
+      "version": 1,
+      "revision": "5e6e429f-13e4-4066-a61e-2bb218c51cc1",
+      "enabled": true,
+      "actor": "kura-uid:996"
+    },
+    "remoteFileFingerprint": [
+      1048613,
+      3638678,
+      997,
+      997,
+      33152,
+      1,
+      101,
+      1794946545640558076,
+      1794946545641558066,
+      "1c9796f19312258c80f7b19414763e9d01b456be5b2c935fa3b5ef1b85d54358"
+    ],
+    "connected": true,
+    "readOnlyStatusAttempts": 1,
+    "originalNewProcessesExact": true,
+    "rootUnits": {
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "ticks": "18777292"
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "ticks": "18759746"
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "ticks": "18777273"
+      }
+    },
+    "businessReport": {
+      "schemaVersion": 1,
+      "profile": "native-retained-state-inspection-v1",
+      "nativeUid": 997,
+      "nativeGid": 997,
+      "noNewPrivileges": true,
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+        },
+        "results.sqlite-wal": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "inventory": {
+        "schemaVersion": 1,
+        "profile": "native-execution-inventory-v1",
+        "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 1,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "executionStates": {
+          "SUCCEEDED": 1
+        },
+        "unresolvedExecutions": 0,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "logicalSha256": "acc02cf45ecff05090c225df13f43e2ae107efa3cad03c74d7aaef76b4f1a4ab",
+        "recordsChanged": false,
+        "replayPerformed": false
+      }
+    },
+    "summary": {
+      "schemaVersion": 1,
+      "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+      "candidateId": "42e96468-bcf9-4940-9b81-0bc4fe70d13f",
+      "identityReceiptSha256": "cdbe13d4e77c970595365be0ef74a3b4ab73dec706bf9a7df25e5bba2fddfe4e",
+      "stageSha256": "adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8",
+      "coreContextSha256": "9a96294173658048b9e1b393afb36c97ac2ff11abceec28b242173417147ae0c",
+      "bindingGeneration": 1
+    },
+    "identityFilesExact": 20,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "switchProofExact": 9,
+    "transportProofExact": 7,
+    "readOnly": true
+  },
+  "configurationList": {
+    "at": "2026-11-17T20:22:28.380Z",
+    "purpose": {
+      "at": "2026-11-17T20:21:00.524Z",
+      "purposeId": "66f0cfc3-f6ae-4b09-bbd7-59d82eb84489",
+      "sourceRequestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+      "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+      "gatewayId": "native-e-a60111a6",
+      "bindingGeneration": 1,
+      "certificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+      "operation": "kura.configuration.list",
+      "protocolOperation": 2,
+      "purpose": "First real configuration-list read on the original gateway after verified business-preserving source upgrade",
+      "dispatchesAllowed": 1,
+      "originalStatusTaskRetained": "7e30af94-6bcd-40cb-a0e4-af475360cab6"
+    },
+    "ack": {
+      "at": "2026-11-17T20:21:26.874Z",
+      "purposeId": "66f0cfc3-f6ae-4b09-bbd7-59d82eb84489",
+      "httpStatus": 202,
+      "taskId": "2841b777-1f58-43ba-a5ef-b949c4993062",
+      "state": "QUEUED",
+      "idempotencyKey": "da951403-bdcb-42e7-8733-57bd3b31349c",
+      "responseSha256": "75a88de9f3cb4aaf38f700f66b63418e0ac7f55accbf17f953725a9c9d02a525",
+      "rawBodyLogged": false
+    },
+    "task": {
+      "createdAt": "2026-11-17T20:21:26.862951Z",
+      "error": null,
+      "gatewayId": "native-e-a60111a6",
+      "id": "2841b777-1f58-43ba-a5ef-b949c4993062",
+      "operation": 2,
+      "result": [
+        "HttpsKeystore",
+        "SSLKeystore",
+        "filesystem-kura-audit-log",
+        "filesystem-kura-log",
+        "org.eclipse.kura.clock.ClockService",
+        "org.eclipse.kura.cloud.CloudService",
+        "org.eclipse.kura.core.data.transport.mqtt.MqttDataTransport",
+        "org.eclipse.kura.core.token.jwt.issuer.JwtIssuingService",
+        "org.eclipse.kura.core.token.jwt.verifier.JwtVerificationService",
+        "org.eclipse.kura.data.DataService",
+        "org.eclipse.kura.db.H2DbService",
+        "org.eclipse.kura.http.server.manager.HttpService",
+        "org.eclipse.kura.identity.LoginBannerService",
+        "org.eclipse.kura.identity.PasswordStrengthVerificationService",
+        "org.eclipse.kura.internal.rest.provider.RestService",
+        "org.eclipse.kura.internal.useradmin.store.RoleRepositoryStoreImpl",
+        "org.eclipse.kura.ssl.SslManagerService",
+        "org.eclipse.kura.watchdog.WatchdogService",
+        "org.eclipse.kura.web.Console"
+      ],
+      "state": "SUCCEEDED"
+    },
+    "dispatches": 1,
+    "pageErrors": 0
+  },
+  "configurationGet": {
+    "at": "2026-11-17T20:31:45.224Z",
+    "purposeId": "bcf94cb1-ef13-457d-bc86-937ad3494f5c",
+    "httpStatus": 200,
+    "task": {
+      "id": "d2fc3e47-1ec4-4458-bbdc-b1f0c48eef94",
+      "gatewayId": "native-e-a60111a6",
+      "operation": 11,
+      "state": "SUCCEEDED",
+      "error": null,
+      "createdAt": "2026-11-17T20:31:26.391071Z"
+    },
+    "resultKeys": [
+      "componentKind",
+      "conditionalWrite",
+      "description",
+      "directConfigAdminCas",
+      "locale",
+      "name",
+      "pid",
+      "properties",
+      "revision",
+      "updateEnabled",
+      "writable"
+    ],
+    "resultSummary": {
+      "pid": "org.eclipse.kura.clock.ClockService",
+      "locale": "en",
+      "revision": "1eef80a1d268d02abf515c467cecafc5f69a1dd0922f2e3ebc8d950b67c2ae73",
+      "name": "ClockService",
+      "properties": [
+        {
+          "id": "chrony.advanced.config",
+          "type": "STRING",
+          "editable": true,
+          "redacted": false,
+          "present": false
+        },
+        {
+          "id": "clock.ntp.host",
+          "type": "STRING",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.ntp.max-retry",
+          "type": "INTEGER",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.ntp.port",
+          "type": "INTEGER",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.ntp.refresh-interval",
+          "type": "INTEGER",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.ntp.retry.interval",
+          "type": "INTEGER",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.ntp.timeout",
+          "type": "INTEGER",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.provider",
+          "type": "STRING",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "clock.set.hwclock",
+          "type": "BOOLEAN",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "enabled",
+          "type": "BOOLEAN",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "kura.service.pid",
+          "type": "UNKNOWN",
+          "editable": false,
+          "readOnlyReason": "NO_METATYPE",
+          "redacted": true,
+          "present": true
+        },
+        {
+          "id": "rtc.filename",
+          "type": "STRING",
+          "editable": true,
+          "redacted": false,
+          "present": true
+        },
+        {
+          "id": "service.pid",
+          "type": "UNKNOWN",
+          "editable": false,
+          "readOnlyReason": "NO_METATYPE",
+          "redacted": true,
+          "present": true
+        }
+      ]
+    },
+    "resultSha256": "edbcf14c87a5043bf095777233146ad901d0c8794aa6b5426d1a534ee829fa8d",
+    "propertyValuesLogged": false,
+    "guiSubmissionVerified": false
+  },
+  "configurationGetFlags": {
+    "at": "2026-11-17T20:32:49.701Z",
+    "status": 200,
+    "id": "d2fc3e47-1ec4-4458-bbdc-b1f0c48eef94",
+    "state": "SUCCEEDED",
+    "pid": "org.eclipse.kura.clock.ClockService",
+    "writable": true,
+    "updateEnabled": false,
+    "conditionalWrite": "PROVIDER_MONITOR",
+    "directConfigAdminCas": false,
+    "componentKind": "CONFIGURABLE",
+    "locale": "en",
+    "propertyCount": 13,
+    "writableIsIntrinsicComponentSupport": true,
+    "updateAuthorized": false,
+    "gatewayUpdateCapabilityAdvertised": false,
+    "firstObserverIncorrectlyExpectedWritableFalse": true,
+    "guiSubmissionVerified": false
+  },
+  "configurationGetGui": {
+    "at": "2026-11-17T20:32:50.576Z",
+    "id": "d2fc3e47-1ec4-4458-bbdc-b1f0c48eef94",
+    "gatewayId": "native-e-a60111a6",
+    "operation": 11,
+    "state": "SUCCEEDED",
+    "pid": "org.eclipse.kura.clock.ClockService",
+    "writable": true,
+    "updateEnabled": false,
+    "propertyCount": 13,
+    "resultViewedInGui": true,
+    "taskSubmittedByGui": false,
+    "propertyValuesLogged": false,
+    "pageErrors": 0
+  },
+  "pgTaskMetadata": [
+    {
+      "id": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+      "gateway_id": "native-e-a60111a6",
+      "operation": 1,
+      "idempotency_key": "4f46051a-eeff-4aef-ae9d-f8debfd82a51",
+      "state": "SUCCEEDED",
+      "error": null,
+      "dispatch_epoch": "7787b274-956a-4d2e-a722-361b046c2295",
+      "binding_generation": 1,
+      "result_bytes": 284
+    },
+    {
+      "id": "2841b777-1f58-43ba-a5ef-b949c4993062",
+      "gateway_id": "native-e-a60111a6",
+      "operation": 2,
+      "idempotency_key": "da951403-bdcb-42e7-8733-57bd3b31349c",
+      "state": "SUCCEEDED",
+      "error": null,
+      "dispatch_epoch": "771630d7-7f22-4617-a1db-3a56fc26f8ce",
+      "binding_generation": 1,
+      "result_bytes": 1744
+    },
+    {
+      "id": "d2fc3e47-1ec4-4458-bbdc-b1f0c48eef94",
+      "gateway_id": "native-e-a60111a6",
+      "operation": 11,
+      "idempotency_key": "97cd0e4b-55ae-4c97-af85-6e88f10f9dbd",
+      "state": "SUCCEEDED",
+      "error": null,
+      "dispatch_epoch": "771630d7-7f22-4617-a1db-3a56fc26f8ce",
+      "binding_generation": 1,
+      "result_bytes": 8472
+    }
+  ],
+  "nativeTaskMetadata": {
+    "at": "2026-11-17T20:35:50.230577+00:00",
+    "sourceApplied": true,
+    "report": {
+      "schemaVersion": 1,
+      "profile": "native-retained-state-inspection-v1",
+      "nativeUid": 997,
+      "nativeGid": 997,
+      "noNewPrivileges": true,
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "c5dce99266b22331eae21225d2714e1bde729240379350d2c53c39831f5cc547"
+        },
+        "results.sqlite-wal": {
+          "bytes": 32992,
+          "sha256": "4ea7fd8f3b0eb446698635ebbf8949461fa65f27df1b30c942d586e130ee7960"
+        }
+      },
+      "inventory": {
+        "schemaVersion": 1,
+        "profile": "native-execution-inventory-v1",
+        "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 3,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "executionStates": {
+          "SUCCEEDED": 3
+        },
+        "unresolvedExecutions": 0,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "logicalSha256": "d1a5a1e24f90914a209264de273c065b7ea5471d25cbd050975d3772dead4d69",
+        "recordsChanged": false,
+        "replayPerformed": false
+      }
+    },
+    "executionMetadata": [
+      {
+        "id": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+        "operation": 1,
+        "idempotencyKey": "4f46051a-eeff-4aef-ae9d-f8debfd82a51",
+        "state": "SUCCEEDED",
+        "requestHash": "78ab76b22d2236445596e618a21f246e63d4376c186577be0f0fa21729f8b97b",
+        "planBytes": 114,
+        "resultBytes": 153
+      },
+      {
+        "id": "2841b777-1f58-43ba-a5ef-b949c4993062",
+        "operation": 2,
+        "idempotencyKey": "da951403-bdcb-42e7-8733-57bd3b31349c",
+        "state": "SUCCEEDED",
+        "requestHash": "185406ae84964eeb5dcc766ef5a7796974cdd3b05455a09b13e9c7cb5d04e86a",
+        "planBytes": 114,
+        "resultBytes": 886
+      },
+      {
+        "id": "d2fc3e47-1ec4-4458-bbdc-b1f0c48eef94",
+        "operation": 11,
+        "idempotencyKey": "97cd0e4b-55ae-4c97-af85-6e88f10f9dbd",
+        "state": "SUCCEEDED",
+        "requestHash": "70deeda0fed9a3a8f431228cf088e62f9d14b386650bb8473dce2e07bfcafecf",
+        "planBytes": 157,
+        "resultBytes": 4250
+      }
+    ],
+    "metadataReadAsDedicatedUidCap0Nnp1": true,
+    "metadataReadOnCopyOnly": true,
+    "originalStatusTaskRetained": true,
+    "keyOrEncryptedPayloadExported": false,
+    "readOnly": true
+  },
+  "browserRecovery": {
+    "at": "2026-11-17T20:38:47.556Z",
+    "sameEAuthenticated": true,
+    "sameDCenterAuthenticated": true,
+    "eConnected": true,
+    "sourceRequestId": "b479b232-38d2-436d-9566-3f0e33c25bb3",
+    "eAllRemoteWritesBlocked": true,
+    "dOtherMutationsBlocked": true,
+    "originalListResultViewedAgain": true,
+    "configurationListRedispatched": false,
+    "getSubmissionViaGui": false,
+    "taskResultViewedInGui": true,
+    "ePageErrors": 0,
+    "dPageErrors": 0
+  },
+  "browserPrivateStateValuesIncluded": false,
+  "preservationEvidence": "phase25-preservation-after-upgrade-and-config.json",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "nonempty-WAL/RUNNING/UNKNOWN/renewal/legacy source matrix",
+    "all provider/launcher/install/upgrade/remove/restore/resource/R017 matrix",
+    "Core typed brokers and 11/13 capabilities/NNP0",
+    "configuration GUI submission and task/selection recovery across clients",
+    "all remaining frozen12 requirements"
+  ],
+  "implementationChangedThisTurn": false,
+  "previousTestsNotRerunOrAccumulated": true,
+  "pushed": false,
+  "jdk27Added": false
+}
