@@ -1,0 +1,737 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-17T18:48:49.168135+00:00",
+  "phase": "native-capability-status",
+  "goal": "active",
+  "pushed": false,
+  "existingCreditsAuthorized": true,
+  "implementationHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+  "consoleBaseHead": "4ac0bf728d223712de4d2b98d230a77d18a9f160",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "fullyClosedParents": 0,
+  "parentCount": 12,
+  "wholeGoalWeightedPercent": null,
+  "scope": "Netplan advertised write scope, source evolution retaining original Root transport proof, known maintenance OFF/ON and one actual agent.status task",
+  "tests": {
+    "transport": {
+      "passed": 18,
+      "ignored": 5,
+      "newCapabilityMethods": 4
+    },
+    "network": {
+      "passed": 35,
+      "ignored": 0
+    },
+    "rootPython": {
+      "rerunThisPhase": false,
+      "unchangedSince": "3e28a441d2e50969768a8732d80b7e8b050be32b",
+      "lastValidatedSelected": 266,
+      "lastValidatedPassed": 264,
+      "lastValidatedSkipped": 2,
+      "sourceEqualityChecked": true
+    },
+    "generatedControlsCompiled": 4,
+    "countsAreNotSummed": true
+  },
+  "buildObservation": {
+    "agentHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-capability-readonly-20261118/agent-source-24552f6",
+    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-capability-readonly-20261118/inputs-capability-fixed",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-capability-readonly-20261118/package-capability-fixed/build/kura-management-agent_0.1.0~native202611171836.24552f6-1_arm64.deb",
+    "version": "0.1.0~native202611171836.24552f6-1",
+    "packageSha256": "239eac991d5444f64ab3053c7f1babe8a6a7d4ce15af79b07358b1226a41f0fc",
+    "binarySha256": "03b87f800e9f42091531048bdf913b54ee490739926961a9b0e5e4198227baa9",
+    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+    "sourceManifestSha256": "44a7249847e39c38731af0dc4dd65c057f572a66c18a124aad813ff55be2ead9",
+    "generatedControlsCompiled": 4,
+    "protocolFreshFromPinnedGit": true,
+    "protocolSourceAndWorkspaceExactToCurrentGit": true,
+    "bridgeFromCurrentPairedRuntime": true,
+    "oldIntermediateUsed": false,
+    "deployed": false
+  },
+  "e": {
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "packageInstalled": true,
+    "sourceRequestId": "8a93b64a-0c41-4816-b092-29eb683f783e",
+    "sourceState": "APPLIED",
+    "sourcePrepareDispatches": 1,
+    "sourceInstallDispatches": 1,
+    "retainedStoppedAssetsExact": 72,
+    "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+    "peerAuthorizationId": "25abd835-cf55-4871-929d-87abee746024",
+    "materialAuthorizationId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+    "switchGrantId": "49e58164-08a1-4511-8b61-ab0e585c2467",
+    "switchGrantProofAssetsExact": 9,
+    "transportRequestId": "2031e3d3-a90b-4ad8-8445-f5a5138ecb0f",
+    "transportProofAssetsExact": 7,
+    "transportReconfigured": false,
+    "summary": {
+      "schemaVersion": 1,
+      "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+      "candidateId": "42e96468-bcf9-4940-9b81-0bc4fe70d13f",
+      "identityReceiptSha256": "cdbe13d4e77c970595365be0ef74a3b4ab73dec706bf9a7df25e5bba2fddfe4e",
+      "stageSha256": "adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8",
+      "coreContextSha256": "9a96294173658048b9e1b393afb36c97ac2ff11abceec28b242173417147ae0c",
+      "bindingGeneration": 1
+    },
+    "units": {
+      "kura.service": {
+        "MainPID": "24168",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "20724118",
+        "status": {
+          "Uid": "996\t996\t996\t996",
+          "Gid": "989\t989\t989\t989",
+          "Groups": "20 987 989 997",
+          "CapInh": "0000000406413426",
+          "CapPrm": "0000000406413426",
+          "CapEff": "0000000406413426",
+          "CapBnd": "00000004064134e6",
+          "CapAmb": "0000000406413426",
+          "NoNewPrivs": "0"
+        }
+      },
+      "kura-management-agent-v2.service": {
+        "MainPID": "23882",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "20724103",
+        "status": {
+          "Uid": "997\t997\t997\t997",
+          "Gid": "997\t997\t997\t997",
+          "Groups": "996 997",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18777292",
+        "status": {
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18759746",
+        "status": {
+          "Uid": "995\t995\t995\t995",
+          "Gid": "988\t988\t988\t988",
+          "Groups": "987 988",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18777273",
+        "status": {
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "00000000200534e2",
+          "CapEff": "00000000200534e2",
+          "CapBnd": "00000000200534e2",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "0"
+        }
+      }
+    },
+    "remoteStatus": {
+      "activeRequests": 0,
+      "bindingGeneration": "1",
+      "bound": true,
+      "canControl": true,
+      "connectionState": "CONNECTED",
+      "enabled": true,
+      "endpoint": "https://192.168.215.3:18444",
+      "gatewayId": "native-e-a60111a6",
+      "recoveryRequired": false,
+      "revision": "bc29b319-608b-4920-bef3-9a161b0f5a11"
+    },
+    "remoteDecision": {
+      "version": 1,
+      "revision": "bc29b319-608b-4920-bef3-9a161b0f5a11",
+      "enabled": true,
+      "actor": "kura-uid:996"
+    },
+    "maintenanceOff": {
+      "intent": {
+        "at": "2026-11-17T18:38:46.840Z",
+        "purposeId": "ecddaf54-d27d-4ab4-ba89-68e48a8ea328",
+        "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+        "expectedRevision": "c693589f-03e5-4dc1-be19-56bd87363ea8",
+        "desiredEnabled": false,
+        "currentSourceManifestSha256": "0cfe4cdf9d7b3e41c0c09dce84d157ef578feb44f568e23343ea4d26d6472135",
+        "candidateCodeHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+        "endpoint": "https://192.168.215.3:18444",
+        "gatewayId": "native-e-a60111a6",
+        "purpose": "Explicit known-state maintenance OFF before capability source evolution",
+        "dispatchesAllowed": 1,
+        "previousOnAcknowledged": true
+      },
+      "ack": {
+        "at": "2026-11-17T18:38:46.988Z",
+        "purposeId": "ecddaf54-d27d-4ab4-ba89-68e48a8ea328",
+        "httpStatus": 200,
+        "gwtResult": "OK",
+        "responseSha256": "f7439635b39a19f545a4e3a9e3cf9f238bb7b8fdfdc39d9065c97400e9784421",
+        "responseBytes": 542,
+        "rawBodyLogged": false
+      },
+      "after": {
+        "activeRequests": 0,
+        "bindingGeneration": "1",
+        "bound": true,
+        "canControl": true,
+        "connectionState": "DISABLED",
+        "enabled": false,
+        "endpoint": "https://192.168.215.3:18444",
+        "gatewayId": "native-e-a60111a6",
+        "recoveryRequired": false,
+        "revision": "790a3e0b-afc5-4f29-be41-0149ea3a32f8"
+      }
+    },
+    "reopen": {
+      "intent": {
+        "at": "2026-11-17T18:42:47.378Z",
+        "purposeId": "a2cb7bad-74f5-4d26-981f-89542714677c",
+        "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+        "sourceHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+        "sourceRequestId": "8a93b64a-0c41-4816-b092-29eb683f783e",
+        "sourceManifestSha256": "44a7249847e39c38731af0dc4dd65c057f572a66c18a124aad813ff55be2ead9",
+        "expectedRevision": "790a3e0b-afc5-4f29-be41-0149ea3a32f8",
+        "desiredEnabled": true,
+        "endpoint": "https://192.168.215.3:18444",
+        "gatewayId": "native-e-a60111a6",
+        "previousOffPurposeId": "ecddaf54-d27d-4ab4-ba89-68e48a8ea328",
+        "previousOffAcknowledged": true,
+        "dispatchesAllowed": 1
+      },
+      "ack": {
+        "at": "2026-11-17T18:42:47.451Z",
+        "purposeId": "a2cb7bad-74f5-4d26-981f-89542714677c",
+        "httpStatus": 200,
+        "gwtResult": "OK",
+        "responseSha256": "6bed6e516dc882115c7f87043724913866361335aa5f6076e444635a068f4c51",
+        "responseBytes": 545,
+        "rawBodyLogged": false
+      }
+    },
+    "identityFilesExact": 20,
+    "inspectedMaterialFiles": 32,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "nativeSelectedPrivateExact": 5,
+    "nativeBusinessCounts": {
+      "results": 0,
+      "executions": 1,
+      "execution_resolutions": 0,
+      "firewall_execution_authorities": 0,
+      "imported_remote_originals": 0,
+      "imported_remote_connection_barriers": 0,
+      "imported_remote_connection_confirmations": 0
+    },
+    "nativeWalBytes": 12392,
+    "rootJournalCounts": {
+      "operations": 0,
+      "startups": 0
+    },
+    "socketUnits": {
+      "kura-management-enrollment-reader.socket": {
+        "NConnections": "0",
+        "NAccepted": "4",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "UnitFileState": "enabled"
+      },
+      "kura-management-agent-enrollment.socket": {
+        "NConnections": "0",
+        "NAccepted": "6",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "UnitFileState": "enabled"
+      }
+    }
+  },
+  "capabilityWire": {
+    "before": {
+      "id": "native-e-a60111a6",
+      "capabilities": [
+        "agent.status",
+        "task.reconcile.v1",
+        "task.network-outcome.v1",
+        "task.configuration-outcome.v1",
+        "kura.configuration.list",
+        "kura.configuration.get",
+        "kura.snapshot.list",
+        "network.inspect",
+        "network.prepare",
+        "network.confirm",
+        "network.rollback",
+        "network.transaction",
+        "network.takeover.plan",
+        "network.takeover.prepare",
+        "firewall.imported.original.v1"
+      ],
+      "sequence": 129,
+      "generation": 1,
+      "connectionEpoch": "4b8e3040-33d7-47b6-b8a4-62f160fceaa9",
+      "onlineReported": true
+    },
+    "after": {
+      "id": "native-e-a60111a6",
+      "certificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+      "capabilities": [
+        "agent.status",
+        "task.reconcile.v1",
+        "task.network-outcome.v1",
+        "task.configuration-outcome.v1",
+        "kura.configuration.list",
+        "kura.configuration.get",
+        "kura.snapshot.list",
+        "network.inspect",
+        "network.transaction",
+        "network.takeover.plan",
+        "firewall.imported.original.v1"
+      ],
+      "sequence": 5,
+      "generation": 1,
+      "connectionEpoch": "7787b274-956a-4d2e-a722-361b046c2295",
+      "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "lastSeen": "2026-11-17T18:43:07.570683+00:00",
+      "onlineReported": true,
+      "kuraAvailable": true
+    },
+    "removed": [
+      "network.prepare",
+      "network.confirm",
+      "network.rollback",
+      "network.takeover.prepare"
+    ],
+    "networkScopeEmpty": true
+  },
+  "actualReadonlyTask": {
+    "purpose": {
+      "at": "2026-11-17T18:43:42.329Z",
+      "purposeId": "37487b53-e59d-4026-bdaa-a69cce30cc0e",
+      "centerContainerId": "5a4b2b32d7a5cfb1c87d56f2486364f86d47155c7f068179d70955c87c50ca39",
+      "databaseContainerId": "40eca01d6c355b968865210f90d71b063f1963d4423503b039d5ee8b18557330",
+      "database": "console_empty_native",
+      "gatewayId": "native-e-a60111a6",
+      "gatewayInitializationId": "24560864-f974-46aa-940a-0a97ad926118",
+      "bindingGeneration": 1,
+      "certificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+      "sourceHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+      "operation": "agent.status",
+      "dispatchesAllowed": 1,
+      "onUnknown": "retain original idempotency key; observe only; no retry or new key"
+    },
+    "dispatch": {
+      "at": "2026-11-17T18:43:42.352Z",
+      "purposeId": "37487b53-e59d-4026-bdaa-a69cce30cc0e",
+      "centerContainerId": "5a4b2b32d7a5cfb1c87d56f2486364f86d47155c7f068179d70955c87c50ca39",
+      "databaseContainerId": "40eca01d6c355b968865210f90d71b063f1963d4423503b039d5ee8b18557330",
+      "database": "console_empty_native",
+      "gatewayId": "native-e-a60111a6",
+      "gatewayInitializationId": "24560864-f974-46aa-940a-0a97ad926118",
+      "bindingGeneration": 1,
+      "certificateSha256": "3681eb8603b4f432078929e673bdc5911c3366459612185964885e1265e79f1a",
+      "sourceHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+      "operation": "agent.status",
+      "dispatchesAllowed": 1,
+      "onUnknown": "retain original idempotency key; observe only; no retry or new key",
+      "idempotencyKey": "4f46051a-eeff-4aef-ae9d-f8debfd82a51",
+      "dispatchOrdinal": 1,
+      "csrfOrAuthorizationLogged": false
+    },
+    "ack": {
+      "at": "2026-11-17T18:43:42.374Z",
+      "purposeId": "37487b53-e59d-4026-bdaa-a69cce30cc0e",
+      "httpStatus": 202,
+      "taskId": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+      "state": "QUEUED",
+      "operation": null,
+      "responseSha256": "89c75526386430d91f829bdbf1ea6aca6f74b87e97f2346e660882fccf8d27e6",
+      "responseBytes": 62,
+      "rawBodyLogged": false,
+      "idempotencyKey": "4f46051a-eeff-4aef-ae9d-f8debfd82a51"
+    },
+    "apiResult": {
+      "at": "2026-11-17T18:44:46.661Z",
+      "purposeId": "37487b53-e59d-4026-bdaa-a69cce30cc0e",
+      "taskId": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+      "idempotencyKey": "4f46051a-eeff-4aef-ae9d-f8debfd82a51",
+      "readOnly": true,
+      "reads": [
+        {
+          "at": "2026-11-17T18:44:46.661Z",
+          "httpStatus": 200,
+          "state": "SUCCEEDED"
+        }
+      ],
+      "httpStatus": 200,
+      "data": {
+        "createdAt": "2026-11-17T18:43:42.362021Z",
+        "error": null,
+        "gatewayId": "native-e-a60111a6",
+        "id": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+        "operation": 1,
+        "result": {
+          "agentAvailable": true,
+          "kuraAvailable": true,
+          "uptimeSeconds": 158,
+          "version": "0.1.0"
+        },
+        "state": "SUCCEEDED"
+      }
+    },
+    "centerDatabase": [
+      {
+        "id": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+        "gatewayId": "native-e-a60111a6",
+        "operation": 1,
+        "idempotencyKey": "4f46051a-eeff-4aef-ae9d-f8debfd82a51",
+        "state": "SUCCEEDED",
+        "error": null,
+        "resultStored": true,
+        "resultStorageBytes": 284,
+        "createdAt": "2026-11-17T18:43:42.362021+00:00",
+        "dispatchEpoch": "7787b274-956a-4d2e-a722-361b046c2295",
+        "bindingGeneration": 1
+      },
+      {
+        "gateways": 1,
+        "tasks": 1
+      }
+    ],
+    "nativeExecutionMetadata": {
+      "status": {
+        "Uid": "997\t997\t997\t997",
+        "Gid": "997\t997\t997\t997",
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "originalExecutionMetadata": [
+        [
+          "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+          1,
+          "4f46051a-eeff-4aef-ae9d-f8debfd82a51",
+          "SUCCEEDED",
+          114,
+          153,
+          "78ab76b22d2236445596e618a21f246e63d4376c186577be0f0fa21729f8b97b",
+          1794941022579,
+          1794941022588,
+          1794941052362
+        ]
+      ],
+      "businessCounts": {
+        "results": 0,
+        "executions": 1,
+        "execution_resolutions": 0,
+        "firewall_execution_authorities": 0,
+        "imported_remote_originals": 0,
+        "imported_remote_connection_barriers": 0,
+        "imported_remote_connection_confirmations": 0
+      },
+      "readOnly": true,
+      "encryptedPlanOrResultBytesExported": false
+    },
+    "taskSubmissions": 1,
+    "onlyOriginalIdReadAfterDispatch": true,
+    "probeCorrections": {
+      "at": "2026-11-17T18:46:21.739039+00:00",
+      "readOnlyProbeFailures": [
+        {
+          "probe": "browser task GET",
+          "reason": "Browser Fetch Response.status is a property, not the Playwright method; corrected original-ID GET only"
+        },
+        {
+          "probe": "PostgreSQL result size",
+          "reason": "mgmt_tasks.result is jsonb; octet_length(jsonb) refused; corrected pg_column_size without reading encrypted payload"
+        },
+        {
+          "probe": "native original result",
+          "reason": "probe assumed legacy results row; owning journal.claim/finish use encrypted executions; original SUCCEEDED execution metadata read at UID997 cap0 NNP1"
+        }
+      ],
+      "taskSubmissionRedispatched": false,
+      "productJournalModifiedToSatisfyProbe": false,
+      "originalFailedReceiptsPreserved": true
+    }
+  },
+  "ui": {
+    "at": "2026-11-17T18:46:34.405Z",
+    "sourceHead": "24552f60c815bbf990feeceaff53ad2cd2214688",
+    "gatewayId": "native-e-a60111a6",
+    "localConnected": true,
+    "centerTaskCompleted": true,
+    "taskId": "7e30af94-6bcd-40cb-a0e4-af475360cab6",
+    "taskDispatches": 1,
+    "taskAcks": 1,
+    "taskErrors": [],
+    "taskUiErrors": 0,
+    "gwtPageErrors": 0,
+    "maintenanceOffDispatches": 1,
+    "reopenDispatches": 1,
+    "csrDispatches": 1,
+    "stageDispatches": 1,
+    "bindDispatches": 1,
+    "registrationDispatches": 1
+  },
+  "preserved": {
+    "recordedAt": "2026-11-17T18:46:34.748276+00:00",
+    "originalFixtures": [
+      {
+        "containerId": "863ea5ecfeb0558eabe4c110a5973efd26fbad58e076c48080b2e9bba5a40f0a",
+        "privateFilesExactMetadata": 7,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 3792,
+            "startTicks": "4469038",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4229,
+            "startTicks": "4480291",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 0
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 0,
+          "startups": 0
+        }
+      },
+      {
+        "containerId": "a04bfb08590b93fa3351447ded42c24b576c676699216f3636ff3ff658190c07",
+        "privateFilesExactMetadata": 10,
+        "runtimeDataContentsExact": 0,
+        "processes": {
+          "kura.service": {
+            "pid": 5174,
+            "startTicks": "4319777",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 4735,
+            "startTicks": "4311323",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          },
+          "kura-key-recovery.service": {
+            "pid": 4893,
+            "startTicks": "4319768",
+            "status": {
+              "Uid": "995\t995\t995\t995",
+              "Gid": "990\t990\t990\t990",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 1,
+          "startups": 2
+        }
+      },
+      {
+        "containerId": "5f6b45125fa35903f4c725aeadfdaa22025c4f2b62e33d156309fe09baf629bd",
+        "privateFilesExactMetadata": 21,
+        "runtimeDataContentsExact": 6,
+        "processes": {
+          "kura.service": {
+            "pid": 10430,
+            "startTicks": "3504160",
+            "status": {
+              "Uid": "997\t997\t997\t997",
+              "Gid": "991\t991\t991\t991",
+              "CapEff": "0000000406413426",
+              "CapBnd": "00000004064134e6",
+              "CapAmb": "0000000406413426",
+              "NoNewPrivs": "0"
+            }
+          },
+          "kura-key-service.service": {
+            "pid": 10576,
+            "startTicks": "3506794",
+            "status": {
+              "Uid": "0\t0\t0\t0",
+              "Gid": "0\t0\t0\t0",
+              "CapEff": "0000000000000000",
+              "CapBnd": "0000000000000000",
+              "CapAmb": "0000000000000000",
+              "NoNewPrivs": "1"
+            }
+          }
+        },
+        "rootJournalCounts": {
+          "operations": 4
+        }
+      }
+    ],
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "center": {
+      "privateFilesExact": 29,
+      "unit": {
+        "MainPID": "3135",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "16649159",
+        "status": {
+          "Uid": "999\t999\t999\t999",
+          "Gid": "996\t996\t996\t996",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "readOnly": true
+    },
+    "readOnly": true
+  },
+  "internalPending": [
+    "actual configuration/snapshot/network and all provider paths",
+    "explicit source/package maintenance retaining real executions and nonempty WAL without rewriting data",
+    "retained renewal/TLS/UNKNOWN and legacy migration",
+    "typed brokers and Core least privilege",
+    "all capability providers and dynamic readiness",
+    "cross-refresh Mode original-purpose/UNKNOWN and transport GUI lifecycle",
+    "complete six-component/provider/launcher/install-upgrade-remove-recovery and all 12 parents",
+    "R017/full platform-resource matrix",
+    "G034 unsealed and unpublished protocol/full release matrix"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ],
+  "evidenceRoot": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-capability-readonly-20261118",
+  "evidenceSha256": {
+    "native-capability-fixed-build-summary.json": "5c4b9be1d656f1572eccbc52f916a31db9e380b36362bea9e56bb0264a2d83a7",
+    "native-capability-protocol-intent.json": "dc80eeb7a0314535c31bbc7907b315e7599d9a6141c3639458992c972748beef",
+    "native-capability-protocol-return.json": "784a204f16533d769644a96254f2fe3e26058e4b6f1a7035c0016f0fdb8cc8d3",
+    "native-capability-rust-transport-tests-return.json": "b73a4ca3e9e72c242abca1199a31751541fb89fbd5ae322e3b7a091ca562ad87",
+    "native-capability-rust-transport-tests.log": "3fcfbeaf7e48dd7cf389d1d12048c03d7c366e44286fc5ee78ea1cdfe27eaa0c",
+    "native-capability-fixed-rust-transport-tests-intent.json": "f42268f6fd913ed2ae59ef7d2b5e81621e76233ffa100d9743fbccfa14fd163c",
+    "native-capability-fixed-rust-transport-tests-return.json": "784a204f16533d769644a96254f2fe3e26058e4b6f1a7035c0016f0fdb8cc8d3",
+    "native-capability-fixed-rust-transport-tests.log": "7930db76181a2569dda83edf315fe30f09dcbbbfbf051375b76f174b4b75a3f6",
+    "native-capability-fixed-rust-network-tests-intent.json": "ffb4115144064da9fdedba67754cb48e860db5a50cdddfde51d06ea237a114ca",
+    "native-capability-fixed-rust-network-tests-return.json": "784a204f16533d769644a96254f2fe3e26058e4b6f1a7035c0016f0fdb8cc8d3",
+    "native-capability-fixed-rust-network-tests.log": "2ab5197baafd4d1fda1ce225f15c181f499e90e1721f1ad8489997952de4565c",
+    "native-capability-fixed-controls-return.json": "784a204f16533d769644a96254f2fe3e26058e4b6f1a7035c0016f0fdb8cc8d3",
+    "maintenance-before-off-observation.json": "9d1fb12501382081e70eea45b005109a1b24b1e1c8b799eac42d1efd9aeb85c2",
+    "maintenance-off-intent.json": "242a77c94075b3834c3788f7a152d869bf6f1e9e1c9e11200ef9d682248ce973",
+    "maintenance-off-dispatch.json": "e3020b92365ab9a71d30f9cfc64f73eb379fa2f68cc4004a2e12b8bb9485eb44",
+    "maintenance-off-ack.json": "7811b62078483ea34932633b7466e327dd2c33007007573f383f00f22472c962",
+    "maintenance-after-off-observation.json": "77516df870bfed686a3d470511c8c90e56c2d425396f22614eab9c67044218c9",
+    "capability-upgrade-intent.json": "0e67802d114c18d339e384d37803b66ffe6cea47702745dab2e4b00712482ef8",
+    "capability-bootstrap-observation.json": "f3cdfec648d09d9a45b59bf7825f73d376b5413224327a7de2c44596124b82d0",
+    "capability-preflight-observation.json": "9836b06037d6c76521681bfccf2072a5561cbdb99b064b3ca644615d0635e3e3",
+    "capability-snapshot-observation.json": "d01fbc64fcc7aa92ae30d04176df4f5e93d9e437797cd63edb7827809c5a07e4",
+    "capability-prepare-observation.json": "e38f258554c850dd62a22ae104fd61a2b4962a19bebf87a60d17d85899c9c65c",
+    "capability-install-observation.json": "a5a7f67c843d76119fe174aeef819ea72e03ac00ea65d84735ac8539ce5d8065",
+    "capability-verify-observation.json": "eca46c07c795a2172f0db7d1c662987c2c5a8898989c8c195f549b1d2b08306a",
+    "capability-start-observation.json": "f1ca0433214cbc4962dffffe7cec6bda4892ba748bb5bdb924247339e83e9a57",
+    "native-capability-live-before-on-observation.json": "00e9ec7ebd95136912337d491c91d8abe73ddf7210f4aef6087c7f366e6fc81a",
+    "reopen-before-on-observation.json": "74613b68a62b128bf7996aacc7ac74adfacd55eee5601b89046dddf1613c75c8",
+    "reopen-intent.json": "bb4acfea8d9ba94152d2810fcd6cc65c73801eb53bdabb26f396103232f1d204",
+    "reopen-dispatch.json": "5bc82d61a2e291d7174f3980146e21d9b9a9b1e5792873be2c3c0e416242b760",
+    "reopen-ack.json": "4b15cd0871c1e76edb72f79e1754d15476e13dd39440361fec798f677b6bbaa0",
+    "reopen-after-on-observation.json": "19c16c0b4f33b0422ab7e2172f436b5bcc6b67851ec6303ca3de795b239f4271",
+    "capability-before-code-observation.json": "995d76d21aeb61cf478cb89c31e8b045d3ee65e019d2ab9d209c6e0aa0344550",
+    "capability-after-code-observation.json": "92682cb9753e0dd561c031571633b5528268572405e762ffc8401af8ee3c87f0",
+    "readonly-status-task-intent.json": "ffff2240b15524e76d3384fe9dc758de1808ed445d9dd2bb6ce5780cfff82b75",
+    "readonly-status-task-dispatch.json": "010c3020d24ef51512a83b28c5244faeb640924ba3b4cb483f3d010c1ea5694a",
+    "readonly-status-task-ack.json": "1ae823715862aa18717fd99db363c6dda09a798ffec3ef9fec21e903ebbeac6e",
+    "readonly-status-task-result-fixed-read.json": "b7bbf01297ff6127178df20e60fbf6ff22edc0ba7e3a04f72686985bd0470123",
+    "readonly-status-task-database-observation.json": "5f14366d8ee55cfc2a1f436507e2eb23de54295648fb8230b2df6eed252d0614",
+    "readonly-status-task-database-fixed-observation.json": "324aba1a69f7f5bf882d1d9ab1c32b7934b01a186c2614c6ee6434129dfb4559",
+    "readonly-status-task-native-journal-observation.json": "32f12ba3babd839ba43b5916141a4716dfa9c975b1f7557c50d587f59b00c469",
+    "readonly-status-task-native-journal-metadata-observation.json": "1727eca2646b2eb7080d6ee0a08cab969a293e89ff133f77499148bbaa5d0fb7",
+    "readonly-status-task-native-execution-observation.json": "959d2e24d97651c6d53fbdef6fbd61be9f575fe8314b5bd0f5a1ef8de069ec76",
+    "readonly-task-initial-probe-corrections.json": "d23697bdcbf265a4fdc8522d606e56e3bac323efc07a9362b682bccd3b181693",
+    "native-capability-live-after-task-observation.json": "57cc3f7448e8767f42fbde2cda29991725b1b75809952fa4b6ce1195cf4bea25",
+    "capability-and-status-both-ui-observation.json": "a8ada177bba30a75d07b8187b53a0c7ad5087d9d6fc62ac83164954ec6254660",
+    "phase23-preservation-after-task.json": "8e0eb8f377cab92824869db9d4ba7fff1fdc3af878522300f41893371a20c4b5",
+    "phase23-before-docs-repositories-and-ledger.json": "7819e33a9e069e98c1d3f9de90f16235dcb164b32864ae2a00b15ee22814309a",
+    "console-native-e-status-completed.png": "d3d5f1493f35dc0f26c05df02ed71c470ed530d74cc9c3120cb6831e22816256",
+    "gwt-native-e-capability-source-connected.png": "ad1c5c7e7eb3f080adf588be950c53313e935d2b9757d64f15952ab9d77b0e0b"
+  }
+}

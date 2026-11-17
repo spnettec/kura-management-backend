@@ -1,3 +1,15 @@
+## 2026-11-18 Netplan能力范围与真实状态任务
+
+agent实现5f95a7e/测试修正24552f6：Hello清单复用network固定接口范围，无后端不宣告network.*；有后端/空范围仅inspect、transaction、takeover.plan；显式非空范围才宣告四个既有写能力。实际空范围E旧Hello误宣告写能力但执行门禁仍拒绝，本次只修宣告，不授新权限或认领数据。transport18过/5显式故障夹具ignored、network35过/0ignored，含4新方法；首次未引入tempfile编译失败保留，改现有临时目录方式无新增依赖。Python/Root相对3e28a44逐字节不变，沿用已验266/264过/2历史排除证据，本轮未重跑、不累加。
+
+当前Git自包含构建新包0.1.0~native202611171836.24552f6-1，SHA239eac99…41f0fc/source44a72498…2ead9/ELF03b87f80…7baa9，协议本轮从已核验声明Git检出重新打包、bridge只读当前Root配对E。已知ON后的维护OFF目的ecddaf54…一次HTTP200//OK，revision790a3e0b…；source8a93b64a-0c41-4816-b092-29eb683f783e各一次prepare/install APPLIED、不自动启动，72停止态资产精确，原switch49e58164…的9证明、transport2031e3d3…的7证明及原身份/材料/env保留，不重授权或配置。显式恢复后native23882/ticks20724103 UID997/五cap0/NNP1；Core24168/ticks20724118仍11/13caps/NNP0内部待办，key4714/recovery4640/NM4668不变。
+
+恢复目的a2cb7bad…确认后一次HTTP200//OK，当前ON revision bc29b319-608b-4920-bef3-9a161b0f5a11/actor kura-uid:996，同证书3681eb86…/网关native-e-a60111a6/generation1，实际新epoch7787b274…；中心Hello15→11，四个未授权网络写能力消失，读取/核定保留。中心Query status只发1次，原key4f46051a-eeff-4aef-ae9d-f8debfd82a51、task7e30af94-6bcd-40cb-a0e4-af475360cab6，202入队后仅读原ID；中心/API/网关现行executions均SUCCEEDED，agent/kura=true。中心1网关1任务，native executions1/旧results及其余5表0，加密plan114/result153字节未导出；WAL12392字节合法保留，不截断/checkpoint/清数据凑准入。后续source必须先有保留真实业务的显式维护，当前空业务门禁不放宽。
+
+初次只读核验误用Fetch.status方法、jsonb长度函数和旧results表，拥有方journal.claim/finish及正确只读查询核对后通过，失败回执保留，无任务重发或产品日志修补。两端UI连接/任务Completed，CSR/stage/bind/登记总各1，页面错误0。原身份20/材料32/Core6/local7/material5/native selected5及grant9/transport7精确；18:46:34UTC原3/个人25/C9进程计数/D29原Main3135再次精确，文档前18仓干净、冻结12父项SHA不变。
+
+见[检查点](native-capability-status-checkpoint.json)、[审查](../../reviews/native-capability-status-review-20261118.md)及agent Netplan能力合同。只证明agent.status任务，继续实际configuration等受限读取、真实业务/续期/TLS/UNKNOWN/source及升级移除恢复、typed brokers/Core最小权限、完整能力/Mode原目的UNKNOWN/地址GUI、六组件/provider/launcher/R017和全部12父项，G034未封存，仅原3 external deferred。目标active/现有积分继续、无推送、不加27、不清active runtime，旧UNKNOWN不重发/换号/跨Root查，闭环备份/归档/轮换/恢复/900秒不重放；仍0/12父项最终闭环，不折算实现0%或编造整体百分比。
+
 ## 2026-11-18 同一原身份的首次 native mTLS 通道
 
 agent 3e28a44 新增独立 Root gRPC 连接地址配置：15字段/原安装-peer-result-角色/同网关及原回执/最低generation、同HTTPS host严格端口；原材料18443保留，连接18444。Root全局原意图先存、原号补全、result/公开/current/ACK完整，停机排空/远程OFF/业务0/原完整首次身份及全部Root配对准入保持，不改.data或重身份。首次u16类型编译错误及65536端口解析缺陷修复后，266 Python中264过/2历史导出夹具排除（16新方法）；干净source Rust身份15/15、enrollment/renewal30过/4显式Root/cross-UID夹具ignored，未算通过、不累加。原失败保留。
