@@ -1,3 +1,13 @@
+## 2026-11-17 固定Kura UID授权与原生真实注册
+
+agent代码d50ac96/文档6a28741新增固定Root本地peer原UUID授权、单次gpasswd与最终发布回执；回复丢失只读原状态、完成动作不重发加组，缺标记/历史阻止新号与启动，闭环fate与当前readiness分离。Root与Rust校验精确账号/组、Core unit/loader/bridge、native身份及原初始化，Core/GWT Root门禁未放宽。177项Python中175过/2历史夹具排除，含9项授权；focused9、Rust身份5/连续性1/注册续期30过，4提权互操作未执行，计数重叠不累加。
+
+当前Git自包含新构建包已在同一E以source原号3c04982b…一次升级APPLIED，16停机资产精确，Core期间继续运行；安装保持native停止。再以peer原号25abd835-cf55-4871-929d-87abee746024一次授权APPLIED/READY、不自动启动/远程仍关；固定Kura UID996/GID989仅加control997，env只改UID，原初始化24560864…不变。授权env之外15停机资产/新Core6私有精确，无重新初始化/CSR/材料/通道。
+
+显式先native后Core启动，native Main5719/ticks18960007、UID/GID997、groups996/997、五cap集合0、NNP1、NRestarts0；Core Main5994/ticks18960028、UID996/GID989、groups20/987/989/997，既有11 ambient/13 bounding/NNP0义务仍开。Key4714/recovery4640原身份不变；Root业务/启动计数0，native4原文件/Core6私有精确。agent.status实际agent=true/kura=true，bundle216/DS53 ACTIVE；无关UID65534即使有control997也在任何frame前EOF拒绝。普通source对已授权peer仍拒绝，下一步必须实现保留原授权的显式联合source/authority演进，不删grant或撤销重做绕过。
+
+见 [检查点](native-kura-peer-registration-checkpoint.json)及 [审查](../../reviews/native-kura-peer-registration-review-20261117.md)。原3现场/个人25/C9及进程计数本次后精确，D29/原Main3135前次精确且未动；18仓文档提交前干净，完整冻结12父项SHA不变。材料/通道与提权broker、Core最小权限、保留态/旧态/UNKNOWN迁移、联合升级移除恢复/R017及全部矩阵/12父项继续内部pending，仅原3外部deferred。原CSR与闭环密钥验收不重发重放；目标active、现有积分继续、无推送。
+
 ## 2026-11-17 原运行态盘点、loader配对及当前Core实际组合
 
 agent2b2ed3c（文档6ee303f）已将原禁用remote、空构造目录、零字节锁/WAL等按含义盘点；非空WAL、原remote丢失/改变、真实恢复/网络记录、凭据及仍持写锁均拒绝，不删改/认领数据。168项Python中166通过、2历史夹具排除，含21项source方法；Core50855bc的v2可选加载及严格单标记/Root配对10项Linux通过。计数重叠不累加。
