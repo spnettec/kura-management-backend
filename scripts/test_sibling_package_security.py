@@ -90,7 +90,7 @@ class NativePackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         assert os.geteuid() == 0 and Path('/.dockerenv').exists()
-        for path in ('/etc/kura', '/var/lib/kura-key-service', '/opt/eclipse'):
+        for path in ('/etc/kura', '/var/lib/kura-key-service', '/var/lib/kura-networking', '/opt/eclipse'):
             assert not os.path.lexists(path), 'Never adopt an installed gateway: ' + path
         subprocess.run(['useradd', '--system', 'kurad'], check=True)
         cls.account = pwd.getpwnam('kurad')
@@ -109,6 +109,8 @@ class NativePackageTests(unittest.TestCase):
 
     def tearDown(self):
         shutil.rmtree('/opt/eclipse')
+        if Path('/var/lib/kura-networking').exists():
+            shutil.rmtree('/var/lib/kura-networking')
         Path('/tmp/install_error').unlink(missing_ok=True)
 
     def stub(self, name, body):
@@ -117,6 +119,8 @@ class NativePackageTests(unittest.TestCase):
         path.chmod(0o755)
 
     def reset(self):
+        if Path('/var/lib/kura-networking').exists():
+            shutil.rmtree('/var/lib/kura-networking')
         if Path('/opt/eclipse').exists():
             shutil.rmtree('/opt/eclipse')
         self.home = Path('/opt/eclipse/kura')
@@ -231,6 +235,9 @@ class NativePackageTests(unittest.TestCase):
             with self.subTest(name=name):
                 self.reset()
                 dest = self.stage(name)
+                if name == 'networking':
+                    admission = self.execute(['bash', str(distrib(name) / 'deb/control/preinst'), 'upgrade', '1.0'])
+                    self.assertEqual(0, admission.returncode, admission.stderr)
                 script = dest / installer_name(name)
                 script.write_text('#!/bin/bash\nexit 37\n')
                 postinst = distrib(name) / 'deb/control/postinst'
@@ -312,6 +319,8 @@ class NativePackageTests(unittest.TestCase):
 
     def test_network_children_finish_and_propagate_failure_before_registration(self):
         dest = self.stage('networking')
+        admission = self.execute(['bash', str(distrib('networking') / 'deb/control/preinst'), 'install'])
+        self.assertEqual(0, admission.returncode, admission.stderr)
         self.stub('java', 'exit 0\n')
         self.stub('keytool', 'exit 0\n')
         self.stub('systemctl', 'case "$1" in show) echo loaded;; daemon-reload) exit 47;; *) exit 0;; esac\n')
@@ -327,6 +336,8 @@ class NativePackageTests(unittest.TestCase):
 
     def test_network_options_failure_prevents_registration(self):
         dest = self.stage('networking')
+        admission = self.execute(['bash', str(distrib('networking') / 'deb/control/preinst'), 'install'])
+        self.assertEqual(0, admission.returncode, admission.stderr)
         marker = Path(self.tmp.name) / 'permissions-child-entered'
         (dest / 'kura_network_options.sh').write_text(
             '#!/bin/bash\ntouch ' + str(marker) + '\nexit 43\n')
@@ -336,6 +347,56 @@ class NativePackageTests(unittest.TestCase):
         result = self.execute(['bash', str(distrib('networking') / 'deb/control/postinst'), 'configure'])
         self.assertNotEqual(0, result.returncode)
         self.assertTrue(marker.exists(), result.stderr + result.stdout)
+        self.assertFalse(self.registry.exists())
+        self.preserved()
+
+    def test_half_configured_upgrade_with_empty_configured_version_preserves_properties(self):
+        self.stage('networking')
+        path = self.home / 'user/kura_custom.properties'
+        path.write_bytes(b'# existing configuration from failed first installation\nprivate.value=preserve\n')
+        os.chown(path, self.account.pw_uid, self.account.pw_gid)
+        path.chmod(0o600)
+        before = self.metadata(path)
+        result = self.execute(['bash', str(distrib('networking') / 'deb/control/preinst'), 'upgrade', '1.0'])
+        self.assertEqual(0, result.returncode, result.stderr)
+        # This is the actual dpkg postinst shape when no old configure succeeded.
+        result = self.execute(['bash', str(distrib('networking') / 'deb/control/postinst'), 'configure'])
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertEqual(before, self.metadata(path))
+        self.assertEqual('networking\n', self.registry.read_text())
+        self.preserved()
+
+    def test_missing_or_unsafe_package_admission_cannot_initialize_properties(self):
+        self.stage('networking')
+        properties = self.home / 'user/kura_custom.properties'
+        properties.write_bytes(b'# preserved personal settings\n')
+        os.chown(properties, self.account.pw_uid, self.account.pw_gid)
+        properties.chmod(0o600)
+        before = self.metadata(properties)
+        postinst = distrib('networking') / 'deb/control/postinst'
+        result = self.execute(['bash', str(postinst), 'configure'])
+        self.assertNotEqual(0, result.returncode)
+        state = Path('/var/lib/kura-networking/install-mode')
+        state.parent.mkdir(mode=0o700)
+        target = Path(self.tmp.name) / 'unrelated'
+        target.write_bytes(b'original unrelated contents\n')
+        for kind in ['symlink', 'hardlink', 'writable', 'corrupt']:
+            state.unlink(missing_ok=True)
+            if kind == 'symlink': state.symlink_to(target)
+            elif kind == 'hardlink': os.link(target, state)
+            else:
+                state.write_bytes(b'corrupt\n' if kind == 'corrupt' else b'upgrade\n')
+                state.chmod(0o666 if kind == 'writable' else 0o600)
+            unrelated_before = self.metadata(target)
+            for hook, arguments in [('preinst', ['upgrade', '1.0']), ('postinst', ['configure'])]:
+                result = self.execute(['bash', str(distrib('networking') / 'deb/control' / hook), *arguments])
+                self.assertNotEqual(0, result.returncode)
+                self.assertEqual(before, self.metadata(properties))
+                self.assertEqual(unrelated_before, self.metadata(target))
+        state.unlink()
+        result = self.execute(['bash', str(distrib('networking') / 'deb/control/preinst'), 'abort-upgrade', '1.0'])
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertFalse(state.exists())
         self.assertFalse(self.registry.exists())
         self.preserved()
 

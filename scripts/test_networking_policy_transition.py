@@ -43,6 +43,8 @@ class NativeTests(unittest.TestCase):
                        stderr=subprocess.DEVNULL, check=True)
         if POLICY.is_symlink() or POLICY.exists():
             POLICY.unlink()
+        if Path('/var/lib/kura-networking').exists():
+            shutil.rmtree('/var/lib/kura-networking')
         self.tmp.cleanup()
 
     def package(self, version, policy=False, conffile=False, transition=False,
