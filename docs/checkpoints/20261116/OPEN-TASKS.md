@@ -1,3 +1,13 @@
+## 2026-11-17 同现场 source 维护及非Root Main 实际续接
+
+agent e06139b 修复固定PID1挂载/root上下文的Root预检，Main隔离不放宽；原source操作26ea376c-81ff-4cdd-b8b9-3ebfcc7c4105在同一E a60111a6…44414只准备/分发一次，实际dpkg升级后APPLIED、未自动启动。旧prerm与完整源配对后私有保留；数据/配置/额外控制包项提前拒绝，原DB/计划钥/初始化回执等6输入字节及记录元数据精确，原初始化24560864…仍APPLIED/READY，没有改写/重做。
+
+原首次启动目的沿配对修复续接：Main795/ticks18465663，UID/GID997、groups996/997、五cap集合0、NNP1、NRestarts0，本地只读status可用。实际Main挂载命名空间中，合成Root0600公开文件直达隐藏、经Root/cap0进程根别名EACCES、Root0600合成IPC EACCES；未读真实Core钥/HMAC。JDK21仅在agent独立启动后安装供实际已装JAR的peer校验：专用user/group接受，冲突Root属性拒绝，无业务frame/OSGi注册。Core尚未安装，不外推真实Core/provider/OSGi验收。
+
+231源码文件自包含离线构建，201 Rust输入未变且实际重建ELF同指纹；四脚本可编译，158项Python中156通过/2历史夹具排除（包含11项source维护，选择重叠不累加）。运行已创建自有禁用remote记录、空network/firewall/recovery目录及零字节锁/WAL；7业务表0、native generation1，后续须按含义盘点维护，不删数据凑准入。见 [检查点](native-source-maintenance-main-checkpoint.json)及 [审查](../../reviews/native-source-maintenance-and-main-review-20261117.md)。
+
+原3现场7进程/38私有/6旧数据、个人25、新C9私有/进程/零业务、中心29私有/原进程、新E原4私有与现用进程再次精确；18仓检查时干净，冻结12父项SHA不变。Native授权/提权、当前Core联合、完整运行态/迁移升级移除/恢复及R017 GUI与全部矩阵/12父项继续内部pending，仅原3 external deferred。旧Root现场同UID反例仍保留；原CSR与闭环密钥验收不重发重放。目标active、现有积分继续、无推送。
+
 ## 2026-11-17 原生 peer、状态连续性及首包原失败续接
 
 networking d226b61 的精确 native peer 校验已通过160项JVM及8项Linux/JDK21检查，Root进程即使伪装socket属主仍拒绝；Core/GWT Root transport未放宽。agent 3f7c5b6 增加显式非Root包、固定账户、代码/unit/source配对、原UUID初始化及DB/计划密钥结构连续性；145项Python通过、2历史导出夹具未执行，后续32项为重叠子集；Rust身份3/连续性1/注册续期30通过。
