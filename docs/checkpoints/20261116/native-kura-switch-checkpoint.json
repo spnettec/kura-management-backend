@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-17T17:36:30.081675+00:00",
+  "goalStatus": "active",
+  "quotaAuthorization": "use existing credits",
+  "codeCommits": {
+    "agent": "a7e5d3c3f9343ee300fec515477b034afa6fe21c",
+    "console": "a88ad2f03069044732298c24b04accf10724acf5",
+    "core": "50855bca2fa1ebc7fb74725849fec4a3e8df4605",
+    "gwt": "63536149fa2938d8e13ef2aef7ea413fdb2c504d"
+  },
+  "agentBuild": {
+    "agentHead": "a7e5d3c3f9343ee300fec515477b034afa6fe21c",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-remote-switch-20261118/agent-source-a7e5d3c",
+    "inputs": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-remote-switch-20261118/inputs-switch",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-remote-switch-20261118/package-switch/build/kura-management-agent_0.1.0~native202611171716.a7e5d3c-1_arm64.deb",
+    "version": "0.1.0~native202611171716.a7e5d3c-1",
+    "packageSha256": "7175a667bec36df3ac558930431eda057d686855e05abf02c68b18d35bc184cb",
+    "binarySha256": "db55b68bbe7c8748caeb7fad95a849ff9b97ac33f06e3b7f6f4d8cc56b5c92ba",
+    "bridgeSha256": "3e0a432ac2d54b8acb9d471ace3e912b219d80876af936eeb6e846a2ad4a5eb9",
+    "sourceManifestSha256": "fb2a9b26f6a2a8c7e283764bc067f89598769a8d0ded588cb4c02df9b110476a",
+    "generatedControlsCompiled": 4,
+    "protocolFreshFromPinnedGit": true,
+    "protocolSourceAndWorkspaceExactToCurrentGit": true,
+    "bridgeFromCurrentPairedRuntime": true,
+    "oldIntermediateUsed": false,
+    "deployed": false
+  },
+  "installerBuild": {
+    "consoleHead": "a88ad2f03069044732298c24b04accf10724acf5",
+    "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-remote-switch-20261118/console-source-a88ad2f",
+    "package": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/source-cohort-20261117/native-remote-switch-20261118/installer-package-switch/build/kura-management-console-installer_0.1.0~host202611171715.a88ad2f-1_all.deb",
+    "packageSha256": "529f4699957d7c3bfb7b79e3b2ef7ec01ecc109ce26b7911ae3cda50f15541dd",
+    "version": "0.1.0~host202611171715.a88ad2f-1",
+    "sourceManifestSha256": "8ef1257aa0b0def4a737f8aa1304f84a4e84ea74247680d0f04ee1717d04ab21",
+    "maintainerScripts": [],
+    "criticalFiles": 20,
+    "serverStopOrStartRequired": false,
+    "deployed": false
+  },
+  "liveSource": {
+    "requestId": "a8226dd5-fe5e-4631-a9ea-76bb89ee3130",
+    "state": "APPLIED",
+    "installed": true,
+    "retainedStoppedAssets": 56,
+    "originalGrantIdsRetained": true
+  },
+  "localSwitchGrant": {
+    "requestId": "49e58164-08a1-4511-8b61-ab0e585c2467",
+    "state": "APPLIED",
+    "readiness": "READY",
+    "previousEnvSha256": "9698352f00e3e14d0cd6b475c40f8da0801d290ac70496b98ec18472b04c12e1",
+    "incomingEnvSha256": "d8f51c992a47e33f1ff3bd32e0c30129fdcaf0831647103a6739aa746da77434",
+    "changedEnvLines": 1,
+    "retainedStoppedAssetsExceptEnv": 57,
+    "proofAssetsExactAfterStart": 9,
+    "authorizedBy": "fixed installed Root controller",
+    "guiPamAcceptance": false
+  },
+  "live": {
+    "at": "2026-11-17T17:31:11.676724+00:00",
+    "containerId": "a60111a62e828e5b50535252a98e3eb3b219fc95f65a1565cdd1fd8dd0944414",
+    "requestId": "a8226dd5-fe5e-4631-a9ea-76bb89ee3130",
+    "summary": {
+      "schemaVersion": 1,
+      "requestId": "7c3361b3-3073-4394-be1c-e18d359525df",
+      "candidateId": "42e96468-bcf9-4940-9b81-0bc4fe70d13f",
+      "identityReceiptSha256": "cdbe13d4e77c970595365be0ef74a3b4ab73dec706bf9a7df25e5bba2fddfe4e",
+      "stageSha256": "adf0acc7865866f5f86383531f4d80fa8c9f91842b16e7f1880fa32216776ca8",
+      "coreContextSha256": "9a96294173658048b9e1b393afb36c97ac2ff11abceec28b242173417147ae0c",
+      "bindingGeneration": 1
+    },
+    "identityFilesExact": 20,
+    "inspectedMaterialFiles": 32,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "nativeSelectedPrivateExact": 6,
+    "units": {
+      "kura.service": {
+        "MainPID": "16836",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "20298805",
+        "status": {
+          "Uid": "996\t996\t996\t996",
+          "Gid": "989\t989\t989\t989",
+          "Groups": "20 987 989 997",
+          "CapInh": "0000000406413426",
+          "CapPrm": "0000000406413426",
+          "CapEff": "0000000406413426",
+          "CapBnd": "00000004064134e6",
+          "CapAmb": "0000000406413426",
+          "NoNewPrivs": "0"
+        }
+      },
+      "kura-management-agent-v2.service": {
+        "MainPID": "16554",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "20298790",
+        "status": {
+          "Uid": "997\t997\t997\t997",
+          "Gid": "997\t997\t997\t997",
+          "Groups": "996 997",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18777292",
+        "status": {
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18759746",
+        "status": {
+          "Uid": "995\t995\t995\t995",
+          "Gid": "988\t988\t988\t988",
+          "Groups": "987 988",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "SubState": "running",
+        "ticks": "18777273",
+        "status": {
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "00000000200534e2",
+          "CapEff": "00000000200534e2",
+          "CapBnd": "00000000200534e2",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "0"
+        }
+      }
+    },
+    "localStatus": {
+      "version": 1,
+      "kind": "response",
+      "requestId": "1b0b1746-9274-4f94-9bcc-284bb735dcdc",
+      "method": "agent.status",
+      "result": {
+        "agentAvailable": true,
+        "kuraAvailable": true,
+        "uptimeSeconds": 61,
+        "version": "0.1.0"
+      }
+    },
+    "socketUnits": {
+      "kura-management-enrollment-reader.socket": {
+        "NConnections": "0",
+        "NAccepted": "4",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "UnitFileState": "enabled"
+      },
+      "kura-management-agent-enrollment.socket": {
+        "NConnections": "0",
+        "NAccepted": "6",
+        "ActiveState": "active",
+        "SubState": "listening",
+        "UnitFileState": "enabled"
+      }
+    },
+    "statuses": {
+      "source": {
+        "schemaVersion": 1,
+        "requestId": "a8226dd5-fe5e-4631-a9ea-76bb89ee3130",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "replayed": false
+      },
+      "material": {
+        "schemaVersion": 1,
+        "requestId": "13d50bed-dab2-412c-90ed-73d634258fb9",
+        "state": "APPLIED",
+        "currentReadiness": "READY",
+        "remoteEnabled": false,
+        "unitStarted": false,
+        "replayed": false
+      },
+      "peer": {
+        "schemaVersion": 1,
+        "requestId": "25abd835-cf55-4871-929d-87abee746024",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "kuraUid": 996,
+        "currentReadiness": "READY",
+        "remoteEnabled": false,
+        "replayed": false
+      },
+      "initialization": {
+        "schemaVersion": 1,
+        "requestId": "24560864-f974-46aa-940a-0a97ad926118",
+        "state": "APPLIED",
+        "currentReadiness": "READY",
+        "replayed": false
+      }
+    },
+    "grantStatus": {
+      "schemaVersion": 1,
+      "requestId": "49e58164-08a1-4511-8b61-ab0e585c2467",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "canControl": true,
+      "unitStarted": false,
+      "remoteEnabled": false,
+      "replayed": false
+    },
+    "grantProofAssetsExact": 9,
+    "inspection": {
+      "schemaVersion": 1,
+      "profile": "native-nonroot-v1",
+      "initializationId": "24560864-f974-46aa-940a-0a97ad926118",
+      "sourceManifestSha256": "fb2a9b26f6a2a8c7e283764bc067f89598769a8d0ded588cb4c02df9b110476a",
+      "nativeUid": 997,
+      "controlGid": 997,
+      "permission": "GRANTED",
+      "requestId": "49e58164-08a1-4511-8b61-ab0e585c2467",
+      "readiness": "READY"
+    },
+    "nativeBusinessCounts": {
+      "executions": 0,
+      "imported_remote_connection_barriers": 0,
+      "execution_resolutions": 0,
+      "results": 0,
+      "imported_remote_originals": 0,
+      "imported_remote_connection_confirmations": 0,
+      "firewall_execution_authorities": 0
+    },
+    "rootJournalCounts": {
+      "operations": 0,
+      "startups": 0
+    },
+    "remoteRevision": "148047bd-0da7-4b65-86a8-e75893f701ee",
+    "remoteEnabled": false,
+    "readOnly": true
+  },
+  "gwt": {
+    "at": "2026-11-17T17:34:18.802Z",
+    "url": "https://native-e-fixture.invalid/admin/console",
+    "grantRequestId": "49e58164-08a1-4511-8b61-ab0e585c2467",
+    "remoteEnabled": false,
+    "remoteRevision": "148047bd-0da7-4b65-86a8-e75893f701ee",
+    "localControlConfirmationEligible": true,
+    "remoteChangeConfirmed": false,
+    "switchButtonEnabled": false,
+    "csrDispatches": 1,
+    "stageDispatches": 1,
+    "bindDispatches": 1,
+    "registrationDispatches": 1,
+    "pageErrors": 0,
+    "observationOnly": true
+  },
+  "tests": {
+    "agentPython": {
+      "selected": 250,
+      "passed": 248,
+      "historicalExportFixtureExclusions": 2,
+      "newMethods": 23
+    },
+    "rustIdentity": {
+      "passed": 10,
+      "ignored": 0,
+      "filtered": 780
+    },
+    "consolePackaging": {
+      "passed": 129
+    },
+    "browser": {
+      "passed": 60,
+      "newScenarios": 13,
+      "screenshotsInspected": [
+        "zh390",
+        "en390"
+      ],
+      "realPamOrCockpit": false
+    },
+    "overlapNotSummed": true
+  },
+  "frozenParents": {
+    "completed": 0,
+    "total": 12,
+    "sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+    "unchanged": true
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard power loss"
+  ],
+  "internalPending": [
+    "actual remote ON UNKNOWN/revision protection and mTLS/heartbeat/read-only task",
+    "Cockpit/PAM and gateway delivery dependencies",
+    "retained business/TLS/UNKNOWN source and migration matrix",
+    "typed brokers and Core least privilege",
+    "complete six-component/provider/launcher/install-upgrade-remove-recovery matrix",
+    "R017 and remaining full 12 parents"
+  ],
+  "evidenceDirectory": ".management-close-20261116/source-cohort-20261117/native-remote-switch-20261118",
+  "pushPerformed": false,
+  "unknownRedispatched": false,
+  "oldIdQueriedInAnotherRoot": false,
+  "closedKeyOr900SecondAcceptanceReplayed": false,
+  "buildFromCurrentGitAndPairedRuntime": true,
+  "oldIntermediateUsed": false,
+  "preservation": {
+    "recordedAt": "2026-11-17T17:37:03.548702+00:00",
+    "originalScenes": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "centerPrivateFilesExact": 29,
+    "centerMainPid": "3135",
+    "evidence": "phase21-preservation-after-grant.json",
+    "sha256": "99f73cb37e106a0e6aceb9b6b64c9f49fccebf4cc353fb0677af69e3fb0a37d9"
+  },
+  "buildReceiptsDescribeCreationMoment": true
+}

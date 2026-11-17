@@ -1,3 +1,13 @@
+## 2026-11-18 独立本机开关授权与主机入口
+
+agenta7e5d3c新增 Root 原号/原意图/前后环境/公开证明/ACK/current 与同号补全，Rust严格验证13字段及环境一致，先核本机namespace再查旧号；原Root代码/peer/material/source检查保持。consolea88ad2f新增固定主机bridge及双语表单、发送前公开原号留存/Web Lock、跨Root/双tab/存储失败/确认后identity-source变化保护。250 Python中248过/2历史夹具排除，含23新方法；当前Git source Rust身份10/10；console打包129/129；最终浏览器60/60含13新场景与双语390px图。原失败均保留，计数重叠不求和。
+
+新包0.1.0~native202611171716.a7e5d3c-1，SHA7175a667…184cb/sourcefb2a9b26…10476a/ELFdb55b68b…5c92ba；协议从声明Git重新打包SHA61163caf…e70c2、与现源码/清单/锁一致，bridge只读当前Root配对E，不用旧中间产物。原E source a8226dd5-fe5e-4631-a9ea-76bb89ee3130一次准备/安装APPLIED、不自动启动；56停机资产/原身份及权限精确。显式恢复后独立本机开关授权49e58164-08a1-4511-8b61-ab0e585c2467由固定Root控制器一次APPLIED/READY，仅env本机开关权限0→1，通道仍OFF，原grant/初始化/CSR/stage/绑定不重做。授权停机58对象中57原样/9新证明启动后精确；新增空WAL/32KiB SHM为原协议支持，固定数量及只读观察器脚本/目录/context失败均保留，未改产品准入或重发授权。
+
+最终native16554/ticks20298790 UID/GID997、五cap0/NNP1/NRestarts0；Core16836/ticks20298805仍11/13 caps/NNP0待办，key4714/recovery4640/NM4668不变。原身份20/材料32/Core6/local7/material5/native selected6精确，agent/kura=true，7业务表/Root业务启动0，两socket监听/连接0。原GWT现用密码登录读回：开关确认可用、未勾选/未开启，remote原revision148047bd…OFF，CSR/stage/bind/登记各总1次，页面错误0。主机installer新包529f4699…541dd/20 critical files/无maintainer脚本仅构建；Cockpit/PAM实机及更轻网关依赖仍内部pending，110新增包/1 Perl升级仅预演未安装，不外推夹具为实机。
+
+见[检查点](native-kura-switch-checkpoint.json)、[审查](../../reviews/native-kura-switch-review-20261118.md)与agent授权合同。继续先核GWT通道变更的原revision/发送前留存/UNKNOWN，再真实mTLS/心跳/只读任务；完整保留业务/TLS/UNKNOWN/source/旧态迁移、typed broker/Core最小权限、六组件/provider/launcher/安装升级移除恢复/R017与全部12父项均内部pending，仅原3 external deferred。目标active/现有积分继续，无推送、不加27、不清active runtime，旧UNKNOWN/闭环密钥/900秒不重放、不跨Root查询。
+
 ## 2026-11-18 原首次身份与材料的联合source维护
 
 agent代码fd771f1/81c1e9b新增独立enrolled-material source动作，仅原授权/Core-native停机/两socket停用排空、远程关、业务0及单一完整首次身份。Core上下文/CSR/stage、native指针/候选/完成回执/独立副本严格只读盘点，类型/权限/链接/哈希/key-CSR-证书与到期一致；不重身份、不认领修补或清理数据。原摘要/完整指纹入不可变source意图/结果，准入核对原意图，丢摘要拒绝；控制入口锁争用立即BUSY。227 Python中225过/2历史夹具排除，含17新方法，前次计数重叠；实际只读先核32文件，不外推完整运行故障矩阵。
