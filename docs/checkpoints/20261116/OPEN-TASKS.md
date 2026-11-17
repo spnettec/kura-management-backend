@@ -1,3 +1,11 @@
+## 2026-11-18 Core 同身份普通命令前置
+
+Core本地代码84d6a58新增仅限同一OS非Root身份、进程/当前线程身份及附加组一致、五cap0/NNP1的直接普通命令路径，不信任user.name；Root/保留身份/不同用户/NNP0/非零cap/缺失异常字段仍走原su。固定env/timeout/argv、显式shell和同步异步语义保留，不自动改command user。JDK21/Maven3.10.1从Git与明确差异导出全新源码并重建test-support/API/util/Core，33项JVM全过/无跳过，含9新方法；8条Linux ARM64/JDK21真实条件通过，含实际同步/异步/参数环境/超时及Root、NNP0、CapBnd、附加Root组、用户名伪造/不符拒绝。五类cap逐项为JVM合同检查，不外推全部真实cap组合。首次只读rootfs复制夹具失败发生在Java前，保留并修正为从未运行的暂存容器封存测试镜像。
+
+原3/个人25/C9进程计数/D29原Main3135再次精确，E原配对/身份20/Core6/local7/material5/switch9/transport7及原native29323/Core29609/key4714/recovery4640/NM4668保持，原ON revision5e6e429f…精确。只读观察器误用Root授权reader读取UID997状态的拒绝保留，按真实属主独立观察后通过，未放宽产品检查。文档前18仓同分支干净，仅Core预期提交，冻结完整12父项SHA不变。
+
+见[检查点](core-unprivileged-executor-checkpoint.json)、[审查](../../reviews/core-unprivileged-executor-review-20261118.md)与Core合同。本次尚未打deb/部署/降低service权限；实际Main仍11/13caps、NNP0。完整typed broker及全部provider/不同command user/launcher、六组件/安装升级移除恢复/平台资源/R017/GUI和全部12父项仍内部pending，最终0/12闭环不等于实现0%，整体无可靠加权百分比。仅原3external deferred，G034未封存、协议未正式发布；目标active/现有积分继续、无push/JDK27/活动runtime清理，旧UNKNOWN和闭环密钥/900秒不重发换号重放或跨Root查。
+
 ## 2026-11-18 同E业务保留实际升级与配置读取
 
 原E已实际安装代码eab6821/包0.1.0~native202611171954.eab6821-1（SHA0dc111eb…3f5b0/source0a5eb472…d157c/ELFc03bbb72…3691）。新维护OFF目的bda873d9…在原ON bc29b319…已核后写前留存；第一次会话过期时实际RPC发送0，同目的恢复认证后单次HTTP200//OK，OFF revision03991e78…。source **b479b232-38d2-436d-9566-3f0e33c25bb3** 各一次prepare/install APPLIED，不自动启动。原加密SUCCEEDED业务及72停止态资产精确，原身份20/材料/Core6/local7/material5/switch9/transport7和所有权限范围保留，不重签/重绑定/重授权/重配。安装基线无WAL/SHM，未补造/截断/checkpoint；不能外推非空WAL或UNKNOWN安装。

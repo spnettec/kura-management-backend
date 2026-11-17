@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-17T21:11:14.021500+00:00",
+  "goal": "active",
+  "coreCode": {
+    "repo": "kura",
+    "branch": "wip/management-close-20261116",
+    "head": "84d6a58f3cc2b40073af2475de7ecf0b6a63f944",
+    "tree": "a0641e15b8fa4bfc8c184d592db3171bc2d1780d",
+    "status": ""
+  },
+  "verification": {
+    "coreSha256": "262076b9349aa423a372cc6a5ebd2fb0bf73b41316196856ba990d1c4a236e98",
+    "apiSha256": "6dd2b509a1f8ef621b94c4f45f11ad3be667c3e5c8235e342d25d78f679ba215",
+    "helperClassMajor": 65,
+    "jvm": [
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilBoundaryTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilDirectExecutionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilExecutionTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilRunningTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.ExecutorUtilTerminationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "org.eclipse.kura.core.internal.linux.executor.UnprivilegedProcessIdentityTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "native": {
+      "cases": [
+        {
+          "containerId": "039b1a0587f84672d428391960a7f00fd322902d3cd009ea92074c2213979ab3",
+          "exitCode": 0,
+          "name": "same-user-cap0-nnp1"
+        },
+        {
+          "containerId": "80658e8166566fd71ec13f000cb940c3e72fda64582337211bc35537cd384eb3",
+          "exitCode": 0,
+          "name": "same-user-spoofed-user-name"
+        },
+        {
+          "containerId": "8dd85eacef897ed407c5b2f4e65285b4331483225ee93d3d232dc4ae8d2a2dd9",
+          "exitCode": 0,
+          "name": "root-cap0-nnp1"
+        },
+        {
+          "containerId": "0206303ffe3e9c917b0115bbc79b33aa3c3ddaa665dbc2694f7c4a2af7ff7305",
+          "exitCode": 0,
+          "name": "root-spoofed-user-name"
+        },
+        {
+          "containerId": "e6a026caf31fc18f8de9d078a40cb019df2165cc34598c3d3a4ec5731bfd8d04",
+          "exitCode": 0,
+          "name": "same-user-nnp0"
+        },
+        {
+          "containerId": "e0be11335ae612d73c5fdf6d5edde4d13d8a9b7ca78d07c4b8abf08367706add",
+          "exitCode": 0,
+          "name": "same-user-nonzero-bounding"
+        },
+        {
+          "containerId": "0001f7b68c962a87aae257da03b5cb3847214db071e4a83c3df68b50de5414db",
+          "exitCode": 0,
+          "name": "same-user-root-supplementary-group"
+        },
+        {
+          "containerId": "aa2eae0bb483cd2e54aee8c39df524986cd2ff823a5abfd9403cde75e1b9cd5a",
+          "exitCode": 0,
+          "name": "different-target-user"
+        }
+      ],
+      "failed": 0,
+      "passed": 8,
+      "scope": "same-user executor admission and commands; not privileged broker or complete Core"
+    },
+    "deployed": false
+  },
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-unprivileged-executor-20261118",
+  "source": "Fresh Git baseline plus explicit staged patch; affected Java exact against final code",
+  "nativeScope": "8 executor conditions only; no Core/provider boot or deployment",
+  "firstNativeFailure": "Read-only rootfs refused payload copy before JVM; original receipt/container retained",
+  "readOnlyObserverCorrection": "Root authorization reader correctly refused UID997 runtime state; independently checked original owner/mode/link/read identity without changing product rules",
+  "deployed": false,
+  "debBuilt": false,
+  "serviceUnitChanged": false,
+  "actualE": {
+    "sourceApplied": true,
+    "currentOriginalRootPairExact": true,
+    "units": {
+      "kura-management-agent-v2.service": {
+        "MainPID": "29323",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "21272446",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "kura.service": {
+        "MainPID": "29609",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "21272461",
+        "CapEff": "0000000406413426",
+        "CapBnd": "00000004064134e6",
+        "NoNewPrivs": "0"
+      }
+    },
+    "rootUnits": {
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "ticks": "18777292"
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "ticks": "18759746"
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "ticks": "18777273"
+      }
+    },
+    "remoteDecision": {
+      "version": 1,
+      "revision": "5e6e429f-13e4-4066-a61e-2bb218c51cc1",
+      "enabled": true,
+      "actor": "kura-uid:996"
+    },
+    "identityFilesExact": 20,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "switchProofExact": 9,
+    "transportProofExact": 7,
+    "readOnly": true
+  },
+  "preservation": {
+    "originalScenes": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "center": {
+      "privateFilesExact": 29,
+      "unit": {
+        "MainPID": "3135",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "16649159",
+        "status": {
+          "Uid": "999\t999\t999\t999",
+          "Gid": "996\t996\t996\t996",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "readOnly": true
+    }
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "remainingInternal": [
+    "Typed privileged broker and all providers",
+    "Different command user and all launchers/modes",
+    "Full six-component/source/package pairing and install-upgrade-remove-recovery/resource/platform matrix",
+    "All original API/R017/GUI/network/key/CA/release and 12 parent obligations"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "Disk-full/hard-power"
+  ],
+  "g034Sealed": false,
+  "protocolPublished": false,
+  "pushed": false,
+  "jdk27Run": false
+}
