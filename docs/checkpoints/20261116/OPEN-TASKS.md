@@ -1,5 +1,11 @@
 # 未验收与剩余实施台账
 
+## 2026-11-17 继续：兼容变体及普通启动
+
+firewall-only 已补齐4个JAR Root权限、升级阶段/agent ownership保护、受限注册表与失败传播，9项独立源码/Linux原生检查通过。对应新实际systemd profile的Core＋12 sibling全部配置成功，一次普通Main启动/HTTPS通过；59个sibling JAR为Root所有且不可由group/other写入，6份凭据/TLS/HMAC元数据保持，Root业务及日志化启动请求0。Main仍11/13 caps、NNP0；MQTT默认clientId与历史额外JAXB边界分别记录，完整provider/broker没有关闭。Netplan兼容适配只完成源码及5-JAR包核对，未部署/切换NM。
+
+见 [兼容变体检查点](networking-variants-code-ownership-checkpoint.json)及 [审查](../../reviews/networking-variants-code-ownership-review-20261117.md)。原普通networking失败现场仍half-configured，继续原现场处理；新profile不替代该失败。完整六组件/provider/launcher/升级移除矩阵及冻结12父项继续内部pending，仍仅3外部边界。
+
 ## 2026-11-17 当前续接：sibling 代码权限与安装链路
 
 用户已明确选择在周额度 100% 时使用现有积分继续，目标 active；不兑换 reset。11 个剩余主 sibling 的 49 处 JAR 映射、提权脚本路径及失败传播已修复，GWT 补齐卸载遗漏。19 项源码/Linux 原生 test methods 通过；实际 12 个新包的 64 个 Root/0644 JAR、56 份代码/模板及 54 条 API 声明已核对。从当前源码构建，不依赖还原旧证据。

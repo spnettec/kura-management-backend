@@ -17,8 +17,11 @@ WORKSPACE = Path(__file__).resolve().parents[2]
 
 
 def sha(path):
+    digest = hashlib.sha256()
     with path.open('rb') as stream:
-        return hashlib.file_digest(stream, 'sha256').hexdigest()
+        for chunk in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def archives(path):
@@ -63,13 +66,19 @@ def inspect(path):
                    for member in archive if member.isfile()}
     metadata = headers(control['control'])
     package = metadata['Package']
-    name = package.removeprefix('kura-')
-    repo = WORKSPACE / package
+    if package == 'kura-firewall-only':
+        name, repository, module = 'firewall', 'kura-networking', 'distrib-firewall'
+    elif package == 'kura-networking-netplan':
+        name, repository, module = 'networking-netplan', 'kura-networking', 'distrib-netplan'
+    else:
+        name, repository, module = package.removeprefix('kura-'), package, 'distrib'
+    repo = WORKSPACE / repository
     assert repo.is_dir() and package.startswith('kura-')
-    assert 'util-linux' in metadata['Depends']
-    source = repo / 'distrib'
+    if package != 'kura-networking-netplan':
+        assert 'util-linux' in metadata['Depends']
+    source = repo / module
     for hook in ('preinst', 'postinst', 'prerm', 'postrm'):
-        current = source / 'deb/control' / hook
+        current = source / ('target/control' if package == 'kura-networking-netplan' else 'deb/control') / hook
         if current.exists():
             assert control[hook] == current.read_bytes(), (package, hook)
     manifests = {}
@@ -80,6 +89,9 @@ def inspect(path):
         if symbolic:
             manifests[symbolic] = manifest
     scripts = source / 'src/main/resources/scripts'
+    script_roots = [scripts]
+    if package == 'kura-firewall-only':
+        script_roots.append(repo / 'distrib/src/main/resources/scripts')
     ns = {'m': 'http://maven.apache.org/POM/4.0.0'}
     code_modes = {}
     for data in ET.parse(source / 'pom.xml').findall('.//m:dataSet/m:data', ns):
@@ -87,7 +99,7 @@ def inspect(path):
         if mapper is not None and '/libexec/addons/' in mapper.findtext('m:prefix', '', ns):
             filename = Path(data.findtext('m:src', '', ns)).name
             code_modes[filename] = int(mapper.findtext('m:filemode', '', ns), 8)
-    jars, installed_code, contracts = [], [], []
+    jars, installed_code, contracts, additional_code = [], [], [], []
     with tarfile.open(fileobj=io.BytesIO(parts.pop('data')), mode='r:*') as archive:
         for member in archive:
             relative = member.name.removeprefix('./')
@@ -116,19 +128,34 @@ def inspect(path):
                 # the source-declared mode, without adding executable bits.
                 assert member.mode == code_modes.get(PurePosixPath(relative).name, 0o644), relative
                 raw = archive.extractfile(member).read()
-                matches = [candidate for candidate in scripts.rglob(PurePosixPath(relative).name)
+                matches = [candidate for folder in script_roots
+                           for candidate in folder.rglob(PurePosixPath(relative).name)
                            if candidate.is_file() and candidate.read_bytes() == raw]
                 assert matches, relative
                 installed_code.append(relative)
+            elif relative == 'opt/eclipse/kura/bin/firewall' and package in ('kura-networking', 'kura-firewall-only'):
+                assert (member.uid, member.gid, member.uname, member.gname, member.mode) == (0, 0, 'root', 'root', 0o700), relative
+                filename = 'firewall-only.init' if package == 'kura-firewall-only' else 'firewall.init'
+                assert archive.extractfile(member).read() == (scripts / filename).read_bytes(), relative
+                additional_code.append(relative)
             elif '/.data/' in relative and relative.endswith(('.sh', '.py')):
                 raise AssertionError('Privileged code remains in runtime data: ' + relative)
-    assert jars and len(installed_code) >= 3
+    assert jars
     expected = 'opt/eclipse/kura/libexec/addons/' + name + '/'
-    assert expected + 'sibling_registry.sh' in installed_code
+    if package == 'kura-networking-netplan':
+        # This compatibility adapter has five JARs, no mutable registry and no
+        # installer code in the payload. Its control script is generated above.
+        assert len(jars) == 5 and not installed_code and not additional_code
+        assert all('/siblings/networking-netplan/' in jar['path'] for jar in jars)
+        assert 'postinst' not in control
+    else:
+        assert len(installed_code) >= (2 if package == 'kura-firewall-only' else 3)
+        assert expected + 'sibling_registry.sh' in installed_code
     return {'package': package, 'version': metadata['Version'], 'path': str(path.resolve()),
             'sha256': sha(path), 'bytes': path.stat().st_size,
             'sourceHead': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip(),
-            'jars': jars, 'installedCodeFiles': installed_code, 'sourceApiContracts': contracts}
+            'jars': jars, 'installedCodeFiles': installed_code,
+            'additionalCodeFiles': additional_code, 'sourceApiContracts': contracts}
 
 
 if __name__ == '__main__':

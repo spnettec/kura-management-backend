@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-17T02:22:59.643839+00:00",
+  "goalStatus": "active",
+  "state": "bounded-firewall-compat-install-and-ordinary-main-accepted-full-matrix-incomplete",
+  "sourceBranch": "wip/management-close-20261116",
+  "networkingSourceHead": "43fa0265ce6c855ad8546434c63075ad76ded11c",
+  "firewallPackage": {
+    "package": "kura-firewall-only",
+    "version": "3.0.0~git202611170207.43fa026-1",
+    "path": "/Users/heyoulin/iot-kura-develop/git/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611170207.43fa026-1_all.deb",
+    "sha256": "166be2481d1ca0f54d21acf3d12df4a76fc09f74abbbcfa9bc15a8c0aa0d12cb",
+    "bytes": 395680,
+    "sourceHead": "43fa0265ce6c855ad8546434c63075ad76ded11c",
+    "installedCodeFiles": [
+      "opt/eclipse/kura/libexec/addons/firewall/customize_firewall_snapshot.py",
+      "opt/eclipse/kura/libexec/addons/firewall/sibling_registry.sh"
+    ],
+    "additionalCodeFiles": [
+      "opt/eclipse/kura/bin/firewall"
+    ],
+    "sourceApiContracts": [
+      {
+        "bundle": "org.eclipse.kura.core.net",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.1,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.net.configuration",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.net.admin.firewall",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      }
+    ]
+  },
+  "netplanCompatibilityPackage": {
+    "package": "kura-networking-netplan",
+    "version": "3.0.0~git20261117.compat",
+    "path": "/Users/heyoulin/iot-kura-develop/git/kura-networking/distrib-netplan/target/kura-networking-netplan_3.0.0~git20261117.compat_all.deb",
+    "sha256": "3344bfbb75194cfbe1ec2fca6fec6cffdca1ece87160d4deec88830b17e5f456",
+    "bytes": 220808,
+    "sourceHead": "43fa0265ce6c855ad8546434c63075ad76ded11c",
+    "installedCodeFiles": [],
+    "additionalCodeFiles": [],
+    "sourceApiContracts": [
+      {
+        "bundle": "org.eclipse.kura.net.configuration",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.management.bridge",
+        "api": "org.eclipse.kura.crypto",
+        "clause": "org.eclipse.kura.crypto;version=\"[2.0,3.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.management.bridge",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.9,2)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.netplan",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.3,2)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.rest.network.configuration.provider",
+        "api": "org.eclipse.kura.crypto",
+        "clause": "org.eclipse.kura.crypto;version=\"[2.0,3.0)\""
+      },
+      {
+        "bundle": "org.eclipse.kura.rest.network.configuration.provider",
+        "api": "org.eclipse.kura.configuration",
+        "clause": "org.eclipse.kura.configuration;version=\"[1.2,2.0)\""
+      }
+    ]
+  },
+  "validation": {
+    "firewallSourceNativeTestMethods": 9,
+    "primarySiblingSourceNativeTestMethods": 19,
+    "firewallPackagedRootJars": 4,
+    "netplanPackagedRootJars": 5,
+    "firewallSourceApiClauses": 3,
+    "netplanSourceApiClauses": 6,
+    "legacyKernelAndOwnerResultsModeledInNativeTests": true
+  },
+  "nativeProfile": {
+    "containerId": "bfcae177c554ab8dbb181879ca1c75b6d9651b5bea7410b46e685795d2125eb7",
+    "mode": "Core plus firewall-only and eleven other sibling packages; no agent",
+    "all13DeclaredPackagesConfigured": true,
+    "normalMainStarts": 1,
+    "interfaces": [
+      "lo"
+    ],
+    "actualRunningIdentities": {
+      "kura.service": {
+        "pid": 5277,
+        "Uid": "997\t997\t997\t997",
+        "Gid": "991\t991\t991\t991",
+        "CapEff": "0000000406413426",
+        "CapBnd": "00000004064134e6",
+        "CapAmb": "0000000406413426",
+        "NoNewPrivs": "0"
+      },
+      "kura-key-service.service": {
+        "pid": 4893,
+        "Uid": "0\t0\t0\t0",
+        "Gid": "0\t0\t0\t0",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "kura-key-recovery.service": {
+        "pid": 4295,
+        "Uid": "995\t995\t995\t995",
+        "Gid": "990\t990\t990\t990",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "rootOwnedNonWritableSiblingJars": 59,
+      "consoleSetting": []
+    },
+    "privateContinuity": {
+      "stage": "after",
+      "privateFilesUnchanged": 6,
+      "canonicalAndLoadedKeyMatch": true,
+      "main": {
+        "MainPID": "5277",
+        "ControlPID": "0",
+        "ExecMainStartTimestampMonotonic": "157884910188"
+      },
+      "mainUid": 997,
+      "capabilities": {
+        "CapAmb": "0000000406413426",
+        "CapBnd": "00000004064134e6",
+        "NoNewPrivs": "0"
+      },
+      "journals": {
+        "operations": {},
+        "archives": {},
+        "startups": {}
+      },
+      "originalGatewayDataUsed": false
+    },
+    "httpsRootStatus": 302,
+    "httpsLocation": "/admin/console",
+    "selfSignedTlsTrustAcceptance": false,
+    "sourcePrescribedRootPairingUnchanged": true,
+    "keyBusinessRequests": 0,
+    "completeProviderAcceptance": false
+  },
+  "boundaries": {
+    "mainStillAmbient11Bounding13Nnp0": true,
+    "mqttDefaultClientIdMissingOnLoOnlyFixture": true,
+    "extraJaxbUnresolved": "javax.xml.bind [2.3,3), preserved docs/migration/jackson-yaml-boundary.md boundary",
+    "netplanCompatibilityBuiltNotInstalled": true,
+    "plainNetworkingOriginalFixtureStillHalfConfigured": true,
+    "plainNetworkingOriginalFixtureId": "8d5c8e8f493c818c9fcc1800df51af6a765482ede93fc68f988d76ea073daee2",
+    "legacyBroadKernelResetStillNotFullOwnershipInverseAcceptance": true
+  },
+  "all12ParentsRemainInternalPending": true,
+  "frozenLedgerSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power-loss"
+  ],
+  "G034Sealed": false,
+  "closedKeyAcceptanceReplayed": false,
+  "unknownResent": false,
+  "pushed": false
+}
