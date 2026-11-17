@@ -1,5 +1,11 @@
 # 管理体系阶段检查点
 
+## 2026-11-17 继续：旧 NM 配置保留与原失败续接
+
+原 networking 失败现场经显式 conffile 过渡及修复后正常包续接，Core＋12 sibling 全部 configured，64 个 Root/不可由 group/other 写入的 JAR，12 注册项无重复；Main 启动/Root operations/startups 0。活动 NM 文件原完整元数据、网络服务 PID/ticks 保持。首次过渡暴露空 configured-version 误判首装，给该新测试现场属性追加两标志；已严格按原前缀/已知后缀指纹撤销，字节/属主/模式/mtime 恢复，但 inode/ctime 不可恢复，偏差保留。preinst 持久安装模式及损坏准入拒绝已修复；24 项 sibling、9 项 dpkg 检查通过。最新修复版过渡归档已组合，尚未另作完整实际 Kura 路径验收。
+
+见 [检查点](legacy-nm-policy-continuation-checkpoint.json)及 [审查](../../reviews/legacy-nm-policy-continuation-review-20261117.md)。resolver 仅 ctime 变化已记录，不宣称全部系统元数据精确。原 3 现场/7 进程/38 私有元数据/6 旧数据及个人 25 文件再次精确。完整六组件/provider/launcher/升级移除、obsolete conffile purge、R017 GUI 与全部冻结 12 父项继续内部 pending，仍仅原 3 外部边界，目标 active。以下 half-configured 描述是各历史检查点当时状态。
+
 ## 2026-11-17 继续：agent 先装与精确 loader 配对
 
 Java adapter 已移到 agent 包自有路径，Root 保护的元数据/loader/JAR 精确绑定；agent-first 不再先占用 Core 未初始化目录。动态父目录隔离修复了启动时不存在密钥路径的漏洞，公开 CLI 支持 kurad。新原生 ARM64 agent/console/installer 已组合；同一 agent-first 失败现场原维护记录续接成功，Core 配对升级及一次普通 Main 首启通过。OSGi bridge ACTIVE、三项 Core 服务绑定，实际 kurad 只读 UDS 得到 kuraAvailable=true；6 份私有文件元数据保持，agent 看不到新原钥/HMAC，Root operations/startups 仍为 0。Main 仍 11/13 caps、NNP0；无 networking 的 health DS 和中心/安装器未实际验收。
