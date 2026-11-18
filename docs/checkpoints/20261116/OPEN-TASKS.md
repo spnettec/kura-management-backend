@@ -1,3 +1,13 @@
+## 2026-11-18 Core 与部署重启入口接线
+
+Core `4ee120cf53` 将 Linux `SystemAdminService.reboot()` 和 watchdog 切到安装态 broker 的固定 helper，维持公开 API。客户端只对确定未派发的情况提供可重试结果，超时、断连、无效回执及 UNKNOWN 保持不确定。watchdog 保留先 sync、停机取消和硬件兜底。deployment `bca16d3` 改用已有 `SystemAdminService`，安装及移除的原业务结果与重启请求分开报告，缺服务时没有命令回退。
+
+macOS 与 Linux ARM64 的 JDK 21 检查每端 Core 系统模块 42 通过、2 跳过，watchdog 114 项、部署 123 项均通过。两份 Core bundle 与从隔离 Git 构建的 ARM64 deb 逐字节配对。deployment deb 的 bundle 和 OSGi 服务引用也已核对，部署包仍待实装。
+
+独立 Debian 从 `120853ec99` 正常升级一次至新完整包，重启 broker 的 Python 和 systemd cohort 相同，Main 的 disabled 状态保持。旧夹具探针保留在自动加载树之外。以正常 Main 内的 OSGi 探针调用一次公开重启入口，Root actor 实际启动，Java 记录 `UNKNOWN or unavailable`，watchdog 的新包导入实际解析。原 Root 恰一条合成 UNKNOWN，sender 恰一条原待办，八份文件在升级、调用和停机间完整精确。实际重启派发 0，夹具正常停机。
+
+保留 Main 单元的 CAP_SYS_BOOT 与旧 logind 授权迁移、实际重启与业务恢复、deployment 实装及硬件 watchdog、跨 broker cohort 升级、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全部生命周期矩阵继续内部 pending。原三现场、个人配置、C/D/E、7fd 停机 41 输入/16 回执及旧 UNKNOWN 已复核。冻结 12 父项仍 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-reboot-callers-checkpoint.json)。
+
 ## 2026-11-18 Core 重启 broker 自动安装与 purge 后续接
 
 Core `120853ec99` 将重启 broker 接入 dpkg。首次配置先保留唯一安装标记，再发布配对 Root、发送端和已校验的 systemd 单元。升级和移除在已配对日志锁内设置围栏。卸载与 purge 保留独立 Root 及 sender，已建立配对缺文件时拒绝重新初始化。配置核对实际单元与 socket 启用后才解除维护围栏，原 UNKNOWN 仍阻止新派发。

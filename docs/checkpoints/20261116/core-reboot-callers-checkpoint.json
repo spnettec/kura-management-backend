@@ -1,0 +1,140 @@
+{
+  "recordedAt": "2026-11-18T07:06:17.351857+00:00",
+  "core": {
+    "previous": "120853ec99cc151abf2e4a1841954a77d27887c1",
+    "commit": "4ee120cf5358caf5568d9283dfc3bae40a863dce",
+    "tree": "4cc26654a056b688023614cb5ed3db6acef8d484",
+    "branch": "wip/management-close-20261116"
+  },
+  "deployment": {
+    "commit": "bca16d34619f8e7c4a20a49d470af61b3f2b88c2",
+    "tree": "b7ed235607287eda5c28d4acbb94434719a9f898",
+    "branch": "wip/management-close-20261116"
+  },
+  "implemented": {
+    "linuxSystemAdminPairedClient": true,
+    "linuxWatchdogPairedClient": true,
+    "deploymentThroughExistingSystemAdminService": true,
+    "linuxDirectCommandFallback": false,
+    "apiUnchanged": true,
+    "malformedOrUncertainRepliesNeverRetry": true,
+    "watchdogDefinitivePredispatchOnlyCanRetry": true,
+    "watchdogHardwareFallbackPreserved": true
+  },
+  "test": {
+    "buildJdk": 21,
+    "gitIsolated": true,
+    "linuxArm64AndMacOS": {
+      "coreSystemPassed": 42,
+      "coreSystemSkipped": 2,
+      "watchdogPassed": 114,
+      "deploymentPassed": 123
+    },
+    "fixturePreservationReadOnly": true
+  },
+  "corePackage": {
+    "sha256": "14bca695799636eca100e222cb354b12fd996d6d0a7a1a9dc22030d9f8dc8540",
+    "bytes": 203593588,
+    "architecture": "arm64",
+    "packageVersion": "6.0.0~git202611180701.4ee120c-1",
+    "rebootManifestSha256": "aefcfe34a43969e9fd0b8b69c6cfd87ca53280108731b9257cd8923eebd44547",
+    "javaBundles": {
+      "org.eclipse.kura.core.system": {
+        "path": "plugins/4s/org.eclipse.kura.core.system-2.0.0-SNAPSHOT.jar",
+        "sha256": "56d2f0c11269b3912c0679ccb4939c9835283df9bf22f11ba17510564db701da"
+      },
+      "org.eclipse.kura.linux.watchdog": {
+        "path": "plugins/4/org.eclipse.kura.linux.watchdog-2.0.0-SNAPSHOT.jar",
+        "sha256": "0aabfee0aabcc14f8b478990b84cb742940ce1cc163738895ea024d9679762f3"
+      }
+    }
+  },
+  "deploymentPackage": {
+    "sha256": "08c31deba59fff0f51f724e9eb57aa28bab913e78833c3faa0b355c354aa8ba2",
+    "bytes": 146340,
+    "architecture": "all",
+    "version": "2.0.0~git202611180704.bca16d3-1",
+    "bundleSha256": "e37a70a66d55f20a0e937496301dad2b3a43acedd93f0ba233ab5009a41a64ae",
+    "typedReference": true,
+    "installed": false
+  },
+  "installed": {
+    "previousVersion": "6.0.0~git202611180650.120853e-1",
+    "newVersion": "6.0.0~git202611180701.4ee120c-1",
+    "crossVersionUpgrades": 1,
+    "brokerScriptAndUnitCohortUnchanged": true,
+    "previousProbePreservedOutOfAutoload": true,
+    "newProductionApiProbe": {
+      "mainPid": 1336,
+      "actorPid": 1466,
+      "actualSystemAdminService": true,
+      "watchdogPackageResolved": true,
+      "rebootTargetMasked": true,
+      "newJournalEntries": 0,
+      "originalRequestId": "0b6c3527-1739-4104-886e-408f02200564",
+      "originalFilesExact": true,
+      "rootOperationCount": 1,
+      "senderPendingCount": 1,
+      "realRebootDispatchCount": 0
+    },
+    "javaReceiptClassification": "UNKNOWN_OR_UNAVAILABLE",
+    "originalFilesExactThroughoutUpgradeProbeAndShutdown": 8,
+    "fixtureState": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T07:00:55.363329489Z",
+      "FinishedAt": "2026-11-18T07:04:46.43651127Z"
+    }
+  },
+  "validationCorrection": {
+    "firstStagingObserverUsedLastJarHash": true,
+    "originalStagedDebRecheckedByHashAndSize": true,
+    "dpkgUpgradeRepeats": 0
+  },
+  "preservation": {
+    "originalLiveCount": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "centerDPrivateExact": 29,
+    "environmentE": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16,
+      "stateExact": true
+    },
+    "oldChronyUnknownKeptAtOriginalRoot": true
+  },
+  "pending": [
+    "Migration and withdrawal of legacy CAP_SYS_BOOT and direct shutdown policy, including retained Main unit",
+    "Real reboot acceptance and kernel/application recovery, plus actual installed deployment and hardware watchdog exercise",
+    "Cross-cohort broker upgrades and wider package interruption matrix",
+    "Remaining Core/OSGi, typed brokers, formal six components including providers and launchers, and all twelve parents"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
