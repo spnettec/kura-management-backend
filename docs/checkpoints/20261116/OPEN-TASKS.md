@@ -1,3 +1,13 @@
+## 2026-11-18 Networking 旧 NM 配置跨 purge 保全
+
+Networking `167ea8b` 在 dpkg 仍登记旧 `99-kura-nm.conf` 时，先落 Root 0600 记录，再以不改名的临时 diversion 将 dpkg 的清除目标指向受保护的空路径。purge 或重装确认旧登记消失后解除。外部 diversion、危险路径和被占用的目标拒绝处理。桥接构建器 `ef19810` 在宽松 umask 下仍生成受保护的归档目录和 conffiles 元数据。
+
+JDK 21 从 Git 构建完整 Core ARM64 deb、Networking deb 和部署包。独立 Debian 从最小历史普通载荷夹具进入当前 bridge 和正常包，得到实际 obsolete conffile。移除后保留 `config-files`，管理员再修改活动文件。原容器正常停机并续接后，实际 purge 清除了 dpkg 登记和临时 diversion，重装也保留该文件。已核文件内容、inode、所有权、模式和时间精确。五项独立 dpkg 钩子试验通过，涵盖直接 purge、结算前后已知失败再续接、保留目标占用及其他 diversion。
+
+Networking `bc90625` 保全 Root 注册表的组和模式。实际 bridge→正常包升级保留字节、顺序和原 inode，移除与重装仅在成员变化时原子替换，保持 Core 的 `0:992/0640`。重装后的两个应用能力标志仍是移除时的 `false`，恢复原能力待实施。Main disabled，七份已核私有文件精确，夹具正常停机。
+
+原三现场、C/D/E、个人配置、原 7fd 停机 41 输入/16 回执已复核。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher/生命周期与全部 12 父项继续内部 pending。冻结父项仍 0/12，external deferred 仅原 3 项。见 [本轮检查点](networking-legacy-nm-purge-checkpoint.json)。
+
 ## 2026-11-18 Core 与 Networking 的 systemd 授权顺序
 
 Core `e952f82bb9` 把共享规则发布到 `51-kura-systemd.rules`，让 Core 在旧 Networking 规则之前决定 `kurad` 的 systemd 与 logind 授权。新版规则发布后，原 `kura.rules` 与可见的旧 wildcard 规则停用并保留原文件归档。Networking `2fe49eb` 的 `52-kura-networking.rules` 仅保留 NetworkManager、ModemManager 和 wpa_supplicant 授权。

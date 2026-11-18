@@ -1,0 +1,148 @@
+{
+  "recordedAt": "2026-11-18T07:53:52.542294+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "jdk": 21,
+    "isolated": true,
+    "core": {
+      "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2",
+      "version": "6.0.0~git202611180747.e952f82-1",
+      "architecture": "arm64",
+      "sha256": "12c336fe73c7e1850ed508d536aef954f1d21d65047ad7bf34f43837004700ec",
+      "bytes": 203597316
+    },
+    "networking": {
+      "commit": "ef19810f23c901945c74ce06c6d86fbda01e4d8b",
+      "tree": "342717bff3308a505a690c65ae79d4984aba4079",
+      "version": "3.0.0~git202611180752.ef19810-1",
+      "architecture": "all",
+      "sha256": "b724a594d9b28c77afd79587f4f62312b85b83348f30690ce29596cc3292c3b6",
+      "bytes": 9278970
+    },
+    "networkingRegistryCommit": "bc90625",
+    "networkingPurgeCommit": "167ea8b",
+    "protectedBridgeMetadataAtUmask000": true,
+    "coreFreshOnFixture": true,
+    "networkingDpBuilt": true,
+    "exactMaintainerHookSha": {
+      "preinst": "cb6ea48df78f414b581f0c8e9641a6380d0772633f12c22ef4bb5294832187d5",
+      "postinst": "133f0308300ed5e004afb4cd8fa6d0022b4184314c2784437a3f415b170ad9cd",
+      "prerm": "dfcafc59284eecb719e84b7dd367f962076c75a92f6536a5806b0b2b2196c86a",
+      "postrm": "470b09f6b2bf9f0771cafea2dfb53dbd9b6d5d4be9f45579511c516b957296bd"
+    }
+  },
+  "historicalLayout": {
+    "minimalFixture": true,
+    "ordinaryPayloadVersion": "3.0.0~fixture20261118-1",
+    "ordinaryPayloadSHA": "8a6b436a874c1ac5103d5fdfdc028c6d2375ff8391761028a42b464e35416d63",
+    "generatedBridgeVersion": "3.0.0~git202611180752.ef19810-1~nmpolicyretain1",
+    "bridgeSHA": "6b2e1c842004694d2705f6e8120b3210db05b7bbad67537ad0fb6f1a7cb1cb03",
+    "installedBridgePreservedPriorSiteEdit": true,
+    "originalProductionFixtureReused": false
+  },
+  "observed": {
+    "container": "509edb685ed151d3528c4f060e5a1531235aafe1d8a55b36b53df6927c591b4d",
+    "debian": 13,
+    "architecture": "arm64",
+    "operations": {
+      "install-fresh-core": 1,
+      "install-historical-layout-fixture": 1,
+      "install-legacy-bridge": 1,
+      "install-normal-from-bridge": 1,
+      "remove-current-networking": 1,
+      "stop-in-config-files": 1,
+      "resume-in-config-files": 1,
+      "purge-retained-networking": 1,
+      "reinstall-networking-after-purge": 1,
+      "final-fixture-exit": 1
+    },
+    "obsoleteConffileBeforePurge": "/etc/NetworkManager/conf.d/99-kura-nm.conf 74608fb8ef46597f90db311def579063 obsolete",
+    "stateAcrossRestoredPid1": "config-files",
+    "removedConfigurationStillActive": true,
+    "diversionModeAtRemove": 384,
+    "obsoleteEntryAndDiversionAbsentAfterPurge": true,
+    "sourceConffileNoLongerOwnedAfterReinstall": true,
+    "sitesExactBeforeAndAfterPurge": true,
+    "siteEditBetweenRemoveAndPurgeRetained": true,
+    "siteFingerprintAfterPurge": {
+      "sha256": "d18ec28a187fa4fbd8cd375ef5d490c9ee2937ac2ee1a6860847f7ad533567c3",
+      "dev": 1048661,
+      "inode": 3730977,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420,
+      "size": 55,
+      "mtime": 1794988360859629160,
+      "ctime": 1794988360859629160
+    },
+    "privateFilesExact": 7,
+    "mainWasDisabled": true,
+    "registry": {
+      "sameFingerprintAcrossUpgrade": true,
+      "group": 992,
+      "mode": 416,
+      "orderAfterReinstall": [
+        "networking"
+      ]
+    },
+    "reinstalledApplicationFlags": [
+      "kura.have.net.admin=false",
+      "kura.have.firewall.admin=false"
+    ],
+    "finalFixture": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T07:52:41.229888054Z",
+      "FinishedAt": "2026-11-18T07:52:42.605514617Z"
+    }
+  },
+  "contracts": {
+    "realLinuxDpkgHooksPassed": [
+      "direct-purge",
+      "before-settle",
+      "after-settle",
+      "occupied",
+      "foreign"
+    ],
+    "knownHookFailuresRetriedWithoutAnyOtherDispatch": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFiles": 25,
+    "combinedCPrivateFiles": 9,
+    "centerDPrivateFiles": 29,
+    "e": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "previousFixturesStoppedExact": true,
+    "unknownResubmitted": false
+  },
+  "pending": [
+    "Regain original Networking application flags after retained reinstall with product-level provider verification",
+    "Networking live OSGi provider and wider distribution matrix",
+    "Complete Core/OSGi, remaining typed brokers, six components/providers/launchers and twelve parents"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "evidenceRoot": ".management-close-20261116/networking-conffile-retention-20261118",
+  "pushed": false
+}
