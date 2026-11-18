@@ -1,3 +1,11 @@
+## 2026-11-18 Chrony 回执随保留重装跨解包中断续接
+
+在原独立 Debian 13 ARM64 夹具上，使用与 Core `0ed95fa4fe` 完全配对的完整 deb，实际 `dpkg --remove`、`--unpack`、`--configure` 各一次均返回 0。停在 `unpacked` 后正常关闭并重启夹具 PID 1。重启前后状态均为 `unpacked`，Main 与 clock 单元未加载，Chrony 的 polkit 规则缺席，写准入关闭，原 clock 和 key 维护 ID 及保留副本精确。配置完成后规则和 socket 恢复，两个围栏解除，key 包历史按原 remove ID 追加一条回执。
+
+全流程未启动 Main 和 Chrony。原 Root 两条 Chrony `APPLIED` 只读查回，14 份文件完整指纹精确，原 key 历史两条保持；五份 sender 内容、权限和 mtime 精确，常规复制更新 inode/ctime。最终 Main/Chrony 仍 disabled，夹具正常退出。该证据覆盖 `--unpack` 完成至 `--configure` 之间的 PID 1 重启。
+
+源码核对发现 `postrm purge` 会删除整棵 `/var/lib/kura-retained`，其中包含 clock sender 的 `issued` 和 `completed`，而 actor 原 Root 日志保留于独立路径。具有 sender 历史的 purge 需要补齐持久保全及同 Root 续接；其实际验收、dpkg 脚本执行中的中断、Chrony 配置/`makestep`、完整 Core/OSGi、其余 typed brokers 和六组件矩阵均继续内部 pending。原 7fd 为 41 输入/16 回执，原三现场与旧 UNKNOWN 停放状态已复核。冻结 12 父项仍 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-chrony-retained-interruption-checkpoint.json)。
+
 ## 2026-11-18 Chrony 校时事件的 typed 读取
 
 Core `0ed95fa4fe` 的 Chrony provider 经原配对 clock broker 读取本次启动、当天的最近校时事件。查询固定 Chrony 单元、真实可执行路径和消息格式，响应只有 schema 和两个时间戳。provider 用单调时间去重，系统壁钟退回后仍能识别后续事件。`systemd-journal` 读取组只配置于独立 actor 单元，`kura-clock` 系统账号本身没有该组成员资格。日志不可读和有权限但无匹配分别处理。

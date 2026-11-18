@@ -1,0 +1,120 @@
+{
+  "at": "2026-11-18T05:55:02.881519+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreCommit": "0ed95fa4fe870855ae990374703573f70692d148",
+  "coreTree": "e38f0386f69ebb36d3aee58c410c014b8794e669",
+  "baseConsole": "326a96998332fd103dfafd47269eb960b4006fc0",
+  "testedPackage": {
+    "packageVersion": "6.0.0~git202611180544.0ed95fa-1",
+    "architecture": "arm64",
+    "sha256": "4485c67b4d082abc819a987697717f7c4b969b1f82f719716226a488748dd8de",
+    "sourceCommit": "0ed95fa4fe870855ae990374703573f70692d148",
+    "bytes": 203567468,
+    "clockProtocolDigest": "a2025023fc186df5f160eebfa5006fd0e1e92ecd897d25ac81b04f9d25ef72ef"
+  },
+  "sameVerifiedReleaseArtifactReinstall": true,
+  "productionScriptsUnmodified": true,
+  "testedDebian13": {
+    "containerId": "bec63b6102e6352252b119c8229c382b95933192a5e946e6911474687bbe8edd",
+    "nativeDispatches": {
+      "remove": 1,
+      "unpack": 1,
+      "configure": 1
+    },
+    "dispositions": [
+      "installed",
+      "config-files",
+      "unpacked",
+      "unpacked after container PID1 restart",
+      "installed"
+    ],
+    "orderlyContainerPid1RestartWhileUnpacked": true,
+    "kernelPowerLossOrMidDpkgKill": false,
+    "inventoriesExactAcrossPid1Restart": true,
+    "noEffectiveMainOrClockUnitsAtUnpacked": true,
+    "polkitRuleAbsentDuringPause": true,
+    "clockAdmissionClosedDuringPause": true,
+    "continuity": {
+      "originalClockNamespace": "e48275c1-1080-4760-813c-b8ff358911ce",
+      "originalRootFilesExact": 14,
+      "originalSenderBytesPermissionsAndMtimeExact": 5,
+      "senderCopyInodeAndCtimeChanged": true,
+      "preExistingKeyHistoryExact": 2,
+      "originalRemovalKeyHistoryReceipt": {
+        "maintenanceId": "4c9b4194-658b-4d31-9a5d-be5a7020ff60",
+        "previousMaintenanceId": "a96ed0f7-407a-40bc-9017-37d9eccf0ba4"
+      },
+      "originalClockMaintenancePurpose": "801ceca3-f40c-4090-aad7-d713e7c1add9",
+      "originalClockAndKeyFencesExactAcrossPid1Restart": true,
+      "originalTerminalClockReceipts": 2,
+      "rootOrSenderClockRequestsCreated": 0,
+      "oldClockStatusReadsOnly": true,
+      "mainStarts": 0,
+      "chronyStarts": 0,
+      "mainChoice": "disabled",
+      "clockTransportRestored": true,
+      "clockPolicyRestored": true
+    },
+    "initialReadOnlyHistoryObserverCorrectedToShippedSchema": true,
+    "finalContainerState": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T05:52:51.986904116Z",
+      "FinishedAt": "2026-11-18T05:54:38.367162808Z"
+    }
+  },
+  "originals": {
+    "sevenFDStoppedAndExact": true,
+    "sevenFDInputs": 41,
+    "sevenFDReceipts": 16,
+    "earlierChronyUnknownFixtureExact": true,
+    "liveOriginals": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    }
+  },
+  "pendingPurgeSourceFinding": {
+    "shippedPostrmRemovesWholeRetainedTree": true,
+    "retainedSenderLocation": "data/clock-broker",
+    "clockRootJournalLivesOutsideRetainedTree": true,
+    "senderContinuityAcrossPurgeRequiresImplementation": true,
+    "nativePurgeExecuted": false
+  },
+  "internalPending": [
+    "other interruption phases and retained sender continuity across purge",
+    "Chrony config/makestep and authentic step decoding in installed Main",
+    "Chrony Main deactivation and compatibility without ProcessFD",
+    "RTC positive write and hotplug",
+    "complete Core/OSGi, other typed brokers and all six components/providers/launchers/matrix",
+    "all 12 parent items"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "closedParents": 0,
+  "totalParents": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "receipts": ".management-close-20261116/chrony-retained-interruption-20261118",
+  "pushed": false
+}
