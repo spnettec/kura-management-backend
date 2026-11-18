@@ -1,3 +1,13 @@
+## 2026-11-18 Core Main 布局维护前拒绝
+
+e99df17793把linked/linked-runtime等不支持Main选择的拒绝前移到initialize、新维护围栏和stop之前；schema2/static还核固定vendor与原manifest的unitSha256，不认领新路径、不读取key、不放宽Root配对。缺Main不引入完整reader依赖，有原围栏不重新解释unpack中间态。66宿主选择65过/1既有Linux renameat2在macOS skip。新Git/private缓存/JDK21完整ARM64包6.0.0~git202611180255.e99df17-1/SHAf99692a6…ddb0a1从原44正常升级一次exit0，38输入保持、新增1正常回执，总39/15，Main disabled未启。
+
+三项完整实际dpkg拒绝观察linked-observed、linked-runtime、未配对static各一次exit1：原39数据及所选unit/link完整指纹、5辅助单元属性/活跃进程ticks精确，无新维护围栏/retained/upgrade stage或业务。首次另有linked采集不完整：socket属性和脱敏消息断言错误，实际动作已知拒绝但调用前helper快照未持久化；不计完整通过、不回填。原失败留存、39数据精确且无新ID后只恢复夹具布局，新linked-observed独立观察，非UNKNOWN重发或旧UUID业务重做。总4次已知拒绝、本轮完整3次；不算成功移除/通用中断恢复。
+
+观察完成后才恢复夹具vendor布局和dpkg install选择；最终key完整generation及clock canonical/actor/effective配对通过，39输入/15回执、原UID/clock目的/密钥/.data历史保持，原7fd完整安装e99、disabled、从未启动Main，正常停止exit0。03:03UTC原3/个人25/C/D/E原身份/文件/进程/ON保持，两VM stopped；E Main仍11/13caps/NNP0。见[检查点](core-main-layout-admission-checkpoint.json)、[审查](../../reviews/core-main-layout-admission-review-20261118.md)。
+
+合法旧static转换/linked审核迁移、purge/通用中断及完整Core/OSGi/当前合法Main/RTC/Chrony/其余typed brokers、六组件/provider/launcher/资源/平台矩阵和原14组/API/R017/GUI/网络/密钥/CA/客户DB/上游/正式发行12父项继续内部pending。仅原3external deferred，冻结全文SHA不变，最终0/12、无加权百分比；G034/协议未封签发布。goal active/现有积分继续，无push/JDK27/活动runtime清理；UNKNOWN/丢失CSR不重发换号跨Root查、闭环密钥/归档/900秒等不重放。
+
 ## 2026-11-18 Core 实际 Main 四状态
 
 97dbbc06e9修复普通disable遗留/run enable链接，追加--runtime且失败前不删vendor，补cron/logrotate/tmp失败传播；凭据准备只认固定Root/单链接/受保护父目录/精确/dev/null Main mask，必须原canonical+回执完整、拒绝bootstrap/普通override/其他目标和mask变更。44b4281923修复clock安装拒绝合法Main masked：明确inactive/PID0/control0+固定Rootmask才接受，clock service/socket masked及原代码/有效unit检查仍拒绝，不读key。135宿主选择134过/1既有Linux-only归档用例在macOS skip不算通过，7实际LinuxRoot key/mask、6shipped preRemove/systemd条件通过，不累加旧JVM/crypto。native首夹具umask000被正确拒绝，失败保留新独立umask077夹具通过；生产检查未放宽。

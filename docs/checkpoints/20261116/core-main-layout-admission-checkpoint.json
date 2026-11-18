@@ -1,0 +1,182 @@
+{
+  "at": "2026-11-18T03:05:55.425882+00:00",
+  "goal": "active",
+  "previousTurn": "no progress: status answer only",
+  "currentTurn": "progress",
+  "sourceCommit": "e99df17793799a6e506ef37b5c1a82e7140193ba",
+  "package": {
+    "packageVersion": "6.0.0~git202611180255.e99df17-1",
+    "sha256": "f99692a65cd768936864f4705b68f2e508a54d58ca57969fe134a1e659ddb0a1",
+    "bytes": 203550910,
+    "architecture": "arm64"
+  },
+  "regression": {
+    "selected": 66,
+    "passed": 65,
+    "skipped": 1,
+    "skipReason": "existing Linux renameat2 immutable Root archive test skipped on macOS",
+    "notAddedToOlderSelections": true
+  },
+  "normalUpgrade": {
+    "dispatches": 1,
+    "returnCode": 0,
+    "originalInputs": 38,
+    "finalInputs": 39,
+    "completedMaintenanceId": "1afecd19-704e-403d-87ba-7da5b39a39ee",
+    "doNotReplayCompletedPurpose": true
+  },
+  "completeRefusalObservations": [
+    {
+      "caseName": "linked-observed",
+      "cohortSha256": "a00fc81927ab5e2ad4b7c5781cddb7d39c64271489f09bff3d317f38dab42a30",
+      "coreStarts": 0,
+      "generationCohortPairedAfterRestoration": true,
+      "harnessLayoutRestoredAfterAcceptance": true,
+      "helpersUnchanged": 5,
+      "mainUnchanged": true,
+      "newKeyOrClockBusiness": false,
+      "newMaintenanceFence": false,
+      "newRetainedOrUpgradeStage": false,
+      "originalFullFingerprintsExact": 39,
+      "originalVendorNumericOwnersModeMtimeAndBytesRestored": true,
+      "packageAfter": "deinstall ok installed|6.0.0~git202611180255.e99df17-1",
+      "packageBefore": "deinstall ok installed|6.0.0~git202611180255.e99df17-1",
+      "profile": "linked",
+      "refusal": "Unsupported Main boot choice; preserve installation",
+      "removeDispatches": 1,
+      "removeExitCode": 1,
+      "selectedUnitAndLinkFullFingerprintsExact": true
+    },
+    {
+      "caseName": "linked-runtime",
+      "cohortSha256": "a00fc81927ab5e2ad4b7c5781cddb7d39c64271489f09bff3d317f38dab42a30",
+      "coreStarts": 0,
+      "generationCohortPairedAfterRestoration": true,
+      "harnessLayoutRestoredAfterAcceptance": true,
+      "helpersUnchanged": 5,
+      "mainUnchanged": true,
+      "newKeyOrClockBusiness": false,
+      "newMaintenanceFence": false,
+      "newRetainedOrUpgradeStage": false,
+      "originalFullFingerprintsExact": 39,
+      "originalVendorNumericOwnersModeMtimeAndBytesRestored": true,
+      "packageAfter": "deinstall ok installed|6.0.0~git202611180255.e99df17-1",
+      "packageBefore": "deinstall ok installed|6.0.0~git202611180255.e99df17-1",
+      "profile": "linked-runtime",
+      "refusal": "Unsupported Main boot choice; preserve installation",
+      "removeDispatches": 1,
+      "removeExitCode": 1,
+      "selectedUnitAndLinkFullFingerprintsExact": true
+    },
+    {
+      "caseName": "unpaired-static",
+      "cohortSha256": "a00fc81927ab5e2ad4b7c5781cddb7d39c64271489f09bff3d317f38dab42a30",
+      "coreStarts": 0,
+      "generationCohortPairedAfterRestoration": true,
+      "harnessLayoutRestoredAfterAcceptance": true,
+      "helpersUnchanged": 5,
+      "mainUnchanged": true,
+      "newKeyOrClockBusiness": false,
+      "newMaintenanceFence": false,
+      "newRetainedOrUpgradeStage": false,
+      "originalFullFingerprintsExact": 39,
+      "originalVendorNumericOwnersModeMtimeAndBytesRestored": true,
+      "packageAfter": "deinstall ok installed|6.0.0~git202611180255.e99df17-1",
+      "packageBefore": "deinstall ok installed|6.0.0~git202611180255.e99df17-1",
+      "profile": "unpaired-static",
+      "refusal": "Static Main unit differs from its package",
+      "removeDispatches": 1,
+      "removeExitCode": 1,
+      "selectedUnitAndLinkFullFingerprintsExact": true
+    }
+  ],
+  "firstLinkedAttempt": {
+    "actualRemoveDispatches": 1,
+    "knownRefused": true,
+    "originalFullFingerprintsExact": 39,
+    "maintenanceIdCreated": false,
+    "preDispatchHelperSnapshotNotRetained": true,
+    "completeMatrixAcceptance": false,
+    "recordsPreserved": true,
+    "oldObservationNotReconstructed": true
+  },
+  "finalFixture": {
+    "accounts": {
+      "kura": {
+        "gid": 1001,
+        "uid": 1001
+      },
+      "kura-clock": {
+        "gid": 988,
+        "uid": 995
+      },
+      "kura-key-recovery": {
+        "gid": 990,
+        "uid": 996
+      },
+      "kurad": {
+        "gid": 991,
+        "uid": 997
+      }
+    },
+    "actor": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": "static"
+    },
+    "clockAccount": {
+      "gid": 988,
+      "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+      "role": "kura-clock",
+      "schema": 1,
+      "uid": 995
+    },
+    "clockNamespaceAbsent": true,
+    "clockOperations": 0,
+    "coreOriginalLogicalFingerprintsExact": 8,
+    "coreStarts": 0,
+    "externalOriginalFullFingerprintsExact": 31,
+    "fullCoreOsgiVerified": false,
+    "inventoriedFiles": 39,
+    "keyBusinessOperations": 0,
+    "main": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": "disabled"
+    },
+    "mode": "installed",
+    "package": "installed 6.0.0~git202611180255.e99df17-1",
+    "packageHistoryReceipts": 15
+  },
+  "finalDpkgStatus": "install ok installed|6.0.0~git202611180255.e99df17-1",
+  "keyGenerationCohortSha256": "a00fc81927ab5e2ad4b7c5781cddb7d39c64271489f09bff3d317f38dab42a30",
+  "clockActorProtocolCohort": "f9ae58a642d5a28039aa8c2ecf86c4428d37ec6d933dfb794b0b9764a4cd2822",
+  "clockManifestFileSha256": "fbb6052c25d3a3b1f827606a8d205e747879a4c6e1b6b4a74ae55cb031eba5f9",
+  "fixtureStoppedExitCode": 0,
+  "harnessLayoutAndDpkgSelectionRestoredOnlyAfterRefusalObservations": true,
+  "fullCoreOsgiVerified": false,
+  "supportedLegacyStaticConversionVerified": false,
+  "linkedAdoptionVerified": false,
+  "purgeVerified": false,
+  "genericInterruptionRecoveryVerified": false,
+  "allSixComponentsProvidersLaunchersVerified": false,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-main-static-linked-20261118",
+  "originalScenesDeployed": false,
+  "jdk27": false,
+  "pushed": false
+}

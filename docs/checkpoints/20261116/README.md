@@ -1,3 +1,7 @@
+## 2026-11-18 Core Main 布局维护前拒绝
+
+最新[检查点](core-main-layout-admission-checkpoint.json)与[审查](../../reviews/core-main-layout-admission-review-20261118.md)。e99将不支持布局拒绝前移，不放宽Root配对；完整新源码包一次正常升级通过。linked/linked-runtime/未配对static三项真实dpkg拒绝保留39数据指纹与5辅助单元；首次linked观察不完整留存、不计通过，未回填。原7fd最终39输入/15回执、完整安装e99/disabled/正常停止，Main未启；原现场与个人配置保留。65/66过、1既有平台skip。合法旧static迁移、purge/通用中断、完整Core/六组件/provider/launcher及12父项继续pending。
+
 ## 2026-11-18 Core 实际 Main 四状态
 
 最新[检查点](core-main-boot-choice-matrix-checkpoint.json)与[审查](../../reviews/core-main-boot-choice-matrix-review-20261118.md)。97修runtime链接、44修严格Main masked停止识别；原同Root enabled/runtime与两mask状态正常产品路径通过，Main未启、原钥/数据/UID保持。97原masked失败仅有界同ID修复、不算正常产品；之后完整44 mask矩阵实际通过。原7fd健康安装44、38输入/14回执、disabled停放且停止；原已完成目的不重做。135选择134过/1平台skip，7 nativeRoot及6真实回调条件；static/linked/purge/通用中断/完整六组件及12父项仍pending，冻结全文不变。
