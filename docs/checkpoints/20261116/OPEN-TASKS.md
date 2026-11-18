@@ -1,3 +1,11 @@
+## 2026-11-18 Debian 13 ARM64 实装 Chrony 正向启停
+
+Core `9949693770` 从 Git 隔离检出并以 Maven 3.10.1、JDK 21、独立缓存构建完整 ARM64 deb。22 项 JDK 21 检查通过。Debian 13 原生 systemd 257、D-Bus 1.16、polkit 126 和 Chrony 4.6.1 上首装成功。正常 Main 中的 OSGi 探针通过实际 ClockService 的生产 client 启停固定 `chrony.service`，原 Root 分别持久返回 `APPLIED/CHRONY_STARTED` 和 `APPLIED/CHRONY_STOPPED`。系统总线观察到 StartUnit 和 StopUnit 各派发一次，polkit 分别检查各自的可信 bus name。日志显示同一实际 chronyd PID 启停各一次。
+
+Main 的五类能力均无 CAP_SYS_TIME，独立 actor 的五类能力均仅 CAP_SYS_TIME，NNP 为 1。夹具只有 loopback，使用发行版 `/etc/default/chrony` 的 `-x`，原厂单元保持精确，seccomp 拦截壁钟和 RTC 写入，实际两类请求均为 0。单次正常停机后两条业务的 12 份记录哈希精确，Main 与 Chrony 均 disabled，容器退出 0。
+
+Ubuntu 26.04 ARM64 原生总线也返回 `ProcessFD`，原厂 Chrony 单元在 Docker 下条件为 false，该夹具在调用前正常停机。Ubuntu 24.04 的旧请求仍停放于原 Root，未重发。旧总线兼容、按单元条件安全准入、deactivating Main、Chrony 配置/`makestep`/事件访问、RTC 正向写入与热插拔、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 及全生命周期矩阵继续内部 pending。原三现场和个人配置保全核对通过，7fd 仍为 41 输入/16 回执。原 12 父项仍 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-chrony-positive-service-checkpoint.json)。
+
 ## 2026-11-18 Chrony 启停事务与系统总线身份准入
 
 Core `a0eb7e7da8` 将 Java ClockService 的 Chrony 启停接入原 Root 的 prepare/commit 日志。actor 只接受实际配对的固定单元和启停请求，按最终单元状态写终态回执。一次 ARM64 整包升级成功，Main 配置仍为 disabled，Chrony 配置和原锁指纹精确。实机 polkit 检查确认旧 `kurad` 的直接启停授权已撤回，服务外的 `kura-clock` 同 UID 也被拒绝。

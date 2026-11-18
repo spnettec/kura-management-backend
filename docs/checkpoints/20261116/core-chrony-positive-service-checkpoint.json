@@ -1,0 +1,284 @@
+{
+  "at": "2026-11-18T05:34:54.104033+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreCommit": "9949693770227f3b65494dd4ed606618dc38a8f3",
+  "coreTree": "082075049f14e346bd8bb07e844046ba07e5a556",
+  "baseConsole": "73d98445fde387826d1cca662216350c5c5ffbf2",
+  "package": {
+    "sourceCommit": "9949693770227f3b65494dd4ed606618dc38a8f3",
+    "packageVersion": "6.0.0~git202611180528.9949693-1",
+    "sha256": "f57a21ecdd38bdb1e09f7a2de4ae7bb772b08e14cd03a59e9754b735f326e3ca",
+    "bytes": 203566538,
+    "architecture": "arm64",
+    "clockProtocolDigest": "a7ae50ab15b0e9c281da9118958c952332f469edc1f254581d9b8dabbc873e8a",
+    "clockFiles": 8,
+    "clockManifestFileSha256": "a8bbeae5d606319f479721497e1520ba1738970769edc64126e0b85cae279d99",
+    "privateCache": true,
+    "usesOldBuildTargets": false
+  },
+  "sourceTests": {
+    "jdk": 21,
+    "maven": "3.10.1",
+    "jvmTests": 22,
+    "distributionBuildFromCleanCheckout": true
+  },
+  "debian13": {
+    "containerId": "bec63b6102e6352252b119c8229c382b95933192a5e946e6911474687bbe8edd",
+    "baseImageDigest": "sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2",
+    "preflight": {
+      "siteClockControlDisabled": true,
+      "chronyDefaultsSHA256": "6ba07380d35d937f4772de89ba7270558f38d01d7bb12ed642521cd7bcc40ba3",
+      "machine": "aarch64",
+      "interfaces": [
+        "lo"
+      ],
+      "nativeVersions": [
+        "chrony\t4.6.1-3+deb13u2",
+        "dbus\t1.16.2-2",
+        "dbus-daemon\t1.16.2-2",
+        "openjdk-21-jre-headless:arm64\t21.0.13+9-1~deb13u2",
+        "polkitd\t126-2",
+        "systemd\t257.13-1~deb13u1"
+      ],
+      "busTypes": {
+        "ProcessID": "u",
+        "UnixUserID": "u",
+        "UnixGroupIDs": "au",
+        "ProcessFD": "h"
+      },
+      "seccomp": 2,
+      "nnp": 1,
+      "rtcInvalidDescriptorErrno": 1,
+      "wallInvalidClockErrno": 1,
+      "chrony": {
+        "MainPID": "0",
+        "Id": "chrony.service",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/chrony.service",
+        "DropInPaths": ""
+      },
+      "beforeKuraInstallation": true
+    },
+    "freshInstallExit": 0,
+    "postInstall": {
+      "main": {
+        "MainPID": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "Id": "kura.service",
+        "ActiveState": "inactive",
+        "UnitFileState": "enabled"
+      },
+      "chrony": {
+        "MainPID": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "Id": "chrony.service",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "actor": {
+        "MainPID": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "ActiveState": "inactive"
+      },
+      "package": "installed 6.0.0~git202611180528.9949693-1",
+      "clockCohort": "a7ae50ab15b0e9c281da9118958c952332f469edc1f254581d9b8dabbc873e8a",
+      "chronyBinding": "c33ed70245d31a6c398728573c9fd69d7a67f14479103076d7e41086193560f1",
+      "rootPolicyExact": true,
+      "serviceStarts": 0
+    },
+    "fixtureDisabledMainBeforeExplicitStart": true,
+    "fixtureLoopbackHostname": true,
+    "vendorChronyUnitUnmodified": true,
+    "positiveRuntime": {
+      "clockCohort": "a7ae50ab15b0e9c281da9118958c952332f469edc1f254581d9b8dabbc873e8a",
+      "main": {
+        "MainPID": "1176",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "243864670000",
+        "ActiveState": "active"
+      },
+      "actor": {
+        "MainPID": "1286",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "243868232360",
+        "ActiveState": "active"
+      },
+      "mainUid": 997,
+      "actorUid": 992,
+      "operations": {
+        "start-chrony": {
+          "result": {
+            "errno": 0,
+            "namespace": "e48275c1-1080-4760-813c-b8ff358911ce",
+            "observedMonotonicNs": 243872125613577,
+            "observedRealtimeNs": 1794980046780803548,
+            "reason": "CHRONY_STARTED",
+            "requestId": "6aa09fe4-f77b-49c9-ad9b-ed242a93c0e6",
+            "requestSha256": "992d7aa7671d1a808dbb63ff2e9dd09fd05d10522bc14c0ca16811ce6e46d4c6",
+            "schema": 1,
+            "state": "APPLIED"
+          },
+          "binding": "c33ed70245d31a6c398728573c9fd69d7a67f14479103076d7e41086193560f1",
+          "files": {
+            "intent.json": "992d7aa7671d1a808dbb63ff2e9dd09fd05d10522bc14c0ca16811ce6e46d4c6",
+            "prepared-context.json": "165466713eb3f58bee00034ced658b9cd9c0d7b7bcc75d257e978808bd0383eb",
+            "commit-intent.json": "38542601a4f2218aa2a1fe825ad4b1e96d6efa9ee4b47941b31b176f17c7c161",
+            "result.json": "f79a24f10b8327e76e648d28f6d65a4673efe1475ca5fc1b6900dbf4ec551c02"
+          },
+          "senderFiles": {
+            "/opt/eclipse/kura/data/clock-broker/completed/6aa09fe4-f77b-49c9-ad9b-ed242a93c0e6.json": "46f099b0cbfd05a3d8f5749bb073c6226494f5c97f0484af62d683bff6d7b0c8",
+            "/opt/eclipse/kura/data/clock-broker/issued/6aa09fe4-f77b-49c9-ad9b-ed242a93c0e6.json": "38542601a4f2218aa2a1fe825ad4b1e96d6efa9ee4b47941b31b176f17c7c161"
+          }
+        },
+        "stop-chrony": {
+          "result": {
+            "errno": 0,
+            "namespace": "e48275c1-1080-4760-813c-b8ff358911ce",
+            "observedMonotonicNs": 243875437555981,
+            "observedRealtimeNs": 1794980050092745452,
+            "reason": "CHRONY_STOPPED",
+            "requestId": "a5107333-2cf8-48de-8eb2-7ecb1cfd4b12",
+            "requestSha256": "e0a5951413c51522f7befd0dac0794dbaf8a9553c6e944a4a3c9f9093a687c55",
+            "schema": 1,
+            "state": "APPLIED"
+          },
+          "binding": "c33ed70245d31a6c398728573c9fd69d7a67f14479103076d7e41086193560f1",
+          "files": {
+            "intent.json": "e0a5951413c51522f7befd0dac0794dbaf8a9553c6e944a4a3c9f9093a687c55",
+            "prepared-context.json": "3f30b6eff219c9cb80592fd34c23a6e833ef790b39887f15eb08ceb5a53ed355",
+            "commit-intent.json": "b01180a80592d03fb54dc8d38d2f0ef3cc68b70063a98d5aa0e8318af2ee3c1b",
+            "result.json": "49ddff86e8cd202d1da0eccb4c8421623590ef539ac8839b582598ab81b37ef7"
+          },
+          "senderFiles": {
+            "/opt/eclipse/kura/data/clock-broker/completed/a5107333-2cf8-48de-8eb2-7ecb1cfd4b12.json": "18010544eda6495a1eb123618b1f03ee99b5ad2bf7de21bb522b2f64c901d243",
+            "/opt/eclipse/kura/data/clock-broker/issued/a5107333-2cf8-48de-8eb2-7ecb1cfd4b12.json": "b01180a80592d03fb54dc8d38d2f0ef3cc68b70063a98d5aa0e8318af2ee3c1b"
+          }
+        }
+      },
+      "chronydPid": "1393",
+      "chronydStarts": 1,
+      "chronydStops": 1,
+      "chronydClockControlDisabled": true,
+      "wallOrRtcRequests": 0,
+      "chronoProcessState": {
+        "MainPID": "0",
+        "Id": "chrony.service",
+        "ActiveState": "inactive"
+      },
+      "mainSysTime": false,
+      "actorAmbientCaps": "0000000002000000",
+      "actorNnp": 1
+    },
+    "busTrace": {
+      "start": {
+        "member": "StartUnit",
+        "methodCount": 1,
+        "polkitTrustedBusName": ":1.73",
+        "polkitCheckCount": 1,
+        "mode": "fail"
+      },
+      "stop": {
+        "member": "StopUnit",
+        "methodCount": 1,
+        "polkitTrustedBusName": ":1.130",
+        "polkitCheckCount": 1,
+        "mode": "fail"
+      }
+    },
+    "postStop": {
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "chrony": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "filesSha256Exact": 12,
+      "unknown": 0,
+      "rootCount": 2,
+      "senderCount": 2
+    },
+    "containerStop": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T05:33:19.381139748Z",
+      "FinishedAt": "2026-11-18T05:34:29.03031682Z"
+    },
+    "vendorChronyUnitSha256": "64e68e0dcea1c29905098bf407be1894044809d07f1d0560e132780557830a7c",
+    "vendorChronyUnitMatchesDpkgInventory": true,
+    "siteDefaultsExactAfterStop": true
+  },
+  "ubuntu2604": {
+    "containerId": "a4b89646e7801f442f407f3c9937251d26fb336d861a4e5652e9c12cb1467628",
+    "nativeVersions": [
+      "chrony\t4.8-2ubuntu1",
+      "dbus\t1.16.2-2ubuntu4",
+      "dbus-daemon\t1.16.2-2ubuntu4",
+      "openjdk-21-jre-headless:arm64\t21.0.13.0.3+1-1~26.04.1",
+      "polkitd\t127-2ubuntu1.1",
+      "systemd\t259.9-0ubuntu0.1"
+    ],
+    "processFD": true,
+    "chronyCondition": "The vendor service skips this container type",
+    "coreInstalled": false,
+    "requestsCreated": 0,
+    "containerStopExit": 0
+  },
+  "originals": {
+    "same7fdStoppedState": true,
+    "protectedInputs7fd": 41,
+    "receipts7fd": 16,
+    "newDispatches7fd": 0,
+    "sameStoppedStateForPriorChronyUnknown": true,
+    "priorChronyUnknownRedispatched": false,
+    "liveOriginals": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    }
+  },
+  "internalPending": [
+    "Chrony support without ProcessFD on supported systems and startup conditions",
+    "Chrony service stop during a deactivating Main",
+    "Chrony configuration, makestep and event authority",
+    "RTC positive write and hotplug",
+    "full Core/OSGi and remaining typed brokers",
+    "six component/provider/launcher modes and install/upgrade/remove/purge/interruption matrix",
+    "all 12 parent items"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "closedParents": 0,
+  "totalParents": 12,
+  "receiptDirectory": ".management-close-20261116/chrony-positive-20261118",
+  "pushed": false
+}
