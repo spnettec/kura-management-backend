@@ -1,3 +1,11 @@
+## 2026-11-18 Chrony 状态接线与 Main 时钟能力移除
+
+Core `9e59cb6004` 用现有已配对的 clock broker 查询 Chrony 单元状态。请求不接受服务名或操作 ID，也不创建时钟日志。Chrony 事件读取改用固定 `journalctl` 参数。Main 的 ambient 和 bounding 集合均移除 CAP_SYS_TIME，clock actor 保留独立身份和仅有的 CAP_SYS_TIME。
+
+同组 72 项 Python 在 macOS 和 Linux ARM64 各通过，另有 21 项 JDK 21 检查通过。新 ARM64 deb 实装后，正常 Main 中的实际 Chrony provider 初始化一次选中 `chrony.service`。同 UID 的独立进程被拒绝为 UNAUTHORIZED。实测 Main 五类能力均无 CAP_SYS_TIME，actor 五类均仅该项，Root 和 sender 均无 clock 事务。旧安装器在 Main 启动前停用夹具自启的 Chrony，原配置指纹精确。新夹具已正常停机。
+
+真实 ARM64 `chronyc tracking` 能由 cap0 的 Chrony UID 在固定 Unix socket 执行。无应答的独立 socket 探针测得默认 3 包和零重试 1 包。正式 `makestep` 仍需单次发送并单独处理协议版本回退。Chrony 配置、启停、校时写与事件授权，以及 RTC 正向写入和热插拔仍内部 pending。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher、安装升级移除与中断恢复及 12 父项继续实施。最终 0/12，external deferred 仅原 3 项。见 [检查点](core-chrony-status-capability-checkpoint.json) 和 [Chrony 4.5 客户端文档](https://chrony-project.org/doc/4.5/chronyc.html#_client_commands)。
+
 ## 2026-11-18 RTC 准备记录绑定实际设备
 
 Core `29c92f0427` 在 prepare 保存内核设备和投影节点的身份指纹，commit 在打开设备前核对原指纹。别名改指、节点换代或准备时设备缺失均无法转成对其他设备的写入。旧未提交的无绑定请求保持 UNKNOWN，旧终态回执按原格式读取。

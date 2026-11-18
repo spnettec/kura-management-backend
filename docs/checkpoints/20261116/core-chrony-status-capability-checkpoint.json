@@ -1,0 +1,167 @@
+{
+  "at": "2026-11-18T05:08:31.825045+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreCommit": "9e59cb6004d8cb40ece879883b007fa536e46a8c",
+  "coreTree": "c1e53ae65c09bcc17ab3c302a8cb25e75c1c36cc",
+  "baseCore": "29c92f04279039d84a72508fe0de265c044553e5",
+  "baseConsole": "30f41e8743c490138e97c0328f7b775488172570",
+  "currentPackage": {
+    "sha256": "0d7721a0223fb408e07c6730315548324008aefa381ede675105085c5e2aeed1",
+    "bytes": 203563858,
+    "packageVersion": "6.0.0~git202611180503.9e59cb6-1",
+    "architecture": "arm64",
+    "sourceCommit": "9e59cb6004d8cb40ece879883b007fa536e46a8c",
+    "clockFiles": 8,
+    "clockProtocolDigest": "408c868c0521ccab63cf72912f9deafd28cfb3cce83f8ad9fc150aced0ca432c",
+    "clockManifestFileSha256": "c5ba1b57ccce4dac6405ba088732e59f46ce399dded7c24255a5d47f43387f7f",
+    "privateCache": true
+  },
+  "sourceTests": {
+    "pythonPerPlatform": 72,
+    "platforms": [
+      "macOS",
+      "Linux ARM64"
+    ],
+    "jvmTests": 21,
+    "jdk": 21
+  },
+  "installedArm64": {
+    "containerId": "d78c192b7fb522e91ec6e04f0b05efeb3a71142b5fcbe149adaf6f1b5fe3dc3c",
+    "fullDebInstalled": true,
+    "systemd": 255,
+    "normalMainBoot": true,
+    "main": {
+      "MainPID": "1157",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "242190261159",
+      "ActiveState": "active"
+    },
+    "actor": {
+      "MainPID": "1268",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "242194319101",
+      "ActiveState": "active"
+    },
+    "mainCapabilities": {
+      "CapInh": "0000000000002422",
+      "CapPrm": "0000000000002422",
+      "CapEff": "0000000000002422",
+      "CapBnd": "00000000000024e2",
+      "CapAmb": "0000000000002422"
+    },
+    "actorCapabilities": {
+      "CapInh": "0000000002000000",
+      "CapPrm": "0000000002000000",
+      "CapEff": "0000000002000000",
+      "CapBnd": "0000000002000000",
+      "CapAmb": "0000000002000000"
+    },
+    "mainSysTime": false,
+    "actorNnp": 1,
+    "actualChronyProviderInitThroughPairedBroker": true,
+    "selectedChrony": "chrony.service",
+    "sameUidOutsideMain": "UNAUTHORIZED",
+    "chronyConfigExact": true,
+    "chronyStoppedAndDisabledByExistingInstallerBeforeMain": true,
+    "bootChronyInitialStateObservationCorrected": true,
+    "runtimeFacadeChronyStartStopCalls": 0,
+    "clockRequestCount": 0,
+    "clockNamespaceCreated": false,
+    "finalMainChoice": "disabled",
+    "finalContainerState": "stopped",
+    "finalExit": 0
+  },
+  "chronycReadOnlyTracking": {
+    "uid": 102,
+    "gid": 103,
+    "capEff": 0,
+    "nnP": 1,
+    "operation": "tracking",
+    "argvFixedUnixEndpoint": true,
+    "fields": 14,
+    "socketUid": 102,
+    "socketGid": 103,
+    "socketMode": 493,
+    "clockWrites": 0
+  },
+  "chronycNoResponseObservation": {
+    "mockUnixDaemon": true,
+    "command": "tracking",
+    "replied": false,
+    "defaultPackets": 3,
+    "explicitZeroRetriesPackets": 1,
+    "capabilities": 0,
+    "nnP": 1,
+    "clockWrites": 0
+  },
+  "preservedOriginals": {
+    "sevenFD": {
+      "sameStoppedState": true,
+      "protectedInputs": 41,
+      "packageHistoryReceipts": 16,
+      "newDispatches": 0
+    },
+    "rtcUpgradeFixtureStoppedStateExact": true,
+    "originalLiveFixtures": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "parallelsBothStopped": true
+  },
+  "workspaceKnowledge": {
+    "selector": "f9b864007dcd8a44",
+    "items": [
+      {
+        "path": "Experience/2026-11-18-Kura-Chrony-状态接线和主进程时钟权限-9e59cb6004-ec66383d.md",
+        "sha256": "8b4042d920eca9b290731f43a1cde1350cc41997c9399b5c72b44960ea96fdad",
+        "exact": true
+      },
+      {
+        "path": "Tasks.md",
+        "sha256": "8b396cc799114e0cf9bcb0a2ba1025213fab428c30bc08a44993ab2aa7170f57",
+        "fullReadback": true,
+        "markerCount": 1
+      },
+      {
+        "path": "Session Summaries.md",
+        "sha256": "bd227e261e2b67da940c208fc9132f7f1532d9b28e7f7292f40db12b6dded19f",
+        "fullReadback": true,
+        "markerCount": 1
+      }
+    ],
+    "globalWritten": false
+  },
+  "previousCheckpoint": "core-rtc-prepared-device-checkpoint.json",
+  "receiptDirectory": ".management-close-20261116/chrony-status-capability-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "remainingInternal": [
+    "Chrony typed start/stop plus their polkit custody, scoped advanced configuration, makestep and event permissions",
+    "RTC positive writes and hotplug",
+    "Full Core/OSGi and legal Main",
+    "Remaining typed brokers",
+    "Complete six-component/provider/launcher/install/upgrade/remove/purge and interruption recovery matrices",
+    "All frozen parent requirements"
+  ],
+  "pushed": false
+}
