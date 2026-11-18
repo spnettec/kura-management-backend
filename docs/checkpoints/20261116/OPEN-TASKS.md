@@ -1,3 +1,11 @@
+## 2026-11-18 Core 重启 broker 实装 socket 与 Main 准入
+
+Core `47b3906027` 将固定 reboot 协议接入 systemd 激活的 Unix socket。客户端验证 PID 1 持有的监听端。Root actor 用内核 pidfd、实际 MainPID、InvocationID、父子关系、账号和 cgroup 核对固定 helper。actor 的 capability 集合为空，NNP 为 1。包保留三份单元副本，核对实际加载单元和源码 SHA。Root 核对并接受密钥服务预留的固定 Root 0700 空目录，活动覆盖仍拒绝。派发器固定调用 systemctl reboot，受理和实际 boot 变化仍分开。
+
+macOS 35 项重启合同通过、2 项 Linux 专属跳过。Linux ARM64 37 项均通过，两平台的 86 项时钟合同均通过。JDK 21 从隔离 Git 构建的完整 ARM64 deb 在新 Debian 13 现场完成一次首装和两次纠错升级。最终普通 Main 内 OSGi 探针通过真实 helper 到达 Root 维护围栏，返回 `ADMISSION_CLOSED`。同 UID 的 Main 外进程在未发送应用帧时由已配对监听端返回 `UNAUTHORIZED`。外进程直接走完整 helper 时仅得到通用不可用错误。Root 原绑定与围栏跨最终升级和停机逐字节精确，重启日志、发送 pending 和实际派发均为 0。独立现场已正常停机。
+
+夹具手动配置 Root 配对和启动 socket。自动安装激活、Root 与 sender 的发行保全、实际重启及 boot/应用恢复、产品 Main/watchdog/部署调用和原权限撤回继续内部 pending。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全部生命周期矩阵继续实施。原三现场、个人配置、C/D/E 和 7fd 停机 41 输入/16 回执已复核，旧 UNKNOWN 留在原 Root。冻结 12 父项 0/12，external deferred 仅原 3 项。见 [检查点](core-standalone-reboot-socket-checkpoint.json)。
+
 ## 2026-11-18 Core 重启请求与发送回执持久化
 
 Core `e113ccb0f0` 实现独立的固定类型重启协议。Root 核对预期 namespace 和当前代码 cohort，在调用派发器前同步保存与 boot ID 绑定的原意图。受理与后续观察到的 boot ID 分开，原记录只读。对同一次启动只允许一条已受理的重启，未知结果会跨启动继续封住派发。发送端先保存原 ID，恢复时先核 Root 配对并仅查原记录。原 Root 无记录时仍保留 UNKNOWN，其他 Root 收不到旧 ID。
