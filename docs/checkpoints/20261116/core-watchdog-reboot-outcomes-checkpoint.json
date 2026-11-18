@@ -1,0 +1,149 @@
+{
+  "recordedAt": "2026-11-18T06:19:18.942905+00:00",
+  "coreSource": {
+    "base": "5f719e43b3371500f537bb02aa70bb8c6ce048a5",
+    "changes": [
+      "30743fb7452de4f4aae20f6939923b7b672103f9",
+      "ce1f4f7ec2db9ed9644d8d9e4910dba0bc5bef11"
+    ],
+    "commit": "ce1f4f7ec2db9ed9644d8d9e4910dba0bc5bef11",
+    "tree": "9f538d9d2b7ddbd06067da8f73e92a7d06a3bb0c",
+    "branch": "wip/management-close-20261116"
+  },
+  "implemented": {
+    "watchdogKnownNoStartCanRetry": true,
+    "watchdogStartedNonzeroTimeoutOrInterruptedReply": "UNKNOWN",
+    "watchdogRedispatchSuppressedWithinServiceInstance": true,
+    "sameInstanceRetainsCauseAndGracePeriodThroughDeviceChange": true,
+    "systemAdminCorrectsCommandFailureLogCondition": true
+  },
+  "validation": {
+    "macOS": {
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "watchdog": {
+        "total": 116,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 116
+      },
+      "coreSystem": {
+        "total": 35,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 2,
+        "passed": 33
+      }
+    },
+    "linuxArm64": {
+      "jdk": "21.0.12.1",
+      "maven": "3.10.1",
+      "offline": true,
+      "uid": 65534,
+      "capabilities": [],
+      "watchdog": {
+        "total": 116,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 116
+      },
+      "coreSystem": {
+        "total": 35,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 2,
+        "passed": 33
+      }
+    },
+    "archivedSourceOutsideActiveRuntimes": true,
+    "dedicatedTestsUseFakeProcessAndWatchdog": true,
+    "realSystemRebootDispatched": false,
+    "deb": {
+      "packageVersion": "6.0.0~git202611180617.ce1f4f7-1",
+      "architecture": "arm64",
+      "bytes": 203572448,
+      "sha256": "25299a2b18d854a1a69f41e8abcf2e51522c767d9fa636e6c58cf2236a7c6330",
+      "packagedHome": "opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+      "watchdogAndSystemBundles": {
+        "org.eclipse.kura.linux.watchdog": {
+          "path": "opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4/org.eclipse.kura.linux.watchdog-2.0.0-SNAPSHOT.jar",
+          "jarSha256": "e62d1c83970392937bdc79e0fb09a7be827eef74abf7b0e24a6fbe9feaf3bf74",
+          "classes": {
+            "org/eclipse/kura/linux/watchdog/WatchdogServiceImpl$CommandNotStartedException.class": "efb7ce4ecefd9dc2e493f419ef05669ab86d33b07345679e5e926a142d9e1b1a",
+            "org/eclipse/kura/linux/watchdog/WatchdogServiceImpl$RebootOutcome.class": "b64ff195a956d0b435b9b80b0a74c510d5a6fad0c7932947c684395524a489f8",
+            "org/eclipse/kura/linux/watchdog/WatchdogServiceImpl.class": "8edcbdd467d289414cb1fe507a7144d1b6ec9a9ab5f5945522c89f2096a07d92"
+          }
+        },
+        "org.eclipse.kura.core.system": {
+          "path": "opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.system-2.0.0-SNAPSHOT.jar",
+          "jarSha256": "6eb201b4c76d117e8d23c10a26107a2023c0a633e16df7ddef39f618c8fcf20e",
+          "classes": {
+            "org/eclipse/kura/core/system/SystemAdminServiceImpl.class": "6d0a98a9d08f0651b1b47f1eb032e8f08a27702b075e077d350a42abfbc17b10"
+          }
+        }
+      },
+      "pairedKeyFiles": 39,
+      "clockManifestFileSha256": "7e3f9bc8fe815336e0dc590b4cdc34b8fc3b42ebd90abca34e78dbe00e7d9eb1",
+      "fullDebInstalled": false
+    }
+  },
+  "pending": [
+    "Paired typed reboot broker with durable sender and Root recovery across JVM and boot",
+    "Standalone Core, watchdog and deployment call-site cutover",
+    "Main CAP_SYS_BOOT and direct logind policy removal after verified cutover",
+    "Installed normal Main and OSGi end-to-end validation",
+    "Chrony configuration and makestep, remaining typed brokers and installer/upgrade/removal/purge/interruption matrix",
+    "Complete six components with provider and launcher combinations and all twelve frozen parents"
+  ],
+  "preservation": {
+    "at": "2026-11-18T06:18:16.405522+00:00",
+    "fixtures": {
+      "original7fd": {
+        "stateExact": true,
+        "inputs": 41,
+        "receipts": 16,
+        "status": "exited",
+        "exitCode": 0
+      },
+      "previousChronyUnknown": {
+        "stateExact": true,
+        "status": "exited",
+        "exitCode": 0
+      },
+      "independentDebian": {
+        "stateExact": true,
+        "status": "exited",
+        "exitCode": 0
+      }
+    },
+    "originalLive": 3,
+    "originalLiveProcessIdentityExact": true,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "centerDPrivateExact": 29,
+    "environmentE": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "readOnly": true
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

@@ -1,3 +1,11 @@
+## 2026-11-18 watchdog 重启结果与配置变更
+
+Core `ce1f4f7ec2` 将确定未启动的重启和已启动但结果不明的重启分开。无硬件 watchdog 时，仅确定未启动进入软件重试。已启动后非零退出、超时或等待中断均保留 UNKNOWN。设备更换保留原待重启状态、原因和硬件兜底截止时间。SystemAdminService 同步修正命令失败日志判断。
+
+macOS 与 Linux ARM64 的 JDK 21 模块回归每端 watchdog 116 项、core.system 33 项通过，core.system 每端 2 项跳过。Linux 合同使用普通 UID、空 capability 集合及模拟进程和设备。完整 ARM64 deb 从该提交构建，两份包内 OSGi bundle 与 reactor 产物逐字节一致。验证范围为源码合同和包内容。本轮未部署该包，实际重启派发为 0。
+
+跨 JVM 或系统重启的持久回执、原 Root 配对的 typed reboot broker、Core/watchdog/部署组件调用切换、Main CAP_SYS_BOOT 和旧 logind 权限撤回仍内部 pending。完整 Core/OSGi、Chrony 剩余动作、其余 typed brokers、六组件/provider/launcher 及安装升级移除 purge 和中断恢复矩阵继续实施。原三现场、个人配置和 C/D/E 已只读核对。原 7fd 停机状态与 41 输入/16 回执沿用。原 Chrony UNKNOWN 现场仍正常停放。冻结 12 父项 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-watchdog-reboot-outcomes-checkpoint.json)。
+
 ## 2026-11-18 Core sender 回执跨 purge 保全
 
 Core `5f719e43b3` 在卸载时把固定 sender 文件经原 Root 核对后原子写入 `/etc/kura` 的 Root 0600 文件。副本绑定原 clock namespace、维护 ID 和两侧 UID/GID。重装在 key 和 clock 准入开放前恢复或核对原记录。接收方尚无意图的 pending 路径通过合同验证，保留原字节且派发计数为 0。macOS 和 Linux ARM64 各 86 项 clock 合同及 23 项 JDK 21 检查通过。
