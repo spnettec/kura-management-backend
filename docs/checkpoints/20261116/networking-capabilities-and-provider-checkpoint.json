@@ -1,0 +1,119 @@
+{
+  "recordedAt": "2026-11-18T08:04:26.598587+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "jdk": 21,
+    "corePrerequisiteCommit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "corePrerequisiteTree": "d0aefb974c0f69043b167effedb4f214b9f075a2",
+    "networking": {
+      "commit": "2ce52509c8ff61d3f34d9cce582d98f26ac35556",
+      "tree": "a9ca519a5a7ed0319227cf890077b3b4147034a5",
+      "version": "3.0.0~git202611180759.2ce5250-1",
+      "architecture": "all",
+      "sha256": "7edd6eb5d90dbbe017f7d17ca6889cd840768e4ffccb96e6c729bd4e6a761bf7",
+      "bytes": 9280202,
+      "publishedHelpers": {
+        "kura_network_options.py": "0e94ec5b91f8df6b58800254f8ba73cbf5cb2ae3d098a1c0bed493ac998f4de9",
+        "kura_network_options.sh": "c6f513c82087b2215b2110ab51b394cef01b530e4589d2243fc25544c97f02b4",
+        "kura_network_install.sh": "1fa710c8637f579fdced1dd2ecd75ab2ebd8a41c2dfe608d5b35edca23435ce0",
+        "kura_network_uninstall.sh": "c4e36fc3562c44bd6a7e911de10dfd186c53b904d56f95c02c1e5adacd391d54",
+        "sibling_registry.sh": "e9a951297cb943e2f7f5c390957ccba7b5dccf8bb309d2c7e816761145c60890"
+      },
+      "siblingJars": 9
+    },
+    "compiledFromGit": true,
+    "networkingDpBuilt": true
+  },
+  "retainedLifecycle": {
+    "container": "509edb685ed151d3528c4f060e5a1531235aafe1d8a55b36b53df6927c591b4d",
+    "debian": 13,
+    "architecture": "arm64",
+    "sameFixtureAsLegacyPurge": true,
+    "historicalFalseUpgradeFingerprintExact": true,
+    "syntheticSiteAdminSelectedTrueBeforeRemoval": true,
+    "pairedPackageOptionsDisabledUntilConfigure": true,
+    "capabilityReceiptRootMode": "0600",
+    "receiptExactAcrossPid1ExitAndStart": true,
+    "restoredPropertiesWithSiteEditSha256": "123c19ac8e35953fb3f2d119534b5823aa50bdde8b306af3cd024c3a6db97c16",
+    "configureSingleDispatch": true,
+    "pairedReceiptRetired": true,
+    "maskedHostPowerTargets": true,
+    "sitePolicyExact": true,
+    "privateFilesExact": 7,
+    "nmAndPolkitProcessesExactAcrossMainRun": true
+  },
+  "ordinaryMain": {
+    "mainPid": 627,
+    "systemServiceFlags": {
+      "kura.have.net.admin": true,
+      "kura.have.firewall.admin": true
+    },
+    "afterRemovalSitePropertyObserved": true,
+    "services": {
+      "status": "org.eclipse.kura.nm",
+      "configurationMetadata": "org.eclipse.kura.nm",
+      "firewall": "org.eclipse.kura.net.admin.firewall",
+      "firewallIPv6": "org.eclipse.kura.net.admin.firewall"
+    },
+    "nmReadActualInterfaceCount": 1,
+    "bundleStates": "ACTIVE",
+    "firewallProviderRegistrationOnly": true,
+    "firewallStartupIOErrors": [
+      "Firewall Flooding Protection Configuration",
+      "Firewall NAT Configuration",
+      "Firewall Open Ports Configuration",
+      "Firewall Port Forwarding Configuration"
+    ],
+    "firewallActualRuleWritesPending": true,
+    "probeSha256": "4b54aef7c921bf0a0d2896faad33fabadca6c861de192b887595da6c2558bec2",
+    "probePreservedOutsideAutoload": true,
+    "parkedDisabled": true,
+    "fixture": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T08:02:26.816242415Z",
+      "FinishedAt": "2026-11-18T08:03:01.870014672Z"
+    }
+  },
+  "contracts": {
+    "hostCapabilityEditsPassed": 4,
+    "unsafeOrUnpairedBlockRefused": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFiles": 25,
+    "combinedCPrivateFiles": 9,
+    "centerDPrivateFiles": 29,
+    "e": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "previousOtherFixturesStoppedExact": true,
+    "unknownResubmitted": false
+  },
+  "pending": [
+    "Actual firewall rule writes and full network lifecycle and provider matrix",
+    "Complete Core/OSGi, remaining typed brokers, six components/providers/launchers and twelve parents"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "evidenceRoot": ".management-close-20261116/networking-application-flags-20261118",
+  "pushed": false
+}

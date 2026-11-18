@@ -1,3 +1,13 @@
+## 2026-11-18 Networking 保留重装与 OSGi provider
+
+Networking `2ce5250` 在移除前保留独立 Root 0600 回执，以该回执绑定的临时配置段禁用两个应用能力。重装只撤回配对的临时配置段，保留原设置和管理员后来追加的属性。旧版本的无回执 `false` 在实际跨版本升级时保持原字节和 inode。四项源码检查覆盖行边界、原始组合、重试以及修改/异配的拒绝。
+
+按原检查点续接同一独立 Debian。JDK 21 从 Git 构建并核对完整 Networking deb 和部署包。夹具管理员显式设置两项初始值，移除后追加无关属性，解包并正常重启夹具 PID 1 后仍为 unpacked，回执和配置一致。配置一次后恢复原 `true` 值及追加属性，删除已结算的回执。七份已核私有文件、站点 NM 文件和 Core 策略保持。
+
+该夹具用原 systemd Main 实际启动，Core 读取两项 `true` 和新增属性，`org.eclipse.kura.nm` 注册状态和配置元数据服务，实际 NM 状态查询返回 1 项。IPv4/IPv6 防火墙 provider 均注册，启动时保存规则报 IO_ERROR，实际防火墙规则写入仍内部 pending。已正常停止 Main，保全只读验收 bundle 到自动加载目录之外，原夹具再次正常停机。
+
+原三现场、C/D/E、个人配置、7fd 停机 41 输入/16 回执和原 UNKNOWN 已复核。完整 Core/OSGi、typed brokers、六组件/provider/launcher、全部生命周期及 12 父项继续实施。冻结父项仍 0/12，external deferred 仅原 3 项。见 [本轮检查点](networking-capabilities-and-provider-checkpoint.json)。
+
 ## 2026-11-18 Networking 旧 NM 配置跨 purge 保全
 
 Networking `167ea8b` 在 dpkg 仍登记旧 `99-kura-nm.conf` 时，先落 Root 0600 记录，再以不改名的临时 diversion 将 dpkg 的清除目标指向受保护的空路径。purge 或重装确认旧登记消失后解除。外部 diversion、危险路径和被占用的目标拒绝处理。桥接构建器 `ef19810` 在宽松 umask 下仍生成受保护的归档目录和 conffiles 元数据。
