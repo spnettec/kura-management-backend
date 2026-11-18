@@ -1,0 +1,130 @@
+{
+  "recordedAt": "2026-11-18T09:44:43.564964+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "agentCommit": "557f7b3358065c57a7f03f50b88dd6f4dd62c0bb",
+    "agentTree": "8f296c6b49961344d27ac6b15b3d3e20f180a523",
+    "toolchain": "Rust 1.95.0",
+    "target": "aarch64-unknown-linux-gnu",
+    "testedFromGit": true,
+    "releaseElfSha256": "84c2df20cd83a40c69920cfee34807691ae32fe1c13a3de8db0cc33809b0a07e",
+    "testElfSha256": "0e090f8598a9d080a60871cec6a53219f52d4a8ee7957a0e224e770e742e0e8a",
+    "fullRust": {
+      "passed": 778,
+      "failed": 0,
+      "ignored": 47
+    }
+  },
+  "review": {
+    "command": "firewall-restore-imported-review",
+    "fixedRoot": true,
+    "sharedOriginalLock": true,
+    "requiredOwnerLeaseSchema": 5,
+    "missingOwnerRefused": true,
+    "callerRootRefused": true,
+    "normalElfCapabilitiesZero": true,
+    "filesystemFingerprintsExact": true,
+    "policyReconstructionDispatchedByReview": false,
+    "originalHistoryRecreated": false,
+    "pendingIntentProbe": {
+      "blocksBeforeOwnerLookup": true,
+      "unknownRetained": true,
+      "originalFingerprintExact": true,
+      "capabilities": 0,
+      "writesByCli": false,
+      "bootFixture": "ea476909-0a25-4543-8adb-74f7ec0109c1"
+    }
+  },
+  "verification": {
+    "initialDifferentFixtureUnknown": true,
+    "originalFailedBatchSha256": "d96dcf1265b976ddf1dcfaac5a8120ec94ad498b0362e1b74af56d2e6bcfaf54",
+    "originalUnknownRedispatched": false,
+    "nativePositive": {
+      "container": "2806055a1bfac7044f2ac5b586aaa7eaa101ff71ba66ef677c4f7f6729f8837d",
+      "testExitCode": 0,
+      "wrapperExit": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 137,
+        "Error": "",
+        "StartedAt": "2026-11-18T09:37:12.770835821Z",
+        "FinishedAt": "2026-11-18T09:37:23.973628827Z"
+      },
+      "forcedAfterTestAndReadback": true,
+      "result": {
+        "batchSha256": "d1b4484b9d4feb9c215a3bbaa7df3dc9a7163365754a10454cbbd1811a0ebc94",
+        "chains": 58,
+        "kernelGenerationAfter": 2,
+        "kernelGenerationBefore": 1,
+        "rules": 144,
+        "syntheticSource": true,
+        "tables": 6
+      }
+    },
+    "nativeNegative": {
+      "container": "d1a2da5dbec9f5b8c4da9335193781effe53f5a3234023c398b0f061d9b241da",
+      "testExitCode": 0,
+      "wrapperExit": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 137,
+        "Error": "",
+        "StartedAt": "2026-11-18T09:37:12.761152858Z",
+        "FinishedAt": "2026-11-18T09:37:23.011345032Z"
+      },
+      "forcedAfterTestAndReadback": true,
+      "result": {
+        "errno": 17,
+        "kernelUnchanged": true,
+        "rejectedSequence": 1498367490,
+        "replySha256": "0e7496c62b5082981e3276c67d398343be44dd048776f3767593241472e464b1"
+      }
+    },
+    "liveJVMOrNM": false,
+    "systemdImportedRestore": false
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "original7fdStateExact": true,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Imported early boot durable dispatch and valid physical epoch/handle rebinding",
+    "Shared imported layouts require independently proven original foreign baseline",
+    "Real JVM/NM authority to schema 5 lease and early boot",
+    "Offline boot UNKNOWN adjudication and original receipt recovery",
+    "Complete Core/OSGi, legal Main, remaining typed brokers, six component lifecycle, and all twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/imported-firewall-boot-plan-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

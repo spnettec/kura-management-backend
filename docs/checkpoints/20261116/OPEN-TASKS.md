@@ -1,3 +1,11 @@
+## 2026-11-18 imported 防火墙早启预检与真实内核批次
+
+Agent `086dbd2` 增加固定 Root 的 `firewall-restore-imported-review`。预检取已提交的 schema 5 配对租约、原运行态物理 epoch 和结算后的原策略头，按 typed 模型生成 `ip`/`ip6` 的 filter、nat、mangle 表及规则。只读共享锁下复核原租约和文件身份，命令输出镜像指纹及对象计数。共享链中的未授权规则、额外对象、base hook 漂移、缺失原证据及未决日志均阻止生成整表计划。镜像不创建历史回执表或历史规则标记。正式 release CLI 在 capabilities 为 0 的独立空现场拒绝缺租约和 Root 参数，原锁及目录指纹精确。另一个 capabilities 为 0 的夹具在查找 owner 前保留待确认原意图的 UNKNOWN，原意图和锁指纹精确。
+
+Agent `557f7b3` 修正 Netfilter 大批次的成功 ACK 请求。批次结束时请求一个成功 ACK，内核继续主动发送命令 NACK。首个旧编码夹具在读取 ACK 时得到 UNKNOWN，该意图及日志保留，未再次派发。在全新 IPv6 OUTPUT DROP 策略夹具中，真实 Linux 一次原子创建 6 表、58 链和 144 规则，内核 generation 只递增一次，完整读回符合 typed 模型。另一全新夹具用 EEXIST 原始负回执核定原子拒绝，内核保持空规则集。两个测试进程均正常返回 0。外层保持命名空间的容器在完成采集后因停止超时退出 137，测试和采集已先完成。最终固定 ARM64 ELF 的全量 Rust 套件为 778 通过、0 失败、47 跳过。
+
+真实内核验证的输入是从仓内测试数据生成的独占布局，并未经过正式 systemd imported 恢复入口。正式 dispatch 与新物理 epoch/handle 接管、共享链先恢复原所有者基线、真实 JVM/NM 签发和后续合法更新仍内部 pending。完整 Core/OSGi、其余 typed brokers 和六组件矩阵继续保留。原三现场、C/D/E、个人配置与 7fd 停机 41 输入及 16 回执保持。冻结父项 0/12，仅有原 3 项 external deferred。见 [检查点](firewall-imported-boot-review-checkpoint.json)。
+
 ## 2026-11-18 配对租约的正向防火墙早启验证
 
 Agent `a497845` 增加独立 Linux 集成夹具。正式防火墙事务在真实 nft 内核上完成 prepare、apply 和 confirm，形成 revision 1 确认策略和原提交日志。正式 coordinator 生成并核验原 schema 4 配对租约、双标记和启动完成回执。NetworkManager D-Bus 和 Kura JVM 见证使用替身。两项启动控制器回归通过。
