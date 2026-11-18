@@ -1,0 +1,196 @@
+{
+  "recordedAt": "2026-11-18T09:05:02.554957+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "agentCommit": "44e023bcb66db967da80a4aefd25b84ef75de82c",
+    "agentTree": "098439234aea0f876606d52ef10ab5e7420ac602",
+    "toolchain": "Rust 1.95.0 and JDK 21",
+    "compiledFromGit": true,
+    "releaseElf": true,
+    "protocolSha256": "61163caf87448c050693b4af36badc05dc01763166dfea6bc41cff6f940e70c2",
+    "inputs": {
+      "binarySha256": "6a5ede6d3e43ae36a321532d4c8ded8bcc49cf0e34872acfd3ce2899ad2f7768",
+      "bridgeSha256": "0ab3eb0c8c0f734ddff2cce979bb75f429141eadb1b57f6dc906a6d239ef6006",
+      "loaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "agentCommit": "44e023bcb66db967da80a4aefd25b84ef75de82c",
+      "bridgeCommit": "4b58a55bb44d48e2bee3098e550bb59b506c75c1",
+      "coreCommit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c"
+    },
+    "core": {
+      "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2",
+      "version": "6.0.0~git202611180859.e952f82-1",
+      "architecture": "arm64",
+      "bytes": 203597316,
+      "sha256": "baea75758d881f099f78f7ad2abba12b3c4aee7fc53f1a5bb961c38b9a178fa1"
+    },
+    "agentLegacy": {
+      "agentCommit": "44e023bcb66db967da80a4aefd25b84ef75de82c",
+      "version": "0.1.0~fwboot202611180902.44e023b.legacy-1",
+      "architecture": "arm64",
+      "bytes": 6606468,
+      "sha256": "8cbd55f95fdeb4257ea5f4a41f7b291ad6ce92f417e887917f60b877746074ed",
+      "agentProfile": "legacy-root-v1",
+      "manifestSha256": "0fd4373cc5e4abba3f67a9cfb1bf7006c78ee21e951d59e348ef133cd8dcab1f",
+      "binarySha256": "6a5ede6d3e43ae36a321532d4c8ded8bcc49cf0e34872acfd3ce2899ad2f7768",
+      "firewallBoot": {
+        "schemaVersion": 1,
+        "runtimeProfile": "legacy-root-v1",
+        "unitPath": "/usr/lib/systemd/system/kura-management-firewall-boot.service",
+        "unitSha256": "81227518d5e4c8dda8dc226086a9eb338969f945f3406c275ee378a6ff02068f"
+      },
+      "maximumGlibc": "2.34"
+    },
+    "agentNative": {
+      "agentCommit": "44e023bcb66db967da80a4aefd25b84ef75de82c",
+      "version": "0.1.0~fwboot202611180902.44e023b.native-1",
+      "architecture": "arm64",
+      "bytes": 6664968,
+      "sha256": "7d5346d91dd990528e35c34e817f436cac2e85657a1576179415a9db59f09f4d",
+      "agentProfile": "native-nonroot-v1",
+      "manifestSha256": "0fd4373cc5e4abba3f67a9cfb1bf7006c78ee21e951d59e348ef133cd8dcab1f",
+      "binarySha256": "6a5ede6d3e43ae36a321532d4c8ded8bcc49cf0e34872acfd3ce2899ad2f7768",
+      "firewallBoot": null,
+      "maximumGlibc": "2.34"
+    },
+    "rustTargetedPassed": 9,
+    "javaBridgeTestsPassed": 160,
+    "packageTestsPassed": 88,
+    "previousFullRegression": {
+      "passed": 769,
+      "failed": 3,
+      "ignored": 44,
+      "container": "660074f4d4d6ac61c3d992ee6601f606c39bc58efef7de593175856c2b659f45",
+      "failedCasesRecheckedOnFixedReadOnlyTestElf": 3,
+      "effectiveFilesystemWritableForIsolatedSyntheticTests": true,
+      "finalFullSuiteVerified": false
+    }
+  },
+  "fixture": {
+    "container": "81b14c57a09da6100dc51fa33a08f1462b6bf76730e45c288c45bdb9a04cf886",
+    "debian": 13,
+    "architecture": "arm64",
+    "network": "none",
+    "privileged": false,
+    "noHostMounts": true,
+    "physicalPowerTargetsMasked": true,
+    "normalExit": true
+  },
+  "validation": {
+    "freshDefault": {
+      "agent": {
+        "MainPID": "1047",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "256457777090",
+        "ExecMainCode": "0",
+        "ExecMainStatus": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "SubState": "running",
+        "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+        "UnitFileState": "enabled"
+      },
+      "boot": {
+        "MainPID": "0",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "ExecMainCode": "0",
+        "ExecMainStatus": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "SubState": "dead",
+        "FragmentPath": "/usr/lib/systemd/system/kura-management-firewall-boot.service",
+        "UnitFileState": "disabled"
+      },
+      "sandbox": {
+        "Restart": "no",
+        "ExecStart": "{ path=/usr/bin/yofc-management-agent ; argv[]=/usr/bin/yofc-management-agent firewall-restore-confirmed ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "CapabilityBoundingSet": "cap_net_admin",
+        "AmbientCapabilities": "cap_net_admin",
+        "ReadWritePaths": "-/var/lib/kura-management-agent/firewall",
+        "ProtectKernelTunables": "yes",
+        "ProtectSystem": "strict",
+        "NoNewPrivileges": "yes",
+        "Wants": "tmp.mount network-pre.target",
+        "Before": "kura-management-agent.service shutdown.target network-pre.target",
+        "After": "local-fs.target systemd-sysctl.service systemd-tmpfiles-setup.service nftables.service systemd-journald.socket tmp.mount -.mount system.slice"
+      },
+      "lock": {
+        "info": "3773307|600|0|985|1|0|1794992632",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "siteRulesExact": true,
+      "remoteDisabled": true
+    },
+    "explicitEnableNoStart": true,
+    "actualSystemdBoot": {
+      "systemd": {
+        "MainPID": "0",
+        "Result": "exit-code",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "256459750243",
+        "ExecMainCode": "1",
+        "ExecMainStatus": "1",
+        "LoadState": "loaded",
+        "ActiveState": "failed",
+        "SubState": "failed",
+        "FragmentPath": "/usr/lib/systemd/system/kura-management-firewall-boot.service",
+        "UnitFileState": "enabled"
+      },
+      "rejectedMissingOwner": true,
+      "noRestoreIntent": true,
+      "originalRootFilesExact": true,
+      "normalAgentNotRequired": true,
+      "coreNotRequired": true
+    },
+    "removePurge": {
+      "kernelExact": true,
+      "coreExact": true,
+      "enabledBootLinkRetired": true,
+      "blankAgentStatePurged": true
+    },
+    "subsequentNativeInstall": {
+      "excludedEarlyPayload": true,
+      "kernelExact": true,
+      "coreExact": true,
+      "unitsInactive": true
+    },
+    "originalOwnerPositiveBootValidated": false,
+    "importedLayoutBootValidated": false
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "oldFixturesStopped": true,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Positive boot with the actual committed original owner lease and confirmed policy",
+    "Imported-layout confirmed restore, explicit UNKNOWN reconciliation, firewall and remaining typed brokers",
+    "Complete Core/OSGi, all six components, providers and launchers",
+    "Complete installation, upgrade, removal, purge and interruption matrix and twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/firewall-early-unit-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

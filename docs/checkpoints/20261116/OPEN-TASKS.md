@@ -1,3 +1,13 @@
+## 2026-11-18 已确认防火墙恢复的可选早启发行单元
+
+Agent `44e023b` 只在 legacy-root-v1 包内增加可显式启用的 vendor oneshot 及其入包摘要。默认不启用、不运行。明确启用后进入多用户启动事务，拉起并排序在 `network-pre.target` 前。单元只有 NET_ADMIN，开启 NNP，只有原 firewall 子树可写，沿原锁 inode 只读打开并排他锁定。包维护核对 vendor 身份并拒绝正在执行的 actor，移除时撤销原启用链接。native-nonroot-v1 包没有该单元或 manifest。
+
+由 Git 以 Rust 1.95 和 JDK 21 实构 Linux ARM64 release ELF、正式格式的本地协议 crate、Java bridge、Core deb 与两种 Agent deb。9 项 Rust 定向、88 项打包、160 项 Java bridge 通过。上一提交的 816 项全量 Rust 记录为 769 通过、3 失败、44 跳过；3 项因并行构建替换其子进程 executable，已在最终 Rust 源码的固定 ELF 副本单独复测通过。当前完整 suite 未重跑。
+
+独立 Debian 13 ARM64 用同一次 Core 安装，首装 legacy Root，普通 Agent 实际运行、远程关闭，早启单元 disabled，站点 nft 完整。显式 enable 后正常停止 PID 1，续接同一容器；实际 systemd 早启调用一次，因缺少原 owner lease 报拒绝，未创建意图或内核表，同一个 Root 锁、配置及 Core 文件精确。实际 remove/purge 保全独立站点 nft 和 Core，撤销启用链接。随后实装 native 包，早启仍无出口，普通 agent 和 Core 均未启动，夹具正常停机。
+
+实际已提交 owner lease 的正向 boot、imported ip/ip6 布局、明确 UNKNOWN 的原编号核定、其余 typed brokers 和完整六组件/provider/launcher/生命周期矩阵继续内部 pending。原三现场、C/D/E、个人配置、7fd 停机 41 输入/16 回执保持。冻结父项 0/12，external deferred 仅原 3 项。见 [本轮检查点](firewall-confirmed-early-unit-checkpoint.json)。
+
 ## 2026-11-18 已确认 typed firewall 策略的 Root 恢复执行器
 
 Agent `24d8a47` 提供固定入口 `firewall-restore-confirmed`。只承认固定 Root 的原已提交 schema 4 配对租约，以及私有布局中与原已结算日志一致的 V3/V4 确认策略。入口从 typed policy 重新编译规则，只允许在目标表不存在时独占创建，遇到其他写入方或现有表漂移则拒绝。先同步带 boot ID、Root 与网络命名空间身份的原意图，再单次派发。无原回执保持 UNKNOWN，跨 boot 禁止再派发；复制到其他 Root 的原意图在读取原回执路径前拒绝。打包生命周期继续保全未决意图和历史回执。
