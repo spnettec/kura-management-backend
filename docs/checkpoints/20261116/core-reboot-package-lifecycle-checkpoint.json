@@ -1,0 +1,149 @@
+{
+  "recordedAt": "2026-11-18T06:53:54.536663+00:00",
+  "core": {
+    "base": "47b390602756f79bc7e198ed84433799c6a814c8",
+    "branch": "wip/management-close-20261116",
+    "commit": "120853ec99cc151abf2e4a1841954a77d27887c1",
+    "tree": "c3a853f0dda32c5a1947b68a51d6230c99088c85"
+  },
+  "implemented": {
+    "preinstAndPrermVerifyExactInstalledCode": true,
+    "bootstrapsIdentityBeforeAuthority": true,
+    "contentAddressedUnitPublication": true,
+    "automaticSocketEnablement": true,
+    "maintainsRootFenceUntilCheckedActivation": true,
+    "systemdMainAuthorizationUnchanged": true,
+    "independentStateOutsidePurge": true,
+    "missingEstablishedStateRefusesReset": true
+  },
+  "validation": {
+    "macOS": {
+      "rebootPassed": 43,
+      "rebootSkipped": 2,
+      "clockPassed": 86
+    },
+    "linuxArm64": {
+      "rebootPassed": 45,
+      "rebootSkipped": 0,
+      "clockPassed": 86,
+      "uid": 65534
+    },
+    "package": {
+      "sha256": "a69f62a71f02a9381ae5118e721156ba46a84fe1c9931c55b122a76f11cf317d",
+      "bytes": 203586550,
+      "architecture": "arm64",
+      "packageVersion": "6.0.0~git202611180650.120853e-1",
+      "rebootManifestSha256": "aefcfe34a43969e9fd0b8b69c6cfd87ca53280108731b9257cd8923eebd44547",
+      "rebootFiles": {
+        "bin/kura_clock_broker.py": "d229bb760a1dc9d204148d3cc4668c62c87313459549d8716044de4e0f85c35d",
+        "bin/kura_clock_journal.py": "64741c7627d4b729ffe54fd2d0b5ceca281afd80ed12419bde099b21a4668b3d",
+        "bin/kura_reboot_broker.py": "6e9eadd46928e95f220f306a599cd0dcee313aa59d522d6798d64d4ba9421f32",
+        "bin/kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+        "bin/kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1",
+        "bin/kura_reboot_setup.py": "ce3bdc8f9be78bd271fcef606736746dd40abefc39ca71c723ac432ceaf1fe78",
+        "libexec/reboot-broker/kura-reboot-broker.service": "7068472da417e809c480d5d29abeb3adcbf9d6c04c23c86f468aacb7e525dff2",
+        "libexec/reboot-broker/kura-reboot-broker.socket": "6c9cc51d43dd33c1074d752bd8ac2419d7ad565a218bb7f36701e85f8846f9a4",
+        "libexec/reboot-broker/kura.service": "2fa5747777f233eb4219ff32a8d7527c34702628b0629ecc007df7956fa642e6"
+      }
+    },
+    "buildJdk": 21,
+    "ciUsedIsolatedSourceAndCache": true,
+    "actualDpkgReturnCodes": {
+      "fresh-install": 0,
+      "remove": 0,
+      "purge": 0,
+      "unpack": 0,
+      "stop-while-unpacked": 0,
+      "restart-while-unpacked": 0,
+      "configure": 0,
+      "start-main-readback": 0,
+      "park-fixture": 0
+    }
+  },
+  "installed": {
+    "distribution": "Debian 13 ARM64",
+    "automaticFreshProvisioning": true,
+    "previousTestFixtureReused": false,
+    "exactPersistedFiles": 8,
+    "pid1RestartWithDpkgStatusUnpacked": true,
+    "kernelBootUnchanged": true,
+    "observedChangedFingerprintFieldsAcrossPid1Restart": [
+      "device"
+    ],
+    "unchangedOriginalMaintenancePurposeUntilConfigure": true,
+    "syntheticUnknown": true,
+    "sameIdReadbackViaActualMain": {
+      "package": "6.0.0~git202611180650.120853e-1",
+      "mainPid": 1095,
+      "actorPid": 1229,
+      "originalRequestId": "0b6c3527-1739-4104-886e-408f02200564",
+      "rootOperationCount": 1,
+      "senderPendingCount": 1,
+      "issuedThisInvocation": false,
+      "realRebootDispatches": 0,
+      "reply": {
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "currentRequest": false,
+        "namespace": "7b9a6f79-7ec6-4360-ab8d-a8a24266b248",
+        "observedBootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "reason": "DISPATCH_UNCONFIRMED",
+        "requestId": "0b6c3527-1739-4104-886e-408f02200564",
+        "requestSha256": "206ebc17361cb357dfce4e1d38c9ca929e7c9b09b5f0fbb5b90dc25118530f33",
+        "schema": 1,
+        "state": "UNKNOWN"
+      }
+    },
+    "fixtureState": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T06:52:41.686489978Z",
+      "FinishedAt": "2026-11-18T06:52:56.372152946Z"
+    }
+  },
+  "pending": [
+    "Cross-version installed broker upgrade and broader maintainer-script interruption points",
+    "Production reboot callers, privilege withdrawal, real dispatch, kernel boot and application recovery",
+    "Remaining Core/OSGi and typed brokers, six components/provider/launcher full matrix and all twelve parents"
+  ],
+  "preservation": {
+    "originalLiveCount": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "centerDPrivateExact": 29,
+    "environmentE": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16,
+      "stateExact": true
+    },
+    "oldChronyUnknownStateExact": true,
+    "earlierIndependentFixturesExact": true
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

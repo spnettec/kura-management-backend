@@ -1,3 +1,13 @@
+## 2026-11-18 Core 重启 broker 自动安装与 purge 后续接
+
+Core `120853ec99` 将重启 broker 接入 dpkg。首次配置先保留唯一安装标记，再发布配对 Root、发送端和已校验的 systemd 单元。升级和移除在已配对日志锁内设置围栏。卸载与 purge 保留独立 Root 及 sender，已建立配对缺文件时拒绝重新初始化。配置核对实际单元与 socket 启用后才解除维护围栏，原 UNKNOWN 仍阻止新派发。
+
+macOS 43 项重启合同通过、2 项 Linux 专属跳过。Linux ARM64 45 项均通过，两平台各 86 项时钟回归通过。JDK 21 从 Git 构建的完整 ARM64 deb 在新的独立 Debian 13 上实际首装、卸载、purge、解包、配置各一次。解包后正常重启夹具 PID 1，dpkg 仍为 unpacked，socket 未加载，原围栏与八份记录不变。跨该次重挂仅设备号改变，文件原内容、inode 和其余已核元数据精确，内核 boot ID 保持。配置重新启用配对 socket。
+
+单条 UNKNOWN 由夹具的派发替身建立，实际重启派发为 0。恢复配置后，普通 Main 通过 OSGi 探针和生产 helper 查回同 Root 的原 ID，返回 `currentRequest=false`，Root 仍单条 UNKNOWN、发送端仍单条待办。八份原记录在查回及正常停机后保持，Main 已 disabled。此证据覆盖同包卸载重装、purge 与解包后中断，跨版本实际升级、脚本内更多中断点、产品调用接线、旧权限撤回与实际重启、内核 boot 和业务恢复仍内部 pending。
+
+完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全部生命周期矩阵继续实施。原三现场、个人配置、C/D/E 和 7fd 停机 41 输入/16 回执已复核，旧 UNKNOWN 留在原 Root。冻结 12 父项 0/12，external deferred 仅原 3 项。见 [检查点](core-reboot-package-lifecycle-checkpoint.json)。
+
 ## 2026-11-18 Core 重启 broker 实装 socket 与 Main 准入
 
 Core `47b3906027` 将固定 reboot 协议接入 systemd 激活的 Unix socket。客户端验证 PID 1 持有的监听端。Root actor 用内核 pidfd、实际 MainPID、InvocationID、父子关系、账号和 cgroup 核对固定 helper。actor 的 capability 集合为空，NNP 为 1。包保留三份单元副本，核对实际加载单元和源码 SHA。Root 核对并接受密钥服务预留的固定 Root 0700 空目录，活动覆盖仍拒绝。派发器固定调用 systemctl reboot，受理和实际 boot 变化仍分开。
