@@ -1,0 +1,208 @@
+{
+  "recordedAt": "2026-11-18T07:42:34.874131+00:00",
+  "branch": "wip/management-close-20261116",
+  "core": {
+    "previous": {
+      "package": "kura-core",
+      "version": "6.0.0~git202611180730.c77d6a0-1",
+      "architecture": "arm64",
+      "commit": "c77d6a035713aca4e06ea0a0ceb051028b1e3a65",
+      "tree": "bda81f0b3641c5d9ef7c10ea2888458342c7b142",
+      "bytes": 203597322,
+      "sha256": "032fca1fa7a6025f7574dbad521d626c8d8b0f76753e96d9ad60d51977ec4427"
+    },
+    "current": {
+      "package": "kura-core",
+      "version": "6.0.0~git202611180735.e952f82-1",
+      "architecture": "arm64",
+      "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2",
+      "bytes": 203597316,
+      "sha256": "4f941ead7c742b7439d12b10e5f361c84faf78f6da52f13938f80a809f761f88"
+    },
+    "rule": "51-kura-systemd.rules",
+    "actualUpgradeAheadOfNetworking": true,
+    "mainAndRebootCohortUnchanged": true
+  },
+  "networking": {
+    "previous": {
+      "package": "kura-networking",
+      "version": "3.0.0~git202611180732.d226b61-1",
+      "architecture": "all",
+      "commit": "d226b613fdb26beacfa156e5eecb2be461c0e3e5",
+      "tree": "4009e77b8f203da44347d6a22acc40e420c513a3",
+      "bytes": 9277432,
+      "sha256": "d60f287792355579d32a8d17bfba5a44294da5792879d2cfb609d976ca5d87fd"
+    },
+    "current": {
+      "package": "kura-networking",
+      "version": "3.0.0~git202611180734.2fe49eb-1",
+      "architecture": "all",
+      "commit": "2fe49ebe574239eb1534f5af01884614ca59c218",
+      "tree": "a2735b12dfcf6a0d2816e00b63cfe1ab574b804e",
+      "bytes": 9277230,
+      "sha256": "25f8d3e1f7c8f6a889586aa2737418b588e66a9f9df12d1816f8ab68c59a854a"
+    },
+    "rule": "52-kura-networking.rules",
+    "authority": [
+      "NetworkManager",
+      "ModemManager",
+      "wpa_supplicant"
+    ],
+    "fullDebAndDpBuilt": true
+  },
+  "observed": {
+    "container": "f596cf0fdcce33ed8065eed0958f89f6e51fdd036eee570f44589f69c3487d1c",
+    "debian": 13,
+    "architecture": "arm64",
+    "jdk": 21,
+    "noNetworkOrMounts": true,
+    "authorizationReadOnly": true,
+    "oldNetworkingRuleExactAfterCoreOnlyUpgrade": true,
+    "actionsChanged": {
+      "chronyStart": [
+        0,
+        1
+      ],
+      "chronydStop": [
+        0,
+        1
+      ],
+      "namedDisallowedVerb": [
+        0,
+        1
+      ]
+    },
+    "allowedDnsAndNMAuthorizationsExact": true,
+    "coreArchiveRootMode": "0600",
+    "operations": {
+      "initial-core": 1,
+      "install-legacy-networking": 1,
+      "upgrade-core-only": 1,
+      "unpack-networking-new": 1,
+      "start-unpacked-fixture": 1,
+      "configure-networking-new": 1,
+      "remove-networking": 1,
+      "purge-networking": 1
+    },
+    "forcedContainerExit": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 137,
+      "Error": "",
+      "StartedAt": "2026-11-18T07:33:41.875523983Z",
+      "FinishedAt": "2026-11-18T07:39:09.271706244Z"
+    },
+    "forceSignals": [
+      37,
+      9
+    ],
+    "sameContainerAndStillUnpackedAfterStart": true,
+    "namespaceAndKeyOperations": {
+      "key": 0,
+      "keyStartup": 0,
+      "clock": null,
+      "reboot": 0
+    },
+    "mainBootChoice": "disabled",
+    "configuredJars": 9,
+    "registry": {
+      "returnCode": 0,
+      "registryBytesAndOrderExact": true,
+      "registryMetadataReplaced": true,
+      "previousRegistry": {
+        "uid": 0,
+        "gid": 992,
+        "mode": 416
+      },
+      "registry": {
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      },
+      "noAdditionalConfigureDispatch": true,
+      "allSevenPrivateFilesExact": true
+    },
+    "privateFilesExact": 7,
+    "ownRuleAndDropInRemoved": true,
+    "siteFileExact": true,
+    "ordinaryPurgeNoOp": true,
+    "finalSystemdExit": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T07:40:03.084004413Z",
+      "FinishedAt": "2026-11-18T07:41:04.1185158Z"
+    }
+  },
+  "contracts": {
+    "macOS": {
+      "passed": 28,
+      "skipped": 21,
+      "policyOrderModelPassed": true
+    }
+  },
+  "preservation": {
+    "originalLive": 3,
+    "personalFilesExact": 25,
+    "workspacesCDEExact": true,
+    "oldParked": {
+      "cutoverDebian": {
+        "container": "528c61dd7a399166379fcecd3fa19427871b797fb748660cf77242674d990497",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "original7fd": {
+        "container": "7fd8c6a0967a58a95c123785e5feff68cd0ce74e370d00ee875f9e215ac08d7e",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "previousChronyUnknown": {
+        "container": "d78c192b7fb522e91ec6e04f0b05efeb3a71142b5fcbe149adaf6f1b5fe3dc3c",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "clockDebian": {
+        "container": "bec63b6102e6352252b119c8229c382b95933192a5e946e6911474687bbe8edd",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "previousRebootDebian": {
+        "container": "a79400b3f0bb2efbf06650ec94e7fe9215d1e972a2bbdc83250576f00beb8873",
+        "stateExact": true,
+        "exitCode": 0
+      }
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false
+  },
+  "pending": [
+    "Purge with an obsolete conffile and retention of active NM administrator configuration",
+    "Retained Networking reinstall and restoration of the two application capability flags",
+    "Sibling registry metadata continuity",
+    "Real Core/OSGi provider operation, remaining typed brokers and complete six-component matrix",
+    "All twelve frozen parents"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "evidenceRoot": ".management-close-20261116/networking-retained-lifecycle-20261118",
+  "pushed": false
+}

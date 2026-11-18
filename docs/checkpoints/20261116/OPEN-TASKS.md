@@ -1,3 +1,13 @@
+## 2026-11-18 Core 与 Networking 的 systemd 授权顺序
+
+Core `e952f82bb9` 把共享规则发布到 `51-kura-systemd.rules`，让 Core 在旧 Networking 规则之前决定 `kurad` 的 systemd 与 logind 授权。新版规则发布后，原 `kura.rules` 与可见的旧 wildcard 规则停用并保留原文件归档。Networking `2fe49eb` 的 `52-kura-networking.rules` 仅保留 NetworkManager、ModemManager 和 wpa_supplicant 授权。
+
+从 Git 用 JDK 21 构建两代 Core deb、两代 Networking deb 和部署包。独立 Debian 实装旧组合后，只升级 Core 并保留旧 Networking。两项 Chrony 管理动作和一项越界 named 动作的实际 polkit 决策转为拒绝。允许的 named/bind9 动作及 NetworkManager 授权仍有效。旧规则按原字节归档为 Root 0600。Main 保持 disabled，实际服务、电源和业务写入派发均为 0。
+
+新版 Networking 解包后容器停止超时，Docker 发送 SIGKILL 并以 137 退出。同一容器恢复后仍为 unpacked，原 Core 授权、现场 NM 文件及七份已核私有文件保留，Docker 重挂的设备号单独核对。继续原 configure 一次成功，九个 JAR 和注册顺序保持。注册表内容相同，原子重写后 inode 变化，属组及模式从 0:992/0640 变为 0:0/0644。实际移除成功，撤下 Networking 的规则与 drop-in，独立站点 NM 文件和 Core 授权保留。普通包移除后已为 not-installed，随后 purge 无待处理对象。夹具最终由 systemd 正常退出。
+
+旧 NM obsolete conffile 的实际 purge、保留重装的应用标志、注册表权限连续性和完整运行矩阵仍内部 pending。原三现场、C/D/E、个人配置与 7fd 停机 41 输入/16 回执已复核。冻结父项仍 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-networking-polkit-package-checkpoint.json)。
+
 ## 2026-11-18 普通 Main 重启权限撤回
 
 Core `6a8a19c8ac` 从普通 Main 的 ambient 和 bounding 集合移除 `CAP_SYS_BOOT`。升级根据同 Root 的包历史核对保存的原软件包和原单元，再采用入包的配对 vendor 单元。保留重装复用已有 Main 回执，实际加载配置在解除维护围栏前核对。Core 拒绝 `kurad` 的 logind 电源动作并归档旧规则。Networking `dc8cd36` 的兼容脚本停止创建或删除共享规则，保留 NetworkManager 等专用规则。
