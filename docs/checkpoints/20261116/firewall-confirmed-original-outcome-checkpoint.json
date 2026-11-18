@@ -1,0 +1,90 @@
+{
+  "recordedAt": "2026-11-18T09:15:38.847534+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "agentCommit": "116e8e0efba4bd6740ad91e6e3ae2436a9b74b7b",
+    "agentTree": "5b396e11e31cf88430346ba098645158157eff70",
+    "toolchain": "Rust 1.95.0",
+    "target": "aarch64-unknown-linux-gnu",
+    "cliReleaseElfSha256": "2a30e75b505c2bf4345f35020dc60ca9eb08721d12a9207a6a128dd3703690e5",
+    "testElfSha256": "378fc541e8d81067cc71a31755d001a37757f2a3d594f2addc17005a91568b01",
+    "copiedImmutableElf": true,
+    "compiledFromGit": true,
+    "rustTargetedPassed": 11,
+    "packagingTestsPassed": 88,
+    "fullRust": {
+      "passed": 776,
+      "failed": 0,
+      "ignored": 44,
+      "container": "73228b1e439db982b75d1ccea016bd90208443ceabfa6a491efc4dc7f55a0945"
+    }
+  },
+  "validation": {
+    "fixedLocalRoot": true,
+    "callerSuppliedIdsAccepted": false,
+    "existingReceiptOnlyAcknowledgement": true,
+    "unknownWithoutReceiptRemainsUnknown": true,
+    "noNftDispatch": true,
+    "compiledCliFixtures": {
+      "original": {
+        "id": "50ce53ace10e192b6d9b28acfca28f4c3a73ddd017673d39dde395d036444e60",
+        "image": "sha256:f5a4e7739ff74b86de034e078f18271cd0f4313c60b6da1c4255a37e5840a23a",
+        "rootReadonly": true,
+        "details": {
+          "historicalUnknownRetained": true,
+          "exactReceiptAcknowledged": true,
+          "immutableHistory": true,
+          "lockAdmissionChecked": true,
+          "callerSelectedRootRejected": true,
+          "lifecycleAdmitsAfterExactAcknowledgement": true,
+          "currentReceiptObservedWithoutPending": true,
+          "effectiveCapabilities": 0
+        }
+      },
+      "foreign": {
+        "id": "0f0341b676db0cdb022fd2c7a8296db8759935acdd9c5243a3e1611f128a4a83",
+        "image": "sha256:f5a4e7739ff74b86de034e078f18271cd0f4313c60b6da1c4255a37e5840a23a",
+        "rootReadonly": true,
+        "details": {
+          "copiedPendingRefusedBeforeReceipt": true,
+          "metadataExact": true,
+          "effectiveCapabilities": 0
+        }
+      }
+    },
+    "fixtureRecordsAreSynthetic": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "oldFixturesStopped": true,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Positive boot with the actual committed original owner lease and confirmed policy",
+    "Imported-layout confirmed restore, evidence adjudication without original receipt and remaining typed brokers",
+    "Complete Core/OSGi, all six components, providers and launchers",
+    "Complete installation, upgrade, removal, purge and interruption matrix and twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/firewall-boot-original-outcome-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

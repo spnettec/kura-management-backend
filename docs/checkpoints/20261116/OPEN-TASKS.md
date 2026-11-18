@@ -1,3 +1,11 @@
+## 2026-11-18 防火墙早启原结果只读查询与回执确认
+
+Agent `116e8e0` 增加固定 Root、本地管理员专用的 `firewall-restore-confirmed-status` 与 `firewall-restore-confirmed-acknowledge`。两条入口均不接受调用方 Root、boot ID 或规则。查询共享锁下读原待确认意图及配对回执；没有待确认意图时，只读当前 boot 已有的回执。确认用同一原共享锁的排他模式，只在原回执及身份完整时清理待确认标记。原回执和原锁保留，缺回执继续 UNKNOWN。复制到另一 Root 的意图在查原回执前拒绝，两条入口均无 nft 后端调用。
+
+Rust 1.95 从当前 Git 构建 Linux ARM64 release ELF。11 项定向 Rust 合同和 88 项包维护测试通过。两处有效 capabilities 为 0 的隔离 Linux 使用正常 ELF：历史待确认意图没有回执时保持 UNKNOWN；真实包维护 guard 拒绝。合成原意图配有精确回执时，只清理标记并放行包维护检查，原回执、状态文件和锁精确。并发占锁、调用方指定 Root/ID 及复制跨 Root 均拒绝。当前提交固定 ELF 的完整 ARM64 Rust 套件为 776 通过、0 失败、44 跳过。
+
+已关闭的现场和既有停止 UNKNOWN 保留，未重新派发。原三现场、C/D/E、个人配置和 7fd 停机 41 输入/16 回执保持。实际已提交 owner lease 的正向 systemd 早启、imported ip/ip6 布局、缺原回执的运行态证据核定、剩余 typed brokers、完整 Core/OSGi 与六组件生命周期矩阵继续内部 pending。冻结父项 0/12，仅原 3 项 external deferred。见 [检查点](firewall-confirmed-original-outcome-checkpoint.json)。
+
 ## 2026-11-18 已确认防火墙恢复的可选早启发行单元
 
 Agent `44e023b` 只在 legacy-root-v1 包内增加可显式启用的 vendor oneshot 及其入包摘要。默认不启用、不运行。明确启用后进入多用户启动事务，拉起并排序在 `network-pre.target` 前。单元只有 NET_ADMIN，开启 NNP，只有原 firewall 子树可写，沿原锁 inode 只读打开并排他锁定。包维护核对 vendor 身份并拒绝正在执行的 actor，移除时撤销原启用链接。native-nonroot-v1 包没有该单元或 manifest。
