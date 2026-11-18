@@ -1,0 +1,98 @@
+{
+  "recordedAt": "2026-11-18T06:25:44.013792+00:00",
+  "core": {
+    "branch": "wip/management-close-20261116",
+    "base": "ce1f4f7ec2db9ed9644d8d9e4910dba0bc5bef11",
+    "commit": "e113ccb0f0964cd0c2198d1b9567df9879e6abe2",
+    "tree": "3468167cfc11f3b54a5c3e2cf03d464637235274"
+  },
+  "productionScope": {
+    "protocol": "kura-host-reboot-v1",
+    "schema": 1,
+    "action": "reboot",
+    "runtimeFiles": [
+      "kura_reboot_journal.py",
+      "kura_reboot_protocol.py"
+    ],
+    "activated": false,
+    "hardwiredPeerTransport": false,
+    "systemdDispatchConnected": false,
+    "installed": false
+  },
+  "contracts": {
+    "callerAuthorizationPrecedesJournalAccess": true,
+    "namespaceCheckedBeforeOldId": true,
+    "rootNamespaceNeverAutoInitialized": true,
+    "requestBoundToCohortBootNamespaceAndId": true,
+    "admitAndPersistBeforeDispatch": true,
+    "unknownClosesAdmissionEvenAfterBootChange": true,
+    "originalStatusIsReadOnly": true,
+    "sameBootExcludesAdditionalAcceptedReboot": true,
+    "observedBootChangeSeparateFromAcceptance": true,
+    "senderResumesWithStatusOnly": true,
+    "senderRetainsLocalFirstObservedReceipt": true,
+    "sameRootOldCohortStatusAllowed": true,
+    "explicitlyMissingLocalIntentAfterSubmissionRemainsUnknown": true
+  },
+  "checks": {
+    "macOS": {
+      "python": "3.15.2",
+      "rebootProtocol": 23,
+      "unchangedClock": 86
+    },
+    "linuxArm64": {
+      "python": "3.12.13",
+      "uid": 65534,
+      "capabilities": [],
+      "noNewPrivileges": true,
+      "network": "none",
+      "newGitArchive": true,
+      "rebootProtocol": 23,
+      "unchangedClock": 86
+    },
+    "separateProcessExit": true,
+    "observedBootIdsInContractAreSynthetic": true,
+    "productionRebootDispatches": 0
+  },
+  "pending": [
+    "Stand up authenticated production Unix socket and exact package, live unit and caller pairing",
+    "Bind a fixed systemd dispatch target and verify real kernel boot with independent application observation",
+    "Wire Core/watchdog/deployment and remove Main CAP_SYS_BOOT and direct logind policy after cutover",
+    "Connect package admission/upgrade/remove/purge and process interruption to retained sender and Root records",
+    "Complete normal Main/OSGi, remaining typed brokers, six components, providers, launchers and all 12 parents"
+  ],
+  "preservation": {
+    "stopped7fd": {
+      "inputs": 41,
+      "receipts": 16,
+      "stateExact": true
+    },
+    "oldChronyUnknownExact": true,
+    "standaloneClockDebianStateExact": true,
+    "originalLiveCount": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "centerDPrivateExact": 29,
+    "environmentE": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    }
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

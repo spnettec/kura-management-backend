@@ -1,3 +1,11 @@
+## 2026-11-18 Core 重启请求与发送回执持久化
+
+Core `e113ccb0f0` 实现独立的固定类型重启协议。Root 核对预期 namespace 和当前代码 cohort，在调用派发器前同步保存与 boot ID 绑定的原意图。受理与后续观察到的 boot ID 分开，原记录只读。对同一次启动只允许一条已受理的重启，未知结果会跨启动继续封住派发。发送端先保存原 ID，恢复时先核 Root 配对并仅查原记录。原 Root 无记录时仍保留 UNKNOWN，其他 Root 收不到旧 ID。
+
+macOS 与 Linux ARM64 各通过 23 项重启协议和 86 项既有时钟合同。两个独立进程退出用例覆盖 Root 意图已持久化但无回执，以及发送端丢失已受理的回执。Linux 以普通 UID、无 capability 和无网络执行，boot 变化用独立 ID 输入模拟，实际重启派发为 0。
+
+生产 socket/peer 和 systemd 固定动作、Main 与部署组件调用切换、CAP_SYS_BOOT 和旧 logind 授权撤回、发行安装与中断恢复均内部 pending。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 及全部 12 父项继续实施。原三现场、个人配置、C/D/E 和停机 7fd 的 41 输入/16 回执仍沿用，旧 UNKNOWN 留在原 Root。冻结父项 0/12 闭环，external deferred 仅原 3 项。见 [检查点](core-standalone-reboot-journal-checkpoint.json)。
+
 ## 2026-11-18 watchdog 重启结果与配置变更
 
 Core `ce1f4f7ec2` 将确定未启动的重启和已启动但结果不明的重启分开。无硬件 watchdog 时，仅确定未启动进入软件重试。已启动后非零退出、超时或等待中断均保留 UNKNOWN。设备更换保留原待重启状态、原因和硬件兜底截止时间。SystemAdminService 同步修正命令失败日志判断。
