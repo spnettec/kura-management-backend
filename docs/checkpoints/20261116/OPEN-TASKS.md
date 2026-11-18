@@ -1,3 +1,13 @@
+## 2026-11-18 Chrony 启停事务与系统总线身份准入
+
+Core `a0eb7e7da8` 将 Java ClockService 的 Chrony 启停接入原 Root 的 prepare/commit 日志。actor 只接受实际配对的固定单元和启停请求，按最终单元状态写终态回执。一次 ARM64 整包升级成功，Main 配置仍为 disabled，Chrony 配置和原锁指纹精确。实机 polkit 检查确认旧 `kurad` 的直接启停授权已撤回，服务外的 `kura-clock` 同 UID 也被拒绝。
+
+正常 Main 的首次 `start-chrony` 留下 UNKNOWN。实际 D-Bus 1.14 凭据无 `ProcessFD`，polkit 无法验证调用者的服务单元。Chrony 未启动，未发送 stop。沿原 Root 只读查回原 ID 的 `NO_DURABLE_RESULT`，正常停机前六份记录哈希精确，无重发。旧探针原文件留存。夹具重启时恢复了本地 loopback 主机名解析，整包未作现场修改。
+
+Core `9949693770` 将 `ProcessFD` 准入检查前移至 prepare 和派发前，两平台各 80 项 clock 合同通过，另有 12 项 polkit 合同和 22 项 JDK 21 检查通过。首次 Linux 合同运行使用了 Root，触发 sender 身份拒绝，按产品身份要求以普通 UID 重验通过。新检查在实机总线上返回 `EOPNOTSUPP`。新提交仍待整包实装，完整成功启停和 deactivating 生命周期仍内部 pending。原 7fd 停机状态实时一致，沿用 41 输入和 16 回执。
+
+Chrony 配置、`makestep`、事件访问授权、RTC 正向写入与热插拔、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和安装升级移除 purge/中断恢复仍内部 pending。冻结 12 父项 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-chrony-service-control-checkpoint.json) 及 [polkit 124 源码](https://github.com/polkit-org/polkit/blob/124/src/polkitbackend/polkitbackendjsauthority.cpp#L652-L675)。
+
 ## 2026-11-18 Chrony 状态接线与 Main 时钟能力移除
 
 Core `9e59cb6004` 用现有已配对的 clock broker 查询 Chrony 单元状态。请求不接受服务名或操作 ID，也不创建时钟日志。Chrony 事件读取改用固定 `journalctl` 参数。Main 的 ambient 和 bounding 集合均移除 CAP_SYS_TIME，clock actor 保留独立身份和仅有的 CAP_SYS_TIME。

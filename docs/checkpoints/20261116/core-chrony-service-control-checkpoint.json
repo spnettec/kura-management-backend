@@ -1,0 +1,159 @@
+{
+  "at": "2026-11-18T05:24:03.950812+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreCommit": "9949693770227f3b65494dd4ed606618dc38a8f3",
+  "coreTree": "082075049f14e346bd8bb07e844046ba07e5a556",
+  "installedCoreCommit": "a0eb7e7da89b5c7db11fa923e234304691a5dd74",
+  "baseCore": "9e59cb6004d8cb40ece879883b007fa536e46a8c",
+  "baseConsole": "b46361cc79c3eb0379e23f5a43cf5717d3fd0afb",
+  "installedPackage": {
+    "sourceCommit": "a0eb7e7da89b5c7db11fa923e234304691a5dd74",
+    "packageVersion": "6.0.0~git202611180516.a0eb7e7-1",
+    "sha256": "8f029daa3501e8652f17641a33685a5a2667a6dac07dc24342086f6f1e6a0592",
+    "bytes": 203566268,
+    "clockProtocolDigest": "fc1540c7ca504066f8762e6de025e81c7491d47ed9df5443526107526857729b",
+    "clockFiles": 8,
+    "privateCache": true
+  },
+  "sourceTests": {
+    "pythonPerPlatform": 80,
+    "platforms": [
+      "macOS",
+      "Linux ARM64"
+    ],
+    "polkitContracts": 12,
+    "jvmTests": 22,
+    "jdk": 21,
+    "initialLinuxHarnessUsedRootAndWasRefused": true
+  },
+  "installedArm64": {
+    "containerId": "d78c192b7fb522e91ec6e04f0b05efeb3a71142b5fcbe149adaf6f1b5fe3dc3c",
+    "priorPackage": "6.0.0~git202611180503.9e59cb6-1",
+    "upgradeCount": 1,
+    "upgradeExit": 0,
+    "bootedNormalMain": true,
+    "afterUpgrade": {
+      "main": {
+        "MainPID": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "Id": "kura.service",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "clockCohort": "fc1540c7ca504066f8762e6de025e81c7491d47ed9df5443526107526857729b",
+      "chronyConfigExact": true,
+      "clockLockExact": true,
+      "oldPolkitArchived": true,
+      "actorPolkitExact": true,
+      "kuraClockNeverStartedSinceBoot": true,
+      "initialClockRecords": 0
+    },
+    "polkitVersion": "124-2ubuntu1.24.04.4",
+    "dbusVersion": "1.14.10-4ubuntu4.1",
+    "systemdVersion": "255.4-1ubuntu8.18",
+    "processFdInSystemBusReply": false,
+    "polkitDirectMainBefore": {
+      "start": 0,
+      "stop": 0,
+      "restart": 1
+    },
+    "polkitDirectMainAfter": {
+      "start": 1,
+      "stop": 1,
+      "restart": 1
+    },
+    "polkitClockUidOutsideUnitAfter": {
+      "start": 1,
+      "stop": 1,
+      "restart": 1
+    },
+    "originalAttempt": {
+      "action": "start-chrony",
+      "cohort": "fc1540c7ca504066f8762e6de025e81c7491d47ed9df5443526107526857729b",
+      "receipt": {
+        "schema": 1,
+        "namespace": "f6fcba9b-3366-45ad-9949-a49153f5aa25",
+        "requestId": "50e9aea2-1504-4c12-9ba0-8a582e0eaaa8",
+        "requestSha256": "3c532e01bb862d2ccc2c93cf0a999a5db75da6346039875328ffda7c404de452",
+        "state": "UNKNOWN",
+        "reason": "NO_DURABLE_RESULT"
+      },
+      "chrony": {
+        "MainPID": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "ActiveState": "inactive"
+      },
+      "observedServiceProcessStartsAfterUpgrade": 0,
+      "observedNewStopRequests": 0,
+      "wallOrRtcRequests": 0
+    },
+    "requestsReplayed": 0,
+    "positiveServiceLifecycleVerified": false,
+    "parked": {
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "recordsUnchanged": 6,
+      "originalUnknown": true,
+      "stopRequestsCreated": 0
+    },
+    "containerStopExit": 0,
+    "oldProbeRetained": true,
+    "dockerHostnameLoopbackFixtureRestoredAfterBoot": true
+  },
+  "followUp": {
+    "identityCheck": "EOPNOTSUPP",
+    "errno": 95,
+    "uid": 995,
+    "actualSystemBus": true,
+    "clockRequestsCreated": 0,
+    "installedAsDeb": false,
+    "negativeTerminalReceiptAndAdmissionCoveredByContract": true
+  },
+  "originals": {
+    "7fdStateExact": true,
+    "7fdProtectedInputs": 41,
+    "7fdReceipts": 16,
+    "7fdNewDispatches": 0,
+    "liveFixtures": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 2,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true,
+      "additionalRootProcessesExact": 3
+    },
+    "parallelsBothStopped": true,
+    "orbstackExistingVmStopped": true
+  },
+  "internalPending": [
+    "Chrony positive start/stop and deactivation lifecycle on paired platform",
+    "Chrony configuration, makestep and journal access authorization",
+    "RTC positive write and hotplug",
+    "full Core/OSGi and remaining typed brokers",
+    "six components, provider, launcher and lifecycle matrix",
+    "all 12 frozen parent items"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "pushed": false,
+  "receipts": ".management-close-20261116/chrony-service-control-20261118"
+}
