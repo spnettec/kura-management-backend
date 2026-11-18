@@ -1,3 +1,11 @@
+## 2026-11-18 Debian 普通 Main 防火墙规则保存路径
+
+Networking `2fa2fa8` 为 Networking 与 firewall-only 两种 deb 安装独立的 `/var/lib/kura-legacy-firewall/rules`。外层由 Root 管理，内层为 `kurad:kurad/0700`。初始化按地址族保留已有站点文件，已存在的同族包管理文件优先。规则发布同步临时文件及目标目录。实际 Linux 普通 UID 路径检查覆盖历史文件、混合地址族、保留重配及链接拒绝。Linux 防火墙模块 171 项通过。
+
+JDK 21 从当前 Git 构建 Core ARM64 deb、两种 Networking deb 和部署包。隔离 Debian 13 ARM64 首装 Networking 后，规则目录为空、`/etc/sysconfig` 未创建，安装前后的两族内核表精确。实装普通 Main 写入两族内核表和各自的 `0600` 文件。随后实际移除且 purge Networking，再安装冲突变体 firewall-only。安装路径全程保留文件内容、inode、权限和内核规则。夹具正常停机并在同一容器使用新的网络命名空间续接，普通 Main 激活两族 OSGi provider，重新写入内核及各自规则文件，保留独立哨兵。早启单元保持 disabled，夹具再次正常停机。
+
+typed firewall broker、确认态早启加载、旧站点文件的显式迁移、NAT/远程及 firewall-only 移除的内核清理继续内部 pending。其余 Core/OSGi、broker、六组件/provider/launcher、完整生命周期矩阵和全部父项保持原范围。原三个现场、C/D/E、个人配置和 7fd 停机 41 输入/16 回执保全。冻结 12 父项仍 0/12，external deferred 仅原三项。见 [本轮检查点](networking-debian-rule-state-checkpoint.json)。
+
 ## 2026-11-18 Networking 旧防火墙规则检查、应用与保存
 
 Networking `cb871ef` 在修改 IPv4/IPv6 内核规则前预写同目录临时文件，检查原目标身份和所需内核表。命令全部成功后才原子替换规则文件。原文件的 owner、group 和权限需要保持，目标为链接或并发改动时拒绝。所需命令失败时保留原保存文件，使尚未确认的新模型不可读。Networking Linux 防火墙模块 168 项通过。

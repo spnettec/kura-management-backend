@@ -1,0 +1,250 @@
+{
+  "recordedAt": "2026-11-18T08:29:55.775605+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "jdk": 21,
+    "compiledFromGit": true,
+    "linuxNetTestCasesPassed": 171,
+    "networkingDpBuilt": true,
+    "core": {
+      "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2",
+      "version": "6.0.0~git202611180825.e952f82-1",
+      "architecture": "arm64",
+      "bytes": 203597316,
+      "sha256": "7be6b995e9190caa604f416f22435fbdb67f9edfd2ba49a86a9777c1eff17be6",
+      "mainSha256": "23fe43ab74b942c06991adc5af1f0c0bbb58bbe9fbf76a71aee0483d63a60dda",
+      "keyManifestSha256": "d8984199f8f4e7f8204f9a4c7accabd7b15fe7ad8c7576dfef51c24f9b5d9e98",
+      "rebootCohortSha256": "7580e311ad5c259aed8e800d15cbf3113a39c883dc4aff245593b7a5bd936c48"
+    },
+    "networking": {
+      "commit": "2fa2fa86a20a34cc2627e129fb2d188ee25aef2a",
+      "tree": "823279a5a746380045f43eed088bd31ce4d5a765",
+      "version": "3.0.0~git202611180825.2fa2fa8-1",
+      "architecture": "all",
+      "bytes": 9289060,
+      "sha256": "19a08b4fa7990c35ffa2bd7e53ad6a8f82afeaa537cb0a9a2ac0cc6796c3083b",
+      "publishedHelpers": {
+        "kura_firewall_state.py": "f43f87a38e0eddfd49e705a2d2cc7fd6e80511e4c67e389170ca43509c004e06",
+        "kura_network_options.py": "0e94ec5b91f8df6b58800254f8ba73cbf5cb2ae3d098a1c0bed493ac998f4de9",
+        "kura_network_options.sh": "c6f513c82087b2215b2110ab51b394cef01b530e4589d2243fc25544c97f02b4",
+        "kura_network_install.sh": "b15b9b9f0880ce67314f0554c4dfbb31d70a45440e8021b8dbdad530492fd349",
+        "kura_network_uninstall.sh": "c4e36fc3562c44bd6a7e911de10dfd186c53b904d56f95c02c1e5adacd391d54",
+        "sibling_registry.sh": "e9a951297cb943e2f7f5c390957ccba7b5dccf8bb309d2c7e816761145c60890"
+      },
+      "linuxNetJarSha256": "3515f27f90e95c902f3073d5aaf717b2429da8c73d015ad927b7862b1b8ad216",
+      "siblingJars": 9
+    },
+    "firewallOnly": {
+      "commit": "2fa2fa86a20a34cc2627e129fb2d188ee25aef2a",
+      "tree": "823279a5a746380045f43eed088bd31ce4d5a765",
+      "version": "3.0.0~git202611180825.2fa2fa8-1",
+      "architecture": "all",
+      "bytes": 404552,
+      "sha256": "87b5ba1ab08a74fd0bd27b2c97121c4967a52ad08762f7725e1e0253d575cae8",
+      "stateHelperSha256": "f43f87a38e0eddfd49e705a2d2cc7fd6e80511e4c67e389170ca43509c004e06",
+      "linuxNetJarSha256": "3515f27f90e95c902f3073d5aaf717b2429da8c73d015ad927b7862b1b8ad216"
+    }
+  },
+  "fixture": {
+    "debian": 13,
+    "architecture": "arm64",
+    "container": "a647c0f9a62fd34a573135a22eca1edf0a1cea1ab25862475fa0a9d17cc4c820",
+    "network": "none",
+    "hostMounts": false,
+    "privileged": false,
+    "fixtureAdditionalNetAdmin": true,
+    "seccompBlocksRebootAndClock": true,
+    "physicalPowerTargetsMasked": true,
+    "finalState": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T08:28:18.052829419Z",
+      "FinishedAt": "2026-11-18T08:28:27.251892151Z"
+    }
+  },
+  "managedStorage": {
+    "path": "/var/lib/kura-legacy-firewall/rules",
+    "beforeMain": {
+      "kernelExact": true,
+      "unchangedKernel": {
+        "iptables": "fd74cbe7599eb86fbb582cac5e22a3f412ed92dc4701f2932378f44cae13ea52",
+        "ip6tables": "fd74cbe7599eb86fbb582cac5e22a3f412ed92dc4701f2932378f44cae13ea52"
+      },
+      "root": [
+        "directory",
+        "755",
+        "root",
+        "root",
+        "1",
+        "3733274",
+        "10",
+        "1794990441"
+      ],
+      "privateLeaf": [
+        "directory",
+        "700",
+        "kurad",
+        "kurad",
+        "1",
+        "3733275",
+        "0",
+        "1794990441"
+      ],
+      "emptyManagedPath": true
+    },
+    "sameFamilyEstablishedLegacyPathSelected": true,
+    "managedFamilySelectedWithoutHistoricalFile": true,
+    "managedFileWinsOncePresent": true,
+    "existingModeInodeBytesRetainedOnReprovision": true,
+    "malformedRuleAndDirectoryRefused": true,
+    "defaultEtcSysconfigNeverCreatedOnMainFixture": true
+  },
+  "networking": {
+    "ordinaryMain": {
+      "pid": 1470,
+      "managedRules": {
+        "iptables": {
+          "metadata": [
+            "regular file",
+            "600",
+            "kurad",
+            "kurad",
+            "1",
+            "3733301",
+            "3180",
+            "1794990447"
+          ],
+          "bytes": 3180,
+          "sha256": "283b337e072f4dcdb972b95143bae8d58934b0b0db7dae3cc478c771f2e68138"
+        },
+        "ip6tables": {
+          "metadata": [
+            "regular file",
+            "600",
+            "kurad",
+            "kurad",
+            "1",
+            "3733300",
+            "8714",
+            "1794990447"
+          ],
+          "bytes": 8714,
+          "sha256": "1c3ca0f1a2157abcefe4cc8108997c3c2463efa2364c4c690fed7734538ff2b6"
+        }
+      },
+      "kernelRules": {
+        "iptables": "89b7cdd0539acd2a63a725d13ba461f8e410b0748c1544e2694c0eed0ac8f204",
+        "ip6tables": "bb32de87960a1b649eea0ebf530c7001654d905e332e4bac45b713eeb59cce06"
+      },
+      "noSharedEtcDirectory": true,
+      "bothSentinels": true,
+      "probeOnly": false
+    },
+    "removedAndPurged": {
+      "kernelExact": true,
+      "managedRulesExact": true,
+      "afterPurgePackage": [
+        "not-installed"
+      ]
+    },
+    "bothOsgiServiceActivations": true
+  },
+  "firewallOnly": {
+    "packageInstallation": {
+      "kernelExact": true,
+      "managedRulesExact": true,
+      "earlyServiceDisabled": true
+    },
+    "hardNamespaceResetObserved": true,
+    "afterFixtureRestart": {
+      "rulesExact": true,
+      "previousKernelRulesAbsent": true,
+      "earlyServiceDisabled": true
+    },
+    "ordinaryMain": {
+      "pid": 722,
+      "managedRules": {
+        "iptables": {
+          "metadata": [
+            "regular file",
+            "600",
+            "kurad",
+            "kurad",
+            "1",
+            "3733399",
+            "2285",
+            "1794990503"
+          ],
+          "bytes": 2285,
+          "sha256": "563e50455df0865c38f398262313070838f9b81d5ada7cbc89b1eb26571c25fd"
+        },
+        "ip6tables": {
+          "metadata": [
+            "regular file",
+            "600",
+            "kurad",
+            "kurad",
+            "1",
+            "3733402",
+            "4463",
+            "1794990503"
+          ],
+          "bytes": 4463,
+          "sha256": "0259d3a4d726a299af7627bb972533cbb190cecc0c4fb2dac8e255dd37cb4b05"
+        }
+      },
+      "kernelRules": {
+        "iptables": "2ce2ec2d490ee949d68257e69421d1cd19f8ce6bb623fa851ce0cc20fa2dc118",
+        "ip6tables": "1f859ef390f7f8f316ad3959602a1526a8659c53171302e25d4db6659da60325"
+      },
+      "noSharedEtcDirectory": true,
+      "bothSentinels": true,
+      "probeOnly": false
+    },
+    "bothOsgiServiceActivations": true,
+    "earlyServiceDisabled": true,
+    "modeSpecificSnapshotReappliedAtMain": true,
+    "firewallOnlyRemoveAndPurgePending": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "oldFixturesStopped": true,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Typed firewall broker, confirmed early restore and removal without global kernel flushing",
+    "Explicit site-file migration, interruption compensation, NAT and remote operations",
+    "Complete Core/OSGi, remaining typed brokers, all six components, providers and launchers",
+    "Complete installation, upgrade, removal, purge and interruption matrix and twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/networking-durable-rules-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
