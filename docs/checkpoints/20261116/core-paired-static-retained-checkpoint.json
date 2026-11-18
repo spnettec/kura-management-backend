@@ -1,0 +1,189 @@
+{
+  "at": "2026-11-18T03:50:04.937140+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreSourceCommit": "40268c05c37d88963b16790c47e65fdb9d1b3a94",
+  "coreTree": "de056d8e29ad83d23777a4eb5840f3e948366d33",
+  "gwtHead": "18c1b5eed4bf1483fb19756f6ea7ca817bd2732e",
+  "startingConsoleHead": "f97ab3d6df8de2fd3a701f6c05bd9225dd1a505b",
+  "normalPackage": {
+    "sha256": "3188ad6f415945c65fcc2461536f3c7e54b50767a22bdcd8d4e502ca955bfe6e",
+    "bytes": 203553172,
+    "packageVersion": "6.0.0~git202611180332.40268c0-1",
+    "architecture": "arm64",
+    "sourceCommit": "40268c05c37d88963b16790c47e65fdb9d1b3a94",
+    "pairedKeyFiles": 39,
+    "pairedKeyUnits": 3,
+    "fixtureTemplateVariant": false,
+    "clockManifestFileSha256": "498b98ae1c2c4741cf0afdf771a65497ba4f3a0e4cc36e84c6fa4173e242a3e4"
+  },
+  "staticFixtureInputPackage": {
+    "sha256": "4bfe80c32865046026a2f1a56388dc20b0c2f53eef65182620a73048700ba540",
+    "bytes": 203553164,
+    "packageVersion": "6.0.0~git202611180337.40268c0-1",
+    "architecture": "arm64",
+    "sourceCommit": "40268c05c37d88963b16790c47e65fdb9d1b3a94",
+    "pairedKeyFiles": 39,
+    "pairedKeyUnits": 3,
+    "fixtureTemplateVariant": true,
+    "clockManifestFileSha256": "498b98ae1c2c4741cf0afdf771a65497ba4f3a0e4cc36e84c6fa4173e242a3e4"
+  },
+  "regression": {
+    "targetedPassed": 50,
+    "adjacentPassed": 68,
+    "adjacentSkipped": 1,
+    "skipReason": "Linux renameat2 publication on macOS"
+  },
+  "pairedStaticConversion": {
+    "state": "disabled",
+    "status": "install ok installed|6.0.0~git202611180332.40268c0-1",
+    "receipts": 2,
+    "newReceipt": "856ef3a4-ae63-49cc-b171-782c46aee03f",
+    "originalInputsPreserved": 23,
+    "mainNeverStarted": true,
+    "packagePaired": true,
+    "keyCohort": "d8c63e63b8e791bfac52c79b79d3b32a8da7eb617d64f8fab72f0323ab73ca1a",
+    "clockCohort": "b26057e7333f8845583482431798e4a0747f53f239d2d5bfa9ff307e5ccf31f3"
+  },
+  "isolatedPurge": {
+    "packagePurged": true,
+    "packagedConffileRemoved": 1,
+    "retainedSyntheticDataDeleted": true,
+    "canonicalInputsExact": 15,
+    "pairedUnitsRemoved": 6,
+    "preservedKeyRemoveFence": "4f7f0d9a-c8a3-4a71-a8d7-c9faff8336c0",
+    "preservedClockFence": true,
+    "historyReceipts": 2,
+    "completedStaticRemovalReceiptPreserved": true,
+    "keyBusinessOps": 0,
+    "secondPurgeDispatched": false
+  },
+  "isolatedPostPurgeReinstall": {
+    "originalPurgeFenceCompleted": "4f7f0d9a-c8a3-4a71-a8d7-c9faff8336c0",
+    "normalHistoryReceipts": 3,
+    "preservedInputs": 15,
+    "main": {
+      "MainPID": "0",
+      "ExecMainStartTimestampMonotonic": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "enabled"
+    },
+    "keyCohort": "d8c63e63b8e791bfac52c79b79d3b32a8da7eb617d64f8fab72f0323ab73ca1a",
+    "clockCohort": "b26057e7333f8845583482431798e4a0747f53f239d2d5bfa9ff307e5ccf31f3"
+  },
+  "isolatedPostPurgeMainStop": {
+    "returnCode": 0,
+    "unit": {
+      "MainPID": "0",
+      "ControlPID": "0",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainCode": "1",
+      "ExecMainStatus": "143",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "enabled"
+    },
+    "elapsedSeconds": 0.562,
+    "stderr": ""
+  },
+  "isolatedFixtureFinal": {
+    "containerId": "9f8558ef992fd95643aa6d14ea6cbd792321791566911340a77f9a31514a9f53",
+    "stoppedExitCode": 0,
+    "installedNormalPackage": true,
+    "unitFileState": "enabled"
+  },
+  "originalCore": {
+    "containerId": "7fd8c6a0967a58a95c123785e5feff68cd0ce74e370d00ee875f9e215ac08d7e",
+    "successfulUpgradeMaintenanceId": "bb951367-b2e7-44e6-9777-9894ae55cfbd",
+    "originalInputCount": 39,
+    "finalInputCount": 41,
+    "packageHistoryCount": 16,
+    "oldStartRefusedBeforeJvm": true,
+    "firstReachedJvmStopResult": {
+      "TimeoutStopUSec": "1min 30s",
+      "MainPID": "0",
+      "ControlPID": "0",
+      "Result": "timeout",
+      "NRestarts": "0",
+      "ExecMainCode": "2",
+      "ExecMainStatus": "9",
+      "ActiveState": "failed",
+      "SubState": "failed",
+      "UnitFileState": "disabled"
+    },
+    "finalBootDeviceOnlyFileChanges": 41,
+    "currentBootReadOnlyLeaseProof": {
+      "main": {
+        "MainPID": "471",
+        "ControlPID": "0",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainCode": "0",
+        "ExecMainStatus": "0",
+        "ActiveState": "active",
+        "UnitFileState": "disabled"
+      },
+      "startTicks": "23743173",
+      "leasePaired": true,
+      "equinoxAndClockActivated": true,
+      "httpComponentActivated": true,
+      "hostnameErrorsInCurrentMain": 0
+    },
+    "finalMainStop": {
+      "returnCode": 0,
+      "properties": {
+        "MainPID": "0",
+        "ControlPID": "0",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainCode": "0",
+        "ExecMainStatus": "0",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "elapsedSeconds": 0.504,
+      "stderr": ""
+    },
+    "finalContainerExit": 0,
+    "canonicalAndClockActorPairing": [
+      "d8c63e63b8e791bfac52c79b79d3b32a8da7eb617d64f8fab72f0323ab73ca1a",
+      "b26057e7333f8845583482431798e4a0747f53f239d2d5bfa9ff307e5ccf31f3"
+    ],
+    "keyBusinessOps": 0,
+    "rootStartupIntents": 0,
+    "clockNamespaceCreated": false,
+    "finalPrivateBaseline": "7fd-shutdown-recovery-final-observation.json"
+  },
+  "originalScenesVerified": 3,
+  "originalPersonalFilesVerified": 25,
+  "preservedCFiles": 9,
+  "preservedCenterFiles": 29,
+  "preservedE": {
+    "sourceApplied": true,
+    "processesExact": 5,
+    "identityFilesExact": 20,
+    "corePrivateExact": 6,
+    "localProofsExact": 7,
+    "materialProofsExact": 5,
+    "switchProofsExact": 9,
+    "transportProofsExact": 7,
+    "remoteRevisionExact": true,
+    "readOnly": true
+  },
+  "parallelsBothStopped": true,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "fullCoreBusinessVerified": false,
+  "allSixComponentsProvidersLaunchersVerified": false,
+  "linkedOrUnpairedLegacyAdoptionVerified": false,
+  "genericInterruptionRecoveryVerified": false,
+  "receiptDirectory": ".management-close-20261116/resume-20261118.FqDevXKS",
+  "pushed": false
+}

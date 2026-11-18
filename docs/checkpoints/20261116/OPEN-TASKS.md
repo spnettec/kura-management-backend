@@ -1,3 +1,11 @@
+## 2026-11-18 配对 static 转换与原 7fd 实际 Core 启停
+
+Core `40268c05c3` 为经过精确包定义及实际有效单元配对的 static 保存原 Root HMAC 回执，标准包重装沿原移除 ID 转为 disabled。ARM64 实际首装/移除/保留重装 0/0/0，23 旧输入保持。独立后续 purge 及沿原围栏重装通过，15 份外部输入继续保留。50 定向通过，另 69 项相邻回归中 68 通过、1 项 Linux renameat2 在 macOS 跳过。
+
+同一原 7fd 从 e99 单次正常升级，39 原输入与新回执连续，真实普通 Main / Equinox / writer lease / ClockService 通过。首次预检失败与首次 Main 停机超时留存，隔离 fixture 的 `/run` 传播及本机名解析修正后真实启停通过。最终 41 份输入（含新增原配置分派锁）、16 正常回执，Main disabled 及正常停放。原现场和亲缘 Root 的业务意图保留。
+
+继续历史 schema 1 static、linked 审核迁移、完整 Core/OSGi/合法 Main 的实际业务、RTC/Chrony/其余 typed brokers、完整六组件/provider/launcher/purge/通用中断恢复及下列冻结台账的全部范围。12 父项仍 0/12 最终闭环，external deferred 仍为原 3 项。详见 [检查点](core-paired-static-retained-checkpoint.json) 和 [实际审查](../../reviews/core-paired-static-retained-review-20261118.md)。
+
 ## 2026-11-18 用户要求本轮收尾后暂停
 
 用户明确要求本轮完成后停止目标、从新会话续接。phase33代码/新包/实际拒绝路径/保全/官方父知识库已完成收尾，未开启下一轮实施。最新[完整交接](../../reviews/continuation-paused-20261118-main-layout-admission.md)及[暂停检查点](main-layout-pause-checkpoint.json)；交接备妥后将目标工具置paused，最终状态以回执目录pause-goal-result.json为准，不把暂停称为目标完成。包含交接提交的确切18仓HEAD/tree/status在pause-final-repositories-and-ledger.json；新会话仍实时核对。

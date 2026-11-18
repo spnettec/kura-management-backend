@@ -1,3 +1,7 @@
+## 2026-11-18 已从暂停检查点恢复实施
+
+Core `40268c05c3`，配对 static 实际 remove/reinstall 转为 disabled，独立 purge/重装通过。原 7fd 完整升级、普通 Main / Equinox 实际启动并最终正常停放，41 输入/16 回执。先读 [本轮审查](../../reviews/core-paired-static-retained-review-20261118.md) 和 [机器检查点](core-paired-static-retained-checkpoint.json)，继续 [完整台账](OPEN-TASKS.md)。下方暂停条目记录前一会话。
+
 ## 2026-11-18 用户要求本轮收尾后暂停
 
 用户明确要求本轮完成后停止目标、从新会话续接。phase33代码/新包/实际拒绝路径/保全/官方父知识库已完成收尾，未开启下一轮实施。最新[完整交接](../../reviews/continuation-paused-20261118-main-layout-admission.md)及[暂停检查点](main-layout-pause-checkpoint.json)；交接备妥后将目标工具置paused，最终状态以回执目录pause-goal-result.json为准，不把暂停称为目标完成。包含交接提交的确切18仓HEAD/tree/status在pause-final-repositories-and-ledger.json；新会话仍实时核对。
