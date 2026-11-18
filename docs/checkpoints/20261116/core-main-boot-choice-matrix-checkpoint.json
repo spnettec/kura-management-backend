@@ -1,0 +1,444 @@
+{
+  "at": "2026-11-18T02:42:48.006541+00:00",
+  "goal": "active",
+  "codeCommits": [
+    "97dbbc06e95db769813def751df5c1e318478a0b",
+    "44b428192320a87196ffd129207a627a8161734e"
+  ],
+  "package97": {
+    "version": "6.0.0~git202611180206.97dbbc0-1",
+    "sha256": "d9a326022f615cedc9d847c2a16af69b864655ec941dd5208b0385f39d213f4f"
+  },
+  "package44": {
+    "version": "6.0.0~git202611180229.44b4281-1",
+    "sha256": "e3f8d8fa08aca1a715c697a5a378595c6c6985fa4aea5f9514a9ff80f502c407",
+    "bytes": 203549636
+  },
+  "regression": {
+    "selected": 135,
+    "passed": 134,
+    "skipped": 1,
+    "skipReason": "existing immutable Root archive renameat2 test skipped on macOS; not counted as passed",
+    "nativeRootMaskConditions": 7,
+    "shippedPreRemoveSystemdConditions": 6,
+    "countsNotAddedAcrossOverlappingSelections": true
+  },
+  "overlayRemount": {
+    "at": "2026-11-18T02:10:40.509528+00:00",
+    "containerId": "7fd8c6a0967a58a95c123785e5feff68cd0ce74e370d00ee875f9e215ac08d7e",
+    "oldDevice": 1048652,
+    "newDevice": 1048667,
+    "files": 30,
+    "onlyDeviceChanged": true,
+    "allOtherNineFieldsExact": true,
+    "mount": {
+      "rootDevice": 1048667,
+      "majorMinor": "0:347",
+      "filesystem": "overlay",
+      "gwtSenderBindingAbsent": true,
+      "businessOperations": 0,
+      "coreStarts": 0
+    },
+    "oldObservationsUntouched": true,
+    "productRootPairingChecksUnchanged": true
+  },
+  "normalProfileCases": [
+    {
+      "profile": "enabled-runtime",
+      "removeExitCode": 0,
+      "reinstallExitCode": 0,
+      "originalRemovalFenceId": "68bd1736-1eca-42eb-bb91-62cc45309e74",
+      "beforeInputs": 32,
+      "afterInventory": 33,
+      "preservation": {
+        "accounts": {
+          "kura": {
+            "gid": 1001,
+            "uid": 1001
+          },
+          "kura-clock": {
+            "gid": 988,
+            "uid": 995
+          },
+          "kura-key-recovery": {
+            "gid": 990,
+            "uid": 996
+          },
+          "kurad": {
+            "gid": 991,
+            "uid": 997
+          }
+        },
+        "actor": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "loaded",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "static"
+        },
+        "clockAccount": {
+          "gid": 988,
+          "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+          "role": "kura-clock",
+          "schema": 1,
+          "uid": 995
+        },
+        "clockNamespaceAbsent": true,
+        "clockOperations": 0,
+        "coreOriginalLogicalFingerprintsExact": 8,
+        "coreStarts": 0,
+        "externalOriginalFullFingerprintsExact": 24,
+        "fullCoreOsgiVerified": false,
+        "inventoriedFiles": 33,
+        "keyBusinessOperations": 0,
+        "main": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "loaded",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "enabled-runtime"
+        },
+        "mode": "installed",
+        "package": "installed 6.0.0~git202611180206.97dbbc0-1",
+        "packageHistoryReceipts": 9
+      },
+      "rootMasksUnchanged": true,
+      "runtimeAndPersistentEnableLinksRemovedOnUninstall": true,
+      "coreClockKeyBusinessOperations": 0,
+      "completion": {
+        "originalRemovalFenceCompleted": true,
+        "main": {
+          "MainPID": "0",
+          "ControlPID": "0",
+          "ExecMainStartTimestampMonotonic": "0",
+          "ActiveState": "inactive",
+          "UnitFileState": "enabled-runtime"
+        },
+        "masksKeptExact": true,
+        "mainNeverStartedInCurrentUnit": true
+      }
+    },
+    {
+      "profile": "enabled",
+      "removeExitCode": 0,
+      "reinstallExitCode": 0,
+      "originalRemovalFenceId": "16c8ecb7-ecb8-4392-8feb-1f9c46d88bb2",
+      "beforeInputs": 33,
+      "afterInventory": 34,
+      "preservation": {
+        "accounts": {
+          "kura": {
+            "gid": 1001,
+            "uid": 1001
+          },
+          "kura-clock": {
+            "gid": 988,
+            "uid": 995
+          },
+          "kura-key-recovery": {
+            "gid": 990,
+            "uid": 996
+          },
+          "kurad": {
+            "gid": 991,
+            "uid": 997
+          }
+        },
+        "actor": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "loaded",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "static"
+        },
+        "clockAccount": {
+          "gid": 988,
+          "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+          "role": "kura-clock",
+          "schema": 1,
+          "uid": 995
+        },
+        "clockNamespaceAbsent": true,
+        "clockOperations": 0,
+        "coreOriginalLogicalFingerprintsExact": 8,
+        "coreStarts": 0,
+        "externalOriginalFullFingerprintsExact": 25,
+        "fullCoreOsgiVerified": false,
+        "inventoriedFiles": 34,
+        "keyBusinessOperations": 0,
+        "main": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "loaded",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "enabled"
+        },
+        "mode": "installed",
+        "package": "installed 6.0.0~git202611180206.97dbbc0-1",
+        "packageHistoryReceipts": 10
+      },
+      "rootMasksUnchanged": true,
+      "runtimeAndPersistentEnableLinksRemovedOnUninstall": true,
+      "coreClockKeyBusinessOperations": 0,
+      "completion": {
+        "originalRemovalFenceCompleted": true,
+        "main": {
+          "MainPID": "0",
+          "ControlPID": "0",
+          "ExecMainStartTimestampMonotonic": "0",
+          "ActiveState": "inactive",
+          "UnitFileState": "enabled"
+        },
+        "masksKeptExact": true,
+        "mainNeverStartedInCurrentUnit": true
+      }
+    },
+    {
+      "profile": "masked-runtime",
+      "removeExitCode": 0,
+      "reinstallExitCode": 0,
+      "originalRemovalFenceId": "3793c1ea-b543-4976-a560-ed51950efe43",
+      "beforeInputs": 36,
+      "afterInventory": 37,
+      "preservation": {
+        "accounts": {
+          "kura": {
+            "gid": 1001,
+            "uid": 1001
+          },
+          "kura-clock": {
+            "gid": 988,
+            "uid": 995
+          },
+          "kura-key-recovery": {
+            "gid": 990,
+            "uid": 996
+          },
+          "kurad": {
+            "gid": 991,
+            "uid": 997
+          }
+        },
+        "actor": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "loaded",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "static"
+        },
+        "clockAccount": {
+          "gid": 988,
+          "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+          "role": "kura-clock",
+          "schema": 1,
+          "uid": 995
+        },
+        "clockNamespaceAbsent": true,
+        "clockOperations": 0,
+        "coreOriginalLogicalFingerprintsExact": 8,
+        "coreStarts": 0,
+        "externalOriginalFullFingerprintsExact": 28,
+        "fullCoreOsgiVerified": false,
+        "inventoriedFiles": 37,
+        "keyBusinessOperations": 0,
+        "main": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "masked",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "masked-runtime"
+        },
+        "mode": "installed",
+        "package": "installed 6.0.0~git202611180229.44b4281-1",
+        "packageHistoryReceipts": 13
+      },
+      "rootMasksUnchanged": true,
+      "runtimeAndPersistentEnableLinksRemovedOnUninstall": true,
+      "coreClockKeyBusinessOperations": 0,
+      "completion": {
+        "originalRemovalFenceCompleted": true,
+        "main": {
+          "MainPID": "0",
+          "ControlPID": "0",
+          "ExecMainStartTimestampMonotonic": "0",
+          "ActiveState": "inactive",
+          "UnitFileState": "masked-runtime"
+        },
+        "masksKeptExact": true,
+        "mainNeverStartedInCurrentUnit": true
+      }
+    },
+    {
+      "profile": "masked",
+      "removeExitCode": 0,
+      "reinstallExitCode": 0,
+      "originalRemovalFenceId": "7b160323-4f5c-4618-a23e-e7a35add6d0f",
+      "beforeInputs": 37,
+      "afterInventory": 38,
+      "preservation": {
+        "accounts": {
+          "kura": {
+            "gid": 1001,
+            "uid": 1001
+          },
+          "kura-clock": {
+            "gid": 988,
+            "uid": 995
+          },
+          "kura-key-recovery": {
+            "gid": 990,
+            "uid": 996
+          },
+          "kurad": {
+            "gid": 991,
+            "uid": 997
+          }
+        },
+        "actor": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "loaded",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "static"
+        },
+        "clockAccount": {
+          "gid": 988,
+          "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+          "role": "kura-clock",
+          "schema": 1,
+          "uid": 995
+        },
+        "clockNamespaceAbsent": true,
+        "clockOperations": 0,
+        "coreOriginalLogicalFingerprintsExact": 8,
+        "coreStarts": 0,
+        "externalOriginalFullFingerprintsExact": 29,
+        "fullCoreOsgiVerified": false,
+        "inventoriedFiles": 38,
+        "keyBusinessOperations": 0,
+        "main": {
+          "ActiveState": "inactive",
+          "ControlPID": "0",
+          "LoadState": "masked",
+          "MainPID": "0",
+          "NRestarts": "0",
+          "UnitFileState": "masked"
+        },
+        "mode": "installed",
+        "package": "installed 6.0.0~git202611180229.44b4281-1",
+        "packageHistoryReceipts": 14
+      },
+      "rootMasksUnchanged": true,
+      "runtimeAndPersistentEnableLinksRemovedOnUninstall": true,
+      "coreClockKeyBusinessOperations": 0,
+      "completion": {
+        "originalRemovalFenceCompleted": true,
+        "main": {
+          "MainPID": "0",
+          "ControlPID": "0",
+          "ExecMainStartTimestampMonotonic": "0",
+          "ActiveState": "inactive",
+          "UnitFileState": "masked"
+        },
+        "masksKeptExact": true,
+        "mainNeverStartedInCurrentUnit": true
+      }
+    }
+  ],
+  "knownMasked97Failure": {
+    "originalPurpose": "2041f9fd-4a61-4acf-b0ae-afd84e8ab8cd",
+    "removeExitCode": 0,
+    "reinstallExitCode": 1,
+    "original34FingerprintsAndCopiesExact": true,
+    "pairedClockCodeOnlyRepair": true,
+    "keyDomainManifestUnchanged": true,
+    "configureDispatchesAfterFix": 1,
+    "configureExitCode": 0,
+    "originalPurposeCompleted": true,
+    "unmodifiedProductAcceptance": false
+  },
+  "finalFixture": {
+    "accounts": {
+      "kura": {
+        "gid": 1001,
+        "uid": 1001
+      },
+      "kura-clock": {
+        "gid": 988,
+        "uid": 995
+      },
+      "kura-key-recovery": {
+        "gid": 990,
+        "uid": 996
+      },
+      "kurad": {
+        "gid": 991,
+        "uid": 997
+      }
+    },
+    "actor": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": "static"
+    },
+    "clockAccount": {
+      "gid": 988,
+      "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+      "role": "kura-clock",
+      "schema": 1,
+      "uid": 995
+    },
+    "clockNamespaceAbsent": true,
+    "clockOperations": 0,
+    "coreOriginalLogicalFingerprintsExact": 8,
+    "coreStarts": 0,
+    "externalOriginalFullFingerprintsExact": 30,
+    "fullCoreOsgiVerified": false,
+    "inventoriedFiles": 38,
+    "keyBusinessOperations": 0,
+    "main": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": "disabled"
+    },
+    "mode": "installed",
+    "package": "installed 6.0.0~git202611180229.44b4281-1",
+    "packageHistoryReceipts": 14
+  },
+  "finalParkingChoice": "disabled harness choice restored only after acceptance",
+  "fixtureStoppedExitCode": 0,
+  "clockActorProtocolCohort": "324441c5b0606b8f551c801bb07d31b588bf76c03a9009270d7d97d2051acc88",
+  "clockManifestFileSha256": "fb0da9f0e9258cbfd2958677d4d8018ee8c00e822e1cf54016434541209a89b3",
+  "keyGenerationAndClockFullPairVerified": true,
+  "fullCoreOsgiVerified": false,
+  "staticLinkedCoreVerified": false,
+  "purgeVerified": false,
+  "genericInterruptionRecoveryVerified": false,
+  "allSixComponentsProvidersLaunchersVerified": false,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-main-boot-choice-matrix-20261118",
+  "originalScenesDeployed": false,
+  "jdk27": false,
+  "pushed": false
+}

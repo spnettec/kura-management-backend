@@ -1,3 +1,7 @@
+## 2026-11-18 Core 实际 Main 四状态
+
+最新[检查点](core-main-boot-choice-matrix-checkpoint.json)与[审查](../../reviews/core-main-boot-choice-matrix-review-20261118.md)。97修runtime链接、44修严格Main masked停止识别；原同Root enabled/runtime与两mask状态正常产品路径通过，Main未启、原钥/数据/UID保持。97原masked失败仅有界同ID修复、不算正常产品；之后完整44 mask矩阵实际通过。原7fd健康安装44、38输入/14回执、disabled停放且停止；原已完成目的不重做。135选择134过/1平台skip，7 nativeRoot及6真实回调条件；static/linked/purge/通用中断/完整六组件及12父项仍pending，冻结全文不变。
+
 ## 2026-11-18 Core 正常保留重装与 NM 授权撤销
 
 最新[检查点](core-retained-reinstall-policy-checkpoint.json)与[审查](../../reviews/core-retained-reinstall-policy-review-20261118.md)。原1fab失败已同Root/同目的局部续接并由正常14f重装完成；此修复不作通用中断验收。38a正常产品升级/remove/retained reinstall各单次通过，实际polkit同subject授权0→1→0、daemon未重启、无网络写；原数据/密钥/UID/disabled选择保持。7fd现健康安装38a、30输入、停止exit0，原1fab及4f52已完成不重做。63宿主/12真实LinuxRoot回归过。purge/legacy/其他boot/通用中断、完整六组件和12父项仍pending，冻结全文不变。

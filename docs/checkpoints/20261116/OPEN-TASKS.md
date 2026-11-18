@@ -1,3 +1,15 @@
+## 2026-11-18 Core 实际 Main 四状态
+
+97dbbc06e9修复普通disable遗留/run enable链接，追加--runtime且失败前不删vendor，补cron/logrotate/tmp失败传播；凭据准备只认固定Root/单链接/受保护父目录/精确/dev/null Main mask，必须原canonical+回执完整、拒绝bootstrap/普通override/其他目标和mask变更。44b4281923修复clock安装拒绝合法Main masked：明确inactive/PID0/control0+固定Rootmask才接受，clock service/socket masked及原代码/有效unit检查仍拒绝，不读key。135宿主选择134过/1既有Linux-only归档用例在macOS skip不算通过，7实际LinuxRoot key/mask、6shipped preRemove/systemd条件通过，不累加旧JVM/crypto。native首夹具umask000被正确拒绝，失败保留新独立umask077夹具通过；生产检查未放宽。
+
+18仓/官方父知识库初始与前轮精确。7fd重挂overlay只st_dev变化，原30文件inode/uid/gid/mode/nlink/size/mtime/ctime/SHA九字段全同，原失败和旧记录留存、当前boot基线另记，产品Root/namespace检查未改；无GWT binding/clock namespace/业务。packages/log扩展覆盖原dpa.properties总31。新Git/private缓存/JDK21完整97包及44包分别单次升级通过；最终44包6.0.0~git202611180229.44b4281-1/SHAe3f8d8fa…02c407。
+
+原同现场enabled-runtime/enabled在97各自单次正常remove/reinstall 0/0，同目的68bd1736…、16c8ecb7…完成，32→33→34库存。97 masked-runtime remove0、reinstall在clock拒绝exit1/half-configured，原2041f9fd…/mask/全部34外部与retained完整指纹保持；只发布新Git完整44的独立8文件clock code cohort、key manifest及原维护不动，单次configure同原目的完成，库存35。该有界修复不算通用/未修改产品通过；随后完整44正常masked-runtime升级0/库存36，真正未改产品脚本masked-runtime/masked各自remove/reinstall 0/0，3793c1ea…/7b160323…同目的完成、36→37→38，原mask inode/属主/模式/链接/mtime/ctime保持。原外部完整/8Core数据逻辑及各副本精确，Rootcanary/.data历史/原UID/钥保持，无Core/key/clock业务，Main从未启动。每次仅正常package-history追加。
+
+四profile验证后单独恢复夹具原disabled停放选择，非产品修复；最终ExecMainStartTimestampMonotonic0、key完整generation及clock canonical/actor/effective配对通过，actor protocol324441c5…/manifest文件SHAfb0da9f0…分别记录。原7fd健康安装完整44、38输入/14正常回执、停止exit0；独立命令探针也停止，不重初始化或重放本轮已完成目的。02:39UTC原3/个人25/C/D/E原数据/身份/配对/进程/ON保持，两VM实时stopped、旧+1ms未重放；E Main仍11/13caps、NNP0。见[检查点](core-main-boot-choice-matrix-checkpoint.json)、[审查](../../reviews/core-main-boot-choice-matrix-review-20261118.md)。
+
+继续static/linked实际Core/legacy转换、purge/通用中断/半配置恢复、全部六组件/provider/launcher/资源/平台矩阵、完整Core合法Main/RTC/Chrony/其余typed brokers/API/R017/GUI/网络/密钥/CA/数据库/上游及发行12父项，不缩目标。仅原3external deferred、冻结完整12父项SHA不变，最终0/12、无加权百分比，G034/协议未封签发布。goal active/现有积分继续，无push/JDK27/活动runtime清理，旧UNKNOWN/丢失CSR不重发换号跨Root查，闭环密钥/900秒等不重放。
+
 ## 2026-11-18 Core 正常保留重装与 NM 授权撤销
 
 代码38a983787e。原7fd的1fab失败维护先在原Root/ID/代码/副本/身份/27输入完整核对后做自有夹具局部续接，从未到达账号回调开始，不重做key/clock移除和数据复制；第一次只读预检因dpkg暂态half-configured拒绝，另次发布因dpkg改脚本755拒绝，账号回调仍0。指纹上下文最终移Root0600；之前该夹具脚本短暂可读的仅测试元数据，无密钥载荷。原日志不改，此修复不作通用中断恢复。新Git/private缓存/JDK21的14f单次正常保留重装exit0，原1fab由产品同ID完成，总28输入；原身份/密钥/data/Main disabled保持。
