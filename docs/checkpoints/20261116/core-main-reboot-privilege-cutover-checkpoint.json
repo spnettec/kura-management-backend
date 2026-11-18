@@ -1,0 +1,232 @@
+{
+  "recordedAt": "2026-11-18T07:25:35.804195+00:00",
+  "branch": "wip/management-close-20261116",
+  "core": {
+    "commit": "6a8a19c8ac037612d26c892f78004d880b8f291a",
+    "tree": "a9c4a1d52d7a1bbcbebd98ea8a5dcc146e0fb5e7",
+    "preceding": "4ee120cf5358caf5568d9283dfc3bae40a863dce",
+    "testRestoration": {
+      "commit": "c77d6a035713aca4e06ea0a0ceb051028b1e3a65",
+      "tree": "bda81f0b3641c5d9ef7c10ea2888458342c7b142",
+      "generation": 21,
+      "journal": 6,
+      "productChanges": false
+    }
+  },
+  "build": {
+    "jdk": 21,
+    "architecture": "arm64",
+    "sourceDetached": true,
+    "independentMavenCache": true,
+    "packageVersion": "6.0.0~git202611180717.6a8a19c-1",
+    "sha256": "b59f641964f9ebd9c1c45c255b9af407401d3c4d380a252b0a6663c8dbc39871",
+    "bytes": 203597302,
+    "mainUnitSha256": "23fe43ab74b942c06991adc5af1f0c0bbb58bbe9fbf76a71aee0483d63a60dda",
+    "rebootCohortSha256": "7580e311ad5c259aed8e800d15cbf3113a39c883dc4aff245593b7a5bd936c48",
+    "changedRebootCohortEntries": [
+      "libexec/reboot-broker/kura.service"
+    ],
+    "exactIncomingReaders": true,
+    "checkedKeyFiles": 39,
+    "checkedKeyUnits": 3
+  },
+  "networking": {
+    "commit": "dc8cd368db7e111b86150633a5de85f5ca73821e",
+    "tree": "c4a21ca0123c4b626da626ebeffc8b0086dffe7a",
+    "package": "kura-networking",
+    "version": "3.0.0~git202611180720.dc8cd36-1",
+    "architecture": "all",
+    "debSha256": "933e8d7e7d644c40fc7c8ccb11a78bdf030d36eb649ef33e0045a1037739907f",
+    "debBytes": 9277318,
+    "scriptSha256": "c13d9a9d4d5ce183783a114a35148d2b4331779e55316e5b51c859f7151bb0a3",
+    "packagedExact": true,
+    "packageBuildPassed": true,
+    "dpBuildPassed": true,
+    "actualInstall": false
+  },
+  "contracts": {
+    "macOS": {
+      "passed": 250,
+      "skipped": 24
+    },
+    "linuxArm64": {
+      "passed": 242,
+      "skipped": 18,
+      "nonRoot": true,
+      "noCapabilities": true,
+      "noNetwork": true
+    }
+  },
+  "installed": {
+    "container": "528c61dd7a399166379fcecd3fa19427871b797fb748660cf77242674d990497",
+    "upgradeAttempts": 1,
+    "upgradeReturnCode": 0,
+    "oldVersion": "6.0.0~git202611180701.4ee120c-1",
+    "vendorMainByteExact": true,
+    "bootChoice": "disabled",
+    "oldPolicyArchivedRootMode": "0600",
+    "previousAuthorizedActions": [
+      "power-off",
+      "power-off-multiple-sessions",
+      "reboot",
+      "reboot-multiple-sessions",
+      "suspend",
+      "suspend-multiple-sessions"
+    ],
+    "currentDeniedActionCount": 19,
+    "systemdCapabilitiesBefore": {
+      "AmbientCapabilities": [
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_kill",
+        "cap_net_bind_service",
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_sys_module",
+        "cap_sys_boot",
+        "cap_sys_tty_config",
+        "cap_syslog"
+      ],
+      "CapabilityBoundingSet": [
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_kill",
+        "cap_setgid",
+        "cap_setuid",
+        "cap_net_bind_service",
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_sys_module",
+        "cap_sys_boot",
+        "cap_sys_tty_config",
+        "cap_syslog"
+      ]
+    },
+    "systemdCapabilitiesAfter": {
+      "AmbientCapabilities": [
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_kill",
+        "cap_net_bind_service",
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_sys_module",
+        "cap_sys_tty_config",
+        "cap_syslog"
+      ],
+      "CapabilityBoundingSet": [
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_kill",
+        "cap_setgid",
+        "cap_setuid",
+        "cap_net_bind_service",
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_sys_module",
+        "cap_sys_tty_config",
+        "cap_syslog"
+      ]
+    },
+    "ordinaryMain": {
+      "mainPid": 1882,
+      "uid": 997,
+      "configured": "disabled",
+      "caps": {
+        "CapInh": 9250,
+        "CapPrm": 9250,
+        "CapEff": 9250,
+        "CapBnd": 9442,
+        "CapAmb": 9250
+      },
+      "effectivePowerAuthorizationCode": 1,
+      "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "newRootOperations": 0,
+      "senderPendingCount": 1,
+      "realRebootDispatchCount": 0,
+      "oldProbeNotRun": true
+    },
+    "osgiSystemAndJettyStarted": true,
+    "privateKeyAndSnapshotFilesExact": 5,
+    "brokerAndSenderFilesExact": 8,
+    "originalUnknownAndSenderPendingExact": true,
+    "realRebootDispatchCount": 0,
+    "oldProbePreservedOutsideAutoload": true,
+    "fixture": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T07:16:10.861692516Z",
+      "FinishedAt": "2026-11-18T07:19:48.75888809Z"
+    }
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFiles": 25,
+    "cPrivateFiles": 9,
+    "dPrivateFiles": 29,
+    "e": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "parkedFixtures": {
+      "cutoverDebian": {
+        "container": "528c61dd7a399166379fcecd3fa19427871b797fb748660cf77242674d990497",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "original7fd": {
+        "container": "7fd8c6a0967a58a95c123785e5feff68cd0ce74e370d00ee875f9e215ac08d7e",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "previousChronyUnknown": {
+        "container": "d78c192b7fb522e91ec6e04f0b05efeb3a71142b5fcbe149adaf6f1b5fe3dc3c",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "clockDebian": {
+        "container": "bec63b6102e6352252b119c8229c382b95933192a5e946e6911474687bbe8edd",
+        "stateExact": true,
+        "exitCode": 0
+      },
+      "previousRebootDebian": {
+        "container": "a79400b3f0bb2efbf06650ec94e7fe9215d1e972a2bbdc83250576f00beb8873",
+        "stateExact": true,
+        "exitCode": 0
+      }
+    },
+    "existingParallelsAndOrbStopped": true,
+    "originalDockerLiveCount": 9,
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16,
+      "stateExact": true
+    },
+    "previousChronyUnknownRedispatched": false
+  },
+  "pending": [
+    "Installed Networking upgrade/install/remove/purge and old maintainer-script interruption matrix",
+    "Installed remove/retained reinstall for new policy across all Main choices",
+    "Real reboot acceptance, boot and application recovery, deployment installation and hardware watchdog",
+    "Full Core/OSGi and remaining typed brokers, components/providers/launchers and all twelve parents"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "localEvidence": ".management-close-20261116/main-reboot-privilege-cutover-20261118",
+  "pushed": false
+}

@@ -1,3 +1,13 @@
+## 2026-11-18 普通 Main 重启权限撤回
+
+Core `6a8a19c8ac` 从普通 Main 的 ambient 和 bounding 集合移除 `CAP_SYS_BOOT`。升级根据同 Root 的包历史核对保存的原软件包和原单元，再采用入包的配对 vendor 单元。保留重装复用已有 Main 回执，实际加载配置在解除维护围栏前核对。Core 拒绝 `kurad` 的 logind 电源动作并归档旧规则。Networking `dc8cd36` 的兼容脚本停止创建或删除共享规则，保留 NetworkManager 等专用规则。
+
+JDK 21 从隔离 Git 构建 Core ARM64 deb、Networking deb 和部署包，核对实际入包文件。macOS 合同 250 项通过、24 项跳过。Linux ARM64 的普通 UID 合同 242 项通过、18 项跳过。Core `c77d6a0357` 只修复两套既有测试的输入，另有 21 项生成代包合同和 6 项历史日志合同通过。
+
+独立 Debian 实际升级一次。重启 broker 的新版本只替换 cohort 中的 Main 单元。原五份密钥及快照文件和原八份 broker/sender 记录保持，旧 logind 规则按原字节归档为 Root 0600。实查 19 项 logind 电源动作均拒绝，旧规则时期其中 6 项曾直接放行。普通 `kurad` Main 实际启动，OSGi SystemService 与 Jetty 就绪，JVM 五个 capability 集合均无 `CAP_SYS_BOOT`。原 UNKNOWN 和 sender 待办各一条，实际派发 0，夹具保持 disabled 并正常停止。
+
+保留重装权限变更的实装交叉矩阵、Networking 实际安装升级移除 purge、真实 reboot/boot 和业务恢复、完整 Core/OSGi、其余 typed brokers 与六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部 pending。原三现场、C/D/E、个人配置、停机 7fd 的 41 输入/16 回执及原 Chrony UNKNOWN 均复核。冻结 12 父项仍 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-main-reboot-privilege-cutover-checkpoint.json)。
+
 ## 2026-11-18 Core 与部署重启入口接线
 
 Core `4ee120cf53` 将 Linux `SystemAdminService.reboot()` 和 watchdog 切到安装态 broker 的固定 helper，维持公开 API。客户端只对确定未派发的情况提供可重试结果，超时、断连、无效回执及 UNKNOWN 保持不确定。watchdog 保留先 sync、停机取消和硬件兜底。deployment `bca16d3` 改用已有 `SystemAdminService`，安装及移除的原业务结果与重启请求分开报告，缺服务时没有命令回退。
