@@ -1,3 +1,13 @@
+## 2026-11-18 当前 actor 实际权限与 Core 升级数据保留
+
+Core b49eb6cb20修复升级强制enable，e1c40469d9修复历史.data恢复及数据属主，合同aa8f086b50。原VM按机器/原namespace/APPLIED/sender/未启probe核对后，沿原维护1284ae68…只归档发布新Git a54的7代码/unit/JAR及manifest，产品install/resume不重身份、不复制真实数据/重建namespace。实际actor cohort07212c1f…，PID4181/ticks41703，UID992/GID970/组970/五cap仅SYS_TIME/NNP1/NRestarts0，通过当前有效unit自配对；一次无ID的Root context被UNAUTHORIZED。原namespace/operation/sender精确、操作数仍1/新clock0，合法Main业务未验。10生产文件与当前逻辑相同；正常quiesce后停机维护4322e5d4…保留同namespace/当前cohort，VM正常poweroff回stopped，旧probe/+1ms未重放。非完整deb/OSGi安装。
+
+Main新逻辑保留已有标准位置unit的enable/mask链接，fresh reload后enable且错误传播，消息不再强制承诺自启；5合同过。原7fd8…同现场从9066到b49新Git/private缓存完整重建包6.0.0~git202611180028.b49eb6c-1/SHAca68e097…669fd3唯一一次升级exit0，Main仍disabled/PID0无后补disable；17外部完整指纹、4权威user逻辑字段精确，2历史副本mtime刷新实录。其源恢复new默认优先/快照强刷及chown-R风险已修：旧.data优先、既有历史快照/链接不重写、缺失填充失败传播、真实数据属主不递归改，Root代码独立libexec/code-only；5合同过，不重跑/累加旧49Python/57JVM。
+
+在该自有夹具归档两原副本、明确追加公开历史标记和Root0600数据canary，权威快照/密钥未改；原始失败/时间不回填。b49到e1新Git完整包6.0.0~git202611180039.e1c4046-1/SHA5df08c91…db66d5唯一一次升级exit0：原25输入，18外部dev/inode/uid/gid/mode/nlink/size/mtime/ctime/SHA精确、7Core数据历史uid/gid/mode/nlink/size/mtime/SHA精确，Root0/0/0600及2不同历史内容保留；Core复制inode/ctime差异实录，NOATIME自查不声称atime一致。每次新增1正常package-history旧回执留存。Main一直disabled/inactive/0，clock actor未启/namespace及operations未创建/业务0；原账号目的2a388683… UID995/GID988保持。最终e1 actor cohort a16faa5e…/manifest文件1798b28d…分开。新7fd8…正常停止保留全部数据/标记/属主/回执，不重当空主机、重初始化或误启Main；私有日志指纹仅本地0700/0600。
+
+00:44UTC原3/个人25/C9及进程计数/D29原Main3135、E原配对/身份20/Core6/local7/material5/switch9/transport7及原全部进程/ON保持。文档前18仓仅预期Core提交，冻结完整12父项SHA不变。见[检查点](clock-actor-core-upgrade-preservation-checkpoint.json)、[审查](../../reviews/clock-actor-core-upgrade-preservation-review-20261118.md)。当前联合包合法Main/完整CoreOSGi、六组件/provider/launcher/模式资源平台、e1首装/其他enable状态/保留数据重装移除purge恢复中断、RTC/Chrony/其余typed broker/clock UNKNOWN容量及全部API/R017/GUI/网络/密钥/CA/数据库/上游/发行12父项仍内部pending；E实际Main11/13caps/NNP0。仅原3external deferred、最终0/12不等于实现0%、无加权总百分比，G034未封存/协议未发布。目标active/现有积分继续、无push/JDK27/活动runtime清理；旧UNKNOWN/丢失CSR不重发换号/跨Root查，闭环密钥/900秒/原clock+1ms不重放。
+
 ## 2026-11-18 Clock 有效 unit 与完整 Core 实际首装
 
 Core9066ce7996/测试817ff3cfa2/合同a54af33949：从PID1真实UnitPath核对完整Root加载目录，拒绝control/attached/generator、前缀/类型drop-in、替代fragment与依赖目录；权限拒绝不当不存在。加载Id/Names/LoadState/FragmentPath/SourcePath/DropInPaths/NeedDaemonReload/Transient须配对，异常缺失/重复关闭准入。安装前先查全部unit输入；resume保留原维护gate直到产品reload、加载配对、启socket及复核成功。原密钥Root配对不改。49项Python全过/新增11方法，Java/manifest/DS未变，前57项不重跑/不累加。新systemd255.4 ARM64夹具60条件通过/37拒绝23接受恢复，含12实际加载目录、真实set-property/global/prefix/stale；cap0/NNP1 sleep仅After引用用于保留inactive fragment，无SYS_TIME/clock namespace/请求，actor/socket未启动，夹具停止保留。

@@ -1,0 +1,380 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-11-18T00:47:42.748214+00:00",
+  "goal": "active",
+  "coreSource": {
+    "at": "2026-11-18T00:46:37.262667+00:00",
+    "head": "aa8f086b50a994354d6cc877085d8c9839cab64f",
+    "tree": "25f8caaadbe0536b9bae95ceced0b4e08911577c",
+    "actorVmProducerHead": "a54af33949f6d379af887b01bd9b53c623eaffca",
+    "mainChoiceCodeHead": "b49eb6cb204f2e7b4ac00322b45187354bf44847",
+    "dataPreserveCodeHead": "e1c40469d9807c0518a34b1f9e24b033df2d5d98",
+    "actorJavaUnchanged": true
+  },
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-clock-actor-current-runtime-20261118",
+  "actorRuntime": {
+    "vmUuid": "8061d57e-0120-42ec-a9a9-5799b436c4eb",
+    "fixtureId": "8c3e125c-8203-403c-928e-da87fa8fc0a6",
+    "publication": {
+      "codePublished": true,
+      "sourceHead": "a54af33949f6d379af887b01bd9b53c623eaffca",
+      "originalMaintenancePurposeId": "1284ae68-2e9e-4f28-8e1b-c62fc1119cf1",
+      "originalGateAndAllClockDataExact": true,
+      "originalCodeArchived": true,
+      "actorCodeArchivedByProduct": true,
+      "newActorCohortSha256": "07212c1f891a4c1e0b1f18d37bb2043ea56e0ffe35276cf4183c4b6a9129304f",
+      "probeNeverStarted": true,
+      "clockDispatches": 0,
+      "installReturnCode": 0
+    },
+    "actualRuntime": {
+      "originalMaintenancePurposeId": "1284ae68-2e9e-4f28-8e1b-c62fc1119cf1",
+      "originalGateCompleted": true,
+      "newActorCohortSha256": "07212c1f891a4c1e0b1f18d37bb2043ea56e0ffe35276cf4183c4b6a9129304f",
+      "sourceHead": "a54af33949f6d379af887b01bd9b53c623eaffca",
+      "reply": {
+        "ok": false,
+        "reason": "UNAUTHORIZED"
+      },
+      "actorUnit": {
+        "ActiveState": "active",
+        "MainPID": "4181",
+        "NRestarts": "0"
+      },
+      "actorTicks": "41703",
+      "actorKernel": {
+        "Uid": "992\t992\t992\t992",
+        "Gid": "970\t970\t970\t970",
+        "Groups": "970",
+        "CapInh": "0000000002000000",
+        "CapPrm": "0000000002000000",
+        "CapEff": "0000000002000000",
+        "CapBnd": "0000000002000000",
+        "CapAmb": "0000000002000000",
+        "NoNewPrivs": "1"
+      },
+      "originalClockFilesExceptCompletedGateExact": true,
+      "originalNamespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+      "originalOperationCount": 1,
+      "newClockOperations": 0,
+      "oldIdsSent": false,
+      "oldJavaProbeStarted": false,
+      "keyGlobalsAbsent": true,
+      "positiveBusinessAdmissionVerified": false
+    },
+    "stop": {
+      "stopped": true,
+      "units": {
+        "kura.service": {
+          "ActiveState": "inactive",
+          "MainPID": "0",
+          "ControlPID": "0",
+          "NRestarts": "0"
+        },
+        "kura-clock-broker.socket": {
+          "ActiveState": "inactive",
+          "ControlPID": "0"
+        },
+        "kura-clock-broker.service": {
+          "ActiveState": "inactive",
+          "MainPID": "0",
+          "ControlPID": "0",
+          "NRestarts": "0"
+        }
+      },
+      "currentMaintenance": {
+        "cohortSha256": "07212c1f891a4c1e0b1f18d37bb2043ea56e0ffe35276cf4183c4b6a9129304f",
+        "namespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+        "purposeId": "4322e5d4-a9bb-4bdb-ab43-a853fad78fb0",
+        "schema": 1,
+        "units": {
+          "kura-clock-broker.service": "b73d720ea3ae273281376513c536688151c562898cc27b3e7a20432224fc30f8",
+          "kura-clock-broker.socket": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020"
+        }
+      },
+      "oldMaintenancePurposeCompleted": "1284ae68-2e9e-4f28-8e1b-c62fc1119cf1",
+      "originalNamespaceAndOperationAndSenderFilesExact": true,
+      "originalOperationCount": 1,
+      "newClockOperations": 0,
+      "oldProbeNeverStarted": true,
+      "currentCohortSha256": "07212c1f891a4c1e0b1f18d37bb2043ea56e0ffe35276cf4183c4b6a9129304f",
+      "newGateIsStopPurposeNotClockRequest": true
+    },
+    "actualCodeProducer": {
+      "sourceHead": "a54af33949f6d379af887b01bd9b53c623eaffca",
+      "packageSha256": "632219ff0c123763446c0c28622da95075b4bffe4c6aa10bc186b6ee61670e27",
+      "packageVersion": "6.0.0~git202611172327.a54af33-1",
+      "manifestFileSha256": "56fc11e8ed799c29d0bb36f56ed278e036c62749a0208e0fabd0b7f8578c1d54",
+      "actorCohortSha256": "07212c1f891a4c1e0b1f18d37bb2043ea56e0ffe35276cf4183c4b6a9129304f",
+      "payloadDirectory": "full-deb-extracted-verified/opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+      "descriptor": {
+        "action": "adjust-realtime",
+        "actor": "kura-clock",
+        "caller": "kurad",
+        "clockBundle": "plugins/4/org.eclipse.kura.linux.clock-2.0.0-SNAPSHOT.jar",
+        "files": {
+          "bin/kura_clock_broker.py": "8d1eb917adac4617d4e113f4f5583385cd4dc48e3c4aaafd06c9fef4b9f9e129",
+          "bin/kura_clock_client.py": "4db87e53b4b811897f2ec23e8b9b7824cad64215b004d8a92f9cae7d139887fd",
+          "bin/kura_clock_journal.py": "1e8a19a4b3122651bbabf9e2098890c1ddfa706b74856333c284b047e7ceb36a",
+          "bin/kura_clock_setup.py": "6384e62984fda9e7f70a776e0e0069c7d6b43da3013c9e37e2a393f96cfac0ff",
+          "libexec/clock-broker/kura-clock-broker.service": "b73d720ea3ae273281376513c536688151c562898cc27b3e7a20432224fc30f8",
+          "libexec/clock-broker/kura-clock-broker.socket": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020",
+          "plugins/4/org.eclipse.kura.linux.clock-2.0.0-SNAPSHOT.jar": "6a67ff22b07c3d48dad60025c928d9f7054624f8a24a8cf2f5dd98dcd9c05cc8"
+        },
+        "protocol": 1,
+        "schema": 1
+      }
+    },
+    "clockLogicAndUnitsCurrentSourceExact": "actor-runtime-source-pair.json: 10 current production files exact",
+    "completeCoreDebInstalledInVm": false,
+    "fullCoreOsgi": false,
+    "currentLegitimateMainBusinessAdmissionVerified": false,
+    "newClockOperations": 0,
+    "originalCompletedClockNotReplayed": true,
+    "normalPoweroffReturnedStopped": true
+  },
+  "mainEnablementFix": {
+    "source": {
+      "at": "2026-11-18T00:26:59.771544+00:00",
+      "head": "b49eb6cb204f2e7b4ac00322b45187354bf44847",
+      "tree": "59681d85df476e6d0d01467a9b458c67b09bf92a",
+      "tests": 5,
+      "actualUpgradeNotYetRun": true,
+      "actorProductionFilesChanged": false,
+      "javaChanged": false
+    },
+    "tests": 5,
+    "realSameFixtureUpgrade": {
+      "packageVersion": "6.0.0~git202611180028.b49eb6c-1",
+      "mainRemainsDisabled": true,
+      "mainPid": 0,
+      "originalInputs": 23,
+      "externalFullFingerprintExact": 17,
+      "authoritativeUserFilesLogicalFingerprintExact": 4,
+      "legacyCopies": [
+        {
+          "path": "/opt/eclipse/kura/.data/manage_kura_users.sh",
+          "oldMtimeNs": 1794956960807881110,
+          "currentMtimeNs": 1794961883605712422,
+          "bytesOwnerGroupModeNlinkSizeExact": true
+        },
+        {
+          "path": "/opt/eclipse/kura/.data/snapshot_0.xml",
+          "oldMtimeNs": 1794956961373886938,
+          "currentMtimeNs": 1794961884983209037,
+          "bytesOwnerGroupModeNlinkSizeExact": true
+        }
+      ],
+      "newPackageHistoryReceipts": 1,
+      "clockNamespaceAbsent": true,
+      "clockOperations": 0,
+      "originalValidatorFailureRetained": true,
+      "legacyMtimeNotBackfilled": true,
+      "fullCoreOsgi": false,
+      "actorCohortSha256": "d81806ca2a0abdeed2faf15610bfc37791a40e5c78d20f08012ac331ef1a1d46"
+    },
+    "scope": "Existing standard unit paths retain enable/mask links; default Core/inactive-disabled actual upgrade only. Other states are filesystem/mock contracts, not actual full profile matrix."
+  },
+  "dataRestoreFix": {
+    "source": {
+      "at": "2026-11-18T00:38:12.867773+00:00",
+      "head": "e1c40469d9807c0518a34b1f9e24b033df2d5d98",
+      "tree": "f8050972fde36b884dc88b1114be1b6a6c58e1eb",
+      "tests": 5,
+      "actualUpgradeNotYetRun": true,
+      "actorOrJavaChanged": false,
+      "finding": "Fresh .data shadows plus no-clobber restore refreshed legacy copies; unconditional snapshot refresh and recursive restored data chown contradicted preservation"
+    },
+    "tests": 5,
+    "changes": [
+      "Preserved addon-data overrides fresh shadow defaults; actual Root addon code remains in separately paired libexec/addons",
+      "Existing historical recovery snapshot not refreshed or followed through a data link; only missing copy populated, errors propagated",
+      "Remove recursive chown of restored user/data/packages/log; code-only ownership validation leaves real data/key owners intact"
+    ],
+    "realSameFixtureUpgrade": {
+      "packageVersion": "6.0.0~git202611180039.e1c4046-1",
+      "packageSha256": "5df08c91871b3f922811b7f14bf226ea964b9b9bbe856196c72afff0ebdb66d5",
+      "packageInstalled": true,
+      "mainEnableState": "disabled",
+      "main": {
+        "MainPID": "0",
+        "ControlPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "inactive"
+      },
+      "oldInputFiles": 25,
+      "externalKeyAccountReceiptFullFingerprintsExact": 18,
+      "coreUserDataHistoryLogicalFingerprintsExact": 7,
+      "coreLogicalFields": "uid/gid/mode/nlink/size/mtime/SHA; copy-back inode/ctime differences retained",
+      "recreatedCorePaths": [
+        "/opt/eclipse/kura/user/kura_custom.properties",
+        "/opt/eclipse/kura/user/security/cacerts.ks",
+        "/opt/eclipse/kura/user/security/httpskeystore.ks",
+        "/opt/eclipse/kura/user/snapshots/snapshot_0.xml",
+        "/opt/eclipse/kura/data/phase29-root-owned-public-data",
+        "/opt/eclipse/kura/.data/manage_kura_users.sh",
+        "/opt/eclipse/kura/.data/snapshot_0.xml"
+      ],
+      "historicalSnapshotMarkerPreserved": true,
+      "historicalScriptShapedDataMarkerPreserved": true,
+      "rootOwnedDataCanary": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600"
+      },
+      "newPackageHistoryReceipts": 1,
+      "actorCohortSha256": "a16faa5ed0f60733a92a7fdf3a1f1a564b63200f1b81e20e63f207e0a5578ac4",
+      "manifestFileSha256": "1798b28daab00890252b27ef75a3addbe2a0bdc2dd0f8fe60c0329c7ceaa623c",
+      "clockAccount": {
+        "gid": 988,
+        "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+        "role": "kura-clock",
+        "schema": 1,
+        "uid": 995
+      },
+      "clockNamespaceAbsent": true,
+      "clockOperations": 0,
+      "actor": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "inactive"
+      },
+      "fullCoreOsgiVerified": false,
+      "timestampBackfill": false
+    },
+    "fixtureDataMutation": "Only this retained fixture: old historical bytes archived, two explicit public markers appended and Root0600 data canary added; authoritative user snapshot/keys untouched. Not customer data proof.",
+    "privateReceiptsNotExported": "upgrade-private directory0700/files0600 only; full key/data file fingerprints and installer logs not copied into Git/KB",
+    "copyBackMetadataScope": "Core logical uid/gid/mode/nlink/size/mtime/SHA retained; inode/ctime differences disclosed, no timestamp backfill; self-read NOATIME, atime not asserted"
+  },
+  "currentInstalledCorePackage": {
+    "sourceHead": "e1c40469d9807c0518a34b1f9e24b033df2d5d98",
+    "packageVersion": "6.0.0~git202611180039.e1c4046-1",
+    "packageSha256": "5df08c91871b3f922811b7f14bf226ea964b9b9bbe856196c72afff0ebdb66d5",
+    "bytes": 203544104,
+    "clockJarSha256": "90ed7ecbca3711e1d28b70ba97efb7c6185956626be6c6d2866460682c07be57",
+    "manifestFileSha256": "1798b28daab00890252b27ef75a3addbe2a0bdc2dd0f8fe60c0329c7ceaa623c",
+    "actorCohortSha256": "a16faa5ed0f60733a92a7fdf3a1f1a564b63200f1b81e20e63f207e0a5578ac4",
+    "actuallyInstalledAndUpgradeVerified": true,
+    "containerId": "7fd8c6a0967a58a95c123785e5feff68cd0ce74e370d00ee875f9e215ac08d7e",
+    "clockAccount": {
+      "gid": 988,
+      "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+      "role": "kura-clock",
+      "schema": 1,
+      "uid": 995
+    },
+    "mainStillDisabledWithoutPostUpgradeManualDisable": true,
+    "rootOwnedDataCanaryRetained": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o600"
+    },
+    "clockNamespaceAbsent": true,
+    "clockOperations": 0,
+    "coreMainNeverStarted": true,
+    "stoppedDataRetained": true,
+    "fullCoreOsgiVerified": false,
+    "thisExactE1PackageFreshFirstInstallVerified": false
+  },
+  "failureAndDifferenceRetention": [
+    "Original first b49 validator rejected refreshed .data copy mtimes; bytes/owner/mode were unchanged. Correctly classified existing historical copies without backfill or editing old evidence, then fixed potential old-content overwrite and recursive data-owner rewrite",
+    "Guessed DS basename in source-pair inspector did not exist; used authoritative owning source inventory, no product mutation"
+  ],
+  "preservation": {
+    "recordedAt": "2026-11-18T00:44:23.968668+00:00",
+    "originalScenes": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "combinedCProcessesAndCountersExact": true,
+    "center": {
+      "privateFilesExact": 29,
+      "unit": {
+        "MainPID": "3135",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "16649159",
+        "status": {
+          "Uid": "999\t999\t999\t999",
+          "Gid": "996\t996\t996\t996",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "readOnly": true
+    }
+  },
+  "actualEUnchanged": {
+    "sourceApplied": true,
+    "currentOriginalRootPairExact": true,
+    "units": {
+      "kura-management-agent-v2.service": {
+        "MainPID": "29323",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "21272446",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "kura.service": {
+        "MainPID": "29609",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "ticks": "21272461",
+        "CapEff": "0000000406413426",
+        "CapBnd": "00000004064134e6",
+        "NoNewPrivs": "0"
+      }
+    },
+    "rootUnits": {
+      "kura-key-service.service": {
+        "MainPID": "4714",
+        "ticks": "18777292"
+      },
+      "kura-key-recovery.service": {
+        "MainPID": "4640",
+        "ticks": "18759746"
+      },
+      "NetworkManager.service": {
+        "MainPID": "4668",
+        "ticks": "18777273"
+      }
+    },
+    "remoteDecision": {
+      "version": 1,
+      "revision": "5e6e429f-13e4-4066-a61e-2bb218c51cc1",
+      "enabled": true,
+      "actor": "kura-uid:996"
+    },
+    "identityFilesExact": 20,
+    "corePrivateExact": 6,
+    "localProofExact": 7,
+    "materialProofExact": 5,
+    "switchProofExact": 9,
+    "transportProofExact": 7,
+    "readOnly": true
+  },
+  "originalScenesOrEDeployed": false,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "remainingInternal": [
+    "Complete Core/OSGi and current joint source package/consumer positive business admission; full six components/provider/launcher and mode/resource/platform matrix",
+    "Fresh first-install of latest E1, enabled/runtime/masked/custom states, retained-data reinstall/remove/purge/restore and interruption matrices",
+    "RTC/Chrony and remaining typed brokers; production E Main remains11/13caps/NNP0; clock UNKNOWN/capacity management",
+    "All original API/R017/GUI/network/key/CA/database/upstream/release and12-parent obligations"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "Disk-full/hard-power"
+  ],
+  "g034Sealed": false,
+  "protocolPublished": false,
+  "pushed": false,
+  "jdk27Run": false,
+  "sharedProjectMavenCacheWrites": false
+}
