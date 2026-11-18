@@ -1,3 +1,13 @@
+## 2026-11-18 firewall-only 移除、purge 与跨变体恢复
+
+Networking `4b58a55` 移除 firewall-only 时先停止已加载 provider 的 Main，仅停用配对的 vendor 早启单元，保留站点单元或 stop 覆盖。卸载不清表、不重设内核默认策略，postrm 在文件移除后刷新 systemd。两变体共用严格校验的能力配置助手，各自保留独立 Root 回执和配置段。切换到 firewall-only 时保全 Networking 的原段，返回 Networking 时按配对记录分别结算。10 项包脚本合同、171 项 Linux 模块测试通过。
+
+旧停机夹具只读确认过往脚本把 Networking 原配对段内的 firewall=false 改成了 true。新助手对这一损坏格式和非标准 dpkg Root 均拒绝，原文件 inode 和字节保持。历史损坏文件的显式修复仍内部 pending。
+
+JDK 21 从当前 Git 构建 Core ARM64 deb、两种 Networking deb 和部署包。新 Debian 13 ARM64 夹具实际安装 Networking，经管理员选择 net=true/firewall=false 后，切换 firewall-only。原 Networking 回执逐字节保留。普通 Main 实际激活两族服务，移除钩子让活跃 Main 正常停止。remove 和 purge 前后，IPv4/IPv6 的 filter/nat/mangle/raw、8 个独立哨兵链、规则文件、快照及两份 Root 回执精确。Networking 解包后停机，续接同一容器时仍为 unpacked，配对记录和文件完整。一次 configure 结算两回执并恢复管理员原配置，Main 保持 disabled，夹具正常退出。
+
+typed firewall broker、确认态早启与显式内核交接、历史损坏拒绝记录的迁移、旧站点文件迁移、NAT/远程及完整六组件/provider/launcher 继续内部 pending。原三现场、C/D/E、个人配置和 7fd 停机 41 输入/16 回执保持。冻结父项 0/12，external deferred 仍仅原 3 项。见 [本轮检查点](networking-firewall-only-removal-checkpoint.json)。
+
 ## 2026-11-18 Debian 普通 Main 防火墙规则保存路径
 
 Networking `2fa2fa8` 为 Networking 与 firewall-only 两种 deb 安装独立的 `/var/lib/kura-legacy-firewall/rules`。外层由 Root 管理，内层为 `kurad:kurad/0700`。初始化按地址族保留已有站点文件，已存在的同族包管理文件优先。规则发布同步临时文件及目标目录。实际 Linux 普通 UID 路径检查覆盖历史文件、混合地址族、保留重配及链接拒绝。Linux 防火墙模块 171 项通过。
