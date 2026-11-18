@@ -1,3 +1,11 @@
+## 2026-11-18 Chrony 校时事件的 typed 读取
+
+Core `0ed95fa4fe` 的 Chrony provider 经原配对 clock broker 读取本次启动、当天的最近校时事件。查询固定 Chrony 单元、真实可执行路径和消息格式，响应只有 schema 和两个时间戳。provider 用单调时间去重，系统壁钟退回后仍能识别后续事件。`systemd-journal` 读取组只配置于独立 actor 单元，`kura-clock` 系统账号本身没有该组成员资格。日志不可读和有权限但无匹配分别处理。
+
+macOS 和 Linux ARM64 各 83 项 clock 合同通过，12 项 polkit 合同和 23 项 JDK 21 检查通过。已更新旧 JVM 测试的空结果 mock。JDK 21 从 Git 和独立缓存构建的完整 ARM64 deb 在原独立 Debian 13 夹具上单次升级成功。实际 Main 经 OSGi 生产 client 查询，排除了普通 UID 写入的同名日志，同 UID 的 Main 外进程返回 `UNAUTHORIZED`。真实校时事件的时间戳通过代码合同验证，实装夹具验证空结果和权限边界，真实 clock step 仍待验。
+
+原 Root 两条启停回执、namespace 和账号连续。17 份文件内容、属主、模式、链接数、大小及 mtime 精确，随标准升级复制的五份 sender 文件改变 inode/ctime，另外 12 份完整指纹精确。Main 和 Chrony 均 disabled，夹具退出 0。原 7fd 仍沿用停机 41 输入/16 回执，旧 UNKNOWN 原现场停放状态精确。Chrony 配置、`makestep`、Main 停机阶段与旧总线兼容，以及完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全生命周期矩阵继续内部 pending。冻结 12 父项仍 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](core-chrony-step-journal-checkpoint.json)。
+
 ## 2026-11-18 Debian 13 ARM64 实装 Chrony 正向启停
 
 Core `9949693770` 从 Git 隔离检出并以 Maven 3.10.1、JDK 21、独立缓存构建完整 ARM64 deb。22 项 JDK 21 检查通过。Debian 13 原生 systemd 257、D-Bus 1.16、polkit 126 和 Chrony 4.6.1 上首装成功。正常 Main 中的 OSGi 探针通过实际 ClockService 的生产 client 启停固定 `chrony.service`，原 Root 分别持久返回 `APPLIED/CHRONY_STARTED` 和 `APPLIED/CHRONY_STOPPED`。系统总线观察到 StartUnit 和 StopUnit 各派发一次，polkit 分别检查各自的可信 bus name。日志显示同一实际 chronyd PID 启停各一次。
