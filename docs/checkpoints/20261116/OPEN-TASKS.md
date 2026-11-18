@@ -1,3 +1,11 @@
+## 2026-11-18 RTC 生产接线及实装拒绝路径
+
+Core `228233f2d0` 将 Java ClockService 的 RTC 写入切换到已配对的 actor。独立启动单元以 CAP_MKNOD/CAP_CHOWN 生成 Root 所有的临时 RTC 投影，保留宿主设备原权限。actor 保留私有 `/dev`，以只读 bind 和 `char-rtc r` 使用投影，仍只有 CAP_SYS_TIME。RTC 调用沿用同一个 pending、原 Root 和不重发规则。
+
+同一组 Python 61 项在 macOS 与 Linux ARM64 各通过。JDK 21 的 18 项 Java 定向检查通过。新 Git 完整 ARM64 deb 实际首装后，正常 Main/OSGi 单次提交 `/dev/rtc0`，实际投影为 254:0，actor 生效挂载只读。同容器直接只读 open 也得到 EPERM，生产回执为 FAILED/OS_ERROR/errno1，未达 ioctl。原请求、issued、回执及 ClockEvent 实际核对通过。新夹具已正常停机，7 份记录保持，原 7fd 仍为 41 输入/16 回执。
+
+RTC 正向设备打开/写入、热插拔与新投影升级移除恢复继续待验。完整 Core/OSGi、Chrony/其余 typed brokers、六组件/provider/launcher 与整个安装升级移除、purge 和中断矩阵仍内部 pending。冻结 12 父项继续 0/12，external deferred 仅原 3 项。详见 [检查点](core-rtc-installed-cutover-checkpoint.json)。
+
 ## 2026-11-18 RTC typed 协议与 ARM64 验证
 
 Core `4512ac8573` 已实现独立 RTC 入参、回执和 Linux ioctl 边界。RTC 与壁钟沿同一 Root、同一 pending/issued 日志准入。旧壁钟 APPLIED 和 UNKNOWN 按原格式读回，跨版本夹具的 9 份文件逐字节精确。两个平台各通过同一组 60 项合同。ARM64 系统头文件验证 ioctl ABI。隔离 Linux 缺设备得到 ENOENT 确定失败，ioctl 次数 0。

@@ -1,0 +1,145 @@
+{
+  "at": "2026-11-18T04:49:24.115625+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "baseCore": "4512ac8573d080d69bea0417359e58b04c26b058",
+  "baseConsole": "11d5779599b5d916036cb841b2338400890071b6",
+  "coreCommit": "228233f2d00998d9afd3c46b0f9022b3de4d56ee",
+  "coreTree": "8659ea48106880c2fb5112167f36d7ce2100d8a6",
+  "currentPackage": {
+    "sha256": "37dc0af6c1768665cfeaf0c8ff63862df2f739217a9b10a9718006f99b7842a1",
+    "bytes": 203562782,
+    "packageVersion": "6.0.0~git202611180443.228233f-1",
+    "architecture": "arm64",
+    "sourceCommit": "228233f2d00998d9afd3c46b0f9022b3de4d56ee",
+    "clockFiles": 8,
+    "clockProtocolDigest": "bd5b39003e541ec0d63038b1ec6be55ba9e64723bfcb9f58de12953ef6178b27",
+    "clockManifestFileSha256": "2f5dc78ab71de17c3a1104e72d72a3667c8ee5646ca52c0bcaff2896ffcdbbec",
+    "privateCache": true
+  },
+  "sourceTests": {
+    "pythonPerPlatform": 61,
+    "pythonPlatforms": [
+      "macOS",
+      "Linux ARM64"
+    ],
+    "java": 18,
+    "javaSkipped": 0,
+    "jdk": 21
+  },
+  "actualRuntime": {
+    "fullDebInstalled": true,
+    "containerId": "911406af1ef454bfc68cb8ef0a17bfbdef4451f5e1c9ebb33e4171ac232755b7",
+    "systemd": 255,
+    "rtcProjectorExit": 0,
+    "realProjectionMajorMinor": "254:0",
+    "ordinaryMain": {
+      "MainPID": "1159",
+      "Result": "success",
+      "NRestarts": "0",
+      "ActiveState": "active"
+    },
+    "actor": {
+      "MainPID": "1281",
+      "Result": "success",
+      "NRestarts": "0",
+      "ActiveState": "active"
+    },
+    "mainUid": 997,
+    "actorUid": 995,
+    "actorGroup": 988,
+    "actorCapabilities": "0000000002000000",
+    "actorNnp": 1,
+    "actorPrivateDevices": true,
+    "actorProjectionMountReadOnly": true,
+    "deviceAllow": "char-rtc r",
+    "rpcAndProjectionVerified": true,
+    "result": {
+      "errno": 1,
+      "namespace": "12762557-885f-40da-8fec-567a324411af",
+      "observedMonotonicNs": 241021417416143,
+      "observedRealtimeNs": 1794977196072604531,
+      "reason": "OS_ERROR",
+      "requestId": "07f1a154-5fd6-473c-820b-6b34e0165a81",
+      "requestSha256": "791a22666caecb19e56cabad15c5a1696699ff2510430f276752f953af7b3d9d",
+      "schema": 1,
+      "state": "FAILED"
+    },
+    "wallClockWriteRequests": 0,
+    "rtcIoctlReached": false,
+    "actualRtcWriteVerified": false,
+    "clockEventObserved": true,
+    "requestCount": 1,
+    "recordsExactAtStop": 7,
+    "finalChoice": "disabled",
+    "finalContainerState": "stopped",
+    "finalExitCode": 0,
+    "preflightCtypeWrapperExit139": true,
+    "rawInvalidDescriptorPreflightSeccompDenied": true
+  },
+  "preservedOriginals": {
+    "sevenFD": {
+      "sameStoppedState": true,
+      "protectedInputs": 41,
+      "packageHistoryReceipts": 16,
+      "newDispatches": 0
+    },
+    "originalLiveFixtures": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "parallelsBothStopped": true
+  },
+  "workspaceKnowledge": {
+    "selector": "f9b864007dcd8a44",
+    "items": [
+      {
+        "path": "Experience/2026-11-18-Kura-RTC-生产接线与实装拒绝-228233f2d0-84caf172.md",
+        "sha256": "f3683af2adccca75c58a8a183851e7a6abd6dd6c9d1b75e98d8b038a2cbd0d63",
+        "exact": true
+      },
+      {
+        "path": "Tasks.md",
+        "sha256": "b593243afb021f5387118cae68eed072f694194a3149f8544e1bc2d3532a93be",
+        "fullReadback": true,
+        "markerCount": 1
+      },
+      {
+        "path": "Session Summaries.md",
+        "sha256": "e9480ac80b98650983787b9f5d2e5baba04f98238a6c711b917e4d75314a274f",
+        "fullReadback": true,
+        "markerCount": 1
+      }
+    ],
+    "globalWritten": false
+  },
+  "previousCheckpoint": "core-rtc-typed-protocol-checkpoint.json",
+  "receiptDirectory": ".management-close-20261116/rtc-installed-cutover-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "remainingInternal": [
+    "Positive RTC device access, projection hotplug, and RTC source-pairing across lifecycle transitions",
+    "Complete Core/OSGi business and authorized Main handling",
+    "Chrony and remaining typed brokers",
+    "All six components/providers/launchers with install/upgrade/remove/purge coverage",
+    "Generic interruption/recovery and all frozen parent requirements"
+  ],
+  "pushed": false
+}
