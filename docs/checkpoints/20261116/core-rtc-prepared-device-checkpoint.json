@@ -1,0 +1,186 @@
+{
+  "at": "2026-11-18T04:57:36.927068+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreCommit": "29c92f04279039d84a72508fe0de265c044553e5",
+  "coreTree": "58f42dd33bde02a85d43dbcb64681d7597bba479",
+  "baseCore": "228233f2d00998d9afd3c46b0f9022b3de4d56ee",
+  "baseConsole": "7617b61c6e6ff676c65b7d984f8ea635104541fe",
+  "currentPackage": {
+    "sha256": "3ac3dc0cbcc6a8718fdbf6760f44401257e205c8c2f28de664c616de6a28463d",
+    "bytes": 203562988,
+    "packageVersion": "6.0.0~git202611180454.29c92f0-1",
+    "architecture": "arm64",
+    "sourceCommit": "29c92f04279039d84a72508fe0de265c044553e5",
+    "clockFiles": 8,
+    "clockProtocolDigest": "5e49d9a16c3701b1d2b037b155682484c2340d143411ea23116c07f9ccfba476",
+    "privateCache": true
+  },
+  "contractTests": {
+    "pythonPerPlatform": 67,
+    "platforms": [
+      "macOS",
+      "Linux ARM64"
+    ],
+    "added": 6,
+    "realMissingDeviceAtPrepare": {
+      "machine": "aarch64",
+      "uid": 65534,
+      "noNewPrivs": 1,
+      "capabilities": 0,
+      "actualProjectionAbsent": true,
+      "persistedBinding": {
+        "errno": 2
+      },
+      "originalPrepareExact": true,
+      "status": "FAILED",
+      "recordedErrno": 2,
+      "rtcIoctlDispatches": 0,
+      "wallClockDispatches": 0
+    },
+    "jdkBuild": 21
+  },
+  "sameRootArm64Upgrade": {
+    "previousPackage": "6.0.0~git202611180443.228233f-1",
+    "currentPackage": "6.0.0~git202611180454.29c92f0-1",
+    "container": "911406af1ef454bfc68cb8ef0a17bfbdef4451f5e1c9ebb33e4171ac232755b7",
+    "upgradeExit": 0,
+    "main": {
+      "MainPID": "0",
+      "ControlPID": "0",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled"
+    },
+    "actor": {
+      "MainPID": "0",
+      "ControlPID": "0",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "static"
+    },
+    "socket": {
+      "ControlPID": "0",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "originalResult": {
+      "errno": 1,
+      "namespace": "12762557-885f-40da-8fec-567a324411af",
+      "observedMonotonicNs": 241021417416143,
+      "observedRealtimeNs": 1794977196072604531,
+      "reason": "OS_ERROR",
+      "requestId": "07f1a154-5fd6-473c-820b-6b34e0165a81",
+      "requestSha256": "791a22666caecb19e56cabad15c5a1696699ff2510430f276752f953af7b3d9d",
+      "schema": 1,
+      "state": "FAILED"
+    },
+    "archiveCreated": true,
+    "receiptFilesExact": 7,
+    "originalLegacyPrepare": true,
+    "newDispatches": 0,
+    "rtcPositiveWriteVerified": false,
+    "finalState": "stopped",
+    "finalExit": 0
+  },
+  "chronyReadOnly": {
+    "uid": 995,
+    "gid": 988,
+    "capEff": 0,
+    "noNewPrivs": 1,
+    "readOnly": true,
+    "units": [
+      {
+        "MainPID": "0",
+        "User": "_chrony",
+        "Id": "chrony.service",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/chrony.service",
+        "DropInPaths": ""
+      },
+      {
+        "MainPID": "0",
+        "User": "",
+        "Id": "chronyd.service",
+        "LoadState": "not-found",
+        "ActiveState": "inactive",
+        "FragmentPath": "",
+        "DropInPaths": ""
+      }
+    ],
+    "chronyWrites": 0
+  },
+  "sourceFilesChanged": [
+    "kura_clock_broker.py",
+    "kura_clock_journal.py",
+    "test_clock_broker.py"
+  ],
+  "preservedOriginals": {
+    "sevenFD": {
+      "sameStoppedState": true,
+      "protectedInputs": 41,
+      "packageHistoryReceipts": 16,
+      "newDispatches": 0
+    },
+    "originalLiveFixtures": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "parallelsBothStopped": true
+  },
+  "workspaceKnowledge": {
+    "selector": "f9b864007dcd8a44",
+    "items": [
+      {
+        "path": "Experience/2026-11-18-Kura-RTC-准备设备身份与实装升级-29c92f0427-800be9c1.md",
+        "sha256": "d05a3de2091f6c7e2a44f24855023d86bf768ea8d56124b31ab356ee30a372bf",
+        "exact": true
+      },
+      {
+        "path": "Tasks.md",
+        "sha256": "0d15a2155768dc00a1bdc86ee9b89763872a2c640abf0f043ae4dea4d1fe1668",
+        "fullReadback": true,
+        "markerCount": 1
+      },
+      {
+        "path": "Session Summaries.md",
+        "sha256": "bdd758576927cc39aa2d9330c3510c31f44c6b4aea682247b1267ea67a9c2a20",
+        "fullReadback": true,
+        "markerCount": 1
+      }
+    ],
+    "globalWritten": false
+  },
+  "previousCheckpoint": "core-rtc-installed-cutover-checkpoint.json",
+  "receiptDirectory": ".management-close-20261116/rtc-prepared-device-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "remainingInternal": [
+    "Positive RTC writes, hotplug and remaining RTC lifecycle",
+    "Full Core/OSGi and legal Main",
+    "Chrony configuration, service control, makestep and event observation typed routes and other typed brokers",
+    "All six components/providers/launchers and full install/upgrade/remove/purge and interruption recovery",
+    "All frozen parent requirements"
+  ],
+  "pushed": false
+}

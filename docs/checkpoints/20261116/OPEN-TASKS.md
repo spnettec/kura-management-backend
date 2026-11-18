@@ -1,3 +1,13 @@
+## 2026-11-18 RTC 准备记录绑定实际设备
+
+Core `29c92f0427` 在 prepare 保存内核设备和投影节点的身份指纹，commit 在打开设备前核对原指纹。别名改指、节点换代或准备时设备缺失均无法转成对其他设备的写入。旧未提交的无绑定请求保持 UNKNOWN，旧终态回执按原格式读取。
+
+同组 67 项合同在 macOS 和 Linux ARM64 各通过。ARM64 实际缺投影探针验证 prepare 保存 ENOENT，重新实例化 actor 后只完成同一请求的确定失败，RTC/壁钟执行均为 0。Chrony 实机只读核对确认 `chrony.service` 状态可由 cap0 账户读取。配置写入、启停、`makestep` 与校时事件读取各自的 typed 接线仍内部 pending。
+
+从 Git 隔离重建的 ARM64 包在原独立 RTC 夹具上单次实装升级成功。新代码同 Root 读回旧 FAILED/EPERM，7 份原记录精确。升级期间 Main disabled 且未启动，actor 未启动，新增 clock 请求为 0。夹具正常停机。原 7fd 仍保持 41 输入/16 回执及原停机状态。
+
+详见 [检查点](core-rtc-prepared-device-checkpoint.json)。RTC 正向写入、热插拔和剩余包生命周期、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全部 12 父项继续实施。冻结台账仍为 0/12，external deferred 仅原 3 项。
+
 ## 2026-11-18 RTC 生产接线及实装拒绝路径
 
 Core `228233f2d0` 将 Java ClockService 的 RTC 写入切换到已配对的 actor。独立启动单元以 CAP_MKNOD/CAP_CHOWN 生成 Root 所有的临时 RTC 投影，保留宿主设备原权限。actor 保留私有 `/dev`，以只读 bind 和 `char-rtc r` 使用投影，仍只有 CAP_SYS_TIME。RTC 调用沿用同一个 pending、原 Root 和不重发规则。
