@@ -1,0 +1,132 @@
+{
+  "recordedAt": "2026-11-18T08:19:04.108053+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "jdk": 21,
+    "compiledFromGit": true,
+    "archives": {
+      "core": {
+        "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+        "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2",
+        "version": "6.0.0~git202611180815.e952f82-1",
+        "architecture": "arm64",
+        "bytes": 203597342,
+        "sha256": "c5cc5f8d34ab655f6b069d1b8f8a0f0051e92c1fa92ee5caffa086ec1dffddb2",
+        "mainSha256": "23fe43ab74b942c06991adc5af1f0c0bbb58bbe9fbf76a71aee0483d63a60dda",
+        "keyManifestSha256": "a4ad273d6fe4dd01d0fb8dfc573c3f0d03f8a237394742e59156b9ae075cab4d",
+        "rebootCohortSha256": "7580e311ad5c259aed8e800d15cbf3113a39c883dc4aff245593b7a5bd936c48"
+      },
+      "networking": {
+        "commit": "cb871ef60ec09174a1fa39bc3a5e5caae3e74c40",
+        "tree": "2c35970a1e50a7e4708b89b4514df1f4f69273b0",
+        "version": "3.0.0~git202611180815.cb871ef-1",
+        "architecture": "all",
+        "bytes": 9285898,
+        "sha256": "63a90560fea36aa2e42429d4f9c49aa6c0df9bba0b2886c7760e9a1ab54985ff",
+        "siblingJars": 9,
+        "linuxNetJarSha256": "65c0b353d641d93caa341f98da8c45d4cbb3a6fd47a58071e0c8579f8334ab76"
+      }
+    },
+    "networkingDpBuilt": true,
+    "linuxNetUnitTestsPassed": 168
+  },
+  "fixture": {
+    "debian": 13,
+    "architecture": "arm64",
+    "container": "09e8b563209f1fc0726fe1ab00532f4e7317251f31b604b3a2dcb81df26eb27b",
+    "network": "none",
+    "privileged": false,
+    "hostMounts": false,
+    "fixtureAdditionalNetAdmin": true,
+    "seccompBlocksRebootAndClock": true,
+    "physicalPowerTargetsMasked": true,
+    "finalState": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T08:15:37.56467302Z",
+      "FinishedAt": "2026-11-18T08:18:07.039690668Z"
+    }
+  },
+  "ordinaryMain": {
+    "realDebianSystemdMain": true,
+    "missingDirectory": {
+      "missingLegacyDirectory": true,
+      "kernelChanged": false,
+      "hashes": {
+        "iptables": "fd74cbe7599eb86fbb582cac5e22a3f412ed92dc4701f2932378f44cae13ea52",
+        "ip6tables": "fd74cbe7599eb86fbb582cac5e22a3f412ed92dc4701f2932378f44cae13ea52"
+      }
+    },
+    "writableLegacyDirectory": {
+      "published": true,
+      "savedRules": {
+        "iptables": {
+          "bytes": 3180,
+          "sha256": "283b337e072f4dcdb972b95143bae8d58934b0b0db7dae3cc478c771f2e68138",
+          "mode": "0600",
+          "owner": "kurad:kurad"
+        },
+        "ip6tables": {
+          "bytes": 8714,
+          "sha256": "1c3ca0f1a2157abcefe4cc8108997c3c2463efa2364c4c690fed7734538ff2b6",
+          "mode": "0600",
+          "owner": "kurad:kurad"
+        }
+      },
+      "hashes": {
+        "iptables": "447ca687c8536bbdb97762d343d0374d9712d82a6eaee969eb18733caf8de37a",
+        "ip6tables": "bb32de87960a1b649eea0ebf530c7001654d905e332e4bac45b713eeb59cce06"
+      },
+      "fixtureDirectoryOwner": "kurad:kurad",
+      "fixtureDirectoryMode": "0700",
+      "sentinelsPreserved": true
+    },
+    "missingDirectoryPID": "1402",
+    "writableDirectoryPID": "2010",
+    "confirmedFinalNoStagedFile": true,
+    "modelStartupErrorFreeWithWritablePath": true,
+    "publishAfterRequiredKernelCommands": true,
+    "defaultFreshInstallPathPending": true,
+    "parkedDisabled": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "oldFixturesStoppedExact": true,
+    "unknownResubmitted": false,
+    "completedOperationsReplayed": false
+  },
+  "internalPending": [
+    "Default Debian first-install save path and compatible retained imports",
+    "Typed firewall dispatch, exact Root pairing and condition-based recovery of kernel writes",
+    "Full Core/OSGi, remaining typed brokers, six components, providers and launchers",
+    "Complete install, upgrade, remove, purge and interruption matrix and all twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/legacy-firewall-publication-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

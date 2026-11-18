@@ -1,3 +1,11 @@
+## 2026-11-18 Networking 旧防火墙规则检查、应用与保存
+
+Networking `cb871ef` 在修改 IPv4/IPv6 内核规则前预写同目录临时文件，检查原目标身份和所需内核表。命令全部成功后才原子替换规则文件。原文件的 owner、group 和权限需要保持，目标为链接或并发改动时拒绝。所需命令失败时保留原保存文件，使尚未确认的新模型不可读。Networking Linux 防火墙模块 168 项通过。
+
+JDK 21 从当前 Git 构建 Core ARM64 deb、Networking deb 和部署包，核对九个 sibling JAR 与防火墙实际入包 JAR。独立 Debian 13 ARM64 使用无外网的网络命名空间和夹具限定的 NET_ADMIN。使用实装普通 systemd Main，缺少旧 `/etc/sysconfig` 时，两族内核规则逐字节一致，保留独立哨兵链。夹具提供 `kurad:kurad/0700` 旧目录后，两族实际生效并发布各自的 `0600` 规则文件，独立哨兵仍在。Main 已 disabled 并正常停止，PID 1 正常退出。
+
+标准 Debian 首装的保存路径、独立 typed firewall broker、分步写入途中内核状态恢复、NAT/远程/早启和完整安装矩阵继续内部 pending。原三现场、C/D/E、个人配置和原 7fd 停机 41 输入/16 回执保持。冻结 12 父项仍 0/12，external deferred 仅原三项。见 [本轮检查点](networking-legacy-firewall-publication-checkpoint.json)。
+
 ## 2026-11-18 Networking 保留重装与 OSGi provider
 
 Networking `2ce5250` 在移除前保留独立 Root 0600 回执，以该回执绑定的临时配置段禁用两个应用能力。重装只撤回配对的临时配置段，保留原设置和管理员后来追加的属性。旧版本的无回执 `false` 在实际跨版本升级时保持原字节和 inode。四项源码检查覆盖行边界、原始组合、重试以及修改/异配的拒绝。
