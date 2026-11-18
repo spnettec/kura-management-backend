@@ -1,0 +1,147 @@
+{
+  "at": "2026-11-18T01:43:29.026343+00:00",
+  "goal": "active",
+  "codeCommit": "38a983787e9b8ce9d6fbb446f5e5322de8762da1",
+  "packageVersion": "6.0.0~git202611180130.38a9837-1",
+  "packageSha256": "e365e1ab089ff7a1cd4a5d9640f57b1ebcbfe7bad5cd26ac78fb3b39fa1c2caf",
+  "packageBytes": 203548340,
+  "privateMavenCache": true,
+  "sourceGitBuild": true,
+  "initialKnownFailureRecovery": {
+    "originalMaintenanceId": "1fab699a-6544-4f65-87f3-cf24a0691c05",
+    "localFixtureOnly": true,
+    "unmodifiedProductInterruptionRecoveryVerified": false,
+    "firstReadOnlyCallbackRefused": true,
+    "firstCallbackPackageState": "half-configured",
+    "dpkgChangesScriptMode": "0755",
+    "privateContextFixed": "Root0600",
+    "exactAccountContinuationExitCode": 0,
+    "ordinary14fRetainedReinstallExitCode": 0,
+    "originalFenceCompleted": true
+  },
+  "tests": {
+    "host": {
+      "selected": 63,
+      "passed": 63,
+      "skipped": 0
+    },
+    "linuxRoot": {
+      "selected": 12,
+      "passed": 12,
+      "skipped": 0,
+      "productionChecksUnmodified": true,
+      "pathOnlyRelocated": true
+    }
+  },
+  "actualUnmodifiedProductMatrix": {
+    "upgrade": {
+      "dispatches": 1,
+      "exitCode": 0
+    },
+    "remove": {
+      "dispatches": 1,
+      "exitCode": 0
+    },
+    "retainedReinstall": {
+      "dispatches": 1,
+      "exitCode": 0
+    },
+    "removeMaintenanceId": "4f52e089-e745-4f1b-83e6-ac2fe8059252",
+    "originalFenceCompleted": true
+  },
+  "polkit": {
+    "subjectPid": 1574,
+    "subjectTicks": "22949568",
+    "uid": 997,
+    "gid": 991,
+    "allCapabilitiesZero": true,
+    "noNewPrivileges": true,
+    "authorizationCodes": [
+      0,
+      1,
+      0
+    ],
+    "polkitUnrestarted": true,
+    "actionHasNoHandler": true,
+    "networkWrites": 0,
+    "ownedProbeCleaned": true
+  },
+  "finalFixture": {
+    "accounts": {
+      "kura": {
+        "gid": 1001,
+        "uid": 1001
+      },
+      "kura-clock": {
+        "gid": 988,
+        "uid": 995
+      },
+      "kura-key-recovery": {
+        "gid": 990,
+        "uid": 996
+      },
+      "kurad": {
+        "gid": 991,
+        "uid": 997
+      }
+    },
+    "actor": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": "static"
+    },
+    "clockAccount": {
+      "gid": 988,
+      "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+      "role": "kura-clock",
+      "schema": 1,
+      "uid": 995
+    },
+    "clockNamespaceAbsent": true,
+    "clockOperations": 0,
+    "coreOriginalLogicalFingerprintsExact": 7,
+    "coreStarts": 0,
+    "externalOriginalFullFingerprintsExact": 22,
+    "fullCoreOsgiVerified": false,
+    "inventoriedFiles": 30,
+    "keyBusinessOperations": 0,
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled"
+    },
+    "mode": "installed",
+    "package": "installed 6.0.0~git202611180130.38a9837-1",
+    "packageHistoryReceipts": 7,
+    "originalRemovalFenceCompleted": true,
+    "firstAction": "remove",
+    "retainedConsumedAfterRestore": true,
+    "originalClockMaintenanceCompleted": true,
+    "pairedNmRuleRoot0644Restored": true,
+    "completedRemovalFenceId": "4f52e089-e745-4f1b-83e6-ac2fe8059252"
+  },
+  "fixtureStoppedExitCode": 0,
+  "fullCoreOsgiVerified": false,
+  "purgeVerified": false,
+  "genericInterruptionRecoveryVerified": false,
+  "legacyMigrationVerified": false,
+  "otherRealBootChoicesVerified": false,
+  "originalScenesDeployed": false,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-retained-remove-recovery-20261118",
+  "jdk27": false,
+  "pushed": false
+}

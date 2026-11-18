@@ -1,3 +1,13 @@
+## 2026-11-18 Core 正常保留重装与 NM 授权撤销
+
+代码38a983787e。原7fd的1fab失败维护先在原Root/ID/代码/副本/身份/27输入完整核对后做自有夹具局部续接，从未到达账号回调开始，不重做key/clock移除和数据复制；第一次只读预检因dpkg暂态half-configured拒绝，另次发布因dpkg改脚本755拒绝，账号回调仍0。指纹上下文最终移Root0600；之前该夹具脚本短暂可读的仅测试元数据，无密钥载荷。原日志不改，此修复不作通用中断恢复。新Git/private缓存/JDK21的14f单次正常保留重装exit0，原1fab由产品同ID完成，总28输入；原身份/密钥/data/Main disabled保持。
+
+发现并修复Core残留kura-nm.rules网络授权：固定原精确字节/Root父目录/属主/单链接/稳定读，未知site规则不删不采纳；独占完整发布，安装前check，卸载用Root bin清规则，补错误传播。63宿主回归、12真实LinuxRoot条件过/无skip；最初自查readlink改atime的测试失败留存、未回填时间。新Git完整38a ARM64包6.0.0~git202611180130.38a9837-1/SHAe365e1ab…a1c2caf在同一原现场正常升级/移除/保留重装各单次exit0，未改产品脚本。原29输入22外部完整/7Core逻辑及retained副本精确，Root0/0/0600 canary和历史.data保持，新正常remove维护4f52e089…由产品同ID完成，总30。Main始终disabled/inactive/PID0/NRestarts0、最终ExecMainStartTimestampMonotonic=0，clock namespace/operations/key业务/startups0，原UID/clock目的保持。正常package本地key副本不等于重放Root备份。
+
+真实polkit、同一UID997/cap0/NNP1/PID1574/ticks22949568 subject对无handler fixture action，移除前0/移除后1/重装后0，daemon原PID/ticks/NRestarts0，0网络写。subject/action清理，私有上下文0600；正常原7fd健康停止exit0，安装38a/30输入保留，不能重初始化。1fab/4f52已完成，不重放这两条验收。见[检查点](core-retained-reinstall-policy-checkpoint.json)、[审查](../../reviews/core-retained-reinstall-policy-review-20261118.md)。
+
+01:39UTC原3/个人25/C/D/E原身份/数据/进程/ON保持；两VM实时stopped、旧+1ms未重放；E Main仍11/13caps、NNP0。文档前18仓干净同分支仅Core38a变更，冻结12父项完整SHA不变。继续purge/legacy/通用中断/其他boot profile、完整Core/当前合法Main、六组件/provider/launcher/资源/安装升级矩阵、RTC/Chrony/其余typed broker/API/R017/GUI/网络/密钥/CA/数据库/上游发行及全部12父项；仅原3external deferred，最终0/12、无加权总百分比。目标active/现有积分继续，无push/JDK27/活动runtime清理；旧UNKNOWN/丢失CSR不重发换号跨Root查，闭环密钥/900秒不重放。
+
 ## 2026-11-18 Core 保留卸载候选与实际失败
 
 4b8171c新增.data独立保留、卸载回调wait/失败传播、原remove fence/HMAC/unit摘要/UID绑定的Main boot选择保留，以及保留数据时不回收kura UID。52项当前定向回归过，含后续安装目录删除后仍执行已安装Root bin helper。新Git/private缓存/JDK21完整构建4b ARM64包6.0.0~git202611180104.4b8171c-1/SHA2014aec5…f1e2a1，同原7fd8…唯一一次升级exit0；原26输入19外部完整/7 Core逻辑字段保持，新增1正常package-history，Main仍disabled/PID0、clock namespace及业务0、key业务及Core启动0。

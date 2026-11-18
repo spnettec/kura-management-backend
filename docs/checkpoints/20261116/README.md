@@ -1,3 +1,7 @@
+## 2026-11-18 Core 正常保留重装与 NM 授权撤销
+
+最新[检查点](core-retained-reinstall-policy-checkpoint.json)与[审查](../../reviews/core-retained-reinstall-policy-review-20261118.md)。原1fab失败已同Root/同目的局部续接并由正常14f重装完成；此修复不作通用中断验收。38a正常产品升级/remove/retained reinstall各单次通过，实际polkit同subject授权0→1→0、daemon未重启、无网络写；原数据/密钥/UID/disabled选择保持。7fd现健康安装38a、30输入、停止exit0，原1fab及4f52已完成不重做。63宿主/12真实LinuxRoot回归过。purge/legacy/其他boot/通用中断、完整六组件和12父项仍pending，冻结全文不变。
+
 ## 2026-11-18 Core 保留卸载候选与实际失败
 
 最新[检查点](core-retained-remove-checkpoint.json)与[审查](../../reviews/core-retained-remove-review-20261118.md)：原7fd同现场新4b包升级通过，实际remove返回已知失败；b509修正安装后Root回调路径，52项当前定向回归通过，修正版尚未构建/实装。原27输入及retained副本、原remove维护ID/账号均已核对，现场正常停止保留；先做精确同目的续接，不清副本/换ID/盲重发。实际重装/purge/中断等矩阵与完整12父项均内部pending，0/12最终闭环、无可信加权百分比。
