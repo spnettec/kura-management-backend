@@ -1,0 +1,132 @@
+{
+  "at": "2026-11-18T04:35:09.074376+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "baseCore": "77d53eda4adc445d87b8b00a2666e6044f5ad49f",
+  "baseConsole": "e164f5d9795ee7eef990a8bd0634d6e39e933f14",
+  "coreCommit": "4512ac8573d080d69bea0417359e58b04c26b058",
+  "coreTree": "d729ad79ab940676ea52af36832449c70a9df1b0",
+  "currentPackage": {
+    "sha256": "44546a4b0dfee46dad8e8edd5aa45f4df61e0a8918956236bab11bedac93931b",
+    "bytes": 203559472,
+    "packageVersion": "6.0.0~git202611180433.4512ac8-1",
+    "architecture": "arm64",
+    "sourceCommit": "4512ac8573d080d69bea0417359e58b04c26b058",
+    "clockFiles": 7,
+    "clockProtocolDigest": "2a33ca630f213653ae35c2ff6a88ebe5c2d08e2feca0d47a5397542ac0736342",
+    "clockManifestFileSha256": "7579f26ecc9f6ab2eb9b6da3ed7e075ff8e85d72016480f680ac5f7c5e3427a3",
+    "fullDebInstalled": false,
+    "privateCache": true
+  },
+  "verification": {
+    "sameContractCountEachPlatform": 60,
+    "addedRtcTests": 8,
+    "platforms": [
+      "macOS",
+      "Linux ARM64"
+    ],
+    "linuxAbi": {
+      "command": "0x4024700a",
+      "structSize": 36
+    },
+    "noDevice": {
+      "machine": "aarch64",
+      "uid": 65534,
+      "capabilities": 0,
+      "noNewPrivs": 1,
+      "facility": "missing-device kernel path",
+      "rtcIoctlDispatched": false,
+      "receipt": {
+        "errno": 2,
+        "namespace": "0eff38ed-c789-4caa-ac41-bfe51b7229e1",
+        "observedMonotonicNs": 240009572014629,
+        "observedRealtimeNs": 1794976184227205142,
+        "reason": "OS_ERROR",
+        "requestId": "57e9c1e3-ddbf-4475-b166-32f9088a074f",
+        "requestSha256": "fb56b6f96c2fc484b66e29df14ca45d98d17bfea690a0d4a34544c5aa2217206",
+        "schema": 1,
+        "state": "FAILED"
+      }
+    },
+    "crossVersion": {
+      "uid": 65534,
+      "nativeKernel": "aarch64",
+      "readbackStates": [
+        "APPLIED",
+        "UNKNOWN"
+      ],
+      "originalContentsExact": 9,
+      "newWritesAccepted": false,
+      "previousSource": "77d53eda4a",
+      "currentSource": "4512ac8573"
+    },
+    "actualRtcWriteVerified": false,
+    "installedRtcRuntimeVerified": false
+  },
+  "preservedOriginals": {
+    "sevenFD": {
+      "sameStoppedState": true,
+      "protectedInputs": 41,
+      "packageHistoryReceipts": 16,
+      "mainBootChoice": "disabled",
+      "newDispatches": 0
+    },
+    "liveGatewayFixtures": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "parallelsBothStopped": true
+  },
+  "previousCheckpoint": "core-historical-main-migration-checkpoint.json",
+  "receiptDirectory": ".management-close-20261116/rtc-broker-20261118",
+  "workspaceKnowledge": {
+    "selector": "f9b864007dcd8a44",
+    "items": [
+      {
+        "path": "Experience/2026-11-18-Kura-RTC-typed-协议与-ARM64-合同-4512ac8573-84087d8d.md",
+        "sha256": "59a09ec306472dfb8b8d97d96fa9afff4dae9ec4873f3202c6d77b1de0cd29dc",
+        "exact": true
+      },
+      {
+        "path": "Tasks.md",
+        "sha256": "2af31dd9b8dbcdb502cbba6193645f6b61779f2961dbe3c9b4f1ce5851bc112d",
+        "fullReadback": true,
+        "markerCount": 1
+      },
+      {
+        "path": "Session Summaries.md",
+        "sha256": "723eb67f1b1040db7ba1e428d95246d9b4752aa8b68410446120e358e6c0bbf4",
+        "fullReadback": true,
+        "markerCount": 1
+      }
+    ],
+    "globalWritten": false
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "remainingInternal": [
+    "Paired RTC device access within the private actor unit and Java ClockService cutover",
+    "Complete Core/OSGi business and authorized Main handling",
+    "Chrony and remaining typed brokers",
+    "All six components/providers/launchers and complete install/upgrade/remove/purge matrix",
+    "Generic interruptions/recovery and all frozen parent requirements"
+  ],
+  "pushed": false
+}

@@ -1,3 +1,9 @@
+## 2026-11-18 RTC typed 协议与 ARM64 验证
+
+Core `4512ac8573` 已实现独立 RTC 入参、回执和 Linux ioctl 边界。RTC 与壁钟沿同一 Root、同一 pending/issued 日志准入。旧壁钟 APPLIED 和 UNKNOWN 按原格式读回，跨版本夹具的 9 份文件逐字节精确。两个平台各通过同一组 60 项合同。ARM64 系统头文件验证 ioctl ABI。隔离 Linux 缺设备得到 ENOENT 确定失败，ioctl 次数 0。
+
+生产 actor 私有设备授权和 Java ClockService 切换仍内部 pending。完整 Core/OSGi 业务、Chrony/其余 typed brokers、六组件/provider/launcher、安装升级移除与 purge、中断恢复及全部 12 父项继续保留。原 7fd 停机基线 41/16 沿用。最终 0/12，仍仅原 3 项 external deferred。详见 [检查点](core-rtc-typed-protocol-checkpoint.json)。
+
 ## 2026-11-18 历史 static、linked 与安装态 OSGi 业务
 
 Core `77d53eda4a`。历史 schema 1 static 的原 manifest 由同一 Root 最后已完成包历史及原 HMAC/UID/GID/围栏配对。真实缺清单拒绝一次，配对后沿旧围栏重装成功，24 输入保留。受保护永久和 runtime linked 实际迁移为 disabled，25 输入保持。从旧 40268c05c3 的 linked 经新包控制入口迁移并升级成功，23 输入连续，原源文件保留。74 项定向中 73 通过、1 个 macOS/Linux-only 跳过。
