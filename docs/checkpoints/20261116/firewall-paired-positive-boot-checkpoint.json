@@ -1,0 +1,134 @@
+{
+  "recordedAt": "2026-11-18T09:26:01.088352+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "agentCommit": "a4978457f34e73fbe4e81bc5ccfb8d8d4646f2e0",
+    "agentTree": "cb76786e3356ea0d0e71fbf4d9a4afe8260dbe44",
+    "rust": "1.95.0",
+    "target": "aarch64-unknown-linux-gnu",
+    "testedFromGit": true,
+    "cliReleaseElfSha256": "9a3e9ac0ab3b928e1ef9d1d8a12ab9aca251b600d5facc71970bfffe81587eb4",
+    "testElfSha256": "9258f05f1bc1c01c14f38c9d44be3672a5d52cf84b753f5c6b399c65dc2e0e29",
+    "vendorUnitSha256": "81227518d5e4c8dda8dc226086a9eb338969f945f3406c275ee378a6ff02068f",
+    "coordinatorRegressionPassed": 2
+  },
+  "verification": {
+    "fixture": {
+      "id": "d1f4e483435042e1b5d91d8ce11b64f97061ee83c530205602320aff431357b5",
+      "image": "sha256:7df10a7fcacba1a731d54505a7d8c8497feab691684663f66ef6d4e1c5877c84",
+      "isolatedVolumes": {
+        "/var/lib": "yofc-paired-boot-varlib-20261118",
+        "/etc": "yofc-paired-boot-etc-20261118"
+      },
+      "noBindMounts": true,
+      "network": "none",
+      "extraCaps": [
+        "CAP_SYS_ADMIN",
+        "CAP_SYS_RESOURCE",
+        "NET_ADMIN"
+      ],
+      "seccompBlocksRebootAndClock": true
+    },
+    "systemd": "257.13-1~deb13u1",
+    "nftables": "1.1.3",
+    "originalPolicy": {
+      "leaseSha256": "70410956767300ac71c4b69939d0ae1537e68f840e6db459089a0ded3cc62ac9",
+      "operationId": "29df7742-fc30-4355-8ebf-ec2f460d3177",
+      "sourceNetDevice": 5,
+      "sourceNetInode": 4026533422
+    },
+    "boot": {
+      "result": {
+        "intentSha256": "8f06481094313d6ae84f1dbc7e7d5937689a4aead71c7561b0c314ca1284734d",
+        "originalBootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "pendingIntentRetained": false,
+        "receiptSha256": "c0991264e93f6ca442354103eba4843343590db09b384d471129a0749efdd6b7",
+        "revision": 1,
+        "schemaVersion": 1,
+        "state": "RESTORED"
+      },
+      "receipt": {
+        "intent": {
+          "schemaVersion": 1,
+          "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+          "scope": {
+            "rootDevice": 39,
+            "rootInode": 3812049,
+            "netDevice": 5,
+            "netInode": 4026533422,
+            "ownerLeaseSha256": "70410956767300ac71c4b69939d0ae1537e68f840e6db459089a0ded3cc62ac9",
+            "confirmedSha256": "17a2ce5cafe81ff5f7150f6fc1f7152fa55008d4d6e88222d059e1ae853f9ce4",
+            "revision": 1
+          }
+        },
+        "intentSha256": "8f06481094313d6ae84f1dbc7e7d5937689a4aead71c7561b0c314ca1284734d"
+      },
+      "unit": {
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "257679492272",
+        "ExecMainExitTimestampMonotonic": "257679656722",
+        "ExecMainStatus": "0",
+        "Before": "kura-management-agent.service network-pre.target shutdown.target",
+        "After": "-.mount var-lib.mount systemd-tmpfiles-setup.service tmp.mount systemd-journald.socket local-fs.target nftables.service system.slice systemd-sysctl.service",
+        "ActiveState": "inactive",
+        "UnitFileState": "enabled",
+        "InvocationID": "51bae27d79dd4cca9781cbaac74963a1"
+      },
+      "networkPre": {
+        "ActiveState": "active",
+        "ActiveEnterTimestampMonotonic": "257679657636"
+      },
+      "originalAuthorityFingerprintsExact": true,
+      "nftExactExceptNewKernelTableHandle": true,
+      "oldKernelTableHandle": 3,
+      "newKernelTableHandle": 2,
+      "networkNamespaceNumberReused": true,
+      "newSystemdBootObserved": true,
+      "systemdBootDispatches": 1,
+      "ordinaryAgentInstalled": false,
+      "syntheticNmAndKuraWitnesses": true
+    },
+    "authorityFiles": 10,
+    "actualPid1Reboot": true,
+    "actualMachineReboot": false,
+    "productionDebInstalledInThisFixture": false,
+    "productionSystemdUnitUsed": true,
+    "initialUnsafeUmaskRefusedBeforeAnyOperation": true,
+    "dockerOverlayIdentityDriftObservedDuringEmptyProbe": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "original7fdStateExact": true,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Real JVM/NM authority through signing and early boot",
+    "Imported ip/ip6 confirmed early restore",
+    "Read-only adjudication when the original boot receipt is absent",
+    "Complete Core/OSGi, remaining typed brokers and legal Main",
+    "Complete six-component provider, launcher, installation, upgrade, removal, purge and interruption matrix and all twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/firewall-paired-positive-boot-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

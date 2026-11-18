@@ -1,3 +1,11 @@
+## 2026-11-18 配对租约的正向防火墙早启验证
+
+Agent `a497845` 增加独立 Linux 集成夹具。正式防火墙事务在真实 nft 内核上完成 prepare、apply 和 confirm，形成 revision 1 确认策略和原提交日志。正式 coordinator 生成并核验原 schema 4 配对租约、双标记和启动完成回执。NetworkManager D-Bus 和 Kura JVM 见证使用替身。两项启动控制器回归通过。
+
+在独立 Debian 13 ARM64 容器用当前 Git 构建的 Agent release ELF 和原 vendor unit。显式启用后经一次正常 PID 1 退出和启动，单元在 `network-pre.target` 到达前写入唯一 `RESTORED` 回执。正式只读命令从同一 Root 返回原回执摘要。原确认策略、提交日志、双标记、启动完成回执、租约、ownership 指针和原锁的摘要及文件身份逐项精确。内核读回除重新分配的表 handle 外完全相同。普通 Agent 单元未安装。现场已正常停止，保留两个专属持久卷。仅夹具存储选型使用实测设备号和 inode 恒定的持久卷，生产 Root 配对条件保持原样。
+
+此前实际旧态现场保持停止 UNKNOWN。实际 JVM/NM 原见证的签发链、imported ip/ip6 正向早启、缺原回执时的独立运行态核定、剩余 typed brokers 以及完整 Core/OSGi 与六组件矩阵继续内部 pending。原三现场、C/D/E、个人配置和 7fd 停机 41 输入及 16 回执保持，冻结父项仍为 0/12，仅原三项 external deferred。见 [检查点](firewall-paired-positive-boot-checkpoint.json)。
+
 ## 2026-11-18 防火墙早启原结果只读查询与回执确认
 
 Agent `116e8e0` 增加固定 Root、本地管理员专用的 `firewall-restore-confirmed-status` 与 `firewall-restore-confirmed-acknowledge`。两条入口均不接受调用方 Root、boot ID 或规则。查询共享锁下读原待确认意图及配对回执；没有待确认意图时，只读当前 boot 已有的回执。确认用同一原共享锁的排他模式，只在原回执及身份完整时清理待确认标记。原回执和原锁保留，缺回执继续 UNKNOWN。复制到另一 Root 的意图在查原回执前拒绝，两条入口均无 nft 后端调用。
