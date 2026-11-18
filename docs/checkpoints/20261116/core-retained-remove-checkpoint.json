@@ -1,0 +1,99 @@
+{
+  "at": "2026-11-18T01:10:40.653510+00:00",
+  "goal": "active",
+  "codeCommit": "b509d5d3f730f386d18a5081ff121c3fe25e2f58",
+  "initialCandidateCommit": "4b8171c8b9fd156723276a2ab7c89b39524cc40f",
+  "candidatePackage": "6.0.0~git202611180104.4b8171c-1",
+  "candidateSha256": "2014aec537e4789f3fa201615f93bc713a3ea8e2a30046dde9bbb12eecf1e2a1",
+  "targetedTests": {
+    "selected": 52,
+    "passed": 52,
+    "scope": "temporary filesystem/manager injection; no complete mode matrix"
+  },
+  "actualUpgrade": {
+    "dispatches": 1,
+    "exitCode": 0
+  },
+  "actualRemove": {
+    "dispatches": 1,
+    "exitCode": 1,
+    "knownFailure": "new prerm used deleted install path; corrected source uses Root bin helper",
+    "replayed": false
+  },
+  "failedStateVerification": {
+    "accounts": {
+      "kura": {
+        "gid": 1001,
+        "uid": 1001
+      },
+      "kura-clock": {
+        "gid": 988,
+        "uid": 995
+      },
+      "kura-key-recovery": {
+        "gid": 990,
+        "uid": 996
+      },
+      "kurad": {
+        "gid": 991,
+        "uid": 997
+      }
+    },
+    "actor": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "not-found",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": ""
+    },
+    "clockAccount": {
+      "gid": 988,
+      "purposeId": "2a388683-4a21-4616-95bd-41efbf631da0",
+      "role": "kura-clock",
+      "schema": 1,
+      "uid": 995
+    },
+    "clockNamespaceAbsent": true,
+    "clockOperations": 0,
+    "coreOriginalLogicalFingerprintsExact": 7,
+    "coreStarts": 0,
+    "externalOriginalFullFingerprintsExact": 20,
+    "fullCoreOsgiVerified": false,
+    "inventoriedFiles": 27,
+    "keyBusinessOperations": 0,
+    "knownFailure": "incorrect prerm install path; completed before account callback",
+    "main": {
+      "ActiveState": "inactive",
+      "ControlPID": "0",
+      "LoadState": "loaded",
+      "MainPID": "0",
+      "NRestarts": "0",
+      "UnitFileState": "disabled"
+    },
+    "mode": "fenced",
+    "originalRemovalFenceId": "1fab699a-6544-4f65-87f3-cf24a0691c05",
+    "package": "installed 6.0.0~git202611180104.4b8171c-1",
+    "packageHistoryReceipts": 4,
+    "retainedMainChoice": "disabled",
+    "retainedProductPairValidation": true
+  },
+  "fixtureStoppedExitCode": 0,
+  "fixedCandidateBuilt": false,
+  "retainedReinstallVerified": false,
+  "purgeVerified": false,
+  "partialRemoveResumeVerified": false,
+  "fullCoreOsgiVerified": false,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "receiptDirectory": ".management-close-20261116/source-cohort-20261117/core-retained-reinstall-20261118",
+  "pushed": false,
+  "jdk27": false
+}

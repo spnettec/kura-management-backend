@@ -1,3 +1,7 @@
+## 2026-11-18 Core 保留卸载候选与实际失败
+
+最新[检查点](core-retained-remove-checkpoint.json)与[审查](../../reviews/core-retained-remove-review-20261118.md)：原7fd同现场新4b包升级通过，实际remove返回已知失败；b509修正安装后Root回调路径，52项当前定向回归通过，修正版尚未构建/实装。原27输入及retained副本、原remove维护ID/账号均已核对，现场正常停止保留；先做精确同目的续接，不清副本/换ID/盲重发。实际重装/purge/中断等矩阵与完整12父项均内部pending，0/12最终闭环、无可信加权百分比。
+
 ## 2026-11-17 保留原材料授权的source联合演进
 
 agenta3b13ea/文档3acb8b0新增独立material联合source动作：Core/native及两材料socket停用并排空、初始空业务/无stage，原env/权限/组/Core/JAR/loader保持；普通/local-only/未装Core动作仍拒绝材料能力。Source前后绑定锚定原local及material结果SHA，原local7/material5证明资产不重写；仅当前native/public与私有relay代码指纹推进。丢材料链拒绝readiness，原fate保留。原号complete只补已准入发布，不重装/重授权/启动；5项初次fixture发布失败及修正保留。210 Python中208过/2历史夹具排除，含13联合方法；Rust未改，既有7/1/30按原范围、4提权互操作未执行，计数重叠。

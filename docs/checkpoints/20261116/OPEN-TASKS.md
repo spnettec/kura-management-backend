@@ -1,3 +1,11 @@
+## 2026-11-18 Core 保留卸载候选与实际失败
+
+4b8171c新增.data独立保留、卸载回调wait/失败传播、原remove fence/HMAC/unit摘要/UID绑定的Main boot选择保留，以及保留数据时不回收kura UID。52项当前定向回归过，含后续安装目录删除后仍执行已安装Root bin helper。新Git/private缓存/JDK21完整构建4b ARM64包6.0.0~git202611180104.4b8171c-1/SHA2014aec5…f1e2a1，同原7fd8…唯一一次升级exit0；原26输入19外部完整/7 Core逻辑字段保持，新增1正常package-history，Main仍disabled/PID0、clock namespace及业务0、key业务及Core启动0。
+
+唯一一次真实remove exit1：已保留完整数据/disabled选择并移除clock/key listeners，新增prerm误调postinst已删除的install回调，尚未进入账号回调。这是本轮引入错误，源码b509d5d3f7恢复Root bin路径并加回归；新修正尚未重建或安装。失败不记通过、不重发remove。原27输入20外部完整/7 Core逻辑字段及对应retained副本再次精确，产品原Root/fence/HMAC/身份验证通过，原账号/目的保持。原remove维护1fab699a…与retained/canonical双份状态及clock维护均保留，同容器正常停止exit0，不能重初始化/改ID/清副本；先独立核对已完成步骤并做可审查精确续接，普通升级不能制造第二份preserve。
+
+01:09UTC原3/个人25/C/D原Main3135及E原身份/配对/全部进程/ON保持，VM未启动、旧+1ms未重放。见[检查点](core-retained-remove-checkpoint.json)、[审查](../../reviews/core-retained-remove-review-20261118.md)。实际保留重装、修正版remove、purge、中断/legacy/所有boot状态与授权清理仍内部pending，完整Core/六组件/provider/launcher/安装升级矩阵及全部12父项未缩减。最终0/12闭环，无可靠加权总百分比；时间只作数周、可能超过一月的粗估。仅原3external deferred，G034/协议未封签发布；目标active/现有积分继续、无push/JDK27/活动runtime清理，旧UNKNOWN/丢失CSR及闭环密钥/900秒不重发换号跨Root查或重放。
+
 ## 2026-11-18 当前 actor 实际权限与 Core 升级数据保留
 
 Core b49eb6cb20修复升级强制enable，e1c40469d9修复历史.data恢复及数据属主，合同aa8f086b50。原VM按机器/原namespace/APPLIED/sender/未启probe核对后，沿原维护1284ae68…只归档发布新Git a54的7代码/unit/JAR及manifest，产品install/resume不重身份、不复制真实数据/重建namespace。实际actor cohort07212c1f…，PID4181/ticks41703，UID992/GID970/组970/五cap仅SYS_TIME/NNP1/NRestarts0，通过当前有效unit自配对；一次无ID的Root context被UNAUTHORIZED。原namespace/operation/sender精确、操作数仍1/新clock0，合法Main业务未验。10生产文件与当前逻辑相同；正常quiesce后停机维护4322e5d4…保留同namespace/当前cohort，VM正常poweroff回stopped，旧probe/+1ms未重放。非完整deb/OSGi安装。
