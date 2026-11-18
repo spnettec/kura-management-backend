@@ -1,3 +1,7 @@
+## 2026-11-18 历史 Main 迁移与安装态 OSGi
+
+Core `77d53eda4a`。ARM64 已过配对 schema 1 static、永久/runtime linked 和原 `40268c05c3` 发布包的 linked 后升级。实际已装 Main 通过 AES 流及两类配置视图，完整业务和全部父项继续实施。先读 [审查](../../reviews/core-historical-main-migration-review-20261118.md)、[机器检查点](core-historical-main-migration-checkpoint.json) 和 [完整台账](OPEN-TASKS.md)。
+
 ## 2026-11-18 已从暂停检查点恢复实施
 
 Core `40268c05c3`，配对 static 实际 remove/reinstall 转为 disabled，独立 purge/重装通过。原 7fd 完整升级、普通 Main / Equinox 实际启动并最终正常停放，41 输入/16 回执。先读 [本轮审查](../../reviews/core-paired-static-retained-review-20261118.md) 和 [机器检查点](core-paired-static-retained-checkpoint.json)，继续 [完整台账](OPEN-TASKS.md)。下方暂停条目记录前一会话。

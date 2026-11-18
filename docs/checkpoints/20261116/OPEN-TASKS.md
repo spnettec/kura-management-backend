@@ -1,3 +1,9 @@
+## 2026-11-18 历史 static、linked 与安装态 OSGi 业务
+
+Core `77d53eda4a`。历史 schema 1 static 的原 manifest 由同一 Root 最后已完成包历史及原 HMAC/UID/GID/围栏配对。真实缺清单拒绝一次，配对后沿旧围栏重装成功，24 输入保留。受保护永久和 runtime linked 实际迁移为 disabled，25 输入保持。从旧 40268c05c3 的 linked 经新包控制入口迁移并升级成功，23 输入连续，原源文件保留。74 项定向中 73 通过、1 个 macOS/Linux-only 跳过。
+
+独立安装态 Main 探针已过 65,329 字节 AES 流、两个实际 CM 存储视图及一个逻辑视图，实际 Root lease 和原数据精确。探针只读续验，既有 Root 业务和已通过的 AES 步骤保持一次。原 7fd 保留停机状态和 41/16 原基线。完整 Core/OSGi 业务、RTC/Chrony/其余 typed brokers、六组件/provider/launcher 和通用中断继续内部 pending。原 12 父项完整保留、0/12 最终闭环，仅原 3 项 external deferred。见 [审查](../../reviews/core-historical-main-migration-review-20261118.md) 和 [检查点](core-historical-main-migration-checkpoint.json)。
+
 ## 2026-11-18 配对 static 转换与原 7fd 实际 Core 启停
 
 Core `40268c05c3` 为经过精确包定义及实际有效单元配对的 static 保存原 Root HMAC 回执，标准包重装沿原移除 ID 转为 disabled。ARM64 实际首装/移除/保留重装 0/0/0，23 旧输入保持。独立后续 purge 及沿原围栏重装通过，15 份外部输入继续保留。50 定向通过，另 69 项相邻回归中 68 通过、1 项 Linux renameat2 在 macOS 跳过。

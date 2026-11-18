@@ -1,0 +1,173 @@
+{
+  "at": "2026-11-18T04:22:35.880996+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "baseCore": "40268c05c37d88963b16790c47e65fdb9d1b3a94",
+  "baseConsole": "ee1805484f18d78e97b7e8366e715f9d355a0781",
+  "coreCommit": "77d53eda4adc445d87b8b00a2666e6044f5ad49f",
+  "coreTree": "70d488bd54aa690b33e413cb4d5990c7e127f957",
+  "currentPackage": {
+    "sha256": "24ebd1a1493c276b98a5e0f138bed0095fa1c6f81a3c15a6ecba5a31a518bff0",
+    "bytes": 203557984,
+    "packageVersion": "6.0.0~git202611180414.77d53ed-1",
+    "architecture": "arm64",
+    "sourceCommit": "77d53eda4adc445d87b8b00a2666e6044f5ad49f",
+    "pairedKeyFiles": 39,
+    "pairedKeyUnits": 3,
+    "fixtureTemplateVariant": false,
+    "clockManifestFileSha256": "e74702c7d23f5ad287ab7a71bdc93baae2daf8d36456d15a393500862b4317be"
+  },
+  "historicalFixturePackage": {
+    "sha256": "d1abc57d2b02a9d1f7c063672bc05d1e0b42f5db26b36fb676f6bac5d99938db",
+    "bytes": 203551008,
+    "packageVersion": "6.0.0~git202611180410.e99df17-1",
+    "architecture": "arm64",
+    "sourceCommit": "e99df17793799a6e506ef37b5c1a82e7140193ba",
+    "pairedKeyFiles": 39,
+    "pairedKeyUnits": 3,
+    "fixtureTemplateVariant": true,
+    "clockManifestFileSha256": "e74702c7d23f5ad287ab7a71bdc93baae2daf8d36456d15a393500862b4317be"
+  },
+  "historicalStatic": {
+    "choice": "disabled",
+    "normalHistoryReceipts": 2,
+    "continuedOriginalId": "8d6c85f8-c391-4dae-b065-871480ed1683",
+    "originalInputsPreserved": 24,
+    "keyCohort": "5e1cc3abd143caab44ae06a4dfb50196728f1d9eb6933471e19175eb229b4eef",
+    "clockCohort": "73b540018fb8ade54e9c5b2ee13d8fffe48092ccd3d0db416c82c9d165e910e6",
+    "originalReceiptSchema": 1,
+    "sourceManifestAnchored": true,
+    "missingManifestPreinstRefusalStateExact": true
+  },
+  "linked": {
+    "linked": {
+      "choice": "linked",
+      "finalChoice": "disabled",
+      "sourcePreserved": true,
+      "helperStateExact": true,
+      "protectedInputsExact": 25,
+      "keyAndClockBusiness": 0,
+      "keyCohort": "5e1cc3abd143caab44ae06a4dfb50196728f1d9eb6933471e19175eb229b4eef",
+      "clockCohort": "73b540018fb8ade54e9c5b2ee13d8fffe48092ccd3d0db416c82c9d165e910e6"
+    },
+    "linked-runtime": {
+      "choice": "linked-runtime",
+      "finalChoice": "disabled",
+      "sourcePreserved": true,
+      "helperStateExact": true,
+      "protectedInputsExact": 25,
+      "keyAndClockBusiness": 0,
+      "keyCohort": "5e1cc3abd143caab44ae06a4dfb50196728f1d9eb6933471e19175eb229b4eef",
+      "clockCohort": "73b540018fb8ade54e9c5b2ee13d8fffe48092ccd3d0db416c82c9d165e910e6"
+    }
+  },
+  "initialUnprotectedLinkRefusedBeforeVendorPublication": true,
+  "oldInstalledPackageLinked": {
+    "normalizeWithIncomingPreinst": {
+      "originalFilesVerified": 23,
+      "originalLinkedSourceExact": true,
+      "historyReceipts": 1,
+      "version": "6.0.0~git202611180332.40268c0-1",
+      "choice": "disabled",
+      "keyCohort": "d8c63e63b8e791bfac52c79b79d3b32a8da7eb617d64f8fab72f0323ab73ca1a"
+    },
+    "actualUpgrade": {
+      "originalFilesVerified": 23,
+      "originalLinkedSourceExact": true,
+      "historyReceipts": 2,
+      "version": "6.0.0~git202611180414.77d53ed-1",
+      "choice": "disabled",
+      "keyCohort": "5e1cc3abd143caab44ae06a4dfb50196728f1d9eb6933471e19175eb229b4eef"
+    }
+  },
+  "installedBusiness": {
+    "oneAesStreamSuccess65329": true,
+    "configRead": {
+      "status": "passed",
+      "storedPids": 2,
+      "logicalViews": 1,
+      "bundleCount": 216
+    },
+    "main": {
+      "MainPID": "3632",
+      "ControlPID": "0",
+      "Result": "success",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled"
+    },
+    "pairedLease": true,
+    "firstHarnessAssertionWasMissingStoredPrefix": true,
+    "cryptoRedispatched": false,
+    "exactInputs": 25,
+    "keyBusiness": 0,
+    "rootStarts": 0,
+    "clockNamespaceCreated": false
+  },
+  "regression": {
+    "selected": 74,
+    "passed": 73,
+    "skipped": 1,
+    "skipReason": "Linux renameat2 publication on macOS"
+  },
+  "fixtures": {
+    "historicalMigration": "e45e97b5e6b8cdfab8feeecaad1d91c3ad6c04c2e7bf1e07bc04274c0c7dffd0",
+    "olderLinked": "e22e2823c56b700ab7bd130b2e2822b0f3ee15f884cb028b50145a5f34a4a840",
+    "finalStates": {
+      "fixture-final-parking-result": {
+        "state": "stopped",
+        "exitCode": 0
+      },
+      "older-fixture-final-stop": {
+        "state": "stopped",
+        "exitCode": 0
+      }
+    }
+  },
+  "preservedOriginals": {
+    "7fd": {
+      "sameStoppedState": true,
+      "protectedInputs": 41,
+      "packageHistoryReceipts": 16,
+      "previousFingerprintReadback": "resume-20261118.FqDevXKS/7fd-shutdown-recovery-final-observation.json"
+    },
+    "liveGatewayFixtures": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    },
+    "parallelsBothStopped": true
+  },
+  "receiptDirectory": ".management-close-20261116/legacy-main-migration-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "overallWeightedPercentage": null,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "remainingInternal": [
+    "Unpaired historical profiles without source evidence",
+    "Full Core/OSGi business",
+    "RTC/Chrony and remaining typed brokers",
+    "Complete six-component/provider/launcher/package matrix",
+    "Generic interruption and recovery",
+    "All frozen parent requirements"
+  ],
+  "fullCoreBusinessVerified": false,
+  "allSixComponentsProvidersLaunchersVerified": false,
+  "genericInterruptionRecoveryVerified": false,
+  "pushed": false
+}
