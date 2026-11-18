@@ -1,0 +1,158 @@
+{
+  "at": "2026-11-18T06:06:58.226621+00:00",
+  "workingBranch": "wip/management-close-20261116",
+  "coreCommit": "5f719e43b3371500f537bb02aa70bb8c6ce048a5",
+  "coreTree": "4f43fb6f13521b98cb12daf72226e5cafa63ebd8",
+  "baseCore": "0ed95fa4fe870855ae990374703573f70692d148",
+  "baseConsole": "cd65df914a18a4de91fc7f98f8b088b1d09fe465",
+  "package": {
+    "packageVersion": "6.0.0~git202611180603.5f719e4-1",
+    "sourceCommit": "5f719e43b3371500f537bb02aa70bb8c6ce048a5",
+    "architecture": "arm64",
+    "sha256": "cf10e13814b1e2a7d14bd583a64f940f8c748efa26fd3c82027d4b9b8a87eb44",
+    "bytes": 203569618,
+    "clockProtocolDigest": "9f44ad0c986cf91eef5626e5f6ca94052940b1a45eae65b1c84a0bb70933d25f",
+    "clockFiles": 8,
+    "privateCache": true
+  },
+  "sourceTests": {
+    "clockContractsPerPlatform": 86,
+    "platforms": [
+      "macOS",
+      "Linux ARM64"
+    ],
+    "clockJvmTests": 23,
+    "jdk": 21,
+    "pendingUnseenTestScope": "contract only; same original bytes and zero dispatch",
+    "foreignResultLookupRefused": true
+  },
+  "production": {
+    "rootPrivateSenderArchive": "/etc/kura/clock-sender-retention.json",
+    "mode": "0600",
+    "archiveBoundToNamespaceMaintenanceAndBothAccounts": true,
+    "pairedTerminalReceiptsReadOnly": true,
+    "senderRestoredBeforeKeyAndClockAdmission": true,
+    "noSourceTemplateFixtureVariant": true
+  },
+  "nativeDebian13Arm64": {
+    "containerId": "bec63b6102e6352252b119c8229c382b95933192a5e946e6911474687bbe8edd",
+    "nativeDispositions": [
+      "installed prior Core",
+      "installed new Core",
+      "config-files",
+      "not-installed",
+      "not-installed after PID1 restart",
+      "installed same new Core"
+    ],
+    "dispatches": {
+      "upgrade": 1,
+      "remove": 1,
+      "purge": 1,
+      "reinstall": 1
+    },
+    "continuity": {
+      "rootFilesExact": 14,
+      "senderFilesBytesOwnerModeLinkCountSizeAndMtimeExact": 5,
+      "senderCopyInodeAndCtimeChanged": true,
+      "originalClockTerminalReceipts": 2,
+      "clockOperationsReissued": 0,
+      "archivePhysicalFingerprintExactAcrossPurge": true,
+      "archiveRetiredOnlyAfterRestore": true,
+      "oldClockNamespace": "e48275c1-1080-4760-813c-b8ff358911ce",
+      "oldClockAccountUid": 992,
+      "originalClockMaintenanceId": "1d9d83db-c6f4-439f-8ed5-d71c3c597187",
+      "sameKeyMaintenanceCompletedReceipt": {
+        "maintenanceId": "208d8ccc-9498-46b1-a361-35e147cbaf3d",
+        "previousMaintenanceId": "e16ef1d4-9106-434c-b22b-75f29d12a947"
+      },
+      "originalPreflightKeyReceipts": 3,
+      "mainStarts": 0,
+      "chronyStarts": 0,
+      "naturalMainBootChoiceAfterPurgeReinstall": "enabled"
+    },
+    "archiveAfterPurge": {
+      "file": {
+        "ino": 3697217,
+        "uid": 0,
+        "gid": 0,
+        "mode": 384,
+        "nlink": 1,
+        "size": 2320,
+        "mtimeNs": 1794981930544578435,
+        "ctimeNs": 1794981930547578447,
+        "sha256": "126c39b3393cd81cdc239a6e81b20bde51c3f2b828b848b517c2d2888daade01"
+      },
+      "binding": {
+        "clockGid": 991,
+        "clockUid": 992,
+        "namespace": "e48275c1-1080-4760-813c-b8ff358911ce",
+        "purposeId": "1d9d83db-c6f4-439f-8ed5-d71c3c597187",
+        "schema": 1,
+        "senderGid": 995,
+        "senderUid": 997
+      },
+      "entries": [
+        "completed/6aa09fe4-f77b-49c9-ad9b-ed242a93c0e6.json",
+        "completed/a5107333-2cf8-48de-8eb2-7ecb1cfd4b12.json",
+        "issued/6aa09fe4-f77b-49c9-ad9b-ed242a93c0e6.json",
+        "issued/a5107333-2cf8-48de-8eb2-7ecb1cfd4b12.json",
+        "sender.lock"
+      ]
+    },
+    "identicalAfterPurgedPid1Restart": true,
+    "ordinaryRetainedDirectoryGoneAfterPurge": true,
+    "rootAbsenceAndClockUnitsConfirmedInPurge": true,
+    "mainParkedDisabledAfterPlannedFixtureAdjustment": true,
+    "finalState": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-18T06:06:07.50138418Z",
+      "FinishedAt": "2026-11-18T06:06:33.663772234Z"
+    }
+  },
+  "originals": {
+    "sevenFDStoppedAndExact": true,
+    "sevenFDInputs": 41,
+    "sevenFDReceipts": 16,
+    "earlierChronyUnknownFixtureExact": true,
+    "liveOriginals": 3,
+    "personalFiles": 25,
+    "C": 9,
+    "D": 29,
+    "E": {
+      "sourceApplied": true,
+      "processesExact": 5,
+      "identityFilesExact": 20,
+      "corePrivateExact": 6,
+      "localProofsExact": 7,
+      "materialProofsExact": 5,
+      "switchProofsExact": 9,
+      "transportProofsExact": 7,
+      "remoteRevisionExact": true,
+      "readOnly": true
+    }
+  },
+  "internalPending": [
+    "pre-fix package already removed before its purge and other interruption points",
+    "formal release full matrix including sibling/provider/launcher combinations",
+    "Chrony config/makestep, authentic step reader observation and older D-Bus/Main teardown coverage",
+    "RTC positive operation/hotplug, complete Core/OSGi, other typed brokers and all 12 frozen parents"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "closedParents": 0,
+  "totalParents": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "receipts": ".management-close-20261116/clock-purge-sender-20261118",
+  "pushed": false
+}

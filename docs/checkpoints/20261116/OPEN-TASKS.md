@@ -1,3 +1,11 @@
+## 2026-11-18 Core sender 回执跨 purge 保全
+
+Core `5f719e43b3` 在卸载时把固定 sender 文件经原 Root 核对后原子写入 `/etc/kura` 的 Root 0600 文件。副本绑定原 clock namespace、维护 ID 和两侧 UID/GID。重装在 key 和 clock 准入开放前恢复或核对原记录。接收方尚无意图的 pending 路径通过合同验证，保留原字节且派发计数为 0。macOS 和 Linux ARM64 各 86 项 clock 合同及 23 项 JDK 21 检查通过。
+
+新源码完整 ARM64 deb 在原独立 Debian 13 夹具上实际升级、移除、purge、同包重装各一次，均返回 0。purge 后保留目录和可执行安装树已删除，Root 副本和原围栏跨夹具 PID 1 正常重启完整精确。重装恢复五份 sender 的原内容、权限及 mtime，inode/ctime 随恢复变化。原 Root 两条 APPLIED、namespace、账号和 14 份外部文件完整指纹精确。key 包历史沿原 remove ID 完成，写入准入恢复。Main 和 Chrony 启动次数均为 0。purge 后重装采用默认 enabled，验收后独立夹具调回 disabled 并正常关停。
+
+由旧软件包移除后直接执行旧 `postrm` 的历史 purge、其它中断点、Chrony 剩余写入和运行权限、完整 Core/OSGi、其余 typed brokers 和六组件发行矩阵仍内部 pending。原 7fd 停机状态及 41 输入/16 回执精确，原三现场、个人配置、C/D/E 与旧 UNKNOWN 已核对。冻结 12 父项仍为 0/12 闭环，external deferred 仅原 3 项。见 [检查点](core-clock-purge-sender-checkpoint.json)。
+
 ## 2026-11-18 Chrony 回执随保留重装跨解包中断续接
 
 在原独立 Debian 13 ARM64 夹具上，使用与 Core `0ed95fa4fe` 完全配对的完整 deb，实际 `dpkg --remove`、`--unpack`、`--configure` 各一次均返回 0。停在 `unpacked` 后正常关闭并重启夹具 PID 1。重启前后状态均为 `unpacked`，Main 与 clock 单元未加载，Chrony 的 polkit 规则缺席，写准入关闭，原 clock 和 key 维护 ID 及保留副本精确。配置完成后规则和 socket 恢复，两个围栏解除，key 包历史按原 remove ID 追加一条回执。
