@@ -1,0 +1,108 @@
+{
+  "recordedAt": "2026-11-18T08:53:38.026048+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "toolchain": "1.95.0",
+    "architecture": "aarch64-unknown-linux-gnu",
+    "agentCommit": "24d8a47da8d413d9cc937482ec816e380c85673b",
+    "agentTree": "5ec4478140919ac80a98ba5e0bb3a107e7a97843",
+    "normalElfSha256": "d2f897d8f5f15c9fbeceafd50c277d0d8f365e4d34f394ab33e8837568a4a27b",
+    "testElfSha256": "8d190dc1b0ddfe4412877edb79a36229863fe63edf5d3789ea202ffae904b0a1",
+    "debugBuild": true,
+    "localProtocolSourceCommit": "cc33490c2b53f404217b4fb122ca28bd00bc95fd",
+    "coreCurrentCommit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "bootContractsPassed": 5,
+    "sharedAdmissionContractsPassed": 3,
+    "packagingTestsPassed": 86,
+    "additionalRegressionRun": {
+      "sourceCommit": "a2816432dafdd88cd71fb2ba8a101d2b5bd283b5",
+      "container": "660074f4d4d6ac61c3d992ee6601f606c39bc58efef7de593175856c2b659f45",
+      "statusAtCheckpoint": "running",
+      "exitCode": null,
+      "currentFinalFullSuiteVerified": false,
+      "log": ".management-close-20261116/firewall-confirmed-boot-20261118/cargo-tests.log"
+    }
+  },
+  "admission": {
+    "productionCommand": "firewall-restore-confirmed",
+    "fixedStateRoot": "/var/lib/kura-management-agent",
+    "confirmedOnly": true,
+    "currentOwnerLeaseSchema": 4,
+    "typedPolicyVersions": [
+      3,
+      4
+    ],
+    "privateTable": "inet yofc_kura",
+    "rootCopiedIntentRejectedBeforeReceiptQuery": true,
+    "unresolvedBlocksLaterBootAndSharedWrites": true,
+    "supportedSystemdUnitInstalled": false
+  },
+  "actualKernel": {
+    "positiveAuthorityIsSynthetic": true,
+    "productionOwnerEndToEnd": false,
+    "fixtures": {
+      "create": {
+        "container": "5f97c209cbbe24113e3e959de632667d9a37813d106e062d7f4f960d0249837a",
+        "exitCode": 0,
+        "image": "sha256:b4e9fe9ae550f0f3f3053acd4bf25e6625db5247d42e6cd804876dd1fd67f80f",
+        "network": "none",
+        "onlyAddedCapability": "CAP_NET_ADMIN",
+        "readonlyRoot": true
+      },
+      "foreign": {
+        "container": "2eba99d97f33208490b0ebc181b5382a09d76561bc80c592540c40606873c12f",
+        "exitCode": 0,
+        "image": "sha256:b4e9fe9ae550f0f3f3053acd4bf25e6625db5247d42e6cd804876dd1fd67f80f",
+        "network": "none",
+        "onlyAddedCapability": "CAP_NET_ADMIN",
+        "readonlyRoot": true
+      },
+      "cli": {
+        "container": "64133981acddf8d0939587c0c325691fbec4f635a69197a686c88906106b21ac",
+        "exitCode": 0,
+        "image": "sha256:b4e9fe9ae550f0f3f3053acd4bf25e6625db5247d42e6cd804876dd1fd67f80f",
+        "network": "none",
+        "onlyAddedCapability": "CAP_NET_ADMIN",
+        "readonlyRoot": true
+      }
+    },
+    "atomicCreateDispatches": 1,
+    "sameReceiptReadOnly": true,
+    "wrongNamespaceBeforeKernel": true,
+    "foreignTableExactAndNoLedger": true,
+    "normalCliMissingOwnerRefusalNoEffect": true
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "oldFixturesStopped": true,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Production early unit packaging and explicit boot authority enrollment under the exact original owner",
+    "Imported-layout confirmed restore, explicit UNKNOWN reconciliation, firewall and remaining typed brokers",
+    "Complete Core/OSGi, all six components, providers and launchers",
+    "Complete installation, upgrade, removal, purge and interruption matrix and twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/firewall-confirmed-boot-20261118",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

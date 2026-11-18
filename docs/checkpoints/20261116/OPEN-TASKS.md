@@ -1,3 +1,11 @@
+## 2026-11-18 已确认 typed firewall 策略的 Root 恢复执行器
+
+Agent `24d8a47` 提供固定入口 `firewall-restore-confirmed`。只承认固定 Root 的原已提交 schema 4 配对租约，以及私有布局中与原已结算日志一致的 V3/V4 确认策略。入口从 typed policy 重新编译规则，只允许在目标表不存在时独占创建，遇到其他写入方或现有表漂移则拒绝。先同步带 boot ID、Root 与网络命名空间身份的原意图，再单次派发。无原回执保持 UNKNOWN，跨 boot 禁止再派发；复制到其他 Root 的原意图在读取原回执路径前拒绝。打包生命周期继续保全未决意图和历史回执。
+
+从当前 Git 用 Rust 1.95 构建 Linux ARM64。最终提交 5 项恢复合同、3 项共享锁合同及 86 项打包测试通过。两处隔离真实 nft 命名空间验证：仅创建一次，原回执再次调用只读，异配命名空间在内核前拒绝；外来表拒绝且整个规则集精确。正向内核场景用合成已确认状态及租约见证，只证明真实执行原语。正常 ELF 的生产 CLI 拒绝缺原 lease 和调用者指定其他 Root，实际内核无变更。
+
+没有启用生产早启单元。正式 systemd 启动、实际原 owner lease 的整合、原生 imported ip/ip6 布局早启、显式故障核定与其余 typed brokers 继续内部 pending，完整 Core/OSGi、六组件及全部 12 父项范围保持。原场景、个人配置及原 7fd 停机 41 输入/16 回执保持。冻结父项 0/12，external deferred 仍仅原三项。见 [本轮检查点](firewall-confirmed-boot-actor-checkpoint.json)。
+
 ## 2026-11-18 firewall-only 移除、purge 与跨变体恢复
 
 Networking `4b58a55` 移除 firewall-only 时先停止已加载 provider 的 Main，仅停用配对的 vendor 早启单元，保留站点单元或 stop 覆盖。卸载不清表、不重设内核默认策略，postrm 在文件移除后刷新 systemd。两变体共用严格校验的能力配置助手，各自保留独立 Root 回执和配置段。切换到 firewall-only 时保全 Networking 的原段，返回 Networking 时按配对记录分别结算。10 项包脚本合同、171 项 Linux 模块测试通过。
