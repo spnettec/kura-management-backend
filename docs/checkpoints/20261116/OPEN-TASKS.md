@@ -1,4 +1,16 @@
 
+## 2026-11-19 Agent 同 Root 后继重装及两次 OverlayFS 重挂
+
+Agent b8a84db 为新移除意图保存内核 OverlayFS 底层指纹。参与的状态必须处于同一原 overlay，拒绝已验证路径的独立挂载。设备号可随相同 backing 重挂变化，其余逐文件指纹保持严格比对。858628a 以原维护编号审核版本严格更高的同 Java/Core bridge 后继包，发布前核对资产、角色、原初始化与来源链。来源链记录绑定原移除和审核摘要。回归覆盖公开代码身份已发布但来源指针未发布时的原编号 configure 续接。
+
+首个原生现场的移除、同 overlay 重挂和后继 unpack 通过。第二次重挂实际改变设备号，早期初始化证明曾固定旧设备号，configure 退出 1。保留原九项、原准入和 `install ok half-configured`，来源链尚无发布，正常停放。9760bb2 使新初始化回执记录 overlay 证明。Python Root 检查、Rust 实际启动与保留状态检查使用相同 backing 绑定，保留原数据库/密钥 inode、计划密钥摘要和原初始化拒绝条件。历史无证明回执继续使用设备号严格比对。97e8eb7 直接编译自身配对的安装控制器源文件，部署验证中隔离 Root 助手没有生成 Python bytecode 缓存。
+
+独立 Debian 13 ARM64 实际将 9760bb2 原包移除，原 Root 同一底层 overlay 重挂后审核 97e8eb7 后继，再在 unpack 状态进行第二次重挂。三个设备号真实不同，overlay 摘要保持，七项停机状态的其余原字段及三个 Core 文件一致。首份同分钟构建的后继版本按 Debian 排序早于原包，写意图前拒绝。按秒构建排序正确的同一 Git 版本，沿原初始化和原移除意图继续。正式 remove、unpack、configure 各一次 exit 0，原移除意图/回执摘要不变。最终 dpkg installed，状态 REINSTALLED 和同编号来源链 APPLIED，仅批准公开代码身份推进，六份其余输入精确。显式启动实际非 Root Rust Agent，零 capabilities、NNP 1、本地 Unix socket 就绪，原初始化、连续性文件和计划密钥保持。Agent 此后正常停机，Core 保持 inactive，两个专用现场均正常停放。
+
+Linux ARM64 Python 170 项及 Rust 状态连续性 1 项通过。有历史无证明的设备重挂、已绑定/业务状态、其他 provider/launcher 及故障时点仍内部待办。保留原现场、原 7fd 41 输入/16 回执及全部冻结 12 父项。最终 0/12，external deferred 仅原三项。见 [检查点](actual-native-agent-successor-overlay-reinstall-checkpoint.json)。
+
+
+
 ## 2026-11-19 已准入的 Agent postrm 原编号续接
 
 Agent 943a27f 增加 Root `prepare-retained-postrm-recovery`，只接受已准入、负载已不存在、dpkg 为 `deinstall ok half-installed` 的原请求。原初始化、状态完整指纹、版本、Java/Core bridge、原 `postrm` 和被审核归档均核对。旧脚本先不可变保存，新脚本与原意图、原/新两份脚本摘要绑定。准备只更新该 maintainer 文件，dpkg 状态仍保持 half-installed。实际选择 Linux ARM64 定向 48 项通过，包含原设备号变化拒绝、不同脚本拒绝及原回执续接。扩展原生权限和状态回归 167 项通过，两组选择重叠。

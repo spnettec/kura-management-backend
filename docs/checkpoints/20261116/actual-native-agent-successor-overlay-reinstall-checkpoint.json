@@ -1,0 +1,241 @@
+{
+  "date": "2026-11-19T14:29:27.194693+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "releases": {
+    "earlierPreparation": {
+      "commit": "b8a84db723a60eacb1b78458717fa9aa2afc7d6c",
+      "tree": "a66fc7bd2d4e86e1345cbf6a6e399b1a614c44ba",
+      "version": "0.1.0~cohort202611191419.b8a84db-1",
+      "sha256": "84a60b0080caa95f7182dbad0dfaaa49d5d377975619dc9406c6fd57d916b434",
+      "sourceManifestSha256": "ec92d1281701dc76a86b7ffa057cfb9adf42135d03d8c2e18c7e77e441619ff1",
+      "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    },
+    "earlierSuccessor": {
+      "commit": "858628a2c6694c3218d87e24058ba8779333d685",
+      "tree": "46816e77e7b168bb6b92632a24829296a54eeae2",
+      "version": "0.1.0~cohort202611191420.858628a-1",
+      "sha256": "e36f369e4b52fd4b975dabb2c480b10ca291587fcbdbde3d11f116c5b1b4b037",
+      "sourceManifestSha256": "b8b118bd421dce06a25952311e71357840ef1572a0d5a53203d5ec510e28a36f",
+      "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    },
+    "original": {
+      "commit": "9760bb2baf484e6ee3f6f6b0b56a308bc9e69c35",
+      "tree": "3d2de021b1306e95591d2b3407956120df0609e3",
+      "version": "0.1.0~cohort202611191426.9760bb2-1",
+      "sha256": "9730540ffb15fa7899bd16208480f61ad27e5e7379eff22c071b6601d3bdf87b",
+      "sourceManifestSha256": "768ff6aacd4c05f11184622b0367f9e2eda99af983ec8bc7ebdbd088292437f3",
+      "binarySha256": "d6f105db3e265e05676fb2511cc3e718c3bc4b0c5d761962c50765f150782579",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    },
+    "versionOrderRefused": {
+      "commit": "97e8eb75962b67f494d0c6dc9a163cdec4b6227f",
+      "tree": "89ad67d51f7991c1f8c349666f0a33b8bf177351",
+      "version": "0.1.0~cohort202611191426.97e8eb7-1",
+      "sha256": "416adf8038477587971db8c1ee65788d958b254d779eb15c8a18295fc4567ead",
+      "sourceManifestSha256": "ade8279cf82203929242634a995e15be60806e95e15c420afa680e11cc049d5f",
+      "binarySha256": "d6f105db3e265e05676fb2511cc3e718c3bc4b0c5d761962c50765f150782579",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    },
+    "verifiedSuccessor": {
+      "commit": "97e8eb75962b67f494d0c6dc9a163cdec4b6227f",
+      "tree": "89ad67d51f7991c1f8c349666f0a33b8bf177351",
+      "version": "0.1.0~cohort20261119142754.97e8eb7-1",
+      "sha256": "c6e5b428c616385d527e82940ebba8d970a9d651a2b736c8863bffd93f92a433",
+      "sourceManifestSha256": "ade8279cf82203929242634a995e15be60806e95e15c420afa680e11cc049d5f",
+      "binarySha256": "d6f105db3e265e05676fb2511cc3e718c3bc4b0c5d761962c50765f150782579",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    }
+  },
+  "preservedEarlierKnownConfigureRefusal": {
+    "container": "bf3296c04fbec3f89c72273e33b0ce2b0961d9c420d08ca5259c7a92f40ab77b",
+    "operation": "72be8051-d8f0-413c-b4d6-22fdf529df6c",
+    "dpkg": "install ok half-configured",
+    "unchangedInputs": 9,
+    "coreFilesExact": 3,
+    "originalDevice": 1048815,
+    "actualDevice": 1048830,
+    "matchingKernelOverlay": true,
+    "sourcePublicationAbsent": true,
+    "configureDispatches": 1
+  },
+  "versionOrderRefusal": {
+    "container": "1ed1ce090aad3c856040653e74d71bc31f8c037ebaac5c89617d60fe72a04b8c",
+    "operation": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+    "originalVersion": "0.1.0~cohort202611191426.9760bb2-1",
+    "firstCandidateVersion": "0.1.0~cohort202611191426.97e8eb7-1",
+    "dpkgOrderExit": 1,
+    "oldStatus": "deinstall ok config-files",
+    "successorIntentAbsent": true,
+    "versionDispatches": 0
+  },
+  "actualReattachments": {
+    "removed": {
+      "container": "1ed1ce090aad3c856040653e74d71bc31f8c037ebaac5c89617d60fe72a04b8c",
+      "operation": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+      "phase": "removed",
+      "newBoot": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 3709337,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:27:15.062642069Z",
+        "FinishedAt": "2026-11-19T14:27:14.915373047Z"
+      },
+      "dpkg": "deinstall ok config-files",
+      "old": {
+        "device": 2097163,
+        "overlaySha256": "ceff7e036872da4061a6342dbbb7720909fdf49c04263dbde1d43c41f7746585"
+      },
+      "new": {
+        "device": 1048826,
+        "overlaySha256": "ceff7e036872da4061a6342dbbb7720909fdf49c04263dbde1d43c41f7746585"
+      },
+      "sameOverlay": true,
+      "allOtherOriginalFieldsExact": 7,
+      "coreExact": 3
+    },
+    "unpacked": {
+      "container": "1ed1ce090aad3c856040653e74d71bc31f8c037ebaac5c89617d60fe72a04b8c",
+      "operation": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+      "phase": "unpacked",
+      "newBoot": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 3716045,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:28:26.962229245Z",
+        "FinishedAt": "2026-11-19T14:28:26.831866009Z"
+      },
+      "dpkg": "install ok unpacked",
+      "old": {
+        "device": 1048826,
+        "overlaySha256": "ceff7e036872da4061a6342dbbb7720909fdf49c04263dbde1d43c41f7746585"
+      },
+      "new": {
+        "device": 1048815,
+        "overlaySha256": "ceff7e036872da4061a6342dbbb7720909fdf49c04263dbde1d43c41f7746585"
+      },
+      "sameOverlay": true,
+      "allOtherOriginalFieldsExact": 7,
+      "coreExact": 3
+    }
+  },
+  "actualSuccessor": {
+    "container": "1ed1ce090aad3c856040653e74d71bc31f8c037ebaac5c89617d60fe72a04b8c",
+    "operation": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+    "initialization": "89d846f0-f24c-4d66-904c-994900865eb5",
+    "originalPackage": "0.1.0~cohort202611191426.9760bb2-1",
+    "successorPackage": "0.1.0~cohort20261119142754.97e8eb7-1",
+    "reinstall": {
+      "schemaVersion": 1,
+      "requestId": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+      "phase": "REINSTALLED",
+      "unitStarted": false
+    },
+    "sourcePair": {
+      "schemaVersion": 1,
+      "requestId": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "replayed": false
+    },
+    "originalRetainedFilesExact": 6,
+    "originalInitializationExact": true,
+    "coreFilesExact": 3,
+    "approvedPublicCodeIdentityAdvanced": true,
+    "unchangedRemovalIntent": "97619a3bb83a5305099e805e6d4f655490780c4d69ff1c5af4c6cdad767e3d1a",
+    "unchangedRemovalReceipt": "f0dd5cd06264f8799d373c662b29f0d8ef964cf123b708d9b3575692ff1bd932",
+    "observedDevices": [
+      2097163,
+      1048826,
+      1048815
+    ],
+    "overlay": "ceff7e036872da4061a6342dbbb7720909fdf49c04263dbde1d43c41f7746585",
+    "terminalDpkg": "install ok installed",
+    "noUnitStarted": true
+  },
+  "actualNonRootRuntime": {
+    "container": "1ed1ce090aad3c856040653e74d71bc31f8c037ebaac5c89617d60fe72a04b8c",
+    "operation": "f120149f-cdec-41b6-9d36-85ff117a5d77",
+    "pid": 456,
+    "invocation": "dac32de26bd94ba2973e8e2a89658ce6",
+    "unprivileged": true,
+    "noCaps": true,
+    "noNewPrivileges": true,
+    "actualLocalSocket": true,
+    "originalPlanKeyAndInitializationExact": true,
+    "originalContinuityExact": true,
+    "coreInactive": true,
+    "sourceControllerCreatedNoBytecodeCache": true
+  },
+  "parked": {
+    "earlierHalfConfigured": {
+      "id": "bf3296c04fbec3f89c72273e33b0ce2b0961d9c420d08ca5259c7a92f40ab77b",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:22:08.963090906Z",
+        "FinishedAt": "2026-11-19T14:25:18.148904406Z"
+      }
+    },
+    "verified": {
+      "id": "1ed1ce090aad3c856040653e74d71bc31f8c037ebaac5c89617d60fe72a04b8c",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:28:26.962229245Z",
+        "FinishedAt": "2026-11-19T14:28:30.122415545Z"
+      }
+    }
+  },
+  "tests": {
+    "pythonNativeAuthorities": 170,
+    "rustNativeState": 1
+  },
+  "remaining": [
+    "review of historical half-installed/half-configured intents before their initialization had an overlay proof",
+    "old generated bytecode removal, retained enrollment/business, other filesystem/providers and phases",
+    "remaining Core/OSGi and typed brokers and full six-component lifecycle matrix"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
