@@ -1,4 +1,14 @@
 
+## 2026-11-19 Main 有序停机与实际 Chrony stop
+
+Core 969c016ced 的正式启动配置启用 Equinox 关闭钩子。已有 `KillMode=control-group` 密钥发布门禁保留。配对同步 ExecStop 仅向 systemd 确认的原 Main pidfd 发一次终止信号，等待 JVM 停用 OSGi 并退出，再由 systemd 清理进程组。Root 配对清单核对固定停机程序，Core 有序停机期间保持时钟 broker 可用。
+
+Debian 13 ARM64 从 Git 和 JDK 21 构建并安装，核对正式 JAR、配置模板、vendor 单元和停机程序四份载荷。从已运行 Chrony 进入无文件变更的 Core profile，单次标准 `systemctl stop` 耗时约 3.0 秒。原 JVM 内实际 bundle 的 stop 回调发生，Core cgroup 清空，Chrony 正常退出，原 namespace 下只有一份终态 CHRONY_STOPPED，sender 和 actor 回执精确。六份原文件、快照和 clock actor 进程均保持，零改时及持久配置更新。
+
+专用测试 bundle 撤下，现场禁用且正常退出。真实停机中断与未决结果核定、其他 provider/launcher 的停机行为、完整 Core/OSGi、其余 typed brokers、完整六组件和发行矩阵继续内部待办。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-core-framework-typed-stop-checkpoint.json)。
+
+
+
 ## 2026-11-19 Chrony 持久化配置与活动 daemon 重载
 
 Core fd3ff3b4d1 让运行中的成对 Chrony 在新文件发布后沿同一配置事务重载一次。只允许原 clock actor 对经过配对的 Chrony vendor 单元发出固定 restart，随后核对新进程出生时间、原单元和已发布内容。发布后无法确认则保留原提交意图。非空配置让 Chrony 使用其自身的调时策略，Core 不另外派发 makestep。旧权限规则仅在原维护记录和旧 actor 成对时迁移。

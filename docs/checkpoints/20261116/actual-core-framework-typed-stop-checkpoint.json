@@ -1,0 +1,67 @@
+{
+  "at": "2026-11-19T07:08:22.188183+00:00",
+  "package": {
+    "commit": "969c016cedefeaad1142c864a51d682a52f5bcc7",
+    "tree": "4cfaebce15f9efb8ad29c141d7dd387046e7d6db",
+    "version": "6.0.0~git202611190706.969c016-1",
+    "sha256": "7e9b45a0458dd14993c07f7135f9f4de0a91e85ece123c9cf720785760d5edc7"
+  },
+  "arm64Debian13": true,
+  "pinnedShutdownAssets": {
+    "config.ini": "7c45f14c02d2225e0f0d7c956e5d06c4499afd57f019652b87666b850e7edfdb",
+    "kura.service": "0fdfbda78b24551fec0920d3a4037a9cb0d686c23d50ae02daa9e197a6f2ab77",
+    "org.eclipse.kura.core-2.0.0-SNAPSHOT.jar": "8effae1f4fe7d68c97dff161458ce990d256c02069c827ae0fa9ecc7c5282d23",
+    "kura_framework_stop.py": "05693b0daa1b5b2000d32e67c3e235740440f7c819e2b87465fdece155d777ed"
+  },
+  "packagedHook": true,
+  "execStopPairedToMainPidViaPidfd": true,
+  "killMode": "control-group",
+  "timedStop": {
+    "returnCode": 0,
+    "seconds": 2.9648863750044256
+  },
+  "actualFrameworkBundleStopPid": 1287,
+  "systemdMainCgroupEmpty": true,
+  "initialChronyPid": 1002,
+  "systemdChronyStopped": true,
+  "chronyNativeLaunches": 1,
+  "typedStepRequests": 0,
+  "typedChronyStopReceipt": {
+    "errno": 0,
+    "namespace": "a5fdb189-ebf0-4268-aefd-d3021855fc16",
+    "observedMonotonicNs": 284952104535790,
+    "observedRealtimeNs": 1795072052763278802,
+    "reason": "CHRONY_STOPPED",
+    "requestId": "bd0308e0-4e33-4a38-99bb-d2f3557a4cb9",
+    "requestSha256": "3d6f932db21246526969b5443d30bd5cb4eaae45b12d8512f2173a06e1efde07",
+    "schema": 1,
+    "state": "APPLIED"
+  },
+  "senderAndActorReceiptsExact": true,
+  "namespaceUnchanged": true,
+  "protectedFileMetadataCount": 6,
+  "snapshotsUnchanged": true,
+  "clockActorUnchanged": true,
+  "persistedConfigurationWriteCount": 0,
+  "fixture": {
+    "id": "7c0abe78a173aa2da6a65166b51978a4814aeedf52c72745f981fee169e08d85",
+    "exitCode": 0,
+    "mainDisabled": true,
+    "probeRemoved": true
+  },
+  "tests": {
+    "macOSPassed": 154,
+    "macOSLinuxOnlySkipped": 5,
+    "arm64Passed": 159,
+    "keyGenerationCohortPassed": 22
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
