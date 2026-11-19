@@ -193,7 +193,31 @@
       ],
       "seccompBlocksRebootAndClock": true
     },
-    "fixtureRemainsRunning": true
+    "fixtureRemainsRunning": true,
+    "osgiInstalledServices": {
+      "probeReadOnly": true,
+      "coreDynamicConfigurationBound": true,
+      "agentBridgeBoundToRealNmWriter": true,
+      "networkConfigurationServiceActive": true,
+      "activeBundles": {
+        "org.eclipse.kura.core.configuration": {
+          "id": 133,
+          "installedArtifact": "org.eclipse.kura.core.configuration_3.0.0.e952f82",
+          "state": "ACTIVE"
+        },
+        "org.eclipse.kura.nm": {
+          "id": 224,
+          "installedArtifact": "org.eclipse.kura.nm_2.0.0.202611190051-4b58a55",
+          "state": "ACTIVE"
+        },
+        "org.eclipse.kura.management.bridge": {
+          "id": 216,
+          "installedArtifact": "org.eclipse.kura.management.bridge_1.0.0.202611190051-4b58a55",
+          "state": "ACTIVE"
+        }
+      },
+      "evidenceSha256": "0f115eff97717cc9e957e09da0a3e6d36f8946ea6e917464807921bb4942dbc1"
+    }
   },
   "preservation": {
     "originalFixtures": 3,

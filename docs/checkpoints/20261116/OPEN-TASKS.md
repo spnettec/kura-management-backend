@@ -5,7 +5,7 @@
 
 Agent `9abe64a` 和 `ff36191` 对该布局增加 schema 2 原授权。Root 预启动核对 Networking 包归属、已配对 Core 版本目录里的原模板、实际 vendor 文件和 systemd 有效能力。仅接受这一份已审查的额外声明，要求两项能力都已在原 Core 单元生效，拒绝其他 drop-in、变化字节和新增能力。Native 进程校验可见的实际 vendor 文件，无需读取 Core 私有目录。原 schema 1 独立 Core 仍按原合同读取。
 
-同一新 Root 用原初始化编号完成一次受控源码升级到 `ff36191`。原初始化、continuity、执行库及 plan key 指纹精确。新配对具备独立原记录，随后正式单元一次启动完成实际 Java/OSGi 桥注册，NetworkManager 保持原 PID。Native Agent 零 capabilities、NNP1、远程关闭。Core Main 的 systemd 声明为 9 ambient、11 bounding、NNP0。此 Docker 现场受外层 capability 围栏与 NNP 约束，Java 进程实测 5 ambient、7 bounding、NNP1。最终版相关 Rust 16 项和 Python 40 项通过。现场继续用于后续真实业务。
+同一新 Root 用原初始化编号完成一次受控源码升级到 `ff36191`。原初始化、continuity、执行库及 plan key 指纹精确。新配对具备独立原记录，随后正式单元一次启动完成实际 Java/OSGi 桥注册，NetworkManager 保持原 PID。Native Agent 零 capabilities、NNP1、远程关闭。Core Main 的 systemd 声明为 9 ambient、11 bounding、NNP0。此 Docker 现场受外层 capability 围栏与 NNP 约束，Java 进程实测 5 ambient、7 bounding、NNP1。最终版相关 Rust 16 项和 Python 40 项通过。运行中 OSGi 确认 Core 配置、NM、Bridge 三 bundle 均 ACTIVE，实际 NetworkWriterStateService 已绑定，NM 配置 DS 组件 ACTIVE。现场继续用于后续真实业务。
 
 完整 ordinary Core/OSGi 业务、真实 JVM/NM 所有权签发和过渡、可选 typed firewall provider 发行映射、其余 typed brokers、已授权 v1 现场后装 Networking 的明确联合变更及六组件矩阵仍内部 pending。原三现场、C/D/E、个人配置和原 7fd 停机 41 输入/16 回执保持。冻结 12 父项最终 0/12，仍仅原 3 项 external deferred。见 [检查点](installed-core-networking-native-peer-checkpoint.json)。
 
