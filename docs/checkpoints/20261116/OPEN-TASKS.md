@@ -1,4 +1,14 @@
 
+## 2026-11-19 正式 Root 双 fence 发布及 Java writer 排空
+
+Agent `bc8e1ea` 发行独立 `kura-management-nm-fence@.service`。Root 发布单元核对包内 loader、bridge、已装二进制、控制脚本、来源及实际 unit；用受保护 UDS 和进程凭据绑定当前 Agent，并比对双方运行二进制摘要。原注册的 JVM/CM/NM/原生来源重新核验，在同一事务内按原 ID 留下 arm 和唯一发布意图。Root 从固定路径发布两道原 fence，用真正文件设备/inode/摘要结算。无共享 Root-only 数据目录重新映射，无自动启用单元。
+
+新隔离 Debian 13 ARM64 以 Core `e952f82bb9`、Networking `180ed6e`、Agent `bc8e1ea` 验证。JDK21 正式 Core 双族 CM 一次落盘，原 Java 加密准备一次进入 PREPARED。实际发布单元先拒绝同 Root 的全新非原 ID，原记录保持；随后正式 Root 单元对原 ID 启动一次，成功 FENCED。实际两道原 marker 权限、文件身份、计划和加密回执核对通过。真实 OSGi writer 证实双族防火墙及 NM writer 排空。原生内核 handle 保持，尚无初始化或首个 netfilter 写批次。Agent 自己继续在只读 /etc/kura 沙箱，查询该 FENCED 结果返回 CONFLICT，待接独立配对的只读证明。ARM64 Rust 15 项、Debian Python 包 92 项通过。
+
+此前独立 PREPARED 原现场仍运行，数据、原编号和两道空 fence 保留。配对只读证明、该旧原计划的安全续接、签发、初始化、真实启动、其余 typed brokers、完整 Core/OSGi/合法 Main 及六组件矩阵继续实施。原三现场与 7fd 41 输入、16 回执保持，12 父项仍 0/12，external deferred 仅原 3 项。见 [检查点](actual-typed-root-fence-publisher-checkpoint.json)。
+
+
+
 ## 2026-11-19 双 fence 派发前准入及原 NM 维护记录保全
 
 Agent `232945a` 将真实目录只读检查和外来 network marker 冲突移到 FENCE_INTENT 前。原 actor、token、注册和双族来源见证继续核对。真实 ARM64 systemd 测试用 `TemporaryFileSystem=/etc/kura:ro`，确认拒绝时原 PREPARED 计划及两个空 fence 位置保持。首次探针因 /run 本身 noexec 返回 203，随即从可执行的隔离路径通过；原操作未派发。ARM64 handover 247 项、独立 bind mount 1 项、systemd 1 项；macOS 外来 marker 1 项通过。

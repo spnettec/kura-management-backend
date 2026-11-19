@@ -1,0 +1,105 @@
+{
+  "recordedAt": "2026-11-19T02:20:19.396203+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "paired-root-fence-admission-checkpoint.json",
+  "agent": {
+    "head": "bc8e1eab49a57947624e62bc747dcf4d9e0b8924",
+    "tree": "963ed5903b85e92f7deedbf811a794adfcd35863"
+  },
+  "consoleProtocol": {
+    "head": "bdb58c1140299f1260730537df58c501a0d38236",
+    "tree": "663a32a52429078acc54e8e613791875a68ea891"
+  },
+  "core": {
+    "head": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+  },
+  "networking": {
+    "head": "180ed6ebba263975860d15a3913015c8c220031b",
+    "tree": "b53f244786b0479bc682d72621c36aca1019dc44"
+  },
+  "validation": {
+    "rust": "1.95.0",
+    "jdk": 21,
+    "architecture": "arm64",
+    "focusedRustPassed": 15,
+    "previousHarnessesIgnored": 2,
+    "packagePythonPassed": 92,
+    "actualDebSystemdPublisher": true,
+    "authenticCoreAndNetworkManager": true,
+    "dedicatedIsolatedRoot": true
+  },
+  "package": {
+    "package": {
+      "package": "kura-management-agent",
+      "version": "0.1.0~fence202611190217.bc8e1ea-1",
+      "architecture": "arm64",
+      "source": "bc8e1eab49a57947624e62bc747dcf4d9e0b8924",
+      "sha256": "b9e9ff6d17ed218935adb646fcb64941e10c417548f5c33773fcdb278cea0a7c"
+    },
+    "pairedMetadata": {
+      "schemaVersion": 1,
+      "unitPath": "/usr/lib/systemd/system/kura-management-nm-fence@.service",
+      "unitSha256": "c465b6754a45908d5d4cf979005e5f05d21efeb37e991c20ba410c1b13723dda",
+      "binarySha256": "6ce037ea428a1e7b82f9317b2fcdf1bef530fd57460d289b299ed931010a442f",
+      "sourceManifestSha256": "c117b6d5ae0a58dd3e0693d861c8beb438f5952976eb1ac32d0dbf77dad11217",
+      "setupSha256": "b4fa90a8bf3511ebec10ec7e2ea07687a78840efc4fbd15165218745c415eccb",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "bridgeSha256": "0780dee39b5f49c2c80f7cdcb61a3ca6d8e2a0168042c700c48c5d28b60e140d"
+    }
+  },
+  "fixture": {
+    "id": "eb9824d45dff7d0641725c54c597648101264f046ac09a5a07c7005a1bdee060",
+    "image": "sha256:7df10a7fcacba1a731d54505a7d8c8497feab691684663f66ef6d4e1c5877c84",
+    "isolatedVolumes": {
+      "/var/lib": "yofc-fence-publisher-varlib-20261119",
+      "/etc": "yofc-fence-publisher-etc-20261119"
+    },
+    "noBindMounts": true,
+    "network": "none",
+    "extraCaps": [
+      "CAP_SYS_ADMIN",
+      "CAP_SYS_RESOURCE",
+      "NET_ADMIN"
+    ],
+    "seccompBlocksRebootAndClock": true
+  },
+  "rootPublication": {
+    "rootReported": "FENCED",
+    "actualMarkerCount": 2,
+    "ordinal": 1,
+    "operationBoundToSameBridgeAndPlan": true,
+    "originalJavaDrainObserved": true,
+    "foreignOperationRefusedBeforeArming": true,
+    "nativeHandlesExact": true,
+    "nativeEffectDispatched": false,
+    "installedAgentStatus": "CONFLICT",
+    "sandboxRetained": true
+  },
+  "preservation": {
+    "priorPreparedRootUntouched": true,
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "replayedCompletedMaintenance": false
+  },
+  "internalPending": [
+    "Root-paired live read path for the sandboxed Agent and legal continuation of the earlier separate PREPARED plan",
+    "Signed ownership, native initialization, actual owner startup, Core/OSGi/typed brokers and the six-component lifecycle matrix",
+    "All twelve frozen parents"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/typed-root-fence-publisher-20261119"
+}
