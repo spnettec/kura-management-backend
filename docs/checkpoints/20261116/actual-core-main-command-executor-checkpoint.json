@@ -1,0 +1,235 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "cb10961dc5ba528684fc910224c0a0a658431501",
+  "core": {
+    "head": "ed6db4f0ebb6a4ab598baeaa44078688351db804",
+    "tree": "042ff0bb4205c9525fb41cb931beec958bd60977"
+  },
+  "priorCore": {
+    "head": "833fc21c355a84a9c95210f59455b5e141483657",
+    "tree": "95520956d2a8c228a065ed6bfaeea10b408dbb32"
+  },
+  "networking": {
+    "head": "846d2504e2169fa90f4115ef31fd37a4653d5b98",
+    "tree": "72ac35619fb4ed7fd4a8eb85b0356c4643424d7d"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 formally installed systemd Main",
+  "sameRootPackageUpgrade": true,
+  "packagedMain": {
+    "id": "41771d9228677f56fc9ba3780674e4917e4ff73868fa81e7f8a69a8cc7ba2cff",
+    "core": [
+      "ed6db4f0ebb6a4ab598baeaa44078688351db804",
+      "042ff0bb4205c9525fb41cb931beec958bd60977"
+    ],
+    "networking": [
+      "846d2504e2169fa90f4115ef31fd37a4653d5b98",
+      "72ac35619fb4ed7fd4a8eb85b0356c4643424d7d"
+    ],
+    "old": {
+      "MainPID": "1592",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin cap_net_raw",
+      "ActiveState": "active",
+      "InvocationID": "96dd04d99f6041de96585ad1c6ebfdf1",
+      "caps": {
+        "CapInh": 13314,
+        "CapPrm": 13314,
+        "CapEff": 13314,
+        "CapBnd": 13506,
+        "CapAmb": 13314
+      },
+      "nnp": 0,
+      "credentials": {
+        "sha256": "2edeb6a5e2750d8ad239235da68df21cbabfac6330fd73f9e1f62ac9f1ee83eb",
+        "stat": "5179016:0:0:400:1:32:1795117631"
+      }
+    },
+    "main": {
+      "MainPID": "3349",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin cap_net_raw",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin cap_net_raw",
+      "ActiveState": "active",
+      "InvocationID": "149a59f2b4fd40c0b9ac29192e806652",
+      "caps": {
+        "CapInh": 13314,
+        "CapPrm": 13314,
+        "CapEff": 13314,
+        "CapBnd": 13314,
+        "CapAmb": 13314
+      },
+      "nnp": 1
+    },
+    "pid1": {
+      "CapInh": 0,
+      "CapPrm": 2837722619,
+      "CapEff": 2837722619,
+      "CapBnd": 2837722619,
+      "CapAmb": 0
+    },
+    "pid1Nnp": 0,
+    "pairedUnitHash": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+    "children": {
+      "main-user": {
+        "pid": 10075,
+        "uid": 997,
+        "exitCode": 143,
+        "account": "kurad",
+        "signal": "SIGTERM"
+      },
+      "command-user": {
+        "pid": 10102,
+        "uid": 1000,
+        "exitCode": 143,
+        "account": "kura",
+        "signal": "SIGTERM"
+      }
+    },
+    "crossUID": [
+      "3010",
+      "1",
+      "EPERM"
+    ],
+    "witness": {
+      "MainPID": "3010",
+      "ControlGroup": "/system.slice/kura-signal-authority-root-witness.service",
+      "ActiveState": "active",
+      "InvocationID": "67b18030b134421ea4b47adb6d8db915"
+    },
+    "binaryBytes": 6,
+    "commandExit": 23,
+    "shellMode": true,
+    "privateCwdRelativeRead": true,
+    "workerCapsZero": true,
+    "workerNnp": 1,
+    "expired": {
+      "pid": 10158,
+      "exit": 143,
+      "timed": "true"
+    },
+    "foreignSameUidRejected": true
+  },
+  "parking": {
+    "id": "41771d9228677f56fc9ba3780674e4917e4ff73868fa81e7f8a69a8cc7ba2cff",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T19:45:54.841943913Z",
+      "FinishedAt": "2026-11-19T19:49:32.464294645Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "osgiStopRan": true,
+    "execStop": "{ path=/usr/bin/python3 ; argv[]=/usr/bin/python3 -I -B /opt/eclipse/kura/bin/kura_framework_stop.py ${MAINPID} ; ignore_errors=no ; start_time=[Thu 2026-11-19 19:49:29 UTC] ; stop_time=[Thu 2026-11-19 19:49:31 UTC] ; pid=10528 ; code=exited ; status=0 }",
+    "unchangedCredential": {
+      "sha256": "2edeb6a5e2750d8ad239235da68df21cbabfac6330fd73f9e1f62ac9f1ee83eb",
+      "stat": "5179016:0:0:400:1:32:1795117631"
+    }
+  },
+  "foreignSameUidRefusal": {
+    "id": "41771d9228677f56fc9ba3780674e4917e4ff73868fa81e7f8a69a8cc7ba2cff",
+    "exitCode": 1,
+    "stdoutEmpty": true
+  },
+  "initialRejectedFixture": {
+    "result": {
+      "id": "fc2b1164f19b5eeff13848fe0d43f15ad13371c9b659c16bb46a159696db5502",
+      "main": {
+        "MainPID": "3345",
+        "NRestarts": "0",
+        "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin cap_net_raw",
+        "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin cap_net_raw",
+        "ActiveState": "active",
+        "InvocationID": "32e54b578aa44e3ead580136f8ce2577",
+        "caps": {
+          "CapInh": 13314,
+          "CapPrm": 13314,
+          "CapEff": 13314,
+          "CapBnd": 13314,
+          "CapAmb": 13314
+        },
+        "nnp": 1
+      },
+      "preDispatchClientFileUnreadableUnderWorkerIdentity": true,
+      "failure": "java.lang.IllegalStateException: Ordinary command streams or exit status differ: 1 EXECUTOR_UNAVAILABLE",
+      "boundClientPath": "/opt/eclipse/kura/bin/kura_command_executor.py",
+      "privateInstallLayoutPreserved": true
+    },
+    "parking": {
+      "id": "fc2b1164f19b5eeff13848fe0d43f15ad13371c9b659c16bb46a159696db5502",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T19:41:01.288251077Z",
+        "FinishedAt": "2026-11-19T19:45:57.599670196Z"
+      },
+      "mainDisabled": true,
+      "probeArchived": true,
+      "osgiStopRan": true
+    }
+  },
+  "packages": {
+    "prior-core-install": {
+      "package": "kura-core",
+      "path": "/root/kura-process-authority-release/kura_6.0.0~git202611191942.833fc21-1_arm64.deb",
+      "sha256": "94a2e3092c201ab920140bbfa61eb9e411a3099dadf5514eacf21e9d5ecb9776",
+      "version": "6.0.0~git202611191942.833fc21-1"
+    },
+    "core-upgrade": {
+      "package": "kura-core",
+      "path": "/root/kura-process-authority-release/kura_6.0.0~git202611191947.ed6db4f-1_arm64.deb",
+      "sha256": "83147994d1ae0f5ddd2d2802f6c0b32ddd4d500cc3ec5b3532f555d737b0c07f",
+      "version": "6.0.0~git202611191947.ed6db4f-1"
+    },
+    "networking-install": {
+      "package": "kura-networking",
+      "path": "/root/kura-process-authority-release/kura-networking-3.0.0~git202611191947.846d250-1_all.deb",
+      "sha256": "15c9f1bbf4ebcd19084f1ae1c87501d17c9753eb73bee858824a12b761d5a5eb",
+      "version": "3.0.0~git202611191947.846d250-1"
+    }
+  },
+  "tests": {
+    "linuxDescriptorContracts": 7,
+    "networkingMaven": 2236
+  },
+  "references": {
+    "systemdSocket": "https://www.freedesktop.org/software/systemd/man/latest/systemd.socket.html",
+    "unixFileDescriptors": "https://man7.org/linux/man-pages/man7/unix.7.html"
+  },
+  "internalPending": [
+    "Main 剩余 capability、完整命令调用者/不同 launcher 及兼容环境矩阵",
+    "完整 Core/OSGi、历史权限/安装迁移及剩余 typed brokers、网络/接管",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

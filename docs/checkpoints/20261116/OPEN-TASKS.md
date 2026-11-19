@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 正式 Main 启用 NoNewPrivileges，普通命令仍由独立账号执行
+
+Core ed6db4f0eb 让已配对的正式 Main 通过 socket worker 运行普通命令。Main 保留 kurad，worker 使用 kura、零 capabilities 与 NoNewPrivileges=1。kernel pidfd、有效 Main、原 cgroup、直属客户端及 package cohort 继续配对。worker 从经核定进程读取固定启动参数，使用 SCM_RIGHTS 接收标准流，仅接收方向正确的管道或 /dev/null，以及已打开的工作目录。可遍历路径在 worker 的挂载命名空间重新打开并核对 inode；私有路径继续使用原目录描述符处理相对路径。Main 默认启用 NoNewPrivileges，并从 bounding 集合移除 CAP_SETUID、CAP_SETGID。 [systemd socket](https://www.freedesktop.org/software/systemd/man/latest/systemd.socket.html) [Unix 描述符传输](https://man7.org/linux/man-pages/man7/unix.7.html)
+
+Debian 13 ARM64 在同一隔离 Root 从 833fc21c35 正常停机后实际升级，并实装当前 Networking。原 AES 凭据指纹和元数据保持。PID 1 的 NNP 为 0，实际 Main 为 1，五类 capability 掩码仅减少原 bounding 的两个身份位。正式 OSGi 验证独立账号下的工作目录、环境变量与字面量 argv，六个二进制字节、独立 stderr、状态码 23、显式 shell、异步命令和 SIGTERM、超时回收。外部同 UID 客户端被拒且零 stdout。Main 正常停机，socket 撤下，夹具已禁用并停放。Linux 描述符合同 7 项、Networking Maven 2236 项通过。初始夹具因 worker 无法读取受保护的客户端副本而在派发前拒绝，已保留。最终包从同一已配对的 /usr/libexec 文件启动，不改变原目录权限。
+
+其余 Main capability、其余 typed brokers、不同 launcher、站点命令账号和 provider、私有目录下依赖绝对 getcwd 的调用、历史及完整 Core/OSGi、六组件生命周期矩阵继续内部待办。冻结 12 父项 0/12、external deferred 仅原三项。原 7fd 禁用且停止，保留 41 输入/16 回执。见 [检查点](actual-core-main-command-executor-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Main 撤下 CAP_KILL
 
 Core 833fc21c35 从正式 systemd Main 的 ambient、bounding 集合撤下 CAP_KILL。Kernel 保留同 UID 进程的信号能力，实际系统服务继续由各专用 broker 与 systemd 管理。既有 Main 停机使用已配对的同 UID pidfd 并等待 OSGi 退出。 [Linux 信号权限](https://man7.org/linux/man-pages/man2/kill.2.html) [systemd 停机与 cgroup](https://www.freedesktop.org/software/systemd/man/latest/systemd.kill.html)
