@@ -1,4 +1,14 @@
 
+## 2026-11-19 Chrony 发布中断与 Debian 提前准入
+
+Debian 13 ARM64 隔离 Root 从当前 Git 正式安装 Core 969c016ced。在实际 OSGi 配置更新中，于发布程序创建暂存文件时挂起原 clock actor。发布程序将候选和原副本落盘后，只终止原 actor。Chrony PID 及进程出生时间不变，实际 daemon 未加载候选。原 namespace 与请求只保留原 intent、prepare、commit-intent 及 sender pending/issued。原请求读回 UNKNOWN，未派发重载或重发。已安装的时钟 quiesce 返回 UNRESOLVED_CLOCK_OPERATION，原现场写入保持关闭。
+
+Core fafc5b3a6b 为 preinst 和 prerm 增加配对只读检查，先核已存在的原时钟记录，再进入 reboot 或 key 维护。早期检查既不建立 namespace，也不停止进程。现构建 ARM64 候选包的两个控制脚本均与源码精确。直接运行候选包的正式 prerm，原中断 Root 拒绝卸载准入，Main 与 Chrony 原 PID、原文件和证据精确，三个维护围栏与 retained/preserve 均保持未创建。此次验证没有调度候选 dpkg 事务。
+
+标准 Main 停机后原 UNKNOWN 与已落盘文件保持，试验 bundle 撤下，现场禁用并正常退出。macOS 与 Debian ARM64 各 58 项通过。发布中断之后的原地核定、提前只读检查与最终 quiesce 之间的并发边界、其他 provider/launcher、完整 Core/OSGi、其余 typed brokers、六组件及发行矩阵继续内部待办。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-chrony-publish-interruption-and-early-maintenance-admission.json)。
+
+
+
 ## 2026-11-19 Main 有序停机与实际 Chrony stop
 
 Core 969c016ced 的正式启动配置启用 Equinox 关闭钩子。已有 `KillMode=control-group` 密钥发布门禁保留。配对同步 ExecStop 仅向 systemd 确认的原 Main pidfd 发一次终止信号，等待 JVM 停用 OSGi 并退出，再由 systemd 清理进程组。Root 配对清单核对固定停机程序，Core 有序停机期间保持时钟 broker 可用。

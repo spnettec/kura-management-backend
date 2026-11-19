@@ -1,0 +1,96 @@
+{
+  "at": "2026-11-19T07:16:29.939703+00:00",
+  "arm64Debian13": true,
+  "installedPackage": {
+    "commit": "969c016cedefeaad1142c864a51d682a52f5bcc7",
+    "tree": "4cfaebce15f9efb8ad29c141d7dd387046e7d6db",
+    "version": "6.0.0~git202611190710.969c016-1",
+    "sha256": "519c1979887a8eb3a2aea73f9fb92a6971b574eb237f607eee59cf140b17c62e"
+  },
+  "candidatePackage": {
+    "commit": "fafc5b3a6b9639b9690961b1e544bd4f15c21116",
+    "tree": "3ce6507a54e1b07f43eb0c653ce02c4070e70cd0",
+    "version": "6.0.0~git202611190715.fafc5b3-1",
+    "sha256": "fc0130967e5bdc841c0569f877b43e319a0111f9c9edf0c90d8ad876c54bec26"
+  },
+  "interruption": {
+    "predicate": "publisher created private stage before native parse",
+    "originalClockActorPid": 1061,
+    "actorSuspendedBeforePublication": true,
+    "originalActorKilledAfterFilePublication": true,
+    "originalChronyPid": 1027,
+    "originalChronyPidAndBirthUnchanged": true,
+    "candidateAbsentFromRunningDaemon": true,
+    "relayRestartDispatches": 0,
+    "originalStatus": {
+      "schema": 1,
+      "namespace": "8c5e7f6b-bbaa-4a85-87b9-fa1f95db156e",
+      "requestId": "9b543d31-4260-4ad2-81ec-349785637267",
+      "requestSha256": "acb0839d72a09c86db086e6e9c2c4d4c39aee931644be4fe6428fb0e6aa7b7f5",
+      "state": "UNKNOWN",
+      "reason": "NO_DURABLE_RESULT"
+    },
+    "originalConfig": {
+      "sha256": "c88d5bb970adbf75809dc17a319ee579486686077f82395c2d152ed4272a2513",
+      "uid": 0,
+      "gid": 0,
+      "inode": 4357897,
+      "mode": "0o600",
+      "mtimeNs": 1795072314398460364,
+      "ctimeNs": 1795072314489032911
+    },
+    "publishedConfig": {
+      "sha256": "1f691ddee9cf8613bbfb277c315309efd00f131e4e5db8a8d72d911bf5056279",
+      "uid": 0,
+      "gid": 0,
+      "inode": 4357896,
+      "mode": "0o644",
+      "mtimeNs": 1795072314392032727,
+      "ctimeNs": 1795072314495032922
+    },
+    "originalSenderAndActorEvidenceUnchanged": true,
+    "automaticRetryDispatches": 0
+  },
+  "maintenance": {
+    "installedClockQuiesceRefusal": "UNRESOLVED_CLOCK_OPERATION",
+    "candidatePreinstAndPrermExact": true,
+    "candidatePrermExercisedDirectly": true,
+    "candidateDpkgTransactionDispatched": false,
+    "returnCode": 1,
+    "reason": "Unpaired or unresolved clock broker; preserve the original namespace and IDs",
+    "packagedControlsSha256": {
+      "preinst": "6d8c69e26820fb2da2697166181df8073c8ed9fecf18248a5d0f3b77ed087e28",
+      "prerm": "259b5ddbeffc6b6a679e48418697ab63c80f90bdacdda5d06023f288e8a9b18e"
+    },
+    "pairedGuardExact": true,
+    "beforeRebootAndKeyMaintenance": true,
+    "originalObservationUnchanged": true,
+    "packageRemainsInstalled": true,
+    "retainedAndPreserveAbsent": true,
+    "maintenanceFencesAbsent": true
+  },
+  "afterNormalMainStop": {
+    "originalEvidenceExact": true,
+    "chronyPidUnchanged": true
+  },
+  "fixture": {
+    "id": "9fa54c0756ab472052a96516495446a89163eb9219eb08b47ebbcfd8d1a687fb",
+    "finalState": "exited",
+    "exitCode": 0,
+    "mainDisabled": true,
+    "probeRemoved": true
+  },
+  "tests": {
+    "macOSPassed": 58,
+    "arm64Passed": 58
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
