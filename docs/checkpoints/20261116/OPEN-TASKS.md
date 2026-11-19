@@ -1,4 +1,15 @@
 
+## 2026-11-19 原初始化 Root 受控停止、普通 owner 启动与实际 OSGi 确认
+
+Agent `530f999`、`f027f33`、`3edd3f5` 将 schema 5 接到正式已装 Root 入口。操作使用同一原 ID、实际已装包链、固定 systemd 单元、原 Root 和原始授权。停机前重新采样当前 Agent Unix 对端、旧 JVM 注册、原 Netfilter 和已提交初始化；停机后仍核对同一 Root/NM/Agent，按原序列发布和启动。被隔离的 Agent 通过正式 Root reader 只读核对两道原系统 fence。新 JVM completion 要求实际已确认启动及新的 Java/OSGi 证据。
+
+从 Git 构建正式 Debian 13 ARM64 deb 并按原计划升级，原 JVM 与 NM 在 Agent 替换期间保持。原 ID 实际完成一次 `STOPPED`、一次 `FILES_PUBLISHED` 和一次 `STARTED`，均独立读取同一原回执。新 JVM 通过实际普通 profile 与 OSGi writer 核验，正式同 ID 所有权为 `COMMITTED`。独立复核实际 JVM 加载已发布参数文件，NetworkManager 后端 active，原 native Netfilter 仍 `APPLIED`，实际终结和 lease 摘要一致，原启动参数字节和 inode 保留。原快照、UNKNOWN 回执、原三现场及 7fd 禁用停机 41 输入/16 回执保持。
+
+ARM64 startup 与 continuity 共 61 项通过、1 项忽略。此次完成同 Root 合法 owner 切换，完整 Core/OSGi/合法 Main、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。冻结 12 父项最终闭环仍 0/12，external deferred 仅原三项。见 [检查点](actual-original-legacy-startup-activation-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原旧 JVM 启动子事务的类型化证据与现场准入
 
 Agent `bcedd4c` 增加启动子事务 schema 5，固定旧 JVM 回执的文件设备号、inode 与摘要，核对父计划、systemd JVM 身份、已签发 profile、原角色和 stop policy。schema 5 的 stop intent 区分旧 JVM 证据与普通 Java report。现有停止、停止后文件发布和未结算结果的门禁复用。隔离回归验证只停止一次、按原记录发布文件；丢失停机应答保留 `STOP_OUTCOME_UNKNOWN`，禁止从后续 inactive 状态合成回执或重新派发。`a7367c2` 恢复历史 schema 2 在任何 unit 探测前拒绝；原字节保持。
