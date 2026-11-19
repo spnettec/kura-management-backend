@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — Wi-Fi 扫描由 NetworkManager 接管
+
+Networking 56f9d84 在正式状态刷新路径使用既有 NetworkManager Wireless.RequestScan。调用前核定 D-Bus 唯一所有者、设备路径、接口名和 Wi-Fi 类型，仅接收同一所有者与设备的 LastScan 信号。未确认扫描留在当前实例和设备的等待记录中，后续刷新只读取同作用域的完成观察，已确认拒绝可释放本次等待。NetworkManager 1.52 的 supplicant 实现保持 AllowRoam=false。 [NetworkManager Wireless API](https://networkmanager.dev/docs/api/latest/gdbus-org.freedesktop.NetworkManager.Device.Wireless.html) [NetworkManager 1.52 源码](https://raw.githubusercontent.com/NetworkManager/NetworkManager/nm-1-52/src/core/supplicant/nm-supplicant-interface.c)
+
+JDK 21 从 Git 构建，实际安装 Core d652342e41 和 Networking 6a85b70 的 Debian 13 ARM64 包。合法 Main 的真实 NetworkManager 1.52.1 返回本机 veth 状态，扫描入口拒绝真实非无线设备。另在只用于验收的独立 D-Bus 上，由实际安装的 NM bundle 发送两次结构化 RequestScan。其他设备路径的信号未完成等待，目标路径更新后正常返回。第二次无完成信号，后续刷新没有再次派发。私有总线与真实系统总线的 ID 分离，真实 NetworkManager invocation 保持。本机无无线设备，这一部分为真实 IPC 契约验证。实际射频路径仍在原硬件边界。夹具正常停放，Main 禁用。
+
+Networking Maven 2215 项通过。旧直接 WPA 规则撤权及历史 XML/polkit 迁移、PPP 及其余 typed brokers、完整 Core/OSGi 与六组件/provider/launcher/生命周期矩阵继续内部待办。12 父项闭环 0/12，external deferred 仍仅原三项。原 7fd 保持 41 输入和 16 回执。见 [检查点](actual-nm-typed-wifi-scan-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — DHCP 多链路、就地升版、移除与 purge
 
 Core d652342e41 校验 dnsmasq 多接口的实际通配 UDP 67 socket。多接口的 socket 跨同一网络命名空间的接口范围，已有外部 IPv4 DHCP 监听时在意图前拒绝。broker 在原沙箱内复核配置文件身份、精确 systemd invocation 和 socket cgroup。运行时凭据目录的指纹由隔离现场的只读观察获得。 [dnsmasq 维护者对多接口 socket 的说明](https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2023q4/017349.html)
