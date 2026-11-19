@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — PPP LCP 配置的 D-Bus 类型与实际 profile 升级
+
+Networking 257a1b7 保留旧快照 lpcEchoInterval、lpcEchoFailure 键，将 LCP 属性编码为 NetworkManager 规范的 uint32。负数及没有发送周期却启用失败阈值的配置在写入 profile 前拒绝。PPP profile 由现行 NetworkManager Settings 生命周期管理。[NetworkManager 1.52 PPP 设置](https://networkmanager.dev/docs/api/1.52.0/settings-ppp.html)
+
+在隔离 Debian 13 ARM64 从 Git 构建 Core 4122fafa10 和 Networking 两个版本。基线 Main 的已安装 OSGi 转换器发送有符号正值，NetworkManager 1.52.1 接受并读回 30/5。通过实包升级 Networking 后，Main 写入 D-Bus 签名 u，先在同一 UUID、同一 Settings 对象读回 CHAP 的 30/5，再更新并读回 PAP 的 45/7。负数与缺少周期两种错误在 profile 写入前拒绝。真实 NetworkManager 重启后读回保持，Root 私有 keyfile 字节与元数据保持，profile 为非自动连接且未激活。夹具正常停放。
+
+Networking Maven 2218 项通过。实际拨号和 PPP 协商、断线重连、实际 IpInterface 与 NAT/DNS 联动仍待验证。完整 Core/OSGi、历史迁移余项、其余 typed brokers 及六组件生命周期继续内部待办，原 7fd 41 输入/16 回执，父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-core-nm-ppp-profile-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 配对撤回 Main 的直接 ModemManager 控制权限
 
 Core 4122fafa10 和 Networking b0c5fcd 将包授予的 ModemManager 通配权限收敛为 GetLocation 所需的精确 Location 权限。Core 在升级及 Main 启动前核对 Reset、GPS provider 与 Networking 只读规则的包归属和哈希。Networking 在拆包前核对已安装 Core 的 GPS actor，从新包移出旧授权脚本。旧 Core 和 Networking 写入的确切规则可以合法迁移，只有精确的历史 ModemManager pkla 退役。[ModemManager 1.24 授权定义](https://github.com/linux-mobile-broadband/ModemManager/blob/1.24.0/src/mm-auth-provider.h)

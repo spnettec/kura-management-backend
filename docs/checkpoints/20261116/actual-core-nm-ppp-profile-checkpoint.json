@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "402ad6b",
+  "core": {
+    "head": "4122fafa10890ba7412d1f303dd09dc674be4d0a",
+    "tree": "73df7a482444f86fd296fe53653a00c7b0c614ec"
+  },
+  "networking": {
+    "head": "257a1b778015c507293690f8a02af128216afa97",
+    "tree": "abe6f17e6cbd44aab14fbcb1bc4d5db1cf9e19ad"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd with NetworkManager 1.52.1",
+  "baseline": {
+    "outcome": "signed-accepted-and-normalized",
+    "dbusSignature": "i",
+    "detail": "/org/freedesktop/NetworkManager/Settings/2",
+    "main": {
+      "MainPID": "1791",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "3d615c5edd2740dbb090198312f035fc"
+    },
+    "profileUuid": "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+    "readback": [
+      "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+      "no",
+      "30",
+      "5",
+      "yes",
+      "no",
+      "kura-fixture.invalid",
+      "auto",
+      "disabled"
+    ]
+  },
+  "profileWrite": {
+    "id": "7ae6cc183ca33825c79bd3d0c29dc13af6e8b325ee5de386574c09fe751641be",
+    "main": {
+      "MainPID": "9181",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "fef2ca06caae4968b4f537d26229a360"
+    },
+    "nm": {
+      "MainPID": "112",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "b4c4aeca9f974a3c87b3a229a5aefa86"
+    },
+    "providerVersion": "2.0.0.202611191755",
+    "profileUuid": "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+    "dbusPath": "/org/freedesktop/NetworkManager/Settings/2",
+    "dbusSignature": "u",
+    "addOrChange": "update",
+    "firstReadback": {
+      "interval": 30,
+      "failure": 5,
+      "authentication": "CHAP"
+    },
+    "secondReadback": {
+      "interval": 45,
+      "failure": 7,
+      "authentication": "PAP"
+    },
+    "keyfile": [
+      "a23492c9905ce53eab86d31bad24623b36cf4c649587cc2e5a0650e17c55f760",
+      "1048815:5084028:0:0:600:1:389:2026-11-19 18:00:02.187272763 +0000"
+    ],
+    "localValidationBeforeMutation": true,
+    "autoconnect": false,
+    "active": false,
+    "readback": [
+      "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+      "no",
+      "45",
+      "7",
+      "no",
+      "yes",
+      "kura-fixture.invalid",
+      "auto",
+      "disabled"
+    ],
+    "rootModemIntents": 0
+  },
+  "persistence": {
+    "id": "7ae6cc183ca33825c79bd3d0c29dc13af6e8b325ee5de386574c09fe751641be",
+    "profileUuid": "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+    "nm": {
+      "MainPID": "15143",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "b9f51461d57e4a6891bd21986e508e9e"
+    },
+    "readback": [
+      "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+      "no",
+      "45",
+      "7",
+      "no",
+      "yes",
+      "kura-fixture.invalid",
+      "auto",
+      "disabled"
+    ],
+    "keyfileExact": true,
+    "autoconnect": false,
+    "active": false,
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "mainDisabled": true
+  },
+  "parking": {
+    "id": "7ae6cc183ca33825c79bd3d0c29dc13af6e8b325ee5de386574c09fe751641be",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T17:56:12.796211616Z",
+      "FinishedAt": "2026-11-19T18:00:05.556246814Z"
+    },
+    "mainDisabled": true,
+    "profileUuid": "63a9e809-c499-4ca0-a4d3-e4d9642e10dc",
+    "profileRetained": true,
+    "probeArchived": true
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-ppp-profile-release/kura_6.0.0~git202611191755.4122faf-1_arm64.deb",
+      "sha256": "d71945ea97002ae70d7f131afaf95f50ce87ee1fdb5558f66e1a18659c4689da",
+      "version": "6.0.0~git202611191755.4122faf-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-ppp-profile-release/kura-networking-3.0.0~git202611191756.b0c5fcd-1_all.deb",
+      "sha256": "0da4115771fb3b9c59747bf572ba2c6cfc027decd7e8ed4343482f746aa0d4e4",
+      "version": "3.0.0~git202611191756.b0c5fcd-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-ppp-profile-release/kura-networking-3.0.0~git202611191759.257a1b7-1_all.deb",
+      "sha256": "931203b28c91417e17422f1c0051b167d59468a2f20c3c2ab170ed77e0765360",
+      "version": "3.0.0~git202611191759.257a1b7-1"
+    }
+  ],
+  "tests": {
+    "networkingMaven": 2218
+  },
+  "scope": {
+    "nativeDbusProfileCreationAndUpdate": true,
+    "nativeNmRestartReadback": true,
+    "typedLcpValues": true,
+    "logicalInvalidRefusedBeforeProfileWrite": true,
+    "nativeModemActivation": false,
+    "nativePppNegotiation": false
+  },
+  "internalPending": [
+    "已激活拨号和实际 IpInterface 关联、断线重连与 NAT/DNS 联动、完整 PPP 业务矩阵",
+    "完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
