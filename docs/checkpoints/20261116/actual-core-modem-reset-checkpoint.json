@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "3c46f63",
+  "core": {
+    "head": "97e0464cc40262c3a29377c56a06ba8827ee73e3",
+    "tree": "1d65b5d828229efb3f5dad6de68501165b5482c6"
+  },
+  "networking": {
+    "head": "51646e1672bd5ab70f95bb888a3dd690a9106125",
+    "tree": "61b788f6905a4b86c5e83438c0dfa531c09f5804"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd",
+  "actualMain": {
+    "id": "83d5b6d9be08f58f865416b3ca515ae7cf9d77758f8cefbdef52a8c45df65d6c",
+    "main": {
+      "MainPID": "1900",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "06cc7100e2fe48d2a69e39c96501e39d"
+    },
+    "networkManager": {
+      "MainPID": "94",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "2f2c9ab611324074b85354a5720e56f9"
+    },
+    "modemManager": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "provider": {
+      "modemResetProtocol": 1,
+      "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "01ff9ac105b6fed8ac2b3f14fa05ece4687ba022b07ba612564249d7759bc73b"
+    },
+    "actorReason": "NOT_A_MODEM_DEVICE",
+    "schedulerClient": "Modem reset refused (6c14b0e1-c8b3-4ee9-86bc-86eb45d61b1f)",
+    "standaloneAccountRejected": true,
+    "privateStateHidden": true,
+    "admittedIntents": 0,
+    "receipts": 0,
+    "nonModemType": 32
+  },
+  "privateMount": "5044 4850 0:520 /systemd/inaccessible/dir /var/lib/kura-modem-reset ro,nosuid,nodev,noexec,relatime shared:3714 master:3382 - tmpfs tmpfs rw,size=98304k,mode=755",
+  "parking": {
+    "id": "83d5b6d9be08f58f865416b3ca515ae7cf9d77758f8cefbdef52a8c45df65d6c",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T17:31:06.668362315Z",
+      "FinishedAt": "2026-11-19T17:36:38.148967243Z"
+    },
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "unitFile": "disabled",
+    "socketRemoved": true,
+    "probeArchived": true
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-modem-reset-release/kura_6.0.0~git202611191734.97e0464-1_arm64.deb",
+      "sha256": "6f273b6f9b312e491a50e92a9f7abf64a1c7416e101c3c6454e4563458457ea9",
+      "version": "6.0.0~git202611191734.97e0464-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-modem-reset-release/kura-networking-3.0.0~git202611191734.51646e1-1_all.deb",
+      "sha256": "ef09d5dfa52be96e4013656b73f0f74225891221bbf57c9661cef62525e60a4a",
+      "version": "3.0.0~git202611191734.51646e1-1"
+    }
+  ],
+  "tests": {
+    "linuxTargeted": 41,
+    "networkingMaven": 2215
+  },
+  "scope": {
+    "nativePairedRefusal": true,
+    "nativeStandalonePidRefusal": true,
+    "nativePositiveReset": false,
+    "unitPositiveReceipt": true,
+    "unitLostResponseNoRepeat": true,
+    "oneUnsettledResetPerRoot": true,
+    "nativeVendorLimitation": "ModemManager.service ConditionVirtualization=!container"
+  },
+  "internalPending": [
+    "ModemManager Enable、Location 与整个 MM 直接授权的收敛、完整 PPP 语义和生命周期证据",
+    "完整 Core/OSGi 业务、实际历史权限矩阵、其他 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

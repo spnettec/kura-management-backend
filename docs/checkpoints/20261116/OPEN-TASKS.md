@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 收敛 ModemManager 定时重置
+
+Core 97e0464cc4 和 Networking 51646e1 将原 ModemTaskScheduler 的直接 Reset 交给已配对的 systemd socket actor。它核对 Main PIDFD、Networking provider、两个原厂系统单元、NM 对象类型与 Udi、ModemManager 的配置 ID 和物理 sysfs 身份。写入 Root 私有意图后再次核对派发目标，只调用不带参数的 ModemManager Reset。收到总线肯定答复才写回执。同一 Root 有未确认的重置时先行拒绝新 ID；进程仍持有原操作时只用原 ID 查询并确认。 [ModemManager D-Bus 接口](https://www.freedesktop.org/software/ModemManager/api/latest/gdbus-org.freedesktop.ModemManager1.Modem.html)
+
+隔离 Debian 13 ARM64 以 JDK 21 和 Maven 3.10.1 从 Git 出包，实际安装正式 Core 和 Networking。已启动的原生 Main JVM 经安装包的 OSGi provider 调用 broker，真实 NM 回环设备被拒绝，单独运行的 kurad 被身份检查拒绝，Root 台账为零意图、零回执。已从 Main 的 mountinfo 核对私有 Root 目录。夹具 disabled，正常停放。Linux 41 项定向和 Networking Maven 2215 项通过，正向 Reset 总线响应、丢失响应、旧 ID 与 Root 拒绝为定向证据。Debian 以原厂 ConditionVirtualization 跳过容器内的 ModemManager，物理业务仍在原外部边界内。
+
+Enable、Location、MM 直接授权撤回的实际配对升级、完整 PPP 和其余 typed brokers 继续内部待办。Core/OSGi、历史权限及六组件/provider/launcher/安装升级移除 purge/中断恢复矩阵继续，父项 0/12，external deferred 仅原三项。原 7fd 保持 41 输入/16 回执。见 [检查点](actual-core-modem-reset-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 按包配对撤回 Main 的直接 WPA 授权
 
 Core 3db2116cb4 和 Networking 3cb9bf2 将已安装 NM 扫描 JAR、Networking 授权规则与正式 dpkg 配对。包版只保留 NM、ModemManager 的原授权。历史两种确定的 Core/Networking polkit 规则可迁移，管理员规则保持。旧 WPA pkla 只在字节完全符合历史包授予时撤回。D-Bus XML 需与受保护的同路径备份以及旧安装器输出逐字配对，按原备份恢复并重新加载总线配置，支持已发布后重试加载。 [D-Bus 守护进程文档](https://dbus.freedesktop.org/doc/dbus-daemon.1.html)
