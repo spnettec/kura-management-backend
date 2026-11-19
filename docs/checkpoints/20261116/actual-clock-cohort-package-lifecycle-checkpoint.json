@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-19T06:00:45.325487+00:00",
+  "sourceBuilds": {
+    "previous": {
+      "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "sourceBinAndUnitsExact": true,
+      "inputs": 8,
+      "sha256": "17d2fc5c8f2728a529824043708a8825d51e2d1cf8b45b03b7ebd973f8cfe167",
+      "filename": "kura_6.0.0~git202611190549.e952f82-1_arm64.deb",
+      "packageSnapshotManuallyPinnedFromGit": true
+    },
+    "current": {
+      "commit": "ef78c110fec9f0f70b2a391c466c56598d750ef9",
+      "sha256": "560ffee25132d278d4fa779aee6e5df5e0cba59b96c6c7bfdafd36b3ac5deb73",
+      "clockInputs": 10
+    }
+  },
+  "actualProfile": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "network": "none",
+    "agentInstalled": false,
+    "chronyInstalled": true,
+    "chronyEnabled": false,
+    "root": "ed7af8735c6167ab28b463f99e4e56df403ca32233c438f5b8bad5dbcb9b8d29",
+    "dispatchedOnce": [
+      "install-old",
+      "start-old",
+      "upgrade-current",
+      "start-current",
+      "remove-current",
+      "reinstall-current",
+      "purge-current"
+    ],
+    "liveJvmBeforeUpgrade": "1147",
+    "liveJvmAfterUpgrade": "2294",
+    "mainWithoutCapSysTime": true,
+    "relayAlwaysInactive": true,
+    "clockActionsBefore": [
+      "adjust-realtime",
+      "sync-rtc",
+      "start-chrony",
+      "stop-chrony"
+    ],
+    "clockActionsAfter": [
+      "adjust-realtime",
+      "sync-rtc",
+      "start-chrony",
+      "stop-chrony",
+      "step-chrony"
+    ],
+    "dataRetainedOnUpgrade": true,
+    "dataPreservedOnRemoveAndRestoredOnReinstall": true,
+    "syntheticDataPurged": true,
+    "originalKeyAndClockAccountMetadataExact": true,
+    "noClockWritesOrNamespaceAllocated": true,
+    "exitCode": 0
+  },
+  "absentChrony": {
+    "root": "1f0bf3cf0e17441402e3ee8e6b249d231338da0765f948a64af5312c635c3f4f",
+    "aptDependencyRejected": true,
+    "packageNotInstalled": true,
+    "coreAndClockStateAbsent": true,
+    "exitCode": 0
+  },
+  "buildFinding": {
+    "detachedWorktreeDefaultPackageQualifierUsedSharedBranchHead": true,
+    "nativeGitPluginFlagAlsoReadSharedHead": true,
+    "mislabeledPackageNeverInstalled": true,
+    "rebuiltAssemblyWithExplicitVersionDerivedFromExactOldHead": true,
+    "productionBuildConfigurationUnchanged": true
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "pushed": false
+}

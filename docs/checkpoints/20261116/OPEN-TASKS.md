@@ -1,4 +1,15 @@
 
+## 2026-11-19 ARM64 Core 时钟 cohort 的正常发行生命周期
+
+新 Debian 13 ARM64 隔离现场使用已安装但停用的 Chrony，Agent 缺席。实际从 e952f82 的四操作时钟 cohort 装机启动，运行中的 Main 通过正式 Debian 生命周期升级到 ef78c11 的五操作 cohort。新 Main 进入 Java，保持 NNP1 且无 CAP_SYS_TIME，relay 保持未激活。实际完成 remove、reinstall 和 purge。升级和 remove/reinstall 保留同一数据标记，purge 后隔离数据标记及暂存目录消失。原加密凭据与时钟账户全程保持同字节、属主、模式和 inode，未创建时钟 namespace。新现场正常退出。
+
+明确核对缺 Chrony 的正式 deb 仍由 APT 拒绝，Core 和时钟状态未创建。历史 detached worktree 的默认包版本错误选用主工作树提交号，native Git 插件开关也未纠正。该产物未安装。历史包在独立构建目录中用实际 Git 头明确固定版本后重新组装，提取的 8 项载荷与原 cohort 匹配。
+
+范围为单个 ARM64 Core profile、Chrony 停用和 Agent 缺席。完整六组件的 provider/launcher、其他包组合和中断恢复继续内部待办。冻结父项 0/12，external deferred 仍为原三项。见 [检查点](actual-clock-cohort-package-lifecycle-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 Chrony makestep 类型化入口与真实 UNKNOWN
 
 Core ef78c110fe 移除 Chrony provider 的通用命令执行器。经原时钟事务的准备、提交意图和结果台账，固定 v6 Unix 数据报只派发一次。systemd 监听由 PID 1 持有。独立 relay 为 _chrony、cap0、NNP1，仅向原 clock actor 开放。对端 PID/UID/GID、实际 Chrony 单元、进程出生和 socket 指纹参与绑定。包 cohort 同时核对两份 vendor unit、原助手及新版 Java bundle。原 cohort 仅沿原维护合同核对。
