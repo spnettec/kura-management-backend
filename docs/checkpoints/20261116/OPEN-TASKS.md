@@ -1,4 +1,18 @@
 
+## 2026-11-19 Core HTTP OSGi keystore 生命周期与默认 Docker 原卷重启
+
+Core 50a9028f0b 实现正式 SCR 描述声明的 `unsetKeystoreService`。解绑仅清理当前服务实例，已换绑后的旧实例通知不影响新绑定。对应 Jetty 刷新在单一执行器串行完成，关闭旧 TLS 和双向 TLS 监听，只运行配置里原有的 HTTP 端口。合法 provider 返回时按原配置恢复两类 TLS。未绑定的启动等待仍为 12 秒。组件停机终止后续刷新，等待 Jetty 收尾时释放组件锁。JDK 21 正式候选 HTTP manager 15 项通过，包括 HTTPS、mTLS、CRL、晚到绑定和旧实例解绑。
+
+隔离原生 Debian 13 ARM64 安装从当前 Git 生成的正式 Core 包。实际 Felix SCR 暂停并启用文件 keystore provider，同一 Main PID 与 systemd InvocationID 内由服务 ID 89 变为 176。本机 443 和 4443 实际拒绝连接后恢复，443 的原证书指纹与 Core 凭据指纹保持。标准 systemd 停机用时 1.55 秒，两端口关闭。夹具禁用并停放。原生探针验证 4443 监听，mTLS 正向握手由 Jetty 测试覆盖。
+
+默认 Docker 首次运行配对同一 Core DEB，四份预装 YOFC 部署包成功，SIGTERM 正常结束。Log4j 在 Jetty 收尾阶段已退出，保留首次退出状态与日志。同一容器的下一次启动在 Java 前被明确拒绝。只读原卷复核定位到 Core 的 `Store.stable()`，初读批准的部署包长度上限在二次核对退回默认 64 KiB，实际归档长度 10,528,481 字节。Core 7d4789fe1d 让二次核对重用各文件的原上限，保留原设备和 inode、属主、权限、摘要与换文件拒绝。ARM64 Linux 的 Core 和 Docker 合计 65 项通过。
+
+从修复提交重建并配对的默认 ARM64 Docker 续接这个原失败卷，保持原容器失败状态。启动及修复后的同一容器实际重启均通过。四份归档均从已持久化记录装载并核对原摘要，凭据指纹、原卷与证书保持。JVM 为 UID 122、零 capabilities、NNP 1，默认 Gogo 关闭。两次 SIGTERM 停机都实测清理了原正在使用的 Jetty 工作目录，父级 Equinox 目录仍可读，均无此前的 SCR 解绑缺失错误。所有新夹具已停放。
+
+原三现场及原 7fd 41 输入/16 回执保持。完整 Core/OSGi、其余 typed brokers、全六组件矩阵与全部 12 父项继续原范围，最终 0/12，external deferred 仍仅原三项。参见 [检查点](actual-core-http-ds-and-docker-restart-checkpoint.json)。
+
+
+
 ## 2026-11-19 当前六组件 ARM64 联合发行与默认 Docker 预装包
 
 从当前 Git 用 JDK 21、Maven 3 和 Linux ARM64 Rust 构建 Core、GWT、Networking、Agent、中心及其安装器、Docker，同时构建发行所需的 Deployment、Wires 和四份 YOFC 部署包。Agent 使用与中心同提交打出的协议 crate，打包复核 Networking Java bridge 与 Core loader 摘要。
