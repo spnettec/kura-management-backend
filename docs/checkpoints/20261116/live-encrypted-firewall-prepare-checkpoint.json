@@ -1,0 +1,74 @@
+{
+  "recordedAt": "2026-11-19T01:55:35.217703+00:00",
+  "branch": "wip/management-close-20261116",
+  "predecessor": "stored-dual-firewall-preparation-checkpoint.json",
+  "installedAgent": {
+    "source": "8033e43916b661c9bb7c6e3cfb244c426de44973",
+    "version": "0.1.0~baseline202611190152.8033e43-1",
+    "packageSha256": "8a2ea31b23c770cf115e7a392cc7db03636000185b856b91b43ce0f0a03e54dd",
+    "tree": "205e15246452194eaf3ac4f7656a8bd0cc462767"
+  },
+  "configuredInIsolatedRoot": {
+    "configSha256": "246b57b1995d7634a837365acd08ed0964698c6c6e5b419c15ff767a04920b2b",
+    "dropInSha256": "3952850f22e69a68d8b5eef431b43bb005519991c46b4a45b99b88a80392b049",
+    "interfaces": [
+      "lo"
+    ],
+    "remoteEnabled": false,
+    "rootLocalOnly": true
+  },
+  "realCoreCrypto": {
+    "actualCustomCredential": true,
+    "readKeyBytes": false
+  },
+  "encryptedPreparation": {
+    "chunks": 1,
+    "bytes": 1025,
+    "cipherFormat": "CUSTOM_AES_GCM_LEGACY_ENVELOPE",
+    "ciphertextSha256": "1a0e831c9f3c04b2fb65da615630c7c310b4e3d9f3c2051b7fecd156d7a8c103",
+    "manifestSha256": "8e76accfe5f32398505399caf32c94d8ff0423e517c5312e1692cab83e7b8a99",
+    "receiptSha256": "1ca5c5ec5068022ba96bf2dc14f851143653f54b35dd30a65ed76c4e4cf14058",
+    "chunkReceiptSha256": "692f611e10941cbeec2b6a3d73c815b327bdb974e1bd1f94df1f2899099cd370",
+    "originalIntentSha256": "a8ca2041f0f800c58f43721f0ef6395cc26b9b2883be1cd93dbe4fe2d10f400d",
+    "originalReadback": "PREPARED",
+    "exactFileFingerprints": true,
+    "preparedDispatches": 1,
+    "remoteDisabled": true,
+    "fencesAbsent": true,
+    "ownershipFenceDispatched": false,
+    "installedLegacyEtcKuraReadOnly": true,
+    "originalCmReceiptPreserved": "UNKNOWN"
+  },
+  "observedMount": {
+    "target": "/etc/kura",
+    "insideLegacyAgentReadOnly": true,
+    "publishingNeedsPairedRootExecutor": true,
+    "fenceAttempted": false
+  },
+  "preservation": {
+    "coreAndNetworkManagerSameProcesses": true,
+    "savedSnapshotsExact": true,
+    "agentExecutionDbDeviceInodeExact": true,
+    "bridgeAndLoaderSameBytes": true,
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Paired Root publication of both original fences, signed transition, actual initialization and owner startup",
+    "Remaining typed brokers, full Core/OSGi business and legal Main, six-component provider/launcher/install/upgrade/remove/purge/interruption matrix",
+    "All twelve parents tracked in the complete frozen ledger"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/stored-firewall-baseline-20261119"
+}

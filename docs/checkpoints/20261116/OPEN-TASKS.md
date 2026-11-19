@@ -1,4 +1,14 @@
 
+## 2026-11-19 原 JVM 加密导出与单次实际 PREPARED
+
+同一隔离 Debian 13 ARM64 Root，沿执行库正式升级 Agent `8033e43`。保留已注册 Java 桥及 Core loader、同一 Core 和 NM 进程、两份快照及原配置收敛 UNKNOWN 记录。通过实际 OSGi CryptoService 确认原部署密钥可用，仅读取布尔结果。私有 NM 配置显式授予该隔离现场的本地 Root 执行器，接口范围只含 lo，远程关闭。
+
+Agent 在升级后重新配对实际 Java 桥，从新预览沿原双族存储和 114 条原生规则绑定，执行一次正式 prepare。真实 Java 生成 1 个 1025 字节自定义密钥 AES-GCM 密文分片。Agent 返回 PREPARED。同 Root 同 ID 原始查询仍为 PREPARED，分片、manifest、原回执和两侧计划文件权限及指纹精确。实测已安装 legacy Agent 的 /etc/kura 挂载为只读，两道原 fence 均保持不存在。后续必须由配对的 Root 发布路径继续原计划，不能改变沙箱权限归属。
+
+原三现场、C/D/E、个人配置、数据和 7fd 停机 41/16 保持。完整 Core/OSGi/合法 Main、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断及全部 12 父项保持内部台账。最终闭环 0/12，external deferred 仅原 3 项。见 [检查点](live-encrypted-firewall-prepare-checkpoint.json)。
+
+
+
 ## 2026-11-19 双族正式 CM 基线与原生防火墙准备预览
 
 Networking `07b00a6` 在桥连接注册时声明原 writer 读取能力，读取时核对当前 provider。Agent `20724a5` 在无原 writer 模型时拒绝为未托管防火墙准备委派，`8033e43` 保留配对防火墙读取的 CM CONFLICT。实际 Debian 13 ARM64 以 JDK 21 从 Git 构建 Core `e952f82bb9`、Networking 和 Agent。正式 Core 条件批处理仅调用一次，紧随其后的读回遇到 CM 收敛门禁，原结果保留 UNKNOWN。同一 Root 独立只读证实两族 stored CM 与实际 writer 一致、原快照保留且新增一份快照。该调用未重发。
