@@ -1,4 +1,15 @@
 
+## 2026-11-19 Chrony makestep 类型化入口与真实 UNKNOWN
+
+Core ef78c110fe 移除 Chrony provider 的通用命令执行器。经原时钟事务的准备、提交意图和结果台账，固定 v6 Unix 数据报只派发一次。systemd 监听由 PID 1 持有。独立 relay 为 _chrony、cap0、NNP1，仅向原 clock actor 开放。对端 PID/UID/GID、实际 Chrony 单元、进程出生和 socket 指纹参与绑定。包 cohort 同时核对两份 vendor unit、原助手及新版 Java bundle。原 cohort 仅沿原维护合同核对。
+
+从 Git 构建 JDK 21 和 ARM64 正式包，10 份载荷精确。Debian 13 实际安装后，Main 通过 OSGi ConfigurationService 变更 provider，真实 Chrony 4.6.1 记录一次改时尝试。隔离环境禁止系统改时，原提交回读 UNKNOWN 并关闭写入准入。启动依赖在新现场产生一份 START 终态。正常停 Main 后两份原输入、START 回执和 STEP pending 字节精确，新现场 disabled、正常退出。Linux ARM64 90 项、macOS 89 项通过且 1 项 Linux 专属测试跳过、JDK 21 JVM 23 项通过。
+
+历史 schema 1 static、linked 和 linked-runtime 沿用已验收证据。原三现场、13 个运行中容器和原 7fd 禁用正常停机 41 输入/16 回执已复核。真实正向改时、Chrony 配置写、完整 Core/OSGi/合法 Main、其余 typed brokers 和六组件矩阵继续内部待办。冻结父项 0/12，external deferred 仍为原三项。见 [检查点](actual-typed-chrony-makestep-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 OBSERVED Root 的合法包升级与运行准入
 
 原 Root 由已装 Agent f054676 升至 7c03712。Debian 先执行旧 prerm，再由已核定新包的 failed-upgrade 和 preinst 分别验证。同一个原 OBSERVED ID、精确候选与已装 bridge、原始租约、已确认的物理头和进程身份保持。Core 328378、NetworkManager 78 未重启，43 份原保护记录及 12 份防火墙文件精确。错误观察 ID 被拒，未发布准入或停机记录。

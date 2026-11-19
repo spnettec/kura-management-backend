@@ -1,0 +1,111 @@
+{
+  "at": "2026-11-19T05:54:38.190289+00:00",
+  "core": {
+    "commit": "ef78c110fec9f0f70b2a391c466c56598d750ef9",
+    "tree": "d6fb0af3306fdcf2550d5c77964563f3f23703e4"
+  },
+  "package": {
+    "name": "kura_6.0.0~git202611190550.ef78c11-1_arm64.deb",
+    "sha256": "560ffee25132d278d4fa779aee6e5df5e0cba59b96c6c7bfdafd36b3ac5deb73",
+    "architecture": "arm64",
+    "pairedPayloads": {
+      "bin/kura_clock_broker.py": "4ca893927d86ba30f9335203d7143d193931f89a1bc318dcd5f0d6963cdbe05d",
+      "bin/kura_clock_client.py": "34e1d6e960e77e5d7ab5e51cb43d0f87330e5ef657e8a60d91c4872eddbe56cd",
+      "bin/kura_clock_journal.py": "9c8c13a55645c3722fa8a2fbafa6d79bb5b950c246eb6f0f23d4833b31727e41",
+      "bin/kura_clock_setup.py": "4a4ba838f9eba3954223fb8c8665d0a9fc64aa7dd43f128f07f6e4657f3c9d31",
+      "libexec/clock-broker/kura-clock-broker.service": "b24d58f4811b32693af616b0b99b9dd49288493fd71bf5b375c1b87c82006f14",
+      "libexec/clock-broker/kura-clock-broker.socket": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020",
+      "libexec/clock-broker/kura-clock-chrony-step.service": "f525193edb6c0041c6a20c0a25f3f3552637046914978f5222381b7c81321bbe",
+      "libexec/clock-broker/kura-clock-chrony-step.socket": "3dc1906833581bb9a3568d13798d40c24d61597e6288316608241ac5f0f341e6",
+      "libexec/clock-broker/kura-clock-rtc-devices.service": "68bc2aedb3cf29d7a5e377432b6c76ac33ad6f8889f656606b41cc94b9194b6d",
+      "plugins/4/org.eclipse.kura.linux.clock-2.0.0-SNAPSHOT.jar": "5261da2c3582003f1669f64dc8d802145de4919198ac8fd99b328b3760e96fb1"
+    },
+    "freshSourceBuild": true
+  },
+  "tests": {
+    "arm64Python": 90,
+    "macOSPythonPassed": 89,
+    "macOSLinuxOnlySkipped": 1,
+    "jdk21JVM": 23
+  },
+  "fixture": {
+    "id": "21661e2f1b49ae481723ed3f76e607f7d81dcec3e700471eaf937e6dfb7bf8ee",
+    "os": "Debian 13",
+    "network": "none",
+    "chronyVersion": "4.6.1",
+    "seccompClockWritesDenied": true,
+    "chronySystemClockDisabled": true,
+    "installed": true,
+    "actualSystemd": true,
+    "actualMainOSGiConfigurationService": true,
+    "relay": {
+      "user": "_chrony",
+      "capabilities": 0,
+      "noNewPrivileges": true,
+      "listenerPeerPid": 1,
+      "directRootProbeRefused": true,
+      "additionalSupplementaryGroup": "kura-clock"
+    },
+    "mainCapSysTime": false,
+    "daemonActuationAttempts": 1,
+    "closure": {
+      "mainDisabled": true,
+      "dockerExitCode": 0,
+      "namespace": "ad36742e-924a-4f19-a114-d3339b43e01e",
+      "step": {
+        "schema": 1,
+        "namespace": "ad36742e-924a-4f19-a114-d3339b43e01e",
+        "requestId": "bfd8f61d-07ea-4587-8a00-1afc3ea377b2",
+        "requestSha256": "84014f06286fa7e4f9330d7505595936c8d4dad7f783511613999ff92438ae25",
+        "state": "UNKNOWN",
+        "reason": "NO_DURABLE_RESULT"
+      },
+      "fixtureDependencyStart": {
+        "errno": 0,
+        "namespace": "ad36742e-924a-4f19-a114-d3339b43e01e",
+        "observedMonotonicNs": 280449186542943,
+        "observedRealtimeNs": 1795067549845285539,
+        "reason": "CHRONY_STARTED",
+        "requestId": "65005837-4de4-411a-a60c-147b7d0725b4",
+        "requestSha256": "674e2dd68b36f1a2b2bcd1cd3a468be79f171f222130ed4cfdfa33225cf4c55c",
+        "schema": 1,
+        "state": "APPLIED"
+      },
+      "pendingExact": true,
+      "activeAdmissionClosed": true,
+      "historyExactAfterStop": true
+    }
+  },
+  "originals": {
+    "threeFixturesProcesses": 7,
+    "privateFileMetadata": 38,
+    "runtimeDataFingerprints": 6,
+    "originalRunningContainers": 13,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "original7fdDisabledAndExited": true,
+    "original7fdStateExact": true,
+    "preservedUnknownIdsAndCohorts": true
+  },
+  "priorCheckpoints": {
+    "staticLinkedAndLinkedRuntime": "verified and retained",
+    "observedFirewall": "actual-observed-firewall-package-continuation-checkpoint.json"
+  },
+  "internalPending": [
+    "Chrony real positive system-clock change and journal readback",
+    "Chrony configuration writes and RTC positive hardware path",
+    "complete Core/OSGi business and lawful Main",
+    "remaining typed brokers",
+    "all six components/provider/launcher and install/upgrade/remove/purge/interruption matrix",
+    "all 12 frozen parent items"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
