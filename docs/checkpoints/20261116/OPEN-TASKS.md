@@ -1,4 +1,18 @@
 
+## 2026-11-19 原生首次绑定、mTLS 与实际 Core 只读业务
+
+在相互隔离的 Debian 13 ARM64 网关、中心及独立 PostgreSQL 验证包级联调。网关安装 Core 7d4789fe1d、GWT 1205092、Networking 4ee16c9 和修复首次绑定的 Agent 3547424。原生中心安装和显式启动均通过，标准安装器为 READY。中心单次初始化 APPLIED，独立 PostgreSQL 应用角色受限，公开 schema 由 0 表增加到 14 表。
+
+实际 GWT 管理员各派发一次 CSR、暂存和绑定，中心单次只登记公开叶证书。两个本机 broker 各接受一次。网关正式身份指针、候选回执和完成意图字节一致，10 份源文件和独立副本摘要一致。首次绑定后通道仍为 OFF，中心无心跳。受控停止本机 Main 和 Agent 后，正式控制器授权 Kura 远程开关并配对独立 gRPC 端口；两份原回执均 APPLIED，身份和初始化保持。此前绑定 UNKNOWN 的现场保持停放。
+
+通道显式开启一次，实际 gRPC mTLS 心跳的叶证书、generation、连接 epoch 和网关启动标识与中心记录一致，中心确认 Kura 可用。匿名客户端收到 TLS 要求客户端证书的拒绝。中心各提交一次配置列表和 ClockService 类型化读取，两个原任务通过本机 Agent 和真实 OSGi 返回 SUCCEEDED，PostgreSQL 的输入及结果均为密文。GWT 启用回包时仍显示 disconnected，显式只读刷新确认 connected，随后关闭一次，中心恢复 offline。
+
+实际停独立 PostgreSQL 后，readiness 由 200 变 503，liveness 仍为 200。同一数据库容器和卷恢复后 readiness 为 200，中心 PID 和 InvocationID 保持。数据库标识、原登记、两条任务及其密文摘要保持，使用原 ID 只读核对，无新派发。另单独正常停止并启动 Agent，保留 OFF 版本、绑定回执和两条 SQLite 执行记录，Core 和中心进程保持。GWT 重新登录后只读读回同一绑定回执及 OFF 状态。
+
+本轮专用网关、中心和数据库正常停放，服务已禁用，数据保留。原三现场及原 7fd 的 41 输入/16 回执保持。其余 Core/OSGi 业务、typed brokers 和完整六组件矩阵仍为内部待办。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-native-positive-mtls-and-business-checkpoint.json)。
+
+
+
 ## 2026-11-19 当前原生中心、数据库与首次绑定边界
 
 在独立 Debian 13 ARM64 Root 当前 Core/GWT/Networking/Agent 同装。中心生产输入和上轮已验证发行包精确，console HEAD 之后仅变更检查点文档。标准安装器后端实际安装，原回执成功且无自动启动。显式启动后标准状态为 READY，测试宿主提供了读取进程摘要所需的进程可见性，中心服务本身为零 capabilities、NNP 1。独立 PostgreSQL 16.15 以密码认证，应用角色无 superuser、createdb、createrole，初始化前 0 表、之后 14 表。采用独立测试 CA 签发的中心服务证书，中心 API 单次初始化后从正式认证入口读回原 APPLIED，发布后证书和同一中心 PID/InvocationID 验证成功。Cockpit 后端已验证，未走 Cockpit 浏览器页面。
