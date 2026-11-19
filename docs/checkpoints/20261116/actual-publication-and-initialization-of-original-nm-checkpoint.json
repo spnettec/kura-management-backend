@@ -1,0 +1,162 @@
+{
+  "recordedAt": "2026-11-19T03:17:37.228612+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-paired-nm-package-upgrade-checkpoint.json",
+  "agent": {
+    "head": "ed4a2d55a333a06b4b4105b4505368da5457907d",
+    "tree": "61e1b9dc5640b571ec4ac337f229318471a5effa"
+  },
+  "nativeEffectImplementation": {
+    "head": "ee3046e10e17fbe5f88b43eaf16d68123f4b5528",
+    "tree": "e716853817f5efeeaefcec28b6916ce84f4e2d11"
+  },
+  "protocol": {
+    "head": "015930660df67f3514a1e0aaf470bb5efb88aa9d",
+    "tree": "1c77c3cc9368c87123d7d13108a2d01c7929f403"
+  },
+  "package": {
+    "package": "/packages/legacy/kura-management-agent_0.1.0~retainedcontinuity202611190314.ed4a2d5-1_arm64.deb",
+    "sha256": "d7ebbd200bf59cf329e5973103e247d98917ae3c1d89c78e5d5bc4a893c4c069",
+    "binarySha256": "aa7f91e54b0d5ac737bfe8f5b26d4ca382360edfdeb76b3aa600732cae87e967",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34"
+  },
+  "sameRootUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "PREPARED",
+    "previousAgent": {
+      "MainPID": "30456",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "currentAgent": {
+      "MainPID": "31934",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "15276",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "packageVersion": "0.1.0~retainedcontinuity202611190314.ed4a2d5-1",
+    "exactOriginalFiles": 8,
+    "pairedSameJvm": true,
+    "authorizedNativeDispatch": false,
+    "remoteDisabled": true,
+    "originalRecordsPreserved": true,
+    "oldReleaseRecordsExact": true,
+    "successorContinuitySha256": "4f7924999cae6e38e9a0e1fd1e7c20665368f51be788d9e2bc354b4f4f730fc3"
+  },
+  "rootPair": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "planSha256": "4603dba54f53fc7e3e240a92d33ae47b69304bb4b66be7486c95599c873a658a",
+    "state": "FENCED",
+    "armSha256": "6e996bfddde38fb8f5cc3ac71346d3524d2237e9a74e63e1e4c6171b102115ab",
+    "originalArmingRegistrationFrozen": true,
+    "newJvmRegistrationBound": true,
+    "physicalFences": 2,
+    "templateAndPlanExact": 7,
+    "untouchedSnapshots": 2,
+    "noNativeDispatchYet": true
+  },
+  "nativeAndInitialization": {
+    "initialization": {
+      "initializedLayoutSha256": "39fbd557c61799e3252d8603103a0b91fade4a940b2874715e89885c78bc1c25",
+      "initializedPolicySha256": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+      "initializedRevision": 1,
+      "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+      "originalFirewallDigest": "03e7635131604c5bea6a383c3d70582fe204e10c7d9b720d8029f315b808c4ea",
+      "originalSourceDigest": "e5398d387684891e517862781bf7c8f67a75d5a759e3a94524cfcc88c7801965",
+      "receiptSha256": "1be175b776cd456c361dcf82769f2d5a4ab23c5c0da74bc96984fb7d37630849",
+      "schemaVersion": 1,
+      "state": "COMMITTED"
+    },
+    "nativeTransfer": {
+      "batchSha256": "c9fa8a37ff35548360c654aeedec49641d6730d755b90319edefd08d3d196507",
+      "epoch": {
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "namespaceDevice": 5,
+        "namespaceInode": 4026533860
+      },
+      "kernelDigest": "39fbd557c61799e3252d8603103a0b91fade4a940b2874715e89885c78bc1c25",
+      "schemaVersion": 3,
+      "state": "APPLIED"
+    },
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "rolesRevision": "f843246e43cc208708e2c309b7e16cb8693cb60852cebed078a8e2080e89680a",
+    "schemaVersion": 1,
+    "sourceDigest": "e5398d387684891e517862781bf7c8f67a75d5a759e3a94524cfcc88c7801965",
+    "state": "FENCED"
+  },
+  "independentLiveReadback": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "originalOperation": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "nativeReadback": "APPLIED",
+    "initializationReadback": "COMMITTED",
+    "actualInitializedPolicyFileSha256": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+    "actualKernelReceiptSha256": "39fbd557c61799e3252d8603103a0b91fade4a940b2874715e89885c78bc1c25",
+    "publishedPolicyMatchesJournal": true,
+    "kuraAndNetworkManagerUnchanged": true,
+    "priorUnknownConfigurationJournalExact": true,
+    "snapshotsExact": true,
+    "hasOrdinaryStartupProfile": false
+  },
+  "otherFencedRoot": {
+    "container": "eb9824d45dff7d0641725c54c597648101264f046ac09a5a07c7005a1bdee060",
+    "state": "FENCED",
+    "readOnly": true
+  },
+  "validation": {
+    "rust": "1.95.0",
+    "arm64DeliveryFocused": 16,
+    "arm64FullFocusedOnEffectImplementation": 79,
+    "pairedPythonDebian": 115
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Seal the installed ordinary startup profile for the original committed policy and prove actual original owner startup",
+    "Complete signing/actual owner and legal Main with the paired full Core OSGi business",
+    "Original other FENCED Root continuation, remaining typed brokers and full six-component matrix"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/paired-nm-continuation-fence-20261119"
+}

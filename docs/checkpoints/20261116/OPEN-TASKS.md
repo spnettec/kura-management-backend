@@ -1,4 +1,15 @@
 
+## 2026-11-19 原 PREPARED 同 Root 完成双 fence、原生批次和初始化
+
+Agent `9cbdba3` 将后续 Debian 包候选的凭证按实际二进制摘要存放。正式升级核对当时已安装的前任版本、其私有计划和停机回执、原 JVM/NM 与原 Netfilter 来源。历史记录保持原字节。Root arm 保留原计划中的 Agent 注册，另记录实际新 Agent 注册与原升级摘要。正式 Root publisher 校验安装包和原计划、两个注册绑定之后，才写两道物理 fence。`ee3046e` 在原 FENCED 计划的后续 native/初始化入口继续严格核对同 Root、原 JVM 的当前 Unix 注册、真实 Java writer 排空、原 CM/NM 和不可变计划。`ed4a2d5` 在续接预检使用既有共享锁作有界等待读取。首个候选在非原 ID 的预检遇到锁争用，只增量落盘候选文件，原操作未进入停机或派发。
+
+原 PREPARED Debian 13 ARM64 Root 使用 `ed4a2d5` 正式生成并安装 deb。链式凭证与旧 `87bbf02` 记录精确匹配。受控启动后通过标准 UDS 核验原 JVM 注册。按同一原 ID 从正式 systemd 单元派发一次，获得真实双 fence、schema 2 的 arm 和完全相同的唯一 dispatch。随后同一原操作 Netfilter 一次批次返回 APPLIED，初始化一次返回 COMMITTED。另以原 ID 经两个正式只读入口核对原内核回执和实际初始化文件摘要。旧计划和六份加密输入/回执、原快照、Core/NM 进程、配置和原配置 UNKNOWN 回执均保持。远程仍关闭。另一原 FENCED Root 仅读取核对原计划、内核和 JVM/NM 身份，保留其已安装版本和现有状态。
+
+`ee3046e` ARM64 相关四组 79 项通过，`ed4a2d5` ARM64 定向 16 项、相同打包源码 Debian Python 115 项通过。当前已初始化 Root 的普通启动还没有正式安装启动 profile。后续普通 Core/OSGi owner 启动、签发、完整合法 Main、其余 typed brokers 与完整六组件/provider/launcher/安装升级移除 purge/中断恢复继续实施。原三现场、7fd 禁用停机 41 输入/16 回执和全部 12 父项保持。最终闭环 0/12，external deferred 仅原 3 项。见 [检查点](actual-publication-and-initialization-of-original-nm-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 NM 计划期间的正式 Agent 包升级和同 JVM 注册
 
 Agent `99b46b0` 将 Root 固定原操作、当前 Agent 与候选二进制和原版本的绑定接入 Debian 正式升级入口。旧 prerm 对活动守护继续拒绝。新包仅在原 Root 私有停止记录可验证、其余生命周期门禁满足的情况下处理 failed-upgrade。Stop intent 持久化一次，preinst 核对原进程实际已停，同一 JVM/NM、全量 Netfilter 源、密文、计划与 fence 再校验，然后允许解包。实际 postinst 保持守护停止，后续以原正式 systemd 单元显式启动。启动后的 Root 本地核对使用实际 Unix 对端 PID、实时 CM 角色、stored firewall 与完整 writer 模型。
