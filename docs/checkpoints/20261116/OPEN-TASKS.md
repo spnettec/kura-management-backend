@@ -1,4 +1,15 @@
 
+## 2026-11-19 原旧 JVM 启动子事务的类型化证据与现场准入
+
+Agent `bcedd4c` 增加启动子事务 schema 5，固定旧 JVM 回执的文件设备号、inode 与摘要，核对父计划、systemd JVM 身份、已签发 profile、原角色和 stop policy。schema 5 的 stop intent 区分旧 JVM 证据与普通 Java report。现有停止、停止后文件发布和未结算结果的门禁复用。隔离回归验证只停止一次、按原记录发布文件；丢失停机应答保留 `STOP_OUTCOME_UNKNOWN`，禁止从后续 inactive 状态合成回执或重新派发。`a7367c2` 恢复历史 schema 2 在任何 unit 探测前拒绝；原字节保持。
+
+原 Debian 13 ARM64 现场从 Git 构建候选二进制，实际核对已安装 Agent Unix 对端、同原 ID 注册、原 JVM/NM、已提交初始化、原 Netfilter、签发 profile 与停机定义。现场返回 `LEGACY_STARTUP_REVIEWED`，给出后续 JVM 参数和 profile 摘要以及 1 个保留、2 个待创建的 fence。错误原操作 ID 被拒。未写入有时效的 proposal 或任何 startup intent，未安装候选；原 Core/NM/Agent 和 17 份原记录、原快照与 UNKNOWN 保持。
+
+最终 ARM64 startup 回归 59 项通过、1 项忽略，continuity 2 项通过。实际 Root 受控执行入口、Core 停止、停止后发布、owner 启动和 OSGi adoption 继续内部待办。完整 Core/OSGi/合法 Main、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断恢复继续。原三现场和 7fd 禁用停机 41/16 保持。冻结父项闭环 0/12，external deferred 仅原三项。见 [检查点](actual-original-legacy-startup-child-review-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原初始化 Root 正式 Agent 升级与实际旧 JVM 绑定
 
 Agent `5a3f852` 支持同一 Root 的原 PREPARED 升级证明续接到 FENCED、native APPLIED 和初始化 COMMITTED。续接重新校验原 plan/加密回执、双 fence、已结算原应用批次与当前真实 Netfilter；首次候选在记录和停止 Agent 前明确拒绝。现场回读定位到旧 JVM 和 NetworkManager 的 procfs inode 分配变化。 `76bacc9` 保留单次采样的文件身份核对；跨期比较要求原证明有同一 PID 命名空间，再核对实际 PID、启动时刻、凭据、systemd InvocationID、cgroup 和 unit。没有命名空间的历史凭证仍用原严格比较。

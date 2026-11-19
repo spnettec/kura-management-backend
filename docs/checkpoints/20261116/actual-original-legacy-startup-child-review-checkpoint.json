@@ -1,0 +1,109 @@
+{
+  "recordedAt": "2026-11-19T03:51:33.297790+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-original-legacy-jvm-startup-binding-checkpoint.json",
+  "source": {
+    "head": "a7367c26049fba1238ec64ec4ba84d7d1baf6341",
+    "tree": "f50fa56b51dd68130f9f02de8c3bf8b516425394"
+  },
+  "reviewCandidate": {
+    "head": "bcedd4c57dc69ce3afaf370e2e86950c8d53a3b7",
+    "tree": "15b91b5ee68e94c955da5f7c908f68d936f4a856"
+  },
+  "protocol": {
+    "head": "bc57b0e5a0e18c9e0e11d0d64d091e2e74917177",
+    "tree": "a78916ad7ede38e429aae3f584db6dfda25d2cc7"
+  },
+  "installedAgentSource": {
+    "head": "76bacc95f14753b925cd4e9e1841785bb348a649",
+    "tree": "644bec9bbc5686aaaaf9626d14c941b3d10d1435"
+  },
+  "actualOriginalReview": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "source": "bcedd4c57dc69ce3afaf370e2e86950c8d53a3b7",
+    "binarySha256": "ebd113a043492a7a5fe0a72e1c11d8d8c285999289d233cdda6fd059c90f237b",
+    "receipt": {
+      "associationReceiptSha256": "97f2229bde73cc4e40c9acecf8f5dc91251d61c027ff016a853d7ae5e52dec3c",
+      "associationScope": "original-live-legacy-jvm-root-and-bridge",
+      "confirmedProvider": "nm-agent-v1",
+      "executionAvailable": false,
+      "fences": [
+        {
+          "action": "retain-and-recheck",
+          "path": "/etc/kura/firewall-owner-agent"
+        },
+        {
+          "action": "create-only",
+          "path": "/opt/eclipse/kura/framework/network-owner-agent"
+        },
+        {
+          "action": "create-only",
+          "path": "/opt/eclipse/kura/framework/firewall-owner-agent"
+        }
+      ],
+      "firewallProvider": "agent",
+      "freshAssociationRequiredBeforeStop": true,
+      "generatedArgumentsSha256": "cef45c5cd35642b9faaf6f73f45bf46b7a9d128becf5114093831d2b885d5c47",
+      "generatedArgumentsVersion": 3,
+      "generatedProfileSha256": "4278a827af0fb71fe9b9d0bf7e4f45cab3b40651ee93cbc61ee0973d19957a75",
+      "legacySourceReceiptSha256": "97f2229bde73cc4e40c9acecf8f5dc91251d61c027ff016a853d7ae5e52dec3c",
+      "oldJvmAssociationVerified": true,
+      "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+      "parentPlanSha256": "4603dba54f53fc7e3e240a92d33ae47b69304bb4b66be7486c95599c873a658a",
+      "profileId": "profile-9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+      "proposalPublished": false,
+      "requiredReservedPids": [
+        "org.eclipse.kura.net.admin.NetworkConfigurationService",
+        "org.eclipse.kura.net.admin.FirewallConfigurationService",
+        "org.eclipse.kura.net.admin.ipv6.FirewallConfigurationServiceIPv6"
+      ],
+      "reservedPid": "org.eclipse.kura.net.admin.NetworkConfigurationService",
+      "schemaVersion": 5,
+      "sourceProfileDigest": "119a85802a88b1838b4854a0c2756c0e71ccd26a71cfe8ad8eb1406631ff56a3",
+      "startupFilesChanged": false,
+      "state": "LEGACY_STARTUP_REVIEWED",
+      "stopPolicySha256": "fbc5f8a3f996644cbdcda3a4f9ae95f05b7c327c6b7c37f2b242e704685f89b6",
+      "systemAdoptionVerified": false,
+      "unit": "kura.service",
+      "unitActionsIssued": false
+    },
+    "previouslyBoundSourceExact": true,
+    "wrongOperationRejected": true,
+    "originalInputsExact": 17,
+    "originalJvmNmAndAgentExact": true,
+    "originalUnknownExact": true,
+    "childOrSystemEffectsCreated": false
+  },
+  "validation": {
+    "arm64StartupPassed": 59,
+    "arm64StartupIgnored": 1,
+    "arm64ContinuityPassed": 2,
+    "kuraRuntimeJdk": 21,
+    "historicalSchema2RejectedBeforeUnitProbe": true,
+    "typedLegacyStopAndPublicationFixture": true,
+    "lostStopAcknowledgmentRemainsUnknownWithoutRedispatch": true
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Make the installed same-Root runner consume the original typed legacy evidence using a fresh actual Agent/JVM pairing",
+    "Dispatch controlled Core stop, stopped-file publication, provider owner boot, actual OSGi adoption and signing on the original Root",
+    "Complete Core/OSGi and legal Main, remaining typed brokers, six-component provider/launcher/install/upgrade/remove/purge/interruption cases"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/original-legacy-startup-child-20261119"
+}
