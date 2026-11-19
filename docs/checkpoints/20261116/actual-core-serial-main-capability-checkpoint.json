@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-19T15:48:21.241107+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "core": [
+    "a47c41ba978877947a23883891a766d8fb744fc0",
+    "d8fbd73bb4e2a818a62c81f5db068ad5bc63f376"
+  ],
+  "installed": {
+    "id": "0fab807f15a5169763a2f4d5db870107f7719434307784d149997afec3856818",
+    "dispatchOrdinal": 1,
+    "exitCode": 0,
+    "packages": [
+      {
+        "package": "kura-core",
+        "filesha": "c0dd050a6e943a8c5658998bac10c6b87559a435eb1e5438ecdb376ce2774d43",
+        "dest": "/root/serial-release/kura_6.0.0~git202611191546.a47c41b-1_arm64.deb",
+        "version": "6.0.0~git202611191546.a47c41b-1"
+      }
+    ]
+  },
+  "actualMain": {
+    "id": "0fab807f15a5169763a2f4d5db870107f7719434307784d149997afec3856818",
+    "core": {
+      "package": "kura-core",
+      "filesha": "c0dd050a6e943a8c5658998bac10c6b87559a435eb1e5438ecdb376ce2774d43",
+      "dest": "/root/serial-release/kura_6.0.0~git202611191546.a47c41b-1_arm64.deb",
+      "version": "6.0.0~git202611191546.a47c41b-1"
+    },
+    "main": {
+      "MainPID": "1550",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_kill cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_kill cap_net_bind_service cap_net_admin cap_net_raw",
+      "ActiveState": "active",
+      "InvocationID": "b080f49a36d745c9929c6d0cb9c9d41e"
+    },
+    "caps": {
+      "CapInh": 9250,
+      "CapPrm": 9250,
+      "CapEff": 9250,
+      "CapBnd": 9442,
+      "CapAmb": 9250
+    },
+    "pid1Bounding": 2904827387,
+    "exchange": {
+      "pid": 1550,
+      "service": "org.eclipse.kura.core.comm",
+      "bundleVersion": "2.0.0.202611191545",
+      "txBytes": 8,
+      "rxBytes": 8,
+      "txSha256": "433e6fec76e8ee7dce427d9a81babf29c28bd4c326b972a8b320db0e5da519fb",
+      "rxSha256": "ed1c7651b4975193a0b39f62e83987570717d8754a027e4d4095d76ac590e666",
+      "baud": 38400,
+      "framing": "8N1",
+      "dialoutGid": 20,
+      "deviceMode": "0660",
+      "unprivilegedGroupOpen": true
+    },
+    "serialDependency": {
+      "path": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/6/jSerialComm-2.11.4.jar",
+      "sha256": "b5f7ec40d622864b92dc679159cdbaa3030d37884f0af2deef45b56c16bda7a6"
+    },
+    "cohortUnitSha256": "98383d258f1bffc77d7fbcfb74c8e736cf170e73182d5162b0a3fb4602f5d51d"
+  },
+  "parked": {
+    "id": "0fab807f15a5169763a2f4d5db870107f7719434307784d149997afec3856818",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T15:45:55.603004152Z",
+      "FinishedAt": "2026-11-19T15:47:34.529130452Z"
+    },
+    "mainDisabled": true,
+    "socketRemoved": true,
+    "probeArchived": true
+  },
+  "linuxCorePassed": 104,
+  "nativeHardwareExercised": false,
+  "alreadyClosedBusinessReplayed": false,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

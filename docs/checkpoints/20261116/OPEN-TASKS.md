@@ -1,4 +1,14 @@
 
+## 2026-11-19 Main 撤下 CAP_SYS_TTY_CONFIG，实际 OSGi 串口验证
+
+Core a47c41ba97 从 Main 的 ambient 和 bounding 集合撤下 CAP_SYS_TTY_CONFIG。串口仍由安装器登记的 dialout 组与 Core CommConnectionFactory 提供。此变更依据实际调用及 [Linux 虚拟终端 ioctl](https://github.com/torvalds/linux/blob/master/drivers/tty/vt/vt_ioctl.c) 与 [jSerialComm 2.11.4 POSIX 实现](https://github.com/Fazecast/jSerialComm/blob/v2.11.4/src/main/c/Posix/SerialPort_Posix.c)。
+
+JDK 21 从当前 Git 构建，Debian 13 ARM64 隔离 Root 正式 dpkg。容器 PID 1 的 bounding set 保有该位，标准 Equinox Java Main 的五类 capability 掩码均无该位。实际 Main 中的 OSGi factory 使用随包的 jSerialComm 2.11.4，真实打开 root:dialout 0660 伪终端。读回 38400 8N1，逐字节校验双向各八字节，包括 0x00。另用无有效 capability 的 kurad 进程确认组权限足以打开同一设备。现场停放，Main 禁用，探针原字节移出自动加载目录。Linux Core 104 项通过。
+
+伪终端结果覆盖 Core 串口配置与流 I/O。物理串口、RS-485 与实际 USB 设备继续沿用原硬件边界。其余 typed brokers、完整 Core/OSGi、六组件/provider/launcher 和发行中断恢复矩阵继续内部待办。原 7fd 保持 41 输入/16 回执，冻结父项 0/12，external deferred 仅原三项。见[检查点](actual-core-serial-main-capability-checkpoint.json)。
+
+
+
 ## 2026-11-19 Main 撤下 CAP_SYS_MODULE
 
 Core 1ea5e52b9d 在 Debian 包换版前和 systemd Main 启动前核验 provider 及其发行指纹。Networking fbcebfc 的标准和 firewall-only 包均核验已装 Core modem broker，发布实际 OSGi JAR 指纹。无 Networking 的 Core 可独立启动。Main 的 AmbientCapabilities 和 CapabilityBoundingSet 均撤下 CAP_SYS_MODULE。
