@@ -1,0 +1,497 @@
+{
+  "recordedAt": "2026-11-19T09:25:50.119561+00:00",
+  "releaseSources": {
+    "kura": {
+      "commit": "2a3b588e63c96689c5e3caefaa2416d17b40dcac",
+      "tree": "ea3b1fc1f3a07250ab77c036d4f4aa40f0448550"
+    },
+    "kura-management-ui": {
+      "commit": "1205092e39b11bd04a7b7173c5b56de3b5ba315f",
+      "tree": "92e25a5c53a91d62f1c7715d27b1e329d1eafe56"
+    },
+    "kura-networking": {
+      "commit": "4ee16c9a98584a54261dd234cb1260725cb6703d",
+      "tree": "e5a521ac328e0cd091835b81347e1910f2ee68c4"
+    },
+    "kura-deployment": {
+      "commit": "fddf0312c3fb863192ed92b6cccdfcfa1e8d39f0",
+      "tree": "89b9f004208244ab6708eb3887e46b977ea79574"
+    },
+    "kura-wires": {
+      "commit": "93f318b241f2d53e4291ffa20fdb1836b34e9b52",
+      "tree": "5595aaa31309c77b540eed04967e289e04bac143"
+    },
+    "kura-yofc-runtime": {
+      "commit": "ecc326ad51548664cce1758b3472e3e9d260d095",
+      "tree": "535ec44537aeb92009f25c15d2840bba68d34271"
+    },
+    "yofc-iot": {
+      "commit": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+      "tree": "6d22a6f8a2fb85828a829a0353e048636ff5200d"
+    },
+    "kura-management-agent": {
+      "commit": "0f48c7d309f7bb25ecde63f372825406d810fd4c",
+      "tree": "f3cb523baa76596c4a4c976c733c047880e125ac"
+    },
+    "kura-management-console": {
+      "commit": "e094676dd3adbfd488cc14981dc27b333119de44",
+      "tree": "cd3dca51cc34e0f428b91e5d8c2f0f0645be1783"
+    },
+    "kura-docker": {
+      "commit": "34fabd8fdf3b4bf64e883d6b4888fbc1d7b9af80",
+      "tree": "b69e53fdd90d7cd60fe3aa0382d60b90122ff621"
+    }
+  },
+  "isolatedNativeDebianArm64": {
+    "packages": {
+      "kura-core": {
+        "sha256": "39b2a56e5b211a16dfe654f312f5769bef0042c73345dd54c106cd2d781446a0",
+        "version": "6.0.0~git202611190914.2a3b588-1",
+        "architecture": "arm64"
+      },
+      "kura-management-agent": {
+        "sha256": "b17802f2512fede92b0eccd38f95fb349a89944c8f6838bb8a6677075fc1b9cf",
+        "version": "0.1.0~cohort202611190917.0f48c7d-1",
+        "architecture": "arm64"
+      },
+      "kura-management-console": {
+        "sha256": "27e23924eb17a9a10eeffc4a529ba87c6d8d5114bc1b51efe88f29d73ff350b9",
+        "version": "0.1.0~cohort202611190917.e094676-1",
+        "architecture": "arm64"
+      },
+      "kura-management-console-installer": {
+        "sha256": "b1ac1f6a3f0013b4f5e7b5a1222ad945b203c7fd2f8418442f19394d40bf75d6",
+        "version": "0.1.0~cohort202611190917.e094676-1",
+        "architecture": "all"
+      },
+      "kura-management-ui": {
+        "sha256": "eeb52d02bee8c0e9e656fbd505aee28d74e89ed1c22192b20473c58b7c80e7d8",
+        "version": "3.0.0~git202611190914.1205092-1",
+        "architecture": "all"
+      },
+      "kura-networking": {
+        "sha256": "f6199af7c457ede4a762d20939b418784fff295eba98b71d2682d270b9f6e1fd",
+        "version": "3.0.0~git202611190914.4ee16c9-1",
+        "architecture": "all"
+      },
+      "kura-deployment": {
+        "sha256": "b2c09db30dd4201ef55be5f061039b92f8cf86b16b14869cd1e2fca57dc7b07e",
+        "version": "2.0.0~git202611190915.fddf031-1",
+        "architecture": "all"
+      },
+      "kura-wires": {
+        "sha256": "c70fcd4040a7697346342d266ba3943fd2e1678cd5d75d64652489127fa4ff78",
+        "version": "3.0.0~git202611190915.93f318b-1",
+        "architecture": "all"
+      }
+    },
+    "sourceManifestAndPairing": {
+      "agent": {
+        "binarySha256": "17e8287bfc59bc081d3ff2952a8b30fd560c8e7860dbcc68c24702013ee3aebe",
+        "sha256": "b17802f2512fede92b0eccd38f95fb349a89944c8f6838bb8a6677075fc1b9cf",
+        "version": "0.1.0~cohort202611190917.0f48c7d-1",
+        "revision": "0f48c7d309f7bb25ecde63f372825406d810fd4c",
+        "tree": "f3cb523baa76596c4a4c976c733c047880e125ac",
+        "sourceManifestSha256": "f2661c3af8116bfcc52899c5c07517d9c8f2505a41b58661833ea57454ee322e",
+        "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+        "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+      },
+      "console": {
+        "binarySha256": "ab0148c0ab6932a4adb2edb2e5647804b73f811942e7ac7f5947fc79c7adcb1b",
+        "sha256": "27e23924eb17a9a10eeffc4a529ba87c6d8d5114bc1b51efe88f29d73ff350b9",
+        "version": "0.1.0~cohort202611190917.e094676-1",
+        "revision": "e094676dd3adbfd488cc14981dc27b333119de44",
+        "tree": "cd3dca51cc34e0f428b91e5d8c2f0f0645be1783",
+        "sourceManifestSha256": "8ef1257aa0b0def4a737f8aa1304f84a4e84ea74247680d0f04ee1717d04ab21"
+      },
+      "installer": {
+        "sha256": "b1ac1f6a3f0013b4f5e7b5a1222ad945b203c7fd2f8418442f19394d40bf75d6",
+        "version": "0.1.0~cohort202611190917.e094676-1",
+        "revision": "e094676dd3adbfd488cc14981dc27b333119de44",
+        "tree": "cd3dca51cc34e0f428b91e5d8c2f0f0645be1783"
+      }
+    },
+    "combined": {
+      "container": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+      "main": {
+        "MainPID": "2556",
+        "Result": "success",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "UnitFileState": "enabled"
+      },
+      "providers": {
+        "org.eclipse.kura.core": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.core.deployment": "initial@reference:file:../kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.hook.file.move.provider": "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.management.bridge": "initial@reference:file:../../../usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar",
+        "org.eclipse.kura.nm": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.web2": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar"
+      },
+      "agent": {
+        "pid": 2187,
+        "uid": [
+          "991",
+          "991",
+          "991",
+          "991"
+        ],
+        "caps": {
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000"
+        },
+        "nnp": "1"
+      },
+      "console": {
+        "pid": 2941,
+        "uid": [
+          "990",
+          "990",
+          "990",
+          "990"
+        ],
+        "caps": {
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000"
+        },
+        "nnp": "1"
+      },
+      "knownInitialAgentId": "bb71238d-b9c5-4d6d-90eb-0b0b22ae97a9",
+      "consoleInstallerOperation": "f5f9fffc-abb2-4455-b8b3-9febd39a7636",
+      "consoleSetupHttpsPinVerified": true,
+      "networkBackend": "NetworkManager",
+      "centerDatabaseAndGatewayEnrollmentUninitialized": true,
+      "coreCredentialsUnchangedDuringObservation": true,
+      "stockInstallerReadiness": {
+        "unit": "kura-management-console.service",
+        "state": "active",
+        "pid": "2941",
+        "job": "",
+        "httpAddress": null,
+        "httpPort": 18443,
+        "ready": false,
+        "readiness": "UNVERIFIED"
+      },
+      "activeExecutableHashViaSameServiceUid": "ab0148c0ab6932a4adb2edb2e5647804b73f811942e7ac7f5947fc79c7adcb1b",
+      "setupHttpsPin": {
+        "pinnedListener": true,
+        "port": 18443
+      }
+    },
+    "stockInstaller": {
+      "container": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+      "operation": "f5f9fffc-abb2-4455-b8b3-9febd39a7636",
+      "phase": "APPLIED",
+      "originalReceipt": {
+        "commandReturnedSuccess": true
+      },
+      "contentLinked": {
+        "binarySha256": "ab0148c0ab6932a4adb2edb2e5647804b73f811942e7ac7f5947fc79c7adcb1b",
+        "maintenanceProtocolVersion": 1,
+        "sourceManifestSha256": "8ef1257aa0b0def4a737f8aa1304f84a4e84ea74247680d0f04ee1717d04ab21"
+      },
+      "noAutostart": true,
+      "defaultCockpitPayload": true
+    },
+    "pid1ContainerExit": 0,
+    "pending": [
+      "stock installer status with host process visibility and actual Cockpit browser invocation",
+      "PostgreSQL and center gateway enrollment/mTLS against this release",
+      "linked and static business startup and full provider/install-upgrade-remove-purge/interruption matrix"
+    ]
+  },
+  "dockerDefaultArm64": {
+    "baselineImage": "sha256:1e3e2bdd73fd3209e171c2fa5d35776f00dce97634cc6ba6e2d734743174fa1f",
+    "baselineContainer": "735be95252206272ff30e12f0959c832d8f2dc430a3e8f4573a99589aa7495a7",
+    "baselineDpFailures": [
+      "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-apps-comp-0.0.1-SNAPSHOT.dp",
+      "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-api-comp-0.0.1-SNAPSHOT.dp",
+      "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/kura-yofc-runtime.dp-1.0.0-SNAPSHOT.dp",
+      "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-apps-opcuaserver-0.0.1-SNAPSHOT.dp"
+    ],
+    "nativeDeploymentFix": {
+      "commit": "5a6025b01226297535bbe13403606a806cfccb54",
+      "tree": "f6466465fb1ba615782e7109891435736c0a7893"
+    },
+    "fresh": {
+      "container": "4e45e75d19106f311b9a4669f9cc5ae7ec0aa2342aad505dcf8cb1a3157d4fac",
+      "volume": "yofc-kura-dp-recovery-fresh-20261119",
+      "image": "sha256:d76026d49bf68ae0bfcd2e4b28e2a303fffa7333f5cb352bb931de9a4a042c32",
+      "packages": {
+        "kura-core": {
+          "version": "6.0.0~git202611190914.2a3b588-1",
+          "architecture": "arm64",
+          "sha256": "39b2a56e5b211a16dfe654f312f5769bef0042c73345dd54c106cd2d781446a0"
+        },
+        "kura-management-ui": {
+          "version": "3.0.0~git202611190914.1205092-1",
+          "architecture": "all",
+          "sha256": "eeb52d02bee8c0e9e656fbd505aee28d74e89ed1c22192b20473c58b7c80e7d8"
+        },
+        "kura-deployment": {
+          "version": "2.0.0~git202611190922.5a6025b-1",
+          "architecture": "all",
+          "sha256": "244535435c6cf234ea50aaa675fac7ebe402b84275235808713da0ec4f6d8ae9"
+        },
+        "kura-wires": {
+          "version": "3.0.0~git202611190915.93f318b-1",
+          "architecture": "all",
+          "sha256": "c70fcd4040a7697346342d266ba3943fd2e1678cd5d75d64652489127fa4ff78"
+        }
+      },
+      "dp": {
+        "kura-yofc-runtime.dp": {
+          "source": "/opt/eclipse/kura/kura/packages/kura-yofc-runtime.dp-1.0.0-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/kura-yofc-runtime.dp_1.0.0.202611190915.dp",
+          "sha256": "b10673195dc1cba419f0afb56bf9e1ec8a03ed8dfdb1dc9a6c8fdd41526d44b7"
+        },
+        "yofc-iot-api-comp": {
+          "source": "/opt/eclipse/kura/kura/packages/yofc-iot-api-comp-0.0.1-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/yofc-iot-api-comp_0.0.1.202611190916.dp",
+          "sha256": "ea89c07a66da07650328ddfd96d05a11cfd6df8f8b41dbd6a07c4c0583d3eed7"
+        },
+        "yofc-iot-apps-comp": {
+          "source": "/opt/eclipse/kura/kura/packages/yofc-iot-apps-comp-0.0.1-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/yofc-iot-apps-comp_0.0.1.202611190916.dp",
+          "sha256": "292235debbd487c07ea810c9c518adb71a652db302faff2a64f75fb92385abef"
+        },
+        "yofc-iot-apps-opcuaserver": {
+          "source": "/opt/eclipse/kura/kura/packages/yofc-iot-apps-opcuaserver-0.0.1-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/yofc-iot-apps-opcuaserver_0.0.1.202611190916.dp",
+          "sha256": "3790af52c76813264d68b6827fafe127a9b35f078e344a4f1c8ba058b20a164f"
+        }
+      },
+      "receipts": [
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-apps-comp-0.0.1-SNAPSHOT.dp",
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-api-comp-0.0.1-SNAPSHOT.dp",
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/kura-yofc-runtime.dp-1.0.0-SNAPSHOT.dp",
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-apps-opcuaserver-0.0.1-SNAPSHOT.dp"
+      ],
+      "runtime": {
+        "retained": {
+          "etc/kura/credentials/kura_encryption_key": {
+            "sha256": "1e747ee3b4b973a537a2f3645f0a3f6f2ba4fa6a24c40cd32cc61acad42e9d9c",
+            "uid": 0,
+            "gid": 0,
+            "mode": "0o400",
+            "ino": 4555444,
+            "mtimeNs": 1795080303497488586,
+            "ctimeNs": 1795080303498108589
+          },
+          "etc/kura/credentials/provisioned.json": {
+            "sha256": "a0fdb5788edc42a28e92f4e52c5b5425125441b8eaa5d5a5d94a39166700b543",
+            "uid": 0,
+            "gid": 0,
+            "mode": "0o600",
+            "ino": 4555445,
+            "mtimeNs": 1795080303499108593,
+            "ctimeNs": 1795080303500108597
+          },
+          "etc/kura/credentials/container-bootstrap.json": {
+            "sha256": "2b5447008ad9ff8e01dfad93b0f0549c6f59dd0320843fdce13ab6c68f6dc9e6",
+            "uid": 0,
+            "gid": 0,
+            "mode": "0o600",
+            "ino": 4555485,
+            "mtimeNs": 1795080303852110023,
+            "ctimeNs": 1795080303853110027
+          },
+          "user/security/httpskeystore.ks": {
+            "sha256": "e5fcc45df1912168efe6c2a2da6f8b80f72e86bf922fbc4bae086e791919b7a2",
+            "uid": 122,
+            "gid": 122,
+            "mode": "0o600",
+            "ino": 4555484,
+            "mtimeNs": 1795080307041122943,
+            "ctimeNs": 1795080307041122943
+          }
+        },
+        "uid": 122,
+        "gid": 122,
+        "supplementaryGroups": [],
+        "pid1": "java",
+        "noNewPrivileges": true,
+        "privateLogFiles": {
+          "kura.log": {
+            "uid": 122,
+            "gid": 122,
+            "mode": "0o600"
+          },
+          "kura-audit.log": {
+            "uid": 122,
+            "gid": 122,
+            "mode": "0o600"
+          }
+        },
+        "capabilityMasks": {
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000"
+        },
+        "instanceLockHeld": true,
+        "defaultGogoPortClosed": true,
+        "rootOwnedPackageCode": true,
+        "servingCertificate": "b94721225a2d5d2e77c0be8701e434bd1a9feab360c1bf7b2c929438a092e338",
+        "loadedCredentialPaired": true
+      },
+      "originalFailedContainerUnchanged": true,
+      "originalVolumeInodeAndCertificateRetained": false
+    },
+    "upgradeOnKnownFailedOriginalVolume": {
+      "container": "12c19048257ce09dd4a6d535ca975e8b531c353bfb369a2e800ddeb98eb49221",
+      "volume": "yofc-kura-current-six-release-20261119",
+      "image": "sha256:d76026d49bf68ae0bfcd2e4b28e2a303fffa7333f5cb352bb931de9a4a042c32",
+      "packages": {
+        "kura-core": {
+          "version": "6.0.0~git202611190914.2a3b588-1",
+          "architecture": "arm64",
+          "sha256": "39b2a56e5b211a16dfe654f312f5769bef0042c73345dd54c106cd2d781446a0"
+        },
+        "kura-management-ui": {
+          "version": "3.0.0~git202611190914.1205092-1",
+          "architecture": "all",
+          "sha256": "eeb52d02bee8c0e9e656fbd505aee28d74e89ed1c22192b20473c58b7c80e7d8"
+        },
+        "kura-deployment": {
+          "version": "2.0.0~git202611190922.5a6025b-1",
+          "architecture": "all",
+          "sha256": "244535435c6cf234ea50aaa675fac7ebe402b84275235808713da0ec4f6d8ae9"
+        },
+        "kura-wires": {
+          "version": "3.0.0~git202611190915.93f318b-1",
+          "architecture": "all",
+          "sha256": "c70fcd4040a7697346342d266ba3943fd2e1678cd5d75d64652489127fa4ff78"
+        }
+      },
+      "dp": {
+        "kura-yofc-runtime.dp": {
+          "source": "/opt/eclipse/kura/kura/packages/kura-yofc-runtime.dp-1.0.0-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/kura-yofc-runtime.dp_1.0.0.202611190915.dp",
+          "sha256": "b10673195dc1cba419f0afb56bf9e1ec8a03ed8dfdb1dc9a6c8fdd41526d44b7"
+        },
+        "yofc-iot-api-comp": {
+          "source": "/opt/eclipse/kura/kura/packages/yofc-iot-api-comp-0.0.1-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/yofc-iot-api-comp_0.0.1.202611190916.dp",
+          "sha256": "ea89c07a66da07650328ddfd96d05a11cfd6df8f8b41dbd6a07c4c0583d3eed7"
+        },
+        "yofc-iot-apps-comp": {
+          "source": "/opt/eclipse/kura/kura/packages/yofc-iot-apps-comp-0.0.1-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/yofc-iot-apps-comp_0.0.1.202611190916.dp",
+          "sha256": "292235debbd487c07ea810c9c518adb71a652db302faff2a64f75fb92385abef"
+        },
+        "yofc-iot-apps-opcuaserver": {
+          "source": "/opt/eclipse/kura/kura/packages/yofc-iot-apps-opcuaserver-0.0.1-SNAPSHOT.dp",
+          "destination": "/opt/eclipse/kura/packages/yofc-iot-apps-opcuaserver_0.0.1.202611190916.dp",
+          "sha256": "3790af52c76813264d68b6827fafe127a9b35f078e344a4f1c8ba058b20a164f"
+        }
+      },
+      "receipts": [
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-apps-comp-0.0.1-SNAPSHOT.dp",
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-api-comp-0.0.1-SNAPSHOT.dp",
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/kura-yofc-runtime.dp-1.0.0-SNAPSHOT.dp",
+        "file:/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/kura/packages/yofc-iot-apps-opcuaserver-0.0.1-SNAPSHOT.dp"
+      ],
+      "runtime": {
+        "retained": {
+          "etc/kura/credentials/kura_encryption_key": {
+            "sha256": "d6c0ee0c10b2a7da2fb24c8b8da4cc0b7d7c9be7a64958c822e32913e4aa768d",
+            "uid": 0,
+            "gid": 0,
+            "mode": "0o400",
+            "ino": 4545866,
+            "mtimeNs": 1795080001873135953,
+            "ctimeNs": 1795080001876135984
+          },
+          "etc/kura/credentials/provisioned.json": {
+            "sha256": "e758578461df9fab500c7a98bc5c7edf821a25a73e1f70ba44d8bc1ccc7f79df",
+            "uid": 0,
+            "gid": 0,
+            "mode": "0o600",
+            "ino": 4545867,
+            "mtimeNs": 1795080001877135994,
+            "ctimeNs": 1795080001879136015
+          },
+          "etc/kura/credentials/container-bootstrap.json": {
+            "sha256": "2e412870d35b012ef8e283826c063d566a0091063e0880d871761391ceee2f0f",
+            "uid": 0,
+            "gid": 0,
+            "mode": "0o600",
+            "ino": 4545915,
+            "mtimeNs": 1795080002409141451,
+            "ctimeNs": 1795080002410141461
+          },
+          "user/security/httpskeystore.ks": {
+            "sha256": "78f823a2b1b0cc72e00537e56b3ea16e9292ebb60ba71d04b7b1a6b1b42615cd",
+            "uid": 122,
+            "gid": 122,
+            "mode": "0o600",
+            "ino": 4545914,
+            "mtimeNs": 1795080004593162553,
+            "ctimeNs": 1795080004593162553
+          }
+        },
+        "uid": 122,
+        "gid": 122,
+        "supplementaryGroups": [],
+        "pid1": "java",
+        "noNewPrivileges": true,
+        "privateLogFiles": {
+          "kura.log": {
+            "uid": 122,
+            "gid": 122,
+            "mode": "0o600"
+          },
+          "kura-audit.log": {
+            "uid": 122,
+            "gid": 122,
+            "mode": "0o600"
+          }
+        },
+        "capabilityMasks": {
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000"
+        },
+        "instanceLockHeld": true,
+        "defaultGogoPortClosed": true,
+        "rootOwnedPackageCode": true,
+        "servingCertificate": "26b6588e39fb5601d4d4b28412886a59b2dcc2fb89515c0a906850b33bb5a68b",
+        "loadedCredentialPaired": true
+      },
+      "originalFailedContainerUnchanged": true,
+      "originalVolumeInodeAndCertificateRetained": true
+    },
+    "exits": [
+      143,
+      143,
+      143
+    ],
+    "nativeNetworkingAgentAndConsoleWereValidatedInTheSeparateDebianRoot": true,
+    "coreOsgiShutdownOpenIssue": "unbind method [unsetKeystoreService] not found"
+  },
+  "tests": {
+    "jdk": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 48,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

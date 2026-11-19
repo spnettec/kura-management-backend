@@ -1,4 +1,18 @@
 
+## 2026-11-19 当前六组件 ARM64 联合发行与默认 Docker 预装包
+
+从当前 Git 用 JDK 21、Maven 3 和 Linux ARM64 Rust 构建 Core、GWT、Networking、Agent、中心及其安装器、Docker，同时构建发行所需的 Deployment、Wires 和四份 YOFC 部署包。Agent 使用与中心同提交打出的协议 crate，打包复核 Networking Java bridge 与 Core loader 摘要。
+
+Debian 13 ARM64 专用 Root 用真实 dpkg 装 Core、Networking、GWT、Deployment、Wires 和 Agent。默认 Cockpit 安装器包内正式 `installer.py` 完成中心的原上传、安装、回执和摘要验收，原操作回执为 APPLIED，安装时服务未自动启动。测试最初调用了供日常配置使用的 `kura-console-setup`，命令解析阶段拒绝，之后从正式入口执行，中心安装只派发一次。Agent 在 Main 前独立初始化并启动。Main 实际 OSGi 激活 Core、GWT、NM、agent 包中外置的 bridge、Deployment 与 FileMove；Agent 和中心进程的 capabilities 均为零，NNP 为 1。中心显式启动后，同服务 UID 所见在运行二进制摘要，与包内摘要匹配；已装安装器的固定证书 HTTPS 探测确认本机 18443。当前容器宿主侧 `/proc/PID/exe` 访问被拒，安装器的标准状态仍报告 UNVERIFIED。Cockpit 浏览器入口、中心数据库、注册和 mTLS 留待联验。
+
+默认 Docker 镜像首次启动实际发现四份预装 YOFC `.dp` 安装事件均失败。非 root Deployment Agent 试图在持久化后删除镜像自有的只读源。Deployment 5a6025b 只对启动注册表中的本地归档保留原源，将副本同步后原子发布到持久目录；主动安装和远程下载保留原行为。JDK 21 全仓 240 项通过。
+
+重建的默认 Docker 镜像用新卷收到四份实际 OSGi 安装成功事件。另一次使用已明确失败的原 Docker 卷，以新镜像进行受控升级，同样收到四份成功事件。原卷凭据、附带文件指纹和 HTTPS 证书准确保持，两次均核对镜像只读源、私有持久副本和注册表。默认 Gogo 端口关闭，JVM UID 122、无 supplementary group、capabilities 为零、NNP 为 1。原失败容器、新运行容器和 Debian 验证现场已正常停放。修复后的两个 Docker JVM 均在停止时记录 Core HTTP DS 缺失 `unsetKeystoreService`，列入内部待办。
+
+全六组件跨布局及安装、升级、移除、purge、中断矩阵，完整 Core/OSGi 业务及其余 typed brokers 继续内部待办。原三现场及原 7fd 41 输入/16 回执保持，历史 UNKNOWN 沿原记录。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-current-six-component-arm64-release-checkpoint.json)。
+
+
+
 ## 2026-11-19 Deployment 换包门禁跨系统管理器重启
 
 Deployment fddf031 用持久、事务自有的 systemd generator 建立早期 Main mask。generator 只向 systemd 的 early 输出目录发布 mask，启动时无需已装 Deployment 代码或读取 /opt。Debian 维护只有在同一 Root、原事务文件、generator 及锚点的 inode 和摘要都核对后才续接；配置完成只清理自有 generator。管理员 linked unit、vendor 文件及 Root 原配对保持。旧格式回执保留同 boot 校验。
