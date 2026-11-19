@@ -1,0 +1,232 @@
+{
+  "recordedAt": "2026-11-19T01:04:23.539707+00:00",
+  "branch": "wip/management-close-20261116",
+  "commits": {
+    "core": [
+      "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "d0aefb974c0f69043b167effedb4f214b9f075a2"
+    ],
+    "networking": [
+      "4b58a55bb44d48e2bee3098e550bb59b506c75c1",
+      "886a9c0096135dd7ef0265a12f54540c3f06e06f"
+    ],
+    "agent": [
+      "ff36191c65efcd67a4f8ce98cd61893f051c6097",
+      "db82e211df747c2d0cd4ac15b7618a6ad839362c"
+    ]
+  },
+  "build": {
+    "compiledFromGit": true,
+    "javaMin": 21,
+    "arm64": true,
+    "sourceManifestSha256": "b13acd6be582618f90cd0db2401ebb8f4377895f996922d9a73d7b8eb61ac7cc",
+    "focusedRustPassed": 16,
+    "focusedPythonPassed": 40
+  },
+  "installed": {
+    "core": {
+      "source": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "debSha256": "908e2080c89c37e34f608e302529b66fb7c7037a58528403b65336f40fbf07fe",
+      "package": "kura-core",
+      "version": "6.0.0~git202611190048.e952f82-1",
+      "architecture": "arm64",
+      "coreOptionalLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "loaderMetadata": "0:992:750:1",
+      "unit": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/kura.service",
+        "UnitFileState": "enabled"
+      }
+    },
+    "networking": {
+      "source": "4b58a55bb44d48e2bee3098e550bb59b506c75c1",
+      "debSha256": "eec8b50ed230e275e567a941fb3a05d2f145d5f1c3d2ab8560a3f068891dd8ee",
+      "package": "kura-networking",
+      "version": "3.0.0~git202611190051.4b58a55-1",
+      "includesNmAndLegacyFirewallBundles": true,
+      "bridgeProvidedByAgentPackage": true,
+      "optionalTypedFirewallProviderShipped": false
+    },
+    "upgradedAgent": {
+      "result": {
+        "schemaVersion": 1,
+        "requestId": "0ecd4bd3-33b5-4973-94e8-c20d54955a2a",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "replayed": false
+      },
+      "version": "0.1.0~native202611190101.ff36191-1",
+      "sameStateFiles": true,
+      "originInitializationStillApplied": true,
+      "coreAndAgentStopped": true
+    },
+    "newPackageSha256": "938e829a6582b23d1c1a309bc0983a18c86f323a6fbb4b1da83f7439c9ee4bff"
+  },
+  "proof": {
+    "previousRejection": {
+      "originalStatus": {
+        "schemaVersion": 1,
+        "requestId": "d9a9ce88-dc1e-4134-ac50-15fa92fba139",
+        "state": "NOT_FOUND",
+        "replayed": false
+      },
+      "groupUnchanged": true,
+      "unitsStopped": true,
+      "networkingDropInOwnedPackage": "kura-networking",
+      "dropInSha256": "eb1079ba9bc662b196ef873cfc860cc1b53ab3b50813c2ee4437352c4cd65b18",
+      "usedSameRoot": true,
+      "redispatched": false
+    },
+    "grant": {
+      "controlGid": 990,
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "coreNetworkingDropInSha256": "eb1079ba9bc662b196ef873cfc860cc1b53ab3b50813c2ee4437352c4cd65b18",
+      "coreUnitSha256": "23fe43ab74b942c06991adc5af1f0c0bbb58bbe9fbf76a71aee0483d63a60dda",
+      "initializationId": "f2213062-374b-4f22-8462-74b6412b3b32",
+      "javaBridgeMetadataSha256": "177c0c826f488e23c52cfae5c54a0c716741a59cf5e9c7b4ee2147bed9c11c26",
+      "kuraGid": 995,
+      "kuraUid": 997,
+      "nativeIdentitySha256": "1444fa99c7ca8634eff978cf48beaa58ba57c0e3162d04f57b804654f6eb268b",
+      "profile": "local-kura-v2",
+      "requestId": "b59ade55-4d66-4cf3-b9b3-85921b407625",
+      "schemaVersion": 2
+    },
+    "nativeZeroCapabilities": true,
+    "nativeNnp": 1,
+    "coreSystemdDeclaration": {
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_kill cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw cap_sys_module cap_sys_tty_config cap_syslog",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_kill cap_net_bind_service cap_net_admin cap_net_raw cap_sys_module cap_sys_tty_config cap_syslog",
+      "NoNewPrivileges": "no"
+    },
+    "isolatedJavaAmbient": 5,
+    "isolatedJavaBounding": 7,
+    "isolatedJavaNnp": 1,
+    "dockerNoNewPrivileges": true,
+    "noExtraCoreCapabilitiesFromDropIn": true,
+    "actualCoreNativeRegistration": {
+      "core": {
+        "pid": 2479,
+        "startTicks": "26303255",
+        "process": {
+          "Name": "java",
+          "Uid": "997\t997\t997\t997",
+          "Gid": "995\t995\t995\t995",
+          "Groups": "20 990 992 995",
+          "CapInh": "0000000000003422",
+          "CapPrm": "0000000000003422",
+          "CapEff": "0000000000003422",
+          "CapBnd": "00000000000034e2",
+          "CapAmb": "0000000000003422",
+          "NoNewPrivs": "1"
+        }
+      },
+      "native": {
+        "pid": 2179,
+        "startTicks": "26303225",
+        "process": {
+          "Name": "yofc-management",
+          "Uid": "991\t991\t991\t991",
+          "Gid": "990\t990\t990\t990",
+          "Groups": "989 990",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "networkManager": {
+        "pid": 68,
+        "startTicks": "26228876",
+        "process": {
+          "Name": "NetworkManager",
+          "Uid": "0\t0\t0\t0",
+          "Gid": "0\t0\t0\t0",
+          "Groups": "0",
+          "CapInh": "0000000000000000",
+          "CapPrm": "00000000200434e2",
+          "CapEff": "00000000200434e2",
+          "CapBnd": "00000000200434e2",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        }
+      },
+      "actualNetworkManagerDbus": "running:disconnected",
+      "actualBridgeRegistered": true,
+      "coreNormalUnit": true,
+      "coreManagementInstalled": true,
+      "nativeRemoteEnabled": false,
+      "serverCredentialsMatch": true,
+      "observation": {
+        "serverPid": 2179,
+        "serverUid": 991,
+        "serverGid": 990,
+        "value": {
+          "agentAvailable": true,
+          "kuraAvailable": true,
+          "uptimeSeconds": 37,
+          "version": "0.1.0"
+        }
+      },
+      "actualMainJava": "java",
+      "packageJavaVersion": "openjdk version \"21.0.13\" 2026-10-20"
+    },
+    "independentNativeRemoteDisabled": true,
+    "actualNmPidUnchanged": true,
+    "fixture": {
+      "id": "a330cd79a1b3e9970b19229173d7bbf053f5926a90a407c1af0b138a235ecd84",
+      "image": "sha256:f5a4e7739ff74b86de034e078f18271cd0f4313c60b6da1c4255a37e5840a23a",
+      "isolatedVolumes": {
+        "/var/lib": "yofc-installed-jvm-nm-varlib-20261119",
+        "/etc": "yofc-installed-jvm-nm-etc-20261119"
+      },
+      "noBindMounts": true,
+      "network": "none",
+      "extraCaps": [
+        "CAP_SYS_ADMIN",
+        "CAP_SYS_RESOURCE",
+        "NET_ADMIN"
+      ],
+      "seccompBlocksRebootAndClock": true
+    },
+    "fixtureRemainsRunning": true
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdStateExact": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedOperationsReplayed": false
+  },
+  "internalPending": [
+    "Complete installed Core/OSGi ordinary business and paired ownership including encrypted export and startup transition",
+    "Optional typed firewall provider packaging and remaining typed brokers",
+    "Existing v1 native grants with subsequently installed Networking require an explicit reviewed joint change",
+    "Six-component provider, launcher, install, upgrade, remove, purge and interruption recovery matrix",
+    "All twelve frozen parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/installed-jvm-nm-authority-20261119",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

@@ -1,4 +1,14 @@
 
+## 2026-11-19 真实 Core、Networking、Native Agent 本地配对
+
+新 Debian 13 ARM64 使用 JDK 21，从 Git 构建并实际安装 Core `e952f82bb9`、Networking `4b58a55` 和 Native Agent。首个本地配对被旧守卫拒绝。只读核定原编号为 NOT_FOUND，组成员未变化、两单元均停止。正式安装布局将 Networking 包内 Root 模板复制到 vendor drop-in。有效 Main 原已有该模板声明的两项网络能力。
+
+Agent `9abe64a` 和 `ff36191` 对该布局增加 schema 2 原授权。Root 预启动核对 Networking 包归属、已配对 Core 版本目录里的原模板、实际 vendor 文件和 systemd 有效能力。仅接受这一份已审查的额外声明，要求两项能力都已在原 Core 单元生效，拒绝其他 drop-in、变化字节和新增能力。Native 进程校验可见的实际 vendor 文件，无需读取 Core 私有目录。原 schema 1 独立 Core 仍按原合同读取。
+
+同一新 Root 用原初始化编号完成一次受控源码升级到 `ff36191`。原初始化、continuity、执行库及 plan key 指纹精确。新配对具备独立原记录，随后正式单元一次启动完成实际 Java/OSGi 桥注册，NetworkManager 保持原 PID。Native Agent 零 capabilities、NNP1、远程关闭。Core Main 的 systemd 声明为 9 ambient、11 bounding、NNP0。此 Docker 现场受外层 capability 围栏与 NNP 约束，Java 进程实测 5 ambient、7 bounding、NNP1。最终版相关 Rust 16 项和 Python 40 项通过。现场继续用于后续真实业务。
+
+完整 ordinary Core/OSGi 业务、真实 JVM/NM 所有权签发和过渡、可选 typed firewall provider 发行映射、其余 typed brokers、已授权 v1 现场后装 Networking 的明确联合变更及六组件矩阵仍内部 pending。原三现场、C/D/E、个人配置和原 7fd 停机 41 输入/16 回执保持。冻结 12 父项最终 0/12，仍仅原 3 项 external deferred。见 [检查点](installed-core-networking-native-peer-checkpoint.json)。
+
 ## 2026-11-19 imported 共享防火墙链早启与事务链重绑
 
 Agent `c53279c` 和 `3e3fb75` 增加共享布局的正式早启恢复。原 schema 5 配对、Root、租约、原证据和逻辑版本继续逐项验证。Agent 先核对独立服务恢复的全部声明、外部规则顺序和原始 Netfilter 表达式。schema 3 意图同时固定实际外部基线和单次派发批次，内核世代作为写入围栏。只使用本次启动的外部 handle 插入或追加原 typed 规则。读回重新计算外部基线摘要，独占布局仍要求完整独占镜像。
