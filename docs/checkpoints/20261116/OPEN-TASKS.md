@@ -1,4 +1,14 @@
 
+## 2026-11-19 SystemUpdate 成对发布与同 Root 中断核定
+
+Deployment 62a0d36 对更新文件和 Verifier 先持久化同一发布意图、原文件副本位置和指纹，再更新两个正式文件。两次 rename 和终态回执各自同步到持久目录。下载读取、安装和 Verifier 共享 per-slot 进程及文件锁。原发布意图未核定时，拦截执行和重新下载。当前路径的两份内容及 inode 均精确符合原意图时，可用原 ID 确认提交。正常显式退役也有持久记录，受控删除两份载荷。早期无回执旧文件沿既有入口处理。
+
+从当前 Git 和 JDK21 构建 Deployment，Debian 13 ARM64 正式安装 Core 2a3b588e63 和 Deployment 62a0d36。已装 Deployment/FileMove JAR 均与正式包及本次构建精确。两个专用进程调用已安装的 prepare 后，分别在第一份、全部两份文件实际原子替换后直接退出，保留同一 Root 的原记录和旧文件。合法 Main 读取第一个场景时拒绝安装及 Verifier 的 executor，调用为 0，请求也未重发到 HTTP。第二个场景使用原 ID 写 COMMITTED，两份已落盘文件的字节、inode 及元数据精确，无再次替换。另一个正常请求实际通过两次 loopback HTTP 完成成对发布，显式退役后留有 RETIRED 回执且两份正式载荷均消失。脚本执行为 0，Main 正常停机、禁用，现场已停放。Maven/JDK21 全仓通过 233 项。
+
+本轮过程故障由专用探针触发。只完成一份的旧位点仍受控保留，明确的恢复动作、跨启动/跨挂载身份核定、后续执行授权、受保护 FileMove 目的地委派及完整发行矩阵继续内部待办。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-paired-publication-interruption-checkpoint.json)。
+
+
+
 ## 2026-11-19 Deployment 校验暂存与实际 FileMove 交接
 
 Deployment 715f48e 与 efa0ca9 将下载和 verifier 的文件名限制为受配置目录下的直接子项，拒绝符号链接和非普通文件。下载先写同目录暂存、校验和同步文件，再分别原子替换正式路径。传输或校验失败留下已有文件，成功发布后才调用 postDownload。异步完成通知等到发布与 hook 结束，同步 pending 查询在传输结束后仍报告进行中。独立安装请求检查它实际指定的产物路径。

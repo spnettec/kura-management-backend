@@ -1,0 +1,75 @@
+{
+  "at": "2026-11-19T08:11:55.479885+00:00",
+  "fixture": {
+    "container": "d533a299e6a3a4275cafb2c56cb0eefa867b408bbcc9cd53d1ec53ea30546405",
+    "architecture": "Debian 13 ARM64",
+    "network": "none",
+    "mainDisabled": true,
+    "exitCode": 0
+  },
+  "packages": {
+    "kura-core": {
+      "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+      "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+      "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+    },
+    "kura-deployment": {
+      "expectedVersion": "2.0.0~git202611190809.62a0d36-1",
+      "sha256": "c636f28eaaf683866453e42ec4ad9f71ccc9811ffcc190acdb17ea23253a2e59",
+      "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+    }
+  },
+  "installedBundles": {
+    "org.eclipse.kura.hook.file.move.provider": {
+      "sha256": "2d8831fa70c993450159e51b692821895102d3a96d1547a62d0c8860e6bdaa0a",
+      "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+    },
+    "org.eclipse.kura.core.deployment": {
+      "sha256": "066836182ad5ee7f36f2a1cb220e202a23146adb6dbad284f1f705f81c4c825e",
+      "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+    }
+  },
+  "deploymentCommit": "62a0d3618fcfc9c4bfe5244ba397490416fc0b9e",
+  "deploymentTree": "42d08e4228d8d3fb136cdbe1d4116b9327e1d575",
+  "mainPid": 1426,
+  "exactProcessCuts": {
+    "implementation": "installed SystemUpdatePublication.prepare with real file moves and probe Runtime.halt",
+    "mixed": {
+      "job": 41,
+      "oneMemberRenamed": true,
+      "retainedPriorFiles": true,
+      "receiptAndFilesExact": true,
+      "installAndVerifierExecutorCalls": 0,
+      "repeatHttpRequests": 0
+    },
+    "complete": {
+      "job": 42,
+      "bothRenamedBeforeFinalReceipt": true,
+      "originalIdPreserved": true,
+      "visibleFilesExact": true,
+      "replacementMovesDuringReconciliation": 0
+    }
+  },
+  "normalOsgi": {
+    "job": 43,
+    "httpRequests": 2,
+    "pairCommitted": true,
+    "explicitRetirement": true,
+    "finalPhase": "RETIRED",
+    "scriptExecutorCalls": 0
+  },
+  "tests": {
+    "macOSDeploymentCore": 132,
+    "macOSDeploymentAgent": 47,
+    "macOSPackagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
