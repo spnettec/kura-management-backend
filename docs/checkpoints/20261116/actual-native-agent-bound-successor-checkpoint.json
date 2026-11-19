@@ -1,0 +1,395 @@
+{
+  "date": "2026-11-19T14:53:49.870420+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "build": {
+    "commit": "f9569529cd58c8a5c184077632e6bc0d65391a1e",
+    "tree": "7a709c9ec6b0acebd9580b96fb6def37f3e72668",
+    "version": "0.1.0~cohort202611191450.f956952-1",
+    "sha256": "375c0b9ad41cc5f1decbf37abf2cd0a4b3b5d67227dd528b6f3cc869ea9ff837",
+    "sourceManifestSha256": "f3d7206acab69f128dc282d5a54ee04d5440a67e81397f8743bd4f5d8f81bd5f",
+    "binarySha256": "90414b50bcfc058114b404901eb0b87602ebc0042b7af7da71c452139d4ff998",
+    "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+    "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+  },
+  "originalBuild": {
+    "commit": "2017a391271e4d58fd562c9e4af40379e563276f",
+    "tree": "9241be66336eb6485619a38dac8790e1024f79b5",
+    "version": "0.1.0~cohort202611191435.2017a39-1",
+    "sha256": "75e7421d9b353abfc5c958eb5a35c06b590f755a759e19d189dce22ab46a0113",
+    "sourceManifestSha256": "7a091f6311f8e2d21b9c24ac953d87e574d3f8a5be9cd85928ab6230413d5402",
+    "binarySha256": "d6f105db3e265e05676fb2511cc3e718c3bc4b0c5d761962c50765f150782579",
+    "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+    "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+  },
+  "purpose": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "db": "070569dbc744bf510249a99dd958293a12cfe307fcaa8178a0ae97ad59afd1ff",
+    "center": "75cad0dcef3154f9a8c92e46d491d7cb14ff528d967b1cd1502326ef369cf450",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "previousCompletedRemoval": "90d442b0-ce49-4284-9863-45a65e53d477",
+    "originalInitialization": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+    "originalTask": "523ec79a-731b-4bb6-b274-9008a750b34d",
+    "reviewedOriginal": "75e7421d9b353abfc5c958eb5a35c06b590f755a759e19d189dce22ab46a0113",
+    "reviewedSuccessor": "375c0b9ad41cc5f1decbf37abf2cd0a4b3b5d67227dd528b6f3cc869ea9ff837"
+  },
+  "originalBusiness": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "intentSha256": "7f36cab15e0227c3baa7d565c1df26509ae6c2d65aefd1702a9aff960721b5d8",
+    "assets": 94,
+    "binding": {
+      "bindingGeneration": 1,
+      "candidateId": "4f0d7b99-0925-498d-ae46-ec63cf4a2eb2",
+      "coreContextSha256": "b9bb166db476e7f2b62e6ddce90619c22a5afa4e8a9b06667ef017c8762b1733",
+      "identityReceiptSha256": "86a9f0bc48cd8d28467e1ff1c7f2d572dda88c1ea964d2d50e04badde5a6e188",
+      "requestId": "90a3511c-b912-465a-812e-286ddcb7f79d",
+      "schemaVersion": 1,
+      "stageSha256": "bc5703c320dcba3146510727e870a340ae984fce67ce7dedd24a849a736e3ffa"
+    },
+    "business": {
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "5954a2580e3654509e4f09e4ebfd40dc894721d427c4aad524bf4dde3d18560e"
+        },
+        "results.sqlite-wal": {
+          "bytes": 12392,
+          "sha256": "c76578081451b1a208a19c5412803675f0902b976314c5354aeee24f98a91f4d"
+        }
+      },
+      "inventory": {
+        "executionStates": {
+          "SUCCEEDED": 1
+        },
+        "initializationId": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+        "logicalSha256": "b42583e5615905c1719b9c73b8b72e90a56eec3f95ca8a9ab9a09c0f4ecacf8a",
+        "profile": "native-execution-inventory-v1",
+        "recordsChanged": false,
+        "replayPerformed": false,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "schemaVersion": 1,
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 1,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "unresolvedExecutions": 0
+      },
+      "nativeGid": 990,
+      "nativeUid": 991,
+      "noNewPrivileges": true,
+      "profile": "native-retained-state-inspection-v1",
+      "schemaVersion": 1
+    },
+    "overlay": {
+      "device": 1048815,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    }
+  },
+  "remount": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "before": {
+      "device": 1048815,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "after": {
+      "device": 1048827,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "dpkg": "deinstall ok config-files",
+    "cipher": {
+      "state": "SUCCEEDED",
+      "input": "99f10a371f7781d99e8cce41330e80a9",
+      "result": "01cbb2a09e4a463b12b71e9946499e6e",
+      "count": 1,
+      "sealed": "1",
+      "resultSealed": "1"
+    },
+    "oldTask": "523ec79a-731b-4bb6-b274-9008a750b34d",
+    "originalStateAssetCount": 94
+  },
+  "review": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "planSha256": "4e80f7bda6090555cf2bfb0ade7a51adc0493a17514b6651b57e133291341176",
+    "previousPair": null,
+    "peer": {
+      "authorizationId": "d8ca2d88-7fc1-42d5-a40f-752d94d6def7",
+      "authorizationResultSha256": "aae78f81c7c41ca67b6b370d97ea900ad35a62c19ba7f26bfff846d7a49e0db5",
+      "incoming": {
+        "controlGid": 990,
+        "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+        "coreNetworkingDropInSha256": "eb1079ba9bc662b196ef873cfc860cc1b53ab3b50813c2ee4437352c4cd65b18",
+        "coreUnitSha256": "002c913c4cf781d1aee8398f60f7a091344d5cea3917fd60e32cfa4339303916",
+        "initializationId": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+        "javaBridgeMetadataSha256": "95f66a3656a761ad0992b3a4c36f7f5ac56ffe2ca49da1ed64b19bed04be3613",
+        "kuraGid": 995,
+        "kuraUid": 997,
+        "nativeIdentitySha256": "51233c20e1b09de1ce0857b35c5c7945cd7d7ee5e9d7cb8f46bac847ca0d5358",
+        "profile": "local-kura-v2",
+        "requestId": "d8ca2d88-7fc1-42d5-a40f-752d94d6def7",
+        "schemaVersion": 2
+      },
+      "previous": {
+        "controlGid": 990,
+        "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+        "coreNetworkingDropInSha256": "eb1079ba9bc662b196ef873cfc860cc1b53ab3b50813c2ee4437352c4cd65b18",
+        "coreUnitSha256": "002c913c4cf781d1aee8398f60f7a091344d5cea3917fd60e32cfa4339303916",
+        "initializationId": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+        "javaBridgeMetadataSha256": "95f66a3656a761ad0992b3a4c36f7f5ac56ffe2ca49da1ed64b19bed04be3613",
+        "kuraGid": 995,
+        "kuraUid": 997,
+        "nativeIdentitySha256": "762881d29c27138580ef854b2637b6d23f87491acdf43275942840cde172c02f",
+        "profile": "local-kura-v2",
+        "requestId": "d8ca2d88-7fc1-42d5-a40f-752d94d6def7",
+        "schemaVersion": 2
+      }
+    },
+    "material": {
+      "authorizationId": "865d2fe0-29ee-41dc-980b-8bce60165d3a",
+      "authorizationResultSha256": "cb1abe00c3c6d261f3da0a53b701ce2b298a520e69be1ae91a8d555745e83f56",
+      "incoming": {
+        "agentGid": 990,
+        "agentUid": 991,
+        "nativeIdentitySha256": "51233c20e1b09de1ce0857b35c5c7945cd7d7ee5e9d7cb8f46bac847ca0d5358",
+        "peerAuthorizationId": "d8ca2d88-7fc1-42d5-a40f-752d94d6def7",
+        "profile": "staged-enrollment-reader-v1",
+        "publisherPairSha256": "5f0736e08ea57f2c2d88a6ec68df1356276a2f7a52b67cae33b4c25f8b658b59",
+        "readerGid": 989,
+        "relayGrantSha256": "14d5fce730d6be896f4a37dd65e7c74fe0a595895c47d1455cfe44074b0eeecc",
+        "relayPairSha256": "936b6bdd14869601ae4e4a78f3044f3e7410445beaf9e6d6e9ddde14f1a3a0ff",
+        "remoteEnabled": false,
+        "requestId": "865d2fe0-29ee-41dc-980b-8bce60165d3a",
+        "schemaVersion": 1,
+        "socket": "/run/kura-management-agent-enrollment.sock",
+        "sourceRoot": "/opt/eclipse/kura/data/management-enrollment",
+        "sourceUid": 997,
+        "upstreamSocket": "/run/kura-management-enrollment-reader.sock"
+      },
+      "previous": {
+        "agentGid": 990,
+        "agentUid": 991,
+        "nativeIdentitySha256": "762881d29c27138580ef854b2637b6d23f87491acdf43275942840cde172c02f",
+        "peerAuthorizationId": "d8ca2d88-7fc1-42d5-a40f-752d94d6def7",
+        "profile": "staged-enrollment-reader-v1",
+        "publisherPairSha256": "5f0736e08ea57f2c2d88a6ec68df1356276a2f7a52b67cae33b4c25f8b658b59",
+        "readerGid": 989,
+        "relayGrantSha256": "86dfeb4a98148bed90dfdb19bc4fadfe7ed3ca1fe278c477b1fc4e9fcb859639",
+        "relayPairSha256": "5c3d1b29d2ecc3e2b9084b1843012315b3066ec1443995d4f03f29555ea90b6c",
+        "remoteEnabled": false,
+        "requestId": "865d2fe0-29ee-41dc-980b-8bce60165d3a",
+        "schemaVersion": 1,
+        "socket": "/run/kura-management-agent-enrollment.sock",
+        "sourceRoot": "/opt/eclipse/kura/data/management-enrollment",
+        "sourceUid": 997,
+        "upstreamSocket": "/run/kura-management-enrollment-reader.sock"
+      }
+    }
+  },
+  "unpack": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "dpkg": "install ok unpacked",
+    "version": "0.1.0~cohort202611191450.f956952-1",
+    "boot": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 3811501,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T14:51:09.790129392Z",
+      "FinishedAt": "2026-11-19T14:51:09.47484107Z"
+    },
+    "startupRefused": true,
+    "overlay": {
+      "device": 1048827,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "machineStateAuthorized": true
+  },
+  "configure": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "release": "375c0b9ad41cc5f1decbf37abf2cd0a4b3b5d67227dd528b6f3cc869ea9ff837",
+    "priorIntent": "7f36cab15e0227c3baa7d565c1df26509ae6c2d65aefd1702a9aff960721b5d8",
+    "unchangedOriginalInputs": 90,
+    "advancedPublications": [
+      "/etc/kura-management-agent-runtime/enrollment-relay-grant.json",
+      "/etc/kura-management-runtime/agent.json",
+      "/etc/kura-management-runtime/enrollment-reader.json",
+      "/etc/kura-management-runtime/kura-peer.json"
+    ],
+    "originalInputs": 94,
+    "sourceResultSha256": "150c8e0edec4015f213eff008698c0718b6208116295d89f0960e149852054c4",
+    "receipt": {
+      "schemaVersion": 1,
+      "requestId": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+      "phase": "REINSTALLED",
+      "unitStarted": false
+    },
+    "oldJournal": [
+      "523ec79a-731b-4bb6-b274-9008a750b34d",
+      3,
+      "SUCCEEDED",
+      114,
+      88
+    ],
+    "oldCenterCipher": {
+      "state": "SUCCEEDED",
+      "input": "99f10a371f7781d99e8cce41330e80a9",
+      "result": "01cbb2a09e4a463b12b71e9946499e6e",
+      "count": 1,
+      "sealed": "1",
+      "resultSealed": "1"
+    },
+    "overlay": {
+      "device": 1048827,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "switch": {
+      "version": 1,
+      "revision": "8ffa3330-f758-4652-be4b-861efe2c8401",
+      "enabled": false,
+      "actor": "kura-uid:997"
+    },
+    "noAutoStart": true
+  },
+  "explicitRuntime": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+    "process": {
+      "kura-management-agent-v2.service": {
+        "MainPID": "1270",
+        "NRestarts": "0",
+        "ActiveState": "active"
+      },
+      "kura.service": {
+        "MainPID": "1597",
+        "NRestarts": "0",
+        "ActiveState": "active"
+      }
+    },
+    "nonRoot": 991,
+    "capabilities": 0,
+    "noNewPrivileges": true,
+    "coreHttpsListenerReady": true,
+    "localSocketReady": true,
+    "launchSha256": "90414b50bcfc058114b404901eb0b87602ebc0042b7af7da71c452139d4ff998",
+    "identityReceiptSha256": "86a9f0bc48cd8d28467e1ff1c7f2d572dda88c1ea964d2d50e04badde5a6e188",
+    "originalJournal": [
+      "523ec79a-731b-4bb6-b274-9008a750b34d",
+      3,
+      "SUCCEEDED",
+      114,
+      88
+    ],
+    "originalCenterCipher": {
+      "state": "SUCCEEDED",
+      "input": "99f10a371f7781d99e8cce41330e80a9",
+      "result": "01cbb2a09e4a463b12b71e9946499e6e",
+      "count": 1,
+      "sealed": "1",
+      "resultSealed": "1"
+    },
+    "switch": {
+      "version": 1,
+      "revision": "8ffa3330-f758-4652-be4b-861efe2c8401",
+      "enabled": false,
+      "actor": "kura-uid:997"
+    },
+    "centerParked": true
+  },
+  "parked": {
+    "gateway": {
+      "id": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:51:09.790129392Z",
+        "FinishedAt": "2026-11-19T14:52:32.97202489Z"
+      }
+    },
+    "postgres": {
+      "id": "070569dbc744bf510249a99dd958293a12cfe307fcaa8178a0ae97ad59afd1ff",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:51:09.694326526Z",
+        "FinishedAt": "2026-11-19T14:52:33.192524907Z"
+      }
+    },
+    "center": {
+      "id": "75cad0dcef3154f9a8c92e46d491d7cb14ff528d967b1cd1502326ef369cf450",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:33:12.996199758Z",
+        "FinishedAt": "2026-11-19T14:41:14.104538153Z"
+      }
+    },
+    "dbVolume": "yofc-bound-retained-native-db-20261119",
+    "sameIdentityAndOffDecision": true,
+    "systemdUnitsDisabled": true
+  },
+  "linuxTests": 174,
+  "targetedTests": 33,
+  "actualDispatches": {
+    "remove": 1,
+    "unpack": 1,
+    "configure": 1,
+    "oldTaskRedispatch": 0,
+    "identityRebind": 0,
+    "remoteSwitchMutation": 0,
+    "closedRemovalReplay": 0
+  },
+  "recoveryCoverage": {
+    "afterPrivateRelayPublication": "Linux filesystem fixture",
+    "deviceChangedAfterRemove": "real Debian 13 ARM64",
+    "manualPendingConfigure": "real Debian 13 ARM64"
+  },
+  "nextInternal": [
+    "other binding generations, prior nonempty source history, finer configure interruption and UNKNOWN historical reconciliation",
+    "complete current Core/OSGi/Main, typed brokers and six-component provider/launcher release matrix"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

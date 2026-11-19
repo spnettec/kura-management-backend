@@ -1,4 +1,14 @@
 
+## 2026-11-19 已绑定 Agent 同 Root 后继发行重装及真实设备号变化
+
+Agent `f956952` 扩展原后继重装，沿初始化和本次移除原编号核对旧 Kura peer、材料授权、原安装/来源链及新版 archive。新版 Rust 检查器在相同非 Root UID 下认证暂存 DB/WAL 副本，并逐项比较旧 inspector 的结果。configure 只发布已审核的原生、Kura peer、材料公开及私有中继代码绑定。原 grant、角色、权限、Core/Networking 配对、保留任务和 OFF 状态继续严格核对。源码回归覆盖私有中继发布后中断，沿唯一初始事务续接。
+
+上一轮隔离 Debian 13 ARM64 的原绑定和一次成功的 `kura.snapshot.list` 延续到新的升级目的。已完成的原移除回执保持。实际新版经单次 remove、unpack、configure 安装。remove 后同一 OverlayFS backing 重新挂载，设备号从 1048815 变为 1048827，94 项原输入保持。解包状态继续拒绝启动。configure 发布 4 份经准入的代码绑定，90 份其他原输入完全保持，含停机 SQLite/WAL 和原任务。原编号回执为 REINSTALLED，未自动启动。
+
+显式启动后核对真实运行的非 Root Rust 指纹、零 capabilities、NNP 1、Unix socket，及 Main 的 HTTPS 监听。Agent 保留原任务 ID、操作和终态，PostgreSQL 保留原 ID 及原输入和结果密文指纹。三处现场正常停放，中心容器保持原停放状态。Linux ARM64 提交版本 174 项通过，33 项定向回归已包括上述中断和业务漂移拒绝。其余绑定代、已有非空来源历史的实际发行、其余中断时点、全部 provider/launcher 及完整六组件矩阵继续内部 pending。保留原 7fd 41 输入/16 回执；12 父项 0/12，external deferred 仅原三项。见[检查点](actual-native-agent-bound-successor-checkpoint.json)。
+
+
+
 ## 2026-11-19 已绑定 Agent 保留加密任务和 WAL 的发行生命周期
 
 Agent 2017a39 加入 Root `prepare-retained-enrolled-removal`。原 Kura peer、材料授权、已绑定凭据及控制通道均经现有实现校验，实际非 Root Rust inspector 认证同字节 SQLite 及 WAL 的副本。运行或 UNKNOWN 任务在写入维护意图前拒绝。准入后，包文件缺席时按原 Core loader/有效单元、原角色、来源链及逐项快照核对，同时保留跨重挂绑定。允许同版本、同发行包原位重装。已绑定后继版本还需联合 Kura 和材料来源转换。
