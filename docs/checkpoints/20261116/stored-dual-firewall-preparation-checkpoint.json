@@ -1,0 +1,147 @@
+{
+  "recordedAt": "2026-11-19T01:49:06.434611+00:00",
+  "branch": "wip/management-close-20261116",
+  "sources": {
+    "core": {
+      "head": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+    },
+    "consoleProtocol": {
+      "head": "535bd70e87e24e1936634b41ccd00be639fffdda",
+      "tree": "cc3eb8f46cd08943f64b263a952393a8825d97ab"
+    },
+    "networkingOriginal": {
+      "head": "07b00a6ec1327a943a36f4858499aab85dbbdb41",
+      "tree": "313a3764b7d1599a39d8c7f717ef601b1208202a"
+    },
+    "networkingUpgraded": {
+      "head": "180ed6ebba263975860d15a3913015c8c220031b",
+      "tree": "b53f244786b0479bc682d72621c36aca1019dc44"
+    },
+    "installedAgent": {
+      "head": "20724a58df2eb388a9cb5fdd23d207b03ff23b65",
+      "tree": "a8681c6387871c856e3fb610e9d2409192cb009d"
+    },
+    "agentConflictFix": {
+      "head": "8033e43916b661c9bb7c6e3cfb244c426de44973",
+      "tree": "205e15246452194eaf3ac4f7656a8bd0cc462767"
+    }
+  },
+  "verification": {
+    "jdk": 21,
+    "toolchainRust": "1.95.0",
+    "newNetworkingFocused": 99,
+    "originalAgentFocused": 24,
+    "agentConflictAndExistingWriteSemantics": 6,
+    "architecture": "arm64"
+  },
+  "installed": {
+    "fixture": {
+      "id": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+      "image": "sha256:7df10a7fcacba1a731d54505a7d8c8497feab691684663f66ef6d4e1c5877c84",
+      "isolatedVolumes": {
+        "/var/lib": "yofc-stored-firewall-varlib-20261119",
+        "/etc": "yofc-stored-firewall-etc-20261119"
+      },
+      "noBindMounts": true,
+      "network": "none",
+      "extraCaps": [
+        "CAP_SYS_ADMIN",
+        "CAP_SYS_RESOURCE",
+        "NET_ADMIN"
+      ],
+      "seccompBlocksRebootAndClock": true
+    },
+    "core": {
+      "package": "kura-core",
+      "version": "6.0.0~git202611190135.e952f82-1",
+      "architecture": "arm64",
+      "source": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "sha256": "e0915c3c4052bf41fad8e5bb9c62f0b6f7ad19be8eb68144aa15a51a4333e114"
+    },
+    "networkingUpgrade": {
+      "version": "3.0.0~git202611190145.180ed6e-1",
+      "previousVersion": "3.0.0~git202611190136.07b00a6-1",
+      "source": "180ed6ebba263975860d15a3913015c8c220031b",
+      "archiveSha256": "7285d06b1a592d8f080fecba4ec18d43be958251d79e00b5452e649096f5341b",
+      "actualJavaBundleSha256": "793b041966a12cbeca04291193d2b49baa7261ae0c003370b73cc85fac813b28",
+      "coreLoaderExact": true
+    },
+    "legacyAgent": {
+      "package": "kura-management-agent",
+      "version": "0.1.0~baseline202611190138.20724a5-1",
+      "architecture": "arm64",
+      "source": "20724a58df2eb388a9cb5fdd23d207b03ff23b65",
+      "sha256": "46f1d26fa832e5c9298e1ee0f39a1c8498b1fd66d709a0381e0f6e4ab18f07c9"
+    }
+  },
+  "normalCoreCm": {
+    "dispatches": 1,
+    "originalStatus": "UNKNOWN",
+    "sameRootReadback": "BOTH_FAMILIES_MATCH_LIVE_WRITER",
+    "snapshotAdded": 1,
+    "originalAndAddedSnapshotPreservedAcrossUpgrade": true,
+    "originalReceiptRewritten": false
+  },
+  "diagnosis": {
+    "beforeBridgeFix": "late-bound writer omitted from registration in original phase",
+    "afterInitialBridgeFix": "CONFLICT",
+    "nativeMatcher": "ip6/filter/input-kura",
+    "originalAdditionalRulesExactlyDuplicated": 38,
+    "originalCopiesPerRule": 2,
+    "upgradedCopiesPerRule": 1
+  },
+  "nativeReview": {
+    "state": "UNMANAGED",
+    "reviewKind": "legacy.raw.source.v1",
+    "reviewDigest": "1bd5563ac409f67207f100247f65d615b335fb42d2e1a1f95f060365b0679a23",
+    "nativeSourceKind": "legacy.native.source.v1",
+    "classificationDigest": "60d8943b79281d63f541a67f67fb3d81c84de0c053310d3d0feca4328c01eb32",
+    "selectedRules": 114,
+    "unselectedRules": 43,
+    "preparationPreview": "AVAILABLE",
+    "signedOwnership": false,
+    "ownerActivationReady": false,
+    "requiresInitializationTransition": true,
+    "preservesOriginalLayout": true,
+    "ownerOperationsDispatched": 0,
+    "storedFamilies": [
+      "org.eclipse.kura.net.admin.FirewallConfigurationService",
+      "org.eclipse.kura.net.admin.ipv6.FirewallConfigurationServiceIPv6"
+    ],
+    "rawAndPreviewUseSameStoredViewAndClassifier": true,
+    "snapshotsAndOriginalJournalsExact": true,
+    "resultDeviceInodeExact": true,
+    "agentAndNetworkManagerSameProcesses": true,
+    "storedRulesExact": true,
+    "opaqueStoredRevisionsReminted": true,
+    "remoteDisabled": true,
+    "ownerFencesAbsent": true
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "original7fdStopped": true,
+    "unknownResubmitted": false,
+    "completedOperationsReplayed": false
+  },
+  "internalPending": [
+    "Explicitly authorized prepare with real Java encrypted export, original receipts, fences and signed initialization/startup on this Root",
+    "Remaining typed brokers, full Core/OSGi business and legal Main, six-component provider/launcher/install/upgrade/remove/purge/interruption matrix",
+    "All twelve parents tracked in the complete frozen ledger"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/stored-firewall-baseline-20261119"
+}

@@ -1,4 +1,16 @@
 
+## 2026-11-19 双族正式 CM 基线与原生防火墙准备预览
+
+Networking `07b00a6` 在桥连接注册时声明原 writer 读取能力，读取时核对当前 provider。Agent `20724a5` 在无原 writer 模型时拒绝为未托管防火墙准备委派，`8033e43` 保留配对防火墙读取的 CM CONFLICT。实际 Debian 13 ARM64 以 JDK 21 从 Git 构建 Core `e952f82bb9`、Networking 和 Agent。正式 Core 条件批处理仅调用一次，紧随其后的读回遇到 CM 收敛门禁，原结果保留 UNKNOWN。同一 Root 独立只读证实两族 stored CM 与实际 writer 一致、原快照保留且新增一份快照。该调用未重发。
+
+原生只读诊断定位到 IPv6 filter input-kura 模型序列歧义。实际威胁防护另提交了与内置规则完全相同的 38 条 IPv6 ICMP ACCEPT，两份均进入内核。Networking `180ed6e` 在内置 ICMP 启用时省去完全相同、位于其后的附加规则。未启用内置 ICMP 时仍刊布附加规则，其他威胁规则顺序保留。真实包在同一隔离 Root 升级，38 条内核规则均由两份变为一份。Core 按正式单元启动，Agent、NetworkManager 进程及执行库 device/inode 保持。前后两份快照、原日志与两族规则精确，存储 revision 随 Core 重启重新计算。
+
+实际 Agent 原源审查返回 `legacy.raw.source.v1`，同源准备预览返回 `legacy.native.source.v1`。114 条原生规则唯一匹配，43 条未选规则保留。两个读入口配对同一 stored CM 和分类摘要。状态为 UNMANAGED，远程关闭，原布局保留，后续需要初始化转换，尚无签发、fence、Java 加密导出或所有权派发。Networking JDK21 定向 99 项，Agent 原安装版与冲突回归共 30 项通过。
+
+原三现场、C/D/E、个人配置、数据及 7fd 停机 41/16 按原指纹保持。后续签发及启动、其余 typed brokers、完整 Core/OSGi/合法 Main 和六组件矩阵为内部 pending。完整 12 父项 0/12 最终闭环，external deferred 仅原 3 项。见 [检查点](stored-dual-firewall-preparation-checkpoint.json)。
+
+
+
 ## 2026-11-19 真实 JVM/NM 旧源只读审查
 
 Agent `09c349d` 将本地 ownership status 和原源审查接入 NM `writeEnabled=false`。沿用原 Root 目录、同一系统锁、已注册 JVM 和现有 CM/内核核对。观察路径不建写事务目录。prepare、原动作结算、cancel、fence、activate 和 Core 启动动作仍要求独立写执行器。相关 ARM64 Rust 23 项通过。
