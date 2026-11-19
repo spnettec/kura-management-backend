@@ -1,0 +1,175 @@
+{
+  "date": "2026-11-19T15:31:26.323903+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "installedCore": [
+    "73ebb0d0b3345c97a0cb5dcf30be27084ebfa716",
+    "89b9782eeb6d288d450432d6c9d56d176967e589"
+  ],
+  "executedCoreFirstRelease": [
+    "e879266d5ad2c5aba34f4b107ee80974c4f5da84",
+    "9033e592801599f822a19ac1ba0e4e207f6e1458"
+  ],
+  "networking": [
+    "8da8a33e6992713fe8e45d2db288f20a328ef254",
+    "3a4c2ef952d15d441dea0aa2873d75380ab5dc0e"
+  ],
+  "initialMain": {
+    "gateway": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "main": {
+      "MainPID": "1807",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "8f978c012b9545b1a8d76a45c2ccbcf2"
+    },
+    "workerPair": {
+      "files": {
+        "kura-modem-driver.socket": "07ef32858d8974e2c7654ceb38b9fce5139677625c78d2e0c8fb5c5d9ad6e971",
+        "kura-modem-driver@.service": "e0a267de871bdea46a09482c648f77f30515bc756d35f2cc0b379acb54a8f5fc",
+        "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+        "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+        "kura_journal_export.py": "4c3e07bb770a2a4fbda2497e2058472930322e772224386a987ae866b71aa4d5",
+        "kura_modem_driver.py": "707eaeb876241d3a7439489e9e9650751bca5be00a3b49dfe7f13f605bd94ee3",
+        "kura_reboot_broker.py": "6e9eadd46928e95f220f306a599cd0dcee313aa59d522d6798d64d4ba9421f32",
+        "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+        "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+      },
+      "mainUnitSha256": "1b3405e412d41d67530a378adfb4ff0b5e0f9c880da5a399250ee29f825aded0",
+      "schema": 1
+    },
+    "networking": {
+      "MainPID": "90",
+      "ActiveState": "active"
+    },
+    "corePackage": {
+      "file": "/root/typed-modem-release/kura_6.0.0~git202611191525.e879266-1_arm64.deb",
+      "name": "kura-core",
+      "version": "6.0.0~git202611191525.e879266-1",
+      "sha256": "eaaeb6d8678b92e93ba9335e8e523d02c3615e25a643b805636fb903576789ae"
+    },
+    "networkingPackage": {
+      "file": "/root/typed-modem-release/kura-networking-3.0.0~git202611191525.8da8a33-1_all.deb",
+      "name": "kura-networking",
+      "version": "3.0.0~git202611191525.8da8a33-1",
+      "sha256": "30f5a9739a9d2ec6075f698e77b2771a38a5025787a1cda62d1f9c3059cca68c"
+    },
+    "platformPackages": [
+      {
+        "file": "/root/typed-modem-release/kmod_34.2-2_arm64.deb",
+        "name": "kmod",
+        "version": "34.2-2",
+        "sha256": "fd7300fcb8b93cc5f77aa439ee539ceb8050f5cf1d22d86e85179d04f7de5b6f"
+      },
+      {
+        "file": "/root/typed-modem-release/libkmod2_34.2-2_arm64.deb",
+        "name": "libkmod2",
+        "version": "34.2-2",
+        "sha256": "01d2bf4ead7f6da5aca7f1ecc108cbe858a349ca55368742ead758fa7383e10a"
+      }
+    ],
+    "installedProvider": "/opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+    "installedProviderSha256": "db5a4b81cdd0f1a5cbc9c845ec240ca571e37b79e65c6aa2864d8c7c7bd727a0"
+  },
+  "externalRefusal": {
+    "gateway": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "exitCode": 2,
+    "initialIntents": 0,
+    "matchesRejectedLog": true
+  },
+  "actualOsgi": {
+    "gateway": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "mainPid": "1807",
+    "networkingBundleVersion": "3.0.0.202611191525",
+    "unattachedLoad": "REFUSED",
+    "absentUnload": "APPLIED",
+    "kernelMutations": 0,
+    "rootPairedReceipt": true,
+    "moduleAbsentBeforeAndAfter": true,
+    "operationId": "ffab8138-f1f4-4ddf-ba60-321d76047fc6",
+    "intentSha256": "ec2457c4edf86e1c08dd79b7bbd0d6af6eac110837c4addb4ab78d43eeace034",
+    "receiptSha256": "a7ef694e41ca695d52cc9cfd5e3233edf6b6e5d5395201e41527144e9e713925"
+  },
+  "finalNativeUpgrade": {
+    "gateway": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "head": "73ebb0d0b3345c97a0cb5dcf30be27084ebfa716",
+    "tree": "89b9782eeb6d288d450432d6c9d56d176967e589",
+    "oldVersion": "6.0.0~git202611191525.e879266-1",
+    "version": "6.0.0~git202611191529.73ebb0d-1",
+    "sha256": "ce4235dece77d0d7235217dd8d15bb9528949936069ac068c8f6f53905cc2c45",
+    "dispatchOrdinal": 1,
+    "originalReceiptSha256": "a7ef694e41ca695d52cc9cfd5e3233edf6b6e5d5395201e41527144e9e713925",
+    "nativeCohort": {
+      "files": {
+        "kura-modem-driver.socket": "07ef32858d8974e2c7654ceb38b9fce5139677625c78d2e0c8fb5c5d9ad6e971",
+        "kura-modem-driver@.service": "e0a267de871bdea46a09482c648f77f30515bc756d35f2cc0b379acb54a8f5fc",
+        "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+        "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+        "kura_journal_export.py": "4c3e07bb770a2a4fbda2497e2058472930322e772224386a987ae866b71aa4d5",
+        "kura_modem_driver.py": "1a0709c26b19fed03b500ad7047f5bf0bcc4cd9cc2329b6b1bb69693c13b3209",
+        "kura_reboot_broker.py": "efd8d99a38bd47dc09b505961f60cf6aed0ffef1b23d0181ee05662a9db0ed83",
+        "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+        "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+      },
+      "mainUnitSha256": "1b3405e412d41d67530a378adfb4ff0b5e0f9c880da5a399250ee29f825aded0",
+      "schema": 1
+    },
+    "originalRetainedProofCount": 3,
+    "unchangedCredentials": 2,
+    "retainedRootMatchesCurrentMount": true,
+    "networkProviderUnchanged": true,
+    "mainInactive": true,
+    "oldOperationsReplayed": 0
+  },
+  "parked": {
+    "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T15:30:34.852677145Z",
+      "FinishedAt": "2026-11-19T15:30:49.465424482Z"
+    },
+    "mainDisabled": true,
+    "socketRemoved": true,
+    "pairedReceiptRetained": true
+  },
+  "tests": {
+    "linuxCorePassed": 95,
+    "networking": {
+      "tests": 2211,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "kmodVersion": "34.2-2",
+    "fixedBinaryLoad": "modprobe dry run recognizes option and module",
+    "fixedBinaryUnload": "rmmod help mode recognized"
+  },
+  "outcomes": {
+    "physicalKernelWriteExercised": false,
+    "mainSysModuleRetained": true,
+    "negativeActualMainSupportedPath": true,
+    "mainLaunchedWithCompatibilityFix": false
+  },
+  "nextInternal": [
+    "joint Main CAP_SYS_MODULE withdrawal and previous Networking upgrade compatibility",
+    "physical modem checks under existing external hardware boundary, retained-module recovery and one-root mount migration",
+    "remaining typed brokers and full Core/OSGi and six-component matrix"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

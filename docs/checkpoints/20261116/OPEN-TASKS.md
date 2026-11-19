@@ -1,4 +1,16 @@
 
+## 2026-11-19 USB modem 类型化委派与实际 Main 准入
+
+Networking 8da8a33 将模组装卸及 Option 动态注册接到 Core 的本机 broker。Core 核验有效 Main、固定 Networking drop-in、直接子进程和内核 pidfd。模块范围为 cdc_acm、sierra 与 option，配对 USB ID 来自当前支持表。加载前实查接入设备；卸载仅接管有原收据且仍属于原内核实例的模块。内核写入前同步原意图，未结结果阻止同一模块换号派发。通用 Java executor 与直接 new_id 写入已移出该业务路径。
+
+独立 Debian 13 ARM64 正式安装 Core e879266d5a、Networking 8da8a33 及带签名索引校验的 Debian kmod。实际 Main 内已装 OSGi 调用得到未接入拒绝和模块已不存在的无操作成功，后者保留原编号的 Root 收据。同 UID 外部进程被拒，实际内核变更为 0。缺少实物的条件只用于拒绝及无操作结果的实际验收。实际正向加载、动态注册、卸载需原硬件验收。
+
+真实 kmod 发现必须按 argv[0] 选择 modprobe 与 rmmod 模式。Core 73ebb0d0b3 修正固定二进制调用并延长客户端等待上限，真实 kmod 的 modprobe dry-run 与 rmmod help 均识别兼容模式。随后同一隔离 Root 正常 Core 升级，原三份操作文件、原两份 Root 凭据及原 Networking JAR 精确保持，已核原 Root 和挂载配对。Main 保持 disabled，升级后未再次派发旧业务。现场正常停放。Linux Core 95 项，Networking Maven 2211 项通过。
+
+Main 的 CAP_SYS_MODULE 仍为旧 Networking 升级交接保留。该权限撤回、合法历史和中断恢复、全 provider/launcher、完整 Core/OSGi、其余 broker 和完整六组件矩阵仍内部 pending。原 7fd 41 输入/16 回执和原 UNKNOWN 保持。父项 0/12，external deferred 仅原三项。见[检查点](actual-core-typed-modem-driver-checkpoint.json)。
+
+
+
 ## 2026-11-19 Main 撤下 CAP_SYSLOG 与实际大日志归档下载
 
 Core 7b9bb19324 从正式 Main 单元的 ambient 和 bounding 配置撤下 CAP_SYSLOG。独立 Journal worker 的只读权限和代码配对保持。同一隔离 Debian 13 ARM64 Root 正常升级 Core/GWT，原两份 Root 凭据完整指纹一致，Main 保持 disabled 且由显式启动。实际已装单元、systemd 有效配置及运行进程的五类 capability 位图均核对。旧能力在旧 vendor 单元中有声明，本轮记录的是当前运行位图。
