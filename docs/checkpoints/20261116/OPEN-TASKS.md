@@ -1,3 +1,11 @@
+
+## 2026-11-19 imported 共享防火墙链早启与事务链重绑
+
+Agent `c53279c` 和 `3e3fb75` 增加共享布局的正式早启恢复。原 schema 5 配对、Root、租约、原证据和逻辑版本继续逐项验证。Agent 先核对独立服务恢复的全部声明、外部规则顺序和原始 Netfilter 表达式。schema 3 意图同时固定实际外部基线和单次派发批次，内核世代作为写入围栏。只使用本次启动的外部 handle 插入或追加原 typed 规则。读回重新计算外部基线摘要，独占布局仍要求完整独占镜像。
+
+新 Debian 13 ARM64 systemd 在同一专属 Root 启动。独立 nftables 服务先恢复 6 表、58 链和 2 条 `numgen` 规则。正式 Agent 单元在 network-pre 前补回 144 条 Kura 规则，单次内核世代 2→3。全部声明与 2 条外部规则保留物理 handle，外部规则两侧的 Kura 规则按原序恢复。正式重绑产生 `BOOT_RESTORE` 链接并保持逻辑版本 1、原配对文件和完整规则，现场正常停放。原初始化的 JVM、NM 和源内核见证使用测试夹具。此现场部署正式 ELF 和 vendor unit，完整发行安装仍待验证。
+
+真实 JVM/NM 签发、原共享恢复缺失或负回执核定、共享重绑后普通 typed 更新、完整 Core/OSGi、其余 typed brokers 和六组件矩阵继续内部 pending。原三现场、C/D/E、个人配置与 7fd 停机的 41 输入/16 回执保持。冻结 12 父项最终 0/12，external deferred 仍仅原三项。见 [检查点](firewall-imported-shared-boot-checkpoint.json)。
 ## 2026-11-19 imported 早启回执进入事务链
 
 Agent `43c1ebc` 增加固定 Root 的 `firewall-rebind-imported-boot`，Agent 启动恢复也走同一绑定实现。它从原已完成 schema 2 早启回执验证 schema 5 租约、原源摘要、初始化锚、实际 boot/netns、内核世代和完整原生读回。`BOOT_RESTORE` 链接以物理文件身份和摘要固定原回执及前序，保留既有逻辑版本，发布新的物理源摘要和已验证 handle。已有事务历史及原回执保留。新事务不得重用初始化操作 ID。Agent `4aec38a` 保留旧版逐命令 ACK 的精确摘要校验，原负回执必须与其原派发意图使用同一编码。新派发仅使用批次结束 ACK。
