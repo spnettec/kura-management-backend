@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "805d38a",
+  "core": {
+    "head": "4122fafa10890ba7412d1f303dd09dc674be4d0a",
+    "tree": "73df7a482444f86fd296fe53653a00c7b0c614ec"
+  },
+  "networking": {
+    "head": "60618e72c4bd217871997ae12a3984dcf7839f8c",
+    "tree": "16d0b53f9d0357f19edadac5ee8e9bf217878f8b"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd, NetworkManager 1.52.1 and BIND 9",
+  "nativeMain": {
+    "id": "0067cbcf324a6535110455e27131916f728fbda0c5ed1da1f8b30dc25e2d4358",
+    "main": {
+      "MainPID": "2093",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "7b4a2f68042e4382889b3412eac19234"
+    },
+    "provider": "3.0.0.202611191819",
+    "networkManagerVersion": "nmcli tool, version 1.52.1",
+    "testInputs": [
+      "first",
+      "stable",
+      "second",
+      "malformed",
+      "missing",
+      "empty",
+      "return",
+      "stub",
+      "after-stub",
+      "agent-owned"
+    ],
+    "rootScopedAndDelivered": [
+      {
+        "stage": "first",
+        "operation": "ebf994ce-65fd-482a-a656-228f2b6045de",
+        "mode": "enable",
+        "publication": 1
+      },
+      {
+        "stage": "second",
+        "operation": "983c718b-6615-4760-8e7d-7f78a6acf4ef",
+        "mode": "enable",
+        "publication": 2
+      },
+      {
+        "stage": "empty",
+        "operation": "5c03d1b0-27a9-4efc-8e91-3cb093db7b18",
+        "mode": "disable",
+        "publication": 3
+      },
+      {
+        "stage": "return",
+        "operation": "947f55b7-d313-4c0c-a422-97f9bf27923b",
+        "mode": "enable",
+        "publication": 4
+      },
+      {
+        "stage": "stub",
+        "operation": "f7f44083-4546-4ac1-8e6e-a92a5d7f6915",
+        "mode": "disable",
+        "publication": 5
+      },
+      {
+        "stage": "after-stub",
+        "operation": "8788973c-1019-48cf-a9de-3b6434b3d6b7",
+        "mode": "enable",
+        "publication": 6
+      }
+    ],
+    "upstreamResponses": [
+      "192.0.2.10 192.0.2.2 198.51.100.10",
+      "192.0.2.20 192.0.2.2 198.51.100.20",
+      "192.0.2.10 192.0.2.2 198.51.100.10",
+      "192.0.2.10 192.0.2.2 198.51.100.10"
+    ],
+    "resolverUnmodifiedByMain": true,
+    "agentMarkerSuppressedWriter": true,
+    "directCallbackFixture": true,
+    "physicalDialing": false,
+    "stockRestoredOnIPv6OnlyAndMixedStub": true,
+    "noWritesForFailedRead": true
+  },
+  "parking": {
+    "id": "0067cbcf324a6535110455e27131916f728fbda0c5ed1da1f8b30dc25e2d4358",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T18:15:19.436148427Z",
+      "FinishedAt": "2026-11-19T18:22:22.296754294Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "receiptsRetained": 6
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-resolver-release/kura_6.0.0~git202611191815.4122faf-1_arm64.deb",
+      "sha256": "fe4882a911150105618e0b3d6ebbcc8085639d50cc12de3aabb574420db0333d",
+      "version": "6.0.0~git202611191815.4122faf-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-resolver-release/kura-networking-3.0.0~git202611191819.60618e7-1_all.deb",
+      "sha256": "fe08c9b17ea3accda1fdd26a88615ffea3862a2b7a2b3b93d2da70db11c899a9",
+      "version": "3.0.0~git202611191819.60618e7-1"
+    }
+  ],
+  "fixtureSetup": {
+    "coreUnpackDependencyAbsent": "python3-dbus",
+    "coreConfigureAfterDependencyInstall": true,
+    "sameRunningMainWhenObserverCorrected": true,
+    "dnsDispatchesBeforeObserverRecovery": 0,
+    "singleSyntheticLanClientAdmission": {
+      "id": "0067cbcf324a6535110455e27131916f728fbda0c5ed1da1f8b30dc25e2d4358",
+      "admitted": false,
+      "policy": "INPUT DROP",
+      "oneSyntheticClient": "203.0.113.2",
+      "ingress": "dns-lan",
+      "udpDestinationPort": 53
+    },
+    "defaultInputPolicy": "DROP"
+  },
+  "tests": {
+    "networkingMaven": 2226
+  },
+  "internalPending": [
+    "真实 PPP 协商及数据流、IPv6 LAN 代理与保留分流策略的本地 stub 集成、完整接管矩阵",
+    "完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

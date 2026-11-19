@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — LAN DNS 转发跟随 NetworkManager 的有效解析器
+
+Networking 60618e7 只读采集实际 `resolv.conf`，包括符号链接指向的文件。读取失败或格式损坏保留最后一次已应用配置，IPv4 解析器有效撤回时停用 LAN 代理。观测到本地 stub 时停用旧转发，避免代理回环和绕过分流。LAN 网段按规范化前缀比较，配置不变时零写入。所有变更继续使用已配对的 typed BIND broker。[NetworkManager DNS 配置合同](https://www.networkmanager.dev/docs/api/latest/NetworkManager.conf.html)
+
+隔离 Debian 13 ARM64 实装 Core 4122fafa10 与新 Networking，以正常 Main 中已安装 OSGi 监视器回调验证。真实 NetworkManager 在两个 WAN 配置间切换，独立网络命名空间内 LAN 查询收到相应上游答案。夹具仅显式放通单个测试客户端的 UDP/53，默认输入策略保持 DROP。损坏、丢失和稳定快照保留服务、文件与账本，IPv6-only 或包含本地 stub 恢复发行版 BIND 配置并停用，回到直接上游后重新启用。Agent ownership marker 置位后有效上游继续变化，代理保留原状态。共 6 组原 Root intent/result/delivered、4 次独立 DNS 数据包查询，Networking Maven 2226 项通过，夹具正常停止。
+
+实际 PPP 拨号、支持本地 stub 的分流转发、完整双族与接管矩阵、其余 typed brokers、完整六组件生命周期仍为内部待验。外部延后仅原三项。原 7fd 维持 41 输入/16 回执并保持停止，父项 0/12。见 [检查点](actual-core-nm-resolver-dns-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — modem 自动 NAT 关联已激活的 IPv4 数据接口
 
 Networking a929074 使用 NetworkManager 已激活且带有效 IPv4 地址的 IpInterface 作为 modem NAT 端点。旧快照 pppNum 保留在历史配置用途。NAT 监测仅在配置包含相关端点时运行，成功观测到成员变化才重算，观察失败保留原规则，写结果不明暂停该监测。Agent 防火墙门禁按配置中的逻辑 LAN/WAN 关系预检，新旧配置断线时都不能规避门禁。内核转发已经开启时避免再次写 sysctl。[NetworkManager Device D-Bus 合同](https://networkmanager.dev/docs/api/1.52.0/gdbus-org.freedesktop.NetworkManager.Device.html)
