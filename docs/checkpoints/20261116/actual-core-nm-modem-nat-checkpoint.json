@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "c711106",
+  "core": {
+    "head": "4122fafa10890ba7412d1f303dd09dc674be4d0a",
+    "tree": "73df7a482444f86fd296fe53653a00c7b0c614ec"
+  },
+  "networking": {
+    "head": "a929074130c329a8e9d30bfee122085409555804",
+    "tree": "262e520c5a14da38c00dffd634c59d4b1f27aee3"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd, iptables-nft",
+  "nativeKernel": {
+    "id": "b1db825dbdff7db3a1c12e196d24d4d37fdcf0c3ff07b8e57d133ce9349c4f69",
+    "main": {
+      "MainPID": "16943",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "86e90970babd41af8801786f4abdd3a3"
+    },
+    "ownedSiteChainPreserved": true,
+    "transitions": [
+      {
+        "state": "down",
+        "interfaces": [
+          "pnfixed0",
+          "ppp51"
+        ]
+      },
+      {
+        "state": "active",
+        "interfaces": [
+          "pnfixed0",
+          "ppp47",
+          "ppp51"
+        ]
+      },
+      {
+        "state": "racing",
+        "interfaces": [
+          "pnfixed0",
+          "ppp47",
+          "ppp51"
+        ]
+      },
+      {
+        "state": "renamed",
+        "interfaces": [
+          "pnfixed0",
+          "ppp49",
+          "ppp51"
+        ]
+      },
+      {
+        "state": "ipv6only",
+        "interfaces": [
+          "pnfixed0",
+          "ppp51"
+        ]
+      },
+      {
+        "state": "absent",
+        "interfaces": [
+          "pnfixed0",
+          "ppp51"
+        ]
+      },
+      {
+        "state": "agent-owned",
+        "interfaces": [
+          "pnfixed0",
+          "ppp51"
+        ]
+      }
+    ],
+    "nmBundleVersion": "2.0.0.202611191807",
+    "privateDbus": true,
+    "kernelRules": true,
+    "forwardingAlreadyEnabled": true,
+    "observedInvalidSnapshotRetainedPreviousRules": true,
+    "agentMarkerSuppressedWriter": true,
+    "nativeNetworkManagerNoModems": true,
+    "realDialing": false,
+    "rootModemIntents": 0
+  },
+  "parking": {
+    "id": "b1db825dbdff7db3a1c12e196d24d4d37fdcf0c3ff07b8e57d133ce9349c4f69",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T18:05:45.2924272Z",
+      "FinishedAt": "2026-11-19T18:12:00.409199452Z"
+    },
+    "mainDisabled": true,
+    "privateBusStopped": true,
+    "probeArchived": true
+  },
+  "probePreDispatchFailures": [
+    {
+      "id": "b1db825dbdff7db3a1c12e196d24d4d37fdcf0c3ff07b8e57d133ce9349c4f69",
+      "main": {
+        "MainPID": "1956",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "f0c7381f14854e8eb1977801fde2b0aa"
+      },
+      "role": "fixture OSGi import",
+      "beforeNatDispatch": true,
+      "privateBusRestarted": false
+    },
+    {
+      "id": "b1db825dbdff7db3a1c12e196d24d4d37fdcf0c3ff07b8e57d133ce9349c4f69",
+      "main": {
+        "MainPID": "9021",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "7f67da10a0d54cbba5b3dd78a4853340"
+      },
+      "role": "fixture OSGi service name",
+      "beforeNatDispatch": true,
+      "privateBusRestarted": false
+    }
+  ],
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-modem-nat-release/kura_6.0.0~git202611191804.4122faf-1_arm64.deb",
+      "sha256": "afd053f1507d670066705c02d3796ba77ba97d93d33e15752a77b5489294d1db",
+      "version": "6.0.0~git202611191804.4122faf-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-modem-nat-release/kura-networking-3.0.0~git202611191807.a929074-1_all.deb",
+      "sha256": "acb0f52663866fc687a3578296ea3e0a906075389af332c3bb7c0f9bd0e05b2d",
+      "version": "3.0.0~git202611191807.a929074-1"
+    }
+  ],
+  "tests": {
+    "networkingMaven": 2222
+  },
+  "scope": {
+    "nativeKernelRulesWithSyntheticModemDbus": true,
+    "observedDataInterfaceChange": true,
+    "ipv4OnlyBranch": true,
+    "unknownObservationPreservedCommittedRules": true,
+    "unitUnconfirmedWriteNoRetry": true,
+    "nativeActualDialing": false,
+    "nativePacketForwarding": false
+  },
+  "internalPending": [
+    "实际 modem 拨号、PPP 协商和数据包/NM 与 DNS 汇合，完整双族 NAT 与接管矩阵",
+    "完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

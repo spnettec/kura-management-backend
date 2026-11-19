@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — modem 自动 NAT 关联已激活的 IPv4 数据接口
+
+Networking a929074 使用 NetworkManager 已激活且带有效 IPv4 地址的 IpInterface 作为 modem NAT 端点。旧快照 pppNum 保留在历史配置用途。NAT 监测仅在配置包含相关端点时运行，成功观测到成员变化才重算，观察失败保留原规则，写结果不明暂停该监测。Agent 防火墙门禁按配置中的逻辑 LAN/WAN 关系预检，新旧配置断线时都不能规避门禁。内核转发已经开启时避免再次写 sysctl。[NetworkManager Device D-Bus 合同](https://networkmanager.dev/docs/api/1.52.0/gdbus-org.freedesktop.NetworkManager.Device.html)
+
+隔离 Debian 13 ARM64 实装 Core 4122fafa10 和 Networking。真实系统总线读取确认现场无 modem，用独立私有 D-Bus 提供两个替身 modem 的属性，在正式 Main 内用生产配置和防火墙代码写隔离内核 iptables-nft。固定 WAN 与第二 modem 的规则保持。首 modem 的规则随 ppp47 激活出现，观测期间接口突变时保留已提交规则，稳定后改为 ppp49，IPv6-only 时撤回该 IPv4 NAT。防火墙 ownership marker 置位后不再写，独立站点链及真实 NM 进程保持。转发 sysctl 已开启且只读，夹具正常停放。
+
+Networking Maven 2222 项通过。实测覆盖内核规则与受控 D-Bus 观测。物理拨号和数据流量仍待验收。完整 PPP 协商、DNS/双族/NAT 业务、其余 typed brokers、历史矩阵、Core/OSGi 与六组件生命周期继续内部待办，外部延后仅原三项。原 7fd 41 输入/16 回执，父项 0/12。见 [检查点](actual-core-nm-modem-nat-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — PPP LCP 配置的 D-Bus 类型与实际 profile 升级
 
 Networking 257a1b7 保留旧快照 lpcEchoInterval、lpcEchoFailure 键，将 LCP 属性编码为 NetworkManager 规范的 uint32。负数及没有发送周期却启用失败阈值的配置在写入 profile 前拒绝。PPP profile 由现行 NetworkManager Settings 生命周期管理。[NetworkManager 1.52 PPP 设置](https://networkmanager.dev/docs/api/1.52.0/settings-ppp.html)
