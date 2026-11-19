@@ -1,4 +1,14 @@
 
+## 2026-11-19 FileMove 受保护路径和原作业回执
+
+Deployment 2a63783 为 `/opt/eclipse/kura-deployment-files/` 的直接子项使用独立的 systemd Unix socket 和 actor。普通目的地的 COPY/MOVE 保留现有入口。受保护请求使用 DEPLOY-V2 解析得到的原作业号。actor 校验内核 peer credentials、pidfd 和 systemd 记录中的同一活动 Main。Root 审批绑定本地 Root、原作业号、目标名、动作、是否覆盖、长度及 SHA-256。可用已装 `/usr/bin/python3 -I -B /usr/libexec/kura-filemove/broker.py authorize JOB COPY|MOVE OVERWRITE NAME SIZE SHA256` 审批，OVERWRITE 为 0 或 1，`status JOB` 原地只读。actor 不解析源路径，只接收有界载荷。正式目标以原子操作发布。原领取记录先于修改落盘，终态回执后于目录同步。MOVE 只在当前 actor 明确确认后移除同身份源，疑似已提交结果沿原作业保留。
+
+隔离 Debian 13 ARM64 上从当前 Git/JDK 21 正式安装。包中及实际已装的两份 OSGi JAR、broker 和两份 systemd unit 核对。合法 Main 内实际 FileMove OSGi hook 完成一次原子覆盖 COPY 和一次新目标 MOVE。普通旧 MOVE 保留。Main 直接写保护目标、同 UID 的外部进程、无签发和错摘要均被拒绝。实际 actor 的能力位图均为零、NNP 为 1。对第 71456 号原 MOVE 用目录内挂载的合规普通文件制造 rename EBUSY。原领取已落盘，目标和源精确，客户端得到 UNKNOWN，零重派。Main、actor 与 socket 正常停止，原 Root 同作业读回仍为 UNKNOWN，两个旧目标源完整保留。现场 Main 与 socket 禁用后正常停放。Maven/JDK 21 全仓 239 项通过。
+
+本轮是固定受保护目录、正式 Main 内 hook、Debian 套件安装及受控 rename 失败的验收。真实云通知、进程丢回复、目标发布后中断、MOVE 源清理恢复、保留 socket 的禁用状态、未决维护准入及 Deployment 的升级/移除/purge 仍待验证。其他受保护位置、完整 Core/OSGi、其他 typed brokers 和完整六组件矩阵继续原范围。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-protected-filemove-checkpoint.json)。
+
+
+
 ## 2026-11-19 历史 SystemUpdate 原文件纳管和无 Verifier 发布
 
 Deployment 3985bfa 增加两步纳管。仅在核实原作业从未派发后，本机 Root 用已装 JAR 的 `org.eclipse.kura.core.deployment.download.SystemUpdateExecution --adopt-undispatched` 签发。参数依次为用于纳管的 UUID、原作业号、当前配置下载目录下的规范脚本绝对路径、Root 审阅副本路径和摘要，成对时再传 Verifier 审阅副本路径和摘要。使用同一个 UUID、原作业号、规范路径，由非 Root 部署存储属主调用 `org.eclipse.kura.core.deployment.download.SystemUpdateLegacyMigration`。配对核对同一个 Root、路径及每份摘要，纳管只登记原文件身份。发现原派发文档、用过的领取记录或现有其他发布回执时保留现场。仅凭旧文件存在或缺少派发文档无法认定原作业未执行。

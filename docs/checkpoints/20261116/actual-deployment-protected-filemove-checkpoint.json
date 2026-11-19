@@ -1,0 +1,183 @@
+{
+  "at": "2026-11-19T08:47:05.904364+00:00",
+  "nativePackage": {
+    "container": "1efe629f63b7af03ccf50f7239b6636d53bc27b2f34513bd3b3febbd7abbc8b3",
+    "packages": {
+      "kura-core": {
+        "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+        "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+        "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+      },
+      "kura-deployment": {
+        "expectedVersion": "2.0.0~git202611190844.2a63783-1",
+        "sha256": "758481c5884f7728aa4dcfbe89e893092b4576cab83a75c0f9a03dd05d196eeb",
+        "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+      }
+    },
+    "revision": "2a63783f964ef2049bc7a707f8551e62ecf19679",
+    "tree": "2a8e8f839a326f6942b68fb909095f97f9703140",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "a0a2687a0697f85ee784b86261ad1135809efc19e42ffac40d489334e4980617",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "a71ce97df2a88a0b6025a893829bbd73a49f46397e44859d4a17c27f51256fef",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "fixture": {
+    "container": "1efe629f63b7af03ccf50f7239b6636d53bc27b2f34513bd3b3febbd7abbc8b3",
+    "network": "none",
+    "ordinaryMainDisabled": true,
+    "socketDisabled": true,
+    "exitCode": 0
+  },
+  "protectedAssets": {
+    "/usr/libexec/kura-filemove/broker.py": "350999bcdb879024acfba61ec7eeaf21560ea804bfdd7422f95d97ce42ffb0dd",
+    "/usr/lib/systemd/system/kura-filemove.service": "e58e5f73dd15763e134285f282c064d8cd3eda7923f78be28ca35de1f7da5e4c",
+    "/usr/lib/systemd/system/kura-filemove.socket": "751e9ee1c428bc391af3f941f7c7392fb1861e9012ecf25df79d7a6852e70ec1"
+  },
+  "actorKernelStatus": {
+    "CapInh": "0000000000000000",
+    "CapPrm": "0000000000000000",
+    "CapEff": "0000000000000000",
+    "CapBnd": "0000000000000000",
+    "CapAmb": "0000000000000000",
+    "NoNewPrivs": "1"
+  },
+  "actualMain": {
+    "pid": 1750,
+    "assertions": [
+      "MAIN_DIRECT_DESTINATION_WRITE_DENIED",
+      "COPY_APPLIED",
+      "MOVE_APPLIED",
+      "NO_APPROVAL_AND_WRONG_DIGEST_DENIED",
+      "ORIGINAL_UNKNOWN_AND_MOVE_SOURCE_HELD",
+      "ORDINARY_MOVE_PRESERVED"
+    ],
+    "sameUidOutsideMainDenied": true,
+    "directWriteDenied": true,
+    "ordinaryMovePreserved": true,
+    "positiveOperations": [
+      71451,
+      71452
+    ],
+    "postClaimFailure": {
+      "job": 71456,
+      "trigger": "EBUSY when replacing a mounted regular destination",
+      "outcome": "UNKNOWN",
+      "sourceExact": true,
+      "oldTargetExact": true,
+      "redispatched": false
+    }
+  },
+  "rootJournals": {
+    "71451.claim": {
+      "meta": [
+        "600",
+        "0",
+        "0",
+        "1048812",
+        "4497749",
+        "1",
+        "264",
+        "2026-11-19",
+        "08:46:22.467503102",
+        "+0000",
+        "2026-11-19",
+        "08:46:22.467503102",
+        "+0000"
+      ],
+      "sha256": "d4bcdd6d3ba0fcc2954299b488ba4112e41db60d5b38addc8fd13c8aa69b63e9"
+    },
+    "71451.result": {
+      "meta": [
+        "600",
+        "0",
+        "0",
+        "1048812",
+        "4497750",
+        "1",
+        "284",
+        "2026-11-19",
+        "08:46:22.472589156",
+        "+0000",
+        "2026-11-19",
+        "08:46:22.472589156",
+        "+0000"
+      ],
+      "sha256": "58e781f39ed8f9b474b47e8dfecd5ba1b77317620e25c4c6c944da02a4669ff0"
+    },
+    "71452.claim": {
+      "meta": [
+        "600",
+        "0",
+        "0",
+        "1048812",
+        "4497752",
+        "1",
+        "265",
+        "2026-11-19",
+        "08:46:22.528399174",
+        "+0000",
+        "2026-11-19",
+        "08:46:22.528399174",
+        "+0000"
+      ],
+      "sha256": "d51da2faf206cdb323b11ae823c39a46c2c73d261f90ac211d452547bb74867a"
+    },
+    "71452.result": {
+      "meta": [
+        "600",
+        "0",
+        "0",
+        "1048812",
+        "4497753",
+        "1",
+        "285",
+        "2026-11-19",
+        "08:46:22.531595541",
+        "+0000",
+        "2026-11-19",
+        "08:46:22.531595541",
+        "+0000"
+      ],
+      "sha256": "335cfdc82993a7e2cc40012c01525c7c6c55bfc9421213fe3f9a8899dd907f53"
+    },
+    "71456.claim": {
+      "meta": [
+        "600",
+        "0",
+        "0",
+        "1048812",
+        "4497757",
+        "1",
+        "270",
+        "2026-11-19",
+        "08:46:22.595422561",
+        "+0000",
+        "2026-11-19",
+        "08:46:22.595422561",
+        "+0000"
+      ],
+      "sha256": "a88fdf9fdcd4b1c3d7f142588f7cc6f6b689b9ee8609bdf47e40fd23cc3d545e"
+    }
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
