@@ -1,0 +1,211 @@
+{
+  "at": "2026-11-19T06:13:01.906051+00:00",
+  "toolchain": {
+    "maven": "3.10.1",
+    "java": 21
+  },
+  "provenance": {
+    "sourceRepos": 13,
+    "projectDebCount": 14,
+    "generatedAddonDebCount": 1,
+    "packages": [
+      {
+        "file": "kura_6.0.0~git202611190608.4315646-1_arm64.deb",
+        "package": "kura-core",
+        "version": "6.0.0~git202611190608.4315646-1",
+        "sha256": "94dd2406dea41a284b3269b7c0c59c66098d1eb4171d674d0a56ff2bfd380204",
+        "architecture": "arm64",
+        "sourceCommit": "43156466fef5afd1dbb1f085551aaceabaff5130",
+        "sourceTree": "26aa4b733e016c564ccee66c3b1371ae59978caf",
+        "differentPrimary": "ef78c110fec9f0f70b2a391c466c56598d750ef9"
+      },
+      {
+        "file": "kura-artemis_1.0.0~git202611190607.3a3b953-1_all.deb",
+        "package": "kura-artemis",
+        "version": "1.0.0~git202611190607.3a3b953-1",
+        "sha256": "36daf3e5d5c999542217c345a20348d2510e5a2ffa0109991cae20395d84b73e",
+        "architecture": "all",
+        "sourceCommit": "3a3b9538781718155a5c308e0ed3e1e9a6001c7c",
+        "sourceTree": "f7e20f13d4fb6493edd133a6a9698c41e9c68328",
+        "differentPrimary": "7ac6d43ff147fec792bab94493c1ecf50e0ab129"
+      },
+      {
+        "file": "kura-camel_1.0.0~git202611190607.5f93ee7-1_all.deb",
+        "package": "kura-camel",
+        "version": "1.0.0~git202611190607.5f93ee7-1",
+        "sha256": "55dad5adb901855535084587cd93890b9e5328c558dab0b23322bc2aed0bbf2c",
+        "architecture": "all",
+        "sourceCommit": "5f93ee70552954baa35cbfd0c7221019a3bb88ee",
+        "sourceTree": "3ce014acb4f5596bf95a285a2753bb531094797a",
+        "differentPrimary": "43bd68f1773b0e17c742213b2ca34b289a7042b7"
+      },
+      {
+        "file": "kura-cloud_3.0.0~git202611190607.9faaec1-1_all.deb",
+        "package": "kura-cloud",
+        "version": "3.0.0~git202611190607.9faaec1-1",
+        "sha256": "6915368a677d7b24a2713ed255768b2c6eb5ba0a41382098a76e9fd2639ee749",
+        "architecture": "all",
+        "sourceCommit": "9faaec10dc7e69dc2fa1970c44cd7b6b2a782fb0",
+        "sourceTree": "8c40f87c084e4d18a09eb0e661f2032103dac249",
+        "differentPrimary": "3a9bc83b475656d4032eaa3b7e3947b10cc3f97b"
+      },
+      {
+        "file": "kura-container_3.0.0~git202611190607.06802ca-1_all.deb",
+        "package": "kura-container",
+        "version": "3.0.0~git202611190607.06802ca-1",
+        "sha256": "b5f9014dc835803a81cb1bc19b626304f4ba56b117c06f17e275fdb1b8f6ac7d",
+        "architecture": "all",
+        "sourceCommit": "06802cadc6b8ce7090bcdf4d338ca5e468983dba",
+        "sourceTree": "8289ee65ab3e62643a97479dee2cdae9eef2e9e9",
+        "differentPrimary": "0eeb713f350c83dd81e15890dc360b1fd3e5a0db"
+      },
+      {
+        "file": "kura-deployment_2.0.0~git202611190606.c6e1fd2-1_all.deb",
+        "package": "kura-deployment",
+        "version": "2.0.0~git202611190606.c6e1fd2-1",
+        "sha256": "152f17e7f37baacd7e4dbaac29b06a04a77960fde5efb9949efdcd9fe3c37620",
+        "architecture": "all",
+        "sourceCommit": "c6e1fd280dd38de2583a5f59f7c5076da835b705",
+        "sourceTree": "86fd202d1f0eeacfbf015fb69ab727e702646a97",
+        "differentPrimary": "bca16d34619f8e7c4a20a49d470af61b3f2b88c2"
+      },
+      {
+        "file": "kura-management-ui_3.0.0~git202611190606.1205092-1_all.deb",
+        "package": "kura-management-ui",
+        "version": "3.0.0~git202611190606.1205092-1",
+        "sha256": "7b865b155815fdc85032f453e96315a32f103b4671aeb8aea45cdd4617bc3463",
+        "architecture": "all",
+        "sourceCommit": "1205092e39b11bd04a7b7173c5b56de3b5ba315f",
+        "sourceTree": "92e25a5c53a91d62f1c7715d27b1e329d1eafe56",
+        "differentPrimary": "18c1b5eed4bf1483fb19756f6ea7ca817bd2732e"
+      },
+      {
+        "file": "kura-networking-3.0.0~git202611190607.4ee16c9-1_all.deb",
+        "package": "kura-networking",
+        "version": "3.0.0~git202611190607.4ee16c9-1",
+        "sha256": "77e26fb953c49261dbb850253293bf960f8eb75855de5cc3d2d3217711b1795e",
+        "architecture": "all",
+        "sourceCommit": "4ee16c9a98584a54261dd234cb1260725cb6703d",
+        "sourceTree": "e5a521ac328e0cd091835b81347e1910f2ee68c4",
+        "differentPrimary": "aad948fd7f3d4dece4fe88f58d870be63616e321"
+      },
+      {
+        "file": "kura-firewall-only-3.0.0~git202611190607.4ee16c9-1_all.deb",
+        "package": "kura-firewall-only",
+        "version": "3.0.0~git202611190607.4ee16c9-1",
+        "sha256": "c6a9340fe0b43ab9c0ae84f1cfd6e6feae6e0c2935175e954263acc562fdba1e",
+        "architecture": "all",
+        "sourceCommit": "4ee16c9a98584a54261dd234cb1260725cb6703d",
+        "sourceTree": "e5a521ac328e0cd091835b81347e1910f2ee68c4",
+        "differentPrimary": "aad948fd7f3d4dece4fe88f58d870be63616e321"
+      },
+      {
+        "file": "kura-opcua_2.0.0~git202611190607.749a651-1_all.deb",
+        "package": "kura-opcua",
+        "version": "2.0.0~git202611190607.749a651-1",
+        "sha256": "9ce5a88c5854d2024b0872712411053c8102032627e814d13613681037f4ba82",
+        "architecture": "all",
+        "sourceCommit": "749a651085d263ce343126f7cfe99c66848b528b",
+        "sourceTree": "66410e51bb0d3c41f9e0a864da7d707454ff3657",
+        "differentPrimary": "a8cfc825ac73ad7f529b266df6f264ab69e3bda0"
+      },
+      {
+        "file": "kura-position_2.0.0~git202611190608.bc9cd9e-1_all.deb",
+        "package": "kura-position",
+        "version": "2.0.0~git202611190608.bc9cd9e-1",
+        "sha256": "fc826b16454d34733fec40eb6ea80a7894821f10a30e5846500d9bc470b3670f",
+        "architecture": "all",
+        "sourceCommit": "bc9cd9eeaf8c241eed76ca95ccc210756eb55cd0",
+        "sourceTree": "a0338354fb1810ff743aa0f3eacfd8fcf71c29e6",
+        "differentPrimary": "39db08421cae5d902e67d5a76683dbf232039167"
+      },
+      {
+        "file": "kura-triton_2.0.0~git202611190608.5229f85-1_all.deb",
+        "package": "kura-triton",
+        "version": "2.0.0~git202611190608.5229f85-1",
+        "sha256": "bb66b51051da02f5c06cee1a56508e91a0858644a4613779d8b18199ba0bf1d4",
+        "architecture": "all",
+        "sourceCommit": "5229f85ed830838104d28eee6227820c89064d3e",
+        "sourceTree": "13860bdd9933ce0814d07585a654de8fdb60225c",
+        "differentPrimary": "4da955858739fd0bcf7c76109ceca3942254c79c"
+      },
+      {
+        "file": "kura-wires_3.0.0~git202611190608.93f318b-1_all.deb",
+        "package": "kura-wires",
+        "version": "3.0.0~git202611190608.93f318b-1",
+        "sha256": "2737cfbb645dd5c71820159d9f3f7bd9dca4e11937f5ae77945250f9a6543965",
+        "architecture": "all",
+        "sourceCommit": "93f318b241f2d53e4291ffa20fdb1836b34e9b52",
+        "sourceTree": "5595aaa31309c77b540eed04967e289e04bac143",
+        "differentPrimary": "2842bd25ac0941d25905ef7d4ce7229e8b569cec"
+      },
+      {
+        "file": "kura-yofc-runtime_1.0.0~git202611190608.ecc326a-1_all.deb",
+        "package": "kura-yofc-runtime",
+        "version": "1.0.0~git202611190608.ecc326a-1",
+        "sha256": "b7a50aa6056a89b760ebb535b64e4c005c6b43bf78ee7ed2f8f95abeb22640ad",
+        "architecture": "all",
+        "sourceCommit": "ecc326ad51548664cce1758b3472e3e9d260d095",
+        "sourceTree": "535ec44537aeb92009f25c15d2840bba68d34271",
+        "differentPrimary": "1c973c08d4890f1dd2d93606d4d0adbe15589901"
+      }
+    ],
+    "generatedAddon": {
+      "worktree-addon": {
+        "file": "worktree-addon_1.0.0~git202611190612.f311402-1_all.deb",
+        "package": "worktree-addon",
+        "version": "1.0.0~git202611190612.f311402-1",
+        "sha256": "4643342105aff6fe5e893470cf5a3d9bc2ae41198f007432224f8b27fb064001",
+        "architecture": "all",
+        "sourceCommit": "f3114025317947a79a038730c5ecb7ae72c5316d",
+        "sourceTree": "9a64ad0e0da7e05a9a5c09c479d2d01cde7a1f91",
+        "differentPrimary": "c0c994ddd67981ff6ef84584ce674137b063fc05"
+      }
+    },
+    "generatedAddonPrimaryReadback": "c0c994d",
+    "generatedAddonQualifiedWithAmbientPrimaryGitEnv": true,
+    "filenamesAndControlVersionsMatchSeparateDetachedHeads": true,
+    "freshMavenHeadAndDependencyCacheTail": true
+  },
+  "coreJVMTests": {
+    "run": 23,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "postinst": {
+    "container": "309f837ca471f14977065e1fb834c7904b4ae243015f1436e2e5ef34bdeb8fec",
+    "packageSha256": "94dd2406dea41a284b3269b7c0c59c66098d1eb4171d674d0a56ff2bfd380204",
+    "pinnedPhase": "restore_retained_sender before key-service leave",
+    "signal": "SIGKILL",
+    "dpkgConfigureInterrupted": true,
+    "resumeReturnCode": 1,
+    "dpkgState": "install ok half-configured",
+    "pairedMaintenanceId": "ae7fe460-9567-48e8-a30b-934e4bc16f4d",
+    "originalKeyAndAccountFingerprintsExact": true,
+    "originalPreparedNamespaceUntouched": true,
+    "clockNamespaceAllocated": false,
+    "packageHistoryEntries": 0,
+    "noNewBusinessDispatch": true,
+    "rootCause": "postinst removed the installer while the package was half-configurable",
+    "mainNeverStarted": true,
+    "normalFixtureParked": true,
+    "productRecoveryVerified": false
+  },
+  "internalPending": [
+    "same transaction resume before releasing original postinst fence",
+    "other configure and maintenance interruption points",
+    "complete six components/provider/launcher installation and recovery matrix",
+    "remaining typed brokers and complete Core/OSGi/lawful Main",
+    "all 12 original parent items"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "pushed": false
+}

@@ -1,4 +1,15 @@
 
+## 2026-11-19 发行包 Git 来源与实际 postinst 中断
+
+13 仓的 14 个实发项目 deb 已按各自 detached worktree 的实际 HEAD 构建，主工作树 HEAD 与其不同。逐包核对文件名、Debian control Version 和 SHA256。Core 43156466fe 保持包脚本过滤在 AntRun 嵌入前完成，JDK 21 JVM 23 项通过。按新模板生成并构建了一个 addon deb，环境变量指向主工作树时仍正确取 detached HEAD。
+
+独立 Debian 13 ARM64 新现场先解包 Core，再在真实 dpkg postinst 进入 restore_retained_sender、释放 key-service 原维护围栏前终止同一配置进程组。原现场为 half-configured。一次标准 dpkg configure 续接因安装器已被前一阶段删除而返回 1。原维护 ID、密钥、clock 账户与 TLS 材料指纹精确，Main PID 为 0，原业务记录保持。该现场保留原数据并正常退出。此点的产品恢复仍内部待办。
+
+历史 Main 转换和已有现场沿用原检查点。完整 Core/OSGi、其余 typed brokers、完整六组件/provider/launcher 和所有发行中断点继续内部待办。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](worktree-package-provenance-and-interrupted-postinst-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 ARM64 Core 时钟 cohort 的正常发行生命周期
 
 新 Debian 13 ARM64 隔离现场使用已安装但停用的 Chrony，Agent 缺席。实际从 e952f82 的四操作时钟 cohort 装机启动，运行中的 Main 通过正式 Debian 生命周期升级到 ef78c11 的五操作 cohort。新 Main 进入 Java，保持 NNP1 且无 CAP_SYS_TIME，relay 保持未激活。实际完成 remove、reinstall 和 purge。升级和 remove/reinstall 保留同一数据标记，purge 后隔离数据标记及暂存目录消失。原加密凭据与时钟账户全程保持同字节、属主、模式和 inode，未创建时钟 namespace。新现场正常退出。
