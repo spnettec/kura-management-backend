@@ -1,0 +1,192 @@
+{
+  "date": "2026-11-19T15:13:37.898325+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "core": {
+    "head": "54fc736feef2fcb1add122d7da116eac77a8effa",
+    "tree": "3e1ccc066af5e9ea966780f41ee3eba6db2b5c05"
+  },
+  "gwt": {
+    "head": "862eaa0adc40f79b144471f680bbefa3a78f81c2",
+    "tree": "267580036b5f2c7b1f0e3d4545303bba571fe5f1"
+  },
+  "packages": {
+    "kura-core": {
+      "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+      "name": "kura-core",
+      "version": "6.0.0~git202611191507.54fc736-1",
+      "sha256": "a9812608f40e292f4f8238de4837fb74c522511597f57c0a2d7510f497729d73",
+      "dispatchOrdinal": 1
+    },
+    "kura-management-ui": {
+      "exitCode": 0,
+      "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+      "name": "kura-management-ui",
+      "version": "3.0.0~git202611191500.862eaa0-1",
+      "sha256": "39f5ee7301f5aa9d8924577a3ca8556fa5741171dc5864578d464382adafda7a",
+      "dispatchOrdinal": 1
+    }
+  },
+  "account": {
+    "uid": 990,
+    "gid": 990,
+    "journalGroup": 999
+  },
+  "pairedFiles": {
+    "files": {
+      "kura-journal-export.socket": "25bfa5c8983df4a83f817b1d9a94462e6f28c033ec23f5bd00ee3fa7f6b8fcae",
+      "kura-journal-export@.service": "6ab6644b15cfc7dd7d9e323eff245c29c939419c96dbab4fe65c4b7916ee011c",
+      "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+      "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+      "kura_journal_export.py": "29ab3aa02172e95a605de17d616b7e2e20782f918573b3181fc911cfc59c11c9",
+      "kura_reboot_broker.py": "6e9eadd46928e95f220f306a599cd0dcee313aa59d522d6798d64d4ba9421f32",
+      "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+      "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+    },
+    "mainUnitSha256": "0eda7884b918f8efec734a211db2ef564211a6b0efe152b3aff0a1d6dcae2533",
+    "schema": 1
+  },
+  "actualMain": {
+    "MainPID": "5860",
+    "NRestarts": "0",
+    "ActiveState": "active",
+    "InvocationID": "a1f481987b954bd38527992d36216272"
+  },
+  "nativeArchive": {
+    "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "archiveName": "Kura_Logs.zip",
+    "archiveBytes": 53560,
+    "archiveSha256": "b9565f05aafe5c6d1fcdc8840f34109578643cec79bec74d2ce06f09e6c7fe03",
+    "archiveEntries": 22,
+    "journalEntries": {
+      "system_journal.log": 110205,
+      "kura_journal.log": 789
+    },
+    "independentMarkerOnlyInSystem": true,
+    "kuraMatchesIndependentUnitRead": true,
+    "ordinaryLogPreserved": true,
+    "actorProcesses": [
+      {
+        "pid": "6076",
+        "uid": 990,
+        "gid": 990,
+        "groups": [
+          990,
+          999
+        ],
+        "caps": {
+          "CapInh": 0,
+          "CapPrm": 0,
+          "CapEff": 0,
+          "CapBnd": 0,
+          "CapAmb": 0
+        },
+        "nnp": true,
+        "unit": "kura-journal-export@1-6075-997.service"
+      },
+      {
+        "pid": "6502",
+        "uid": 990,
+        "gid": 990,
+        "groups": [
+          990,
+          999
+        ],
+        "caps": {
+          "CapInh": 0,
+          "CapPrm": 0,
+          "CapEff": 0,
+          "CapBnd": 0,
+          "CapAmb": 0
+        },
+        "nnp": true,
+        "unit": "kura-journal-export@2-6501-997.service"
+      },
+      {
+        "pid": "6517",
+        "uid": 990,
+        "gid": 990,
+        "groups": [
+          990,
+          999
+        ],
+        "caps": {
+          "CapInh": 0,
+          "CapPrm": 0,
+          "CapEff": 0,
+          "CapBnd": 0,
+          "CapAmb": 0
+        },
+        "nnp": true,
+        "unit": "kura-journal-export@3-6516-997.service"
+      }
+    ],
+    "sameUidNonMainRefused": true,
+    "negativeOutputBytes": 0,
+    "gwt": {
+      "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+      "httpStatus": 200,
+      "actualFilename": "Kura_Logs.zip",
+      "privateName": "actual-kura-logs-1.zip",
+      "certificate": "cc6f87c0f6ee5f73619b0514436c5d8f2c48ba55ee3f3ba1f24462954c100626",
+      "sessionRole": "authenticated Kura admin",
+      "nonceAndXsrf": true
+    },
+    "main": {
+      "MainPID": "5860",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "a1f481987b954bd38527992d36216272"
+    },
+    "privateStagingRemoved": true
+  },
+  "parked": {
+    "id": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T15:00:46.714898164Z",
+      "FinishedAt": "2026-11-19T15:12:51.008448746Z"
+    },
+    "mainDisabled": true,
+    "socketRemovedOnStop": true
+  },
+  "credentialFilesUnchangedAcrossFinalDpkgUpgrade": 2,
+  "actualDispatches": {
+    "gwtDownload": 1,
+    "typedExport": 2,
+    "nonMainRefusal": 1
+  },
+  "testResults": {
+    "macJournalPassed": 5,
+    "linuxJournalPassed": 5,
+    "mavenGwtPassed": 10,
+    "linuxPackagingSelected": 74,
+    "existingFailedMethods": 1,
+    "existingFailedSubtests": 2,
+    "existingFailureVerifiedAt": "7d4789fe1d",
+    "existingFailure": "Watchdog callback fixture omits the current helper"
+  },
+  "remainingInternal": [
+    "Main capability consolidation and other provider/launcher layouts",
+    "journal alternate field sets, archived first-boot variants and full remove/purge/interruption matrix",
+    "remaining typed brokers, Core/OSGi and complete six-component lifecycle"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

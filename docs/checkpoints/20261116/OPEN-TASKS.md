@@ -1,4 +1,16 @@
 
+## 2026-11-19 Core/GWT typed Journal 下载与实际 Main 准入
+
+Core 54fc736fee 与 GWT 862eaa0 通过同机 Unix socket 提供固定的 Kura 与 system journal 查询。GWT 保留原设备权限和 XSRF 检查，有界调用固定客户端，使用每次请求独立暂存并在归档后清理。Broker 核对已装 SHA 清单、实际 vendor 单元、Main PID/cgroup、直接子进程参数与内核 pidfd；仅接收已定义日志范围和字段名。读取每项最多 32 MiB；异常结果不会作为成功条目归档。
+
+实际 Core 安装器会清理模板暂存目录，留存模板已移至正式配对目录。隔离 Debian 13 上动态 UID 的消息总线查询被拒，实装按正常升级改为专用静态系统账号。打包的 worker 源由独立 Root 目录提供，运行时隐藏 Core 与密钥目录，只给 systemd-journal 附加组。最终 Core 原位升级保存两个原 Root 凭据的完整指纹，Main 无自动启动。版本配对安装后显式启动实际 Main，socket 自动就绪。
+
+同 UID 非 Main 进程被实际拒绝，返回零日志字节。GWT 管理员从正式 System Logs 入口发起一次下载，HTTP 200，ZIP 含 22 项。两份 journal 经实际 worker 输出且各自作用范围已核对。普通日志文件保持原字节，请求暂存清理。观测到的三个处理进程全部为专用非 Root UID、五类 capabilities 为零、NNP 1。正常停止 Main 时 socket 撤下，现场 disabled 并正常停放。
+
+macOS 和 Linux ARM64 各 5 项定向合同，GWT Maven 10 项通过。Linux 74 项相关包装选择中一项旧 watchdog 夹具在两种成功分支失败，基线 7d4789fe1d 已复现相同失败。继续收敛 Main 权限、其余日志 provider/launcher、完整 Core/OSGi、typed brokers 与全六组件矩阵。原 7fd 保持 41 输入/16 回执。12 父项关闭 0/12，external deferred 仅原三项。见[检查点](actual-core-typed-journal-export-checkpoint.json)。
+
+
+
 ## 2026-11-19 已绑定 Agent 同 Root 后继发行重装及真实设备号变化
 
 Agent `f956952` 扩展原后继重装，沿初始化和本次移除原编号核对旧 Kura peer、材料授权、原安装/来源链及新版 archive。新版 Rust 检查器在相同非 Root UID 下认证暂存 DB/WAL 副本，并逐项比较旧 inspector 的结果。configure 只发布已审核的原生、Kura peer、材料公开及私有中继代码绑定。原 grant、角色、权限、Core/Networking 配对、保留任务和 OFF 状态继续严格核对。源码回归覆盖私有中继发布后中断，沿唯一初始事务续接。
