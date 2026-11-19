@@ -1,4 +1,14 @@
 
+## 2026-11-20 BIND 文件已发布且无回执的原编号核定
+
+Core 1ae9a34b3e 在原意图记录真实已 fsync 且通过 named-checkconf 的暂存文件身份。文件发布采用同一原 inode。受控核定先核 Root 和原 ID，只采信同一次 Linux 启动、原 named invocation、原暂存 inode 和发布摘要均匹配的文件操作。核定同步父目录并单独生成受保护的回执，确认仍需原 ID。启停和激活如果缺少完成证据，继续保留原 UNKNOWN 围栏。
+
+Debian 13 ARM64 从 Git 构建并实装。在专用隔离容器以只用于验收的 Linux ptrace 证实实际 actor 的 rename 成功返回，用 PIDFD 中断该进程。真实 Main 的 Java 调用报告 UNKNOWN，此时配置已换成原意图指向的 inode，原结果文件缺失。继任 Main 在同次 Linux 启动、同 Root 上先只读查询 UNKNOWN，再核定并明确确认原编号。仅增加回执和确认文件，未重新发布配置，named PID 和 invocation 保持，原三份保护文件和发布配置的 inode、字节及元数据精确保持。现场禁用 Main 并正常停放。[Linux ptrace syscall-info 接口](https://github.com/torvalds/linux/blob/master/include/uapi/linux/ptrace.h)
+
+Linux Core 121 项、Networking b3af558 Maven 2211 项通过。实际现场抑制 NM 后台重配，生产包权限未加入 tracer。其他 BIND 未决服务阶段、Root 重挂、旧配置合法纳管、NM 实际后台触发仍内部待办。其余 brokers、完整 Core/OSGi 和六组件/provider/launcher/安装升级移除 purge 与全部中断恢复矩阵保持。原 7fd 保持 41 输入/16 回执，冻结父项最终闭环 0/12，external deferred 仅原三项。见[检查点](actual-core-bind-publication-settlement-checkpoint.json)。
+
+
+
 ## 2026-11-20 BIND 已提交丢回复与同 Root 继任 Main 核定
 
 Core c41514a055 让写请求提交前绑定当前 Root scope。提交后原结果一旦缺确认即保留后续写围栏。只读查询沿原 ID，先核 Root，再核对意图与回执。Networking b3af558 在原 JVM 确认收到结果后使用同一 ID 确认。Root 记录验证后单独持久化确认。兼容以前已闭环的旧回执，原写请求走独立派发入口。

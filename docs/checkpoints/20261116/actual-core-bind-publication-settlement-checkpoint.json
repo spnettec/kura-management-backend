@@ -1,0 +1,130 @@
+{
+  "date": "2026-11-19T16:33:14.899378+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "core": [
+    "1ae9a34b3e352b1520eae709527291ca285feff8",
+    "5df83b8d8f9d283c9e1d5941aefcc7194a30702c"
+  ],
+  "networking": [
+    "b3af5584b24ef6d9a8f0c58d83771e1ae9ea8b62",
+    "b03044cf1e28307eb49cdf3de66ca4a97fcfba18"
+  ],
+  "provider": {
+    "bindOutcomeProtocol": 1,
+    "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+    "schema": 1,
+    "sha256": "1191733544368ed50bf4214042790aa7fea1873a260605b9c66ec3b32f1d1dbb"
+  },
+  "initial": {
+    "id": "d1e0105545c9b1d8ee49617760f38e179fcf54be781881d8e27c67af9804f705",
+    "main": {
+      "MainPID": "1778",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "0c026fdf9e604851b46604c15d23b598"
+    },
+    "named": {
+      "MainPID": "110",
+      "ControlPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "aaef442b2b44404b9d0b6b909bdafb4c"
+    },
+    "configSha256": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+    "rootIdentity": "1048830:4936825"
+  },
+  "actualInterruptedPublication": {
+    "id": "d1e0105545c9b1d8ee49617760f38e179fcf54be781881d8e27c67af9804f705",
+    "original": "44bc62c3-a368-4185-a443-d3d184456e19",
+    "configuration": {
+      "forwarders": [
+        "127.0.0.2"
+      ],
+      "mode": "keep",
+      "networks": [
+        "127.0.0.1/32"
+      ]
+    },
+    "actor": {
+      "actorPid": 2621,
+      "unit": "kura-bind-service@1-2608-997.service",
+      "requestId": "44bc62c3-a368-4185-a443-d3d184456e19",
+      "intentSha256": "99dd586f23d63e192891df1a64fd83b1543c59d648640838bbd0552504a63ca7",
+      "configSha256": "5bde042732247cda2eeedc74634dc37e7da15b29cfd764fc0f3669db2e1f7d82",
+      "atSuccessfulRenameExit": true,
+      "noTerminalReceipt": true
+    },
+    "pendingSha256": "5bde042732247cda2eeedc74634dc37e7da15b29cfd764fc0f3669db2e1f7d82",
+    "callerObserved": "UNKNOWN",
+    "resultPresent": false,
+    "namedUnchanged": true
+  },
+  "settlement": {
+    "id": "d1e0105545c9b1d8ee49617760f38e179fcf54be781881d8e27c67af9804f705",
+    "original": "44bc62c3-a368-4185-a443-d3d184456e19",
+    "main": {
+      "MainPID": "3703",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "2d1abcbceae74d81acfea28c6c3d8b1f"
+    },
+    "sameBootSameRoot": true,
+    "firstRead": "UNKNOWN",
+    "resolved": "APPLIED",
+    "acknowledged": true,
+    "namedUnchanged": true,
+    "publishedInodeAndBytesExact": true,
+    "priorFilesExact": 3,
+    "receiptSha256": "9a24038ff4f1dff6eb450a52d3b45a3e2af043b98807df881849e3651c7740ac",
+    "ackSha256": "0d8d1d5c8682d7e60157100b9e9c9f597e6e284cea4dd6cc15cd6aab9eaee061",
+    "redispatchCount": 0
+  },
+  "parked": {
+    "id": "d1e0105545c9b1d8ee49617760f38e179fcf54be781881d8e27c67af9804f705",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:29:39.574226404Z",
+      "FinishedAt": "2026-11-19T16:32:37.521609365Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "socketRemoved": true,
+    "receiptsRetained": 1,
+    "acknowledgmentsRetained": 1
+  },
+  "tests": {
+    "linuxCore": 121,
+    "networking": {
+      "tests": 2211,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "backgroundNMSuppressed": true,
+  "testOnlyDebuggerCapability": true,
+  "originalPublishDispatches": 1,
+  "repeatDispatches": 0,
+  "crossRootLookups": 0,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
