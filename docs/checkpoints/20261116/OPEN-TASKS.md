@@ -1,4 +1,14 @@
 
+## 2026-11-19 Deployment 正式 Main 换包准入与半配置续接
+
+Deployment a32aa7e 将 Main 生命周期接入 Deployment 的 Debian 换包。活动 Main 或仍有启动作业时拒绝替换。Main 停止后，维护脚本持久绑定同一 Root、boot 与本次 runtime mask 的 inode，并验证 mask 生效，再允许替换。configure 成功才释放本次自有 mask。既有管理员 mask、Core vendor unit 和 Root 配对保持。preinst/postrm 内嵌同一段正式检查源码。未配置的新包可按正常 dpkg 移除，前提是未创建 FileMove 业务状态、容纳它的服务保持静止。
+
+独立 Debian 13 ARM64 从已装 Deployment 8b6fcd0 和真实活动 Main 开始。在实际 dpkg upgrade 入口拒绝更换，旧 JVM PID/出生时间、实际 OSGi provider、包版本和已装两份 JAR 完整保持。旧 prerm 的 socket 暂停经 dpkg abort 回到原 socket 状态。用标准 systemd 停止专用旧 Main 后实际 unpack 成功，新的临时 mask 与记录精确，真实 Main start 被拒绝。用独立测试目录权限冲突造成实际 dpkg half-configured，现有 gate 与 inode 保持。仅修复测试权限后正常 configure 原包，释放相同 inode 的 mask。正式候选两份 JAR、gate、broker、unit 均与包精确；新 Main 真正加载 FileMove provider。Core canonical key、provisioned.json 和 vendor Main unit 保持。Maven/JDK 21 全仓 239 项通过。
+
+另一个新隔离 Debian 13 ARM64 Root 用标准 dpkg unpack 后直接 remove，保留独立管理员 runtime mask 的完整所测指纹，Core 保持安装，没初始化 FileMove 状态或启动 Main。两个新现场均正常停放。上一轮业务动作及 UNKNOWN 保持。当前覆盖 vendor 布局和同 boot 续接；跨 boot、其他合法布局/launcher、其余 provider 和完整六组件矩阵仍内部待办。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-running-main-cohort-checkpoint.json)。
+
+
+
 ## 2026-11-19 受保护 FileMove MOVE 原源清理和实际丢回复
 
 Deployment 8b6fcd0 将目标发布与源清理分别记录。合法 Main 在提交前同步原源路径、设备号、inode、时间与摘要，只把原意图摘要交给 Root actor。目标同步并提交后，actor 生成只读证明，绑定同一个 Root、作业、源意图以及已发布目标的 inode 与摘要。Main 核对目标与源的原身份再清理，并独立确认原清理回执。源未确认时维护保持待办，同一受保护目标由原作业占用。旧协议的受保护 MOVE 需要更新 provider，旧原记录留存可读。

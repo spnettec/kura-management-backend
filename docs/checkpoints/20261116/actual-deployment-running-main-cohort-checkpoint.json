@@ -1,0 +1,226 @@
+{
+  "at": "2026-11-19T09:06:33.311092+00:00",
+  "initialPackage": {
+    "container": "9f544fee6438675fbf9d6f815b766c8d49e62437bf039d5d76ae14ae472564c2",
+    "packages": {
+      "kura-core": {
+        "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+        "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+        "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+      },
+      "kura-deployment": {
+        "expectedVersion": "2.0.0~git202611190857.8b6fcd0-1",
+        "sha256": "1251ed1727e151126809d810c6ce263fadfd73e5b5b930162b25ecaf0bb5b757",
+        "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+      }
+    },
+    "revision": "8b6fcd0c63a434fa170b501e12ce6de08d2208be",
+    "tree": "e0dd88ca6c4b990bf9c36b914580df7f3cdbe6fc",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "abc0e90ae68366de3199df211250d75ff44f4159e9d87d86e15a43153cc2b30e",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "5954e4b2c28322289d14d0f3ed3f7fbfd4d2a31fa06d88c949afae1b97c5e4c3",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "nativePackage": {
+    "container": "9f544fee6438675fbf9d6f815b766c8d49e62437bf039d5d76ae14ae472564c2",
+    "commit": "a32aa7eb68984160ca2600c1b59c469e161266b6",
+    "tree": "305a3f8f0641fdab763bf3672d255ab7fc941365",
+    "version": "2.0.0~git202611190903.a32aa7e-1",
+    "deb": "kura-deployment_2.0.0~git202611190903.a32aa7e-1_all.deb",
+    "sha256": "664306e1139ad0b49509262b84836e0905114a4506a94399f77aa0a85e0e6076",
+    "embeddedGateExact": true,
+    "payloads": {
+      "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar": "5b3aa23bce359c771066243dd9d9fe74185d48fdd32002171ae8b6a8319f6d32",
+      "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar": "7febfce6605ae9797d1fb824906be79f51e4faf03b44537bf12b3c8768d9e582",
+      "/usr/libexec/kura-filemove/main_maintenance.py": "daa8a1d476c3bace88a2a066e1f4bf4da888a3dad44e7bc5ce3559613ec11c07",
+      "/usr/libexec/kura-filemove/broker.py": "24e6378a1059921bec67c6a363853f87b1131bb9d0b9829e92aba6bafcc71446",
+      "/usr/lib/systemd/system/kura-filemove.service": "c3998707f4766149df312e0e51d0708b09122f7ec20332648344f975de6c7ed7",
+      "/usr/lib/systemd/system/kura-filemove.socket": "751e9ee1c428bc391af3f941f7c7392fb1861e9012ecf25df79d7a6852e70ec1"
+    }
+  },
+  "fixture": {
+    "container": "9f544fee6438675fbf9d6f815b766c8d49e62437bf039d5d76ae14ae472564c2",
+    "network": "none",
+    "finalOrdinaryMainDisabled": true,
+    "finalSocketDisabled": true,
+    "exitCode": 0
+  },
+  "actualInUseRefusal": {
+    "container": "9f544fee6438675fbf9d6f815b766c8d49e62437bf039d5d76ae14ae472564c2",
+    "oldMain": {
+      "pid": 1600,
+      "ticks": "29201660"
+    },
+    "provider": [
+      "1600",
+      "org.eclipse.kura.hook.file.move.provider",
+      "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.internal.hook.file.move.FileMoveDeploymentHook"
+    ],
+    "socketRestored": true,
+    "originalCodeExact": true,
+    "version": "2.0.0~git202611190857.8b6fcd0-1"
+  },
+  "halfConfigured": {
+    "container": "9f544fee6438675fbf9d6f815b766c8d49e62437bf039d5d76ae14ae472564c2",
+    "version": "2.0.0~git202611190903.a32aa7e-1",
+    "gate": {
+      "meta": [
+        "600",
+        "0",
+        "0",
+        "1048812",
+        "4514070",
+        "1",
+        "271",
+        "2026-11-19 09:05:23.923542504 +0000",
+        "2026-11-19 09:05:23.923542504 +0000"
+      ],
+      "digest": "591f5543f7ab82d313f34e8046440ac599b73f4879e797efbc7156d574abb19c"
+    },
+    "maskLinkRetained": true,
+    "startWasRefused": true,
+    "ownedInode": 435,
+    "originalPhase": "install ok half-configured"
+  },
+  "ordinaryInstalledContinuation": {
+    "container": "9f544fee6438675fbf9d6f815b766c8d49e62437bf039d5d76ae14ae472564c2",
+    "baselineVersion": "2.0.0~git202611190857.8b6fcd0-1",
+    "version": "2.0.0~git202611190903.a32aa7e-1",
+    "oldMain": {
+      "pid": 1600,
+      "ticks": "29201660"
+    },
+    "newMain": {
+      "pid": 2751,
+      "ticks": "29202560"
+    },
+    "provider": [
+      "2751",
+      "org.eclipse.kura.hook.file.move.provider",
+      "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.internal.hook.file.move.FileMoveDeploymentHook"
+    ],
+    "installed": {
+      "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar": {
+        "meta": [
+          "644",
+          "0",
+          "0",
+          "1048812",
+          "4514073",
+          "1",
+          "33741",
+          "1980-02-01 00:00:00.000000000 +0000",
+          "2026-11-19 09:05:23.983751787 +0000"
+        ],
+        "digest": "5b3aa23bce359c771066243dd9d9fe74185d48fdd32002171ae8b6a8319f6d32"
+      },
+      "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar": {
+        "meta": [
+          "644",
+          "0",
+          "0",
+          "1048812",
+          "4514071",
+          "1",
+          "126244",
+          "1980-02-01 00:00:00.000000000 +0000",
+          "2026-11-19 09:05:23.983751787 +0000"
+        ],
+        "digest": "7febfce6605ae9797d1fb824906be79f51e4faf03b44537bf12b3c8768d9e582"
+      },
+      "/usr/libexec/kura-filemove/main_maintenance.py": {
+        "meta": [
+          "644",
+          "0",
+          "0",
+          "1048812",
+          "4514079",
+          "1",
+          "8502",
+          "1980-02-01 00:00:00.000000000 +0000",
+          "2026-11-19 09:05:23.983751787 +0000"
+        ],
+        "digest": "daa8a1d476c3bace88a2a066e1f4bf4da888a3dad44e7bc5ce3559613ec11c07"
+      },
+      "/usr/libexec/kura-filemove/broker.py": {
+        "meta": [
+          "644",
+          "0",
+          "0",
+          "1048812",
+          "4514078",
+          "1",
+          "30968",
+          "1980-02-01 00:00:00.000000000 +0000",
+          "2026-11-19 09:05:23.983751787 +0000"
+        ],
+        "digest": "24e6378a1059921bec67c6a363853f87b1131bb9d0b9829e92aba6bafcc71446"
+      },
+      "/usr/lib/systemd/system/kura-filemove.service": {
+        "meta": [
+          "644",
+          "0",
+          "0",
+          "1048812",
+          "4514081",
+          "1",
+          "982",
+          "1980-02-01 00:00:00.000000000 +0000",
+          "2026-11-19 09:05:23.983751787 +0000"
+        ],
+        "digest": "c3998707f4766149df312e0e51d0708b09122f7ec20332648344f975de6c7ed7"
+      },
+      "/usr/lib/systemd/system/kura-filemove.socket": {
+        "meta": [
+          "644",
+          "0",
+          "0",
+          "1048812",
+          "4514080",
+          "1",
+          "274",
+          "1980-02-01 00:00:00.000000000 +0000",
+          "2026-11-19 09:05:23.983751787 +0000"
+        ],
+        "digest": "751e9ee1c428bc391af3f941f7c7392fb1861e9012ecf25df79d7a6852e70ec1"
+      }
+    },
+    "coreProtectedExact": true,
+    "operatorShutdownOldMain": true,
+    "resumedOriginalHalfConfigured": true,
+    "ownedMaskReleased": true
+  },
+  "freshUnpackRemove": {
+    "container": "b4e4a9e4632db6e87fd3bb604877b83006f53dd29e52bf3153a232113fd2d14b",
+    "externalMaskExact": "1048825:380:0:0:1:2026-11-19 09:05:58.996868021 +0000:2026-11-19 09:05:58.996868021 +0000",
+    "mainNeverStarted": true,
+    "noFileMoveStateInitialized": true,
+    "unpackedRemoved": true,
+    "coreStillInstalled": true,
+    "exitCode": 0,
+    "externalMaskPreservedUntilFixtureStopped": true
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
