@@ -1,4 +1,14 @@
 
+## 2026-11-20 BIND 类型化配置发布与实际 DNS 验证
+
+Core 0b4f42576f 在 Main 将 /etc/bind 挂为只读，通过配对 actor 接受 IPv4 转发器、CIDR 与启用状态。先核对发行包原配置或同 Root 上次已提交字节，再由实际 named-checkconf 验证固定模板。在写意图后原子发布并核对启用状态，任一不确定的变更保留原编号。站点自改主配置或 options 在变更前拒绝。禁用时恢复原发行包字节。保留站点 zones 等 include。Networking 8c522a2 的 NM 监视器调用同一 OSGi 配置入口，由发行证明约束对应 JAR。[ISC BIND 配置参考](https://bind9.readthedocs.io/en/v9.20.15/reference.html)
+
+Debian 13 ARM64 实装当前 Git 以 JDK 21 构建。合法 Main 内的已装 OSGi provider 实际发布并激活，新的 named invocation 转发允许源 127.0.0.1 的查询并返回测试地址 192.0.2.42，拒绝另一源 127.0.0.3。随后实际禁用，原 named.conf 字节恢复，四份 include 或启动输入保持，两个原 ID 均留同 Root 回执。现场抑制 NM 后台重配以单独验证 provider，正常停放并移出专用探针。Linux Core 116 项与 Networking Maven 2211 项通过。
+
+历史 Java 生成及站点自改 BIND 配置的显式纳管、丢回复与跨 Main 核定、Root 重挂恢复及实际 NM 后台触发仍为内部待办。其余 brokers、完整 Core/OSGi 和六组件/provider/launcher 生命周期矩阵保持原范围。原 7fd 保持 41 输入/16 回执，12 父项最终闭环 0/12，external deferred 仅原三项。见[检查点](actual-core-bind-configuration-checkpoint.json)。
+
+
+
 ## 2026-11-20 BIND 直接 polkit 授权配对撤回
 
 Networking b54b360 在发行包发布已构建的 DNS provider 指纹。Core d0e9774b13 在 Debian 换版和 Main 启动前、在原 modem 配对基础上核对 BIND provider 的包所有权和 JAR 指纹，撤下 kurad 对 named/bind9 的直接 systemd 操作授权。Main 将 polkit 配置挂为只读。原 polkit 文件按指纹归档，Chrony 专用账号与 unit 的权限合同保持。

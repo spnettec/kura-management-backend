@@ -1,0 +1,142 @@
+{
+  "date": "2026-11-19T16:18:27.099458+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "core": [
+    "0b4f42576f63d3a60cd21ca5f54beae3b54a9a54",
+    "e83c868a7ae7476fdd07451081e3feaec28cf27e"
+  ],
+  "networking": [
+    "8c522a299f838faf6508a62b447277ee15d6f63c",
+    "2f13d8a7058fe0c067203e88e4e0201d02037d04"
+  ],
+  "main": {
+    "id": "ea1c7e4ddbd428c87f48d07df7d9be70bd8569d01fe9fc1c1e4f5548fae335d4",
+    "main": {
+      "MainPID": "1837",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "8833db982d4a49c5bb6c773e318c80b8"
+    },
+    "providerVersion": "3.0.0.202611191614",
+    "bindDirectoryReadOnly": true
+  },
+  "providerProof": {
+    "bindConfigurationProtocol": 1,
+    "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+    "schema": 1,
+    "sha256": "579de7c1e8e30b51d600c597068362f16e365f9aa664fe628b562ae3b87a7fc9"
+  },
+  "enable": {
+    "id": "ea1c7e4ddbd428c87f48d07df7d9be70bd8569d01fe9fc1c1e4f5548fae335d4",
+    "pairedIntent": {
+      "action": "configure",
+      "configuration": {
+        "forwarders": [
+          "127.0.0.2"
+        ],
+        "mode": "enable",
+        "networks": [
+          "127.0.0.1/32"
+        ]
+      },
+      "operationId": "bbb6aa8e-ccfb-4cc2-a723-83e3bb2dbfb5",
+      "schema": 1
+    },
+    "publication": {
+      "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "published": "5bde042732247cda2eeedc74634dc37e7da15b29cfd764fc0f3669db2e1f7d82",
+      "revision": 1,
+      "stockSha256": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7"
+    },
+    "service": {
+      "MainPID": "2400",
+      "ActiveState": "active",
+      "InvocationID": "694fc1e065da473396884bf3346ed1a0"
+    },
+    "good": {
+      "address": "192.0.2.42",
+      "source": "127.0.0.1",
+      "answerCount": 1
+    },
+    "bad": {
+      "action": "REFUSED",
+      "source": "127.0.0.3",
+      "answerCount": 0
+    },
+    "upstream": {
+      "replies": 1,
+      "source": "127.0.0.1",
+      "response": "192.0.2.42"
+    }
+  },
+  "disable": {
+    "id": "ea1c7e4ddbd428c87f48d07df7d9be70bd8569d01fe9fc1c1e4f5548fae335d4",
+    "pairedIntent": {
+      "action": "configure",
+      "configuration": {
+        "forwarders": [],
+        "mode": "disable",
+        "networks": []
+      },
+      "operationId": "2428070c-f034-420f-821f-554ea68c22dd",
+      "schema": 1
+    },
+    "publication": {
+      "before": "5bde042732247cda2eeedc74634dc37e7da15b29cfd764fc0f3669db2e1f7d82",
+      "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "revision": 2,
+      "stockSha256": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7"
+    },
+    "stopped": {
+      "MainPID": "0",
+      "ActiveState": "inactive",
+      "InvocationID": "694fc1e065da473396884bf3346ed1a0"
+    },
+    "stockBytesRestored": true,
+    "includeFilesExact": true
+  },
+  "parked": {
+    "id": "ea1c7e4ddbd428c87f48d07df7d9be70bd8569d01fe9fc1c1e4f5548fae335d4",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:14:54.524834494Z",
+      "FinishedAt": "2026-11-19T16:17:49.583839568Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "socketRemoved": true,
+    "receiptsRetained": 2
+  },
+  "linuxCorePassed": 116,
+  "networkingTests": {
+    "tests": 2211,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "backgroundNMSuppressed": true,
+  "testedThroughInstalledOsgiProvider": true,
+  "liveSiteConfigurationTested": false,
+  "actualLostReplyExercised": false,
+  "olderBusinessReplayed": false,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
