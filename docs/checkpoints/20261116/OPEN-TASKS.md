@@ -1,4 +1,14 @@
 
+## 2026-11-19 Agent 原生 remove/purge 和已初始化边界
+
+两个独立、无外网的 Debian 13 ARM64 Root，均安装配对的 Core 7d4789fe1d 和 Agent 3547424 正式 deb。未初始化的现场使用实际 dpkg 各执行一次 remove 和 purge，均 exit 0。remove 后为 `deinstall ok config-files`，purge 后包从 dpkg 清单消失。Agent 负载和控制器移除，专用账号保留，Agent 单元停止，Core 仍安装，三个原文件摘要一致。第一次探针用了错误的服务账号名，在任何 remove/purge 派发前纠正，沿同一次安装继续。
+
+另一个现场单次正常初始化后保持 Main、Agent 和两个 socket inactive。真实 dpkg remove 在 `prerm` 拒绝并返回 exit 1，dpkg 记录为 `deinstall ok installed`。原 11 个状态条目、其中 7 个文件的内容及元数据保持，原初始化回执、已装二进制、控制器、maintainer、Core loader 与服务状态均一致。未再次派发 remove，未派发 purge。两个现场均正常停放。macOS maintainer 契约 8 项通过。
+
+已初始化数据的合法移除、跨中断续接、purge 和同 Root 重装仍为内部待办。原三现场、原 7fd 41 输入/16 回执及已有 UNKNOWN 保持。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-native-agent-remove-purge-boundary-checkpoint.json)。
+
+
+
 ## 2026-11-19 原生首次绑定、mTLS 与实际 Core 只读业务
 
 在相互隔离的 Debian 13 ARM64 网关、中心及独立 PostgreSQL 验证包级联调。网关安装 Core 7d4789fe1d、GWT 1205092、Networking 4ee16c9 和修复首次绑定的 Agent 3547424。原生中心安装和显式启动均通过，标准安装器为 READY。中心单次初始化 APPLIED，独立 PostgreSQL 应用角色受限，公开 schema 由 0 表增加到 14 表。

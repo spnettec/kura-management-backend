@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-19T13:49:43.529620+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "fresh": {
+    "container": "b2aaa19f4a908d1dbbe09858bde487d3b21568a649256fcc2b2a4a64b88c9375",
+    "agentPackage": "0.1.0~cohort202611191336.3547424-1",
+    "releaseSha256": "1e0a4f03bd73dc9037dd290c28241203f2ed4b80c6ab05ffd280335de390f921",
+    "agentSource": "3547424c1b3f90d13650c95f5063b7cc21b6db55",
+    "coreSource": "7d4789fe1d6636b7f092959724f3f9281842c205",
+    "packageAfterRemove": "deinstall ok config-files",
+    "packageAfterPurge": "not-listed",
+    "originalCoreFilesExact": 3,
+    "controlAndPayloadAbsent": true,
+    "retainedProfileNeverCreated": true,
+    "unitStatesInactive": true,
+    "nativeAccountsRetained": true,
+    "removeCount": 1,
+    "purgeCount": 1
+  },
+  "initialized": {
+    "container": "a92381c147f9a25055643b70052c1b50b690f9551cb8e1be39e713d20c4df0f4",
+    "productionAgent": "3547424c1b3f90d13650c95f5063b7cc21b6db55",
+    "operation": "7d0ef945-7e85-4607-9735-82e18d03a536",
+    "dpkgExit": 1,
+    "packageStatus": "deinstall ok installed",
+    "blockedIn": "prerm",
+    "matchedGuard": "Retained native profile requires original upgrade/removal maintenance; preserve all data",
+    "retainedEntries": 11,
+    "retainedFiles": 7,
+    "initializationReceiptExact": true,
+    "originalCoreFilesExact": 3,
+    "originalPairExact": true,
+    "unitStateExact": true,
+    "removeDispatches": 1,
+    "purgeDispatches": 0,
+    "productionRemovalSupportPending": true
+  },
+  "parked": {
+    "fresh": {
+      "container": "b2aaa19f4a908d1dbbe09858bde487d3b21568a649256fcc2b2a4a64b88c9375",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T13:47:44.350781098Z",
+        "FinishedAt": "2026-11-19T13:48:16.969655976Z"
+      }
+    },
+    "initialized": {
+      "container": "a92381c147f9a25055643b70052c1b50b690f9551cb8e1be39e713d20c4df0f4",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T13:48:47.685475706Z",
+        "FinishedAt": "2026-11-19T13:49:11.174005726Z"
+      }
+    }
+  },
+  "freshObserverCorrection": {
+    "container": "b2aaa19f4a908d1dbbe09858bde487d3b21568a649256fcc2b2a4a64b88c9375",
+    "installedOnce": true,
+    "priorGetentExitCode": 2,
+    "actualUser": "kura-management-agent",
+    "noRemoveOrPurgePreviouslyDispatched": true
+  },
+  "nativeLifecycleHostTests": 8,
+  "baseConsole": "cf06e387be80b823e46aa677128e85a51b1383c8",
+  "pending": [
+    "explicit Root-paired native Agent retained removal, retained purge and same-Root reinstall after interruption",
+    "remaining Core and OSGi business, typed brokers and six-component release matrix"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
