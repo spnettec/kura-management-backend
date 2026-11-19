@@ -1,4 +1,15 @@
 
+## 2026-11-19 原 owner 的双族 typed 业务读取与 JVM 可执行身份
+
+在原 `COMMITTED` 现场，通过同一实际 JVM 的正式 OSGi 防火墙 provider 读取 IPv4/IPv6 typed snapshot、schema 4 candidate 和同一确认源。正式 imported review 在 Java 探针修正本地时限参数后到达已装 Agent，返回 INTERNAL，现场无防火墙 transaction。实测外部 Root 与完全相同 UID/GID 均无法读取 JVM 的 `/proc/<pid>/exe`。原 lease 与实际 native 回读仍可验证，Agent 本地和远程写授权均未开启。
+
+Networking `3723ab2` 复用已有普通启动回调的扩展查询，由真实 JVM 读取自己的内核 executable 身份。旧请求和注册清单保持兼容。Agent `951da5c` 仅在外部 procfs 权限拒绝时调用，核对 Unix 对端 PID 与注册 epoch，独立绑定实际进程出生及 Root 保护安装路径、device/inode/size/ctime，并保留原 unit、profile、租约和启动证据复核。纯所有权 status 使用既有有界共享锁。ARM64 Rust 62 项通过、1 项忽略；JDK 21 bridge 161 项通过。
+
+实际同 JVM 测量及独立 Root 校验一致。候选桥与 Agent 尚待正式同 Root 配对部署及真实业务写入验收。原三现场、现有进程、原 lease、密钥、快照、原 UNKNOWN 与 7fd 禁用停机 41 输入/16 回执保持。完整 Core/OSGi/合法 Main、拆分 broker 与六组件矩阵仍内部待办，冻结 12 父项 0/12，external deferred 仅原三项。见 [检查点](actual-imported-firewall-executable-observation-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原初始化 Root 受控停止、普通 owner 启动与实际 OSGi 确认
 
 Agent `530f999`、`f027f33`、`3edd3f5` 将 schema 5 接到正式已装 Root 入口。操作使用同一原 ID、实际已装包链、固定 systemd 单元、原 Root 和原始授权。停机前重新采样当前 Agent Unix 对端、旧 JVM 注册、原 Netfilter 和已提交初始化；停机后仍核对同一 Root/NM/Agent，按原序列发布和启动。被隔离的 Agent 通过正式 Root reader 只读核对两道原系统 fence。新 JVM completion 要求实际已确认启动及新的 Java/OSGi 证据。

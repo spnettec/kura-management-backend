@@ -1,0 +1,114 @@
+{
+  "recordedAt": "2026-11-19T04:17:43.854225+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-original-legacy-startup-activation-checkpoint.json",
+  "agentSource": {
+    "head": "951da5c570505e8bddc095b9761d9d201cba4dfe",
+    "tree": "8d649903c0f2f6a262b8cd2a9299646d46bfb0de"
+  },
+  "networkingSource": {
+    "head": "3723ab282f7564b2fed42328931f86d09c6ba50e",
+    "tree": "79ad7dfc6d0040c93a97370d9b0105f4416e22ba"
+  },
+  "protocol": {
+    "head": "283b76bde48ff703bd57a1c26e6eaeaee387f87c",
+    "tree": "2421a4e6f687901efa6a63fc8364bc0bb3524132"
+  },
+  "actualInstalledAgentSource": {
+    "head": "3edd3f5cb55ad25ccc87bb1f418b273b2dab61c6",
+    "tree": "fabf667a1fbce6b2d1bc0d69fcddca87d2b0704d"
+  },
+  "actualDualStackBusinessView": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "bundleId": "228",
+    "binaryDigest": "4ad7bd12b185b97750e2e8aea5a44c342db09d22826cf64afc25e4a009eafad0",
+    "result": {
+      "processId": 85897,
+      "providerBundle": "org.eclipse.kura.firewall.agent",
+      "providerVersion": "1.0.0.202611190145",
+      "typedIpv4": true,
+      "typedIpv6": true,
+      "schema4": true,
+      "revision": 1,
+      "sourceDigest": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+      "sameTypedSource": true,
+      "confirmedStable": true,
+      "reviewOperationId": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "state": "REFUSED",
+      "stage": "live-owner-review",
+      "code": "INTERNAL"
+    },
+    "noTransactionCreated": true,
+    "originalProcessesAndUnknownExact": true
+  },
+  "actualExternalProcRestriction": {
+    "root": {
+      "readlink": 13,
+      "stat": 13
+    },
+    "sameCoreIdentity": {
+      "uid": 997,
+      "gid": 995,
+      "readlink": 13,
+      "stat": 13
+    }
+  },
+  "actualSameJvmMeasurement": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "processId": 85897,
+    "measurement": {
+      "schemaVersion": 1,
+      "processId": 85897,
+      "startTicks": 27387572,
+      "path": "/usr/lib/jvm/java-21-openjdk-arm64/bin/java",
+      "device": 1048736,
+      "inode": 3689927,
+      "size": 67560,
+      "ctime": 1794979988,
+      "ctimeNanos": 336122770
+    },
+    "proof": {
+      "rootIndependentInstalledFileExact": true,
+      "externalProcBirthExact": true
+    },
+    "sandboxLegacyAgentPreserved": true,
+    "probeOnly": true,
+    "bundleId": "229",
+    "jarSha256": "de2292f98007905fb7f31114a42c515ffc926cae4d27c3e8b51973f7c9eb6b97"
+  },
+  "installedLocalTypedWriteGrant": false,
+  "installedRemoteTypedWriteGrant": false,
+  "validation": {
+    "arm64RustPassed": 62,
+    "arm64RustIgnored": 1,
+    "managementBridgeJavaPassed": 161,
+    "jdk": 21,
+    "liveSameJvmMeasurementAndIndependentRootReadback": true,
+    "publishedPairedWireActuallyDeployed": false,
+    "liveImportedWriteDispatched": false
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Package and legally pair the new Agent and Java bridge on the same committed Root, then verify authenticated live review",
+    "Exercise the actual imported business forward/confirm/inverse/observation and durable outcomes with original leases and explicit grants",
+    "Complete Core/OSGi and legal Main, remaining typed brokers, full six-component provider/launcher/install/upgrade/remove/purge/interruption cases"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/original-imported-firewall-business-20261119"
+}
