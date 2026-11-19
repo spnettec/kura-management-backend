@@ -1,4 +1,16 @@
 
+## 2026-11-19 Deployment 换包门禁跨系统管理器重启
+
+Deployment fddf031 用持久、事务自有的 systemd generator 建立早期 Main mask。generator 只向 systemd 的 early 输出目录发布 mask，启动时无需已装 Deployment 代码或读取 /opt。Debian 维护只有在同一 Root、原事务文件、generator 及锚点的 inode 和摘要都核对后才续接；配置完成只清理自有 generator。管理员 linked unit、vendor 文件及 Root 原配对保持。旧格式回执保留同 boot 校验。
+
+Debian 13 ARM64 一个独立 Root 以管理员 linked 布局真实 unpack。权限夹具造成实际 half-configured，gate 保持。原测试最初把 FragmentPath 当作解析后的目标，随即按 systemd 实际返回的管理员链接路径验证，未重复创建链接或包操作。实际 systemctl soft-reboot 将计数 0 增到 1，dbus invocation 变化，内核与原 Root 指纹保持。原 generator、回执、链接及目标文件精确。重启前后真实 Main start 均被拒绝。随后对相同字节的异 inode generator 验证拒绝释放，恢复本次自有链接并修正测试权限后，原 dpkg configure 成功。只移除本次 generator 和生成的 mask，管理员链接、Core 凭据和 vendor unit 保持。
+
+另一独立 Debian 13 ARM64 vendor 现场在实际 dpkg unpack 后正常停止并重新启动整个容器。新的 PID 1 出生时间和容器 StartedAt 已核对，仍用原内核，Root 设备号与 inode 匹配。新 systemd 启动时原 gate 再生成 mask，实际 Main start 被拒绝。原 configure 成功，保持既有布局。两个现场均无 Main 执行，正常停放。JDK 21 全仓 239 项通过。
+
+实际硬件冷启动、换设备后的 Root 恢复、旧格式跨 boot、其他 launcher 和完整六组件矩阵仍待验证。本次管理员 linked 布局用于验证换包保护与布局保留，未在该布局启动业务。原三现场、原 7fd 与历史 UNKNOWN 保持。全部 12 父项仍 0/12，external deferred 仅原三项。参见 [检查点](actual-deployment-main-gate-restart-checkpoint.json) 和 [systemd generator 文档](https://www.freedesktop.org/software/systemd/man/latest/systemd.generator.html)。
+
+
+
 ## 2026-11-19 Deployment 正式 Main 换包准入与半配置续接
 
 Deployment a32aa7e 将 Main 生命周期接入 Deployment 的 Debian 换包。活动 Main 或仍有启动作业时拒绝替换。Main 停止后，维护脚本持久绑定同一 Root、boot 与本次 runtime mask 的 inode，并验证 mask 生效，再允许替换。configure 成功才释放本次自有 mask。既有管理员 mask、Core vendor unit 和 Root 配对保持。preinst/postrm 内嵌同一段正式检查源码。未配置的新包可按正常 dpkg 移除，前提是未创建 FileMove 业务状态、容纳它的服务保持静止。

@@ -1,0 +1,99 @@
+{
+  "at": "2026-11-19T09:12:00.295466+00:00",
+  "nativePackage": {
+    "container": "9a27aa5e4e9b63313d79f437eca4500c841e3790837c2467abb8b2d89ed39eb6",
+    "commit": "fddf0312c3fb863192ed92b6cccdfcfa1e8d39f0",
+    "tree": "89b9f004208244ab6708eb3887e46b977ea79574",
+    "deb": "kura-deployment_2.0.0~git202611190909.fddf031-1_all.deb",
+    "sha256": "9c108ea674b9b6944c1bca7d67a270b50a49ef8e323a643494c136ddd07b157f",
+    "embeddedGateExact": true,
+    "helperSha256": "e5d3c1106bdd75ec68acb45078564fd19ad93578fffe301e1cd378fa5f8ed5be"
+  },
+  "originalRootBindingRetained": true,
+  "independentRootEntryNeverReplaced": true,
+  "softReboot": {
+    "container": "9a27aa5e4e9b63313d79f437eca4500c841e3790837c2467abb8b2d89ed39eb6",
+    "previous": {
+      "soft": "0",
+      "kernel": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "root": "1048813:4517366",
+      "invocation": "3dfec46582cf4b4abc1539dd6224e924",
+      "run": "1048826:1"
+    },
+    "current": {
+      "soft": "1",
+      "kernel": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "root": "1048813:4517366",
+      "invocation": "1e494659f46546179f387cdc30790ab4",
+      "run": "1048826:1"
+    },
+    "originalSameRoot": true,
+    "generatorAndReceiptExact": true,
+    "legacyLinkExact": true,
+    "startRefused": true,
+    "status": "install ok half-configured"
+  },
+  "originalConfigureContinuation": {
+    "container": "9a27aa5e4e9b63313d79f437eca4500c841e3790837c2467abb8b2d89ed39eb6",
+    "old": {
+      "soft": "0",
+      "kernel": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "root": "1048813:4517366",
+      "invocation": "3dfec46582cf4b4abc1539dd6224e924",
+      "run": "1048826:1"
+    },
+    "new": {
+      "soft": "1",
+      "kernel": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "root": "1048813:4517366",
+      "invocation": "1e494659f46546179f387cdc30790ab4",
+      "run": "1048826:1"
+    },
+    "originalTransitionUnchangedAcrossBoot": true,
+    "onlyOriginalGeneratorReleased": true,
+    "foreignGeneratorRefused": true,
+    "linkedUnitUnchanged": true,
+    "coreCredentialsAndUnitExact": true,
+    "mainNeverStarted": true
+  },
+  "containerStopStart": {
+    "container": "703fea87ea2b17e827e1ae36d1df8d5200cccc7f1b94aec9305b68dab8abecde",
+    "previous": {
+      "root": "1048812:4519450",
+      "kernel": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "init": "29233695",
+      "started": "2026-11-19T09:10:37.605484345Z"
+    },
+    "current": {
+      "root": "1048812:4519450",
+      "kernel": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "init": "29236710",
+      "started": "2026-11-19T09:11:07.75259863Z"
+    },
+    "filesystemContentAndInodeExact": true,
+    "newPid1Generation": true,
+    "mainMaskedAfterRestart": true,
+    "explicitStartRefused": true,
+    "rootExact": true,
+    "configured": true,
+    "differentDeviceStayedHeld": false,
+    "mainNeverStarted": true
+  },
+  "bothShareOriginalKernelWithinTheirTest": true,
+  "bothParkedExitZero": true,
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
