@@ -1,4 +1,14 @@
 
+## 2026-11-19 Chrony 类型化配置发布
+
+Core 244c3068a6 将 Chrony 配置从 JVM 的直接文件操作迁移到配对的发布单元。固定 Debian 配置路径由零 capability、NNP 的独立 Root 服务写入，调用者必须是已配对的 clock actor。NTP 源和支持的校时参数由 broker 类型化检查，原系统路径、权限和其他 Root 管理指令保持。变更先用实际 chronyd 校验，按原请求 ID 保留原字节，再原子发布。相同配置只读确认，发布结果不明时沿原 ID 查询。
+
+从当前 Git 用 JDK 21 构建正式 ARM64 deb，在 Debian 13 与 Chrony 4.6.1 实际安装并核对 13 份配对载荷。标准 systemd Main 内实际 OSGi 读取 Clock 配置，使用已装 provider 的初始化入口。一次配置发布 APPLIED，相同内容零新请求，额外 include 产生确定 EPERM。原文件副本字节精确，默认 chronyd 解析读回实际配置，直接 Root 读 socket 也被拒绝。Chrony 没有启动和改时。Main 正常退出后两份原回执与文件精确，测试 bundle 撤下，新现场禁用停放。
+
+本轮验证止于实际 provider 初始化、发布及解析。通过 ConfigurationService 持久化业务更新、active Chrony 的后续加载、其余发行布局和真实中断核定仍是内部 pending。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher、安装升级移除 purge 与全部 12 父项维持原范围。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-typed-chrony-configuration-checkpoint.json)。
+
+
+
 ## 2026-11-19 Core 安装器内阶段续接
 
 Core 5e4f795fdd 把布局、broker、运行文件、HTTPS 身份与权限设置分成五个固定步骤。每步先持久化意图，成功后持久化回执。回执绑定原 Root、维护 ID、包版本、控制脚本与原恢复副本。标准 configure 读取已完成回执，仅继续尚未派发的步骤。

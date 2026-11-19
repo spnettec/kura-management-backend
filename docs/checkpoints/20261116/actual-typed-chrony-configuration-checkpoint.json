@@ -1,0 +1,100 @@
+{
+  "at": "2026-11-19T06:50:34.337089+00:00",
+  "core": {
+    "commit": "244c3068a653ada6afcc06534d1658c0735889e4",
+    "tree": "105b9a51a73fc45139d61510ff6da5c73a0135b3",
+    "version": "6.0.0~git202611190647.244c306-1",
+    "sha256": "0f2bd7533aaf2ef693b07c31716e48dbedb48dc03faefc4e8cb615c28e88977e"
+  },
+  "arm64Debian13": true,
+  "chronyVersion": "4.6.1-3+deb13u2",
+  "cohortSha256": "6300a5398e8fdc12b3d776ae178cdafe166b870762640bbfbcbbcba9b2f9c116",
+  "pairedPayloadCount": 13,
+  "actualSystemdMain": {
+    "pid": 1276,
+    "nnp": true,
+    "noSysTimeOrBoot": true,
+    "normalStop": true
+  },
+  "actualPublisher": {
+    "pid": 1550,
+    "uid": 0,
+    "capabilityMasksZero": true,
+    "nnp": true,
+    "writableConfigDirectory": "/etc/chrony",
+    "rawRootSocketReadDenied": true
+  },
+  "rootNamespace": "77a70e83-e94d-4941-ac29-89fddb15cf64",
+  "applied": {
+    "errno": 0,
+    "namespace": "77a70e83-e94d-4941-ac29-89fddb15cf64",
+    "observedMonotonicNs": 283875268059832,
+    "observedRealtimeNs": 1795070975926802720,
+    "reason": "CHRONY_CONFIGURED",
+    "requestId": "0041f0cf-41f9-4b53-8c9a-81008ce5c2dd",
+    "requestSha256": "9552e8ea745917ea47f93165cf89f537a734d6598545c5d715f2f72f7630eea3",
+    "schema": 1,
+    "state": "APPLIED"
+  },
+  "rejected": {
+    "errno": 1,
+    "namespace": "77a70e83-e94d-4941-ac29-89fddb15cf64",
+    "observedMonotonicNs": 283878298633588,
+    "observedRealtimeNs": 1795070978957376767,
+    "reason": "OS_ERROR",
+    "requestId": "9a1872c2-1537-4baf-a89b-2656b144ede3",
+    "requestSha256": "5e4f88dffde42ee40d04ea20b87f65be6c4fa54a76e8e85fa254da141ac02128",
+    "schema": 1,
+    "state": "FAILED"
+  },
+  "candidateFile": {
+    "sha256": "6876de14906f17f004f40f91280b2131c8c20a71451a83a6784d05142622e48c",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o644",
+    "ino": 4329849,
+    "mtimeNs": 1795070975727925498
+  },
+  "originalRetainedFile": {
+    "sha256": "c88d5bb970adbf75809dc17a319ee579486686077f82395c2d152ed4272a2513",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o600",
+    "ino": 4329852,
+    "mtimeNs": 1795070975853070880
+  },
+  "identicalCandidateNewRequests": 0,
+  "afterStopFilesAndReceiptsExact": true,
+  "clockDaemonStarted": false,
+  "stepDispatches": 0,
+  "osgiProof": {
+    "source": "packaged Chrony provider init in actual OSGi JVM",
+    "componentConfigurationRead": true,
+    "configurationServicePersistedUpdate": false,
+    "defaultChronydParserAccepted": true,
+    "smokeBundleRemoved": true
+  },
+  "fixture": {
+    "id": "403a6a541c0f44b2565e01e811924e6180eeb9e89298f42d3a85cd62c2523d44",
+    "mainDisabled": true,
+    "exitCode": 0
+  },
+  "tests": {
+    "macOSPassed": 97,
+    "macOSLinuxOnlySkipped": 5,
+    "arm64NonRootPassed": 98,
+    "arm64NonRootSkipped": 4,
+    "arm64RootSelectionPassed": 6,
+    "arm64UniquePassed": 102,
+    "jdk21Passed": 27
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
