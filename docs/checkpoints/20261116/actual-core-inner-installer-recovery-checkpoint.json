@@ -1,0 +1,67 @@
+{
+  "at": "2026-11-19T06:39:10.317938+00:00",
+  "arm64Debian13": true,
+  "package": {
+    "commit": "5e4f795fddf3f0c86126dbaa7fe189ac80a0ce8d",
+    "tree": "82cf7f8301bb34d53863d9c35695a354f462c967",
+    "version": "6.0.0~git202611190637.5e4f795-1",
+    "sha256": "f30b852173776d4edafb470b29243d5562ede2a9685426de5ce1512dd8c3c37d",
+    "exactEmbeddedConfigureSource": true,
+    "threePairedPackageAssets": true
+  },
+  "completedStages": [
+    "layout",
+    "brokers",
+    "runtime",
+    "https",
+    "ownership"
+  ],
+  "resumed": {
+    "fixture": {
+      "id": "d7e7ad98d8bd2f03d9229ec0ec9a28dbe874fc028903a27f34148b18c630e065",
+      "normallyStopped": true,
+      "mainDisabled": true
+    },
+    "originalMaintenanceId": "65a5f43f-5ecd-4b20-a0b7-ed97ce1e0357",
+    "interrupts": [
+      "after layout and before brokers",
+      "after HTTPS and before ownership"
+    ],
+    "finalDpkgStatus": "install ok installed",
+    "earlierReceiptsUnchanged": true,
+    "finalPhaseFileCount": 13,
+    "originalPackageHistoryReceipts": 1,
+    "keyAndJournalExact": true,
+    "generatedTlsAndSnapshotsPreserved": true,
+    "clockAccountExact": true,
+    "clockBusinessNamespaceAllocated": false
+  },
+  "unresolved": {
+    "fixture": {
+      "id": "0106e3e9554a8f4228043d3720a1a1a9454846721f2f1f41ca47cc7d292ee6c6",
+      "normallyStopped": true,
+      "mainDisabled": true
+    },
+    "originalMaintenanceId": "5d1258e3-1aa1-48c5-80ab-c8275c9e71f1",
+    "interruptedAt": "during HTTPS keytool",
+    "finalDpkgStatus": "install ok half-configured",
+    "originalFenceAndIntentRetained": true,
+    "configureRefusalCount": 1,
+    "identicalBeforeAndAfter": true,
+    "httpsRepeatDispatches": 0,
+    "resultReconciliation": "internal pending"
+  },
+  "tests": {
+    "macos": 113,
+    "debian13Arm64": 113
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

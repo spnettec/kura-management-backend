@@ -1,4 +1,16 @@
 
+## 2026-11-19 Core 安装器内阶段续接
+
+Core 5e4f795fdd 把布局、broker、运行文件、HTTPS 身份与权限设置分成五个固定步骤。每步先持久化意图，成功后持久化回执。回执绑定原 Root、维护 ID、包版本、控制脚本与原恢复副本。标准 configure 读取已完成回执，仅继续尚未派发的步骤。
+
+在 Debian 13 ARM64 实际安装与当前 Git 配对的 deb。布局已完成和 HTTPS 已完成时分别中断，同一维护 ID 最终安装完成。五对步骤回执、原 intent、prepared、ready 和唯一 package-history 齐全。先前回执未重写，原密钥与 HMAC 秘密、时钟账户和已生成 HTTPS 身份保留。
+
+独立现场在 keytool 已启动且仅有 HTTPS 意图时中断。标准 configure 返回 1，原围栏、意图及文件观察值保持，未重复派发。两个新现场均禁用 Main 并正常停放。macOS 与 Debian ARM64 分别通过 113 项包契约测试。
+
+步骤内未确认结果的原地核定仍是内部 pending。完整 Core/OSGi、其余 typed brokers 及六组件/provider/launcher、剩余发行与中断矩阵继续。冻结父项 0/12，external deferred 仍为原三项。见 [检查点](actual-core-inner-installer-recovery-checkpoint.json)。
+
+
+
 ## 2026-11-19 原旧包半配置现场同 Root 恢复与实际 Main
 
 原 43156466fe 半配置现场在同一 Debian 13 ARM64 容器内，仅在重新引导时临时屏蔽 Main，随后恢复原启动选择。原维护 ID、原文件指纹与现场连续。overlay 重新挂载导致设备号一致映射，其余八项原元数据逐项核对。Core cbf7df7fa6 正式 deb 经一次标准 unpack 和 configure 升级恢复，原 install 目的保留。同一原 ID 最终一份 package-history 和三份阶段回执。7 份原运行文件联合核对通过，原业务请求、密钥及 clock 账户保持。
