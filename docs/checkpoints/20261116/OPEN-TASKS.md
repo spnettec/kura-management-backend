@@ -1,4 +1,16 @@
 
+## 2026-11-19 受保护 FileMove MOVE 原源清理和实际丢回复
+
+Deployment 8b6fcd0 将目标发布与源清理分别记录。合法 Main 在提交前同步原源路径、设备号、inode、时间与摘要，只把原意图摘要交给 Root actor。目标同步并提交后，actor 生成只读证明，绑定同一个 Root、作业、源意图以及已发布目标的 inode 与摘要。Main 核对目标与源的原身份再清理，并独立确认原清理回执。源未确认时维护保持待办，同一受保护目标由原作业占用。旧协议的受保护 MOVE 需要更新 provider，旧原记录留存可读。
+
+同一 Root 可用已安装 FileMove JAR 的 `org.eclipse.kura.internal.hook.file.move.ProtectedFileMoveSource JOB`，由非 Root 部署属主沿原作业完成源清理。若目标证明还没写，先由 Root 用 `broker.py reconcile JOB` 核定原发布。随后本机 Root 可用 `broker.py ack-source JOB` 核对持久源结果。两个恢复入口均沿原记录。替代 inode、未确认目标和缺失清理证据分别拒绝。
+
+Debian 13 ARM64 用当前 Git/JDK 21 正式安装并核对两份 OSGi JAR、broker 和 unit。实际 Main 对 71660 正常 MOVE，原目标和源清理确认齐全。对 71661 使用 fixture-only systemd drop-in，加载已装的原 broker，在原目标和只读证明落盘后退出 79。原 Main 观察到真实丢回复，源保持，Root 查询为 DESTINATION_APPLIED_SOURCE_PENDING，过早确认与实际 dpkg remove 被拒绝。第一份测试替代文件带宿主属主并被拒；Root 所有、同字节的另一 inode 再被独立拒绝。用专用夹具构造源 inode 已进入原暂存名的边界，并在原路径建立独立新文件。正式非 Root Java 恢复只清原 inode，新文件与目标精确。Root 确认原结果后同作业读回 ALREADY_APPLIED。零目标重派，原 Main 正常停机，Main 与 socket 禁用，独立现场正常停放。Maven/JDK 21 全仓 239 项通过。
+
+源重命名边界由专用进程构造；真实丢回复由实际 Unix socket 上的原 broker 进程退出触发。跨启动或挂载配对、协议不同时的包/运行中 JVM 联合切换、初装半配置及实际云通知仍待验。其他受保护位置、完整 Core/OSGi、其余 typed brokers 与全部六组件发行矩阵继续原范围。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-protected-filemove-source-checkpoint.json)。
+
+
+
 ## 2026-11-19 FileMove 原发布核定和 Deployment 包维护
 
 Deployment bd3fbec 保存同一原批准和暂存文件的设备号、inode。原领取、候选发布记录及终态均用同目录原子创建。Root 可用 `/usr/bin/python3 -I -B /usr/libexec/kura-filemove/broker.py reconcile JOB` 核定。只有正式目标可证为原审阅副本时才发布原结果。若原无覆盖动作停在硬链接建立后，核对正式目标与原暂存链指向同一 inode，只移除确切的暂存名。旧领取没有候选记录或当前可见文件无法配对时保持 UNKNOWN。此动作只核定目标发布。

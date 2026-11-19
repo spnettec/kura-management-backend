@@ -1,0 +1,283 @@
+{
+  "at": "2026-11-19T09:00:17.821537+00:00",
+  "nativePackage": {
+    "container": "e5f3de3d521da4b60958ce58bf8ffa2c9e32e59ff178c49e256f553f5729ea1d",
+    "packages": {
+      "kura-core": {
+        "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+        "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+        "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+      },
+      "kura-deployment": {
+        "expectedVersion": "2.0.0~git202611190857.8b6fcd0-1",
+        "sha256": "1251ed1727e151126809d810c6ce263fadfd73e5b5b930162b25ecaf0bb5b757",
+        "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+      }
+    },
+    "revision": "8b6fcd0c63a434fa170b501e12ce6de08d2208be",
+    "tree": "e0dd88ca6c4b990bf9c36b914580df7f3cdbe6fc",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "abc0e90ae68366de3199df211250d75ff44f4159e9d87d86e15a43153cc2b30e",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "5954e4b2c28322289d14d0f3ed3f7fbfd4d2a31fa06d88c949afae1b97c5e4c3",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "fixture": {
+    "container": "e5f3de3d521da4b60958ce58bf8ffa2c9e32e59ff178c49e256f553f5729ea1d",
+    "network": "none",
+    "ordinaryMainDisabled": true,
+    "socketDisabled": true,
+    "exitCode": 0
+  },
+  "normalMove": {
+    "job": 71660,
+    "confirmedSourceAndDestination": true,
+    "actual": {
+      "container": "e5f3de3d521da4b60958ce58bf8ffa2c9e32e59ff178c49e256f553f5729ea1d",
+      "pid": 1526,
+      "actorPid": "1701",
+      "records": {
+        ".source": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508733",
+          "links": "1",
+          "size": "342",
+          "mtime": "2026-11-19 08:59:14.378659443 +0000",
+          "ctime": "2026-11-19 08:59:14.379632744 +0000",
+          "digest": "194e39ad3464087ab56847c5ac32ce10488b7f704edb153a91bcaf68ba2467da"
+        },
+        ".claim": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508734",
+          "links": "1",
+          "size": "267",
+          "mtime": "2026-11-19 08:59:14.381588886 +0000",
+          "ctime": "2026-11-19 08:59:14.382632770 +0000",
+          "digest": "a88c446632f803f49131b4a084a6566260a1fcae14ed13f721a2b757a21e1745"
+        },
+        ".publication": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508735",
+          "links": "1",
+          "size": "377",
+          "mtime": "2026-11-19 08:59:14.384463661 +0000",
+          "ctime": "2026-11-19 08:59:14.384632787 +0000",
+          "digest": "fe563e264f3fd77735a167460fc1aa6cfbb2270e1240cc164c9915a19eaee1a6"
+        },
+        ".result": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508736",
+          "links": "1",
+          "size": "287",
+          "mtime": "2026-11-19 08:59:14.387026808 +0000",
+          "ctime": "2026-11-19 08:59:14.387632813 +0000",
+          "digest": "f0328d50e4c56c8f4f84b2310b7f09bdd7cec2072ccff55586f0e0d9d11130e1"
+        },
+        ".source-done": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508741",
+          "links": "1",
+          "size": "342",
+          "mtime": "2026-11-19 08:59:14.424462885 +0000",
+          "ctime": "2026-11-19 08:59:14.425633145 +0000",
+          "digest": "194e39ad3464087ab56847c5ac32ce10488b7f704edb153a91bcaf68ba2467da"
+        },
+        ".receipt": {
+          "mode": "444",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508737",
+          "links": "1",
+          "size": "257",
+          "mtime": "2026-11-19 08:59:14.388621489 +0000",
+          "ctime": "2026-11-19 08:59:14.388632822 +0000",
+          "digest": "a424a7f36c2755d31e0f287d0cfe7250f75513a40e999b7d3d55e493a9f9533b"
+        }
+      }
+    }
+  },
+  "interruptedMove": {
+    "job": 71661,
+    "clientSawUnknown": true,
+    "actorLoadedInstalledPublicationButExitedBeforeReply": true,
+    "mainPidUnchanged": true,
+    "originalDestinationAndReceiptsExact": true,
+    "wrongInodeRefused": true,
+    "initialWrongOwnerAlsoRefused": true,
+    "replacementSourceExact": true,
+    "sourceRenameBoundaryEstablishedByFixture": true,
+    "localRecoveryWasNonRoot": true,
+    "postRecoveryRootAcknowledgement": true,
+    "redispatches": 0,
+    "dpkgRemoveRefusedBeforeMaintenanceFence": true,
+    "actual": {
+      "container": "e5f3de3d521da4b60958ce58bf8ffa2c9e32e59ff178c49e256f553f5729ea1d",
+      "mainPid": 1526,
+      "sourceReplacement": {
+        "mode": "600",
+        "uid": "997",
+        "gid": "995",
+        "device": "1048812",
+        "inode": "4509148",
+        "links": "1",
+        "size": "29",
+        "mtime": "2026-11-19 08:59:45.558904787 +0000",
+        "ctime": "2026-11-19 08:59:45.558904787 +0000",
+        "digest": "cd12ca8231f194ff42d51555bd45350edf76bb990aecc144fa67fede473f615a"
+      },
+      "installed": {
+        "/usr/libexec/kura-filemove/broker.py": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4507901",
+          "links": "1",
+          "size": "30213",
+          "mtime": "1980-02-01 00:00:00.000000000 +0000",
+          "ctime": "2026-11-19 08:58:29.197542578 +0000",
+          "digest": "49c609ec55f2f66e0b8f0e55f2eb051fc962c3e90b0bb55c4a247f5b8939ad19"
+        },
+        "/usr/lib/systemd/system/kura-filemove.service": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4507906",
+          "links": "1",
+          "size": "982",
+          "mtime": "1980-02-01 00:00:00.000000000 +0000",
+          "ctime": "2026-11-19 08:58:29.197542578 +0000",
+          "digest": "c3998707f4766149df312e0e51d0708b09122f7ec20332648344f975de6c7ed7"
+        },
+        "/usr/lib/systemd/system/kura-filemove.socket": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4507905",
+          "links": "1",
+          "size": "274",
+          "mtime": "1980-02-01 00:00:00.000000000 +0000",
+          "ctime": "2026-11-19 08:58:29.197542578 +0000",
+          "digest": "751e9ee1c428bc391af3f941f7c7392fb1861e9012ecf25df79d7a6852e70ec1"
+        }
+      },
+      "prior": {
+        ".source": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508775",
+          "links": "1",
+          "size": "340",
+          "mtime": "2026-11-19 08:59:15.764699995 +0000",
+          "ctime": "2026-11-19 08:59:15.764699995 +0000",
+          "digest": "5d90026541625f6bb2017ce7d3c30a62c87bfa5671d15cba367b28a648b4fa0d"
+        },
+        ".claim": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508776",
+          "links": "1",
+          "size": "265",
+          "mtime": "2026-11-19 08:59:15.766381968 +0000",
+          "ctime": "2026-11-19 08:59:15.766644845 +0000",
+          "digest": "77a90cd92b9caabcf00d1521adb7d18fc4baee0f8e9829541a8e4aa7b346e1ed"
+        },
+        ".publication": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508777",
+          "links": "1",
+          "size": "375",
+          "mtime": "2026-11-19 08:59:15.768621404 +0000",
+          "ctime": "2026-11-19 08:59:15.769644872 +0000",
+          "digest": "996de096055090cebd1908d17d9d5ef4770282d31bf5fd1566c79c08365b427d"
+        },
+        ".result": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4508778",
+          "links": "1",
+          "size": "285",
+          "mtime": "2026-11-19 08:59:15.772904358 +0000",
+          "ctime": "2026-11-19 08:59:15.772904358 +0000",
+          "digest": "7b835be900f605e87048013734b1f0bb343f3a205d42e27d8b4dd3d6e8c3d9fb"
+        }
+      },
+      "sourceReceipt": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4509159",
+        "links": "1",
+        "size": "340",
+        "mtime": "2026-11-19 08:59:46.343343507 +0000",
+        "ctime": "2026-11-19 08:59:46.343911637 +0000",
+        "digest": "5d90026541625f6bb2017ce7d3c30a62c87bfa5671d15cba367b28a648b4fa0d"
+      },
+      "destination": {
+        "mode": "644",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4508774",
+        "links": "1",
+        "size": "20",
+        "mtime": "2026-11-19 08:59:15.750206535 +0000",
+        "ctime": "2026-11-19 08:59:15.770644880 +0000",
+        "digest": "26062e1bf36b866434e5d707135206c4617cfea9bcc19a6c705d2540bc7a85e5"
+      },
+      "failedWrongInode": true,
+      "actualLostReply": true,
+      "sourceRenameBoundaryFixture": true,
+      "noRedispatch": true,
+      "maintenanceRefused": true
+    }
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
