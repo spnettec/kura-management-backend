@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "78cb377",
+  "core": {
+    "head": "3ea096ae52aed099045dbd781627d383122f7901",
+    "tree": "77189e74631e5f744be13b671d2b15c112ffb534"
+  },
+  "networking": {
+    "head": "9509d5a97d7e6a3244b8592e2f6c78ee072be52e",
+    "tree": "b47d7e67a8376ef6d574d4f8b1b5debea37d4104"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd with separate WAN and LAN namespaces, NetworkManager and BIND",
+  "nativeMain": {
+    "id": "265ba7f3afb2e933166216b2a21c0bd3523a76a78e3154f08d7dad28d91aa16c",
+    "main": {
+      "MainPID": "2092",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "4e49286ede174e6b88a44d1b5b7373c5"
+    },
+    "networkManagerVersion": "nmcli tool, version 1.52.1",
+    "provider": "org.eclipse.kura.core.configuration",
+    "core": [
+      "3ea096ae52aed099045dbd781627d383122f7901",
+      "77189e74631e5f744be13b671d2b15c112ffb534"
+    ],
+    "networking": [
+      "9509d5a97d7e6a3244b8592e2f6c78ee072be52e",
+      "b47d7e67a8376ef6d574d4f8b1b5debea37d4104"
+    ],
+    "registeredConfigurationService": true,
+    "initial": {
+      "id": "e5c9079e-5121-441f-9473-51d0667a27c0",
+      "revision": 1,
+      "config": {
+        "mode": "disable",
+        "forwarders": [],
+        "networks": []
+      },
+      "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "rootScopedAndDelivered": true
+    },
+    "stages": [
+      {
+        "receipt": {
+          "id": "423c7e8d-f613-49da-805d-250f14ececb9",
+          "revision": 2,
+          "config": {
+            "mode": "enable-lan-scoped",
+            "forwarders": [
+              "fe80::53%scoped-wan"
+            ],
+            "networks": [
+              "fd90:5::/64"
+            ],
+            "scopes": {
+              "scoped-wan": 3
+            }
+          },
+          "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+          "published": "b604ee4d3f929905d9e810f36457d13e1fc32375b113dea34aba1026dfc69ab7",
+          "rootScopedAndDelivered": true
+        },
+        "resolverNameservers": [
+          "fe80::53%scoped-wan"
+        ],
+        "resolverSha256": "690309d33cea2244fa7da1bd9008cf32bf7f37d543e55f0229f478a486a54a69",
+        "index": 3,
+        "inputPolicy": "-P INPUT DROP",
+        "query": {
+          "answer": "2001:db8:a::53",
+          "route": {
+            "dst": "fe80::53",
+            "dev": "scoped-wan",
+            "protocol": "kernel",
+            "prefsrc": "fe80::21b6:8f73:a9f1:d005",
+            "metric": 1024,
+            "flags": [],
+            "pref": "medium"
+          },
+          "peer": "a",
+          "packet": {
+            "label": "select-a",
+            "source": "fe80::21b6:8f73:a9f1:d005",
+            "receivedScope": 2,
+            "listenerIndex": 2,
+            "answer": "2001:db8:a::53",
+            "peerInterface": "scoped-peer"
+          }
+        }
+      },
+      {
+        "receipt": {
+          "id": "42288e74-1dc5-40d8-83d6-a0c746e24a0d",
+          "revision": 3,
+          "config": {
+            "mode": "enable-lan-scoped",
+            "forwarders": [
+              "fe80::53%scoped-b"
+            ],
+            "networks": [
+              "fd90:5::/64"
+            ],
+            "scopes": {
+              "scoped-b": 5
+            }
+          },
+          "before": "b604ee4d3f929905d9e810f36457d13e1fc32375b113dea34aba1026dfc69ab7",
+          "published": "979a0dc08d6cbaa9074983925d4b84b20e472caad85a3026a24c2e4991c897ba",
+          "rootScopedAndDelivered": true
+        },
+        "resolverNameservers": [
+          "fe80::53%scoped-b"
+        ],
+        "resolverSha256": "e8095d91a3e0ca2661719fdb6778657c995016c4c163d6a358e2bf9ab13e9f58",
+        "index": 5,
+        "inputPolicy": "-P INPUT DROP",
+        "query": {
+          "answer": "2001:db8:b::53",
+          "route": {
+            "dst": "fe80::53",
+            "dev": "scoped-b",
+            "protocol": "kernel",
+            "prefsrc": "fe80::4127:532b:d7e3:6fd2",
+            "metric": 1024,
+            "flags": [],
+            "pref": "medium"
+          },
+          "peer": "b",
+          "packet": {
+            "label": "select-b",
+            "source": "fe80::4127:532b:d7e3:6fd2",
+            "receivedScope": 4,
+            "listenerIndex": 4,
+            "answer": "2001:db8:b::53",
+            "peerInterface": "dns-b"
+          }
+        }
+      },
+      {
+        "receipt": {
+          "id": "7b6adba4-ab4c-4ac1-bfc1-77eaaa89a519",
+          "revision": 4,
+          "config": {
+            "mode": "enable-lan-scoped",
+            "forwarders": [
+              "fe80::53%scoped-b"
+            ],
+            "networks": [
+              "fd90:5::/64"
+            ],
+            "scopes": {
+              "scoped-b": 9
+            }
+          },
+          "before": "979a0dc08d6cbaa9074983925d4b84b20e472caad85a3026a24c2e4991c897ba",
+          "published": "7361418be0ecf11212a1ccf136838c86dc00f487abc6987d23e8c7318003c7d7",
+          "rootScopedAndDelivered": true
+        },
+        "resolverNameservers": [
+          "fe80::53%scoped-b"
+        ],
+        "resolverSha256": "e8095d91a3e0ca2661719fdb6778657c995016c4c163d6a358e2bf9ab13e9f58",
+        "index": 9,
+        "inputPolicy": "-P INPUT DROP",
+        "query": {
+          "answer": "2001:db8:c::53",
+          "route": {
+            "dst": "fe80::53",
+            "dev": "scoped-b",
+            "protocol": "kernel",
+            "prefsrc": "fe80::4127:532b:d7e3:6fd2",
+            "metric": 1024,
+            "flags": [],
+            "pref": "medium"
+          },
+          "peer": "b-next",
+          "packet": {
+            "label": "replug-b",
+            "source": "fe80::4127:532b:d7e3:6fd2",
+            "receivedScope": 8,
+            "listenerIndex": 8,
+            "answer": "2001:db8:c::53",
+            "peerInterface": "dns-b-next"
+          }
+        }
+      },
+      {
+        "receipt": {
+          "id": "5e6de739-a74f-445e-ad7a-93ea7da9531a",
+          "revision": 5,
+          "config": {
+            "mode": "disable",
+            "forwarders": [],
+            "networks": []
+          },
+          "before": "7361418be0ecf11212a1ccf136838c86dc00f487abc6987d23e8c7318003c7d7",
+          "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+          "rootScopedAndDelivered": true
+        },
+        "resolverNameservers": [],
+        "serviceInactive": true
+      }
+    ]
+  },
+  "parking": {
+    "id": "265ba7f3afb2e933166216b2a21c0bd3523a76a78e3154f08d7dad28d91aa16c",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T18:54:06.246035388Z",
+      "FinishedAt": "2026-11-19T19:00:56.770165018Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "receiptsRetained": 5
+  },
+  "initialSourceReadback": {
+    "id": "265ba7f3afb2e933166216b2a21c0bd3523a76a78e3154f08d7dad28d91aa16c",
+    "firstPrefsrc": "fd90:1::2",
+    "firstRouteDevice": "scoped-wan",
+    "laterRoute": "fe80::53 dev scoped-wan proto kernel src fe80::21b6:8f73:a9f1:d005 metric 1024 pref medium",
+    "firstSourceObserverStoppedBeforeSendingQuery": true,
+    "originalBindDispatchRetained": true
+  },
+  "replugObservation": {
+    "id": "265ba7f3afb2e933166216b2a21c0bd3523a76a78e3154f08d7dad28d91aa16c",
+    "initialNmcli": "base connection interrupted",
+    "activationNowConfirmed": true,
+    "originalIndex": 5,
+    "currentIndex": 9,
+    "linkOrConnectionNotReissued": true
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-dns-scoped-release/kura_6.0.0~git202611191856.3ea096a-1_arm64.deb",
+      "sha256": "6720a210974694dcfa4c57f6f362f0caada3b49f889e2c899827fbf4c6c301a9",
+      "version": "6.0.0~git202611191856.3ea096a-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-dns-scoped-release/kura-networking-3.0.0~git202611191857.9509d5a-1_all.deb",
+      "sha256": "349651287ba7747f16948281ddf3973b6ba65e2d96417de9ce28be7a077c348e",
+      "version": "3.0.0~git202611191857.9509d5a-1"
+    }
+  ],
+  "tests": {
+    "networkingMaven": 2231,
+    "bindLinuxRoot": 20
+  },
+  "internalPending": [
+    "无 zone 的 IPv6 WAN 上游切换源地址、动态前缀委派、DHCPv6/RA 公布、systemd-resolved 实装",
+    "实际 PPP 协商与报文、完整接管、完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

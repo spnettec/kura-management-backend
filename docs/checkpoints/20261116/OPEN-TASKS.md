@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 保留 IPv6 链路本地上游的 zone
+
+Networking 9509d5a 在有效解析器观测中保留 IPv6 链路本地地址的接口名与内核索引。Core 3ea096ae52 在已配对的 BIND broker 中增加 typed `enable-lan-scoped`。Root 在准备、准入和应用前后核对接口索引，发布精确索引的 BIND 配置；同名链路重新创建时，配置模型根据索引改变。旧类型和 Root 账本规则保持。 [RFC 4007](https://datatracker.ietf.org/doc/html/rfc4007)
+
+Debian 13 ARM64 实装 Core 和 Networking，由正常 Main 内的 ConfigurationService 与生产监视器处理配置。两个独立 WAN 命名空间使用相同的 `fe80::53`，LAN 第三个命名空间的实包只到达 NetworkManager 选中的上游，源地址核对为相应链路本地地址。替换第二条链路后，解析器文件内容保持，新内核索引经新配对回执发布，第三个实包到达新接口的上游。随后取消上游，BIND 按原 Root 配置停用。共保留 5 组意图、结果及送达记录。Maven Networking 2231 项、Linux Root BIND 20 项通过。夹具仅为单个测试客户端放通 UDP 53，输入默认策略保持。
+
+首个配置发布到链路本地地址就绪有短暂窗口，路由观测曾显示同一 WAN 的全局源地址。待实际链路本地源地址就绪后才发出首次验证查询。重插时前台 nmcli 报告中断，原连接随后由实际 NetworkManager 恢复，未重复重插或激活。无 zone 的 IPv6 源地址选择、动态前缀、DHCPv6/RA、systemd-resolved、实际 PPP、其余 typed brokers 及六组件矩阵仍为内部待办。外部延后仍仅原三项。原 7fd 停止，41 输入/16 回执。12 父项 0/12。见 [检查点](actual-core-nm-scoped-dns-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 静态 IPv6 LAN DNS 与双栈转发
 
 Core 948bf00af8 为已配对的 typed BIND broker 增加双栈配置。IPv4/IPv6 各自只监听批准的 LAN 前缀，上游传输地址族独立于客户端。原 Root、旧请求及历史发布匹配规则继续生效。Networking 825d5dc 新增默认关闭的 `net.interface.<接口>.config.ip6.dnsProxy.enabled`，仅适用于显式静态 IPv6 LAN。发布使用系统有效解析器，保留已支持的本地 stub 选择；IPv6 上游需要路由可达的无 scope 地址。 [BIND 配置参考](https://bind9.readthedocs.io/en/v9.20.24/reference.html)
