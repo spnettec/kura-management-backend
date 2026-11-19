@@ -1,0 +1,176 @@
+{
+  "recordedAt": "2026-11-19T04:38:09.902965+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-imported-firewall-paired-upgrade-checkpoint.json",
+  "historicalStaticLinked": "core-historical-main-migration-checkpoint.json",
+  "agentSource": {
+    "head": "3c76d94fae0e245afede8f25ee23c451e148a044",
+    "tree": "baaae1ec1ee0d9e4162bd22a1b11636abd2e1636"
+  },
+  "coreSource": {
+    "head": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+  },
+  "networkingBridgeSource": {
+    "head": "3723ab282f7564b2fed42328931f86d09c6ba50e",
+    "tree": "79ad7dfc6d0040c93a97370d9b0105f4416e22ba"
+  },
+  "gwtSource": {
+    "head": "18c1b5eed4bf1483fb19756f6ea7ca817bd2732e",
+    "tree": "8df2724c363d402649d688aa7b7befeb26d161a7"
+  },
+  "actualAgentOnlyUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "COMMITTED",
+    "oldCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "newCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "oldAgent": {
+      "MainPID": "143112",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "newAgent": {
+      "MainPID": "193534",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "actualBridgeVersion": "1.0.0.202611190419",
+    "installedVersion": "0.1.0~retainedcontinuity202611190505.3c76d94-1",
+    "bridgeSha256": "8190415c2e6fe6d775dc940494f065bb21f5ed8371f591270c35f0283de1e0de",
+    "binarySha256": "cf0324720cf5652f8ad9a8718f8d97f47d0f4f28852fb7ed6ace7efa31102d46",
+    "originalFingerprintsExact": 43,
+    "oldLeaseAndSnapshotsExact": true,
+    "unresolvedOriginalUnknownExact": true,
+    "remoteDisabled": true,
+    "originalNativeApplied": true,
+    "explicitGogoReadinessReadback": true,
+    "existingJvmKept": true
+  },
+  "validation": {
+    "arm64HandoverPassed": 256,
+    "arm64RolesPassed": 16,
+    "arm64CoordinatorPassed": 133,
+    "arm64TotalPassed": 405,
+    "arm64TotalIgnored": 22,
+    "arm64ReleaseBuiltFromGit": true,
+    "sameInstalledJavaBridgeBytes": true,
+    "activeCoreAndNetworkManagerKept": true,
+    "osgiReviewJdk": 21,
+    "liveImportedWriteDispatched": false
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "originalProcessesExact": 7,
+    "originalProtectedPrivateFileMetadataExact": 38,
+    "originalRuntimeDataContentsExact": 6,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false,
+    "originalSameRootLeaseFilesExact": 43
+  },
+  "internalPending": [
+    "Exercise the imported forward, confirm, inverse, source observation and durable outcomes with the original Root and explicit grants",
+    "Connect the typed Core business entry points through normal provider lifecycle and validate parity, rejection and recovery",
+    "Complete the remaining typed brokers, Core/OSGi and legal Main, and the six-component provider/launcher/install/upgrade/remove/purge/interruption matrix"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/committed-typed-firewall-source-20261119",
+  "actualImportedFirewallBusinessReview": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "bundleId": "231",
+    "binaryDigest": "058fe604a44412e7e1b32718144c9ebef1e2fd48f0ef08ada178fbe96e0388ed",
+    "result": {
+      "processId": 143427,
+      "providerBundle": "org.eclipse.kura.firewall.agent",
+      "providerVersion": "1.0.0.202611190145",
+      "typedIpv4": true,
+      "typedIpv6": true,
+      "schema4": true,
+      "revision": 1,
+      "sourceDigest": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+      "sameTypedSource": true,
+      "confirmedStable": true,
+      "reviewOperationId": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "review": {
+        "backend": "nft.imported.v1",
+        "cohortDigest": "f068f25e182f76188eb6221e9cfa618ff89d6efa4224435880f7476bb106fcce",
+        "dispatchEnabled": false,
+        "nativePlan": {
+          "applyReady": false,
+          "baseRevision": 1,
+          "dispatched": false,
+          "draftSha256": "615929c47b0629024305570abcdd46ad13de4c53cbf3d02b382944ee36872bcd",
+          "forwardBatchSha256": "c3d4e235e5f05ae98b624cb60876bc82788fba09c22b532dfa80f2f048619070",
+          "initializationReceiptSha256": "1be175b776cd456c361dcf82769f2d5a4ab23c5c0da74bc96984fb7d37630849",
+          "operationId": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+          "policyChanges": 0,
+          "preservesOriginalLayout": true,
+          "requiredAuthority": "SAME_FIREWALL_TRANSACTION_AND_CURRENT_CORE_NM_LEASE",
+          "reviewKind": "nft.imported.update.plan.v1",
+          "schemaVersion": 1,
+          "selectedRuleCount": 114,
+          "sourceBindingSha256": "20f47ab8a204599dc4e5ca63b8f649bd4f636ea18735f4ae2f38a0d02920ddbd",
+          "sourceGeneration": 2337,
+          "sourceReceiptSha256": "aa813eba54a443b7873e3c81f0b2e4153f6b8922c8c143a9057d292fc934d8a4",
+          "targetRevision": 2,
+          "targetRuleCount": 115,
+          "transferSha256": "81867c0298f2a9e574fde48e26ca97fb273aeb305436c5e72225b4e6d640c3b0",
+          "wirePreflightBytes": 40380,
+          "writeEnabled": false
+        },
+        "ownerGrant": false,
+        "revision": 1,
+        "schemaVersion": 1,
+        "sourceDigest": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+        "writeEnabled": false
+      },
+      "state": "REVIEWED"
+    },
+    "noTransactionCreated": true,
+    "originalProcessesAndUnknownExact": true
+  }
+}

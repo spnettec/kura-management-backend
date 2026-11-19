@@ -1,4 +1,17 @@
 
+## 2026-11-19 原 COMMITTED Root 正式 OSGi 防火墙业务预审通过
+
+Agent `3c76d94` 从原密封租约验证历史 CM 源及其原始角色，现行权限使用同一实际 Core JVM 的完整外部 handler 证据。原操作、计划、模板、当前两族确认 revision/digest、原 writer drain、进程/注册、网络和内核代校验保留。旧 CM 捕获与初次迁移逻辑保持原合同。
+
+从 Git 构建 Debian 13 ARM64 Agent。通过同原 Root 已安装的标准包生命周期更新一次 Agent，配对 bridge 来自现场，其字节与已安装 `3723ab2` bridge 一致。Core PID 143427 与 NM PID 78 连续，Agent 为 193534。原 43 份记录、原快照、未结算 UNKNOWN、原 lease / startup ticket 和 native APPLIED 保持，远程关闭。
+
+安装态同 JVM 实际双族 provider 与原 revision 1 的确认源一致。真实 imported 预审返回 REVIEWED，确认同原布局从 114 条到 115 条的回环接口候选。预审的 writeEnabled、dispatchEnabled 和 ownerGrant 均为 false，没有新事务或内核派发。ARM64 三组共 405 项通过、22 项忽略，JDK 21 探针实际运行。
+
+历史 schema 1 static、linked 与 linked-runtime 的合法转换沿用已验证检查点。原三场景 7 进程、38 私有元数据、6 运行数据文件匹配，原 7fd 禁用正常停机 41/16；18 仓同分支干净。实际 forward/confirm/inverse/source observation、完整 Core/OSGi/合法 Main、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。冻结 12 父项闭环 0/12，仅原 3 项 external deferred。见 [检查点](actual-committed-typed-firewall-business-review-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 owner 正式 Agent/Java bridge 配对升级与业务源授权定位
 
 在原 COMMITTED Root 从 Git 构建并正式安装 Debian 13 ARM64 Agent `951da5c` 与 Networking `3723ab2` 的 Java bridge。原 Root 原 owner 的维护记录收齐五个独立结果，实际执行一次 Core 正常停止、Agent 停止、同包升级、Agent 启动及 Core 启动。Core PID 143427、Agent PID 143112、NM PID 78。确认实际 OSGi bridge 已加载，43 份原记录指纹完全一致，原 lease、native APPLIED、快照及未结算 UNKNOWN 保留，远程关闭。
