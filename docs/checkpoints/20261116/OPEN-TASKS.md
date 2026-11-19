@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — IPv6 LAN 经 systemd-resolved 分流及中断恢复
+
+从当前 Git 用 JDK 21 构建 Core 3ea096ae52 与 Networking 846d250，实装隔离 Debian 13 ARM64。使用 Debian 正式 systemd-resolved 257.13 包。基础镜像的 policy-rc.d 拒绝安装期自动启服，核对初始 inactive 后依原厂 systemd 单元启动一次。NetworkManager 1.52.1 将两个实际活动接口的域和服务器交给 resolved。首次配置漏列两条 WAN，现行全量清单行为停用设备并删除夹具 profile，原现场和两份回执已留存。第二个隔离 Root 显式声明两条 WAN 的 IPv4 和 IPv6 均为 Unmanaged，交由 NetworkManager 管理。合法 Main 内由正式 OSGi ConfigurationService 提交静态 IPv6 LAN，正式 DNS provider 通过同 Root typed BIND broker 只监听获准 LAN，唯一转发器为 127.0.0.53。 [NetworkManager DNS 配置](https://networkmanager.dev/docs/api/1.52.0/NetworkManager.conf.html) [systemd-resolved 路由规则](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) [Debian ARM64 包](https://packages.debian.org/trixie/arm64/systemd-resolved/download)
+
+独立 IPv6 LAN 客户端经 TCP 和 UDP 共完成六次真实查询。企业域走企业链路，默认域走第二条链路。企业解析器切换后，默认解析保持。单独停止 resolved 时，企业查询未到达任一上游。跨一个普通监视周期，BIND 配置、进程和 Root 台账保持。按原厂单元恢复 resolved 后，NetworkManager 自动重新发布分流配置，两个域恢复。合法 Main 与 NetworkManager 的实际 invocation 保持；原 Root 共两组意图、结果和送达记录，均已复核。首次端到端查询已收到正确答案，夹具最初误设每次只能对应一个上游数据报。两份上游报文到达同一预期链路，读取已有证明后接续其余查询。夹具禁用 Main 并正常停放。Networking Maven 2236 项通过。
+
+自动公布 IPv6 本地 RDNSS 与安全撤回、实际 PPP、完整网络/接管、其余 typed brokers、完整 Core/OSGi 和六组件发行矩阵仍为内部待办。12 父项 0/12，external deferred 仍仅原三项，原 7fd 禁用且停止，保留 41 输入/16 回执。见 [检查点](actual-core-nm-systemd-resolved-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — LAN DNS 代理排除自身作为转发器
 
 Networking 846d250 在已配对的双栈路径排除网关上由本次 BIND LAN 策略监听的地址。网段内其他主机仍可作上游，已配对的系统 loopback stub 继续遵循原分流策略。所有代理配置仍由既有同 Root 的 BIND broker 接受和确认。

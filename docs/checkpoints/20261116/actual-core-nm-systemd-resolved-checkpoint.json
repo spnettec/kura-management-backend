@@ -1,0 +1,494 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "d9ac1ed2b081c8818af704a066728b8cc502a39b",
+  "core": {
+    "head": "3ea096ae52aed099045dbd781627d383122f7901",
+    "tree": "77189e74631e5f744be13b671d2b15c112ffb534"
+  },
+  "networking": {
+    "head": "846d2504e2169fa90f4115ef31fd37a4653d5b98",
+    "tree": "72ac35619fb4ed7fd4a8eb85b0356c4643424d7d"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64; NetworkManager 1.52.1, vendor systemd-resolved 257.13, named and installed legal Main",
+  "main": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "core": [
+      "3ea096ae52aed099045dbd781627d383122f7901",
+      "77189e74631e5f744be13b671d2b15c112ffb534"
+    ],
+    "networking": [
+      "846d2504e2169fa90f4115ef31fd37a4653d5b98",
+      "72ac35619fb4ed7fd4a8eb85b0356c4643424d7d"
+    ],
+    "main": {
+      "MainPID": "2291",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "3ef64dab81f143d593e2695fc75e300e"
+    },
+    "networkManager": {
+      "InvocationID": "ef94b5495f8c486fb800a8f95c89cc73"
+    },
+    "resolvedBefore": {
+      "MainPID": "616",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "a9dda4cad1f04c8b879e0db236309528"
+    },
+    "resolvedAfter": {
+      "MainPID": "10475",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "b07caab439894254912d3686e08143c0"
+    },
+    "binding": {
+      "operation": "b1432a54-6cba-4dab-9a3d-148644063e85",
+      "revision": 2,
+      "config": {
+        "mode": "enable-lan-dual",
+        "forwarders": [
+          "127.0.0.53"
+        ],
+        "networks": [
+          "fd62:44::/64"
+        ]
+      },
+      "published": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+      "rootScopedAndDelivered": true
+    },
+    "default": {
+      "operation": "77d91e25-5607-4c53-8399-850684be1e7a",
+      "revision": 1,
+      "config": {
+        "forwarders": [],
+        "mode": "disable",
+        "networks": []
+      },
+      "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "rootScopedAndDelivered": true
+    },
+    "queries": [
+      {
+        "query": "initial.office.resolved.test",
+        "upstream": "192.0.2.61",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.161",
+        "transport": "udp",
+        "upstreamDatagrams": 2
+      },
+      {
+        "query": "initial.outside.resolved.test",
+        "upstream": "198.51.100.62",
+        "sender": "198.51.100.3",
+        "answer": "198.51.100.162",
+        "transport": "tcp",
+        "upstreamDatagrams": 2
+      },
+      {
+        "query": "switch.office.resolved.test",
+        "upstream": "192.0.2.81",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.181",
+        "transport": "tcp",
+        "upstreamDatagrams": 2
+      },
+      {
+        "query": "switch.outside.resolved.test",
+        "upstream": "198.51.100.62",
+        "sender": "198.51.100.3",
+        "answer": "198.51.100.162",
+        "transport": "udp",
+        "upstreamDatagrams": 1
+      },
+      {
+        "query": "recovered.office.resolved.test",
+        "upstream": "192.0.2.81",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.181",
+        "transport": "udp",
+        "upstreamDatagrams": 2
+      },
+      {
+        "query": "recovered.outside.resolved.test",
+        "upstream": "198.51.100.62",
+        "sender": "198.51.100.3",
+        "answer": "198.51.100.162",
+        "transport": "tcp",
+        "upstreamDatagrams": 2
+      }
+    ],
+    "interruptedQuery": {
+      "query": "during-stop.office.resolved.test",
+      "transport": "udp",
+      "answer": "SERVFAIL",
+      "observedUpstream": null
+    },
+    "unchangedLedgerAndBind": {
+      "files": [
+        "77d91e25-5607-4c53-8399-850684be1e7a.delivered",
+        "77d91e25-5607-4c53-8399-850684be1e7a.intent",
+        "77d91e25-5607-4c53-8399-850684be1e7a.result",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.delivered",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.intent",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.result",
+        "lock",
+        "root.json"
+      ],
+      "config": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+      "service": {
+        "MainPID": "9547",
+        "ActiveState": "active",
+        "InvocationID": "47c57817e8dd443ba9e208b013e8b5f3"
+      }
+    },
+    "policy": "-P INPUT DROP"
+  },
+  "parking": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T19:26:43.925335853Z",
+      "FinishedAt": "2026-11-19T19:28:49.534277749Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "retainedReceipts": 2
+  },
+  "resolvedInitial": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "resolved": {
+      "MainPID": "616",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "a9dda4cad1f04c8b879e0db236309528"
+    },
+    "config": {
+      "office": [
+        "192.0.2.61"
+      ],
+      "officeRoute": [
+        "~office.resolved.test"
+      ],
+      "public": [
+        "198.51.100.62"
+      ],
+      "publicRoute": [
+        "~."
+      ]
+    },
+    "stubTarget": "/run/systemd/resolve/stub-resolv.conf"
+  },
+  "initialQueries": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "binding": {
+      "operation": "b1432a54-6cba-4dab-9a3d-148644063e85",
+      "revision": 2,
+      "config": {
+        "mode": "enable-lan-dual",
+        "forwarders": [
+          "127.0.0.53"
+        ],
+        "networks": [
+          "fd62:44::/64"
+        ]
+      },
+      "published": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+      "rootScopedAndDelivered": true
+    },
+    "systemdResolved": {
+      "MainPID": "616",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "a9dda4cad1f04c8b879e0db236309528"
+    },
+    "state": {
+      "files": [
+        "77d91e25-5607-4c53-8399-850684be1e7a.delivered",
+        "77d91e25-5607-4c53-8399-850684be1e7a.intent",
+        "77d91e25-5607-4c53-8399-850684be1e7a.result",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.delivered",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.intent",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.result",
+        "lock",
+        "root.json"
+      ],
+      "config": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+      "service": {
+        "MainPID": "9547",
+        "ActiveState": "active",
+        "InvocationID": "47c57817e8dd443ba9e208b013e8b5f3"
+      }
+    },
+    "queries": [
+      {
+        "query": "initial.office.resolved.test",
+        "upstream": "192.0.2.61",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.161",
+        "transport": "udp",
+        "upstreamDatagrams": 2
+      },
+      {
+        "query": "initial.outside.resolved.test",
+        "upstream": "198.51.100.62",
+        "sender": "198.51.100.3",
+        "answer": "198.51.100.162",
+        "transport": "tcp",
+        "upstreamDatagrams": 2
+      }
+    ],
+    "sources": {
+      "office": [
+        "192.0.2.61"
+      ],
+      "officeRoute": [
+        "~office.resolved.test"
+      ],
+      "public": [
+        "198.51.100.62"
+      ],
+      "publicRoute": [
+        "~."
+      ]
+    }
+  },
+  "officeLinkChange": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "state": {
+      "files": [
+        "77d91e25-5607-4c53-8399-850684be1e7a.delivered",
+        "77d91e25-5607-4c53-8399-850684be1e7a.intent",
+        "77d91e25-5607-4c53-8399-850684be1e7a.result",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.delivered",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.intent",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.result",
+        "lock",
+        "root.json"
+      ],
+      "config": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+      "service": {
+        "MainPID": "9547",
+        "ActiveState": "active",
+        "InvocationID": "47c57817e8dd443ba9e208b013e8b5f3"
+      }
+    },
+    "queries": [
+      {
+        "query": "switch.office.resolved.test",
+        "upstream": "192.0.2.81",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.181",
+        "transport": "tcp",
+        "upstreamDatagrams": 2
+      },
+      {
+        "query": "switch.outside.resolved.test",
+        "upstream": "198.51.100.62",
+        "sender": "198.51.100.3",
+        "answer": "198.51.100.162",
+        "transport": "udp",
+        "upstreamDatagrams": 1
+      }
+    ],
+    "sources": {
+      "office": [
+        "192.0.2.81"
+      ],
+      "officeRoute": [
+        "~office.resolved.test"
+      ],
+      "public": [
+        "198.51.100.62"
+      ],
+      "publicRoute": [
+        "~."
+      ]
+    }
+  },
+  "resolverInterruption": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "query": {
+      "query": "during-stop.office.resolved.test",
+      "transport": "udp",
+      "answer": "SERVFAIL",
+      "observedUpstream": null
+    },
+    "unchanged": {
+      "files": [
+        "77d91e25-5607-4c53-8399-850684be1e7a.delivered",
+        "77d91e25-5607-4c53-8399-850684be1e7a.intent",
+        "77d91e25-5607-4c53-8399-850684be1e7a.result",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.delivered",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.intent",
+        "b1432a54-6cba-4dab-9a3d-148644063e85.result",
+        "lock",
+        "root.json"
+      ],
+      "config": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+      "service": {
+        "MainPID": "9547",
+        "ActiveState": "active",
+        "InvocationID": "47c57817e8dd443ba9e208b013e8b5f3"
+      }
+    },
+    "stubSymlink": "/run/systemd/resolve/stub-resolv.conf",
+    "runtimeTargetPresent": true
+  },
+  "firstPacketReadback": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "answerFromCompletedClientCheck": true,
+    "upstreamDatagrams": [
+      {
+        "query": "initial.office.resolved.test",
+        "upstream": "192.0.2.61",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.161"
+      },
+      {
+        "query": "initial.office.resolved.test",
+        "upstream": "192.0.2.61",
+        "sender": "192.0.2.3",
+        "answer": "192.0.2.161"
+      }
+    ],
+    "acceptanceAdjustment": "exact route and answer; allow repeated identical upstream datagrams",
+    "noReplay": true
+  },
+  "wanProfileContinuity": {
+    "rd-wan-a": {
+      "uuid": "edb2cd95-2169-4b1f-859a-3c26fa50de82",
+      "profile": "lab-resolved-office",
+      "liveProfileMatchesBeforeMain": true
+    },
+    "rd-wan-b": {
+      "uuid": "270315b3-a7bf-40f2-94f6-1f0dfc0ae4b9",
+      "profile": "lab-resolved-public",
+      "liveProfileMatchesBeforeMain": true
+    }
+  },
+  "omittedWanInventory": {
+    "observed": {
+      "id": "6bd5a78ff3d2987c691d0bd5ef0b68c8a02b1097bf9ce982830673adf110f761",
+      "rootReceipt": {
+        "operation": "14ed7f81-fbaf-42a7-ae2b-f41618f14d25",
+        "revision": 2,
+        "config": {
+          "mode": "enable-lan-dual",
+          "forwarders": [
+            "127.0.0.53"
+          ],
+          "networks": [
+            "fd62:44::/64"
+          ]
+        },
+        "published": "4a8bf93c646e8ba613c4015cda2ba9ac1d302279c0dbb1a60c62b0571e9649ef",
+        "rootScopedAndDelivered": true
+      },
+      "liveNetworkManagerDeletion": [
+        "<info>  [1795116306.8712] audit: op=\"connection-delete\" uuid=\"58401fe6-3025-499d-8454-b1d674b31de2\" name=\"lab-resolved-office\" pid=2321 uid=997 result=\"success\"",
+        "<info>  [1795116306.8944] audit: op=\"connection-delete\" uuid=\"6b25eb80-acf6-42b1-90c4-c2fbae9f0c85\" name=\"lab-resolved-public\" pid=2321 uid=997 result=\"success\""
+      ],
+      "resolverAfterConfig": {
+        "office": [],
+        "officeRoute": [],
+        "public": [],
+        "publicRoute": []
+      },
+      "main": {
+        "MainPID": "2321",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "bb4f2c2cb2be4e029389b72a312b69fd"
+      },
+      "originalInputConsumed": true
+    },
+    "parking": {
+      "id": "6bd5a78ff3d2987c691d0bd5ef0b68c8a02b1097bf9ce982830673adf110f761",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T19:21:55.073484168Z",
+        "FinishedAt": "2026-11-19T19:26:54.109429457Z"
+      },
+      "mainDisabled": true,
+      "retainedReceipts": 2
+    }
+  },
+  "initialStart": {
+    "id": "c1dfb82e1f5de4d02a974e93f79a5eca0dc098d00881189a71d26925e92a4691",
+    "dispatchOrdinal": 1,
+    "before": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "InvocationID": ""
+    }
+  },
+  "packagePolicyAutomaticallyStartedResolved": false,
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/kura-resolved-release/kura_6.0.0~git202611191922.3ea096a-1_arm64.deb",
+      "sha256": "7b73bfa11ccde9bbba0543b7b0e5563441c57123d5e529ea3defd79b86468176",
+      "version": "6.0.0~git202611191922.3ea096a-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/kura-resolved-release/kura-networking-3.0.0~git202611191923.846d250-1_all.deb",
+      "sha256": "d2f6d4aedf1fff92db96ceac64915f06c88af22cf30448c8819ac5b1a602f8ac",
+      "version": "3.0.0~git202611191923.846d250-1"
+    },
+    {
+      "package": "systemd-resolved",
+      "path": "/root/kura-resolved-release/systemd-resolved_257.13-1~deb13u1_arm64.deb",
+      "sha256": "bde3620675edb29cabbdcfcf57d7b59d027ad6e81f14ddd5eff51bbeecaed054",
+      "version": "257.13-1~deb13u1"
+    }
+  ],
+  "upstreamSources": {
+    "networkManager": "https://networkmanager.dev/docs/api/1.52.0/NetworkManager.conf.html",
+    "resolver": "https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html",
+    "debianPackage": "https://packages.debian.org/trixie/arm64/systemd-resolved/download"
+  },
+  "tests": {
+    "networkingMaven": 2236
+  },
+  "internalPending": [
+    "自动公布 IPv6 本地 RDNSS 与安全撤回、无 zone IPv6 上游源地址选择及完整网络/接管矩阵",
+    "历史权限及其余 typed brokers，真实 PPP 协商和业务，完整 Core/OSGi",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
