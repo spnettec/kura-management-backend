@@ -1,4 +1,19 @@
 
+## 2026-11-19 原 COMMITTED Root 实际防火墙提交与原 ID 到期恢复
+
+正式 Core JVM 与已安装双族 provider 下，原 IPv4 回环操作 `6b3acbf5` 保持三个原请求 ID，依序完成 PREPARED、WAIT_CONFIRM 与 COMMITTED。独立 outcome 核对原输入、实际内核规则句柄和 revision 2。此前仅等待放行的过期探针缺少发送意图。
+
+Agent `a15fb7f` 将原已确认 Core 的有界读取时限用于同注册 epoch 的 roles 与 writer drain。Debian 13 ARM64 正式 Agent 升级保留同字节 Java bridge，Core/NM 连续，43 份原保护记录和原 UNKNOWN 精确。ARM64 定向 118 项通过。Agent 6de7668 为原 outcome 增加三秒有界排他等待。定向 20 项通过。Agent 0d05072 对 source observation 保留原排他准入且有界等待。定向 15 项通过。
+
+Agent f054676 与 Networking aad948f 对齐 imported 权限证明的固定连接时限，正式配对升级后当前 Core PID 328378，原 NM、43 份记录和实际规则保持。JDK 21 bridge 162 项、ARM64 transport 18 项通过。Agent f8bedd7 普通 imported 排他准入已构建，ARM64 13 项通过。已安装包升级预检拒绝终态 OBSERVED，停服务和安装均未发生。
+
+第二个独立 IPv6 回环候选通过预审和 prepare，apply 只派发一次。调用超时后读取到原 WAIT_CONFIRM 和实际内核效果。现有事务经自动到期回收，由同 JVM 用原请求独立读回历史 ROLLED_BACK，IPv6 回环候选已撤回。IPv4 原规则句柄和历史 COMMITTED 回执、结构化策略与 revision 2 均精确。加载新版 bridge 的正式 Core JVM 查回原 source observation 请求的历史 OBSERVED，实际规则字节和逻辑 revision 2 保持。显式 rollback 的正向验收继续内部待办。临时本地写授权已撤回，当前 Agent PID 349643，撤权期间 Core 与 NetworkManager 进程连续。
+
+历史 schema 1 static、linked 与 linked-runtime 沿用已验证检查点。原三现场实时复核 7 进程、38 私有文件元数据和 6 运行数据文件。原 7fd 保持禁用正常停机 41 输入/16 回执。正常 typed Core 业务、完整 Core/OSGi/合法 Main、RTC/Chrony 等其余 typed brokers 和六组件/provider/launcher/发行生命周期矩阵继续内部待办。12 父项闭环 0/12，external deferred 仍仅原 3 项。见 [检查点](actual-committed-typed-firewall-outcomes-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 COMMITTED Root 正式 OSGi 防火墙业务预审通过
 
 Agent `3c76d94` 从原密封租约验证历史 CM 源及其原始角色，现行权限使用同一实际 Core JVM 的完整外部 handler 证据。原操作、计划、模板、当前两族确认 revision/digest、原 writer drain、进程/注册、网络和内核代校验保留。旧 CM 捕获与初次迁移逻辑保持原合同。

@@ -1,0 +1,602 @@
+{
+  "recordedAt": "2026-11-19T05:21:42.042385+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-committed-typed-firewall-business-review-checkpoint.json",
+  "historicalStaticLinked": "core-historical-main-migration-checkpoint.json",
+  "baseConsole": {
+    "head": "f717dd4483dc83c50f634a1c405ca6705032f30e",
+    "tree": "890abae0d2e3218b7772a4336e8f0a8fb6e300c8"
+  },
+  "agentSource": {
+    "head": "f8bedd723f94a3ffabe08e432f9eac87a15a517e",
+    "tree": "e281aeaf8f119ea6a391449b3698e7da238b2ab9"
+  },
+  "coreSource": {
+    "head": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+  },
+  "networkingBridgeSource": {
+    "head": "aad948fd7f3d4dece4fe88f58d870be63616e321",
+    "tree": "01a3f8b30e7d87af0c4d55a702df99807a964764"
+  },
+  "gwtSource": {
+    "head": "18c1b5eed4bf1483fb19756f6ea7ca817bd2732e",
+    "tree": "8df2724c363d402649d688aa7b7befeb26d161a7"
+  },
+  "actualAgentOnlyUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "COMMITTED",
+    "oldCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "newCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "oldAgent": {
+      "MainPID": "210296",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "newAgent": {
+      "MainPID": "250743",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "actualBridgeVersion": "1.0.0.202611190419",
+    "installedVersion": "0.1.0~retainedcontinuity202611190555.a15fb7f-1",
+    "bridgeSha256": "8190415c2e6fe6d775dc940494f065bb21f5ed8371f591270c35f0283de1e0de",
+    "binarySha256": "fba42c711da0188651f8206fdb77ce7b3c461cacd417dda88fd17a3d66e4726b",
+    "originalFingerprintsExact": 43,
+    "oldLeaseAndSnapshotsExact": true,
+    "unresolvedOriginalUnknownExact": true,
+    "remoteDisabled": true,
+    "originalNativeApplied": true,
+    "existingJvmKept": true,
+    "retainedFirewallFingerprints": 6,
+    "keptFirstCommit": true
+  },
+  "actualForwardAndConfirmation": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+    "prepared": {
+      "id": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "requestId": "bfdd1bb4-90f7-4535-b8ef-18bee7471a5e",
+      "state": "PREPARED",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795063760300,
+      "historical": false,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false
+    },
+    "applied": {
+      "id": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "requestId": "bfdd1bb4-90f7-4535-b8ef-18bee7471a5e",
+      "state": "WAIT_CONFIRM",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795063760300,
+      "historical": false,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false
+    },
+    "terminal": {
+      "id": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "requestId": "bfdd1bb4-90f7-4535-b8ef-18bee7471a5e",
+      "state": "COMMITTED",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795063760300,
+      "historical": false,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false
+    },
+    "originalOutcome": {
+      "id": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "requestId": "bfdd1bb4-90f7-4535-b8ef-18bee7471a5e",
+      "state": "COMMITTED",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795063760300,
+      "historical": true,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false,
+      "confirmedRevision": 2,
+      "confirmedSourceDigest": "48bbc5621372d69d5470df3c3fcfc30370df77bd470a45c1cb55da0392a78dde"
+    },
+    "kernelHandlesExact": [
+      248
+    ],
+    "usedOriginalRequest": true,
+    "unchangedOriginalProofInputs": 43,
+    "existingJvmAndNmPreserved": true,
+    "phaseCommandsIssuedOnce": true,
+    "confirmedViewInInstalledJvm": true,
+    "validationBundleId": "233"
+  },
+  "sameIdApplyTimeoutReadback": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "bca6e599-ea6b-4080-bd94-6d25cb346aea",
+    "requestId": "b73172d2-4ff6-4ea1-959f-39a9408ad31e",
+    "sameIdStoredState": "WAIT_CONFIRM",
+    "deadlineMs": 1795064303451,
+    "v6RuleHandles": [
+      723
+    ],
+    "retainedV4RuleHandles": [
+      248
+    ],
+    "explicitRollbackIntent": false,
+    "applyRedispatchAllowed": false
+  },
+  "nativeTimerDecision": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "bca6e599-ea6b-4080-bd94-6d25cb346aea",
+    "requestId": "6730a5d8-734b-43a5-acac-e27b81805a4c",
+    "state": "ROLLED_BACK",
+    "timerDecision": {
+      "schemaVersion": 1,
+      "phase": "AFTER_FORWARD",
+      "deadlineMs": 1795064303451,
+      "observedAtMs": 1795064304522
+    },
+    "recordSha256": "3c7b8cccb8a9d01afcbf2e63fae00e7a3e619007816e2642ecf30ee5e06ec542",
+    "forwardWireSha256": "3f4c24d1b855cc037cf014cb52801391cbf82feb7a853736e30abba6347e05ff",
+    "inverseWireSha256": "f305e6afcbb3130f71d5aafd23fef4c30c917c9857993e869f000d69b7154dec",
+    "oneOriginalInverseDispatch": true,
+    "confirmationDecision": false
+  },
+  "exactTimerHistoryAndKernel": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "bca6e599-ea6b-4080-bd94-6d25cb346aea",
+    "requestId": "6730a5d8-734b-43a5-acac-e27b81805a4c",
+    "recordState": "ROLLED_BACK",
+    "historySha256": "3c7b8cccb8a9d01afcbf2e63fae00e7a3e619007816e2642ecf30ee5e06ec542",
+    "confirmedPointerSha256": "02ba45d16312d8d9b14ed1ec8eeb664e3c58983c30defb31285f122db7796aad",
+    "retainedIpv4Handle": 248,
+    "ipv6TestRuleAbsent": true,
+    "confirmedHistoricalRecordPresent": true
+  },
+  "actualOutcomeLockAgentUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "COMMITTED",
+    "oldCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "newCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "oldAgent": {
+      "MainPID": "250743",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "newAgent": {
+      "MainPID": "286376",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "actualBridgeVersion": "1.0.0.202611190419",
+    "installedVersion": "0.1.0~retainedcontinuity202611190615.6de7668-1",
+    "bridgeSha256": "8190415c2e6fe6d775dc940494f065bb21f5ed8371f591270c35f0283de1e0de",
+    "binarySha256": "2ba55d4a779a9ec812978e9fdf643884d0fbf8986e72b528b18290d847b5dd92",
+    "originalFingerprintsExact": 43,
+    "oldLeaseAndSnapshotsExact": true,
+    "unresolvedOriginalUnknownExact": true,
+    "remoteDisabled": true,
+    "originalNativeApplied": true,
+    "existingJvmKept": true,
+    "retainedFirewallFingerprints": 10,
+    "keptFirstCommit": true,
+    "keptAutomaticRollback": true
+  },
+  "actualSourceLockAgentUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "COMMITTED",
+    "oldCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "newCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "oldAgent": {
+      "MainPID": "286376",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "newAgent": {
+      "MainPID": "303546",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "actualBridgeVersion": "1.0.0.202611190419",
+    "installedVersion": "0.1.0~retainedcontinuity202611190650.0d05072-1",
+    "bridgeSha256": "8190415c2e6fe6d775dc940494f065bb21f5ed8371f591270c35f0283de1e0de",
+    "binarySha256": "1861047045d437af86163596e44acfbbdc91b2360b3b4d1cd456c0cb829a69d8",
+    "originalFingerprintsExact": 43,
+    "oldLeaseAndSnapshotsExact": true,
+    "unresolvedOriginalUnknownExact": true,
+    "remoteDisabled": true,
+    "originalNativeApplied": true,
+    "existingJvmKept": true,
+    "retainedFirewallFingerprints": 10,
+    "keptFirstCommit": true,
+    "keptAutomaticRollback": true
+  },
+  "actualCompleteBudgetPairedUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "COMMITTED",
+    "oldCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "newCore": {
+      "MainPID": "328378",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "oldAgent": {
+      "MainPID": "303546",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "newAgent": {
+      "MainPID": "328063",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "actualBridgeVersion": "1.0.0.202611190514",
+    "installedVersion": "0.1.0~retainedcontinuity202611190710.f054676-1",
+    "bridgeSha256": "3455c783d80b1dfce3c8e764d18d684979914a07e8117672398ff0557b2ea5f4",
+    "binarySha256": "b4a777e409032d9390bb4361f3625c73a0894445974f3ff03f623739f9f54381",
+    "originalFingerprintsExact": 43,
+    "oldLeaseAndSnapshotsExact": true,
+    "unresolvedOriginalUnknownExact": true,
+    "remoteDisabled": true,
+    "existingJVMRestartedForPairedBridge": true,
+    "retainedFirewallFingerprints": 10,
+    "physicalPolicyExact": true
+  },
+  "sourcePureNativeDiagnosis": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "returnCode": 0,
+    "stdout": "\nrunning 1 test\ntest nm::handover::initialization::journal::producer::observation::retained_netfilter_source_diagnosis ... STAGE=sealed-snapshot CODE=OK\nSTAGE=physical-epoch CODE=OK\nSTAGE=raw-json-generation CODE=OK\nGENERATION=2341\nSTAGE=native-plan CODE=OK\nSTAGE=native-recheck CODE=OK\nSTAGE=sealed-current-identity CODE=OK\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 846 filtered out; finished in 6.84s\n\n",
+    "samePrimaryGroup": true,
+    "onlyRead": true
+  },
+  "automaticExpiry": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "bca6e599-ea6b-4080-bd94-6d25cb346aea",
+    "terminalMode": "automatic",
+    "originalOutcome": {
+      "id": "bca6e599-ea6b-4080-bd94-6d25cb346aea",
+      "requestId": "6730a5d8-734b-43a5-acac-e27b81805a4c",
+      "state": "ROLLED_BACK",
+      "historical": true,
+      "requiresOriginalQuery": false,
+      "deadlineUnixMs": 1795064303451,
+      "dispatchEnabled": false,
+      "writeEnabled": false,
+      "previousCommit": {
+        "id": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+        "requestId": "bfdd1bb4-90f7-4535-b8ef-18bee7471a5e",
+        "state": "COMMITTED",
+        "historical": true,
+        "requiresOriginalQuery": false,
+        "deadlineUnixMs": 1795063760300,
+        "dispatchEnabled": false,
+        "writeEnabled": false
+      },
+      "confirmedRevision": 2,
+      "confirmedSourceDigest": "4b641befe701ccbbfc104c9e55d28678c7e7e26b426a39f57933687f73ef8de5",
+      "sameStructuredPolicy": true
+    },
+    "initialNativeHandles": [
+      723
+    ],
+    "exactPreviouslyCommittedHandle": [
+      248
+    ],
+    "originalOwnerInputsExact": 43,
+    "applyRedispatched": false,
+    "explicitRollbackDispatched": false,
+    "validationBundleId": "239"
+  },
+  "expiryReadbackError": {
+    "code": "CONFLICT"
+  },
+  "actualSourceObservation": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "requestId": "22068981-caf0-4678-be45-c08d172a216a",
+    "originalOutcome": {
+      "backend": "nft.imported.v1",
+      "deadlineExpired": false,
+      "deadlineMs": 1795065491599,
+      "dispatchEnabled": false,
+      "historical": true,
+      "id": "abf49c92-3038-47c1-9ddb-56592109b753",
+      "kernelEffect": false,
+      "kind": "SOURCE_OBSERVATION",
+      "logicalRevisionChanged": false,
+      "ownerGrant": false,
+      "requestId": "22068981-caf0-4678-be45-c08d172a216a",
+      "requiresConfirmation": false,
+      "requiresOriginalQuery": false,
+      "state": "OBSERVED",
+      "writeEnabled": false,
+      "confirmedRevision": 2,
+      "confirmedSourceDigest": "a657856647f162cca6c6c05c6eba0b0ce4f29e37c7b4a0e155b9b664af4bb5d2",
+      "structuredPolicyExact": true
+    },
+    "unchangedPolicySha256": "323302c145e36bf5c58ef9748e7f62a2a5e09b9e1d7b7eea2965361121d718ec",
+    "protectedExact": 43,
+    "observedOnce": true,
+    "validationBundleId": "227"
+  },
+  "sourceObservationProbeError": null,
+  "priorUndispatchedSourcePreflightErrors": [
+    {
+      "stage": "setup",
+      "code": "FirewallTransactionException"
+    },
+    {
+      "stage": "source-review",
+      "code": "CONFLICT"
+    },
+    {
+      "stage": "source-review",
+      "code": "INTERNAL"
+    }
+  ],
+  "sourceFixtureReadback": {
+    "returnCode": 0,
+    "policyExact": true,
+    "afterSha256": "323302c145e36bf5c58ef9748e7f62a2a5e09b9e1d7b7eea2965361121d718ec"
+  },
+  "sourcePhysicalGeneration": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "currentGeneration": 2341,
+    "inverseFields": {},
+    "originalInverseGenerations": {
+      "kernelGeneration": 2340
+    },
+    "inverseSha256": "49431d41af13c931cbf9b74e8bb804a38c7ab52a4ec3aa05c314cb5f954ef854"
+  },
+  "explicitRollback": null,
+  "explicitRollbackProbeError": null,
+  "actualOrdinaryGuardAgentUpgrade": null,
+  "observedPackageLifecyclePreflight": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "originalObservationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "originalState": "OBSERVED",
+    "returnCode": "LIFECYCLE_PREFLIGHT_REFUSED",
+    "guardMessage": "Settle the firewall transaction before package lifecycle changes",
+    "installedVersion": "0.1.0~retainedcontinuity202611190710.f054676-1",
+    "serviceStopIntents": 0,
+    "packageMutationDispatched": false,
+    "readOnly": true,
+    "candidate": "f8bedd723f94a3ffabe08e432f9eac87a15a517e"
+  },
+  "priorOrdinaryPrepareDefiniteRejection": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "23154056-bedc-4ee1-9594-4d21a4e4ddb1",
+    "requestId": "b308ab52-57b6-48e3-b896-1b7ef6a91ef7",
+    "code": "CONFLICT",
+    "priorSourceObservationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "durablePrepareAbsent": true,
+    "nativeDispatchIntentAbsent": true,
+    "rulePolicyExact": true,
+    "privateOriginalQuerySha256": "3dec6b871a8ddd457960d77c5d1a83af3a17f349b32912cb2954ea8b80b73f90"
+  },
+  "temporaryGrantWithdrawal": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "core": {
+      "MainPID": "328378",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "beforeAgent": {
+      "MainPID": "328063",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "agent": {
+      "MainPID": "349643",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "state": "OBSERVED",
+    "sealedGrantSha256": "6c5cda8d58f45d794165bac497824e292726549cd2946aeb6358933b0ca82e2e",
+    "grantDisabled": true,
+    "allWriteFlagsDisabled": true,
+    "remoteDisabled": true,
+    "firewallFileFingerprintsExact": 12,
+    "ownerFingerprintsExact": 43,
+    "actualRulesetSha256": "323302c145e36bf5c58ef9748e7f62a2a5e09b9e1d7b7eea2965361121d718ec"
+  },
+  "validation": {
+    "arm64LocalTests": 18,
+    "arm64RolesTests": 16,
+    "arm64InitializationTests": 74,
+    "arm64PairedCallbackTests": 10,
+    "arm64PairedReadRevisionPassed": 118,
+    "arm64OutcomeLockRevisionPassed": 20,
+    "arm64SourceObservationGuardPassed": 15,
+    "arm64TransportPassed": 18,
+    "javaBridgeTestsPassed": 162,
+    "arm64OrdinaryProposalGuardPassed": 13,
+    "arm64TotalIgnored": 0,
+    "arm64ReleaseBuiltFromGit": true,
+    "osgiProbeJdk": 21
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "originalProcessesExact": 7,
+    "originalProtectedPrivateFileMetadataExact": 38,
+    "originalRuntimeDataContentsExact": 6,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false,
+    "originalSameRootLeaseFilesExact": 43
+  },
+  "internalPending": [
+    "Explicit imported rollback through the original request and its independent receipt",
+    "Legally admit the already authenticated OBSERVED receipt through the old package lifecycle guard before upgrading the original Root",
+    "Normal typed Core consumer business integration and broader rejection and recovery matrix",
+    "Complete Core/OSGi and legal Main consumer business and remaining typed brokers including RTC/Chrony",
+    "Complete six-component provider/launcher/install/upgrade/remove/purge/interruption matrix and all twelve parent tasks"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/committed-typed-firewall-outcomes-20261119",
+  "firstCommitEvidenceRoot": ".management-close-20261116/committed-typed-firewall-source-20261119/write-acceptance/resumed"
+}
