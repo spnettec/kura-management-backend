@@ -1,4 +1,14 @@
 
+## 2026-11-20 BIND 直接 polkit 授权配对撤回
+
+Networking b54b360 在发行包发布已构建的 DNS provider 指纹。Core d0e9774b13 在 Debian 换版和 Main 启动前、在原 modem 配对基础上核对 BIND provider 的包所有权和 JAR 指纹，撤下 kurad 对 named/bind9 的直接 systemd 操作授权。Main 将 polkit 配置挂为只读。原 polkit 文件按指纹归档，Chrony 专用账号与 unit 的权限合同保持。
+
+原 BIND 验收夹具重挂时文件系统设备号与记录不同，原受保护文件和三份回执字节匹配，按原 Root 校验边界停放，未向它派发包操作或 BIND 操作。随后从 Git 构建前后版本，在新的隔离 Debian 13 ARM64 Root 实装。实际 dpkg 先拒绝缺少 BIND 发行证明的旧 Networking，依序升级 Networking 与 Core 后，真实 polkit 对同一 kurad 身份、两个 unit 名、三种操作的六项授权由允许变为拒绝。合法 Main 内实际 OSGi 只读状态仍通过 broker。系统 named 保持同一个 PID 和 invocation，未派发 BIND 变更，两份原凭据和空台账保持，夹具正常停放。
+
+Linux Core 110 项、polkit 合同 14 项、Networking Maven 2211 项通过。Core 1dedc117f0 单独补齐先前 Chrony 配置激活已有的 restart 规则测试。测试现场抑制了 NM 后台重配。BIND 配置发布、真实丢回复、跨 Main 核定及 Root 设备改号后安全恢复仍内部待办。其余 typed brokers、完整 Core/OSGi 和六组件/provider/launcher/生命周期矩阵继续实施。原 7fd 保持 41 输入/16 回执，父项 0/12，external deferred 仍仅原三项。见[检查点](actual-core-bind-policy-cutover-checkpoint.json)。
+
+
+
 ## 2026-11-19 实际 OSGi BIND 进程委派
 
 Core 05ad0dbf35 安装 BIND socket actor，核验固定 Main、Networking drop-in、直接子进程及 peer pidfd。actor 本身无 Linux capabilities，仅接受固定 named.service 的状态与启停请求，校验已装 Debian BIND unit 和二进制。变更前同步同 Root 意图，结果不明确时保留原编号并阻断后续写。Main 将系统代码、unit 目录和 dpkg 元数据挂为只读，独立 BIND 台账挂为不可访问。Networking 1809304 从正式 OSGi DnsServerService 接到此路径，运行中结果不明确时保留原 ID。

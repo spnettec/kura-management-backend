@@ -1,0 +1,199 @@
+{
+  "date": "2026-11-19T16:09:26.430231+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "identities": {
+    "core": [
+      "d0e9774b130ae8d911c12d6f7b549cba49e9eacc",
+      "f661f6d7732ace31113806cf2d38de0a3314296f"
+    ],
+    "networking": [
+      "b54b3603d94bb8f463304eec4eaac380ec1cac74",
+      "90d6d2db27bf9988c0afb17c5d88c9ccb9923647"
+    ],
+    "core-tested": [
+      "1dedc117f0936f10945faacb9f3917e58b95a35f",
+      "f15d53f0fb85842a642287e6d8e9f99c7aadfa41"
+    ]
+  },
+  "predecessors": {
+    "core": [
+      "05ad0dbf35648536134120e4dd0d2ef4ffb494ae",
+      "e57712ce90e63dc01e53fba32d58c2b9a2f95341"
+    ],
+    "networking": [
+      "1809304a030035672acdea200fa87fd80da29491",
+      "eba698caaec699ac65dc39d11c9d7436e9012341"
+    ]
+  },
+  "oldRootRemount": {
+    "id": "0627c123ecf6603bae2806692ce07ace2a51e3a320f8001395e220f020766f6d",
+    "boundDevice": 1048826,
+    "liveDevice": 1048815,
+    "inodeStillExact": true,
+    "originalPayloadExact": true,
+    "previousReceiptsExact": 3,
+    "packageMutationDispatched": false,
+    "operationDispatched": false
+  },
+  "oldRootParked": {
+    "id": "0627c123ecf6603bae2806692ce07ace2a51e3a320f8001395e220f020766f6d",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:03:19.082232603Z",
+      "FinishedAt": "2026-11-19T16:05:06.461634123Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "socketRemoved": true,
+    "receiptsRetained": 3,
+    "rootBindingMismatchAfterReattach": true
+  },
+  "beforePermissions": {
+    "named.service start": true,
+    "named.service stop": true,
+    "named.service restart": true,
+    "bind9.service start": true,
+    "bind9.service stop": true,
+    "bind9.service restart": true
+  },
+  "rejectedUnpaired": {
+    "id": "549b504e3a95c84951fe11c6e406313efa61cc9f368e8ac835b21bab7862d532",
+    "dispatchOrdinal": 1,
+    "candidate": {
+      "package": "kura-core",
+      "version": "6.0.0~git202611191608.d0e9774-1",
+      "sha256": "85599897e416c82fbcf1d0e80f40fcc57b4e962460eecc88650220a8ffe399c3",
+      "remote": "/root/typed-bind-release/bind-withdraw-core-latest.deb"
+    },
+    "exitCode": 1
+  },
+  "networkingUpgrade": {
+    "id": "549b504e3a95c84951fe11c6e406313efa61cc9f368e8ac835b21bab7862d532",
+    "dispatchOrdinal": 1,
+    "candidate": {
+      "package": "kura-networking",
+      "version": "3.0.0~git202611191607.b54b360-1",
+      "sha256": "28151d8227ff73f5386a8c9bf8f309efc70965af7ec1c1cd4b685657f1775e09",
+      "remote": "/root/typed-bind-release/typed-bind-provider-latest.deb"
+    },
+    "exitCode": 0
+  },
+  "coreUpgrade": {
+    "id": "549b504e3a95c84951fe11c6e406313efa61cc9f368e8ac835b21bab7862d532",
+    "dispatchOrdinal": 1,
+    "candidate": {
+      "package": "kura-core",
+      "version": "6.0.0~git202611191608.d0e9774-1",
+      "sha256": "85599897e416c82fbcf1d0e80f40fcc57b4e962460eecc88650220a8ffe399c3",
+      "remote": "/root/typed-bind-release/bind-withdraw-core-latest.deb"
+    },
+    "exitCode": 0
+  },
+  "nativePolicy": {
+    "id": "549b504e3a95c84951fe11c6e406313efa61cc9f368e8ac835b21bab7862d532",
+    "denied": {
+      "named.service start": true,
+      "named.service stop": true,
+      "named.service restart": true,
+      "bind9.service start": true,
+      "bind9.service stop": true,
+      "bind9.service restart": true
+    },
+    "archivedOriginalPolicy": true,
+    "releaseProof": {
+      "bindProtocol": 1,
+      "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "b14aec47c9a716e0c3bdaf64a233c3b4aabfdbf449a89ed2314f1a53f5f658c6"
+    },
+    "policySha256": "1614d397f91b8faad20dd8e1740b57ade753056617363e57d2631d94309d9a9e",
+    "bindBeforeMain": {
+      "MainPID": "110",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "14256865e2a8423ba6fe4e5db91b083a"
+    }
+  },
+  "actual": {
+    "id": "549b504e3a95c84951fe11c6e406313efa61cc9f368e8ac835b21bab7862d532",
+    "readOnlyOsgiActive": true,
+    "main": {
+      "MainPID": "3843",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "b77f94f636cc4656a329b9ac5fa68177"
+    },
+    "providerVersion": "3.0.0.202611191607",
+    "providerManifest": {
+      "bindProtocol": 1,
+      "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "b14aec47c9a716e0c3bdaf64a233c3b4aabfdbf449a89ed2314f1a53f5f658c6"
+    },
+    "binderUnchanged": {
+      "MainPID": "110",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "14256865e2a8423ba6fe4e5db91b083a"
+    },
+    "mounts": {
+      "/etc/polkit-1": "/etc/polkit-1",
+      "/var/lib/kura-bind-service": "/systemd/inaccessible/dir"
+    },
+    "admittedBindMutations": 0
+  },
+  "parked": {
+    "id": "549b504e3a95c84951fe11c6e406313efa61cc9f368e8ac835b21bab7862d532",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:05:06.74571333Z",
+      "FinishedAt": "2026-11-19T16:09:11.695698147Z"
+    },
+    "mainDisabled": true,
+    "socketRemoved": true,
+    "probeArchived": true,
+    "admittedBindMutations": 0
+  },
+  "testTotals": {
+    "linuxCore": 110,
+    "polkitContract": 14,
+    "networking": {
+      "tests": 2211,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "candidateRebuiltAfterPredecessorForDebianOrdering": true,
+  "testedWithNetworkBackgroundSuppressed": true,
+  "bindConfigurationPublicationExercised": false,
+  "priorOperationsReplayed": false,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
