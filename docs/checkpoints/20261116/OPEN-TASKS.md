@@ -1,4 +1,16 @@
 
+## 2026-11-19 Agent 已初始化状态的同 Root 移除、purge 与重装
+
+Agent `a500c3d` 增加 Root `prepare-retained-removal` 和 `retained-removal-status`。准备绑定原初始化 UUID、原版本、审核归档、固定二进制/单元/maintainer 摘要、原 UID/GID、Core loader 和停机状态。持久意图保持启动门禁，五个阶段回执核对同一意图摘要。只允许已停用、未绑定且无业务写入的已初始化状态通过本条路径。归档检查排空有界 tar 零填充，避免较大的 maintainer 脚本使 `dpkg-deb` 阻塞。
+
+首个独立 Root 的归档宿主属主和镜像排除的五份文档示例分别在发布意图前触发拒绝。`4b6271a` 兼容这五份固定示例缺席，继续严格核验程序、单元和 maintainer。真实 dpkg 以一次正式源码更新沿原初始化升级，六份原文件精确，公开代码身份按原升级回执更新。唯一 remove 已通过 `prerm` 而后在 `postrm` 因组校验读取已不存在的 package-v2 标记退出 1。原现场为 `deinstall ok half-installed`，15 个已核条目及 Core 文件保持，原准入回执保留，正常停放，无再次派发。
+
+`34d3b5f` 在移除负载后用已配对的原 GID 校验现存控制组。46 项 Linux ARM64 定向回归通过。独立 Debian 13 ARM64 正式包单次 `remove`、`purge`、`unpack`、`configure` 均 exit 0，阶段回执共享同一意图摘要。原包已删除后用同版本、同摘要归档分步重装。unpack 后仍保持启动门禁，configure 后原回执为 REINSTALLED，正式检查通过。七份原数据和初始化回执的内容及元数据保持，三个 Core 文件一致，整个过程没有自动启动。专用现场已正常停放。dpkg purge 仍报告库目录非空，已确认残留 Python bytecode，清理单独待验。
+
+原半安装 remove 的核定续接、具有身份或业务记录的同 Root 维护、跨启动和其余故障阶段均为内部待办。完整 Core/OSGi、其余 typed brokers、六组件矩阵与冻结的全部 12 父项继续原范围。原 7fd 41 输入/16 回执和原 UNKNOWN 保持。最终父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-native-agent-retained-removal-checkpoint.json)。
+
+
+
 ## 2026-11-19 Agent 原生 remove/purge 和已初始化边界
 
 两个独立、无外网的 Debian 13 ARM64 Root，均安装配对的 Core 7d4789fe1d 和 Agent 3547424 正式 deb。未初始化的现场使用实际 dpkg 各执行一次 remove 和 purge，均 exit 0。remove 后为 `deinstall ok config-files`，purge 后包从 dpkg 清单消失。Agent 负载和控制器移除，专用账号保留，Agent 单元停止，Core 仍安装，三个原文件摘要一致。第一次探针用了错误的服务账号名，在任何 remove/purge 派发前纠正，沿同一次安装继续。

@@ -1,0 +1,204 @@
+{
+  "date": "2026-11-19T14:05:42.960130+00:00",
+  "nativeOs": "Debian 13",
+  "architecture": "arm64",
+  "releases": {
+    "initial": {
+      "commit": "a500c3da0f15d8d535da0555ff4feeb25f795281",
+      "tree": "1b5bb46b3d64a853f699ca5dcdffe0b4e6fb09fa",
+      "version": "0.1.0~cohort202611191359.a500c3d-1",
+      "sha256": "28ce675e81cfffbb499d9b0589264cb3558dd9ebead5ea529a1c6d068e53f8a0",
+      "sourceManifestSha256": "12bc6130190b8ff1b8f1085155ae2ada0326af1c76f309172780efc104f5fdea",
+      "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    },
+    "configured": {
+      "commit": "4b6271a1a0bf95f4f42e46b2055e171bd39a6f02",
+      "tree": "53073bc569374031d00ffd04bacfe4da1c6f61e1",
+      "version": "0.1.0~cohort202611191402.4b6271a-1",
+      "sha256": "a6311999b756d4983b22244bcfba162404ff6e7213c454e00069b2ffcb85adc2",
+      "sourceManifestSha256": "8d955d16f660d31792024eb6779f69fed67a94b4bfed9d9290e101be64fb4cbb",
+      "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    },
+    "verified": {
+      "commit": "34d3b5fb51c71271c987826c8d97cc1ae92b2c96",
+      "tree": "b86263f3e7cb4b5c08ad8ef383bb24b7967caf8c",
+      "version": "0.1.0~cohort202611191404.34d3b5f-1",
+      "sha256": "f8562ab4bbc2316a31d339a2ceecd9a2e069af666637486d5e8e42c7ec98fcfb",
+      "sourceManifestSha256": "4540751eb3a5601d58b9f314b8a8642a7148ab9f93867a6de42482ebf6443085",
+      "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+    }
+  },
+  "firstOwnershipRefusal": {
+    "container": "9ccb4a838dbb8e682db9f9bafe7e261769ff15720f47721a18b7435517db88d7",
+    "operation": "f23af4db-6470-4a56-a899-0d1d7b384d9f",
+    "archiveOwnership": "501:20:600:1",
+    "noPreparedOrAdmittedMarker": true,
+    "originalProfileAndPackagesExact": true,
+    "allPriorDpkgMaintenanceDispatches": 0
+  },
+  "debianDocExamplesExcluded": 5,
+  "originalSourceUpgrade": {
+    "container": "9ccb4a838dbb8e682db9f9bafe7e261769ff15720f47721a18b7435517db88d7",
+    "sourceOperation": "cfb8fe11-77e4-4421-97cb-db01fe3d115c",
+    "receipt": {
+      "schemaVersion": 1,
+      "requestId": "cfb8fe11-77e4-4421-97cb-db01fe3d115c",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "replayed": false
+    },
+    "originalInputExact": 6,
+    "onlyPublicCodeIdentityAdvanced": true
+  },
+  "priorHalfInstalled": {
+    "container": "9ccb4a838dbb8e682db9f9bafe7e261769ff15720f47721a18b7435517db88d7",
+    "requestId": "f23af4db-6470-4a56-a899-0d1d7b384d9f",
+    "dpkgStatus": "deinstall ok half-installed",
+    "onlyAdmissionReceipt": true,
+    "exitCode": 1,
+    "strictOriginalEntriesExact": 15,
+    "coreFilesExact": 3,
+    "currentPayloadAbsent": true,
+    "noFurtherDpkgDispatch": true
+  },
+  "positivePhases": {
+    "removed": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "status": "deinstall ok config-files",
+      "inputFilesExact": 7,
+      "sameOriginalRoot": true
+    },
+    "purged": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "status": "not-listed",
+      "inputFilesExact": 7,
+      "sameOriginalRoot": true
+    },
+    "unpacked": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "status": "install ok unpacked",
+      "launchGuardRemains": true,
+      "inputFilesExact": 7
+    },
+    "reinstalled": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "receipt": {
+        "schemaVersion": 1,
+        "requestId": "6b52db16-e4f0-4da4-a996-9fb5d02b0bb8",
+        "phase": "REINSTALLED",
+        "unitStarted": false
+      },
+      "originalInitializationPreserved": true,
+      "packageVersion": "0.1.0~cohort202611191404.34d3b5f-1",
+      "strictFingerprintsExact": 7,
+      "coreFilesExact": 3,
+      "noAutoStart": true,
+      "originalPhaseReceipts": [
+        {
+          "intentSha256": "ad91e5856f5ce9bc6a2163b16be6ba8b1a1c9ec818bc83762df5aaa42ae9c311",
+          "phase": "remove-admitted",
+          "requestId": "6b52db16-e4f0-4da4-a996-9fb5d02b0bb8",
+          "schemaVersion": 1
+        },
+        {
+          "intentSha256": "ad91e5856f5ce9bc6a2163b16be6ba8b1a1c9ec818bc83762df5aaa42ae9c311",
+          "phase": "removed",
+          "requestId": "6b52db16-e4f0-4da4-a996-9fb5d02b0bb8",
+          "schemaVersion": 1
+        },
+        {
+          "intentSha256": "ad91e5856f5ce9bc6a2163b16be6ba8b1a1c9ec818bc83762df5aaa42ae9c311",
+          "phase": "purged",
+          "requestId": "6b52db16-e4f0-4da4-a996-9fb5d02b0bb8",
+          "schemaVersion": 1
+        },
+        {
+          "intentSha256": "ad91e5856f5ce9bc6a2163b16be6ba8b1a1c9ec818bc83762df5aaa42ae9c311",
+          "phase": "install-admitted",
+          "requestId": "6b52db16-e4f0-4da4-a996-9fb5d02b0bb8",
+          "schemaVersion": 1
+        },
+        {
+          "intentSha256": "ad91e5856f5ce9bc6a2163b16be6ba8b1a1c9ec818bc83762df5aaa42ae9c311",
+          "phase": "reinstalled",
+          "requestId": "6b52db16-e4f0-4da4-a996-9fb5d02b0bb8",
+          "schemaVersion": 1
+        }
+      ]
+    }
+  },
+  "dpkgOutcome": {
+    "remove": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "exitCode": 0
+    },
+    "purge": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "exitCode": 0
+    },
+    "unpack": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "exitCode": 0
+    },
+    "configure": {
+      "container": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "exitCode": 0
+    }
+  },
+  "parked": {
+    "original": {
+      "id": "9ccb4a838dbb8e682db9f9bafe7e261769ff15720f47721a18b7435517db88d7",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T13:58:47.322515884Z",
+        "FinishedAt": "2026-11-19T14:03:51.71269909Z"
+      }
+    },
+    "verified": {
+      "id": "9ddb11748221bd0797cfe648f329242604256ac672cc57120f89a2834d06306b",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:04:12.831140437Z",
+        "FinishedAt": "2026-11-19T14:04:38.922687667Z"
+      }
+    }
+  },
+  "linuxTestsPassed": 46,
+  "gaps": [
+    "reconcile the original half-installed remove after its known postrm failure",
+    "purge-generated Python bytecode remains in the library directory",
+    "retained enrollment, encrypted business, migrations and other launcher/power/interruption combinations",
+    "remaining typed brokers and complete six-component and Core/OSGi validation"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
