@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-19T08:03:15.387723+00:00",
+  "architecture": "Debian 13 ARM64",
+  "nativeCore": {
+    "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+    "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+    "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+  },
+  "initialDeploymentCommit": "715f48e1bbdc99b62a4afc5433b43297e957ef29",
+  "candidate": {
+    "container": "51936db5d5055c5c96fd9e0c971522414658e666af82d49d84b5f8906af9e536",
+    "version": "2.0.0~git202611190801.efa0ca9-1",
+    "commit": "efa0ca998d8f9e50b7353f65133e9e246cc30774",
+    "tree": "78fc841f5a96ed1ecd63ac7960dd6259f9915e3b",
+    "sha256": "fde69714653ec01c4cee615f770853efa9ff95766be2576238a103f07b0d1473",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+        "sha256": "a783d2d5d43052beb93309cf0c6ad375bee34406b644b1b4e61a61797b27eb8f"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+        "sha256": "cf66bfc4f2ec455c42a504a2d4b7d01d8ef7c6ba6aec80f2631a89316843a725"
+      }
+    },
+    "originalPrivateAndFixtureDataExact": true
+  },
+  "actualOsgi": {
+    "container": "51936db5d5055c5c96fd9e0c971522414658e666af82d49d84b5f8906af9e536",
+    "realMainPid": 2266,
+    "states": [
+      "COMMITTED_FILEMOVE_COPY",
+      "REJECTED_CHECKSUM_ORIGINAL_EXACT",
+      "REJECTED_VERIFIER_PAIR_EXACT",
+      "COMMITTED_VERIFIED_UPDATE_PAIR"
+    ],
+    "httpRequests": 6,
+    "priorHarnessRequests": 1,
+    "packageCurrent": true,
+    "recognizedFileMoveService": true,
+    "installedUpdateScriptDispatched": false,
+    "noVerificationScriptDispatched": true,
+    "externalNetworkNone": true,
+    "unchangedProtectedFiles": 5
+  },
+  "firstProbeStoppedBeforePublish": "missing KuraPayload OSGi import in the test probe",
+  "fixture": {
+    "id": "51936db5d5055c5c96fd9e0c971522414658e666af82d49d84b5f8906af9e536",
+    "finalState": "exited",
+    "exitCode": 0,
+    "mainDisabled": true,
+    "chronyMaskedRuntime": true
+  },
+  "tests": {
+    "macOSDeploymentCore": 128,
+    "macOSDeploymentAgent": 47,
+    "macOSPackagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

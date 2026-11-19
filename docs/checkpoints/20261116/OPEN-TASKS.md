@@ -1,4 +1,14 @@
 
+## 2026-11-19 Deployment 校验暂存与实际 FileMove 交接
+
+Deployment 715f48e 与 efa0ca9 将下载和 verifier 的文件名限制为受配置目录下的直接子项，拒绝符号链接和非普通文件。下载先写同目录暂存、校验和同步文件，再分别原子替换正式路径。传输或校验失败留下已有文件，成功发布后才调用 postDownload。异步完成通知等到发布与 hook 结束，同步 pending 查询在传输结束后仍报告进行中。独立安装请求检查它实际指定的产物路径。
+
+当前 Core 2a3b588e63 与 Deployment 715f48e 正式 deb 在同一个 Debian 13 ARM64 隔离 Root 首装，然后标准 dpkg 升级 Deployment 到 efa0ca9。包中、当前 Git 构建产物与已安装的 Deployment/FileMove 两个 OSGi JAR 精确。首个探针缺少 KuraPayload 导入，首轮无发布，保留原诊断和文件。修正探针后在当前合法 Main 实际走同容器 HTTP 和已装 FileMove 服务，共六次请求。新内容校验后复制；校验失败保留原字节、inode 且不调用 hook；verifier 失败保留两份旧文件；两份均校验成功时分别发布。两条 SystemUpdate 路径均未执行脚本。五份原资料指纹精确，Main 正常停机、禁用，现场已停放。Maven/JDK21 全仓通过 229 项。
+
+当前两份文件各自原子发布；需要进一步实现跨 verifier 和更新文件的持久提交、覆盖中断核定、SystemUpdate 执行授权及受保护 FileMove 目的地的窄委派。完整 Core/OSGi、其余 typed brokers、六组件联合发行和全生命周期矩阵继续内部待办。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-native-deployment-staged-publication-checkpoint.json)。
+
+
+
 ## 2026-11-19 watchdog Debian 维护与正式 Main 停机准入
 
 Core 2a3b588e63 将 Debian preinst、postinst、prerm 和当前 systemd ExecStopPost 的 watchdog 动作接入同一固定 helper。helper 有界读取旧 marker，核对文件权限与身份，并只接受 Linux sysfs 证实的 watchdog 字符设备。固定保活和 Magic Close 动作通过核对后的设备描述符写入。Maven 将 helper 精确嵌入三份脚本，正式 unit 与已装 helper 入 generation 清单。
