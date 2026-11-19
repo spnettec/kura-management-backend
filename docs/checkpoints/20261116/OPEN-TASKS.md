@@ -1,4 +1,16 @@
 
+## 2026-11-19 已绑定 Agent 保留加密任务和 WAL 的发行生命周期
+
+Agent 2017a39 加入 Root `prepare-retained-enrolled-removal`。原 Kura peer、材料授权、已绑定凭据及控制通道均经现有实现校验，实际非 Root Rust inspector 认证同字节 SQLite 及 WAL 的副本。运行或 UNKNOWN 任务在写入维护意图前拒绝。准入后，包文件缺席时按原 Core loader/有效单元、原角色、来源链及逐项快照核对，同时保留跨重挂绑定。允许同版本、同发行包原位重装。已绑定后继版本还需联合 Kura 和材料来源转换。
+
+专用 Debian 13 ARM64 网关经真实 GWT 首次绑定并由独立 CA 签发。开启 mTLS 后只提交一次 `kura.snapshot.list`，同 ID 为 SUCCEEDED，中心任务输入、结果均保留密文。显式关闭通道后停止并禁用 Main、Agent 和中继，正常停机后的 SQLite WAL 仍非空。全程使用原数据库和 WAL，独立读取仅在临时副本进行。实际 Root 保存 94 项，包含 Core 原 CSR/证书材料、Agent 原绑定、授权及 SQLite/WAL；Rust 回执确认一个 terminal 任务及零未决记录。
+
+正式 dpkg 各一次 remove、purge、unpack、configure 均成功。remove 后同网关重挂，内核复用同一设备号，本轮证据覆盖真实重挂及 94 项严格指纹保持。unpack 后仍拒绝启动，configure 后原回执 REINSTALLED。显式启动后实际非 Root Agent 零 capabilities，GWT 只读核对同一绑定回执和原 OFF，中心密文及本地任务原 ID 保持。真实 purge 未出现旧缓存目录遗留告警，重装后的程序目录无 Python bytecode 缓存。三处新隔离现场正常停放。
+
+Linux ARM64 原生权限和发行回归 172 项通过。其余绑定代、已绑定后继版本、绑定现场设备号变化、未决业务和完整六组件矩阵保持内部待办。原三现场、原 7fd 41 输入/16 回执和原 UNKNOWN 保持。冻结 12 父项仍 0/12，external deferred 仅原三项。见 [检查点](actual-native-agent-bound-business-removal-checkpoint.json)。
+
+
+
 ## 2026-11-19 Agent 同 Root 后继重装及两次 OverlayFS 重挂
 
 Agent b8a84db 为新移除意图保存内核 OverlayFS 底层指纹。参与的状态必须处于同一原 overlay，拒绝已验证路径的独立挂载。设备号可随相同 backing 重挂变化，其余逐文件指纹保持严格比对。858628a 以原维护编号审核版本严格更高的同 Java/Core bridge 后继包，发布前核对资产、角色、原初始化与来源链。来源链记录绑定原移除和审核摘要。回归覆盖公开代码身份已发布但来源指针未发布时的原编号 configure 续接。

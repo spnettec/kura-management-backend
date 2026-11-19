@@ -1,0 +1,319 @@
+{
+  "date": "2026-11-19T14:41:59.036107+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "build": {
+    "commit": "2017a391271e4d58fd562c9e4af40379e563276f",
+    "tree": "9241be66336eb6485619a38dac8790e1024f79b5",
+    "version": "0.1.0~cohort202611191435.2017a39-1",
+    "sha256": "75e7421d9b353abfc5c958eb5a35c06b590f755a759e19d189dce22ab46a0113",
+    "sourceManifestSha256": "7a091f6311f8e2d21b9c24ac953d87e574d3f8a5be9cd85928ab6230413d5402",
+    "binarySha256": "d6f105db3e265e05676fb2511cc3e718c3bc4b0c5d761962c50765f150782579",
+    "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+    "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+  },
+  "root": {
+    "center": "75cad0dcef3154f9a8c92e46d491d7cb14ff528d967b1cd1502326ef369cf450",
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "db": "070569dbc744bf510249a99dd958293a12cfe307fcaa8178a0ae97ad59afd1ff",
+    "network": "4a8b32848466448059ffa20bc36c481c2c75ca1a920188080f902530a48fd753",
+    "dbVolume": "yofc-bound-retained-native-db-20261119",
+    "images": {
+      "center": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "gateway": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "db": "sha256:c54a696c68013b2f8f42f479e00a2b6ad24c5ef10ee31cdfb8972cec3dad7eb7"
+    }
+  },
+  "originalEnrollment": {
+    "center": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "requestId": "90a3511c-b912-465a-812e-286ddcb7f79d",
+    "staged": true,
+    "bound": true,
+    "remoteEnabled": false,
+    "writeDispatchCounts": {
+      "prepareIdentityInContext": 1,
+      "stageCertificates": 1,
+      "bindIdentity": 1
+    },
+    "sessionRole": "authenticated Kura admin",
+    "tlsTrust": "only actual fixture SPKI pinned by test Chrome"
+  },
+  "encryptedSnapshotJob": {
+    "id": "523ec79a-731b-4bb6-b274-9008a750b34d",
+    "key": "8cfd1aa1-e2a8-47cf-91b3-9fc2b31be5e1",
+    "operation": "kura.snapshot.list",
+    "terminalState": "SUCCEEDED",
+    "pgAtRest": {
+      "state": "SUCCEEDED",
+      "inputSealed": "1",
+      "resultSealed": "1"
+    }
+  },
+  "retainedBusiness": {
+    "inputFiles": {
+      "results.sqlite": {
+        "bytes": 69632,
+        "sha256": "5954a2580e3654509e4f09e4ebfd40dc894721d427c4aad524bf4dde3d18560e"
+      },
+      "results.sqlite-wal": {
+        "bytes": 12392,
+        "sha256": "c76578081451b1a208a19c5412803675f0902b976314c5354aeee24f98a91f4d"
+      }
+    },
+    "inventory": {
+      "executionStates": {
+        "SUCCEEDED": 1
+      },
+      "initializationId": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+      "logicalSha256": "b42583e5615905c1719b9c73b8b72e90a56eec3f95ca8a9ab9a09c0f4ecacf8a",
+      "profile": "native-execution-inventory-v1",
+      "recordsChanged": false,
+      "replayPerformed": false,
+      "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+      "schemaVersion": 1,
+      "tableCounts": {
+        "execution_resolutions": 0,
+        "executions": 1,
+        "firewall_execution_authorities": 0,
+        "imported_remote_connection_barriers": 0,
+        "imported_remote_connection_confirmations": 0,
+        "imported_remote_originals": 0,
+        "native_profile_generation": 1,
+        "results": 0
+      },
+      "unresolvedExecutions": 0
+    },
+    "nativeGid": 990,
+    "nativeUid": 991,
+    "noNewPrivileges": true,
+    "profile": "native-retained-state-inspection-v1",
+    "schemaVersion": 1
+  },
+  "prepared": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "90d442b0-ce49-4284-9863-45a65e53d477",
+    "phase": {
+      "schemaVersion": 1,
+      "requestId": "90d442b0-ce49-4284-9863-45a65e53d477",
+      "phase": "PREPARED",
+      "unitStarted": false
+    },
+    "assetCount": 94,
+    "enrollment": {
+      "bindingGeneration": 1,
+      "candidateId": "4f0d7b99-0925-498d-ae46-ec63cf4a2eb2",
+      "coreContextSha256": "b9bb166db476e7f2b62e6ddce90619c22a5afa4e8a9b06667ef017c8762b1733",
+      "identityReceiptSha256": "86a9f0bc48cd8d28467e1ff1c7f2d572dda88c1ea964d2d50e04badde5a6e188",
+      "requestId": "90a3511c-b912-465a-812e-286ddcb7f79d",
+      "schemaVersion": 1,
+      "stageSha256": "bc5703c320dcba3146510727e870a340ae984fce67ce7dedd24a849a736e3ffa"
+    },
+    "business": {
+      "inputFiles": {
+        "results.sqlite": {
+          "bytes": 69632,
+          "sha256": "5954a2580e3654509e4f09e4ebfd40dc894721d427c4aad524bf4dde3d18560e"
+        },
+        "results.sqlite-wal": {
+          "bytes": 12392,
+          "sha256": "c76578081451b1a208a19c5412803675f0902b976314c5354aeee24f98a91f4d"
+        }
+      },
+      "inventory": {
+        "executionStates": {
+          "SUCCEEDED": 1
+        },
+        "initializationId": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+        "logicalSha256": "b42583e5615905c1719b9c73b8b72e90a56eec3f95ca8a9ab9a09c0f4ecacf8a",
+        "profile": "native-execution-inventory-v1",
+        "recordsChanged": false,
+        "replayPerformed": false,
+        "schemaSha256": "70be30f7fd709f4a84a765c769431ceef7679bbeab498dfaad5d2f6ac31c3b8e",
+        "schemaVersion": 1,
+        "tableCounts": {
+          "execution_resolutions": 0,
+          "executions": 1,
+          "firewall_execution_authorities": 0,
+          "imported_remote_connection_barriers": 0,
+          "imported_remote_connection_confirmations": 0,
+          "imported_remote_originals": 0,
+          "native_profile_generation": 1,
+          "results": 0
+        },
+        "unresolvedExecutions": 0
+      },
+      "nativeGid": 990,
+      "nativeUid": 991,
+      "noNewPrivileges": true,
+      "profile": "native-retained-state-inspection-v1",
+      "schemaVersion": 1
+    },
+    "overlay": {
+      "device": 1048826,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "intentSha256": "5af811b34f98837748174c7d07f3d2bd1bde455107b3ce245b13afc5d9faa7cc"
+  },
+  "remount": {
+    "gateway": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "90d442b0-ce49-4284-9863-45a65e53d477",
+    "beforeDevice": 1048826,
+    "currentDevice": 1048826,
+    "boot": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 3769182,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T14:40:53.911514806Z",
+      "FinishedAt": "2026-11-19T14:40:53.661940958Z"
+    },
+    "originalStateFilesExactExceptKernelDevice": 94
+  },
+  "configured": {
+    "gatewayRoot": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "90d442b0-ce49-4284-9863-45a65e53d477",
+    "receipt": {
+      "schemaVersion": 1,
+      "requestId": "90d442b0-ce49-4284-9863-45a65e53d477",
+      "phase": "REINSTALLED",
+      "unitStarted": false
+    },
+    "retained": {
+      "receiptSha256": "86a9f0bc48cd8d28467e1ff1c7f2d572dda88c1ea964d2d50e04badde5a6e188"
+    },
+    "originalInitialization": {
+      "schemaVersion": 1,
+      "requestId": "7a00a1ab-1f88-4c2e-a15c-acb6d45b416f",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "replayed": false
+    },
+    "off": {
+      "version": 1,
+      "revision": "8ffa3330-f758-4652-be4b-861efe2c8401",
+      "enabled": false,
+      "actor": "kura-uid:997"
+    },
+    "originalJob": {
+      "id": "523ec79a-731b-4bb6-b274-9008a750b34d",
+      "key": "8cfd1aa1-e2a8-47cf-91b3-9fc2b31be5e1",
+      "operation": "kura.snapshot.list",
+      "terminalState": "SUCCEEDED",
+      "pgAtRest": {
+        "state": "SUCCEEDED",
+        "inputSealed": "1",
+        "resultSealed": "1"
+      }
+    },
+    "encryptedCenterRecordPreserved": true,
+    "nativeExecutionPreserved": true,
+    "retainedCount": 94,
+    "noAutoStart": true
+  },
+  "explicitRuntime": {
+    "gatewayRoot": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "operation": "90d442b0-ce49-4284-9863-45a65e53d477",
+    "remote": {
+      "version": 1,
+      "revision": "8ffa3330-f758-4652-be4b-861efe2c8401",
+      "enabled": false,
+      "actor": "kura-uid:997"
+    },
+    "nativeNonRootNoCapabilities": true,
+    "nativeJournalSameOriginalId": true,
+    "centerCipherSameOriginalId": true,
+    "main": {
+      "MainPID": "1179"
+    },
+    "agent": {
+      "MainPID": "852"
+    }
+  },
+  "gwtReadOnly": {
+    "gatewayRoot": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+    "request": "90a3511c-b912-465a-812e-286ddcb7f79d",
+    "remoteEnabled": false,
+    "retainedReceipt": true,
+    "writeDispatches": 0
+  },
+  "parked": {
+    "gateway": {
+      "id": "a9d1edc1508527770b7d6acc6b585bc1c47025c4c8c846653f40bea87faf801b",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:40:53.911514806Z",
+        "FinishedAt": "2026-11-19T14:41:14.110770256Z"
+      }
+    },
+    "center": {
+      "id": "75cad0dcef3154f9a8c92e46d491d7cb14ff528d967b1cd1502326ef369cf450",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:33:12.996199758Z",
+        "FinishedAt": "2026-11-19T14:41:14.104538153Z"
+      }
+    },
+    "postgres": {
+      "id": "070569dbc744bf510249a99dd958293a12cfe307fcaa8178a0ae97ad59afd1ff",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:33:13.695404661Z",
+        "FinishedAt": "2026-11-19T14:41:14.399534837Z"
+      }
+    },
+    "dbVolume": "yofc-bound-retained-native-db-20261119",
+    "sameIdentityAndOffDecision": true,
+    "systemdUnitsDisabled": true
+  },
+  "linuxTests": 172,
+  "validations": {
+    "rootAndAgentAuthorityExact": true,
+    "dirtyWalPreserved": true,
+    "changedDeviceNotExercisedForBoundProfile": true,
+    "noRuntimeBytecodeCache": true,
+    "onlyOriginalTask": true
+  },
+  "nextInternal": [
+    "enrolled successor with joint Kura/material source transition and bound profile with changed device",
+    "remaining enrollment generations, unresolved business, historical Root proofs and all providers/launchers",
+    "full Core/OSGi operations, remaining typed brokers and complete six-component release matrix"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
