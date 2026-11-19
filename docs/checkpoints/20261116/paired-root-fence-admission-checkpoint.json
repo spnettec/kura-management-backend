@@ -1,0 +1,76 @@
+{
+  "recordedAt": "2026-11-19T02:08:47.055655+00:00",
+  "branch": "wip/management-close-20261116",
+  "predecessor": "live-encrypted-firewall-prepare-checkpoint.json",
+  "rootFenceAdmission": {
+    "head": "232945ad296678028523c9c05e7a61c2646bb025",
+    "tree": "b3c31be0f4c47b4fbfc7e802f0f6826fd46f1c20"
+  },
+  "retainedMaintenance": {
+    "head": "7be3275f4cd38984fe69ab5fcd9dd67092aa3094",
+    "tree": "5c409d0922ad07be175822bb61f38296701b037a"
+  },
+  "arm64Validation": {
+    "rust": "1.95.0",
+    "handoverPassed": 247,
+    "handoverIgnored": 16,
+    "separateReadonlyBindMountPassed": 1,
+    "actualSystemdNamespaceGuardPassed": 1,
+    "legacyPackagePythonPassed": 91,
+    "freshFromGit": true,
+    "liveCandidateInstalled": false
+  },
+  "otherValidation": {
+    "macOsForeignMarkerPassed": 1,
+    "initialSystemdHarness": "203/EXEC on /run/noexec; alternate executable location"
+  },
+  "installedEnvironment": {
+    "activeAgentUnchanged": "8033e43",
+    "owningFixture": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "bothFencesAbsent": true,
+    "existingOriginalState": "PREPARED",
+    "originalOpaqueCmReceipt": "UNKNOWN",
+    "actualAgentCoreNmProcessesExact": true,
+    "approvedPublisherPresent": false
+  },
+  "packagedIncomingGuard": {
+    "refusedOriginalPrepared": true,
+    "dpkgInstallInvoked": false,
+    "subsystemInspectionOnly": true,
+    "archiveSha256": "18bec05b8598ca20b473d33f4465f1f1d0d090eee526f994f5baed45e7b03a71",
+    "candidateVersion": "0.1.0~fence202611190206.7be3275-1",
+    "source": "7be3275f4cd38984fe69ab5fcd9dd67092aa3094",
+    "controlScriptSha256": "bdef72e46281955672c25784b0b55afb2b5fe140af6704c0f29edb2e4a00decc",
+    "originalJournalCiphertextFilesExact": 8,
+    "outputState": "PREPARED",
+    "bothFencesAbsent": true,
+    "allOriginalProcessesSame": true
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "original7fdStopped": true,
+    "originalFenceDispatched": false,
+    "originalEncryptedPrepareRedispatched": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Production Root-paired publisher and same-Root continuation of the exact PREPARED original",
+    "Paired fences, signed owner transition, real initialization/startup, and complete Core/OSGi/typed brokers",
+    "All six components, all providers/launcher and install/upgrade/remove/purge/interruption matrix, and all twelve frozen parents"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/paired-root-fence-admission-20261119"
+}

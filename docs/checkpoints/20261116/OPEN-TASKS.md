@@ -1,4 +1,14 @@
 
+## 2026-11-19 双 fence 派发前准入及原 NM 维护记录保全
+
+Agent `232945a` 将真实目录只读检查和外来 network marker 冲突移到 FENCE_INTENT 前。原 actor、token、注册和双族来源见证继续核对。真实 ARM64 systemd 测试用 `TemporaryFileSystem=/etc/kura:ro`，确认拒绝时原 PREPARED 计划及两个空 fence 位置保持。首次探针因 /run 本身 noexec 返回 203，随即从可执行的隔离路径通过；原操作未派发。ARM64 handover 247 项、独立 bind mount 1 项、systemd 1 项；macOS 外来 marker 1 项通过。
+
+Agent `7be3275` 将原 NM ownership 和加密模板流水接入 legacy 包维护准入。未结算或孤立原记录拒绝；正常结算仍核对双侧的原 ID、计划、收据和租约摘要。purge 前保护原交接证据。在原隔离 Root 上只读执行新 ARM64 包提取的真实 preinst 检查，原 PREPARED 拒绝，8 份原计划/分片/回执的内容和元数据精确。当前安装仍为 `8033e43`，原 Core/NM/Agent 进程保持。Debian ARM64 Python 包测试 91 项通过。
+
+配对 Root publisher 和原计划续接、实际两道 fence/签发/初始化/启动、其余 typed brokers、完整合法 Main/OSGi 业务及六组件生命周期仍为内部 pending。原三现场、个人配置、运行中 runtime、原 7fd 停机 41 输入/16 回执继续保全。冻结 12 父项仍 0/12，external deferred 仅原 3 项。见 [检查点](paired-root-fence-admission-checkpoint.json)。
+
+
+
 ## 2026-11-19 原 JVM 加密导出与单次实际 PREPARED
 
 同一隔离 Debian 13 ARM64 Root，沿执行库正式升级 Agent `8033e43`。保留已注册 Java 桥及 Core loader、同一 Core 和 NM 进程、两份快照及原配置收敛 UNKNOWN 记录。通过实际 OSGi CryptoService 确认原部署密钥可用，仅读取布尔结果。私有 NM 配置显式授予该隔离现场的本地 Root 执行器，接口范围只含 lo，远程关闭。
