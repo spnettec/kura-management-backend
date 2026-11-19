@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 静态 IPv6 LAN DNS 与双栈转发
+
+Core 948bf00af8 为已配对的 typed BIND broker 增加双栈配置。IPv4/IPv6 各自只监听批准的 LAN 前缀，上游传输地址族独立于客户端。原 Root、旧请求及历史发布匹配规则继续生效。Networking 825d5dc 新增默认关闭的 `net.interface.<接口>.config.ip6.dnsProxy.enabled`，仅适用于显式静态 IPv6 LAN。发布使用系统有效解析器，保留已支持的本地 stub 选择；IPv6 上游需要路由可达的无 scope 地址。 [BIND 配置参考](https://bind9.readthedocs.io/en/v9.20.24/reference.html)
+
+隔离 Debian 13 ARM64 实装 Core 与 Networking，经正常 Main 的已注册配置服务验证仅 IPv6。随后沿同一账本升级 Networking，修复可选 DNS provider 的晚绑定，并让已配对的双栈配置避开旧 IPv4 解析器。取走并恢复实际 DNS DS 组件时，网络配置服务保持同一注册 ID。provider 缺席期间完成 IPv4 网络配置，BIND 文件及账本保持，恢复 provider 后由监视器发布双栈，再撤回 IPv6 监听。独立网络命名空间共五次取得 IPv6 上游的 AAAA 答案。保留三次启动禁用及三次配置共六组同一 Root 下配对的意图、结果及送达记录。隔离夹具只为测试客户端放通 TCP/UDP 53，默认输入策略保持。Networking Maven 2229 项及 Linux Root BIND 19 项通过。
+
+上游在首次仅 IPv6 阶段记录到网关的 LAN IPv6 源地址，最终两阶段记录到预期的 WAN IPv6 源地址。IPv6 上游切换期间的源地址选择、动态 IPv6 前缀、链路本地 DNS、DHCPv6/RA、systemd-resolved、实际 PPP、完整接管及六组件生命周期仍为内部待办。外部延后仅原三项。原 7fd 保持 41 输入/16 回执，父项 0/12。见 [检查点](actual-core-nm-dual-stack-dns-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — LAN 代理遵循 NetworkManager 系统 stub 的分流
 
 Core 800ce41270 将 LAN 监听能力与 broker 文件、systemd 单元和正常 Main 一起配对。typed `enable-lan` 仅监听获准的 IPv4 LAN，排除 loopback，并限制查询与递归。保留已有 `enable` 请求、文件渲染与账本协议。Networking 0c5cf77 在能力可用时将一个已识别 IPv4 本地 stub 作为唯一转发目标，保留系统路由策略。未知或多个 loopback 仍停用旧转发。 [NetworkManager DNS 配置合同](https://www.networkmanager.dev/docs/api/latest/NetworkManager.conf.html) [systemd-resolved stub 合同](https://www.freedesktop.org/software/systemd/man/latest/resolved.conf.html)

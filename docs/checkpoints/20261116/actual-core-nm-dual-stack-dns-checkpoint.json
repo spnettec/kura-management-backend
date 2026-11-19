@@ -1,0 +1,504 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "7102817",
+  "core": {
+    "head": "948bf00af8483704cc9b3ea3b15abfee194c5011",
+    "tree": "f47829928d3ab4f1e3dcc088a9cd2cb977c90ef1"
+  },
+  "networking": {
+    "head": "825d5dce305ef831f80c361e2d01e7a8c266fd85",
+    "tree": "4a0763ac41ea41307611ea0e4e4a6e049843420b"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd, NetworkManager and BIND with IPv6 network namespaces",
+  "nativeMain": {
+    "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+    "main": {
+      "MainPID": "39601",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "d81a848016a8455fbcd92e45cd79a355"
+    },
+    "networkManagerVersion": "nmcli tool, version 1.52.1",
+    "core": [
+      "948bf00af8483704cc9b3ea3b15abfee194c5011",
+      "f47829928d3ab4f1e3dcc088a9cd2cb977c90ef1"
+    ],
+    "networking": [
+      "825d5dce305ef831f80c361e2d01e7a8c266fd85",
+      "4a0763ac41ea41307611ea0e4e4a6e049843420b"
+    ],
+    "registeredConfigurationService": true,
+    "default": [
+      {
+        "id": "6b844c7b-5f53-49b7-aabd-913106bfb56b",
+        "revision": 1,
+        "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+        "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+        "config": {
+          "mode": "disable",
+          "forwarders": [],
+          "networks": []
+        },
+        "rootScopedAndDelivered": true
+      },
+      {
+        "id": "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef",
+        "revision": 2,
+        "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+        "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+        "config": {
+          "mode": "disable",
+          "forwarders": [],
+          "networks": []
+        },
+        "rootScopedAndDelivered": true
+      },
+      {
+        "id": "830eb3a2-a802-479c-954b-63386f355a16",
+        "revision": 4,
+        "before": "062b86542e04478a454ce46239d40fb6b7dbff253b0ff4deebf157d715b99c89",
+        "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+        "config": {
+          "mode": "disable",
+          "forwarders": [],
+          "networks": []
+        },
+        "rootScopedAndDelivered": true
+      }
+    ],
+    "stages": [
+      {
+        "stage": "configured-v6-only",
+        "receipt": {
+          "id": "de166353-b077-41b6-a4b2-6f4b1ebf60ac",
+          "revision": 3,
+          "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+          "published": "062b86542e04478a454ce46239d40fb6b7dbff253b0ff4deebf157d715b99c89",
+          "config": {
+            "mode": "enable-lan-dual",
+            "forwarders": [
+              "2001:db8:20::53"
+            ],
+            "networks": [
+              "fd37:4::/64"
+            ]
+          },
+          "rootScopedAndDelivered": true
+        },
+        "sockets": [
+          [
+            "tcp",
+            "[fd37:4::1]:53"
+          ],
+          [
+            "udp",
+            "[fd37:4::1]:53"
+          ]
+        ],
+        "queries": [
+          {
+            "transport": "udp",
+            "ipVersion": 6,
+            "label": "ipv6-udp",
+            "answer": "2001:db8:40::60"
+          },
+          {
+            "transport": "tcp",
+            "ipVersion": 6,
+            "label": "ipv6-tcp",
+            "answer": "2001:db8:40::60"
+          }
+        ],
+        "inputPolicies": {
+          "ip6tables": "-P INPUT DROP",
+          "iptables": "-P INPUT DROP"
+        },
+        "service": {
+          "MainPID": "17527",
+          "ActiveState": "active",
+          "InvocationID": "b681a389d0d74074b9b303e7b7750b1a"
+        },
+        "ipv6Interface": "dual-lan@if4     UP             fd37:4::1/64 fe80::e398:edba:225a:6bdd/64",
+        "main": {
+          "MainPID": "11001",
+          "NRestarts": "0",
+          "ActiveState": "active",
+          "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+          "InvocationID": "6a863650f957405983839e4b1ed58354"
+        },
+        "networkingRevision": "16e7fca3a85e9f39253a2be9e7b83b870b5cc647"
+      },
+      {
+        "stage": "typed-dual",
+        "receipt": {
+          "id": "1f2c253e-1fc0-4ffd-9d5b-02df59fb80c7",
+          "revision": 5,
+          "before": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+          "published": "693cddf59e7a05eacc217e6db2851b53dbee2d5a24fbf32372024eaed44bc979",
+          "config": {
+            "mode": "enable-lan-dual",
+            "forwarders": [
+              "2001:db8:20::53"
+            ],
+            "networks": [
+              "203.0.113.0/24",
+              "fd37:4::/64"
+            ]
+          },
+          "rootScopedAndDelivered": true
+        },
+        "sockets": [
+          [
+            "tcp",
+            "203.0.113.1:53"
+          ],
+          [
+            "tcp",
+            "[fd37:4::1]:53"
+          ],
+          [
+            "udp",
+            "203.0.113.1:53"
+          ],
+          [
+            "udp",
+            "[fd37:4::1]:53"
+          ]
+        ],
+        "queries": [
+          {
+            "transport": "udp",
+            "ipVersion": 4,
+            "label": "dual-ipv4",
+            "answer": "2001:db8:40::60"
+          },
+          {
+            "transport": "tcp",
+            "ipVersion": 6,
+            "label": "dual-ipv6",
+            "answer": "2001:db8:40::60"
+          }
+        ],
+        "inputPolicies": {
+          "ip6tables": "-P INPUT DROP",
+          "iptables": "-P INPUT DROP"
+        },
+        "service": {
+          "MainPID": "47423",
+          "ActiveState": "active",
+          "InvocationID": "a78db42ea170404bb4604435f78500c0"
+        },
+        "ipv6Interface": "dual-lan@if4     UP             fd37:4::1/64 fe80::e398:edba:225a:6bdd/64",
+        "main": {
+          "MainPID": "39601",
+          "NRestarts": "0",
+          "ActiveState": "active",
+          "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+          "InvocationID": "d81a848016a8455fbcd92e45cd79a355"
+        }
+      },
+      {
+        "stage": "typed-withdraw-v6",
+        "receipt": {
+          "id": "a3da577f-e33c-4953-9af8-8476a55bbebb",
+          "revision": 6,
+          "before": "693cddf59e7a05eacc217e6db2851b53dbee2d5a24fbf32372024eaed44bc979",
+          "published": "dcd30cc52141ab049eec0a5aac83e71575d430fda1b418ce6460f240e15e61da",
+          "config": {
+            "mode": "enable-lan-dual",
+            "forwarders": [
+              "2001:db8:20::53"
+            ],
+            "networks": [
+              "203.0.113.0/24"
+            ]
+          },
+          "rootScopedAndDelivered": true
+        },
+        "sockets": [
+          [
+            "tcp",
+            "203.0.113.1:53"
+          ],
+          [
+            "udp",
+            "203.0.113.1:53"
+          ]
+        ],
+        "queries": [
+          {
+            "transport": "tcp",
+            "ipVersion": 4,
+            "label": "ipv4-retained",
+            "answer": "2001:db8:40::60"
+          }
+        ],
+        "inputPolicies": {
+          "ip6tables": "-P INPUT DROP",
+          "iptables": "-P INPUT DROP"
+        },
+        "service": {
+          "MainPID": "48240",
+          "ActiveState": "active",
+          "InvocationID": "32cbd9fd39fa4b7a8319f24f9a10a743"
+        },
+        "ipv6Interface": "dual-lan@if4     UP             fd37:4::1/64 fe80::e398:edba:225a:6bdd/64",
+        "main": {
+          "MainPID": "39601",
+          "NRestarts": "0",
+          "ActiveState": "active",
+          "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+          "InvocationID": "d81a848016a8455fbcd92e45cd79a355"
+        }
+      }
+    ],
+    "upstream": [
+      {
+        "label": "ipv6-udp",
+        "source": "fd37:4::1"
+      },
+      {
+        "label": "ipv6-tcp",
+        "source": "fd37:4::1"
+      },
+      {
+        "label": "dual-ipv4",
+        "source": "2001:db8:20::2"
+      },
+      {
+        "label": "dual-ipv6",
+        "source": "2001:db8:20::2"
+      },
+      {
+        "label": "ipv4-retained",
+        "source": "2001:db8:20::2"
+      }
+    ]
+  },
+  "parking": {
+    "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T18:31:12.340706273Z",
+      "FinishedAt": "2026-11-19T18:53:03.39295219Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "receiptsRetained": 6
+  },
+  "fixtureConfigRecoveries": [
+    {
+      "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+      "previousMain": {
+        "MainPID": "2061",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "0a7c195aa568434ebcc220ee74bee8b3"
+      },
+      "formerIncompleteConfigurationCreatedDnsIntent": false,
+      "udevNetworkUnchanged": true,
+      "originalBINDLedger": [
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.delivered",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.intent",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.result",
+        "lock",
+        "root.json"
+      ],
+      "detail": "include WAN in complete desired configuration"
+    },
+    {
+      "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+      "originalV6CaseRetained": true,
+      "priorDualOperationReachedBind": false,
+      "fix": "submit DHCP lease durations as metadata-declared INTEGER",
+      "previousMain": {
+        "MainPID": "11001",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "6a863650f957405983839e4b1ed58354"
+      },
+      "priorLedger": [
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.delivered",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.intent",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.result",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.delivered",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.intent",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.result",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.delivered",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.intent",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.result",
+        "lock",
+        "root.json"
+      ]
+    },
+    {
+      "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+      "previousMain": {
+        "MainPID": "20765",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "5768d3b20f9540fd8768776a5ec5faf8"
+      },
+      "originalV6CaseRetained": true,
+      "noNewBindIntent": true,
+      "providerOptionalStaticBeforeUpgrade": true,
+      "ledger": [
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.delivered",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.intent",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.result",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.delivered",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.intent",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.result",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.delivered",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.intent",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.result",
+        "lock",
+        "root.json"
+      ]
+    },
+    {
+      "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+      "previousMain": {
+        "MainPID": "28053",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "InvocationID": "0b7d230a4cc14a938321c5d38b597c57"
+      },
+      "originalV6CaseRetained": true,
+      "noNewBindIntent": true,
+      "legacyParserActivationFailure": true,
+      "ledger": [
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.delivered",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.intent",
+        "6b844c7b-5f53-49b7-aabd-913106bfb56b.result",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.delivered",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.intent",
+        "9b7a14a5-4a0d-45ee-97a3-f3b0ff1251ef.result",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.delivered",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.intent",
+        "de166353-b077-41b6-a4b2-6f4b1ebf60ac.result",
+        "lock",
+        "root.json"
+      ]
+    }
+  ],
+  "upstreamSourceReadback": {
+    "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+    "observations": [
+      {
+        "label": "ipv6-udp",
+        "source": "fd37:4::1"
+      },
+      {
+        "label": "ipv6-tcp",
+        "source": "fd37:4::1"
+      },
+      {
+        "label": "dual-ipv4",
+        "source": "2001:db8:20::2"
+      },
+      {
+        "label": "dual-ipv6",
+        "source": "2001:db8:20::2"
+      },
+      {
+        "label": "ipv4-retained",
+        "source": "2001:db8:20::2"
+      }
+    ],
+    "firstPhaseSource": "fd37:4::1",
+    "finalSelectedSource": "2001:db8:20::2",
+    "finalIPv6Route": "2001:db8:20::53 dev dns-uplink proto kernel src 2001:db8:20::2 metric 107 pref medium",
+    "noQueryResubmission": true
+  },
+  "authority": {
+    "capabilityPaired": true,
+    "registeredPid": "org.eclipse.kura.net.admin.NetworkConfigurationService",
+    "mainMatched": {
+      "MainPID": "39601",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "d81a848016a8455fbcd92e45cd79a355"
+    },
+    "configurationProvider": "org.eclipse.kura.core.configuration",
+    "explicitSyntheticClientFirewalls": true
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-dns-dual-release/kura_6.0.0~git202611191835.948bf00-1_arm64.deb",
+      "sha256": "448c09e837c887c9e433e7026bfeda7a162df421b3027284ba91c4471c69cc96",
+      "version": "6.0.0~git202611191835.948bf00-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-dns-dual-release/kura-networking-3.0.0~git202611191837.16e7fca-1_all.deb",
+      "sha256": "14c9d13a7abe011dda471e466215b2580c5b4ab6b41ac7d3d0c42bb5f12ef7af",
+      "version": "3.0.0~git202611191837.16e7fca-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-dns-dual-release/kura-networking-3.0.0~git202611191845.35d24b3-1_all.deb",
+      "sha256": "eb9b8e548a4b52609f27a7415549bb2e5eab9b98dd6297777b3b51dc05ecd5b0",
+      "version": "3.0.0~git202611191845.35d24b3-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-dns-dual-release/kura-networking-3.0.0~git202611191849.825d5dc-1_all.deb",
+      "sha256": "bf4a90b61992e744daa36fdcc3733df80fdd6e32e0ee82dedb9fdec0f36bcdc0",
+      "version": "3.0.0~git202611191849.825d5dc-1"
+    }
+  ],
+  "actualProviderRebind": {
+    "id": "2288b6e507e6d5487117727a0e9e30611d21a9ce6594a398480fe750115c01e4",
+    "networkComponentServiceId": "157",
+    "networkComponentRegistrationUnchanged": true,
+    "main": {
+      "MainPID": "39601",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "d81a848016a8455fbcd92e45cd79a355"
+    }
+  },
+  "beforeUpgradeNetworking": "16e7fca3a85e9f39253a2be9e7b83b870b5cc647",
+  "tests": {
+    "networkingMaven": 2229,
+    "bindLinuxRoot": 19
+  },
+  "internalPending": [
+    "动态前缀委派、链路本地 DNS 的 zone id、DHCPv6/RA 公布、IPv6 上游切换期间源地址选择与 systemd-resolved 实装",
+    "实际 PPP 协商及流量、完整接管、完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
