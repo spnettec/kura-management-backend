@@ -1,4 +1,15 @@
 
+## 2026-11-19 原初始化 Root 正式 Agent 升级与实际旧 JVM 绑定
+
+Agent `5a3f852` 支持同一 Root 的原 PREPARED 升级证明续接到 FENCED、native APPLIED 和初始化 COMMITTED。续接重新校验原 plan/加密回执、双 fence、已结算原应用批次与当前真实 Netfilter；首次候选在记录和停止 Agent 前明确拒绝。现场回读定位到旧 JVM 和 NetworkManager 的 procfs inode 分配变化。 `76bacc9` 保留单次采样的文件身份核对；跨期比较要求原证明有同一 PID 命名空间，再核对实际 PID、启动时刻、凭据、systemd InvocationID、cgroup 和 unit。没有命名空间的历史凭证仍用原严格比较。
+
+原 Debian 13 ARM64 Root 以同一个原 ID 通过正式 `dpkg` 升级，随后显式启动一次已安装 Agent。实际 Unix 对端通过同 JVM 注册核验。经 Root 本地入口对当前 JVM、已密封的 12 份普通启动 profile 输入、原角色和原初始化出具独立 `LEGACY_JVM_BOUND` 回执。原 ID 读回与受保护文件摘要一致。错误 token 在写入前拒绝。现行 Core 与 NetworkManager 进程保持，原 17 份记录、旧包证明、数据、原快照和 UNKNOWN 回执均保持，远程维持关闭。
+
+本次未发出 Core 停机或 owner 启动。后续需在原 startup 子事务内消费独立旧 JVM 证明，落实原 Root 的停机、文件发布和实际 owner 启动。完整 Core/OSGi/合法 Main、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。ARM64 定向 19 项通过、2 项忽略。全 handover 套件 254 项通过、16 项忽略。Debian 打包源码与 115 项已验证版本一致。原三现场及原 7fd 禁用停机 41 输入/16 回执保持。冻结父项闭环 0/12，external deferred 仅原三项。见 [检查点](actual-original-legacy-jvm-startup-binding-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原初始化 Root 普通启动 profile 签发
 
 Agent `936ddd4` 识别现行 Core 的受密钥服务管理的 packaged-background 启动链，并将密钥包装器及凭据读取脚本纳入固定输入。普通参数文件仅接受附加 JVM 参数。新 Root 本地签发入口核对原 FENCED 计划、该 Root 的实际升级/停机记录、发布凭证、已提交初始化文件、当前真实 native 回执和原 JVM/NM 进程，再密封指定已装 Core 单元、实际有效定义、stop policy 和输入文件。`64d1eb9` 以现有全局锁作有界排他等待。首候选因锁争用在签发前已知拒绝，无原 profile 文件生成。

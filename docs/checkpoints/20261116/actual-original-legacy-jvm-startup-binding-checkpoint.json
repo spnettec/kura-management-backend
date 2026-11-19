@@ -1,0 +1,152 @@
+{
+  "recordedAt": "2026-11-19T03:44:29.411586+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-original-nm-live-startup-seal-checkpoint.json",
+  "source": {
+    "head": "76bacc95f14753b925cd4e9e1841785bb348a649",
+    "tree": "644bec9bbc5686aaaaf9626d14c941b3d10d1435"
+  },
+  "protocol": {
+    "head": "e21256bbb249c5af810d8c5b7651cc7bd41bacb3",
+    "tree": "c4f2633354c860cd6d7f4a75ff12ba8a1eae32ca"
+  },
+  "package": {
+    "package": "/packages/legacy/kura-management-agent_0.1.0~retainedcontinuity202611190338.76bacc9-1_arm64.deb",
+    "sha256": "c081084c3329012144b6eb74bccccbbb207cf8072cffa76aa64efc3e07250b1f",
+    "binarySha256": "b7494a96f556de38ab4d7fd6f941e35d90cf863d1de304e59f6f4de22c8a3f21",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34"
+  },
+  "initializedOriginalPackageUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "FENCED",
+    "previousAgent": {
+      "MainPID": "31934",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "currentAgent": {
+      "MainPID": "61282",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "15276",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "packageVersion": "0.1.0~retainedcontinuity202611190338.76bacc9-1",
+    "exactOriginalFiles": 17,
+    "pairedSameJvm": true,
+    "authorizedNativeDispatch": false,
+    "remoteDisabled": true,
+    "originalRecordsPreserved": true,
+    "oldReleaseRecordsExact": true,
+    "successorContinuitySha256": "e6d960e497cb26e8abf2d075d67272012f1324c23e957445d6d624a43451a06e"
+  },
+  "legacyJvmSource": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "receipt": {
+      "initializationReceiptSha256": "1be175b776cd456c361dcf82769f2d5a4ab23c5c0da74bc96984fb7d37630849",
+      "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+      "originalPlanSha256": "4603dba54f53fc7e3e240a92d33ae47b69304bb4b66be7486c95599c873a658a",
+      "profileSha256": "134dced45f2c8e5699d95d9b1bbfa25fb0b060052717473a2786eff8c79016be",
+      "receiptSha256": "97f2229bde73cc4e40c9acecf8f5dc91251d61c027ff016a853d7ae5e52dec3c",
+      "runningJvmPid": 15276,
+      "schemaVersion": 1,
+      "scope": "original-live-legacy-jvm-root-and-bridge",
+      "state": "LEGACY_JVM_BOUND",
+      "stopDispatched": false
+    },
+    "runtimeCore": {
+      "MainPID": "15276",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "originalRecordsExact": 17,
+    "oldAgentPackageProofExact": true,
+    "normalizedSystemdProfileExact": true,
+    "wrongTokenRefusedWithoutWriting": true,
+    "currentRegisteredJvmActual": true,
+    "separateDurableSourceReceipt": true,
+    "stopOrSwitchNotDispatched": true,
+    "unknownReceiptExact": true
+  },
+  "firstCandidateDefinitePreflightRefusal": {
+    "differences": {
+      "kura.service": {
+        "procInode": [
+          30250253,
+          31062985
+        ]
+      },
+      "NetworkManager.service": {
+        "procInode": [
+          30244598,
+          31069612
+        ]
+      }
+    },
+    "samePidNamespace": true,
+    "originalJvmNmTupleExact": true,
+    "noCandidateStopIntent": true
+  },
+  "validation": {
+    "arm64TargetedRustPassed": 19,
+    "arm64TargetedRustIgnored": 2,
+    "debianPackagePythonPassed": 115,
+    "packagingUnchangedFromValidatedSource": "5a3f852",
+    "kuraRuntimeJdk": 21,
+    "arm64HandoverRustPassed": 254,
+    "arm64HandoverRustIgnored": 16
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Consume the durable legacy source as typed evidence in the original startup child, without an ordinary-JVM report",
+    "Execute controlled Core stop, same-Root stopped-file publication, real provider owner boot and signing",
+    "Complete Core/OSGi, legal Main, remaining typed brokers and all six-component provider/launcher/install/upgrade/remove/purge/interruption cases"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/original-legacy-jvm-startup-binding-20261119"
+}
