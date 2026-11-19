@@ -1,4 +1,14 @@
 
+## 2026-11-19 实际 OSGi BIND 进程委派
+
+Core 05ad0dbf35 安装 BIND socket actor，核验固定 Main、Networking drop-in、直接子进程及 peer pidfd。actor 本身无 Linux capabilities，仅接受固定 named.service 的状态与启停请求，校验已装 Debian BIND unit 和二进制。变更前同步同 Root 意图，结果不明确时保留原编号并阻断后续写。Main 将系统代码、unit 目录和 dpkg 元数据挂为只读，独立 BIND 台账挂为不可访问。Networking 1809304 从正式 OSGi DnsServerService 接到此路径，运行中结果不明确时保留原 ID。
+
+Debian 13 ARM64 正式实装后，同一合法 Main 内的业务完成停止、启动和重启，各有一份配对回执。启动和重启后的本地 UDP version.bind 查询成功。停止时的 MainPID=0、新启动及重启的不同 invocation、BIND 配置原字节、Main 名字空间实际只读和不可访问路径均已核对。同 UID 外部进程被拒且无回执。该隔离现场用现有持久所有权围栏抑制 NM 后台重配，实际业务由已装 OSGi 服务发起。Main 正常停止、禁用，原探针保留并移出加载目录，三份回执保留。Linux Core 109 项与 Networking Maven 2211 项通过。
+
+当前保留旧包 BIND polkit 兼容授权。跨包配对撤权、实际丢回复与跨 Main 恢复及 BIND 配置发布仍内部待办。已定位 DHCP/dnsmasq、PPP 和 Wi-Fi 等余下进程管理路径，保留完整 Core/OSGi 和六组件/provider/launcher 发行与中断恢复矩阵。原 7fd 41 输入/16 回执保持，父项 0/12，external deferred 仅原三项。见[检查点](actual-core-typed-bind-service-checkpoint.json)。
+
+
+
 ## 2026-11-19 Main 撤下 CAP_SYS_TTY_CONFIG，实际 OSGi 串口验证
 
 Core a47c41ba97 从 Main 的 ambient 和 bounding 集合撤下 CAP_SYS_TTY_CONFIG。串口仍由安装器登记的 dialout 组与 Core CommConnectionFactory 提供。此变更依据实际调用及 [Linux 虚拟终端 ioctl](https://github.com/torvalds/linux/blob/master/drivers/tty/vt/vt_ioctl.c) 与 [jSerialComm 2.11.4 POSIX 实现](https://github.com/Fazecast/jSerialComm/blob/v2.11.4/src/main/c/Posix/SerialPort_Posix.c)。
