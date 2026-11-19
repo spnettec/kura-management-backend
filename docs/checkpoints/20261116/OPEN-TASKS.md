@@ -1,4 +1,17 @@
 
+## 2026-11-19 原 NM 计划期间的正式 Agent 包升级和同 JVM 注册
+
+Agent `99b46b0` 将 Root 固定原操作、当前 Agent 与候选二进制和原版本的绑定接入 Debian 正式升级入口。旧 prerm 对活动守护继续拒绝。新包仅在原 Root 私有停止记录可验证、其余生命周期门禁满足的情况下处理 failed-upgrade。Stop intent 持久化一次，preinst 核对原进程实际已停，同一 JVM/NM、全量 Netfilter 源、密文、计划与 fence 再校验，然后允许解包。实际 postinst 保持守护停止，后续以原正式 systemd 单元显式启动。启动后的 Root 本地核对使用实际 Unix 对端 PID、实时 CM 角色、stored firewall 与完整 writer 模型。
+
+原 FENCED 的 Debian 13 ARM64 现场正式升级到 `99b46b0` 并启动。原 Core/NM、12 份原记录、数据库身份与远程关闭保持，正常安装版 UDS 同 ID 回读 FENCED。新注册证明返回 CONFLICT。已在其真实 Root 对比证实 procfs 在受保护 systemd 沙箱内重挂后，同一进程的 procfs device/inode 与宿主视角不同。保留这次正式安装及第一次启动。原现场此次没有应用修正版。
+
+Agent `87bbf02` 在同一视角保留对 procfs 文件身份的核对，跨挂载使用实际 PID 命名空间、systemd InvocationID/cgroup、PID、启动时刻和凭据，既有共享锁仅在有争用时作有界等待读取。另一原 PREPARED Root 沿其原 ID 用修正版 ARM64 正式 deb 升级并显式启动，实际 Agent 的内核对端 PID、原 CM 角色、存储防火墙和 writer 模型均通过核验。同 Root 读回 PREPARED，原 Core/NM、8 份原文件、快照、数据和原 UNKNOWN 回执保持。ARM64 Rust 18 项、Debian 包测试 115 项通过。两边均未派发原生或 owner 写入。
+
+原 FENCED 的修正续接、原 PREPARED 的后续 Root 派发、签发、初始化、实际 owner 启动继续内部待办。完整 Core/OSGi/合法 Main、其余 typed brokers 与六组件/provider/launcher/安装升级移除 purge/中断恢复及全部 12 父项维持原范围。原三现场和原 7fd 禁用停机 41 输入/16 回执保持。最终闭环 0/12，external deferred 仅原三项。见 [检查点](actual-paired-nm-package-upgrade-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 两个原 NM 现场的 Agent 续接准入检查
 
 Agent `ba636ed` 新增 Root 本地命令 `inspect-original-nm-continuity`。在已有共享锁下校验原 ID、Root owner、计划、加密传输完整回执与原来源。PREPARED 须无原派发记录且 fence 仍保持原样。FENCED 须有与原计划严格绑定的 arm/dispatch 和两道真实 fence。已派发未决的动作、startup 子事务及矛盾结算记录拒绝。检查同时取原 Kura、Agent、NetworkManager 的 systemd InvocationID 与内核进程出生凭据，以原计划及当前真实 nftables JSON/raw dump 校验全量源并生成本代候选 batch 摘要。入口只读。

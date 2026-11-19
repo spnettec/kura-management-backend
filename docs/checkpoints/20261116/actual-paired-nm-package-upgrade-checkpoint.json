@@ -1,0 +1,161 @@
+{
+  "recordedAt": "2026-11-19T03:04:50.231779+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-nm-root-continuity-review-checkpoint.json",
+  "initialAgent": {
+    "head": "99b46b05495c05df5600ac88ae4ce43d7cb710b9",
+    "tree": "7f11e96a4b763a6a0d454df28ffd684e9cafaedc"
+  },
+  "correctedAgent": {
+    "head": "87bbf021c27a6b80f56ab62575db2c85584f4dad",
+    "tree": "6f4059b0bf0edf3dc5e1e3d89a9c7caaec9a2879"
+  },
+  "protocol": {
+    "head": "bd1a89fcd7950556b3849f345f9c2394fd4e91bb",
+    "tree": "5672e0c45f2f5137b99af20f8273e7608ff22a8a"
+  },
+  "fencedPackage": {
+    "package": "/packages/legacy/kura-management-agent_0.1.0~retainedcontinuity202611190301.99b46b0-1_arm64.deb",
+    "sha256": "6bb70a383a14a00b00fcbcb36f8c87dc169d71b59e5823f98c7dfae3c6ccc2ea",
+    "binarySha256": "f65cbd11d271dfa4411cc20771b7b394abbc464d9a2b4e1cb2ee18ee2e20aeaa",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34"
+  },
+  "preparedPackage": {
+    "package": "/packages/legacy/kura-management-agent_0.1.0~retainedcontinuity202611190307.87bbf02-1_arm64.deb",
+    "sha256": "ce7bf4313ee1ece09298a77b703bdd8dfcc8926d4922f09323bf5e1d3e09690b",
+    "binarySha256": "a1b8511a29902c139889f95c32f652bec2d96d518beb1ad3c54008eb5b865dba",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34"
+  },
+  "officialFencedReplacement": {
+    "root": "eb9824d45dff7d0641725c54c597648101264f046ac09a5a07c7005a1bdee060",
+    "packageVersion": "0.1.0~retainedcontinuity202611190301.99b46b0-1",
+    "oldAgent": {
+      "MainPID": "1553",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "currentAgent": {
+      "MainPID": "20068",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "1859",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "89",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "originalProtectedFilesExact": 12,
+    "resolvedRootState": "FENCED",
+    "registrationVerification": "CONFLICT",
+    "cause": "procfs-remount-device-and-inode",
+    "noRepeat": true
+  },
+  "officialPreparedReplacement": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "PREPARED",
+    "previousAgent": {
+      "MainPID": "22687",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "currentAgent": {
+      "MainPID": "30456",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "15276",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "packageVersion": "0.1.0~retainedcontinuity202611190307.87bbf02-1",
+    "exactOriginalFiles": 8,
+    "pairedSameJvm": true,
+    "authorizedNativeDispatch": false,
+    "remoteDisabled": true,
+    "originalRecordsPreserved": true
+  },
+  "preparedSameJvmReceipt": {
+    "dispatchAuthorized": false,
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "pairedRegistration": true,
+    "planSha256": "4603dba54f53fc7e3e240a92d33ae47b69304bb4b66be7486c95599c873a658a",
+    "registeredJvmPid": 15276,
+    "schemaVersion": 1,
+    "state": "PREPARED"
+  },
+  "tests": {
+    "arm64RustPassed": 18,
+    "priorHarnessesIgnored": 2,
+    "debianPythonPassed": 115
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Continue the original FENCED record after repair without replaying the completed installation",
+    "Use the verified original registration in the PREPARED Root and its original plan for legal Root publication",
+    "Signed ownership, native initialization, actual owner startup",
+    "Complete Core/OSGi, legal Main, remaining typed brokers and complete six-component provider/launcher/install/upgrade/remove/purge/interruption recovery"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/paired-nm-package-upgrade-20261119"
+}
