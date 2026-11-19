@@ -1,4 +1,15 @@
 
+## 2026-11-19 原 OBSERVED Root 的合法包升级与运行准入
+
+原 Root 由已装 Agent f054676 升至 7c03712。Debian 先执行旧 prerm，再由已核定新包的 failed-upgrade 和 preinst 分别验证。同一个原 OBSERVED ID、精确候选与已装 bridge、原始租约、已确认的物理头和进程身份保持。Core 328378、NetworkManager 78 未重启，43 份原保护记录及 12 份防火墙文件精确。错误观察 ID 被拒，未发布准入或停机记录。
+
+Agent b5e24b1 让系统 writer 准入直接使用已经验证的 imported 防火墙历史，0f48c7d 增加有限阶段诊断。正式发布 0f48c7d 后，在原 OBSERVED 上独立采样六次，旧状态表拒绝计数从此前 31 条到当前 0 条。实际 Core、NM、原回执及规则保持。ARM64 两个装机版本各 17 项，宿主 94 项和 Debian ARM64 105 项 Python 包回归通过。
+
+同原 JVM 的独立 IPv6 候选完成一次 prepare、apply、显式 rollback，原查询读回历史 ROLLED_BACK。真实 IPv6 候选撤回，之前 IPv4 规则句柄保持，逻辑 revision 2。临时写授权已撤回，中心远程管理关闭。原三现场和原 7fd 禁用正常停机 41 输入 / 16 回执已复核。完整 Core/OSGi、合法 Main、其余 typed brokers 和六组件安装升级移除 purge / 中断恢复矩阵继续内部实施。冻结父项 0/12，external deferred 仍为原三项。见 [检查点](actual-observed-firewall-package-continuation-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 COMMITTED Root 实际防火墙提交与原 ID 到期恢复
 
 正式 Core JVM 与已安装双族 provider 下，原 IPv4 回环操作 `6b3acbf5` 保持三个原请求 ID，依序完成 PREPARED、WAIT_CONFIRM 与 COMMITTED。独立 outcome 核对原输入、实际内核规则句柄和 revision 2。此前仅等待放行的过期探针缺少发送意图。

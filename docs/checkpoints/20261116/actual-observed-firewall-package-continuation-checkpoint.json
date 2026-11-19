@@ -1,0 +1,320 @@
+{
+  "recordedAt": "2026-11-19T05:39:35.504958+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-committed-typed-firewall-outcomes-checkpoint.json",
+  "agentSource": {
+    "head": "0f48c7d309f7bb25ecde63f372825406d810fd4c",
+    "tree": "f3cb523baa76596c4a4c976c733c047880e125ac"
+  },
+  "coreSource": {
+    "head": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+  },
+  "gwtSource": {
+    "head": "18c1b5eed4bf1483fb19756f6ea7ca817bd2732e",
+    "tree": "8df2724c363d402649d688aa7b7befeb26d161a7"
+  },
+  "networkingBridgeSource": {
+    "head": "aad948fd7f3d4dece4fe88f58d870be63616e321",
+    "tree": "01a3f8b30e7d87af0c4d55a702df99807a964764"
+  },
+  "baseConsole": {
+    "head": "14aff0b2118fd307a4f198974caa64ba9b7a09d7",
+    "tree": "6fff9a1081d55ef491321433805f0679699e31b7"
+  },
+  "wrongObservationRejected": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "returnCode": 1,
+    "preparedReceiptAbsent": true,
+    "stopAbsent": true
+  },
+  "actualObservedPackageUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "observationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "state": "OBSERVED",
+    "agentBefore": {
+      "MainPID": "349643",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "agentAfter": {
+      "MainPID": "375858",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "328378",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "oldVersion": "0.1.0~retainedcontinuity202611190710.f054676-1",
+    "newVersion": "0.1.0~retainedcontinuity202611190750.7c03712-1",
+    "agentBinarySha256": "a25ea4da25392b55b40ab8d6a4548df11881eb49c3a8701f34dc258d7e669249",
+    "bridgeSha256": "3455c783d80b1dfce3c8e764d18d684979914a07e8117672398ff0557b2ea5f4",
+    "exactOriginalProtectedFingerprints": 43,
+    "exactFirewallFileFingerprints": 12,
+    "unchangedRulesetSha256": "323302c145e36bf5c58ef9748e7f62a2a5e09b9e1d7b7eea2965361121d718ec",
+    "remoteDisabled": true,
+    "originalUnknownUnchanged": true,
+    "pairedRegistration": true,
+    "admissionSha256": "5624f925f54840385836f932a30ae0169944ffcde3e51957dbc7d03c70eb2fbc",
+    "transactionSha256": "5a8350155cbd91d5a793b477be58e520a5d9b914c54855056119a3728f0bb45d",
+    "dpkgOnce": true,
+    "agentStartOnce": true,
+    "coreAndNmUninterrupted": true
+  },
+  "actualRuntimeClassifierUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "observationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "state": "OBSERVED",
+    "agentBefore": {
+      "MainPID": "393786",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "agentAfter": {
+      "MainPID": "401297",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "328378",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "oldVersion": "0.1.0~retainedcontinuity202611190750.7c03712-1",
+    "newVersion": "0.1.0~retainedcontinuity202611190810.0f48c7d-1",
+    "agentBinarySha256": "763b68ebff47d92ca62a0cd353a187eebcbfc2adf9e82ef63a4212dd2dce7001",
+    "bridgeSha256": "3455c783d80b1dfce3c8e764d18d684979914a07e8117672398ff0557b2ea5f4",
+    "exactOriginalProtectedFingerprints": 43,
+    "exactFirewallFileFingerprints": 12,
+    "unchangedRulesetSha256": "323302c145e36bf5c58ef9748e7f62a2a5e09b9e1d7b7eea2965361121d718ec",
+    "remoteDisabled": true,
+    "originalUnknownUnchanged": true,
+    "pairedRegistration": true,
+    "admissionSha256": "2008bef6f293ade68049b407ca6d85ad88be787deb19edb6e2120945e9ebdc02",
+    "transactionSha256": "5a8350155cbd91d5a793b477be58e520a5d9b914c54855056119a3728f0bb45d",
+    "dpkgOnce": true,
+    "agentStartOnce": true,
+    "coreAndNmUninterrupted": true
+  },
+  "actualRuntimeClassifierReadback": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "observationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "state": "OBSERVED",
+    "begin": "2026-11-19T05:36:21.121622+00:00",
+    "end": "2026-11-19T05:36:27.752159+00:00",
+    "agentPid": "401297",
+    "priorLegacyClassificationErrors": 31,
+    "candidateFirewallClassificationErrors": 0,
+    "originalTransactionExact": true,
+    "noNmTransaction": true
+  },
+  "actualExplicitRollback": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "53761951-493a-427f-94ba-acf5137520f2",
+    "temporaryPort": 45984,
+    "prepared": {
+      "id": "53761951-493a-427f-94ba-acf5137520f2",
+      "requestId": "5e5a7602-7034-4714-8676-7586e79b4cf2",
+      "state": "PREPARED",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795066953968,
+      "historical": false,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false
+    },
+    "applied": {
+      "id": "53761951-493a-427f-94ba-acf5137520f2",
+      "requestId": "5e5a7602-7034-4714-8676-7586e79b4cf2",
+      "state": "WAIT_CONFIRM",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795066953968,
+      "historical": false,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false
+    },
+    "terminal": {
+      "id": "53761951-493a-427f-94ba-acf5137520f2",
+      "requestId": "5e5a7602-7034-4714-8676-7586e79b4cf2",
+      "state": "ROLLED_BACK",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795066953968,
+      "historical": false,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false
+    },
+    "originalOutcome": {
+      "id": "53761951-493a-427f-94ba-acf5137520f2",
+      "requestId": "5e5a7602-7034-4714-8676-7586e79b4cf2",
+      "state": "ROLLED_BACK",
+      "backend": "nft.imported.v1",
+      "deadlineUnixMs": 1795066953968,
+      "historical": true,
+      "requiresOriginalQuery": false,
+      "writeEnabled": false,
+      "dispatchEnabled": false,
+      "sameStructuredPolicy": true,
+      "confirmedRevision": 2,
+      "confirmedSourceDigest": "57ea6bd5f4add2fe328e6e761d64dd1d746b1c42ef8c612fe9bb428d1449a289"
+    },
+    "temporaryKernelHandles": [
+      723
+    ],
+    "precedingSourceObservationId": "abf49c92-3038-47c1-9ddb-56592109b753",
+    "earlierAutomaticRollbackId": "bca6e599-ea6b-4080-bd94-6d25cb346aea",
+    "exactPreviouslyCommittedHandle": [
+      248
+    ],
+    "unchangedOriginalProofInputs": 43,
+    "existingJvmAndNmPreserved": true,
+    "phaseCommandsIssuedOnce": true,
+    "confirmedViewInInstalledJvm": true,
+    "validationBundleId": "233"
+  },
+  "latestExplicitProbeFailure": null,
+  "priorUndispatchedReview": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "53761951-493a-427f-94ba-acf5137520f2",
+    "files": [
+      "layout-preview.json",
+      "operation.json",
+      "review-result.json"
+    ],
+    "readOnly": true
+  },
+  "priorReadOnlyProbeFailures": [
+    {
+      "stage": "inverse-candidate-review",
+      "code": "INTERNAL"
+    },
+    {
+      "stage": "inverse-candidate-review",
+      "code": "INTERNAL"
+    },
+    {
+      "stage": "inverse-candidate-review",
+      "code": "IllegalStateException"
+    }
+  ],
+  "finalHistoryReadback": {
+    "at": "2026-11-19T05:39:11.959219+00:00",
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "state": "ROLLED_BACK",
+    "originalOperationId": "53761951-493a-427f-94ba-acf5137520f2",
+    "exactOriginalHistoricalArtifacts": 10,
+    "exactOriginalOwnerFiles": 43,
+    "temporaryGrantWithdrawn": true,
+    "actualRulesetSha256": "ebc976bcebccb5fff8ae41dd145853fdc5cb6c8430009f948f29655dc04ef8bf",
+    "inverseDispatchSha256": "d27b2ccf3a771d0be3d180dec259dfc13c9c664404eee1e9c9f6687e6376c161",
+    "notTimerDriven": true,
+    "originalReceiptExact": true
+  },
+  "finalTestGrantWithdrawal": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "agent": {
+      "MainPID": "416826",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "core": {
+      "MainPID": "328378",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "state": "ROLLED_BACK",
+    "operationId": "53761951-493a-427f-94ba-acf5137520f2",
+    "purpose": "explicit firewall inverse validation",
+    "localGrantEnabled": false,
+    "remoteDisabled": true,
+    "exactFirewallFileFingerprints": 16,
+    "rulesetSha256": "ebc976bcebccb5fff8ae41dd145853fdc5cb6c8430009f948f29655dc04ef8bf",
+    "at": "2026-11-19T05:39:08.408858+00:00"
+  },
+  "validation": {
+    "arm64FirstReleaseTests": 17,
+    "arm64FinalReleaseTests": 17,
+    "pythonPackagingMacTests": 94,
+    "pythonPackagingLinuxTests": 105,
+    "osgiTestJdk": 21
+  },
+  "internalPending": [
+    "Complete full Core/OSGi and legal Main consumer business, remaining typed brokers and RTC/Chrony",
+    "Complete all six component provider/launcher and installed upgrade/remove/purge/interruption matrix",
+    "Complete all twelve original parent groups under the retained evidence contract"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fdInputs": 41,
+  "original7fdReceipts": 16,
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/observed-firewall-lifecycle-20261119"
+}
