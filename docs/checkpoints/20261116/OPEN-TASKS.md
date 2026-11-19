@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — LAN DNS 代理排除自身作为转发器
+
+Networking 846d250 在已配对的双栈路径排除网关上由本次 BIND LAN 策略监听的地址。网段内其他主机仍可作上游，已配对的系统 loopback stub 继续遵循原分流策略。所有代理配置仍由既有同 Root 的 BIND broker 接受和确认。
+
+隔离 Debian 13 ARM64 实装 Core 3ea096ae52 和 Networking。合法 Main 中实际 OSGi 监视器观察 NetworkManager 加入本地及 WAN 两个解析器，BIND 配置、进程和 Root 台账取样保持。独立 SLAAC 客户端查询取得 WAN 上游答案。NetworkManager 只保留本地解析器后，委派前缀与活跃连接仍在，BIND 停用并交付同 Root 回执。共 3 组意图、结果和送达记录。夹具最初误判 WAN 只能有 DHCPv6 单地址，实际仍有 SLAAC 地址。原回执已在同 Root 只读复核，随后正常停放。Networking Maven 2236 项通过。
+
+另一隔离网络抓到 NetworkManager 1.52.1 的实际 RA。临时指定共享接口的 DNS 后，RDNSS 从上游地址换为 LAN 本地地址，有效期 900 秒。撤销后下一份 RA 恢复上游，未携带本地地址的零时限撤回。自动公布与安全撤回、完整分流/防火墙/接管及其余 typed brokers、完整 Core/OSGi 和六组件仍为内部待办。父项 0/12，external deferred 仅原三项。原 7fd 停止且保留 41 输入/16 回执。 [NetworkManager 1.52.1 RA 发送源码](https://raw.githubusercontent.com/NetworkManager/NetworkManager/1.52.1/src/core/ndisc/nm-lndp-ndisc.c) [检查点](actual-core-nm-dns-loop-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — NetworkManager 委派前缀驱动 LAN DNS
 
 Networking f9a0c3c 支持明确选择 `netIPv6MethodShared` 的 IPv6 LAN。开启该 LAN 的 DNS 代理后，只使用实际应用的 NetworkManager shared 连接和内核中仍 preferred 的地址交集，排除临时、tentative、DAD 失败或已 deprecated 的地址。委派前缀规范化后比较，同前缀忽略续租期限变化，失败观测保留已提交状态。正式 Main 仍经只接受既定 Root 配对的 typed BIND broker 写入。 [NetworkManager 1.52.1 委派处理](https://raw.githubusercontent.com/NetworkManager/NetworkManager/1.52.1/src/core/devices/nm-device.c)
