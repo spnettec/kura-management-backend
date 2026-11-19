@@ -1,4 +1,15 @@
 
+## 2026-11-19 原 owner 正式 Agent/Java bridge 配对升级与业务源授权定位
+
+在原 COMMITTED Root 从 Git 构建并正式安装 Debian 13 ARM64 Agent `951da5c` 与 Networking `3723ab2` 的 Java bridge。原 Root 原 owner 的维护记录收齐五个独立结果，实际执行一次 Core 正常停止、Agent 停止、同包升级、Agent 启动及 Core 启动。Core PID 143427、Agent PID 143112、NM PID 78。确认实际 OSGi bridge 已加载，43 份原记录指纹完全一致，原 lease、native APPLIED、快照及未结算 UNKNOWN 保留，远程关闭。
+
+实际 JVM 读取双族 typed provider，确认原 revision 和 source digest。布局与绑定原计划的双入口均通过编译预审，正式 imported review 和 source review 均返回 UNSUPPORTED。真实 JVM 内可验证已安装 Java executable，外部 procfs 仍拒绝读取。现行 roles、fence、owner 回调返回 OK。原两族 ConfigAdmin PID 均不存在，Core 的旧 stored revision 接口拒绝已外部保留的 PID。当前 imported 源授权仍调用旧存储路径，需接通现行外部 typed 权限及原始密封源证明。现场没有产生新防火墙事务。
+
+ARM64 Rust 62 项通过、1 项忽略，JDK 21 bridge 161 项通过。原三现场及原 7fd 禁用停机 41 输入/16 回执保留。完整 Core/OSGi/合法 Main、其余 typed brokers 和六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。冻结父项闭环 0/12，external deferred 仅原三项。见 [检查点](actual-imported-firewall-paired-upgrade-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 owner 的双族 typed 业务读取与 JVM 可执行身份
 
 在原 `COMMITTED` 现场，通过同一实际 JVM 的正式 OSGi 防火墙 provider 读取 IPv4/IPv6 typed snapshot、schema 4 candidate 和同一确认源。正式 imported review 在 Java 探针修正本地时限参数后到达已装 Agent，返回 INTERNAL，现场无防火墙 transaction。实测外部 Root 与完全相同 UID/GID 均无法读取 JVM 的 `/proc/<pid>/exe`。原 lease 与实际 native 回读仍可验证，Agent 本地和远程写授权均未开启。

@@ -1,0 +1,212 @@
+{
+  "recordedAt": "2026-11-19T04:29:50.780114+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-imported-firewall-executable-observation-checkpoint.json",
+  "coreSource": {
+    "head": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+  },
+  "agentInstalledSource": {
+    "head": "951da5c570505e8bddc095b9761d9d201cba4dfe",
+    "tree": "8d649903c0f2f6a262b8cd2a9299646d46bfb0de"
+  },
+  "pairedJavaBridgeSource": {
+    "head": "3723ab282f7564b2fed42328931f86d09c6ba50e",
+    "tree": "79ad7dfc6d0040c93a97370d9b0105f4416e22ba"
+  },
+  "actualPairedUpgrade": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+    "phase": "COMMITTED",
+    "oldCore": {
+      "MainPID": "85897",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "newCore": {
+      "MainPID": "143427",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "UnitFileState": "enabled"
+    },
+    "oldAgent": {
+      "MainPID": "83610",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "newAgent": {
+      "MainPID": "143112",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/kura-management-agent.service",
+      "UnitFileState": "enabled"
+    },
+    "nm": {
+      "MainPID": "78",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "UnitFileState": "enabled"
+    },
+    "actualBridgeVersion": "1.0.0.202611190419",
+    "installedVersion": "0.1.0~retainedcontinuity202611190422.951da5c-1",
+    "bridgeSha256": "8190415c2e6fe6d775dc940494f065bb21f5ed8371f591270c35f0283de1e0de",
+    "binarySha256": "901552caeae63dccc45d86cf4433c47beb38995abc001769418c7b2449bfb74e",
+    "originalFingerprintsExact": 43,
+    "oldLeaseAndSnapshotsExact": true,
+    "unresolvedOriginalUnknownExact": true,
+    "remoteDisabled": true,
+    "originalNativeApplied": true,
+    "explicitGogoReadinessReadback": true
+  },
+  "actualDualStackBusinessView": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "bundleId": "227",
+    "binaryDigest": "29de889168ef956c0314c6adb140ce4b2600b03441ba2b9bb44e4a0bcad1ba30",
+    "result": {
+      "processId": 143427,
+      "providerBundle": "org.eclipse.kura.firewall.agent",
+      "providerVersion": "1.0.0.202611190145",
+      "typedIpv4": true,
+      "typedIpv6": true,
+      "schema4": true,
+      "revision": 1,
+      "sourceDigest": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+      "sameTypedSource": true,
+      "confirmedStable": true,
+      "reviewOperationId": "6b3acbf5-bbc2-4237-ae63-1049a8e08864",
+      "state": "REFUSED",
+      "stage": "live-owner-review",
+      "code": "UNSUPPORTED"
+    },
+    "noTransactionCreated": true,
+    "originalProcessesAndUnknownExact": true
+  },
+  "actualIndependentChecks": {
+    "javaExecutable": {
+      "schemaVersion": 1,
+      "processId": 143427,
+      "startTicks": 27496465,
+      "path": "/usr/lib/jvm/java-21-openjdk-arm64/bin/java",
+      "device": 1048736,
+      "inode": 3689927,
+      "size": 67560,
+      "ctime": 1794979988,
+      "ctimeNanos": 336122770
+    },
+    "externalProcfs": {
+      "stat": true,
+      "status": true,
+      "cgroup": true,
+      "cmdline": true,
+      "externalExe": 13,
+      "ipv4": true,
+      "ipv6": true
+    },
+    "layoutOnly": {
+      "code": "OK",
+      "sourceDigest": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+      "compiledLayoutSha256": "5d5ca9718dc20f0e8847aa1400f1adaa4567050a34df5abd1688cc190476dc97",
+      "elapsedMillis": 284
+    },
+    "layoutWithSourcePlan": {
+      "code": "OK",
+      "sourceDigest": "633b200b484c333e4d0c66a2859d3b25a07c226d81ac3b8adeeb27af8f69494d",
+      "compiledLayoutSha256": "5d5ca9718dc20f0e8847aa1400f1adaa4567050a34df5abd1688cc190476dc97",
+      "planFields": [
+        "applyReady",
+        "baseRevision",
+        "dispatched",
+        "draftSha256",
+        "forwardBatchSha256",
+        "initializationReceiptSha256",
+        "operationId",
+        "policyChanges",
+        "preservesOriginalLayout",
+        "requiredAuthority",
+        "reviewKind",
+        "schemaVersion",
+        "selectedRuleCount",
+        "sourceBindingSha256",
+        "sourceGeneration",
+        "sourceReceiptSha256",
+        "targetRevision",
+        "targetRuleCount",
+        "transferSha256",
+        "wirePreflightBytes",
+        "writeEnabled"
+      ],
+      "elapsedMillis": 356
+    },
+    "sourceAuthority": {
+      "code": "UNSUPPORTED",
+      "elapsedMillis": 7390
+    },
+    "javaCallbacks": {
+      "processId": 143427,
+      "roles": "OK",
+      "fence": "OK",
+      "owner": "OK",
+      "source": "UNSUPPORTED",
+      "sourceException": "Rejected",
+      "state": "FAILED",
+      "exception": "Rejected"
+    },
+    "rawConfigurationAdminCounts": {
+      "org.eclipse.kura.net.admin.FirewallConfigurationService": {
+        "count": 0
+      },
+      "org.eclipse.kura.net.admin.ipv6.FirewallConfigurationServiceIPv6": {
+        "count": 0
+      }
+    }
+  },
+  "pendingSourceAuthority": "The committed imported path still calls the legacy stored-configuration reader. Both original ConfigAdmin PIDs are absent after the ordinary Core owner startup. The configuration service rejects externally reserved PIDs in its legacy stored API. The confirmed external typed provider still serves both families at the adopted revision. Repair the committed authority read while preserving the captured legacy source and strict Root pairing.",
+  "validation": {
+    "arm64RustPassed": 62,
+    "arm64RustIgnored": 1,
+    "managementBridgeJavaPassed": 161,
+    "jdk": 21,
+    "publishedPairedWireActuallyDeployed": true,
+    "sameRootMaintenanceActionsCompletedOnce": 5,
+    "liveImportedWriteDispatched": false
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Connect current externally reserved and confirmed dual-family authority to the original committed import proof",
+    "Verify actual imported forward/confirm/inverse/observation and durability with the original lease and explicit grants",
+    "Complete Core/OSGi and legal Main, the remaining typed brokers, and the six-component provider/launcher/install/upgrade/remove/purge/interruption matrix"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/original-imported-firewall-paired-upgrade-20261119"
+}
