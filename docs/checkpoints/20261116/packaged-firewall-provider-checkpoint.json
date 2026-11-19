@@ -1,0 +1,205 @@
+{
+  "recordedAt": "2026-11-19T01:18:50.640344+00:00",
+  "branch": "wip/management-close-20261116",
+  "pins": {
+    "kura": {
+      "commit": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "tree": "d0aefb974c0f69043b167effedb4f214b9f075a2"
+    },
+    "kura-networking": {
+      "commit": "d949ec103929dbac5ab2309ec26479a58e354207",
+      "tree": "79f06aa44430be7f49c0297bc996195ae28c809a"
+    },
+    "kura-management-agent": {
+      "commit": "ff36191c65efcd67a4f8ce98cd61893f051c6097",
+      "tree": "db82e211df747c2d0cd4ac15b7618a6ad839362c"
+    },
+    "kura-management-console": {
+      "commit": "a803ef93d02b8b1213dd1940946732f7613ab16b",
+      "tree": "f1e52ce5cf9f05f21b0ce8671f6ba079b9c5ceb7"
+    }
+  },
+  "build": {
+    "compiledFromGit": true,
+    "jdk": 21,
+    "debianArm64": true,
+    "surefire": {
+      "NetworkRolesCommandTest": 12,
+      "AgentFirewallTest": 19,
+      "FirewallProfileSelectionTest": 6,
+      "FirewallOwnershipTest": 7,
+      "NMConfigurationServiceImplTest": 22
+    },
+    "focusedJavaTotal": 66
+  },
+  "installed": {
+    "core": {
+      "package": "kura-core",
+      "version": "6.0.0~git202611190112.e952f82-1",
+      "architecture": "arm64",
+      "source": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+      "sha256": "46905c6cc693348c65af9428de4a7542cf5d3cfc9941dcf6315dbcde582c83c0"
+    },
+    "networking": {
+      "package": "kura-networking",
+      "version": "3.0.0~git202611190114.d949ec1-1",
+      "architecture": "all",
+      "source": "d949ec103929dbac5ab2309ec26479a58e354207",
+      "sha256": "3a661979f13412d52382a59de73189c007b947e513279aefdd5c088e35b21c6d"
+    },
+    "loaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+    "provider": {
+      "path": "/opt/eclipse/kura/siblings/networking/5s/org.eclipse.kura.firewall.agent-1.0.0-SNAPSHOT.jar",
+      "sha256": "7999d881d21b4f34c56333e5fbea6fc6dbed673f6a8ec80dcb1988f0d81d8e94",
+      "rootFileMode": "0644",
+      "ownerPackage": "kura-networking"
+    },
+    "agentInstalled": false,
+    "legacyAndNmKept": true
+  },
+  "agentPackage": {
+    "package": "kura-management-agent",
+    "version": "0.1.0~native202611190115.ff36191-1",
+    "architecture": "arm64",
+    "source": "ff36191c65efcd67a4f8ce98cd61893f051c6097",
+    "sha256": "cf60cbaf67b306043ab1f4853a7cebfb632962af0a32792b12f537adfe984cf4"
+  },
+  "proof": {
+    "defaultCombinations": {
+      "without-agent": {
+        "typedOsgiBundle": "ACTIVE",
+        "typedFacades": "UNSATISFIED REFERENCE",
+        "legacyIpv4": "ACTIVE",
+        "legacyIpv6": "ACTIVE",
+        "rootPairedBridgeInstalled": false,
+        "agentProcessRunning": false,
+        "exactBundleInventory": {
+          "org.eclipse.kura.firewall.agent": {
+            "id": "222",
+            "state": "ACTIVE",
+            "version": "1.0.0.202611190110-d949ec1"
+          },
+          "org.eclipse.kura.net.admin.firewall": {
+            "id": "223",
+            "state": "ACTIVE",
+            "version": "3.0.0.202611190110-d949ec1"
+          },
+          "org.eclipse.kura.nm": {
+            "id": "224",
+            "state": "ACTIVE",
+            "version": "2.0.0.202611190110-d949ec1"
+          }
+        },
+        "noResolutionFailure": true
+      },
+      "with-installed-agent": {
+        "typedOsgiBundle": "ACTIVE",
+        "typedFacades": "UNSATISFIED REFERENCE",
+        "legacyIpv4": "ACTIVE",
+        "legacyIpv6": "ACTIVE",
+        "rootPairedBridgeInstalled": true,
+        "agentProcessRunning": false,
+        "exactBundleInventory": {
+          "org.eclipse.kura.firewall.agent": {
+            "id": "223",
+            "state": "ACTIVE",
+            "version": "1.0.0.202611190110-d949ec1"
+          },
+          "org.eclipse.kura.net.admin.firewall": {
+            "id": "224",
+            "state": "ACTIVE",
+            "version": "3.0.0.202611190110-d949ec1"
+          },
+          "org.eclipse.kura.management.bridge": {
+            "id": "216",
+            "state": "ACTIVE",
+            "version": "1.0.0.202611190110-d949ec1"
+          },
+          "org.eclipse.kura.nm": {
+            "id": "225",
+            "state": "ACTIVE",
+            "version": "2.0.0.202611190110-d949ec1"
+          }
+        },
+        "noResolutionFailure": true
+      }
+    },
+    "selectionWithoutOwnerFences": {
+      "twoTypedActivationFailures": true,
+      "legacyFallbackSuppressed": true,
+      "realOriginalAuthorityAbsent": true,
+      "reason": "FORBIDDEN: durable network owner fence is absent",
+      "usedTestOnlyProfileProperties": true,
+      "temporaryTestInputsRemoved": true
+    },
+    "removalAndPurge": {
+      "typedBundleRemoved": true,
+      "protectedCoreAndBridgeInputsExact": 3,
+      "nmProcessUnchanged": true,
+      "actualCoreAndBridgeRestarted": true,
+      "legacyAndTypedBundlesAbsent": true
+    },
+    "isolatedFixture": {
+      "id": "81ca8073bb34e47e92b4c36c6840dbc6f7c523ca3ffb7b3f4342bda053d0a4c8",
+      "image": "sha256:f5a4e7739ff74b86de034e078f18271cd0f4313c60b6da1c4255a37e5840a23a",
+      "isolatedVolumes": {
+        "/var/lib": "yofc-packaged-firewall-varlib-20261119",
+        "/etc": "yofc-packaged-firewall-etc-20261119"
+      },
+      "noBindMounts": true,
+      "network": "none",
+      "extraCaps": [
+        "CAP_SYS_ADMIN",
+        "CAP_SYS_RESOURCE",
+        "NET_ADMIN"
+      ],
+      "seccompBlocksRebootAndClock": true
+    },
+    "normalExit": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T01:12:02.351570257Z",
+      "FinishedAt": "2026-11-19T01:16:57.129416595Z"
+    }
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdStateExact": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedOperationsReplayed": false
+  },
+  "internalPending": [
+    "Positive installed firewall profile with original JVM, NetworkManager, fences and actual ownership chain",
+    "Native privileged typed brokers and full ordinary Core/OSGi business",
+    "Combined package upgrades and interruptions across the full six-component provider and launcher matrix",
+    "All twelve frozen parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/packaged-firewall-provider-20261119",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

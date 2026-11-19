@@ -1,22 +1,29 @@
 # Kura firewall provider and local transaction contract
 
-Round a44da9fc builds on the V3 rule semantics and writer ownership evidence. This
-is an opt-in provider and public API implementation. The original GWT transaction
-editing/confirmation workflow and formal installation profile remain pending.
+Round a44da9fc builds on the V3 rule semantics and writer ownership evidence.
+The opt-in provider and public API can now be installed by the standard
+Networking package. The original GWT transaction editing and confirmation
+workflow and end-to-end installed ownership transition remain pending.
 
 ## Activation and independent startup
 
-- The optional networking bundle is `org.eclipse.kura.firewall.agent`.
+- The standard Networking deb installs the Root-owned
+  `org.eclipse.kura.firewall.agent` bundle beside the legacy facade.
 - Activation requires `kura.firewall.provider=agent`, reservation of both original
-  IPv4/IPv6 firewall PIDs in `kura.configuration.external.pids`, and omission of
-  the old `org.eclipse.kura.net.admin.firewall` writer bundle from that profile.
+  IPv4/IPv6 firewall PIDs in `kura.configuration.external.pids`, and the local
+  NM writer observer. With the legacy bundle installed, the observer must
+  attest both durable fences and drained writers. Both firewall facades must
+  be free of competing registrations.
 - NetworkManager is retained. This provider does not select Netplan, remove NM,
   change forwarding sysctls, or adopt an existing system firewall automatically.
-- `LocalAgentService` is a dynamic optional OSGi reference. Kura startup and the
-  original login work without a running agent. Reads then report unavailable;
-  they do not fabricate empty firewall rules or fall back to a legacy writer.
-- The default distribution is unchanged. No new formal deb installation or
-  ownership handoff is claimed by adding the bundle to the Maven reactor.
+- The OSGi package import for the Java bridge is optional. With the Agent package
+  absent, default Core startup still resolves the bundle and selects the legacy
+  facade. When the typed profile is selected, the paired Java bridge service is
+  a required dynamic OSGi reference. The bridge can be present with the Agent
+  daemon stopped. Calls over a disconnected bridge report unavailable.
+- The package leaves the active profile selection to the existing startup and
+  handover gates. See the [installed package checkpoint](checkpoints/20261116/packaged-firewall-provider-checkpoint.json)
+  for the Debian ARM64 combinations and the refusal without original fences.
 
 ## Authorization and requests
 
@@ -85,8 +92,7 @@ range, automatic-rule constraints and unknown-field rejection remain strict.
 ## Remaining delivery boundaries
 
 The GWT write UX/RPC, per-browser draft ownership and original-request UNKNOWN
-reconciliation; NM automatic NAT ownership, other-manager adoption/retirement,
-center task integration, affected management-path proof, confirmed-only actual
-early boot, formal deb/Docker/release integration and physical-network validation
-are separate outstanding work. A loopback browser proxy proves original login,
-not reachability over a newly changed management path.
+reconciliation; NM automatic NAT ownership, other-manager adoption and retirement,
+center task integration, affected management-path proof, the installed positive
+ownership transition, and remaining package, Docker and release combinations
+need their own acceptance. Physical-NM validation remains external deferred.

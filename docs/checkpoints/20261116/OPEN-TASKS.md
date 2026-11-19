@@ -1,4 +1,14 @@
 
+## 2026-11-19 typed firewall provider 进入正式 Networking 包
+
+Networking `d949ec1` 将 typed facade 作为 Root 所有的 0644 bundle 安装到既有 `5s`。Core loader 和原 Agent Java 桥配对指纹保持。可选 Java 包导入允许独立 Core 解析该 bundle。选择 typed profile 时，两族服务需要真正的 Java 桥服务和 NM writer observer。已安装的旧 bundle 要经过两项原 fence、实际 writer drain 和独占 facade 检查。
+
+同一个新 Debian 13 ARM64 现场从 Git 构建 Core `e952f82bb9`、Networking `d949ec1` 和 Agent `ff36191`。未装 Agent 时及装入精确配对 Java 桥但 Agent 停机时，真实 OSGi 两族 legacy facade 均 ACTIVE，typed facade 留在未满足状态。后者确认 typed bundle 真实导入该配对桥。隔离测试临时选择 typed profile，原所有权未签发且无 fence，两族均在 NM writer 检查因找不到 durable network owner fence 拒绝激活，legacy 同时被抑制。测试选择文件已移除。
+
+正式移除和 purge 清除 typed bundle，Core 钥、快照及配对桥原指纹精确，NetworkManager 原进程保持。其后实际 Core 和配对桥再启动，旧和 typed firewall bundle 均不存在。测试现场正常退出保留。JDK21 相关 66 项通过。原三现场、C/D/E、个人配置和 7fd 41 输入/16 回执保持。见 [检查点](packaged-firewall-provider-checkpoint.json)。
+
+原真实 JVM/NM 签发与正向所有权过渡、完整 Core/OSGi 业务、Native 其余 typed brokers、六组件/provider/launcher/安装升级移除 purge 和中断恢复矩阵继续内部 pending。冻结 12 父项最终 0/12，external deferred 仍仅原 3 项。
+
 ## 2026-11-19 真实 Core、Networking、Native Agent 本地配对
 
 新 Debian 13 ARM64 使用 JDK 21，从 Git 构建并实际安装 Core `e952f82bb9`、Networking `4b58a55` 和 Native Agent。首个本地配对被旧守卫拒绝。只读核定原编号为 NOT_FOUND，组成员未变化、两单元均停止。正式安装布局将 Networking 包内 Root 模板复制到 vendor drop-in。有效 Main 原已有该模板声明的两项网络能力。
