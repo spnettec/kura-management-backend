@@ -1,0 +1,202 @@
+{
+  "date": "2026-11-19T15:42:24.422620+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "core": [
+    "1ea5e52b9d9900a29aafba565759ff7401a4025a",
+    "c1aedfe0b656c10e11418ac9b424c64790aef57b"
+  ],
+  "networking": [
+    "fbcebfc1445a08aa4f67660f4e123245bb422b00",
+    "e6527397612dc84cbb8e24516bf526f5a3aacbde"
+  ],
+  "rejectedUnpaired": {
+    "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "package": "kura-core",
+    "version": "6.0.0~git202611191539.1ea5e52-1",
+    "sha256": "0dfcd7ed544599190279025c73f23e1216c48391a9fbac180dc8ecb2b7e27ebd",
+    "remote": "/root/typed-modem-release/module-capability-core.deb",
+    "dispatchOrdinal": 1,
+    "exitCode": 1
+  },
+  "pairedProviderUpgrade": {
+    "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "package": "kura-networking",
+    "version": "3.0.0~git202611191538.fbcebfc-1",
+    "sha256": "4c4a98eff6bd9713d6057980de57c1453e0aacb0344f058dd05100d0212ded14",
+    "remote": "/root/typed-modem-release/paired-networking-provider.deb",
+    "dispatchOrdinal": 1,
+    "exitCode": 0
+  },
+  "pairedCoreUpgrade": {
+    "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "package": "kura-core",
+    "version": "6.0.0~git202611191539.1ea5e52-1",
+    "sha256": "0dfcd7ed544599190279025c73f23e1216c48391a9fbac180dc8ecb2b7e27ebd",
+    "remote": "/root/typed-modem-release/module-capability-core.deb",
+    "dispatchOrdinal": 1,
+    "exitCode": 0
+  },
+  "actualCutoverMain": {
+    "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "main": {
+      "MainPID": "2670",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_kill cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw cap_sys_tty_config",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_kill cap_net_bind_service cap_net_admin cap_net_raw cap_sys_tty_config",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "551ed4792abb4c668be294439b415174"
+    },
+    "caps": {
+      "CapInh": 9250,
+      "CapPrm": 9250,
+      "CapEff": 9250,
+      "CapBnd": 9442,
+      "CapAmb": 9250
+    },
+    "core": {
+      "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+      "package": "kura-core",
+      "version": "6.0.0~git202611191539.1ea5e52-1",
+      "sha256": "0dfcd7ed544599190279025c73f23e1216c48391a9fbac180dc8ecb2b7e27ebd",
+      "remote": "/root/typed-modem-release/module-capability-core.deb",
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "networking": {
+      "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+      "package": "kura-networking",
+      "version": "3.0.0~git202611191538.fbcebfc-1",
+      "sha256": "4c4a98eff6bd9713d6057980de57c1453e0aacb0344f058dd05100d0212ded14",
+      "remote": "/root/typed-modem-release/paired-networking-provider.deb",
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "providerManifest": {
+      "modemProtocol": 1,
+      "provider": "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "7f68a6c5879a00817cc09a15435c678f85000efdbf84fb41cc6009993cff0049"
+    },
+    "noModemWrites": true,
+    "priorProbeArchived": true,
+    "retainedRootMatches": true,
+    "priorReceiptSha256": "a7ef694e41ca695d52cc9cfd5e3233edf6b6e5d5395201e41527144e9e713925",
+    "retainedProofCount": 6,
+    "syntheticProbeDataContentRetained": 2,
+    "syntheticProbeDataMetadataChanges": 2
+  },
+  "parked": {
+    "id": "d5a045f8e9e21c082b7be21ddb4ae3b1d16855db2ad16a782d9a98cf6d9f6877",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T15:39:27.27198241Z",
+      "FinishedAt": "2026-11-19T15:41:18.126127928Z"
+    },
+    "mainDisabled": true,
+    "socketRemoved": true,
+    "pairedReceiptRetained": true
+  },
+  "standaloneMain": {
+    "id": "2f33bb8ea341210c54800852bc3ed94c0d920dbb4e12177e49363c16b26c2791",
+    "details": {
+      "MainPID": "1526",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_kill cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw cap_sys_tty_config",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_kill cap_net_bind_service cap_net_admin cap_net_raw cap_sys_tty_config",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "91e0daa584ab4f4a83fa113eddd7e4de"
+    },
+    "caps": {
+      "CapInh": 9250,
+      "CapPrm": 9250,
+      "CapEff": 9250,
+      "CapBnd": 9442,
+      "CapAmb": 9250
+    }
+  },
+  "firewallOnlyMain": {
+    "id": "2f33bb8ea341210c54800852bc3ed94c0d920dbb4e12177e49363c16b26c2791",
+    "details": {
+      "MainPID": "2268",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_kill cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw cap_sys_tty_config",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_kill cap_net_bind_service cap_net_admin cap_net_raw cap_sys_tty_config",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "c9a3c6fda9284e4a9050d6b706f98507"
+    },
+    "caps": {
+      "CapInh": 9250,
+      "CapPrm": 9250,
+      "CapEff": 9250,
+      "CapBnd": 9442,
+      "CapAmb": 9250
+    }
+  },
+  "independentParking": {
+    "id": "2f33bb8ea341210c54800852bc3ed94c0d920dbb4e12177e49363c16b26c2791",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T15:40:00.061804316Z",
+      "FinishedAt": "2026-11-19T15:42:24.24898083Z"
+    },
+    "mainDisabled": true,
+    "noModemWrites": true,
+    "credentialsRetained": true,
+    "providerManifest": {
+      "modemProtocol": 1,
+      "provider": "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "7f68a6c5879a00817cc09a15435c678f85000efdbf84fb41cc6009993cff0049"
+    }
+  },
+  "tests": {
+    "linuxCorePassed": 99,
+    "networking": {
+      "tests": 2211,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "outcomes": {
+    "mainSysModuleWithdrawn": true,
+    "unpairedPreviousTypedProviderRejected": true,
+    "priorModemBusinessReplayed": false,
+    "physicalKernelWriteExercised": false
+  },
+  "nextInternal": [
+    "provider and Core compatibility during interrupted package transactions",
+    "retained module recovery and the remaining typed brokers",
+    "full Core/OSGi and six-component package, provider and launcher matrix"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

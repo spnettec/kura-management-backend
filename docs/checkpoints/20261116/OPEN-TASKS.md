@@ -1,4 +1,16 @@
 
+## 2026-11-19 Main 撤下 CAP_SYS_MODULE
+
+Core 1ea5e52b9d 在 Debian 包换版前和 systemd Main 启动前核验 provider 及其发行指纹。Networking fbcebfc 的标准和 firewall-only 包均核验已装 Core modem broker，发布实际 OSGi JAR 指纹。无 Networking 的 Core 可独立启动。Main 的 AmbientCapabilities 和 CapabilityBoundingSet 均撤下 CAP_SYS_MODULE。
+
+在上一轮实际 modem 的同一 Debian 13 ARM64 隔离 Root，先验证带 broker 的上一版 Networking 缺少发行证明时，候选 Core 的 dpkg preinst 拒绝换版。随后依序实装有证明的 Networking 与 Core，启动标准 Equinox Java Main。实际 JVM 的五类 capability 掩码均无 CAP_SYS_MODULE，modem socket 正常监听。同 Root 的三份历史业务文件、锁文件和两份凭据精确保持。两份夹具业务输入与输出在 Core 升级后换了 inode，字节保持。上一轮夹具 bundle 原字节移出自动加载目录，旧业务未重放。现场重新禁用 Main，正常停放。
+
+另一套 Debian 13 ARM64 隔离现场成功启动独立 Core，随后正式安装并启动 firewall-only 配对 Main，两次实际 Java Main 均无 CAP_SYS_MODULE。Core 凭据保持，现场正常停放。Linux Core 99 项与 Networking Maven 2211 项通过。
+
+历史 schema 1 各合法转换沿用已验收证据。实际内核模块装卸和动态注册仍按原硬件边界处理。安装中断及配对恢复、其余 typed brokers、完整 Core/OSGi 和六组件/provider/launcher/安装升级移除 purge 矩阵继续内部待办。原 7fd 保持 41 输入/16 回执，父项 0/12，external deferred 仅原三项。见[检查点](actual-core-modem-capability-cutover-checkpoint.json)。
+
+
+
 ## 2026-11-19 USB modem 类型化委派与实际 Main 准入
 
 Networking 8da8a33 将模组装卸及 Option 动态注册接到 Core 的本机 broker。Core 核验有效 Main、固定 Networking drop-in、直接子进程和内核 pidfd。模块范围为 cdc_acm、sierra 与 option，配对 USB ID 来自当前支持表。加载前实查接入设备；卸载仅接管有原收据且仍属于原内核实例的模块。内核写入前同步原意图，未结结果阻止同一模块换号派发。通用 Java executor 与直接 new_id 写入已移出该业务路径。
