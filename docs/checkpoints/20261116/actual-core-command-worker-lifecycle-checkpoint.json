@@ -1,0 +1,396 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "9f54db887786ddadbb4c0748ee1d7eda037f28f7",
+  "core": {
+    "head": "19d2926fd004e16e89464a0623685c8d27b60af4",
+    "tree": "139c1fede23270669ca1131bf5b3d7d93e50e263"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 systemd Core-only",
+  "beforeStopUnpacked": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "archive": "/root/kura-command-lifecycle-release/kura_6.0.0~git202611191952.19d2926-1_arm64.deb",
+    "packageSha256": "098737ee3938c0ce4135299c0e85e3c638c0b499d7416d0c72af8640ebdb66ce",
+    "packageState": [
+      "6.0.0~git202611191952.19d2926-1",
+      "unpacked"
+    ],
+    "unitCohort": {
+      "sha256": "db974d3e35f3a462d8666b668eb191d3987a69b009046ae5fb755681072dec9c",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "0222e82830808db600d99f14dab5ffb0df657f93058e8bf5bed1abd0fbbf57a2",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5185845:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5185844:0:0:644:1:210:318211200"
+      }
+    },
+    "startedAt": "2026-11-19T19:51:37.15978496Z",
+    "canonicalCredential": {
+      "sha256": "44c52bc2b90855017d3375969fa606cf9f280f784b0180018cd22200b3d92158",
+      "stat": "5185759:0:0:400:1:32:1795118035"
+    },
+    "maintenance": {
+      "sha256": "41fbb16fecf884d4632d3d9bb482830a76284c2e2d5a11b7977b404aab49c05e",
+      "stat": "5185753:0:0:600:1:102:1795118035"
+    },
+    "socketPresent": false
+  },
+  "unpackedContainerStop": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T19:51:37.15978496Z",
+      "FinishedAt": "2026-11-19T19:54:33.75393186Z"
+    },
+    "dpkg": [
+      "6.0.0~git202611191952.19d2926-1",
+      "unpacked"
+    ]
+  },
+  "resumedUnpacked": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "startedAt": "2026-11-19T19:54:33.935777491Z",
+    "priorStartedAt": "2026-11-19T19:51:37.15978496Z",
+    "dpkg": [
+      "6.0.0~git202611191952.19d2926-1",
+      "unpacked"
+    ],
+    "unchangedInstalledFiles": {
+      "sha256": "db974d3e35f3a462d8666b668eb191d3987a69b009046ae5fb755681072dec9c",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "0222e82830808db600d99f14dab5ffb0df657f93058e8bf5bed1abd0fbbf57a2",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5185845:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5185844:0:0:644:1:210:318211200"
+      }
+    }
+  },
+  "configured": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "dpkg": [
+      "6.0.0~git202611191952.19d2926-1",
+      "installed"
+    ],
+    "credential": {
+      "sha256": "44c52bc2b90855017d3375969fa606cf9f280f784b0180018cd22200b3d92158",
+      "stat": "5185759:0:0:400:1:32:1795118035"
+    },
+    "workerCohort": {
+      "sha256": "db974d3e35f3a462d8666b668eb191d3987a69b009046ae5fb755681072dec9c",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "0222e82830808db600d99f14dab5ffb0df657f93058e8bf5bed1abd0fbbf57a2",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5185845:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5185844:0:0:644:1:210:318211200"
+      }
+    },
+    "mainInitiallyStopped": true
+  },
+  "actualLiveCommandGroup": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "main": {
+      "MainPID": "1876",
+      "NRestarts": "0",
+      "NoNewPrivileges": "yes",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "7658fc34449a4936bc149ffc9d77ab23"
+    },
+    "worker": {
+      "TimeoutStopUSec": "5s",
+      "MainPID": "2256",
+      "ControlGroup": "/system.slice/system-kura\\x2dcommand\\x2dexecutor.slice/kura-command-executor@0-2247-997.service",
+      "KillMode": "control-group",
+      "After": "sysinit.target basic.target \"system-kura\\\\x2dcommand\\\\x2dexecutor.slice\" kura-command-executor.socket kura.service systemd-journald.socket",
+      "ActiveState": "active",
+      "InvocationID": "04f02941d71640b098353e3fcbf646f8"
+    },
+    "unit": "kura-command-executor@0-2247-997.service",
+    "command": {
+      "pid": 2263,
+      "comm": "python3",
+      "ticks": "31806761",
+      "parent": 2256,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/system-kura\\x2dcommand\\x2dexecutor.slice/kura-command-executor@0-2247-997.service",
+      "nnp": 1,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 0,
+        "CapAmb": 0
+      }
+    },
+    "descendant": {
+      "pid": 2264,
+      "comm": "python3",
+      "ticks": "31806762",
+      "parent": 2263,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/system-kura\\x2dcommand\\x2dexecutor.slice/kura-command-executor@0-2247-997.service",
+      "nnp": 1,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 0,
+        "CapAmb": 0
+      }
+    },
+    "independent": {
+      "pid": 1563,
+      "comm": "sleep",
+      "ticks": "31806240",
+      "parent": 1,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/kura-lifecycle-independent-account.service",
+      "nnp": 0,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 2837722619,
+        "CapAmb": 0
+      }
+    }
+  },
+  "actualRemove": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "ownerAfter": {
+      "MainPID": "0",
+      "ControlPID": "0",
+      "ActiveState": "inactive"
+    },
+    "retainedMarker": {
+      "sha256": "94f199ae9a256f591f5a049e6e488a69ed8fc54c6577d4ed1098c80cb22d5131",
+      "stat": "997:995:600:1:26:1795118083"
+    },
+    "retainedOsgiStop": [
+      "1876",
+      "2263",
+      "2264",
+      "false",
+      "false"
+    ],
+    "commandOutcome": 1,
+    "independent": {
+      "pid": 1563,
+      "comm": "sleep",
+      "ticks": "31806240",
+      "parent": 1,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/kura-lifecycle-independent-account.service",
+      "nnp": 0,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 2837722619,
+        "CapAmb": 0
+      }
+    },
+    "credential": {
+      "sha256": "44c52bc2b90855017d3375969fa606cf9f280f784b0180018cd22200b3d92158",
+      "stat": "5185759:0:0:400:1:32:1795118035"
+    },
+    "workerJournal": "[318062.714369] kura-current-release python3[1606]: Kura su PAM policy check-installed accepted.\n[318062.861500] kura-current-release sh[1620]: [gen_config_ini] sibling 'yofc-command-lifecycle-proof' not in install-order registry; loading last",
+    "workerManagerReadback": "Result=success\nLoadState=not-found",
+    "explicitKillSignalObserved": false,
+    "readbackOnlyOfOriginalRemove": true,
+    "removedSocket": true
+  },
+  "actualPurge": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "dpkg": [],
+    "credential": {
+      "sha256": "44c52bc2b90855017d3375969fa606cf9f280f784b0180018cd22200b3d92158",
+      "stat": "5185759:0:0:400:1:32:1795118035"
+    },
+    "retainedRemoved": true,
+    "socketRemoved": true,
+    "workerRemoved": true,
+    "independent": {
+      "pid": 1563,
+      "comm": "sleep",
+      "ticks": "31806240",
+      "parent": 1,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/kura-lifecycle-independent-account.service",
+      "nnp": 0,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 2837722619,
+        "CapAmb": 0
+      }
+    }
+  },
+  "parking": {
+    "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T19:54:33.935777491Z",
+      "FinishedAt": "2026-11-19T19:55:56.80412797Z"
+    },
+    "maintenanceCompleted": true,
+    "mainRemoved": true
+  },
+  "dpkgActions": {
+    "unpack": {
+      "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 6.2378701670095325,
+      "dpkg": [
+        "6.0.0~git202611191952.19d2926-1",
+        "unpacked"
+      ]
+    },
+    "configure": {
+      "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 5.150032792007551,
+      "dpkg": [
+        "6.0.0~git202611191952.19d2926-1",
+        "installed"
+      ]
+    },
+    "remove": {
+      "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 13.393046666984446,
+      "dpkg": [
+        "6.0.0~git202611191952.19d2926-1",
+        "config-files"
+      ]
+    },
+    "purge": {
+      "id": "f807ee0254cd624341826ef3f2f7bf842cc1d933525fa11b502f7cb55c9a7a65",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 0.08386141696246341,
+      "dpkg": []
+    }
+  },
+  "interruptionScope": "container stopped and restarted while dpkg was in unpacked state, before configure",
+  "references": {
+    "systemdOrdering": "https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html",
+    "systemdCgroupKill": "https://www.freedesktop.org/software/systemd/man/latest/systemd.kill.html"
+  },
+  "internalPending": [
+    "活动命令期间实际换版、维护单步中断核定以及其他 launcher/命令账号/provider",
+    "完整 Core/OSGi、网络/接管、其余 typed brokers 和历史边界",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

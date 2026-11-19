@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — 普通命令 worker 的停机顺序与实际包生命周期
+
+Core 19d2926fd0 在正式命令 worker 单元增加 After=kura.service。systemd 在停机时逆序清理，Main 的 ExecStop 和 OSGi 退出开始前，先停止已接受的命令 cgroup。工作进程仍为普通账号、零 capabilities、NNP 1，沿用原包和 Root 配对。 [systemd 顺序](https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html) [cgroup 停止](https://www.freedesktop.org/software/systemd/man/latest/systemd.kill.html)
+
+从 Git 和 JDK 21 构建 Debian 13 ARM64 Core-only 实包。实际 dpkg 解包一次，停在 unpacked 后正常停止容器。沿同一容器恢复，软件包、worker/socket 单元、AES 凭据和预配置维护记录保持，再实际 configure 一次。初次采集误以为凭据在 configure 才创建，实包确认 preinst 已建立，沿原结果只读继续。configure 完成时 Main 仍停止，命令 socket 尚未创建。
+
+正式 Main 通过 OSGi 启动一个忽略 SIGTERM 的普通命令及子进程。活动状态下执行 dpkg remove，原 cgroup 在 OSGi 的 stop 回调前已清空，回调保留两进程均已退出的记录。采集未取得针对该实例的具体信号记录，沿原 remove 回执只读核对后继续。无关的同 UID 服务保持原 PID、启动计数及 invocation。移除正常保留数据副本和 AES 凭据，撤下 socket、unit 和 worker。实际 purge 删除保留的运行时副本，原 AES 凭据及独立服务保持，现场正常停放。两阶段间中断试验覆盖 unpacked 状态，单步中的中断仍为内部待办。
+
+完整 Core/OSGi、活动命令换版与其他中断点、其他 provider/launcher、其余 typed brokers 及六组件矩阵仍为内部待办。冻结 12 父项 0/12，external deferred 仅原三项，原 7fd 禁用且停止，保留 41 输入/16 回执。见 [检查点](actual-core-command-worker-lifecycle-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式 Main 启用 NoNewPrivileges，普通命令仍由独立账号执行
 
 Core ed6db4f0eb 让已配对的正式 Main 通过 socket worker 运行普通命令。Main 保留 kurad，worker 使用 kura、零 capabilities 与 NoNewPrivileges=1。kernel pidfd、有效 Main、原 cgroup、直属客户端及 package cohort 继续配对。worker 从经核定进程读取固定启动参数，使用 SCM_RIGHTS 接收标准流，仅接收方向正确的管道或 /dev/null，以及已打开的工作目录。可遍历路径在 worker 的挂载命名空间重新打开并核对 inode；私有路径继续使用原目录描述符处理相对路径。Main 默认启用 NoNewPrivileges，并从 bounding 集合移除 CAP_SETUID、CAP_SETGID。 [systemd socket](https://www.freedesktop.org/software/systemd/man/latest/systemd.socket.html) [Unix 描述符传输](https://man7.org/linux/man-pages/man7/unix.7.html)
