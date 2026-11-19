@@ -1,0 +1,235 @@
+{
+  "recordedAt": "2026-11-19T02:49:23.962083+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-paired-root-fence-readback-checkpoint.json",
+  "agent": {
+    "head": "ba636ed852c1b5aa2f844e104312a3f2a581a9d9",
+    "tree": "4b7f360654da5b3475eda583815b24b75caf6bf7"
+  },
+  "protocol": {
+    "head": "9120e9e5837e5aeaebcf2cacf9b58ac90b33c9b2",
+    "tree": "ae049c1439fd209b3ad5ad44d7aca3289e38df74"
+  },
+  "package": {
+    "package": "/packages/legacy/kura-management-agent_0.1.0~continuity202611190245.ba636ed-1_arm64.deb",
+    "sha256": "75f65588efd6d827bb734e8111644f1b17799d7fbe34777f342f7f7f5d187d8b",
+    "binarySha256": "177feaf160a5e6016afba9f257eb8f44b2921dcb486679aa812e412e477a2aff",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34"
+  },
+  "verification": {
+    "architecture": "arm64",
+    "rust": "1.95.0",
+    "nativeRustCasesPassed": 10,
+    "previousHarnessesIgnored": 2,
+    "realDebPackage": true
+  },
+  "originalFenced": {
+    "root": "eb9824d45dff7d0641725c54c597648101264f046ac09a5a07c7005a1bdee060",
+    "original": {
+      "dispatchAuthorized": false,
+      "netfilterGeneration": 1456,
+      "original": {
+        "firewallMarker": {
+          "device": 39,
+          "inode": 4031190,
+          "sha256": "4479730e8c665fd12f5d8b7bb5bd7a0983c1d9efe3a5fbb07ceb35ef0f41d66e"
+        },
+        "journalIdentity": {
+          "device": 39,
+          "inode": 4031192,
+          "sha256": "eb3433af5c02f5e008e97544ae0706db62d4910c618b92fb099241de256a800e"
+        },
+        "networkMarker": {
+          "device": 39,
+          "inode": 4031191,
+          "sha256": "a6f9ac1b7c5ac76e4734361c0312e5f9fffd35b686aa85b5891dbcfaea1aef45"
+        },
+        "operationId": "90684e2e-5261-4dc2-a6d0-106b26ec78ab",
+        "phase": "FENCED",
+        "planSha256": "51684abe10af368d7625f5eb8028ae679ac24ae14f944e0c108c0a23e7d25228",
+        "rootPublicationSha256": "2c1a01007cced7145c31ca1c4f017e2cd516a119dd0b64eb7e850fc0917e0d71",
+        "sourceDigest": "e90eb2e9f843c87e7d8930a94633a46b060f5b576bf51373c9db5c3328e41122",
+        "templateReceipt": {
+          "chunkCount": 1,
+          "intentSha256": "46d649f0c7849c7a2a7d959af0ad341047e29599151acdbdd78e9ed058140513",
+          "manifestSha256": "81d7b9dfa15d1e24f3c67fc3277f898a3d378b1ef8a2b4fb3cdbd1d506ac1ab5",
+          "operationId": "90684e2e-5261-4dc2-a6d0-106b26ec78ab",
+          "receiptSha256": "f0dcf054f7da09f59c5b9372f776f508bdd72a4ed2e83165847e16105e3bbdf8",
+          "templateSha256": "b0f336f0f248522a005a2c1f21a836a0c468fd6d8dea479131b03c89e0796f0d"
+        }
+      },
+      "physicalEpoch": {
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "namespaceDevice": 5,
+        "namespaceInode": 4026533966
+      },
+      "processes": [
+        {
+          "gid": 995,
+          "procDevice": 1048776,
+          "procInode": 29907187,
+          "startTicks": 26757240,
+          "uid": 997,
+          "unit": {
+            "activeState": "active",
+            "controlGroup": "/system.slice/kura.service",
+            "invocationId": "e13dafcdf98c4deaa95244793bc02ca6",
+            "pid": 1859,
+            "unit": "kura.service",
+            "unitFileState": "enabled"
+          }
+        },
+        {
+          "gid": 985,
+          "procDevice": 1048776,
+          "procInode": 29887750,
+          "startTicks": 26757209,
+          "uid": 0,
+          "unit": {
+            "activeState": "active",
+            "controlGroup": "/system.slice/kura-management-agent.service",
+            "invocationId": "6ed9a933ddc548f08388c14a41783d4d",
+            "pid": 1553,
+            "unit": "kura-management-agent.service",
+            "unitFileState": "enabled"
+          }
+        },
+        {
+          "gid": 0,
+          "procDevice": 1048776,
+          "procInode": 29907195,
+          "startTicks": 26747006,
+          "uid": 0,
+          "unit": {
+            "activeState": "active",
+            "controlGroup": "/system.slice/NetworkManager.service",
+            "invocationId": "1250bb2f806245309cf20ec39acff9bf",
+            "pid": 89,
+            "unit": "NetworkManager.service",
+            "unitFileState": "enabled"
+          }
+        }
+      ],
+      "reviewedBatchSha256": "0781e170135ee5c0a7075f153ed34887bc447586d3648f3035545b4d55da5c16",
+      "schemaVersion": 1
+    },
+    "originalProtectedFilesExact": 12,
+    "foreignIdRefused": true,
+    "withoutDispatch": true,
+    "stagedCandidateSha256": "177feaf160a5e6016afba9f257eb8f44b2921dcb486679aa812e412e477a2aff",
+    "maskedFenceReaderUsed": true
+  },
+  "originalPrepared": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "original": {
+      "dispatchAuthorized": false,
+      "netfilterGeneration": 2336,
+      "original": {
+        "firewallMarker": null,
+        "journalIdentity": {
+          "device": 39,
+          "inode": 4005558,
+          "sha256": "e84a9c377c2b89ba75c67ac87ca07712272fa234c24c80dc60386d303b4b81bb"
+        },
+        "networkMarker": null,
+        "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+        "phase": "PREPARED",
+        "planSha256": "4603dba54f53fc7e3e240a92d33ae47b69304bb4b66be7486c95599c873a658a",
+        "rootPublicationSha256": null,
+        "sourceDigest": "e5398d387684891e517862781bf7c8f67a75d5a759e3a94524cfcc88c7801965",
+        "templateReceipt": {
+          "chunkCount": 1,
+          "intentSha256": "a8ca2041f0f800c58f43721f0ef6395cc26b9b2883be1cd93dbe4fe2d10f400d",
+          "manifestSha256": "8e76accfe5f32398505399caf32c94d8ff0423e517c5312e1692cab83e7b8a99",
+          "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+          "receiptSha256": "1ca5c5ec5068022ba96bf2dc14f851143653f54b35dd30a65ed76c4e4cf14058",
+          "templateSha256": "1a0e831c9f3c04b2fb65da615630c7c310b4e3d9f3c2051b7fecd156d7a8c103"
+        }
+      },
+      "physicalEpoch": {
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "namespaceDevice": 5,
+        "namespaceInode": 4026533860
+      },
+      "processes": [
+        {
+          "gid": 995,
+          "procDevice": 1048747,
+          "procInode": 30250253,
+          "startTicks": 26575752,
+          "uid": 997,
+          "unit": {
+            "activeState": "active",
+            "controlGroup": "/system.slice/kura.service",
+            "invocationId": "c8ccd22e7c9f4e02af5065abf94d0af4",
+            "pid": 15276,
+            "unit": "kura.service",
+            "unitFileState": "enabled"
+          }
+        },
+        {
+          "gid": 985,
+          "procDevice": 1048747,
+          "procInode": 29887758,
+          "startTicks": 26608485,
+          "uid": 0,
+          "unit": {
+            "activeState": "active",
+            "controlGroup": "/system.slice/kura-management-agent.service",
+            "invocationId": "dd93288be505474b9f60139f89efcbde",
+            "pid": 22687,
+            "unit": "kura-management-agent.service",
+            "unitFileState": "enabled"
+          }
+        },
+        {
+          "gid": 0,
+          "procDevice": 1048747,
+          "procInode": 30244598,
+          "startTicks": 26499583,
+          "uid": 0,
+          "unit": {
+            "activeState": "active",
+            "controlGroup": "/system.slice/NetworkManager.service",
+            "invocationId": "d4682bf8a88f4103aa652f1af05b2286",
+            "pid": 78,
+            "unit": "NetworkManager.service",
+            "unitFileState": "enabled"
+          }
+        }
+      ],
+      "reviewedBatchSha256": "c9fa8a37ff35548360c654aeedec49641d6730d755b90319edefd08d3d196507",
+      "schemaVersion": 1
+    },
+    "originalProtectedFilesExact": 8,
+    "foreignIdRefused": true,
+    "withoutDispatch": true,
+    "stagedCandidateSha256": "177feaf160a5e6016afba9f257eb8f44b2921dcb486679aa812e412e477a2aff",
+    "maskedFenceReaderUsed": false
+  },
+  "preservation": {
+    "originalFixturesRetained": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "closedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Enroll the candidate Agent through a paired replacement and verify the new registration is the original live Core process",
+    "Bind current NM/CM writer and original role proofs before the next effect of each retained operation",
+    "Signed ownership, native initialization, actual owner startup",
+    "Complete Core/OSGi business, legal Main, typed brokers, six-component provider/launcher installation, upgrade, removal, purge and interruption recovery"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/original-nm-continuity-20261119"
+}

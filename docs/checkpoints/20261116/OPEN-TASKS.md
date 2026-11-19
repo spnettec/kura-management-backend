@@ -1,4 +1,15 @@
 
+## 2026-11-19 两个原 NM 现场的 Agent 续接准入检查
+
+Agent `ba636ed` 新增 Root 本地命令 `inspect-original-nm-continuity`。在已有共享锁下校验原 ID、Root owner、计划、加密传输完整回执与原来源。PREPARED 须无原派发记录且 fence 仍保持原样。FENCED 须有与原计划严格绑定的 arm/dispatch 和两道真实 fence。已派发未决的动作、startup 子事务及矛盾结算记录拒绝。检查同时取原 Kura、Agent、NetworkManager 的 systemd InvocationID 与内核进程出生凭据，以原计划及当前真实 nftables JSON/raw dump 校验全量源并生成本代候选 batch 摘要。入口只读。
+
+从 Git 构建 ARM64 deb，以包内二进制在两个原 Debian 13 Root 各执行原 ID 检查。原 FENCED 经过配对 systemd Root 只读 socket，原 PREPARED 读取本地实际 fence 缺席。两边真实 Netfilter generation 与计划验证通过，各拒绝随机非原 ID，分别保持 12 和 8 份原文件、原进程及日志。定向 Rust 原生套件通过 10 项，另 2 项需专用夹具。候选仅增量落盘用于检查，原已安装守护保持，未派发新原生批次。
+
+仍需正式 Agent 受控替换、以实际新注册核验原 JVM/CM/NM 绑定，再继续签发、初始化和实际 owner 启动。完整 Core/OSGi/合法 Main、其余 typed brokers 与六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。原三现场及 7fd 停机 41 输入/16 回执保持。冻结 12 父项仍 0/12，external deferred 仅原三项。见 [检查点](actual-nm-root-continuity-review-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 FENCED 的配对 Root 只读证明
 
 Agent `c835d15` 新增 legacy Debian 的 socket-activated Root 读取单元。文件路径固定，socket 为 root:root 0600，并检查对端凭据。每次读取核对包来源、实际 systemd unit、Core loader 与 Java bridge，拒绝别名、硬链接和变更中的文件，只返回两道 marker 的设备号、inode、SHA-256。沙箱中的 Rust 读取方核验 PID 1、socket 身份和原计划摘要，共享已有执行锁，并保持原 Root 的路径和写入权限。
