@@ -1,4 +1,16 @@
 
+## 2026-11-19 FileMove 原发布核定和 Deployment 包维护
+
+Deployment bd3fbec 保存同一原批准和暂存文件的设备号、inode。原领取、候选发布记录及终态均用同目录原子创建。Root 可用 `/usr/bin/python3 -I -B /usr/libexec/kura-filemove/broker.py reconcile JOB` 核定。只有正式目标可证为原审阅副本时才发布原结果。若原无覆盖动作停在硬链接建立后，核对正式目标与原暂存链指向同一 inode，只移除确切的暂存名。旧领取没有候选记录或当前可见文件无法配对时保持 UNKNOWN。此动作只核定目标发布。
+
+Debian 13 ARM64 当前 Git/JDK 21 正式 deb 标准安装，核对已装两份 OSGi JAR、actor 和 unit。两个专用 Linux 进程加载正式已装发布代码，分别在覆盖目标已同步但结果尚未写入，以及无覆盖硬链接已创建但尚未移除暂存名时退出。两个原作业均为 UNKNOWN。以相同字节的替代 inode 做负对照，保持 UNKNOWN 且原领取、发布证据精确。回到原路径后在同一 Root 沿原作业明确核定。覆盖目标的完整指纹保持，无覆盖目标保留 inode、字节、属主、mode、mtime，移除原暂存硬链接时 nlink/ctime 变化。零重发或跨 Root 查询。
+
+未决时，实际 dpkg remove 和 upgrade 都在建立维护围栏前被拒绝，原部署包、socket、actor 进程与回执保持。核定后，实际标准升级保留原已禁用、inactive 的 socket；标准 remove 与 purge 退出 0，正式 broker 和 unit 移除，两个目标、Root 审批及发布回执精确保留。Main 本次未启动，最终仍禁用，现场正常停放。Maven/JDK 21 全仓 239 项通过。
+
+本轮未重复上一检查点的真实 Main FileMove 业务。单独的真实 Main 业务证据在上一检查点。MOVE 源清理跨中断恢复、真实客户端丢回复、较早未带维护门禁版本的完整迁移、初装半配置及全 provider/launcher 继续内部待办。最初的原 71456 停放现场保持。完整 Core/OSGi、其余 typed brokers 和全部六组件矩阵保留。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-protected-filemove-recovery-checkpoint.json)。
+
+
+
 ## 2026-11-19 FileMove 受保护路径和原作业回执
 
 Deployment 2a63783 为 `/opt/eclipse/kura-deployment-files/` 的直接子项使用独立的 systemd Unix socket 和 actor。普通目的地的 COPY/MOVE 保留现有入口。受保护请求使用 DEPLOY-V2 解析得到的原作业号。actor 校验内核 peer credentials、pidfd 和 systemd 记录中的同一活动 Main。Root 审批绑定本地 Root、原作业号、目标名、动作、是否覆盖、长度及 SHA-256。可用已装 `/usr/bin/python3 -I -B /usr/libexec/kura-filemove/broker.py authorize JOB COPY|MOVE OVERWRITE NAME SIZE SHA256` 审批，OVERWRITE 为 0 或 1，`status JOB` 原地只读。actor 不解析源路径，只接收有界载荷。正式目标以原子操作发布。原领取记录先于修改落盘，终态回执后于目录同步。MOVE 只在当前 actor 明确确认后移除同身份源，疑似已提交结果沿原作业保留。

@@ -1,0 +1,281 @@
+{
+  "at": "2026-11-19T08:53:01.062508+00:00",
+  "nativePackage": {
+    "container": "2138640d822f3450b74e585bbb66304a0b898fd4d471580a161f98b9d18ae827",
+    "packages": {
+      "kura-core": {
+        "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+        "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+        "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+      },
+      "kura-deployment": {
+        "expectedVersion": "2.0.0~git202611190850.bd3fbec-1",
+        "sha256": "75e2227af64deb983051651bcaaa2c3687a9ccef59b73c95da5b08c0bfdc5ada",
+        "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+      }
+    },
+    "revision": "bd3fbec5792e28bc5d7bee30f31141b0b0be9148",
+    "tree": "e0e0d6716dee63b451f1da7e68e9e00998773306",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "045b0eeaef66cdf2b425b54934f120cddac0ee74854b85e2fed884d79711c0eb",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "052a13ebd9bf5806f354092df75effb01eb7682c73374bd985f763f9538c113a",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "fixture": {
+    "container": "2138640d822f3450b74e585bbb66304a0b898fd4d471580a161f98b9d18ae827",
+    "network": "none",
+    "ordinaryMainStarted": false,
+    "ordinaryMainDisabled": true,
+    "exitCode": 0
+  },
+  "publicationRecovery": {
+    "operations": {
+      "71531": {
+        "mode": "renamed",
+        "name": "reconcile-replaced.dat",
+        "overwrite": "1",
+        "oldTarget": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502913",
+          "links": "1",
+          "size": "24",
+          "mtime": "2026-11-19 08:52:26.045430567 +0000",
+          "ctime": "2026-11-19 08:52:26.045430567 +0000",
+          "digest": "dd953bd43233733c2625ccc186e098fdd719fb9c2ecb8f02d5fcbf8903988d8c"
+        },
+        "visible": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502919",
+          "links": "1",
+          "size": "25",
+          "mtime": "2026-11-19 08:52:26.259536991 +0000",
+          "ctime": "2026-11-19 08:52:26.265431259 +0000",
+          "digest": "8a9fa9f0733c94b15d7d8364e37d71757b6ce7bc87ad210dad2f53e8899807c3"
+        },
+        "temporary": ".filemove-00000000000000000000000000071531",
+        "authority": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502918",
+          "links": "1",
+          "size": "278",
+          "mtime": "2026-11-19 08:52:26.152880822 +0000",
+          "ctime": "2026-11-19 08:52:26.154430910 +0000",
+          "digest": "4c272c6270c20bd8d794bd7fbbd3cc6d08bcd5f51891d7190abfc7d680833d1c"
+        },
+        "reconciled": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502919",
+          "links": "1",
+          "size": "25",
+          "mtime": "2026-11-19 08:52:26.259536991 +0000",
+          "ctime": "2026-11-19 08:52:26.265431259 +0000",
+          "digest": "8a9fa9f0733c94b15d7d8364e37d71757b6ce7bc87ad210dad2f53e8899807c3"
+        }
+      },
+      "71532": {
+        "mode": "linked",
+        "name": "reconcile-linked.dat",
+        "overwrite": "0",
+        "visible": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502928",
+          "links": "2",
+          "size": "24",
+          "mtime": "2026-11-19 08:52:26.711192828 +0000",
+          "ctime": "2026-11-19 08:52:26.720432691 +0000",
+          "digest": "962a35a05d983e023d9738cdd90b6df30e5f1b08b435950a2d6e3589009064f8"
+        },
+        "temporary": ".filemove-00000000000000000000000000071532",
+        "authority": {
+          "mode": "600",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502927",
+          "links": "1",
+          "size": "277",
+          "mtime": "2026-11-19 08:52:26.596619843 +0000",
+          "ctime": "2026-11-19 08:52:26.602432320 +0000",
+          "digest": "dd085f51094ee3988d3693cb94b97eb51121bd2c9e39b71e6cfd761d825c7e12"
+        },
+        "reconciled": {
+          "mode": "644",
+          "uid": "0",
+          "gid": "0",
+          "device": "1048812",
+          "inode": "4502928",
+          "links": "1",
+          "size": "24",
+          "mtime": "2026-11-19 08:52:26.711192828 +0000",
+          "ctime": "2026-11-19 08:52:30.147443473 +0000",
+          "digest": "962a35a05d983e023d9738cdd90b6df30e5f1b08b435950a2d6e3589009064f8"
+        }
+      }
+    },
+    "noDispatchRepeated": true,
+    "cutMechanism": "Dedicated Linux processes loaded the installed publisher and exited before result or unlink",
+    "originalInodeAndDigestRequired": true,
+    "wrongInodeWithIdenticalDigestRejected": true,
+    "confirmedDestinationReceipts": {
+      "71531.claim": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502920",
+        "links": "1",
+        "size": "278",
+        "mtime": "2026-11-19 08:52:26.262344208 +0000",
+        "ctime": "2026-11-19 08:52:26.262431250 +0000",
+        "digest": "4c272c6270c20bd8d794bd7fbbd3cc6d08bcd5f51891d7190abfc7d680833d1c"
+      },
+      "71531.publication": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502921",
+        "links": "1",
+        "size": "388",
+        "mtime": "2026-11-19 08:52:26.264684257 +0000",
+        "ctime": "2026-11-19 08:52:26.264684257 +0000",
+        "digest": "a82df6e22cc0795932053b03c9a98b4e91c2d26c498c86b95d7b0507e1e23b49"
+      },
+      "71531.result": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502989",
+        "links": "1",
+        "size": "298",
+        "mtime": "2026-11-19 08:52:29.756699660 +0000",
+        "ctime": "2026-11-19 08:52:29.758442249 +0000",
+        "digest": "a17b7cb2f3469df92558e7d6bafea03246a4662558a2c194b19648638de63215"
+      },
+      "71532.claim": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502929",
+        "links": "1",
+        "size": "277",
+        "mtime": "2026-11-19 08:52:26.715711301 +0000",
+        "ctime": "2026-11-19 08:52:26.716432678 +0000",
+        "digest": "dd085f51094ee3988d3693cb94b97eb51121bd2c9e39b71e6cfd761d825c7e12"
+      },
+      "71532.publication": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502930",
+        "links": "1",
+        "size": "387",
+        "mtime": "2026-11-19 08:52:26.718498643 +0000",
+        "ctime": "2026-11-19 08:52:26.719432688 +0000",
+        "digest": "917341b92487bd3980f1c45c63c2ddeb05e75f609c551254d6dee33ec77ae6cf"
+      },
+      "71532.result": {
+        "mode": "600",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502996",
+        "links": "1",
+        "size": "297",
+        "mtime": "2026-11-19 08:52:30.150677691 +0000",
+        "ctime": "2026-11-19 08:52:30.151443485 +0000",
+        "digest": "03b92ffddfc21a762cfef5f83a9dbcb7c6981cfad085ec80cefc860aa620d50d"
+      }
+    }
+  },
+  "nativeDpkg": {
+    "unknownRemoveAndUpgradeRefused": {
+      "container": "2138640d822f3450b74e585bbb66304a0b898fd4d471580a161f98b9d18ae827",
+      "actorCurrentIdentityExact": true,
+      "currentVersion": "2.0.0~git202611190850.bd3fbec-1",
+      "originalReceiptsExact": true,
+      "preAdmissionFenceAbsent": true
+    },
+    "settledUpgradeVersion": "2.0.0~git202611190851.bd3fbec-2",
+    "originalDisabledAndInactiveSocketPreserved": true,
+    "ordinaryRemoveAndPurgeSucceeded": true,
+    "approvalsTargetsAndOriginalReceiptsExactAfterPurge": true,
+    "assetFingerprints": {
+      "/usr/libexec/kura-filemove/broker.py": {
+        "mode": "644",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502036",
+        "links": "1",
+        "size": "22027",
+        "mtime": "1980-02-01 00:00:00.000000000 +0000",
+        "ctime": "2026-11-19 08:51:34.839186735 +0000",
+        "digest": "49c7edf9e039efda020825f1dfc5112d4a36f5bd0f99facd67cb5bd3cb0ce084"
+      },
+      "/usr/lib/systemd/system/kura-filemove.socket": {
+        "mode": "644",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502040",
+        "links": "1",
+        "size": "274",
+        "mtime": "1980-02-01 00:00:00.000000000 +0000",
+        "ctime": "2026-11-19 08:51:34.839186735 +0000",
+        "digest": "751e9ee1c428bc391af3f941f7c7392fb1861e9012ecf25df79d7a6852e70ec1"
+      },
+      "/usr/lib/systemd/system/kura-filemove.service": {
+        "mode": "644",
+        "uid": "0",
+        "gid": "0",
+        "device": "1048812",
+        "inode": "4502041",
+        "links": "1",
+        "size": "939",
+        "mtime": "1980-02-01 00:00:00.000000000 +0000",
+        "ctime": "2026-11-19 08:51:34.839186735 +0000",
+        "digest": "e58e5f73dd15763e134285f282c064d8cd3eda7923f78be28ca35de1f7da5e4c"
+      }
+    }
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
