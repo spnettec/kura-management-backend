@@ -1,4 +1,14 @@
 
+## 2026-11-19 原 SystemUpdate 混合态本地恢复
+
+Deployment 11f4c37 增加仅本地部署存储属主可运行的恢复入口。逐份验证原 ID、文件副本、当前文件及待保留候选，先持久化 ROLLING_BACK 决定，再将原 inode 恢复到对应位置。中断后同一入口只补仍缺的恢复步骤，原候选和回执保留。若两份候选已与原发布精确配对，沿原提交核定；恢复完成的位点留有 ROLLED_BACK，继续拒绝下载复用、安装、Verifier 及替换。恢复入口不负责重新签发原位点执行授权。
+
+重新启动前一轮保留的实际 Debian 13 ARM64 Root，原混合态、第 42 号已提交和第 43 号已退役位点均精确，Main 仍禁用。用 JDK21 从当前 Git 构建并正常 dpkg 升级 Deployment 到 11f4c37，Core 套件、两个已安装 JAR 和三份 Core 保护文件核对。UID0 拒绝且无状态变化。由 kurad 调用正式包的本地恢复入口一次，沿第 41 号原发布 ID 将旧 Verifier inode 恢复到正式路径，内容、mode、属主、mtime 保持，重新硬链接使 ctime 变化。被替换的候选以原 inode 保留，旧更新文件及另两个位点完整精确。此前的部署请求、更新脚本、Verifier 及 HTTP 均未重发或执行。
+
+实际已装 Main 复核旧内容、恢复后禁用执行和下载复用、其他已提交位点仍可准入。随后正常停止，Main 保持禁用，原容器正常停放。全仓 JDK21 构建通过 236 项。恢复过程再次中断在单元测试覆盖；实际硬断电及发生设备号变化的跨挂载恢复尚未验。恢复后的再次准入、受保护 FileMove 与 SystemUpdate 执行授权、完整 Core/OSGi 和六组件发行矩阵继续内部待办。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-deployment-pair-original-root-rollback-checkpoint.json)。
+
+
+
 ## 2026-11-19 SystemUpdate 成对发布与同 Root 中断核定
 
 Deployment 62a0d36 对更新文件和 Verifier 先持久化同一发布意图、原文件副本位置和指纹，再更新两个正式文件。两次 rename 和终态回执各自同步到持久目录。下载读取、安装和 Verifier 共享 per-slot 进程及文件锁。原发布意图未核定时，拦截执行和重新下载。当前路径的两份内容及 inode 均精确符合原意图时，可用原 ID 确认提交。正常显式退役也有持久记录，受控删除两份载荷。早期无回执旧文件沿既有入口处理。

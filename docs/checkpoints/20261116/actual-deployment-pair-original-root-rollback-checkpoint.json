@@ -1,0 +1,70 @@
+{
+  "at": "2026-11-19T08:17:58.433429+00:00",
+  "nativePackage": {
+    "commit": "11f4c3701381959460a99b6b76fbeb6601ee89c7",
+    "tree": "b53ce7e1adc1837df42111a8248e3bea338c11d8",
+    "sha256": "56be92b89b9ae242249364b4f2cdeedff92ad364f0bd19b86bde096786dbf5b0",
+    "version": "2.0.0~git202611190816.11f4c37-1",
+    "container": "d533a299e6a3a4275cafb2c56cb0eefa867b408bbcc9cd53d1ec53ea30546405",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+        "sha256": "cb9eff3de1c1aa6519f347bd0b0ab3c061423eba2f6c50903e46e9fb52a8a493"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+        "sha256": "af264bbe3390469d0975222f0cd73cbaa75336939730a5b4ba1c5684ac3563de"
+      }
+    },
+    "core": {
+      "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+      "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+      "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+    },
+    "priorFilesExact": true
+  },
+  "fixture": {
+    "container": "d533a299e6a3a4275cafb2c56cb0eefa867b408bbcc9cd53d1ec53ea30546405",
+    "reopenedOriginalRoot": true,
+    "ordinaryMainDisabled": true,
+    "network": "none",
+    "exitCode": 0
+  },
+  "restored": {
+    "originalJob": 41,
+    "originalPublicationIdKept": true,
+    "explicitRestoreActor": "kurad",
+    "rootIdentityRefusedBeforeMutation": true,
+    "originalVerifierBytesInodeModeOwnerAndMtimeExact": true,
+    "verifierCtimeChangedByRelinking": true,
+    "displacedCandidateRetainedWithOriginalInode": true,
+    "primaryAndOtherTwoSlotsExact": true,
+    "updateScriptsOrVerifierDispatched": 0,
+    "downloadRequestsReplayed": 0
+  },
+  "actualMainReadback": {
+    "container": "d533a299e6a3a4275cafb2c56cb0eefa867b408bbcc9cd53d1ec53ea30546405",
+    "pid": 828,
+    "checks": [
+      "RESTORED_BYTES_EXACT",
+      "INSTALL_VERIFIER_DOWNLOAD_HELD",
+      "OTHER_COMMITTED_SLOT_AVAILABLE"
+    ],
+    "publicationFilesExact": true,
+    "coreFilesExact": true
+  },
+  "tests": {
+    "macOSCoreDeployment": 135,
+    "macOSDeploymentAgent": 47,
+    "macOSPackageRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
