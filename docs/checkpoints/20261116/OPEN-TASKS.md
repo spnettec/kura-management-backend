@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — DHCP 外部监听冲突与专用进程归属
+
+Core 8e60accd21 用 Linux socket diagnostics 核对 IPv4 与能接收 IPv4 的双栈 UDP 67 监听。用正式 unit 的 systemd cgroup 判断 Kura 专用实例的 socket 归属，结合接口、主设备、地址及广播范围拒绝服务冲突。发布前重复核对，启动或重配后确认所需监听确实由专用 cgroup 持有。保留原包、已加载 Main、Root 配对和 UNKNOWN 围栏。 [Linux inet_diag 源码](https://raw.githubusercontent.com/torvalds/linux/master/net/ipv4/inet_diag.c)
+
+从 Git 以 JDK 21 构建并在独立 Debian 13 ARM64 实装 Core 和 Networking 47a7dfb。独立运营方 dnsmasq 已绑定 kdlegacy0。实际 OSGi/NM 配置请求在同接口返回 DHCP_PORT_IN_USE，专用配置与元数据原样，专用实例未启动，未生成写入意图。另一条链路 kdfree0 成功启动专用实例，随后更改该链路租期只重启专用实例。两个实例同一 UID、不同 cgroup。运营方 PID、invocation、配置和 unit 指纹保持，Main 无重启，独立两笔 APPLIED 和确认保留。测试容器正常停放，原两处 DHCP 夹具未启动。
+
+Linux 63 项定向、Networking Maven 2211 项通过。历史 DHCP 文件和存量租约合法纳管、实际就地升级与 remove/purge、竞争中断后原编号核定仍为内部待办。原 7fd 保持 41 输入/16 回执。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断矩阵及冻结 12 父项范围保持，最终闭环 0/12。external deferred 仍仅原三项。见 [检查点](actual-core-dhcp-listener-authority-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 类型化 DHCP 与实际 NM 发租约
 
 Core 324aec118f、Networking 47a7dfb 从 Git 构建，安装实际 Debian 13 ARM64 包。新 Core 为应答器配对正式 Networking 的两个 JAR 和已加载 Main。同 Root 记录意图、结果及结果确认。专用 dnsmasq 从 systemd 凭据目录读取结构化模型生成的固定配置，仅绑定所需接口，保留系统 dnsmasq 的配置和状态。

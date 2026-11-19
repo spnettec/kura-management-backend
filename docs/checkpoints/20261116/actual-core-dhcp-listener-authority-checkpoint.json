@@ -1,0 +1,312 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "20c35c3",
+  "core": {
+    "head": "8e60accd21dfb822d201fa6a05bc24b06563455b",
+    "tree": "c9bdaa80433ff82ce27a7f2193341ad6bb13c628"
+  },
+  "networking": {
+    "head": "47a7dfb90a46e861fb4fd7a4b2923d6dc7ae5ed1",
+    "tree": "a22b217e92056891b6f484a4738f48a1bacd477c"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 systemd on isolated network",
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-dhcp-release/kura_6.0.0~git202611191651.8e60acc-1_arm64.deb",
+      "sha256": "734bd45dd6d7f94fa4c94d5aa47f1b2893e4d92240f6ddfaa3268e0c89b113d1",
+      "version": "6.0.0~git202611191651.8e60acc-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-dhcp-release/kura-networking-3.0.0~git202611191651.47a7dfb-1_all.deb",
+      "sha256": "b1b81bff8e6dbc89fc5b7ad5e21c89964236d46469a054456d1d9e29f5438f41",
+      "version": "3.0.0~git202611191651.47a7dfb-1"
+    }
+  ],
+  "initial": {
+    "id": "f315a4fd78dee3a8238ca36306debf51cb76a428581fa91825df88f86e5bad32",
+    "main": {
+      "MainPID": "1991",
+      "NRestarts": "0",
+      "ControlGroup": "/system.slice/kura.service",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "f537fd7e0ecc4929a08595aef8620642"
+    },
+    "operator": {
+      "unit": {
+        "MainPID": "1608",
+        "NRestarts": "0",
+        "ControlGroup": "/system.slice/fixture-vendor-dhcp.service",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "bbdee3a25f684193a201b7511fe1fe24"
+      },
+      "uid": 999,
+      "cgroup": 7963407,
+      "ifindex": 3
+    },
+    "daemon": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ControlGroup": "",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "root": "1048828:5018148",
+    "boot": "38663672-c6a8-476d-a08f-437f4ca99f72",
+    "stock": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ControlGroup": "",
+      "ActiveState": "failed",
+      "DropInPaths": "",
+      "InvocationID": "a60ecc4cee784a0bb952dc10b30f8fa1"
+    },
+    "listeners": [
+      {
+        "interface": 3,
+        "address": "0.0.0.0",
+        "cgroup": 7963407
+      }
+    ],
+    "config": [
+      "252fa45bfd5d471dfdcac09fe63e7a2c4cb3f1e74d949dda2c2571d018e9ca38",
+      "1048828:5018150:0:0:644:60:2026-11-19 16:52:42.911713057 +0000:2026-11-19 16:52:42.911713057 +0000"
+    ],
+    "operatorConfig": [
+      "1b36a0bb78f1b55a48d905eaecac3e510236aa751984afb29f6912bc0e0144ce",
+      "1048828:5018500:501:20:644:116:2026-11-19 16:51:37.000000000 +0000:2026-11-19 16:52:48.427519064 +0000"
+    ],
+    "operatorUnit": [
+      "dd4f8da0b04f063b9fcf6d27a4ada3dcbfaea1cd011a494ed22ecfc82726dac5",
+      "2097170:462:0:0:644:515:2026-11-19 16:53:12.385191150 +0000:2026-11-19 16:53:12.385191150 +0000"
+    ],
+    "before": {}
+  },
+  "collision": {
+    "state": "REFUSED",
+    "journal": "DHCP_PORT_IN_USE",
+    "preparedIntents": 0,
+    "daemon": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ControlGroup": "",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "operator": {
+      "unit": {
+        "MainPID": "1608",
+        "NRestarts": "0",
+        "ControlGroup": "/system.slice/fixture-vendor-dhcp.service",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "bbdee3a25f684193a201b7511fe1fe24"
+      },
+      "uid": 999,
+      "cgroup": 7963407,
+      "ifindex": 3
+    },
+    "managedConfig": [
+      "252fa45bfd5d471dfdcac09fe63e7a2c4cb3f1e74d949dda2c2571d018e9ca38",
+      "1048828:5018150:0:0:644:60:2026-11-19 16:52:42.911713057 +0000:2026-11-19 16:52:42.911713057 +0000"
+    ],
+    "kernel": [
+      {
+        "interface": 3,
+        "address": "0.0.0.0",
+        "cgroup": 7963407
+      }
+    ]
+  },
+  "independent": {
+    "state": "APPLIED",
+    "operator": {
+      "unit": {
+        "MainPID": "1608",
+        "NRestarts": "0",
+        "ControlGroup": "/system.slice/fixture-vendor-dhcp.service",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "bbdee3a25f684193a201b7511fe1fe24"
+      },
+      "uid": 999,
+      "cgroup": 7963407,
+      "ifindex": 3
+    },
+    "managed": {
+      "unit": {
+        "MainPID": "10095",
+        "NRestarts": "0",
+        "ControlGroup": "/system.slice/kura-dhcp.service",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "6fee2779a3604ecba70af29eb6791062"
+      },
+      "uid": 999,
+      "cgroup": 7966301,
+      "ifindex": 5
+    },
+    "managedConfig": [
+      "72233d3ade2a58372c90c7c147a5e21b30703baa85c7dd2189a653c28396377f",
+      "1048828:5018992:0:0:644:316:2026-11-19 16:53:23.664843865 +0000:2026-11-19 16:53:23.896589576 +0000"
+    ],
+    "receipts": {
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.delivered": "c12cd5fcc4468472b0bb572f064e1cb551dc58ad4ad6b62743e8f82bb29da363",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.intent": "da04ea1fdab756aab16bece223483e32a244b3079d89e6b89a00012af170de84",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.result": "4e2eb73efe2a21533247ed7ba02384c752390d4ec3f7defaf78cc4943adbc913",
+      "lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "root.json": "e33aee6c3ddc2627427c22c85689b767a84eb0782bf9f17137b63f9fc3f98c96"
+    },
+    "listeners": [
+      {
+        "interface": 5,
+        "address": "0.0.0.0",
+        "cgroup": 7966301
+      },
+      {
+        "interface": 3,
+        "address": "0.0.0.0",
+        "cgroup": 7963407
+      }
+    ],
+    "sameUid": true,
+    "separateCgroups": true
+  },
+  "managedRestart": {
+    "state": "APPLIED",
+    "operator": {
+      "unit": {
+        "MainPID": "1608",
+        "NRestarts": "0",
+        "ControlGroup": "/system.slice/fixture-vendor-dhcp.service",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "bbdee3a25f684193a201b7511fe1fe24"
+      },
+      "uid": 999,
+      "cgroup": 7963407,
+      "ifindex": 3
+    },
+    "managed": {
+      "unit": {
+        "MainPID": "11030",
+        "NRestarts": "0",
+        "ControlGroup": "/system.slice/kura-dhcp.service",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "a3d0e0423aa44dadb4454b1d315cee07"
+      },
+      "uid": 999,
+      "cgroup": 7967170,
+      "ifindex": 5
+    },
+    "managedConfig": [
+      "b4b4604dfec2fed568e1e902f69092fec9b8ef534d1ca93fcbb288a4f50a6e83",
+      "1048828:5019052:0:0:644:316:2026-11-19 16:53:26.827822945 +0000:2026-11-19 16:53:27.015595777 +0000"
+    ],
+    "receipts": {
+      "009cc903-0a50-4bd0-a102-3b9aeab9c476.delivered": "3c0f7a88a0e7db8ece57d8f699f67a3c4c18bd15b9b30baa2a34ba5dd1c9ac60",
+      "009cc903-0a50-4bd0-a102-3b9aeab9c476.intent": "9b14b925ccfad3ce97e0dddd26c8a827c2448fc01a4cb1b2ed426643ddb788f6",
+      "009cc903-0a50-4bd0-a102-3b9aeab9c476.result": "784400eb852a8c384701021822cb6e43b57c668f1c23c0050d3ea89cd63f9372",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.delivered": "c12cd5fcc4468472b0bb572f064e1cb551dc58ad4ad6b62743e8f82bb29da363",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.intent": "da04ea1fdab756aab16bece223483e32a244b3079d89e6b89a00012af170de84",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.result": "4e2eb73efe2a21533247ed7ba02384c752390d4ec3f7defaf78cc4943adbc913",
+      "lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "root.json": "e33aee6c3ddc2627427c22c85689b767a84eb0782bf9f17137b63f9fc3f98c96"
+    },
+    "listeners": [
+      {
+        "interface": 5,
+        "address": "0.0.0.0",
+        "cgroup": 7967170
+      },
+      {
+        "interface": 3,
+        "address": "0.0.0.0",
+        "cgroup": 7963407
+      }
+    ],
+    "sameUid": true,
+    "separateCgroups": true
+  },
+  "parking": {
+    "id": "f315a4fd78dee3a8238ca36306debf51cb76a428581fa91825df88f86e5bad32",
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ControlGroup": "",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "daemon": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ControlGroup": "",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "operator": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ControlGroup": "",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "unitFile": "disabled",
+    "receipts": {
+      "009cc903-0a50-4bd0-a102-3b9aeab9c476.delivered": "3c0f7a88a0e7db8ece57d8f699f67a3c4c18bd15b9b30baa2a34ba5dd1c9ac60",
+      "009cc903-0a50-4bd0-a102-3b9aeab9c476.intent": "9b14b925ccfad3ce97e0dddd26c8a827c2448fc01a4cb1b2ed426643ddb788f6",
+      "009cc903-0a50-4bd0-a102-3b9aeab9c476.result": "784400eb852a8c384701021822cb6e43b57c668f1c23c0050d3ea89cd63f9372",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.delivered": "c12cd5fcc4468472b0bb572f064e1cb551dc58ad4ad6b62743e8f82bb29da363",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.intent": "da04ea1fdab756aab16bece223483e32a244b3079d89e6b89a00012af170de84",
+      "8356dcf4-800e-4c03-8cf1-3be079f3f890.result": "4e2eb73efe2a21533247ed7ba02384c752390d4ec3f7defaf78cc4943adbc913",
+      "lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "root.json": "e33aee6c3ddc2627427c22c85689b767a84eb0782bf9f17137b63f9fc3f98c96"
+    },
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:51:08.853371456Z",
+      "FinishedAt": "2026-11-19T16:53:31.84970472Z"
+    }
+  },
+  "targetedLinux": 63,
+  "networkingMaven": 2211,
+  "internalPending": [
+    "DHCP 历史配置与租约的合法纳管与交接，真实就地升级和移除 purge，监听竞争中断与原编号核定",
+    "完整 Core/OSGi 与合法 Main，PPP、Wi-Fi 和其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复矩阵及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "previousUnknownRedispatched": false,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
