@@ -1,0 +1,118 @@
+{
+  "recordedAt": "2026-11-19T02:39:15.114651+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-typed-root-fence-publisher-checkpoint.json",
+  "agent": {
+    "head": "c835d15e2c6b424430907895e62d528b3e9cc223",
+    "tree": "bc4bfa78561762ccfc4b1b8a20968d0d712beb1e"
+  },
+  "consoleProtocol": {
+    "head": "c4732f605ccf8fdd6b080de12c52f3a8b97869a6",
+    "tree": "a5b97eab75bedd8e8de42bb1f4e492f9d690f770"
+  },
+  "packageEvidence": {
+    "source": "c835d15e2c6b424430907895e62d528b3e9cc223",
+    "archiveSha256": "a1276237990859dbca1bcff16a401165d631c1088c93001c8dadeeef9d74978f",
+    "candidateVersion": "0.1.0~fenceread202611190229.c835d15-1",
+    "installedPackageUnaffected": true,
+    "files": [
+      "/usr/lib/kura-management-agent/fence_reader.py",
+      "/usr/lib/systemd/system/kura-management-nm-fence-reader.socket",
+      "/usr/lib/systemd/system/kura-management-nm-fence-reader@.service",
+      "/usr/share/kura-management-agent/root-fence-reader.json"
+    ],
+    "meta": {
+      "schemaVersion": 1,
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "bridgeSha256": "0780dee39b5f49c2c80f7cdcb61a3ca6d8e2a0168042c700c48c5d28b60e140d",
+      "scriptSha256": "fe7dc9a2e7ea3f878bc571ae3e40541f922fa77519cb34363dc0919c50520303",
+      "socketSha256": "7401629a930eb645bfc2888c5250365d9f8866e46946f95d0e2aaac3ec33950f",
+      "unitSha256": "a97d5b85f7f2974b78b322c44cb9eaceeccc4901de47399484016a61d1f646a9"
+    },
+    "candidateBinarySha256": "55efdff2938fe38b9e65b470cdf0251145e248be8fdc2b09a4ec901ba408db18"
+  },
+  "validation": {
+    "jdk": 21,
+    "architecture": "arm64",
+    "focusedRustPassed": 19,
+    "previousHarnessesIgnored": 2,
+    "packagePythonPassed": 95,
+    "actualReadonlySystemdService": true,
+    "unavailableSocketRefused": true,
+    "candidateDebBuiltFromPinnedGit": true
+  },
+  "originalFencedRoot": {
+    "container": "eb9824d45dff7d0641725c54c597648101264f046ac09a5a07c7005a1bdee060",
+    "state": "FENCED",
+    "observation": {
+      "sameRoot": true,
+      "fenced": true,
+      "readThroughReadonlyMount": true,
+      "currentPhysicalEvidenceExact": true,
+      "originalDaemonPidsExact": true,
+      "oldMainStillReturnsConflict": true,
+      "foreignOriginalRefused": true,
+      "unprivilegedOSAccessRejected": true,
+      "readOnly": true
+    },
+    "immutableFiles": 12,
+    "originalLiveJavaModelAndRoles": {
+      "wholeJavaOriginModelShaMatchesOriginalRustPlan": true,
+      "currentCmRevisionMatchesOriginal": true,
+      "actualNetworkRolesExact": true,
+      "pairedJavaWriterReadOnly": true,
+      "actualOriginalJvm": true,
+      "provesModelAndRolesOnly": true
+    },
+    "installedAgentSource": "bc8e1ea",
+    "candidateServiceFilesAdded": 4,
+    "existingPackageUpgraded": false,
+    "readerEnabledAtBoot": false,
+    "nativeEffectDispatched": false
+  },
+  "otherOriginalPreparedRoot": {
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "originalIdExact": true,
+    "journalState": "PREPARED",
+    "statusLookup": {
+      "state": "PREPARED",
+      "code": null,
+      "message": null
+    },
+    "localOriginalLookup": {
+      "state": "PREPARED",
+      "code": null,
+      "message": null
+    },
+    "immutableEncryptedFiles": 5,
+    "fencesAbsent": true,
+    "originalProcessesExact": true,
+    "readOnly": true
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateExact": 9,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "replayedCompletedMaintenance": false
+  },
+  "internalPending": [
+    "Paired live Main and legally admitted continuation of both original Root plans",
+    "Signed ownership, native initialization, actual owner startup",
+    "Complete Core/OSGi business, typed brokers, six-component release/provider/launcher/installation, upgrade, removal, purge and interruption recovery",
+    "All twelve frozen parents"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/paired-root-fence-readback-20261119"
+}

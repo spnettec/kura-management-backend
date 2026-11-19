@@ -1,4 +1,15 @@
 
+## 2026-11-19 原 FENCED 的配对 Root 只读证明
+
+Agent `c835d15` 新增 legacy Debian 的 socket-activated Root 读取单元。文件路径固定，socket 为 root:root 0600，并检查对端凭据。每次读取核对包来源、实际 systemd unit、Core loader 与 Java bridge，拒绝别名、硬链接和变更中的文件，只返回两道 marker 的设备号、inode、SHA-256。沙箱中的 Rust 读取方核验 PID 1、socket 身份和原计划摘要，共享已有执行锁，并保持原 Root 的路径和写入权限。
+
+在原 Debian 13 ARM64 `FENCED` Root 上从候选 deb 仅增量放置四份读取单元文件。正式 socket 经 systemd 启动但未 enable。以候选二进制和正式只读挂载验证同 Root 同 ID 返回 `FENCED`。无 socket、外来 ID 和非授权 UID 均被拒。12 份原 marker、计划和加密回执的身份与摘要、快照、旧版 Agent 以及原 Core/NM 进程保持。实际 JVM 只读网络角色和完整 writer 模型匹配原计划。现装 `bc8e1ea` 主守护仍返回 `CONFLICT`。尚未把新读取逻辑部署到该守护，没有派发原生 netfilter 写批次。另一原 Root 用原 ID 仍可读出 `PREPARED`，五份加密文件指纹匹配，原两道 fence 仍不存在。
+
+ARM64 Rust 定向通过 19 项，另需隔离挂载或原 Java writer 夹具的 2 项保持忽略。Debian 包 Python 定向 95 项通过。正式守护在原操作期间的安全续接、签发、初始化和实际 owner 启动继续列为内部待办。完整 Core/OSGi、合法 Main、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge 及中断恢复矩阵继续实施。原三现场和 7fd 停机 41 输入/16 回执保持。父项 0/12，external deferred 仅原 3 项。见 [检查点](actual-paired-root-fence-readback-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 正式 Root 双 fence 发布及 Java writer 排空
 
 Agent `bc8e1ea` 发行独立 `kura-management-nm-fence@.service`。Root 发布单元核对包内 loader、bridge、已装二进制、控制脚本、来源及实际 unit；用受保护 UDS 和进程凭据绑定当前 Agent，并比对双方运行二进制摘要。原注册的 JVM/CM/NM/原生来源重新核验，在同一事务内按原 ID 留下 arm 和唯一发布意图。Root 从固定路径发布两道原 fence，用真正文件设备/inode/摘要结算。无共享 Root-only 数据目录重新映射，无自动启用单元。
