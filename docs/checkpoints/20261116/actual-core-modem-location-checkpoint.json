@@ -1,0 +1,134 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "c583b0e",
+  "core": {
+    "head": "01c158f66c04e23a2dd961e87f421197648079c6",
+    "tree": "187fb1efe5b032b63687f7313f6b424e6068e9dd"
+  },
+  "networking": {
+    "head": "6e01047254da12f5f31c62f3cef6f11be967a080",
+    "tree": "ab528dd82dcd93801d9840830c00b90393280a49"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd",
+  "actualMain": {
+    "id": "254e9f160e21e7caf5cc610795445e35449f26bf1b3b4b7dae2f5b9355c9735d",
+    "main": {
+      "MainPID": "1823",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "6c020f0e646a4ebda758c85ff64af47d"
+    },
+    "networkManager": {
+      "MainPID": "112",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "7dd9876cb6444c15b3c97221278ea5ce"
+    },
+    "modemManager": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "provider": {
+      "modemLocationProtocol": 1,
+      "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "07f0a467a388a0967db3dc54c8a3c1077181b0282a5f08e0e213351d5348c626"
+    },
+    "actorReason": "NOT_A_MODEM_DEVICE",
+    "gpsClient": "Modem location configuration refused (8f0c18c5-2fc3-439f-ab7c-035d92748768)",
+    "missingProviderRefusal": "Cannot admit a new paired modem operation",
+    "referenceProviderRestored": true,
+    "privateMount": "5073 4993 0:521 /systemd/inaccessible/dir /var/lib/kura-modem-reset ro,nosuid,nodev,noexec,relatime shared:3726 master:3431 - tmpfs tmpfs rw,size=98304k,mode=755",
+    "admittedIntents": 0,
+    "receipts": 0,
+    "nonModemType": 32
+  },
+  "parking": {
+    "id": "254e9f160e21e7caf5cc610795445e35449f26bf1b3b4b7dae2f5b9355c9735d",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T17:41:20.551999304Z",
+      "FinishedAt": "2026-11-19T17:45:14.423737439Z"
+    },
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "unitFile": "disabled",
+    "socketRemoved": true,
+    "probeArchived": true
+  },
+  "nativePolkitBeforeCutover": {
+    "id": "254e9f160e21e7caf5cc610795445e35449f26bf1b3b4b7dae2f5b9355c9735d",
+    "kuradPolkitCheck": {
+      "org.freedesktop.ModemManager1.Control": 0,
+      "org.freedesktop.ModemManager1.Device.Control": 0,
+      "org.freedesktop.ModemManager1.Location": 0
+    }
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-modem-location-release/kura_6.0.0~git202611191743.01c158f-1_arm64.deb",
+      "sha256": "556037065002b5af90b74ed95ff9b6d6ef757ac86433537ab4639c5113317eb8",
+      "version": "6.0.0~git202611191743.01c158f-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-modem-location-release/kura-networking-3.0.0~git202611191743.6e01047-1_all.deb",
+      "sha256": "ad7c95f135460195e632bbfc917d2dce9c92496aa3e0e5be118ff3ec4b4878c5",
+      "version": "3.0.0~git202611191743.6e01047-1"
+    }
+  ],
+  "tests": {
+    "linuxTargeted": 46,
+    "networkingMaven": 2215
+  },
+  "scope": {
+    "nativePairedRefusal": true,
+    "nativeMissingGpsCohortRefusal": true,
+    "nativePhysicalEnableAndGps": false,
+    "unitThreeGpsModes": true,
+    "unitOneIntentAcrossThreePhases": true,
+    "unitUncertainClearStopsSetup": true,
+    "unitMainAndRootCheckedAgainBeforeEachDispatch": true,
+    "nativeVendorLimitation": "ModemManager.service ConditionVirtualization=!container"
+  },
+  "internalPending": [
+    "撤回包授予的 ModemManager 直接变更权限，保留精确 Location 读取授权，历史 pkla 和厂商规则的配对升级",
+    "完整 PPP、Core/OSGi 业务、历史权限矩阵和其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

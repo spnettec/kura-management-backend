@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 配对 modem 启用与 GPS 配置
+
+Core 01c158f66c 和 Networking 6e01047 将已配置与未配置的 modem 的 GPS 策略转给已配对 broker。保留原先按需 Enable(true) 与 Setup 的顺序，支持关闭、托管 Raw/NMEA 和非托管模式。在首个实际总线写入前持久化一条意图，逐步重新核对 Main、Root 和物理目标。中途响应不明时依原编号对账，后续 Setup 被阻止。GetLocation 的独立读取权限仍用于位置 provider。[ModemManager 1.24 定位接口实现](https://github.com/linux-mobile-broadband/ModemManager/blob/1.24.0/src/mm-iface-modem-location.c)
+
+隔离 Debian 13 ARM64 从 Git 出包并实装 Core 和 Networking。正式 Main 中的 OSGi 客户端经 GPS 入口拒绝真实 NM 回环设备。临时移出定位 provider 证明时在分配写入 ID 前拒绝，证明以原 inode 与字节恢复，Main InvocationID 保持。两次检查 Root 台账 0 意图、0 回执，夹具已停用并正常停放。Linux 定向 46 项和 Networking Maven 2215 项通过。物理 Enable/Setup 沿用原硬件边界，三种模式、顺序和响应丢失为定向证据。
+
+实际 pkcheck 记录了收敛前 kurad 仍可使用 ModemManager 的 Control、Device.Control 与 Location。配对授予撤回与历史 pkla 迁移仍属内部待办，继续完整 PPP/Core/OSGi、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断恢复。父项 0/12，external deferred 仅原三项。原 7fd 保持 41 输入/16 回执。见 [检查点](actual-core-modem-location-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 收敛 ModemManager 定时重置
 
 Core 97e0464cc4 和 Networking 51646e1 将原 ModemTaskScheduler 的直接 Reset 交给已配对的 systemd socket actor。它核对 Main PIDFD、Networking provider、两个原厂系统单元、NM 对象类型与 Udi、ModemManager 的配置 ID 和物理 sysfs 身份。写入 Root 私有意图后再次核对派发目标，只调用不带参数的 ModemManager Reset。收到总线肯定答复才写回执。同一 Root 有未确认的重置时先行拒绝新 ID；进程仍持有原操作时只用原 ID 查询并确认。 [ModemManager D-Bus 接口](https://www.freedesktop.org/software/ModemManager/api/latest/gdbus-org.freedesktop.ModemManager1.Modem.html)
