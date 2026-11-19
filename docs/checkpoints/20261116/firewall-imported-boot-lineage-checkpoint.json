@@ -1,0 +1,215 @@
+{
+  "recordedAt": "2026-11-19T00:34:36.139067+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "agentCommit": "43c1ebc3e54349fc541bb2a295625d6a8986515b",
+    "agentTree": "b2301919fce9a3da01e684cbaf5df86d85000af3",
+    "target": "aarch64-unknown-linux-gnu",
+    "toolchain": "Rust 1.95.0",
+    "compiledFromGit": true,
+    "releaseElfSha256": "8e004aa2ddbbcb07e32fa85eb17fe42dfb2f6a53b83c8800079cb173dcdf313b",
+    "fixedTestElfSha256": "ec5781309e491199779acdaf0c71176e53f59265810bb2ed67c13a4b2a852e7b",
+    "packagingTestsPassed": 88,
+    "fullSuite": {
+      "passed": 776,
+      "failed": 2,
+      "ignored": 49
+    },
+    "fixedElfSerialRetest": {
+      "previousFailuresPassed": 2,
+      "legacyEncodingContractPassed": 1
+    }
+  },
+  "proof": {
+    "actualRestore": {
+      "result": {
+        "intentSha256": "6529dc9c61671a41dbaa9bb511db9e931297a4ce107eb9d0e9c80c83dec32518",
+        "originalBootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "pendingIntentRetained": false,
+        "receiptSha256": "12f834e1896357a569fc31a11190b1b770e7947ef5cfcd9b5e042e493c08e2ec",
+        "revision": 1,
+        "schemaVersion": 1,
+        "state": "RESTORED"
+      },
+      "intent": {
+        "schemaVersion": 2,
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "scope": {
+          "rootDevice": 39,
+          "rootInode": 3857222,
+          "netDevice": 5,
+          "netInode": 4026533422,
+          "ownerLeaseSha256": "4d74b3af12a5d162c04a475c11e4b098af94f5956b43e96c164607060ccd452e",
+          "confirmedSha256": "26a4894af0323b8f66fd7bdf29d0deb1ad09e0bb59cf223004805f37f535b5ef",
+          "revision": 1
+        },
+        "imported": {
+          "initializationReceiptSha256": "7440d88d7dd945d63c515f2329d71fae42c94f1a06995ca4dd33308ba71c2874",
+          "imageSha256": "c1318621f0aef5b5c5f5e06a0f0941a9174212781314b8b89ac3218d9c6c8750",
+          "expectedGeneration": 1
+        }
+      },
+      "canonicalKernelEvidenceBytes": 169244,
+      "nativeCounts": {
+        "table": 6,
+        "chain": 58,
+        "rule": 144
+      },
+      "nftFullReadbackExact": true,
+      "rawRuleFingerprints": 144,
+      "networkPre": {
+        "ActiveState": "active",
+        "ActiveEnterTimestampMonotonic": "261221309105"
+      },
+      "authorityFingerprintsExact": true,
+      "unitStartedOnce": true,
+      "ordinaryAgentInstalled": false,
+      "syntheticOriginalJVMNMAndKernel": true
+    },
+    "actualRebind": {
+      "result": {
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "bootReceiptSha256": "12f834e1896357a569fc31a11190b1b770e7947ef5cfcd9b5e042e493c08e2ec",
+        "revision": 1,
+        "sourceDigest": "0beb826f9ef34b90b93f03005a6dd32984eeb1f183e91e94bc97f91df1f9041f",
+        "state": "REBOUND"
+      },
+      "bootReceipt": {
+        "metadata": "39:3869270:0:0:600:169244:1795048321 /var/lib/kura-management-agent/firewall/boot-restore/38663672-c6a8-476d-a08f-437f4ca99f72.receipt.json",
+        "sha256": "12f834e1896357a569fc31a11190b1b770e7947ef5cfcd9b5e042e493c08e2ec"
+      },
+      "bootLink": {
+        "metadata": "39:3869939:0:0:600:319:1795048324 /var/lib/kura-management-agent/firewall/boot-restore/38663672-c6a8-476d-a08f-437f4ca99f72.rebind.json",
+        "sha256": "5e450e2c01a30e95cd423db86a71e58914fe60370eef8e423943cf08999e0ccb"
+      },
+      "originalAuthorityExact": true,
+      "originalNftRulesExact": true,
+      "pointer": {
+        "backend": "nft.imported.v1",
+        "schemaVersion": 2,
+        "head": {
+          "kind": "BOOT_RESTORE",
+          "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+          "reference": {
+            "device": 39,
+            "inode": 3869939,
+            "sha256": "5e450e2c01a30e95cd423db86a71e58914fe60370eef8e423943cf08999e0ccb"
+          }
+        },
+        "revision": 1,
+        "sourceDigest": "0beb826f9ef34b90b93f03005a6dd32984eeb1f183e91e94bc97f91df1f9041f"
+      },
+      "physicalKernelRuleMutationByRebind": false
+    },
+    "actualTypedUpdate": {
+      "original": {
+        "initialRevision": 1,
+        "kernelGenerationAfter": 3,
+        "kernelGenerationBefore": 2,
+        "operationId": "e73a3a00-fd76-46aa-824c-f4cab95b5095",
+        "originalBootEvidenceExact": true,
+        "revision": 2,
+        "state": "COMMITTED",
+        "syntheticCurrentCoreAuthority": true
+      },
+      "newPointer": {
+        "backend": "nft.imported.v1",
+        "schemaVersion": 1,
+        "head": {
+          "kind": "TRANSACTION",
+          "uid": 77,
+          "requestId": "original-rebound-forward-20261119",
+          "reference": {
+            "file": {
+              "device": 39,
+              "inode": 3870729,
+              "sha256": "b90292fbe0f2aef3f8e002b30c44154fd13d5fb793e5bb270475c086c1dd4072"
+            },
+            "firewall": {
+              "device": 39,
+              "inode": 3857360
+            },
+            "history": {
+              "device": 39,
+              "inode": 3870304
+            },
+            "parent": {
+              "device": 39,
+              "inode": 3870304
+            }
+          }
+        },
+        "revision": 2,
+        "sourceDigest": "3cc880500a486b5ff33b5afd0d3b2748774e52a86a7e8998eb8bd8a24e26fe4c"
+      },
+      "exactReceiptAndLineageLink": true,
+      "nftReceiptTableObserved": true
+    },
+    "originalLease": {
+      "operationId": "b17f8736-c22e-4422-a307-5ad4d680b58f",
+      "review": {
+        "chains": 58,
+        "dispatched": false,
+        "initializationReceiptSha256": "7440d88d7dd945d63c515f2329d71fae42c94f1a06995ca4dd33308ba71c2874",
+        "logicalRestoreImageSha256": "c1318621f0aef5b5c5f5e06a0f0941a9174212781314b8b89ac3218d9c6c8750",
+        "ownerLeaseSha256": "4d74b3af12a5d162c04a475c11e4b098af94f5956b43e96c164607060ccd452e",
+        "revision": 1,
+        "rules": 144,
+        "schemaVersion": 1,
+        "sourceKind": "nft.imported.boot.review.v1",
+        "sourceReceiptSha256": "26a4894af0323b8f66fd7bdf29d0deb1ad09e0bb59cf223004805f37f535b5ef",
+        "tables": 6,
+        "wirePreflightBytes": 54112
+      },
+      "syntheticJVMNMAndInitialKernel": true
+    },
+    "sourceJvmNmAndRuntimeAuthoritySynthetic": true,
+    "productionDebInstalledHere": false,
+    "earlyFixtureParked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T00:32:00.93879769Z",
+      "FinishedAt": "2026-11-19T00:32:11.16202011Z"
+    }
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdStateExact": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Shared legacy chains with independently restored original foreign baseline",
+    "Original early boot unknown or negative outcome adjudication and broader interruption/upgrade matrix",
+    "Real JVM/NM authority and ordinary Core business, remaining typed brokers and six-component lifecycle",
+    "Complete all twelve frozen parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/imported-firewall-boot-lineage-20261119",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

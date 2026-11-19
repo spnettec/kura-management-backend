@@ -1,3 +1,11 @@
+## 2026-11-19 imported 早启回执进入事务链
+
+Agent `43c1ebc` 增加固定 Root 的 `firewall-rebind-imported-boot`，Agent 启动恢复也走同一绑定实现。它从原已完成 schema 2 早启回执验证 schema 5 租约、原源摘要、初始化锚、实际 boot/netns、内核世代和完整原生读回。`BOOT_RESTORE` 链接以物理文件身份和摘要固定原回执及前序，保留既有逻辑版本，发布新的物理源摘要和已验证 handle。已有事务历史及原回执保留。新事务不得重用初始化操作 ID。Agent `4aec38a` 保留旧版逐命令 ACK 的精确摘要校验，原负回执必须与其原派发意图使用同一编码。新派发仅使用批次结束 ACK。
+
+新 Debian 13 ARM64 systemd 容器从固定 Git ELF 签发真实格式的原租约，正式早启恢复独占 `ip`/`ip6` 布局。用正式命令接入事务链后逻辑版本仍为 1，原规则、原授权文件及早启回执的指纹精确。然后同一 Root 一次完成新转发端口的 typed prepare、内核 apply 和 confirm。实际 Netfilter 世代从 2 到 3，形成新规则回执及逻辑版本 2，重绑链接和早启回执的物理文件身份和内容都保持。初始化、JVM/NM 见证和后续 Core 注册授权为测试夹具，正式读回、重绑、事务持久化及内核效果真实。新现场正常停放。88 项 Agent 包测试通过。固定 ARM64 release ELF 的并行全量为 776 通过、2 失败、49 跳过。两项失败都触发原启动执行锁冲突，沿用同一 ELF 的串行定向复测两项及旧编码合同均通过。
+
+真实 JVM/NM 签发与正式安装态业务、共享链先恢复原所有者基线、缺原或负回执的早启核定、完整 Core/OSGi 及六组件矩阵继续内部 pending。原三现场及 C/D/E、个人配置、7fd 停机 41 输入/16 回执保持。冻结 12 父项仍 0/12，仅原 3 项 external deferred。见 [检查点](firewall-imported-boot-lineage-checkpoint.json)。
+
 ## 2026-11-19 imported 防火墙正式早启派发与内核回执
 
 Agent `6ad4667` 将独占 imported `ip`/`ip6` 布局接到正式 `firewall-restore-confirmed` 和既有可选 systemd 单元。固定 Root、原 schema 5 配对租约、原结算策略头、初始化回执摘要、重新编译的镜像摘要及实际新 boot/netns 进入 schema 2 意图。空命名空间和所需转发状态在原锁内核对。落盘后只派发一个世代围栏批次。收到批次结束 ACK 并完成声明、规则顺序和原生 payload 读回后，写唯一原回执，保留完整 canonical 内核观测。schema 1 可继续读取。独立零 capabilities CLI 夹具证实缺回执的 schema 2 原意图保持 UNKNOWN，派发和确认均拒绝，锁及原数据精确。
