@@ -1,4 +1,15 @@
 
+## 2026-11-19 Core 实际 postinst 同原维护目的恢复
+
+Core cbf7df7fa6 为 Debian configure 写入绑定包版本、控制脚本、原 Root 及维护 ID 的 intent、prepared、ready 回执。阶段回执先持久化，再清理已执行的安装脚本或已恢复的备份。READY 可沿用原 package-history，围栏释放后继续激活原 broker。仅有 intent 的安装器结果仍需独立核定。
+
+从 Git 和 JDK 21 构建的 ARM64 包实际安装。Debian 13 对 dpkg 配置进程组执行四处有明确触发点的中断。首次配置在 key 围栏释放前后分别中断，最终原 ID 只保留一份 package-history，原密钥、TLS、快照及阶段回执精确。随后独立 remove/保留数据重装在 READY 后、清理备份前中断，恢复数据标记与原阶段回执精确。另一个独立新现场从 43156466fe 跨版本升级，在相同提交点中断和续接，旧历史、密钥和数据标记保留。恢复完成后两个新现场的 Main 均禁用且正常退出。原旧包失败现场仍保持停放。macOS 和 Debian ARM64 定向 Python 各 79 项通过。
+
+仍需实现安装器内部中断及无阶段回执的旧半配置包恢复。完整 Core/OSGi/合法 Main、剩余 typed brokers、六组件/provider/launcher、剩余安装升级移除 purge 及中断点继续内部待办。冻结父项 0/12，external deferred 仍为原三项。见 [检查点](actual-core-postinst-phase-recovery-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 发行包 Git 来源与实际 postinst 中断
 
 13 仓的 14 个实发项目 deb 已按各自 detached worktree 的实际 HEAD 构建，主工作树 HEAD 与其不同。逐包核对文件名、Debian control Version 和 SHA256。Core 43156466fe 保持包脚本过滤在 AntRun 嵌入前完成，JDK 21 JVM 23 项通过。按新模板生成并构建了一个 addon deb，环境变量指向主工作树时仍正确取 detached HEAD。

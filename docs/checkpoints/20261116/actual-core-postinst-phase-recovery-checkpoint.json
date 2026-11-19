@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-19T06:23:56.635311+00:00",
+  "source": {
+    "commit": "cbf7df7fa6d40be736c4f00c631a2500a1ac541f",
+    "tree": "7a382823f5f9152311496092089c9b34db04ed22"
+  },
+  "distribution": {
+    "version": "6.0.0~git202611190619.cbf7df7-1",
+    "sha256": "38fb0535e66611b37feb0c83d9f683b878fb3e733cfa3da4029be74dcad125ac",
+    "architecture": "arm64",
+    "jdk": 21,
+    "embeddedConfigureExact": true,
+    "pairedShippedAssets": 3
+  },
+  "tests": {
+    "macOS": 79,
+    "linuxArm64": 79
+  },
+  "stableReceipts": [
+    "intent",
+    "prepared",
+    "ready"
+  ],
+  "coldConfigure": {
+    "root": "1811001249e6d33ff5907bf7e3785d2d2725c8e1c5a7054267a0f72266a0a5a3",
+    "maintenanceId": "2d3caed5-752d-48cb-be1a-7fd0a14de147",
+    "beforeFenceRelease": true,
+    "afterFenceRelease": true,
+    "uniqueHistory": true,
+    "finalDpkgState": "installed",
+    "originalPhaseKeyTlsAndSnapshotMetadataExact": true,
+    "systemdBrokerSocketsReady": true,
+    "originalInstallerRepeated": false
+  },
+  "retainedReinstall": {
+    "root": "1811001249e6d33ff5907bf7e3785d2d2725c8e1c5a7054267a0f72266a0a5a3",
+    "maintenanceId": "b756cf31-fadf-4f32-8af2-239849f57c89",
+    "actualRemoveAndRetainedReinstall": true,
+    "interruptedBeforeRetirement": true,
+    "originalKeyAndHistoryExact": true,
+    "restoredDataMarkerExact": true,
+    "durableReceiptsExact": true,
+    "originalBackupRetiredAfterReady": true
+  },
+  "crossVersionUpgrade": {
+    "root": "2a53a5ccb3d1b06714ea8e59ef5b30376855fd804836e5ae319763b92635ccb5",
+    "maintenanceId": "7b8e6395-6a5b-46a4-8627-ddb6703dc22b",
+    "predecessorCommit": "43156466fef5afd1dbb1f085551aaceabaff5130",
+    "predecessorSha256": "94dd2406dea41a284b3269b7c0c59c66098d1eb4171d674d0a56ff2bfd380204",
+    "interruptedBeforeRetirement": true,
+    "originalHistoryExact": true,
+    "originalCredentialExact": true,
+    "restoredDataMarkerExact": true,
+    "originalBackupRetiredAfterReady": true
+  },
+  "untouchedOriginalNegativeFixture": "309f837ca471f14977065e1fb834c7904b4ae243015f1436e2e5ef34bdeb8fec",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "internalPending": [
+    "interruption inside the base installer before its prepared receipt",
+    "older half-configured packages without a configure-phase receipt",
+    "remaining release interruption and lifecycle combinations",
+    "full Core/OSGi and lawful Main, remaining typed brokers, full six-component provider and launcher matrix",
+    "all 12 frozen items"
+  ],
+  "pushed": false
+}
