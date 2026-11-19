@@ -1,4 +1,14 @@
 
+## 2026-11-20 BIND 已提交丢回复与同 Root 继任 Main 核定
+
+Core c41514a055 让写请求提交前绑定当前 Root scope。提交后原结果一旦缺确认即保留后续写围栏。只读查询沿原 ID，先核 Root，再核对意图与回执。Networking b3af558 在原 JVM 确认收到结果后使用同一 ID 确认。Root 记录验证后单独持久化确认。兼容以前已闭环的旧回执，原写请求走独立派发入口。
+
+Debian 13 ARM64 从当前 Git 以 JDK 21 实装。以 PIDFD 在专用现场暂停 named，真实 systemd 已受理原重启任务后终止一次实际 Main 客户端，随后释放 named。原 Java 调用报告 UNKNOWN，系统完成已受理的单次操作并保留一个 APPLIED 回执。继任 Main 同 Linux 启动和同 Root，只读核定原编号。随后以不同动作的独立 stop 验证围栏，未派发 job、未创建该动作意图。明确确认原编号时只新增一份确认文件，原四份文件的字节和元数据、named PID 和 invocation 均精确保持。现场禁用 Main 并正常停放。Linux Core 118 项，Networking Maven 2211 项通过。
+
+实际验收抑制 NM 后台重配。未落终态的系统中断、Root 重挂后合法转换、已装历史配置纳管及完整 NM 触发仍内部待办。其余 brokers、完整 Core/OSGi、六组件/provider/launcher/全部发行与中断恢复矩阵保持原范围。原 7fd 保持 41 输入/16 回执，冻结父项最终闭环 0/12，external deferred 仅原三项。见[检查点](actual-core-bind-outcome-recovery-checkpoint.json)。
+
+
+
 ## 2026-11-20 BIND 类型化配置发布与实际 DNS 验证
 
 Core 0b4f42576f 在 Main 将 /etc/bind 挂为只读，通过配对 actor 接受 IPv4 转发器、CIDR 与启用状态。先核对发行包原配置或同 Root 上次已提交字节，再由实际 named-checkconf 验证固定模板。在写意图后原子发布并核对启用状态，任一不确定的变更保留原编号。站点自改主配置或 options 在变更前拒绝。禁用时恢复原发行包字节。保留站点 zones 等 include。Networking 8c522a2 的 NM 监视器调用同一 OSGi 配置入口，由发行证明约束对应 JAR。[ISC BIND 配置参考](https://bind9.readthedocs.io/en/v9.20.15/reference.html)

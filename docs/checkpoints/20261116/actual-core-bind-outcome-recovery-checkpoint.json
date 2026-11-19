@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-19T16:26:43.065700+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "jdk": 21,
+  "core": [
+    "c41514a055d4721a2117616de8c5e85cd1d406bc",
+    "1b466ae844e6e8bfb02f6ca8e202160b60e5488d"
+  ],
+  "networking": [
+    "b3af5584b24ef6d9a8f0c58d83771e1ae9ea8b62",
+    "b03044cf1e28307eb49cdf3de66ca4a97fcfba18"
+  ],
+  "provider": {
+    "bindOutcomeProtocol": 1,
+    "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+    "schema": 1,
+    "sha256": "5d9bff98dc524b607ab000e195707359bf66478c528f6bdff7877367ea6fe76b"
+  },
+  "first": {
+    "id": "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f",
+    "main": {
+      "MainPID": "1757",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "5c0f438a05d347748d38466027b03e25"
+    },
+    "named": {
+      "MainPID": "110",
+      "ControlPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "57976f4a278e4a34b34e131504b6914d"
+    },
+    "configSha256": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+    "rootIdentity": "1048815:4928376"
+  },
+  "committedLostReply": {
+    "id": "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f",
+    "original": "d4c25718-c1a8-462e-a6c6-03a467dd1545",
+    "originalMain": "1757",
+    "named": {
+      "MainPID": "2371",
+      "ControlPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "InvocationID": "daea4baa52304017a4679247007ed250"
+    },
+    "originalIntentSha256": "23270f082d28eb8e83a2b7e1b53f5ac15a9db7c626d26781c6caa6e62b0707ba",
+    "pairedResultSha256": "a249cc43b5fffd620d1e70adf7147e8cb92fb97d2622987994b95a59c30b9aef",
+    "callerObserved": "UNKNOWN",
+    "durableResult": "APPLIED",
+    "originalJobAcknowledged": false
+  },
+  "recovery": {
+    "id": "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f",
+    "original": "d4c25718-c1a8-462e-a6c6-03a467dd1545",
+    "main": {
+      "MainPID": "2923",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "cee44aed5f6d4bdd8f124762f848ac18"
+    },
+    "oldEffectStable": true,
+    "sameBootSameRoot": true,
+    "readOnlyOutcome": "APPLIED",
+    "distinctAction": "stop",
+    "distinctId": "66d5965c-8958-4785-984b-66c69b1e3ec7",
+    "distinctAdmissionOutcome": "UNKNOWN",
+    "distinctEffectCount": 0,
+    "acknowledged": true,
+    "deliveredSha256": "f9935c527e42982ffcdfa54e7edabe671302cd4b954c77b2dad101acd75e7161",
+    "preservedInputsCount": 4
+  },
+  "parked": {
+    "id": "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:23:35.59256564Z",
+      "FinishedAt": "2026-11-19T16:26:12.957340617Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "socketRemoved": true,
+    "receiptsRetained": 1,
+    "acknowledgmentsRetained": 1
+  },
+  "tests": {
+    "linuxCore": 118,
+    "networking": {
+      "tests": 2211,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "backgroundNMSuppressed": true,
+  "appliedOriginalWriteDispatches": 1,
+  "repeatDispatches": 0,
+  "crossRootLookups": 0,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
