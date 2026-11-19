@@ -1,5 +1,17 @@
 
 
+## 2026-11-20 继续实施 — Main 撤下 CAP_KILL
+
+Core 833fc21c35 从正式 systemd Main 的 ambient、bounding 集合撤下 CAP_KILL。Kernel 保留同 UID 进程的信号能力，实际系统服务继续由各专用 broker 与 systemd 管理。既有 Main 停机使用已配对的同 UID pidfd 并等待 OSGi 退出。 [Linux 信号权限](https://man7.org/linux/man-pages/man2/kill.2.html) [systemd 停机与 cgroup](https://www.freedesktop.org/software/systemd/man/latest/systemd.kill.html)
+
+以 JDK 21 从 Git 构建两代 Core 和当前 Networking，Debian 13 ARM64 同一隔离 Root 先实装旧 Core 3ea096ae52，核对实际 CAP_KILL 并正常停止，随后实际 dpkg 升级及安装配对 Networking。升级前后的已有 AES 凭据字节、inode、UID/GID、权限、链接数、长度及 mtime 保持。PID 1 仍持 CAP_KILL，实际 Equinox Main 的五类 capability 掩码均仅少该位，ambient 共 5 项、bounding 共 7 项。上述 5/7 是单元声明。容器 PID 1 的 bounding 不含 CAP_DAC_READ_SEARCH，JVM 实测为 4/6。四个 actor 的包内 Main unit 指纹与实际安装字节相符。
+
+同一实际 Main 的两个已装 OSGi executor 分别启动并以 SIGTERM 回收 kurad、kura 子进程，退出码均为 143。对独立 Root 测试进程的 signal 0 返回 EPERM，原进程及 invocation 保持。最终 OSGi 停机回调和正式 ExecStop 均完成，Main 禁用，夹具正常停放。Networking Maven 2236 项通过。
+
+首个夹具继承容器的 NoNewPrivileges=1，同 UID 终止与跨 UID 拒绝通过，跨账号普通命令仍在 su 设置附加组时被拒绝。另一隔离 Root 使用正式发行的默认 NoNewPrivileges=0，完成上述两个 executor 的验证。两处均正常停放。 [Linux NoNewPrivileges](https://docs.kernel.org/userspace-api/no_new_privs.html)
+
+其余 Main 权限及 NNP、其他 provider/launcher 与运行模式、完整 Core/OSGi、历史边界、其余 typed brokers 和完整六组件生命周期仍内部待办。父项 0/12，external deferred 仅原三项，原 7fd 禁用且停止，保留 41 输入/16 回执。见 [检查点](actual-core-main-cap-kill-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — IPv6 LAN 经 systemd-resolved 分流及中断恢复
 
 从当前 Git 用 JDK 21 构建 Core 3ea096ae52 与 Networking 846d250，实装隔离 Debian 13 ARM64。使用 Debian 正式 systemd-resolved 257.13 包。基础镜像的 policy-rc.d 拒绝安装期自动启服，核对初始 inactive 后依原厂 systemd 单元启动一次。NetworkManager 1.52.1 将两个实际活动接口的域和服务器交给 resolved。首次配置漏列两条 WAN，现行全量清单行为停用设备并删除夹具 profile，原现场和两份回执已留存。第二个隔离 Root 显式声明两条 WAN 的 IPv4 和 IPv6 均为 Unmanaged，交由 NetworkManager 管理。合法 Main 内由正式 OSGi ConfigurationService 提交静态 IPv6 LAN，正式 DNS provider 通过同 Root typed BIND broker 只监听获准 LAN，唯一转发器为 127.0.0.53。 [NetworkManager DNS 配置](https://networkmanager.dev/docs/api/1.52.0/NetworkManager.conf.html) [systemd-resolved 路由规则](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) [Debian ARM64 包](https://packages.debian.org/trixie/arm64/systemd-resolved/download)
