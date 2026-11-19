@@ -1,0 +1,368 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "448c43340ec6166612302e94e8d9bf9420d167c6",
+  "core": {
+    "head": "88376a62d9a1a2876755715ee9cca1aedf4d7dd5",
+    "tree": "f4d4bd3fe1fb4f808c9d2a85eb02a7648e6b1b0a"
+  },
+  "priorCore": {
+    "head": "19d2926fd004e16e89464a0623685c8d27b60af4",
+    "tree": "139c1fede23270669ca1131bf5b3d7d93e50e263"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64; same Core-only Root and actual systemd Main",
+  "priorRuntime": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "main": {
+      "MainPID": "1664",
+      "NRestarts": "0",
+      "NoNewPrivileges": "yes",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "77ef37df0661407aa73710940c37323d"
+    },
+    "unit": "kura-command-executor@0-2061-997.service",
+    "worker": {
+      "MainPID": "2070",
+      "ControlGroup": "/system.slice/system-kura\\x2dcommand\\x2dexecutor.slice/kura-command-executor@0-2061-997.service",
+      "After": "\"system-kura\\\\x2dcommand\\\\x2dexecutor.slice\" kura.service systemd-journald.socket kura-command-executor.socket sysinit.target basic.target",
+      "ActiveState": "active",
+      "InvocationID": "0b1516d78ad64ce9bb97ae32bd223420"
+    },
+    "parent": {
+      "pid": 2082,
+      "comm": "python3",
+      "ticks": "31841690",
+      "parent": 2070,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/system-kura\\x2dcommand\\x2dexecutor.slice/kura-command-executor@0-2061-997.service",
+      "nnp": 1,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 0,
+        "CapAmb": 0
+      }
+    },
+    "child": {
+      "pid": 2083,
+      "comm": "python3",
+      "ticks": "31841691",
+      "parent": 2082,
+      "uids": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "group": "0::/system.slice/system-kura\\x2dcommand\\x2dexecutor.slice/kura-command-executor@0-2061-997.service",
+      "nnp": 1,
+      "caps": {
+        "CapInh": 0,
+        "CapPrm": 0,
+        "CapEff": 0,
+        "CapBnd": 0,
+        "CapAmb": 0
+      }
+    },
+    "credential": {
+      "sha256": "a56fb1cd77feab7eb4243b9ca877553cba7df146d9035322a569efe7f89b3ea7",
+      "stat": "5191560:0:0:400:1:32:1795118420"
+    },
+    "token": {
+      "sha256": "4a30f20c062eb8ef42a20c85e0bdce07d091b7dc0121ce44f32217c3689c7c46",
+      "stat": "5192512:1000:1000:600:1:15:1795118432"
+    },
+    "version": "6.0.0~git202611191958.19d2926-1",
+    "oldCohort": {
+      "sha256": "db974d3e35f3a462d8666b668eb191d3987a69b009046ae5fb755681072dec9c",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "0222e82830808db600d99f14dab5ffb0df657f93058e8bf5bed1abd0fbbf57a2",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5191646:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5191645:0:0:644:1:210:318211200"
+      }
+    }
+  },
+  "actualUnpackedUpgrade": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "version": "6.0.0~git20261119200230.88376a6-1",
+    "packageSha": "253e8a4e48ce18980c42da8fe8238d7fa07d17af10085121535bdef6bfabd9d5",
+    "cgroupGoneBeforeOsgi": [
+      "1664",
+      "2082",
+      "2083",
+      "false",
+      "false"
+    ],
+    "newCohort": {
+      "sha256": "17c4abcf8a67f066c53f6248d77b224753b605524aa8376fd1a35ca75808fab2",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "03677bf95a7f232171c24b4527c30fbad2dca763eeed804cf7b410d2a47f33d6",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5194637:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5194636:0:0:644:1:210:318211200"
+      }
+    },
+    "canonicalKey": {
+      "sha256": "a56fb1cd77feab7eb4243b9ca877553cba7df146d9035322a569efe7f89b3ea7",
+      "stat": "5191560:0:0:400:1:32:1795118420"
+    },
+    "maintenance": {
+      "sha256": "dddc8bf39d63b52aa7a20b9f24b85b9a0e34fa1795f7f2eb00ca9598fb6d2369",
+      "stat": "5194431:0:0:600:1:102:1795118593"
+    },
+    "maintainerScript": "ce125e6df0e04baebbf97171be64fa1d9561507f0148142e728c9b16614360c9",
+    "interruptHarness": "532fc04813b68bb8a0a54bbd5cd907db9dc0deb32f78758d5e57476764b93d86",
+    "stoppedWitness": "/opt/eclipse/.kura-preserve/data/command-lifecycle-proof/old.stopped"
+  },
+  "halfConfigured": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "state": [
+      "6.0.0~git20261119200230.88376a6-1",
+      "half-configured"
+    ],
+    "trace": {
+      "dpkgPid": 2952,
+      "postinstPid": 2953,
+      "basename": "kura-core.postinst",
+      "sha256": "ce125e6df0e04baebbf97171be64fa1d9561507f0148142e728c9b16614360c9",
+      "stage": "PTRACE_EVENT_EXEC",
+      "argument": "configure",
+      "returnedToScript": false
+    },
+    "summary": {
+      "verifiedEvent": true,
+      "dpkgExit": 1,
+      "postinstExit": -9
+    },
+    "credential": {
+      "sha256": "a56fb1cd77feab7eb4243b9ca877553cba7df146d9035322a569efe7f89b3ea7",
+      "stat": "5191560:0:0:400:1:32:1795118420"
+    },
+    "maintenance": {
+      "sha256": "dddc8bf39d63b52aa7a20b9f24b85b9a0e34fa1795f7f2eb00ca9598fb6d2369",
+      "stat": "5194431:0:0:600:1:102:1795118593"
+    },
+    "workerCohort": {
+      "sha256": "17c4abcf8a67f066c53f6248d77b224753b605524aa8376fd1a35ca75808fab2",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "03677bf95a7f232171c24b4527c30fbad2dca763eeed804cf7b410d2a47f33d6",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5194637:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5194636:0:0:644:1:210:318211200"
+      }
+    }
+  },
+  "configurationRecovered": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "before": [
+      "6.0.0~git20261119200230.88376a6-1",
+      "half-configured"
+    ],
+    "after": [
+      "6.0.0~git20261119200230.88376a6-1",
+      "installed"
+    ],
+    "credential": {
+      "sha256": "a56fb1cd77feab7eb4243b9ca877553cba7df146d9035322a569efe7f89b3ea7",
+      "stat": "5191560:0:0:400:1:32:1795118420"
+    },
+    "mainKeptStopped": true,
+    "workerCohort": {
+      "sha256": "17c4abcf8a67f066c53f6248d77b224753b605524aa8376fd1a35ca75808fab2",
+      "manifest": {
+        "files": {
+          "kura-command-executor.socket": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+          "kura-command-executor@.service": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+          "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_command_executor.py": "03677bf95a7f232171c24b4527c30fbad2dca763eeed804cf7b410d2a47f33d6",
+          "kura_journal_export.py": "d0c691b78527d14c7f8a4d4c7e85c8640541230a60eb95f0e61ce36902b49d69",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+        "schema": 1
+      },
+      "worker": {
+        "sha256": "596606cc59f4d7b516497b60b37d2b49afa3a553edd89f1f64c65e5a64794622",
+        "stat": "5194637:0:0:644:1:1179:318211200"
+      },
+      "socket": {
+        "sha256": "be9cc6648f7374a845a35178faa5b2b44c3cdda6860e34290250266a732e859a",
+        "stat": "5194636:0:0:644:1:210:318211200"
+      }
+    }
+  },
+  "directoryPolicy": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "main": {
+      "MainPID": "4385",
+      "NRestarts": "0",
+      "NoNewPrivileges": "yes",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "eebc2fdaf16747f69d5d421501e0ffe9"
+    },
+    "results": [
+      "visible",
+      "application-private",
+      "foreign-private-refused",
+      "alias-refused"
+    ],
+    "privateRelativeRead": true,
+    "hostPrivateRefusalCount": 2,
+    "originalCredential": {
+      "sha256": "a56fb1cd77feab7eb4243b9ca877553cba7df146d9035322a569efe7f89b3ea7",
+      "stat": "5191560:0:0:400:1:32:1795118420"
+    },
+    "token": {
+      "sha256": "4a30f20c062eb8ef42a20c85e0bdce07d091b7dc0121ce44f32217c3689c7c46",
+      "stat": "1000:1000:600:1:15:1795118432"
+    },
+    "foreignAliasUnchanged": true
+  },
+  "parking": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T19:57:54.644873318Z",
+      "FinishedAt": "2026-11-19T20:05:06.344927423Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "preservedKey": {
+      "sha256": "a56fb1cd77feab7eb4243b9ca877553cba7df146d9035322a569efe7f89b3ea7",
+      "stat": "5191560:0:0:400:1:32:1795118420"
+    }
+  },
+  "dpkgActions": {
+    "core-active-unpack": {
+      "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 13.867148416000418,
+      "dpkg": [
+        "6.0.0~git20261119200230.88376a6-1",
+        "unpacked"
+      ]
+    },
+    "interrupted-configure": {
+      "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 0.0672602920094505,
+      "dpkg": [
+        "6.0.0~git20261119200230.88376a6-1",
+        "half-configured"
+      ]
+    },
+    "resume-original-configure": {
+      "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+      "dispatchOrdinal": 1,
+      "exitCode": 0,
+      "elapsed": 5.127076375007164,
+      "dpkg": [
+        "6.0.0~git20261119200230.88376a6-1",
+        "installed"
+      ]
+    }
+  },
+  "rejectedVersionPreflight": {
+    "id": "46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946",
+    "olderInstalled": "6.0.0~git202611191958.19d2926-1",
+    "dispatchIssued": false,
+    "rejectedComparison": "subprocess.CalledProcessError: Command ('docker', 'exec', '46cb6a16e5efecae6ca12483fe761d1b96e934587cfd4eac73b6d15c44abc946', 'dpkg', '--compare-versions', '6.0.0~git202611191958.19d2926-1', 'lt', '6.0.0~git202611191958.0b0d1b4-1') returned non-zero exit status 1."
+  },
+  "references": {
+    "dpkgState": "https://manpages.debian.org/trixie/dpkg/dpkg.1.en.html",
+    "kernelExecStop": "https://man7.org/linux/man-pages/man2/ptrace.2.html"
+  },
+  "internalPending": [
+    "postinst 已执行写入后的中断、其他工作目录语义和 launcher/命令账号/provider",
+    "完整 Core/OSGi、网络/接管、剩余 typed brokers 和历史边界",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

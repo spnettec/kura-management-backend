@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — 普通命令目录授权、活动换版与 postinst 中断恢复
+
+Core 88376a62d9 在正式 Main 启动命令客户端前解析规范工作路径，客户端核对实际 cwd。worker 在自己的挂载命名空间打开可遍历目录并核对原 inode；对私有目录，只在已配对 Core 的五类可写数据目录继承原描述符。实际 OSGi 验证普通路径和 Kura 私有数据的相对访问。站点私有目录及从 Kura 数据树指向它的链接均拒绝，两个请求零 stdout，worker 留下明确的目录拒绝事件。
+
+Debian 13 ARM64 从 Git/JDK 21 构建两代 Core。旧 19d2926fd0 Main 及忽略 SIGTERM 的普通命令和子进程仍运行时，实际 dpkg --unpack 换版。Core 预安装脚本暂存数据后，从实际暂存位置读回停机回调，确认原 cgroup 两进程均在回调前退出，AES 凭据保留。初始候选与旧包同分钟，Debian 版本预检查拒绝，派发为零。Core 快照版本改用秒级时间戳并重建，沿原现场执行一次换版。新版本进入 unpacked，Main 和 socket 已停止。 [Debian dpkg 状态](https://manpages.debian.org/trixie/dpkg/dpkg.1.en.html)
+
+同一 Root 执行实际 configure，隔离追踪器只在确认正式 postinst 指纹和参数后的 PTRACE_EVENT_EXEC 处中断该脚本。dpkg exit 1，实际 half-configured，脚本正文尚未执行。原 AES 凭据、维护记录与已安装 worker 单元保持。沿原软件包状态配置一次进入 installed，Main 保持停止；之后显式启动，新的合法 Main 实际完成四项工作目录验证，再正常停机、禁用并停放。 [Linux exec 追踪事件](https://man7.org/linux/man-pages/man2/ptrace.2.html)
+
+postinst 已执行写入后的其他中断点、其他 launcher/命令账号及 provider、完整 Core/OSGi、其余 typed brokers 与六组件生命周期矩阵继续为内部待办。冻结 12 父项 0/12，external deferred 仅原三项；原 7fd 禁用且停止，保留 41 输入/16 回执。见 [检查点](actual-core-command-active-upgrade-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 普通命令 worker 的停机顺序与实际包生命周期
 
 Core 19d2926fd0 在正式命令 worker 单元增加 After=kura.service。systemd 在停机时逆序清理，Main 的 ExecStop 和 OSGi 退出开始前，先停止已接受的命令 cgroup。工作进程仍为普通账号、零 capabilities、NNP 1，沿用原包和 Root 配对。 [systemd 顺序](https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html) [cgroup 停止](https://www.freedesktop.org/software/systemd/man/latest/systemd.kill.html)
