@@ -1,0 +1,94 @@
+{
+  "at": "2026-11-19T08:33:06.867867+00:00",
+  "nativePackage": {
+    "container": "b576aaed1ba4b9e59ebd45b4562a68ebac23036113ee43851d3427d29cae5a91",
+    "packages": {
+      "kura-core": {
+        "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+        "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+        "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+      },
+      "kura-deployment": {
+        "expectedVersion": "2.0.0~git202611190831.05be6d2-1",
+        "sha256": "3ae54556659c4b5c5c380dc0f78d5ab246373fc51fe98345e6cbb189974f281a",
+        "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+      }
+    },
+    "revision": "05be6d29181625f45474510f898db39379bf4ae3",
+    "tree": "9772c0e43f636ba30eefbecae101516325518639",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "31bb4767b678743aa02be28020d279373ce91f1eeabc098b6467faf25cc16f0b",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "e045264ec5271dc2f4eb184fa3a5e38a12cf264fcbda0c6add6a6e0c673f5826",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "fixture": {
+    "container": "b576aaed1ba4b9e59ebd45b4562a68ebac23036113ee43851d3427d29cae5a91",
+    "network": "none",
+    "ordinaryMainDisabled": true,
+    "ordinaryMainStarted": false,
+    "exitCode": 0
+  },
+  "issuance": {
+    "rootOnly": true,
+    "rootUmasks": [
+      "000",
+      "077"
+    ],
+    "freshJob": 71237,
+    "recoveryOriginalJob": 71238,
+    "originalApprovalUuid": "09a1e926-0569-4a4b-90c5-1c3fc7f9f753",
+    "preCompletion": {
+      ".intent": {
+        "mode": 292,
+        "uid": 0,
+        "gid": 0,
+        "dev": 1048812,
+        "ino": 4486039,
+        "nlink": 1,
+        "size": 451,
+        "mtime": 1795077152,
+        "ctime": 1795077152,
+        "sha256": "e9f94f1f6fe249b3209b2f4fddd554a918c0f291203924b0d444453938e61753"
+      },
+      "update.sh": {
+        "mode": 365,
+        "uid": 0,
+        "gid": 0,
+        "dev": 1048812,
+        "ino": 4486041,
+        "nlink": 1,
+        "size": 97,
+        "mtime": 1795077152,
+        "ctime": 1795077152,
+        "sha256": "e4d3c4df2a6e2cf8b01f5b1b1213808b9236b424bec16405aecb95eaf75e6d69"
+      }
+    },
+    "unchangedPublishedArtifact": true,
+    "originalApprovalManifestInodeRetained": true,
+    "wrongUuidNoWrite": true,
+    "authorityGeneratedMode": "0444",
+    "reviewedCopiesMode": "0555",
+    "scriptExecutions": 0
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 135,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

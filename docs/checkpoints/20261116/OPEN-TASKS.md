@@ -1,4 +1,14 @@
 
+## 2026-11-19 SystemUpdate 原授权签发续接
+
+Deployment 05be6d2 为本机 Root 签发增加原作业锁和持久签发意图。校验审阅载荷后先同步原授权意图，再逐份以原子替换发布首次出现的定稿副本。后续只核对已存在副本，按原摘要补齐缺失项。两份均精确后，以原意图发布正式授权。路径或原 UUID 不符时拒绝续接。显式创建并设置授权、定稿和目录权限，适用 Root umask 000 和 077。已完成的授权再次核对返回 ALREADY_APPROVED。
+
+在全新的隔离 Debian 13 ARM64 Root 用当前 Git、JDK 21 正式 deb 及已装 JAR 验证。第 71237 号在 umask 077 下正常签发，正式回执 0444、定稿 0555。为第 71238 号构造审阅件目的地类型冲突，实际签发器先保留原意图和第一份定稿，正式授权未出现。不同 UUID 被拒绝且原内容、元数据精确。保留测试阻挡物后，沿同一 Root、同一 UUID 只补第二份并发布正式授权。第一份定稿的 inode 和元数据精确，原意图 inode 成为正式授权。两组原部署回执及载荷保持，零脚本执行。此 Root 禁用 Main 并正常停放。Maven/JDK 21 全仓 236 项通过。
+
+本次覆盖正常签发和中途文件系统拒绝后的原地续接。未对本次发行重复运行上一检查点的 Main 及脚本场景。硬断电、跨启动或跨挂载、历史无回执脚本纳管、保护目标的 FileMove 委派、完整 Core/OSGi 业务及六组件矩阵继续原范围。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-system-update-approval-recovery-checkpoint.json)。
+
+
+
 ## 2026-11-19 SystemUpdate 本地执行授权与原派发回执
 
 Deployment ee339f3 在安装和 Verifier 入口核对已提交的原发布回执。本机 Root 明确审阅两份载荷，并用已装 Deployment JAR 的 `org.eclipse.kura.core.deployment.download.SystemUpdateExecution` 授权。参数依次是原发布 UUID、作业号、规范化的已发布脚本绝对路径、两份 Root 所有的已审阅副本的绝对路径及各自 SHA-256（每份路径紧跟该份摘要）。授权绑定本地 Root、原 ID、作业、路径和两份摘要。Main 从 `/opt/eclipse/kura-deployment-approvals/<作业号>` 的只读边界启动定稿载荷。固定 setpriv 销权并设置 NNP，取消通用特权命令服务依赖。两种动作都在启动前持久化原领取记录。Verifier 只有在同一更新成功且通知作业、文件与发布者匹配时可运行。未定态保留原领取记录并拦截重派、退役和同位点替换。
