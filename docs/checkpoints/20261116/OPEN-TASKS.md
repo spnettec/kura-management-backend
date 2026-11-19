@@ -1,4 +1,16 @@
 
+## 2026-11-19 已准入的 Agent postrm 原编号续接
+
+Agent 943a27f 增加 Root `prepare-retained-postrm-recovery`，只接受已准入、负载已不存在、dpkg 为 `deinstall ok half-installed` 的原请求。原初始化、状态完整指纹、版本、Java/Core bridge、原 `postrm` 和被审核归档均核对。旧脚本先不可变保存，新脚本与原意图、原/新两份脚本摘要绑定。准备只更新该 maintainer 文件，dpkg 状态仍保持 half-installed。实际选择 Linux ARM64 定向 48 项通过，包含原设备号变化拒绝、不同脚本拒绝及原回执续接。扩展原生权限和状态回归 167 项通过，两组选择重叠。
+
+原 9ccb 现场只读重挂后，15 个原条目仅设备号变化，原 `postrm` 摘要、原准入记录、Core 三文件和停机状态保持。历史意图没有跨重挂证明，当前严格配对仍拒绝这类变化。原现场原编号保持半安装并已正常停放，未派发 dpkg 或更改 maintainer。
+
+在独立 Debian 13 ARM64 测试现场，4b6271a 首次真实 remove 在 postrm 退出 1，包负载已不存在，保留原准入和七份文件。保留同一 Boot、原 Root、原维护 UUID。用当前 Git 与当前协议构建的正式 943a27f ARM64 deb 提供经过核验的修复脚本。实际 dpkg 续接的进程跟踪只有 `postrm remove`，未再执行 prerm。退出 0，包状态变为 `deinstall ok config-files`，原维护回执 REMOVED。原准入文件的 inode、元数据和摘要、七份 Agent 数据及三份 Core 文件保持，现场正常停放。
+
+较早包的后继发行重装、历史意图跨重挂核定、Python bytecode 残留、已绑定或有业务状态及其他中断阶段仍为内部待办。原 7fd 41 输入/16 回执和原 UNKNOWN 保持，完整 Core/OSGi、typed brokers、六组件矩阵及冻结 12 父项继续原范围。父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-native-agent-postrm-only-recovery-checkpoint.json)。
+
+
+
 ## 2026-11-19 Agent 已初始化状态的同 Root 移除、purge 与重装
 
 Agent `a500c3d` 增加 Root `prepare-retained-removal` 和 `retained-removal-status`。准备绑定原初始化 UUID、原版本、审核归档、固定二进制/单元/maintainer 摘要、原 UID/GID、Core loader 和停机状态。持久意图保持启动门禁，五个阶段回执核对同一意图摘要。只允许已停用、未绑定且无业务写入的已初始化状态通过本条路径。归档检查排空有界 tar 零填充，避免较大的 maintainer 脚本使 `dpkg-deb` 阻塞。

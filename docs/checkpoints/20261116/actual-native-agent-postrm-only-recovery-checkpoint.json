@@ -1,0 +1,127 @@
+{
+  "date": "2026-11-19T14:15:00.742459+00:00",
+  "architecture": "arm64",
+  "nativeOs": "Debian 13",
+  "recoveredRelease": {
+    "commit": "943a27fd2c499ad621adece3744ab0f45acdc144",
+    "tree": "767693d134a060d4f5a64bd54da12227db9b306f",
+    "version": "0.1.0~cohort202611191413.943a27f-1",
+    "sha256": "766c7fac475099739ca41f8c3662f6e8cbc3eecee1f3b2c1874ea853ca8c8b39",
+    "sourceManifestSha256": "bf40bd5f5dfaa2ca3ae86566e756e89179ece39091690b454083505aadbaad83",
+    "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+    "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+    "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+  },
+  "rebuiltRustSource": true,
+  "currentProtocolBuiltFromGit": true,
+  "targetedLinux": {
+    "run": 48,
+    "skipped": 0
+  },
+  "nativeAuthorityLinux": {
+    "run": 167,
+    "skipped": 0
+  },
+  "oldScope": {
+    "id": "9ccb4a838dbb8e682db9f9bafe7e261769ff15720f47721a18b7435517db88d7",
+    "originalRequest": "f23af4db-6470-4a56-a899-0d1d7b384d9f",
+    "status": "deinstall ok half-installed",
+    "onlyDeviceFieldChanged": 15,
+    "deviceRebindAdmitted": false,
+    "originalDpkgDispatchesInThisPass": 0,
+    "originalPostrmSha256": "d2e9cc3fb10a2a9963290ae7334dab655d106c52b98ad8147814ee53ae1d7ce6"
+  },
+  "knownFailure": {
+    "container": "9e88a06342ebbad1df7b545d8d616a433341838b4c8b2a10bebd3403abd54160",
+    "operation": "949fa854-788a-4a29-9be1-833e263ef69a",
+    "initialization": "c7d294dd-af41-4484-810a-fc01b6949927",
+    "exitCode": 1,
+    "dpkgStatus": "deinstall ok half-installed",
+    "originalDataExact": 7,
+    "coreExact": 3,
+    "postrmSha256": "d2e9cc3fb10a2a9963290ae7334dab655d106c52b98ad8147814ee53ae1d7ce6",
+    "sameBoot": "2026-11-19T14:11:04.657996717Z"
+  },
+  "terminal": {
+    "container": "9e88a06342ebbad1df7b545d8d616a433341838b4c8b2a10bebd3403abd54160",
+    "operation": "949fa854-788a-4a29-9be1-833e263ef69a",
+    "dpkgStatus": "deinstall ok config-files",
+    "result": {
+      "schemaVersion": 1,
+      "requestId": "949fa854-788a-4a29-9be1-833e263ef69a",
+      "phase": "REMOVED",
+      "unitStarted": false
+    },
+    "maintenanceProcessDispatches": [
+      "D000002: fork/exec /var/lib/dpkg/info/kura-management-agent.postrm ( remove )"
+    ],
+    "cleanDpkgExit": 0,
+    "originalAdmissionUnchanged": true,
+    "onlyOriginalPostrmContinued": true,
+    "originalDataExact": 7,
+    "coreExact": 3,
+    "originalSourceAndReplacement": {
+      "intentSha256": "55f19f45fde8760d09a1f272994cda4bf82c9c2b7cb8da4ee43d3a435516cadc",
+      "originalPostrmSha256": "d2e9cc3fb10a2a9963290ae7334dab655d106c52b98ad8147814ee53ae1d7ce6",
+      "postrmSha256": "6f3ac27b0d73a8e50236109aa5b1f306058a100a889f5bcc85bb5b0aa33476ea",
+      "requestId": "949fa854-788a-4a29-9be1-833e263ef69a",
+      "reviewedPackageSha256": "766c7fac475099739ca41f8c3662f6e8cbc3eecee1f3b2c1874ea853ca8c8b39",
+      "reviewedPair": {
+        "binarySha256": "0e548a7d1fbebadd8f36fe9dc3f33537554751a428c22fb6b5fe0c5d6bbd4c84",
+        "sourceManifestSha256": "bf40bd5f5dfaa2ca3ae86566e756e89179ece39091690b454083505aadbaad83",
+        "unitSha256": "1a1579c779825aa0db1acf70422e71a13d0599fe9034cec88fa2887c9ad736ca"
+      },
+      "schemaVersion": 1
+    },
+    "setupPhysicallyAbsent": true
+  },
+  "parked": {
+    "original": {
+      "id": "9ccb4a838dbb8e682db9f9bafe7e261769ff15720f47721a18b7435517db88d7",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:08:04.818789508Z",
+        "FinishedAt": "2026-11-19T14:11:24.81657535Z"
+      },
+      "deviceEquivalenceNotAccepted": true
+    },
+    "verified": {
+      "id": "9e88a06342ebbad1df7b545d8d616a433341838b4c8b2a10bebd3403abd54160",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:11:04.657996717Z",
+        "FinishedAt": "2026-11-19T14:13:32.789083712Z"
+      }
+    }
+  },
+  "remaining": [
+    "same-Root proof across a changed device number for historical tickets",
+    "approved successor reinstall of recovered earlier package cohorts",
+    "bytecode purge residue, bound/business profiles, other providers/launchers and interruption phases"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
