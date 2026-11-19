@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 配对撤回 Main 的直接 ModemManager 控制权限
+
+Core 4122fafa10 和 Networking b0c5fcd 将包授予的 ModemManager 通配权限收敛为 GetLocation 所需的精确 Location 权限。Core 在升级及 Main 启动前核对 Reset、GPS provider 与 Networking 只读规则的包归属和哈希。Networking 在拆包前核对已安装 Core 的 GPS actor，从新包移出旧授权脚本。旧 Core 和 Networking 写入的确切规则可以合法迁移，只有精确的历史 ModemManager pkla 退役。[ModemManager 1.24 授权定义](https://github.com/linux-mobile-broadband/ModemManager/blob/1.24.0/src/mm-auth-provider.h)
+
+隔离 Debian 13 ARM64 从当前两个候选和两个基线 Git 版本构建并完成双包升级。新版 Core 对旧 Networking 规则、新版 Networking 对缺失 Core actor 证明、以及新版 Core 对带站点改动的旧 pkla 都在实包预检时拒绝。实际先升级 Networking，后升级 Core。新版 Core 就位后真实 pkcheck 对 kurad 拒绝 Control 和 Device.Control，允许 Location 与 NetworkManager；root 权限、polkit 进程、站点规则和凭据指纹保持。隔离数据标记按既有 cp -a 流程恢复，内容、权限、所有者与 mtime 保持，inode 变更。正式 Main 启动后由 OSGi 读到真实 NM 网卡，并通过 GPS broker 就绪检查，0 意图、0 回执，夹具正常停放。
+
+Linux 65 项定向、Networking Maven 2215 项通过。Debian 13 验证了旧 pkla 字节退休和当前 polkit 的实际授权。旧后端的动态行为属于历史验证余项，物理 modem 沿用原外部边界。完整 PPP/Core/OSGi、历史矩阵余项、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。原 7fd 保持 41 输入/16 回执，父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-core-modem-policy-cutover-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 配对 modem 启用与 GPS 配置
 
 Core 01c158f66c 和 Networking 6e01047 将已配置与未配置的 modem 的 GPS 策略转给已配对 broker。保留原先按需 Enable(true) 与 Setup 的顺序，支持关闭、托管 Raw/NMEA 和非托管模式。在首个实际总线写入前持久化一条意图，逐步重新核对 Main、Root 和物理目标。中途响应不明时依原编号对账，后续 Setup 被阻止。GetLocation 的独立读取权限仍用于位置 provider。[ModemManager 1.24 定位接口实现](https://github.com/linux-mobile-broadband/ModemManager/blob/1.24.0/src/mm-iface-modem-location.c)

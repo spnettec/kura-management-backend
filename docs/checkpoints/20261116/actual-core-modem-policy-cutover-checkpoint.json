@@ -1,0 +1,164 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "b9cab29",
+  "core": {
+    "head": "4122fafa10890ba7412d1f303dd09dc674be4d0a",
+    "tree": "73df7a482444f86fd296fe53653a00c7b0c614ec"
+  },
+  "networking": {
+    "head": "b0c5fcd0da2bd879459d89850a4b136f5eb1b36f",
+    "tree": "6ab4615b2163909d45fd605c3977ff4e1609c18b"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd",
+  "before": {
+    "org.freedesktop.ModemManager1.Control": 0,
+    "org.freedesktop.ModemManager1.Device.Control": 0,
+    "org.freedesktop.ModemManager1.Location": 0,
+    "org.freedesktop.NetworkManager.network-control": 0
+  },
+  "networkingFirst": {
+    "org.freedesktop.ModemManager1.Control": 0,
+    "org.freedesktop.ModemManager1.Device.Control": 0,
+    "org.freedesktop.ModemManager1.Location": 0,
+    "org.freedesktop.NetworkManager.network-control": 0
+  },
+  "after": {
+    "org.freedesktop.ModemManager1.Control": 1,
+    "org.freedesktop.ModemManager1.Device.Control": 1,
+    "org.freedesktop.ModemManager1.Location": 0,
+    "org.freedesktop.NetworkManager.network-control": 0
+  },
+  "root": {
+    "org.freedesktop.ModemManager1.Control": 0,
+    "org.freedesktop.ModemManager1.Device.Control": 0,
+    "org.freedesktop.ModemManager1.Location": 0,
+    "org.freedesktop.NetworkManager.network-control": 0
+  },
+  "polkitProcessPreserved": true,
+  "preserved": {
+    "sitePolicyExact": true,
+    "credentialsExact": true,
+    "runtimeDataContentsOwnersModeMtimeExact": true,
+    "runtimeDataInodeChanged": true
+  },
+  "refusals": [
+    {
+      "candidate": "6.0.0~git202611191750.4122faf-1",
+      "exitCode": 1,
+      "reason": "Cannot start or replace Kura Main: install the paired typed Networking providers. Networking still needs the paired read-only ModemManager policy",
+      "noPackageDispatch": true
+    },
+    {
+      "candidate": "3.0.0~git202611191750.b0c5fcd-1",
+      "exitCode": 1,
+      "reason": "Cannot unpack Networking modem provider: first install the paired Core modem brokers. [Errno 2] No such file or directory: '/usr/libexec/kura-modem-reset/cohort.json'",
+      "noPackageDispatch": true
+    },
+    {
+      "candidate": "6.0.0~git202611191750.4122faf-1",
+      "exitCode": 1,
+      "reason": "Cannot retire the historical network policy: 53-org.freedesktop.modemmanager.pkla is not the historical Kura grant",
+      "noPackageDispatch": true
+    }
+  ],
+  "legacyInstallerWithdrawn": true,
+  "historicalModemPklaRetired": true,
+  "actualMain": {
+    "id": "820057f8d9048c773be6f04b01edad99c86fed19eae9927d214c716792555929",
+    "main": {
+      "MainPID": "4370",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "a56605cc509e4103815ead10f2d43688"
+    },
+    "providerVersion": "2.0.0.202611191750",
+    "reportedLoopback": true,
+    "gpsReadiness": true,
+    "admittedIntents": 0,
+    "receipts": 0
+  },
+  "parking": {
+    "id": "820057f8d9048c773be6f04b01edad99c86fed19eae9927d214c716792555929",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T17:49:50.548103857Z",
+      "FinishedAt": "2026-11-19T17:53:07.236000006Z"
+    },
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "unitFile": "disabled",
+    "socketRemoved": true,
+    "probeArchived": true
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-modem-policy-cutover-release/kura_6.0.0~git202611191747.01c158f-1_arm64.deb",
+      "sha256": "8103e7aa8e51b9a670cbbe3c441c8b36ce4d843c1f9804b2dbce26da8b34be24",
+      "version": "6.0.0~git202611191747.01c158f-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-modem-policy-cutover-release/kura-networking-3.0.0~git202611191749.6e01047-1_all.deb",
+      "sha256": "b781c6c97cefae62ffb3a9694de52feabf9fd4dde1606c8700c5279729020588",
+      "version": "3.0.0~git202611191749.6e01047-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-modem-policy-cutover-release/kura-networking-3.0.0~git202611191750.b0c5fcd-1_all.deb",
+      "sha256": "245014c8b064f5cfdc0e49a7954ceb892e4551c47996d90ad14fab4ae839e0d6",
+      "version": "3.0.0~git202611191750.b0c5fcd-1"
+    },
+    {
+      "package": "kura-core",
+      "path": "/root/typed-modem-policy-cutover-release/kura_6.0.0~git202611191750.4122faf-1_arm64.deb",
+      "sha256": "9f0096af515b55254767edbbec02d736e8acbcecd57953f1f601e5a457b2fd02",
+      "version": "6.0.0~git202611191750.4122faf-1"
+    }
+  ],
+  "tests": {
+    "linuxTargeted": 65,
+    "networkingMaven": 2215
+  },
+  "scope": {
+    "nativeActualPolkit": true,
+    "nativeRealPackageUpgrade": true,
+    "nativeModemPklaByteRetirement": true,
+    "nativeLegacyPolkitBackend": false,
+    "nativePhysicalModem": false
+  },
+  "internalPending": [
+    "完整 PPP/Core/OSGi，其他 typed brokers 和仍未通过实际旧安装器验证的历史路径",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
