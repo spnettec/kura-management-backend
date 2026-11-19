@@ -1,4 +1,16 @@
 
+## 2026-11-19 Docker ARM64 非 Root launcher 与原卷升级
+
+Docker 34fabd8 的正式镜像入口把 Root 限于配对检查、密钥准备和对固定应用目录交接。持久 canonical key 和两份回执保持 Root 所有，JVM 仅读取本次独立运行目录下同摘要的 0400 凭据。默认 Gogo TCP 端口关闭。实际 PID 1 为 UID/GID 122 的 JVM，无 supplementary groups，全部五类 capability 位图为零，NNP 生效。普通日志和审计日志在 Root 保护父目录下由 kurad 创建，实测均为 0600。实际请求 `/admin/auth` 返回 200。初始 Root 使用 CHOWN、DAC_OVERRIDE、SETPCAP、SETUID、SETGID 五项测试启动能力，JVM 持有原卷的同一实例锁。
+
+从当前 Git 经 Maven/JDK21 构建正式 ARM64 镜像，四份正式 deb 与此前同 Git 产物指纹精确，macOS 与实际 Alpine 各 26 项通过。空卷、已中断的原卷、此前 UID0 正常运行过的旧卷三条实际路径通过，三个正向容器均在停机超时前退出。空卷的第二实例在原 JVM 运行时被拒绝，原进程凭据与 HTTPS 证书保持。正常旧卷升级保留了 canonical key 和两份回执的完整指纹，TLS keystore 字节、inode、mode、mtime 与已服务 TLS 证书保持，TLS 文件按运行边界转交 kurad，属主和 ctime 变化。
+
+原中断卷保留了两次入口拒绝。先修正 OverlayFS 父子目录交接顺序，再修正运行凭据先设 mode、再移交的次序。随后沿原卷完成 JVM 真正启动，canonical key 和两份回执自第一次失败保持。该卷首次 JVM 启动前的 TLS keystore 字节在加载期间变化；之后最终镜像保留了该卷实测的已服务证书及同份 keystore。不同进程阶段的证据均已保留。
+
+本次只覆盖显式跳过 YOFC DP 且外网络隔离的 ARM64 Docker 入口。持久卷的其他布局、权限边界、其余 provider/launcher、完整六组件联合安装升级移除 purge、完整 Core/OSGi 和其余 typed brokers 继续内部 pending。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-arm64-docker-nonroot-launcher-checkpoint.json)。
+
+
+
 ## 2026-11-19 当前 Git 的 Docker ARM64 发行与同卷续接
 
 Docker 6a8a719、a989d3c、fae4711 强制检查四份 deb 的包名及架构、把实际输入指纹写入镜像，并在运行引导前校验 Root 所有的 Core 密钥策略模块及对应清单。缺失依赖、创建账号、解包和配置失败直接终止构建。实际错包构建在解包前拒绝且未生成镜像。可显式指定运行层 Alpine 镜像源和候选镜像名。YOFC DP 默认继续纳入；本次验证显式使用 `-Ddist.dp.skip=true`，过期 DP 不会随该模式混入。

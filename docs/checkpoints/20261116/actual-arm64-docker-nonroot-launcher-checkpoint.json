@@ -1,0 +1,203 @@
+{
+  "at": "2026-11-19T07:42:42.089218+00:00",
+  "image": {
+    "image": "sha256:de85ff4f818d3a8344dc6686bebdf6352d9877c8d7ef7af91d39443a4ee51b15",
+    "tag": "yofc-kura-launcher:nonroot-v4-20261119",
+    "commit": "34fabd8fdf3b4bf64e883d6b4888fbc1d7b9af80",
+    "tree": "b69e53fdd90d7cd60fe3aa0382d60b90122ff621",
+    "arm64": true,
+    "packages": {
+      "kura-core": {
+        "version": "6.0.0~git202611190718.fafc5b3-1",
+        "arch": "arm64",
+        "sha256": "e70570487a5474266afb6666ce39fdb5e5b8d73d4ee24a232aa5771732f12ab1",
+        "commit": "fafc5b3a6b9639b9690961b1e544bd4f15c21116",
+        "tree": "3ce6507a54e1b07f43eb0c653ce02c4070e70cd0"
+      },
+      "kura-management-ui": {
+        "version": "3.0.0~git202611190719.1205092-1",
+        "arch": "all",
+        "sha256": "372f2926c7b923b00f9f1e12d1a6a6a5e66153b1a92e046368cc3cb9e0e0300c",
+        "commit": "1205092e39b11bd04a7b7173c5b56de3b5ba315f",
+        "tree": "92e25a5c53a91d62f1c7715d27b1e329d1eafe56"
+      },
+      "kura-deployment": {
+        "version": "2.0.0~git202611190719.c6e1fd2-1",
+        "arch": "all",
+        "sha256": "ddbbd95118a4fd4f90dacffe10a770ccd05880abbded9196431b677398fe8bdd",
+        "commit": "c6e1fd280dd38de2583a5f59f7c5076da835b705",
+        "tree": "86fd202d1f0eeacfbf015fb69ab727e702646a97"
+      },
+      "kura-wires": {
+        "version": "3.0.0~git202611190719.93f318b-1",
+        "arch": "all",
+        "sha256": "870ae8fe5fb9da2d9b75d2b3641d1ef451eb256b51145c41e351bb249c8d4443",
+        "commit": "93f318b241f2d53e4291ffa20fdb1836b34e9b52",
+        "tree": "5595aaa31309c77b540eed04967e289e04bac143"
+      }
+    },
+    "customDPsIncluded": false
+  },
+  "rootBootstrapCapabilities": [
+    "CHOWN",
+    "DAC_OVERRIDE",
+    "SETPCAP",
+    "SETUID",
+    "SETGID"
+  ],
+  "containerNetwork": "none",
+  "runtime": {
+    "fresh-v4": {
+      "uid": 122,
+      "gid": 122,
+      "supplementaryGroups": [],
+      "pid1": "java",
+      "noNewPrivileges": true,
+      "privateLogFiles": {
+        "kura.log": {
+          "uid": 122,
+          "gid": 122,
+          "mode": "0o600"
+        },
+        "kura-audit.log": {
+          "uid": 122,
+          "gid": 122,
+          "mode": "0o600"
+        }
+      },
+      "capabilityMasks": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      },
+      "instanceLockHeld": true,
+      "defaultGogoPortClosed": true,
+      "rootOwnedPackageCode": true,
+      "servingCertificate": "1e07e0c3f3f414ba74075f1069956a8ef4007ac11004c885e9c91590326de566",
+      "loadedCredentialPaired": true,
+      "containerId": "c0d27ca5ac49068576977189287790fb5f3a14e4d9b0bafc32c775c391fea23d",
+      "volume": "yofc-kura-nonroot-fresh-v4-20261119",
+      "httpsStatus": 200,
+      "unrelatedUidDenied": true,
+      "runtimeUidCanonicalDenied": true,
+      "exitCode": 143,
+      "stopSeconds": 0.247
+    },
+    "resume-v4": {
+      "uid": 122,
+      "gid": 122,
+      "supplementaryGroups": [],
+      "pid1": "java",
+      "noNewPrivileges": true,
+      "privateLogFiles": {
+        "kura.log": {
+          "uid": 122,
+          "gid": 122,
+          "mode": "0o600"
+        },
+        "kura-audit.log": {
+          "uid": 122,
+          "gid": 122,
+          "mode": "0o600"
+        }
+      },
+      "capabilityMasks": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      },
+      "instanceLockHeld": true,
+      "defaultGogoPortClosed": true,
+      "rootOwnedPackageCode": true,
+      "servingCertificate": "354c4d656830c0aa740d0932fced7cf4f26af662dbab2b7a19b577bd6cbf84a2",
+      "loadedCredentialPaired": true,
+      "containerId": "de5ecc0f303bf4669d63bc90f63ef0e78fee035dc0230c703a6160a44ec3b0fd",
+      "volume": "yofc-kura-nonroot-fresh-20261119",
+      "httpsStatus": 200,
+      "unrelatedUidDenied": true,
+      "runtimeUidCanonicalDenied": true,
+      "canonicalAndReceiptsExact": true,
+      "tlsBytesInodeModeExact": true,
+      "preexistingServiceCertificateExact": true,
+      "previousImageIsDifferent": true,
+      "exitCode": 143,
+      "stopSeconds": 0.33
+    },
+    "upgrade": {
+      "uid": 122,
+      "gid": 122,
+      "supplementaryGroups": [],
+      "pid1": "java",
+      "noNewPrivileges": true,
+      "privateLogFiles": {
+        "kura.log": {
+          "uid": 122,
+          "gid": 122,
+          "mode": "0o600"
+        },
+        "kura-audit.log": {
+          "uid": 122,
+          "gid": 122,
+          "mode": "0o600"
+        }
+      },
+      "capabilityMasks": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      },
+      "instanceLockHeld": true,
+      "defaultGogoPortClosed": true,
+      "rootOwnedPackageCode": true,
+      "servingCertificate": "6f0e49a59502544d37519c72c1522a8d4116c0152579dd9f379ce71b1eb916d6",
+      "loadedCredentialPaired": true,
+      "containerId": "efd94171247d82e37285745c5e5c8bf691a5fc55d66e37fe694c56f07456ef25",
+      "volume": "yofc-kura-current-cohort-validated-cache-20261119",
+      "httpsStatus": 200,
+      "unrelatedUidDenied": true,
+      "runtimeUidCanonicalDenied": true,
+      "canonicalAndReceiptsExact": true,
+      "tlsBytesInodeModeExact": true,
+      "preexistingServiceCertificateExact": true,
+      "previousImageIsDifferent": true,
+      "exitCode": 143,
+      "stopSeconds": 0.38
+    }
+  },
+  "lockContender": {
+    "id": "a72ccd5ff12c9bbff5f161bc4627f9704411f6bef3aace26d8a06d728d93a2ab",
+    "exitCode": 1,
+    "firstProcessAndBoundFilesExact": true
+  },
+  "interruptedBootstrap": {
+    "initialExitCode": 1,
+    "secondExitCode": 1,
+    "originalContainer": "094aafaf7b627c19ca13112e65fd9ecfcda9ac6b99fb1926022ae85f7a78b93f",
+    "secondContainer": "d63ae079518bbb3e56fea2d31909cde63ae0959309e15e18859e5ffa6450dd9c",
+    "originalCanonicalAndReceiptsExact": true,
+    "originalUnservedKeystoreContainerFirstStartedUnderV3": true,
+    "unservedKeystoreBytesChangedOnFirstJVMStart": true,
+    "servedCertificateRetainedUnderFinalImage": true,
+    "overlayOwnershipOrderCorrected": true,
+    "temporaryCredentialModeBeforeOwnership": true
+  },
+  "tests": {
+    "macOSPassed": 26,
+    "arm64AlpinePassed": 26
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
