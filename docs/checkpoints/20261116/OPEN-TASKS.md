@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — DHCP 多链路、就地升版、移除与 purge
+
+Core d652342e41 校验 dnsmasq 多接口的实际通配 UDP 67 socket。多接口的 socket 跨同一网络命名空间的接口范围，已有外部 IPv4 DHCP 监听时在意图前拒绝。broker 在原沙箱内复核配置文件身份、精确 systemd invocation 和 socket cgroup。运行时凭据目录的指纹由隔离现场的只读观察获得。 [dnsmasq 维护者对多接口 socket 的说明](https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2023q4/017349.html)
+
+JDK 21 从 Git 构建，实装 Debian 13 ARM64。第二个 Root 从 Core 324aec118f，经 dfef47f5d3 到 d652342e41，两次真实版本单调上升且 Main 在升版前运行。两次包替换后旧 dnsmasq PID、进程启动时间、invocation、UDP socket inode、租约、DHCP 原回执和原 AES 凭据一致。中间版本的 worker 读不到其他服务的私有凭据目录，比较返回拒绝，零新增意图。最终版本业务 Main 只读比较通过，随后实际加第二条链路发租约，原租约按原条目保留，同 Root 两笔写入均有结果和确认。
+
+独立隔离现场通过正式 dpkg 移除和 purge Networking，再移除和 purge Core。移除 Networking 时 Main 与 DHCP 原本均在运行，退出后无原 socket。四步沿原 Root 保存 DHCP 配置、租约、回执和 AES 凭据的字节与元数据。Core remove 的保留快照原字节与数字 UID/GID 权限一致，Core purge 按既有合同删除运行时恢复副本。原系统 dnsmasq 状态保持。两处夹具均正常停放。
+
+第一处夹具遇到同一分钟构建导致 Debian 版本倒序，真实包替换和随后严格升版单独记账。旧监听门禁在增加第二链路后留下 UNKNOWN，原意图和现场保留，无重发、换编号或跨 Root 查询。Linux 定向 65 项、Networking Maven 2211 项通过。历史 DHCP 纳管与重装、竞争中断后的原编号核定、完整 Core/OSGi、其余 brokers 和完整六组件矩阵继续内部待办。冻结 12 父项 0/12，external deferred 仍仅原三项，原 7fd 41 输入/16 回执保持。见 [检查点](actual-core-dhcp-multilink-lifecycle-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — DHCP 外部监听冲突与专用进程归属
 
 Core 8e60accd21 用 Linux socket diagnostics 核对 IPv4 与能接收 IPv4 的双栈 UDP 67 监听。用正式 unit 的 systemd cgroup 判断 Kura 专用实例的 socket 归属，结合接口、主设备、地址及广播范围拒绝服务冲突。发布前重复核对，启动或重配后确认所需监听确实由专用 cgroup 持有。保留原包、已加载 Main、Root 配对和 UNKNOWN 围栏。 [Linux inet_diag 源码](https://raw.githubusercontent.com/torvalds/linux/master/net/ipv4/inet_diag.c)
