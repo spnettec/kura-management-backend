@@ -1,0 +1,91 @@
+{
+  "at": "2026-11-19T06:58:05.302299+00:00",
+  "arm64Debian13": true,
+  "chronyVersion": "4.6.1-3+deb13u2",
+  "packageUpgrade": {
+    "predecessor": {
+      "commit": "244c3068a653ada6afcc06534d1658c0735889e4",
+      "tree": "105b9a51a73fc45139d61510ff6da5c73a0135b3",
+      "version": "6.0.0~git202611190654.244c306-1",
+      "sha256": "4618200604351613fbf91dd919090fab4692361eea1df1805865214419eb087f"
+    },
+    "successor": {
+      "commit": "fd3ff3b4d17361c7cfb4dfdb823e90e64a657603",
+      "tree": "a54e66d5c0ab045b30aa5019996fc6b1f047e13e",
+      "version": "6.0.0~git202611190654.fd3ff3b-1",
+      "sha256": "4abb30a0fb5bf71f984bb73b80436bae3428a84b37ad0eaa5775d63c4f8c990e"
+    },
+    "originalHistoryExact": true,
+    "originalProtectedFileCount": 7,
+    "pairedPriorPolkitRuleMigrated": true,
+    "priorAndSuccessorActorPayloads": 13
+  },
+  "application": {
+    "mainPid": 2204,
+    "ordinarySystemdMain": true,
+    "configurationServiceUpdateCount": 1,
+    "snapshotId": "1795071386572",
+    "liveAndPersistedConfigurationReadBack": true,
+    "snapshotFileSha256": "e5a26bda2d4212348896ae4f96e68e19097d0b5a147ed77eb91c9fc2bfba23ba"
+  },
+  "actualChrony": {
+    "previousPid": 1914,
+    "nextPid": 2784,
+    "pairedRestartCount": 1,
+    "liveOfflineSource": "192.0.2.72",
+    "clockControlDisabledOnBothDaemonExecutions": true,
+    "typedStepRequests": 0
+  },
+  "typedConfigurationReceipt": {
+    "errno": 0,
+    "namespace": "72d7858c-c85e-4adc-bca2-0145aa984d02",
+    "observedMonotonicNs": 284291343824813,
+    "observedRealtimeNs": 1795071392002567493,
+    "reason": "CHRONY_CONFIGURED",
+    "requestId": "b4bc5548-fcad-4781-a447-006ebe905f1b",
+    "requestSha256": "17e07a4ec74fc82d96ca66af504246b921c1af1d0c2fe0f6ebae8c73fac7cf1f",
+    "schema": 1,
+    "state": "APPLIED"
+  },
+  "candidate": {
+    "sha256": "b2fa732b950067e62c7e71bc7c7d0f3c75eb0aee693afd1ba6c518a76b2b3b91",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o644",
+    "ino": 4337394,
+    "mtimeNs": 1795071391018712686
+  },
+  "original": {
+    "sha256": "c88d5bb970adbf75809dc17a319ee579486686077f82395c2d152ed4272a2513",
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o600",
+    "ino": 4337399,
+    "mtimeNs": 1795071391137721985
+  },
+  "stop": {
+    "normalMainStop": true,
+    "configurationSnapshotAndReceiptExact": true,
+    "chronyStillActiveAfterMainStop": true,
+    "typedChronyStopReceipts": 0,
+    "fixtureShutdownExit": 0,
+    "fixture": "9a5e529c84447199545ff3c27d19e9eb722801bb6e67c6d1d523d479ed1f83d6",
+    "mainDisabled": true,
+    "probeBundleRemoved": true
+  },
+  "tests": {
+    "macOSPassed": 100,
+    "macOSLinuxOnlySkipped": 5,
+    "arm64Passed": 105,
+    "jdk21Passed": 27
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

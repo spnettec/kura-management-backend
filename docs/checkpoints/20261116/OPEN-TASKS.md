@@ -1,4 +1,14 @@
 
+## 2026-11-19 Chrony 持久化配置与活动 daemon 重载
+
+Core fd3ff3b4d1 让运行中的成对 Chrony 在新文件发布后沿同一配置事务重载一次。只允许原 clock actor 对经过配对的 Chrony vendor 单元发出固定 restart，随后核对新进程出生时间、原单元和已发布内容。发布后无法确认则保留原提交意图。非空配置让 Chrony 使用其自身的调时策略，Core 不另外派发 makestep。旧权限规则仅在原维护记录和旧 actor 成对时迁移。
+
+Debian 13 ARM64 同一新 Root 使用现构建的 244c3068a6 与 fd3ff3b4d1 标准升级，七份原文件元数据及原历史精确，13 份载荷配对。合法 systemd Main 的实际 OSGi ConfigurationService 更新一次，当前配置与新快照回读精确。已运行的 Chrony 由 PID 1914 成为 PID 2784，实际 chronyc 查询确认候选离线时间源。一次 CHRONY_CONFIGURED，原配置字节及回执保留，两次 daemon 启动均显式禁用改时，零 step 请求。
+
+Main 正常停止后快照、已发布配置和原回执原样。Chrony 仍保持同一运行进程，未观察到 typed stop，停机交接继续内部待办。专用测试 bundle 移除后现场禁用并正常退出。发布后中断的实际原地核定、其他 Chrony 布局、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全发行矩阵继续。冻结父项 0/12，仅原三项 external deferred。见 [检查点](actual-chrony-configuration-service-active-reload-checkpoint.json)。
+
+
+
 ## 2026-11-19 Chrony 类型化配置发布
 
 Core 244c3068a6 将 Chrony 配置从 JVM 的直接文件操作迁移到配对的发布单元。固定 Debian 配置路径由零 capability、NNP 的独立 Root 服务写入，调用者必须是已配对的 clock actor。NTP 源和支持的校时参数由 broker 类型化检查，原系统路径、权限和其他 Root 管理指令保持。变更先用实际 chronyd 校验，按原请求 ID 保留原字节，再原子发布。相同配置只读确认，发布结果不明时沿原 ID 查询。
