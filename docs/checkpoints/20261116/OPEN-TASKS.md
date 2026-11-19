@@ -1,3 +1,11 @@
+## 2026-11-19 imported 防火墙正式早启派发与内核回执
+
+Agent `6ad4667` 将独占 imported `ip`/`ip6` 布局接到正式 `firewall-restore-confirmed` 和既有可选 systemd 单元。固定 Root、原 schema 5 配对租约、原结算策略头、初始化回执摘要、重新编译的镜像摘要及实际新 boot/netns 进入 schema 2 意图。空命名空间和所需转发状态在原锁内核对。落盘后只派发一个世代围栏批次。收到批次结束 ACK 并完成声明、规则顺序和原生 payload 读回后，写唯一原回执，保留完整 canonical 内核观测。schema 1 可继续读取。独立零 capabilities CLI 夹具证实缺回执的 schema 2 原意图保持 UNKNOWN，派发和确认均拒绝，锁及原数据精确。
+
+本次在新 Debian 13 ARM64 容器，用当前 Git 构建的正式 Agent ELF 和 vendor unit，沿专属持久卷的同一 Root。用测试见证签发正式 schema 5 租约的采集命令超时。未重发原命令，进程退出后用正常只读命令在原 Root 核定已提交租约、原 native APPLIED、初始化 COMMITTED 和启动完成回执，再显式启用单元。随 PID 1 正常退出及重启一次，单元在 `network-pre.target` 前恢复。读回为 6 表、58 链、144 规则，内核世代 1→2。唯一原回执保留全部 144 个 raw 规则指纹及载荷。十份原授权文件的内容和物理文件身份精确。末次正常停放首次观察超时，沿原退出任务确认 PID 1 结束且退出码为 0。15 项定向 Rust 回归及 88 项 Agent 包测试通过。
+
+旧 JVM、NetworkManager 见证以及初始化时的 kernel 源数据为测试夹具。启动恢复使用正式入口及真实内核。本次直接放置正式 unit 与 ELF，未在该现场安装 deb。新物理 epoch/handle 接入后续正常事务、共享链基线、原始无回执或负回执核定、真实 JVM/NM 签发、完整 Core/OSGi 和六组件矩阵继续内部 pending。原现场、C/D/E、个人配置及 7fd 原停机 41 输入/16 回执保留。冻结 12 父项最终 0/12，仅原三项 external deferred。见 [检查点](firewall-imported-early-actor-checkpoint.json)。
+
 ## 2026-11-18 imported 防火墙早启预检与真实内核批次
 
 Agent `086dbd2` 增加固定 Root 的 `firewall-restore-imported-review`。预检取已提交的 schema 5 配对租约、原运行态物理 epoch 和结算后的原策略头，按 typed 模型生成 `ip`/`ip6` 的 filter、nat、mangle 表及规则。只读共享锁下复核原租约和文件身份，命令输出镜像指纹及对象计数。共享链中的未授权规则、额外对象、base hook 漂移、缺失原证据及未决日志均阻止生成整表计划。镜像不创建历史回执表或历史规则标记。正式 release CLI 在 capabilities 为 0 的独立空现场拒绝缺租约和 Root 参数，原锁及目录指纹精确。另一个 capabilities 为 0 的夹具在查找 owner 前保留待确认原意图的 UNKNOWN，原意图和锁指纹精确。

@@ -1,0 +1,153 @@
+{
+  "recordedAt": "2026-11-19T00:21:10.486241+00:00",
+  "branch": "wip/management-close-20261116",
+  "build": {
+    "agentCommit": "6ad466728418b4786a648a6de4bb96163fb0fb20",
+    "agentTree": "fbb863af1e4aaa0de1433a9c4c388de187f7b62c",
+    "toolchain": "Rust 1.95.0",
+    "target": "aarch64-unknown-linux-gnu",
+    "builtFromGit": true,
+    "releaseElfSha256": "ebd6998c0c5d2e496913d6a24b57122bb401c39592c61b9e22a5682e856abe09",
+    "testElfSha256": "20a4c43f084eb96a50e277e49c8c33d5637930ad4e6ab9ba9c0acd1efbf67d44",
+    "vendorUnitSha256": "81227518d5e4c8dda8dc226086a9eb338969f945f3406c275ee378a6ff02068f",
+    "arm64TargetedTestsPassed": 15,
+    "packagingTestsPassed": 88
+  },
+  "proof": {
+    "sameRootOriginalAuthority": {
+      "operationId": "4c748b65-7262-47df-8825-a126e35a0449",
+      "schemaVersion": 5,
+      "originalNativeState": "APPLIED",
+      "originalInitializationState": "COMMITTED",
+      "review": {
+        "chains": 58,
+        "dispatched": false,
+        "initializationReceiptSha256": "53eb91cb6951b0b288bdbe1156721cff2696d2a00ebd6df000ab6eb98e4d3557",
+        "logicalRestoreImageSha256": "0150eaca862d66c20a69b5faf336039e587344d7067606c4c0a31ca148f349e4",
+        "ownerLeaseSha256": "0a5095b83aac1b6ee8764177f0e18ad0507c14c52400256ae191c8e0c53930a0",
+        "revision": 1,
+        "rules": 144,
+        "schemaVersion": 1,
+        "sourceKind": "nft.imported.boot.review.v1",
+        "sourceReceiptSha256": "fc348d74929008d591ad6a4587ba8f29239cd7475b44bae669e04f25bcab0da5",
+        "tables": 6,
+        "wirePreflightBytes": 54112
+      },
+      "syntheticJVMNMAndInitialKernel": true,
+      "observedFromExactCommittedOriginal": true,
+      "signingOutputTimedOut": true,
+      "originalSigningRedispatched": false
+    },
+    "actualEarlyBoot": {
+      "result": {
+        "intentSha256": "2d7361dd5febe012566fbef8c7fe98b7aa72f6aab70d8b68ec876f057758cc14",
+        "originalBootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "pendingIntentRetained": false,
+        "receiptSha256": "ad41bae4b2f54acbac021015131a0c06939c7d1d9caf203c6efae524e55e4d34",
+        "revision": 1,
+        "schemaVersion": 1,
+        "state": "RESTORED"
+      },
+      "intent": {
+        "schemaVersion": 2,
+        "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+        "scope": {
+          "rootDevice": 39,
+          "rootInode": 3852572,
+          "netDevice": 5,
+          "netInode": 4026533422,
+          "ownerLeaseSha256": "0a5095b83aac1b6ee8764177f0e18ad0507c14c52400256ae191c8e0c53930a0",
+          "confirmedSha256": "fc348d74929008d591ad6a4587ba8f29239cd7475b44bae669e04f25bcab0da5",
+          "revision": 1
+        },
+        "imported": {
+          "initializationReceiptSha256": "53eb91cb6951b0b288bdbe1156721cff2696d2a00ebd6df000ab6eb98e4d3557",
+          "imageSha256": "0150eaca862d66c20a69b5faf336039e587344d7067606c4c0a31ca148f349e4",
+          "expectedGeneration": 1
+        }
+      },
+      "canonicalKernelEvidenceBytes": 169244,
+      "nativeCounts": {
+        "table": 6,
+        "chain": 58,
+        "rule": 144
+      },
+      "nftFullReadbackExact": true,
+      "rawRuleFingerprints": 144,
+      "networkPre": {
+        "ActiveState": "active",
+        "ActiveEnterTimestampMonotonic": "260460405012"
+      },
+      "authorityFingerprintsExact": true,
+      "unitStartedOnce": true,
+      "ordinaryAgentInstalled": false,
+      "syntheticOriginalJVMNMAndKernel": true
+    },
+    "pendingProbe": {
+      "schema": 2,
+      "capabilities": 0,
+      "status": {
+        "intentSha256": "7427df5679f95214bdaef2344f6e7fbc25186f548f5fc889cf3c546fa1f08d7b",
+        "originalBootId": "5e1d3083-699c-4785-8697-52dddb04999c",
+        "pendingIntentRetained": true,
+        "receiptSha256": null,
+        "revision": 7,
+        "schemaVersion": 1,
+        "state": "OUTCOME_UNKNOWN"
+      },
+      "dispatchAndAckRefused": true,
+      "rootAndPendingExact": true,
+      "noLeaseLookupState": true
+    },
+    "successfulFixtureParked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T00:19:20.41517467Z",
+      "FinishedAt": "2026-11-19T00:20:22.574575287Z"
+    },
+    "authorityFingerprintsVerified": 10,
+    "vendorUnitFromGit": true,
+    "productionDebInstalledHere": false,
+    "liveJVMOrNM": false
+  },
+  "preservation": {
+    "originals": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "nativeE": {
+      "readOnly": true,
+      "sourceReceipt": "APPLIED",
+      "originalNewProcessesExact": true,
+      "remoteDecisionExact": true
+    },
+    "original7fdStateExact": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "completedOperationsReplayed": false,
+    "unknownResubmitted": false
+  },
+  "internalPending": [
+    "Publish the new physical epoch and selected handles into imported transaction lineage and verify legal updates",
+    "Shared legacy chains and independent original foreign baseline, original outcome adjudication",
+    "Real JVM/NM contribution to original schema 5 lease and actual installed package lifecycle",
+    "Complete Core/OSGi/legal Main, remaining typed brokers, six-component lifecycle and all twelve parent items"
+  ],
+  "evidenceRoot": ".management-close-20261116/imported-firewall-early-actor-20261119",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
