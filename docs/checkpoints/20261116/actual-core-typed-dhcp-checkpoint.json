@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-20",
+  "priorConsole": "c6e3baa",
+  "core": {
+    "head": "324aec118f7adcd4195c722506f0006fcbdac44b",
+    "tree": "7dbeb354a18590a6162b67a8d10d4040077ace42"
+  },
+  "networking": {
+    "head": "47a7dfb90a46e861fb4fd7a4b2923d6dc7ae5ed1",
+    "tree": "a22b217e92056891b6f484a4738f48a1bacd477c"
+  },
+  "sourceFirstCore": "f0b4216d90",
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd",
+  "corePackage": {
+    "package": "kura-core",
+    "path": "/root/typed-dhcp-release/kura_6.0.0~git202611191644.324aec1-1_arm64.deb",
+    "sha256": "b4ca32fcacbc5b31b34bc91015bd3e4d77bc323420b253ee6bbd4c070b441629",
+    "version": "6.0.0~git202611191644.324aec1-1"
+  },
+  "networkingPackage": {
+    "package": "kura-networking",
+    "path": "/root/typed-dhcp-release/kura-networking-3.0.0~git202611191641.47a7dfb-1_all.deb",
+    "sha256": "93868b1c2813c58277edfea33f1e6deecd8f9b87e689c9f62e25d9d2aeafaed5",
+    "version": "3.0.0~git202611191641.47a7dfb-1"
+  },
+  "initial": {
+    "main": {
+      "MainPID": "1829",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "ab2b5a178e974e0088b1fdab1c59a1f0"
+    },
+    "provider": {
+      "dhcp": {
+        "dhcpProtocol": 1,
+        "provider": "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "schema": 1,
+        "sha256": "2a86bd2c12e3f508f3ac51760e33ca1a141f2b236ea87b920fc8627ab62b49c7"
+      },
+      "dhcp-nm": {
+        "dhcpNmProtocol": 1,
+        "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+        "schema": 1,
+        "sha256": "f5d2080bc005b9aa58af9b1a01b5932e5047122ccee21bc17bcaee97095252f7"
+      }
+    },
+    "vendor": {
+      "unit": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "failed",
+        "DropInPaths": "",
+        "InvocationID": "cdd14d5a8c014f24ba9bf55a75f8ef6f"
+      },
+      "files": {
+        "/etc/dnsmasq.conf": "74940278c8dc733c6e778f13082abae6e12002cff0af34dbff3f0575fb5bf54e",
+        "/etc/default/dnsmasq": "1731d99d4ee7d1ea6c25289b5ef6c7e066be045f8a2ce01dbc3e3432d0087386",
+        "/etc/dnsmasq.d/README": "96fed9626ba8887658f4e6ac7c5d09b433c4f2bc4a1a0c56c2f2e760a53b1051"
+      }
+    },
+    "boot": "38663672-c6a8-476d-a08f-437f4ca99f72",
+    "root": "1048825:5010447",
+    "initialConfig": "252fa45bfd5d471dfdcac09fe63e7a2c4cb3f1e74d949dda2c2571d018e9ca38"
+  },
+  "clientLease": {
+    "main": {
+      "MainPID": "1829",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "ab2b5a178e974e0088b1fdab1c59a1f0"
+    },
+    "daemon": {
+      "MainPID": "9164",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "e5bfb071ecab473ba7dd1379a337c2f1"
+    },
+    "vendor": {
+      "unit": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "failed",
+        "DropInPaths": "",
+        "InvocationID": "cdd14d5a8c014f24ba9bf55a75f8ef6f"
+      },
+      "files": {
+        "/etc/dnsmasq.conf": "74940278c8dc733c6e778f13082abae6e12002cff0af34dbff3f0575fb5bf54e",
+        "/etc/default/dnsmasq": "1731d99d4ee7d1ea6c25289b5ef6c7e066be045f8a2ce01dbc3e3432d0087386",
+        "/etc/dnsmasq.d/README": "96fed9626ba8887658f4e6ac7c5d09b433c4f2bc4a1a0c56c2f2e760a53b1051"
+      }
+    },
+    "lease": "198.51.100.157",
+    "dhcpClientOutput": "DHCPDISCOVER(kdhcp2) 8a:22:3f:dd:81:b7\nDHCPOFFER(kdhcp2) 198.51.100.157 8a:22:3f:dd:81:b7\nDHCPDISCOVER(kdhcp2) 8a:22:3f:dd:81:b7\nDHCPOFFER(kdhcp2) 198.51.100.157 8a:22:3f:dd:81:b7\nDHCPREQUEST(kdhcp2) 198.51.100.157 8a:22:3f:dd:81:b7\nDHCPACK(kdhcp2) 198.51.100.157 8a:22:3f:dd:81:b7",
+    "configSha256": "7e18e0bdeb6d45451323f094fcd2ffa756739f00c33cd1b37a227a20ecf4c7f7",
+    "receipts": {
+      "b0d3b39e-4227-4ca2-acf0-11a28f981581.delivered": "ee8fdf03e50b8ea0cc0c72013aa6dcbc399330f6ba8d73141a40d62f7feac138",
+      "b0d3b39e-4227-4ca2-acf0-11a28f981581.intent": "f1e6f3955bd10ebb409e681d163c6cca8945fbabe2d127d63d63a03afa1e0e3e",
+      "b0d3b39e-4227-4ca2-acf0-11a28f981581.result": "622b0d69784bd9fb60af7a9f94688e3e70aa1a05476e1887c8da9e7096f59fa2",
+      "lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "root.json": "b73d5112468c944bdcfccccb87afdb1ab04e60f6c67d666f6e1a8904961fd646"
+    }
+  },
+  "disabled": {
+    "daemon": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "configSha256": "252fa45bfd5d471dfdcac09fe63e7a2c4cb3f1e74d949dda2c2571d018e9ca38",
+    "root": "1048825:5010447",
+    "receipts": {
+      "36dd9b16-e472-4d16-8eb1-2022b7b0e0b1.delivered": "f10e1dbc64ec2b072ddce4b5c4ffee81c8433644f1eb6612bc7e8eaccf96bf95",
+      "36dd9b16-e472-4d16-8eb1-2022b7b0e0b1.intent": "feb7a4426028a1db7c5988d5ba5ec2baca8cadb2dd414316661037ebc9b95404",
+      "36dd9b16-e472-4d16-8eb1-2022b7b0e0b1.result": "2d7aeb3f6d7ec3c13284aa2071fb1c201ab8cdcc482377909d3d3dcbc4d1216a",
+      "b0d3b39e-4227-4ca2-acf0-11a28f981581.delivered": "ee8fdf03e50b8ea0cc0c72013aa6dcbc399330f6ba8d73141a40d62f7feac138",
+      "b0d3b39e-4227-4ca2-acf0-11a28f981581.intent": "f1e6f3955bd10ebb409e681d163c6cca8945fbabe2d127d63d63a03afa1e0e3e",
+      "b0d3b39e-4227-4ca2-acf0-11a28f981581.result": "622b0d69784bd9fb60af7a9f94688e3e70aa1a05476e1887c8da9e7096f59fa2",
+      "lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "root.json": "b73d5112468c944bdcfccccb87afdb1ab04e60f6c67d666f6e1a8904961fd646"
+    },
+    "leaseFileSha256": "068ecef2ce8a9152d4a23b8e957b566071722e677b1ed1f3b28b8c7d3506051b"
+  },
+  "parking": {
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "daemon": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "InvocationID": ""
+    },
+    "unitFile": "disabled",
+    "id": "156259dc499b7d22b414cd2c779efb81d4ee6c5820376990b13cf633490db04e"
+  },
+  "packetFixture": {
+    "ipv4": "198.51.100.1/24",
+    "pool": [
+      "198.51.100.150",
+      "198.51.100.170"
+    ],
+    "leaseSeconds": 1200,
+    "dedicatedVethPair": true,
+    "temporaryIngress": [
+      "kdhcp2",
+      "udp",
+      "68",
+      "67"
+    ],
+    "ruleRemoved": true,
+    "productionFirewallChanged": false
+  },
+  "firstUnknown": {
+    "container": "890c8db1fe48379e67816ce01e8d2f66a93781adc953615c6dafbc10f1803367",
+    "failure": "dnsmasq could not traverse the private /etc/kura configuration parent",
+    "evidence": [
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /var/lib/kura-dhcp-service/lock",
+      "ee4eb2ac43bbe6c6f1de44bf84bcccd5a4dca05bcb19fd6369fed64486f65be8  /var/lib/kura-dhcp-service/root.json",
+      "cc1e5992274da3e3ba360928f0961cc3e5be2ad9770d3bc03786d7e256ddc7b2  /var/lib/kura-dhcp-service/673685e8-22f8-4df8-bea2-43ad665fce18.intent",
+      "2ece91d73ff53283f6e6bb7f1749078c0e3426584ba0f45c1602373c0219b31b  /etc/kura/dhcp-service/dnsmasq.conf"
+    ],
+    "parking": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T16:41:39.452040047Z",
+      "FinishedAt": "2026-11-19T16:44:10.536201858Z"
+    },
+    "originalIntentRetained": true,
+    "crossRootLookup": false,
+    "redispatched": false
+  },
+  "tests": {
+    "targetedLinux": 60,
+    "networkingMaven": 2211,
+    "broadDiscovery": {
+      "environment": "standalone Debian image, without required fixture layouts/services",
+      "baseline": "1ae9a34b3e",
+      "baselineTests": 1073,
+      "candidateTests": 1077,
+      "failures": 7,
+      "errors": 326,
+      "skipped": 34,
+      "failedTestIdentitiesExact": true
+    }
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "DHCP 已装旧配置与存量租约合法接管、并存 DHCP 服务识别、跨 Main 及故障各时点原编号核定、package upgrade/remove/purge 实证和多链路配置矩阵",
+    "完整 Core/OSGi 与合法 Main，PPP/Wi-Fi 及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复及冻结 12 父项"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

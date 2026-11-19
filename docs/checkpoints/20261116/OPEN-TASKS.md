@@ -1,4 +1,13 @@
 
+
+## 2026-11-20 继续实施 — 类型化 DHCP 与实际 NM 发租约
+
+Core 324aec118f、Networking 47a7dfb 从 Git 构建，安装实际 Debian 13 ARM64 包。新 Core 为应答器配对正式 Networking 的两个 JAR 和已加载 Main。同 Root 记录意图、结果及结果确认。专用 dnsmasq 从 systemd 凭据目录读取结构化模型生成的固定配置，仅绑定所需接口，保留系统 dnsmasq 的配置和状态。
+
+在独立容器由 OSGi ConfigurationService 更新正式 NM 配置，默认防火墙丢弃首个客户端请求。仅对隔离 veth 的 UDP 68 到 67 临时放行，实际 DHCP 请求、应答与 ACK 成功，租约 198.51.100.157 落盘，临时规则撤回。随后同入口禁用 DHCP，专用进程退出，Main PID 和 invocation 未变化，原系统 dnsmasq 状态与所查配置指纹精确，保留两笔原 Root 结果和确认。第一份 Core 的专用服务无法读取私有父目录，原 Root 保留单笔 UNKNOWN。修复通过 systemd 凭据目录交付配置，第二个 Root 使用独立链路和地址池，未查询或重发第一笔。两处新夹具均正常停放。
+
+Linux 定向 60 项、Networking Maven 2211 项通过。另做 Python 全量 discovery，两版本在同一个缺少所需夹具的镜像中失败及报错的测试名称完全一致，此运行不作完整验收。DHCP 历史接管、并存服务、多链路及未决写核定，完整 Core/OSGi、其余 brokers、六组件/provider/launcher 和安装升级移除 purge/中断恢复继续内部待办。原 7fd 41 输入/16 回执、全部冻结 12 父项和三项 external deferred 保持。见 [检查点](actual-core-typed-dhcp-checkpoint.json)。
+
 ## 2026-11-20 BIND 文件已发布且无回执的原编号核定
 
 Core 1ae9a34b3e 在原意图记录真实已 fsync 且通过 named-checkconf 的暂存文件身份。文件发布采用同一原 inode。受控核定先核 Root 和原 ID，只采信同一次 Linux 启动、原 named invocation、原暂存 inode 和发布摘要均匹配的文件操作。核定同步父目录并单独生成受保护的回执，确认仍需原 ID。启停和激活如果缺少完成证据，继续保留原 UNKNOWN 围栏。
