@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 按包配对撤回 Main 的直接 WPA 授权
+
+Core 3db2116cb4 和 Networking 3cb9bf2 将已安装 NM 扫描 JAR、Networking 授权规则与正式 dpkg 配对。包版只保留 NM、ModemManager 的原授权。历史两种确定的 Core/Networking polkit 规则可迁移，管理员规则保持。旧 WPA pkla 只在字节完全符合历史包授予时撤回。D-Bus XML 需与受保护的同路径备份以及旧安装器输出逐字配对，按原备份恢复并重新加载总线配置，支持已发布后重试加载。 [D-Bus 守护进程文档](https://dbus.freedesktop.org/doc/dbus-daemon.1.html)
+
+在隔离 Debian 13 ARM64 从 Git 构建新版。实装旧 Core 后，其真实安装器生成已标记的 .save 与直接授权。实际系统总线旧版允许 kurad 获取测试用 WPA 服务名，三个 polkit 测试授权均通过。新版 Core 的已打包 preinst 在旧 provider 缺证明时拒绝，未向 dpkg 提交该次检查。实际先升级 Networking 后升级 Core，前一步单独撤掉 Networking 规则的 WPA 分支，Core 旧授权仍生效。后一步恢复原 XML 字节，退役确认的 pkla，系统总线拒绝 kurad 测试请求，root、NM 和 ModemManager 通过。D-Bus 进程、管理员文件、备份及凭据指纹保持。最终 Main 经正式包启动并返回真实网卡状态，夹具正常停放。
+
+Linux 82 项定向、Networking Maven 2215 项通过。实际 .save 迁移通过，vendor .kurasave 两种精确输入、歧义拒绝及重新加载重试是 Linux 定向测试。真实射频仍按原硬件边界。完整历史权限矩阵、PPP/其余 typed brokers、完整 Core/OSGi 和六组件/provider/launcher/生命周期矩阵继续内部待办。12 父项 0/12，external deferred 仍仅原三项。原 7fd 保持 41 输入/16 回执。见 [检查点](actual-core-wifi-policy-cutover-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Wi-Fi 扫描由 NetworkManager 接管
 
 Networking 56f9d84 在正式状态刷新路径使用既有 NetworkManager Wireless.RequestScan。调用前核定 D-Bus 唯一所有者、设备路径、接口名和 Wi-Fi 类型，仅接收同一所有者与设备的 LastScan 信号。未确认扫描留在当前实例和设备的等待记录中，后续刷新只读取同作用域的完成观察，已确认拒绝可释放本次等待。NetworkManager 1.52 的 supplicant 实现保持 AllowRoam=false。 [NetworkManager Wireless API](https://networkmanager.dev/docs/api/latest/gdbus-org.freedesktop.NetworkManager.Device.Wireless.html) [NetworkManager 1.52 源码](https://raw.githubusercontent.com/NetworkManager/NetworkManager/nm-1-52/src/core/supplicant/nm-supplicant-interface.c)

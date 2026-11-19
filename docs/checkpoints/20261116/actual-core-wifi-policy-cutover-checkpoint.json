@@ -1,0 +1,289 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "5195f65",
+  "core": {
+    "head": "3db2116cb4f86f4f1922c3a34413ba2235ee3f24",
+    "tree": "fc7a4ea0a64d93163e2303debeadfe356b428d0a"
+  },
+  "networking": {
+    "head": "3cb9bf2f02a378fe68c4702069959750e20bebf7",
+    "tree": "38702fc39f13d896afd2c61c7005c826efeb1ea5"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd",
+  "legacyPolicy": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "owner": {
+      "site": [
+        "50d84e9766edb9a47ade9d312ed9c0f4d60d7bac881960e4f301f5b385aa6913",
+        "1048815:5049999:0:0:644:1:192:2026-11-19 17:24:37.117000421 +0000:2026-11-19 17:24:37.118000424 +0000"
+      ],
+      "backup": [
+        "5c777635666280349f70a740459cb42511e6d1fad481feffc7c07bf9c1092865",
+        "1048815:5050724:0:0:644:1:416:2026-11-19 17:24:45.592025583 +0000:2026-11-19 17:24:45.592025583 +0000"
+      ],
+      "credential": [
+        "fae048294bd2edfe59bade36e30394ac3d623f03194bd137cc870ed2446fbfba",
+        "1048815:5050051:0:0:400:1:32:2026-11-19 17:24:38.559503996 +0000:2026-11-19 17:24:38.561004708 +0000"
+      ]
+    },
+    "rules": {
+      "/usr/share/polkit-1/rules.d/kura-nm.rules": [
+        "ff81d098ed539b00d0de3e83dfa81ea6a103aa5b59c1758c6aa6069cfa10609e",
+        "1048815:5050719:0:0:644:1:349:2026-11-19 17:24:45.562864455 +0000:2026-11-19 17:24:45.563025497 +0000"
+      ],
+      "/usr/share/polkit-1/rules.d/52-kura-networking.rules": [
+        "0bbe0eec0fdf8d6e740899e63c5527c672cdd4013c7817875bc32683a93f07cd",
+        "1048815:5050982:0:0:644:1:544:1980-02-01 00:00:00.000000000 +0000:2026-11-19 17:24:49.939038490 +0000"
+      ],
+      "/etc/dbus-1/system.d/wpa_supplicant.conf": [
+        "42f1d0cfd07ad26fc174e778b11c78487223b8851a9b7a1aa38db3006ec55ba7",
+        "1048815:5050725:0:0:644:1:694:2026-11-19 17:24:45.594025589 +0000:2026-11-19 17:24:45.595570261 +0000"
+      ],
+      "/etc/polkit-1/localauthority/50-local.d/54-fi.w1.wpa_supplicant1.pkla": [
+        "ea6f2f882ae1268e40624cb971594bc3e321c60f68524de428bec1d067cbb010",
+        "1048815:5050006:0:0:644:1:166:2026-11-19 17:24:37.263000855 +0000:2026-11-19 17:24:37.263000855 +0000"
+      ]
+    },
+    "manager": {
+      "MainPID": "82",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "19e57344c7bc45f9a003ddda585f6ec9"
+    }
+  },
+  "legacyAuthority": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "dbus": {
+      "kurad": "allowed",
+      "root": "allowed"
+    },
+    "polkit": {
+      "wpa": 0,
+      "nm": 0,
+      "modem": 0
+    }
+  },
+  "unpairedPreinst": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "exitCode": 1,
+    "reason": "Cannot start or replace Kura Main: install the paired typed Networking providers. Missing paired Networking release proof for wifiNmProtocol\n",
+    "rules": {
+      "/usr/share/polkit-1/rules.d/kura-nm.rules": [
+        "ff81d098ed539b00d0de3e83dfa81ea6a103aa5b59c1758c6aa6069cfa10609e",
+        "1048815:5050719:0:0:644:1:349:2026-11-19 17:24:45.562864455 +0000:2026-11-19 17:24:45.563025497 +0000"
+      ],
+      "/usr/share/polkit-1/rules.d/52-kura-networking.rules": [
+        "0bbe0eec0fdf8d6e740899e63c5527c672cdd4013c7817875bc32683a93f07cd",
+        "1048815:5050982:0:0:644:1:544:1980-02-01 00:00:00.000000000 +0000:2026-11-19 17:24:49.939038490 +0000"
+      ],
+      "/etc/dbus-1/system.d/wpa_supplicant.conf": [
+        "42f1d0cfd07ad26fc174e778b11c78487223b8851a9b7a1aa38db3006ec55ba7",
+        "1048815:5050725:0:0:644:1:694:2026-11-19 17:24:45.594025589 +0000:2026-11-19 17:24:45.595570261 +0000"
+      ],
+      "/etc/polkit-1/localauthority/50-local.d/54-fi.w1.wpa_supplicant1.pkla": [
+        "ea6f2f882ae1268e40624cb971594bc3e321c60f68524de428bec1d067cbb010",
+        "1048815:5050006:0:0:644:1:166:2026-11-19 17:24:37.263000855 +0000:2026-11-19 17:24:37.263000855 +0000"
+      ]
+    },
+    "owner": {
+      "site": [
+        "50d84e9766edb9a47ade9d312ed9c0f4d60d7bac881960e4f301f5b385aa6913",
+        "1048815:5049999:0:0:644:1:192:2026-11-19 17:24:37.117000421 +0000:2026-11-19 17:24:37.118000424 +0000"
+      ],
+      "backup": [
+        "5c777635666280349f70a740459cb42511e6d1fad481feffc7c07bf9c1092865",
+        "1048815:5050724:0:0:644:1:416:2026-11-19 17:24:45.592025583 +0000:2026-11-19 17:24:45.592025583 +0000"
+      ],
+      "credential": [
+        "fae048294bd2edfe59bade36e30394ac3d623f03194bd137cc870ed2446fbfba",
+        "1048815:5050051:0:0:400:1:32:2026-11-19 17:24:38.559503996 +0000:2026-11-19 17:24:38.561004708 +0000"
+      ]
+    },
+    "noPackageDispatch": true
+  },
+  "typedProviderFirst": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "proof": {
+      "policySha256": "604b3309acd3569beeb9f737a2a923f73da8859596f4397ac7388db1216e742c",
+      "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+      "schema": 1,
+      "sha256": "16a0086c897bd4ef4bbf561f100a31a3d672fe6295d72c28f927146887a60275",
+      "wifiNmProtocol": 1
+    },
+    "owner": {
+      "site": [
+        "50d84e9766edb9a47ade9d312ed9c0f4d60d7bac881960e4f301f5b385aa6913",
+        "1048815:5049999:0:0:644:1:192:2026-11-19 17:24:37.117000421 +0000:2026-11-19 17:24:37.118000424 +0000"
+      ],
+      "backup": [
+        "5c777635666280349f70a740459cb42511e6d1fad481feffc7c07bf9c1092865",
+        "1048815:5050724:0:0:644:1:416:2026-11-19 17:24:45.592025583 +0000:2026-11-19 17:24:45.592025583 +0000"
+      ],
+      "credential": [
+        "fae048294bd2edfe59bade36e30394ac3d623f03194bd137cc870ed2446fbfba",
+        "1048815:5050051:0:0:400:1:32:2026-11-19 17:24:38.559503996 +0000:2026-11-19 17:24:38.561004708 +0000"
+      ]
+    },
+    "rules": {
+      "/usr/share/polkit-1/rules.d/kura-nm.rules": [
+        "ff81d098ed539b00d0de3e83dfa81ea6a103aa5b59c1758c6aa6069cfa10609e",
+        "1048815:5050719:0:0:644:1:349:2026-11-19 17:24:45.562864455 +0000:2026-11-19 17:24:45.563025497 +0000"
+      ],
+      "/usr/share/polkit-1/rules.d/52-kura-networking.rules": [
+        "604b3309acd3569beeb9f737a2a923f73da8859596f4397ac7388db1216e742c",
+        "1048815:5051132:0:0:644:1:483:1980-02-01 00:00:00.000000000 +0000:2026-11-19 17:24:55.146053949 +0000"
+      ],
+      "/etc/dbus-1/system.d/wpa_supplicant.conf": [
+        "42f1d0cfd07ad26fc174e778b11c78487223b8851a9b7a1aa38db3006ec55ba7",
+        "1048815:5050725:0:0:644:1:694:2026-11-19 17:24:45.594025589 +0000:2026-11-19 17:24:45.595570261 +0000"
+      ],
+      "/etc/polkit-1/localauthority/50-local.d/54-fi.w1.wpa_supplicant1.pkla": [
+        "ea6f2f882ae1268e40624cb971594bc3e321c60f68524de428bec1d067cbb010",
+        "1048815:5050006:0:0:644:1:166:2026-11-19 17:24:37.263000855 +0000:2026-11-19 17:24:37.263000855 +0000"
+      ]
+    }
+  },
+  "authorityAfter": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "broker": {
+      "MainPID": "82",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "19e57344c7bc45f9a003ddda585f6ec9"
+    },
+    "dbus": {
+      "kurad": "denied",
+      "root": "allowed"
+    },
+    "polkit": {
+      "wpa": 1,
+      "nm": 0,
+      "modem": 0
+    },
+    "owner": {
+      "site": [
+        "50d84e9766edb9a47ade9d312ed9c0f4d60d7bac881960e4f301f5b385aa6913",
+        "1048815:5049999:0:0:644:1:192:2026-11-19 17:24:37.117000421 +0000:2026-11-19 17:24:37.118000424 +0000"
+      ],
+      "backup": [
+        "5c777635666280349f70a740459cb42511e6d1fad481feffc7c07bf9c1092865",
+        "1048815:5050724:0:0:644:1:416:2026-11-19 17:24:45.592025583 +0000:2026-11-19 17:24:45.592025583 +0000"
+      ],
+      "credential": [
+        "fae048294bd2edfe59bade36e30394ac3d623f03194bd137cc870ed2446fbfba",
+        "1048815:5050051:0:0:400:1:32:2026-11-19 17:24:38.559503996 +0000:2026-11-19 17:24:38.561004708 +0000"
+      ]
+    },
+    "rules": {
+      "/usr/share/polkit-1/rules.d/kura-nm.rules": [
+        "16bc6c9aa7aa9a916a18e7ed8d5eb26d1a86094af98dc4a04b04902daaa55721",
+        "1048815:5051894:0:0:644:1:285:2026-11-19 17:25:06.260311989 +0000:2026-11-19 17:25:06.261086949 +0000"
+      ],
+      "/usr/share/polkit-1/rules.d/52-kura-networking.rules": [
+        "604b3309acd3569beeb9f737a2a923f73da8859596f4397ac7388db1216e742c",
+        "1048815:5051132:0:0:644:1:483:1980-02-01 00:00:00.000000000 +0000:2026-11-19 17:24:55.146053949 +0000"
+      ],
+      "/etc/dbus-1/system.d/wpa_supplicant.conf": [
+        "5c777635666280349f70a740459cb42511e6d1fad481feffc7c07bf9c1092865",
+        "1048815:5051895:0:0:644:1:416:2026-11-19 17:25:06.280086922 +0000:2026-11-19 17:25:06.280087006 +0000"
+      ]
+    },
+    "packageState": "installed"
+  },
+  "actualMain": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "main": {
+      "MainPID": "4064",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "fd641b85f9aa48c3b93f2e5e02679028"
+    },
+    "provider": "2.0.0.202611191721",
+    "reportedWiredStatus": true
+  },
+  "parking": {
+    "id": "cf1edfe1381c492c21c29c4e7de15eb7b2d13b108215432e4d8e568eabcb0e0b",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T17:23:11.605040485Z",
+      "FinishedAt": "2026-11-19T17:25:21.300439684Z"
+    },
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": ""
+    },
+    "unitFile": "disabled"
+  },
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-dhcp-release/kura_6.0.0~git202611191713.d652342-1_arm64.deb",
+      "sha256": "5d44e37fe142cb98c761c52d78ba2aacbf68c1285d51c669b4a3291bfef742de",
+      "version": "6.0.0~git202611191713.d652342-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-dhcp-release/kura-networking-3.0.0~git202611191714.6a85b70-1_all.deb",
+      "sha256": "44a20c4fcd331e6408b4a72168aa4ee0313bb664fdd7055e17fdd734a5a52a10",
+      "version": "3.0.0~git202611191714.6a85b70-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-dhcp-release/kura-networking-3.0.0~git202611191721.3cb9bf2-1_all.deb",
+      "sha256": "490a0086033231d5cfb1754dfb1fca82b5aa30d5396ebdf63c1abfb2053f75e7",
+      "version": "3.0.0~git202611191721.3cb9bf2-1"
+    },
+    {
+      "package": "kura-core",
+      "path": "/root/typed-dhcp-release/kura_6.0.0~git202611191723.3db2116-1_arm64.deb",
+      "sha256": "68d372c1908fd1ef7f46a5b50f295f2cc8d3f0677753c6a02e2ef1adf5c60456",
+      "version": "6.0.0~git202611191723.3db2116-1"
+    }
+  ],
+  "tests": {
+    "linuxTargeted": 82,
+    "networkingMaven": 2215
+  },
+  "nativeFixtureScope": {
+    "rawDbusPermission": true,
+    "polkitPolicyFixture": true,
+    "oldCoreProducedSave": true,
+    "actualHistoricalNetworkingKurasave": false,
+    "typedWifiRadio": false
+  },
+  "internalPending": [
+    "旧 Networking 在 vendor 路径的 .kurasave 实包迁移和 WPA 生命周期全矩阵",
+    "PPP、其余 typed brokers，完整 Core/OSGi 与合法 Main",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
