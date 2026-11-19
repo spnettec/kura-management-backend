@@ -1,4 +1,16 @@
 
+## 2026-11-19 watchdog Debian 维护与正式 Main 停机准入
+
+Core 2a3b588e63 将 Debian preinst、postinst、prerm 和当前 systemd ExecStopPost 的 watchdog 动作接入同一固定 helper。helper 有界读取旧 marker，核对文件权限与身份，并只接受 Linux sysfs 证实的 watchdog 字符设备。固定保活和 Magic Close 动作通过核对后的设备描述符写入。Maven 将 helper 精确嵌入三份脚本，正式 unit 与已装 helper 入 generation 清单。
+
+当前 Git/JDK21 ARM64 deb 在实际 Debian 13 隔离 Root 中验证。普通文件类型的测试记录导致实际 preinst 拒绝，原测试文件及状态精确。移除人工测试记录后完整解包，由于基础镜像缺少 chrony 依赖而留在 unpacked。用 Debian 发行包补齐依赖，在同一 Root 执行 configure，Chrony 保持 inactive。正式 Main 和 watchdog OSGi bundle 实际 ACTIVE。
+
+实际 prerm 再对人工普通文件类型记录拒绝，原 JVM PID/出生时间、文件与配对载荷精确，reboot/key/clock 三围栏未建立。清除测试记录后标准 Main 停机成功，正式 helper pulse 的 ExecStopPost 退出 0，原凭据和正式载荷保持，现场禁用 Main 并正常停放。macOS 36 项，Linux ARM64 14 项通过。
+
+该 Root 无真实 watchdog 设备，本次实际硬件写入为 0。正向实机设备保活、Magic Close、nowayout、热插拔、旧已安装 unit 和 tar 安装器转换继续内部待验。完整 Core/OSGi、其余 typed brokers、六组件联合发行与全生命周期矩阵仍在原范围。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-arm64-watchdog-maintenance-admission-checkpoint.json)。
+
+
+
 ## 2026-11-19 Docker ARM64 非 Root launcher 与原卷升级
 
 Docker 34fabd8 的正式镜像入口把 Root 限于配对检查、密钥准备和对固定应用目录交接。持久 canonical key 和两份回执保持 Root 所有，JVM 仅读取本次独立运行目录下同摘要的 0400 凭据。默认 Gogo TCP 端口关闭。实际 PID 1 为 UID/GID 122 的 JVM，无 supplementary groups，全部五类 capability 位图为零，NNP 生效。普通日志和审计日志在 Root 保护父目录下由 kurad 创建，实测均为 0600。实际请求 `/admin/auth` 返回 200。初始 Root 使用 CHOWN、DAC_OVERRIDE、SETPCAP、SETUID、SETGID 五项测试启动能力，JVM 持有原卷的同一实例锁。
