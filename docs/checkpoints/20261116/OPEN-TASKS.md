@@ -1,4 +1,16 @@
 
+## 2026-11-19 历史 SystemUpdate 原文件纳管和无 Verifier 发布
+
+Deployment 3985bfa 增加两步纳管。仅在核实原作业从未派发后，本机 Root 用已装 JAR 的 `org.eclipse.kura.core.deployment.download.SystemUpdateExecution --adopt-undispatched` 签发。参数依次为用于纳管的 UUID、原作业号、当前配置下载目录下的规范脚本绝对路径、Root 审阅副本路径和摘要，成对时再传 Verifier 审阅副本路径和摘要。使用同一个 UUID、原作业号、规范路径，由非 Root 部署存储属主调用 `org.eclipse.kura.core.deployment.download.SystemUpdateLegacyMigration`。配对核对同一个 Root、路径及每份摘要，纳管只登记原文件身份。发现原派发文档、用过的领取记录或现有其他发布回执时保留现场。仅凭旧文件存在或缺少派发文档无法认定原作业未执行。
+
+正常无 Verifier 下载也持久记录原作业及发布 UUID。其授权只包含批准的脚本；同位点或授权出现意外 Verifier 时拒绝。单文件更新成功后报告该原作业 COMPLETED。成对位点保留 Verifier 合同和相关授权。两类更新均经原派发记录。
+
+独立 Debian 13 ARM64 Root 先标准安装上一正式包，在旧包上准备历史文件和对应未派发证明，再标准升级到从当前 Git 构建的包。实际已装的发布、审批和纳管入口保持历史文件字节、inode 与所测元数据。Root 执行纳管按角色被拒绝，存储属主登记成对和单文件两个原作业。带旧派发文档的第三个位点拒绝纳管，原文档和载荷精确，无审批和执行。实际 Main 中两个旧作业各执行一次原主动作，成对作业再执行一次 Verifier。通过同 Root loopback HTTP 下载另一无 Verifier 的新作业一次，按原发布 UUID 授权并执行。所有实际子进程的 CapEff 为零，NNP 为 1；原三作业号各获一次本地探针记录的 COMPLETED。Main 正常停止、禁用，现场正常停放。Maven/JDK 21 全仓 239 项通过。
+
+未知历史结果保持当前判定。同一 Root 启动切换、实际云端通知及硬断电仍待验证。完整 Core/OSGi、保护目标的 FileMove、其他 typed brokers 和完整六组件矩阵继续内部待办。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-system-update-legacy-admission-checkpoint.json)。
+
+
+
 ## 2026-11-19 SystemUpdate 原授权签发续接
 
 Deployment 05be6d2 为本机 Root 签发增加原作业锁和持久签发意图。校验审阅载荷后先同步原授权意图，再逐份以原子替换发布首次出现的定稿副本。后续只核对已存在副本，按原摘要补齐缺失项。两份均精确后，以原意图发布正式授权。路径或原 UUID 不符时拒绝续接。显式创建并设置授权、定稿和目录权限，适用 Root umask 000 和 077。已完成的授权再次核对返回 ALREADY_APPROVED。

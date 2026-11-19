@@ -1,0 +1,140 @@
+{
+  "at": "2026-11-19T08:39:13.468130+00:00",
+  "initialPackage": {
+    "container": "189ebbc70d9e6936ed61091b8c835245f9c7218104277bd65b5e712e6fb8352a",
+    "packages": {
+      "kura-core": {
+        "expectedVersion": "6.0.0~git202611190748.2a3b588-1",
+        "sha256": "612ee19cb6ca768357c9c9471db4a6de933488581bc9de1cd4525ff8ff291538",
+        "containerDeb": "/var/tmp/yofc-native-kura-core.deb"
+      },
+      "kura-deployment": {
+        "expectedVersion": "2.0.0~git202611190831.05be6d2-1",
+        "sha256": "3ae54556659c4b5c5c380dc0f78d5ab246373fc51fe98345e6cbb189974f281a",
+        "containerDeb": "/var/tmp/yofc-native-kura-deployment.deb"
+      }
+    },
+    "revision": "05be6d29181625f45474510f898db39379bf4ae3",
+    "tree": "9772c0e43f636ba30eefbecae101516325518639",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "31bb4767b678743aa02be28020d279373ce91f1eeabc098b6467faf25cc16f0b",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "e045264ec5271dc2f4eb184fa3a5e38a12cf264fcbda0c6add6a6e0c673f5826",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "nativePackage": {
+    "container": "189ebbc70d9e6936ed61091b8c835245f9c7218104277bd65b5e712e6fb8352a",
+    "commit": "3985bfa0e0be4a9ad9941a8af9d491ebac5fb643",
+    "tree": "2109f44dd91e58dec648e472a644c9f0a94b4e16",
+    "version": "2.0.0~git202611190836.3985bfa-1",
+    "deb": "kura-deployment_2.0.0~git202611190836.3985bfa-1_all.deb",
+    "sha256": "5e3c59e44d09ad4c463b7892655ff5c029bea247910245c5f82b2548228e4b4d",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "870a5ef38e611d62607af6dc2bc62670ed10b0e2e4dcfcaf9963050c347a071b",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "308a15e7d7632179fbadf875376d70cedfbb3ba3c789f5a502680a351b003f33",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "fixture": {
+    "container": "189ebbc70d9e6936ed61091b8c835245f9c7218104277bd65b5e712e6fb8352a",
+    "network": "none",
+    "ordinaryMainDisabled": true,
+    "exitCode": 0,
+    "mainPid": 1993
+  },
+  "legacy": {
+    "originalJobs": [
+      71341,
+      71342
+    ],
+    "originalFilesMetadataAndDigestsExact": true,
+    "originalReceiptsMapped": true,
+    "administratorAttestedUndispatchedAndReviewedBothOperands": true,
+    "nonRootStoreOwnerEnrollment": true,
+    "rootEnrollmentRejected": true,
+    "historicalDispatchDocumentUntouchedJob": 71343,
+    "dispatchOfHeldJob": 0
+  },
+  "current": {
+    "originalJob": 71344,
+    "httpRequests": 1,
+    "optionalVerifierAbsent": true,
+    "retainedOriginalPublicationId": true,
+    "rootApprovedOriginalReceipt": true
+  },
+  "actualMain": {
+    "probeNotifications": [
+      "install:71342:COMPLETED",
+      "install:71341:COMPLETED",
+      "install:71344:COMPLETED"
+    ],
+    "runtime": {
+      "legacy-pair": {
+        "job": "71341",
+        "acts": {
+          "update": [
+            "script=/opt/eclipse/kura-deployment-approvals/71341/update.sh",
+            "uid=997",
+            "caps=0000000000000000 nnp=1"
+          ],
+          "verify": [
+            "script=/opt/eclipse/kura-deployment-approvals/71341/verify.sh",
+            "uid=997",
+            "caps=0000000000000000 nnp=1"
+          ]
+        }
+      },
+      "legacy-single": {
+        "job": "71342",
+        "acts": {
+          "update": [
+            "script=/opt/eclipse/kura-deployment-approvals/71342/update.sh",
+            "uid=997",
+            "caps=0000000000000000 nnp=1"
+          ]
+        }
+      },
+      "legacy-held": {
+        "job": "71343",
+        "acts": {}
+      },
+      "new-single": {
+        "job": "71344",
+        "acts": {
+          "update": [
+            "script=/opt/eclipse/kura-deployment-approvals/71344/update.sh",
+            "uid=997",
+            "caps=0000000000000000 nnp=1"
+          ]
+        }
+      }
+    },
+    "allPayloadsEffectiveCapabilitiesZero": true,
+    "allPayloadsNoNewPrivileges": true
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 138,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
