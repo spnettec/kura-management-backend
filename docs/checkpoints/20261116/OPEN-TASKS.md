@@ -1,4 +1,15 @@
 
+## 2026-11-19 原初始化 Root 普通启动 profile 签发
+
+Agent `936ddd4` 识别现行 Core 的受密钥服务管理的 packaged-background 启动链，并将密钥包装器及凭据读取脚本纳入固定输入。普通参数文件仅接受附加 JVM 参数。新 Root 本地签发入口核对原 FENCED 计划、该 Root 的实际升级/停机记录、发布凭证、已提交初始化文件、当前真实 native 回执和原 JVM/NM 进程，再密封指定已装 Core 单元、实际有效定义、stop policy 和输入文件。`64d1eb9` 以现有全局锁作有界排他等待。首候选因锁争用在签发前已知拒绝，无原 profile 文件生成。
+
+原 Debian 13 ARM64 Root 以原 ID 实际布置仅包含三个附加 JVM 选项的受保护参数文件和一份 systemd drop-in。一次 daemon-reload 后，采用新 Git 构建 deb 所提取的精确签发组件发布 Root 私有 `nm-ownership-profile.json`。签发绑定现行凭据管理启动链、12 份固定文件及原实际 Netfilter/初始化回执。独立读回 systemd 定义和所有文件一致。原 Core/NM/Agent PID、快照和原 UNKNOWN 记录保持。当前运行 Agent 包仍为 `ed4a2d5`，本轮候选为单独 Root 签发工具。
+
+当前真实 JVM 启动时没有普通 profile 标识，后续实际启动需用原合法 JVM/Root 证明单独处理旧态路径。受控停止、发布、owner 启动、完整 Core/OSGi/合法 Main、其余 typed brokers 和六组件/provider/launcher/安装升级移除 purge/中断恢复继续内部待办。ARM64 定向 15 项、Debian 打包回归 115 项。原三现场和原 7fd 禁用停机 41 输入/16 回执保持。冻结父项最终闭环 0/12，external deferred 仅原三项。见 [检查点](actual-original-nm-live-startup-seal-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 原 PREPARED 同 Root 完成双 fence、原生批次和初始化
 
 Agent `9cbdba3` 将后续 Debian 包候选的凭证按实际二进制摘要存放。正式升级核对当时已安装的前任版本、其私有计划和停机回执、原 JVM/NM 与原 Netfilter 来源。历史记录保持原字节。Root arm 保留原计划中的 Agent 注册，另记录实际新 Agent 注册与原升级摘要。正式 Root publisher 校验安装包和原计划、两个注册绑定之后，才写两道物理 fence。`ee3046e` 在原 FENCED 计划的后续 native/初始化入口继续严格核对同 Root、原 JVM 的当前 Unix 注册、真实 Java writer 排空、原 CM/NM 和不可变计划。`ed4a2d5` 在续接预检使用既有共享锁作有界等待读取。首个候选在非原 ID 的预检遇到锁争用，只增量落盘候选文件，原操作未进入停机或派发。

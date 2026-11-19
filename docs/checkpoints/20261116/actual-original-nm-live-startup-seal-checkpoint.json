@@ -1,0 +1,86 @@
+{
+  "recordedAt": "2026-11-19T03:29:37.161760+00:00",
+  "branch": "wip/management-close-20261116",
+  "previous": "actual-publication-and-initialization-of-original-nm-checkpoint.json",
+  "source": {
+    "head": "64d1eb9dfd248a85f1bc850eb0cd831a8defa2d3",
+    "tree": "e0d04a9d0279d6592e339d14ebc1ab2c15a7b1ea"
+  },
+  "protocol": {
+    "head": "62a2adf2a6263f57ae25b6e43dddebbef548a707",
+    "tree": "2af60706c8564cbc06d15093e82f8686263aa0fa"
+  },
+  "package": {
+    "package": "/packages/legacy/kura-management-agent_0.1.0~retainedcontinuity202611190327.64d1eb9-1_arm64.deb",
+    "sha256": "0b6c937159b297aadc68452da34fcf73187ca96200235218f60c0995e5fcc842",
+    "binarySha256": "a9a0b0ca17de82dabc1efed094802d800a785e42fdce98e76528afb964610398",
+    "architecture": "arm64",
+    "maximumGlibc": "2.34"
+  },
+  "installedAgentSource": "ed4a2d55a333a06b4b4105b4505368da5457907d",
+  "rootLiveSeal": {
+    "receipt": {
+      "grantSha256": "134dced45f2c8e5699d95d9b1bbfa25fb0b060052717473a2786eff8c79016be",
+      "initializedKernelSha256": "39fbd557c61799e3252d8603103a0b91fade4a940b2874715e89885c78bc1c25",
+      "launcherKind": "packaged-background",
+      "operationId": "9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+      "planSha256": "4603dba54f53fc7e3e240a92d33ae47b69304bb4b66be7486c95599c873a658a",
+      "profileId": "profile-9ac1489c-eca0-45b1-849a-0fc741ae58e6",
+      "runningJvmPid": 15276,
+      "schema": 1,
+      "unit": "kura.service",
+      "unitDefinitionSha256": "4e34db6b7a3246965d863ec6d02fdd5eee1b8b378fc617f54055fe0aa6e8ec01",
+      "unitEnabled": false,
+      "unitStarted": false
+    },
+    "root": "ca034b75f20f77801be401b0aa7975ca17febb48af7c7b124c54f9aa39fb5546",
+    "installedAgentUnchanged": true,
+    "candidateDebSha256": "0b6c937159b297aadc68452da34fcf73187ca96200235218f60c0995e5fcc842",
+    "profilePackageFiles": 12,
+    "rootKeyBrokerRetained": true,
+    "argumentFileHasNoCredentialsOrProviderSwitch": true,
+    "oldCoreStillOriginalLegacyInvocation": true,
+    "originalProofFilesExact": 26,
+    "snapshotsAndUnknownJournalExact": true,
+    "successorStartNotDispatched": true,
+    "earlierKnownLockRefusalBeforeIssuingGrant": true,
+    "systemdReloadAlreadyRecordedOnce": true
+  },
+  "independentReadback": {
+    "legacyJvmHasOrdinaryIdentity": false,
+    "frameworkNetworkFenceExists": false,
+    "frameworkFirewallFenceExists": false,
+    "installedSealAndSystemdDefinitionExact": true,
+    "allPinnedFilesExact": 12,
+    "originalCoreNmAndAgentExact": true,
+    "profileSha256": "134dced45f2c8e5699d95d9b1bbfa25fb0b060052717473a2786eff8c79016be"
+  },
+  "validation": {
+    "arm64RustPassed": 15,
+    "debianPackagePythonPassed": 115,
+    "kuraRuntimeJdk": 21
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "original7fdStopped": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedScenariosReplayed": false
+  },
+  "internalPending": [
+    "Bind the live legacy JVM to the sealed profile without a synthetic ordinary JVM identity",
+    "Actual original controlled Core stop, paired publication, provider owner startup and signing",
+    "Complete Core/OSGi, legal Main, remaining typed brokers and all six-component provider/launcher/install/upgrade/remove/purge/interruption cases"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "evidenceRoot": ".management-close-20261116/original-nm-live-startup-seal-20261119"
+}
