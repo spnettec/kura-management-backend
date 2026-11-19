@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — NetworkManager 委派前缀驱动 LAN DNS
+
+Networking f9a0c3c 支持明确选择 `netIPv6MethodShared` 的 IPv6 LAN。开启该 LAN 的 DNS 代理后，只使用实际应用的 NetworkManager shared 连接和内核中仍 preferred 的地址交集，排除临时、tentative、DAD 失败或已 deprecated 的地址。委派前缀规范化后比较，同前缀忽略续租期限变化，失败观测保留已提交状态。正式 Main 仍经只接受既定 Root 配对的 typed BIND broker 写入。 [NetworkManager 1.52.1 委派处理](https://raw.githubusercontent.com/NetworkManager/NetworkManager/1.52.1/src/core/devices/nm-device.c)
+
+隔离 Debian 13 ARM64 实装 Core 3ea096ae52 和 Networking。正式 Main 一次提交共享 LAN 与 WAN 配置。独立上游以真实 DHCPv6 和 RA 报文提供前缀，实际 NetworkManager 将 LAN 由 fd60:10::/64 改为 fd60:20::/64。独立 LAN 客户端从实际 RA 获取地址，并在两个前缀下分别获得 BIND 转发的 AAAA 响应。捕获了同前缀续租，配置、进程和账本取样一致。随后撤回委派并确认 BIND 停用，原 WAN DNS 保留。共 4 组原 Root 配对的意图、结果和送达记录。Networking Maven 2235 项通过。
+
+夹具默认只读 sysctl 导致首次 shared 激活失败。只在该隔离夹具及 NetworkManager 的私有挂载命名空间放通 IPv6 子树，随后由实际 NetworkManager 启用已有配置。Main 和 Root 历史沿用。客户端仅放通测试地址的 UDP 53，输入默认策略保持。自动公布本地代理地址、完整转发/防火墙/接管矩阵、其余 typed brokers 与六组件仍为内部待办。外部延后仍仅原三项，原 7fd 停止且 41 输入/16 回执。父项仍 0/12。见 [检查点](actual-core-nm-delegated-dns-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 保留 IPv6 链路本地上游的 zone
 
 Networking 9509d5a 在有效解析器观测中保留 IPv6 链路本地地址的接口名与内核索引。Core 3ea096ae52 在已配对的 BIND broker 中增加 typed `enable-lan-scoped`。Root 在准备、准入和应用前后核对接口索引，发布精确索引的 BIND 配置；同名链路重新创建时，配置模型根据索引改变。旧类型和 Root 账本规则保持。 [RFC 4007](https://datatracker.ietf.org/doc/html/rfc4007)

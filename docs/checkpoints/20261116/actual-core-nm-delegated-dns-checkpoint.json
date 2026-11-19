@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "145d63e",
+  "core": {
+    "head": "3ea096ae52aed099045dbd781627d383122f7901",
+    "tree": "77189e74631e5f744be13b671d2b15c112ffb534"
+  },
+  "networking": {
+    "head": "f9a0c3c65966d69d7bc8d8cd41d4a6c8c5d48891",
+    "tree": "85571358eb1267645c408985847e25351e9fef6b"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 NetworkManager internal DHCPv6, routed kernel namespaces, BIND and legal Main",
+  "nativeMain": {
+    "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+    "main": {
+      "MainPID": "2060",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "e92e37b0db3649da88853cf56ade60a2"
+    },
+    "networkManagerVersion": "nmcli tool, version 1.52.1",
+    "provider": "org.eclipse.kura.core.configuration",
+    "core": [
+      "3ea096ae52aed099045dbd781627d383122f7901",
+      "77189e74631e5f744be13b671d2b15c112ffb534"
+    ],
+    "networking": [
+      "f9a0c3c65966d69d7bc8d8cd41d4a6c8c5d48891",
+      "85571358eb1267645c408985847e25351e9fef6b"
+    ],
+    "registeredConfigurationService": true,
+    "default": {
+      "operation": "2e94480a-3928-4db5-a962-5bd09e8e3e37",
+      "revision": 1,
+      "config": {
+        "mode": "disable",
+        "forwarders": [],
+        "networks": []
+      },
+      "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "rootScopedAndDelivered": true
+    },
+    "delegated": {
+      "label": "initial-pd",
+      "receipt": {
+        "operation": "47e0a038-2338-4dc2-9bc7-eb3f30d17a07",
+        "revision": 2,
+        "config": {
+          "mode": "enable-lan-dual",
+          "forwarders": [
+            "fd60:ff::53"
+          ],
+          "networks": [
+            "fd60:10::/64"
+          ]
+        },
+        "published": "5315b6c6da24009df75bab0dcc35247fad3e9177e32c560ecd267b3a745dd635",
+        "rootScopedAndDelivered": true
+      },
+      "router": "fd60:10::1",
+      "client": "fd60:10::701f:7fff:fec0:9146",
+      "dnsAnswer": "2001:db8:ff::53",
+      "upstreamQuery": {
+        "case": "initial-pd",
+        "source": "fd60:ff::2"
+      },
+      "realDhcpv6Reply": {
+        "message": 6,
+        "mode": "a",
+        "delegation": [
+          {
+            "requested": [
+              "fd60:10::"
+            ],
+            "offered": "fd60:10::"
+          }
+        ],
+        "source": "fe80::ad73:3613:d22a:1457",
+        "monotonic": 315373.054923543
+      },
+      "inputPolicy": "-P INPUT DROP"
+    },
+    "renumbered": {
+      "label": "renumbered-pd",
+      "receipt": {
+        "operation": "6e5b7beb-1393-40a4-bea0-b7e39265456b",
+        "revision": 3,
+        "config": {
+          "mode": "enable-lan-dual",
+          "forwarders": [
+            "fd60:ff::53"
+          ],
+          "networks": [
+            "fd60:20::/64"
+          ]
+        },
+        "published": "ae6c6e5a1d70e71a6f31c71848a78067918d3bb12415aa8178d7f40e76f235c9",
+        "rootScopedAndDelivered": true
+      },
+      "router": "fd60:20::1",
+      "client": "fd60:20::701f:7fff:fec0:9146",
+      "dnsAnswer": "2001:db8:ff::53",
+      "upstreamQuery": {
+        "case": "renumbered-pd",
+        "source": "fd60:ff::2"
+      },
+      "realDhcpv6Reply": {
+        "message": 6,
+        "mode": "b",
+        "delegation": [
+          {
+            "requested": [
+              "fd60:20::"
+            ],
+            "offered": "fd60:20::"
+          }
+        ],
+        "source": "fe80::ad73:3613:d22a:1457",
+        "monotonic": 315395.863710067
+      },
+      "inputPolicy": "-P INPUT DROP"
+    },
+    "withdrawn": {
+      "operation": "3b27424a-a7b9-40ff-94fb-b6a9fd0d2c5f",
+      "revision": 4,
+      "config": {
+        "mode": "disable",
+        "forwarders": [],
+        "networks": []
+      },
+      "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "rootScopedAndDelivered": true
+    },
+    "renewal": {
+      "message": 5,
+      "mode": "a",
+      "delegation": [
+        {
+          "requested": [
+            "fd60:10::"
+          ],
+          "offered": "fd60:10::"
+        }
+      ],
+      "source": "fe80::ad73:3613:d22a:1457",
+      "monotonic": 315380.282375426
+    },
+    "raClientAddressObserved": true
+  },
+  "parking": {
+    "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T19:03:27.580264772Z",
+      "FinishedAt": "2026-11-19T19:10:55.373021141Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "receiptsRetained": 4
+  },
+  "leaseRenewal": {
+    "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+    "unchanged": {
+      "files": [
+        "2e94480a-3928-4db5-a962-5bd09e8e3e37.delivered",
+        "2e94480a-3928-4db5-a962-5bd09e8e3e37.intent",
+        "2e94480a-3928-4db5-a962-5bd09e8e3e37.result",
+        "47e0a038-2338-4dc2-9bc7-eb3f30d17a07.delivered",
+        "47e0a038-2338-4dc2-9bc7-eb3f30d17a07.intent",
+        "47e0a038-2338-4dc2-9bc7-eb3f30d17a07.result",
+        "lock",
+        "root.json"
+      ],
+      "config": "5315b6c6da24009df75bab0dcc35247fad3e9177e32c560ecd267b3a745dd635",
+      "service": {
+        "MainPID": "10863",
+        "ActiveState": "active",
+        "InvocationID": "f97912d0c9d849faba3d097d93c7a314"
+      }
+    },
+    "realDhcpv6Renewal": {
+      "message": 5,
+      "mode": "a",
+      "delegation": [
+        {
+          "requested": [
+            "fd60:10::"
+          ],
+          "offered": "fd60:10::"
+        }
+      ],
+      "source": "fe80::ad73:3613:d22a:1457",
+      "monotonic": 315380.282375426
+    },
+    "configurationAndServiceUnchanged": true,
+    "ledgerUnchanged": true
+  },
+  "withdrawal": {
+    "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+    "receipt": {
+      "operation": "3b27424a-a7b9-40ff-94fb-b6a9fd0d2c5f",
+      "revision": 4,
+      "config": {
+        "mode": "disable",
+        "forwarders": [],
+        "networks": []
+      },
+      "published": "50c296bb3ae376b6fdde1f092ebf228056d38e525b53dc3415b7945136af14b7",
+      "rootScopedAndDelivered": true
+    },
+    "serviceInactive": true,
+    "upstreamRetained": true,
+    "sharedProfileRetained": true
+  },
+  "fixtureRecovery": [
+    {
+      "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+      "originalSystemMountReadOnly": true,
+      "namespaceIpv6MountWritable": true,
+      "bindStateUnchanged": true
+    },
+    {
+      "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+      "pid": "89",
+      "rootBindHistoryUnchanged": true,
+      "originalSysMountReadOnly": true
+    },
+    {
+      "id": "037bed1f9a4d522711c42e0bbe2891ea67866ac1a475eca0f4c5a6591f89569a",
+      "exit": 4,
+      "output": "",
+      "error": "Error: Connection activation failed: The base network connection was interrupted\nHint: use 'journalctl -xe NM_CONNECTION=ebbb2145-9550-463e-8c83-79e74809ad97 + NM_DEVICE=deleg-lan' to get more details.\n"
+    }
+  ],
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-delegated-dns-release/kura_6.0.0~git202611191904.3ea096a-1_arm64.deb",
+      "sha256": "0f4b04bb41a804939796b3fa859435c387b3f9b80042ac5a56afa62d64c32e3d",
+      "version": "6.0.0~git202611191904.3ea096a-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-delegated-dns-release/kura-networking-3.0.0~git202611191907.f9a0c3c-1_all.deb",
+      "sha256": "d3dcc29bb5e404be8c8788152125da2118a9efec0b81c3c4f09fdc75dfa01d1e",
+      "version": "3.0.0~git202611191907.f9a0c3c-1"
+    }
+  ],
+  "tests": {
+    "networkingMaven": 2235
+  },
+  "internalPending": [
+    "DHCPv6/RA 自动公布本地代理地址、事件与包转发完整矩阵、无 zone IPv6 上游源地址、systemd-resolved",
+    "真实 PPP 协商及流量、完整接管、完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}
