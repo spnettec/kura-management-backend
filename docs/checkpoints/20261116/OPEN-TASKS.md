@@ -1,4 +1,14 @@
 
+## 2026-11-19 Main 撤下 CAP_SYSLOG 与实际大日志归档下载
+
+Core 7b9bb19324 从正式 Main 单元的 ambient 和 bounding 配置撤下 CAP_SYSLOG。独立 Journal worker 的只读权限和代码配对保持。同一隔离 Debian 13 ARM64 Root 正常升级 Core/GWT，原两份 Root 凭据完整指纹一致，Main 保持 disabled 且由显式启动。实际已装单元、systemd 有效配置及运行进程的五类 capability 位图均核对。旧能力在旧 vendor 单元中有声明，本轮记录的是当前运行位图。
+
+GWT 08712fb 在每个请求自身的私有目录先完成 ZIP，再分块写响应。生成失败在下载标头和完成 cookie 之前返回 503。正常响应发送准确的 Content-Length，请求结束清理暂存。root scope 仍由原 Journal broker 和实际 Main 配对。受限 JVM 测试在 32 MiB 堆下压缩不可压缩的 40 MiB 文件；实际 GWT 管理员另下载 48 MiB 文件和两份 Journal，ZIP 完整且输入 SHA-256 不变。真实响应 Content-Length 与 ZIP 文件大小一致。两个 worker 实测非 Root、五类 capabilities 为零、NNP 1。Main 正常停止后 socket 已撤下，同一隔离现场已重新停放。
+
+Linux ARM64 75 项包装回归、GWT Maven 12 项通过。前一轮的旧 watchdog 测试单独修正，按正式 helper 验证回调返回及 check/disarm。模拟的归档生成失败通过测试；真实磁盘写满继续在原外部边界内。原三个现场、原 7fd 的 41 输入/16 回执、原 UNKNOWN 和已闭环业务保持。其余 Main 权限、typed brokers、provider/launcher、完整 Core/OSGi 与六组件矩阵内部 pending。12 父项关闭 0/12，external deferred 仅原三项。见[检查点](actual-core-journal-bounded-archive-checkpoint.json)。
+
+
+
 ## 2026-11-19 Core/GWT typed Journal 下载与实际 Main 准入
 
 Core 54fc736fee 与 GWT 862eaa0 通过同机 Unix socket 提供固定的 Kura 与 system journal 查询。GWT 保留原设备权限和 XSRF 检查，有界调用固定客户端，使用每次请求独立暂存并在归档后清理。Broker 核对已装 SHA 清单、实际 vendor 单元、Main PID/cgroup、直接子进程参数与内核 pidfd；仅接收已定义日志范围和字段名。读取每项最多 32 MiB；异常结果不会作为成功条目归档。

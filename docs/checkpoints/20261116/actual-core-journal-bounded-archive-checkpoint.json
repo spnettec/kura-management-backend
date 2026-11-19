@@ -1,0 +1,232 @@
+{
+  "date": "2026-11-19T15:19:48.791693+00:00",
+  "nativeOs": "Debian 13",
+  "architecture": "arm64",
+  "jdk": 21,
+  "core": {
+    "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "version": "6.0.0~git202611191517.7b9bb19-1",
+    "originalVersion": "6.0.0~git202611191507.54fc736-1",
+    "sha256": "34f3ddb322f1fe14eca572bae2d15dd0cd9630d0567f9883b7109a5ed35e553c",
+    "architecture": "arm64",
+    "head": "7b9bb1932465feedf4433d668656a693b27b6048",
+    "tree": "394d0554ade35686ce4707335f63bc3e5800781d",
+    "dispatchOrdinal": 1,
+    "exitCode": 0
+  },
+  "gwt": {
+    "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "version": "3.0.0~git202611191516.08712fb-1",
+    "originalVersion": "3.0.0~git202611191500.862eaa0-1",
+    "sha256": "2552817cab97b4e425f41c2ced9ab0b19baaebade0b14b5a9714b51cd329d585",
+    "architecture": "all",
+    "head": "08712fbc8e7acca19182cd253c2d614332c0b6e9",
+    "tree": "60259c3899777b060334418fba6cffdca5ff7aa1",
+    "dispatchOrdinal": 1,
+    "exitCode": 0
+  },
+  "originalPairedRoot": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+  "native": {
+    "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "main": {
+      "MainPID": "1756",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "4a08d3a4883844b185a9552ff1df9787"
+    },
+    "mainUid": 997,
+    "oldCaps": {
+      "AmbientCapabilities": [
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_net_bind_service",
+        "cap_kill",
+        "cap_sys_module",
+        "cap_sys_tty_config",
+        "cap_syslog"
+      ],
+      "CapabilityBoundingSet": [
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_net_bind_service",
+        "cap_kill",
+        "cap_sys_module",
+        "cap_sys_tty_config",
+        "cap_syslog",
+        "cap_setuid",
+        "cap_setgid"
+      ]
+    },
+    "newCaps": {
+      "AmbientCapabilities": [
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_net_bind_service",
+        "cap_kill",
+        "cap_sys_module",
+        "cap_sys_tty_config"
+      ],
+      "CapabilityBoundingSet": [
+        "cap_net_admin",
+        "cap_net_raw",
+        "cap_dac_override",
+        "cap_dac_read_search",
+        "cap_net_bind_service",
+        "cap_kill",
+        "cap_sys_module",
+        "cap_sys_tty_config",
+        "cap_setuid",
+        "cap_setgid"
+      ]
+    },
+    "liveCapabilities": {
+      "CapInh": 9250,
+      "CapPrm": 9250,
+      "CapEff": 9250,
+      "CapBnd": 9442,
+      "CapAmb": 9250
+    },
+    "effectiveCapabilities": {
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_kill cap_setgid cap_setuid cap_net_bind_service cap_net_admin cap_net_raw cap_sys_module cap_sys_tty_config",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_kill cap_net_bind_service cap_net_admin cap_net_raw cap_sys_module cap_sys_tty_config"
+    },
+    "rootCredentialsExact": 2,
+    "codePair": {
+      "files": {
+        "kura-journal-export.socket": "25bfa5c8983df4a83f817b1d9a94462e6f28c033ec23f5bd00ee3fa7f6b8fcae",
+        "kura-journal-export@.service": "6ab6644b15cfc7dd7d9e323eff245c29c939419c96dbab4fe65c4b7916ee011c",
+        "kura_clock_broker.py": "f2b09c9a0f667c89577e1b679400aaa2ed5a921afc128ec940d12597ea1b2c7d",
+        "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+        "kura_journal_export.py": "29ab3aa02172e95a605de17d616b7e2e20782f918573b3181fc911cfc59c11c9",
+        "kura_reboot_broker.py": "6e9eadd46928e95f220f306a599cd0dcee313aa59d522d6798d64d4ba9421f32",
+        "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+        "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+      },
+      "mainUnitSha256": "c08670c0cd2f0e2e8986a633630974cce1b71c0565d2df049d0336f71280f636",
+      "schema": 1
+    },
+    "ordinaryLog": "yofc-bounded-journal-48MiB.log",
+    "ordinaryLogSha256": "e42f3aa6875a77707d9f1d4691927f43aa290efdce50390182a83ae4da4a6095",
+    "ordinaryLogBytes": 50331648,
+    "systemMarker": "KURA_BOUNDED_JOURNAL_SYSTEM_ONLY_83e0ff49ce404c9f9d019fe8c07db772"
+  },
+  "archive": {
+    "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "gwt": {
+      "gateway": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+      "httpStatus": 200,
+      "actualFilename": "Kura_Logs.zip",
+      "privateName": "actual-kura-logs-1.zip",
+      "contentLength": 50420247,
+      "certificate": "cc6f87c0f6ee5f73619b0514436c5d8f2c48ba55ee3f3ba1f24462954c100626",
+      "sessionRole": "authenticated Kura admin",
+      "nonceAndXsrf": true
+    },
+    "archiveBytes": 50420247,
+    "archiveEntries": 26,
+    "archiveSha256": "574bf4c4c994f0462749a2b2bd9a589013d211c0946d248c17c5c420f5022bb9",
+    "largeLogBytes": 50331648,
+    "largeLogSha256": "e42f3aa6875a77707d9f1d4691927f43aa290efdce50390182a83ae4da4a6095",
+    "contentLengthExact": true,
+    "ordinarySourcePreserved": true,
+    "independentScopeChecks": true,
+    "stagingRemoved": true,
+    "journalBytes": {
+      "kura": 1052,
+      "system": 193336
+    },
+    "actualWorkers": [
+      {
+        "pid": "2049",
+        "uid": 990,
+        "gid": 990,
+        "groups": [
+          990,
+          999
+        ],
+        "caps": {
+          "CapInh": 0,
+          "CapPrm": 0,
+          "CapEff": 0,
+          "CapBnd": 0,
+          "CapAmb": 0
+        },
+        "nnp": true,
+        "unit": "kura-journal-export@0-2048-997.service"
+      },
+      {
+        "pid": "2064",
+        "uid": 990,
+        "gid": 990,
+        "groups": [
+          990,
+          999
+        ],
+        "caps": {
+          "CapInh": 0,
+          "CapPrm": 0,
+          "CapEff": 0,
+          "CapBnd": 0,
+          "CapAmb": 0
+        },
+        "nnp": true,
+        "unit": "kura-journal-export@1-2059-997.service"
+      }
+    ]
+  },
+  "parked": {
+    "id": "05cfdc9b1b0a23ff753453e85a7bed43fb6a1c2b17be8279ce1657ff1c61b1c7",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T15:18:04.957734102Z",
+      "FinishedAt": "2026-11-19T15:19:05.357549061Z"
+    },
+    "mainDisabled": true,
+    "socketRemovedOnStop": true
+  },
+  "tests": {
+    "linuxPackagingPassed": 75,
+    "gwtMavenPassed": 12,
+    "limitedHeapMiB": 32,
+    "incompressibleInputMiB": 40,
+    "simulatedArchiveCreationFailureHttp": 503,
+    "watchdogCallbackFixtureRestored": true
+  },
+  "validations": {
+    "removedCapability": "CAP_SYSLOG",
+    "previousCapabilityMeasuredInVendorPolicy": true,
+    "currentVendorEffectiveAndProcessMasksVerified": true,
+    "previousProcessMaskTransitionNotMeasured": true,
+    "oneNewLargeDownload": true,
+    "actualDiskFullNotExercised": true
+  },
+  "remainingInternal": [
+    "remaining Main capabilities, kernel module and other brokers",
+    "provider and launcher variants, including previously bound native Agent cohort evolution",
+    "complete Core/OSGi and full six-component lifecycle and recovery matrix"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
