@@ -1,0 +1,82 @@
+{
+  "at": "2026-11-19T08:29:24.562717+00:00",
+  "nativePackage": {
+    "container": "1b01249f24469403c249104eb611dd6172042fabae3b680cf14a392a571bab90",
+    "commit": "ee339f3490fcac5c7ae1c2974f9254037c60f705",
+    "tree": "925d833b05faaf1e5bf291738462943a6e1358bf",
+    "version": "2.0.0~git202611190827.ee339f3-1",
+    "deb": "kura-deployment_2.0.0~git202611190827.ee339f3-1_all.deb",
+    "sha256": "06c4938fcb4a056a1f5fc29a17023ca78ed1cd9ff5b6f5e2621b669ddf8d1fb1",
+    "bundles": {
+      "org.eclipse.kura.hook.file.move.provider": {
+        "sha256": "44a58e97ca4fc610d6f607e8f841a87cc33269f2bc77b92b499535acb8e6f5dc",
+        "path": "/opt/eclipse/kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.core.deployment": {
+        "sha256": "a058f2466e8b342683df737d12f93379b2d29b0d5e22c75bd41f69dcbff2c770",
+        "path": "/opt/eclipse/kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar"
+      }
+    }
+  },
+  "fixture": {
+    "container": "1b01249f24469403c249104eb611dd6172042fabae3b680cf14a392a571bab90",
+    "network": "none",
+    "ordinaryMainDisabled": true,
+    "exitCode": 0,
+    "mainPid": 2428
+  },
+  "product": {
+    "authorityPath": "/opt/eclipse/kura-deployment-approvals/<original-job>",
+    "bindings": [
+      "root device and inode",
+      "local machine ID digest",
+      "original UUID",
+      "original job",
+      "canonical staged path",
+      "update SHA-256",
+      "verifier SHA-256"
+    ],
+    "execution": "fixed setpriv launcher with scrubbed environment, no capabilities passed to the reviewed script and NNP",
+    "journalOwner": "kurad",
+    "claimsDurableBeforeLaunch": true
+  },
+  "issuanceFix": {
+    "firstCandidate": "444ed75b5875dbdcbab6dce162550d5f049f3e90",
+    "originalDenialNoDispatch": true,
+    "sameRootExactOriginalApprovalBytesAndInodes": true,
+    "modeCorrectedFrom": "0666",
+    "modeCorrectedTo": "0444",
+    "finalIssuerModeExplicitInSource": true
+  },
+  "actualMain": {
+    "unapproved": 0,
+    "approvedUpdate": 1,
+    "approvedVerifier": 1,
+    "unknownOriginalJob": 71193,
+    "unknownOriginalId": "ec210fa4-daa5-4ccd-b765-56cf6e351e7b",
+    "interruptedChild": 2630,
+    "unknownVerifier": 0,
+    "unknownRedispatched": false,
+    "unknownRetirementDenied": true,
+    "notices": [
+      "install:71192:COMPLETED",
+      "install:71193:UNKNOWN"
+    ],
+    "coreDeploymentAndHookJarsPaired": true
+  },
+  "tests": {
+    "JDK": 21,
+    "coreDeployment": 135,
+    "deploymentAgent": 47,
+    "packagesRest": 54
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

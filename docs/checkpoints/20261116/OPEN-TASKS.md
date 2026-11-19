@@ -1,4 +1,14 @@
 
+## 2026-11-19 SystemUpdate 本地执行授权与原派发回执
+
+Deployment ee339f3 在安装和 Verifier 入口核对已提交的原发布回执。本机 Root 明确审阅两份载荷，并用已装 Deployment JAR 的 `org.eclipse.kura.core.deployment.download.SystemUpdateExecution` 授权。参数依次是原发布 UUID、作业号、规范化的已发布脚本绝对路径、两份 Root 所有的已审阅副本的绝对路径及各自 SHA-256（每份路径紧跟该份摘要）。授权绑定本地 Root、原 ID、作业、路径和两份摘要。Main 从 `/opt/eclipse/kura-deployment-approvals/<作业号>` 的只读边界启动定稿载荷。固定 setpriv 销权并设置 NNP，取消通用特权命令服务依赖。两种动作都在启动前持久化原领取记录。Verifier 只有在同一更新成功且通知作业、文件与发布者匹配时可运行。未定态保留原领取记录并拦截重派、退役和同位点替换。
+
+Debian 13 ARM64 同一隔离 Root 以 JDK 21 当前 Git deb 正常升级。第一次候选受 Root 命令 umask 影响产生 0666 授权，实际 Main 拒绝且零派发。按原摘要逐份核对后，只修正原授权 mode 为 0444，原 UUID、文件字节与 inode 保持，再用标准 dpkg 升级到显式指定文件权限的最终候选，核对正式包和已装两份 OSGi JAR。未授权对照零执行。实际 Main 中第 71192 号原作业的更新和 Verifier 各执行一次，UID 为 kurad，CapEff 为零，NNP 为 1，仅向探针提供的通知端一次报告 COMPLETED。第 71193 号脚本在原领取记录落盘并输出一次后停住，精确核对 PID、出生时间及 Main 的父子关系后仅终止这一个进程。原记录回报 UNKNOWN，零 Verifier、零重发，原数据和授权完整保留。Main 正常停止并禁用，新 Root 正常停放。236 项 Maven/JDK 21 测试通过。
+
+本轮验证使用受控惰性载荷、实际 Main 和本地观察通知。最终候选读取了沿用的两份授权，显式 mode 的新签发全链尚未重测。无成对发布回执的历史脚本现在保留文件并阻止执行，其原地合法纳管、授权中断恢复、跨启动或跨挂载配对、运行中脚本所需的粗粒度权限替代及真实云端通知交接继续内部待办。受保护 FileMove、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 与完整安装升级移除 purge/中断矩阵仍在原范围。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-deployment-system-update-execution-admission-checkpoint.json)。
+
+
+
 ## 2026-11-19 原 SystemUpdate 混合态本地恢复
 
 Deployment 11f4c37 增加仅本地部署存储属主可运行的恢复入口。逐份验证原 ID、文件副本、当前文件及待保留候选，先持久化 ROLLING_BACK 决定，再将原 inode 恢复到对应位置。中断后同一入口只补仍缺的恢复步骤，原候选和回执保留。若两份候选已与原发布精确配对，沿原提交核定；恢复完成的位点留有 ROLLED_BACK，继续拒绝下载复用、安装、Verifier 及替换。恢复入口不负责重新签发原位点执行授权。
