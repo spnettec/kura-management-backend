@@ -1,4 +1,16 @@
 
+## 2026-11-19 当前原生中心、数据库与首次绑定边界
+
+在独立 Debian 13 ARM64 Root 当前 Core/GWT/Networking/Agent 同装。中心生产输入和上轮已验证发行包精确，console HEAD 之后仅变更检查点文档。标准安装器后端实际安装，原回执成功且无自动启动。显式启动后标准状态为 READY，测试宿主提供了读取进程摘要所需的进程可见性，中心服务本身为零 capabilities、NNP 1。独立 PostgreSQL 16.15 以密码认证，应用角色无 superuser、createdb、createrole，初始化前 0 表、之后 14 表。采用独立测试 CA 签发的中心服务证书，中心 API 单次初始化后从正式认证入口读回原 APPLIED，发布后证书和同一中心 PID/InvocationID 验证成功。Cockpit 后端已验证，未走 Cockpit 浏览器页面。
+
+Agent 的版本化 Networking 模板实际为 root:kura-key-control 0640。Agent 3edb9b8 兼容精确模板布局，vendor 生效文件仍只认 root:root 0644。旧本机授权在创建意图及 gpasswd 派发前明确 NOT_FOUND。Agent 6dc9ae3 解决原生包历史 maintainer 复核和新包头输出，用原已装版本、二进制、bridge 和已装源码核实历史包头。已验证新包的维护控制器在受保护 Root 目录准备原操作，真实 dpkg 在同一个初始化现场升级。早期旧控制器、世界可写祖先及非 Root 归档的拒绝均留证，发生在发布维护意图之前。沿原维护编号完成升级，原初始化回执保持。沿已证实未派发的原本机授权编号完成一次 gpasswd，原材料授权随后完成，Main、Agent 和两个只读中继实际启动，远程保持 OFF。Python ARM64 Linux 42 项通过。
+
+实际 GWT 管理员首次改密后，同一 Java CSR 只生成一次，私钥保持在网关。外部 CA 签回后中心只登记公开叶证书，GWT 单次阶段写入成功。首次绑定请求只派发一次，GWT 返回 CONNECTION_FAILURE，原结果按 UNKNOWN 保留。两个 socket 各接受一次，10 份独立源/候选文件摘要相同，Agent 生成 6 份校验派生文件，正式身份、接受回执、提交标记和待提交指针均未出现。中心原登记仍 offline，无首次心跳。保留原 CSR、候选、中心数据库、初始化和 OFF 决定。两个新现场正常停放，无重发、换号或跨 Root 查询。
+
+Agent 3547424 修复候选经过校验后读取尚未发布回执的故障。首次绑定用待提交回执的字节构造连接配置，重新加载已提交身份仍使用原磁盘回执字节。原二进制语义在独立 ARM64 回归复现 ENOENT；修改后 36 项 ARM64 Linux 定向通过。已构建这个修复提交的正式 ARM64 deb。原 UNKNOWN 现场继续按原版本停放，完整首次绑定、原位核定、mTLS、业务读取和发行矩阵继续内部待办。原三现场、个人文件及原 7fd 41 输入/16 回执保持。冻结父项 0/12，external deferred 仍仅原三项。见 [检查点](actual-native-current-center-and-first-bind-boundary-checkpoint.json)。
+
+
+
 ## 2026-11-19 Core HTTP OSGi keystore 生命周期与默认 Docker 原卷重启
 
 Core 50a9028f0b 实现正式 SCR 描述声明的 `unsetKeystoreService`。解绑仅清理当前服务实例，已换绑后的旧实例通知不影响新绑定。对应 Jetty 刷新在单一执行器串行完成，关闭旧 TLS 和双向 TLS 监听，只运行配置里原有的 HTTP 端口。合法 provider 返回时按原配置恢复两类 TLS。未绑定的启动等待仍为 12 秒。组件停机终止后续刷新，等待 Jetty 收尾时释放组件锁。JDK 21 正式候选 HTTP manager 15 项通过，包括 HTTPS、mTLS、CRL、晚到绑定和旧实例解绑。
