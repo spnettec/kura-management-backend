@@ -1,0 +1,99 @@
+{
+  "recordedAt": "2026-11-19T01:29:18.611702+00:00",
+  "branch": "wip/management-close-20261116",
+  "built": {
+    "agent": "09c349d1fb665ac094f9bcf7605c6fa5b2b674fe",
+    "agentTree": "54eb89eb9d5e9805a8c1a5cf9c418a24fbab96a6",
+    "rust": "1.95.0",
+    "target": "aarch64-unknown-linux-gnu",
+    "fromGit": true,
+    "focusedRustPassed": 23,
+    "agentPackage": [
+      "ii ",
+      "0.1.0~observer202611190126.09c349d-1",
+      "arm64"
+    ]
+  },
+  "installedSourceCore": {
+    "package": "kura-core",
+    "version": "6.0.0~git202611190112.e952f82-1",
+    "architecture": "arm64",
+    "source": "e952f82bb9904ed7ec00b1cac1e4e1fc90e24f5c",
+    "sha256": "46905c6cc693348c65af9428de4a7542cf5d3cfc9941dcf6315dbcde582c83c0"
+  },
+  "installedSourceNetworking": {
+    "package": "kura-networking",
+    "version": "3.0.0~git202611190114.d949ec1-1",
+    "architecture": "all",
+    "source": "d949ec103929dbac5ab2309ec26479a58e354207",
+    "sha256": "3a661979f13412d52382a59de73189c007b947e513279aefdd5c088e35b21c6d"
+  },
+  "proof": {
+    "readerUsesExistingLockAndPairing": true,
+    "proofTookNoOwnershipOrWriterGrant": true,
+    "authenticJavaAndNmDbus": true,
+    "actualOsGiNetworkWriterReady": true,
+    "writeEnabled": false,
+    "remoteEnabled": false,
+    "configuredFirstStartupDbInodePreserved": true,
+    "earlyReadBeforeDsReadiness": "NOT_FOUND",
+    "genericStatus": "UNMANAGED",
+    "ownerFencesAbsent": true,
+    "ownerAndTemplateDirectoriesAbsent": true,
+    "manualOwnershipOperationsDispatched": 0,
+    "reviewKind": "legacy.kernel.source.v1",
+    "reviewSha256": "4d5d6820f91a71391acb85acb4572054f144cdeed9900ecc72dd1e9c03f5ebf0",
+    "currentKernelSourceKind": "iptables.current.unowned.v1",
+    "currentKernelSha256": "7524a967464d4a947c9f663cf9be6a6cd7042f998c4a0f53f44eb8d4e9824627",
+    "cmSourceKind": "stored.cm.rules.v1",
+    "stockFixtureWithoutStoredFirewallPids": [
+      "org.eclipse.kura.net.admin.FirewallConfigurationService",
+      "org.eclipse.kura.net.admin.ipv6.FirewallConfigurationServiceIPv6"
+    ],
+    "preparationReady": false,
+    "preparationSelectorResult": "INTERNAL",
+    "fixtureLeftRunning": true,
+    "fixture": {
+      "id": "1b9d663f96a535fdbb03fc60eed069f3a4f45d246e1b8061529e061d54c00494",
+      "image": "sha256:7df10a7fcacba1a731d54505a7d8c8497feab691684663f66ef6d4e1c5877c84",
+      "isolatedVolumes": {
+        "/var/lib": "yofc-source-review-varlib-20261119",
+        "/etc": "yofc-source-review-etc-20261119"
+      },
+      "noBindMounts": true,
+      "network": "none",
+      "extraCaps": [
+        "CAP_SYS_ADMIN",
+        "CAP_SYS_RESOURCE",
+        "NET_ADMIN"
+      ],
+      "seccompBlocksRebootAndClock": true
+    }
+  },
+  "preservation": {
+    "originalFixtures": 3,
+    "personalFilesExact": 25,
+    "combinedCPrivateFilesExact": 9,
+    "centerDPrivateFilesExact": 29,
+    "original7fdUnchanged": true,
+    "original7fdInputs": 41,
+    "original7fdReceipts": 16,
+    "unknownResubmitted": false,
+    "completedOperationsReplayed": false
+  },
+  "internalPending": [
+    "Legitimately persisted CM baseline for both firewall families and actual positive preparation",
+    "Original encrypted export, fence, signed ownership, actual startup and remaining typed brokers",
+    "Complete ordinary Core and OSGi business and six-component lifecycle matrix and all twelve parents"
+  ],
+  "evidenceRoot": ".management-close-20261116/live-firewall-source-review-20261119",
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

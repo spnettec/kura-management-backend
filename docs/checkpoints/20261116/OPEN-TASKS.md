@@ -1,4 +1,12 @@
 
+## 2026-11-19 真实 JVM/NM 旧源只读审查
+
+Agent `09c349d` 将本地 ownership status 和原源审查接入 NM `writeEnabled=false`。沿用原 Root 目录、同一系统锁、已注册 JVM 和现有 CM/内核核对。观察路径不建写事务目录。prepare、原动作结算、cancel、fence、activate 和 Core 启动动作仍要求独立写执行器。相关 ARM64 Rust 23 项通过。
+
+新隔离 Debian 13 ARM64 在 Core `e952f82bb9`、Networking `d949ec1` 和正式 legacy-profile Agent deb 上验证。沿包自动启动已建立的执行库 device/inode 配置观察模式，实际 Java 桥注册，NetworkManager D-Bus 可读，ownership status 为 UNMANAGED。初次原源只读在 NM DS 就绪前为 NOT_FOUND。同一 Core JVM 的真实 NM writer ACTIVE 后，返回 `legacy.kernel.source.v1`，见证两个固定 PID 的 stored CM 投影和真实内核双族 iptables。该现场两族 PID 尚无原存储配置，审查标记 preparationReady=false，单独的准备预览返回 INTERNAL 原码。均为只读采集，未派发 ownership 建计划、加密导出、持久 fence 或委派启停操作。观察现场继续保留运行。
+
+真实正向原源 prepare、两族合法原存储、原签发与启动、其余 typed brokers、完整 Core/OSGi 和六组件矩阵继续内部 pending。原三现场、C/D/E、个人配置、数据和原 7fd 停机 41 输入/16 回执保持。冻结父项最终 0/12，external deferred 仅原 3 项。见 [检查点](live-readonly-nm-source-checkpoint.json)。
+
 ## 2026-11-19 typed firewall provider 进入正式 Networking 包
 
 Networking `d949ec1` 将 typed facade 作为 Root 所有的 0644 bundle 安装到既有 `5s`。Core loader 和原 Agent Java 桥配对指纹保持。可选 Java 包导入允许独立 Core 解析该 bundle。选择 typed profile 时，两族服务需要真正的 Java 桥服务和 NM writer observer。已安装的旧 bundle 要经过两项原 fence、实际 writer drain 和独占 facade 检查。
