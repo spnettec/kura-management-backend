@@ -1,4 +1,14 @@
 
+## 2026-11-19 当前 Git 的 Docker ARM64 发行与同卷续接
+
+Docker 6a8a719、a989d3c、fae4711 强制检查四份 deb 的包名及架构、把实际输入指纹写入镜像，并在运行引导前校验 Root 所有的 Core 密钥策略模块及对应清单。缺失依赖、创建账号、解包和配置失败直接终止构建。实际错包构建在解包前拒绝且未生成镜像。可显式指定运行层 Alpine 镜像源和候选镜像名。YOFC DP 默认继续纳入；本次验证显式使用 `-Ddist.dp.skip=true`，过期 DP 不会随该模式混入。
+
+从当前 Git 用 JDK 21 构建 Core fafc5b3a6b、GWT 1205092、Deployment c6e1fd2 和 Wires 93f318b，Maven 产出的 ARM64 镜像内四份 deb 记录均与实际构建包精确。两次隔离容器启动实际观测 Core、GWT、Deployment 和 Wires 对应 bundle 均 ACTIVE，HTTPS `/admin/auth` 均返回 200。第二次沿同一个数据卷启动，canonical key、两份 marker、HTTPS keystore 的内容及元数据精确，实际服务 TLS 证书摘要相同。两次标准 Docker stop 均在超时前退出且退出码 143；明确核对了启动配置中的关闭钩子，未另测每个框架停用回调。另保留首个缺少自身 hostname 映射的隔离容器和卷，该容器未提供 HTTPS，退出码 137。
+
+macOS 和实际 ARM64 Alpine 各通过 24 项契约检查。两个正向容器使用零 capabilities、NNP 和无外部网络的测试参数，当前镜像 JVM 仍以 UID0 运行。networking 普通和 firewall-only 变体本次仅完成构建；native Agent、console 联合配对、其余 Docker 布局和 YOFC DP、其他 provider/launcher、dpkg 安装升级移除 purge、真实中断核定、完整 Core/OSGi 和其余 typed brokers 仍属内部 pending。冻结父项 0/12，external deferred 仅原三项。见 [检查点](actual-arm64-docker-current-core-gwt-cohort-checkpoint.json)。
+
+
+
 ## 2026-11-19 Chrony 发布中断与 Debian 提前准入
 
 Debian 13 ARM64 隔离 Root 从当前 Git 正式安装 Core 969c016ced。在实际 OSGi 配置更新中，于发布程序创建暂存文件时挂起原 clock actor。发布程序将候选和原副本落盘后，只终止原 actor。Chrony PID 及进程出生时间不变，实际 daemon 未加载候选。原 namespace 与请求只保留原 intent、prepare、commit-intent 及 sender pending/issued。原请求读回 UNKNOWN，未派发重载或重发。已安装的时钟 quiesce 返回 UNRESOLVED_CLOCK_OPERATION，原现场写入保持关闭。

@@ -1,0 +1,123 @@
+{
+  "at": "2026-11-19T07:30:37.233830+00:00",
+  "image": {
+    "image": "sha256:7b17325ac704fa8d396f332bebc2cb54d57ac623279b5ce08ce20a79ffa2aa33",
+    "tag": "yofc-kura-current-cohort:verified-20261119",
+    "dockerCommit": "fae4711ca13d2a050184aad67bd582ab0cbdbdb3",
+    "dockerTree": "c73e780fdc9fedefbcfacd0749fddd01c9c64751",
+    "alpineRef": "sha256:abbc135a7d3909a5eb6a56aac4c769cf15be025e3c9e226b8660f2b2b378158b [\"alpine@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf\"] arm64",
+    "arm64": true,
+    "packagedDebInputs": {
+      "kura-core": {
+        "version": "6.0.0~git202611190718.fafc5b3-1",
+        "arch": "arm64",
+        "sha256": "e70570487a5474266afb6666ce39fdb5e5b8d73d4ee24a232aa5771732f12ab1",
+        "commit": "fafc5b3a6b9639b9690961b1e544bd4f15c21116",
+        "tree": "3ce6507a54e1b07f43eb0c653ce02c4070e70cd0"
+      },
+      "kura-management-ui": {
+        "version": "3.0.0~git202611190719.1205092-1",
+        "arch": "all",
+        "sha256": "372f2926c7b923b00f9f1e12d1a6a6a5e66153b1a92e046368cc3cb9e0e0300c",
+        "commit": "1205092e39b11bd04a7b7173c5b56de3b5ba315f",
+        "tree": "92e25a5c53a91d62f1c7715d27b1e329d1eafe56"
+      },
+      "kura-deployment": {
+        "version": "2.0.0~git202611190719.c6e1fd2-1",
+        "arch": "all",
+        "sha256": "ddbbd95118a4fd4f90dacffe10a770ccd05880abbded9196431b677398fe8bdd",
+        "commit": "c6e1fd280dd38de2583a5f59f7c5076da835b705",
+        "tree": "86fd202d1f0eeacfbf015fb69ab727e702646a97"
+      },
+      "kura-wires": {
+        "version": "3.0.0~git202611190719.93f318b-1",
+        "arch": "all",
+        "sha256": "870ae8fe5fb9da2d9b75d2b3641d1ef451eb256b51145c41e351bb249c8d4443",
+        "commit": "93f318b241f2d53e4291ffa20fdb1836b34e9b52",
+        "tree": "5595aaa31309c77b540eed04967e289e04bac143"
+      }
+    },
+    "customDpsIncluded": false
+  },
+  "packageAdmission": {
+    "exit": 1,
+    "wrongPackageRefusedBeforeExtraction": true,
+    "noImage": true
+  },
+  "isolatedRuntime": {
+    "bootIds": [
+      "5c982527390a943e6487a9cda8118ce896add857ca24ab914f5187d6003f0471",
+      "8af10c719144c8ce6e9e2cb5cf175473f893e8c5e8c25f09c8d1da3a2dedad7c"
+    ],
+    "volume": "yofc-kura-current-cohort-validated-cache-20261119",
+    "networkNone": true,
+    "sameFourFilesExactMetadata": true,
+    "tlsCertificateSha256": "6f0e49a59502544d37519c72c1522a8d4116c0152579dd9f379ce71b1eb916d6",
+    "httpsStatus": [
+      200,
+      200
+    ],
+    "activeBundles": [
+      "org.eclipse.kura.core",
+      "org.eclipse.kura.web2",
+      "org.eclipse.kura.deployment.agent",
+      "org.eclipse.kura.wire.provider"
+    ],
+    "boots": [
+      {
+        "container": "5c982527390a943e6487a9cda8118ce896add857ca24ab914f5187d6003f0471",
+        "exitCode": 143,
+        "stopSeconds": 0.272,
+        "runtimeUid": 0,
+        "noNewPrivileges": true,
+        "effectiveCapabilities": 0,
+        "bundleObservationSha256": "c483de27308f865931c2fb21136bd3e80cfdbcaa372a3350a381621aa4b500fc"
+      },
+      {
+        "container": "8af10c719144c8ce6e9e2cb5cf175473f893e8c5e8c25f09c8d1da3a2dedad7c",
+        "exitCode": 143,
+        "stopSeconds": 0.22,
+        "runtimeUid": 0,
+        "noNewPrivileges": true,
+        "effectiveCapabilities": 0,
+        "bundleObservationSha256": "03bd7e912f928dece622c48f229ca2e9524052fb241b67a598f1b41a35bf40e8"
+      }
+    ],
+    "retainedFiles": [
+      "etc/kura/credentials/kura_encryption_key",
+      "etc/kura/credentials/provisioned.json",
+      "etc/kura/credentials/container-bootstrap.json",
+      "user/security/httpskeystore.ks"
+    ],
+    "fixtureHostname": "kura-cohort-test",
+    "networkPublished": false,
+    "rootOwnedPairedPolicy": true,
+    "factoryHasNoTls": true,
+    "shutdownHookConfigured": true,
+    "frameworkStopCallbacksVerified": false
+  },
+  "preservedSetupFailure": {
+    "container": "5b24069a2e659b83c41a3d7dc2a64fc3468e8693e8b433b92ac4c3c0c126d908",
+    "volume": "yofc-kura-current-cohort-cache-20261119",
+    "failure": "self hostname not mapped in no-network fixture",
+    "exitCode": 137
+  },
+  "nativeNetworking": {
+    "commit": "4ee16c9a98584a54261dd234cb1260725cb6703d",
+    "ordinaryAndFirewallOnlyBuilt": true,
+    "installedWithDockerCohort": false
+  },
+  "tests": {
+    "macOSPassed": 24,
+    "arm64AlpinePassed": 24
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
