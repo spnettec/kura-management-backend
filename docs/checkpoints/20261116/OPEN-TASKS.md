@@ -1,4 +1,15 @@
 
+## 2026-11-19 原旧包半配置现场同 Root 恢复与实际 Main
+
+原 43156466fe 半配置现场在同一 Debian 13 ARM64 容器内，仅在重新引导时临时屏蔽 Main，随后恢复原启动选择。原维护 ID、原文件指纹与现场连续。overlay 重新挂载导致设备号一致映射，其余八项原元数据逐项核对。Core cbf7df7fa6 正式 deb 经一次标准 unpack 和 configure 升级恢复，原 install 目的保留。同一原 ID 最终一份 package-history 和三份阶段回执。7 份原运行文件联合核对通过，原业务请求、密钥及 clock 账户保持。
+
+安装与当前 Git 配对的正式 GWT 包后，用标准 systemd 在同原 Root 启动 Main。实际 JVM 内 OSGi ConfigurationService 获取 Clock provider 配置，CryptoService 完成内存加解密，GWT 3.0.0.1205092 处于 ACTIVE。实际 HTTPS 回环经原证书固定校验，认证资源返回 200，未认证 console 请求返回 302。Main NNP1、无 CAP_SYS_TIME 与 CAP_SYS_BOOT。正常停止后原回执和运行文件再次精确核对，移除了专用测试 bundle，Main 禁用，容器正常退出。
+
+旧包半配置恢复与此 Main/GWT 组合通过。安装器内部未解决结果、其余 Core/OSGi、typed brokers 和完整六组件/provider/launcher、剩余发行生命周期与中断点继续内部待办。冻结父项 0/12，external deferred 仍为原三项。见 [检查点](actual-legacy-half-configured-same-root-recovery-checkpoint.json)。
+
+
+
+
 ## 2026-11-19 Core 实际 postinst 同原维护目的恢复
 
 Core cbf7df7fa6 为 Debian configure 写入绑定包版本、控制脚本、原 Root 及维护 ID 的 intent、prepared、ready 回执。阶段回执先持久化，再清理已执行的安装脚本或已恢复的备份。READY 可沿用原 package-history，围栏释放后继续激活原 broker。仅有 intent 的安装器结果仍需独立核定。

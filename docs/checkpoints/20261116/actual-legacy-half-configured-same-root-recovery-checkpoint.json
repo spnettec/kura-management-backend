@@ -1,0 +1,79 @@
+{
+  "at": "2026-11-19T06:31:13.501803+00:00",
+  "root": "309f837ca471f14977065e1fb834c7904b4ae243015f1436e2e5ef34bdeb8fec",
+  "arm64Debian13": true,
+  "originalMaintenanceId": "ae7fe460-9567-48e8-a30b-934e4bc16f4d",
+  "predecessor": {
+    "commit": "43156466fef5afd1dbb1f085551aaceabaff5130",
+    "version": "6.0.0~git202611190608.4315646-1",
+    "sha256": "94dd2406dea41a284b3269b7c0c59c66098d1eb4171d674d0a56ff2bfd380204",
+    "status": "install ok half-configured"
+  },
+  "successor": {
+    "commit": "cbf7df7fa6d40be736c4f00c631a2500a1ac541f",
+    "version": "6.0.0~git202611190619.cbf7df7-1",
+    "sha256": "38fb0535e66611b37feb0c83d9f683b878fb3e733cfa3da4029be74dcad125ac",
+    "status": "install ok installed"
+  },
+  "originalFreshInstallPurposeContinuedViaStandardUpgrade": true,
+  "oneUnpackAndConfigure": true,
+  "identity": {
+    "originalTerseBootReceipt": {
+      "original": "ae7fe460-9567-48e8-a30b-934e4bc16f4d",
+      "unchangedFieldsPerFile": 8,
+      "verifiedFiles": [
+        "key",
+        "keyReceipt",
+        "keyFence",
+        "keyHmac",
+        "clockAccount",
+        "clockActorManifest",
+        "https"
+      ],
+      "deviceRemap": [
+        1048789,
+        1048788
+      ],
+      "sameContainer": true,
+      "mainNeverStarted": true
+    },
+    "originalRuntimeFileCount": 7,
+    "dataExactWithNumericOwnersModeMtime": true,
+    "canonicalKeysAndClockAccountPreserved": true,
+    "originalMaintenanceReceipts": 1,
+    "phaseReceipts": 3,
+    "clockBusinessNamespaceAllocated": false
+  },
+  "coreMain": {
+    "startedFromStandardSystemd": true,
+    "pid": 1529,
+    "officialWithNoNewPrivileges": true,
+    "capSysTimeAndBootAbsent": true,
+    "actualGwtBundleVersion": "3.0.0.1205092",
+    "gwtDeb": {
+      "commit": "1205092e39b11bd04a7b7173c5b56de3b5ba315f",
+      "version": "3.0.0~git202611190606.1205092-1",
+      "sha256": "7b865b155815fdc85032f453e96315a32f103b4671aeb8aea45cdd4617bc3463"
+    },
+    "actualOSGiConfigurationClockRead": true,
+    "actualOSGiCryptoInMemoryRoundTrip": true,
+    "retainedCertificateSha256": "bafda17143d19601bc8ec2b3e2e4b15c82b0ea03ee6b71e9ecdb2314697ed7a1",
+    "adminHttpOutcomes": {
+      "/admin/auth": 200,
+      "/admin/console": 302
+    },
+    "normalStop": true,
+    "disabledAtExit": true,
+    "testProbeRemoved": true,
+    "originalDataAndReceiptsAfterStopExact": true
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}
