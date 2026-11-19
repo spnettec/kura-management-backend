@@ -1,0 +1,254 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "4644321",
+  "core": {
+    "head": "800ce41270b0dedc83b6fd9c68bd3eb6bccf6508",
+    "tree": "6fca2fc56f884ad012253053a9e4a3b21d073383"
+  },
+  "networking": {
+    "head": "0c5cf77f51b1f8cbe4aa0622e9fdb6718c3e800c",
+    "tree": "6692414b48a2a055d4abf45656cd67d8a2305d03"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 isolated systemd, NetworkManager 1.52.1, installed dnsmasq and BIND 9",
+  "nativeMain": {
+    "id": "2b3a7624dc4368a2be0cf3c200acfd40930a7e0f2988058aac8f72f656a1dd19",
+    "main": {
+      "MainPID": "2141",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "5984a66471074ade86d7923335662deb"
+    },
+    "provider": "3.0.0.202611191825",
+    "core": [
+      "800ce41270b0dedc83b6fd9c68bd3eb6bccf6508",
+      "6fca2fc56f884ad012253053a9e4a3b21d073383"
+    ],
+    "networking": [
+      "0c5cf77f51b1f8cbe4aa0622e9fdb6718c3e800c",
+      "6692414b48a2a055d4abf45656cd67d8a2305d03"
+    ],
+    "networkManagerVersion": "nmcli tool, version 1.52.1",
+    "lanBound": {
+      "operation": "f47ead8e-92f4-4f4f-ba15-c3fe2c5e1ebd",
+      "delivered": true,
+      "publication": 1,
+      "service": {
+        "MainPID": "8285",
+        "ActiveState": "active",
+        "InvocationID": "dafaea35adeb44148434f8d51d3e1244"
+      },
+      "sockets": [
+        [
+          "tcp",
+          "203.0.113.1:53"
+        ],
+        [
+          "udp",
+          "203.0.113.1:53"
+        ]
+      ]
+    },
+    "stub": {
+      "operation": "6dc713e7-a4a4-4f64-aaee-a4f083faa5f0",
+      "delivered": true,
+      "publication": 2,
+      "service": {
+        "MainPID": "8598",
+        "ActiveState": "active",
+        "InvocationID": "193324ce7f594d4ba441a9f54ae37256"
+      },
+      "stub": {
+        "pid": "8471",
+        "sockets": [
+          [
+            "tcp",
+            "127.0.0.1:53"
+          ],
+          [
+            "tcp",
+            "203.0.113.1:53"
+          ],
+          [
+            "udp",
+            "127.0.0.1:53"
+          ],
+          [
+            "udp",
+            "203.0.113.1:53"
+          ]
+        ]
+      }
+    },
+    "stable": {
+      "service": {
+        "MainPID": "8598",
+        "ActiveState": "active",
+        "InvocationID": "193324ce7f594d4ba441a9f54ae37256"
+      },
+      "samePublicationAndService": true,
+      "boundStateUnchanged": true
+    },
+    "direct": {
+      "operation": "e11e6867-0863-4ef2-8d7d-b0e2af0dac75",
+      "delivered": true,
+      "publication": 3,
+      "service": {
+        "MainPID": "9200",
+        "ActiveState": "active",
+        "InvocationID": "0ce428fb44724abe80b335181629a50a"
+      },
+      "sockets": [
+        [
+          "tcp",
+          "203.0.113.1:53"
+        ],
+        [
+          "udp",
+          "203.0.113.1:53"
+        ]
+      ]
+    },
+    "queries": [
+      {
+        "transport": "udp",
+        "name": "first.corp.stub.test",
+        "answer": "192.0.2.110"
+      },
+      {
+        "transport": "tcp",
+        "name": "first.public.stub.test",
+        "answer": "198.51.100.120"
+      },
+      {
+        "transport": "tcp",
+        "name": "changed.corp.stub.test",
+        "answer": "192.0.2.130"
+      },
+      {
+        "transport": "udp",
+        "name": "changed.public.stub.test",
+        "answer": "198.51.100.120"
+      }
+    ],
+    "upstream": [
+      {
+        "host": "first.corp.stub.test",
+        "upstream": "192.0.2.10",
+        "source": "192.0.2.2",
+        "answer": "192.0.2.110"
+      },
+      {
+        "host": "first.public.stub.test",
+        "upstream": "198.51.100.20",
+        "source": "198.51.100.2",
+        "answer": "198.51.100.120"
+      },
+      {
+        "host": "changed.corp.stub.test",
+        "upstream": "192.0.2.30",
+        "source": "192.0.2.2",
+        "answer": "192.0.2.130"
+      },
+      {
+        "host": "changed.public.stub.test",
+        "upstream": "198.51.100.20",
+        "source": "198.51.100.2",
+        "answer": "198.51.100.120"
+      }
+    ],
+    "managedStubDnsmasq": true,
+    "stubProfileChangedWithNoBindWrite": true,
+    "nativeSystemdResolved": false
+  },
+  "parking": {
+    "id": "2b3a7624dc4368a2be0cf3c200acfd40930a7e0f2988058aac8f72f656a1dd19",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T18:24:19.255722765Z",
+      "FinishedAt": "2026-11-19T18:28:54.348234491Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true,
+    "receiptsRetained": 3
+  },
+  "authority": {
+    "capabilityPaired": true,
+    "mainMatched": {
+      "MainPID": "2141",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "5984a66471074ade86d7923335662deb"
+    },
+    "inputPolicy": "-P INPUT DROP",
+    "explicitSingleSyntheticClientTestAdmission": [
+      "tcp/53",
+      "udp/53"
+    ],
+    "provider": "3.0.0.202611191825"
+  },
+  "fixtureObservationRecoveries": [
+    {
+      "id": "2b3a7624dc4368a2be0cf3c200acfd40930a7e0f2988058aac8f72f656a1dd19",
+      "oldExpected": "INPUT DROP before Main",
+      "observed": "-P INPUT ACCEPT",
+      "samePackages": true,
+      "alreadyCreatedNetworkRetained": true,
+      "dnsDispatches": 0
+    },
+    {
+      "id": "2b3a7624dc4368a2be0cf3c200acfd40930a7e0f2988058aac8f72f656a1dd19",
+      "priorObservation": "/proc/PID/exe unreadable",
+      "liveProcessFoundInNetworkManagerCgroup": true,
+      "originalOperationRetained": true
+    }
+  ],
+  "packages": [
+    {
+      "package": "kura-core",
+      "path": "/root/typed-nm-dns-stub-release/kura_6.0.0~git202611191826.800ce41-1_arm64.deb",
+      "sha256": "0da5a05047bc9c5524f6c2dea08d99b9c043220467835c018846c1eaa4945024",
+      "version": "6.0.0~git202611191826.800ce41-1"
+    },
+    {
+      "package": "kura-networking",
+      "path": "/root/typed-nm-dns-stub-release/kura-networking-3.0.0~git202611191826.0c5cf77-1_all.deb",
+      "sha256": "3f9ec7f7ceaec0f0b321a8013cb1f02b9f5c7436b31c804f9d7852e3fe586f1f",
+      "version": "3.0.0~git202611191826.0c5cf77-1"
+    }
+  ],
+  "tests": {
+    "networkingMaven": 2227,
+    "bindLinuxRoot": 17
+  },
+  "internalPending": [
+    "真实 PPP 协商及数据流、systemd-resolved 现场矩阵、IPv6 LAN 与完整接管矩阵",
+    "完整 Core/OSGi、历史迁移及其余 typed brokers",
+    "完整六组件/provider/launcher/安装升级移除 purge/中断恢复以及全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true
+  },
+  "pushed": false
+}

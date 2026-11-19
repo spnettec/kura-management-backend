@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — LAN 代理遵循 NetworkManager 系统 stub 的分流
+
+Core 800ce41270 将 LAN 监听能力与 broker 文件、systemd 单元和正常 Main 一起配对。typed `enable-lan` 仅监听获准的 IPv4 LAN，排除 loopback，并限制查询与递归。保留已有 `enable` 请求、文件渲染与账本协议。Networking 0c5cf77 在能力可用时将一个已识别 IPv4 本地 stub 作为唯一转发目标，保留系统路由策略。未知或多个 loopback 仍停用旧转发。 [NetworkManager DNS 配置合同](https://www.networkmanager.dev/docs/api/latest/NetworkManager.conf.html) [systemd-resolved stub 合同](https://www.freedesktop.org/software/systemd/man/latest/resolved.conf.html)
+
+Debian 13 ARM64 实装 Core 与 Networking，用正常 Main 中的已装 OSGi 回调接上真实 NetworkManager 管理的 dnsmasq。BIND 的 TCP/UDP 53 仅监听 LAN，dnsmasq 使用 127.0.0.1。独立网络命名空间的四个 TCP/UDP DNS 请求分别走企业域和公共域，并核对实际收到请求的上游。企业域更换上游时，BIND 进程、配置和 Root 账本保持，公共域答案保持。验证完成后恢复直接上游，共保留三组原 Root 的 intent/result/delivered。夹具只为单个测试客户端放通 TCP/UDP 53，输入默认策略保持。Networking Maven 2227 项及 Linux Root BIND 17 项通过。
+
+真实 PPP、systemd-resolved 现场验证、IPv6 LAN 代理、完整接管与其余 Core/OSGi/typed brokers/六组件矩阵继续为内部待办。外部延后仍仅原三项。原 7fd 保持 41 输入/16 回执，父项 0/12。见 [检查点](actual-core-nm-split-dns-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — LAN DNS 转发跟随 NetworkManager 的有效解析器
 
 Networking 60618e7 只读采集实际 `resolv.conf`，包括符号链接指向的文件。读取失败或格式损坏保留最后一次已应用配置，IPv4 解析器有效撤回时停用 LAN 代理。观测到本地 stub 时停用旧转发，避免代理回环和绕过分流。LAN 网段按规范化前缀比较，配置不变时零写入。所有变更继续使用已配对的 typed BIND broker。[NetworkManager DNS 配置合同](https://www.networkmanager.dev/docs/api/latest/NetworkManager.conf.html)
