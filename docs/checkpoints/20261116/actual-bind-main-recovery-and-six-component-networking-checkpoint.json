@@ -1,0 +1,309 @@
+{
+  "date": "2026-11-21",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "source": {
+    "core": {
+      "archive": "kura_6.0.0~git20261120171715.5a47412-1_arm64.deb",
+      "bytes": 204223174,
+      "sha256": "fe9fea7711f215bfdf83bc5e01e5997503d88bd71cd6336413633ac14bc239f5",
+      "cohorts": {
+        "bind-service": {
+          "files": 15,
+          "sha256": "6f05c3900212f28feae88dcd7120dc0f10caa707ea8bb9b412ebecc48cfd41c5"
+        },
+        "dhcp-service": {
+          "files": 16,
+          "sha256": "d104aa1f296c7cc28e20a424d1368ec28a75bbb4e1848ad041488efff074d6a1"
+        },
+        "modem-reset": {
+          "files": 13,
+          "sha256": "b522f57077ba6df1e1daf1181e722eefaf826011ca57fb2f1235d7fb70192dd1"
+        }
+      },
+      "commit": "5a47412895fe7f19bb88df7a628f410872939e36",
+      "tree": "19235bb3c7270cf7657cecce7991969765df9634"
+    },
+    "networking": {
+      "archive": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611201717.4741b5e-1_all.deb",
+      "commit": "4741b5e9751394f19c3de945c21f4f3212542261",
+      "tree": "a4fe14a26511804b2957fd97e398067cca513a25",
+      "sha256": "71c7c399cd8a0b388d65c714b67415654bcf01609daa061491428dc0db3a951e",
+      "cohorts": {
+        "bind-provider.json": {
+          "bindProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "f187c26998e661c6371ae13ef2a7a3f78905f93e7ceebe8d5bf31071622c8d5e"
+        },
+        "bind-config-provider.json": {
+          "bindConfigurationProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "f187c26998e661c6371ae13ef2a7a3f78905f93e7ceebe8d5bf31071622c8d5e"
+        },
+        "bind-outcome-provider.json": {
+          "bindOutcomeProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "f187c26998e661c6371ae13ef2a7a3f78905f93e7ceebe8d5bf31071622c8d5e"
+        },
+        "dhcp-provider.json": {
+          "dhcpProtocol": 1,
+          "provider": "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "0b8a23f487ce915c158d6a6051263365fb1290c89590fb52bc3744dee40b0c2d"
+        }
+      },
+      "tests": [
+        2249,
+        0,
+        0,
+        0
+      ]
+    },
+    "intermediateNetworking": {
+      "archive": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611201709.1f82dcc-1_all.deb",
+      "commit": "1f82dccc41f266bb75c84bb42c4150cbd022134b",
+      "tree": "fbb0dda51c8ee233af7ecc2b1b304873db467ddf",
+      "sha256": "63f76a70d7011c029881729bb28d2c7957342015dbb70a8f2080aa862cd6bb43",
+      "cohorts": {
+        "bind-provider.json": {
+          "bindProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "78c0d561bbf1125c4be7e3cbe4296ec87b64a4bc2ecd9587202ed9397641c40d"
+        },
+        "bind-config-provider.json": {
+          "bindConfigurationProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "78c0d561bbf1125c4be7e3cbe4296ec87b64a4bc2ecd9587202ed9397641c40d"
+        },
+        "bind-outcome-provider.json": {
+          "bindOutcomeProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "78c0d561bbf1125c4be7e3cbe4296ec87b64a4bc2ecd9587202ed9397641c40d"
+        },
+        "dhcp-provider.json": {
+          "dhcpProtocol": 1,
+          "provider": "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "be403d332d3f692c0ef5479e42f4581a0558cd69fac34c774c0e78bb881aa58b"
+        }
+      },
+      "tests": [
+        2248,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "actualLostReply": {
+    "root": {
+      "id": "1f169a814d77603a4effde239c50e9bea843fe862a38a1ca12d323a1fb6e6d4a",
+      "mount": "1048815:6437560",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "provider": "Registered OSGi DnsServerService inside packaged kura.service",
+    "originalNamedPid": "8788",
+    "operation": "4d3e0e99-d5f8-4302-a317-1263714c57cf",
+    "pids": [
+      "2098",
+      "9481"
+    ],
+    "description": "Initial normal DNS monitoring published a disabled model. After the fixture started named, the real Main called stop exactly once. A test watcher suspended only the authenticated child client after original intent creation and terminated that child after the real actor committed a result. The first JVM reported UNKNOWN. The second Main confirmed that original result with no second stop. The initial automatic configure record remained intact. One additional operation ID appeared during the second startup; its verb was not captured in this run.",
+    "namedInactive": true,
+    "originalRootIntentAndResultExact": true,
+    "keysExact": true
+  },
+  "six": {
+    "root": {
+      "id": "61eae8e243979baa4296367388077c40d523091930102caf2b194e20b3b8760b",
+      "mount": "1048582:6444634",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "managementPackages": [
+      "kura-core",
+      "kura-networking",
+      "kura-management-ui",
+      "kura-deployment",
+      "kura-wires",
+      "kura-management-agent"
+    ],
+    "originalOperation": "35ebc6ff-51dd-4652-8c08-c4866809fb59",
+    "mainPids": [
+      "2763",
+      "10479",
+      "18163"
+    ],
+    "bundleStates": {
+      "first": [
+        [
+          "org.eclipse.kura.core",
+          "32/2.0.0.202611201553"
+        ],
+        [
+          "org.eclipse.kura.core.deployment",
+          "32/2.0.0.202611201456"
+        ],
+        [
+          "org.eclipse.kura.hook.file.move.provider",
+          "32/2.0.0.202611201456"
+        ],
+        [
+          "org.eclipse.kura.management.bridge",
+          "32/1.0.0.202611200952"
+        ],
+        [
+          "org.eclipse.kura.nm",
+          "32/2.0.0.202611201709"
+        ],
+        [
+          "org.eclipse.kura.web2",
+          "32/3.0.0.202611201404"
+        ],
+        [
+          "org.eclipse.kura.wire.provider",
+          "32/3.0.0.202611201404"
+        ]
+      ],
+      "upgrade": [
+        [
+          "org.eclipse.kura.core",
+          "32/2.0.0.202611201553"
+        ],
+        [
+          "org.eclipse.kura.core.deployment",
+          "32/2.0.0.202611201456"
+        ],
+        [
+          "org.eclipse.kura.hook.file.move.provider",
+          "32/2.0.0.202611201456"
+        ],
+        [
+          "org.eclipse.kura.management.bridge",
+          "32/1.0.0.202611200952"
+        ],
+        [
+          "org.eclipse.kura.nm",
+          "32/2.0.0.202611201717"
+        ],
+        [
+          "org.eclipse.kura.web2",
+          "32/3.0.0.202611201404"
+        ],
+        [
+          "org.eclipse.kura.wire.provider",
+          "32/3.0.0.202611201404"
+        ]
+      ],
+      "reinstall": [
+        [
+          "org.eclipse.kura.core",
+          "32/2.0.0.202611201553"
+        ],
+        [
+          "org.eclipse.kura.core.deployment",
+          "32/2.0.0.202611201456"
+        ],
+        [
+          "org.eclipse.kura.hook.file.move.provider",
+          "32/2.0.0.202611201456"
+        ],
+        [
+          "org.eclipse.kura.management.bridge",
+          "32/1.0.0.202611200952"
+        ],
+        [
+          "org.eclipse.kura.nm",
+          "32/2.0.0.202611201717"
+        ],
+        [
+          "org.eclipse.kura.web2",
+          "32/3.0.0.202611201404"
+        ],
+        [
+          "org.eclipse.kura.wire.provider",
+          "32/3.0.0.202611201404"
+        ]
+      ]
+    },
+    "registryAfterFirst": [
+      "networking",
+      "management-ui",
+      "deployment",
+      "wires"
+    ],
+    "registryAfterUpgrade": [
+      "networking",
+      "management-ui",
+      "deployment",
+      "wires"
+    ],
+    "registryAfterReinstall": [
+      "management-ui",
+      "deployment",
+      "wires",
+      "networking"
+    ],
+    "sequence": [
+      "joint install of six packages including preceding Networking",
+      "first ordinary Main commits and acknowledges disabled DNS model",
+      "stop Main; upgrade Networking",
+      "second ordinary Main observes disabled DNS model",
+      "stop Main; remove Networking; purge it; reinstall same deb with five other packages installed",
+      "third ordinary Main observes same disabled model"
+    ],
+    "evidence": "All three snapshots have one matching root.json, intent, result and delivery with identical bytes and metadata. The named unit remained inactive after the initial publication; configuration, keys and provisioning metadata matched. The observer only read the registered DNS provider and OSGi bundles. All dpkg audits were empty.",
+    "scope": "Installed comparison covered the disabled model. Running enabled/scoped resolver profile needs independent installed observation; typed Java model roundtrips include scoped IPv6 and retained disabled resolvers."
+  },
+  "tests": {
+    "networkingJdk21": {
+      "modules": 17,
+      "passed": 2249,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "arm64BindDhcpModemActor": 48
+  },
+  "storage": {
+    "retiredGuestDebBytes": 598030778,
+    "copies": 17,
+    "rejectedBuild": "A Core assembly started before the Git commit completed. The archive with the previous commit in its version was excluded before installation and removed after source and final archive verification."
+  },
+  "sourceEvidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120",
+  "receipts": {
+    "bind-sender-restart/package.json": "ec066677e9ddb027f527fbb2deaa8fcc6d6aa474cfdd6741a65aef529b4de868",
+    "bind-sender-restart/native/automatic-initial.json": "c7de98c1fb68efe96840e036709b44f36b662734a691b6e0e1e4d1afc977c542",
+    "bind-sender-restart/native/named-before-stop.json": "8490e81dc3d076ffbd28875fed2f83d438d1f8578ec47ecde7257c6ac3a84bd3",
+    "bind-sender-restart/native/stop.json": "b069cf1613fa897a20bf827b3656869f10749b9cdd27489401fcab75e16f6fa6",
+    "bind-sender-restart/native/confirm.json": "b925a213d8b62ecf221229e1bcf7c85134ff3bf9b023c40546218952c3b6b560",
+    "bind-sender-restart/native/parked.json": "139e99b9a0a989de48aff0f185e72274e3c3041b1a51b2ec4ecbcc7e391edde0",
+    "bind-boot-model/package.json": "eda1f48a53873dd6f527e848c6de5d77783a0e39ab7047eb98d43a586bfa1db6",
+    "bind-boot-model/verified-package.json": "155a4c84a8dfc292f0a63580df9b1a71bc7d6251be1a1dc0dbfbf398f2994409",
+    "bind-boot-model/core-actors-final.log": "be4ec7b73f78f4071c14be14c16bd0dba8b93c41f28018165956af46244756c3",
+    "bind-boot-model/preservation.json": "1afa877d3f907275b8554c1326f3f500fa5fa1da83b1607464376934388a757c",
+    "bind-boot-model/original-three-after.json": "86abbc8ddb58709936cb3c639551f265cd78bcc9fbb5b1bb8783a622faf9a5f9",
+    "bind-boot-model/uncommitted-version/rejected.json": "5645091dc86c2beb26489dfda98c8971bf51eb81e6ff7071cf80d75e0eac7bf9",
+    "bind-boot-model/six/installed.json": "5b47729f5e39d8740e1c4e98c891272ab6f2ac2ae44270caf927ebf0192beec5",
+    "bind-boot-model/six/before.json": "952e3bb6960ed7923b86a63fd6d6b6e70e1c2bc31c92916ac24e550d124cd643",
+    "bind-boot-model/six/upgrade-observation.json": "ad3a6cad231bb272c329aaee05bf69e34c6b7e3129f460a9a263c6cb2f4487d2",
+    "bind-boot-model/six/upgraded.json": "7f764b970cd8f7b6c19db66e15c5beb1110b2b05fe397369780feba65fbb03a8",
+    "bind-boot-model/six/remove-observation.json": "5c72fd77b6fcc9965a50ce383c998c87dc95740f78877842526e4f3f64686141",
+    "bind-boot-model/six/purge-observation.json": "89016440e96c3b9eff8f333208b7248c8fadefb144772165ba707b1f61478a45",
+    "bind-boot-model/six/reinstall-observation.json": "8d31edc34449b2e40be70465f31e9c7df008868963e2035f4f609a1c431b2ccc",
+    "bind-boot-model/six/reinstalled.json": "b40ecaf7fc6c39d10c36e7c4e5be63cccc4b27c19f66f61258dee3a48e6ff66f",
+    "bind-boot-model/six/parked.json": "ef13fac1f2e0446181cf5b7d25d2a75f4b2f760c4685381471a2891cefe62d87",
+    "bind-boot-model/six/archive-retirement.json": "3aaf5f584826cbb06f66ad939d8fec6a3ce675e8125b088439e71bed6625eeb4"
+  }
+}

@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 的 BIND 丢回执恢复及六组件 Networking 维护
+
+真实 BIND 服务在正式 Main 调用 stop 后停机。测试在 actor 提交结果后终止了等待回复的客户端，第一 JVM 返回 UNKNOWN。第二个正式 Main 核对原 Root、原编号及动作后完成确认，原意图和结果文件保持，named 没有再启动。该次启动另出现一笔记录，未采集它的动作。
+
+Core `5a47412895` 增加只读核对，Networking `4741b5e` 在普通启动时先读取已发布的 DNS 模型。独立 Debian 13 ARM64 实装六个网关 deb，同一 Root 先后启动三个正规 Main。第一次保存 disabled 模型；Networking 升级、单独 remove、purge 和重装后，后两次启动均恢复原模型。三次都只看到原编号、同一套 BIND 意图、结果和回执；文件内容和元数据、named 状态及密钥一致。其余五包保持 installed，dpkg audit 为空。Networking 重装后按启动器规则移至注册顺序末尾。JDK 21 全 Networking 2249 项、ARM64 actor 48 项通过。两个现场正常停机，核实宿主原包后共移除 17 份夹具临时 deb，598,030,778 字节。启用中 DNS、完整 Main/RTC、其余组件和 provider/launcher 的完整维护与中断矩阵仍待验。冻结 0/12。[检查点](actual-bind-main-recovery-and-six-component-networking-checkpoint.json)
+
 ## 2026-11-21 DHCP 调用方跨 JVM 续接原确认
 
 Core `61aac0f8ce` 支持 BIND 和 DHCP 按原动作及配置查回执。Networking `e06eb2b` 的 DHCP 调用方派发前持久化原请求，与 modem 复用文件锁和原子发布。Debian 13 ARM64 上三个普通用户 JVM 先后运行。第一个让真实 dnsmasq 停机一次，确认只写入 32 字节。第二个遇到不同 Root，只查询 scope。第三个回到原 Root，用同一编号和配置将原 inode 补完到 201 字节。测试使用真实 deb 的 Java 与 socket actor，systemd 调用身份及服务调度使用适配器。
