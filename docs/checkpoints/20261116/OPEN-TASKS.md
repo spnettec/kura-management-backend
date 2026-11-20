@@ -1,5 +1,17 @@
 
 
+## 2026-11-20 继续实施 — 认证心跳中的远程配置写入能力
+
+Agent 25e295a 仅在本地 opt-in 且当前注册的 Java bridge 宣告 update 时报告写就绪。console 043e83d 在认证 Hello 协商后，通过有序心跳更新原连接的配置写能力。读取能力、证书与绑定代次、Java PID allowlist、实时派发门禁及 UNKNOWN 合同保持。没有协商标记的旧 agent 保留原 Hello 静态行为。
+
+真实 mTLS 与独立 PostgreSQL 验证首心跳前隐藏、bridge 不可用时隐藏、同连接启用及撤回、重复序号拒绝、其他 capability 保留及旧 agent 合同。撤回后正式 HTTPS API 返回 422，数据库零任务，实际测试派发零次配置写入。Agent 740053d 另以真实 Unix socket 及原 peer 身份检查测试只读与写方法注册、脱离及重新注册。PostgreSQL 已正常停放。
+
+Agent 首次 ARM64 Linux 全量遇到 1 个导入防火墙历史用例失败，原 Agent/console Git 配对独立复现。用例的临时 Root 在通用写入口先被正式围栏拒绝。4d7348d 在同一测试分别核对原围栏拒绝与孤立计划的 OUTCOME_UNKNOWN，保持零 backend 调用及精确原文件。修正仅涉及测试。协议 24 项、ARM64 Linux Agent 798 项和 console 115 项通过。macOS Agent 编译触及未改动的 Linux peer_pid 源码边界。macOS console 首次默认套件 1 个维护用例失败，前后版本单项复验和 Linux 套件该项通过。首个离线 Linux 构建在测试前因 Rustup 组件探测失败，显式采用镜像内已装 Rust 1.95.0 后运行。
+
+从 Git 的 console 代码提交新打包协议 crate，核对归档 Git 提交及 SHA-256，再生成当前 Agent 自包含源码并逐文件验证 manifest。ARM64 Linux 容器只挂载只读发布源码和依赖缓存，离线通过实际 Agent 二进制目标的 cargo check。正式 deb 和实际正向配置写入仍待验。
+
+正式包 Java 授权、真实业务写入及已核定结果交付仍待验。原三现场、7fd 的 41 输入/16 回执和旧 UNKNOWN 保持。完整 provider/launcher、其余 typed brokers、完整六组件矩阵及 12 父项继续内部待办。闭环 0/12，external deferred 仅原三项。见 [实际检查点](actual-configuration-write-readiness-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Debian 正式 Main 配置事务、真实 provider 及重启回执
 
 Debian 13 ARM64 从 Git 和 JDK 21 构建实包。旧 981d71c393 的合法 Main 在 Core 配置准入拒绝第一次尝试。原编号只出现 request、rejected，原因 UNSUPPORTED；无 dispatch、intent、complete，独立密钥库未创建。文件日志 provider 已实现 ConfigurableComponent，但 SCR 未发布该接口。Core 2a74ac1c38 补齐正式注册，原准入和 Root 配对规则保持。采集区分正式插件目录和冷恢复目录的同名配置 JAR。

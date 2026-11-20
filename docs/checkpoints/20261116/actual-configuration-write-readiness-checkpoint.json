@@ -1,0 +1,279 @@
+{
+  "date": "2026-11-20",
+  "rust": "1.95.0",
+  "console": {
+    "head": "043e83da5bf9928269e1a5b9eebefdb3d4fa49bd",
+    "tree": "0069a4ec1ff54d48f19697b829b7925c5ac7ca48"
+  },
+  "agent": {
+    "head": "4d7348d892382d21ea6b47ac0e8361d77eebcaa8",
+    "tree": "7527d579584728ae456173f4831160f1705d12a6"
+  },
+  "agentUnixSocketTest": {
+    "head": "740053d2c785a9fb1d6989288194c1e1f5182808",
+    "tree": "86a548da39ee14eeb40224c41a910abd05930528"
+  },
+  "agentImplementation": {
+    "head": "25e295aa810ade8ab0dbfb47bdb67678fd5b23f3",
+    "tree": "282929f9dc6779b3272c5d5e4a3091b154bd8d26"
+  },
+  "previousConsole": "7228ed1090a26f21ff53383c97611a2d4af50f1a",
+  "previousAgent": "f9569529cd58c8a5c184077632e6bc0d65391a1e",
+  "verified": {
+    "protocolMajor": 1,
+    "helloNegotiation": "kura.configuration.update.readiness.v1",
+    "bridgeRequiresLocalOptInAndUpdateMethod": true,
+    "unixKernelPeerAndRegistrationLifecycle": true,
+    "authenticatedGrpcAndHttps": true,
+    "heartbeatSequenceAndCurrentEpoch": true,
+    "noTaskOnWithdrawal": true,
+    "pidAllowlistUnchanged": true,
+    "legacyMarkerAbsentKeepsStaticContract": true,
+    "remoteWritesIssued": 0
+  },
+  "postgres": {
+    "id": "143fa5ce0052e9bd8106d816bc267a6383f514a6eb6c5500e25340d52aa30387",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T01:31:04.992652654Z",
+      "FinishedAt": "2026-11-20T01:34:37.746498769Z"
+    },
+    "address": "127.0.0.1:32772",
+    "dbReadback": {
+      "tasks": 0,
+      "gatewayCount": 1,
+      "lastSequence": 1
+    }
+  },
+  "isolatedBuildContainers": {
+    "agent-linux-toolchain-discovery": {
+      "id": "b86a54a8b68d306c2f269fd8fc79c88c8e201113cd4b4db310f145c8f35c496d",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 1,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:33:03.737092393Z",
+        "FinishedAt": "2026-11-20T01:33:13.045123911Z"
+      }
+    },
+    "agent-linux": {
+      "id": "714f13a19cdec2c0c719e9c285aa79217a40377707b22bd9446f438d7badccb7",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 101,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:33:39.576293549Z",
+        "FinishedAt": "2026-11-20T01:38:52.048764141Z"
+      }
+    },
+    "agent-linux-nm-recheck": {
+      "id": "0fee497cbd88184c025ed1dd153e03579ea533a9ab41e696707257d62afdd7bc",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 101,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:39:18.473076766Z",
+        "FinishedAt": "2026-11-20T01:39:26.841326477Z"
+      }
+    },
+    "agent-linux-nm-baseline": {
+      "id": "467d98c6941b26a173f41076d95e7114eee221f863d2fbd5e1f3ef2079df1699",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 101,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:40:02.860203276Z",
+        "FinishedAt": "2026-11-20T01:40:47.136084996Z"
+      }
+    },
+    "agent-linux-history": {
+      "id": "2cb59f70f083bc7d35cadf6b30bc14612f88afb436f7e5f1398c3d05a4bb5e82",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:41:09.6454007Z",
+        "FinishedAt": "2026-11-20T01:46:03.141986763Z"
+      }
+    },
+    "console-linux": {
+      "id": "403d446ef1420df6b2a3849950220da42d4e500ef745ac044e1911b43c0dbce1",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:34:25.124197215Z",
+        "FinishedAt": "2026-11-20T01:35:37.339422484Z"
+      }
+    },
+    "agent-linux-release-source": {
+      "id": "362740267abe42d0620e9608614a60062253b443e2d7952b9f48141a77715aa2",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:42:51.961090628Z",
+        "FinishedAt": "2026-11-20T01:43:44.190135717Z"
+      }
+    }
+  },
+  "regression": {
+    "protocol": {
+      "passed": 24,
+      "failed": 0,
+      "ignored": 0,
+      "sha256": "45b0d7f2a3fc390878fff4a41a62a29bddc59929cd1a8628d9ca0506d655003d",
+      "exitCode": 0
+    },
+    "console-live": {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "sha256": "cbca29b27c9ee2940bcd8e82d50b13dad7348a63c15f240f190e86b0577a167e",
+      "exitCode": 0
+    },
+    "console-regressions": {
+      "passed": 114,
+      "failed": 1,
+      "ignored": 52,
+      "sha256": "b8e44da290fdb125b7f871145018294630d6e7d2add5016333e0fd574044d469",
+      "exitCode": 101
+    },
+    "agent-linux": {
+      "passed": 797,
+      "failed": 1,
+      "ignored": 50,
+      "sha256": "c6a66c701cca6964b154ecd8bb3cefe0a78bfde0582dd985e1d73ed986002c42",
+      "exitCode": 101
+    },
+    "agent-linux-nm-recheck": {
+      "passed": 0,
+      "failed": 1,
+      "ignored": 0,
+      "sha256": "d2cc3ba6ebf057a1b054ddbbbdd683e622b2f6755b01b8bd76e9515169580ff4",
+      "exitCode": 101
+    },
+    "agent-linux-nm-baseline": {
+      "passed": 0,
+      "failed": 1,
+      "ignored": 0,
+      "sha256": "7d68508d8309501dad5d73174936856cf23fa7d9594d161fb310f0907fcc2807",
+      "exitCode": 101
+    },
+    "agent-linux-history-targeted": {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "sha256": "6e233321014d6d9f22d9ecf90dcb68acecc29edcaec642022bf678d00f391100",
+      "exitCode": 0
+    },
+    "agent-linux-history": {
+      "passed": 798,
+      "failed": 0,
+      "ignored": 50,
+      "sha256": "1f10d6b6833d90db320419cf60f957803f1ad947e6f490a99724738daf3065e9",
+      "exitCode": 0
+    },
+    "console-linux": {
+      "passed": 115,
+      "failed": 0,
+      "ignored": 52,
+      "sha256": "472f369b97c943db59164f2a4844463dee6c36dbb5e1504edba0188b4a78b4db",
+      "exitCode": 0
+    },
+    "console-baseline-maintenance": {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "sha256": "1301a218fbbfdebbf1bff8bcfc6514df9ecc3f054dba0368650223107285a635",
+      "exitCode": 0
+    },
+    "console-current-maintenance": {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "sha256": "be6e6616368a697903cf95894aa8bbfe55178d439b8be290c2ca1506e360d068",
+      "exitCode": 0
+    }
+  },
+  "releaseSource": {
+    "protocolSha256": "fcf89d7455a36cf1c55edca0f3f4400b097cd78e4c635cea4d03d38a8a1f8ab3",
+    "sourceManifestSha256": "5261c0801018f57b6777a11ba8904ecc0887f546e189bec79cb5bba8262cfa5a",
+    "agent": "4d7348d892382d21ea6b47ac0e8361d77eebcaa8",
+    "console": "043e83da5bf9928269e1a5b9eebefdb3d4fa49bd",
+    "sourceFiles": 264,
+    "vendoredProtocolFiles": 10,
+    "siblingSourceRequired": false,
+    "offlineLinuxBuildCheckSha256": "8f9293e5ee01e50143e7c78544e89acc27ebe29adfefeca70841788ccbfc94fd"
+  },
+  "originalCoreCopyRecovery": "actual-core-postinst-issued-and-copy-recovery-checkpoint.json",
+  "internalPending": [
+    "正式包、Java 当前 PID allowlist 与中心授权的实放行端到端",
+    "远程结果持久核定、其余 typed brokers 和完整六组件矩阵"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stateExact": true
+  },
+  "pushed": false
+}
