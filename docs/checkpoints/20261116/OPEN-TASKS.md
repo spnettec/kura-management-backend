@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Main 撤下 DAC_READ_SEARCH 与六组件内 Wires 保留升级
+
+Core `735ebf0c64` 从正式 Main 的 AmbientCapabilities 和 CapabilityBoundingSet 撤下 CAP_DAC_READ_SEARCH。独立测试提交 `67d2dbe926` 让 key cohort 回归夹具带齐正式 Main 声明的辅助程序。JDK 21／Maven 3.10.1 从该生产 Git 提交构建 ARM64 deb。首次发行构建缺 Git 元数据，在同一源码树补齐后完成。定向合同与 Linux writer lease 合计 107 项通过。
+
+沿当前六组件首装测试 Root，保留八包和原初始化/安装回执。Docker 正常停启后 root inode、machine-id 摘要和容器 ID 保持，设备号变化；在该次挂载中为本次新维护建立基线。实际正式 Main 通过 WireGraphService 的成对修订入口仅一次提交 Timer→Logger 图，确认两个工厂组件及实际消息送达后正常停止。单次真实 dpkg 原位升级 Core，八包均 installed，其他七包版本保持。新维护只增加一份原编号回执，原回执、Core AES 和 provision、Agent 初始化、中心安装记录保持。升级期间中心原进程连续，Agent 初始化的正式只读检查通过。
+
+候选 Main 保持 disabled 和 NNP。三项剩余能力声明与五组进程掩码已核，夹具 PID 1 原本缺 CAP_DAC_READ_SEARCH，因此此次差异证明来自单元声明。新 Main 读回两个工厂配置和原拓扑，三份编辑令牌按重启语义刷新，原 Logger 再次收到实际 Timer 消息。两份快照及两份图提交记录的内容与业务属性保持，保留回拷仅改变 inode/ctime。首轮观察误用了 Logger 的 PID 格式和跨进程修订相等条件，均沿同一进程补采。dpkg 返回成功后的元数据断言同样只读补验。未重新提交图或升级。三服务正常停止，Main disabled，停机后读回八包和十份输入/记录。
+
+本次覆盖已有 Wires 图的六组件内 Core 原位升级。已绑定业务、其他 provider／launcher、联合升级/移除/purge/中断的其余组合、完整 Core/OSGi、剩余 typed brokers 与全部 12 父项继续内部待办。原三现场、个人配置和停机 7fd 的 41 输入／16 回执保留。冻结 12 父项仍 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-main-dac-read-search-wires-upgrade-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 凭据隔离 Main 与当前六组件联合实装
 
 使用 Core `bcf8c24f5c`，从当前 Git 构建 Networking `0789499`、GWT `08712fb`、Deployment `5a6025b`、Wires `93f318b`、Agent `b9b2d3b` 与中心 `9691fe9` 的正式包，并构建中心安装器。JDK 21／Maven 3.10.1 和 Rust 1.95.0 的构建通过。Rust 首次在隔离构建中尝试同步工具链组件，在构建前退出；明确选用镜像中已安装的同版本后完成离线构建。协议 crate 从当前 Git 当次打包，进入 Agent 源码配对。

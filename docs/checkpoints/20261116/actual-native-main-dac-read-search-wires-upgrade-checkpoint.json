@@ -1,0 +1,157 @@
+{
+  "recordedAt": "2026-11-20T10:09:01.726513+00:00",
+  "sourceTesting": {
+    "commit": "67d2dbe92670888100237d442dffab0260a9b9c5",
+    "tree": "48ab97f7f3e306142ffc19bb2390d3122771e1ff"
+  },
+  "package": {
+    "commit": "735ebf0c6437f6e9be522e3c177cc7e123008330",
+    "tree": "217924a3cb4c75faaec1a1ce1f5d769da128326e",
+    "version": "6.0.0~git20261120100117.735ebf0-1",
+    "sha256": "b7c69b2f5da53cae3806dd629c6a1e69e0f23c47155841c8bb7bf7f70c684778",
+    "size": 204204748
+  },
+  "platform": {
+    "os": "Debian 13",
+    "arch": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1"
+  },
+  "root": {
+    "sameContainer": true,
+    "preUpgrade": {
+      "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+      "fs": "1048815:6123658",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "postUpgrade": {
+      "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+      "fs": "1048815:6123658",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "initialObservationDeviceBeforeReboot": "1048830"
+  },
+  "privilege": {
+    "removedFromDeclarations": "CAP_DAC_READ_SEARCH",
+    "retainedNNP": true,
+    "originalPid1AlreadyLackedCapDacReadSearch": true,
+    "baseline": {
+      "MainPID": "818",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "364349140000",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "f284455e696c4b95a6475aa34f074b4e"
+    },
+    "candidate": {
+      "MainPID": "8443",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "364478610000",
+      "CapabilityBoundingSet": "cap_dac_override cap_net_bind_service cap_net_admin",
+      "AmbientCapabilities": "cap_dac_override cap_net_bind_service cap_net_admin",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "40231264c5524617b978b65c0c5d2b3d"
+    },
+    "process": {
+      "Uid": "997\t997\t997\t997",
+      "NoNewPrivs": "1",
+      "CapBnd": "0000000000001402",
+      "CapEff": "0000000000001402",
+      "CapAmb": "0000000000001402",
+      "CapPrm": "0000000000001402",
+      "CapInh": "0000000000001402"
+    }
+  },
+  "wires": {
+    "graphSubmissions": 1,
+    "memberNames": [
+      "native-wire-upgrade.logger",
+      "native-wire-upgrade.timer",
+      "org.eclipse.kura.wire.graph.WireGraphService"
+    ],
+    "connectedPorts": [
+      0,
+      0
+    ],
+    "snapshotBytesPreserved": true,
+    "originalGraphFilesPreserved": true,
+    "postRestartOpaqueRevisionsRenewed": 3,
+    "loggerDeliveriesBeforeStop": 21,
+    "totalLoggerDeliveriesAtCandidateObservation": 39,
+    "retentionCopyMetadataChanges": [
+      "inode",
+      "ctime"
+    ]
+  },
+  "originalAuthoritiesExact": true,
+  "consoleUninterruptedDuringUpgrade": true,
+  "agentInitializationCheckSucceeded": true,
+  "nativeUpgrade": {
+    "dpkgInstallDispatches": 1,
+    "dpkgAuditClean": true,
+    "upgradedPackage": "kura-core",
+    "packages": {
+      "kura-core": "6.0.0~git20261120100117.735ebf0-1",
+      "kura-deployment": "2.0.0~git202611200952.5a6025b-1",
+      "kura-management-agent": "0.1.0~cohort202611200955.b9b2d3b-1",
+      "kura-management-console": "0.1.0~cohort202611200955.9691fe9-1",
+      "kura-management-console-installer": "0.1.0~cohort202611200955.9691fe9-1",
+      "kura-management-ui": "3.0.0~git202611200952.08712fb-1",
+      "kura-networking": "3.0.0~git202611200952.0789499-1",
+      "kura-wires": "3.0.0~git202611200952.93f318b-1"
+    },
+    "newReceiptId": "c10a8d50-30df-48ea-9da0-959df31346d2",
+    "previousReceiptPreserved": true
+  },
+  "stoppedRootReadback": {
+    "files": 10,
+    "mainDisabled": true,
+    "probeRemovedFromLoader": true,
+    "packages": 8
+  },
+  "tests": {
+    "ordinaryPackageAndIcmp": 41,
+    "generationCohort": 22,
+    "layoutAndRetainedMain": 31,
+    "linuxWriterLease": 13
+  },
+  "fixture": {
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T10:01:34.082463569Z",
+      "FinishedAt": "2026-11-20T10:06:40.441843371Z"
+    }
+  },
+  "originalThreeReadOnlyCheck": 38,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
