@@ -175,6 +175,13 @@ class Setup:
                 fields = line.split()
                 if fields and self.instance_from_unit(fields[0]) is not None:
                     units.add(fields[0])
+        # On systemd, an enabled instance may exist only as a target link.
+        # The unit-file listing can report just its template as indirect.
+        for scope in ('/etc', '/run'):
+            directory = self.path(scope + '/systemd/system/multi-user.target.wants')
+            for link in directory.glob(pattern):
+                if link.is_symlink() and self.instance_from_unit(link.name) is not None:
+                    units.add(link.name)
         # An inactive, unloaded instance can still own encrypted tasks. Its
         # retained directories are authoritative even when systemd lists none.
         for base in [CONFIG, STATE]:

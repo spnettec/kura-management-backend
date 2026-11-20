@@ -96,6 +96,10 @@ class ConsoleInstanceTests(unittest.TestCase):
         root = Path(tempfile.mkdtemp())
         self.addCleanup(lambda: shutil.rmtree(root))
         (root / 'run/systemd/system').mkdir(parents=True)
+        wants = root / 'run/systemd/system/multi-user.target.wants'
+        wants.mkdir()
+        (wants / 'kura-management-console@link-only.service').symlink_to(
+            '/usr/lib/systemd/system/kura-management-console@.service')
         def run(command, **kwargs):
             if command[1]=='list-unit-files':
                 return SimpleNamespace(returncode=0, stdout=(
@@ -111,6 +115,7 @@ class ConsoleInstanceTests(unittest.TestCase):
             'kura-management-console@center2.service',
             'kura-management-console@center3.service',
             'kura-management-console@later.service',
+            'kura-management-console@link-only.service',
         ])
 
     def test_removal_rejects_enabled_override_without_disabling_it(self):
