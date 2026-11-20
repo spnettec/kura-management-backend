@@ -145,5 +145,90 @@
     "Registered Main missing-device failure is verified. Full Main positive virtual DS1307 write is still open. Earlier successful DS1307 receipt was in the component fixture.",
     "Other brokers and the complete six-component/provider/launcher maintenance and interruption matrix remain open."
   ],
-  "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/registered-main-rtc-absent"
+  "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/registered-main-rtc-absent",
+  "retiredNtpProvider": {
+    "date": "2026-11-21",
+    "release": {
+      "source": "4c43461ff370a29e4dfff99a0601cc4eefbd7cf6",
+      "tree": "ef5e6466ca4045ce0aa4245803000bfdbf4e4795",
+      "name": "kura_6.0.0~git20261120183128.4c43461-1_arm64.deb",
+      "bytes": 204226474,
+      "sha256": "7c2c811fc59f8cdc994ffcb8f38aad2cd89e28c638543724f0f3d43b02210d07",
+      "jar": "c4b8f2e864ec632aebb82a0ef7cc87ca5306f99144a416c1fa8e47631f1fbfe9",
+      "clockManifest": "fe2d36eee48672de18aba5d743093e2bc164e451f2d7c9bff0c6c9617d85808f",
+      "cohortFileCount": 14
+    },
+    "rtcNodeBefore": "/dev/rtc1",
+    "rtcNodeAfter": "/dev/rtc2",
+    "cause": "An in-flight Java NTP query kept the shared listener, so a late sample could adjust the system clock or use the replacement configuration to select the hardware clock.",
+    "fix": "Bind delivery to the provider instance and drain accepted callbacks before configuration changes. Revoke the source before stopping and on failed start.",
+    "regression": {
+      "before": "The pre-fix real loopback UDP regression reached the mocked privileged client after replacement.",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "clockModule": {
+        "tests": 31,
+        "passed": 31
+      },
+      "clockBrokerHost": {
+        "ran": 67,
+        "passed": 66,
+        "skipped": 1
+      }
+    },
+    "refusedOriginal": {
+      "previous": "1048582:6453806",
+      "observed": {
+        "id": "bf60ae2d47c5fd085ea9bad9cf474be811537df0110755b4ad7a0f955a61c731",
+        "mount": "1048827:6453806",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "operationLookup": false,
+      "stoppedExit": 0
+    },
+    "registeredMain": {
+      "root": {
+        "id": "07d4fc0698a9e6579fcaa84a50fcbd432397abcec0a312877e1e8373d58f2a3c",
+        "mount": "1048828:6520184",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "version": "6.0.0~git20261120183128.4c43461-1",
+      "container": "07d4fc0698a9e6579fcaa84a50fcbd432397abcec0a312877e1e8373d58f2a3c",
+      "mounts": "five existing read-only package inputs",
+      "rtcDevices": [],
+      "network": "loopback only",
+      "main": {
+        "unit": {
+          "MainPID": "1761",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "a8da836e1a8046eca7bc3b36a3ff328e"
+        },
+        "ticks": "38551005",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "result": "old NTP sample parsed and accepted after DS applied rtc2; port=40776; main=1761",
+      "senderAndActor": {
+        "/var/lib/kura-clock-broker": {
+          "admission.lock": [
+            1048828,
+            6521339,
+            33152,
+            0,
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        },
+        "/opt/eclipse/kura/data/clock-broker": null
+      },
+      "configuration": "original disabled ClockService restored",
+      "parkExit": 0
+    },
+    "runtimeProbe": "The in-process fixture updated real Configuration Admin, served one loopback UDP response after DS replaced the provider and checked lastSync/isSynced on the retired instance. The production scheduler and provider processed the packet. No direct onClockUpdate invocation was used in the installed test.",
+    "stillOpen": "Full Main positive DS1307 write, remaining providers and maintenance matrix.",
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/clock-provider-retirement"
+  }
 }

@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 丢弃已退役 NTP provider 的迟到回复
+
+Core `4c43461ff3` 修复 RTC 配置切换时的旧采样竞争。旧实现将每个 provider 的回调交给同一个监听器，一次真实回环 UDP 回归在切换后触发了模拟时钟写入。修复后，时钟服务在发布新配置前等待已受理的回调结束，后续只接收当前 provider 的采样。JDK 21 时钟模块 31 项通过。独立 Debian ARM64 正式 deb 装入完整 Main，Configuration Admin 将 RTC 选择从 /dev/rtc1 改到 /dev/rtc2 后，旧 Java NTP provider 收到并成功解析切换前请求的 UDP 回复。原 actor 目录只保有安装锁，发送端目录没有创建。出厂禁用配置已恢复，Main disabled，容器正常停机。上一 RTC 现场因挂载设备号变化在查业务记录前停机。虚拟 DS1307 上完整 Main 的正向写入仍待验，冻结 0/12。[源码、包配对与正式 Main 实测](actual-registered-main-clock-and-purge-checkpoint.json)
+
 ## 2026-11-21 Alpine 启动器用原卷升级四个发行包并回滚
 
 以当前 Core、GWT、Deployment、Wires 四个 deb 构建 ARM64 镜像。原停放容器保留，候选镜像和旧镜像先后挂载原数据卷和空的 /load 卷启动。两个实例均提供原 HTTPS 证书，登录入口返回 200，PID 1 为 UID/GID 122 的 Java，五组能力集均为零。每次正常停止和移除临时容器后，两卷根 inode 与四份受保护文件的内容、属主、权限、inode 和时间戳均一致。候选 JVM 实际打开的 109 个发行 JAR 中，有 16 个与旧镜像同路径文件摘要不同，覆盖全部四个包。此项覆盖基础镜像的升级、回滚及保留卷式移除。冻结 0/12。[启动与回滚检查点](actual-arm64-docker-nonroot-launcher-checkpoint.json)
