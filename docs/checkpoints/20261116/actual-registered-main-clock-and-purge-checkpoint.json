@@ -465,5 +465,64 @@
       "../full-main-rtc/existing-roots/inventory.json": "d9469d0d98381c535e4bbeeb621f7eb11562c19281870186c9099c9e7505b4c0",
       "../full-main-rtc/existing-roots/preserved.json": "faf997db0a7d0eea0fed0fee9df368d7b673657cc3bb5432b60f92238fffc3a6"
     }
+  },
+  "ntpEventPublicationOrder": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/clock-sync-confirmation/event-order",
+    "source": "d0f5bed6921d8e369fef28e0f2319a6490df788b",
+    "tree": "34a01d03f2eb5dc686ef999709f59fec543beb51",
+    "package": "426d1af381bcb6cf156a51d9a7d6ec73d5cf227c5dbe3fe3d86f151349fc7de8",
+    "installedClockBundle": "2cbcfdeb3cfe26d667dab2a6ed0f14f885c8cfc9d566f83815528625d5ead26a",
+    "regression": "A clock event consumer could see a null timestamp after successful synchronization. Publish the confirmed timestamp before dispatching the event.",
+    "clockTests": 35,
+    "equinoxIntegrationTests": 67,
+    "fullReactorAtPriorCommit": "abefdec533b8ba2a7e11cf36ba68adcf0c9dec9a",
+    "nativeMain": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "2247",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "49d2d15055bc40ed8f38fde12bffb8fa"
+        },
+        "ticks": "39105574",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "outcome": {
+        "ready": "2247",
+        "reply": "1795205126270",
+        "confirmed": "1795205126271",
+        "restored": "factory configuration submitted"
+      },
+      "actorCount": 0,
+      "pending": false
+    },
+    "scope": "One local NTP sample required no system-clock modification. OSGi subscriber and a later independent API read saw the identical timestamp. Startup permissions exclude SYS_TIME. This does not exercise RTC hardware.",
+    "managedRoot": "39:6611544",
+    "evidenceSha256": {
+      "package.json": "2126e52819b0766307215929bffdb563dd309f1746ad260062700293c211f78e",
+      "before.log": "6e3463c1ae35a339e1f1649d55f0a553fb07009c6ebc7035007bfb913ae55b54",
+      "after.log": "0d4ecd65115dd0928b70b710e04ee3da7fbe03fa0a1933acd5d80fe0a3264daf",
+      "equinox-verified.log": "9abddfbc22034e8d9743d569fc3426c7eca04b0b7a24a4885329b0791c5b8a57",
+      "ClockEventProbe.java": "9ddecfb7556832ad6c9da42de74b994f8e4cbcf5b81cf58c2bdce3b2b33997ba",
+      "probe.jar": "d2900027603dbb3be5526f9acb1ca5c1a3e1b58d61290d54021872e4bdf970eb",
+      "one-dispatch.json": "3f9191b60e6dd54148a5fcebcce9e07fb8f28ebeebcca407b90d3ba5e7598d1e",
+      "observed.json": "637d25c0bb5295ae588dc5f0718a125a347060fcb87ec16fb2e512d7e3340c2c",
+      "upgraded.json": "99d865d66848a2a62db998922747f36b2d726c1c922fe62f18ae85d7832a07c6",
+      "parked.json": "c97ed2155e43df6caa9ede1f1448f07eeec68884d88beefcb178190194d7f38f",
+      "final-check.json": "df819ed51351d1fea31ee2dbe3165433c680fd45a843f3c3b86bd66a758a904c",
+      "offline-readback.json": "6983bb460c10db7053b186213bc2187e1e40b95c83bb88e550a183cee625a9fc",
+      "original-three-after.json": "8c0a41eb20fd544a0e9f7fa5ea4f96cca24e0aa6e317106cc610e66b1c3e1b66",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "disk.json": "9d5a1d32be51148fe6615a143e8f124d03a1d543c6fdefafc281f747226f9610"
+    }
   }
 }

@@ -226,5 +226,47 @@
     },
     "nextReadOnlyAdmission": "parked-readback.py",
     "storagePairing": "Retain both the dedicated stopped container and its named volume. PID 1 and package processes use the volume as /. The /usr mount belongs to the same original container."
+  },
+  "currentColdRootAfterClockUpgrade": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/clock-sync-confirmation/event-order",
+    "source": "d0f5bed6921d8e369fef28e0f2319a6490df788b",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "versions": {
+      "kura-core": "6.0.0~git20261120200157.d0f5bed-1",
+      "kura-networking": "3.0.0~git202611201717.4741b5e-1",
+      "kura-management-ui": "3.0.0~git202611201910.6b7442f-1",
+      "kura-deployment": "2.0.0~git202611201456.3772936-1",
+      "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+      "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+    },
+    "diskKiB": 448176,
+    "filesVerifiedOffline": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "protectedFilesExact": 6,
+      "originalSubmitWithdrawn": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T20:04:39.999777826Z",
+        "FinishedAt": "2026-11-20T20:05:30.754317188Z"
+      }
+    },
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/clock-sync-confirmation/event-order/parked-readback.py"
   }
 }
