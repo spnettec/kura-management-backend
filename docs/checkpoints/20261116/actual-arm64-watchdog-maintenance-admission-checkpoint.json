@@ -53,5 +53,123 @@
     "amd64",
     "disk-full/hard-power"
   ],
-  "pushed": false
+  "pushed": false,
+  "softdogMaintenanceHandoff": {
+    "source": "722191abd8b4307549aff16884060b9ef3c8934c",
+    "tree": "65e071800cab0bf843707c222b6aca02e2e6aee4",
+    "debVersion": "6.0.0~git20261120214317.722191a-1",
+    "debSha256": "a535fefb71e6c98380b3c8459a0e143ce6bc660bed99a346b073a3562f5fdfc0",
+    "payload": {
+      "bin/kura_watchdog_maintenance.py": "c820ff5bca688c173f6e0792a8769c05594eb344a97924d9e02ad077712936d9",
+      "install/kura.service": "6d1f075044ec0a5fc19cd15c7d8aa95637253a6a3ea4e68c1364486487513aaa",
+      "libexec/key-backup/manifest.json": "d88d5fdf869d973cd1af8fe3caf724c34874c3176f31355bcc56f735ff55089f",
+      "plugins/4/org.eclipse.kura.linux.watchdog-2.0.0-SNAPSHOT.jar": "4f83786dc1ca00d6cf8c72274050e8db4e62e22502a27d22b8e916f5ec5fc400"
+    },
+    "controlScripts": {
+      "postinst": "993cefdf0bb0e4ea714c4b4525f9d9e772f752cf1edea160adf1ca9bcb1b815c",
+      "preinst": "72f784576a7263569227ec8da7d8a70b5b054cd5729a086799be8237c04739af",
+      "prerm": "e228d4ffa3e6e38f1aa8ef0d0e15481af109b00797824962d333972adef51f81"
+    },
+    "originalHelperAdmittedBothModes": true,
+    "softdog": {
+      "nowayout0": "Packaged check, pulse and disarm on both 10:130 and watchdog0. Active remained under a live exclusive holder. Magic Close after release produced inactive.",
+      "nowayout1": "Both paths remained inactive on check, pulse and disarm refusal. No active non-stoppable timer was created. The active-nowayout pulse branch has unit-test coverage.",
+      "driver": "softdog; soft_noboot=1, soft_panic=0, soft_active_on_boot=0, timeout=300 seconds",
+      "directActions": 20,
+      "javaProvider": {
+        "boot": "943a3075-4daa-435f-a121-cebb9cb24f35",
+        "observation": "OBSERVED SUPERVISING 300000 2026-11-20T21:49:16.464398053Z 2026-11-20T21:49:16.618253303Z",
+        "providerUid": 993,
+        "providerBoundingCapabilities": 0,
+        "providerStoppedKernel": "active",
+        "packagedHandoff": [
+          {
+            "entry": "preinst",
+            "action": "check",
+            "pre": "active",
+            "post": "active",
+            "exit": 0,
+            "diagnostic": ""
+          },
+          {
+            "entry": "postinst",
+            "action": "pulse",
+            "pre": "active",
+            "post": "active",
+            "exit": 0,
+            "diagnostic": ""
+          },
+          {
+            "entry": "prerm",
+            "action": "disarm",
+            "pre": "active",
+            "post": "inactive",
+            "exit": 0,
+            "diagnostic": ""
+          }
+        ],
+        "restored": true,
+        "jars": {
+          "slf4j-api-2.0.18.jar": "44508fd1576500688c790b190acdd16fec4f8c79a3e0b900afd70503cf055f55",
+          "org.eclipse.kura.api-3.0.0-SNAPSHOT.jar": "7c809043e0292af13117896e6607d8a521d4a70b98b2183d3e03495e75986c65",
+          "org.eclipse.kura.linux.watchdog-2.0.0-SNAPSHOT.jar": "4f83786dc1ca00d6cf8c72274050e8db4e62e22502a27d22b8e916f5ec5fc400",
+          "org.eclipse.kura.core.system-2.0.0-SNAPSHOT.jar": "96526be1a2ec02a061f0c87c57be594bbdfb59e8901b8341310acdc0c4d4ba31",
+          "jna-5.19.1.jar": "4fb141dd8ef6b0585ffceea4bc49602fbc6312fa977e2c488794ea3e6aafecae",
+          "probe.jar": "301469a39966d86bdefed8f508e94990de26b93a6b2188e4559fcb5541f3d8a5"
+        }
+      }
+    },
+    "installedMain": {
+      "root": "39:6611544",
+      "provider": "org.eclipse.kura.linux.watchdog",
+      "bundleState": "ACTIVE",
+      "status": "DISABLED",
+      "deviceOpen": false,
+      "retainedBusinessBundle": "fixture.retained.business.bundle",
+      "main": {
+        "unit": {
+          "MainPID": "4118",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "71c3f187833748448122e84d56c669f3"
+        },
+        "ticks": "39717723",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "dpkgAudited": true,
+      "sixPackages": 6,
+      "protectedFiles": 83,
+      "stopJobExit": 0,
+      "execStopPostCommandVerified": true,
+      "execStopPostIndividualExitObserved": false,
+      "parkedExit": 0
+    },
+    "arm64Tests": {
+      "watchdog": 7,
+      "generationCohort": 22
+    },
+    "guestRoot": "2050:2",
+    "guestOriginalClockFiles": 21,
+    "guestFence": "ebf6a548-01d4-4278-926b-691d7a2be5b7",
+    "scope": "The Java component exercised a Linux software watchdog from the packaged provider and JNA with no capabilities. Real six-package Equinox Main used its deployed disabled configuration with no device. Physical watchdog, old drivers with missing sysfs attributes, and full Main owning a device through a package interruption remain unverified.",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/watchdog-softdog-maintenance",
+    "nextSixPackageReadOnlyCheck": ".management-close-20261116/core-rtc-hotplug-20261120/watchdog-softdog-maintenance/parked-readback.py",
+    "evidenceSha256": {
+      "package.json": "0467dc26f8988fbf7f4c0892e123a8b84f673566029da08e1ab4cabebf1bc000",
+      "platform.json": "60b0e1e704c5f5cb6b97b1f7f4889315defd15d9ccb0e0ca76d5f4ce2cf7046b",
+      "exercise.json": "1f643016cba9a2ecda02b93b509e891587c05a0da5470ca48e290dd32f87010c",
+      "java-handoff.json": "4efdc89d5f0bf6bfdc47aa23877e9e50ed7041bc24ac462b8ef5a2f9b8836f2a",
+      "main.json": "677ba5b935f3527274d6d21844016a1d2330956c563d08bbae23125b535e6546",
+      "upgrade-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "parallels-final.json": "2cf767675dbbb782371064c1dbf4914ea8e7e0f2f5243f1cc7cc83e75f3d66bf",
+      "original-three-after.json": "3d8721ba81bc3a6e1b9cfe0d5b9451650ce155db3fdfd539dce8c1abbb99afea",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "arm64-unit.log": "683546ee1572ef6b858e7b611e5467522ae2068271584dcce6f7c7354c519c58"
+    }
+  }
 }

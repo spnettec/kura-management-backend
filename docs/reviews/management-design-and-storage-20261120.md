@@ -138,3 +138,7 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 读到定位后，进一步实测了空闲串口的负载。第一版超时修复在 1.20 秒内进行了 1,324,688 次读取；加入 25 毫秒等待后，同一窗口内为 41 次。两次在随后输入报文时均交付了定位。此处计数来自实际伪终端的读取调用，未测整机功耗。同期当前 Core 全量构建耗时 11 分 43 秒，其中证书吊销集成用例占 424.4 秒。[串口负载](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) · [Core 完整构建](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)
 
 仅复用中的 Core 打包目录就保留了 17 个不同版本的 ARM64 deb，合计 3,471,719,790 字节逻辑长度。逐文件对照其中首版 `66cce5e` 和末版 `3fe46ee`，末版有 539 个常规文件，443 个路径和内容完全相同，合计 93,289,145 字节。另有 46 个同路径 JAR 的整包摘要改变，其中 42 个的直接 `.class` 条目逐一同名同内容，而完整解包后所有文件条目仍相同的仅有 1 个。仅凭编译类相同来清理历史包会遗漏配置、资源或内嵌依赖的变化。此次对照流式读取原包，保留了全部 17 个历史版本。[发行包逐文件计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/position-idle-poll/package-storage.json) · [JAR 内容对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/position-idle-poll/jar-storage.json)
+
+### Watchdog 维护的一次增量
+
+这次复用了已有 Parallels VM 和六组件卷。Linux 的两个设备入口指向同一只软件 watchdog，独立进程持有设备、Java 服务退出和安装器接手都可在同一轮观察。它揭示了旧版在设备不允许停用时仍放行包维护的问题。新版 Core 的完整 ARM64 deb 为 204,236,454 字节。打包时曾在源码提交前生成一份带旧提交号的候选；核对正式包和原安装包后移除了该未安装候选的 204,236,452 字节文件。两者是文件长度，实际释放的 APFS 块数未计量。[发行包、Java 与 Linux 交接记录](../checkpoints/20261116/actual-arm64-watchdog-maintenance-admission-checkpoint.json)

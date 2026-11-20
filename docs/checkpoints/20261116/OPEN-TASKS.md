@@ -1,3 +1,7 @@
+## 2026-11-21 Watchdog 的设备交接与原六包升级
+
+旧包对 Linux softdog 的两种 nowayout 设置均允许进入维护。新版在系统明确报告不可停用时拒绝维护。Parallels 上用同一 ARM64 deb 的 Java provider 和 JNA，以 kurad 运行，读到 300 秒超时并观察到两次保活。Java 服务停用并关 FD 后，内核仍在计时。发行包的维护程序接手续喂，再用 Magic Close 使设备回到 inactive。原六组件卷另以 dpkg 升级 Core，正式 Main 读到 watchdog 为 DISABLED，原业务 DP 再次 ACTIVE，正常停机后六包及 83 份文件只读核对。原卷下一次从 watchdog-softdog-maintenance/parked-readback.py 续接。正式 Main 持有真实设备跨包中断的场景仍待验。冻结 0/12。[ARM64 设备与实装证据](actual-arm64-watchdog-maintenance-admission-checkpoint.json)
+
 ## 2026-11-21 原 Parallels RTC 独占打开竞争
 
 原组件 Root 2050:2 的独立进程持续只读占用虚拟 DS1307。实际 ClockService、时钟 actor 与 systemd relay 对一次请求完成 prepare，交付 FD 时遇到 EBUSY。Root 与 Java 都保存了同编号 FAILED / OS_ERROR / errno 16。解除占用后可以只读打开，观察窗口内维持原三笔操作，设备日期仍未设置。停用后原 15 份及新增六份文件已核对，八个时钟单元 inactive。此处取代先前两笔操作和旧停机围栏作为本 VM 的续接基线。正式包的 Main 布局检查已在原 Root 只读执行，拒绝无配套清单的静态 Main。冻结 0/12。[当前围栏、证据及只读入口](actual-registered-main-clock-and-purge-checkpoint.json)
