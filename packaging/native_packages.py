@@ -365,7 +365,8 @@ class NativePackages:
         maintenance = control.journal(value['maintenanceOperationId'])
         expected = {'maintenanceProtocolVersion': 1, 'binarySha256': value['package']['binarySha256'],
                     'sourceManifestSha256': value['package']['sourceManifestSha256']}
-        if maintenance['phase'] != 'COMPLETE' or maintenance.get('verifiedPayload') != expected:
+        if maintenance['phase'] != 'COMPLETE' or maintenance.get('verifiedPayload') != expected \
+                or maintenance.get('packageInstallOperationId') != value['operationId']:
             raise RuntimeError('Original package post-install verification receipt required')
         value.update(phase='APPLIED', verifiedPayload=expected)
         self.save(value)  # Durable package receipt precedes release of its host fence.

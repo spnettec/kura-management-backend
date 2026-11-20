@@ -286,6 +286,72 @@ class NativeControlTests(unittest.TestCase):
         self.assertFalse(self.control.finalize(operation)['finalizationRequired'])
         self.assertEqual(len(self.install_calls()), 1)
 
+    def test_first_durable_package_completion_is_linked_and_repeat_is_read_only(self):
+        operation = self.accepted()
+        maint = HostControl(self.setup)
+        writes = []
+        original_save = HostControl.save
+
+        def observe_save(control, value, **kwargs):
+            original_save(control, value, **kwargs)
+            if value['phase'] == 'COMPLETE':
+                writes.append(control.journal(value['operationId']))
+
+        def repeat():
+            recorded = maint.journal(operation)
+            self.assertEqual(recorded['packageInstallOperationId'], operation)
+            self.assertEqual(maint.complete(operation), recorded)
+
+        self.after_postinst = repeat
+        with patch.object(HostControl, 'save', observe_save):
+            self.assertEqual(self.control.worker(operation)['phase'], 'APPLIED')
+        self.assertEqual([row['packageInstallOperationId'] for row in writes], [operation])
+        self.assertEqual(len(self.install_calls()), 1)
+
+    def test_legacy_split_completion_requires_original_held_install_intent(self):
+        operation = self.accepted()
+        maint = HostControl(self.setup)
+
+        def old_completion():
+            receipt = maint.journal(operation)
+            del receipt['packageInstallOperationId']
+            maint.save(receipt)
+            job = self.control.record(operation)
+            changed = dict(job, installIntent={'packageSha256': 'f'*64})
+            self.control.save(changed)
+            with self.assertRaisesRegex(RuntimeError, 'held package install intent'):
+                maint.complete(operation)
+            self.assertEqual(maint.journal(operation), receipt)
+            self.control.save(job)
+            recovered = maint.complete(operation)
+            self.assertEqual(recovered, dict(receipt, packageInstallOperationId=operation))
+            self.assertEqual(maint.package_hold()['packageOperationId'], operation)
+
+        self.after_postinst = old_completion
+        self.assertEqual(self.control.worker(operation)['phase'], 'APPLIED')
+        self.assertEqual(len(self.install_calls()), 1)
+
+    def test_other_package_receipt_cannot_replace_original_or_publish_applied(self):
+        operation = self.accepted()
+        maint = HostControl(self.setup)
+        other = str(uuid.uuid4())
+
+        def conflicting_completion():
+            receipt = maint.journal(operation)
+            receipt['packageInstallOperationId'] = other
+            maint.save(receipt)
+            with self.assertRaisesRegex(RuntimeError, 'Original package operation differs'):
+                maint.complete(operation)
+            self.assertEqual(maint.journal(operation), receipt)
+
+        self.after_postinst = conflicting_completion
+        with self.assertRaisesRegex(RuntimeError, 'original package post-install|Original package post-install'):
+            self.control.worker(operation)
+        self.assertEqual(self.control.record(operation)['phase'], 'RUNNING')
+        self.assertEqual(self.control.status(operation)['phase'], 'UNKNOWN')
+        self.assertEqual(maint.package_hold()['packageOperationId'], operation)
+        self.assertEqual(len(self.install_calls()), 1)
+
     def test_controller_change_after_acceptance_never_executes_dpkg(self):
         operation = self.accepted(); self.write(PROGRAM, b'replaced-controller')
         with self.assertRaises(RuntimeError): self.control.worker(operation)

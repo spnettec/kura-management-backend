@@ -420,6 +420,22 @@ class HostControl:
                     (self.directory/'active.json').unlink();self.sync()
                     return value
                 value['debianConfigure'] = debian
+            if hold is not None and value['phase'] == 'COMPLETE':
+                if value.get('verifiedPayload') != payload or 'outcome' in value:
+                    raise RuntimeError('Original package completion differs')
+                if 'packageInstallOperationId' in value:
+                    if value['packageInstallOperationId'] != hold['packageOperationId']:
+                        raise RuntimeError('Original package operation differs')
+                    return value
+                # Older postinst versions saved COMPLETE before linking the held
+                # package job. Recover only while that original install is fenced.
+                package = self.package_receipt(hold['packageOperationId'])
+                if package.get('maintenanceOperationId') != identity or package.get('phase') != 'RUNNING' \
+                        or package.get('installIntent') != {'packageSha256': hold['packageSha256']} \
+                        or any(package.get('package', {}).get(key) != hold[held] for key, held in (
+                            ('archiveSha256', 'packageSha256'), ('binarySha256', 'binarySha256'),
+                            ('sourceManifestSha256', 'sourceManifestSha256'))):
+                    raise RuntimeError('Original held package install intent required')
             if value['ownedMasks'] and value['phase']!='COMPLETE':
                 value['phase']='UNMASKING';self.save(value)
             for unit in value['ownedMasks'] if value['phase']!='COMPLETE' else []:
@@ -429,9 +445,11 @@ class HostControl:
                 if mask.is_symlink() and os.readlink(mask)=='/dev/null': self.setup.systemctl('unmask','--runtime',unit)
                 elif mask.exists() or mask.is_symlink(): raise RuntimeError('Maintenance runtime mask changed')
             value['verifiedPayload']=payload
-            value['phase']='COMPLETE';self.save(value)
             if hold is not None:
-                value['packageInstallOperationId']=hold['packageOperationId'];self.save(value)
+                value['packageInstallOperationId'] = hold['packageOperationId']
+            value['phase'] = 'COMPLETE'
+            self.save(value)
+            if hold is not None:
                 return value  # dpkg's own receipt is still required before release.
             (self.directory/'active.json').unlink();self.sync()
             return value  # No enable/start/restart is performed.
@@ -465,6 +483,19 @@ class HostControl:
             self.write('package-install.json',hold,new=True)
             return hold
 
+    def package_receipt(self,package_operation):
+        self.identity(package_operation)
+        path=self.setup.path('/var/lib/yofc-console-native-packages/operations/'+package_operation+'.json')
+        descriptor=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+        with os.fdopen(descriptor,'rb') as stream:
+            info=os.fstat(stream.fileno())
+            if not stat.S_ISREG(info.st_mode) or info.st_uid!=0 or info.st_mode&0o077 or info.st_size>4*1024*1024:
+                raise RuntimeError('Root-private original package receipt required')
+            package=json.loads(stream.read(4*1024*1024+1))
+        if package.get('schemaVersion') != 1 or package.get('operationId') != package_operation:
+            raise RuntimeError('Original native package operation differs')
+        return package
+
     def release_package(self,identity,package_operation):
         """Release only a verified, successful original native package job.
 
@@ -474,16 +505,9 @@ class HostControl:
         """
         self.identity(identity);self.identity(package_operation)
         with self.locked(),self.locked(writers=True):
-            path=self.setup.path('/var/lib/yofc-console-native-packages/operations/'+package_operation+'.json')
-            descriptor=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
-            with os.fdopen(descriptor,'rb') as stream:
-                info=os.fstat(stream.fileno())
-                if not stat.S_ISREG(info.st_mode) or info.st_uid!=0 or info.st_mode&0o077 or info.st_size>4*1024*1024:
-                    raise RuntimeError('Root-private original package receipt required')
-                package=json.loads(stream.read(4*1024*1024+1))
+            package=self.package_receipt(package_operation)
             value=self.journal(identity)
-            if package.get('schemaVersion')!=1 or package.get('operationId')!=package_operation \
-                    or package.get('maintenanceOperationId')!=identity or package.get('phase')!='APPLIED' \
+            if package.get('maintenanceOperationId')!=identity or package.get('phase')!='APPLIED' \
                     or package.get('installReceipt')!={'commandReturnedSuccess':True} \
                     or value['phase']!='COMPLETE' or value.get('packageInstallOperationId')!=package_operation \
                     or value.get('verifiedPayload')!=package.get('verifiedPayload'):
