@@ -1,3 +1,9 @@
+## 2026-11-20 原时钟 actor 暂存文件写入中断
+
+Core `4739a24da1` 支持逐文件续装。只有原维护下尚未发布的候选可补写，先校验文件类型、所有者、模式、链接数和已有字节，再从同一候选补全。旧 actor 已归档时，暂存树依然必须完整通过配对验证。Debian ARM64 以普通账号验证 96 项，另以 Root 验证 2 项暂存回归。
+
+在原 Parallels 时钟 Root，将实际安装器单进程的文件大小上限设为 4,096 字节。安装返回 1，7,761 字节的文件实际只写入 4,096 字节，旧 actor 仍在原路径。普通安装入口随后沿原围栏在同一 inode 上补完，完整摘要与 deb 相同，原 actor 和暂存目录在发布前后均可核对。15 份原状态文件、两笔操作及静态 Main 保持；新停机围栏下八单元均 inactive。此项覆盖暂存途中中断。磁盘满及硬断电仍属原外部延期。冻结 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 正式 Main 日志字段实测和原时钟 actor 发布中断恢复
 
 六组件原 Root 启动正式 kura.service。OSGi 客户端通过已安装的 typed journal broker 分别导出 Kura 和系统日志，指定 _SYSTEMD_UNIT、SYSLOG_IDENTIFIER、PRIORITY。结果为 5,595 和 873,189 字节，分别与独立 journalctl 同范围输出前缀逐字节吻合。独立标记仅出现在系统范围。采样到 245 个 bundle、110 条 SCR 配置或描述记录；唯一处于 INSTALLED 的独立 Jackson JAXB 扩展属于已记录的发行兼容边界。记录保留了 4 条未满足引用及 21 条没有配置实例的描述。此次通过实际 Main 调用 broker，未增加浏览器验收。原六组件已正常停机。

@@ -853,5 +853,59 @@
     "activeFolderAbsentAtCut": true,
     "archiveInodeUnchanged": true,
     "originalAndNewOperationsUnchanged": true
+  },
+  "partialClockActorStaging": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/full-main-rtc/partial-stage",
+    "core": "4739a24da113db04bb3553775e5aa719abb14bbf",
+    "deb": "kura_6.0.0~git20261120151841.4739a24-1_arm64.deb",
+    "sha256": "d8758c011e1efe05de69d3f35560ec2f055c96be7c56a4857e0f78ff3919d69b",
+    "vm": "8061d57e-0120-42ec-a9a9-5799b436c4eb",
+    "fixture": "8c3e125c-8203-403c-928e-da87fa8fc0a6",
+    "priorPurpose": "29673165-23b0-45e0-9256-1c46abe96204",
+    "originalActorStillInstalledAtFailure": true,
+    "firstInstallerExit": 1,
+    "perProcessFileSizeLimit": 4096,
+    "partialFile": {
+      "bytes": 4096,
+      "expectedBytes": 7761,
+      "inode": 1835597,
+      "name": "bin/kura_chrony_config.py",
+      "prefixSha256": "f4681496b3f28432a4d2e814dfe5fe515e8d993d5264da43eda7fcd5a758f67b"
+    },
+    "installed": {
+      "actorInode": 1835036,
+      "archiveInode": 1835045,
+      "completedSha256": "62a2ca802cfe9d9e6291117d0d1d231d12970fad211a199b815ab62ae18f6595",
+      "fileInode": 1835597,
+      "historyExact": 15,
+      "purpose": "29673165-23b0-45e0-9256-1c46abe96204"
+    },
+    "parked": {
+      "fence": {
+        "cohortSha256": "639dc809f3364d35951ec2516615f67b1f930fbafcc941a1893fdc2bc7a887ac",
+        "namespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+        "purposeId": "7250d0c3-4575-4109-9417-cc277c05f06b",
+        "schema": 1,
+        "units": {
+          "kura-clock-broker.service": "e7279176d7066d4ec9e2c5f5b728215b7a9ff4445dbf1603d9196eef0466f1f8",
+          "kura-clock-broker.socket": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020",
+          "kura-clock-chrony-config.service": "01718c32a764f86200365e79ab80bcccc47d0fbfbe3a3c25595ed7792c84a374",
+          "kura-clock-chrony-config.socket": "a5d1db3205754a4439f4f5a333fb22b4c53eecb2c2edb05de945b4ed95715d1e",
+          "kura-clock-chrony-step.service": "f525193edb6c0041c6a20c0a25f3f3552637046914978f5222381b7c81321bbe",
+          "kura-clock-chrony-step.socket": "3dc1906833581bb9a3568d13798d40c24d61597e6288316608241ac5f0f341e6",
+          "kura-clock-rtc-devices.service": "44cd44c28f5d31406536abcb0854afb63030e00bcb52ae5dd36a5ffa5167cfe8",
+          "kura-clock-rtc-devices.socket": "5f492bab156bc29e521201059f904edfcfd5af169f6e1a6a4585270ab3767925"
+        }
+      },
+      "historyExact": 15,
+      "mainNeverStarted": true,
+      "operationCount": 2,
+      "unitsInactive": 8
+    },
+    "unitTests": {
+      "nonrootPassed": 96,
+      "additionalRootPassed": 2
+    },
+    "sixParked": true
   }
 }
