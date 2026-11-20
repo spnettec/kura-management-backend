@@ -1,0 +1,157 @@
+{
+  "date": "2026-11-21",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "packages": {
+    "networking": {
+      "commit": "30f67a722fb4ec2c840262252ea27a056bd78290",
+      "tree": "41facdfe8fee80f1015b3f9b622fb39d3c391953",
+      "sha256": "50b2fc9c178f9bca8ce69a2f2a6082cb58144313c863ec540b488dea8b17da38",
+      "archive": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611201652.30f67a7-1_all.deb",
+      "bundleSha256": "0c06d61c9f3c54681c161e6d63b865cfc7ed1c7b9fb2207f7b17431ff104e7de",
+      "cohorts": {
+        "modem-reset-provider.json": {
+          "modemResetProtocol": 1,
+          "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "0c06d61c9f3c54681c161e6d63b865cfc7ed1c7b9fb2207f7b17431ff104e7de"
+        },
+        "modem-location-provider.json": {
+          "modemLocationProtocol": 1,
+          "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "0c06d61c9f3c54681c161e6d63b865cfc7ed1c7b9fb2207f7b17431ff104e7de"
+        }
+      }
+    },
+    "core": {
+      "commit": "54cc64dfe2ca455821b4adf68c7232e1ce934982",
+      "archiveSha256": "4780c8b9c29bd143663101459cc96af8fbcd7c7124c26f5ce7a338f86dfc192e",
+      "pythonFilesMatched": 35
+    }
+  },
+  "coreTree": "b46b74e70794edb91add602e1261a51e3aeab8b4",
+  "tests": {
+    "networking": {
+      "modules": 17,
+      "passed": 2245,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "jdk": 21
+    },
+    "arm64Actor": 62
+  },
+  "baseline": "Old installed JAR under a second JVM issued fresh readiness after a partial acknowledgement and lost its original operation. No second reset observed.",
+  "implementation": "The caller durably publishes the action, device object path, device ID, actor scope and operation UUID under an exclusive lock before dispatch. After restart the caller checks the current scope, then matches the original tuple against the actor intent before any acknowledgement.",
+  "packagedJvmCases": {
+    "torn": {
+      "case": "torn",
+      "jvmPids": [
+        8,
+        48,
+        68
+      ],
+      "lockContender": 30,
+      "operationId": "b7550c6c-233e-41ab-8702-49815cb6cf18",
+      "dbusResetCount": 1,
+      "originalRootAndRecordsExact": true,
+      "otherRootLedgerEmpty": true,
+      "pendingRetained": false,
+      "initialDeliveryBytes": 32,
+      "deliveryBytes": 201
+    },
+    "after-ack": {
+      "case": "after-ack",
+      "jvmPids": [
+        8,
+        48,
+        68
+      ],
+      "lockContender": 30,
+      "operationId": "4c4aef8d-8a08-4b9f-8e09-274eab04d898",
+      "dbusResetCount": 1,
+      "originalRootAndRecordsExact": true,
+      "otherRootLedgerEmpty": true,
+      "pendingRetained": false,
+      "initialDeliveryBytes": 201,
+      "deliveryBytes": 201
+    },
+    "unknown": {
+      "case": "unknown",
+      "jvmPids": [
+        8,
+        29,
+        49
+      ],
+      "lockContender": null,
+      "operationId": "615c1a56-ba8a-4c64-9065-60f984c52f47",
+      "dbusResetCount": 1,
+      "originalRootAndRecordsExact": true,
+      "otherRootLedgerEmpty": true,
+      "pendingRetained": true,
+      "initialDeliveryBytes": null,
+      "deliveryBytes": null
+    }
+  },
+  "packagedJvmBoundary": "Real ARM64 Java, package socket actor, file limits, private D-Bus and operation ledger. Virtual D-Bus modem and adapters for peer and unit checks; each case recorded one virtual reset.",
+  "legalMainRestart": "Intermediate networking provider: genuine installed service called the actor while its journal was locked. Two different Main invocations kept the same pending entry. Retry on another mount was refused before dpkg or operation lookup.",
+  "legalMainUpgrade": {
+    "originalAction": "gps-managed",
+    "originalOperation": "3364022d-50af-4734-8d94-2c2d4718fa4e",
+    "root": "2097166:6419930",
+    "ledger": "2097166:6421584",
+    "mainPids": [
+      "2253",
+      "10727"
+    ],
+    "result": "UNKNOWN",
+    "remoteFiles": 0,
+    "originalSenderBytesExact": true,
+    "senderInodes": [
+      "6423218",
+      "6424186"
+    ],
+    "keysAndProvisionMetadataExact": true,
+    "siteConfigAndSnapshotBytesExact": true,
+    "siteConfigAndSnapshotInodesChanged": true,
+    "interruption": "Probe in previous formal Main published the sender record via production store.begin before dispatch. No process was killed during publication. The upgraded formal Main requested reset, recovered the original pending GPS operation, and sent no new operation.",
+    "admission": "New networking deb refused by preinst on old Core; the identical deb installed after paired Core upgrade on this same root.",
+    "parkedExit": 0
+  },
+  "remaining": [
+    "Complete installed Main to RTC",
+    "Remaining typed broker callers and interruptions",
+    "Six-component registered provider and launcher maintenance and recovery"
+  ],
+  "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/modem-original-java-restart",
+  "evidenceSha256": {
+    "baseline.json": "228450e7f6995de6e68f399825a00d824698a954dbaa62346b64af1e30920e2a",
+    "native-main/first.json": "e986d6f8af578cf08dacdc7255098596729e44bfe2148d5baf785e6a69ee8207",
+    "native-main/recovered.json": "0252ebbc4c9709f179a4590c04e476abfbe7db63a535962e91112f5618eb8cd3",
+    "paired/packages.json": "2e246fc2bd27c15c8e128ef92797b07fe627e797e747b8c3d23357ec43e9f44a",
+    "paired/verified-package.json": "25e12f28005e111d6f30c1db675a1d675e420c0591d0b8f4cf58ca97687d3c82",
+    "paired/networking.log": "f5d42a26b3878a37fc6d4bf899be0f71bdd0faa3ce7c7f0886fca8d3065bf149",
+    "paired/actor-tests.log": "13b8d3e413528f86078121a903788eb4aca492d716534e64c01744b5d82ab51f",
+    "paired/existing-root-check.json": "3f4234de245448a12160a2b5226842823c1349eed22c98782959b5df30920390",
+    "paired/existing-parked.json": "ae3f03a9db519fe52c362fa499922e729b6d91fd71766928d372c5e7eecb6e7d",
+    "paired/torn.json": "7651fccd587fbd9a9d2aa5593e8b83628df433b99b7b9d15d6cfbceda89eacfa",
+    "paired/after-ack.json": "78ab4429d4c5290df552964473777ab366ba184c080287a50c61ee3a2270c00c",
+    "paired/unknown.json": "f15c598a06d390c62ea6560202dca8d7ebec97d88737b035260eb2ff5d7cd479",
+    "preservation.json": "0eee4219014866fd773add4c3298f93c26ddd04aa3515743b3135549a63049d8",
+    "original-three-after.json": "6b36465bfd0b2fd5bac6bdcaad21b8227cd05783e683c686ffc03f132a542c58",
+    "paired/admission/reserve.json": "6eaaa13c74757ff7cd083b87f38932f9957a8af3a307591dffd6218b4c23e59c",
+    "paired/admission/after-core-upgrade.json": "46480e563bd052ba82acbe25cfe0dfb3e40ab6491358e7ee15d2cde655f54912",
+    "paired/admission/refused.json": "3189944b755f7fff2c51ab2653d0f5d574ac61eedb257cb7485c48e6772f575d",
+    "paired/admission/admitted.json": "bed7663ae95cd4556cd069dae3d1880e22b68c203adab62db8c18f210e0bd7b2",
+    "paired/admission/recover.json": "66c0b64ecf5a961f80838e78768ac3a2690b2d15f0b1528e7e8dd2c4c42ae472",
+    "paired/admission/parked.json": "82910e4c8f5a43c44f4e4275e607bdf32841e5571a98cff9576b422cfa837a3e",
+    "paired/admission/operation.json": "b29883445acd71808de44cc9fbfff2161f1b70c28253a0410a2942b59bdfce34"
+  }
+}

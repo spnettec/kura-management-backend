@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 在重启及升包后保留未决调制解调器操作
+
+旧 Networking 的 JVM 在确认中断后丢失原操作。Core `54cc64dfe2` 和 Networking `30f67a722f` 现在核对原 Root、编号、动作、设备路径及设备标识。ARM64 的三个独立 JVM 场景覆盖 32 字节部分确认、确认已写完但回复丢失，以及虚拟调制解调器已收到 Reset 而结果不明。每个场景仅收到一次 Reset。Networking 全 17 模块 2245 项、Core actor 62 项通过。
+
+实际 dpkg 在旧 Core 上拒绝新版 Networking。同一隔离安装升级 Core 后接纳相同的 deb。前一版正式 Main 用探针在派发前写入 GPS 记录，新版正式 Main 请求 reset 时返回原 GPS 编号的 UNKNOWN，actor 无新记录。Core 升级重建了发送记录、站点属性和快照的 inode，三者内容保持，密钥和发放记录的元数据也一致。另一个已验证跨 JVM 重启的现场因再次启动时挂载设备号改变，在 dpkg 和操作查询前停止。两现场均正常停机。物理调制解调器及其余内部验收仍开放，冻结闭环 0/12。[检查点](actual-modem-sender-restart-and-upgrade-checkpoint.json)
+
 ## 2026-11-21 独立 Core 的 Position 升级、六组件转换中断与拆回
 
 在新的 Debian 13 ARM64 测试安装上，Core `bdf7690c8e` 用发行版 systemd 单元独立启动。旧 Position 的串口 provider 缺少连接工厂，原地升级至 `fd742d9` 后，正式 Main 内的串口 provider 与 Core 工厂都为 active，绑定指向 `org.eclipse.kura.core.comm`。remove 后再次启动 Main，定位 provider 消失；purge 完成。gpsd socket 的 invocation 保持。此次观察了真实服务绑定，未打开物理串口。
