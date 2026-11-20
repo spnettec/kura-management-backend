@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-20",
+  "platform": "Debian 13 ARM64, actual dpkg and systemd",
+  "java": "21.0.13",
+  "maven": "3.10.1",
+  "coreOriginal": {
+    "head": "99024da7fb798fde48411c11311e8bd19ef83f55",
+    "tree": "b2c84acdc35e3dd3a00f085eb41e2ccaa334527e"
+  },
+  "coreInitialCandidate": {
+    "head": "63b2091e35eb37372d20c7b4dae4e8c94a5941ec",
+    "tree": "04cd188e54d13a5813ab745e7b95db14208ee874"
+  },
+  "coreVerified": {
+    "head": "33a3cfef85c7388e422a7d039c132c6c3083353d",
+    "tree": "6d9b12db0779e1643917bab1941b9bb0c6b6a531"
+  },
+  "gwt": {
+    "head": "08712fbc8e7acca19182cd253c2d614332c0b6e9",
+    "tree": "60259c3899777b060334418fba6cffdca5ff7aa1"
+  },
+  "tests": {
+    "linuxArm64Passed": 54,
+    "macosPassed": 53,
+    "macosSkipped": 1,
+    "baselineFixtureAlreadyFailed": "Expected obsolete status instead of resume; corrected in 23adf0977f"
+  },
+  "initialCandidate": {
+    "parking": {
+      "id": "893b68db4cc49c857d862ec6d2e584e2b55ba3b822ad707d4045fa24f738201b",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:43:22.353405992Z",
+        "FinishedAt": "2026-11-20T02:46:59.031035733Z"
+      }
+    },
+    "originalFence": "33453b43-7a0b-43f5-b3b4-b08883e83185",
+    "status": "half-configured",
+    "originalCopyKept": true,
+    "readyCreated": false,
+    "observed": {
+      "action": "sibling",
+      "rootFence": "33453b43-7a0b-43f5-b3b4-b08883e83185",
+      "postinstSha256": "02247f15182de7fd36073a5551a17774801914a8f8cd78d6148a86fac40d9d14",
+      "dpkgPid": 1861,
+      "postinstPid": 1862,
+      "copyPid": 2256,
+      "fileLimit": 1048576,
+      "partialFiles": [
+        {
+          "source": "/opt/eclipse/.kura-preserve/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+          "stage": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/siblings/.kura-restore-33453b43-7a0b-43f5-b3b4-b08883e83185/copy-wymham0r/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+          "size": 1048576,
+          "whole": 34169929,
+          "prefixSha256": "0ec7ab06a0de524757398bd74f379237dbc9b0eb7c0420a99f42043d3e395a2a",
+          "inode": 5593308
+        }
+      ],
+      "normalPathAbsent": true,
+      "signal": 25,
+      "event": 0
+    },
+    "trace": {
+      "action": "sibling",
+      "result": 1,
+      "postinstExit": -9,
+      "installerCalls": [
+        "layout",
+        "brokers",
+        "runtime",
+        "https",
+        "ownership"
+      ],
+      "copyCalls": [
+        "sibling"
+      ],
+      "traceesRemaining": 0
+    },
+    "resumeOutcome": "Generation-reader scan rejected an incomplete staging JAR within siblings/",
+    "registryFaultDispatched": false,
+    "candidateSlotReused": false
+  },
+  "verified": {
+    "parking": {
+      "id": "7a5e8ace3ee84c3073db223cb6a403d687c1834f95f0951e18d6fc43eafd9c2d",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:47:12.827639051Z",
+        "FinishedAt": "2026-11-20T02:50:27.204741184Z"
+      }
+    },
+    "packages": [
+      {
+        "archive": "/root/kura-torn-copy/kura_6.0.0~git20261120024203.99024da-1_arm64.deb",
+        "sha256": "4be8e1909b150d839b61017c2218b8bd27387e28a0a378120634d89377e8a20e",
+        "package": "kura-core",
+        "version": "6.0.0~git20261120024203.99024da-1"
+      },
+      {
+        "archive": "/root/kura-torn-copy/kura_6.0.0~git20261120024730.33a3cfe-1_arm64.deb",
+        "sha256": "08e490d370ac1e0c689edf8651d9c2ddd0fb5db2ab5a4d34fe68adf166feda39",
+        "package": "kura-core",
+        "version": "6.0.0~git20261120024730.33a3cfe-1"
+      },
+      {
+        "archive": "/root/kura-torn-copy/kura-management-ui_3.0.0~git202611200244.08712fb-1_all.deb",
+        "sha256": "da9697e8723e6d9db4de0f0de7aad3e99c663abc12eb40ffeb1a63be99bd7565",
+        "package": "kura-management-ui",
+        "version": "3.0.0~git202611200244.08712fb-1"
+      }
+    ],
+    "originalMaintenanceFence": "c574b98b-d258-4d00-b320-047e701ca932",
+    "recoveryCopyDeviceInode": "1048815:5598711",
+    "manifestSha256": "9c30912179622cf3d19526be29e636450ea84d0ee1364e8365d09419f6c0c1a5",
+    "shellPostinstSha256": "a11fc3836fb0a22ac7026ead1956626ef177eec25f2fa3d4ece8467310e93906",
+    "dpkgStates": [
+      "installed (original)",
+      "unpacked",
+      "half-configured",
+      "half-configured",
+      "installed (successor)"
+    ],
+    "actualSiblingCopyInterrupted": {
+      "action": "sibling",
+      "rootFence": "c574b98b-d258-4d00-b320-047e701ca932",
+      "postinstSha256": "a11fc3836fb0a22ac7026ead1956626ef177eec25f2fa3d4ece8467310e93906",
+      "dpkgPid": 1868,
+      "postinstPid": 1869,
+      "copyPid": 2263,
+      "fileLimit": 1048576,
+      "partialFiles": [
+        {
+          "source": "/opt/eclipse/.kura-preserve/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+          "stage": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/.kura-restore-c574b98b-d258-4d00-b320-047e701ca932/copy-cly365j2/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+          "size": 1048576,
+          "whole": 34169929,
+          "prefixSha256": "0ec7ab06a0de524757398bd74f379237dbc9b0eb7c0420a99f42043d3e395a2a",
+          "inode": 5599599
+        }
+      ],
+      "normalPathAbsent": true,
+      "signal": 25,
+      "event": 0
+    },
+    "actualRegistryShortWrite": {
+      "action": "registry",
+      "rootFence": "c574b98b-d258-4d00-b320-047e701ca932",
+      "postinstSha256": "a11fc3836fb0a22ac7026ead1956626ef177eec25f2fa3d4ece8467310e93906",
+      "dpkgPid": 2444,
+      "postinstPid": 2445,
+      "copyPid": 2509,
+      "fileLimit": 4,
+      "partialFiles": [
+        {
+          "source": "/opt/eclipse/.kura-preserve/framework/sibling-install-order",
+          "stage": "/opt/eclipse/kura/framework/sibling-install-order",
+          "size": 4,
+          "whole": 14,
+          "prefixSha256": "c1212091aa78c0075bb40728f8a5db14549c21e8034482ce2b3683e4217ab395",
+          "inode": 5599501
+        }
+      ],
+      "normalPathAbsent": false,
+      "signal": 25,
+      "event": 0
+    },
+    "traces": [
+      {
+        "action": "sibling",
+        "result": 1,
+        "postinstExit": -9,
+        "installerCalls": [
+          "layout",
+          "brokers",
+          "runtime",
+          "https",
+          "ownership"
+        ],
+        "copyCalls": [
+          "sibling"
+        ],
+        "traceesRemaining": 0
+      },
+      {
+        "action": "registry",
+        "result": 1,
+        "postinstExit": 1,
+        "installerCalls": [],
+        "copyCalls": [
+          "sibling",
+          "registry"
+        ],
+        "traceesRemaining": 0
+      },
+      {
+        "action": "observe",
+        "result": 0,
+        "postinstExit": 0,
+        "installerCalls": [],
+        "copyCalls": [
+          "registry"
+        ],
+        "traceesRemaining": 0
+      }
+    ],
+    "originalPrepareEvidenceExact": true,
+    "originalPrepareFileCount": 17,
+    "finalAuthenticatedFileCount": 18,
+    "siblingInodeKeptAtFinalResume": 5599632,
+    "originalCoreHistoryKept": true,
+    "addedOnlyOriginalMaintenanceReceipt": {
+      "sha256": "5cd8a12a97973d748f8cbab2727f62f99ca5a98e2ec1b46e062b1db600b675d0",
+      "attr": "1048815:5599726:1:0:0:600:342:1795142908:1795142908"
+    },
+    "recoveredGwtEntries": {
+      "6s/commons-csv-1.14.0.jar": {
+        "sha256": "2f34d69f89dc94d606e250d5eb26205923e5dbc2c3891d3575f86c849f7f8726",
+        "size": 60223,
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      },
+      "6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar": {
+        "sha256": "8371bccc144b169320b8af293e0950cc8f8f24a299b3f6df1853af493429d94c",
+        "size": 34169929,
+        "uid": 0,
+        "gid": 0,
+        "mode": 420
+      }
+    },
+    "registrySha256": "ae21bbbc009b0c100645b793878e4f3fae9b3ff3ea57d5b41a447699b392f942",
+    "originalAesAndMetadataExact": true,
+    "sameDeviceRootAndBoot": true,
+    "copyRetiredAfterReady": true,
+    "newMain": {
+      "http": [
+        {
+          "path": "/",
+          "status": 302
+        },
+        {
+          "path": "/admin/console",
+          "status": 302
+        },
+        {
+          "path": "/admin/auth",
+          "status": 200
+        },
+        {
+          "path": "/admin/login/login.nocache.js",
+          "status": 200
+        }
+      ],
+      "loginSha256": "bd0df47d6f2422456f103e47306e9b2ac50688cbe463ca50d350d0a7c0d6ad37",
+      "serverCertificateSha256": "a01b7a719194836ebc54c0bc9cc3fd61e25d019a3b1a85820c3ef43a81246bdb",
+      "moduleSha256": "6e6a4024376e7d9dfed2a4b5044e93118ac463c973b25f40d7621df19a3ea069",
+      "credentialDispatches": 0
+    }
+  },
+  "previousPreparedCheckpoint": "67bf3c5",
+  "historicalOperationsRedispatched": false,
+  "rootPairingRelaxed": false,
+  "original7fdInputs": 41,
+  "original7fdReceipts": 16,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "internalPending": [
+    "first candidate stays preserved half-configured",
+    "cross-boot and other interrupted copy sites",
+    "remaining Core/OSGi, typed brokers, providers, launchers and six-component lifecycle matrix"
+  ]
+}

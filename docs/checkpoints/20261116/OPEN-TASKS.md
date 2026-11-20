@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — PREPARED 中途写入 sibling 与安装顺序恢复
+
+Core 63b2091e35 将缺失 sibling 的回拷改为按原维护围栏暂存，写完并同步后在同一文件系统原子发布目录，保留已经由 dpkg 解包的目录。安装顺序记录回拷失败会保留 PREPARED 和原恢复副本。首次实装在 GWT JAR 实际写出 1 MiB 后中断。续接时 generation-reader 扫到私有区中的半截 JAR 并拒绝。该现场保持半配置，原副本和编号保留。Core 33a3cfef85 把暂存移出 reader 扫描范围，配对规则保持。
+
+Debian 13 ARM64 用 JDK 21 从 Git 构建两代 Core 与 GWT。修正包在新隔离 Root 从实装旧包升级。第一次在实际 GWT JAR 只写出 1 MiB 时中断，正式 sibling 目录仍缺。第二次沿相同 Root、boot 和维护围栏恢复完整目录，安装顺序文件仅写出 4 字节时 dpkg 返回失败，源数据和原阶段回执保持。第三次恢复完整安装顺序文件，已发布 sibling 的 inode 保持，五个安装步骤均未重新执行。17 份原阶段证据精确保持，新增 READY 后的 18 份记录全部通过 HMAC 核验，旧维护历史与原 AES 凭据保持。原副本在 READY 后退休，新增一份同编号维护回执。
+
+合法 Main 启动后经 HTTPS 读取已恢复的 GWT 登录入口。ARM64 Linux 定向 54 项通过，macOS 53 项通过、1 项 Linux 原子重命名用例跳过。两个隔离现场均正常停放。跨 boot、其他回拷路径、完整 Core/OSGi、其余 typed brokers 及六组件全生命周期矩阵仍为内部待办。原三现场和 7fd 的 41 输入/16 回执保持，旧 UNKNOWN 未重发。父项 0/12，external deferred 仅原三项。见 [实际检查点](actual-core-prepared-torn-copy-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式 Main 改密成功后立即停机
 
 Debian 13 ARM64 从当前 Git 和 JDK 21 构建旧 Core 2a74ac1c38、修复版 99024da7fb 和 GWT 08712fb。旧包的 GWT 普通改密实际返回成功，Main 在 1.565 秒内正常停止。新密码在新 Main 被拒绝，原密码仍可登录。Felix 角色事件原先只排入默认五秒延迟的快照任务，HTTP 可以提前返回。
