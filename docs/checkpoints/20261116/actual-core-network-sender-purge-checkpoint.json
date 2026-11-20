@@ -143,7 +143,6 @@
   },
   "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/network-sender-core-retention",
   "remaining": [
-    "Full Core resumption through its corrected abort callback needs a real installed interruption. The two isolated dpkg carrier paths passed.",
     "Core purge with an applied but unacknowledged operation from a registered Main remains a separate case."
   ],
   "abortCallbackFix": {
@@ -182,7 +181,7 @@
         "stderr": "dpkg: error processing archive /tmp/kura-debian-callback/2.deb (--unpack):\n new kura-test-abort-callback package pre-installation script subprocess returned error exit status 1\nErrors were encountered while processing:\n /tmp/kura-debian-callback/2.deb\n"
       }
     },
-    "remaining": "Exercise refused replacement and ordinary dpkg configure resumption in the installed full Core package.",
+    "remaining": "Initial install PREPARED recovery passed on a single Root. Other phases, upgrade/removal modes and unrelated senders retain their own evidence requirements.",
     "fullPackageFollowup": {
       "admission": {
         "id": "60c7aec0e6cd7c36d5eceecbe8669031ac8b0f059af1b44a7498a18a3f6f9065",
@@ -207,6 +206,62 @@
       "originalFixtureStoppedNormally": true,
       "attemptedPackageReplacement": false,
       "attemptedMainStart": false
+    },
+    "fullInstalledInterruption": {
+      "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/full-core-prepared-interruption",
+      "root": {
+        "id": "7c2205e3b2f2a1309db3f7da8cd2f6301f3d155096c118aa651fbe5297f31b18",
+        "mount": "1048582:6495530",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "postinstSha256": "179d0132e0102eb1642cd9645627bfaa7d7901659c2d44386d82ff073793e245",
+      "interruption": {
+        "unit": "kura-configure-interruption-proof.service",
+        "pid": 525,
+        "result": "signal",
+        "files": [
+          "intent.json",
+          "prepared.json",
+          "setup-brokers-complete.json",
+          "setup-brokers-intent.json",
+          "setup-brokers-returned.json",
+          "setup-https-complete.json",
+          "setup-https-intent.json",
+          "setup-https-returned.json",
+          "setup-layout-complete.json",
+          "setup-layout-intent.json",
+          "setup-layout-returned.json",
+          "setup-ownership-complete.json",
+          "setup-ownership-intent.json",
+          "setup-ownership-returned.json",
+          "setup-runtime-complete.json",
+          "setup-runtime-intent.json",
+          "setup-runtime-returned.json"
+        ],
+        "state": "half-configured",
+        "fence": "2cd5e8c7-c049-4349-8275-a1a655c60d16"
+      },
+      "refusedReplacement": {
+        "state": "unpacked",
+        "phase": "PREPARED install /opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+        "originalFenceExact": true,
+        "all17FilesExact": true,
+        "keysExact": true
+      },
+      "normalConfigure": {
+        "state": "installed",
+        "phase": "READY install /opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+        "original": "2cd5e8c7-c049-4349-8275-a1a655c60d16",
+        "added": "ready.json",
+        "packageHistory": "2cd5e8c7-c049-4349-8275-a1a655c60d16.json",
+        "keysExact": true,
+        "all17FilesExact": true,
+        "auditEmpty": true
+      },
+      "mainWasStarted": false,
+      "parkedDisabled": true,
+      "shutdownExit": 0,
+      "mountedReadOnlyDebInputs": 5
     }
   }
 }

@@ -29,7 +29,7 @@
 
 | 网关包 | 已取得的现场证据 | 仍需区分的条件 |
 | --- | --- | --- |
-| Core | 正式 Main 取得缺失 RTC 的 ENOENT，Core 移除、purge、重装后原回执和密钥仍在。[时钟实装记录](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)。三类网络发送端在派发前保存的原编号已通过正式 Core purge、重装及 Java 读回。[网络发送端记录](../checkpoints/20261116/actual-core-network-sender-purge-checkpoint.json) | 完整 Main 对虚拟 DS1307 的成功写入。 |
+| Core | 正式 Main 取得缺失 RTC 的 ENOENT，Core 移除、purge、重装后原回执和密钥仍在。[时钟实装记录](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)。三类网络发送端在派发前保存的原编号已通过正式 Core purge、重装及 Java 读回。同一发行系列的真实首装在 PREPARED 中断后，原 17 份回执经拒绝替换与正常续配保持一致。[网络发送端记录](../checkpoints/20261116/actual-core-network-sender-purge-checkpoint.json) | 完整 Main 对虚拟 DS1307 的成功写入。 |
 | Networking | 启用 DNS 的六组件现场经过 Core 升级及 Networking 移除、purge、重装。正式 Main 恢复原模型，IPv6 客户端收到合成 IPv4 上游的回答。[启用 DNS 实装记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json)。DHCP 停用丢回执后，经 Networking purge、配置中断及重装，正式 Main 按原编号取回结果。[DHCP 实装记录](../checkpoints/20261116/actual-registered-main-dhcp-maintenance-checkpoint.json) | 本次网络设备由夹具准备。真实 NM/cloud-init 和物理硬件交接仍归原延期项。 |
 | GWT | 单独移除后观察到 unpacked、half-configured，原地续配成功，随后 purge；核对了自定义图标和 Wires 文件。[中断回滚记录](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 维护脚本通过后，仍需对照各项实际页面流程单独验收。 |
 | Deployment | FileMove 发布后丢回执，系统服务管理器重启后仍按原记录完成源端收尾。[FileMove 续接记录](../checkpoints/20261116/actual-deployment-filemove-manager-reboot-checkpoint.json) | 这次是服务管理器重启，Linux boot ID 保持。 |

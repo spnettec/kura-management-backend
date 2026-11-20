@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Core 首装在 PREPARED 中断后沿原围栏完成
+
+在独立 Debian ARM64 首装现场，完整 `fcf1206435` deb 完成五个安装步骤并发布 PREPARED 后，夹具终止了仅承载本次 dpkg 配置的 systemd 单元。包停在 half-configured。再次解包同一份正式 deb 被维护围栏拒绝，原 postinst 的 abort-upgrade 回调让 dpkg 保持 unpacked。直接执行 `dpkg --configure kura-core` 完成首装，原 17 份意图及回执保持内容、inode 和其他元数据；只新增 ready.json 和同围栏编号的包历史。两份凭据保持、dpkg audit 为空。该现场始终未启动 Main，停放时 disabled、exit 0。五份 deb 用只读挂载复用。冻结 0/12。[原围栏、回执与包状态](actual-core-network-sender-purge-checkpoint.json)
+
 ## 2026-11-21 纠正 Core 旧配置尚未完成时 dpkg 误报 installed
 
 Core `fcf1206435` 在 abort 回调中核对活跃围栏与对应原 configure 目录。两个隔离 ARM64 dpkg 事务直接调用正式 deb 内的完整 postinst。替换解包被拒后，原 configure 未完成的一组由 half-configured 转为 unpacked，普通已安装的一组保持 installed，两个原围栏内容均一致。另有 29 项 configure 与普通启动回归通过。两个测试的 configure 入口由载体构造。完整 Core 现场重新启动后，挂载设备号由 1048815 变为 1048582，根目录与三处 actor 的 inode 保持。配对拒绝后已正常停机，未启动 Main、查询原编号或发起包替换。完整原 Root 上的同类中断续接仍待验。冻结 0/12。[包维护检查点](actual-core-network-sender-purge-checkpoint.json)
