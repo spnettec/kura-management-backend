@@ -562,7 +562,7 @@
       "maven": "3.10.1",
       "platform": "macOS ARM64",
       "status": "BUILD SUCCESS",
-      "modules": 14,
+      "modules": 22,
       "reactor": {
         "tests": 1207,
         "failures": 0,
