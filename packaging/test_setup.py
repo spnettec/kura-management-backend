@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from types import SimpleNamespace
 import shutil
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -117,6 +118,34 @@ class ConsoleInstanceTests(unittest.TestCase):
             'kura-management-console@later.service',
             'kura-management-console@link-only.service',
         ])
+
+    def test_absent_template_unit_listing_keeps_link_inventory(self):
+        with tempfile.TemporaryDirectory() as root:
+            wants = Path(root) / 'run/systemd/system/multi-user.target.wants'
+            wants.mkdir(parents=True)
+
+            def run(command, **kwargs):
+                if command[1] == 'list-unit-files':
+                    raise subprocess.CalledProcessError(1, command, output='', stderr='')
+                return subprocess.CompletedProcess(command, 0, '', '')
+
+            setup = console_setup.Setup(Path(root), run=run)
+            self.assertEqual(setup.template_units(), [])
+            unit = 'kura-management-console@link-only.service'
+            (wants / unit).symlink_to('/usr/lib/systemd/system/kura-management-console@.service')
+            self.assertEqual(setup.template_units(), [unit])
+
+    def test_template_inventory_propagates_systemctl_errors(self):
+        with tempfile.TemporaryDirectory() as root:
+            (Path(root) / 'run/systemd/system').mkdir(parents=True)
+
+            def run(command, **kwargs):
+                if command[1] == 'list-unit-files':
+                    raise subprocess.CalledProcessError(1, command, output='', stderr='Bus unavailable')
+                return subprocess.CompletedProcess(command, 0, '', '')
+
+            with self.assertRaisesRegex(subprocess.CalledProcessError, 'non-zero exit status 1'):
+                console_setup.Setup(Path(root), run=run).template_units()
 
     def test_removal_rejects_enabled_override_without_disabling_it(self):
         commands = []

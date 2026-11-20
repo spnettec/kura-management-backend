@@ -168,7 +168,13 @@ class Setup:
     def template_units(self):
         pattern = 'kura-management-console@*.service'
         loaded = self.systemctl('list-units', pattern, '--all', '--no-legend', '--plain')
-        installed = self.systemctl('list-unit-files', pattern, '--no-legend', '--no-pager')
+        try:
+            installed = self.systemctl('list-unit-files', pattern, '--no-legend', '--no-pager')
+        except subprocess.CalledProcessError as error:
+            # systemd can report an unmatched glob as status 1 with both streams empty.
+            if error.returncode != 1 or error.stdout != '' or error.stderr != '':
+                raise
+            installed = None
         units = set()
         for result in (loaded, installed):
             for line in result.stdout.splitlines() if result is not None else []:
