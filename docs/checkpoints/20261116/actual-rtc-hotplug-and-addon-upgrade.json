@@ -1,0 +1,259 @@
+{
+  "core": {
+    "version": "6.0.0~git20261120140001.66cce5e-1",
+    "commit": "66cce5ec64735f7804d43962ad0daca1c567f3f0",
+    "tree": "c4351320ca8201096b49e7e6a4b0849557b2ff31",
+    "sha256": "92a89666d53c62d9f3c39d2971d318d89d06fe709fb9c046ac2cdd782d30741b",
+    "size": 204210674
+  },
+  "rtcArm64": {
+    "kernel": "7.0.0-43-generic aarch64",
+    "driver": "rtc-ds1307 on i2c-stub",
+    "handlerCases": [
+      {
+        "case": "appear and receive read-only fd",
+        "result": {
+          "binding": "5d5083aefdaceb06169ef33c3d8ac0492929b7428deb9da6781d69f1528ba2e3"
+        }
+      },
+      {
+        "case": "unplug",
+        "result": {
+          "errno": 2
+        }
+      },
+      {
+        "case": "same number replaced",
+        "result": {
+          "errno": 116
+        }
+      },
+      {
+        "case": "same number new prepare admitted",
+        "result": {
+          "binding": "9b14ca2f215d9e5f6cd104e56adeae00b8d481567ee993ed101174b0436629ce"
+        }
+      },
+      {
+        "case": "alias retarget",
+        "result": {
+          "errno": 116
+        }
+      },
+      {
+        "case": "new alias admitted",
+        "result": {
+          "binding": "257a3d9673c787e117ed4b38bd0dbc906a51e9020eefc975c77800fa88bb66e3"
+        }
+      },
+      {
+        "case": "alias changed at open",
+        "result": {
+          "errno": 116
+        }
+      },
+      {
+        "case": "kernel device replaced at open",
+        "result": {
+          "errno": 116
+        }
+      },
+      {
+        "case": "new device admitted after open race",
+        "result": {
+          "binding": "ea41c11c3bf320e880b7fb778980e3d9188683c7f49bb4590ce375db76c7ade3"
+        }
+      }
+    ],
+    "writeIoctl": false,
+    "transport": "SEQPACKET socketpair",
+    "formalAuthorizedActorExercised": false
+  },
+  "regression": {
+    "clockArm64Passed": 93,
+    "hostClockPassed": 92,
+    "hostSkipped": 1
+  },
+  "fixture": {
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "status": "exited",
+    "exitCode": 0,
+    "root": {
+      "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+      "fs": "1048582:6123658",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "originalFiles": 10,
+    "coreUpgrade": {
+      "returnCode": 0
+    },
+    "sameUidPeer": "UNAUTHORIZED",
+    "legalMainClock": {
+      "main": {
+        "MainPID": "2260",
+        "Result": "success",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "369277240000",
+        "CapabilityBoundingSet": "cap_dac_override cap_net_bind_service cap_net_admin",
+        "AmbientCapabilities": "cap_dac_override cap_net_bind_service cap_net_admin",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "38c2e015dc3c4c3aa9e48966ccd112b4"
+      },
+      "snapshots": {
+        "snapshot_0.xml": {
+          "enabled": "false",
+          "clock.provider": "java-ntp"
+        },
+        "snapshot_1795169033338.xml": {
+          "clock.provider": "java-ntp",
+          "enabled": "false"
+        }
+      },
+      "readOnlyOutcome": "org.eclipse.kura.KuraException: Service unavailable. Clock service not configured yet.",
+      "positiveSyncObserved": false
+    },
+    "corePackageHistory": "e25bd6b4-2870-43b1-8f05-495ab7992a7e.json",
+    "siblingUpgrade": {
+      "kura-management-ui": {
+        "commit": "b62f67ae75f1364fa4e0d2f2e1d6653b993660d9",
+        "tree": "c76f1fe745ce58b4f15dd30b5590c867b1bfa33c",
+        "sha256": "5d575d1ee9c58f12a79ec87b804b882baadd15369059763571a00f1b1addb5e7",
+        "version": "3.0.0~git202611201404.b62f67a-1"
+      },
+      "kura-wires": {
+        "commit": "89d5f57bf40317307eda8929459b6194b5e8240d",
+        "tree": "efaefdec6dc535122a5be2ce26d15d2c27ed12a8",
+        "sha256": "49f3458f31a7960f8e063ec06ef5281c0f319b043dd6b92e2f614c8daccf92b5",
+        "version": "3.0.0~git202611201404.89d5f57-1"
+      },
+      "kura-deployment": {
+        "commit": "c93c39e33a3eefda3a4863d6a49903376375d941",
+        "tree": "332b808ba98c8f989f62e8a40eb265cb62fe7c54",
+        "sha256": "81f8333b4b191939d6fad3a9f6ba2739064fc733a34b2bb612d2250224908553",
+        "version": "2.0.0~git202611201404.c93c39e-1"
+      }
+    },
+    "unpacked": "masked-runtime",
+    "configured": "disabled",
+    "installedPackageVersions": {
+      "kura-core": "6.0.0~git20261120140001.66cce5e-1",
+      "kura-management-ui": "3.0.0~git202611201404.b62f67a-1",
+      "kura-networking": "3.0.0~git202611200952.0789499-1",
+      "kura-deployment": "2.0.0~git202611201404.c93c39e-1",
+      "kura-wires": "3.0.0~git202611201404.89d5f57-1",
+      "kura-management-agent": "0.1.0~cohort202611200955.b9b2d3b-1",
+      "kura-management-console": "0.1.0~cohort202611200955.9691fe9-1",
+      "kura-management-console-installer": "0.1.0~cohort202611200955.9691fe9-1"
+    },
+    "stoppedReadback": true,
+    "wiresPurgeRecovery": {
+      "purge": "not-installed",
+      "failedConfigure": {
+        "returnCode": 1,
+        "state": "half-configured",
+        "registered": false
+      },
+      "recovered": "3.0.0~git202611201404.89d5f57-1",
+      "registry": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires"
+      ],
+      "parked": 0,
+      "main": "disabled/inactive",
+      "protectedFiles": 10
+    }
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "latestCoreArchive": {
+    "version": "6.0.0~git20261120141700.168681f-1",
+    "architecture": "arm64",
+    "package": "kura_6.0.0~git20261120141700.168681f-1_arm64.deb",
+    "bytes": 204212276,
+    "sha256": "256210abad38963807ad47273afc8035f9cf3a1c50c1e81fe749ff9f4a4f0e58",
+    "commit": "168681f6aa0a9fe403efa76fe99ef5809a7beeaf",
+    "tree": "eac64f325f4a6a39e57334438501ce6e9e803fb7",
+    "matchedClockFiles": [
+      "bin/kura_chrony_config.py",
+      "bin/kura_clock_broker.py",
+      "bin/kura_clock_client.py",
+      "bin/kura_clock_journal.py",
+      "bin/kura_clock_setup.py",
+      "libexec/clock-broker/kura-clock-broker.service",
+      "libexec/clock-broker/kura-clock-broker.socket",
+      "libexec/clock-broker/kura-clock-chrony-config.service",
+      "libexec/clock-broker/kura-clock-chrony-config.socket",
+      "libexec/clock-broker/kura-clock-chrony-step.service",
+      "libexec/clock-broker/kura-clock-chrony-step.socket",
+      "libexec/clock-broker/kura-clock-rtc-devices.service",
+      "libexec/clock-broker/kura-clock-rtc-devices.socket",
+      "plugins/4/org.eclipse.kura.linux.clock-2.0.0-SNAPSHOT.jar"
+    ],
+    "cohortFileCount": 14,
+    "deployed": true
+  },
+  "legacyProjection": {
+    "implementation": "a356b281389ec770101fbbfa2b3abb7d909f5db0",
+    "arm64ClockTests": 95,
+    "hostClockTests": {
+      "passed": 94,
+      "skipped": 1
+    },
+    "linuxRenameFixture": "empty paired catalog, directory and manifest inodes retained under a root-only parent",
+    "livePopulatedLegacyProjectionInDpkg": false
+  },
+  "coreReactor": {
+    "jdk": "21.0.13",
+    "maven": "3.10.1",
+    "profile": "osgi-it",
+    "projects": 82,
+    "initialStop": "kura-unit-tests (79/82), seven failed configuration tests",
+    "resumeFrom": "kura-unit-tests",
+    "crossModuleTestsPassed": 127,
+    "realEquinoxTestsPassed": 67,
+    "systemServiceTestSkips": 2,
+    "qualification": "82 modules covered across initial run and four-module continuation; both share the same private Maven repository",
+    "testsCommit": "168681f6aa0a9fe403efa76fe99ef5809a7beeaf"
+  },
+  "legacyPackageDependencyRecovery": {
+    "containerPrefix": "911406af1ef4",
+    "distribution": "Ubuntu 24.04 ARM64",
+    "from": "6.0.0~git202611180454.29c92f0-1",
+    "to": "6.0.0~git20261120141700.168681f-1",
+    "coldBootProjectionPresent": false,
+    "firstInstallExit": 1,
+    "interruptedState": "unpacked",
+    "dependencies": [
+      "kmod",
+      "python3-dbus",
+      "iputils-ping"
+    ],
+    "dpkgConfigureExit": 0,
+    "originalRecordsVerified": 7,
+    "originalResult": "FAILED",
+    "operations": 1,
+    "senderIssued": 1,
+    "senderCompleted": 1,
+    "clockSocketEnabled": true,
+    "rtcSocketEnabledAndActive": true,
+    "main": {
+      "MainPID": "0",
+      "ControlPID": "0",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled"
+    },
+    "parkExitCode": 0
+  }
+}

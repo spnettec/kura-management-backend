@@ -1,3 +1,17 @@
+## 2026-11-20 RTC 热插拔、原 Root 的 Core 及三组件升级
+
+Core `66cce5ec64` 将时钟 actor 与按请求打开 RTC 的无能力 relay 分开。Ubuntu ARM64 虚拟 I²C 总线上，真实 DS1307 内核驱动创建、拔出、同编号重新注册，别名改指和两种打开竞争均完成观察。原绑定拒绝，重新准备可收到只读 FD。设备检查使用实际 SEQPACKET socketpair，未调用写时间 ioctl。ARM64 时钟合同 93 项通过。
+
+已在六组件原 Debian 13 ARM64 Root 上由 `735ebf0c64` 升级新 Core。正式 socket、actor 副本、vendor 单元与 cohort 配对；同 UID 的其他进程被实际 relay 拒绝。正式 Main 的 OSGi ClockService 已注册，两份原快照均为 disabled，getLastSync 返回 SERVICE_UNAVAILABLE。保持原配置、原图和所有历史操作编号。合法 actor 经正式 socket 的正向 FD 及 RTC 写入仍待实证。
+
+GWT `b62f67a`、Wires `89d5f57`、Deployment `c93c39e` 移除无人生产的跨包失败标记，继续传播各自安装器的真实退出码。三个新包在同一 Root 一次联合解包后均为 unpacked，Deployment 的维护 mask 生效；单次联合 configure 后八包 installed、Main 回到原 disabled。中心进程、十份保留文件和 Core 包历史在两阶段一致，现场正常停机。上述为阶段间续接；故障中断和其他 provider/launcher 场景继续内部 pending。冻结闭环仍 0/12，外部延期仍为原三项。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
+随后对同一 Root 的 Wires 核对包内无 conffiles，已装文件仅含受管理的 JAR 与脚本，原图存在 Core 快照。单包 purge 后为 not-installed，原十份文件保持。原包解包后，一次真实注册表锁竞争使 configure 明确返回 1，包处于 half-configured，Wires 注册行仍缺席。释放锁后同一 Root 续配成功，八包 installed、原四行顺序和维护历史精确。原图没有再次提交。联合整机中断和其余包的故障恢复继续内部 pending。
+
+Core 后续提交 `a356b28138` 将旧 RTC 投影退场限定为同一维护围栏、同一旧 actor 清单和原 service 的配对。Linux ARM64 设备目录试验验证保留 inode 的原子移动和重复进入；时钟合同 95 项通过。Core `168681f6aa` 修正配置测试，覆盖未标记快照的密码解密和失败回退，保留新旧 XML 两份预期，并显式选择单参数快照保存方法。JDK 21 的 Core 82 模块分初跑和续跑完成；跨模块单测 127 项、真实 Equinox 集成测试 67 项通过。初跑 SystemServiceTest 有两项跳过。此记录覆盖该 Maven profile；客户安装下的全部 provider、launcher 和故障矩阵仍在台账中。
+
+同一 Core 工作树单独重建 ARM64 发行包，14 份时钟配对文件逐项核定。原 Ubuntu 时钟 Root 从 `29c92f0` 升级时，缺少 kmod、python3-dbus 和 iputils-ping，dpkg 明确退出 1，状态 unpacked。五份原 actor 记录及两份已移入保留目录的 sender 记录均核对。由相同基础镜像从 Ubuntu 签名仓库取得三项依赖，原围栏摘要保持，单次 configure 成功；原 FAILED 回执和七份文件精确，操作数、issued、completed 各一。新 RTC socket 已启用，Main 保持 disabled，原 Root 正常停机。旧投影在本次冷启动时不存在，实际带设备的旧投影迁移仍未覆盖。
+
 ## 2026-11-20 继续实施 — 六组件内 Wires 保留式移除和分阶段重装
 
 继续上一轮保留实际 Timer→Logger 的同一 Debian 13 ARM64 测试 Root。正常停启后核对原容器、OverlayFS 底层路径、根 inode 和 machine-id 摘要，十份被保护文件的元数据及内容在新挂载中核定。维护期间 Main disabled、未自启，Agent 保持停止且原初始化读取通过，中心原进程保持。
