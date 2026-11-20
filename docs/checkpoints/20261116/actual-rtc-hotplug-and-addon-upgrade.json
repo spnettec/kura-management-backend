@@ -1464,5 +1464,93 @@
       "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.608 s -- in org.eclipse.kura.core.system.SystemServiceTest"
     ],
     "logSha256": "fafa676a294b858fcee2ad59631d0b40a4ea443caee229a9345bd77c6ba47a3b"
+  },
+  "dhcpJavaRecovery": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation",
+    "networking": {
+      "archive": "kura-networking-3.0.0~git202611201611.22a47d6-1_all.deb",
+      "sha256": "01568b895ebb3e344493aeb0292c728965f990780ca654a70fc59b55358c4644",
+      "commit": "22a47d659c7f24c1c12ebd26ae083d9c8fd446a9",
+      "tree": "164e841f36a2d7290cc78ecc4d0396370a3efeba",
+      "files": {
+        "org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar": "5f32ee26a106323670a9f1f8b4c7852eed9af49e5f5db39a714d20ec199fc1e6",
+        "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar": "70473c654c468bd131c78c0f9c098e1f9847798a6ba196a1a48e47255af18539",
+        "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar": "67a196d67f87b0acc595e6224ee42d13605a99b7c8a961bafa967c8400e460d0"
+      },
+      "proofs": {
+        "dhcp-provider.json": {
+          "dhcpProtocol": 1,
+          "provider": "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "67a196d67f87b0acc595e6224ee42d13605a99b7c8a961bafa967c8400e460d0"
+        },
+        "dhcp-nm-provider.json": {
+          "dhcpNmProtocol": 1,
+          "provider": "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "70473c654c468bd131c78c0f9c098e1f9847798a6ba196a1a48e47255af18539"
+        }
+      }
+    },
+    "core": "bdf7690c8e11a4ffa58257bc6d7215d46f33bbc4",
+    "coreDebSha256": "9a534cf0ef6aff2687121e3956b9c7f13e69d61540d94221a4aa0208f04e36d1",
+    "oldRegression": "Original Java client stopped before same-root outcome lookup after acknowledgement failed",
+    "tests": 2242,
+    "reactorModules": 17,
+    "integration": {
+      "operation": "629708ba-025f-4b69-8f87-a8ccf930d40e",
+      "originalIdCount": 1,
+      "sequence": [
+        "compare",
+        "scope",
+        "apply",
+        "acknowledge",
+        "scope",
+        "outcome",
+        "acknowledge"
+      ],
+      "issuedServiceJobs": [
+        "stop"
+      ],
+      "daemonPid": 6,
+      "daemonExit": 0,
+      "intermediateBytes": 32,
+      "finalBytes": 201,
+      "deliveredInode": 12,
+      "originalRootIntentAndResultExact": true,
+      "javaRanAs": 60429,
+      "javaOutput": "Original reconciliation completed",
+      "transport": "packaged fixed Unix socket client; fixture peer/unit checks; actual dnsmasq stop via test service adapter"
+    },
+    "retainedAdmission": {
+      "id": "206dcf6fd115c242fde27134c9cec0f43d9b1d1e0cbf3b6c40bec0f91c367a1e",
+      "expected": "1048825:5031285",
+      "observed": "1048582:5031285",
+      "matched": false,
+      "queryCount": 0,
+      "packageDispatches": 0
+    },
+    "parked": {
+      "id": "206dcf6fd115c242fde27134c9cec0f43d9b1d1e0cbf3b6c40bec0f91c367a1e",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T16:14:23.118801368Z",
+        "FinishedAt": "2026-11-20T16:14:23.309644944Z"
+      }
+    },
+    "protectedSitesVerified": 3,
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "sixComponentParked": true
   }
 }

@@ -1,3 +1,9 @@
+## 2026-11-21 DHCP 正式 Java 调用方沿原编号确认送达
+
+Networking `22a47d6` 修复后台调和一旦遇到未决回执便永久停在 JVM 内的问题。下一次调和先用原编号读取作用域，仅在原 Root 核对原结果；取得原 APPLIED 的有效令牌才确认并释放编号。Root 改变、NOT_FOUND、UNKNOWN、坏令牌及确认失败均保留原操作。相同目标在本次恢复中不再执行 apply；目标已变则确认成功后才重新比较。上述覆盖同一客户端存活期间的恢复。跨 JVM 的原编号恢复和全部安装维护继续待验。
+
+JDK 21 的 Networking 17 模块构建及 2242 项测试通过。用新 deb 内实际调用类、Core `bdf7690c8e` 包内固定 Unix socket 客户端及 actor 进行了隔离 Debian ARM64 联调。普通账号 Java 发出一次 apply，独立 dnsmasq 只停止一次。内核将首次送达文件截于 32 字节，Java 下一次调和以原编号 scope、outcome、acknowledge，经原 inode 补完为 201 字节，原意图、结果、Root 元数据及内容保持。peer 的 systemd Main 归属、unit 观察和 stop 调度使用夹具适配器；此项没有在正式 Main 实装。已 purge 的 DHCP 原夹具 `206dcf6f` 停机状态与回执吻合，但重启后设备号由 1048825 变为 1048582，inode 5031285 保持；未查询历史、未派发包或启动 Main，已正常停机。三原现场、六组件和 7fd 复核通过，冻结 0/12。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-21 当前 Core 单次完整 reactor 验证
 
 在 Core `bdf7690c8e` 使用 JDK 21.0.13、Maven 3.10.1，从根 POM 执行无模块筛选的 `-Posgi-it verify`，82 个模块一次完成，11 分 42 秒。Maven 各测试阶段共报告 2130 项，2128 项通过，SystemServiceTest 跳过 2 项，失败和错误均为零。其中跨模块单测 127 项、真实 Equinox 集成测试 67 项全部通过。13 项 CRL 集成测试用时 424 秒。预先调用 build-all 使用的测试模块选择器只选中 23 个模块，已停止该次调用并以本次完整构建计数。原三现场在完整构建后核对一致。修复版在原六组件或完整 Main 的设备、安装维护和中断矩阵继续内部待验，冻结闭环 0/12。[测试汇总](actual-rtc-hotplug-and-addon-upgrade.json)
