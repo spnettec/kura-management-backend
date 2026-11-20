@@ -1,3 +1,9 @@
+## 2026-11-20 六组件原 Root 的时钟服务和 socket 联合停机
+
+Parallels 组件停机时，systemd 提示 RTC 服务停止后其 socket 仍可激活服务。Core `5f6be61f46` 将八个时钟服务及 socket 纳入同一个 PID 1 停止事务，并逐项核对终态。95 项时钟合同在 Debian 13 ARM64 以非 Root 身份通过；首次以 Root 运行时，模拟普通调用者的用例被准入检查拒绝。
+
+JDK 21 构建当前 ARM64 deb，六组件原 Root 从 `66cce5e` 实际原位升级。中心进程连续，Main 维持 disabled，Agent 没有启动，原两份中心回执和 Agent 源包记录完整。实际 relay 在 accept 等待时执行新维护入口，八单元均 inactive，原 relay 进程结束。systemd 保留 socket 文件，Linux 内核连接结果为 ECONNREFUSED。沿同一围栏恢复后 socket 重新监听，relay 按需启动，新增时钟请求数为零。原六组件夹具正常停机；原 VM 已关机、三现场、13 个原运行容器及原 7fd 保持。冻结仍 0/12。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 正式 RTC socket 与 actor 在虚拟 DS1307 上写入成功
 
 原 Parallels ARM64 时钟组件沿原 namespace 和停机维护围栏，将 Core 包 `168681f6aa` 的时钟文件及正式 systemd 单元配对升级。沿用原测试单元、账号和 JDK 21，测试入口 `30b7af79e4` 增加仅针对内存 I²C 总线上 DS1307 的显式触发。真实 ClockServiceImpl 以零有效 capabilities 运行，时钟 actor 仅有 CAP_SYS_TIME。JVM 时钟模块 30 项通过。

@@ -576,5 +576,44 @@
     "fullOsgiMain": false,
     "physicalRtc": false,
     "rawEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/virtual-rtc-component"
+  },
+  "clockSocketQuiescence": {
+    "package": {
+      "version": "6.0.0~git20261120145024.5f6be61-1",
+      "commit": "5f6be61f463987ceef9ce96dcd4e80ee02efab69",
+      "tree": "03ee6168103015f4ff4709145a3c0defa707098a",
+      "sha256": "19af0fc5c4b4c897a0d840645212d343843adf953eb8ce94ca673442863fdfb7",
+      "size": 204212276
+    },
+    "previousVersion": "6.0.0~git20261120140001.66cce5e-1",
+    "jointNativeRoot": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "coreUpgradeHistory": "8c0f5694-e759-4266-b2fa-61a36507ad55.json",
+    "testCountNonRootArm64": 95,
+    "previousObservedWarning": "Stopping RTC service while its triggering socket was still active",
+    "listeningWait": "__skb_wait_for_more_packets",
+    "sameSystemdStopTransaction": true,
+    "stoppedUnits": [
+      "kura-clock-broker.service",
+      "kura-clock-broker.socket",
+      "kura-clock-chrony-config.service",
+      "kura-clock-chrony-config.socket",
+      "kura-clock-chrony-step.service",
+      "kura-clock-chrony-step.socket",
+      "kura-clock-rtc-devices.service",
+      "kura-clock-rtc-devices.socket"
+    ],
+    "retainedSocketNode": true,
+    "socketConnectResult": "ECONNREFUSED",
+    "clockMaintenancePurpose": "0c9b30eb-dae4-484c-bb2a-c06a66bf3b22",
+    "socketRestoredActive": true,
+    "newClockOperations": 0,
+    "originalCenterContinuous": true,
+    "agentAndMainNotStarted": true,
+    "previousCenterReceipts": 2,
+    "previousAgentSourceFiles": 2,
+    "parkedExitCode": 0,
+    "original13Running": true,
+    "original7fdExited": true,
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-clock-quiesce"
   }
 }
