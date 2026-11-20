@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — Core dpkg 回滚硬链接中断与 Equinox reactor
+
+在独立 Debian 13 ARM64 Root 实测 dpkg 发布完整原路径后中断，续解包在 linkat 成功后再次中断。原路径和回滚路径仅有两个名字，共用原包文件 inode。旧 a95523d46a 在只读核验中拒绝该状态，夹具保持原 dpkg 状态、Root 和围栏。
+
+Core d37dfbc9de 只在已有原 HMAC 交接且目录 inode 匹配的载荷中，按同一包清单验证原路径和回滚路径共享的 inode。两份路径和原文件的大小、元数据及摘要必须精确相符。第三个硬链接、换成同字节但不同 inode 的回滚文件、未配对路径及不完整文件上的硬链接继续拒绝。
+
+修正在新隔离 Root 从 Git、JDK 21 构建并实际验收。实际 dpkg 经两个中断边界后，沿同一 Root、boot、包和围栏接回原旧树。旧树核验后，同一个目录、硬链接的 inode、两份名字及内容精确交还 dpkg。实际 configure 达到 installed ok，18 份配置记录通过，原 AES、四类数据、旧包历史和相邻目录保持，仅新增原维护号回执。96 项 ARM64 Linux 定向通过。两个现场均禁用 Main 且正常停放。
+
+Core a95523d46a 用 JDK 21、Maven 3.10.1 完成标准 Equinox reactor，先前分开验证的 67 项真实 Equinox 用例首次在同一当前源码构建中通过。后续 d37dfbc9de 只变更 Python 包装代码与其测试。其余 Core/OSGi 业务、typed brokers、六组件 provider/launcher/全生命周期及跨 boot 仍内部待办。原三现场、25 份个人文件和 7fd 的 41 输入/16 回执保持，旧 UNKNOWN 未重派。12 父项仍 0/12，external deferred 仅原三项。见 [实际检查点](actual-core-dpkg-hardlink-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core dpkg 控制替换及新版 reinstreq 恢复
 
 原 HTTPS 步骤仍按原编号保留 UNKNOWN。可信记录只有派发证据。已实际验证的 PREPARED 文件回拷和原围栏续接继续沿用。
