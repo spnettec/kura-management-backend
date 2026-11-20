@@ -56,6 +56,8 @@ H2 文件库提供了一个只有跨升级才看得清的风险。旧版遇到�
 
 11 月 21 日 04:05 再次采样，当前续接目录用 `du -sk` 计得 7.91 GB，含私有 Maven 缓存 0.69 GB。单个 Core 打包目录已保留 20 个版本，deb 文件长度合计 4.08 GB。本次在同一六组件卷上升级 Core 并实测事件，停机卷从 447,028 KiB 增至 448,176 KiB。完整包留存与现场复用的成本可以分别核算；APFS 克隆的实际独占块没有单测。[目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/clock-sync-confirmation/event-order/disk.json) · [停机卷验证](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
+两条文件数据库路径继续复用同一六组件卷。H2 修改属于网关默认 Core，验证升级时保留了一份 204,227,890 字节的新 deb。SQLite 属于可选 OSGi provider，在同一 Main 内实际安装、更新、卸载与重装，直接使用 provider 和 JDBC bundle。两次正常停机的卷占用分别为 450,540 KiB 和 465,856 KiB。SQLite 验收沿用 H2 已安装的 Core 包。[实装和离线读回](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 本次续接采用的简化
 
 同一版本只建立一份工作检出，RTC 先跑脚本与 unit 定向回归，需要验证包实际安装时再组装当前版本。对必须安装的候选保留 Git tree、包摘要、成套文件清单和原始维护回执。涉及原 Root 的业务沿原现场继续；可重建的编译输出单独放置。这项选择削减构建副本，保留已冻结的 12 项验收范围。

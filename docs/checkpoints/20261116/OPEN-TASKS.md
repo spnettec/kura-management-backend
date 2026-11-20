@@ -1,3 +1,7 @@
+## 2026-11-21 SQLite 可选 provider 安装、升级、卸载与原文件重开
+
+Core 源码 `2bc1de1a76` 的 SQLite provider 保留打开成功后的数据文件。保存凭据和换钥失败时直接返回错误。缺省配置保留不可读文件，主动启用重建的旧配置仍可在没有候选加密钥且 SQLite 明确报告文件格式错误时重建。82 项模块测试通过，包括真实 SQLite 文件打开成功、随后保存凭据失败，恢复后读回原行。在同一 ARM64 六组件 Main 上实际安装 JDBC 和旧 provider、创建一次工厂配置、写入一行。原地更新 provider、卸载并从相同 bundle location 重装后，原服务重新注册并分别读回同一行。该验证采用可选 OSGi 安装方式，持久库使用普通 SQLite。冻结 0/12。[维护阶段与停机状态](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 六组件正式 Main 保留 H2 文件库及原凭据
 
 Core `5e80d67bd6` 修复 H2 provider 首次打开文件库失败时删除原库的问题，并正确取消重新配置前的 checkpoint 与 defrag 定时任务。原六组件 Main 创建独立 H2 文件库，通过 Kura 配置工厂提交一次凭据，写入一条记录。Core 原地升级期间关闭的数据库 SHA-256 保持。新 Main 先读回原记录，临时重开凭据被拒绝后恢复原配置，再次读到相同业务行。仅校验当前 H2 文件 provider。该 Root 的六包、13 份文件已在正常停机状态只读核对。JDK 21 本模块 42 项、Core/OSGi 完整 82 模块 2139 项通过、2 项跳过。冻结 0/12。[业务读回与最新停机现场](actual-native-wires-retained-reinstall-checkpoint.json)

@@ -19,3 +19,7 @@ cloud、Artemis、container、OPC UA、Triton、YOFC MQTT/InfluxDB等已定位�
 store.save检查覆盖旧密文字符串保留、两实例并发32次更新、发布失败/不支持原子移动、坏文件、符号/硬链接，以及“可写但不可读”的旧文件。macOS及隔离Linux/JDK21的6项均通过。序列化范围是同一JVM，不替代维护锁、跨文件事务、provider重加密或旧钥退役。
 
 NM测试使用合法自定义原钥；默认弱钥继续拒绝新模板。代号形状不是认证，Java认证整个头和内容；agent不取得原钥、不解密、不重建模板。没有恢复或重发原网关UNKNOWN。
+
+## 2026-11-21 文件数据库的实际进度
+
+正式六组件 Main 已验证两条独立的文件保留路径。H2 工厂沿原凭据重开原库，凭据被拒绝后仍能读回升级前的记录。可选 SQLite provider 在原地更新、卸载及重新安装后仍能通过原工厂读回原记录。SQLite JDBC 回归另验证凭据记录保存失败后的原文件重开。两条路径均未更换网关包装钥，SQLCipher、旧钥退役与其他 provider 仍按原台账待验。[实装回执](actual-native-wires-retained-reinstall-checkpoint.json)

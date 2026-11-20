@@ -407,5 +407,84 @@
       "FileProviderProbe.java": "c3b760e99f8fc1dc982623efb92ee8b9cae92b1b8f7f1b4b8db54dd86829c062",
       "probe.jar": "6103c3f9632510530db39b327a42f4031e26fa090bf99650765a5e7e8c01e0c4"
     }
+  },
+  "optionalSqliteProviderLifecycle": {
+    "source": "2bc1de1a766a8923b334e8c4c8af3f97686e6375",
+    "tree": "e1016f24b33e61a4b0763bfb79beefcbf11df867",
+    "installedCore": "6.0.0~git20261120201409.5e80d67-1",
+    "providerModuleTests": 82,
+    "nativeDatabaseRegression": "A real JDBC file opens before an injected credential-store error. Subsequent successful open returned the original row. Explicit reset was enabled for this regression.",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "main": {
+      "unit": {
+        "MainPID": "1084",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "90c624629ad542ab94b5a0f86b84256f"
+      },
+      "ticks": "39232269",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001402",
+      "nnp": "1"
+    },
+    "installedOldBundleId": "247",
+    "installedNewBundleId": "248",
+    "originalBusinessRowVerified": true,
+    "factorySubmissions": 1,
+    "rowInsertions": 1,
+    "phases": [
+      "optional JDBC driver and old provider installed",
+      "factory created and one row committed",
+      "provider updated in place and same row read",
+      "provider uninstalled, service withdrawn and file retained",
+      "same location reinstalled, original factory and row read"
+    ],
+    "defaultReset": false,
+    "scope": "Optional OSGi bundles installed in a registered Core Main; local file DB and native SQLite JDBC driver. This does not verify SQLCipher encryption or a separate Debian package.",
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "protectedFilesExact": 24,
+      "originalSubmitWithdrawn": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T20:26:20.548100864Z",
+        "FinishedAt": "2026-11-20T20:26:38.97416118Z"
+      }
+    },
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/sqlite-retained-file",
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/sqlite-retained-file/parked-readback.py",
+    "evidenceSha256": {
+      "inputs.json": "58534bc74568ab16dc4e7af06950a0703aa63549acff185383f3c96d5525c245",
+      "intent.json": "e9e67ca56e8623b7c71e76bd9f84758f3dbb416d4bdf582158ce835cb9c4d878",
+      "observed.json": "228bd4790adb96a0c456654e18b8cecb07faad17f426c0deff6e9bba02db7a29",
+      "parked.json": "de01ab27f9f81d2fe757b8f8dfabb458d4ad499fa1d519fec3662ef105eb957c",
+      "offline-readback.json": "3c273b4fef4a3a9795387eb91b747d86343955ccc03940ca015c9c41089f1d6a",
+      "final-check.json": "2f839c8a4197a6f407223c88ec1155a47ecb067498c0236537d04ba9203d3528",
+      "original-three-after.json": "98f100bcb64c2fdb510d4d8d484897ca5d76be67169696a40a58f17a070361a9",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "maven.log": "1dc645a21b41649057b1979b59628545ebf3ebeb216328f5124c9d6d42547018",
+      "candidate-verified.log": "fccee014657ee9a1852a5660c1ebaaeab4f51795629b36b6fc2cf18fb3fe42a2",
+      "SqliteLifecycle.java": "56ad89baeff31d1fbcd97594926941ad7c875636e7d55e1d69133c8f3fd23c9a",
+      "probe.jar": "876c4f8d2c06e1d29dd6834e25193df3f58d4c960fc2911a0fc73f1ea05a9588"
+    }
   }
 }
