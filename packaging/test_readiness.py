@@ -14,6 +14,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 import installer
+from setup import Setup
 
 
 class ReadinessTests(unittest.TestCase):
@@ -96,8 +97,8 @@ class ReadinessTests(unittest.TestCase):
             process=Path(directory)/'unit-only-old-executable';process.write_bytes(b'old unit fixture')
             service=self.service();service.path.return_value=process
             service.verify_local_command.return_value={'binarySha256':'0'*64}
-            with patch.object(installer,'active_process_digest',return_value=hashlib.sha256(process.read_bytes()).hexdigest()):
-                result=installer.status(service)
+            service.active_process_digest.return_value=hashlib.sha256(process.read_bytes()).hexdigest()
+            result=installer.status(service)
             self.assertFalse(result['ready']);self.assertEqual(result['readiness'],'UNVERIFIED')
             service.bound_command.assert_not_called();service.activate.assert_not_called()
 
@@ -108,7 +109,8 @@ class ReadinessTests(unittest.TestCase):
             service.verify_local_command.return_value={'binarySha256':hashlib.sha256(process.read_bytes()).hexdigest()}
             description={'schemaVersion':1,'httpAddress':'[::]:28443','httpPort':28443,'certificateFingerprint':'a'*64}
             service.bound_command.return_value=description
-            with patch.object(installer,'active_process_digest',return_value=hashlib.sha256(process.read_bytes()).hexdigest()),patch.object(installer,'probe_listener',return_value=True) as probe:
+            service.active_process_digest.return_value=hashlib.sha256(process.read_bytes()).hexdigest()
+            with patch.object(installer,'probe_listener',return_value=True) as probe:
                 result=installer.status(service)
             self.assertTrue(result['ready']);self.assertEqual(result['httpPort'],28443)
             service.bound_command.assert_called_once_with('installation-status',include_overrides=True)
@@ -121,17 +123,17 @@ class ReadinessTests(unittest.TestCase):
             stdout=initial.stdout.replace('a' * 32, 'b' * 32))]
         service.verify_local_command.return_value = {'binarySha256': 'c' * 64}
         service.bound_command.return_value = {'httpPort': 18443}
-        with patch.object(installer, 'active_process_digest', return_value='c' * 64), \
-                patch.object(installer, 'probe_listener', return_value=True):
+        service.active_process_digest.return_value = 'c' * 64
+        with patch.object(installer, 'probe_listener', return_value=True):
             self.assertEqual(installer.status(service)['readiness'], 'NOT_READY')
         self.assertEqual(service.systemctl.call_count, 2)
 
     def test_digest_fallback_uses_fixed_unprivileged_credentials(self):
         digest = 'a' * 64
         answer = SimpleNamespace(returncode=0, stdout=f'{digest}  /proc/123/exe\n')
-        with patch.object(Path, 'read_bytes', side_effect=PermissionError), \
-                patch.object(installer.subprocess, 'run', return_value=answer) as run:
-            self.assertEqual(installer.active_process_digest('123'), digest)
+        run = Mock(return_value=answer)
+        with patch.object(Path, 'read_bytes', side_effect=PermissionError):
+            self.assertEqual(Setup(run=run).active_process_digest('123'), digest)
         run.assert_called_once_with([
             '/usr/bin/setpriv', '--reuid=yofc-console', '--regid=yofc-console',
             '--clear-groups', '--bounding-set=-all', '--inh-caps=-all', '--ambient-caps=-all',
@@ -142,17 +144,16 @@ class ReadinessTests(unittest.TestCase):
     def test_unreadable_executable_never_probes_the_console(self):
         service = self.service()
         service.verify_local_command.return_value = {'binarySha256': 'c' * 64}
-        with patch.object(Path, 'read_bytes', side_effect=PermissionError), \
-                patch.object(installer.subprocess, 'run',
-                             side_effect=subprocess.TimeoutExpired('sha256sum', 5)):
-            self.assertEqual(installer.status(service)['readiness'], 'UNVERIFIED')
+        service.active_process_digest.side_effect = subprocess.TimeoutExpired('sha256sum', 5)
+        self.assertEqual(installer.status(service)['readiness'], 'UNVERIFIED')
         service.bound_command.assert_not_called()
 
     @unittest.skipUnless(Path('/proc/self/exe').exists(),'Linux kernel process magic link')
     def test_actual_kernel_process_identity_is_read_without_relaxing_owned_path_guard(self):
-        self.assertEqual(installer.active_process_digest(str(os.getpid())),hashlib.sha256(Path(sys.executable).read_bytes()).hexdigest())
+        setup = Setup()
+        self.assertEqual(setup.active_process_digest(str(os.getpid())),hashlib.sha256(Path(sys.executable).read_bytes()).hexdigest())
         with self.assertRaisesRegex(RuntimeError,'Invalid'):
-            installer.active_process_digest('../self')
+            setup.active_process_digest('../self')
 
 
 if __name__=='__main__':

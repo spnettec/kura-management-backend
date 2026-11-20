@@ -6,7 +6,6 @@ receipts belong to the original operation; an uncertain stop is never retried.
 """
 from contextlib import contextmanager
 import fcntl
-import hashlib
 import json
 import os
 import re
@@ -165,7 +164,7 @@ class HostControl:
             pid=fields['MainPID']
             if fields['ActiveState']!='active' or fields['Job'] or not re.fullmatch(r'[1-9][0-9]*',pid):
                 raise RuntimeError('Participant startup or shutdown is unsettled')
-            digest=hashlib.sha256((self.setup.path('/proc')/pid/'exe').read_bytes()).hexdigest()
+            digest=item.active_process_digest(pid)
             if digest!=record['binarySha256']:
                 raise RuntimeError('A running participant does not implement the installed maintenance protocol')
 

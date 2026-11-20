@@ -26,7 +26,8 @@ class MaintenanceTests(unittest.TestCase):
         self.guard=patch.object(Setup,'guard_all_instances');self.addCleanup(self.guard.stop);self.check=self.guard.start()
         self.inventory=patch.object(Setup,'template_units',return_value=[]);self.addCleanup(self.inventory.stop);self.inventory.start()
         self.protocol=patch.object(HostControl,'supported',return_value=True);self.addCleanup(self.protocol.stop);self.protocol.start()
-        active=patch.object(HostControl,'verify_active_participants');self.addCleanup(active.stop);active.start()
+        self.active_proof=patch.object(HostControl,'verify_active_participants')
+        self.addCleanup(self.active_proof.stop);self.active_proof.start()
 
     def run_command(self,argv,**kwargs):
         self.calls.append(argv)
@@ -58,6 +59,21 @@ class MaintenanceTests(unittest.TestCase):
         self.check.side_effect=RuntimeError('unsettled UNKNOWN task')
         with self.assertRaisesRegex(RuntimeError,'unsettled'):self.control.begin(self.id)
         self.assertIsNone(self.control.active());self.assertEqual(self.stops(),[])
+
+    def test_live_maintenance_requires_the_original_executable_digest(self):
+        self.active_proof.stop()
+        with patch.object(Setup, 'active_process_digest', return_value='b' * 64) as digest, \
+                patch.object(Setup, 'verify_local_command', return_value={'binarySha256': 'a' * 64}):
+            with self.assertRaisesRegex(RuntimeError, 'running participant'):
+                self.control.begin(self.id)
+            self.check.assert_not_called()
+            self.assertFalse(self.control.status()['activeFencePresent'])
+            self.assertEqual(self.stops(), [])
+            digest.assert_called_once_with('123')
+            digest.return_value = 'a' * 64
+            self.assertEqual(self.control.begin(self.id)['phase'], 'FROZEN')
+            self.assertTrue(self.control.status()['activeFencePresent'])
+            self.assertEqual(self.stops(), [])
 
     def test_unknown_stop_is_not_reissued_even_when_service_is_now_inactive(self):
         self.control.begin(self.id);self.fail_stop=True

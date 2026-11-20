@@ -337,6 +337,30 @@ class Setup:
             raise RuntimeError('Installation operation cannot be verified; preserve state and use the original record')
         return json.loads(result.stdout)
 
+    def active_process_digest(self, pid):
+        if not re.fullmatch(r'[1-9][0-9]*',pid):
+            raise RuntimeError('Invalid service process identity')
+        # This is a fixed kernel-managed magic link, not a console-owned path.
+        # Keep Setup.path's symlink refusal for all configuration/state files.
+        executable = self.path('/proc') / pid / 'exe'
+        try:
+            return hashlib.sha256(executable.read_bytes()).hexdigest()
+        except PermissionError:
+            # A host administrator without CAP_SYS_PTRACE may still read the
+            # executable with the service's own credentials. Drop all privileges
+            # in the child and hash the kernel path with a fixed program.
+            result = self.run([
+                '/usr/bin/setpriv', '--reuid=' + SERVICE_USER, '--regid=' + SERVICE_USER,
+                '--clear-groups', '--bounding-set=-all', '--inh-caps=-all', '--ambient-caps=-all',
+                '--no-new-privs', '/usr/bin/sha256sum', '--', str(executable),
+            ], env={'PATH': '/usr/bin'}, stdin=subprocess.DEVNULL,
+                capture_output=True, text=True, timeout=5)
+            output = result.stdout.removesuffix('\n')
+            digest = output.removesuffix('  ' + str(executable))
+            if result.returncode or digest == output or not re.fullmatch(r'[a-f0-9]{64}', digest):
+                raise RuntimeError('Active service executable could not be verified')
+            return digest
+
     def verify_local_command(self, command):
         """Do not probe an old executable with an unknown argument: old startup
         dispatch may migrate before it reports an unsupported command."""
