@@ -1,0 +1,267 @@
+{
+  "date": "2026-11-20",
+  "platform": "Previously installed Debian 13 ARM64 with systemd and separate PostgreSQL",
+  "sources": {
+    "kura": {
+      "head": "2a74ac1c38e126de24a31ae9c6a422fa367af7f9",
+      "tree": "0175c1654ee191cd2c62970470877b0ebbe1c2bb"
+    },
+    "kura-networking": {
+      "head": "82dc2cd68938781549e4cc92e2b0b5781f253319",
+      "tree": "9815284c2950e44e6cb9a6f8921ff9cb6dde89d6"
+    },
+    "kura-management-agent": {
+      "head": "03b2b8077d825baf2cb5a0f81b4d74e0ccdae901",
+      "tree": "d425ac1eb277beaac839e40b3bfe76b2220974b1"
+    },
+    "kura-management-console": {
+      "head": "91645e518df758bc13238101ca7a558304db7f16",
+      "tree": "c2cddc9d45672e41e7d1d7c12df36c1b3d522e08"
+    },
+    "kura-management-ui": {
+      "head": "08712fbc8e7acca19182cd253c2d614332c0b6e9",
+      "tree": "60259c3899777b060334418fba6cffdca5ff7aa1"
+    },
+    "kura-management-console-runtime": {
+      "head": "8eec49f94ace596c2c9d8f56eb9e94321c3e5056",
+      "tree": "ecba2e183f67475e327cffe155823ec432b22c4c"
+    }
+  },
+  "sameRootReattached": true,
+  "packagesReinstalled": 0,
+  "environmentsReinitialized": 0,
+  "priorSuccessfulTask": "ffd240ae-5c5d-4105-bc84-9a4ed4b047be",
+  "interrupted": {
+    "id": "09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+    "originalReceiptSha256": "e239a329ba67af46f544ff0d7f545b14cda8bf0b56df3ba1f4fadb56b48a9400",
+    "originalReceipt": {
+      "source": "configuration.journal.v1",
+      "commandId": "09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+      "operation": 12,
+      "pid": "filesystem-kura-log",
+      "previousRevision": "2442cb6324ec629bc3aea216a32db0ef3d61a9018f4a2f048793a7f472db6944",
+      "submitted": true,
+      "paramsSha256": "7312de0be5459b97a1743aac97252cfa9c414b25d38d416742c303468ed914be"
+    },
+    "stamp": [
+      5562295,
+      993,
+      991,
+      317,
+      1795140806999052983
+    ],
+    "detachedName": "/opt/eclipse/kura/data/management-outcomes/.held-original-09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+    "originalName": "/opt/eclipse/kura/data/management-outcomes/09982d6a-abe9-4d90-94ca-7d46753fc4f2.json",
+    "claim": {
+      "state": "RUNNING",
+      "requestHash": "fb4cf7dac6df5ce2af093f850e80a42bdfb9a1fe63ede8c1b5aabb9f88af620b",
+      "planSha256": "e64eb7db6dfc8cf7426691ee699067d5ecb19f172ba2ee622479fe932b51b3d0",
+      "planContainsPlaintext": false
+    },
+    "agent": {
+      "MainPID": "748",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "d1e3ab379f344400a8e5315f5a4fc099",
+      "pid": 748,
+      "ticks": "33602235"
+    },
+    "main": {
+      "MainPID": "700",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "fb40d7aa48b44d3dae312b7ae7dc239c",
+      "pid": 700,
+      "ticks": "33602206"
+    },
+    "signal": 9,
+    "sqliteWritesByInjector": 0,
+    "coreCompletedBeforeSignal": true,
+    "artifactHeldInOriginalRoot": true
+  },
+  "consoleUnknown": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "id": "09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+    "state": "UNKNOWN",
+    "error": "OUTCOME_UNKNOWN",
+    "mainUnchanged": true,
+    "agentStopped": true,
+    "olderSuccessUnchanged": true
+  },
+  "whileReceiptHeld": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "id": "09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+    "firstLease": {
+      "epoch": "078bb9b3-fc0c-4b28-90e6-908690aee312",
+      "lease": "2026-11-20T02:15:03.834179+00:00",
+      "state": "UNKNOWN",
+      "current": "078bb9b3-fc0c-4b28-90e6-908690aee312",
+      "generation": 1,
+      "certificate": "1a9c271beae2778f59b750c2b2ae86f2f9d1247466b3433a4c578e210a138ba9",
+      "seen": 1
+    },
+    "secondLease": {
+      "epoch": "078bb9b3-fc0c-4b28-90e6-908690aee312",
+      "lease": "2026-11-20T02:15:13.840227+00:00",
+      "state": "UNKNOWN",
+      "current": "078bb9b3-fc0c-4b28-90e6-908690aee312",
+      "generation": 1,
+      "certificate": "1a9c271beae2778f59b750c2b2ae86f2f9d1247466b3433a4c578e210a138ba9",
+      "seen": 3
+    },
+    "agentExecution": {
+      "operation": 12,
+      "state": "UNKNOWN",
+      "key": "fb70bda2-0db5-4a68-99bf-623a978f2f41",
+      "requestHash": "fb4cf7dac6df5ce2af093f850e80a42bdfb9a1fe63ede8c1b5aabb9f88af620b",
+      "planSha256": "e64eb7db6dfc8cf7426691ee699067d5ecb19f172ba2ee622479fe932b51b3d0",
+      "resultSha256": "9f7dd872b0c18d2de05a9873d7d16095a4ca68b1eada235631f7ac29524cbf46",
+      "resolutions": [],
+      "operation12Count": 3
+    },
+    "localWriteEnabled": false,
+    "queriesReservedForOriginalOnly": true
+  },
+  "originalRestored": {
+    "sameInode": true,
+    "sha256": "e239a329ba67af46f544ff0d7f545b14cda8bf0b56df3ba1f4fadb56b48a9400",
+    "path": "/opt/eclipse/kura/data/management-outcomes/09982d6a-abe9-4d90-94ca-7d46753fc4f2.json"
+  },
+  "settled": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "center": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+    "id": "09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+    "oldAgent": 748,
+    "newAgent": 1584,
+    "mainUnchanged": true,
+    "readOnlyReconciliation": true,
+    "sameInode": true,
+    "proof": {
+      "source": "configuration.journal.v1",
+      "commandId": "09982d6a-abe9-4d90-94ca-7d46753fc4f2",
+      "operation": 12,
+      "pid": "filesystem-kura-log",
+      "previousRevision": "2442cb6324ec629bc3aea216a32db0ef3d61a9018f4a2f048793a7f472db6944",
+      "paramsSha256": "7312de0be5459b97a1743aac97252cfa9c414b25d38d416742c303468ed914be",
+      "journalSha256": "e239a329ba67af46f544ff0d7f545b14cda8bf0b56df3ba1f4fadb56b48a9400"
+    },
+    "audit": [
+      [
+        "kura.configuration.update",
+        "ACCEPTED"
+      ],
+      [
+        "task.uncertain",
+        "UNKNOWN"
+      ],
+      [
+        "task.result",
+        "SUCCEEDED"
+      ],
+      [
+        "task.reconcile.configuration",
+        "SUCCEEDED"
+      ]
+    ],
+    "events": [
+      "QUEUED",
+      "RUNNING",
+      "UNKNOWN",
+      "SUCCEEDED"
+    ],
+    "agentWorkspace": {
+      "operation": 12,
+      "state": "SUCCEEDED",
+      "key": "fb70bda2-0db5-4a68-99bf-623a978f2f41",
+      "requestHash": "fb4cf7dac6df5ce2af093f850e80a42bdfb9a1fe63ede8c1b5aabb9f88af620b",
+      "planSha256": "e64eb7db6dfc8cf7426691ee699067d5ecb19f172ba2ee622479fe932b51b3d0",
+      "resultSha256": "c8ac281b7093bb3a861baaba9f20087b68103d660f3ca8b570acd9a5d45909b4",
+      "resolutions": [
+        [
+          "fb4cf7dac6df5ce2af093f850e80a42bdfb9a1fe63ede8c1b5aabb9f88af620b",
+          "configuration.journal.v1",
+          "e239a329ba67af46f544ff0d7f545b14cda8bf0b56df3ba1f4fadb56b48a9400"
+        ]
+      ],
+      "operation12Count": 3
+    },
+    "postgresSealed": {
+      "input": "1",
+      "result": "1"
+    },
+    "configurationWriteDisabled": true,
+    "taskPosts": 1,
+    "operation12ExecutionRows": 1,
+    "originalFilesExact": true
+  },
+  "fixturesParked": {
+    "gateway": {
+      "id": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.833605246Z",
+        "FinishedAt": "2026-11-20T02:15:41.20555029Z"
+      }
+    },
+    "center": {
+      "id": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.836343117Z",
+        "FinishedAt": "2026-11-20T02:15:41.203848251Z"
+      }
+    },
+    "postgres": {
+      "id": "5e9d3da46418f94d2383b9443f857e1a5b135f44a21cf28b5d5bb26c767460d9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.67086167Z",
+        "FinishedAt": "2026-11-20T02:15:41.452883716Z"
+      }
+    },
+    "dbVolume": "yofc-configuration-native-db-20261120",
+    "sameReceiptAndOffSwitch": true,
+    "systemdUnitsDisabled": true
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stateExact": true
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentItemsClosed": 0,
+  "parentItemsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

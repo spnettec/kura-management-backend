@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 正式包 Operation 12 丢回执与原编号核定
+
+沿上轮 Debian ARM64 隔离 Root 重新启动已装的 Core、Networking、GWT、Agent、console 和原 PostgreSQL。保持原注册、凭据及上轮成功任务。对 stock 文件日志 provider 的新配置只派发一次。故障注入在 Agent 持久 claim 后持有 SQLite 写锁，注入器没有执行数据写入。正式 Java Main 按原编号发布回执时，Agent 的执行记录仍是 RUNNING，随后对该 Agent 进程发 SIGKILL。中心真实进入 UNKNOWN，Main 的 PID、启动时钟和调用代次保持。
+
+故障夹具把新 Java 回执暂存在同一目录。新 Agent 启动前撤回配置写权限。原证书和代次的 mTLS 重连后，中心对原编号取得两次核定租约。回执缺位期间，中心与 Agent 均保留 UNKNOWN，SQLite 没有核定记录。将原文件移回原名后，原 inode、内容及 SHA-256 对齐。只读核定令同一任务进入 SUCCEEDED，并绑定原 PID、revision、参数哈希和 Java 回执哈希。SQLite 原加密计划保持，核定仅一条，PostgreSQL 输入和结果仍为密文封装。原编号只有一次 RUNNING，审计依次记接受、UNKNOWN、成功、配置回执核定。
+
+新任务的异步 provider 健康及其他 provider/launcher 的跨中断覆盖仍需单独验证。隔离服务已禁用并正常停放。18 仓、原三现场、个人文件和 7fd 的 41 输入/16 回执复核保持。旧 UNKNOWN 未重发、已验场景未重放。完整 Core/OSGi、其余 typed brokers、完整六组件矩阵和 12 父项继续实施。闭环 0/12，external deferred 仅原三项。见 [实际检查点](actual-native-configuration-unknown-outcome-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式包的远程配置授权、真实提交及原回执
 
 Agent 03b2b80 使用与原初始化绑定的 Root 配置授权。非 Root 进程核验原数据库、原密钥、初始化和 Kura peer，仍拒绝环境注入的写入开关。Networking 82dc2cd 从受保护文件读取 Java PID 名单，通过正式 SystemService 定位回执目录。缺少可定位的存储时，带编号的请求在调用 Core 前被拒绝。Java 同步落盘并按原编号创建回执。

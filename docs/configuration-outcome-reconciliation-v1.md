@@ -34,5 +34,11 @@ agent 宣告 `task.configuration-outcome.v1`。旧 bridge 未登记 `kura.config
 ## 边界
 
 本机制不能撤销写入，也不是删除/reset/factory。若本机特权方篡改记录及其元数据，本版本
-不能提供超出本地完整性假设的防伪。真实 IDEA/OrbStack 运行验证见
-`phase2-configuration-outcome-20261101.md`；未执行前不得宣称真实 Kura 闭环。
+不能提供超出本地完整性假设的防伪。历史 IDEA/OrbStack 结果见
+[早期验证](phase2-configuration-outcome-20261101.md)。
+
+2026-11-20 在已安装的 Debian 13 ARM64 环境中，正式 Main 发布新命令的原编号回执后，
+Agent 在持久终态前中断。重启时撤回配置写权限。回执缺位期间原任务保持 UNKNOWN，
+恢复同一 Root 中原回执后按原编号核定为 SUCCEEDED。已核对原加密计划、PostgreSQL 审计和唯一派发。
+该验收覆盖提交回执，独立的异步业务健康仍需验证。
+[正式包检查点](checkpoints/20261116/actual-native-configuration-unknown-outcome-checkpoint.json)
