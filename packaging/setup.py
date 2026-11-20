@@ -269,6 +269,7 @@ class Setup:
         control.provision()
         if control.status()['active'] is not None:
             raise RuntimeError('Maintenance is frozen; preserve the original operation')
+        control.require_configured_package()
         overrides = self.overrides(missing_ok=True)
         state_override = overrides.get('CONSOLE_STATE_DIR', '')
         if state_override.strip() and state_override != self.state:
@@ -360,6 +361,14 @@ class Setup:
             if result.returncode or digest == output or not re.fullmatch(r'[a-f0-9]{64}', digest):
                 raise RuntimeError('Active service executable could not be verified')
             return digest
+
+    def debian_package_state(self):
+        result = self.run(['/usr/bin/dpkg-query', '-W', '-f=${Version}\t${db:Status-Status}',
+                           'kura-management-console'], capture_output=True, text=True, timeout=5)
+        version, separator, status = result.stdout.partition('\t')
+        if result.returncode or not separator:
+            return '', 'not-installed'
+        return version, status
 
     def verify_local_command(self, command):
         """Do not probe an old executable with an unknown argument: old startup

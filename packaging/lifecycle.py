@@ -6,7 +6,26 @@ if 'HostControl' not in globals():
     from host_control import HostControl
 
 
-def lifecycle(script, action):
+def configure_context(setup, previous_version):
+    maintainer = setup.path('/var/lib/dpkg/info/kura-management-console.postinst')
+    if os.environ.get('DPKG_MAINTSCRIPT_PACKAGE')!='kura-management-console' \
+            or os.environ.get('DPKG_MAINTSCRIPT_NAME')!='postinst' or Path(__file__)!=maintainer \
+            or setup.debian_package_state()!=(PACKAGE_VERSION, 'half-configured'):
+        raise RuntimeError('Exact installed Debian postinst and half-configured package required')
+    root = setup.root.stat()
+    boot = setup.path('/proc/sys/kernel/random/boot_id').read_text().strip()
+    uuid.UUID(boot)
+    with maintainer.open('rb') as stream:
+        info = os.fstat(stream.fileno())
+        if not stat.S_ISREG(info.st_mode) or info.st_uid!=0 or info.st_nlink!=1 or info.st_mode&0o022:
+            raise RuntimeError('Protected installed Debian postinst required')
+        digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+    return {'version':PACKAGE_VERSION, 'previousVersion':previous_version,
+            'bootId':boot, 'rootDevice':root.st_dev, 'rootInode':root.st_ino,
+            'scriptInode':info.st_ino, 'scriptSha256':digest}
+
+
+def lifecycle(script, action, previous_version=''):
     setup = Setup()
     control = HostControl(setup)
     if script == 'preinst' and action in ('install', 'upgrade'):
@@ -15,6 +34,11 @@ def lifecycle(script, action):
         control.begin(identity)
         control.stop(identity)
     elif script == 'postinst' and action == 'configure':
+        context = configure_context(setup, previous_version)
+        active = control.active()
+        if active is None:
+            control.complete(None, PACKAGE_BINARY_SHA256, PACKAGE_SOURCE_SHA256, debian=context)
+            return
         try:
             user = pwd.getpwnam(SERVICE_USER)
         except KeyError:
@@ -45,10 +69,7 @@ def lifecycle(script, action):
             setup.put(marker, 'kura-management-console-v1\n', 0o600)
             setup.run(['chown', f'{SERVICE_USER}:{SERVICE_USER}', str(marker)], check=True)
         setup.systemctl('daemon-reload')
-        active=control.status()['active']
-        if active is None:
-            raise RuntimeError('Original package maintenance operation missing; preserve state')
-        control.complete(active['operationId'],PACKAGE_BINARY_SHA256,PACKAGE_SOURCE_SHA256)
+        control.complete(active['operationId'], PACKAGE_BINARY_SHA256, PACKAGE_SOURCE_SHA256, debian=context)
         print('Installed without starting. Open the host installer page to start the HTTPS setup wizard.')
     elif script == 'prerm' and action in ('remove', 'upgrade', 'deconfigure'):
         active=control.status()['active']
@@ -65,4 +86,4 @@ def lifecycle(script, action):
 
 
 if __name__ == '__main__':
-    lifecycle(SCRIPT_NAME, sys.argv[1] if len(sys.argv) > 1 else '')
+    lifecycle(SCRIPT_NAME, sys.argv[1] if len(sys.argv) > 1 else '', sys.argv[2] if len(sys.argv) > 2 else '')

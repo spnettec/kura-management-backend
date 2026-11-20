@@ -171,7 +171,8 @@ Description: Independent YOFC Rust multi-gateway management console
     for name in ['preinst', 'postinst', 'prerm', 'postrm']:
         script = control / name
         script.write_text('#!/usr/bin/python3\nSCRIPT_NAME = '+repr(name)+'\nPACKAGE_BINARY_SHA256 = '+repr(expected)+
-                          '\nPACKAGE_SOURCE_SHA256 = '+repr(sha(source_manifest))+'\n'+host_control+'\n'+setup+'\n'+lifecycle)
+                          '\nPACKAGE_SOURCE_SHA256 = '+repr(sha(source_manifest))+
+                          '\nPACKAGE_VERSION = '+repr(version)+'\n'+host_control+'\n'+setup+'\n'+lifecycle)
         script.chmod(0o755)
     for path in payload.rglob('*'):
         if path.is_dir():

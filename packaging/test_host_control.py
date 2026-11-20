@@ -97,6 +97,51 @@ class MaintenanceTests(unittest.TestCase):
         self.assertFalse(any(call[1] in ['start','restart','enable'] for call in self.calls))
         with self.assertRaisesRegex(RuntimeError,'reused'):self.control.begin(self.id)
 
+    def test_debian_configure_recovers_completed_fence_release_without_rewriting(self):
+        self.control.begin(self.id)
+        stopped = self.control.stop(self.id)
+        context = {'version':'1.2', 'previousVersion':'1.1', 'bootId':str(uuid.uuid4()),
+                   'rootDevice':1, 'rootInode':2, 'scriptInode':3, 'scriptSha256':'e'*64}
+        provenance = {'maintenanceProtocolVersion':1, 'binarySha256':'a'*64, 'sourceManifestSha256':'b'*64}
+        with patch.object(Setup,'verify_local_command',return_value=provenance), \
+                patch.object(Setup,'debian_package_state',return_value=('1.2','half-configured')) as state:
+            complete = self.control.complete(self.id, 'a'*64, 'b'*64, debian=context)
+            self.assertEqual(complete['stopReceipts'], stopped['stopReceipts'])
+            self.assertIsNone(self.control.active())
+            journal = self.control.directory/'operations'/f'{self.id}.json'
+            old = journal.stat().st_ino
+            recovered = self.control.complete(None, 'a'*64, 'b'*64, debian=context)
+            self.assertEqual(recovered, complete)
+            self.assertEqual(journal.stat().st_ino, old)
+            for mutation in ({'rootDevice':99}, {'previousVersion':'1.0'}, {'scriptInode':9}):
+                with self.assertRaisesRegex(RuntimeError,'Exact original'):
+                    self.control.complete(None, 'a'*64, 'b'*64, debian={**context,**mutation})
+            with self.assertRaisesRegex(RuntimeError,'target payload'):
+                self.control.complete(None, 'c'*64, 'b'*64, debian=context)
+            with self.assertRaisesRegex(RuntimeError,'finish the original'):
+                with self.control.starting():
+                    raise AssertionError('must not enter before dpkg settles')
+            with self.assertRaisesRegex(RuntimeError,'Finish the original'):
+                self.control.begin(str(uuid.uuid4()))
+            state.return_value = ('1.2','installed')
+            with self.control.starting():
+                pass
+        self.assertEqual(len(self.stops()),1)
+
+    def test_debian_configure_intent_without_terminal_receipt_does_not_acknowledge_missing_fence(self):
+        self.control.begin(self.id)
+        self.control.stop(self.id)
+        context = {'version':'1.2'}
+        self.control.write('debian-configure.json', {
+            'schemaVersion':1, 'operationId':self.id, 'context':context},new=True)
+        (self.control.directory/'active.json').unlink()
+        provenance = {'maintenanceProtocolVersion':1, 'binarySha256':'a'*64, 'sourceManifestSha256':'b'*64}
+        with patch.object(Setup,'verify_local_command',return_value=provenance):
+            with self.assertRaisesRegex(RuntimeError,'completion differs'):
+                self.control.complete(None, 'a'*64, 'b'*64, debian=context)
+        self.assertEqual(self.control.journal(self.id)['phase'],'STOPPED')
+        self.assertEqual(len(self.stops()),1)
+
     def test_wrong_identity_malformed_or_dangling_fence_cannot_release_writes(self):
         self.control.begin(self.id)
         with self.assertRaisesRegex(RuntimeError,'original|Original|uncertain|No such'):

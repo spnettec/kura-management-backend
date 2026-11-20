@@ -172,7 +172,21 @@ class HostControl:
     def starting(self):
         with self.locked(),self.locked(writers=True,shared=True):
             if self.status()['active'] is not None: raise RuntimeError('Maintenance is frozen; observe the original operation')
+            self.require_configured_package()
             yield
+
+    def debian_configure_receipt(self):
+        receipt = self.read('debian-configure.json', optional=True)
+        if receipt is not None:
+            self.identity(receipt['operationId'])
+            if receipt.get('schemaVersion') != 1 or not isinstance(receipt.get('context'), dict):
+                raise RuntimeError('Original Debian configure proof is invalid')
+        return receipt
+
+    def require_configured_package(self):
+        # Older installations have no direct-dpkg configure proof.
+        if self.debian_configure_receipt() is not None and self.setup.debian_package_state()[1] != 'installed':
+            raise RuntimeError('Wait for dpkg to finish the original configuration')
 
     def begin(self,identity,offline_legacy=False,require_stopped=False):
         identity=self.identity(identity)
@@ -183,6 +197,10 @@ class HostControl:
                 return self.journal(identity)  # Observation only.
             if self.package_hold() is not None:
                 raise RuntimeError('Finish the original verified package release first')
+            prior_configure = self.debian_configure_receipt()
+            if prior_configure is not None and self.setup.debian_package_state() == (
+                    prior_configure['context'].get('version'), 'half-configured'):
+                raise RuntimeError('Finish the original Debian configuration before maintenance')
             if self.read('operations/'+identity+'.json',optional=True) is not None:
                 raise RuntimeError('A maintenance operation ID cannot be reused')
             if self.unresolved():raise RuntimeError('An original maintenance journal has an uncertain outcome')
@@ -306,13 +324,20 @@ class HostControl:
                 (self.directory/'active.json').unlink();self.sync()
             return value  # No stop/start/restart/enable is issued.
 
-    def complete(self,identity,expected_binary=None,expected_source=None):
+    def complete(self,identity,expected_binary=None,expected_source=None,*,debian=None):
         with self.locked(),self.locked(writers=True):
-            active=self.active();value=self.journal(identity)
-            if active is None:
+            active=self.active()
+            prior_configure = self.debian_configure_receipt() if debian is not None else None
+            if active is None and debian is not None:
+                if prior_configure is None or prior_configure['context'] != debian:
+                    raise RuntimeError('Exact original Debian configure proof required')
+                identity = prior_configure['operationId']
+            value=self.journal(identity)
+            if active is None and debian is None:
                 if value['phase']!='COMPLETE': raise RuntimeError('Original completion receipt missing')
                 return value
-            if active['operationId']!=identity or value['phase'] not in ['FROZEN','STOPPED','COMPLETE']:
+            allowed = ['FROZEN','STOPPED','COMPLETE'] if debian is None else ['STOPPED','COMPLETE']
+            if (active is not None and active['operationId']!=identity) or value['phase'] not in allowed:
                 raise RuntimeError('Maintenance has an uncertain outcome; retain the fence')
             participants=self.participants()
             if [item.unit for item in participants]!=value['units'] or not all(self.stopped(self.state(item)) for item in participants):
@@ -327,7 +352,31 @@ class HostControl:
             if record.get('maintenanceProtocolVersion')!=1 or (expected_binary and record['binarySha256']!=expected_binary) \
                     or (expected_source and record['sourceManifestSha256']!=expected_source):
                 raise RuntimeError('Installed maintenance protocol or target payload cannot be verified')
+            payload = {'maintenanceProtocolVersion':1,'binarySha256':record['binarySha256'],
+                       'sourceManifestSha256':record['sourceManifestSha256']}
+            if active is None:
+                if hold is not None or value['phase']!='COMPLETE' or value.get('debianConfigure')!=debian \
+                        or value.get('verifiedPayload')!=payload or 'outcome' in value:
+                    raise RuntimeError('Original Debian configuration completion differs')
+                return value
             self.setup.guard_all_instances()
+            if debian is not None and hold is None:
+                proof = {'schemaVersion':1, 'operationId':identity, 'context':debian}
+                if prior_configure != proof:
+                    if value['phase']=='COMPLETE' or (prior_configure is not None and
+                            prior_configure['operationId']==identity):
+                        raise RuntimeError('Original Debian configuration changed')
+                    if prior_configure is not None:
+                        previous = self.journal(prior_configure['operationId'])
+                        if previous['phase']!='COMPLETE' or previous.get('debianConfigure')!=prior_configure['context']:
+                            raise RuntimeError('Previous Debian configuration has no completion proof')
+                    self.write('debian-configure.json', proof, new=prior_configure is None)
+                if value['phase']=='COMPLETE':
+                    if value.get('debianConfigure')!=debian or value.get('verifiedPayload')!=payload:
+                        raise RuntimeError('Original Debian configuration completion differs')
+                    (self.directory/'active.json').unlink();self.sync()
+                    return value
+                value['debianConfigure'] = debian
             if value['ownedMasks'] and value['phase']!='COMPLETE':
                 value['phase']='UNMASKING';self.save(value)
             for unit in value['ownedMasks'] if value['phase']!='COMPLETE' else []:
@@ -336,8 +385,7 @@ class HostControl:
                 # symlinks, so inspect it through the trusted parent instead.
                 if mask.is_symlink() and os.readlink(mask)=='/dev/null': self.setup.systemctl('unmask','--runtime',unit)
                 elif mask.exists() or mask.is_symlink(): raise RuntimeError('Maintenance runtime mask changed')
-            value['verifiedPayload']={'maintenanceProtocolVersion':1,'binarySha256':record['binarySha256'],
-                'sourceManifestSha256':record['sourceManifestSha256']}
+            value['verifiedPayload']=payload
             value['phase']='COMPLETE';self.save(value)
             if hold is not None:
                 value['packageInstallOperationId']=hold['packageOperationId'];self.save(value)
