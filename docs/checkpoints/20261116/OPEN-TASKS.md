@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — G021 实际 OSGi PID 查询与 Config Admin 状态
+
+从当前 Git 用 JDK 21、Maven 3.10.1 构建 Core d37dfbc9de 和 Cloud 9faaec1 正式包。逐项核对原 G021 的 27 个描述、历史 DS namespace、PID 默认或显式 String 类型及当前打包字节。Core 2d5c0ab992 提交了实际 registry 与 Config Admin 测试探针，生产描述保持。[上游变更](https://github.com/eclipse-kura/kura/commit/5943c897ae0353ff1360b8b808c49fb504e98195)
+
+在独立 Debian 13 ARM64 Root 正式安装 Core 与 Cloud，实测非 Root Main 上 25 个原生 provider 的 OSGi LDAP 过滤查询，均返回来自预期 bundle 和 component 的单个 String PID，Config Admin 原本均无匹配项。JSON、XML 和 Raw MQTT 工厂分别由真实 Config Admin 建立临时匹配项、通过包含标记的过滤器读取、移除并再次核定缺配置。三个 provider 的全部九次阶段观测均为 String，Main PID 和 invocation 保持。
+
+两份 emulator provider 在无外网的独立 Equinox JVM 实测。首轮引导缺 Aries SPI Fly/ASM，在 resolver 阶段退出。补齐本包对应运行依赖后完成两个 provider 的缺配置查找及两次真实 Config Admin 三态验证。原生和 emulator 合计 27 个缺配置注册结果及 5 个配置存在／移除周期。两个夹具均正常停放，原生 Main 禁用，探针已移出自动加载目录。
+
+G021 的实际 PID／配置合同已有运行证据。G022、其余业务与 typed brokers、完整六组件 provider/launcher/生命周期矩阵继续内部待办，冻结 12 父项仍 0/12，external deferred 仅原三项。原三现场、个人文件及 7fd 的 41 输入/16 回执保持。见 [实际检查点](actual-g021-service-pid-runtime-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core dpkg 回滚硬链接中断与 Equinox reactor
 
 在独立 Debian 13 ARM64 Root 实测 dpkg 发布完整原路径后中断，续解包在 linkat 成功后再次中断。原路径和回滚路径仅有两个名字，共用原包文件 inode。旧 a95523d46a 在只读核验中拒绝该状态，夹具保持原 dpkg 状态、Root 和围栏。
