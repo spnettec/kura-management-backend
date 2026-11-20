@@ -100,3 +100,11 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 11 月 21 日用当前 Core、GWT、Deployment、Wires 四个 deb 重建 Alpine ARM64 镜像。Docker 报告旧镜像为 677.77 MB，新镜像为 679.04 MB。两者各有六个文件系统层，前两层的内容标识相同。整树复制的 `/opt/eclipse` 层分别为 369 MB 和 370 MB。因此，即使新旧镜像的总大小只差 1.27 MB，保留两个版本仍会留下不同的运行时层。宿主实际新增的物理块还受压缩、共享和构建缓存影响，未在此次单独计量。
 
 本轮复用现成的四个正式 deb；核对原件后移除构建上下文的四份 APFS 克隆，逻辑文件长度合计 358.09 MB。升级和回滚还复用了原数据卷与空的 /load 卷，保存两套数据副本的开销在这一步可以避免。[镜像层、发行包与原卷检查点](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
+### 时钟包与串口定位的实际成本
+
+11 月 21 日的时钟修复让 bundle 从 43,064 字节增至 43,144 字节。旧、新 Core deb 分别为 204,226,474 和 204,226,478 字节。为比较停用后的网络请求，保留两份正式包要再计约 204 MB 逻辑长度。文件系统实际新增物理块未单测。[发行包和 UDP 计数](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)
+
+六组件串口验收把 11 个已有安装包以只读方式直接挂入夹具，复用了 374,893,280 字节输入。一次开机、一次定位配置覆盖 Position 升级、独立 purge 重装、配置中断恢复三个阶段，每次以新的串口报文核对坐标和 UTC。旧包在端口打开后立即因空闲超时退出，完整流程因此发现了单查服务注册看不到的客户故障。[串口实装、原 Root 与安装恢复](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json)
+
+读到定位后，进一步实测了空闲串口的负载。第一版超时修复在 1.20 秒内进行了 1,324,688 次读取；加入 25 毫秒等待后，同一窗口内为 41 次。两次在随后输入报文时均交付了定位。此处计数来自实际伪终端的读取调用，未测整机功耗。同期当前 Core 全量构建耗时 11 分 43 秒，其中证书吊销集成用例占 424.4 秒。[串口负载](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) · [Core 完整构建](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)

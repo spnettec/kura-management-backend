@@ -200,5 +200,150 @@
     "parked.json": "7bb8604784fff1d48aa215ffc19bbbdf4f7a6b470314d3ebb38fea09ff3224bc",
     "original-three-after.json": "075341e9562b8008302a96d8fba0a9fd766f2bafd68f9cc0f570ac19cbb88b99",
     "preservation.json": "ec3097bed9d1bd5ed2b21e37c1f8e9668502bf23e9b2e8110c5e4e24198ad040"
+  },
+  "sixComponentSerialDataMaintenance": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/six-position-serial-data",
+    "root": {
+      "id": "ca48de8bb20676f1e29d42b9044e7accdbaaa7b2ac602f476cad79cec24430ba",
+      "mount": "1048827:6527650",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "initialPackages": {
+      "kura-core": "installed 6.0.0~git20261120183545.3fe46ee-1",
+      "kura-networking": "installed 3.0.0~git202611201717.4741b5e-1",
+      "kura-management-ui": "installed 3.0.0~git202611201623.a2ed695-1",
+      "kura-deployment": "installed 2.0.0~git202611201456.3772936-1",
+      "kura-wires": "installed 3.0.0~git202611201623.5605b6b-1",
+      "kura-management-agent": "installed 0.1.0~cohort20261120163743.ab1cf33-1",
+      "kura-position": "installed 2.0.0~git202611201627.fd742d9-1"
+    },
+    "positionUpgrade": {
+      "commit": "b908c4784334264a1e76b053a61360d3b2846aff",
+      "tree": "615bb80dd81a3553ea642fa095ac61b837b83537",
+      "version": "2.0.0~git202611201842.b908c47-1",
+      "sha256": "4845c7f15f3141f3d04f424e8f1953672b30961176d763ebbd54c34610190b07",
+      "jar": "f2bcc9dfc875a4dac505c5f58e0e62226026f5ac4fc25e60600265c41aa2bc8b"
+    },
+    "tests": {
+      "position": 71,
+      "rest": 8
+    },
+    "initialFailure": "The released provider opened the PTY and then its reader exited on the initial read timeout on two independent Main activations. No baseline NMEA was submitted.",
+    "configuration": "One ConfigService update, serial 38400 on /dev/pts/0, static disabled. Non-root packaged systemd Main observed three unique test NMEA sentences from the PTY after quiet intervals. Factory and user snapshots and both credential files matched throughout.",
+    "observations": {
+      "upgrade": {
+        "utc": "2026-11-21T17:45:12.750",
+        "latitude": 31.2,
+        "longitude": 121.5,
+        "constellation": "[GPS]",
+        "pid": "21133"
+      },
+      "reinstall": {
+        "utc": "2026-11-21T23:14:05.125",
+        "latitude": 31.2,
+        "longitude": 121.5,
+        "constellation": "[GPS]",
+        "pid": "28586"
+      },
+      "resumed": {
+        "utc": "2026-11-21T00:01:02.025",
+        "latitude": 31.2,
+        "longitude": 121.5,
+        "constellation": "[GPS]",
+        "pid": "36350"
+      }
+    },
+    "maintenance": {
+      "removeState": "config-files",
+      "purgeState": "not-installed",
+      "installed": "2.0.0~git202611201842.b908c47-1",
+      "sameRoot": {
+        "id": "ca48de8bb20676f1e29d42b9044e7accdbaaa7b2ac602f476cad79cec24430ba",
+        "mount": "1048827:6527650",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "otherSixAndSnapshotsExact": true
+    },
+    "interrupted": {
+      "code": 1,
+      "dpkg": 35455,
+      "interruptedPositionLockWorker": 35480,
+      "lock": [
+        1048827,
+        6529191
+      ],
+      "states": {
+        "kura-position": "half-configured"
+      },
+      "order": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires",
+        "position"
+      ]
+    },
+    "recovery": "Same unpacked package configured on the original mount after its postinst registry-lock waiter was interrupted. Registry and package JAR matched, dpkg audit was empty, and the original configuration delivered the third fix.",
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T18:38:34.652993545Z",
+      "FinishedAt": "2026-11-20T18:45:39.046079668Z"
+    },
+    "receiptSha256": {
+      "inputs.json": "57409c39249da3deb2cbf649e94c4a8220c9550ba39aeb12c6f92a24e584004a",
+      "position-package.json": "38e5d0672d92343b28db71350d0c1d8b46ad1116c99d63c8536a71c1862af769",
+      "idle-failure.json": "d207824aee9ffe373b6a41baa39203315665bdcd972b2f5c44f3d61307ae8b99",
+      "original-restart.json": "ff20344c159784f70756ce443cf1daffe608b81c6b6c918d88db502ce9c304d2",
+      "cycled.json": "10b806f37cc4f4fee83f02b67acb3d820c0152c6c3a0a09fe13cbf204b23d20e",
+      "interrupted.json": "abdac996c9ffd1c075d378c78e3b39e3cd7b098e1ccf3784141ac5f5b4715c0e",
+      "configured-again.json": "d63137a4fd1e06cfb3da0a6acbb525aa8c7f19fdc07c6f0e609689df8d299d95",
+      "resumed-observation.json": "440eaa7dc11c58132e4e839a47b37c93a0900cc206e9c592a0fa989061066fcb",
+      "parked.json": "e4e4e5a1e4b5fb9e6aef901d36c73b26f364c98e6797ee1acafc6116782bbb65",
+      "preservation-final.json": "3bd333f09c3d98508eb55a5fae62172792ee08a3439fa1779a6ce058cd696a69"
+    }
+  },
+  "serialIdlePolling": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/position-idle-poll",
+    "release": {
+      "commit": "3af724e9c5af56d3dc5d3cde8d965b0270fdb037",
+      "tree": "831584e0f29fabf62f66c621b2ffdcf2a807a82d",
+      "deb": "kura-position_2.0.0~git202611201848.3af724e-1_all.deb",
+      "debSha256": "140ee2987e47ca7a68e84c0337e3cf11fed8a73228646f7e284a96dbb44a8597",
+      "jar": "be92977bfaf23a6ac40ba83e0f34014a3c717cc88ede0d4f2326f22c2fa1a04a",
+      "originalDeb": "kura-position_2.0.0~git202611201842.b908c47-1_all.deb",
+      "originalDebSha256": "4845c7f15f3141f3d04f424e8f1953672b30961176d763ebbd54c34610190b07"
+    },
+    "arm64": {
+      "previous": {
+        "calls": 1324688,
+        "windowNs": 1200336998,
+        "readsPerSecond": 1103596.7,
+        "utc": "2026-11-21T20:40:30.125",
+        "latitude": 31.2
+      },
+      "candidate": {
+        "calls": 41,
+        "windowNs": 1200108248,
+        "readsPerSecond": 34.2,
+        "utc": "2026-11-21T20:40:30.125",
+        "latitude": 31.2
+      }
+    },
+    "method": "Linux ARM64 PTY, unchanged Core serial connection factory/jSerialComm, Java read counter wrapping the actual input stream, one valid test RMC per fresh isolated process, no physical devices.",
+    "tests": {
+      "position": 72,
+      "rest": 8
+    },
+    "parkedFullMainVersion": "b908c47",
+    "scope": "The full systemd Main maintenance cycle above used b908c47. The follow-up pairs the release JARs outside Main and checks PTY reads and position delivery.",
+    "receiptSha256": "00c2df42887158725c4d6884a788ab21442a8036c16c381c8e26a6b80b19082f"
   }
 }

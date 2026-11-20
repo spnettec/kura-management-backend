@@ -1,3 +1,11 @@
+## 2026-11-21 串口 Position 从升级、重装和配置中断中恢复定位
+
+旧包在串口空闲时退出接收线程。六个网关包联合安装后，正式 Main 仅提交一次 Position 配置。将 Position 从 `fd742d9` 升至 `b908c47`、单独移除并 purge 重装、在 postinst 等待注册锁时中断并直接续配，三次均在同一 Root 从伪终端读到各自的 NMEA 定位和 UTC 毫秒。其他六包、两个快照和两份凭据均保持可核对。夹具正常停机，物理 GPS 仍在原硬件边界内。随后用同一 Core 串口实现、两版正式 Position 包和 ARM64 伪终端定量复核。`3af724e` 在无字节时等待 25 毫秒，实测空闲读取从每秒约 110 万次降至 34 次，仍能收到有效定位。该版本 Position 与 REST 共 80 项测试通过。[六组件串口与 dpkg 记录](actual-standalone-position-six-conversion-checkpoint.json)
+
+## 2026-11-21 NTP 单次任务在 provider 停用后退出重试
+
+Core `3fe46eeefb` 将失败重试绑定到发起它的那次启动。ARM64 实际发行包使用 JDK 21 调度器和回环 UDP，第一次回复后的测试回调报错。旧包在停用后再发 1 次，修复后为 0；重新启用时从 2 次降至当次启动的 1 次。一直保持启用的任务失败后仍重试 1 次并成功。当前 Core 的 82 模块完整构建用时 11 分 43 秒，2,133 项通过、2 项跳过，含 67 项真实 Equinox 集成测试。冻结父项 0/12。[正式包和 UDP 计数](actual-registered-main-clock-and-purge-checkpoint.json)
+
 ## 2026-11-21 正式 Main 丢弃已退役 NTP provider 的迟到回复
 
 Core `4c43461ff3` 修复 RTC 配置切换时的旧采样竞争。旧实现将每个 provider 的回调交给同一个监听器，一次真实回环 UDP 回归在切换后触发了模拟时钟写入。修复后，时钟服务在发布新配置前等待已受理的回调结束，后续只接收当前 provider 的采样。JDK 21 时钟模块 31 项通过。独立 Debian ARM64 正式 deb 装入完整 Main，Configuration Admin 将 RTC 选择从 /dev/rtc1 改到 /dev/rtc2 后，旧 Java NTP provider 收到并成功解析切换前请求的 UDP 回复。原 actor 目录只保有安装锁，发送端目录没有创建。出厂禁用配置已恢复，Main disabled，容器正常停机。上一 RTC 现场因挂载设备号变化在查业务记录前停机。虚拟 DS1307 上完整 Main 的正向写入仍待验，冻结 0/12。[源码、包配对与正式 Main 实测](actual-registered-main-clock-and-purge-checkpoint.json)

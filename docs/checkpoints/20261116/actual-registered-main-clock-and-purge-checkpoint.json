@@ -230,5 +230,115 @@
     "runtimeProbe": "The in-process fixture updated real Configuration Admin, served one loopback UDP response after DS replaced the provider and checked lastSync/isSynced on the retired instance. The production scheduler and provider processed the packet. No direct onClockUpdate invocation was used in the installed test.",
     "stillOpen": "Full Main positive DS1307 write, remaining providers and maintenance matrix.",
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/clock-provider-retirement"
+  },
+  "oneShotRetryAfterProviderRetirement": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/clock-one-shot-retirement",
+    "packagePair": {
+      "source": "3fe46eeefb841b87be9a4f9eabb51e767a21d25d",
+      "tree": "88cc00b3454b70d027dce1cc4a4a4e739e3d6282",
+      "previous": {
+        "name": "kura_6.0.0~git20261120183128.4c43461-1_arm64.deb",
+        "sha256": "7c2c811fc59f8cdc994ffcb8f38aad2cd89e28c638543724f0f3d43b02210d07",
+        "bytes": 204226474,
+        "jar": "c4b8f2e864ec632aebb82a0ef7cc87ca5306f99144a416c1fa8e47631f1fbfe9",
+        "clockManifest": "fe2d36eee48672de18aba5d743093e2bc164e451f2d7c9bff0c6c9617d85808f",
+        "cohortFileCount": 14
+      },
+      "current": {
+        "name": "kura_6.0.0~git20261120183545.3fe46ee-1_arm64.deb",
+        "sha256": "83cd0ba77fd0a92c46b4d1dd4fac5c23b3f92560427a2314a46f2916f2741014",
+        "bytes": 204226478,
+        "jar": "9f886bdc905f7b938f92038cd20be7e01121f161f3b8889daf7074a5c2d6e974",
+        "clockManifest": "ecccf1ce7c9dae0c75e58f0bdadb0453377e07f49c6a9e70eed3c5e9f509fdf9",
+        "cohortFileCount": 14
+      }
+    },
+    "clockModuleTests": 34,
+    "localUdpEvidence": {
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "udp": "isolated loopback",
+      "scheduler": "java.util.concurrent.ScheduledThreadPoolExecutor",
+      "testFault": "first fixture listener fails after processing a valid reply",
+      "results": [
+        {
+          "release": "previous",
+          "mode": "stop",
+          "observed": "provider=(file:/proof/lib/0.jar <no signer certificates>)\nstop first=1 subsequent=1 callbackCount=2 queued=0 arch=aarch64 jdk=21"
+        },
+        {
+          "release": "previous",
+          "mode": "restart",
+          "observed": "provider=(file:/proof/lib/0.jar <no signer certificates>)\nrestart first=1 subsequent=2 callbackCount=3 queued=0 arch=aarch64 jdk=21"
+        },
+        {
+          "release": "current",
+          "mode": "stop",
+          "observed": "provider=(file:/proof/lib/0.jar <no signer certificates>)\nstop first=1 subsequent=0 callbackCount=1 queued=0 arch=aarch64 jdk=21"
+        },
+        {
+          "release": "current",
+          "mode": "restart",
+          "observed": "provider=(file:/proof/lib/0.jar <no signer certificates>)\nrestart first=1 subsequent=1 callbackCount=2 queued=0 arch=aarch64 jdk=21"
+        },
+        {
+          "release": "current",
+          "mode": "active",
+          "observed": "provider=(file:/proof/lib/0.jar <no signer certificates>)\nactive first=1 subsequent=1 callbackCount=2 queued=0 arch=aarch64 jdk=21"
+        }
+      ]
+    },
+    "method": "Ran the release bundle from each ARM64 deb with Linux ARM64 JDK 21, the Java NTP provider and a real scheduled executor. The fixture raised one listener error after accepting the first UDP reply. Counts exclude the first exchange.",
+    "additionalQueries": {
+      "oldAfterStop": 1,
+      "newAfterStop": 0,
+      "oldAfterRestart": 2,
+      "newAfterRestart": 1,
+      "newStillActive": 1
+    },
+    "qualification": "Only the complete classpath runs count. This fault is injected at the listener, with loopback NTP and no system-clock or RTC writes.",
+    "receiptSha256": {
+      "package.json": "528ba4414546b1996957eaca8c7876cc294fadf31ee7f43eaebde3fd542160b1",
+      "arm64.json": "8cb841734c3abc95defcb18983d24741f0e707dc47f7e3fc806f52ee614b6c87",
+      "verify.log": "413428072b270ee0630145cceebcf8b65e5b030b20d7331be89d74457641a8ac"
+    },
+    "fullCoreOsgi": {
+      "commit": "3fe46eeefb841b87be9a4f9eabb51e767a21d25d",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:43 min",
+      "testTotals": {
+        "tests": 2135,
+        "passed": 2133,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.4,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.589 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "7b48e5d31777257709942117dc8a13965d28b4f2bc32043eaf6b5d14678fa494"
+    }
   }
 }
