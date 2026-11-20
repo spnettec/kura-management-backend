@@ -143,7 +143,7 @@
   },
   "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/network-sender-core-retention",
   "remaining": [
-    "An applied but unacknowledged BIND or modem operation from registered Main across Core purge is not covered by the DHCP run."
+    "An applied but unacknowledged modem operation from registered Main across Core purge still needs its own admitted modem target and maintenance evidence."
   ],
   "abortCallbackFix": {
     "core": "fcf120643543ceccab710edc5e9d270eac6ab2ea",
@@ -316,5 +316,110 @@
     "retiredDebCopyBytes": 9381874,
     "parkedDisabled": true,
     "exit": 0
+  },
+  "registeredMainAppliedBindCorePurge": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/main-bind-core-purge/original-bind",
+    "source": {
+      "core": "fcf120643543ceccab710edc5e9d270eac6ab2ea",
+      "networking": "4741b5e9751394f19c3de945c21f4f3212542261"
+    },
+    "unrelatedDhcpSiteAdmission": {
+      "original": {
+        "id": "7c2205e3b2f2a1309db3f7da8cd2f6301f3d155096c118aa651fbe5297f31b18",
+        "mount": "1048582:6495530",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "current": {
+        "id": "7c2205e3b2f2a1309db3f7da8cd2f6301f3d155096c118aa651fbe5297f31b18",
+        "mount": "1048815:6495530",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "dhcpLedger": "1048815:6496934",
+      "bindLedger": "1048815:6496933",
+      "admitted": false,
+      "operationQueryIssued": false
+    },
+    "originalBindSite": {
+      "original": {
+        "id": "1f169a814d77603a4effde239c50e9bea843fe862a38a1ca12d323a1fb6e6d4a",
+        "mount": "1048815:6437560",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "current": {
+        "id": "1f169a814d77603a4effde239c50e9bea843fe862a38a1ca12d323a1fb6e6d4a",
+        "mount": "1048815:6437560",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "bindLedger": "1048815:6438716",
+      "originalLedger": "1048815:6438716",
+      "admitted": true,
+      "operationQueried": false
+    },
+    "mode": "Standalone Core plus Networking. Original BIND site upgraded first. Registered Main used a synthetic IPv6 LAN and synthetic resolver address to publish an enabled configuration, then used its original factory snapshot to disable it.",
+    "enable": {
+      "id": "5300d773-47cf-4980-8c95-cd3b3c847771",
+      "model": {
+        "forwarders": [
+          "192.0.2.53"
+        ],
+        "mode": "enable-lan-dual",
+        "networks": [
+          "fd37:7::/64"
+        ]
+      },
+      "namedPid": "8909"
+    },
+    "lostStopReply": {
+      "main": 10318,
+      "child": 15833,
+      "op": "98001648-aafb-48c6-bd83-a8c224209e2c",
+      "model": [
+        "dual",
+        "disable"
+      ],
+      "scope": "265964fb2f6c12eae5f708064fc806ae71d14b4a3faabbc483d3f883a710503e",
+      "root": [
+        1048815,
+        6438716
+      ]
+    },
+    "senderSha256": "292de19025c5a841efda2ed34180172b9304f996c26d68be62d47ad39c1d1a75",
+    "maintenance": {
+      "remove": "config-files",
+      "purge": "not-installed",
+      "reinstall": "installed",
+      "priorBindRecordsExact": 15,
+      "keysExact": true,
+      "sameSenderBytesModeOwnerLinksSize": true,
+      "sourceSnapshotAfterPurge": "factory input only",
+      "archiveConsumed": true
+    },
+    "confirmation": {
+      "mainPid": "20801",
+      "originalId": "98001648-aafb-48c6-bd83-a8c224209e2c",
+      "receiptResultSha256": "eaac6576d8d6592a472cb544a95a6ece6ded67d8ded2a6a34ab3fba03c492de0",
+      "newRequests": [],
+      "newActorFiles": [
+        "/var/lib/kura-bind-service/98001648-aafb-48c6-bd83-a8c224209e2c.delivered"
+      ],
+      "localAfter": [
+        "lock"
+      ],
+      "namedAfter": "inactive"
+    },
+    "retirement": {
+      "copies": 2,
+      "bytes": 213607914,
+      "priorRuntimePreserved": [
+        ".data",
+        "data",
+        "log",
+        "packages",
+        "user",
+        "yofc-bind-sender"
+      ]
+    },
+    "parkedDisabled": true,
+    "shutdownExit": 0
   }
 }

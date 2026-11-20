@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 的 BIND 配置回执跨 Core 与 Networking 共同 purge
+
+原 DHCP 夹具重启后挂载设备号改变，未查询业务操作，正常停机。独立 BIND 原现场另按自己的机器、Root 与 actor 目录配对成功，同 Root 升级至 Core `fcf1206435` 与 Networking `4741b5e`。正式 Main 先为隔离 IPv6 LAN 发布 DNS 配置，再从原出厂快照停用 DNS。服务端提交后，等待回复的客户端被中断，Main 记录 UNKNOWN，named 已停机。两个正式包共同 remove、purge、重装，发送端读回同一编号和原字节。重装后正式 Main 直接使用出厂快照，15 份既有服务端记录和两份凭据逐项一致，只新增原编号的送达回执，无新增 DNS 操作。保留测试前的运行数据及旧证据，删除两份已核实宿主原件的 deb 副本，213,607,914 字节。现场 disabled、正常停机，冻结 0/12。[完整实装检查点](actual-core-network-sender-purge-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 DHCP 已生效回执跨 Core 与 Networking 共同 purge
 
 复用上一次完整 Core 首装现场，重新核实原挂载身份后安装 Networking，使用隔离虚拟 LAN。正式 Main 启用专用 dnsmasq。随后的停用已由 actor 提交，终止等待回复的客户端后 Main 记录 UNKNOWN。普通 dpkg 共同移除、purge、重装 Core 和 Networking；原六份服务端记录与两份凭据逐项一致。发送端恢复原编号、字节、权限、属主、链接数和长度。明确 purge 后仅从夹具备份重新提供原停用测试快照。新 Main 取得原结果，服务端只新增该编号的送达回执，本地 pending 消失，服务保持 inactive。收尾撤除虚拟接口与运行目录中的测试快照，保留恢复证据，Main disabled、正常停机。BIND、modem 的已派发组合仍各自待验，冻结 0/12。[正式包与原操作证据](actual-core-network-sender-purge-checkpoint.json)
