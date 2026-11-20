@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — PKCS#11 共享令牌的 PIN 校验与既有会话
+
+Core `9d490f6195` 使用独立 JVM 验证显式 PIN，PIN 通过匿名管道传递。错误 PIN 或已启动后结果未明的校验阻止后续读取，直到认证配置改变。认证前确认不可用可以重试。JDK 21／Maven 3.10.1 的 88 项 keystore 测试通过，正式 ARM64 deb 由该 Git 树顺序构建。
+
+独立 Debian 13 ARM64 Root 一次安装正式 Core 和已校验的 SoftHSM2。正式 Main 内两个不同 OSGi provider 分别按槽号和实际槽索引访问同一令牌。先同一配置计划创建两者并将 Jetty 绑定到 B。再以一份新计划配置 A 的错误 PIN，两次读取均拒绝，只观察到一次原生 PIN 拒绝。B 的原不可导出私钥句柄继续签名。第三份合法计划恢复 A；两个 OSGi service ID、Main PID、出生时间、InvocationID、B 与 Jetty 的配置修订均保持。三个阶段均用原证书完成 TLS 1.2 和 TLS 1.3 并得到 HTTP 响应。
+
+首次读取令牌指纹把 token.object 与证书和私钥对象等同，因元数据变化退出。核定原创建计划已提交后仅补采原观察，原创建未重派。证书与私钥对象文件精确保持，token.object 的变化单独留证。三个计划各有原四文件回执，前序快照与回执逐项保持。Main 保持 disabled 且正常停止，夹具退出 0；停机后读回 21 份文件，合成 PIN 和探针留在该 Root 私有目录。
+
+本次覆盖显式 PIN 的共享软件令牌。受保护认证路径、令牌拔出或替换、全部 provider 重加密、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 与生命周期矩阵继续内部待办。原三现场及 7fd 的 41 输入／16 回执保持。冻结 12 父项最终 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-core-pkcs11-shared-slot-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — PKCS#11 签名 CRL 的离线冷启动
 
 复用实装 Core `4535c821c6` 的原隔离 Debian 13 ARM64 Root。原容器重新启动后先核对设备号、Root inode、machine-id 摘要、原已装包及 14 份受保护文件的完整指纹，再显式启动禁用状态下的正式 Main。回环 CRL 源端口全程拒绝连接，配置探针和临时 PIN 文件继续移出运行目录。没有配置派发、令牌重建或 CRL 发布。
