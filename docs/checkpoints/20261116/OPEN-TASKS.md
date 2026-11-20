@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 正式 Core Main 的 PKCS#11 令牌与配置连续性
+
+隔离 Debian 13 ARM64 Root 从 Debian 签名索引校验 SoftHSM2 2.6.1-3 正式包。旧 Core `96ffee3741` 的一次正式配置计划成功提交，但实际 SCR 激活未获得 provider。原日志显示默认 CRL 路径读取了尚未创建的 PKCS#11 选项。首次 SoftHSM 令牌准备因 `kurad` 无法读取配置而停止。只读确认令牌目录为空后，测试夹具将该配置的读取组配给 Main，沿原 PIN 输入完成首次令牌初始化。
+
+Core `96cd580d8a` 先加载 PKCS#11 选项再初始化或更新 CRL manager。令牌配置变化时使旧 manager 退休并发出既有 keystore 变更事件。metatype 只保留一份 CRL 路径属性。从 Git 用 JDK 21/Maven 3.10.1 生成正式 ARM64 deb，在原 Root 实际升级。已装 JAR、正式包和本次 Git 构建摘要相同。
+
+旧 Main 正常停机后把合成 PIN 输入移到 Root 私有目录。修正版两次正式 systemd 启动都通过原配置及 JDK SunPKCS11 读取同一令牌证书和不可导出的私钥，各一次签名由对应公钥验证。KeyManager 可用。升级回拷使四份配置记录、快照和三份令牌对象的 inode 及 ctime 变化，八份字节、属主、模式、长度和 mtime 保持，Core 凭据完整指纹保持。两次启动之间快照、回执及证书和私钥对象完整指纹保持，SoftHSM 的 token.object 元数据内容在使用期间更新。原 PIN 未出现在快照、回执及所核对日志。两次 Main 正常停止并保持 disabled，隔离现场正常停放。keystore Maven 84 项通过。
+
+活跃消费者下的令牌更新、拔出和 CRL 分发，以及全部 provider 加密归档与重加密、完整 Core/OSGi、其余 typed brokers、六组件矩阵和全部 12 父项继续内部待办。原三现场及 7fd 的 41 输入／16 回执保留，闭环 0/12，external deferred 仍仅原三项。见 [实装检查点](actual-native-core-pkcs11-keystore-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 标准防火墙启动器配置与原回执续接
 
 标准版旧 Networking `3e15d6a` 在隔离 Debian 13 ARM64 Root 的一次正式 systemd 启动中，已经写入两族站点规则并归档了站点回执，随后创建 IPv4 `input-kura`，把父链推导为无效的 `INPUT KURA` 而退出 1。实际 IPv4 链存在但未链接，其他配置尚未执行，原现场正常停放且未再次派发。
