@@ -1,3 +1,15 @@
+## 2026-11-20 继续实施 — Core 与旧 firewall-only 原位联合升级及 launcher
+
+Core `96ffee3741` 增加独立 `KURA_FIREWALL_ONLY_COHORT_SHA256`。同一 Root 及挂载命名空间内的实际 dpkg 仍需传入有序批准归档。单独核对已装变体、新归档包名及版本、独立 modem 证明和 JAR 指纹。混入标准 Networking、BIND 或 NetworkManager 资产会拒绝。实际两种归档分别通过自身检查，反向交叉均拒绝。69 项 ARM64 回归通过，JDK 21、Maven 3.10.1 从 Git 构建 Core ARM64 正式包。
+
+在独立 Debian 13 ARM64 Root 实装旧 Core `2a3b588`、旧 firewall-only `4ee16c9`、GWT、Deployment、Wires。旧防火墙辅助脚本只创建私有规则目录，站点规则保持原路径。首次观测误预期会复制站点文件，按实装行为核对空私有目录和两份原站点文件后继续。两族隔离内核已各有独立哨兵链。
+
+一次真实 dpkg 联合换版后，Core 和 firewall-only 各一次 upgrade，零 remove，dpkg audit 无输出。标准 Networking 未安装。两份站点规则、能力记录、两族 filter 表、两份 Core 凭据及旧包历史精确。快照与合成用户数据的内容和保留元数据一致，原编号新增一份回执。私有规则目录仍空，Main 未启动。实际已装 modem 证明以 kurad 核对通过。
+
+显式启动一次实际 `firewall.service`，按两份站点文件独立加载 IPv4／IPv6 规则，原站点哨兵链保持，Main 未被连带启动。之后实际 Main 保持 NNP，Core、GWT、Linux 网络及 firewall 管理四个 bundle ACTIVE。两个 OSGi 防火墙配置 API 分别返回 IPv4 和 IPv6 配置，均由 firewall-only 的正式 bundle 提供。固定已装叶证书验证 GWT 200／302。站点规则文件和哨兵链保持，Main 正常停机并维持 disabled，夹具正常停放。
+
+其他 provider／launcher、换版后更多中断点、实际内核重启或 Root 重挂、已绑定业务、完整 Core/OSGi、余下 typed brokers 及完整六组件矩阵继续内部待办。原三现场、个人文件和 7fd 的 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-firewall-only-direct-upgrade-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core 与 Networking 联合升级中断及 soft-reboot 续接
 
 独立 Debian 13 ARM64 Root 实装旧组合。对正式 Core `910493756d` 与 Networking `6ab7101` 发起联合升级，在新版 Networking preinst 的内核 exec 停点中断。Core 已 unpacked，Networking 仍为旧版 half-installed。新版 preinst 正文未进入，原 dpkg 和该子进程均确认退出。九份新版证明尚未写入，三份 Core 原围栏、恢复副本、凭据和旧包历史保持。实际 Main 配对检查拒绝该中间状态。

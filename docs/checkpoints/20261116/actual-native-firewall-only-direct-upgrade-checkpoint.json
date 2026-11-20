@@ -1,0 +1,176 @@
+{
+  "recordedAt": "2026-11-20T06:57:58.729754+00:00",
+  "source": {
+    "core": "96ffee3741fda1c4535a715a8ff33b2bb84f80f5",
+    "coreTree": "71ec9be33eb7391723704ca57e63c58ce99fec40",
+    "networking": "6ab7101"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true
+  },
+  "fixture": {
+    "id": "dcf5792fb928f56453eb27240d6dfc4493f3cf13336adfa7cefecfb070ef61d0",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:53:18.177792813Z",
+      "FinishedAt": "2026-11-20T06:57:18.122541905Z"
+    }
+  },
+  "archives": {
+    "legacyFirewallOnly": {
+      "sha256": "c153d506b96949ea7ce8b598bf4f2477b3ae9ac7e42c6be8782c0ceaa88eaf0b",
+      "version": "3.0.0~git202611190914.4ee16c9-1",
+      "revision": "4ee16c9a98584a54261dd234cb1260725cb6703d",
+      "tree": "e5a521ac328e0cd091835b81347e1910f2ee68c4"
+    },
+    "core": {
+      "sha256": "aee916b1f4260483cd2c8372899230daabb010328412363cb94043da2c126587",
+      "version": "6.0.0~git20261120065440.96ffee3-1",
+      "artifact": "kura_6.0.0~git20261120065440.96ffee3-1_arm64.deb"
+    },
+    "firewallOnly": {
+      "version": "3.0.0~git202611200435.6ab7101-1",
+      "sha256": "582303c707f258b92b96eeed9d36299595326ca23ec7b675e7673719ef5db8eb",
+      "archiveVerified": true,
+      "otherVariantRejected": true
+    },
+    "standardNetworkingReadOnlyCheck": {
+      "version": "3.0.0~git202611200436.6ab7101-1",
+      "sha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f",
+      "archiveVerified": true,
+      "otherVariantRejected": true
+    }
+  },
+  "preflight": {
+    "separateVariantApproval": true,
+    "sameRootAndDpkgTransaction": true,
+    "standardAndStandaloneArtifactsChecked": true,
+    "crossVariantRejected": true
+  },
+  "operation": {
+    "directInstallInvocations": 1,
+    "upgradeLogEntries": {
+      "kura-core": 1,
+      "kura-firewall-only": 1
+    },
+    "removals": 0,
+    "sameRootAndBoot": true,
+    "before": {
+      "kura-core": "6.0.0~git202611190914.2a3b588-1",
+      "kura-firewall-only": "3.0.0~git202611190914.4ee16c9-1",
+      "kura-management-ui": "3.0.0~git202611190914.1205092-1",
+      "kura-deployment": "2.0.0~git202611190915.fddf031-1",
+      "kura-wires": "3.0.0~git202611190915.93f318b-1"
+    },
+    "after": {
+      "kura-core": "6.0.0~git20261120065440.96ffee3-1",
+      "kura-firewall-only": "3.0.0~git202611200435.6ab7101-1",
+      "kura-management-ui": "3.0.0~git202611190914.1205092-1",
+      "kura-deployment": "2.0.0~git202611190915.fddf031-1",
+      "kura-wires": "3.0.0~git202611190915.93f318b-1"
+    },
+    "standardNetworkingAbsent": true,
+    "dpkgAuditEmpty": true,
+    "kernelRulesBothFamiliesExact": true,
+    "firewallCapabilityAndSiteFilesExact": 3,
+    "privateRuleStoreStayedEmpty": true,
+    "coreKeysExact": 2,
+    "userAndSnapshotExact": 2,
+    "oldPackageReceiptsExact": 1,
+    "newReceipt": {
+      "id": "e8aec87c-1c03-488a-8789-9e995fd2111d",
+      "sha256": "437d789d9e590fd0e691f217ed512a2dcf3be56ebad323acd8e70eae475bebe1"
+    },
+    "mainDidNotStart": true
+  },
+  "launcher": {
+    "unit": "firewall.service",
+    "oneExplicitStart": true,
+    "state": {
+      "MainPID": "0",
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled"
+    },
+    "ipv4AndIpv6MatchedSiteFiles": true,
+    "independentSiteChainsRetained": true,
+    "mainDidNotStart": true
+  },
+  "runtime": {
+    "coreNnp": true,
+    "activeBundles": {
+      "org.eclipse.kura.core": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.linux.net": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/firewall/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.net.admin.firewall": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/firewall/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.web2": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar"
+      }
+    },
+    "configurationReads": {
+      "org.eclipse.kura.net.firewall.FirewallConfigurationService": "initial@reference:file:../kura/siblings/firewall/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.net.firewall.FirewallConfigurationServiceIPv6": "initial@reference:file:../kura/siblings/firewall/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar"
+    },
+    "siteFilesAndChainsPreserved": true,
+    "pinnedGwt": {
+      "auth": {
+        "status": 200,
+        "location": null,
+        "serverSha256": "44dfaf6760b99212d8a8322595b5c90153054128d0e4feeb1eb5542f3ebcbc55"
+      },
+      "console": {
+        "status": 302,
+        "location": "/admin/auth",
+        "serverSha256": "44dfaf6760b99212d8a8322595b5c90153054128d0e4feeb1eb5542f3ebcbc55"
+      }
+    },
+    "normalStop": true,
+    "mainDisabled": true
+  },
+  "observationCorrection": "The historical package provisions an empty private rule store and does not copy site files. The observer used the actual empty store and preserved site files before the one upgrade.",
+  "tests": {
+    "linuxArm64Passed": 69
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "additional firewall variants, launchers and interruption/reboot boundaries",
+    "complete Core/OSGi, remaining typed brokers, bound business, full six-component matrix and all 12 parents"
+  ]
+}
