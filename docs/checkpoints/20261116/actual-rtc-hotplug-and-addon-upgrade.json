@@ -1424,5 +1424,45 @@
       }
     ],
     "limits": "Synthetic completed operations and authenticated caller substitute. No installed Main observation for bdf7690c8e and no modem or DHCP resource change."
+  },
+  "singleRunCoreReactor": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/typed-delivery-interruption/all-core-osgi.log",
+    "commit": "bdf7690c8e11a4ffa58257bc6d7215d46f33bbc4",
+    "jdk": "21.0.13",
+    "maven": "3.10.1",
+    "profile": "osgi-it",
+    "selection": "all modules from workspace pom; no -pl or -rf",
+    "modules": 82,
+    "totalTime": "11:42 min",
+    "testTotals": {
+      "tests": 2130,
+      "passed": 2128,
+      "skipped": 2,
+      "failures": 0,
+      "errors": 0
+    },
+    "crossModule": {
+      "module": "kura-unit-tests",
+      "kind": "surefire",
+      "tests": 127,
+      "passed": 127,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "equinox": {
+      "module": "kura-osgi-tests",
+      "kind": "failsafe",
+      "tests": 67,
+      "passed": 67,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "crlIntegrationSeconds": 424.0,
+    "skips": [
+      "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.608 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+    ],
+    "logSha256": "fafa676a294b858fcee2ad59631d0b40a4ea443caee229a9345bd77c6ba47a3b"
   }
 }
