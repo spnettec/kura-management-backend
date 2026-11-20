@@ -1,0 +1,102 @@
+{
+  "recordedAt": "2026-11-20T07:05:14.032789+00:00",
+  "source": {
+    "core": "96ffee3741fda1c4535a715a8ff33b2bb84f80f5",
+    "networking": "76825d69ccdd26639d826abfadc6fc7b2a376f79",
+    "networkingTree": "0b0e3ac35b532d27ddda2b4d2c1b046b0131eca1"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true
+  },
+  "fixture": {
+    "id": "dbeff4b30d5ee9dd8102587eae7c0bffc9f6b883396e12511e5219ed48e64345",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T07:02:11.033164867Z",
+      "FinishedAt": "2026-11-20T07:04:29.116655907Z"
+    }
+  },
+  "archives": {
+    "kura-firewall-only": {
+      "sha256": "47d0d2d4bb349ad973e328b52241f7a94a3905344607e8391067d6fed0914373",
+      "version": "3.0.0~git202611200702.76825d6-1",
+      "helper": "/opt/eclipse/kura/libexec/addons/firewall/kura_firewall_boot.py"
+    },
+    "kura-networking": {
+      "sha256": "75ebd2115a302c8d276227f02c3adf16cd7079bcb02cff6b3636bdb0ccf64c80",
+      "version": "3.0.0~git202611200702.76825d6-1",
+      "helper": "/opt/eclipse/kura/libexec/addons/networking/kura_firewall_boot.py"
+    }
+  },
+  "originalBehavior": {
+    "realSystemdInvocation": true,
+    "ipv4AlreadyChangedWhenIpv6Failed": true,
+    "ipv6Unchanged": true,
+    "maintainedSiteFileFingerprints": 2,
+    "unitResult": "exit-code"
+  },
+  "standaloneFixed": {
+    "sameRootAndCore": true,
+    "invalidIpv6": {
+      "bothTablesUnchanged": true,
+      "siteFilesExact": true
+    },
+    "symlinkIpv6": {
+      "bothTablesUnchanged": true,
+      "linkAndTargetExact": true
+    },
+    "validPair": {
+      "actualBothFamiliesApplied": true,
+      "siteChainsRetained": true,
+      "siteFilesExact": true
+    }
+  },
+  "standardFixed": {
+    "actualRemoveStandaloneAndInstallStandard": true,
+    "sameCoreAndRoot": true,
+    "invalidIpv6Refused": true,
+    "bothTablesAndInputsExact": true,
+    "ipv4Ipv6ForwardingExact": true,
+    "networkManagerProcessExact": true
+  },
+  "tests": {
+    "networkingMavenPassed": 2239,
+    "arm64FirewallPackagingPassed": 6
+  },
+  "releaseScope": "Rule file preflight before any restore. Errors raised during a real kernel write still need explicit outcome checks.",
+  "mainDisabledAndNeverStarted": true,
+  "dpkgAuditEmpty": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "actual write-phase interruption and result reconciliation",
+    "standard launcher full successful activation",
+    "remaining providers, typed brokers, Core/OSGi, full six-component matrix and all 12 parents"
+  ]
+}

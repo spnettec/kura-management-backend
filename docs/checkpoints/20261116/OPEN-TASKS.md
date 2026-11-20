@@ -1,3 +1,15 @@
+## 2026-11-20 继续实施 — 两种防火墙启动器在写入前核对双族站点规则
+
+独立 Debian 13 ARM64 Root 安装 Core `96ffee3741` 和旧 firewall-only 正式包。用单次实际 `firewall.service` 调用复现：合法 IPv4 已写入内核，随后无效 IPv6 使单元失败，IPv6 保持原规则，两份站点文件指纹精确。该旧结果完整保留。
+
+Networking `76825d6` 让标准和独立两种正式包共用站点规则前置检查。只从固定 Root 所有目录读取普通、非链接且无非 Root 写权限的文件。先将两族规则送入各自真实 `--test`，重核文件及防火墙归属，然后使用校验过的原字节。标准版根据同一份数据计算转发选择。JDK 21/Maven 3.10.1 从 Git 构建两种正式 deb，Networking Maven 2239 项、ARM64 包装 6 项通过。
+
+同 Root 只升级 firewall-only，Core 凭据、能力记录、快照和站点文件保持。单独实测两次拒绝：IPv6 规则损坏，以及 IPv6 路径为符号链接。两族均未发生写入，现有文件及链接目标保持。随后合法规则对经实际 launcher 生效，两个表与站点文件匹配，独立哨兵链保留。
+
+沿同一 Root 实际移除隔离 firewall-only 并安装同期标准 Networking。两族规则和站点文件保持，NetworkManager 进程身份及 Core 凭据保持。标准版实际 `firewall.service` 拒绝错误 IPv6 时，两族规则和转发开关精确。整个隔离现场 Main 保持 disabled 且未启动，dpkg audit 无输出，夹具正常停放。
+
+本轮覆盖写入前拒绝。实际写入途中故障的结果核定、标准 launcher 正常完整启用、其余 provider／launcher、Core/OSGi、typed brokers 和六组件矩阵继续内部待办。原三现场、个人文件和 7fd 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-firewall-dual-family-boot-preflight-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core 与旧 firewall-only 原位联合升级及 launcher
 
 Core `96ffee3741` 增加独立 `KURA_FIREWALL_ONLY_COHORT_SHA256`。同一 Root 及挂载命名空间内的实际 dpkg 仍需传入有序批准归档。单独核对已装变体、新归档包名及版本、独立 modem 证明和 JAR 指纹。混入标准 Networking、BIND 或 NetworkManager 资产会拒绝。实际两种归档分别通过自身检查，反向交叉均拒绝。69 项 ARM64 回归通过，JDK 21、Maven 3.10.1 从 Git 构建 Core ARM64 正式包。
