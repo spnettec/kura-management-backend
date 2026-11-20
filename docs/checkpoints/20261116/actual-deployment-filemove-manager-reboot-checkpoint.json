@@ -1,0 +1,137 @@
+{
+  "recordedAt": "2026-11-20T05:37:28.397315+00:00",
+  "platform": "Debian 13 ARM64 OrbStack with private network namespace",
+  "source": {
+    "kura": {
+      "head": "27a64d73f3ed466475f8c9c4a045126441c71018",
+      "tree": "1bbc379b62cae04048ee1d55f21d4150257282d0"
+    },
+    "kura-deployment": {
+      "head": "5a6025b01226297535bbe13403606a806cfccb54",
+      "tree": "f6466465fb1ba615782e7109891435736c0a7893"
+    }
+  },
+  "packages": {
+    "kura-core": {
+      "version": "6.0.0~git20261120043757.27a64d7-1",
+      "sha256": "c051ed194405a297bf95ff0ced9c301a24524e1f788e63804d4b0cf073ea62c4",
+      "revision": "27a64d73f3ed466475f8c9c4a045126441c71018"
+    },
+    "kura-deployment": {
+      "version": "2.0.0~git202611190922.5a6025b-1",
+      "sha256": "244535435c6cf234ea50aaa675fac7ebe402b84275235808713da0ec4f6d8ae9",
+      "revision": "5a6025b01226297535bbe13403606a806cfccb54"
+    }
+  },
+  "sealedReleaseArchivesReused": true,
+  "java": "openjdk version \"21.0.13\" 2026-10-20",
+  "fixture": {
+    "id": "e32b803ce90108e90f011bf71783a7ab2b8861f74567ff988d52fa3a626f2a4a",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:34:20.081301518Z",
+      "FinishedAt": "2026-11-20T05:36:28.383943017Z"
+    }
+  },
+  "managerRestart": {
+    "softRebootsBefore": 0,
+    "softRebootsAfter": 1,
+    "dbusGenerationChanged": true,
+    "linuxBootIdExact": true,
+    "machineIdExact": true,
+    "rootDeviceAndInodeExact": true,
+    "dockerProcessEpochUnchanged": true,
+    "actualMainKeptStoppedAfterRestart": true
+  },
+  "fileMove": {
+    "job": "72643",
+    "actualOsgiProvider": true,
+    "actualActorLostReply": true,
+    "actorExitStatus": 79,
+    "currentDestinationBeforeManagerRestart": "DESTINATION_APPLIED_SOURCE_PENDING",
+    "originalSevenEntriesByteAndMetadataExact": true,
+    "sourceOnlyRecovery": true,
+    "ownerWasKurad": true,
+    "originalDestinationNotRewritten": true,
+    "finalOutcome": "ALREADY_APPLIED",
+    "sourceOwnerReceipt": {
+      "meta": "600:0:0:1048815:5826687:1:349:2026-11-20 05:36:24.602312496 +0000:2026-11-20 05:36:24.602905533 +0000",
+      "sha256": "4928bfa2d63342ee508b04b0dc40b41e1cbc358409a40fd52238545a64c0b3d5"
+    },
+    "acceptedDestinationDispatchCount": 1,
+    "resultPreservedAcrossRemovePurgeAndReinstall": true
+  },
+  "originalCoreProtectedEntriesExact": 3,
+  "historicalJobNumbersQueriedOrReused": false,
+  "dispatches": {
+    "install-platform": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "install-paired": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "approve": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "start-main": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "stop-main": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "stop-socket": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "disable-socket": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "soft-reboot": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "recover-original-source": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "ack-original-source": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "remove-deployment": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "purge-deployment": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "reinstall-deployment": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    }
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

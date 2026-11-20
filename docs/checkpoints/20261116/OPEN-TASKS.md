@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 受保护 FileMove 跨系统管理器重启续接
+
+在新的 Debian 13 ARM64 无外网隔离 Root 实际安装当前 Core 27a64d73f3 和 Deployment 5a6025b。按 Git 和既有正式归档 SHA 复用已构建包，从实际已装 JAR 以 JDK 21 构建单次验证 bundle。首个编译前探针同时匹配了运行库和独立恢复库，校正为正式 Main 的运行库后继续，未重新安装。
+
+实际 Main 的 OSGi FileMove 发出一个新 MOVE。已装 actor 按正式流程发布原目标和证明后由隔离故障钩子退出 79，客户端未收到结果，原状态为 DESTINATION_APPLIED_SOURCE_PENDING。标准停机后移出探针和故障覆盖，Main 不再启动。实际 systemd soft-reboot 计数增加一次，D-Bus InvocationID 变化，内核 boot ID 与 Root 的设备、inode、machine-id 保持。同一 Root 读回原作业仍待清理，七份目标、源意图及回执字节、inode 和元数据精确。
+
+使用正式已装 Java 入口以 kurad 清理同一原源，再由本机 Root 确认原回执。同一作业达到 ALREADY_APPLIED，原已发目标及证明未变化，一次发布请求。实际 remove、purge、同包重装后原作业仍为 ALREADY_APPLIED，原目标、原记录及三份 Core 保护输入精确，原隔离 Root 禁用停放。历史 UNKNOWN 未查询或重派。
+
+此次范围为系统管理器软重启下同一内核、文件系统和 Root。跨设备号或内核重启、实际云通知和完整 Core/OSGi、余下 typed brokers、六组件及 12 父项仍内部待办。原三现场、个人文件和 7fd 41 输入/16 回执保持。父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-deployment-filemove-manager-reboot-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Native 中心命名实例与启用状态的维护
 
 console 3cf887b 在原 STOPPED 围栏下停用默认与命名发行单元。292412c 补齐持久和运行期 target 链接清点，避免 systemd 只列模板时漏掉未启动实例。无目录的原实例在停用前将精确单元名记入原维护记录。配置时原参与者仍须停机，原休眠实例不得新增状态。启用的管理员单元替换会拒绝变更，管理员 mask 保留。 [systemctl 单元文件文档](https://freedesktop.org/software/systemd/man/latest/systemctl.html)
