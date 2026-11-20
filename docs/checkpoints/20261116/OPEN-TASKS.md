@@ -1,3 +1,15 @@
+## 2026-11-20 继续实施 — 原生联合发行保留式移除与同 Root 重装
+
+Debian 13 systemd 257 在未安装中心且没有命名实例时，`list-unit-files` 实际返回 1，stdout 和 stderr 均为空。原正式安装器因此拒绝进入包概览。console `6798af7` 识别这一种空清单，继续核对持久和运行期链接、已加载实例和保留实例目录，真实系统错误仍上报。Debian ARM64 包装回归 139 项通过。由当前 Git 构建正式中心及安装器，207 项编译输入精确后复用现有正式 ARM64 ELF 和 Web 文件。
+
+沿原隔离 Root 只更换安装器，原网关包和受保护输入保持。真实入口返回唯一批准的中心归档及未安装的默认单元，上传和安装各派发一次。当前 Core、Networking、GWT、Deployment、Wires、Agent、中心安装器和中心八包齐备。实际独立 Agent、合法 Main 与默认中心同时运行。直接移除 Core 时，dpkg 因四个依赖包拒绝，三个原进程、八份输入及包状态精确，未创建 Core 围栏。
+
+通过正式中心维护及 Agent 保留移除入口完成原围栏。Agent 第一次审核归档因位于可写的 `/var/tmp` 父目录拒绝，未创建意图。将同 SHA 归档放入隔离 Root 的私有路径后沿原编号完成审核。之后 Agent 和中心实际 remove、purge，Core 和四个依赖包实际联合 remove。Core 三个围栏、保留数据、Agent 和中心原编号、受保护文件精确。中心安装器维持安装。
+
+沿同一 Root 从相同正式归档重装。原 Agent 回执 REINSTALLED，原中心回执 COMPLETE，原 Agent 四份回执精确。Core 保留的合成业务文件及两份密钥，另有五份 Agent 和三份中心文件核对。三类服务在重装配置后都未自启，经显式启动观察到在运行的进程，随后正常停止，隔离 Root 正常停放。
+
+本轮覆盖无 PostgreSQL 任务和未绑定 Agent 的联合发行路径。网关组与安装器的完整 purge、联合换版、已注册生产式业务、重装后的 GWT 业务就绪和跨阶段中断、完整 Core/OSGi、其余 typed brokers、六组件矩阵和全部 12 父项仍内部待办。原三现场、个人文件及 7fd 41 输入/16 回执精确。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-combined-package-retained-reinstall-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Debian 正式 Core 的双向 TLS、动态吊销与离线缓存续接
 
 新 Debian 13 ARM64 无外网隔离 Root 安装当前正式 Core `f6beac005c` 的 Debian 包，当前 Core `b0ac48556b` 仅有测试变更。四份已装 Equinox、配置、HTTP 和 keystore JAR 与归档 SHA-256 精确。实际 systemd Main 由 kurad 在 NNP 下运行。正式 OSGi 配置计划仅派发一次，创建文件 keystore，切换 Jetty 到独立测试端口和严格 CRL_ONLY。配置回执为 CORE_COMMITTED。真实 TLS 使用隔离测试 CA，客户端核对服务端证书链、主机名和叶证书摘要。

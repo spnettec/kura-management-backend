@@ -1,0 +1,178 @@
+{
+  "at": "2026-11-20T06:05:39.456830+00:00",
+  "fixture": {
+    "id": "a2e211d35629523fdaab766f9d19f1288e402af10a54aea43abde52fc9b698f1",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:58:01.193492602Z",
+      "FinishedAt": "2026-11-20T06:04:21.252328421Z"
+    }
+  },
+  "platform": {
+    "distribution": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "network": "none",
+    "hostMounts": false
+  },
+  "consolePackagingCode": "6798af73ce14e4992c11eae003979887c6364210",
+  "consoleNativeBuildInputsExact": 207,
+  "consoleBinarySha256": "de23eda73205a354c16d265f3c3887c01fc92daef8564e6ab446defc01ce0c48",
+  "packages": {
+    "kura-core": {
+      "path": "/var/tmp/native-cohort-removal/kura-core.deb",
+      "sha256": "4b02b5bb58ca0b6cf09f44ec1f4635a63fa959c6f3873c427947567d45d7f55c",
+      "version": "6.0.0~git20261120054157.f6beac0-1",
+      "architecture": "arm64",
+      "revision": "f6beac005c3c0c09324c90e43a0b76a79dd38d25"
+    },
+    "kura-networking": {
+      "path": "/var/tmp/native-cohort-removal/kura-networking.deb",
+      "sha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f",
+      "version": "3.0.0~git202611200436.6ab7101-1",
+      "architecture": "all",
+      "revision": "6ab7101295702d3ba01d1c3aaf017305637170b0"
+    },
+    "kura-management-ui": {
+      "path": "/var/tmp/native-cohort-removal/kura-management-ui.deb",
+      "sha256": "0677158e707b68d36c0b99b26c1b0e0f988a17687b8b77edfab9603991422eaf",
+      "version": "3.0.0~git202611200220.08712fb-1",
+      "architecture": "all",
+      "revision": "08712fbc8e7acca19182cd253c2d614332c0b6e9"
+    },
+    "kura-deployment": {
+      "path": "/var/tmp/native-cohort-removal/kura-deployment.deb",
+      "sha256": "244535435c6cf234ea50aaa675fac7ebe402b84275235808713da0ec4f6d8ae9",
+      "version": "2.0.0~git202611190922.5a6025b-1",
+      "architecture": "all",
+      "revision": "5a6025b01226297535bbe13403606a806cfccb54"
+    },
+    "kura-wires": {
+      "path": "/var/tmp/native-cohort-removal/kura-wires.deb",
+      "sha256": "c70fcd4040a7697346342d266ba3943fd2e1678cd5d75d64652489127fa4ff78",
+      "version": "3.0.0~git202611190915.93f318b-1",
+      "architecture": "all",
+      "revision": "93f318b241f2d53e4291ffa20fdb1836b34e9b52"
+    },
+    "kura-management-agent": {
+      "path": "/var/tmp/native-cohort-removal/kura-management-agent.deb",
+      "sha256": "746e0f32254d53835ebd9a03155c4ba15a809a6b2117c911377079343e65e59e",
+      "version": "0.1.0~cohort202611200455.4.7d58d7b-1",
+      "architecture": "arm64",
+      "revision": "7d58d7b74739d9827fc968faaf0cd3b936bceef9"
+    },
+    "kura-management-console": {
+      "path": "/var/tmp/native-cohort-removal/kura-management-console-candidate.deb",
+      "sha256": "5a57c042a8e768cf8347581c5ab621c366b07c32731c025a5fbf686d2a8bac10",
+      "version": "0.1.0~cohort20261120060040.6798af7-1",
+      "architecture": "arm64",
+      "revision": "6798af73ce14e4992c11eae003979887c6364210"
+    },
+    "kura-management-console-installer": {
+      "path": "/var/tmp/native-cohort-removal/kura-management-console-installer-candidate.deb",
+      "sha256": "e88c32d8dd9d3479b866bddfcf1076748ad0714300e76f7566410ad850184cee",
+      "version": "0.1.0~cohort20261120060040.6798af7-1",
+      "architecture": "all",
+      "revision": "6798af73ce14e4992c11eae003979887c6364210"
+    }
+  },
+  "freshConsoleOverview": {
+    "systemdVersion": "systemd 257 (257.13-1~deb13u1)",
+    "noMatchCommandStatus": 1,
+    "oldOverviewRefused": true,
+    "fixedOverviewListsDefaultOnly": true,
+    "genuineSystemctlFailurePropagates": true,
+    "coreAndExistingPackageInputsPreserved": true
+  },
+  "firstSetup": {
+    "consoleInstallPhase": "APPLIED",
+    "consoleNativeInstallDispatches": 1,
+    "allEightInstalled": true,
+    "mainAgentAndCenterActiveTogether": true,
+    "networkProvider": "NetworkManager"
+  },
+  "earlyCoreRemoval": {
+    "exitCode": 1,
+    "dependentPackages": [
+      "kura-networking",
+      "kura-management-ui",
+      "kura-deployment",
+      "kura-wires"
+    ],
+    "allOriginalProcessesAndEightFilesExact": true,
+    "noCoreMaintenanceFenceCreated": true
+  },
+  "retainedRemoval": {
+    "originalCenterOperationId": "4539e311-6a6a-4758-bd54-db0fb406c8ae",
+    "originalAgentOperationId": "4882863b-80f1-4da4-ae60-f492f870f4f8",
+    "states": {
+      "kura-core": "config-files",
+      "kura-networking": "config-files",
+      "kura-management-ui": "config-files",
+      "kura-deployment": "config-files",
+      "kura-wires": "config-files",
+      "kura-management-agent": "not-installed",
+      "kura-management-console-installer": "installed",
+      "kura-management-console": "not-installed"
+    },
+    "coreThreeOriginalFences": true,
+    "preservedCoreSyntheticUserData": true,
+    "agentAndConsolePurgeCompleted": true,
+    "installerRemainedInstalled": true
+  },
+  "retainedReinstall": {
+    "originalCenterOperationPhase": "COMPLETE",
+    "originalAgentOperationPhase": "REINSTALLED",
+    "coreAgentConsoleProtectedFilesExact": [
+      2,
+      5,
+      3
+    ],
+    "originalAgentReceiptFilesExact": 4,
+    "allEightInstalled": true,
+    "sameRoot": true,
+    "noAutoStart": true,
+    "mainAgentAndCenterExplicitProcessesObserved": true,
+    "allThreeStoppedNormally": true,
+    "gwtBusinessAfterReinstallVerified": false
+  },
+  "fixtureNotes": [
+    "corrected launcher invocation to its installed package entrypoint",
+    "sampled the same original three processes after correcting the Networking probe path",
+    "read socket state separately from service MainPID before sending Agent maintenance",
+    "Agent rejected the sticky temporary parent before reserving an intent; same archive SHA staged under /root"
+  ],
+  "tests": {
+    "debianArm64ConsolePackagingPassed": 139,
+    "skipped": 0
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "gateway cohort full purge and installer lifecycle",
+    "joint version upgrade, warmed database/enrolled workload, and interruption matrix",
+    "other providers/launchers, complete Core/OSGi and remaining typed brokers, all 12 parents"
+  ],
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false
+}
