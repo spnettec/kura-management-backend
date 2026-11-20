@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Core Main ICMP 专用 worker
+
+Core 6d768e52b3 将实际 OSGi SystemService 的联网探测交给按需启动、独立账号的 ICMP worker。只接纳来自实际 systemd Main 的直接子进程，重新核对 cgroup、PID、已加载单元与包指纹。使用固定 iputils-ping 指令和有界运行时间。正式 Main 移除 CAP_NET_RAW，普通命令 worker 的能力集仍为空。发行包显式依赖 Debian iputils-ping。
+
+用 Git、JDK 21 和 Maven 3.10.1 构建前后两代 Core。在独立 Debian 13 ARM64 Root 关闭普通 ICMP datagram 授权。旧 Main 实测 0x3402，升级后 Main 为 0x1402 且 NNP=1，其他位保持。实际 SystemService 在两代均报告 FULL。新 worker 五个能力掩码均为 0x2000，IPv4 和 IPv6 回环均返回 0；同账号但不属于 Main 的请求被 worker 拒绝。两代软件包同 Root、同 boot 升级，原 AES 凭据、测试配置字节和已配对的维护历史保持。
+
+正式 Main 正常停止后 socket 和实例全部退出。实际 dpkg remove 保留测试用户配置，purge 清除该保留副本，两步均保持原 AES 和两个维护回执。worker 单元、socket、包内代码已移除，独立账号闭锁。隔离 Root 正常退出。35 项 Python 回归通过，42 项 JDK 21 Core System 通过、2 项跳过。
+
+原 HTTPS 的 UNKNOWN 核定和 PREPARED 同 Root 原围栏恢复结果沿用已有证据。Networking 组合、其他 launcher、完整 Core/OSGi、其余 typed brokers 及六组件矩阵继续内部待办，冻结 12 父项为 0/12，external deferred 仅原三项。原三现场、个人配置和 7fd 禁用停止及 41 输入/16 回执保持。见 [实际检查点](actual-core-typed-icmp-checkpoint.json)。
+
 
 
 ## 2026-11-20 继续实施 — G022 Maven 模板、可选生成与 .NET 验证

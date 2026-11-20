@@ -1,0 +1,185 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "b969b37a153516697860fdcb3cc7fe4c8befd479",
+  "core": {
+    "head": "6d768e52b3ec2f76a21e56813b1fff4ad9a5ef24",
+    "tree": "e17d6272106dad2c245a58e2ccc7ebb033537144"
+  },
+  "previousCore": {
+    "head": "2d5c0ab9922de62316296a686dfbcf842d06dc48",
+    "tree": "3c39afd3d2c160913d0593a73018df1a2c37a566"
+  },
+  "platform": "Debian 13 ARM64, systemd, network none",
+  "jdk": 21,
+  "maven": "3.10.1",
+  "oldPackage": {
+    "path": "/root/kura-typed-icmp/kura_6.0.0~git20261120040848.2d5c0ab-1_arm64.deb",
+    "sha256": "21cd51033836fa41ecbc3e7c6191a03f6622cd2fb1d2755ad1a25525d3028f9c",
+    "package": "kura-core",
+    "version": "6.0.0~git20261120040848.2d5c0ab-1",
+    "architecture": "arm64"
+  },
+  "newPackage": {
+    "path": "/root/kura-typed-icmp/kura_6.0.0~git20261120041312.6d768e5-1_arm64.deb",
+    "sha256": "53a3e286f57b2b3330e7fa880914ae41ccfccb0776dd16bfbd2c65af488fb15d",
+    "package": "kura-core",
+    "version": "6.0.0~git20261120041312.6d768e5-1",
+    "architecture": "arm64"
+  },
+  "iputilsPing": {
+    "path": "/root/kura-typed-icmp/iputils-ping_3%3a20240905-3_arm64.deb",
+    "sha256": "b3072df313074159ad7a22f46043d4bac7c36a452a45194fa320574704da5c85",
+    "package": "iputils-ping",
+    "version": "3:20240905-3",
+    "architecture": "arm64"
+  },
+  "sameRootAndBootForPackageUpgrade": true,
+  "pingGroupRange": [
+    "1",
+    "0"
+  ],
+  "oldMain": {
+    "capEff": "0000000000003402",
+    "status": "FULL"
+  },
+  "capZeroPing": {
+    "exit": 2,
+    "error": "/usr/bin/ping: socktype: SOCK_RAW\n/usr/bin/ping: socket: Operation not permitted\n/usr/bin/ping: => missing cap_net_raw+p capability or setuid?"
+  },
+  "newMain": {
+    "capEff": "0000000000001402",
+    "allOtherCapabilitiesUnchanged": true,
+    "uid": "997\t997\t997\t997",
+    "noNewPrivs": true,
+    "systemService": [
+      "FULL",
+      "::1",
+      "127.0.0.1",
+      "1",
+      "org.eclipse.kura.core.system"
+    ]
+  },
+  "probe": {
+    "unitAndTemplatePairManifestSha256": "758bdca756d7220ec273c0ac2a4bdf3f8fc46266205ca7854930a0806ecf856a",
+    "icmpWorkerCapBitmaps": {
+      "CapInh": "0000000000002000",
+      "CapPrm": "0000000000002000",
+      "CapEff": "0000000000002000",
+      "CapBnd": "0000000000002000",
+      "CapAmb": "0000000000002000"
+    },
+    "ipv4": 0,
+    "ipv6": 0,
+    "sameUidWithoutMainParent": {
+      "exit": 1,
+      "error": "ICMP_RESULT_UNAVAILABLE",
+      "actorReason": "UNAUTHORIZED"
+    }
+  },
+  "lifecycle": {
+    "stop": {
+      "main": {
+        "MainPID": "0",
+        "ControlGroup": "",
+        "NoNewPrivileges": "yes",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "actorSocketAbsent": true,
+      "actorInstancesActive": 0
+    },
+    "remove": {
+      "status": "config-files ok",
+      "retainedUserConfig": {
+        "hash": "4070d0d2d8bfb946fa65693054bd01ba8b6bad1573f5f5f6d6d051b3b5b77883",
+        "stat": "5701689 997 995 600 1"
+      },
+      "assetsAbsent": [
+        "/usr/lib/systemd/system/kura-icmp-probe.socket",
+        "/usr/lib/systemd/system/kura-icmp-probe@.service",
+        "/usr/lib/sysusers.d/kura-icmp-probe.conf",
+        "/usr/libexec/kura-command-executor",
+        "/run/kura-icmp-probe.sock"
+      ],
+      "canonicalKeyUntouched": true,
+      "priorHistoryExact": true
+    },
+    "purge": {
+      "status": "not-installed",
+      "assetsAbsent": [
+        "/usr/lib/systemd/system/kura-icmp-probe.socket",
+        "/usr/lib/systemd/system/kura-icmp-probe@.service",
+        "/usr/lib/sysusers.d/kura-icmp-probe.conf",
+        "/usr/libexec/kura-command-executor",
+        "/run/kura-icmp-probe.sock"
+      ],
+      "retainedUserStatePurged": true,
+      "lockedServiceAccountRetained": true,
+      "canonicalKeyUntouched": true,
+      "priorHistoryExact": true
+    },
+    "baselineInstallAndUpgradeChainVerified": true,
+    "preservedCanonicalKeyOnUpgrade": true
+  },
+  "fixture": {
+    "id": "a73463711c43ab74d44b5aee826cd9cae971356bdf806c68b4b9ac03ad67090f",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T04:12:12.759583153Z",
+      "FinishedAt": "2026-11-20T04:17:38.516682156Z"
+    }
+  },
+  "emptyFixture": {
+    "id": "fdc4f042c518e8eee90e753153a55941fa534bbbb2566d7be5b34518084252a3",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T04:08:19.878196364Z",
+      "FinishedAt": "2026-11-20T04:12:12.496998132Z"
+    },
+    "noKuraDispatch": true
+  },
+  "focusedTests": {
+    "pythonPassed": 35,
+    "javaPassed": 42,
+    "javaSkipped": 2
+  },
+  "internalPending": [
+    "Networking drop-in and other launchers",
+    "remaining Core capabilities and typed brokers",
+    "complete Core/OSGi",
+    "complete six-component provider/launcher/lifecycle and recovery matrix",
+    "full 12 parent tasks"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "enabled": false,
+    "running": false
+  },
+  "pushed": false
+}
