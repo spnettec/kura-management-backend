@@ -1,3 +1,9 @@
+## 2026-11-20 正式 RTC socket 与 actor 在虚拟 DS1307 上写入成功
+
+原 Parallels ARM64 时钟组件沿原 namespace 和停机维护围栏，将 Core 包 `168681f6aa` 的时钟文件及正式 systemd 单元配对升级。沿用原测试单元、账号和 JDK 21，测试入口 `30b7af79e4` 增加仅针对内存 I²C 总线上 DS1307 的显式触发。真实 ClockServiceImpl 以零有效 capabilities 运行，时钟 actor 仅有 CAP_SYS_TIME。JVM 时钟模块 30 项通过。
+
+虚拟 `/dev/rtc1` 首次读日期为 EINVAL。零系统时钟偏移触发一次 RTC 同步，relay 由 systemd 启动两次并均成功退出，分别处理 prepare 和只读 FD 交付。actor 实际 ioctl 返回，原 namespace 内新增一笔 APPLIED、RTC_SET_RETURNED、errno 0；设备读数与同期 guest UTC 差 0.837 秒。原校时和新 RTC 共两组 issued/completed，原校时未重发。停机前核对新操作的六个文件、原历史文件、同 namespace 的新停机围栏；移除虚拟设备后 VM 正常关机。此次启动的是历史 ClockService 组件夹具，完整 Core/OSGi Main 的 RTC 联调仍待验。物理 RTC 归原硬件边界，OrbStack 共享 rtc0 保留。冻结闭环 0/12，外部延期仍为原三项。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 Agent 原编号升级与 Cloud 客户属性保留
 
 Agent `e28abfa` 将源包、Kura peer、材料、远程开关和传输五种完成入口的原编号核对移入 dpkg 锁。原操作已结算时只读查询。原六组件 Root `60df52cf998b` 上，首次准入因新 deb 携带宿主属主而拒绝，原运行状态、该编号目录及 pending 均已核实。仅将暂存 deb 的属主修正为 root:root，保持摘要和操作编号，解包和配置各执行一次。原准备进入 UNKNOWN 后没有重发。实际 postinst 返回 APPLIED，Agent 和 Main 均保持停止，中心进程连续，原十份输入和两份中心回执相同，夹具正常停机。
