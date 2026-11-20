@@ -1,3 +1,7 @@
+## 2026-11-21 Deployment 注册表部分写入
+
+同一 ARM64 六包 Root 先后安装的两个版本在相同 1024 字节进程文件上限下各处理一份合成注册表。旧版返回成功并把 5963 字节截成 1024 字节。新版返回 I/O 失败，原摘要、长度及 inode 完整。两个 JVM 分别加载已安装的本地和云端 bundle，并发新增 60 条后，原有 180 条无关记录仍在。正式 Main 从原登记读出原业务 DP 的 ACTIVE 资源，两份实际 bundle 的注册表类摘要均匹配发行包。六包正常停机，83 份文件只读复核。冻结 0/12。[实装记录及下次只读入口](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 原业务 DP 跨 Deployment 移除、purge 和中断重装
 
 六组件正式 Main 通过 DeploymentAgentService 一次安装合成业务 DP，收到成功事件，从 ACTIVE bundle 读出资源。Deployment 包普通移除后进入 config-files，purge 后包缺席。以余下五包启动正式 Main，部署服务缺席，Felix 未列出该 DP，磁盘上的原注册表和归档仍在。重装同版 deb 时在 postinst 等待注册锁处中断，dpkg 进入 half-configured。正常停机、以新的 systemd PID 1 启动后，原 Root、Main 围栏、FileMove 维护文件、注册表及归档均匹配。直接续配，第三次正式 Main 从原登记自动恢复同版本 ACTIVE bundle，资源读回成功。注册表和 DP 的内容、inode 与元数据在各阶段一致。六包、83 份文件已停机只读复核。冻结 0/12。[三次 Main 与续接入口](actual-native-wires-retained-reinstall-checkpoint.json)

@@ -1205,5 +1205,94 @@
       "DpMain.java": "2d7f96aa38310d625f886a7668f6595bb2be85b0d3140c6d2a5589ef05e7254f",
       "cut.py": "189662f342cbbd07849d5597a0c2eb3be8e4520a4bd0b580249e4c2a4a889723"
     }
+  },
+  "deploymentRegistryPublication": {
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "source": "7938e2785b1946bf86aae94e0313dcc6d9fc616d",
+    "tree": "1f59ef2cb7b346b465e5842dccf3a5aa078c8aaa",
+    "version": "2.0.0~git202611202130.7938e27-1",
+    "debSha256": "d746829656ddd9ad81287c416a6e7f4968d2ac3cc5d4ae5e4f9fddc2fad057c7",
+    "tests": {
+      "tests": 237,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "before": {
+      "phase": "before",
+      "result": "REPORTED_SUCCESS",
+      "originalBytes": 5963,
+      "remainingBytes": 1024,
+      "original": "c09f76efebd823743692854e954be3cc8accc237febc0a301073d2af7687cd48",
+      "current": "1c995eb892c26419c4bd45e996601775442d2958ff86ed260124ed234e7de22f",
+      "sameInode": true
+    },
+    "after": {
+      "phase": "after",
+      "result": "REPORTED_IO_FAILURE",
+      "originalBytes": 5963,
+      "remainingBytes": 5963,
+      "original": "c09f76efebd823743692854e954be3cc8accc237febc0a301073d2af7687cd48",
+      "current": "c09f76efebd823743692854e954be3cc8accc237febc0a301073d2af7687cd48",
+      "sameInode": true,
+      "concurrentRegistrations": 60,
+      "originalUnrelatedRows": 180,
+      "finalEntries": 240
+    },
+    "main": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "4347",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "289fb7db83684f3392395dec0f153f5c"
+        },
+        "ticks": "39628006",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "owners": {
+        "org.eclipse.kura.core.deployment": "83a51f7342c62bdf942ab2d37efa1714beab60a882a1ee4fb4f07a0adf10b6ea",
+        "org.eclipse.kura.deployment.agent": "83a51f7342c62bdf942ab2d37efa1714beab60a882a1ee4fb4f07a0adf10b6ea"
+      },
+      "businessRestored": true,
+      "registeredArchiveObserved": true,
+      "noDeploymentResubmit": true
+    },
+    "readback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "scope": "The file-size limit was applied only to non-root JVMs using synthetic registry paths. Two independent JVMs loaded the helper from the two actual installed bundles. The packaged Main separately restored the prior DP with its original registry and archive. This demonstrates registry durability across the observed write failure, not a transaction across Felix framework state, the archive and the registry, and not full disk or hard power failure.",
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-atomic-registry/parked-readback.py",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-atomic-registry",
+    "sha256": {
+      "before.json": "2fe046397c6ccaa46cce5929d7244585be8b845ad57cc9cdd9a6f0a43bb0951b",
+      "after.json": "a1bfb558d5071d3295258dec9f0fdf8aca11cd800c58ee0efd8bcc83faf320c7",
+      "release.json": "8e1159f64e15c697caab2d47e0526f2825b34d3906fb99ec837bf26295e45e77",
+      "upgraded.json": "c924c129b5e3526a2dfaa6e9d75db37c3c6a1a8a7801a87bd07cd4c1f933c8f8",
+      "main.json": "4aedf547647e162250938728ce910395627e6b8f8d86d52dd7ce39c2e9d417ea",
+      "final-check.json": "3d090a48b6937ba3e84244f78fa6734145da84fc39dddc3f78461046b09c52e5",
+      "parked.json": "0153a43b81490f41eafbd9c3792631b73a54a344956ba4dc18d063e8f1df68b7",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "original-three-after.json": "3b9196ca8ccc5be84200b8eb861f018a2009b01c201cc41d347137b7c7c916cc",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }
