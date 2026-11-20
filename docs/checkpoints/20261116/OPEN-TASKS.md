@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Core 与 Networking 联合升级保留原只读材料授权
+
+Agent 7d58d7b 为联合维护增加显式原材料授权编号。沿原 peer、初始化和同一 Root/boot，准备时固定公开授权、私有 relay grant、原指针和四份回执。两条原材料 socket 必须停用且连接归零。完成校验在新 Core 上重算原授权上下文，拒绝文件、权限或源目录变化，原材料授权保留。保留此前无需材料授权的流程。
+
+从当前 Git 构建新版 Agent 正式包，从前一已核验的发行包提取 Rust 构建输入未变的 ARM64 ELF 并核对指纹。Debian 13 ARM64 实际部署旧 Core 和 Networking，分别建立原本地与材料授权。正常 dpkg 升级两个批准的正式包，沿原维护编号完成。原材料和本地授权均为 APPLIED/READY，7 份材料授权文件的字节、inode、属主与权限精确，原 SQLite、plan key、AES 等另外 12 份输入在启动前核对一致。
+
+正式非 Root Main 和 Agent 显式启动，正常 Unix 对端身份和 OSGi 桥注册。Agent 五组 capabilities 为零，Main 为 0x1402，两者 NNP 1，远程关闭。启动后原 7 份材料文件再次核对一致。135 项 Debian Native 包装测试通过，含授权字节漂移拒绝和已有 enrollment 保留门禁。夹具正常停放。
+
+已绑定数据、附加授权和跨 boot 仍为内部待办，完整 Core/OSGi、typed brokers、六组件和全部 12 父项保留。原三现场、个人文件及 7fd 的禁用停机与 41 输入/16 回执保持。父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-companion-material-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 原 Native Kura peer 的同 Root 联合升级
 
 Agent 1f74d99 增加 `prepare-kura-companion-update`。正式入口沿原初始化、原本地授权和同一 Root/boot 记录显式升级意图，固定两个实际 Debian 归档、版本、维护脚本和新 Main/drop-in。仅接受原版已审查 drop-in 到无能力声明版的过渡，Core 的能力范围只能收窄。沿用原源码维护回执链与启动准入。已绑定、材料及额外授权仍走其独立维护合同。

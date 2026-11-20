@@ -1,0 +1,215 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "74d26057e872571bc2ab61e49a3d3fd79b72bbed",
+  "agent": {
+    "head": "7d58d7b74739d9827fc968faaf0cd3b936bceef9",
+    "tree": "2cf32377edcc658ea96bcea36fde8e4de9e0aae1"
+  },
+  "platform": "Debian 13 ARM64 systemd, Docker network none",
+  "freshPackagingFromGit": true,
+  "verifiedUnchangedELFFromFormalPackage": "27bb9b0f781e29e5b93111372caefded3a0fc9c650bac18a4b1970e502777784",
+  "nativePackage": {
+    "version": "0.1.0~cohort202611200455.4.7d58d7b-1",
+    "sha256": "746e0f32254d53835ebd9a03155c4ba15a809a6b2117c911377079343e65e59e",
+    "sourceManifestSha256": "5ea589a7f472c7274a21bcd1fb502ef3fa64271c1952014febd4bc450d1df765",
+    "binarySha256": "c95f26432a23766b6402f5fa80ae27e5f9a290ef2d4a1126be6efd61a8b50434",
+    "bridgeSha256": "3d4512c759ddb6610880a629ebcd047dfc5482159f7c037956070ade38bf82ad",
+    "loaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+  },
+  "sameRootAndBoot": true,
+  "originalLocalPeer": {
+    "schemaVersion": 1,
+    "requestId": "552193e6-d9ca-4cb1-a7c8-b31bfa9b5c95",
+    "state": "APPLIED",
+    "unitStarted": false,
+    "kuraUid": 997,
+    "currentReadiness": "READY",
+    "remoteEnabled": false,
+    "replayed": false
+  },
+  "originalReadOnlyMaterial": {
+    "schemaVersion": 1,
+    "requestId": "46e936d2-452f-40d3-970d-f8726c8ad01d",
+    "state": "APPLIED",
+    "currentReadiness": "READY",
+    "remoteEnabled": false,
+    "unitStarted": false,
+    "replayed": false
+  },
+  "companionOperation": {
+    "schemaVersion": 1,
+    "requestId": "de2a192a-f245-4d0f-9d74-1c15a3b1c27b",
+    "state": "APPLIED",
+    "unitStarted": false,
+    "replayed": false
+  },
+  "originalMaterialProofRetained": {
+    "files": 7,
+    "bytesAndFileIdentityExactAfterStart": true,
+    "recordPinnedBeforeInstall": true
+  },
+  "originalNativeAndCoreInputsExactBeforeStart": 12,
+  "companionArchives": {
+    "core": {
+      "path": "/root/kura-current-peer/kura_6.0.0~git20261120043757.27a64d7-1_arm64.deb",
+      "sha256": "c051ed194405a297bf95ff0ced9c301a24524e1f788e63804d4b0cf073ea62c4",
+      "package": "kura-core",
+      "version": "6.0.0~git20261120043757.27a64d7-1",
+      "architecture": "arm64"
+    },
+    "networking": {
+      "path": "/root/kura-current-peer/kura-networking-3.0.0~git202611200436.6ab7101-1_all.deb",
+      "sha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f",
+      "package": "kura-networking",
+      "version": "3.0.0~git202611200436.6ab7101-1",
+      "architecture": "all"
+    }
+  },
+  "runtime": {
+    "root": {
+      "deviceInode": "1048815:5756586",
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "native": {
+      "properties": {
+        "MainPID": "5945",
+        "NRestarts": "0",
+        "CapabilityBoundingSet": "",
+        "AmbientCapabilities": "",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "UnitFileState": "disabled",
+        "InvocationID": "fbd5af7a2df94471aafa0a362ce06196"
+      },
+      "status": {
+        "Name": "yofc-management",
+        "Uid": "990\t990\t990\t990",
+        "Gid": "989\t989\t989\t989",
+        "Groups": "988 989",
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000",
+        "NoNewPrivs": "1"
+      },
+      "startTicks": "34595761"
+    },
+    "main": {
+      "properties": {
+        "MainPID": "6302",
+        "NRestarts": "0",
+        "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+        "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "UnitFileState": "disabled",
+        "InvocationID": "c40303d9d5ee423988b9abb99dc1b54b"
+      },
+      "status": {
+        "Name": "java",
+        "Uid": "997\t997\t997\t997",
+        "Gid": "995\t995\t995\t995",
+        "Groups": "20 989 991 995",
+        "CapInh": "0000000000001402",
+        "CapPrm": "0000000000001402",
+        "CapEff": "0000000000001402",
+        "CapBnd": "0000000000001402",
+        "CapAmb": "0000000000001402",
+        "NoNewPrivs": "1"
+      },
+      "startTicks": "34595816"
+    },
+    "status": {
+      "pid": 5945,
+      "uid": 990,
+      "gid": 989,
+      "value": {
+        "agentAvailable": true,
+        "kuraAvailable": true,
+        "uptimeSeconds": 4,
+        "version": "0.1.0"
+      }
+    },
+    "remote": {
+      "pid": 5945,
+      "uid": 990,
+      "gid": 989,
+      "value": {
+        "activeRequests": 0,
+        "bound": false,
+        "canControl": true,
+        "connectionState": "UNBOUND",
+        "enabled": false,
+        "recoveryRequired": false,
+        "revision": "554bee9b-aa29-42b7-a231-fd92f42ed318"
+      }
+    },
+    "actualBridgeRegistered": true,
+    "agentPermissionProfile": "native-nonroot-v1"
+  },
+  "stopped": {
+    "kura.service": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+      "ActiveState": "inactive",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "kura-management-agent-v2.service": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "CapabilityBoundingSet": "",
+      "AmbientCapabilities": "",
+      "ActiveState": "inactive",
+      "DropInPaths": "",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    }
+  },
+  "fixture": {
+    "id": "44b200e66e74e5ce3dd81b6be3b837ae9df10d30121182c354ae6635c9b22043",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T04:55:52.163610287Z",
+      "FinishedAt": "2026-11-20T04:57:44.57703321Z"
+    }
+  },
+  "tests": {
+    "nativePackagingDebianPassed": 135,
+    "targetedPassed": 7
+  },
+  "internalPending": [
+    "Already enrolled Core source and retained native identity/business across companion packages",
+    "Optional remote-switch, transport and configuration-write grants",
+    "Companion cross-boot and remaining actual interruption boundaries",
+    "Complete Core/OSGi, remaining typed brokers and six-component matrix",
+    "All 12 parent tasks"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "enabled": false,
+    "running": false
+  },
+  "pushed": false
+}
