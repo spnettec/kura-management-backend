@@ -1,3 +1,11 @@
+## 2026-11-20 正式 Main 的 OSGi 引用和串口定位服务修复
+
+在六组件原现场 `60df`，正式 Main 相隔 5 秒的两次 SCR 采样完全一致。IPv4、IPv6 本地防火墙组件均 active，对应的 agent 实现等待另一配置。Cloud Deployment 缺 MQTT 传输，ModemManager 定位缺 Position 条件。另有 20 条 require 声明没有实例，1 条 optional 声明 WebsecurityFilter 在包中默认禁用。此次没有切换防火墙配置。
+
+在同一原现场装入 Position `e014454` 后，ModemManager 实际绑定 Position 包提供的条件，GPSD、PositionService 和 Position REST 均 active。串口定位组件独自缺少旧 OSGi ConnectionFactory。Position `cf7e292` 将 DS 引用改为 Java 方法和 Core 服务共同使用的 `org.eclipse.kura.comm.CommConnectionFactory`。新增回归在旧声明上失败，修复后 76 项测试通过。ARM64 独立 Equinox 使用两份 deb 的实际 bundle，在线更新后串口提供者绑定原 Core 工厂的同一对象，卸载后串口服务消失，Core 注册继续有效。此项未打开串口。
+
+原现场实装的旧 Position 已 purge，原四行注册表、业务配置、密钥与历史保持，gpsd 服务及 socket 状态连续。随后准备安装修复版时，原 Root 的挂载设备号及四份包历史文件的设备号改变；文件 inode、内容和其他元数据保持。配对检查在发出 dpkg 和启动 Main 前拒绝。六组件已正常停机，后续沿该 Root 使用最新停放回执。修复版在该现场的 dpkg／完整 Main 验收仍待完成。12 项冻结闭环 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 Core deb 单独构建与时钟暂存锁
 
 Core `8947d37475` 在暂存文件被其他进程锁住时立即返回 BUSY。3 项 ARM64 Root 回归通过，含解除锁后沿原文件补完。该版已构建，原 Parallels 上实装到 `4739a24da1`。在依赖已就绪时，单独组装 deb 用时 8.585 秒，完整发行用时 30.215 秒，两个 deb 整包 SHA-256 一致。单包验收可少生成约 408 MB 附带产物。冻结 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)

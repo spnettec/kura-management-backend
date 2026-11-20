@@ -1020,5 +1020,128 @@
     ],
     "temporaryComparisonDebRemoved": true,
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/deb-only-comparison"
+  },
+  "installedMainScrAndSerialPosition": {
+    "evidence": [
+      ".management-close-20261116/core-rtc-hotplug-20261120/six-scr-references",
+      ".management-close-20261116/core-rtc-hotplug-20261120/six-position-osgi",
+      ".management-close-20261116/core-rtc-hotplug-20261120/six-position-osgi-fixed"
+    ],
+    "fixture": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "originalSix": {
+      "active": 78,
+      "satisfied": 7,
+      "unsatisfied": [
+        {
+          "component": "org.eclipse.kura.core.deployment.CloudDeploymentHandlerV2",
+          "reference": "DataTransportService",
+          "target": "(kura.service.pid=org.eclipse.kura.core.data.transport.mqtt.MqttDataTransport)",
+          "matching": "0"
+        },
+        {
+          "component": "org.eclipse.kura.net.admin.FirewallConfigurationService",
+          "reference": "osgi.ds.satisfying.condition",
+          "target": "(osgi.condition.id=org.eclipse.kura.firewall.profile.agent)",
+          "matching": "0"
+        },
+        {
+          "component": "org.eclipse.kura.net.admin.ipv6.FirewallConfigurationServiceIPv6",
+          "reference": "osgi.ds.satisfying.condition",
+          "target": "(osgi.condition.id=org.eclipse.kura.firewall.profile.agent)",
+          "matching": "0"
+        },
+        {
+          "component": "ModemManagerPositionProvider",
+          "reference": "LinuxPositionProviderCondition",
+          "target": "(osgi.condition.id=org.eclipse.kura.linux.position.impl)",
+          "matching": "0"
+        }
+      ],
+      "noInstanceByPolicy": {
+        "require": 20,
+        "optional": 1
+      },
+      "optionalWebsecurityFilterDefaultEnabled": false,
+      "legacyIpv4Ipv6Active": true
+    },
+    "positionInstalledInOriginalSix": {
+      "commit": "e014454",
+      "activated": [
+        "ModemManagerPositionProvider",
+        "GpsdPositionProvider",
+        "org.eclipse.kura.position.PositionService",
+        "org.eclipse.kura.internal.rest.position.PositionRestService"
+      ],
+      "serialConnectionFactoryMissing": true,
+      "subsequentPurgeRetainedOriginalRegistry": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires"
+      ],
+      "sameGpsd": true,
+      "sameGpsdSocket": true
+    },
+    "candidate": {
+      "version": "2.0.0~git202611201532.cf7e292-1",
+      "sha256": "47739dd1573362acad958666184864b2d28a58dbed69445999f202fe5976f8e8",
+      "tree": "ade30b3979e78d43a066d699e24c52d91d95316b",
+      "commit": "cf7e292bfe366c02eec06ed8721e4979ea48e362",
+      "descriptorSha256": "232318425c1ff5f8de2cd2c3c5ed48694b77a46224956e92cea49db304dbca99",
+      "bundleSha256": "dc0c3d880a9e0b8481818af9c81697abb222240ee5420e694cb3563b9873a464"
+    },
+    "regressionBefore": "expected Kura CommConnectionFactory, received OSGi ConnectionFactory",
+    "reactorTestsPassed": 76,
+    "actualCandidateScope": {
+      "comparedArchives": [
+        "kura_6.0.0~git20261120145024.5f6be61-1_arm64.deb",
+        "kura_6.0.0~git20261120152401.8947d37-1_arm64.deb"
+      ],
+      "coreProviderInputs": {
+        "org.apache.felix.scr-2.2.14.jar": "0bc6d63a5e6c3110e5da637b296d5ade217ffe3f7aae33690f0b96d90c5d83e8",
+        "org.eclipse.equinox.event-1.7.300.jar": "a95ed37b7f1c340b4bef599bdc011a3c51b0489a4e1fc11abd62856e49c22fd9",
+        "org.eclipse.kura.linux.usb-2.0.0-SNAPSHOT.jar": "4bc6047103488395f5fff82b1b41b0a85d391e8a46a459cd5a1281321164aa0d",
+        "org.eclipse.kura.core.comm-2.0.0-SNAPSHOT.jar": "d9abb6da26f489d9c8c4f324249567b728b0ac94d51b0b3e2705cb24176a2cd6",
+        "org.eclipse.osgi-3.24.100.jar": "d20f892030596fbc2c25da00acdbd2750f77cefd68136c33a3e279b8949867a8"
+      },
+      "runtime": "ARM64 Linux / JDK 21 / Equinox / Felix SCR",
+      "candidate": "cf7e292bfe366c02eec06ed8721e4979ea48e362",
+      "registeredFactoryMatchedByObjectIdentity": true,
+      "uninstalledSerialProviderDisappeared": true,
+      "originalCoreServiceRegistrationRetained": true,
+      "serialPortOpened": false,
+      "scope": "isolated OSGi process; no packaged Main activation or Debian upgrade in retained six for this candidate"
+    },
+    "sixCandidatePreflight": {
+      "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+      "oldFs": "1048582:6123658",
+      "currentFs": "1048815:6123658",
+      "sameMachine": true,
+      "packageHistoryEntries": 4,
+      "differentFields": [
+        "dev"
+      ],
+      "installDispatched": false,
+      "mainStarted": false,
+      "version": {
+        "kura-core": "6.0.0~git20261120145024.5f6be61-1",
+        "kura-management-ui": "3.0.0~git202611201404.b62f67a-1",
+        "kura-networking": "3.0.0~git202611200952.0789499-1",
+        "kura-deployment": "2.0.0~git202611201456.3772936-1",
+        "kura-wires": "3.0.0~git202611201404.89d5f57-1",
+        "kura-management-agent": "0.1.0~cohort20261120143330.e28abfa-1",
+        "kura-management-console": "0.1.0~cohort20261120142931.930cab3-1",
+        "kura-management-console-installer": "0.1.0~cohort20261120142931.930cab3-1"
+      },
+      "order": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires"
+      ]
+    },
+    "latestParkedEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-position-osgi-fixed/parked.json",
+    "originalThreeEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-position-osgi-fixed/original-three-after.json",
+    "externalHardwareTestPerformed": false
   }
 }
