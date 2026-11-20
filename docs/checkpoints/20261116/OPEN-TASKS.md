@@ -1,3 +1,9 @@
+## 2026-11-21 BIND Java 已观察成功后的确认中断恢复
+
+Networking `e01f6ec` 保留原 BIND 请求和 JVM 已实际收到的成功令牌。送达确认失败时，下一次调用或原 DNS 监视器先核对作用域，再只送原编号的确认。actor 用原 Root、意图、结果及令牌核验。相同动作在恢复后直接返回，IPv4 及双栈模型在确认后发布。原回复未知、令牌无效和 Root 改变仍维持围栏；监视器遇到有未决请求的旧 provider 时继续保留原配对。
+
+JDK 21 Networking 全 17 模块、2242 项测试通过。旧 deb 的 Java 合同复现确认后无法前进，新包通过了 Root 变化、无有效原回复和模型发布检查。隔离 Debian ARM64 用实际 BIND provider、固定 socket 客户端及 Core `bdf7690c8e` 包内 actor，在普通用户 JVM 发出单笔 stop。真实 named 仅停一次，首次确认内核只写了 32 字节，再核对 scope 并以原编号补完到原 inode 的 201 字节，原 Root、意图、结果保持。peer 的正式 systemd Main 身份、目标 unit 观察及 stop 调度由测试适配器提供。本证据覆盖同一 JVM 的已观察成功路径。完整 Main 实装、跨 JVM 未决交接及完整维护矩阵继续内部待验。原三现场、六组件、BIND/DHCP 原续接现场与 7fd 停放复核，冻结 0/12。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-21 DHCP 正式 Java 调用方沿原编号确认送达
 
 Networking `22a47d6` 修复后台调和一旦遇到未决回执便永久停在 JVM 内的问题。下一次调和先用原编号读取作用域，仅在原 Root 核对原结果；取得原 APPLIED 的有效令牌才确认并释放编号。Root 改变、NOT_FOUND、UNKNOWN、坏令牌及确认失败均保留原操作。相同目标在本次恢复中不再执行 apply；目标已变则确认成功后才重新比较。上述覆盖同一客户端存活期间的恢复。跨 JVM 的原编号恢复和全部安装维护继续待验。

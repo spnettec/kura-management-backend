@@ -1552,5 +1552,82 @@
       "receipts": 16
     },
     "sixComponentParked": true
+  },
+  "bindObservedJavaDelivery": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/bind-java-confirmed-delivery",
+    "networking": {
+      "archive": "kura-networking-3.0.0~git202611201617.e01f6ec-1_all.deb",
+      "sha256": "d3e4c97de8feded272a8acbd4c48fc8a4858588be80690bbdad8f1d74368d312",
+      "bundles": {
+        "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar": "e3e58be6612f407151c88eb46c2d3fd9427ba510d03e99c49d41893b3b401643",
+        "org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar": "15c55d306063385db16200d3a158f56eb503f365cbc1787c8a21b6dfb58f8aee",
+        "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar": "6fdb35c9eb5c552f0bf6e3c58978954b91a5c0574f2188a9531aa7f381e0efd7",
+        "org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar": "7e2df9fea72cc8d9c470460e3e5ca8dcb5140dcc235dd9935530a7153811ef2b",
+        "org.eclipse.kura.net.configuration-3.0.0-SNAPSHOT.jar": "709df2f25a359a175b19d46314c862de491aa3def10deabe3f9387b14b959131"
+      },
+      "bindProofs": {
+        "bind-provider.json": {
+          "bindProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "6fdb35c9eb5c552f0bf6e3c58978954b91a5c0574f2188a9531aa7f381e0efd7"
+        },
+        "bind-config-provider.json": {
+          "bindConfigurationProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "6fdb35c9eb5c552f0bf6e3c58978954b91a5c0574f2188a9531aa7f381e0efd7"
+        },
+        "bind-outcome-provider.json": {
+          "bindOutcomeProtocol": 1,
+          "provider": "org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar",
+          "schema": 1,
+          "sha256": "6fdb35c9eb5c552f0bf6e3c58978954b91a5c0574f2188a9531aa7f381e0efd7"
+        }
+      },
+      "commit": "e01f6ec44bf2d5746089071322fe6c0992b9259e",
+      "tree": "9c6ccb58b1a2c781d046e5a1f09e8ae92f1d0cd9"
+    },
+    "core": "bdf7690c8e11a4ffa58257bc6d7215d46f33bbc4",
+    "coreDebSha256": "9a534cf0ef6aff2687121e3956b9c7f13e69d61540d94221a4aa0208f04e36d1",
+    "jdk": 21,
+    "modules": 17,
+    "tests": 2242,
+    "integration": {
+      "operation": "f3b79b36-ffe2-431d-8a06-9b6f4b7f0a2d",
+      "originalIdCount": 1,
+      "sequence": [
+        "scope",
+        "stop",
+        "acknowledge",
+        "scope",
+        "acknowledge"
+      ],
+      "issuedServiceJobs": [
+        "stop"
+      ],
+      "namedPid": 6,
+      "daemonExit": 0,
+      "intermediateBytes": 32,
+      "finalBytes": 201,
+      "deliveredInode": 16,
+      "originalRootIntentAndResultExact": true,
+      "javaRanAs": 60429,
+      "javaOutput": "Original BIND stop acknowledged",
+      "transport": "packaged fixed Unix socket client; fixture peer/unit checks; actual isolated named stop via test service adapter"
+    },
+    "previousVersionRegression": "22a47d6 refused to advance even after a successful original response with a valid token",
+    "deliveryContracts": {
+      "changedRootNoAcknowledgement": true,
+      "missingOriginalReplyRemainsFenced": true,
+      "malformedTokenRemainsFenced": true,
+      "configurationPublishedAfterAcknowledgement": true,
+      "monitorRetainsOriginalWriter": true
+    },
+    "qualified": "JVM remains live; systemd Main identity and named unit dispatch adapted; real socket client, kernel short write and named process",
+    "preservedOriginal7fd": {
+      "inputs": 41,
+      "receipts": 16
+    }
   }
 }
