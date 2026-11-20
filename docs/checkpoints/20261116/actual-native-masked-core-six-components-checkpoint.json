@@ -1,0 +1,213 @@
+{
+  "recordedAt": "2026-11-20T09:57:06.410806+00:00",
+  "scope": "Exact current six gateway packages, stock installer and native console with Main credential isolation",
+  "packageSource": {
+    "kura-core": {
+      "version": "6.0.0~git20261120094749.bcf8c24-1",
+      "sha256": "b26cbc1a753c3ff56f1105195b433f0ff402e2a837427528a5f30a676854d071",
+      "commit": "bcf8c24f5c9d39501484c18295c09c46da3a3654",
+      "tree": "a6ea6b89969aaca03f8c343704ed51b1d1e45197"
+    },
+    "kura-management-ui": {
+      "version": "3.0.0~git202611200952.08712fb-1",
+      "sha256": "250e30fac44b5a3fff4ffc7f902a60a0a9a403a798b3bf7eccb9c967384f0be6",
+      "commit": "08712fbc8e7acca19182cd253c2d614332c0b6e9",
+      "tree": "60259c3899777b060334418fba6cffdca5ff7aa1"
+    },
+    "kura-networking": {
+      "version": "3.0.0~git202611200952.0789499-1",
+      "sha256": "560309fd76389add124cf625447150d072697a82a75b155b587af2ad13c54100",
+      "commit": "07894999b1e478bfe5a44c613e0babcfccab53f8",
+      "tree": "ce1d08e6e9cfc5975ae93e221789dd30f4bc7311"
+    },
+    "kura-deployment": {
+      "version": "2.0.0~git202611200952.5a6025b-1",
+      "sha256": "11114f21abc621f29705b5a9b40ae40bb85d1cb752fa50c9f5f5220eb2e5ee59",
+      "commit": "5a6025b01226297535bbe13403606a806cfccb54",
+      "tree": "f6466465fb1ba615782e7109891435736c0a7893"
+    },
+    "kura-wires": {
+      "version": "3.0.0~git202611200952.93f318b-1",
+      "sha256": "81836bd7736b0a30dbbd6f1318a0cfc5154df4941c4ad796ec146cc05f60e963",
+      "commit": "93f318b241f2d53e4291ffa20fdb1836b34e9b52",
+      "tree": "5595aaa31309c77b540eed04967e289e04bac143"
+    },
+    "kura-management-agent": {
+      "version": "0.1.0~cohort202611200955.b9b2d3b-1",
+      "sha256": "e99ceb67991db8042067228421e36bd013870204b597418a754605061577ef3e",
+      "commit": "b9b2d3b31ab3d97fd69960c603fc3ee6d13d83d5",
+      "tree": "ab9caf6e0662542f111fb20a7cd05aa7314bcd2c"
+    },
+    "kura-management-console": {
+      "version": "0.1.0~cohort202611200955.9691fe9-1",
+      "sha256": "2876b75815e347d9c748baa36afab23a76e1a348ab37c8f3c1bd33b6be80964e",
+      "commit": "9691fe90a3df1e5213912cc10ef74f783da68efa",
+      "tree": "79b8ce5b724e6839ccdcece1c08e25ae45fa330f"
+    },
+    "kura-management-console-installer": {
+      "version": "0.1.0~cohort202611200955.9691fe9-1",
+      "sha256": "f61dff75d13297b94f49cff4261349e93953140ea44a4db9f010b06f17194952",
+      "commit": "9691fe90a3df1e5213912cc10ef74f783da68efa",
+      "tree": "79b8ce5b724e6839ccdcece1c08e25ae45fa330f"
+    }
+  },
+  "platform": {
+    "os": "Debian 13",
+    "arch": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "rust": "1.95.0",
+    "network": "none"
+  },
+  "runtime": {
+    "container": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "root": {
+      "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+      "mount": "1048830:6123658",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "main": {
+      "MainPID": "2864",
+      "Result": "success",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled"
+    },
+    "providers": {
+      "org.eclipse.kura.core": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.core.deployment": "initial@reference:file:../kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.hook.file.move.provider": "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.management.bridge": "initial@reference:file:../../../usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar",
+      "org.eclipse.kura.nm": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.web2": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.wire.provider": "initial@reference:file:../kura/siblings/wires/4s/org.eclipse.kura.wire.provider-3.0.0-SNAPSHOT.jar"
+    },
+    "credentialIsolation": true,
+    "rootWriterLease": true,
+    "gwt": {
+      "auth": {
+        "status": 200,
+        "peerSha256": "0acb3d47cdb0a170199d67f2e702cb293e57c2538d821e1bc5af1f2fd732af7b",
+        "redirect": null
+      },
+      "console": {
+        "status": 302,
+        "peerSha256": "0acb3d47cdb0a170199d67f2e702cb293e57c2538d821e1bc5af1f2fd732af7b",
+        "redirect": "/admin/auth"
+      }
+    },
+    "agent": {
+      "pid": 2459,
+      "uid": [
+        "989",
+        "989",
+        "989",
+        "989"
+      ],
+      "caps": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      },
+      "nnp": "1"
+    },
+    "console": {
+      "pid": 9440,
+      "uid": [
+        "988",
+        "988",
+        "988",
+        "988"
+      ],
+      "caps": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      },
+      "nnp": "1"
+    },
+    "knownInitialAgentId": "c5748480-7ce3-40f2-83b1-b24a41032d89",
+    "consoleInstallerOperation": "2675a7e4-5487-47bb-87e1-62f37fc9a269",
+    "consoleSetupHttpsPinVerified": true,
+    "networkBackend": "NetworkManager",
+    "centerDatabaseAndGatewayEnrollmentUninitialized": true,
+    "coreCredentialsExact": true
+  },
+  "stockInstaller": {
+    "container": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "operation": "2675a7e4-5487-47bb-87e1-62f37fc9a269",
+    "phase": "APPLIED",
+    "originalReceipt": {
+      "commandReturnedSuccess": true
+    },
+    "contentLinked": {
+      "binarySha256": "07104331ec17d6ea79bbb4a6cca214fad163134b56a2ea2203a1262a5aec9713",
+      "maintenanceProtocolVersion": 1,
+      "sourceManifestSha256": "a28fd336f1fd4fe145d264a3b82b85d87c00dbe613dae4d3430389b6eff929de"
+    },
+    "noAutostart": true,
+    "defaultCockpitPayload": true
+  },
+  "agentInitialization": {
+    "schemaVersion": 1,
+    "requestId": "c5748480-7ce3-40f2-83b1-b24a41032d89",
+    "initialized": true,
+    "created": true,
+    "remoteEnabled": false,
+    "unitStarted": false
+  },
+  "fixture": {
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T09:54:06.028511392Z",
+      "FinishedAt": "2026-11-20T09:56:20.198714313Z"
+    }
+  },
+  "stoppedRootReadback": {
+    "packages": {
+      "kura-core": "6.0.0~git20261120094749.bcf8c24-1",
+      "kura-deployment": "2.0.0~git202611200952.5a6025b-1",
+      "kura-management-agent": "0.1.0~cohort202611200955.b9b2d3b-1",
+      "kura-management-console": "0.1.0~cohort202611200955.9691fe9-1",
+      "kura-management-console-installer": "0.1.0~cohort202611200955.9691fe9-1",
+      "kura-management-ui": "3.0.0~git202611200952.08712fb-1",
+      "kura-networking": "3.0.0~git202611200952.0789499-1",
+      "kura-wires": "3.0.0~git202611200952.93f318b-1"
+    },
+    "installerReceiptSha256": "aaae9f759676f40e206c3bbd70c4a3d5fbcff8f9c31cacc84529ee30c49e28e9",
+    "agentReceiptSha256": "3334da4a6ca4d311cdc37b959be92083967cde56c3f00854e1038ac3f4570fc9",
+    "matchedCanonicalAndInjectedCredential": true,
+    "runningBinaryDigestsMatched": true
+  },
+  "buildRecovery": {
+    "rustupInstalledToolchainSelectedExplicitly": true
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

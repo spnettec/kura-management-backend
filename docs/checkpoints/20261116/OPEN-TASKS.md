@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 凭据隔离 Main 与当前六组件联合实装
+
+使用 Core `bcf8c24f5c`，从当前 Git 构建 Networking `0789499`、GWT `08712fb`、Deployment `5a6025b`、Wires `93f318b`、Agent `b9b2d3b` 与中心 `9691fe9` 的正式包，并构建中心安装器。JDK 21／Maven 3.10.1 和 Rust 1.95.0 的构建通过。Rust 首次在隔离构建中尝试同步工具链组件，在构建前退出；明确选用镜像中已安装的同版本后完成离线构建。协议 crate 从当前 Git 当次打包，进入 Agent 源码配对。
+
+在无网络和宿主挂载的 Debian 13 ARM64 Root，六个网关包和正式安装器一次 dpkg 安装完成。中心以独立新 UUID 在正式安装器完成上传、校验、安装与 APPLIED 回执，安装阶段未自动启动中心。Agent 一次初始化，保持远程关闭。正式 Main 与 Agent、中心显式启动。Core、Networking、GWT、Deployment、FileMove、Wires 和 Agent Java bridge 七个指定 bundle 均为 ACTIVE。实际 Main 经 systemd 注入凭据完成 OSGi Crypto 加解密并持有原 Root writer lease，直接打开原始凭据记录、provision 回执与锁均拒绝。
+
+GWT 登录入口实际返回 200，未认证控制台返回 302，两个请求用同一 TLS 证书。中心的正式安装器按原证书指纹验证本机设置页就绪。Agent 和中心的五组 capability 皆为 0，NNP 为 1。三服务正常停止，Main disabled，夹具退出 0。停机后读回八包的真实 dpkg 状态、中心安装和 Agent 初始化的原回执、Core 凭据配对以及两份程序指纹。
+
+本次覆盖当前包的联合首装、Main 凭据隔离、指定 provider 就绪和中心设置入口。已绑定业务、其他 provider／launcher、联合生命周期与中断恢复的其余矩阵仍内部待办。原三现场和 7fd 的 41 输入／16 回执保持。冻结 12 父项仍 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-masked-core-six-components-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式 Main 隔离原始凭据并保留加密连续性
 
 Core `bcf8c24f5c` 将 `/etc/kura/credentials` 加入正式 systemd Main 的 InaccessiblePaths。systemd 继续加载配对凭据，Root broker 继续核对原始凭据及发放 writer lease。原配对检查保持。JDK 21／Maven 3.10.1 由 Git 构建正式 ARM64 deb，包合同和普通 launcher 相关回归 75 通过、3 跳过。
