@@ -48,3 +48,14 @@
 本轮实际续做复用了同一工作树与 Maven 缓存。第一次组装发现运行时 JAR 与独立恢复工具中的 JAR 摘要不同，发行检查拒绝了该候选。保留失败目录、在空组装目录重新生成后，14 份时钟配对文件均已对照新 deb。正式 Debian 六组件现场和较旧 Ubuntu 时钟现场分别停在各自已验的版本，详细范围见[本轮检查点](../checkpoints/20261116/actual-rtc-hotplug-and-addon-upgrade.json)。
 
 北京时间 22:25 再次以 `du -sk` 计量，当前续接目录连同原交接共 3.48 GB，项目私有 Maven 缓存约 0.54 GB，八个可选 sibling 的工作树、测试与包合计约 0.54 GB。后两项包含在续接目录内。此次复用主机依赖作为只读来源，代码仍能按 Git 版本生成独立 deb。
+
+### 单独验证 Core deb 的实测成本
+
+已构建同一提交的 Core bundle、密钥工作器和离线恢复工具时，可在 `kura/distrib/kura-core` 模块执行 Maven 的 `prepare-package org.vafer:jdeb:1.14:jdeb@gateway-deb`。沿用同一个 JDK 21、依赖缓存、Git 版本和包修订号。本次两条命令分别从干净的八个配对输出目录和过滤控制脚本目录开始。源码或 JAR 有变化时，仍需先构建受影响模块。
+
+| 同一提交 `8947d37475` | Maven 用时 | deb 之外的输出 |
+| --- | ---: | --- |
+| 完整发行 package | 30.215 秒 | ZIP、独立安装脚本、catalog 共 408,304,863 字节 |
+| 只组装 deb | 8.585 秒 | 上述三份保留件的内容、inode、mtime 均保持 |
+
+两份 deb 的整体 SHA-256 相同。另逐项比对了 7 个控制条目和 595 个载荷条目的内容与元数据。比对用的临时 deb 已删除，正式包及回执保留。在新验收目录只需 deb 时，本例可少生成约 408 MB 的附带产物。客户安装器和 ZIP 交付的验证仍采用完整发行构建。[构建对照回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/deb-only-comparison/verified.json)

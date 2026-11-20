@@ -1,3 +1,7 @@
+## 2026-11-20 Core deb 单独构建与时钟暂存锁
+
+Core `8947d37475` 在暂存文件被其他进程锁住时立即返回 BUSY。3 项 ARM64 Root 回归通过，含解除锁后沿原文件补完。该版已构建，原 Parallels 上实装到 `4739a24da1`。在依赖已就绪时，单独组装 deb 用时 8.585 秒，完整发行用时 30.215 秒，两个 deb 整包 SHA-256 一致。单包验收可少生成约 408 MB 附带产物。冻结 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 六组件原 Root 的 Cloud 安装、升级、移除和 purge
 
 真实 dpkg 将 Cloud `8bb2418` 装入原六组件夹具，再升级至 `b7d280f`，随后 remove、purge。每次只在 dpkg 的私有挂载命名空间覆盖应用 user 目录，使用合成站点配置；包数据库、systemd 日志和 sibling 注册表都来自原 Root。升级时末行带续行符，维护脚本正确独立追加 Cloud 开关。注册顺序从四行到五行再回到原四行，原八包及其他受保留文件均吻合，中心 PID 连续且 Main 保持停用。

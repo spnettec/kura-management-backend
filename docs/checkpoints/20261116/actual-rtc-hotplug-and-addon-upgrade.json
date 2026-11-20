@@ -906,7 +906,15 @@
       "nonrootPassed": 96,
       "additionalRootPassed": 2
     },
-    "sixParked": true
+    "sixParked": true,
+    "contendedFollowUp": {
+      "commit": "8947d37475e8fd7264d6fccac52f2fee0f6ee778",
+      "packaged": "kura_6.0.0~git20261120152401.8947d37-1_arm64.deb",
+      "sha256": "4ed6f2c82abf528227ce1f3e2dc94aa78560a1e1dbf40823a7859439f28d50b7",
+      "linuxRootFocusedTests": 3,
+      "busyPreservesFile": true,
+      "installedInOriginalVm": false
+    }
   },
   "nativeCloudSixComponentLifecycle": {
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-cloud-lifecycle",
@@ -982,5 +990,35 @@
       "StartedAt": "2026-11-20T15:21:42.13943112Z",
       "FinishedAt": "2026-11-20T15:22:27.239487341Z"
     }
+  },
+  "debOnlyBuildComparison": {
+    "version": "6.0.0~git20261120152401.8947d37",
+    "full": "kura_6.0.0~git20261120152401.8947d37-1_arm64.deb",
+    "source": "8947d37475e8fd7264d6fccac52f2fee0f6ee778",
+    "fullSha256": "4ed6f2c82abf528227ce1f3e2dc94aa78560a1e1dbf40823a7859439f28d50b7",
+    "targetedSha256": "4ed6f2c82abf528227ce1f3e2dc94aa78560a1e1dbf40823a7859439f28d50b7",
+    "comparisons": {
+      "control.tar.gz": {
+        "full": 7,
+        "targeted": 7,
+        "differences": {}
+      },
+      "data.tar.gz": {
+        "full": 595,
+        "targeted": 595,
+        "differences": {}
+      }
+    },
+    "secondaryRetainedTotalBytes": 408304863,
+    "secondaryKeptIdentical": true,
+    "fullSeconds": 30.215,
+    "targetedSeconds": 8.585,
+    "module": "kura/distrib/kura-core",
+    "goals": [
+      "prepare-package",
+      "org.vafer:jdeb:1.14:jdeb@gateway-deb"
+    ],
+    "temporaryComparisonDebRemoved": true,
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/deb-only-comparison"
   }
 }
