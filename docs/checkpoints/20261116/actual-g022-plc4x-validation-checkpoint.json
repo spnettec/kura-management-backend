@@ -1,0 +1,290 @@
+{
+  "date": "2026-11-20",
+  "plc4x": {
+    "head": "36e8afa8da029d7aa9c058dd7bfd33461c3d3c33",
+    "tree": "e6b68cf98e5c70c633ec25cf4a032055fc695fbb"
+  },
+  "templateAndJavaBuildPin": {
+    "head": "8bfdc46416bf2a342ab89c251adf7e57ded647b9",
+    "tree": "1610da23e17cdba3fa1a881bd33d329ab3979c31"
+  },
+  "nonjavaProfilePin": {
+    "head": "c3f4747719be135c50f26505890796318d4612a5",
+    "tree": "4d724f99cdaeb1da3965efc544a883ad547e4575"
+  },
+  "templates": {
+    "c": {
+      "path": "code-generation/language/c/src/test/resources/integration-test/pom.xml",
+      "beforeSha256": "dd6fa010396decc0ea079673f3e967ad90c406dbe640398ccb2b11b935265453",
+      "currentSha256": "005288c1ce5c24eb1175c4f9ef65266a11f6015e7c0e4584c320aee700fa201d",
+      "artifact": "plc4j-c-mspec-test",
+      "mavenBeforeParsed": false,
+      "mavenAfterValidatePassed": true,
+      "mavenInvokerTest": true,
+      "nestedBuildSha256": "da517dd3a8180e4b48949e9bbdba7d95d241f19b92ae047912dd01d75124505a"
+    },
+    "go": {
+      "path": "code-generation/language/go/src/test/resources/plc4go/pom.xml",
+      "beforeSha256": "7957aee68410c3104916e0037389278a95299ef6be9167d00982bffc92a382b0",
+      "currentSha256": "b7855a1b2b80ff4351896a2cf3fc57d6a81e5cb72b3f53a37c626c11fddd92da",
+      "artifact": "plc4j-go-mspec-test",
+      "mavenBeforeParsed": false,
+      "mavenAfterValidatePassed": true,
+      "mavenInvokerTest": true,
+      "nestedBuildSha256": "4443d914f829e7f97790d1d47ecd04eb8f39087021a91123695a8904c7ad7c23"
+    },
+    "python": {
+      "path": "code-generation/language/python/src/test/resources/plc4py/pom.xml",
+      "beforeSha256": "847c95303b15af908a401da052cdcbb9454da75d350427d0aaafeabcf1248512",
+      "currentSha256": "d5329b4332811320dae48be589da84ac8a786365b96357f30b93ea60b08842f5",
+      "artifact": "plc4py-python-mspec-test",
+      "mavenBeforeParsed": false,
+      "mavenAfterValidatePassed": true,
+      "mavenInvokerTest": true,
+      "nestedBuildSha256": "14b3fda52e1f48a05768eb124b2350e6d907c5de14afa03ba99e74f997ab7d4b"
+    }
+  },
+  "immutableCoordinate": "2.0.0.B-SNAPSHOT",
+  "maven": "3.10.1",
+  "jdk": "21.0.13",
+  "optionalJavaGeneration": {
+    "reactorModules": 34,
+    "sourceStatus": "KNX data refresh changed four tracked inputs in isolated checkout",
+    "importedXmlSha256": "91bf7b0c6ae1bf6810b580edb6924aefe39003e6d657a9c9a6b1cb7776c3b3a9",
+    "changedPaths": {
+      "plc4j/drivers/knxnetip/src/main/generated/org/apache/plc4x/java/knxnetip/readwrite/KnxDatapoint.java": "bbcc1a492eb4f05652b5c2d33f09770ca058828aa4d6a7620301498ec8ad0042",
+      "plc4j/drivers/knxnetip/src/main/generated/org/apache/plc4x/java/knxnetip/readwrite/KnxDatapointType.java": "61c239cce4a0832588abfe96cdb6e6920a1c9cb362655495d2d2ba6f5f9c5560",
+      "plc4j/drivers/knxnetip/src/main/generated/org/apache/plc4x/java/knxnetip/readwrite/KnxManufacturer.java": "5740340144493b7ad3389b91eb1f6163c0a7cd43ef4b1016ee2bf413ae5700f7",
+      "protocols/knxnetip/src/main/generated/protocols/knxnetip/knx-master-data.mspec": "ba864d0e0fd3880be8d57e526e078e2c2c4a759f212159a80a61730391b4be3d"
+    },
+    "generatedOpcUaSourceChanged": false
+  },
+  "dotnet": {
+    "sdk": "8.0.428 osx-arm64",
+    "mavenVerify": true,
+    "checkedGeneratedProtocols": [
+      "modbus",
+      "s7",
+      "slmp"
+    ],
+    "firstFailure": "Old local assertion expected two batch frames before the updated upstream planner moved both ranges into 0x0406",
+    "solutionPassedByAssembly": {
+      "plc4net-driver-slmp-test.dll": 125,
+      "plc4net-driver-s7-test.dll": 303,
+      "plc4net-driver-modbus-test.dll": 261,
+      "plc4net-spi-test.dll": 328,
+      "plc4net-code-gen-test.dll": 148
+    },
+    "packages": {
+      "plc4net-api.2.0.0-B-SNAPSHOT.nupkg": "f7cb2599f0845cfe1c4bd823e61e27108c78ce90dfd05f86e6f2a4a0b2cb4477",
+      "plc4net-driver-modbus.2.0.0-B-SNAPSHOT.nupkg": "bec83ec0de138a60cef05c2e6fed131b901fa60477a8ee81b57fa2b8f32d4e0f",
+      "plc4net-driver-s7.2.0.0-B-SNAPSHOT.nupkg": "1fb345609fcae1baf9af6c1bd5e124c17e9f13a21eb4577843fd39e9d28a2dd3",
+      "plc4net-driver-slmp.2.0.0-B-SNAPSHOT.nupkg": "7e7b1af763c5e4ae9dd41e2bd6ff6f5fc977d52450536f66ec96129183b98a45",
+      "plc4net-spi.2.0.0-B-SNAPSHOT.nupkg": "274c9fbba2e5b61b7fc83035c322eaba850642641cff5bd35c8643b71c545430",
+      "plc4net-code-gen.2.0.0-B-SNAPSHOT.nupkg": "21e4cb44f980749ef825a2ed5a56d4ecaf5831a68f9a260ea849f16a6188f1ed",
+      "plc4net-transports-cotp.2.0.0-B-SNAPSHOT.nupkg": "878b1cc24856ba817ea296d7158a71d823846d7ce6354ead90a4c452051a854f",
+      "plc4net-transports-serial.2.0.0-B-SNAPSHOT.nupkg": "9668a65d400c830be3a9cbd581d74b3a6d5400d097ebf56956ee2fc409a3646e",
+      "plc4net-transports-tcp.2.0.0-B-SNAPSHOT.nupkg": "2a40e977334c7a10865e9b5139c3310e6bb31f32b1aec15389a804f273560e83",
+      "plc4net-transports-test.2.0.0-B-SNAPSHOT.nupkg": "901f64a689e1b8d43b2bff3e84494a6512723ce96f160f642690ff279351bef7",
+      "plc4net-transports-udp.2.0.0-B-SNAPSHOT.nupkg": "ad33c0d698e6f4f68e0ea04c47457c4d1d98c73f7a90563ead9fef47a1e07771"
+    },
+    "focusedSlmpTests": [
+      "org.apache.plc4net.test.slmp.SlmpRandomReadRegressionTests.Cancelling_a_sent_random_group_keeps_the_uncorrelated_connection_unusable",
+      "org.apache.plc4net.test.slmp.SlmpMultiBlockReadTests.Word_and_bit_ranges_share_one_multi_block_read_and_keep_request_order",
+      "org.apache.plc4net.test.slmp.SlmpRandomReadRegressionTests.A_queued_random_group_shares_the_existing_polling_exchange_gate",
+      "org.apache.plc4net.test.slmp.SlmpMultiBlockReadTests.A_partial_bit_block_falls_back_to_batch_read",
+      "org.apache.plc4net.test.slmp.SlmpMultiBlockReadTests.More_than_960_points_split_at_the_combined_point_limit",
+      "org.apache.plc4net.test.slmp.SlmpMultiBlockReadTests.Multi_block_read_applies_frame_errors_to_every_grouped_tag(endCode: 0, dataHex: \"3412\", expected: InvalidData)",
+      "org.apache.plc4net.test.slmp.SlmpRandomReadRegressionTests.Array_blocks_and_explicit_single_ranges_keep_list_semantics_and_result_order",
+      "org.apache.plc4net.test.slmp.SlmpRandomReadRegressionTests.A_full_double_word_group_uses_192_points_and_keeps_all_value_boundaries",
+      "org.apache.plc4net.test.slmp.SlmpMultiBlockReadTests.Multi_block_read_applies_frame_errors_to_every_grouped_tag(endCode: 4660, dataHex: \"\", expected: RemoteError)",
+      "org.apache.plc4net.test.slmp.SlmpRandomReadRegressionTests.A_random_group_error_does_not_replace_a_separate_successful_batch_result",
+      "org.apache.plc4net.test.slmp.SlmpMultiBlockReadTests.More_than_120_blocks_split_into_multi_block_then_batch_read"
+    ],
+    "upstreamSlmpProductionChanged": false
+  },
+  "go": {
+    "evidence": {
+      "buildExit": 0,
+      "vetExit": 1,
+      "historicDiagnosticMultisetExact": true,
+      "diagnostics": {
+        "methodSignatures": 27,
+        "unreachable": 2,
+        "invalidShifts": 2
+      },
+      "filesExactToLocalUpstream": "987b02d0e80cf666fc4c1a7d2e36df4553b91f55",
+      "files": [
+        {
+          "path": "plc4go/protocols/bacnetip/readwrite/model/StaticHelper.go",
+          "sha256": "399fd04b427b8a78088db17a920e52d4623d89ec98a66f37a3273d98ba158aa5"
+        },
+        {
+          "path": "plc4go/protocols/cbus/readwrite/model/MeasurementDataChannelMeasurementData.go",
+          "sha256": "f6f4841e03be8c828dfe0351ef8637ff9eff8f5eee2af78cfd14115139308773"
+        },
+        {
+          "path": "plc4go/protocols/knxnetip/readwrite/model/KnxProperty.go",
+          "sha256": "528b69a5d1cd37286aa21633384b8fc2507e4ec512a54b250ed81c1ec549bf15"
+        },
+        {
+          "path": "plc4go/spi/transports/mocks_test.go",
+          "sha256": "4437682cccd1bb14522f2a6c04ee792758f76637bb70de5c76cfbdd34fcd702c"
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBuffer.go",
+          "sha256": "ccf530d5f25356ad58750ac52046f616335e9b31a3d6acaaebb464c8af58788b"
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBufferByteBased.go",
+          "sha256": "42af782b8c5d9a27e5ef80ff2bc3621fe4273fe243c3f9957164d45a58556798"
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBufferJsonBased.go",
+          "sha256": "49191fa61da8b40146c4d215c57836eab002936f27a99b824f5ad12aec700ee5"
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBufferXmlBased.go",
+          "sha256": "7ceac7aa67c7677911c8262380742cac652a94816d1772f4bf39901f9a9bb392"
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBuffer.go",
+          "sha256": "bb2d5324120785872a3c26ddad286096fc1740de077b88302adb1f6d9580716f"
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferBoxBased.go",
+          "sha256": "3dd901d8169f809f0af9e5984061ee0885b3d8a6572c2e69a15f8ccddd3dc63c"
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferByteBased.go",
+          "sha256": "f0088fe47e87b9da7816bade4b9d581ac4d219e300c80d7e4515b828ffcd45f6"
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferJsonBased.go",
+          "sha256": "52527f6a5fc1b33a34556ddfa0a9f7946e24c2042f4d01dad37dc7aefe0c351d"
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferXmlBased.go",
+          "sha256": "6e16aa423639f6e43d62d97a667be81a45e61a29c36248ea5d4ad4c7bde261ed"
+        },
+        {
+          "path": "plc4go/spi/utils/mocks_test.go",
+          "sha256": "274c9f34fa6c1db2850335811da61bc64fa9293ceba72381d33d968b00c5fa52"
+        },
+        {
+          "path": "plc4go/spi/values/WriteBufferPlcValueBased.go",
+          "sha256": "6ed48e6a323cf3c209de64aaa7a9d56b8c47aecec0693a6d407ff6913fbb7fea"
+        },
+        {
+          "path": "plc4go/spi/values/mocks_test.go",
+          "sha256": "b1e64d4db54fae991514b249d3cafec75000d41e49b181ffa1797cc6dbe76b4d"
+        }
+      ],
+      "toolchain": "go version go1.27.4 darwin/arm64"
+    },
+    "currentUpstream": {
+      "upstreamDevelop": "f28cefb1d038dd882c91a8a70e46c86613dcfd02",
+      "refUpdated": false,
+      "observations": [
+        {
+          "path": "plc4go/protocols/bacnetip/readwrite/model/StaticHelper.go",
+          "sha256": "399fd04b427b8a78088db17a920e52d4623d89ec98a66f37a3273d98ba158aa5",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/protocols/cbus/readwrite/model/MeasurementDataChannelMeasurementData.go",
+          "sha256": "f6f4841e03be8c828dfe0351ef8637ff9eff8f5eee2af78cfd14115139308773",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/protocols/knxnetip/readwrite/model/KnxProperty.go",
+          "sha256": "528b69a5d1cd37286aa21633384b8fc2507e4ec512a54b250ed81c1ec549bf15",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/transports/mocks_test.go",
+          "sha256": "4437682cccd1bb14522f2a6c04ee792758f76637bb70de5c76cfbdd34fcd702c",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBuffer.go",
+          "sha256": "ccf530d5f25356ad58750ac52046f616335e9b31a3d6acaaebb464c8af58788b",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBufferByteBased.go",
+          "sha256": "42af782b8c5d9a27e5ef80ff2bc3621fe4273fe243c3f9957164d45a58556798",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBufferJsonBased.go",
+          "sha256": "49191fa61da8b40146c4d215c57836eab002936f27a99b824f5ad12aec700ee5",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/ReadBufferXmlBased.go",
+          "sha256": "7ceac7aa67c7677911c8262380742cac652a94816d1772f4bf39901f9a9bb392",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBuffer.go",
+          "sha256": "bb2d5324120785872a3c26ddad286096fc1740de077b88302adb1f6d9580716f",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferBoxBased.go",
+          "sha256": "3dd901d8169f809f0af9e5984061ee0885b3d8a6572c2e69a15f8ccddd3dc63c",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferByteBased.go",
+          "sha256": "f0088fe47e87b9da7816bade4b9d581ac4d219e300c80d7e4515b828ffcd45f6",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferJsonBased.go",
+          "sha256": "52527f6a5fc1b33a34556ddfa0a9f7946e24c2042f4d01dad37dc7aefe0c351d",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/WriteBufferXmlBased.go",
+          "sha256": "6e16aa423639f6e43d62d97a667be81a45e61a29c36248ea5d4ad4c7bde261ed",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/utils/mocks_test.go",
+          "sha256": "274c9f34fa6c1db2850335811da61bc64fa9293ceba72381d33d968b00c5fa52",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/values/WriteBufferPlcValueBased.go",
+          "sha256": "6ed48e6a323cf3c209de64aaa7a9d56b8c47aecec0693a6d407ff6913fbb7fea",
+          "unchanged": true
+        },
+        {
+          "path": "plc4go/spi/values/mocks_test.go",
+          "sha256": "b1e64d4db54fae991514b249d3cafec75000d41e49b181ffa1797cc6dbe76b4d",
+          "unchanged": true
+        }
+      ]
+    },
+    "defaultVetPassed": false
+  },
+  "original7fdInputs": 41,
+  "original7fdReceipts": 16,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "rootPairingRelaxed": false,
+  "historicalOperationsRedispatched": false,
+  "pushed": false,
+  "externalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "internalPending": [
+    "unchanged Go default vet debt",
+    "KNX master data drift review and joint language generation rules",
+    "complete Core/OSGi, typed brokers and six-component provider/launcher/lifecycle matrix"
+  ]
+}

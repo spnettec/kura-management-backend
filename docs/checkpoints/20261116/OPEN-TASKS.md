@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — G022 Maven 模板、可选生成与 .NET 验证
+
+PLC4X 8bfdc46416 将 C／Go／Python 三份生成器测试 POM 的 modelVersion 移入 project 元素。c3f4747719 把 C／Python 模块的 Maven 4 专用 sources 声明换成兼容原 source root 的 Maven 3 写法。112 份仓库 POM 核对为合法 XML，三份原模板的 Maven 3 解析失败均复现。以 Git 当前构建的生成器依赖复验，三个模板的实际 Maven validate、各自的 Invoker test 和 generate-driver 均通过。Maven 坐标保持 2.0.0.B-SNAPSHOT。
+
+当前 Git 的 JDK 21／Maven 3.10.1 可选生成依序完成 OPC UA 和 KNX 的 xml 1.4.0 变换及两套 driver 生成，34 模块完整安装通过。OPC UA 源码无变化。在线 KNX 主数据变更产生 mspec 及三份 Java 生成文件差异，隔离工作树中保留 XML 指纹和生成结果，后续需联合评审。
+
+.NET 首轮测试中，旧本地 SLMP 测试仍等待两个独立批次，当前上游实现把显式范围合为 0x0406 读取。36e8afa8da 修正既有测试帧断言，保留原列表值和请求顺序验证。JDK 21 的 Maven 入口调用私有 .NET SDK 8.0.428，Modbus/S7/SLMP 生成物检查和全套 1,165 项通过，SLMP 定向 11 项全部通过。11 个实际 NuGet 产物元数据核对为 2.0.0-B-SNAPSHOT。[上游 SLMP 变更](https://github.com/apache/plc4x/commit/ea42d3db707839f3d2030d05c929a42a867c5d2f)
+
+Go 1.27.4 的全模块 build 通过，默认 vet exit 1，精确重现既有 31 条诊断，包括 27 条方法签名、2 条不可达代码和 2 条移位。16 个相关文件与当次远端 develop f28cefb1d0 逐字节一致，未更新工作区 refs 或审查游标。Go vet 和 KNX 生成差异继续内部待办。原三现场、25 份个人文件及 7fd 的 41 输入/16 回执保持。其余 Core/OSGi、typed brokers、完整六组件矩阵及 12 父项继续，冻结闭环 0/12，external deferred 仅原三项。见 [实际检查点](actual-g022-plc4x-validation-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — G021 实际 OSGi PID 查询与 Config Admin 状态
 
 从当前 Git 用 JDK 21、Maven 3.10.1 构建 Core d37dfbc9de 和 Cloud 9faaec1 正式包。逐项核对原 G021 的 27 个描述、历史 DS namespace、PID 默认或显式 String 类型及当前打包字节。Core 2d5c0ab992 提交了实际 registry 与 Config Admin 测试探针，生产描述保持。[上游变更](https://github.com/eclipse-kura/kura/commit/5943c897ae0353ff1360b8b808c49fb504e98195)
