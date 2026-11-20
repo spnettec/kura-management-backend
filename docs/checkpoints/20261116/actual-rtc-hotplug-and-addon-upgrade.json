@@ -907,5 +907,80 @@
       "additionalRootPassed": 2
     },
     "sixParked": true
+  },
+  "nativeCloudSixComponentLifecycle": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-cloud-lifecycle",
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "scope": "real original root, package database, installer and sibling registry; only application user directory was overmounted with a synthetic site configuration inside each private dpkg mount namespace",
+    "archives": {
+      "old": {
+        "path": "/root/native-wires-upgrade/kura-cloud_3.0.0~git202611201423.8bb2418-1_all.deb",
+        "sha256": "d3fbf73a702c68b30264f73ababa22e30f70ad70896cb327f4ef8715e90226ac",
+        "version": "3.0.0~git202611201423.8bb2418-1"
+      },
+      "new": {
+        "path": "/root/native-wires-upgrade/kura-cloud_3.0.0~git202611201440.b7d280f-1_all.deb",
+        "sha256": "caa7b575faf1bab29454a018e04a6975b7abd3646f73dd11217ae3aae5bd2ef9",
+        "version": "3.0.0~git202611201440.b7d280f-1"
+      }
+    },
+    "states": [
+      "installed 3.0.0~git202611201423.8bb2418-1",
+      "installed 3.0.0~git202611201440.b7d280f-1",
+      "config-files 3.0.0~git202611201440.b7d280f-1",
+      "absent"
+    ],
+    "initialOrder": [
+      "networking",
+      "management-ui",
+      "deployment",
+      "wires"
+    ],
+    "orderWithCloud": [
+      "networking",
+      "management-ui",
+      "deployment",
+      "wires",
+      "cloud"
+    ],
+    "finalOrder": [
+      "networking",
+      "management-ui",
+      "deployment",
+      "wires"
+    ],
+    "allOtherPackagesExact": true,
+    "originalCustomerConfigExactThroughThisRun": true,
+    "historicalBeforeThisRun": {
+      "ino": [
+        6191094,
+        6321849
+      ],
+      "dev": [
+        1048815,
+        1048582
+      ],
+      "ctime": [
+        1795183256116067578,
+        1795186303873802804
+      ]
+    },
+    "upgradedSampleFlag": true,
+    "syntheticFlagStillTrueAfterNativePurge": true,
+    "syntheticFileUnchangedAcrossRemovalAndPurge": true,
+    "centerContinuousAndMainInactive": true,
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T15:21:42.13943112Z",
+      "FinishedAt": "2026-11-20T15:22:27.239487341Z"
+    }
   }
 }

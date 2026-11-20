@@ -1,3 +1,9 @@
+## 2026-11-20 六组件原 Root 的 Cloud 安装、升级、移除和 purge
+
+真实 dpkg 将 Cloud `8bb2418` 装入原六组件夹具，再升级至 `b7d280f`，随后 remove、purge。每次只在 dpkg 的私有挂载命名空间覆盖应用 user 目录，使用合成站点配置；包数据库、systemd 日志和 sibling 注册表都来自原 Root。升级时末行带续行符，维护脚本正确独立追加 Cloud 开关。注册顺序从四行到五行再回到原四行，原八包及其他受保留文件均吻合，中心 PID 连续且 Main 保持停用。
+
+原客户配置从本轮开始到正常停机的内容、inode 和时间戳完全一致。与更早的可选包检查点比，本轮开始前其 inode、ctime 和挂载设备号已有变化，内容及 mtime 一致。实测原生 remove 和 purge 保留了测试配置中的 `kura.have.cloud.connection=true`；本轮未验证卸载后的 GWT 菜单。六组件已正常停机，原三现场和 7fd 保持，冻结 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 原时钟 actor 暂存文件写入中断
 
 Core `4739a24da1` 支持逐文件续装。只有原维护下尚未发布的候选可补写，先校验文件类型、所有者、模式、链接数和已有字节，再从同一候选补全。旧 actor 已归档时，暂存树依然必须完整通过配对验证。Debian ARM64 以普通账号验证 96 项，另以 Root 验证 2 项暂存回归。
