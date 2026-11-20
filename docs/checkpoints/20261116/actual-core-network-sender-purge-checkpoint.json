@@ -143,7 +143,7 @@
   },
   "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/network-sender-core-retention",
   "remaining": [
-    "Core purge with an applied but unacknowledged operation from a registered Main remains a separate case."
+    "An applied but unacknowledged BIND or modem operation from registered Main across Core purge is not covered by the DHCP run."
   ],
   "abortCallbackFix": {
     "core": "fcf120643543ceccab710edc5e9d270eac6ab2ea",
@@ -263,5 +263,58 @@
       "shutdownExit": 0,
       "mountedReadOnlyDebInputs": 5
     }
+  },
+  "registeredMainAppliedDhcpCorePurge": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/main-dhcp-core-purge",
+    "mode": "Core and Networking installed. Isolated dummy LAN and production registered Main. Package removal and reinstallation used both complete packages in the same dpkg transaction.",
+    "core": "fcf120643543ceccab710edc5e9d270eac6ab2ea",
+    "networking": "4741b5e9751394f19c3de945c21f4f3212542261",
+    "root": {
+      "id": "7c2205e3b2f2a1309db3f7da8cd2f6301f3d155096c118aa651fbe5297f31b18",
+      "mount": "1048582:6495530",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "actorRoot": "1048582:6496934",
+    "enable": {
+      "id": "2b182fcc-23aa-432a-ba20-40e22bbeeae1",
+      "daemonPid": "7694"
+    },
+    "lostStopReply": {
+      "main": 8417,
+      "child": 13947,
+      "op": "f408fb4c-1498-4034-837b-c05c784c1433",
+      "model": "",
+      "scope": "8db3981af661e869cd06614f61f48508d1f0a43b5f866ff2eb6901680d75406b",
+      "root": [
+        1048582,
+        6496934
+      ]
+    },
+    "pendingSha256": "55319007fe2c84f7568d5c6739c6b565c70c3ef4b55f3afde5c3d4b48f76cbb1",
+    "maintenance": {
+      "remove": "config-files",
+      "purge": "not-installed",
+      "reinstall": "installed",
+      "sameSixActorRecords": true,
+      "sameBothCredentials": true,
+      "samePendingBytesOwnerModeLinksLength": true,
+      "archiveConsumed": true
+    },
+    "profile": {
+      "originalSha256": "22aaefa8f77eacc1b163d877348ef9d353c50b7a49d95f1a1d1c127b9687f0df",
+      "reinstalledSha256": "22aaefa8f77eacc1b163d877348ef9d353c50b7a49d95f1a1d1c127b9687f0df",
+      "source": "Only the original disabled synthetic snapshot was re-supplied from the isolated fixture backup after purge. On completion the live snapshot directory returned to the factory input."
+    },
+    "confirmation": {
+      "pid": "17709",
+      "originalId": "f408fb4c-1498-4034-837b-c05c784c1433",
+      "resultSha256": "b0e2d71bd9167f4bceaa709a42c61bb4b646fd15752cd4211f018c1d7096f582",
+      "onlyAddedFile": "/var/lib/kura-dhcp-service/f408fb4c-1498-4034-837b-c05c784c1433.delivered",
+      "senderAfter": "lock only",
+      "serviceAfter": "inactive"
+    },
+    "retiredDebCopyBytes": 9381874,
+    "parkedDisabled": true,
+    "exit": 0
   }
 }

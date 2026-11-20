@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 的 DHCP 已生效回执跨 Core 与 Networking 共同 purge
+
+复用上一次完整 Core 首装现场，重新核实原挂载身份后安装 Networking，使用隔离虚拟 LAN。正式 Main 启用专用 dnsmasq。随后的停用已由 actor 提交，终止等待回复的客户端后 Main 记录 UNKNOWN。普通 dpkg 共同移除、purge、重装 Core 和 Networking；原六份服务端记录与两份凭据逐项一致。发送端恢复原编号、字节、权限、属主、链接数和长度。明确 purge 后仅从夹具备份重新提供原停用测试快照。新 Main 取得原结果，服务端只新增该编号的送达回执，本地 pending 消失，服务保持 inactive。收尾撤除虚拟接口与运行目录中的测试快照，保留恢复证据，Main disabled、正常停机。BIND、modem 的已派发组合仍各自待验，冻结 0/12。[正式包与原操作证据](actual-core-network-sender-purge-checkpoint.json)
+
 ## 2026-11-21 正式 Core 首装在 PREPARED 中断后沿原围栏完成
 
 在独立 Debian ARM64 首装现场，完整 `fcf1206435` deb 完成五个安装步骤并发布 PREPARED 后，夹具终止了仅承载本次 dpkg 配置的 systemd 单元。包停在 half-configured。再次解包同一份正式 deb 被维护围栏拒绝，原 postinst 的 abort-upgrade 回调让 dpkg 保持 unpacked。直接执行 `dpkg --configure kura-core` 完成首装，原 17 份意图及回执保持内容、inode 和其他元数据；只新增 ready.json 和同围栏编号的包历史。两份凭据保持、dpkg audit 为空。该现场始终未启动 Main，停放时 disabled、exit 0。五份 deb 用只读挂载复用。冻结 0/12。[原围栏、回执与包状态](actual-core-network-sender-purge-checkpoint.json)
