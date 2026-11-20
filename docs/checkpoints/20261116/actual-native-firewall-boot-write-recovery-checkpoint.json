@@ -1,0 +1,98 @@
+{
+  "recordedAt": "2026-11-20T07:12:48.318976+00:00",
+  "source": {
+    "core": "96ffee3741fda1c4535a715a8ff33b2bb84f80f5",
+    "networking": "6a98ed14a63c0639a3cfab109ca5325004782846",
+    "networkingTree": "b4778f09e2f3948d9a73b6a38a8e11636d7d42d0"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true
+  },
+  "fixture": {
+    "id": "0ea55f106f099e918cf6ca68929368b2c3e1c83e9f827ca35df3276d38214905",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T07:07:14.050282175Z",
+      "FinishedAt": "2026-11-20T07:12:01.143206983Z"
+    }
+  },
+  "archives": {
+    "kura-networking": {
+      "sha256": "f10795099807b7bf4f6ca8444e81e6d5cad2dc3b0e88de605bb60bd8068a2d80",
+      "version": "3.0.0~git202611200709.6a98ed1-1"
+    },
+    "kura-firewall-only": {
+      "sha256": "4fde4095215915a66809d0330ef3a8d53ed592875b0128641aeb74775b5036f4",
+      "version": "3.0.0~git202611200709.6a98ed1-1"
+    }
+  },
+  "firstBoundary": {
+    "installedLauncherTraced": true,
+    "directoryFsyncReturned": true,
+    "originalCompletedFamily": "iptables",
+    "originalIpv6NotIssued": true,
+    "sameRootBootAndNetworkNamespace": true,
+    "sameOperationId": "875039f1-0341-436f-8f18-0f2a20e44477",
+    "vendorSystemdResumeSucceeded": true,
+    "onlyIpv6DispatchedOnResume": true,
+    "ipv4CounterAfter": 30,
+    "originalLoopbackDatagrams": 15,
+    "bothFinalRuleFamiliesExact": true,
+    "finalReceiptSha256": "492be686063f468545ab88c8e35659edebdef6415e1793b4d854a99102273df5"
+  },
+  "secondBoundary": {
+    "installedLauncherTraced": true,
+    "actualIpv6ChildExit": 0,
+    "successRecordAbsent": true,
+    "originalOperationId": "d9dfb16f-2b9d-4adb-b5b8-4f4955038251",
+    "vendorGuardRefusedOriginalIssuedFamily": true,
+    "sameRootBootAndNetworkNamespace": true,
+    "previousReceiptExact": true,
+    "originalPendingSha256": "2c7c467eb2f8661e8f2335996bfd9863c4810430e4eb9fb283e641e8ffef47ed",
+    "originalTablesAndInputsPreserved": true,
+    "newReceiptPublished": false,
+    "redispatched": false
+  },
+  "observationCorrection": "The initial postchecks compared changing built-in counters. Read-only verification normalized those counters and checked the original settled and unresolved records. No original dispatch was repeated.",
+  "tests": {
+    "networkingMavenPassed": 2239,
+    "arm64PackageTestsPassed": 8,
+    "hostPackageTestsPassed": 8
+  },
+  "dpkgAuditEmpty": true,
+  "mainDisabledAndNeverStarted": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "explicit authenticated settlement of an issued family with no durable completion",
+    "package maintenance admission with pending boot restore, other dispatch and real reboot boundaries",
+    "standard launcher full positive and installed interruption cases, remaining typed brokers",
+    "complete Core/OSGi, provider and six-component matrix and all 12 parents"
+  ]
+}

@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 防火墙启动器保留已完成地址族并拒绝重派未决步骤
+
+Networking `6a98ed1` 在两种正式启动器共用的站点规则恢复路径中记录原意图。私有记录绑定 Root、boot、网络命名空间、原文件指纹、实际工具和 helper。每族派发前同步意图，成功退出和内核读回后同步完成。恢复时已完成族须匹配内核读回，只派发尚无意图的族。已有派发意图而缺完成证明时保留原编号并拒绝写入。JDK 21 和 Maven 3.10.1 从 Git 构建两种正式 deb，Networking Maven 2239 项、宿主和 ARM64 包装各 8 项通过。
+
+Debian 13 ARM64 独立 Root 实装 Core `96ffee3741` 和新 firewall-only。跟踪已装启动器，在 IPv4 完成回执所在目录的实际 fsync 成功返回后终止进程，此时 IPv6 尚未派发。由正式 systemd `firewall.service` 沿同一 Root、boot 和网络命名空间续接，两个地址族读回正确，原编号归档一份完成回执。IPv4 原规则的测试计数保持，未重派 IPv4。观测脚本起初直接比较了会随流量变化的内建计数，随后对原规则、结算文件和真实计数只读补验，未重派启动。
+
+同一新 Root 上的另一个独立规则对，在真实 IPv6 执行进程返回 0 后、启动器写入完成回执前中断。已审阅的合成规则实际进入两族内核，产品记录保留原 IPv6 issued 状态。实际 vendor unit 拒绝续写，原 pending、之前的完成回执、两族规则和站点文件完整指纹保持。现场正常停放，Main 全程 disabled 且未启动，dpkg audit 无输出。
+
+已派发步骤的显式原证据结算、带未决记录的包维护准入、真实重启、标准 launcher 完整正向实装和其余中断点仍待验证。完整 Core/OSGi、其余 typed brokers、provider 和六组件矩阵继续内部待办。原三现场、个人文件和 7fd 的 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-firewall-boot-write-recovery-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 两种防火墙启动器在写入前核对双族站点规则
 
 独立 Debian 13 ARM64 Root 安装 Core `96ffee3741` 和旧 firewall-only 正式包。用单次实际 `firewall.service` 调用复现：合法 IPv4 已写入内核，随后无效 IPv6 使单元失败，IPv6 保持原规则，两份站点文件指纹精确。该旧结果完整保留。
