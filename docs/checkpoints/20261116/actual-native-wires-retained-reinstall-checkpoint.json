@@ -1938,5 +1938,98 @@
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
       "parallels-final.json": "c7d286b286f41b1e37a6f4c9439699f77144053cb113e8415bb276e519157285"
     }
+  },
+  "deploymentArchiveReplacement": {
+    "source": "15c50ca101657a1aea41a77fdc77aed12dfc33f3",
+    "tree": "d2bceb42a89995d53b8f7901ab87b3e309135ab6",
+    "version": "2.0.0~git202611202327.15c50ca-1",
+    "debSha256": "7e39e23626854058569a260361eca043b59b4519edb92f8efc9843c3130a7196",
+    "debBytes": 218572,
+    "tests": {
+      "tests": 240,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "before": {
+      "local": {
+        "result": "IO_FAILURE",
+        "registeredFileExists": false,
+        "originalExact": false,
+        "registryExact": true,
+        "stagingFiles": 0,
+        "sourceExists": true
+      },
+      "cloud": {
+        "result": "IO_FAILURE",
+        "registeredFileExists": false,
+        "originalExact": false,
+        "registryExact": true,
+        "stagingFiles": 0,
+        "sourceExists": false
+      },
+      "alias": {
+        "result": "SUCCESS",
+        "registeredFileExists": false,
+        "originalExact": false,
+        "registryExact": true,
+        "stagingFiles": 0,
+        "sourceExists": false
+      }
+    },
+    "after": {
+      "local": {
+        "result": "IO_FAILURE",
+        "registeredFileExists": true,
+        "originalExact": true,
+        "registryExact": true,
+        "stagingFiles": 0,
+        "sourceExists": true
+      },
+      "cloud": {
+        "result": "IO_FAILURE",
+        "registeredFileExists": true,
+        "originalExact": true,
+        "registryExact": true,
+        "stagingFiles": 0,
+        "sourceExists": true
+      },
+      "alias": {
+        "result": "SUCCESS",
+        "registeredFileExists": true,
+        "originalExact": true,
+        "registryExact": true,
+        "stagingFiles": 0,
+        "sourceExists": true
+      }
+    },
+    "activeRetainedBusiness": true,
+    "scope": "Installed local and cloud code in unprivileged ARM64 JVMs, using a DeploymentAdmin test double and isolated files. RLIMIT_FSIZE=1024 only on the test JVM for cross-filesystem copies. Separate packaged Main startup read the original registered business bundle using real Felix. Process termination between Felix and registry commit, hard power loss and physical disk exhaustion are outside this observation.",
+    "readback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-archive-publication/parked-readback.py",
+    "sha256": {
+      "before.json": "87dfedf9fc9e5801884654a43725ee034301548d3a3e1eee3d82fec1dbf70903",
+      "after.json": "3253dc819ba908a7752c56ecad893fa3af78c069a276787bbe75d09813b63380",
+      "release.json": "546d3f2fee82930cee37d269398c8eb3814b6bd6aff560e197812058d509b9ac",
+      "upgraded.json": "2354fff8bf3bcc7d8abd390694be521cabfcb0ac3ac1ecc8e86a4adc17a52bb8",
+      "main.json": "ea241afff9124a8a89f811e40750c280ea4ae467fb460656c8b27ccd9d45011f",
+      "final-check.json": "eb9e8f973e6e665c801c4856e2940ef2dd0311c16d6489c57e133ebe3a8ba466",
+      "parked.json": "289be9a5218f6a17d385be2e09fba43b5c04bdaa869d7e7df858a32df7acdb2f",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "original-three-after.json": "9e6b5f89f9689f5bb381d76098646e2da6d7706bfcbe2aae73669193152eb07d",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }

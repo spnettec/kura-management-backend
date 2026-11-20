@@ -52,7 +52,7 @@
 | Wires | 保留式移除和分阶段重装后，正式 Main 读回原 Timer→Logger 图，Logger 再次收到消息，原图仅提交一次。[原图重装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 联合配置中断有另一套现场及原 Root。[六组件转换记录](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) |
 | Agent | 同 Root 实际经过移除、purge、解包及重装，另有已绑定和未绑定场景。[保留式维护记录](../checkpoints/20261116/actual-native-agent-retained-removal-checkpoint.json) | 续接前要确认原注册身份、业务记录和 launcher 模式。 |
 
-Deployment 的本地和云端入口各自维护同一份业务 DP 注册表。旧云端代码一次写入失败，就把 5963 字节的表截成 1024 字节，并向调用方返回成功。修复后两个入口编译同一份文件更新代码，各自随原 bundle 发行。相同限制下新版报告失败，原表完整。同一现场的两个 JVM 并发登记 60 项后，原有的 180 条无关记录仍可读。这轮复用原六包卷，仅新建约 0.22 MB 的 Deployment deb。OSGi 框架安装、归档移动和注册表发布仍分步执行。[版本对照和实际 Main](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+Deployment 的本地和云端入口各自维护同一份业务 DP 注册表。旧云端代码一次写入失败，就把 5963 字节的表截成 1024 字节，并向调用方返回成功。修复后两个入口编译同一份文件更新代码，各自随原 bundle 发行。相同限制下新版报告失败，原表完整。同一现场的两个 JVM 并发登记 60 项后，原有的 180 条无关记录仍可读。这轮复用原六包卷，仅新建约 0.22 MB 的 Deployment deb。随后发现注册行完整时，旧版仍可能在替换同名归档时先删旧文件。新版先完成同目录暂存与同步，再原子替换。两个实装入口在跨文件系统复制失败时均保住原文件，正式 Main 再次从原记录加载业务包。本次 Deployment deb 为 218,572 字节，复用了原卷和 Maven 缓存。Felix 安装、归档替换和注册表更新仍分步执行。[版本对照和实际 Main](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 H2 文件库提供了一个只有跨升级才看得清的风险。旧版遇到首次打开失败会删除数据库重试，凭据不匹配也可能丢失业务行。六组件的旧 Main 建库、写入一次业务记录，原地升级后的 Main 在拒绝错误凭据后恢复原凭据，再次读回同一行。整个场景复用 Wires 中断恢复的原容器和卷。[H2 实装与停机读回](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 

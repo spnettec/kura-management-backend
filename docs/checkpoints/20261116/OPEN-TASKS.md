@@ -1,3 +1,7 @@
+## 2026-11-21 Deployment 同版本归档替换
+
+原六组件卷上，旧版两条安装路径遇到跨文件系统复制失败时均丢失原归档，云端通过目录别名安装还会在返回成功后删除归档。Deployment 15c50ca 通过 240 项测试，同样条件下三次均保留原注册行、文件内容和 inode。故障对照使用实装 bundle、独立普通用户 JVM 和替代的 DeploymentAdmin；随后正式 Main 通过实际 Felix 读回原业务资源。六包正常停机，83 份文件已核对。当前只读入口为 deployment-archive-publication/parked-readback.py。冻结 0/12。[实装记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 中断普通命令实例及工作目录实测
 
 六组件原 Root 的正式 Main 通过 OSGi 启动普通命令。确认 worker 实例、子进程及其 cgroup 后，仅停止这个实例。调用收到退出码 1、空 stdout 和 EXECUTOR_RESULT_UNAVAILABLE。原子进程及 cgroup 退出，Main 和监听 socket 的 InvocationID 保持。下一条独立请求以 UID 1000 成功执行。
