@@ -96,6 +96,8 @@ systemd 默认及模板 unit 不再以 console.env 为启动条件；环境文�
 
 主机页面把进程active与HTTPS就绪分开。新的固定只读installation-status命令不连接数据库、不创建身份、不获取服务租约、不发布TLS选择，也不导出令牌、密码或私钥。它核对已选不可变TLS代际的叶证书指纹；待审批材料不会成为就绪依据。安装器先验证已安装程序及命令provenance、实际active进程的程序摘要，再在本机核对TLS peer的精确指纹，随后只GET固定/health/live。进程摘要只读取固定/proc/数字PID/exe内核路径；控制台配置/状态路径继续拒绝符号链接。返回受限的成功存活状态才标记主机HTTPS就绪；这不能代替浏览器对发布地址/域名/证书的核对。旧制品没有声明能力时拒于应用命令调用前。
 
+如果宿主管理员没有读取运行进程程序的权限，安装器以固定的 yofc-console 账号和组启动一次只读摘要进程，清空附加组与 capabilities 并启用 NoNewPrivileges。摘要必须与已安装程序的受保护记录一致。TLS 存活探测成功后再次核对原 systemd InvocationID 和 MainPID，再返回 READY；读取被拒、摘要不符或进程在观察期间变更时保持未就绪。
+
 启动后的界面最多追加15次只读状态查询，不重发start，不转换成restart；切换目标取消旧观察。尚未核实HTTPS时不打开本机中心页面。新安装默认尝试IPv6通配双栈，仅自动首次设置在IPv6不可用时回退IPv4；端口占用不触发回退。显式已有地址不扩大地址族。命名实例由界面创建只含CONSOLE_SETUP_PORT的私有内部启动文件；这不是需要用户填写的环境变量。去掉unit强制监听地址后，已有安装继续使用原不可变设置；高级legacy环境文件保留。向导根据实际HTTPS监听地址族和端口，初始化代理通道为同地址族的下一端口（65535时取65534），后续保留用户填写的值。
 
 验收状态和制品SHA以docs/reviews/registered-runtime-review-20261114.md及对应target组件为准；源码版本、普通release、标准包、真实Cockpit和完整多阶段构建证据分别核对，不能用模拟桥替代主机认证，或用运行阶段镜像替代完整构建。Docker Rust构建固定Bookworm基础，限制两个编译job，保留normal/non-test release的编译消息。维护并发冻结/排他、完整平台GUI、macOS/Docker Desktop交付、凭据恢复续期及正式沙箱仍须按完整台账交付。

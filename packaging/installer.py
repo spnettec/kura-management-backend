@@ -17,7 +17,7 @@ import ssl
 import stat
 import subprocess
 import sys
-from setup import Setup, valid_instance
+from setup import SERVICE_USER, Setup, valid_instance
 from host_control import HostControl
 from docker_control import DockerControl
 from docker_maintenance import MaintenanceControl
@@ -127,11 +127,29 @@ def active_process_digest(pid):
         raise RuntimeError('Invalid service process identity')
     # This is a fixed kernel-managed magic link, not a console-owned path.
     # Keep Setup.path's symlink refusal for all configuration/state files.
-    return hashlib.sha256((Path('/proc')/pid/'exe').read_bytes()).hexdigest()
+    executable = Path('/proc') / pid / 'exe'
+    try:
+        return hashlib.sha256(executable.read_bytes()).hexdigest()
+    except PermissionError:
+        # A host administrator without CAP_SYS_PTRACE may still read the
+        # executable with the service's own credentials. Drop all privileges
+        # in the child and hash the kernel path with a fixed program.
+        result = subprocess.run([
+            '/usr/bin/setpriv', '--reuid=' + SERVICE_USER, '--regid=' + SERVICE_USER,
+            '--clear-groups', '--bounding-set=-all', '--inh-caps=-all', '--ambient-caps=-all',
+            '--no-new-privs', '/usr/bin/sha256sum', '--', str(executable),
+        ], env={'PATH': '/usr/bin'}, stdin=subprocess.DEVNULL,
+            capture_output=True, text=True, timeout=5)
+        output = result.stdout.removesuffix('\n')
+        digest = output.removesuffix('  ' + str(executable))
+        if result.returncode or digest == output or not re.fullmatch(r'[a-f0-9]{64}', digest):
+            raise RuntimeError('Active service executable could not be verified')
+        return digest
 
 
 def status(setup):
-    result = setup.systemctl('show', setup.unit, '-p', 'ActiveState', '-p', 'MainPID', '-p', 'Job')
+    observe = ('show', setup.unit, '-p', 'ActiveState', '-p', 'MainPID', '-p', 'Job', '-p', 'InvocationID')
+    result = setup.systemctl(*observe)
     if result is None:
         raise RuntimeError('A systemd host is required')
     fields = dict(line.split('=',1) for line in result.stdout.splitlines() if '=' in line)
@@ -148,18 +166,24 @@ def status(setup):
         return value
     try:
         record=setup.verify_local_command('installation-status')
-        if active_process_digest(value['pid'])!=record['binarySha256']:
+        if not re.fullmatch(r'[a-f0-9]{32}', fields.get('InvocationID', '')) \
+                or active_process_digest(value['pid'])!=record['binarySha256']:
             raise RuntimeError('Active executable differs from installed provenance')
-    except (OSError,RuntimeError,KeyError,TypeError,ValueError):
+    except (OSError,RuntimeError,KeyError,TypeError,ValueError,subprocess.TimeoutExpired):
         value['readiness']='UNVERIFIED'
         return value
     try:
         description=setup.bound_command('installation-status',include_overrides=True)
         value['httpAddress']=description.get('httpAddress')
         value['httpPort']=description['httpPort']
-        value['ready']=probe_listener(description)
-        value['readiness']='READY' if value['ready'] else 'NOT_READY'
-    except (OSError,RuntimeError,KeyError,TypeError,ValueError,subprocess.TimeoutExpired):
+        if probe_listener(description):
+            again = setup.systemctl(*observe)
+            # Do not carry a successful probe over to a different service
+            # invocation that appeared during provenance/TLS verification.
+            if again is not None and result.stdout == again.stdout:
+                value['ready'] = True
+                value['readiness'] = 'READY'
+    except (OSError,RuntimeError,KeyError,TypeError,ValueError,subprocess.SubprocessError):
         pass  # A partial bootstrap or expired observation is never a new start.
     return value
 
