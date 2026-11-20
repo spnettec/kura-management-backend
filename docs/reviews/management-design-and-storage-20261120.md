@@ -94,3 +94,9 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 这揭示了另一项工期成本：若验收需要跨重启继续写同一份台账，选用夹具前就值得验证其文件系统身份能否跨停机保持。对这两个现存夹具，复制目录、重算身份或凭相同 inode 放行都会改变验收条件。此项观察限定在这两次 ARM64 容器续接，尚无物理网关上的同类结论。[实装及停放记录](../checkpoints/20261116/actual-rtc-hotplug-and-addon-upgrade.json)
 
 11 月 21 日，独立 Core 夹具出现第三例。修正版 deb 在连续运行的同一 Root 上完成了三类 Java 记录的 purge 和恢复。重启容器后，机器标识、根目录 inode 6481777 和三个 actor 目录的 inode 均保持，挂载设备号从 1048815 变为 1048582。本次在读取待确认编号之前就结束了续接。团队可以用这个例子估算测试安排的代价：一组需要同一 Root 的维护步骤放在一次开机窗口内，可复用同一安装和同一份包；跨停机身份连续性则须单独验证。[本次原 Root 核对](../checkpoints/20261116/actual-core-network-sender-purge-checkpoint.json)
+
+### 四个发行包更新后的 Docker 层
+
+11 月 21 日用当前 Core、GWT、Deployment、Wires 四个 deb 重建 Alpine ARM64 镜像。Docker 报告旧镜像为 677.77 MB，新镜像为 679.04 MB。两者各有六个文件系统层，前两层的内容标识相同。整树复制的 `/opt/eclipse` 层分别为 369 MB 和 370 MB。因此，即使新旧镜像的总大小只差 1.27 MB，保留两个版本仍会留下不同的运行时层。宿主实际新增的物理块还受压缩、共享和构建缓存影响，未在此次单独计量。
+
+本轮复用现成的四个正式 deb；核对原件后移除构建上下文的四份 APFS 克隆，逻辑文件长度合计 358.09 MB。升级和回滚还复用了原数据卷与空的 /load 卷，保存两套数据副本的开销在这一步可以避免。[镜像层、发行包与原卷检查点](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)

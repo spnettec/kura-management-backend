@@ -199,5 +199,128 @@
     "amd64",
     "disk-full/hard-power"
   ],
-  "pushed": false
+  "pushed": false,
+  "fourPackageVolumeUpgrade": {
+    "date": "2026-11-21",
+    "dockerCommit": "34fabd8fdf3b4bf64e883d6b4888fbc1d7b9af80",
+    "platform": "linux/arm64",
+    "inputCommits": {
+      "kura-management-ui": {
+        "commit": "a2ed6951ede3ccc7787d2858fe3cf438440e6add",
+        "tree": "c55d86775378e096fa451da4067ad9aecc634edc",
+        "sha256": "2173b07eb7ffc2e94a32dba3e39fb3b1119befbe33d23401321b82110754ba65",
+        "bytes": 34133286
+      },
+      "kura-deployment": {
+        "commit": "377293634e426fe4a939fcc5273c15e3d97741b5",
+        "tree": "651363cf6ad9452c830dd8d7069f6c51e066a263",
+        "sha256": "e363fca545e09da3daee8dea2e5adbc89f4f5a993d4e6958da612eae7a42bd14",
+        "bytes": 211450
+      },
+      "kura-wires": {
+        "commit": "5605b6b70b785f70d5c13afab74343afc7a73114",
+        "tree": "4e7fff1f246987ea018487106fdef2279a092a5d",
+        "sha256": "f0acfacfec276be93306d1691e3915785f4eefbad1600f24315e0969f4f750dc",
+        "bytes": 119523144
+      },
+      "kura-core": {
+        "commit": "fcf120643543ceccab710edc5e9d270eac6ab2ea",
+        "tree": "36eafecd3a4121e5c146c8f6be4ddc6a6f28bd9a",
+        "sha256": "f57365d15db4c04a12caec5ee2cbd6c9ead783291563b41c99c2c914a8297a02",
+        "bytes": 204226040
+      }
+    },
+    "originalContainer": "c0d27ca5ac49068576977189287790fb5f3a14e4d9b0bafc32c775c391fea23d",
+    "sameOriginalVolumeNames": {
+      "/load": "3d851d68a9e2d4b210150eb0bd3de7bf24fc60c5ce20644e32d97512c23498a3",
+      "/var/lib/kura": "yofc-kura-nonroot-fresh-v4-20261119"
+    },
+    "originalLoadEntries": [],
+    "observations": {
+      "upgrade": {
+        "image": "sha256:e39e1ebfc914dc06a1bcfa9ba2328326687e6e3716866b023081b336b12f95b8",
+        "packages": [
+          "kura-core\t6.0.0~git20261120180944.fcf1206-1\tarm64\tf57365d15db4c04a12caec5ee2cbd6c9ead783291563b41c99c2c914a8297a02",
+          "kura-management-ui\t3.0.0~git202611201623.a2ed695-1\tall\t2173b07eb7ffc2e94a32dba3e39fb3b1119befbe33d23401321b82110754ba65",
+          "kura-deployment\t2.0.0~git202611201456.3772936-1\tall\te363fca545e09da3daee8dea2e5adbc89f4f5a993d4e6958da612eae7a42bd14",
+          "kura-wires\t3.0.0~git202611201623.5605b6b-1\tall\tf0acfacfec276be93306d1691e3915785f4eefbad1600f24315e0969f4f750dc"
+        ],
+        "httpLogin": 200,
+        "uid": 122,
+        "gid": 122,
+        "noNewPrivileges": true,
+        "capabilities": {
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000"
+        },
+        "loadedCredentialPaired": true,
+        "retainedFilesExact": 4,
+        "certificate": "1e07e0c3f3f414ba74075f1069956a8ef4007ac11004c885e9c91590326de566",
+        "stopExit": 143,
+        "removed": true,
+        "originalStoppedStateExact": true,
+        "volumesExact": true
+      },
+      "rollback": {
+        "image": "sha256:de85ff4f818d3a8344dc6686bebdf6352d9877c8d7ef7af91d39443a4ee51b15",
+        "packages": [
+          "kura-core\t6.0.0~git202611190718.fafc5b3-1\tarm64\te70570487a5474266afb6666ce39fdb5e5b8d73d4ee24a232aa5771732f12ab1",
+          "kura-management-ui\t3.0.0~git202611190719.1205092-1\tall\t372f2926c7b923b00f9f1e12d1a6a6a5e66153b1a92e046368cc3cb9e0e0300c",
+          "kura-deployment\t2.0.0~git202611190719.c6e1fd2-1\tall\tddbbd95118a4fd4f90dacffe10a770ccd05880abbded9196431b677398fe8bdd",
+          "kura-wires\t3.0.0~git202611190719.93f318b-1\tall\t870ae8fe5fb9da2d9b75d2b3641d1ef451eb256b51145c41e351bb249c8d4443"
+        ],
+        "httpLogin": 200,
+        "uid": 122,
+        "gid": 122,
+        "noNewPrivileges": true,
+        "capabilities": {
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000"
+        },
+        "loadedCredentialPaired": true,
+        "retainedFilesExact": 4,
+        "certificate": "1e07e0c3f3f414ba74075f1069956a8ef4007ac11004c885e9c91590326de566",
+        "stopExit": 143,
+        "removed": true,
+        "originalStoppedStateExact": true,
+        "volumesExact": true
+      }
+    },
+    "upgradeHttp": {
+      "console": "302 https://127.0.0.1/admin/auth",
+      "auth": "200"
+    },
+    "initialProbe": "The first observer expected HTTP 200 from the protected console. The same running candidate redirected to /admin/auth, which returned 200. No second candidate was launched.",
+    "liveJvmOpenedPackageJars": 109,
+    "openJarsWithDifferentDigestAtSamePath": 16,
+    "openJarDigestChangesByPackage": {
+      "kura-core": 7,
+      "kura-wires": 7,
+      "kura-deployment": 1,
+      "kura-management-ui": 1
+    },
+    "imageBytes": {
+      "candidate": 679043346,
+      "previous": 677769722
+    },
+    "commonLayerDiffIds": 2,
+    "runtimeCopyReported": [
+      "370MB",
+      "369MB"
+    ],
+    "stagingRetired": {
+      "copies": 4,
+      "logicalBytes": 358093920,
+      "method": "independent APFS clones",
+      "sourcePackagesPreserved": true
+    },
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/docker-four-package-volume-upgrade",
+    "scope": "Four base packages, two retained volumes, existing empty /load and same TLS. Optional deployment packages, purge of persistent volumes and six-component installation are outside this observation."
+  }
 }

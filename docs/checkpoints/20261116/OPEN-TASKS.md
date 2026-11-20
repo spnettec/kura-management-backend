@@ -1,3 +1,7 @@
+## 2026-11-21 Alpine 启动器用原卷升级四个发行包并回滚
+
+以当前 Core、GWT、Deployment、Wires 四个 deb 构建 ARM64 镜像。原停放容器保留，候选镜像和旧镜像先后挂载原数据卷和空的 /load 卷启动。两个实例均提供原 HTTPS 证书，登录入口返回 200，PID 1 为 UID/GID 122 的 Java，五组能力集均为零。每次正常停止和移除临时容器后，两卷根 inode 与四份受保护文件的内容、属主、权限、inode 和时间戳均一致。候选 JVM 实际打开的 109 个发行 JAR 中，有 16 个与旧镜像同路径文件摘要不同，覆盖全部四个包。此项覆盖基础镜像的升级、回滚及保留卷式移除。冻结 0/12。[启动与回滚检查点](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 BIND 配置回执跨 Core 与 Networking 共同 purge
 
 原 DHCP 夹具重启后挂载设备号改变，未查询业务操作，正常停机。独立 BIND 原现场另按自己的机器、Root 与 actor 目录配对成功，同 Root 升级至 Core `fcf1206435` 与 Networking `4741b5e`。正式 Main 先为隔离 IPv6 LAN 发布 DNS 配置，再从原出厂快照停用 DNS。服务端提交后，等待回复的客户端被中断，Main 记录 UNKNOWN，named 已停机。两个正式包共同 remove、purge、重装，发送端读回同一编号和原字节。重装后正式 Main 直接使用出厂快照，15 份既有服务端记录和两份凭据逐项一致，只新增原编号的送达回执，无新增 DNS 操作。保留测试前的运行数据及旧证据，删除两份已核实宿主原件的 deb 副本，213,607,914 字节。现场 disabled、正常停机，冻结 0/12。[完整实装检查点](actual-core-network-sender-purge-checkpoint.json)
