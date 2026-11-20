@@ -1,0 +1,281 @@
+{
+  "recordedAt": "2026-11-20T05:30:59.935652+00:00",
+  "source": {
+    "commit": "292412c9e63cc9d00b422dda05cebd06d6c4241b",
+    "tree": "5bfc76365281f9ed5030deab71434c5cfb37c756",
+    "removalImplementationCommit": "3cf887b4bd6fc3726552f1792d12b131602c09b5",
+    "removalImplementationTree": "54c6ad68a977a3d6864d7f102e6e27a0ef595414"
+  },
+  "platform": "Debian 13 arm64",
+  "archives": {
+    "console": {
+      "version": "0.1.0~cohort20261120053001.292412c-1",
+      "architecture": "arm64",
+      "sha256": "04da106891f96ef4d98aabf70e3d1d1ad979b1309d27372729a308832a7df010",
+      "sourceManifestSha256": "764cced6fbd457659d984b5a07f537995fe7c8d517cc171550d77ff4f81d8c1e"
+    },
+    "installer": {
+      "version": "0.1.0~cohort20261120053001.292412c-1",
+      "architecture": "all",
+      "sha256": "768558202d6ddce46ff1aab23c8cc51a6d89947916dc2b10bb996d3e2b43a62c",
+      "sourceManifestSha256": "764cced6fbd457659d984b5a07f537995fe7c8d517cc171550d77ff4f81d8c1e"
+    }
+  },
+  "reusedFormalRelease": {
+    "sourceInputs": 207,
+    "sealedArchiveSha256": "6c5302efb08e36f41b7a5ac0e2dc2154b5790bef0921cff748dc7b8280b374b5",
+    "sealedVersion": "0.1.0~cohort20261120051418.768b0fa-2",
+    "binarySha256": "de23eda73205a354c16d265f3c3887c01fc92daef8564e6ab446defc01ce0c48",
+    "webFiles": 3
+  },
+  "fixtureBefore": {
+    "gateway": {
+      "id": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.833605246Z",
+        "FinishedAt": "2026-11-20T02:15:41.20555029Z"
+      }
+    },
+    "center": {
+      "id": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:22:03.89123383Z",
+        "FinishedAt": "2026-11-20T05:22:09.640986455Z"
+      }
+    },
+    "postgres": {
+      "id": "5e9d3da46418f94d2383b9443f857e1a5b135f44a21cf28b5d5bb26c767460d9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:22:03.690148746Z",
+        "FinishedAt": "2026-11-20T05:22:09.804139978Z"
+      }
+    },
+    "dbVolume": "yofc-configuration-native-db-20261120",
+    "sameReceiptAndOffSwitch": true,
+    "systemdUnitsDisabled": true
+  },
+  "fixtureAfter": {
+    "gateway": {
+      "id": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.833605246Z",
+        "FinishedAt": "2026-11-20T02:15:41.20555029Z"
+      }
+    },
+    "center": {
+      "id": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:28:48.335137877Z",
+        "FinishedAt": "2026-11-20T05:30:17.628417585Z"
+      }
+    },
+    "postgres": {
+      "id": "5e9d3da46418f94d2383b9443f857e1a5b135f44a21cf28b5d5bb26c767460d9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:28:48.11224314Z",
+        "FinishedAt": "2026-11-20T05:30:17.821508628Z"
+      }
+    },
+    "dbVolume": "yofc-configuration-native-db-20261120",
+    "sameReceiptAndOffSwitch": true,
+    "systemdUnitsDisabled": true
+  },
+  "actualNamedLauncher": {
+    "port": 28443,
+    "originalDefaultPort": 18443,
+    "firstLaunchUsedPackagedInstaller": true,
+    "distinctTlsPins": true,
+    "launcherInitiallyEnabledNamedUnit": true,
+    "testedRuntimeEnablementSelectedByFixture": true
+  },
+  "upgrade": {
+    "maintenanceOperation": "2d0fb20f-feef-40b2-92a2-adccfb80912f",
+    "phase": "COMPLETE",
+    "originalUnits": [
+      "kura-management-console.service",
+      "kura-management-console@rollout-check.service"
+    ],
+    "stopReceipts": {
+      "kura-management-console.service": {
+        "after": {
+          "ActiveState": "inactive",
+          "Job": "",
+          "MainPID": "0"
+        },
+        "commandIssued": true,
+        "returncode": 0,
+        "state": "APPLIED"
+      },
+      "kura-management-console@rollout-check.service": {
+        "after": {
+          "ActiveState": "inactive",
+          "Job": "",
+          "MainPID": "0"
+        },
+        "commandIssued": true,
+        "returncode": 0,
+        "state": "APPLIED"
+      }
+    },
+    "persistentAndRuntimeEnablementPreserved": true,
+    "originalSeparatePrivateDataExact": true,
+    "explicitActivationAfterConfig": true,
+    "multipleInstancesSharedOneFence": true,
+    "dispatches": {
+      "upgrade-tools": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "upgrade-freeze": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "upgrade-stop": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "upgrade-unpack": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "upgrade-configure": {
+        "dispatches": 1,
+        "exitCode": 0
+      }
+    }
+  },
+  "removal": {
+    "maintenanceOperation": "a9a50c35-9afc-4e97-b96f-0728b67b8861",
+    "phase": "COMPLETE",
+    "originalUnits": [
+      "kura-management-console.service",
+      "kura-management-console@admin-masked.service",
+      "kura-management-console@nextboot.service",
+      "kura-management-console@rollout-check.service"
+    ],
+    "realTargetLinksDiscovered": [
+      "/etc/systemd/system/multi-user.target.wants/kura-management-console.service",
+      "/run/systemd/system/multi-user.target.wants/kura-management-console@nextboot.service",
+      "/run/systemd/system/multi-user.target.wants/kura-management-console@rollout-check.service"
+    ],
+    "dormantFirstFoundFromTargetLink": true,
+    "retiredDormantUnits": [
+      "kura-management-console@nextboot.service"
+    ],
+    "dormantWasNeverStarted": true,
+    "administratorMaskExact": true,
+    "noEnablementLinksAfterRemoveOrReinstall": true,
+    "sameArchive": true,
+    "originalStopReceiptsExact": true,
+    "onlyExplicitlySelectedInstancesStarted": true,
+    "dispatches": {
+      "remove-freeze": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "remove-stop": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "remove": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "purge": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "reinstall-unpack": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "reinstall-configure": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "reinstalled-activate-default": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "reinstalled-activate-named": {
+        "dispatches": 1,
+        "exitCode": 0
+      }
+    }
+  },
+  "continuity": {
+    "defaultPrivateEntries": 24,
+    "namedPrivateEntries": 12,
+    "postgresTableFingerprints": 14,
+    "originalTaskRows": 6,
+    "taskResultsReadThroughOriginalSession": 2,
+    "noTaskRedispatched": true,
+    "originalGatewayNeverStarted": true
+  },
+  "verification": {
+    "debianArm64PackagingTests": 137
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Native 中心命名实例与启用状态的维护
+
+console 3cf887b 在原 STOPPED 围栏下停用默认与命名发行单元。292412c 补齐持久和运行期 target 链接清点，避免 systemd 只列模板时漏掉未启动实例。无目录的原实例在停用前将精确单元名记入原维护记录。配置时原参与者仍须停机，原休眠实例不得新增状态。启用的管理员单元替换会拒绝变更，管理员 mask 保留。 [systemctl 单元文件文档](https://freedesktop.org/software/systemd/man/latest/systemctl.html)
+
+原 Debian 13 ARM64 远程配置现场用正式安装器在独立 28443 首次启动 rollout-check，TLS 与原默认中心不同。观测器最初预想 named 仍 disabled，实际首次启动入口也启用；沿两条原进程观测明晰现状，测试夹具切换 named 为 runtime enabled，默认保留持久 enabled。两实例实际经同一 UUID 停机、dpkg 解包及配置，显式启动后保留原启用选择、原 TLS 与默认原任务。
+
+另一个维护目的包含默认、rollout-check、运行期启用但未启动的 nextboot 和管理员 mask 单元。实际 list-unit-files 缺休眠实例，发行清点从 target 链接取得原名。实际 remove、purge 移除三处原启用链接，管理员 mask 的 inode、内容和元数据精确。沿原四参与者回执同一归档重装，配置后两个业务实例均 disabled，只有随后显式选择者启动。休眠实例未建立状态。
+
+原 PostgreSQL 14 表、6 条任务、两条原会话只读结果、默认 24 项及命名 12 项私有输入保持。网关未启、没有新业务派发，中心和数据库正常停放。137 项 Debian ARM64 包装测试通过。从当前 Git 生成正式包，核对 207 项编译输入后沿用原正式包 ELF 和 Web 文件。完整 Core/OSGi、typed brokers、其他提供方／启动方式和全六组件矩阵继续内部待办。原三现场、个人文件和 7fd 41 输入/16 回执保持。冻结 12 父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-console-named-maintenance-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Native 中心带原 PostgreSQL 任务的换版与保留态重装
 
 在原 Debian ARM64 远程配置实验现场复用独立 PostgreSQL 与已初始化中心。原网关保持停放。中心初次显式启动时收敛一条已过期的网关在线状态，实际只多一条 offline 事件，原事件前缀、其他表与任务精确。随后把启动后已结算的 14 张表、6 个原任务和 24 项中心私有输入作为维护基线。
