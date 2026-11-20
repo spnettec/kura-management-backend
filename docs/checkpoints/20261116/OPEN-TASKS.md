@@ -1,3 +1,9 @@
+## 2026-11-21 六组件中 GWT 与 Wires 联合移除在 postrm 中断
+
+实际 dpkg 在 GWT 的文件已移除、postrm 正等待原注册锁时收到定向中断。GWT 留在 half-installed，原注册行仍在。该次 dpkg 继续完成 Wires 移除，Wires 进入 config-files，注册行已移除。仅续办 GWT 的普通移除后，两包均到 config-files，四个 GWT 图标保留。共同 purge 移除四个图标，再从相同的两个 deb 安装，六包恢复原版本，dpkg audit 为空。正式 Main 中七个目标 bundle 均为 ACTIVE，HTTPS 登录入口返回 200。两份凭据、原快照和另外四个包经过全部阶段复核。Main disabled，夹具正常停机。
+
+原 GPSD 夹具重新启动的挂载设备号变动，在业务读取前正常停机。联合维护在独立六组件 Root 上完成。冻结 0/12。[dpkg 阶段、实装 Main 与原现场核对](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 Docker 挂载目录中的 bundle 热加载和移除
 
 旧镜像中的 FileInstall 已解析但未启动，普通 Main 可以读到 /load 的 JAR，观察包始终没有激活。Docker `9f9aad6` 将原 FileInstall 放入镜像的 6s 启动目录，原四个 deb 及四个 DP 的输入均保持。相同只读挂载、同一数据卷上的新镜像自动激活原观察包。另一次正式 Main 从空目录运行，在宿主发布观察包后取得 ACTIVE 及其 OSGi 回调，撤下该文件后两次查询均已无该 bundle，HTTPS 返回 200。两次都复核了原四个 DP、注册表、回执与密钥。冻结 0/12。[正式镜像和 OSGi 状态](actual-arm64-docker-nonroot-launcher-checkpoint.json)

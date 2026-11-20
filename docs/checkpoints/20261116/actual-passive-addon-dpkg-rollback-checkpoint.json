@@ -177,5 +177,214 @@
     "original-three-after.json": "d45bad15589753a3399d4804c115baf75bbcefe00e321aa7566378eac22dfc96",
     "parked.json": "3481f8936d18ba2df39d38d695342dc8baa8d5331a9705c77f3f0e18e1cef7b4",
     "retire-test-copies.json": "bc96a6d87eec71e79bc25706d1f9e21e3ae7304b8280b5439b2313d0ba93c8e0"
+  },
+  "jointRemoveInterruptedInPostrm": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/six-ui-wires-postrm",
+    "scope": "Six actual gateway packages in an isolated Debian ARM64 installation; no initialized agent or previous business transaction transferred.",
+    "earlierRoot": {
+      "expected": {
+        "id": "7c88016555c36e56851ddbf5964633b37084000c6abba07df3bbf4a444ce56ae",
+        "mount": "1048827:6539850",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "observed": {
+        "id": "7c88016555c36e56851ddbf5964633b37084000c6abba07df3bbf4a444ce56ae",
+        "mount": "2097164:6539850",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "admitted": false,
+      "queriedBusiness": false
+    },
+    "parkedEarlierNormally": true,
+    "root": {
+      "id": "78c152b8e17b2791828e9ad8ae5f0aa2f0b5ba3ce02c95cc951aa903e7bf6662",
+      "mount": "2097163:6600674",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "versions": {
+      "kura-management-ui": "installed 3.0.0~git202611201910.6b7442f-1",
+      "kura-wires": "installed 3.0.0~git202611201623.5605b6b-1",
+      "kura-core": "installed 6.0.0~git20261120192633.f4b364b-1",
+      "kura-networking": "installed 3.0.0~git202611201717.4741b5e-1",
+      "kura-deployment": "installed 2.0.0~git202611201456.3772936-1",
+      "kura-management-agent": "installed 0.1.0~cohort20261120163743.ab1cf33-1"
+    },
+    "batchDpkgExitCode": 1,
+    "interruptedPostrm": "kura-management-ui",
+    "continuedInSameDpkg": "kura-wires",
+    "packageOrder": [
+      "kura-management-ui",
+      "kura-wires"
+    ],
+    "states": {
+      "before": {
+        "packages": [
+          "installed",
+          "installed"
+        ],
+        "registry": [
+          "networking",
+          "management-ui",
+          "deployment",
+          "wires"
+        ],
+        "payloads": [
+          true,
+          true
+        ]
+      },
+      "interrupted": {
+        "packages": [
+          "half-installed",
+          "config-files"
+        ],
+        "registry": [
+          "networking",
+          "management-ui",
+          "deployment"
+        ],
+        "payloads": [
+          false,
+          false
+        ]
+      },
+      "removeCompleted": {
+        "packages": [
+          "config-files",
+          "config-files"
+        ],
+        "registry": [
+          "networking",
+          "deployment"
+        ],
+        "payloads": [
+          false,
+          false
+        ]
+      },
+      "purged": {
+        "packages": [
+          "not-installed",
+          "not-installed"
+        ],
+        "registry": [
+          "networking",
+          "deployment"
+        ],
+        "payloads": [
+          false,
+          false
+        ]
+      },
+      "reinstalled": {
+        "packages": [
+          "installed",
+          "installed"
+        ],
+        "registry": [
+          "networking",
+          "deployment",
+          "management-ui",
+          "wires"
+        ],
+        "payloads": [
+          true,
+          true
+        ]
+      },
+      "afterMain": {
+        "packages": [
+          "installed",
+          "installed"
+        ],
+        "registry": [
+          "networking",
+          "deployment",
+          "management-ui",
+          "wires"
+        ],
+        "payloads": [
+          true,
+          true
+        ]
+      }
+    },
+    "retained": {
+      "otherFourPackagesExact": true,
+      "twoCredentialsAndOneSnapshotExact": true,
+      "registryLockExact": true,
+      "gwtConffilesAcrossRemove": 4
+    },
+    "main": {
+      "root": {
+        "id": "78c152b8e17b2791828e9ad8ae5f0aa2f0b5ba3ce02c95cc951aa903e7bf6662",
+        "mount": "2097163:6600674",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3238",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "444e9e59c28d4156aefc69babf5858ee"
+        },
+        "ticks": "38970078",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "http": 200,
+      "activeBundles": {
+        "org.eclipse.kura.core": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.core.deployment": "initial@reference:file:../kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.hook.file.move.provider": "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.management.bridge": "initial@reference:file:../../../usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar",
+        "org.eclipse.kura.nm": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.web2": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.wire.provider": "initial@reference:file:../kura/siblings/wires/4s/org.eclipse.kura.wire.provider-3.0.0-SNAPSHOT.jar"
+      },
+      "agent": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "registry": [
+        "networking",
+        "deployment",
+        "management-ui",
+        "wires"
+      ]
+    },
+    "finalDisabled": true,
+    "finalExitCode": 0,
+    "retainedWritableBytes": 438448828,
+    "notes": [
+      "The observation initially compared an untrimmed dpkg status field after purge. Read the completed status and continued directly with reinstall.",
+      "The first observer staging path under /run was not visible in the systemd mount namespace. Staged the verified read-only observer under /root before Main started. HTTP read back with Python on that same Main."
+    ],
+    "evidenceSha256": {
+      "admission.json": "e572e9b95cea2c3f941cc8e434f4eb5c26c02020be645a13caf9f027cd5aadcb",
+      "refused-park.json": "5ab7d3749a9cb5f4a1e65b5648b10968a6c080eae18756315349475e3795065f",
+      "original-three-after.json": "5f357e527b4bead7d449e02f40145f2a45191ef2ece3d53e3d091effcdbcb837",
+      "preservation-final.json": "379d96f17bbd030b8d4ca78b384cd4836b0838b842987f5fc0a24d38e70eb776",
+      "paired/inputs.json": "ce72c7a0fa9c1db155de0f7be9809a88416664edf10f103b8686dfb93f7fed82",
+      "paired/root.json": "2769e9d628b8404f904a5c3eec659f08e2dc8367db86fda7934889b23df80ba3",
+      "paired/pre-batch.json": "ca629e3750b7e56d87c86ee79ecceb4ea45994c51360cadc522ae967e84ebbf4",
+      "paired/mixed-result.json": "7c81b4e8b10d9e7244a0073c27a0f8aaf20518d8372a06b8b081e0f49f0dc067",
+      "paired/finish-only-original-gwt-remove-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "paired/removed.json": "e8da7c3949e109e74c321c3538abc1ad82ff17f3bea1685936fc576e6beacf1a",
+      "paired/purge-removed-both-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "paired/purged.json": "154ef7e4813d1eaa97a519cec912ea5408796521b34169ad504442ad37d67f7c",
+      "paired/reinstall-original-pair-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "paired/reinstalled.json": "1688a4edfa43c73479007fc764b547d81f89fe6d2e63a2b8b95ec1f383857ccc",
+      "paired/main-observed.json": "8ae2854d626660fae09f2381ac7dfcbfccef11ae4155f060c2a744cc2e67d3a5",
+      "paired/final-installed.json": "1688a4edfa43c73479007fc764b547d81f89fe6d2e63a2b8b95ec1f383857ccc",
+      "paired/parked.json": "84c0e2728de5c883da56115ce0b399388d16a5e0decb8cb038f40cec8561c7f4"
+    }
   }
 }
