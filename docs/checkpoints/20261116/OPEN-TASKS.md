@@ -1,3 +1,9 @@
+## 2026-11-20 正式 Main 日志字段实测和原时钟 actor 发布中断恢复
+
+六组件原 Root 启动正式 kura.service。OSGi 客户端通过已安装的 typed journal broker 分别导出 Kura 和系统日志，指定 _SYSTEMD_UNIT、SYSLOG_IDENTIFIER、PRIORITY。结果为 5,595 和 873,189 字节，分别与独立 journalctl 同范围输出前缀逐字节吻合。独立标记仅出现在系统范围。采样到 245 个 bundle、110 条 SCR 配置或描述记录；唯一处于 INSTALLED 的独立 Jackson JAXB 扩展属于已记录的发行兼容边界。记录保留了 4 条未满足引用及 21 条没有配置实例的描述。此次通过实际 Main 调用 broker，未增加浏览器验收。原六组件已正常停机。
+
+Core `3aa64568bc` 修复时钟 actor 在代码归档和发布两次 rename 之间中断的续接。原 Parallels 组件沿原 namespace 和维护 purpose，用 JDK 21 构建的 ARM64 deb 更新两份发生变化的时钟文件。实际安装器在第二次 rename 前退出 75，活动目录缺席，旧归档和新暂存两边均可核验。经正常维护入口继续，保留了两个目录各自的 inode，原 15 份状态文件及两笔操作保持。原围栏恢复后再正常停用，八单元均 inactive。96 项 ARM64 时钟测试通过。VM 根只有一个时钟插件和静态测试单元；完整正式 Main 正向写入虚拟 RTC 仍待联调。冻结 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 Deployment 在管理员临时屏蔽 FileMove 时升级、移除和恢复
 
 Deployment `3772936` 将管理员创建的临时 mask 与原 Root、boot、符号链接设备号、inode 和 ctime 配对。六组件原夹具实际从 `c93c39e` 升级。持有 sibling 注册表锁后，真实 dpkg configure 返回 1，包进入 half-configured。释放锁后，沿原 Main 与 FileMove 两份围栏完成 configure。四项注册顺序、临时 mask、中心进程以及原密钥、Agent 和中心回执均保持。JDK 21 验证通过 240 项。

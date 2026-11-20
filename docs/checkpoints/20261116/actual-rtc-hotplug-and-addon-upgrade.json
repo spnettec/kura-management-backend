@@ -722,5 +722,136 @@
       "receipts": 16
     },
     "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7"
+  },
+  "sixComponentMainJournalFields": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/full-main-rtc/journal",
+    "main": {
+      "MainPID": "1182",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "373359340000",
+      "CapabilityBoundingSet": "cap_dac_override cap_net_bind_service cap_net_admin",
+      "AmbientCapabilities": "cap_dac_override cap_net_bind_service cap_net_admin",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "20bf29b2759742a68f5d2997cf567c9c"
+    },
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "fields": "_SYSTEMD_UNIT,SYSLOG_IDENTIFIER,PRIORITY",
+    "exports": {
+      "kura": {
+        "bytes": 5595,
+        "sha256": "452f2ef1fc8684d703e207d3b2ba6edf5262a1e25bf166c81e1a104c2307557d",
+        "selectedFields": [
+          "PRIORITY",
+          "SYSLOG_IDENTIFIER",
+          "_SYSTEMD_UNIT"
+        ],
+        "systemMarker": false,
+        "matchesIndependentJournalPrefix": true
+      },
+      "system": {
+        "bytes": 873189,
+        "sha256": "62bbf381fc94469310fffbe71d3558231d969740ed7774ba48ead6bafcc7825c",
+        "selectedFields": [
+          "PRIORITY",
+          "SYSLOG_IDENTIFIER",
+          "_SYSTEMD_UNIT"
+        ],
+        "systemMarker": true,
+        "matchesIndependentJournalPrefix": true
+      }
+    },
+    "bundleStates": {
+      "2": 1,
+      "32": 118,
+      "4": 123,
+      "8": 3
+    },
+    "bundles": 245,
+    "componentStates": {
+      "8": 78,
+      "NO_INSTANCE": 21,
+      "4": 7,
+      "2": 4
+    },
+    "componentRows": 110,
+    "onlyInstalledBundle": "tools.jackson.module.jackson-module-jaxb-annotations 3.2.0",
+    "scope": "SCR and bundle readback at sampling time, direct supported journal client from real OSGi Main, no HTTP request or frontend change",
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T15:09:46.245855779Z",
+      "FinishedAt": "2026-11-20T15:10:35.765126178Z"
+    }
+  },
+  "interruptedClockActorPublication": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/full-main-rtc/actor-upgrade",
+    "package": "kura_6.0.0~git20261120151346.3aa6456-1_arm64.deb",
+    "sha256": "a4c24094ac337af24258ea589e6c2d461bc380e685ecbc900d1f3f9a3df19082",
+    "core": "3aa64568bc57f257c1a665451a20444ef1a75d12",
+    "unitTests": 96,
+    "vm": "8061d57e-0120-42ec-a9a9-5799b436c4eb",
+    "fixture": "8c3e125c-8203-403c-928e-da87fa8fc0a6",
+    "oldCohort": "7a4fad1eab7b8be07b29862dc9bd2643a43a12853e4b4efaed93b196e226e26c",
+    "newCohort": "1ddc46f4faa0186cc25ac84702bed68879b75f61045c7b314a8177913abefd5b",
+    "scope": "native archive clock component files in original static component fixture",
+    "cut": {
+      "archiveCohort": "7a4fad1eab7b8be07b29862dc9bd2643a43a12853e4b4efaed93b196e226e26c",
+      "archiveInode": 1835180,
+      "gate": [
+        2050,
+        1835204,
+        0,
+        0,
+        33188,
+        1,
+        996,
+        1795186043232000076,
+        1795186043232000076,
+        "be70d84c08e5f72ca3f235ae697baea3da055c956a7829379cb4386a2ee1770c"
+      ],
+      "stagedCohort": "1ddc46f4faa0186cc25ac84702bed68879b75f61045c7b314a8177913abefd5b",
+      "stagedInode": 1835045
+    },
+    "cutExitCode": 75,
+    "installed": {
+      "actorInode": 1835045,
+      "archiveInode": 1835180,
+      "historyExact": 15,
+      "purpose": "8b6061b4-851b-4388-9217-a9d176ba9058"
+    },
+    "parked": {
+      "fence": {
+        "cohortSha256": "1ddc46f4faa0186cc25ac84702bed68879b75f61045c7b314a8177913abefd5b",
+        "namespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+        "purposeId": "29673165-23b0-45e0-9256-1c46abe96204",
+        "schema": 1,
+        "units": {
+          "kura-clock-broker.service": "e7279176d7066d4ec9e2c5f5b728215b7a9ff4445dbf1603d9196eef0466f1f8",
+          "kura-clock-broker.socket": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020",
+          "kura-clock-chrony-config.service": "01718c32a764f86200365e79ab80bcccc47d0fbfbe3a3c25595ed7792c84a374",
+          "kura-clock-chrony-config.socket": "a5d1db3205754a4439f4f5a333fb22b4c53eecb2c2edb05de945b4ed95715d1e",
+          "kura-clock-chrony-step.service": "f525193edb6c0041c6a20c0a25f3f3552637046914978f5222381b7c81321bbe",
+          "kura-clock-chrony-step.socket": "3dc1906833581bb9a3568d13798d40c24d61597e6288316608241ac5f0f341e6",
+          "kura-clock-rtc-devices.service": "44cd44c28f5d31406536abcb0854afb63030e00bcb52ae5dd36a5ffa5167cfe8",
+          "kura-clock-rtc-devices.socket": "5f492bab156bc29e521201059f904edfcfd5af169f6e1a6a4585270ab3767925"
+        }
+      },
+      "historyExact": 15,
+      "mainNeverStarted": true,
+      "operationCount": 2,
+      "unitsInactive": 8
+    },
+    "activeFolderAbsentAtCut": true,
+    "archiveInodeUnchanged": true,
+    "originalAndNewOperationsUnchanged": true
   }
 }
