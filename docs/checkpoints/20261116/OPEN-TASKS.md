@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 全 purge 后联合复装与解包态重启续接
+
+Core `015e6dce60` 移除 dpkg 首装时对 `/opt/eclipse/kura*` 的清理，独立 provider 状态由各自软件包维护。自解包入口只按原 Core 链接和历史目录名检查旧安装。同一 purge 现场先用旧安装器头部复现旧路径拒绝。JDK 21、Maven 3.10.1 从当前 Git 构建新正式 ARM64 deb 和自解包。实际新自解包保留六个 Deployment 目录和三份文件完整指纹，Core 写入原移除编号的正常包回执，保留的 AES 不变。Linux ARM64 25 项通过，macOS 24 项通过、1 项平台跳过。
+
+随后实际安装四个 Core 依赖包及中心工具。Agent 和中心沿原移除意图同时实际进入 unpacked。单次正常停启后，系统管理器及 D-Bus 实例更新，内核 boot ID、容器和根 inode 均保持，OverlayFS 设备号改变。使用已装 Agent 的原挂载配对验证底层 OverlayFS 摘要，22 份原围栏和文件只变更设备号，其余指纹精确。三服务启动计时均为 0。现有产品配对通过后，实际 dpkg configure 完成，同一 Agent 编号为 REINSTALLED，同一中心编号为 COMPLETE。八包均为 installed，dpkg audit 无输出。
+
+显式启动三服务后，GWT 按本次已装叶证书指纹核对 HTTPS，认证入口 200，未认证控制台 302，中心 READY。Journal socket 实际 active，FileMove socket 已装并维持 disabled。观测器初次误等 FileMove 自动启动，沿已运行进程补采，三项启动均未重派。三服务正常停机、禁用，隔离现场正常停放。合成 Core 用户数据在上一轮 purge 已清除，本轮保留的是原凭据与维护历史。
+
+该次实装覆盖同一 OverlayFS 上完整 purge 后复装和双组件 unpacked 的正常停启续接。联合换版、已绑定和认证业务、其他中断点及 provider／launcher、完整 Core/OSGi、其余 typed brokers 与全部 12 父项仍内部待办。原三现场、个人文件和 7fd 的 41 输入/16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-post-purge-reinstall-reboot-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 联合重装后的 GWT 就绪与八包完整 purge
 
 续接前一原生组合的同一隔离 Debian 13 ARM64 Root。真实 Docker 停启后，容器 ID、底层挂载信息、根目录设备和 inode、machine-id 摘要及原四份 Agent 回执精确。原 Agent 和中心回执仍为 REINSTALLED 和 COMPLETE。按正常 systemd 入口显式启动 Agent、Main 与中心。真实 HTTPS 按已装 Core keystore 的叶证书 SHA-256 固定核对，GWT 认证入口响应 200，未认证的控制台入口响应 302。正式中心安装器返回 READY，三个进程均为 NNP。

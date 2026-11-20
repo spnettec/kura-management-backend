@@ -1,0 +1,132 @@
+{
+  "recordedAt": "2026-11-20T06:17:11.266567+00:00",
+  "fixture": {
+    "id": "a2e211d35629523fdaab766f9d19f1288e402af10a54aea43abde52fc9b698f1",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:13:37.560432007Z",
+      "FinishedAt": "2026-11-20T06:16:31.542295436Z"
+    }
+  },
+  "source": {
+    "core": "015e6dce60be11a253f69113c405a0053a0bc80b",
+    "tree": "2f56e8ce31b25806e51fa8b624bdff7efd6f9a86"
+  },
+  "coreArtifact": {
+    "package": "kura_6.0.0~git20261120061225.015e6dc-1_arm64.deb",
+    "wrapper": "kura_6.0.0-SNAPSHOT_linux_installer.sh",
+    "version": "6.0.0~git20261120061225.015e6dc-1",
+    "sha256": "6ed76118b2741712c3decc091e369b5123128a8ab1746301b2d82831b92f93e6",
+    "wrapperSha256": "30f609e04816aa43f5cc8ca8464f7a1a8c692c37bf0df952c19ff1653f2621a6",
+    "revision": "015e6dce60be11a253f69113c405a0053a0bc80b"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true
+  },
+  "removedRoot": {
+    "previousFixtureExact": true,
+    "oldWrapperHeaderRejectedRetainedPaths": true,
+    "providerPathDirectoriesExactAfterCoreInstall": 6,
+    "providerFilesExactAfterCoreInstall": 3,
+    "originalCoreRemovalReceiptSettled": true,
+    "purgedSyntheticUserDataNotRestored": true
+  },
+  "unpackedReboot": {
+    "packages": {
+      "kura-management-agent": "0.1.0~cohort202611200455.4.7d58d7b-1",
+      "kura-management-console": "0.1.0~cohort20261120060040.6798af7-1"
+    },
+    "sameContainerAndRootInode": true,
+    "sameMachineAndKernelBootId": true,
+    "systemdDbusInvocationChanged": true,
+    "originalAgentOverlayDigestMatchedByInstalledCode": true,
+    "originalDevice": 1048815,
+    "observedDevice": 1048825,
+    "protectedFilesExactExceptDeviceAttachment": 22,
+    "zeroMainStartTimestamps": true
+  },
+  "configure": {
+    "sameOriginalAgentIntent": true,
+    "sameOriginalConsoleIntent": true,
+    "agentPhase": "REINSTALLED",
+    "consolePhase": "COMPLETE",
+    "noAutoStart": true,
+    "packageStates": {
+      "kura-core": "installed",
+      "kura-networking": "installed",
+      "kura-management-ui": "installed",
+      "kura-deployment": "installed",
+      "kura-wires": "installed",
+      "kura-management-agent": "installed",
+      "kura-management-console-installer": "installed",
+      "kura-management-console": "installed"
+    },
+    "emptyDpkgAudit": true,
+    "protectedFilesAndPriorHistoryExactOnNewDevice": {
+      "oldRecords": 5,
+      "retained": 10,
+      "agentRecords": 4
+    }
+  },
+  "runtime": {
+    "gwtPinnedHttps": {
+      "auth": {
+        "status": 200,
+        "location": null,
+        "serverSha256": "83bdf27d9181919868d2f867f9a4b40bb56c80358a4d41381207fd15e01c4dd2"
+      },
+      "console": {
+        "status": 302,
+        "location": "/admin/auth",
+        "serverSha256": "83bdf27d9181919868d2f867f9a4b40bb56c80358a4d41381207fd15e01c4dd2"
+      }
+    },
+    "consoleReady": true,
+    "journalSocketActive": true,
+    "fileMoveSocketState": "loaded, disabled, inactive",
+    "normalStop": true
+  },
+  "verificationNotes": [
+    "OverlayFS device changed on the single real boot; original package overlay evidence proved the same backing",
+    "corrected the observer to accept the disabled FileMove socket; no startup reissued"
+  ],
+  "tests": {
+    "linuxArm64Passed": 25,
+    "macOsPassed": 24,
+    "macOsSkipped": 1
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "joint version upgrades",
+    "additional multi-component interruption points",
+    "enrolled/authenticated business and other providers/launchers",
+    "complete Core/OSGi, remaining typed brokers, six-component matrix and all 12 parents"
+  ]
+}
