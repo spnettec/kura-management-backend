@@ -2359,5 +2359,62 @@
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
       "original-three-after.json": "d8f6a643e89177771f8f34a18c7ae04acce03fb92967de5df0435d6e05de8fab"
     }
+  },
+  "directLauncherArchiveDirectory": {
+    "source": "7f91ef9024d6f01d70bcbc15791bdd6d20051fcb",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "main": {
+      "unit": {
+        "MainPID": "1528",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "transient",
+        "InvocationID": "f7e850cce0434b719a9f4b4e6d16a8af"
+      },
+      "ticks": "40432211",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001400",
+      "nnp": "1"
+    },
+    "registeredBusinessActive": true,
+    "writer": "/validation-root/run/kura-key-service/writers/lease.lock",
+    "appenders": {
+      "kura": {
+        "originalInode": 6967018,
+        "currentInode": 6967018,
+        "archiveCount": 1,
+        "beforeInActive": false,
+        "afterInActive": true,
+        "legacyPathReadsSameFile": true,
+        "alias": false
+      },
+      "kura-audit": {
+        "originalInode": 6967019,
+        "currentInode": 6967019,
+        "archiveCount": 1,
+        "beforeInActive": false,
+        "afterInActive": true,
+        "legacyPathReadsSameFile": true,
+        "alias": false
+      }
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "ordinaryActiveFiles": true,
+    "privateArchiveDirectory": "/var/log/kura/archives",
+    "originalLogFingerprintsExact": 3,
+    "scope": "Installed foreground launcher with private log mounts. Packaged first creation, diagnostic files, archive downloads and the formal unit capability remain open.",
+    "evidence": "direct-log-archive-only/parked-readback.py"
   }
 }

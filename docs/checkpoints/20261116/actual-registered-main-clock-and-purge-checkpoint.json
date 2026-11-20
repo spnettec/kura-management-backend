@@ -583,5 +583,99 @@
       "original-three-after.json": "9a959ab9b67747aa2438b5647694dfb6e26572e152f9e5bdbb9d133f45931ec8",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "registeredMainVirtualRtcFreshInstall": {
+    "scope": "User-authorized fresh Debian 13 ARM64 installation within existing Parallels VM; registered ClockService callback selected using an OSGi test bundle and ConfigurationAdmin.",
+    "core": "7f91ef9024d6f01d70bcbc15791bdd6d20051fcb",
+    "tree": "82c4eb71f4b8892e56c83a59eaaf9a6ae1ebed25",
+    "debSha256": "3fcb777b519dd5d81a0cd499a8e926fb6a32558161c1a6af584afbae401223b0",
+    "version": "6.0.0~git20261120233729.7f91ef9-1",
+    "root": "2050:1835231",
+    "originalComponentRoot": "2050:2",
+    "originalSixComponentRoot": "39:6611544",
+    "main": {
+      "pid": "1490",
+      "invocation": "9a137fbc3e8242a886e91bf3a23ca7c7",
+      "identity": {
+        "Uid": "997\t997\t997\t997",
+        "CapEff": "0000000000001402",
+        "NoNewPrivs": "1"
+      }
+    },
+    "selection": {
+      "main": {
+        "pid": "1490",
+        "invocation": "9a137fbc3e8242a886e91bf3a23ca7c7",
+        "identity": {
+          "Uid": "997\t997\t997\t997",
+          "CapEff": "0000000000001402",
+          "NoNewPrivs": "1"
+        }
+      },
+      "settings": "/dev/rtc1/3",
+      "provider": "org.eclipse.kura.linux.clock"
+    },
+    "device": {
+      "path": "/dev/rtc1",
+      "sysfs": "/sys/devices/i2c-0/0-0068/rtc/rtc1",
+      "number": "246:1",
+      "initial": "EINVAL"
+    },
+    "sharedRtc0VisibleInside": false,
+    "guestSystemClockSettingSyscallsDenied": "~adjtimex clock_adjtime clock_settime settimeofday",
+    "requestId": "a2e5480c-6e46-4254-b80f-62ed04c6b78e",
+    "namespace": "94de0952-0fd1-41c5-8c7d-65dc69ce8568",
+    "deviceBindingSha256": "c636677784d1f2af157852d3decdc0d7706b5e6ca2111d6f247b0a3e458b9ab4",
+    "senderAndActorResult": {
+      "errno": 0,
+      "namespace": "94de0952-0fd1-41c5-8c7d-65dc69ce8568",
+      "observedMonotonicNs": 31353024274325,
+      "observedRealtimeNs": 1795218830454767658,
+      "reason": "RTC_SET_RETURNED",
+      "requestId": "a2e5480c-6e46-4254-b80f-62ed04c6b78e",
+      "requestSha256": "a30836c3d2b90064b229329d1283aeba697fd2b01dcf2e78b9da6d26995f76dc",
+      "schema": 1,
+      "state": "APPLIED"
+    },
+    "installedSenderCommand": {
+      "action": "sync-rtc",
+      "cohortSha256": "074c9105222040fcd152bd932ce09a1b9a91832bfcf66431aca69f505e212a5f",
+      "namespace": "94de0952-0fd1-41c5-8c7d-65dc69ce8568",
+      "requestId": "a2e5480c-6e46-4254-b80f-62ed04c6b78e",
+      "rtcDevice": "/dev/rtc1",
+      "schema": 1
+    },
+    "afterEpoch": 1795218830,
+    "wallAtReturn": 1795218830.7646608,
+    "callbackCount": 1,
+    "countsAfter": {
+      "actor": [
+        "a2e5480c-6e46-4254-b80f-62ed04c6b78e"
+      ],
+      "issued": [
+        "a2e5480c-6e46-4254-b80f-62ed04c6b78e.json"
+      ],
+      "completed": [
+        "a2e5480c-6e46-4254-b80f-62ed04c6b78e.json"
+      ],
+      "pending": false
+    },
+    "shutdown": {
+      "root": "2050:1835231",
+      "status": "inactive",
+      "result": "success"
+    },
+    "mainAfter": "disabled",
+    "coldFencePurpose": "1da760b4-6596-4731-8c28-f3b9f5e60e74",
+    "rtcDevicesAfter": [
+      "rtc0"
+    ],
+    "coldReceiptFiles": 7,
+    "retained": {
+      "localExportBytes": 308849518,
+      "guestDebCopyBytes": 204535994,
+      "newRootAllocatedKiB": 1149644
+    },
+    "evidence": "parallels-registered-main-rtc/parked-readback.py"
   }
 }

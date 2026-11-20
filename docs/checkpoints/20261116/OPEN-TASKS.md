@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 向隔离虚拟 RTC 写入、六组件卷日志归档
+
+在现有 Parallels 内获准另建 ARM64 安装。发行包安装的 Main 以 kurad 启动，通过注册的 ClockService 将系统时间同步到专属虚拟 DS1307。初始设备读数为 EINVAL；唯一一次回调后，设备秒值与 actor 写入时刻相符，发送端和 Root 的同一编号均为 APPLIED，errno 为 0。新安装已正常停机并保留围栏。续接入口为 parallels-registered-main-rtc/parked-readback.py。原 Parallels 组件的 21 份文件、3 个操作和原围栏已复核。物理硬件仍在原延期项内。[时钟实装检查点](actual-registered-main-clock-and-purge-checkpoint.json)
+
+六组件原卷还实测了第三种日志布局。仅将归档写到专属目录，应用和审计两个活动文件均保持原路径和 inode，各自压缩旧内容并继续写入。六组件停机入口更新为 direct-log-archive-only/parked-readback.py。正式包首次建日志、诊断输出、历史归档下载和正式单元撤权仍待验。冻结 0/12。[六组件实装记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 整个前台 JVM 撤去 DAC_OVERRIDE 后的日志轮换
 
 六组件原 Root 上，两次使用已安装的前台脚本、原凭据和 writer lease，整个 JVM 的有效能力为 0x1400，原业务 DP 均为 ACTIVE。两种私有挂载分别模拟 Debian 默认目录及 Docker 已用的 Kura 专属目录。前者的应用和审计日志都可续写，但强制轮换后 inode 保持，压缩归档为零；后者两条日志均完成压缩并换新 inode，旧路径可读到轮换后的新行。原宿主三个日志完整指纹相同。六包已正常停机，83 份文件完成只读复核。当前入口为 direct-main-log-permissions/parked-readback.py。正式单元整体撤权、历史日志升级迁移和完整维护仍待验。冻结 0/12。[实装对照](actual-native-wires-retained-reinstall-checkpoint.json)
