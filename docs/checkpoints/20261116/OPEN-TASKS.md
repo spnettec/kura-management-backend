@@ -1,3 +1,9 @@
+## 2026-11-20 同一编号续完 BIND、DHCP、modem 的送达确认
+
+Core `bdf7690c8e` 修复结果已经 APPLIED、送达确认文件只写了一部分时无法确认的问题。原 Root、编号、意图、结果及确认令牌配对后，只在原 inode 上补完与应有记录完全相符的前缀，并同步文件及父目录。只读查询不改送达记录，错误令牌或无关字节继续拒绝。实际操作不重发。此路径要求已有完整的 APPLIED 结果，缺损的操作意图或结果继续 UNKNOWN。
+
+原实现在 32 字节截断的 BIND 确认回归上失败。修复后 ARM64 回归 61 项通过。JDK 21 单独组装 Core deb 用时 9.186 秒；从包取出的 DHCP、modem actor 分别在第 32、64 字节被内核中断，两次均能只读查到原结果；最后沿原 inode 补完 201 字节并确认。意图、结果和 Root 记录保持。此处使用合成的已提交记录和测试用授权入口。修复版正式 Main 实装及全组合维护仍待验，冻结 0/12。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 原 BIND Root 上的联合包升级与正式 Main 锁竞争
 
 在独立 ARM64 夹具 `20b36ea5`，原 Root 的设备号、inode、机器及作用域吻合。实际 dpkg 联合升级 Core 至 `db514f2a57`、Networking 至 `0789499`；原 BIND 五份文件、凭据、密钥及既有包回执逐项吻合，新增一份本次包回执。13 份原配置及测试数据在 Core 恢复复制后 inode、ctime 改变，内容、所有权、模式、大小及 mtime 保持。升级期间 Main 保持 disabled、inactive，named 的 PID 及 invocation 连续。

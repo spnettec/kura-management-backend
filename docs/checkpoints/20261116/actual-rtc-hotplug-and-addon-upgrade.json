@@ -1364,5 +1364,65 @@
     },
     "preservedSites": 38,
     "sixComponentInstance": false
+  },
+  "interruptedTypedDelivery": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/typed-delivery-interruption",
+    "package": {
+      "archive": "kura_6.0.0~git20261120155315.bdf7690-1_arm64.deb",
+      "bytes": 204216986,
+      "sha256": "9a534cf0ef6aff2687121e3956b9c7f13e69d61540d94221a4aa0208f04e36d1",
+      "cohorts": {
+        "bind-service": {
+          "files": 15,
+          "sha256": "5524fc0baab3a91d187cf293cd7d7850adf9bc3f344467496ac3b35f7edc2da3"
+        },
+        "dhcp-service": {
+          "files": 16,
+          "sha256": "aaf675a7c02c36c3477c32fa1c1ec5e07e639f56346c4aa99f06a0df002e7f66"
+        },
+        "modem-reset": {
+          "files": 13,
+          "sha256": "ec16695801733d098aa81f2a84a45eed2a1780da93212c23ce7cd91c1dabd512"
+        }
+      },
+      "commit": "bdf7690c8e11a4ffa58257bc6d7215d46f33bbc4",
+      "tree": "593247f9894df1cfc406e729bfb18d23579f4260"
+    },
+    "targetedTests": 61,
+    "bindRegression": "kernel truncated original acknowledgement at 32 bytes; same ID, result token and inode completed; one mocked BIND job",
+    "originalRegression": "old code refused the authenticated original acknowledgement while decoding the partial record",
+    "packagedActorChecks": [
+      {
+        "actor": "kura_dhcp_service",
+        "operationId": "1b5d604a-309b-4e3b-904c-e8d4c92c6d1c",
+        "partialBytes": [
+          32,
+          64
+        ],
+        "completedBytes": 201,
+        "sameInode": 7,
+        "originalIntentResultRootExact": true,
+        "query": "APPLIED",
+        "wrongTokenChangedFile": false,
+        "submission": "existing synthetic committed result; no mutation request",
+        "finalAcknowledgement": "APPLIED"
+      },
+      {
+        "actor": "kura_modem_reset",
+        "operationId": "402fd4cd-2abc-4989-9174-ffe6790b042b",
+        "partialBytes": [
+          32,
+          64
+        ],
+        "completedBytes": 201,
+        "sameInode": 13,
+        "originalIntentResultRootExact": true,
+        "query": "APPLIED",
+        "wrongTokenChangedFile": false,
+        "submission": "existing synthetic committed result; no mutation request",
+        "finalAcknowledgement": "APPLIED"
+      }
+    ],
+    "limits": "Synthetic completed operations and authenticated caller substitute. No installed Main observation for bdf7690c8e and no modem or DHCP resource change."
   }
 }
