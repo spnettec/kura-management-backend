@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — 正式 Main 改密成功后立即停机
+
+Debian 13 ARM64 从当前 Git 和 JDK 21 构建旧 Core 2a74ac1c38、修复版 99024da7fb 和 GWT 08712fb。旧包的 GWT 普通改密实际返回成功，Main 在 1.565 秒内正常停止。新密码在新 Main 被拒绝，原密码仍可登录。Felix 角色事件原先只排入默认五秒延迟的快照任务，HTTP 可以提前返回。
+
+修复版由 OSGi 角色存储在返回成功前提交已有配置快照。延后事件跳过同一已提交配置，快照结果未决时停止后续写入，等待重新加载角色库。沿同一 Root 和 boot 实际 dpkg 升级，GWT、旧快照与 AES 密钥内容和所测元数据保持。新的一次 GWT 普通改密返回成功至 Main 正常停止为 1.584 秒。重启后新密码可登录、原密码被拒绝，只有一份新快照。
+
+另一独立新装 Root 实际完成首次强制改密。原快照保留，新快照清除强制标记。正常停止并重启后新密码可登录，初始密码被拒绝。浏览器探针漏采首次改密模块的 RPC 回执，未测量该分支收到回执后立即停机的时间，原改密未再派发。三个改动相关模块共 257 项测试通过。两个隔离 Main 均禁用并正常停放。
+
+此前原安装步骤核定与 PREPARED 回拷的同 Root、原围栏证据继续沿用。完整 Core/OSGi、其余 typed brokers、完整六组件/provider/launcher/安装升级移除 purge/中断恢复矩阵和全部 12 父项仍为原范围。闭环 0/12，external deferred 仅原三项。原 7fd 禁用且停止，保留 41 输入/16 回执。见 [实际检查点](actual-native-identity-persistence-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式包 Operation 12 丢回执与原编号核定
 
 沿上轮 Debian ARM64 隔离 Root 重新启动已装的 Core、Networking、GWT、Agent、console 和原 PostgreSQL。保持原注册、凭据及上轮成功任务。对 stock 文件日志 provider 的新配置只派发一次。故障注入在 Agent 持久 claim 后持有 SQLite 写锁，注入器没有执行数据写入。正式 Java Main 按原编号发布回执时，Agent 的执行记录仍是 RUNNING，随后对该 Agent 进程发 SIGKILL。中心真实进入 UNKNOWN，Main 的 PID、启动时钟和调用代次保持。

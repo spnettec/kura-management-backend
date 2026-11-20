@@ -1,0 +1,294 @@
+{
+  "date": "2026-11-20",
+  "platform": "Debian 13 ARM64 with systemd, packaged Core Equinox and GWT",
+  "sources": {
+    "originalCore": {
+      "head": "2a74ac1c38e126de24a31ae9c6a422fa367af7f9",
+      "tree": "0175c1654ee191cd2c62970470877b0ebbe1c2bb"
+    },
+    "core": {
+      "head": "99024da7fb798fde48411c11311e8bd19ef83f55",
+      "tree": "b2c84acdc35e3dd3a00f085eb41e2ccaa334527e"
+    },
+    "gwt": {
+      "head": "08712fbc8e7acca19182cd253c2d614332c0b6e9",
+      "tree": "60259c3899777b060334418fba6cffdca5ff7aa1"
+    }
+  },
+  "java": "21.0.13",
+  "maven": "3.10.1",
+  "buildExitCodes": {
+    "support": 0,
+    "core": 0,
+    "offline-recovery": 0,
+    "distribution": 0,
+    "gwt": 0
+  },
+  "tests": {
+    "userAdminStore": 20,
+    "identity": 87,
+    "restProvider": 150,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "ordinaryPasswordChange": {
+    "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+    "originalPackages": [
+      {
+        "package": "kura-core",
+        "version": "6.0.0~git20261120021931.2a74ac1-1",
+        "sha256": "16a58aef003d92518b68d1bc373b52b203a625f697c14a450a019c514cb4f8d1"
+      },
+      {
+        "package": "kura-management-ui",
+        "version": "3.0.0~git202611200220.08712fb-1",
+        "sha256": "0677158e707b68d36c0b99b26c1b0e0f988a17687b8b77edfab9603991422eaf"
+      }
+    ],
+    "successorPackage": {
+      "package": "kura-core",
+      "version": "6.0.0~git20261120022937.99024da-1",
+      "sha256": "5f9fc913de889b4f488acd8eab351cd0b40056496731d96afeb6abca6661b2ad"
+    },
+    "sameBootSameRootAndKey": true,
+    "originalSnapshotBytesExact": true,
+    "baseline": {
+      "release": "original",
+      "input": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "dispatchOrdinal": 1,
+        "firstChangeRequired": false,
+        "immediateStop": true
+      },
+      "replyAndStop": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "state": "changed",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "counts": {
+          "passwordUpdates": 1,
+          "passwordAuthentications": 1
+        },
+        "acceptedResponse": true,
+        "stop": {
+          "elapsedMilliseconds": 1564.944083,
+          "systemd": {
+            "MainPID": "1669",
+            "InvocationID": "2e6136d31144405690187806ebd2c335",
+            "Result": "success",
+            "ExecMainExitTimestampMonotonic": "337139648053",
+            "ActiveState": "inactive"
+          }
+        }
+      },
+      "newPasswordAfterRestart": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "state": "denied",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "counts": {
+          "passwordUpdates": 0,
+          "passwordAuthentications": 1
+        }
+      },
+      "previousPasswordAfterRestart": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "state": "console",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "counts": {
+          "passwordUpdates": 0,
+          "passwordAuthentications": 1
+        }
+      }
+    },
+    "successor": {
+      "release": "successor",
+      "input": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "dispatchOrdinal": 1,
+        "firstChangeRequired": false,
+        "immediateStop": true
+      },
+      "replyAndStop": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "state": "changed",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "counts": {
+          "passwordUpdates": 1,
+          "passwordAuthentications": 1
+        },
+        "acceptedResponse": true,
+        "stop": {
+          "elapsedMilliseconds": 1583.773916,
+          "systemd": {
+            "MainPID": "4185",
+            "InvocationID": "ff69c134b8b64c8eb48c6ad32ebfbc8c",
+            "Result": "success",
+            "ExecMainExitTimestampMonotonic": "337291459613",
+            "ActiveState": "inactive"
+          }
+        }
+      },
+      "newPasswordAfterRestart": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "state": "console",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "counts": {
+          "passwordUpdates": 0,
+          "passwordAuthentications": 1
+        }
+      },
+      "previousPasswordAfterRestart": {
+        "root": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+        "state": "denied",
+        "peer": "faff2bf33ff68a13bad4af660cbf7518854a1c9391046cf131e861cd1a8efcd8",
+        "counts": {
+          "passwordUpdates": 0,
+          "passwordAuthentications": 1
+        }
+      }
+    },
+    "newSnapshot": {
+      "id": 1795141968411,
+      "sha256": "49ab5da1b9ca4ebdb6d54f75804adf6e1f453d08cd29b3d1e2c9dac217f52239",
+      "inodeMtime": 1795141968,
+      "adminRequiresChange": false
+    },
+    "afterSuccessorRestart": {
+      "MainPID": "4707",
+      "ActiveState": "active",
+      "SubState": "running",
+      "InvocationID": "02514bea063a4f5cb292936b1a21774d"
+    },
+    "installedBundleSha256": {
+      "org.eclipse.kura.useradmin.store-2.0.0-SNAPSHOT.jar": "d90a88275bb0402ab4d87328849a3b584fbdc9877ba24d92b01dd5e985425960",
+      "org.eclipse.kura.core.identity-2.0.0-SNAPSHOT.jar": "4dc438f045f8a7a82abfd03b5e1f47e21f003bc10a9d09473690b4931b91a71a"
+    },
+    "firstProbeTlsHandshakeAbortedBeforeHttpDispatch": true,
+    "parking": {
+      "id": "592e0c7c847805eea9f7d6326f19c682875a2b0b91580916648bcc0e2873bb96",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:20:44.452978091Z",
+        "FinishedAt": "2026-11-20T02:33:25.839396642Z"
+      },
+      "mainInactive": true,
+      "mainDisabled": true
+    }
+  },
+  "initialPasswordChange": {
+    "root": "e109a8e049019b0333da4f66f273ea3acb2f3fcc86a33bc3d6218be742110774",
+    "packages": [
+      {
+        "package": "kmod",
+        "version": "34.2-2",
+        "sha256": "fd7300fcb8b93cc5f77aa439ee539ceb8050f5cf1d22d86e85179d04f7de5b6f"
+      },
+      {
+        "package": "libkmod2",
+        "version": "34.2-2",
+        "sha256": "01d2bf4ead7f6da5aca7f1ecc108cbe858a349ca55368742ead758fa7383e10a"
+      },
+      {
+        "package": "python3-dbus",
+        "version": "1.4.0-1",
+        "sha256": "fe98d700adc6239a01ffa7441bb554a78b43bf7be4edf026a8be279266dde919"
+      },
+      {
+        "package": "kura-core",
+        "version": "6.0.0~git20261120022937.99024da-1",
+        "sha256": "5f9fc913de889b4f488acd8eab351cd0b40056496731d96afeb6abca6661b2ad"
+      },
+      {
+        "package": "kura-management-ui",
+        "version": "3.0.0~git202611200220.08712fb-1",
+        "sha256": "0677158e707b68d36c0b99b26c1b0e0f988a17687b8b77edfab9603991422eaf"
+      }
+    ],
+    "input": {
+      "root": "e109a8e049019b0333da4f66f273ea3acb2f3fcc86a33bc3d6218be742110774",
+      "peer": "2d63682ba37ac45ca64ad94984c779337dac2a7ee7c2c3a820d78f09e94e9904",
+      "dispatchOrdinal": 1,
+      "firstChangeRequired": true,
+      "immediateStop": true
+    },
+    "responseObserverMissedLoginModuleRpc": true,
+    "immediateStopTimingEvidenced": false,
+    "originalInputResubmitted": false,
+    "newSnapshot": {
+      "id": 1795142069961,
+      "sha256": "f43d8c3637e4dfa8ae1ff511cf9ea920828d463ac740aa30f783476b9357949e",
+      "inodeMtime": 1795142069,
+      "adminRequiresChange": false
+    },
+    "afterRestartMain": {
+      "MainPID": "2151",
+      "ActiveState": "active",
+      "SubState": "running",
+      "InvocationID": "01b886df9d7e43f8a8839ad632e10dc4"
+    },
+    "newPasswordAfterRestart": {
+      "root": "e109a8e049019b0333da4f66f273ea3acb2f3fcc86a33bc3d6218be742110774",
+      "state": "console",
+      "peer": "2d63682ba37ac45ca64ad94984c779337dac2a7ee7c2c3a820d78f09e94e9904",
+      "counts": {
+        "passwordUpdates": 0,
+        "passwordAuthentications": 1
+      }
+    },
+    "stockPasswordAfterRestart": {
+      "root": "e109a8e049019b0333da4f66f273ea3acb2f3fcc86a33bc3d6218be742110774",
+      "state": "denied",
+      "peer": "2d63682ba37ac45ca64ad94984c779337dac2a7ee7c2c3a820d78f09e94e9904",
+      "counts": {
+        "passwordUpdates": 0,
+        "passwordAuthentications": 1
+      }
+    },
+    "parking": {
+      "id": "e109a8e049019b0333da4f66f273ea3acb2f3fcc86a33bc3d6218be742110774",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:33:50.277327079Z",
+        "FinishedAt": "2026-11-20T02:35:21.915142839Z"
+      },
+      "mainInactive": true,
+      "mainDisabled": true
+    }
+  },
+  "priorInstallerCheckpoint": "67bf3c5",
+  "priorInstallerScenariosReplayed": false,
+  "directSameRootPairingChange": false,
+  "original7fdInputs": 41,
+  "original7fdReceipts": 16,
+  "unknownOperationsRedispatched": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "externalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "internalPending": [
+    "remaining Core/OSGi business and failure cases",
+    "remaining typed brokers",
+    "complete six-component provider/launcher/package lifecycle and interruption matrix"
+  ]
+}
