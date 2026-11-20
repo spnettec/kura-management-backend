@@ -108,3 +108,5 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 六组件串口验收把 11 个已有安装包以只读方式直接挂入夹具，复用了 374,893,280 字节输入。一次开机、一次定位配置覆盖 Position 升级、独立 purge 重装、配置中断恢复三个阶段，每次以新的串口报文核对坐标和 UTC。旧包在端口打开后立即因空闲超时退出，完整流程因此发现了单查服务注册看不到的客户故障。[串口实装、原 Root 与安装恢复](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json)
 
 读到定位后，进一步实测了空闲串口的负载。第一版超时修复在 1.20 秒内进行了 1,324,688 次读取；加入 25 毫秒等待后，同一窗口内为 41 次。两次在随后输入报文时均交付了定位。此处计数来自实际伪终端的读取调用，未测整机功耗。同期当前 Core 全量构建耗时 11 分 43 秒，其中证书吊销集成用例占 424.4 秒。[串口负载](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) · [Core 完整构建](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)
+
+仅复用中的 Core 打包目录就保留了 17 个不同版本的 ARM64 deb，合计 3,471,719,790 字节逻辑长度。逐文件对照其中首版 `66cce5e` 和末版 `3fe46ee`，末版有 539 个常规文件，443 个路径和内容完全相同，合计 93,289,145 字节。另有 46 个同路径 JAR 的整包摘要改变，其中 42 个的直接 `.class` 条目逐一同名同内容，而完整解包后所有文件条目仍相同的仅有 1 个。仅凭编译类相同来清理历史包会遗漏配置、资源或内嵌依赖的变化。此次对照流式读取原包，保留了全部 17 个历史版本。[发行包逐文件计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/position-idle-poll/package-storage.json) · [JAR 内容对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/position-idle-poll/jar-storage.json)
