@@ -1,3 +1,9 @@
+## 2026-11-20 中心安装完成回执及同 Root 的释放中断
+
+console `930cab3` 把安装器任务编号与中心 postinst 的 COMPLETE 回执放在同一次原子写入。历史两次写入留下的缺编号回执，只在原活动围栏、原 RUNNING 安装意图、原归档和载荷均配对时补齐。其他任务编号拒绝，已完整回执重复核验后保留原 inode。37 项定向测试和 Debian ARM64 包装套件 142 项通过。按当前 Git 构建中心与安装器，207 项编译输入与已验 ELF/Web 一致后复用相同二进制及三份静态文件。
+
+原六组件 Root `60df52cf998b` 上先升级安装器，运行中心进程连续；正式维护停止中心，安装器使用独立的维护及安装 UUID 并仅派发一次。观察到第一份 COMPLETE 已带原安装 UUID，当时 worker 仍为 RUNNING。独立管理进程实际持有 host.lock，dpkg 成功回执与 APPLIED 已持久化，worker 退出 1，原围栏仍在、启动准入为 MAINTENANCE。系统单元日志没有 Python 堆栈。释放锁后沿同一安装 UUID 单次 native-finalize，原两份终态文件的内容及元数据均保持，围栏清除。经显式启动恢复 READY，再正常停机。原六个网关包版本、原 Core/Agent 文件与十份保留输入核对通过，原安装编号没有重发。最新停放证据在 `.management-close-20261116/core-rtc-hotplug-20261120/center-held-completion/parked.json`。上述不扩大为所有中断及已绑定业务通过；冻结仍 0/12，外部延期仍为原三项。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 RTC 热插拔、原 Root 的 Core 及三组件升级
 
 Core `66cce5ec64` 将时钟 actor 与按请求打开 RTC 的无能力 relay 分开。Ubuntu ARM64 虚拟 I²C 总线上，真实 DS1307 内核驱动创建、拔出、同编号重新注册，别名改指和两种打开竞争均完成观察。原绑定拒绝，重新准备可收到只读 FD。设备检查使用实际 SEQPACKET socketpair，未调用写时间 ioctl。ARM64 时钟合同 93 项通过。

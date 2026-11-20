@@ -399,5 +399,72 @@
     "sixComponentParkExit": 0,
     "legacyClockFixtureParkExit": 0,
     "primaryBranchesManuallySwitched": 14
+  },
+  "centerHeldCompletion": {
+    "implementation": "930cab3c5640171da6a2a48eeed4f2b05cf1c3a2",
+    "version": "0.1.0~cohort20261120142931.930cab3-1",
+    "originalRoot": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "buildInputs": {
+      "sourceInputs": 207,
+      "sealedArchiveSha256": "2876b75815e347d9c748baa36afab23a76e1a348ab37c8f3c1bd33b6be80964e",
+      "sealedVersion": "0.1.0~cohort202611200955.9691fe9-1",
+      "binarySha256": "07104331ec17d6ea79bbb4a6cca214fad163134b56a2ea2203a1262a5aec9713",
+      "webFiles": 3
+    },
+    "packageSha256": {
+      "console": "c19edadc5e56887c8ae55b8618c0e468b0ad80217737f51815a5567876275722",
+      "installer": "f254a143b224929a27ee0b5cc7c82a42c57756a5861ada1bbac30674f1b98f31"
+    },
+    "focusedTests": 37,
+    "debianArm64PackagingTests": 142,
+    "operation": "07ceb10b-3be0-4812-b629-11bc582ed819",
+    "maintenance": "fb6a2cfe-6cd4-4213-8bc6-828b3ecf6951",
+    "firstCompletionObservation": {
+      "contended": true,
+      "firstObservedPhase": "COMPLETE",
+      "linkExact": true,
+      "worker": "RUNNING"
+    },
+    "whileHeld": {
+      "phase": "APPLIED",
+      "finalizationRequired": true,
+      "dpkgReturnedSuccess": true,
+      "workerExit": 1,
+      "originalStopVerified": true,
+      "unitJournalHasTraceback": false,
+      "ready": "MAINTENANCE"
+    },
+    "recovery": {
+      "versions": {
+        "kura-core": "6.0.0~git20261120140001.66cce5e-1",
+        "kura-management-ui": "3.0.0~git202611201404.b62f67a-1",
+        "kura-networking": "3.0.0~git202611200952.0789499-1",
+        "kura-deployment": "2.0.0~git202611201404.c93c39e-1",
+        "kura-wires": "3.0.0~git202611201404.89d5f57-1",
+        "kura-management-agent": "0.1.0~cohort202611200955.b9b2d3b-1",
+        "kura-management-console": "0.1.0~cohort20261120142931.930cab3-1",
+        "kura-management-console-installer": "0.1.0~cohort20261120142931.930cab3-1"
+      },
+      "finalizationIssued": 1,
+      "receiptFingerprintsExact": true,
+      "main": 0,
+      "center": 0,
+      "agent": 0
+    },
+    "restoredReadiness": "READY",
+    "protectedCenterFiles": 6,
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T14:30:18.076033956Z",
+      "FinishedAt": "2026-11-20T14:31:26.905601897Z"
+    }
   }
 }
