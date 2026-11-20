@@ -44,3 +44,5 @@
 依据见[最新 Wires 检查点](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)、[冻结台账](../checkpoints/20261116/OPEN-TASKS.md)、[网络决策](../management-network-nm-decision-20261105.md)、[首次清理回执](../checkpoints/20261116/cleanup-status.json)及[最近清理回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/session-handoff/cleanup-final.json)。
 
 本轮实际续做复用了同一工作树与 Maven 缓存。第一次组装发现运行时 JAR 与独立恢复工具中的 JAR 摘要不同，发行检查拒绝了该候选。保留失败目录、在空组装目录重新生成后，14 份时钟配对文件均已对照新 deb。正式 Debian 六组件现场和较旧 Ubuntu 时钟现场分别停在各自已验的版本，详细范围见[本轮检查点](../checkpoints/20261116/actual-rtc-hotplug-and-addon-upgrade.json)。
+
+北京时间 22:25 再次以 `du -sk` 计量，当前续接目录连同原交接共 3.48 GB，项目私有 Maven 缓存约 0.54 GB，八个可选 sibling 的工作树、测试与包合计约 0.54 GB。后两项包含在续接目录内。此次复用主机依赖作为只读来源，代码仍能按 Git 版本生成独立 deb。

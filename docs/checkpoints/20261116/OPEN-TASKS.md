@@ -12,6 +12,10 @@ Core 后续提交 `a356b28138` 将旧 RTC 投影退场限定为同一维护围�
 
 同一 Core 工作树单独重建 ARM64 发行包，14 份时钟配对文件逐项核定。原 Ubuntu 时钟 Root 从 `29c92f0` 升级时，缺少 kmod、python3-dbus 和 iputils-ping，dpkg 明确退出 1，状态 unpacked。五份原 actor 记录及两份已移入保留目录的 sender 记录均核对。由相同基础镜像从 Ubuntu 签名仓库取得三项依赖，原围栏摘要保持，单次 configure 成功；原 FAILED 回执和七份文件精确，操作数、issued、completed 各一。新 RTC socket 已启用，Main 保持 disabled，原 Root 正常停机。旧投影在本次冷启动时不存在，实际带设备的旧投影迁移仍未覆盖。
 
+随后排查其余 sibling，Artemis、Camel、Cloud、Container、OPC UA、Position、Triton、YOFC Runtime 各自只读取共享临时失败标记。八仓在本地 WIP 修正，JDK 21 构建八个 deb，59 份有效载荷和维护脚本已核对。Linux ARM64 的 8 个安装器均在正常注册时成功，在真实注册目录权限不符时拒绝，旁置临时文件的元数据和内容保持。该脚本回归使用日志接收替身。
+
+六组件原 Root 上，Artemis、Camel、Container、OPC UA、Triton、YOFC Runtime 六个可选包联合实装、remove、purge；原八包、四行注册顺序、十份保留文件及客户配置原样。Position 另经真实 postrm 锁等待失败，返回 1，half-installed，载荷目录已移除、注册行保留。锁释放后在同一 Root 完成 remove 和 purge，gpsd 服务状态保持。Cloud 此版的 deb 和维护脚本已验，六组件现场的客户配置未进入它的改写流程。上述是包级验收；各 provider 的运行中业务及重加密仍待验。六组件原现场正常停机。现行原始回执目录为 `.management-close-20261116/core-rtc-hotplug-20261120/sibling-maintenance/`。
+
 ## 2026-11-20 继续实施 — 六组件内 Wires 保留式移除和分阶段重装
 
 继续上一轮保留实际 Timer→Logger 的同一 Debian 13 ARM64 测试 Root。正常停启后核对原容器、OverlayFS 底层路径、根 inode 和 machine-id 摘要，十份被保护文件的元数据及内容在新挂载中核定。维护期间 Main disabled、未自启，Agent 保持停止且原初始化读取通过，中心原进程保持。

@@ -255,5 +255,149 @@
       "UnitFileState": "disabled"
     },
     "parkExitCode": 0
+  },
+  "optionalSiblings": {
+    "archives": {
+      "artemis": {
+        "version": "1.0.0~git202611201423.77096ba-1",
+        "commit": "77096ba5eafebad553385528a9b8f05aa3f8c42f",
+        "tree": "6eeb58752d92b103faf2faed1017578c9158d8d1",
+        "sha256": "dabe0a9107f52cc0968ec520025a030ad9df5ebc6f962c7edaaf6944bfff535d",
+        "bytes": 15378446,
+        "files": 10
+      },
+      "camel": {
+        "version": "1.0.0~git202611201423.4243ac0-1",
+        "commit": "4243ac03b60dbf81764194eafa53b83e823369f1",
+        "tree": "84d920018165a3dc9720737c96524913601fafaa",
+        "sha256": "b9972b5af99e8968aa0344858a741d0dd3e547b9d9195ed8758ec314f0dacaa1",
+        "bytes": 31547188,
+        "files": 9
+      },
+      "cloud": {
+        "version": "3.0.0~git202611201423.8bb2418-1",
+        "commit": "8bb24180c97cb55150af1d20587edf2f19ea08dc",
+        "tree": "e724ba9129dd91a6d139f52c02ffbc51e1451073",
+        "sha256": "d3fbf73a702c68b30264f73ababa22e30f70ad70896cb327f4ef8715e90226ac",
+        "bytes": 4173782,
+        "files": 11
+      },
+      "container": {
+        "version": "3.0.0~git202611201423.02e317f-1",
+        "commit": "02e317f8b4ce097bbd408b0664218e3dd4842b7c",
+        "tree": "ff788203f97a56441536c8eaccbdc0fc51202eba",
+        "sha256": "8cde2390f8f99581e01da7100a3cffe1821c9b262d779f87ca18a065338c4ad5",
+        "bytes": 15972646,
+        "files": 5
+      },
+      "opcua": {
+        "version": "2.0.0~git202611201423.d95b0a2-1",
+        "commit": "d95b0a28fe0ea7109c2ec8c6d33cf86bb592e75a",
+        "tree": "3124aa5ce8f38773a5454a8e86839b5aa3ec1f39",
+        "sha256": "817981f7de5d875b8dbce112e24c3f1902bb3f111d0bbfa1b332dd3472b58530",
+        "bytes": 5839256,
+        "files": 9
+      },
+      "position": {
+        "version": "2.0.0~git202611201423.e014454-1",
+        "commit": "e014454a3f025d7d92fbab261362494a3afb7621",
+        "tree": "2a75ca3c9339a20c2a73f1598e8cbc46aa73f79b",
+        "sha256": "351b703f07a86fa907833b44e6f2a2e683bc85efeb76487ee2efc5ffb0d375ae",
+        "bytes": 136972,
+        "files": 7
+      },
+      "triton": {
+        "version": "2.0.0~git202611201423.c8ca0e9-1",
+        "commit": "c8ca0e985cac66fbff43d4b30dd3a98172266302",
+        "tree": "4a28718ef5004fbdb27325e8be05d9abb8f3fe8a",
+        "sha256": "bf857335defea9c18dd9b418cd7c96dd4349ef853eddc271fbdde6fffc6babbb",
+        "bytes": 11954158,
+        "files": 4
+      },
+      "yofc-runtime": {
+        "version": "1.0.0~git202611201423.4fd58b4-1",
+        "commit": "4fd58b42b15fd375c60447b563648f8adf68411c",
+        "tree": "b4eaa0b37afa6be52c09ed9bbcd20f709b5fdaa5",
+        "sha256": "4baad4370b08d0cbcfb5ace03fe1f8d41912587b45036999f2533292a45c058a",
+        "bytes": 10532998,
+        "files": 4
+      }
+    },
+    "maintenanceScriptResults": {
+      "normalRegistry": 8,
+      "unsafeRegistryRefused": 8,
+      "logging": "stand-in for systemd-cat in script-only tests"
+    },
+    "sixPackageInstallRemovePurge": [
+      "artemis",
+      "camel",
+      "container",
+      "opcua",
+      "triton",
+      "yofc-runtime"
+    ],
+    "rootAfterPurge": {
+      "states": [
+        "not-installed",
+        "not-installed",
+        "absent",
+        "not-installed",
+        "not-installed",
+        "absent"
+      ],
+      "order": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires"
+      ],
+      "restoredEight": {
+        "kura-core": "6.0.0~git20261120140001.66cce5e-1",
+        "kura-management-ui": "3.0.0~git202611201404.b62f67a-1",
+        "kura-networking": "3.0.0~git202611200952.0789499-1",
+        "kura-deployment": "2.0.0~git202611201404.c93c39e-1",
+        "kura-wires": "3.0.0~git202611201404.89d5f57-1",
+        "kura-management-agent": "0.1.0~cohort202611200955.b9b2d3b-1",
+        "kura-management-console": "0.1.0~cohort202611200955.9691fe9-1",
+        "kura-management-console-installer": "0.1.0~cohort202611200955.9691fe9-1"
+      },
+      "exactFiles": 11
+    },
+    "positionPostrmFailure": {
+      "returnCode": 1,
+      "package": "half-installed 2.0.0~git202611201423.e014454-1",
+      "order": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires",
+        "position"
+      ]
+    },
+    "positionRecovered": {
+      "state": "not-installed",
+      "registry": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires"
+      ],
+      "gpsdPreserved": true
+    },
+    "cloudPackageInstalledInSixComponentFixture": false,
+    "lastParked": "2026-11-20T14:26:00.020571214Z"
+  },
+  "preservation": {
+    "originalRunningContainers": 13,
+    "originalLiveFixtures": 3,
+    "originalProcessesAndStartTimes": 7,
+    "originalPrivateFiles": 38,
+    "runtimeDataContents": 6,
+    "personalFilesAndMetadata": 25,
+    "stopped7fdInputsFromLastShutdown": 41,
+    "stopped7fdReceiptsFromLastShutdown": 16,
+    "sixComponentParkExit": 0,
+    "legacyClockFixtureParkExit": 0,
+    "primaryBranchesManuallySwitched": 14
   }
 }
