@@ -350,5 +350,39 @@
       "paired-target-reloaded/result.json": "5926e540cd9c70f9d0f7aeded35e84a32d61f67780518a5e636fa086572bf582",
       "paired-target-reloaded/preserved.json": "5db778e7ce9f090b81e9d0b2e516d2856055dbcf831696b34fb0a65372d530b7"
     }
+  },
+  "virtualUsbReattach": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/modem-target-reattach",
+    "componentRoot": "2050:2",
+    "first": {
+      "nm": "/org/freedesktop/NetworkManager/Devices/10",
+      "mm": "/org/freedesktop/ModemManager1/Modem/5",
+      "sysfs": "/sys/devices/platform/vhci_hcd.0/usb4/4-1",
+      "dev": 28,
+      "inode": 49426,
+      "state": 5,
+      "deviceId": "4-1"
+    },
+    "replacement": {
+      "nm": "/org/freedesktop/NetworkManager/Devices/11",
+      "mm": "/org/freedesktop/ModemManager1/Modem/6",
+      "sysfs": "/sys/devices/platform/vhci_hcd.0/usb4/4-1",
+      "dev": 28,
+      "inode": 49744,
+      "state": 5,
+      "deviceId": "4-1"
+    },
+    "whileUnplugged": "org.freedesktop.DBus.Error.UnknownMethod",
+    "afterReattachOldRequest": "org.freedesktop.DBus.Error.UnknownMethod",
+    "mutatingCalls": 0,
+    "restored": true,
+    "firstAttempt": "Unplug refusal was observed. The emulator kept an open stale ttyGS0 and did not finish rediscovery. Guest state was restored. The subsequent test reopened the gadget port and observed both NM and MM replacement identities.",
+    "scope": "Read-only target resolution on the packaged modem broker. The original UNKNOWN has no confirmed Reset receipt. Post-dispatch recovery under a registered Main across a joint purge remains pending.",
+    "evidenceSha256": {
+      "result.json": "640d61d27e856f588776b96506c26b733dc463c33eee7460f13c07cbac1a75e3",
+      "reopened-port/result.json": "1a42ba77abd4ff97871085018b342295d4028f2a26273cca645dbd1e7c88048d",
+      "reopened-port/guest.py": "a013f177f564364d295fbf3f72679872fecd53d9ef5a24d343a9d0dda458cb1b",
+      "reopened-port/intent.json": "8b4615a17ae267e521d3ba7ca58789b7e43e428cbaab7975e275b5a451bc0a96"
+    }
   }
 }

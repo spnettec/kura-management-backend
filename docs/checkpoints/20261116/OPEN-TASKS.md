@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 和直接启动 JVM 跨包维护
+
+六组件原 Root 上，直接启动的 JVM 持有写者锁时，已安装 prerm 和传入 preinst 均拒绝重装，原进程、密钥及历史保留。首版依赖读取另一 UID 的 FD，在实装中被拒。最终 Core 3e1bc49711 使用现有 Root 租约登记识别正式 Main；停服后仍须取得内核独占锁。正式 Main 运行中用 dpkg 重装成功，手动再启动后，原业务 DP 和 agent bridge 均 ACTIVE。六组件已正常停机，续接入口为 package-writer-quiescence/parked-readback.py，复核六包和 83 份文件。[实装与续接证据](actual-native-wires-retained-reinstall-checkpoint.json)
+
+Parallels 原组件 Root 上，专属虚拟 modem 拔出和重接后，发行包两次拒绝旧 NM 对象。同一 USB 端口重新出现时，内核 inode、NM 和 MM 对象全部变更，新对象可以只读解析。设备、路由和服务调用实例已复核恢复。原发送端 UNKNOWN 继续保留，正式 Main 已派发的 modem 操作跨双包 purge 仍待验。冻结 0/12。[两次设备试验及原始结果](actual-modem-sender-restart-and-upgrade-checkpoint.json)
+
 ## 2026-11-21 Equinox 启动配置中断恢复
 
 旧版前台、后台、调试启动器会在模板缺失时截断上次的 config.ini 并继续。原六包 Root 第一次升级后，三个入口实测均保留旧文件并在申请 writer 前退出。正式 Main 和两个直接入口均读到 ACTIVE 业务 DP 与配对 agent bridge，但进程组中断可留下 17 字节暂存文件。最终 Core 12518cff92 把暂存限制为一个文件，用同目录的非阻塞锁协调三个入口。实装中，后台生成到 1 MiB 时，前台启动被拒绝，原 config.ini 和 writer 登记保持。随后中断后台，实际 --detached --debug 启动回收暂存，发布与原来逐字节相同的 22,579 字节配置，取得原 Root 的 writer lease 并恢复两个 ACTIVE bundle。六包与 83 份保留文件已停机只读复核。新入口为 launcher-config-recovery/parked-readback.py。冻结 0/12。[发行与现场记录](actual-native-wires-retained-reinstall-checkpoint.json)

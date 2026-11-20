@@ -1372,5 +1372,47 @@
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
       "observed-detached-debug.json": "4966d898c92e7ef8ee4b3b76d60c8582bea62807da688d517a59df53d89559c9"
     }
+  },
+  "directWriterPackageMaintenance": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/package-writer-quiescence",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "firstSource": "df62c0eaf07347b2317d37811be56cb1fb8075d4",
+    "currentSource": "3e1bc497119b5d44a0099d2621c80a9b42dba749",
+    "currentTree": "cccf27e16e900dfe6383f0bb88fdb2d6d2a1d2d1",
+    "installedArm64DebSha256": "fd225a7cb0612458e2d5827c8616a674d46d03d0ef948aa346b8d1287eb953ac",
+    "directProcess": "On the first candidate a real direct foreground JVM held the canonical lease while kura.service was stopped. The installed prerm and incoming preinst both refused the attempted reinstall. Process identity, keys and sender history matched and no maintenance fence was issued.",
+    "managedProcess": "The first candidate could not inspect another UID’s /proc/<pid>/fd/9 inside the fixture. The final build pairs systemd MainPID, boot, process start time, UID and kernel lock identity with the existing Root-owned LEASE_GRANTED registration. Both maintainer scripts require the kernel writer lock to be free after draining the service.",
+    "installedResult": "Live managed Main admitted the real reinstall. The package stopped it normally. The disabled unit stayed inactive after dpkg and dpkg --audit was empty. A subsequent new Main invocation republished the same config and started the retained business DP and agent bridge. Both original keys matched.",
+    "tests": {
+      "lifecycleAndNetworkRetention": 29,
+      "cohort": 22
+    },
+    "coldReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "nextColdCheck": ".management-close-20261116/core-rtc-hotplug-20261120/package-writer-quiescence/parked-readback.py",
+    "evidenceSha256": {
+      "red.log": "75bb8450433f1022211d484b47b4cd90238d39d06e52a49da2c16de6654928c5",
+      "admit-managed.json": "b772a70276af15b42e6280304c68d2d1608d2528930dd7e0c96b4929c99911b4",
+      "refused.json": "8464d336aea9f61dff22893a9ef768e1c34d7322da912a51b0519547d1dd6c63",
+      "refuse-active-direct.log": "0856c9cb308b3c18ad71dc59f939eb3c06bb2dc82dd36322447fb10a1f5b674a",
+      "managed-main/tests.log": "8b82325384ef85bbe0365945295d638d3c1e01cb6d45872a63a0574a4de9799e",
+      "managed-main/package.json": "339094440e2cd2dcc696cb69be3d598385a4ea0dbae34f77f935ae43adfa2f02",
+      "managed-before-install.json": "a255dcbf5d5c300f4f3520e0ef4b0770ca308ee22eb97ddbc0ffc0db142ab9ea",
+      "permitted-reinstall.log": "b487fe204b0f5c656181a78e2fca3452a4d946c5dfd68a8382fb1d62d979dfb2",
+      "managed-drained.json": "6006180ba2b2d31f66fbbf9637a11bd54a77a75e1d5c2660b4a2524449c5e184",
+      "recovered-main.json": "96f912109a4a4c74f470fb12a9cd3b728aa598a1c8e17574307481b4d0393b00",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }
