@@ -1,3 +1,11 @@
+## 2026-11-21 虚拟 GSM 设备通过 modem broker 的目标配对
+
+在原 Parallels 组件 Root 上用只匹配测试序列号的临时 udev 规则声明主 AT 端口。ModemManager 的 generic 插件枚举出虚拟 modem，NetworkManager 报告 ttyACM0 为 disconnected GSM。首次运行发行包的只读目标核验时，两个守护进程的 systemd 定义均待重载，核验拒绝。核对磁盘单元和二进制归属及校验和后正常重载管理器定义，原进程及 InvocationID 保持。再次接入时，同一发行包的 target() 两次核对真实系统总线、原包、设备路径及 sysfs inode 通过。临时规则和设备已撤，原时钟围栏、模块、RTC、网络和默认路由均复核。此次没有派发 reset，正式 Main 的已派发 modem 跨双包 purge 恢复继续待验。冻结 0/12。[目标核验与复原记录](actual-modem-sender-restart-and-upgrade-checkpoint.json)
+
+## 2026-11-21 PKCS12 业务私钥跨 Core 升级和冷启动
+
+Core `55ce9dfec7` 修复通用配置服务更新只读属性映射时的异常。旧 Main 通过正式工厂在 PKCS12 生成一对 RSA 业务钥并验证签名，随后在口令属性加密阶段拒绝更新。旧源码的定向用例在同一方法报错。六组件原地升级后，正式 Main 用原口令和原证书验证签名，以只读映射更新同一工厂的口令，再次验证签名并确认旧口令被拒绝。第三次 Main 启动仍用原证书验签。正常停机后 59 份文件及六包完成只读核对。配置模块 301 项、完整 Core/OSGi 82 模块 2142 项通过、2 项跳过。文件库发布中断及包装钥跨代维护仍待验证。冻结 0/12。[实装与测试回执](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 SQLite 加密配置与正式 Main 冷启动
 
 Core `f6c57008b7` 在打开持久库前核对原生 SQLite 引擎支持的加密和换钥指令。Git 指定的 Xerial 驱动在 ARM64 请求加密时拒绝操作，业务文件和凭据记录均未创建。SQLite 模块 83 项通过。同一六组件 Root 的正式 Main 加载测试用 SQLCipher 4.6.1 驱动后，实际通过配置工厂创建加密库、写入一行业务数据并换钥。第二次 Main 冷启动读回同一行，通过加密页完整性检查，两次均读回此前普通 SQLite 库的原行。正常停机后只读核对六包、SQLCipher 库包与 40 份文件。加密版 JDBC 的正式交付及网关包装钥轮换仍待验。冻结 0/12。[构建输入、两次 Main 与停机回执](actual-native-wires-retained-reinstall-checkpoint.json)

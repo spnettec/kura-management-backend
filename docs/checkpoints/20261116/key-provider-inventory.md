@@ -27,3 +27,7 @@ NM测试使用合法自定义原钥；默认弱钥继续拒绝新模板。代号
 ## 2026-11-21 SQLCipher 文件库
 
 ARM64 六组件正式 Main 已验证同一 SQLite 工厂内的数据库凭据换钥，以及第二次 Main 启动后的业务行与加密页完整性。现场使用测试专用 JNI 和 Debian libsqlcipher1，原包装钥及先前存储项保留。发行驱动选择、跨代包装钥轮换、旧钥退役仍待验证。[驱动来源、实装与离线复核](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-21 PKCS12 业务签名钥
+
+原六组件安装生成一次合成 RSA 业务钥。Core 升级前后，原 PKCS12 均能以原凭据打开。正式 Main 改变文件库口令并冷启动后，原 X.509 证书仍能验证新挑战签名。独立 JCA PKCS12 reader 拒绝旧口令。网关包装钥仍为原钥，文件库写入中断、其他认证模式和跨代包装重加密继续待验。[文件指纹、三个 Main 及安装包记录](actual-native-wires-retained-reinstall-checkpoint.json)

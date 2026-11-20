@@ -602,5 +602,201 @@
       "parked-readback.py": "53ff701f051fc8d5ae136029e2b813641ca1e600b7b7cf5a8770fa6531f47646",
       "live.py": "0a5e63baaa7e090d7aecd9d66fa30ae640d3b6e3d06bd1e57593c14c8333d216"
     }
+  },
+  "fileKeystoreBusinessKey": {
+    "source": "55ce9dfec71381f86b8c54acdd668144d4eebfc0",
+    "tree": "0aacf503075904e3030e1808ed7a39716da248d4",
+    "version": "6.0.0~git20261120204035.55ce9df-1",
+    "debSha256": "6e7e94856cd14e61be5467f5d088dcf6732daadacbe26d8bb50ca0bed9f27cb3",
+    "configurationBundle": "e4a85f5e9a8562d59f2814bb9266b6b001d9f5cd018bf5a5e4a8a16ac278ea0a",
+    "installedProvider": {
+      "before": "752ec3d8e4cb9239344519841bf29af78407eb614629fc0770e13973371d229d",
+      "after": "053d3203aa12b7d922e47dbfda7eb469509b37d20a0c048da5cbf60bae88d52c",
+      "providerClass": "88212460e8d8f76031d39e6c0c033493b70fd587afa646cf7cf4c55f03141ee3",
+      "changed": [
+        "META-INF/MANIFEST.MF"
+      ],
+      "oldCore": "272d1d4c57656b54ac317ae80fcf39650456b6394adf6d2eda5fbd90688c0992",
+      "newCore": "6e7e94856cd14e61be5467f5d088dcf6732daadacbe26d8bb50ca0bed9f27cb3"
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "mainInvocations": [
+      {
+        "unit": {
+          "MainPID": "1346",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "8830591566be43289b992ffca53c6777"
+        },
+        "ticks": "39301089",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "10833",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "12e20a6622614138bfc5c6abde79ef4a"
+        },
+        "ticks": "39328108",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "17612",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "16948a74aaf64874bb9ca9b4fd9b6c0e"
+        },
+        "ticks": "39329581",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      }
+    ],
+    "certificateSha256": "7533f7be951a8c9ae0e804b7bc3348463e04bfeeaa238c5a66835899864a2bd4",
+    "business": "Created one new PKCS12 factory, generated one RSA-2048 signing key and verified a fresh challenge against its certificate. The old generic ConfigurationService threw UnsupportedOperationException while converting a typed Password in an immutable Map before any CM update. Reproduced with the old source.",
+    "upgrade": "Core upgraded through dpkg on the same six-package root. The 40 files from the preceding stage matched in content across the stopped upgrade, including the existing SQLite data and both original credentials. The two test-only SQLite launch slots were moved aside and returned after Core replacement. The original keystore and certificate matched before and after the upgrade.",
+    "confirmation": "After upgrade the original PKCS12 entry signed with its original credential. An immutable properties map changed the store password through the same factory PID. The old store password was rejected. The same certificate verified signatures after changing password and on another cold Main. No second keypair or factory was created.",
+    "moduleTests": 301,
+    "fullCoreOsgi": {
+      "commit": "55ce9dfec71381f86b8c54acdd668144d4eebfc0",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:46 min",
+      "testTotals": {
+        "tests": 2144,
+        "passed": 2142,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.3,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.588 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "96c23dc17f131c8b00b78ea76c49cc99cf6b0ec6c680fe5c0dd425a05ca4434d"
+    },
+    "scope": "One registered filesystem PKCS12 factory and one normal systemd Main. This is not a hardware token, a gateway wrapping-key rotation, or a file-provider purge or interrupted file rewrite.",
+    "disk": {
+      "postUpgradeTrees": {
+        "user": {
+          "regularFiles": 11,
+          "fileBytes": 412398,
+          "allocatedFileBytes": 430080
+        },
+        "data": {
+          "regularFiles": 65,
+          "fileBytes": 53269,
+          "allocatedFileBytes": 249856
+        },
+        "packages": {
+          "regularFiles": 1,
+          "fileBytes": 51,
+          "allocatedFileBytes": 4096
+        },
+        "siblings": {
+          "regularFiles": 30,
+          "fileBytes": 163542323,
+          "allocatedFileBytes": 163602432
+        },
+        "log": {
+          "regularFiles": 0,
+          "fileBytes": 0,
+          "allocatedFileBytes": 0
+        },
+        ".data": {
+          "regularFiles": 2,
+          "fileBytes": 37983,
+          "allocatedFileBytes": 40960
+        }
+      },
+      "fileBytes": 164046024,
+      "installedVolumeKiB": 471316,
+      "oldInstalledVolumeKiB": 481784,
+      "packageBytes": 204230968
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 59,
+      "originalSubmitWithdrawn": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T20:37:46.890532826Z",
+        "FinishedAt": "2026-11-20T20:42:58.353033768Z"
+      }
+    },
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-retained-entry",
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-retained-entry/parked-readback.py",
+    "evidenceSha256": {
+      "package.json": "96171bb8a6c0b24ae98002100fa8795c83f65b3b2891a9fe42eb21070d3adffe",
+      "packaged-provider.json": "b1fe16d27a18823deca6e4a1a8a4c92073cdbfa80f288e485973f0f420da29e3",
+      "inputs.json": "78d53cbe148ffc3688306bfc6a58d245154a74a1ce6a5f3e9728f14d7ad8cd2a",
+      "Pkcs12Main.java": "90f488452459dbb75105af17f5d9a770291350e1bf446d42325b5cd18708cf0e",
+      "RetainedKeyMain.java": "5f7a7e26c7c0996cdc2d0a4d66e64bbf844ccb65b77a5b02717e8ebfe5b1b021",
+      "refusal.json": "369f3d30db2e665d9c4c39d047633ff60ae10a844138b143be8796c2c436e7e8",
+      "refused-stopped.json": "561d331f83c17fd6ae494b5342f43ddc49509982bbcd6e98e80c0b301fc69f64",
+      "upgraded.json": "b96d8626fa8ac19dbd9d598f81477f233a9243ecf8ae224d1d7a0a8e86abd725",
+      "repair-observed.json": "44623aee820ff4787618c6ccf5493f7048da488675b4b51ffcefa1de58ab30c3",
+      "cold-observed.json": "9c2e40b79008b490703619d6b70c6367666c31c5616da831d73f6fe1f468a607",
+      "parked.json": "9749c08f1890a13bd4eb90bc6d15f81247d15bb7d48dae32ff1cae8ebdbc42da",
+      "offline-readback.json": "c9b3428de06c22460030be363ac9976ff7c38488683112bd20daf4327ac980ee",
+      "final-check.json": "e55ee29ab696fbd02cfae0b46f7ec35fac9e6bb7ed4b11667430ccb17a8d4cc1",
+      "original-three-after.json": "a626e5595a0d6b10c0a1d56e3314de6bf2b41a28af73f03fbf75b862358b8cf7",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "pre-fix.log": "6afe4677251b52897906abf4f89f39f869e31527f43c17820045124774e85d73",
+      "module.log": "1667149a747687ab9368a12f7de1cffc68923a7f063a92014d9c8c24e8d9468e",
+      "core-osgi-result.json": "bb1706cfa2a5eb920ee916b0b547880d9d9176f1305f9c3fc9dcbba659397482",
+      "disk.json": "5c9e1c0c1a05aa9d3177cde468d7a6ba3929b6a133b8b1dfc162e38edcbef641"
+    }
   }
 }

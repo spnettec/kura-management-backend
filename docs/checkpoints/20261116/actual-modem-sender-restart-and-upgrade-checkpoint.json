@@ -284,5 +284,71 @@
       "ready-before-attach/intent.json": "b1b51e231200d899de9185781e85c3f6c74cac9ada81ba700817a7e453d73a99",
       "ready-before-attach/result.json": "098f047ccb3236645cba698d227467f906e07aac33c638650e02ed8041b51f03"
     }
+  },
+  "virtualUsbPairedTarget": {
+    "source": "55ce9dfec71381f86b8c54acdd668144d4eebfc0",
+    "guest": "Parallels Ubuntu 26.04 ARM64, original clock component Root 2050:2",
+    "testDevice": "USB/IP Linux serial gadget, exact synthetic serial matched by a temporary /run/udev rule declaring an AT primary port. Only loopback in the transport network namespace.",
+    "discovery": {
+      "udev": [
+        "ID_MODEL_ID=a4a7",
+        "ID_VENDOR_ID=0525",
+        "ID_USB_DRIVER=cdc_acm",
+        "ID_MM_CANDIDATE=1",
+        "ID_MM_DEVICE_PROCESS=1",
+        "ID_MM_PORT_TYPE_AT_PRIMARY=1"
+      ],
+      "plugin": "generic",
+      "nm": [
+        "ttyACM0:gsm:disconnected"
+      ]
+    },
+    "admissionBeforeReload": "UNPAIRED_MODEM_DAEMON",
+    "administration": {
+      "before": {
+        "NetworkManager.service": "yes",
+        "ModemManager.service": "yes",
+        "kura.service": "yes"
+      },
+      "after": {
+        "NetworkManager.service": "no",
+        "ModemManager.service": "no",
+        "kura.service": "no"
+      },
+      "sameDaemons": true,
+      "clockFenceExact": true,
+      "historyFiles": 15,
+      "inactiveClockUnits": 8
+    },
+    "observed": {
+      "device": "/org/freedesktop/NetworkManager/Devices/8",
+      "hardware": "/sys/devices/platform/vhci_hcd.0/usb4/4-1",
+      "deviceId": "4-1",
+      "modem": "/org/freedesktop/ModemManager1/Modem/2",
+      "states": [
+        5,
+        5
+      ],
+      "sysfsDevice": 28,
+      "sysfsInode": 45770,
+      "nmVersion": "installed 1.54.3-2ubuntu3.1",
+      "mmVersion": "installed 1.25.95-1ubuntu1",
+      "sameOwners": true
+    },
+    "scope": "Called the unmodified packaged target() twice using real system-bus owners and sysfs. Did not invoke client, mutate, Reset, configure_location or query an operation. Full authorized Main, a dispatched operation and recovery across joint purge remain pending.",
+    "cleanup": "The test rule and virtual device were removed. Prior modules, USB, RTC, unit invocations, active NM connection digest and default-route digest matched. The manager definitions were reloaded once; neither network daemon was restarted.",
+    "documentation": "https://modemmanager.org/docs/modemmanager/port-and-device-detection/",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/modem-virtual-platform/usb-serial",
+    "files": {
+      "declared-at-port/result.json": "b527ea3c1950ded154dc6092d121e63d95c8fd98ffb940c6f7aa4848886a5ecc",
+      "paired-target/result.json": "21639c96cf53fa6d34cf9b3c577a5102cffaefcebfe746476110792c3563d76c",
+      "paired-target/daemon-status.json": "3752ac50aff02450642cc0a5e5b0278f2c979b11877d618d8168e567e1c8d791",
+      "paired-target/daemon-reload-readback.json": "7c2dfd577efe94205553f57ba3347c39f4bc19b437b97f0709b18fa2ba98e985",
+      "paired-target/inputs.json": "279f4bd87982437bbf6185605eaa5c41d8f114b5b37e2963d45f0832e21b5571",
+      "paired-target/payload-verified.json": "07d7e503136e2323a60bf1e37cf6cd34a8a833b7344b3e7b868142d973c15385",
+      "paired-target-reloaded/guest.py": "c2eacc8c9e991292c7ca002723505c76988bc4a09ad9aaeadcb84726a5a60fa9",
+      "paired-target-reloaded/result.json": "5926e540cd9c70f9d0f7aeded35e84a32d61f67780518a5e636fa086572bf582",
+      "paired-target-reloaded/preserved.json": "5db778e7ce9f090b81e9d0b2e516d2856055dbcf831696b34fb0a65372d530b7"
+    }
   }
 }
