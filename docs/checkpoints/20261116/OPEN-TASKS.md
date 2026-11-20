@@ -1,3 +1,7 @@
+## 2026-11-21 原 Parallels RTC 独占打开竞争
+
+原组件 Root 2050:2 的独立进程持续只读占用虚拟 DS1307。实际 ClockService、时钟 actor 与 systemd relay 对一次请求完成 prepare，交付 FD 时遇到 EBUSY。Root 与 Java 都保存了同编号 FAILED / OS_ERROR / errno 16。解除占用后可以只读打开，观察窗口内维持原三笔操作，设备日期仍未设置。停用后原 15 份及新增六份文件已核对，八个时钟单元 inactive。此处取代先前两笔操作和旧停机围栏作为本 VM 的续接基线。正式包的 Main 布局检查已在原 Root 只读执行，拒绝无配套清单的静态 Main。冻结 0/12。[当前围栏、证据及只读入口](actual-registered-main-clock-and-purge-checkpoint.json)
+
 ## 2026-11-21 Deployment 注册表部分写入
 
 同一 ARM64 六包 Root 先后安装的两个版本在相同 1024 字节进程文件上限下各处理一份合成注册表。旧版返回成功并把 5963 字节截成 1024 字节。新版返回 I/O 失败，原摘要、长度及 inode 完整。两个 JVM 分别加载已安装的本地和云端 bundle，并发新增 60 条后，原有 180 条无关记录仍在。正式 Main 从原登记读出原业务 DP 的 ACTIVE 资源，两份实际 bundle 的注册表类摘要均匹配发行包。六包正常停机，83 份文件只读复核。冻结 0/12。[实装记录及下次只读入口](actual-native-wires-retained-reinstall-checkpoint.json)

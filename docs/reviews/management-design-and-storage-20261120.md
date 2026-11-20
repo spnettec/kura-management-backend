@@ -29,7 +29,7 @@
 | 浏览器和中心 | React 经 HTTPS API/SSE 连接中心。Rust 中心保存任务、审计和结果；agent 主动建立双向 gRPC/mTLS 通道。方案 A 使用外部 CA。 | 中心、安装器和六个网关包已在一套 ARM64 夹具联合首装。多人 CA 保管、客户旧库及完整部署 GUI 仍待验。 |
 | 网关本地 | Kura/OSGi 支持独立运行，保留 NetworkManager。可选 agent 常驻，远程开关控制中心通道。原 GWT 在安装 agent 后显示远程菜单。Core 生成私钥和 CSR。 | 原运行现场与新候选分开核验。当前六组件为 Core、Networking、GWT、Deployment、Wires、agent；加中心和安装器共八个 deb。 |
 | 需要系统权限的操作 | Main 调用按操作类型限定的本机服务。peer 校验调用身份，actor 执行获准的系统动作，安装器校验成套代码和单元。 | 六组件夹具的正式 Main 已撤下 DAC_READ_SEARCH。上次 Wires 验收读到 DAC_OVERRIDE、NET_BIND_SERVICE、NET_ADMIN。旧现场有自己的权限集。 |
-| RTC 热插拔 | 草稿把启动时的设备投影改成请求时重验节点及别名，再向时钟 actor 传递只读 FD。 | 复盘时为草稿。报告送达后，已完成 ARM64 热插拔、只读 FD 和新包的两条原 Root 升级路径。随后在原 Parallels 组件完成正式 actor 经 relay 接收 FD 并写入虚拟 DS1307，实测回执 APPLIED。正式 Main 已取得设备缺失的 ENOENT 回执，并在 Core purge、重装后读回原记录。完整 Main 正向写入虚拟 DS1307 和物理 RTC 仍待验。 |
+| RTC 热插拔 | 草稿把启动时的设备投影改成请求时重验节点及别名，再向时钟 actor 传递只读 FD。 | 复盘时为草稿。报告送达后，已完成 ARM64 热插拔、只读 FD 和新包的两条原 Root 升级路径。随后在原 Parallels 组件完成正式 actor 经 relay 接收 FD 并写入虚拟 DS1307，实测回执 APPLIED。正式 Main 已取得设备缺失的 ENOENT 回执，并在 Core purge、重装后读回原记录。在原组件上，独占打开的 DS1307 使实际 relay 返回 EBUSY，Root 与发送端保存同一笔失败。当前 Core 安装器只读核对后拒绝此静态组件单元。完整 Main 正向写入虚拟 DS1307 和物理 RTC 仍待验。 |
 
 ### 六个网关包已经验证到哪一步
 

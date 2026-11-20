@@ -524,5 +524,64 @@
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
       "disk.json": "9d5a1d32be51148fe6615a143e8f124d03a1d543c6fdefafc281f747226f9610"
     }
+  },
+  "rtcExclusiveOpen": {
+    "root": "2050:2",
+    "vm": "8061d57e-0120-42ec-a9a9-5799b436c4eb",
+    "beforeFence": "7250d0c3-4575-4109-9417-cc277c05f06b",
+    "currentParkedFence": {
+      "cohortSha256": "639dc809f3364d35951ec2516615f67b1f930fbafcc941a1893fdc2bc7a887ac",
+      "namespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+      "purposeId": "ebf6a548-01d4-4278-926b-691d7a2be5b7",
+      "schema": 1,
+      "units": {
+        "kura-clock-broker.service": "e7279176d7066d4ec9e2c5f5b728215b7a9ff4445dbf1603d9196eef0466f1f8",
+        "kura-clock-broker.socket": "19a0fb207a5ede6687a9ec60454b194de3e7bdce5b6d67bf53d5fcdb4b24c020",
+        "kura-clock-chrony-config.service": "01718c32a764f86200365e79ab80bcccc47d0fbfbe3a3c25595ed7792c84a374",
+        "kura-clock-chrony-config.socket": "a5d1db3205754a4439f4f5a333fb22b4c53eecb2c2edb05de945b4ed95715d1e",
+        "kura-clock-chrony-step.service": "f525193edb6c0041c6a20c0a25f3f3552637046914978f5222381b7c81321bbe",
+        "kura-clock-chrony-step.socket": "3dc1906833581bb9a3568d13798d40c24d61597e6288316608241ac5f0f341e6",
+        "kura-clock-rtc-devices.service": "44cd44c28f5d31406536abcb0854afb63030e00bcb52ae5dd36a5ffa5167cfe8",
+        "kura-clock-rtc-devices.socket": "5f492bab156bc29e521201059f904edfcfd5af169f6e1a6a4585270ab3767925"
+      }
+    },
+    "result": {
+      "errno": 16,
+      "namespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+      "observedMonotonicNs": 23165445348837,
+      "observedRealtimeNs": 1795210642875841671,
+      "reason": "OS_ERROR",
+      "requestId": "a3f08970-4db4-4797-91fa-9055d56c7e61",
+      "requestSha256": "68cf08d2070cc7f22fc0fa07ece6ea08b7c1e701acafd4350618f4ee524c13f6",
+      "schema": 1,
+      "state": "FAILED"
+    },
+    "priorFilesExact": 15,
+    "newFilesExact": 6,
+    "operations": 3,
+    "relayActivations": 2,
+    "jvmEffectiveCaps": "0000000000000000",
+    "afterRelease": {
+      "deviceDate": "EINVAL",
+      "originalResultExact": true,
+      "readOnlyReopen": true,
+      "receiptCount": 3,
+      "sampleSeconds": 1.2
+    },
+    "currentMainAdmission": "Main unit has no paired package definition; preserve installation",
+    "corePackageChecked": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+    "currentCoreDebSha256": "6f1e50d38ef9ad847fd55e8b5d7ca1cb5a0f2cbce0fd43da5f26fcf54c24c24f",
+    "scope": "Original static systemd component, installed ClockServiceImpl and socket-activated relay on guest-owned DS1307. The exclusive holder remained open through the submitted operation. No full Equinox Main is installed on this Root. Layout admission was read-only; no key state was initialized.",
+    "nextGuestReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/rtc-open-contention/readback.py",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/rtc-open-contention",
+    "evidenceSha256": {
+      "exercise.json": "0a4ca006a5d12079c7138b86dad6eade2337f6cfc6032fc0d8219900ea1fcba9",
+      "parked-readback.json": "632eb13b977eaf2ebdb2b012172e8ba9cab3e140d152e9c6d54c3d051bcb4b46",
+      "guest.py": "3318ff8687f5c15a2f1f3f5082481a27d3656479e4e5dabdada35a29cd54f1af",
+      "host.py": "d2186e1fe687ee670a9c315d75b726a977bef60a11a2ce398ab03bd59bf7a09b",
+      "readback.py": "283908d3b2e046e715b9b78669b58216e7720a0b287b3ec5c26c88c0dc4963c6",
+      "original-three-after.json": "9a959ab9b67747aa2438b5647694dfb6e26572e152f9e5bdbb9d133f45931ec8",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }
