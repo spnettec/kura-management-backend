@@ -153,5 +153,69 @@
     "paired/admission/recover.json": "66c0b64ecf5a961f80838e78768ac3a2690b2d15f0b1528e7e8dd2c4c42ae472",
     "paired/admission/parked.json": "82910e4c8f5a43c44f4e4275e607bdf32841e5571a98cff9576b422cfa837a3e",
     "paired/admission/operation.json": "b29883445acd71808de44cc9fbfff2161f1b70c28253a0410a2942b59bdfce34"
+  },
+  "subsequentDhcpSender": {
+    "coreCommit": "61aac0f8cec844ffad424242dda9e492fcc0df59",
+    "coreTree": "3dcecd8d15d6beabc39af9fcd67b680751004704",
+    "coreDeb": "9faf7f2c563afcdc6f7c83aa38f3ffb23e005a8835534a36bb35d58783f270f6",
+    "networkingCommit": "e06eb2ba5e3e9e911a19cebd72819fb7eeac1062",
+    "networkingTree": "e9503c89d49be038bedf3494e325535002b80a1f",
+    "networkingDeb": "fdf9b53ddd98f860519a5d39da9891131fb04f773ae063832fbb44e4f24150c7",
+    "networkingTests": 2245,
+    "arm64ActorTests": 46,
+    "actorQuery": "BIND and DHCP can read the original result only when the supplied mutation model matches its original intent. Older API remains available to its existing callers.",
+    "java": "DHCP and modem use the same process lock and disk publication code; the modem sender format is unchanged.",
+    "dhcp": {
+      "operation": "6cf92dcb-3245-49a4-8012-edef3917afa4",
+      "originalIdCount": 1,
+      "sequence": [
+        "compare",
+        "scope",
+        "apply",
+        "acknowledge",
+        "scope",
+        "scope",
+        "paired-outcome",
+        "acknowledge"
+      ],
+      "issuedServiceJobs": [
+        "stop"
+      ],
+      "daemonPid": 6,
+      "daemonExit": 0,
+      "intermediateBytes": 32,
+      "finalBytes": 201,
+      "deliveredInode": 13,
+      "originalRootIntentAndResultExact": true,
+      "javaRanAs": 60429,
+      "jvmPids": [
+        7,
+        34,
+        56
+      ],
+      "otherRootEmpty": true,
+      "javaReplies": [
+        "Command 'DHCP outcome UNKNOWN (6cf92dcb-3245-49a4-8012-edef3917afa4, 0ef6f71d4f1aedced03e4702ccde3c7857b6c6d34b3a3ce095e652b5b27cae69)' exited with code {1}.",
+        "Command 'DHCP outcome UNKNOWN (6cf92dcb-3245-49a4-8012-edef3917afa4, 0ef6f71d4f1aedced03e4702ccde3c7857b6c6d34b3a3ce095e652b5b27cae69)' exited with code {1}.",
+        "APPLIED"
+      ],
+      "transport": "packaged fixed Unix socket client; fixture peer/unit checks; actual dnsmasq stop via test service adapter"
+    },
+    "dpkg": "Two fresh transient ARM64 unpack-only roots. Same Networking archive rejected on 54cc64d, unpacked on 61aac0f8ce. Neither assembled installation started a service.",
+    "packaging": "The first assembly-skip build retained 4 stale broker modules and was rejected before use. Rebuilt via prepare-package and jdeb@gateway-deb, matched archive payloads and actor cohorts to sources, and removed the 204217676-byte rejected deb.",
+    "boundary": "Three unprivileged JVMs and real dnsmasq, package scripts and journal, emulated unit/peer admission and service dispatch. Latest DHCP Java caller still requires installed Main and full maintenance checks. BIND Java cross-JVM persistence remains open.",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/network-service-sender-restart",
+    "evidenceSha256": {
+      "actual-dhcp.json": "52a91d9b95df131549c60e8745365a16630fa088b10d98bfd5538432485e8252",
+      "core-actors-final.log": "f63aeebc9532f97fa47fc371f1c11ea0b4f3600930c32b6c5e72596212ca720c",
+      "package.json": "e50a32626a98ad5081718ec877cd95d5d493909deb35c54c462c6e16a26922ab",
+      "verified-package.json": "dbb2b637208cb92e25607e8bfd3294210d3acc76cddd84a5ec722da8ff6ed389",
+      "networking.log": "67f94dc0358d750c2bf00466e291378ea53894627493522a4f93fb1779f9a273",
+      "unpack-old.log": "7a04ae80b97817ee46dc272377f5639cc474f6e19126a000c976cedbf47808f1",
+      "unpack-new.log": "24fa8575b08b845e2326497c703364eebdc3e5a4ac0c900458c4919e99445373",
+      "rejected-stale/rejection.json": "395c8c53d8eb0473a55c0f9d9211ce6c7509d71bb2e1a6bb63abb8b4bf40b647",
+      "preservation.json": "0eee4219014866fd773add4c3298f93c26ddd04aa3515743b3135549a63049d8",
+      "original-three-after.json": "425e868fbdef58af4fc8b61f3ae5c1309914ad4028f93168a5d11932a467d420"
+    }
   }
 }

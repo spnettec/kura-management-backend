@@ -1,3 +1,9 @@
+## 2026-11-21 DHCP 调用方跨 JVM 续接原确认
+
+Core `61aac0f8ce` 支持 BIND 和 DHCP 按原动作及配置查回执。Networking `e06eb2b` 的 DHCP 调用方派发前持久化原请求，与 modem 复用文件锁和原子发布。Debian 13 ARM64 上三个普通用户 JVM 先后运行。第一个让真实 dnsmasq 停机一次，确认只写入 32 字节。第二个遇到不同 Root，只查询 scope。第三个回到原 Root，用同一编号和配置将原 inode 补完到 201 字节。测试使用真实 deb 的 Java 与 socket actor，systemd 调用身份及服务调度使用适配器。
+
+两个临时 ARM64 安装分别对同一 Networking deb 执行实际 dpkg 解包，旧 Core 拒绝，新 Core 准入。首次打 Core deb 时跳过 assembly 也跳过了资源刷新，四份脚本仍旧；包在安装前被检查拒绝。按发行 POM 重新准备资源并单独打 deb，核对包内代码及成套摘要后验收。Networking 全 17 模块 2245 项、ARM64 actor 46 项通过。BIND 的 Java 跨进程续接、DHCP 完整 Main 及维护矩阵仍在进行。冻结 0/12。[检查点](actual-modem-sender-restart-and-upgrade-checkpoint.json)
+
 ## 2026-11-21 正式 Main 在重启及升包后保留未决调制解调器操作
 
 旧 Networking 的 JVM 在确认中断后丢失原操作。Core `54cc64dfe2` 和 Networking `30f67a722f` 现在核对原 Root、编号、动作、设备路径及设备标识。ARM64 的三个独立 JVM 场景覆盖 32 字节部分确认、确认已写完但回复丢失，以及虚拟调制解调器已收到 Reset 而结果不明。每个场景仅收到一次 Reset。Networking 全 17 模块 2245 项、Core actor 62 项通过。
