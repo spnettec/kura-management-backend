@@ -1,5 +1,17 @@
 
 
+## 2026-11-20 继续实施 — Core 已派发步骤核定与 PREPARED 部分回拷恢复
+
+在历史原容器保持 stopped 的情况下只读核对八份原阶段文件、围栏以及 dpkg 半配置状态。此前实际 HTTPS keytool 已派发，但无可信成功退出证据或完成回执，保持 UNKNOWN。原现场未启动，原号及所有原证据保留。
+
+Core 2603adefae 在原安装子进程成功退出并同步之后，原子落盘同 Root/围栏/包版本/脚本/恢复副本绑定的 HMAC 成功证据。后续 configure 仅凭精确证据为原步骤补齐完成回执。结果未决的步骤继续拒绝再次执行。原意图、成功证据、完成回执和 PREPARED/READY 标记均原子发布；READY 发布前同步回拷数据。73 项相关包合同通过。
+
+Debian 13 ARM64 用 JDK 21 从 Git 顺序构建旧版与候选。真实 dpkg 第一次在 layout 成功证据写入后、完成回执写入前中断。原围栏第二次 configure 补齐 layout 回执，同次实测只派发 brokers、runtime、HTTPS 和 ownership，layout 未重新执行。完成 PREPARED 后 user 树已回拷，在 data 树实际 cp 进程执行正文前中断。此时另外三棵树的观察文件未出现，原恢复副本及原 AES 凭据保持，实际状态为 half-configured。
+
+最终沿同一 Root 和原围栏 configure，四棵树的观察文件内容、属主、组、模式和时间戳与升级前一致。原暂存副本在 READY 后按原配对退休，18 份 HMAC 阶段记录通过验证，旧包历史保持，新增唯一一份原维护回执。Main 一直禁用且未启动，新现场正常停放。
+
+无成功证据的旧步骤、单文件内的部分写入、跨 boot 与其余发行中断点继续内部待办。完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher/安装升级移除 purge/中断及全部 12 父项维持原范围。闭环 0/12，external deferred 仅原三项，原 7fd 保持禁用、正常停止和 41 输入/16 回执。见 [检查点](actual-core-postinst-issued-and-copy-recovery-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core postinst 持久阶段中断与原围栏恢复
 
 Core 8e60c9f901 先在围栏目录的同级私有暂存位置落盘完整 HMAC 意图，再原子发布原围栏目录并同步父目录。中断发生在发布之前时，正式目录仍缺失，可沿原围栏开始；当正式目录已存在但原意图缺失，继续拒绝并保留现场。两个新增用例和其余相关合同、保留布局和维护测试合计 72 项通过。macOS 全量发现与上版产生相同平台及夹具诊断；显式使用实际构建 JAR 的 generation 测试仍有 22 项与上版相同的夹具设置错误。
