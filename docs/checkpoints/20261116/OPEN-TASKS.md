@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 当前 Native Agent 启动与现有 Kura peer 授权边界
+
+从 Git 用 JDK 21、Maven 3.10.1 和 Rust 1.95.0 构建 Core 27a64d73f3、Networking 6ab7101、Native Agent bd69cc1。正式 Agent 包固定当前协议、Java bridge、Core loader 以及 ARM64 ELF 指纹。首次并行构建的 Debian 时间戳排序不符合升级顺序，派发前重新生成正式归档。旧包和首次输出保留作为证据。
+
+在新 Debian 13 ARM64 Root 安装三包，原生初始化、本地授权各派发一次。正常 systemd 单元显式启动 Agent 和 Main，Java/OSGi bridge 实际完成注册。Unix socket 的内核对端 PID、UID、GID 与正式 Agent 进程一致。Agent 为独立非 Root、五个能力掩码均为零、NNP 1，Core Main 为非 Root、0x1402、NNP 1。远程通道 OFF。首次进程采样早于启动脚本交接 Java，经原运行进程只读补采，启动未重派。
+
+第二个隔离 Root 从旧正式组合建立本地授权。沿原初始化，经真实 dpkg 将 Agent 一次升级到同桥配对的 bd69cc1，源码维护回执 APPLIED，原授权仍为 APPLIED/READY，12 份保留输入精确。随后 Core 与 Networking 在同一 Root、boot 正式升级。原授权记录、原状态、原 AES 和两份退役指纹保持。历史仍为 APPLIED，当前准入为 REFUSED。真实 systemd ExecStartPre 返回原 Root proof 差异，ExecMain PID 和启动计时均为 0。原两个业务编号保留，未重复派发。
+
+Linux Rust 17 项、Python 本地授权与原源码维护 22 项通过。两轮夹具正常停放，原三现场、个人文件和 7fd 的 41 输入/16 回执保持。已有授权的 Core unit／Networking 双指纹联合迁移、材料和已绑定场景、完整 Core/OSGi、typed brokers、六组件矩阵均继续内部待办。冻结 12 父项为 0/12，external deferred 仅原三项。见 [实际检查点](actual-current-native-agent-peer-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core 与 Networking 的 Main 配对及域名探测
 
 旧 Networking drop-in 请求 cap_net_raw，实际 systemd 进程受 Core bounding set 限制，仍为 0x1402，但 systemd 的声明值与旧 Agent 配对条件不符。Core 5ce4a95ddf 只接受两个指纹固定的 Networking 模板，并声明新包依赖。Networking 6ab7101 改用无能力声明的依赖 drop-in，仅在升级中精确识别并替换原模板。Agent bd69cc1 核对包归属、原模板、实际 vendor 文件与 Core 已加载能力声明。两个指纹均有回归覆盖，历史规则继续生效。

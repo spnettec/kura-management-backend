@@ -1,0 +1,309 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "05f203021f54d4dc22bb8106e947ff2238c52182",
+  "core": {
+    "head": "27a64d73f3ed466475f8c9c4a045126441c71018",
+    "tree": "1bbc379b62cae04048ee1d55f21d4150257282d0"
+  },
+  "networking": {
+    "head": "6ab7101295702d3ba01d1c3aaf017305637170b0",
+    "tree": "86a5a881b720532d1b3754c1d504d5025d7df025"
+  },
+  "agent": {
+    "head": "bd69cc1b0668705ec09d1b4ee2c3d21f1cd42fff",
+    "tree": "cd9ad9c9df08743b7c2a517ec54ee30209ff0127"
+  },
+  "baseline": {
+    "core": {
+      "head": "2d5c0ab9922de62316296a686dfbcf842d06dc48",
+      "tree": "3c39afd3d2c160913d0593a73018df1a2c37a566"
+    },
+    "networking": {
+      "head": "82dc2cd68938781549e4cc92e2b0b5781f253319",
+      "tree": "9815284c2950e44e6cb9a6f8921ff9cb6dde89d6"
+    },
+    "agent": {
+      "head": "03b2b8077d825baf2cb5a0f81b4d74e0ccdae901",
+      "tree": "d425ac1eb277beaac839e40b3bfe76b2220974b1"
+    }
+  },
+  "toolchains": {
+    "java": 21,
+    "maven": "3.10.1",
+    "rust": "1.95.0",
+    "platform": "Debian 13 ARM64 systemd, Docker network none"
+  },
+  "protocol": {
+    "source": {
+      "head": "05f203021f54d4dc22bb8106e947ff2238c52182",
+      "tree": "acb995de652268f65fc7e38afd2ca05dcf0afa83"
+    },
+    "artifactSha256": "c1304333bba2b54d79751091eb8f8b92d5d50b73ddcafcdf5a7c9f7bc97f1e64"
+  },
+  "currentRelease": {
+    "core": {
+      "path": "/root/kura-current-peer/kura_6.0.0~git20261120043757.27a64d7-1_arm64.deb",
+      "sha256": "c051ed194405a297bf95ff0ced9c301a24524e1f788e63804d4b0cf073ea62c4",
+      "package": "kura-core",
+      "version": "6.0.0~git20261120043757.27a64d7-1",
+      "architecture": "arm64"
+    },
+    "networking": {
+      "path": "/root/kura-current-peer/kura-networking-3.0.0~git202611200436.6ab7101-1_all.deb",
+      "sha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f",
+      "package": "kura-networking",
+      "version": "3.0.0~git202611200436.6ab7101-1",
+      "architecture": "all"
+    },
+    "agent": {
+      "path": "/root/kura-current-peer/kura-management-agent_0.1.0~cohort202611200439.2.bd69cc1-1_arm64.deb",
+      "sha256": "6348c37d088e5ccab017fd2b808d8e3f44ba7ee7bdc0deea01042211e7777830",
+      "package": "kura-management-agent",
+      "version": "0.1.0~cohort202611200439.2.bd69cc1-1",
+      "architecture": "arm64"
+    }
+  },
+  "verifiedNativePackageSource": {
+    "bridgeSha256": "4e6be9c2422735fd510709d5ebc74f2f668d16b86b09a9ed573c7d9db0611a44",
+    "loaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+    "binarySha256": "c95f26432a23766b6402f5fa80ae27e5f9a290ef2d4a1126be6efd61a8b50434",
+    "sourceManifestSha256": "558a6e83ff83a95cf1e8b0309944e58060e1f98decfe90300dbedb501735b602"
+  },
+  "currentRoot": {
+    "init": {
+      "schemaVersion": 1,
+      "requestId": "20e5eff5-99d2-44a7-8230-1c024e7e3e48",
+      "state": "APPLIED",
+      "currentReadiness": "READY",
+      "replayed": false
+    },
+    "authorization": {
+      "schemaVersion": 1,
+      "requestId": "bd6b139b-43fe-4b30-bcbd-83a712ac445a",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "kuraUid": 997,
+      "currentReadiness": "READY",
+      "remoteEnabled": false,
+      "replayed": false
+    },
+    "runtime": {
+      "root": {
+        "deviceInode": "1048827:5721401",
+        "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+      },
+      "native": {
+        "properties": {
+          "MainPID": "2113",
+          "NRestarts": "0",
+          "CapabilityBoundingSet": "",
+          "AmbientCapabilities": "",
+          "ActiveState": "active",
+          "DropInPaths": "",
+          "UnitFileState": "disabled",
+          "InvocationID": "2d39f399c7d94657a75be52898a332ca"
+        },
+        "status": {
+          "Name": "yofc-management",
+          "Uid": "989\t989\t989\t989",
+          "Gid": "988\t988\t988\t988",
+          "Groups": "987 988",
+          "CapInh": "0000000000000000",
+          "CapPrm": "0000000000000000",
+          "CapEff": "0000000000000000",
+          "CapBnd": "0000000000000000",
+          "CapAmb": "0000000000000000",
+          "NoNewPrivs": "1"
+        },
+        "startTicks": "34494568"
+      },
+      "main": {
+        "properties": {
+          "MainPID": "2455",
+          "NRestarts": "0",
+          "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+          "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+          "ActiveState": "active",
+          "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+          "UnitFileState": "disabled",
+          "InvocationID": "8cc4f8ff226f4dc58f8a80e8d556ad17"
+        },
+        "status": {
+          "Name": "java",
+          "Uid": "997\t997\t997\t997",
+          "Gid": "995\t995\t995\t995",
+          "Groups": "20 988 990 995",
+          "CapInh": "0000000000001402",
+          "CapPrm": "0000000000001402",
+          "CapEff": "0000000000001402",
+          "CapBnd": "0000000000001402",
+          "CapAmb": "0000000000001402",
+          "NoNewPrivs": "1"
+        },
+        "startTicks": "34494763"
+      },
+      "status": {
+        "pid": 2113,
+        "uid": 989,
+        "gid": 988,
+        "value": {
+          "agentAvailable": true,
+          "kuraAvailable": true,
+          "uptimeSeconds": 32,
+          "version": "0.1.0"
+        }
+      },
+      "remote": {
+        "pid": 2113,
+        "uid": 989,
+        "gid": 988,
+        "value": {
+          "activeRequests": 0,
+          "bound": false,
+          "canControl": true,
+          "connectionState": "UNBOUND",
+          "enabled": false,
+          "recoveryRequired": false,
+          "revision": "35e8fca1-b4e2-4e6d-84ab-d410e54dae80"
+        }
+      },
+      "actualBridgeRegistered": true,
+      "agentPermissionProfile": "native-nonroot-v1"
+    }
+  },
+  "sourceMaintenance": {
+    "applied": {
+      "schemaVersion": 1,
+      "requestId": "500c255a-6c8f-42fc-b42a-898b8709e79e",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "replayed": false
+    },
+    "unchangedOriginalGrant": {
+      "schemaVersion": 1,
+      "requestId": "983b4510-d29d-4015-9c38-f0c6001b8cc7",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "kuraUid": 997,
+      "currentReadiness": "READY",
+      "remoteEnabled": false,
+      "replayed": false
+    },
+    "retainedInputCount": 12,
+    "sameRootAndBoot": true,
+    "automaticUnitStart": false
+  },
+  "companionBoundary": {
+    "status": {
+      "root": {
+        "deviceInode": "1048815:5728463",
+        "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+      },
+      "source": {
+        "schemaVersion": 1,
+        "requestId": "500c255a-6c8f-42fc-b42a-898b8709e79e",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "replayed": false
+      },
+      "originalAuthorization": {
+        "schemaVersion": 1,
+        "requestId": "983b4510-d29d-4015-9c38-f0c6001b8cc7",
+        "state": "APPLIED",
+        "unitStarted": false,
+        "kuraUid": 997,
+        "currentReadiness": "REFUSED",
+        "remoteEnabled": false,
+        "replayed": false
+      },
+      "oldCoreSha256": "3d43c014e0d19a104ec4231b6d5f8c99a63a407284e373058e80d898aaa32803",
+      "newCoreSha256": "a2e0fe09f9b7e942a649bacfddab484514bb94fbe03ccbdc8f7976f99a973811",
+      "oldDropInSha256": "eb1079ba9bc662b196ef873cfc860cc1b53ab3b50813c2ee4437352c4cd65b18",
+      "newDropInSha256": "06589b8dede5926f63d760ec0a94a51aa6ef6ce6ddffee1c78dfcf978ec30473",
+      "originalGrantRecordExact": true,
+      "retainedAssets": 12
+    },
+    "resolvedRootStartupCheck": {
+      "root": {
+        "deviceInode": "1048815:5728463",
+        "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+      },
+      "properties": {
+        "MainPID": "0",
+        "Result": "exit-code",
+        "NRestarts": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "ExecMainPID": "0",
+        "ActiveState": "activating"
+      },
+      "rootGuardReportedPairMismatch": true,
+      "daemonProcessNeverStarted": true,
+      "retainedAssetsExact": true
+    },
+    "firstFailure": "Kura peer authority differs from its original Root proof"
+  },
+  "startupProbe": {
+    "confirmedOnOriginalRunAfterJavaExec": true,
+    "originalStartsReissued": 0
+  },
+  "focusedTests": {
+    "rustRuntimeIdentityPassed": 17,
+    "linuxPythonPeerAndSourcePassed": 22
+  },
+  "fixtures": [
+    {
+      "id": "34ff1e8df39f91dcd0d3bab1dc2a4548a91779cced9b355e70862c19b1f98003",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T04:36:12.161019716Z",
+        "FinishedAt": "2026-11-20T04:40:59.717022163Z"
+      }
+    },
+    {
+      "id": "4ea7ce1c9d9b8e2e8bb30ede5924069de7736386a6c594f2c78681c065b9435a",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T04:40:59.934301803Z",
+        "FinishedAt": "2026-11-20T04:42:16.552399991Z"
+      }
+    }
+  ],
+  "internalPending": [
+    "joint same-Root Core/Networking peer fingerprint transition",
+    "material/enrolled/retained authority variants and interruption recovery",
+    "complete Core/OSGi and remaining typed brokers",
+    "six-component provider/launcher/lifecycle matrix",
+    "all 12 parents"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "enabled": false,
+    "running": false
+  },
+  "pushed": false
+}
