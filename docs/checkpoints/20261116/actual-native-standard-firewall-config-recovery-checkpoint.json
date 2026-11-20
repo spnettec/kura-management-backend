@@ -1,0 +1,165 @@
+{
+  "recordedAt": "2026-11-20T07:29:18.911304+00:00",
+  "source": {
+    "core": "96ffee3741fda1c4535a715a8ff33b2bb84f80f5",
+    "networking": "07894999b1e478bfe5a44c613e0babcfccab53f8",
+    "networkingTree": "ce1d08e6e9cfc5975ae93e221789dd30f4bc7311",
+    "previousNetworking": "3e15d6a64ce566e17dabd0d8e0305ed1f5e4a7b4"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true,
+    "writableNetNamespaceSysctls": [
+      "/proc/sys/net/ipv4/ip_forward",
+      "/proc/sys/net/ipv6/conf/all/forwarding"
+    ],
+    "remainingProcSysReadOnly": true
+  },
+  "fixtures": {
+    "legacy": {
+      "id": "46f852e5bc407c45970cf2938302b13f929a800a7258d7d50c18773d557bbcc7",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T07:21:04.527022247Z",
+        "FinishedAt": "2026-11-20T07:25:16.411200045Z"
+      }
+    },
+    "candidate": {
+      "id": "70ca6f2fbbe2db3bb53574a1d17892afd45d5defe77cc9cd3f4e947f5a8d91e6",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 137,
+        "Error": "",
+        "StartedAt": "2026-11-20T07:25:38.09204175Z",
+        "FinishedAt": "2026-11-20T07:28:23.470716597Z"
+      }
+    }
+  },
+  "candidateParkingReadback": {
+    "stopTimedOut": true,
+    "sigRtMinPlus3": 37,
+    "terminalSignal": 9,
+    "exitCode": 137,
+    "archivedReceiptsExact": 2,
+    "pendingAndExtensionLogExact": true,
+    "restarted": false
+  },
+  "candidateArchives": {
+    "kura-core": {
+      "sha256": "aee916b1f4260483cd2c8372899230daabb010328412363cb94043da2c126587",
+      "version": "6.0.0~git20261120065440.96ffee3-1"
+    },
+    "kura-networking": {
+      "sha256": "aadf752fc3b236e91d0ddafdf04bf17a1a7f843d468517491971ff06de5d2e5a",
+      "version": "3.0.0~git202611200725.0789499-1"
+    }
+  },
+  "legacyFailure": {
+    "oneOriginalSystemdDispatch": true,
+    "vendorResult": {
+      "MainPID": "0",
+      "Result": "exit-code",
+      "ExecMainStartTimestampMonotonic": "354667038283",
+      "ExecMainStatus": "1",
+      "ActiveState": "failed",
+      "UnitFileState": "disabled",
+      "InvocationID": "c630dd6a0cc0452e8bf9f186909eac03"
+    },
+    "siteRulesAlreadyApplied": true,
+    "unlinkedIpv4Chain": true,
+    "originalReceiptSha256": "848361fbf66446f983c99cc62aee1f73fa7786609b38b043de0ad59dea71dd13",
+    "standardConfigurationReceiptAbsent": true,
+    "replayed": false
+  },
+  "standardPositive": {
+    "vendorResult": {
+      "MainPID": "0",
+      "Result": "success",
+      "ExecMainStartTimestampMonotonic": "0",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "bothFamiliesFilterNatMangleObserved": true,
+    "preexistingUnlinkedSiteChainAndRulePreserved": true,
+    "forwardingChanged": [
+      "0",
+      "1"
+    ],
+    "extensionInvocations": 1,
+    "operationId": "8e211c70-bc09-408e-8c37-170444fd4db6",
+    "receiptSha256": "6c43bc9245c6569a03c60d967c8b5e2c1495069fbad85a6b608e3bd8fec226bf"
+  },
+  "standardDurable": {
+    "directoryFsyncReturned": true,
+    "sameRootBootNetNamespaceAndOperation": true,
+    "operationId": "a630b97f-b711-4954-b13b-49f3a74b1036",
+    "previousReceiptExact": true,
+    "exactRetainedSha256": "a625c1da61ef485afac99cc8708a35585e4648b2fc1deb8fcfbe45a7fb49d022",
+    "vendorOnlyFinalizedOriginalArchive": true,
+    "extensionInvocationsBeforeAndAfter": [
+      2,
+      2
+    ],
+    "finalNetfilterAndForwardingExact": true
+  },
+  "standardUnresolved": {
+    "actualConfigurationChildExit": 0,
+    "durableCompletionAbsent": true,
+    "operationId": "3c29fca4-2061-4aa1-9b7b-136836275eed",
+    "originalPendingSha256": "621dd37c86581063044ddfd2848f2693791902e7c4915ca438ae74c67a70f4a2",
+    "vendorAndRealPackageRemoveRefused": true,
+    "extensionInvocationsBeforeAndAfter": [
+      3,
+      3
+    ],
+    "previousHistoryAndKernelExact": true,
+    "originalRedispatched": false
+  },
+  "tests": {
+    "networkingMavenPassed": 2239,
+    "hostPackagePassed": 12,
+    "arm64PackagePassed": 12
+  },
+  "mainDisabledAndNeverStartedInBothFixtures": true,
+  "networkManagerProcessAndCoreFilesExact": true,
+  "dpkgAuditEmptyBeforeParking": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "explicit authenticated evidence settlement when durable completion is absent",
+    "candidate fixture normal stop, real cross-boot boundaries and remaining launcher and package lifecycle matrix",
+    "complete Core/OSGi, remaining typed brokers, providers and six components, all 12 parents"
+  ],
+  "pushed": false
+}

@@ -1,3 +1,15 @@
+## 2026-11-20 继续实施 — 标准防火墙启动器配置与原回执续接
+
+标准版旧 Networking `3e15d6a` 在隔离 Debian 13 ARM64 Root 的一次正式 systemd 启动中，已经写入两族站点规则并归档了站点回执，随后创建 IPv4 `input-kura`，把父链推导为无效的 `INPUT KURA` 而退出 1。实际 IPv4 链存在但未链接，其他配置尚未执行，原现场正常停放且未再次派发。
+
+Networking `0789499` 修正父链解析，允许将站点已经定义而尚未链接的链挂接，保留链内规则。标准配置将两族站点恢复、filter/nat/mangle 配置、转发与站点扩展纳入同一持久原编号和包数据库锁。标准阶段绑定实际 launcher、shell、工具与站点扩展，派发前写入意图，成功后记录两族规则及转发的最终证据。最终证据持久后可用同一编号补归档。
+
+新隔离 Debian 13 ARM64 Root 从 Git 实装 Core `96ffee3741` 与正式标准 Networking。只在隔离网络命名空间开放实际两份转发 sysctl 写入，其他 proc/sys 保持只读。一次正常启动验证两族 filter/nat/mangle、站点原规则保留及实际转发改为 IPv4 0、IPv6 1，站点扩展执行一次。另一原操作在标准阶段完成证据的目录 fsync 返回后被实际中断。经正式 systemd 原 Root、原 boot、原命名空间续接，原回执摘要一致，两族规则和转发一致，站点扩展没有再次执行。
+
+第三个独立操作在实际标准配置子进程返回 0 后、持久标准完成回执落盘前中断。正式 launcher 与真实 `dpkg --remove` 均拒绝，原编号、未决、之前回执、内核规则、转发和扩展计数保持。旧夹具正常停放。候选夹具停止超时，Docker 随后发 SIGKILL，终态 137。停机后只读核对了原 pending、两份已归档回执和扩展计数，字节一致，未重启。两个夹具的 Core Main 全程 disabled 且未启动。JDK 21/Maven 3.10.1 构建两种正式 deb，Networking Maven 2239 项，宿主和 ARM64 包装各 12 项通过。
+
+未决记录的原证据结算、跨 boot、其余 provider／launcher 和维护范围、完整 Core/OSGi、其余 typed brokers 及完整六组件矩阵继续内部待办。原三现场和 7fd 的 41 输入／16 回执保持，冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-standard-firewall-config-recovery-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 防火墙启动恢复与 Debian 包维护互斥
 
 Networking `3e15d6a` 为两种正式防火墙启动器增加实际 dpkg 数据库锁，并在两种 deb 的四个维护脚本中内嵌同一准入检查。检查读取原 Root 的记录目录，有未决记录时拒绝包维护。保留未决记录的 postinst abort 以无副作用返回，避免自动回退操作再次修改现场。从 Git 使用 JDK 21、Maven 3.10.1 构建两种正式 deb，Networking Maven 2239 项、宿主和 ARM64 包装各 10 项通过。
