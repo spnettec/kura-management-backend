@@ -1,3 +1,7 @@
+## 2026-11-21 PKCS12 文件发布中断、原业务钥和数字 UID
+
+Core `6621e1fa64` 将文件密钥库的保存改为同文件系统暂存并原子发布。ARM64 上在旧库替换前、首次建库发布后分别终止独立写进程，冷读者均能用原口令签名，下一写者收回暂存。另对真实 PKCS12 序列化施加单文件大小限制，原文件、元数据及签名钥保持。原六组件正式 Main 拒绝已锁文件，释放后保存一个新的受信任证书。冷启动以及再次原地升级到 `8a70d2e518` 后，均能读回该证书并用原业务钥验签。发行包支持只有数字 UID 的写者。JDK 21 密钥库模块 94 项通过，完整 82 模块 2148 项通过、2 项跳过。夹具正常停机，按最新回执只读核对六包与 72 份文件。跨口令记录与库文件的随机改密中断、网关包装钥跨代、其他 provider/launcher 与维护矩阵继续待验。冻结 0/12。[实装和续接入口](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 虚拟 GSM 设备通过 modem broker 的目标配对
 
 在原 Parallels 组件 Root 上用只匹配测试序列号的临时 udev 规则声明主 AT 端口。ModemManager 的 generic 插件枚举出虚拟 modem，NetworkManager 报告 ttyACM0 为 disconnected GSM。首次运行发行包的只读目标核验时，两个守护进程的 systemd 定义均待重载，核验拒绝。核对磁盘单元和二进制归属及校验和后正常重载管理器定义，原进程及 InvocationID 保持。再次接入时，同一发行包的 target() 两次核对真实系统总线、原包、设备路径及 sysfs inode 通过。临时规则和设备已撤，原时钟围栏、模块、RTC、网络和默认路由均复核。此次没有派发 reset，正式 Main 的已派发 modem 跨双包 purge 恢复继续待验。冻结 0/12。[目标核验与复原记录](actual-modem-sender-restart-and-upgrade-checkpoint.json)

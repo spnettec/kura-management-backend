@@ -798,5 +798,305 @@
       "core-osgi-result.json": "bb1706cfa2a5eb920ee916b0b547880d9d9176f1305f9c3fc9dcbba659397482",
       "disk.json": "5c9e1c0c1a05aa9d3177cde468d7a6ba3929b6a133b8b1dfc162e38edcbef641"
     }
+  },
+  "atomicFilesystemKeystore": {
+    "source": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+    "tree": "893c1a6cd28c039d4d623b3d19e93edf71116587",
+    "atomicCommit": "6621e1fa645d3e5eec5cc53a03a57557f9586aa9",
+    "packages": [
+      {
+        "source": "6621e1fa645d3e5eec5cc53a03a57557f9586aa9",
+        "sha256": "c5843f3298ad29fdcb02a0a8f64c01eab18dbfed6d8e9243dc8803b73fb58215",
+        "bytes": 204234762,
+        "providerJar": "96bac47395e26c18de40b7128000c7e2a4085e98a29f5c4d5e6e567600fbc82b",
+        "classes": {
+          "KeystoreFile": "0f0264383bd861b5647ed28904632140986cf07f45d7da9169381a9ee1af8477",
+          "FilesystemKeystoreServiceImpl": "07b7796a70b603a647930c164d89c34f36f59c268d3bccca4b7461e6cc0d5a07"
+        }
+      },
+      {
+        "source": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+        "sha256": "6f1e50d38ef9ad847fd55e8b5d7ca1cb5a0f2cbce0fd43da5f26fcf54c24c24f",
+        "bytes": 204235006,
+        "providerJar": "51b28d9c699629670f0e1488a95ea2a9ee1c99486126be942ad2b229f29f3e9d",
+        "classes": {
+          "KeystoreFile": "4353bb3331b252bad6d9183d251a434023c5f174e8cd7b8c4a74b20e20d26c9d",
+          "FilesystemKeystoreServiceImpl": "07b7796a70b603a647930c164d89c34f36f59c268d3bccca4b7461e6cc0d5a07"
+        }
+      }
+    ],
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "initialFilesVerified": 59,
+    "priorUpgradeFiles": 70,
+    "offline": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 72,
+      "originalSubmitWithdrawn": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T21:08:22.68523487Z",
+        "FinishedAt": "2026-11-20T21:09:20.125104073Z"
+      }
+    },
+    "invocations": [
+      {
+        "unit": {
+          "MainPID": "3376",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "a1418559147d41c49f0028c90557d2e9"
+        },
+        "ticks": "39451642",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "9712",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "83ab1f798edf412399f44760eecfdd9c"
+        },
+        "ticks": "39452807",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "3580",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "746b5f7a55b042fba9efd73009577a40"
+        },
+        "ticks": "39487800",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      }
+    ],
+    "originalCertSha256": "7533f7be951a8c9ae0e804b7bc3348463e04bfeeaa238c5a66835899864a2bd4",
+    "writeTests": {
+      "beforeReplace": "JDK 21 ARM64 writer killed by SIGKILL after complete staged serialization and force, before rename. Original inode, metadata and bytes matched and original key signed. A new process committed a distinct entry.",
+      "afterCreate": "Writer killed by SIGKILL with both original publication names still bound to the same inode. Cold reader signed with original private key. Next writer recovered the known additional link and retained the key.",
+      "fileLimit": "Real JCA PKCS12 engineStore raised File too large during serialization under RLIMIT_FSIZE. The original image, metadata, password, certificate and private key survived.",
+      "installed": "Actual Main refused a locked file write, kept the record and signature, then saved one distinct trusted certificate. The subsequent Main verified both original aliases. After the next real Core upgrade another cold Main verified that trust and signed a fresh challenge with the original business key.",
+      "identity": "Kernel identity is authoritative even with a changed Java user.name. Final deb provider saved a store at an unregistered Linux UID of 20001 with owner 20001, private directory 0700, lock 0600."
+    },
+    "scope": "Verified single PKCS12 publication on the tested POSIX filesystems. The process-death tests used a dedicated ARM64 JCA process. The registered systemd Main exercised file-lock refusal and normal writes. Interrupted randomization across the credential record, PKCS12 and Configuration Admin, gateway wrapping-key maintenance and power loss remain separate.",
+    "temporaryInputs": "Two test-only JDBC/provider JARs were parked outside the Core plugin tree across each upgrade and restored with identical hashes. The proof listener was retired before the fixture stopped.",
+    "superseded": "The initial 6621e1fa64 complete reactor was stopped during module 35 when the numeric-UID fix superseded it. Only the complete final run is counted.",
+    "concurrentWriters": "Two independent JDK 21 processes loaded the same PKCS12 snapshot and attempted distinct entries. Exactly one published; the other refused its stale snapshot. The final store contained the original verified HMAC key and the winning entry only.",
+    "installedStoreOwnership": {
+      "data/pkcs12-entry-proof/business.p12": {
+        "file": {
+          "uid": 997,
+          "gid": 995,
+          "mode": "0o600",
+          "links": 1
+        },
+        "parent": {
+          "uid": 997,
+          "gid": 995,
+          "mode": "0o700",
+          "links": 1
+        }
+      },
+      "user/security/cacerts.ks": {
+        "file": {
+          "uid": 997,
+          "gid": 995,
+          "mode": "0o600",
+          "links": 1
+        },
+        "parent": {
+          "uid": 997,
+          "gid": 995,
+          "mode": "0o700",
+          "links": 1
+        }
+      },
+      "user/security/httpskeystore.ks": {
+        "file": {
+          "uid": 997,
+          "gid": 995,
+          "mode": "0o600",
+          "links": 1
+        },
+        "parent": {
+          "uid": 997,
+          "gid": 995,
+          "mode": "0o700",
+          "links": 1
+        }
+      }
+    },
+    "accessMetadata": "A separately owned Ubuntu ARM64 JDK 21 test retained a real named-user POSIX access ACL and a user xattr byte-for-byte, together with UID, GID and mode, across file publication.",
+    "alpineRuntime": "Alpine 3.24.4 JDK 21.0.13.1 from the retained ARM64 launcher image, with packaged provider, kurad UID 122, no effective capabilities and no-new-privileges. Two isolated JVMs verified a synthetic HMAC before and after adding an entry. This component check used tmpfs and did not start the container Main.",
+    "fullCoreOsgi": {
+      "commit": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:50 min",
+      "testTotals": {
+        "tests": 2150,
+        "passed": 2148,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.6,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.597 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "e6c81b403b9b4b983d23fbee9744519d9775e138c596c51afde6489d16969199"
+    },
+    "moduleTests": 94,
+    "storage": {
+      "workspaceKiB": 335817352,
+      "historicalWorkKiB": 243920672,
+      "consoleRepoKiB": 79534116,
+      "hostAvailableKiB": 144051388,
+      "coreDebCount": 24,
+      "coreDebTotalBytes": 4901332698,
+      "coreDebLargest": 204235006,
+      "consoleTarget": {
+        "totalKiB": 76913248,
+        "topKiB": {
+          "kura-management-console/target/nm-role-authority-20261112": 47967468,
+          "kura-management-console/target/upstream-logical-sync-20261112": 17311896,
+          "kura-management-console/target/zcode-resume-20261108": 871312,
+          "kura-management-console/target/remote-firewall-tasks-20261108": 855824,
+          "kura-management-console/target/gwt-client-receipts-20261108": 815264
+        }
+      },
+      "historicalBreakdown": {
+        "totalKiB": 243919948,
+        "topKiB": {
+          ".management-close-20261116/source-cohort-20261117": 26435124,
+          ".management-close-20261116/core-rtc-hotplug-20261120": 8551808,
+          ".management-close-20261116/core-bind-policy-cutover-20261120": 6326044,
+          ".management-close-20261116/core-chrony-makestep-20261119": 5655172,
+          ".management-close-20261116/plc4x-g022-runtime-20261120": 4720916
+        }
+      }
+    },
+    "buildPairing": {
+      "org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar": [
+        "Bundle-Version"
+      ],
+      "org.eclipse.kura.api-3.0.0-SNAPSHOT.jar": [
+        "Bundle-Version"
+      ],
+      "org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar": [
+        "Bundle-Version"
+      ]
+    },
+    "isolatedApiBuilds": {
+      "source": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+      "qualifier": "202611202106",
+      "fixedQualifier": {
+        "rawIdentical": true,
+        "entryCount": 606,
+        "entryDifferences": [],
+        "bundleVersions": [
+          "3.0.0.202611202106",
+          "3.0.0.202611202106"
+        ],
+        "jarHashes": [
+          "61a4cd6de9180f08c8815861f87070aa74c074d895c334340565f260ee7e1748",
+          "61a4cd6de9180f08c8815861f87070aa74c074d895c334340565f260ee7e1748"
+        ]
+      }
+    },
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/parked-readback.py",
+    "evidenceSha256": {
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/package.json": "0aafbcfc4df36fc50bf96735b16227e65a2d7eff977158d4acc93266498a84ae",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/arm64-final.log": "70619d1885a4e194104da05f5042babc27f97b4fcd9ba414c302a9d80c9dcd0f",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/create-stop-final.log": "61263b17e1a37ded0c0664ba36e96a50a83ffb98e9f5533e7bf8f21a093522b5",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/size-limit.log": "f83b5284d1a860808df7494abe8b6320b57693dbb3cd51aae913f625fcc41008",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/Interruption.java": "03529cf4511d5b34bbe4a937fef8d4642a4b5e4769396587a7df271646bdf318",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/CreateInterruption.java": "8b49d7591b8c335970c1bcfdbdded7ad8e8963915b6a03803009b9057e41236c",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/SizeLimit.java": "17601474ba4f1719207754a8e434131f7a5eeccc4f0105132cc90fd1b6dce1e1",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/upgraded.json": "4e4ef51e494363a7c728ecf3ff13513bd891fbc159b2046146b345f6b878ca2b",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/write-stopped.json": "5b6c1479aae53572b10430734e4a55821d1c654fa1c6d24f2b7c7fc837a1db19",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/cold-stopped.json": "fba2f7e0966aee95c745ffd0b0ca98d14d237d9c1a9640418c7715bcabbead23",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/final-check.json": "6bb9ccd20feb5ce6c1817f26a22a759d7b99af3722aa1f36650192ce02b7fc1e",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/parked.json": "d90b6a723dc1588780a5fcad62f41d3526d65ac565ddc5a5fbc6f0e6e1b25ea1",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/offline-readback.json": "4d949eb7aef58a2f0e16dd2c177b4af87ae2f500d589389ad33d221427b98192",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-atomic-file/superseded-reactor.json": "7b8cd6b243b840838368f186d611047a4644ffd1d6df4f5bb8b5382b9a04152b",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/package.json": "ec581fad10eb2c7c8988b78106b6843c20f66197ec613c85c1f7d9b142c7c01e",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/upgraded.json": "900cef62798d690eaec5f8f84d1dba43cfdfb7dff38a7d506fe1b579d03eed96",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/resume-stopped.json": "4c905c27d7bba3a2529b7e5292ce736ed50a195a94661e009b8d108bc36a6c7f",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/numeric.log": "5b215d7355cbe20229ae717a43db1dfae19691371617221172444bfb2eba281d",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/AlpineStore.java": "1a739bfdd11d6010303b39350f8685903f8fe45293939ae541e8d83720d90e13",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/alpine.log": "7cc693f2366ecfc217bd78389763b6cd31ba485e46353eacdf8c4b4ac35c8235",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/check-acl.py": "cc698b0b9379473aae3e131051769b3897abc94ce21aece9a8435399b3214383",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/acl.log": "11eccb761dac82bf841a8d57201aa71959a3db67049a013416fefb2e96da9d1e",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/ConcurrentStore.java": "42bc221827ec4bdfeed1e9bb444e30e0d4feb119dee22ae49ab79ae93958b139",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/two-writers.log": "8ed33e8710bba5b1b26d9f887e009da087666b7a4d1ea5a54a35243d68124cb7",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/installed-file-layout.json": "7cfb4eb55c61cddd17135036f67b75ddb882c912e5a841d502194b4b1797eee4",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/final-check.json": "9a773fae09ada1c98833c51d8b7ecd201b930fa24c20bc001c8461dc732fb691",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/parked.json": "366245889a2337199ae795e4b4cfe3c66b9e8948be9485644408747a7eb632d6",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/offline-readback.json": "3c7cbf33ffb31bff4f5981e6d60d53981b22f4cfbf71860515e2a39a941d6604",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/original-three-after.json": "c7831b7321d2e90d563c1d0181e52d79da81e81416627df4ed1d6350a02d226a",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/parallels-readback.json": "536a6aa3e0ed427655861fffe9451cf57263244e97855d264e65e782e173576c",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json": "22d6ed0bc4a8c0c25baf62dd81a0b759322057e70dd4775d1da1e8049313b815",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json": "f905bf1aef9772bca41df4bb4b2b32038e3acabd080732aaf0aa5c575d3c9260",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json": "050b9423a4f9bb7737235bbd2a3e8038fed657cf0999c0fec3c188bc34457c9b",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/manifest-differences.json": "09604296ade895855a9909dd4594684fbbe9b053b72ff4a76fea975fcba5a045",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/module.log": "19b456e2b650941ec4a2c36eb3bbd1e89199e9b11f3394c433b4b194173456d3",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/core-osgi-result.json": "02d5f97f52071dbfd6d793838437c31240499ff3804586ff1285b3daed35ede2",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/workspace-du-kib.tsv": "c713b147b5c7c766d67e982bf33f7284bd11446f169f5728de7a1b1137a62f7d",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/historical-size-kib.tsv": "4c42eb46e852d7549a5b2dc870428731db0816c399aaa0bee3e6f2ac8c7ea829",
+      ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/console-target-kib.tsv": "86330b81baadf269050d154d8a7b40cb1b2b4a62025f010d77e633423ecb7bf1"
+    }
   }
 }

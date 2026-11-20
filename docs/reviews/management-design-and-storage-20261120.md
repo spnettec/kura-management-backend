@@ -1,6 +1,14 @@
 # YOFC Kura 管理改造：设计、工期与磁盘复盘
 
-2026-11-20。复核对象为会话《YOFC Kura 管理体系改造》、父工作区暂停交接、12 项冻结台账、实际八包安装与 Wires 重装检查点、两次清理回执和当前 Git 引用。
+2026-11-20 初稿，2026-11-21 更新。复核对象为会话《YOFC Kura 管理体系改造》、父工作区暂停交接、12 项冻结台账、实际八包安装与 Wires 重装检查点、两次清理回执和当前 Git 引用。
+
+## 目前的判断
+
+**有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
+
+11 月 21 日 05:08 前后，工作区按 `du -k` 实测 **343.88 GB**，宿主可用 **147.51 GB**。其中历史工作目录 **249.77 GB**，中心仓的 `target` **78.76 GB**，两者合计约 **95.5%**。中心 `target` 中，网络权限与注册现场占 49.12 GB，上游逻辑同步目录占 17.73 GB。当前 Core 打包目录留有 24 个 ARM64 deb，文件长度合计 4.90 GB。APFS 可共享数据块，上述目录计量不能直接换算为可释放空间。[本次容量明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json)
+
+这次还定位到一种可以避免的重组装。API、Crypto 和 Configuration 三个 JAR 在运行时与冷恢复目录的内容逐项相同，只有清单中的 OSGi `Bundle-Version` 不同。例如 API 的构建后缀分别为 `202611202101` 和 `202611202040`。打包正确拒绝该组输入，从同一缓存重建恢复工具后通过。正式 `build-all.sh` 会为一次构建固定 `KURA_BUILD_QUALIFIER`。拆开运行 Maven 时，同一批候选也应显式传递相同的 `-Dkura.build.qualifier`，并让运行时和恢复工具使用同一批依赖。从当前 Git 只取 API 模块和构建父 POM，用同一个固定后缀连续执行两次干净打包，606 个文件条目以及整个 JAR 的 SHA-256 均相同。该验证复用了 Maven 缓存，临时源码和编译目录随即回收。[两次构建摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json) · [实际差异](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json) · [正式构建入口](../../../.management-close-20261116/core-rtc-hotplug-20261120/wip-core/build-all.sh)
 
 ## 工期花在哪里
 
