@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-21",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "core": {
+    "commit": "5a47412895fe7f19bb88df7a628f410872939e36",
+    "tree": "19235bb3c7270cf7657cecce7991969765df9634",
+    "packageVersion": "6.0.0~git20261120171715.5a47412-1",
+    "packageSha256": "fe9fea7711f215bfdf83bc5e01e5997503d88bd71cd6336413633ac14bc239f5"
+  },
+  "probe": {
+    "role": "Test-only OSGi bundle selects the clock through ConfigAdmin and calls the production synchronization callback on the registered ClockService. The provider receives offset zero.",
+    "java": 21,
+    "sha256": "584cb90bf2e616a93fb28eb110d8220eafdb5cd7023db66c5126851c21ba0f9f",
+    "sharedRtc0Accessed": false
+  },
+  "six": {
+    "id": "61eae8e243979baa4296367388077c40d523091930102caf2b194e20b3b8760b",
+    "mainPids": [
+      "882",
+      "7720"
+    ],
+    "registeredSelection": "/dev/rtc1/3",
+    "capSysTimeAvailable": false,
+    "actorLog": "UNSAFE_ACTOR",
+    "activations": 5,
+    "newRequestIds": 0,
+    "senderLockCreated": true,
+    "configurationOnRestart": [
+      "org.eclipse.kura.linux.clock",
+      "false",
+      "/dev/rtc0",
+      "true",
+      "false",
+      "/dev/rtc0",
+      "true"
+    ],
+    "snapshotMetadataExact": true,
+    "originalBindFilesExact": 4,
+    "credentialsExact": 2,
+    "exitCode": 0
+  },
+  "standalone": {
+    "id": "bf60ae2d47c5fd085ea9bad9cf474be811537df0110755b4ad7a0f955a61c731",
+    "mainPids": [
+      "1831",
+      "5430"
+    ],
+    "platform": "Debian 13 ARM64, no network or device mappings, seccomp denies system and hardware clock changes",
+    "rootIdentity": "1048582:6453806",
+    "relayInvocation": "ef7740a65b6540fc8f12157e7192f865",
+    "namespace": "998d441a-051e-4f88-8951-f4d32b2af065",
+    "requestId": "c99f1b4c-7ce4-42a8-bc51-fcdd1a244377",
+    "preparedRtcBinding": {
+      "errno": 2
+    },
+    "receipt": {
+      "errno": 2,
+      "namespace": "998d441a-051e-4f88-8951-f4d32b2af065",
+      "observedMonotonicNs": 381693298949514,
+      "observedRealtimeNs": 1795195756125565517,
+      "reason": "OS_ERROR",
+      "requestId": "c99f1b4c-7ce4-42a8-bc51-fcdd1a244377",
+      "requestSha256": "a5d4e25d0876bd30172f473fe92604b0c3e032796d6fb8773a02451087f8ac2b",
+      "schema": 1,
+      "state": "FAILED"
+    },
+    "providerSelection": "/dev/rtc1",
+    "existingDevice": false,
+    "dpkg": {
+      "install-core": 0,
+      "remove-core": 0,
+      "purge-core": 0,
+      "reinstall-core": 0
+    },
+    "removeAndPurgeFence": "9eb64670-78e1-4be0-a354-2f70e6e5adcd",
+    "rootArchiveRetainedAcrossPurge": true,
+    "namespaceAndActorFilesWithExactMetadata": 5,
+    "senderFilesRestored": 3,
+    "restoredSenderNewInodes": 3,
+    "senderFilesWithContentOwnerModeLinksSizeAndMtimeExact": 3,
+    "keysWithExactMetadata": 2,
+    "reinstallUnitBeforeExplicitStart": "enabled",
+    "clockOsgiAfterReinstall": [
+      "org.eclipse.kura.linux.clock",
+      "false",
+      "/dev/rtc0",
+      "true",
+      "false",
+      "/dev/rtc0",
+      "true"
+    ],
+    "operationsAfterReinstallMain": 1,
+    "dpkgAuditClean": true,
+    "exitCode": 0,
+    "retiredArchiveCopies": {
+      "bytes": 204519238,
+      "copies": 5
+    },
+    "dockerSizeRwBytesAfterPark": 250151614,
+    "productSourceChanged": false
+  },
+  "parallels": {
+    "vm": "8061d57e-0120-42ec-a9a9-5799b436c4eb",
+    "root": "2050:2",
+    "machine": "940bbf505db3feb596834849bb04c3c74cad2496354fdc32e1f8e46c52dfb8f9",
+    "unit": {
+      "UnitFileState": "static",
+      "ActiveState": "inactive",
+      "FragmentPath": "/usr/lib/systemd/system/kura.service",
+      "MainPID": "0"
+    },
+    "clockNamespace": "a23fb4e9-1621-4d82-9d53-7b9a1d94e391",
+    "fencePurpose": "7250d0c3-4575-4109-9417-cc277c05f06b",
+    "previousOperations": 2,
+    "previousIssued": 2,
+    "devices": [
+      "rtc0"
+    ],
+    "installed": null
+  },
+  "preservation": {
+    "runningDockerStartTimesExact": 13,
+    "originalPrivateFileMetadataExact": 38,
+    "originalProcessIdsAndTicksExact": 7,
+    "runtimeDataWithExactContent": 6,
+    "personalFilesExact": 25,
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "repositories": 18,
+    "mainCheckoutBranches": {
+      "heyoulin-kura": 14,
+      "wip/management-close-20261116": 4
+    }
+  },
+  "scope": [
+    "Registered Main missing-device failure is verified. Full Main positive virtual DS1307 write is still open. Earlier successful DS1307 receipt was in the component fixture.",
+    "Other brokers and the complete six-component/provider/launcher maintenance and interruption matrix remain open."
+  ],
+  "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/registered-main-rtc-absent"
+}

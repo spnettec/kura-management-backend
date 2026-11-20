@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 的 RTC 缺失回执跨 Core purge 恢复
+
+六组件原 Root 的正式 Main 通过 ConfigAdmin 选择不存在的 `/dev/rtc1`，触发一次生产 ClockService 回调。该现场的 PID 1 缺少 CAP_SYS_TIME，时钟进程五次启动均记录 UNSAFE_ACTOR；发送端只创建了锁。再次启动 Main 读回默认配置，原 BIND 四份记录及两份凭据逐项一致。
+
+独立 Debian 13 ARM64 安装使用同一 Core 包，隔离网络和设备，并在容器层禁止修改系统时钟和 RTC 写入。正式 Main 选择相同的缺失设备，生产 actor 准备阶段记录 errno 2，最终结果为 FAILED / OS_ERROR / ENOENT，发送端保存同一编号。真实 dpkg remove、purge 和重装均成功。五份 Root 文件及两份凭据的完整指纹一致，三份 sender 文件恢复内容、属主、权限、链接数、长度和 mtime。重装后的 Main 再次取得已注册的 ClockService，原操作仍为唯一一笔。两夹具均正常停机，删除了已核对宿主原件的五份临时 deb，共 204,519,238 字节。Parallels 保留原围栏与两笔操作，完整 Main 正向写入虚拟 DS1307 仍待验。冻结 0/12。[检查点](actual-registered-main-clock-and-purge-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 BIND 丢回执恢复及六组件 Networking 维护
 
 真实 BIND 服务在正式 Main 调用 stop 后停机。测试在 actor 提交结果后终止了等待回复的客户端，第一 JVM 返回 UNKNOWN。第二个正式 Main 核对原 Root、原编号及动作后完成确认，原意图和结果文件保持，named 没有再启动。该次启动另出现一笔记录，未采集它的动作。
