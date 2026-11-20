@@ -1,0 +1,227 @@
+{
+  "recordedAt": "2026-11-20T06:52:00.703170+00:00",
+  "source": {
+    "originalCore": "910493756d630d818f969379028a93812c7a358e",
+    "core": "58942a28430d2a2baaf7ff86426484281c17f9ff",
+    "coreTree": "eb0fd80a62077c4d4a8bf072d31da86d40c2117e",
+    "networking": "6ab7101"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "noExternalNetwork": true
+  },
+  "approvedArchives": {
+    "kura-core": {
+      "version": "6.0.0~git20261120063656.9104937-1",
+      "sha256": "f9589c71e43d250e97c7477d7aa06a6d643eb5c7de95c4a57315fa3a64df34ff",
+      "preinstSha256": "aeab5b52c4e5105193d79b004a2678889ed0af4aa9f35243c1ee723cbd774b1c"
+    },
+    "kura-networking": {
+      "version": "3.0.0~git202611200436.6ab7101-1",
+      "sha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f",
+      "preinstSha256": "0a6dbced16b53c7e1d08833b1da41eacddeb84aa9c4d64fdfeda1e9c852b7125"
+    }
+  },
+  "fixtureBeforeNetworkingPreinst": {
+    "id": "a0192083163c4105ed7bfa51ccb446a2a3f0d5180b59404cfa948e6c1f6b3397",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:41:33.410399896Z",
+      "FinishedAt": "2026-11-20T06:44:59.27232558Z"
+    }
+  },
+  "fixtureBeforeCorePostinst": {
+    "id": "d00f13827af935cfa5d4afa38f0f44b8e76de7afae8e4352a4bd6e5cdafca91b",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:49:49.249748822Z",
+      "FinishedAt": "2026-11-20T06:51:52.401583811Z"
+    }
+  },
+  "fixtureWithUnsettledBrokers": {
+    "id": "2b1b9572f955214e906d2cda9925af7fd81fc4275af7d0d9b3abeec48c7fde9e",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:45:16.931553714Z",
+      "FinishedAt": "2026-11-20T06:49:50.606225884Z"
+    }
+  },
+  "fixedCoreArtifact": {
+    "head": "58942a28430d2a2baaf7ff86426484281c17f9ff",
+    "tree": "eb0fd80a62077c4d4a8bf072d31da86d40c2117e",
+    "version": "6.0.0~git20261120065038.58942a2-1",
+    "artifact": "kura_6.0.0~git20261120065038.58942a2-1_arm64.deb",
+    "sha256": "271314dd2305e171d740d6f9addc87062f1dffe1946105490f6f17306b84f58b"
+  },
+  "softRebootWithoutFix": {
+    "knownDpkgExit": 1,
+    "sameRootAndProofsAcrossReboot": true,
+    "brokerPhaseError": "UNIT_RUNNING",
+    "listenersActive": [
+      "kura-clock-broker.socket",
+      "kura-clock-chrony-config.socket",
+      "kura-clock-chrony-step.socket",
+      "kura-reboot-broker.socket"
+    ],
+    "operationPreserved": "05a311f2-0009-4bbb-b80f-a30b035b57e1",
+    "brokerOutcomeUnsettled": true,
+    "redispatched": false
+  },
+  "tests": {
+    "linuxArm64PackageTestsPassed": 67
+  },
+  "interruptedBeforeNetworkingPreinst": {
+    "originalDpkgTerminated": true,
+    "corePhase": [
+      "unpacked",
+      "6.0.0~git20261120063656.9104937-1"
+    ],
+    "networkingPhase": [
+      "half-installed",
+      "3.0.0~git202611190914.4ee16c9-1"
+    ],
+    "preinstBodyEntered": false,
+    "mainGateExit": 1,
+    "originalFencesExact": 3,
+    "sameCaptureProof": true,
+    "onlyNetworkingUnpackedOnRecovery": true,
+    "coreNotUnpackedAgain": true,
+    "sameBoot": true,
+    "sameRoot": true,
+    "sameMaintenanceId": "9618ae69-72bd-4157-bfa6-f56cfd463104",
+    "receiptSha256": "e48487c8faf73527c3677b426225a40106b661202313b729cb84c92672813d68",
+    "retainedFiles": {
+      "coreCredentials": 2,
+      "packageHistory": 1,
+      "userAndSnapshot": 2,
+      "networkingProofs": 9
+    },
+    "dpkgAuditEmpty": true,
+    "noMainAutoStart": true
+  },
+  "runtimeAfterFirstRecovery": {
+    "activeBundles": {
+      "org.eclipse.kura.core": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.linux.net": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.linux.systemd.provider": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/networking/4/org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.nm": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.web2": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar"
+      }
+    },
+    "typedReadOnlyCalls": {
+      "bind-status": {
+        "exitCode": 0,
+        "requestId": "37ad5214-65bf-4789-a7c2-f26272814514"
+      },
+      "dhcp-scope": {
+        "exitCode": 0,
+        "requestId": "195dcc15-7659-434c-a47d-ad56c500356c"
+      },
+      "modem-ready-gps": {
+        "exitCode": 0,
+        "requestId": "f1468774-5b7a-4994-8f4f-64437f499dd1"
+      }
+    },
+    "brokerJournalsUnchanged": true,
+    "namedInvocationAndPidUnchanged": true,
+    "gwtPinnedHttps": {
+      "auth": {
+        "status": 200,
+        "location": null,
+        "serverSha256": "3ce5a7627ff4ebcb2860d72b179281fda6fb10ca9c1b452558cc4bb47e5720f0"
+      },
+      "console": {
+        "status": 302,
+        "location": "/admin/auth",
+        "serverSha256": "3ce5a7627ff4ebcb2860d72b179281fda6fb10ca9c1b452558cc4bb47e5720f0"
+      }
+    },
+    "noNewPrivileges": true,
+    "normalStop": true
+  },
+  "interruptedBeforeCorePostinst": {
+    "originalDpkgTerminated": true,
+    "corePhase": [
+      "half-configured",
+      "6.0.0~git20261120065038.58942a2-1"
+    ],
+    "networkingPhase": [
+      "unpacked",
+      "3.0.0~git202611200436.6ab7101-1"
+    ],
+    "postinstBodyEntered": false,
+    "systemdSoftReboots": 1,
+    "dbusInvocationChanged": true,
+    "sameKernelBoot": true,
+    "sameRootAndContainerStart": true,
+    "exactFilesAcrossReboot": 13,
+    "archivesNotUnpackedAgain": true,
+    "sameMaintenanceId": "2efe22b2-0240-461a-aa74-f60b67b07e02",
+    "pairedListenersReestablishedAfterMaintenance": 4,
+    "receiptSha256": "d0f3f832a6d51efd95cc4320cc26dcb8340b9d87e7efb28dd60e37be7504b446",
+    "dpkgAuditEmpty": true,
+    "noMainStartBeforeParking": true,
+    "installedProviderCheckAsKurad": true
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "additional direct upgrade interruption boundaries, real kernel reboot/Root remount",
+    "other provider and launcher variants, full Core/OSGi and remaining typed brokers",
+    "enrolled/authenticated business and complete six-component matrix, all 12 parents"
+  ]
+}

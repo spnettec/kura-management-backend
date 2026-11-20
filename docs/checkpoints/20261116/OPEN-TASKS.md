@@ -1,3 +1,17 @@
+## 2026-11-20 继续实施 — Core 与 Networking 联合升级中断及 soft-reboot 续接
+
+独立 Debian 13 ARM64 Root 实装旧组合。对正式 Core `910493756d` 与 Networking `6ab7101` 发起联合升级，在新版 Networking preinst 的内核 exec 停点中断。Core 已 unpacked，Networking 仍为旧版 half-installed。新版 preinst 正文未进入，原 dpkg 和该子进程均确认退出。九份新版证明尚未写入，三份 Core 原围栏、恢复副本、凭据和旧包历史保持。实际 Main 配对检查拒绝该中间状态。
+
+在同一 Root 和同一 boot 仅解包尚未执行的原批准 Networking 归档。两包实际 unpacked，原围栏与恢复副本完整指纹保持。随后用 dpkg configure 配置两包，Core 未重新解包，原编号只新增一份回执。九份 provider 证明、两份凭据、旧包历史及用户文件和快照通过核对。两包 installed，dpkg audit 无输出。Networking 日志有两条开始记录，首条停在新 preinst 正文前。
+
+恢复后显式启动实际 Main。Core、GWT、NM、Linux 网络及 systemd provider 五个 bundle ACTIVE，固定已装叶证书验证 GWT 200／302。合法 Main 的 OSGi 探针通过真实客户端完成 BIND status、DHCP scope、Modem ready-gps 三项只读请求。三处 broker 台账无新增文件，named 的 PID 与 InvocationID 保持。Main 正常停止且禁用，探针移出加载路径，隔离 Root 正常停放。
+
+第二处在两包载荷已解包、新 Core postinst 正文尚未执行时中断。一次真实 systemd soft-reboot 后，Root、原围栏和十三份证明精确，Core 配置实际返回 UNIT_RUNNING。持久启用的旧 clock／reboot 监听已恢复，broker 安装阶段有原意图而缺成功证明。保留原号、原围栏和这份未结算状态，正常停放原试验 Root。
+
+Core `58942a2843` 在发布 broker 配置意图前，用已核对的新版 helper 检查原时钟及重启维护记录，仅静默已配对的监听器。已派发的阶段仍按原成功证据处理。67 项 ARM64 回归通过，JDK 21 和 Maven 3.10.1 从 Git 构建新正式 ARM64 deb。独立 Root 实测相同 postinst exec 中断及一次 soft-reboot，D-Bus InvocationID 更新，内核 boot ID、容器启动记录、Root 设备及 inode 保持。十三份围栏和 provider 证明精确，原编号仅以 dpkg configure 完成，两份归档均未重解包。四个实际监听器在维护收尾重新监听。原凭据、快照、旧历史及九份 provider 证明核对通过，dpkg audit 无输出，Main 全程未启动，现场正常停放。
+
+真正的内核重启或 Root 重挂、其他 provider／launcher、补充中断点、已绑定业务、完整 Core/OSGi 和其余 typed brokers 继续内部待办。原三现场、个人文件和 7fd 的 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-direct-core-networking-interruption-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 旧 Networking 与 Core 单次 dpkg 原位联合换版
 
 Core `910493756d` 增加显式的联合换版准入。旧 Networking 缺少未由旧包声明的证明时，仅从实际调用新 Core preinst 的同 Root、同挂载命名空间 dpkg 进程识别有序归档。核对 Core 目标版本、显式审批的 Networking SHA-256、九个 typed provider 合同及只读 ModemManager 策略。已装包声明但缺失的文件、错误证明、游离 provider 仍拒绝。Main 继续按实际已配置包及文件配对。
