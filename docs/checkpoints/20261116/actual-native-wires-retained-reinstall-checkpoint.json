@@ -1294,5 +1294,83 @@
       "original-three-after.json": "3b9196ca8ccc5be84200b8eb861f018a2009b01c201cc41d347137b7c7c916cc",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "frameworkConfigurationPublication": {
+    "source": "12518cff9278b87ac9415d0d74c56c3c9c5d6398",
+    "tree": "7e62b2a1ab1504a6e71a77d43b4f9233c6306a3f",
+    "deb": "6.0.0~git20261120215845.12518cf-1",
+    "sha256": "d8a0ebc53c9c5348f9733d8501eb5ed478ab7e8175cf84bfcf53e49476feb25d",
+    "previousCandidate": "dda6a189feab663b8f45acb45b5898584ff1bd9f",
+    "root": "39:6611544",
+    "packageHelper": "b76e04a4e455785ef93485901a45b72ca773179a3bd5c65a34e8159bacab6405",
+    "agentLoader": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+    "sourceTests": "Original launcher test with a missing template returned 0 in all three entry points. Final ARM64 suites: 9 launcher, 10 optional adapter, 22 generation cohort tests passed.",
+    "firstCandidate": {
+      "missingTemplate": {
+        "foreground": true,
+        "background": true,
+        "debug": true
+      },
+      "formalMain": "3987",
+      "directForeground": "10410",
+      "directDebug": "16578",
+      "formalStopIdentityRefusedForDirectProcess": 1,
+      "directUnitsStoppedNormally": true,
+      "temporaryBytesAfterInterruption": 17
+    },
+    "finalCandidate": {
+      "formalMain": "3965",
+      "concurrentDirectRefused": true,
+      "samePreviousConfigurationWhileInterrupted": true,
+      "partialBytes": 1048576,
+      "previousConfigBytes": 22579,
+      "completeSha256": "46181bd4397a04d159f7d6d10ee3a5e58de49d9bd73d6ff4d25bb4d586105535",
+      "recovery": "Installed start_kura.sh --detached --debug; existing partial reclaimed, config inode replaced, original bytes recovered",
+      "recoveredMain": "10468",
+      "activeBundles": [
+        "fixture.retained.business.bundle",
+        "org.eclipse.kura.management.bridge"
+      ],
+      "writerLease": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "agentLoaderDigestUnchanged": true,
+      "parked": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 83,
+        "originalSubmitWithdrawn": true
+      }
+    },
+    "reactor": {
+      "verifiedAt": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+      "passed": 2148,
+      "skipped": 2,
+      "changedPathsSinceVerification": [
+        "kura/distrib/src/main/resources/filtered/pkg/bin/start_kura.sh",
+        "kura/distrib/src/main/resources/filtered/pkg/bin/start_kura_background.sh",
+        "kura/distrib/src/main/resources/filtered/pkg/bin/start_kura_debug.sh",
+        "kura/distrib/src/main/resources/unfiltered/pkg/bin/kura_framework_config.py",
+        "kura/distrib/src/main/resources/unfiltered/pkg/bin/kura_key_cohort.py",
+        "kura/distrib/src/main/resources/unfiltered/pkg/bin/kura_watchdog_maintenance.py",
+        "kura/distrib/src/test/test_ordinary_launcher.py",
+        "kura/distrib/src/test/test_watchdog_maintenance.py"
+      ],
+      "rerun": false
+    },
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/launcher-config-recovery",
+    "previousDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/launcher-config-publication",
+    "sixPackageReadOnlyCheck": ".management-close-20261116/core-rtc-hotplug-20261120/launcher-config-recovery/parked-readback.py",
+    "evidenceSha256": {
+      "package.json": "59e54106939cd81bac7af49f3c9f5c79cc40a3420794bdc8a2a865ffa767d117",
+      "main.json": "3956f35bf6d7cc0f1e50f738952d6beb49dab929fa44eacb445233386701ef58",
+      "interrupted.json": "37690add32e3982b5ce0df47951bdd596917aa670055dd60c10edfc69d5fffdd",
+      "recovered.json": "f034e7604708c39e5acc0f4cfc45d598e877daa9cbac6863ecdfaa41cdb75144",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "original-three-after.json": "087d5ef7e4f178574c0ed4a04d23a7b798433ffa6b01c425ff1eb0a5ba0e0349",
+      "parallels-final.json": "a8a9c652bafca73afe82181e34727d5f9d668f9dac56dd8c6bf2db438da23c4e",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "observed-detached-debug.json": "4966d898c92e7ef8ee4b3b76d60c8582bea62807da688d517a59df53d89559c9"
+    }
   }
 }

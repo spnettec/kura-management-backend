@@ -1,3 +1,7 @@
+## 2026-11-21 Equinox 启动配置中断恢复
+
+旧版前台、后台、调试启动器会在模板缺失时截断上次的 config.ini 并继续。原六包 Root 第一次升级后，三个入口实测均保留旧文件并在申请 writer 前退出。正式 Main 和两个直接入口均读到 ACTIVE 业务 DP 与配对 agent bridge，但进程组中断可留下 17 字节暂存文件。最终 Core 12518cff92 把暂存限制为一个文件，用同目录的非阻塞锁协调三个入口。实装中，后台生成到 1 MiB 时，前台启动被拒绝，原 config.ini 和 writer 登记保持。随后中断后台，实际 --detached --debug 启动回收暂存，发布与原来逐字节相同的 22,579 字节配置，取得原 Root 的 writer lease 并恢复两个 ACTIVE bundle。六包与 83 份保留文件已停机只读复核。新入口为 launcher-config-recovery/parked-readback.py。冻结 0/12。[发行与现场记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Watchdog 的设备交接与原六包升级
 
 旧包对 Linux softdog 的两种 nowayout 设置均允许进入维护。新版在系统明确报告不可停用时拒绝维护。Parallels 上用同一 ARM64 deb 的 Java provider 和 JNA，以 kurad 运行，读到 300 秒超时并观察到两次保活。Java 服务停用并关 FD 后，内核仍在计时。发行包的维护程序接手续喂，再用 Magic Close 使设备回到 inactive。原六组件卷另以 dpkg 升级 Core，正式 Main 读到 watchdog 为 DISABLED，原业务 DP 再次 ACTIVE，正常停机后六包及 83 份文件只读核对。原卷下一次从 watchdog-softdog-maintenance/parked-readback.py 续接。正式 Main 持有真实设备跨包中断的场景仍待验。冻结 0/12。[ARM64 设备与实装证据](actual-arm64-watchdog-maintenance-admission-checkpoint.json)
