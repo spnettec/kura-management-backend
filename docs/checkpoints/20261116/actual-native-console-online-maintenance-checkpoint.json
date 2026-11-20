@@ -1,0 +1,191 @@
+{
+  "recordedAt": "2026-11-20T05:10:47.064781+00:00",
+  "source": {
+    "commit": "c42b025ea013d93fad2a42cb10f99bcffc7c36a0",
+    "tree": "3cfec99ae239e1e612d963840feb5d3f79a3006f"
+  },
+  "platform": "Debian 13 arm64",
+  "archives": {
+    "console": {
+      "version": "0.1.0~cohort20261120050740.c42b025-1",
+      "architecture": "arm64",
+      "sha256": "c79fd2e0bfd31cc98ddb13dd9924974d9ce7c08c5a4fed1bbc36a582fc8c7277",
+      "sourceManifestSha256": "1299722328d13a98afb6064fc180341dc83d9a666c5daae68a0b1af62fae4fdd",
+      "binarySha256": "de23eda73205a354c16d265f3c3887c01fc92daef8564e6ab446defc01ce0c48",
+      "hostPackageFenceProtocolVersion": 1
+    },
+    "installer": {
+      "version": "0.1.0~cohort20261120050740.c42b025-1",
+      "architecture": "all",
+      "sha256": "9f13ac416313629aa47a59416739bbc1b5caa778896cc228420294b0e45fd562",
+      "sourceManifestSha256": "1299722328d13a98afb6064fc180341dc83d9a666c5daae68a0b1af62fae4fdd",
+      "maintainerScripts": [],
+      "nativePackageCatalogSha256": "7b2c258287197e47cd72da3d860c04cf38de04d1d9729745ae91a73d19b84ba9",
+      "approvedNativePackages": 1
+    }
+  },
+  "reusedFormalRelease": {
+    "sourceInputs": 207,
+    "sealedArchiveSha256": "4225228f620586074940a957c48b4a0d6742fd6781c9195ca60a304c10cabd2c",
+    "sealedVersion": "0.1.0~cohort202611200156.8eec49f-1",
+    "binarySha256": "de23eda73205a354c16d265f3c3887c01fc92daef8564e6ab446defc01ce0c48",
+    "webFiles": 3
+  },
+  "fixtureBefore": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:02:46.137967821Z",
+      "FinishedAt": "2026-11-20T05:03:22.776209985Z"
+    }
+  },
+  "fixtureAfter": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:09:50.336446151Z",
+      "FinishedAt": "2026-11-20T05:10:09.975273321Z"
+    }
+  },
+  "activeUpgrade": {
+    "originalReadOnlyProofDeniedBeforeFence": true,
+    "toolsUpgradeKeptProcess": true,
+    "operation": "d08082ae-4712-43d1-a270-b683cf944870",
+    "phase": "COMPLETE",
+    "stopReceipt": {
+      "state": "APPLIED",
+      "commandIssued": true,
+      "returncode": 0,
+      "after": {
+        "MainPID": "0",
+        "ActiveState": "inactive",
+        "Job": ""
+      }
+    },
+    "sameRootAndBootAcrossLifecycle": true,
+    "unpackedFenceHeld": true,
+    "verifiedInstalledFiles": 9,
+    "retainedPrivateAndSharedEntriesExact": 13,
+    "originalInitialInstallReceiptExact": true,
+    "noImplicitStart": true,
+    "explicitStartReadiness": "READY",
+    "originalTlsPinExact": true,
+    "coreAndAgentKeptStopped": true,
+    "dispatches": {
+      "upgrade-tools": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "freeze": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "maint-stop": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "unpack": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "configure": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "activate": {
+        "dispatches": 1,
+        "exitCode": 0
+      }
+    }
+  },
+  "removePurgeReinstall": {
+    "operation": "63e6d657-ca49-4b2a-a4aa-44b8a160927c",
+    "phase": "COMPLETE",
+    "sameRootAndBootAcrossLifecycle": true,
+    "disabledAtEnd": true,
+    "stopReceipt": {
+      "state": "APPLIED",
+      "commandIssued": true,
+      "returncode": 0,
+      "after": {
+        "MainPID": "0",
+        "ActiveState": "inactive",
+        "Job": ""
+      }
+    },
+    "actualRemovedStatus": "deinstall ok config-files",
+    "actualPurgedStatus": "unknown ok not-installed",
+    "packageFilesAndControlAbsentAfterPurge": true,
+    "sameVersionSameArchive": true,
+    "retainedPrivateAndSharedEntriesExact": 13,
+    "originalInitialInstallReceiptExact": true,
+    "originalTlsPinExact": true,
+    "observedReadiness": "READY",
+    "coreAndAgentKeptStopped": true,
+    "noImplicitStart": true,
+    "dispatches": {
+      "retained-freeze": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "retained-stop": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "retained-remove": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "retained-purge": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "retained-unpack": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "retained-configure": {
+        "dispatches": 1,
+        "exitCode": 0
+      },
+      "retained-activate": {
+        "dispatches": 1,
+        "exitCode": 0
+      }
+    }
+  },
+  "tests": {
+    "nativePackagingTestsPassed": 133
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pending": [
+    "已初始化 PostgreSQL 与原任务的中心换版",
+    "postinst 各持久断点和跨 boot 恢复",
+    "命名实例、其他 launcher/provider 和完整六组件矩阵",
+    "完整 Core/OSGi、其余 typed brokers 和 12 父项"
+  ],
+  "pushed": false
+}

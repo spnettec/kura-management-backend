@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Native 中心运行态换版和保留态重装
+
+console c42b025 让主机维护准入和取消共用中心就绪的受保护程序摘要。宿主直接读取被拒时，固定服务账号仍须核对运行程序与已装包的同一摘要。摘要变化时不创建围栏，原停机和 UNKNOWN 约束继续生效。Debian ARM64 包装回归 133 项通过。
+
+原六组件 Debian 13 ARM64 现场在旧工具上只读复现维护程序摘要拒绝。新版安装器独立升级后，原中心的 PID、InvocationID 和启动时钟精确。正式入口冻结并沿同一维护 UUID 只停机一次。真实 dpkg 解包后 Main 仍 inactive，停机回执和原围栏保持。配置核对实际负载后完成同一维护。显式启动新版中心返回 READY，原 TLS 叶证书、原安装回执与 13 项受保护目录及文件精确。Core 和 Agent 保持停机。
+
+同一 isolated Root 另用一个新维护目的完成实际 remove、purge、同版本及同归档重装。purge 回执为 exit 0，dpkg 显示 unknown ok not-installed，包控制文件与 unit 缺席；首轮观察器只接受无 dpkg 条目，沿原派发修正只读判定，未重做 purge。保留文件和原回执精确。解包期间仍有原围栏，配置完成后中心保持 disabled；显式启动后的 READY 与原 TLS 指纹一致。三个服务停机且禁用，隔离现场正常停放。
+
+新发行包按当前 Git 生成，核对原正式中心包的 207 项 Rust、迁移和 Web 编译输入后，重用与原包摘要匹配的 ELF 及三个 Web 文件。现场中心仍为未初始化数据库的本机设置态；含真实 PostgreSQL 任务的换版、进一步配置中断、命名实例、其他 launcher/provider 与全六组件矩阵继续内部待办。原三现场、个人文件和 7fd 禁用停机及 41 输入/16 回执保持。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-console-online-maintenance-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Native 中心安装器在受限宿主核验运行程序
 
 console 45a973e 在管理员读取内核程序链接被拒时，以固定中心账号、空附加组、空 capabilities 和 NNP 1 核对同一数字 PID 的程序摘要。已安装包的来源证明和精确 TLS 叶证书检验仍必需，成功探测后再次核对 systemd 原 MainPID 和 InvocationID。读不出原摘要、摘要不匹配或运行代次变化均不会返回 READY。
