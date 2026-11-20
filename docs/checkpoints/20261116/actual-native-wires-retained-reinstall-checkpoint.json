@@ -268,5 +268,144 @@
       }
     },
     "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/clock-sync-confirmation/event-order/parked-readback.py"
+  },
+  "h2ProviderFileAcrossCoreUpgrade": {
+    "source": "5e80d67bd651f7057171363c0e1923b1e7ac993d",
+    "tree": "bf9dcae41dde12571f7813386c2429a6402be4a8",
+    "prior": "d0f5bed692",
+    "archive": "272d1d4c57656b54ac317ae80fcf39650456b6394adf6d2eda5fbd90688c0992",
+    "h2Bundle": "8b562d227bf5f0fcef6267131e13c3c5d4e46929334e7e7a1937c2aa2cd00b8d",
+    "packagedProviderTests": 42,
+    "reactor": {
+      "commit": "5e80d67bd651f7057171363c0e1923b1e7ac993d",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:45 min",
+      "testTotals": {
+        "tests": 2141,
+        "passed": 2139,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.4,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.598 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "a7b72f41e0149c5c2a8a44f894c95c6161817a1d4070c8212ecdcf71eb640586"
+    },
+    "originalRoot": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "databaseAcrossUnpack": {
+      "before": {
+        "sha256": "45ae12116a7ff4bc3e8ad5d5f00b83513db1b0c392f2952971e97a713ce3f2ad",
+        "meta": "39|6636086|600|997|995|1|20480|2026-11-20 20:15:38.848443103 +0000|2026-11-20 20:15:38.848443103 +0000"
+      },
+      "after": {
+        "sha256": "45ae12116a7ff4bc3e8ad5d5f00b83513db1b0c392f2952971e97a713ce3f2ad",
+        "meta": "39|6637105|600|997|995|1|20480|2026-11-20 20:15:38.848443103 +0000|2026-11-20 20:15:52.533132123 +0000"
+      }
+    },
+    "storedRowWrittenOnce": true,
+    "readBackWithOriginalCredentialAfterRejection": true,
+    "oldMain": {
+      "unit": {
+        "MainPID": "897",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "b69517e456e54ee291bc1b2a65595271"
+      },
+      "ticks": "39166780",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001402",
+      "nnp": "1"
+    },
+    "newMain": {
+      "unit": {
+        "MainPID": "8884",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "d6227aa67ade47d6acb5115e13a97b18"
+      },
+      "ticks": "39173053",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001402",
+      "nnp": "1"
+    },
+    "observer": "The upgrade replaced the generated plugins directory. Reinstalled the same observer SHA before starting the new Main.",
+    "coldReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "protectedFilesExact": 13,
+      "originalSubmitWithdrawn": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T20:15:26.900908738Z",
+        "FinishedAt": "2026-11-20T20:16:46.629538975Z"
+      }
+    },
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/h2-file-provider/parked-readback.py",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/h2-file-provider",
+    "evidenceSha256": {
+      "package.json": "0f069425288446d62b2ae4144cdb58cd1286b5b5804462277bb43367138c9339",
+      "install.log": "4dd7bff259983dbfde64f168ddc4425498232759c69262c4094b65dd1f443286",
+      "seed-intent.json": "42373eb42e54b7ed565dce9ad4ec9469e664fead67ad96685a8c7c9dc7eb7c3d",
+      "seed-result.json": "e3d349acca7402d828ca152788c4854ccc4466e5558e12f0bacf79addb153126",
+      "seed-stopped.json": "22547cb52a0ce3b93def38a51f5e7ed54db1340a2399ee59ae473b988a8545fb",
+      "upgrade-core-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "upgraded.json": "0a3ac252230b64c80ba8955277f67f5eef4c6cd90462ae103800a017146d672c",
+      "observer-restored.json": "91cf3dfc3342d73f05edf95c860476fefe5a60931ef9cad3ba417672e7ddd1cd",
+      "recover-intent.json": "ce3aabe88553b6b109ee78a7ee03006f8f1c69137ef941c2ef61722199d53d48",
+      "recover-result.json": "a476473d6cbe84a276b0bafb4bae98934fe2b5d9e78f11a3fcfec3138d7157de",
+      "recover-stopped.json": "aed6b3e8b23613ee0eeb6ef5f5e5ea09f9cfc7d19ef7c60fa23c488903b6d7b4",
+      "final-check.json": "de8455cb1eae71796d0fb7cb5ae73a8a13d91c61174144adba8383844fddc80c",
+      "parked.json": "f766b3fbf745c92f7814658c93812b5e2bbcf86ff16f39038e2900f025a25e23",
+      "offline-readback.json": "afe0a9ff2aa5ffa624cf3a6e6dfe759f48ef9f7d5dde5eca0665126061050644",
+      "core-osgi-result.json": "9c17ed843d25cb7211caf3db828f83b37f2704539c3afda8921d2ae57a951bd6",
+      "original-three-after.json": "1e271e97ec03ab16bd800318def2c1f5535bb54aa16c7c87dce7b9bc1db7a7e9",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "FileProviderProbe.java": "c3b760e99f8fc1dc982623efb92ee8b9cae92b1b8f7f1b4b8db54dd86829c062",
+      "probe.jar": "6103c3f9632510530db39b327a42f4031e26fa090bf99650765a5e7e8c01e0c4"
+    }
   }
 }

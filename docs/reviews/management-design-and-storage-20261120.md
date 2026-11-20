@@ -36,6 +36,8 @@
 | Wires | 保留式移除和分阶段重装后，正式 Main 读回原 Timer→Logger 图，Logger 再次收到消息，原图仅提交一次。[原图重装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 联合配置中断有另一套现场及原 Root。[六组件转换记录](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) |
 | Agent | 同 Root 实际经过移除、purge、解包及重装，另有已绑定和未绑定场景。[保留式维护记录](../checkpoints/20261116/actual-native-agent-retained-removal-checkpoint.json) | 续接前要确认原注册身份、业务记录和 launcher 模式。 |
 
+H2 文件库提供了一个只有跨升级才看得清的风险。旧版遇到首次打开失败会删除数据库重试，凭据不匹配也可能丢失业务行。六组件的旧 Main 建库、写入一次业务记录，原地升级后的 Main 在拒绝错误凭据后恢复原凭据，再次读回同一行。整个场景复用 Wires 中断恢复的原容器和卷。[H2 实装与停机读回](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 这次验证启用中的 DNS 复用了原六组件容器、已有 Core 工作树和 Maven 缓存。修复后的 Core deb 为 204,224,080 字节，逐项核对了运行时和恢复工具中的两份 XML provider JAR。收尾从测试容器移除了已核对宿主原件的两个临时 deb，共 213,605,954 字节。[本轮安装与空间记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json)
 
 ## 磁盘增长的实测解释

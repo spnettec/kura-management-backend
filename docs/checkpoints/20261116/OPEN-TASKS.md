@@ -1,3 +1,7 @@
+## 2026-11-21 六组件正式 Main 保留 H2 文件库及原凭据
+
+Core `5e80d67bd6` 修复 H2 provider 首次打开文件库失败时删除原库的问题，并正确取消重新配置前的 checkpoint 与 defrag 定时任务。原六组件 Main 创建独立 H2 文件库，通过 Kura 配置工厂提交一次凭据，写入一条记录。Core 原地升级期间关闭的数据库 SHA-256 保持。新 Main 先读回原记录，临时重开凭据被拒绝后恢复原配置，再次读到相同业务行。仅校验当前 H2 文件 provider。该 Root 的六包、13 份文件已在正常停机状态只读核对。JDK 21 本模块 42 项、Core/OSGi 完整 82 模块 2139 项通过、2 项跳过。冻结 0/12。[业务读回与最新停机现场](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 NTP 确认时间与 Wires 包跨容器停机续配
 
 Core `abefdec533` 修复公开 ClockService 在调时尚未确认时就报告同步时间的问题。回环 UDP 回归复现旧行为，新实现只在当前 provider 的系统时钟得到确认后推进时间。ARM64 正式 Main 收到一包有效 NTP 回复，时钟 actor 返回 FAILED / OS_ERROR / EPERM。公开读数仍为空，2.4 秒内无第二个请求，原停用配置恢复。JDK 21 时钟模块 35 项，完整 Core/OSGi 82 模块共 2138 项通过、2 项跳过。Parallels 原静态 Main、15 份历史文件及八个停用单元的围栏已核对。完整 Main 对虚拟 DS1307 的正向写入仍待验。[时钟实装和原 Root 核对](actual-registered-main-clock-and-purge-checkpoint.json)
