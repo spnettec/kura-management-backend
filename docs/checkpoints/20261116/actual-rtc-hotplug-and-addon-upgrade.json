@@ -465,6 +465,73 @@
       "Error": "",
       "StartedAt": "2026-11-20T14:30:18.076033956Z",
       "FinishedAt": "2026-11-20T14:31:26.905601897Z"
-    }
+    },
+    "debianArm64TestLog": "center-held-completion/package-suite-trixie.log"
+  },
+  "agentOriginalCompletion": {
+    "installedCommit": "e28abfa2fd2d3d12ad38b7ecb75cc1ff9386a585",
+    "refusalMessageCompatibilityCommit": "ab1cf33ef0c9f09db5ca7e1d55365694c3a620bf",
+    "packageVersion": "0.1.0~cohort20261120143330.e28abfa-1",
+    "packageSha256": "5658f41728d9224a5e0164b99b071172bb1aa1d70948587ff3522883689f0db5",
+    "compileInputs": 218,
+    "sourceCompletionControllers": [
+      "source/companion",
+      "Kura peer",
+      "material",
+      "remote switch",
+      "transport"
+    ],
+    "container": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "originalInitialization": "c5748480-7ce3-40f2-83b1-b24a41032d89",
+    "operation": "8945ed3f-4220-46c8-be4b-16e9864373ad",
+    "initialAdmission": "rejected before publication; docker cp retained host UID/GID",
+    "pendingAndRequestDirectoryAbsentBeforeCorrection": true,
+    "correctedOnlyNewArchiveOwnership": true,
+    "dpkgUnpackDispatches": 1,
+    "dpkgConfigureDispatches": 1,
+    "unpacked": {
+      "version": "0.1.0~cohort20261120143330.e28abfa-1",
+      "masked": "masked-runtime",
+      "state": "unpacked"
+    },
+    "settled": {
+      "schemaVersion": 1,
+      "requestId": "8945ed3f-4220-46c8-be4b-16e9864373ad",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "replayed": false
+    },
+    "previousProtectedFiles": 10,
+    "centerReceipts": 2,
+    "centerWasContinuousDuringAgentUpgrade": true,
+    "parkedExitCode": 0,
+    "unitTests": {
+      "platforms": [
+        "Debian 13 ARM64",
+        "Alpine ARM64"
+      ],
+      "passedPerPlatform": 323,
+      "suiteSkippedPerPlatform": 2,
+      "capabilityDependentExcludedPerPlatform": 2,
+      "initialUnfilteredRunFailures": 2,
+      "initialUnfilteredRunErrors": 4
+    },
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/agent-original-completion"
+  },
+  "cloudJavaProperties": {
+    "commit": "b7d280f3401a72a2562fc371c27471a60eb22e7c",
+    "tree": "62918295733d8e20cd98a4b9028f6035ed59b460",
+    "package": "kura-cloud_3.0.0~git202611201440.b7d280f-1_all.deb",
+    "sha256": "caa7b575faf1bab29454a018e04a6975b7abd3646f73dd11217ae3aae5bd2ef9",
+    "javaBuild": 21,
+    "distribution": "Debian 13 ARM64",
+    "dpkgUnpacked": true,
+    "packagedScriptsMatchSource": true,
+    "previousJavaMismatches": 2,
+    "javaPropertyComparisonsPassed": 14,
+    "filesWithAndWithoutFinalLineBreakAndContinuations": true,
+    "originalCustomerConfigurationUsed": false,
+    "dpkgConfigureRemovePurgeOnSixComponentRoot": false,
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/sibling-maintenance/cloud-properties"
   }
 }
