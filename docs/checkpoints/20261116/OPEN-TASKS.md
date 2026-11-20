@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — Core preinst 旧树副本发布前中断恢复
+
+Core 4f71bda2b3 将旧数据复制到私有目录。暂存记录绑定原维护围栏、Root 和旧目录身份、incoming preinst 指纹与两侧版本。原子发布 .kura-preserve 前须全部复制成功并同步。再次 unpack 只清理与同一 Root、源目录、包和围栏匹配的未发布暂存。已存在的正式恢复副本及历史保留副本仍拒绝覆盖。
+
+在新隔离 Debian 13 ARM64 Root 从 Git 用 JDK 21 构建并实装两代 Core。data 源文件共 3,400,000 字节，真实 dpkg 的 preinst 只写出 1 MiB 前缀时中断。正式恢复目录未出现，dpkg 保留旧包 installed。原 user/data/packages/log 四份文件的内容、inode 和所测元数据，原 AES 凭据、旧维护历史及原围栏保持。沿同一 Root、boot、原包和原围栏继续 unpack。仅弃用有原 HMAC 记录的未发布暂存，从完整旧树生成全量副本，再原子发布。随后标准 configure 成功，四份文件的内容、属主、权限及时间戳复核一致，18 份 configure 记录通过 HMAC 核验，旧历史保持，仅新增同编号维护回执。ARM64 Linux 定向 65 项通过，夹具 Main 全程禁用且未启动，最终正常停放。
+
+正式副本已发布后的中断、跨 boot、其余 Core/OSGi、typed brokers 和完整六组件生命周期矩阵继续内部待办。12 父项 0/12，external deferred 仍仅原三项。原三现场、25 份个人文件和 7fd 的 41 输入/16 回执保持。见 [实际检查点](actual-core-preinst-capture-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — PREPARED 中途写入 sibling 与安装顺序恢复
 
 Core 63b2091e35 将缺失 sibling 的回拷改为按原维护围栏暂存，写完并同步后在同一文件系统原子发布目录，保留已经由 dpkg 解包的目录。安装顺序记录回拷失败会保留 PREPARED 和原恢复副本。首次实装在 GWT JAR 实际写出 1 MiB 后中断。续接时 generation-reader 扫到私有区中的半截 JAR 并拒绝。该现场保持半配置，原副本和编号保留。Core 33a3cfef85 把暂存移出 reader 扫描范围，配对规则保持。
