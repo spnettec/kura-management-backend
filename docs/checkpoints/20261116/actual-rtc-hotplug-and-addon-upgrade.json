@@ -1143,5 +1143,69 @@
     "latestParkedEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-position-osgi-fixed/parked.json",
     "originalThreeEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-position-osgi-fixed/original-three-after.json",
     "externalHardwareTestPerformed": false
+  },
+  "interruptedTypedBrokerIntent": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/typed-broker-interrupted-intent",
+    "package": {
+      "archive": "kura_6.0.0~git20261120154141.db514f2-1_arm64.deb",
+      "bytes": 204214708,
+      "sha256": "eb661cbe97d45de93d7ba8160472079a02917d8e242f0dbd96641285ae6df9d9",
+      "cohorts": {
+        "bind-service": {
+          "files": 15,
+          "sha256": "336776ec43cd8a2268f4cf8ade7a3f48a9a21bac9b9bb1cbe3d2c9bb6dee84ee"
+        },
+        "dhcp-service": {
+          "files": 16,
+          "sha256": "0480536e87c2044fc90fd1377a2a7de18ed38813180061c05c217c4f38acb013"
+        },
+        "modem-reset": {
+          "files": 13,
+          "sha256": "75eb3c91e8a57a72266b715c94216007f970d0b05976afe04d44be5c05e9cafb"
+        }
+      },
+      "commit": "db514f2a57eba7681cfec4e40954abe3edf6ed4e",
+      "tree": "750b4ec33eb017a68c37c99f96a822415e01eb14"
+    },
+    "linuxArm64TestsPassed": 59,
+    "oldSourceWithNewRegression": "REFUSED for same-Root truncated intent",
+    "realShortWrite": {
+      "arch": "aarch64",
+      "results": [
+        {
+          "actor": "bind",
+          "operation": "6944f1f0-b45c-435c-9023-0b68f0c006a9",
+          "singleMutationFrames": 1,
+          "originalOutcomeFrames": 1,
+          "reply": "UNKNOWN",
+          "query": "UNKNOWN",
+          "intentBytes": 128,
+          "inode": 6,
+          "intentSha256": "0b7870885e329cdfdd4396b8ef3a301993eea03e449841490bdb06420af4bd5e",
+          "markerPreserved": true,
+          "daemonConfigChecked": false,
+          "serviceJobs": 0
+        },
+        {
+          "actor": "dhcp",
+          "operation": "8a736fa2-e0ca-44b4-a70d-1201983f9dcc",
+          "singleMutationFrames": 1,
+          "originalOutcomeFrames": 1,
+          "reply": "UNKNOWN",
+          "query": "UNKNOWN",
+          "intentBytes": 128,
+          "inode": 13,
+          "intentSha256": "7ed0b9f1708153e4fe2e59b592d8acab927636f1087579476c9338e1a6edd7d3",
+          "markerPreserved": true,
+          "daemonConfigChecked": true,
+          "serviceJobs": 0
+        }
+      ],
+      "peerAndUnitChecks": "fixture substitutes; actual socketpair, SO_PEERPIDFD, framing, state binding, kernel write limit and journal",
+      "hardPowerOrFullDisk": false
+    },
+    "modemScope": "shared classifier, packaging and regression tests; no modem reset or GPS command issued",
+    "releaseInstallation": "Packaged inputs exercised in ephemeral Linux processes. This specific candidate has not been installed in the retained six-component Main.",
+    "originals": ".management-close-20261116/core-rtc-hotplug-20261120/typed-broker-interrupted-intent/original-three-after.json"
   }
 }

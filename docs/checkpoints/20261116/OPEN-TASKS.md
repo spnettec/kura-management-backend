@@ -1,3 +1,9 @@
+## 2026-11-20 BIND、DHCP 原意图写入途中保留操作编号
+
+Core `db514f2a57` 修复写入失败后的回执分类。旧实现将同 Root 下无法解析的部分意图报告为 REFUSED，BIND Java 调用者会据此清除原编号。BIND、DHCP 和 modem 现在共用同一处理逻辑。只有在确认原 Root、固定原目录并查明该编号的意图文件缺席后，才报告写入被拒绝。原 Root 的只读查询遇到可安全读取但无法解码的意图或结果，返回 UNKNOWN。Root、文件所有权、权限以及可解析记录的配对校验继续生效。
+
+旧代码上的新增回归复现了误判。Debian ARM64 定向回归 59 项通过，三个 broker 的成套文件与当前 Core deb 逐项配对。用包内脚本分别派发一次合成 BIND 和 DHCP 请求，内核实际在意图的第 128 字节截停写入。两次原请求和同编号只读查询均得到 UNKNOWN，原文件保持，无服务作业、结果或送达记录。DHCP 使用发行版 dnsmasq 实际检查了配置。此项使用隔离进程、真实本机 socket 和测试用 peer／unit 条件；未在六组件正式 Main 安装本版本，未执行 modem 复位。冻结 0/12，原三项外部延期保持。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 正式 Main 的 OSGi 引用和串口定位服务修复
 
 在六组件原现场 `60df`，正式 Main 相隔 5 秒的两次 SCR 采样完全一致。IPv4、IPv6 本地防火墙组件均 active，对应的 agent 实现等待另一配置。Cloud Deployment 缺 MQTT 传输，ModemManager 定位缺 Position 条件。另有 20 条 require 声明没有实例，1 条 optional 声明 WebsecurityFilter 在包中默认禁用。此次没有切换防火墙配置。
