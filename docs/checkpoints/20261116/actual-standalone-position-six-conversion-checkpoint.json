@@ -1,0 +1,204 @@
+{
+  "date": "2026-11-21",
+  "purpose": "Debian ARM64 installed standalone Main, Position provider upgrade, conversion to six gateway packages and return to standalone Core on one continuously running Root",
+  "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/standalone-position-main",
+  "root": {
+    "id": "556d6e892febc940ac176a0952812801ebf8f9da03547b8064cc19a18eb8c6d9",
+    "mount": "1048582:6402571",
+    "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+  },
+  "java": "openjdk version \"21.0.13\" 2026-10-20",
+  "core": {
+    "commit": "bdf7690c8e11a4ffa58257bc6d7215d46f33bbc4",
+    "tree": "593247f9894df1cfc406e729bfb18d23579f4260",
+    "archive": "kura_6.0.0~git20261120155315.bdf7690-1_arm64.deb",
+    "sha256": "9a534cf0ef6aff2687121e3956b9c7f13e69d61540d94221a4aa0208f04e36d1"
+  },
+  "position": {
+    "oldCommit": "e014454a3f025d7d92fbab261362494a3afb7621",
+    "newCommit": "fd742d9b97b3215f6c0e750e521739e8d1b1309e",
+    "newSha256": "1686a730f448fbed479131195d70ca612c3f52bbd186c8c0938e4cf7a78c3948",
+    "before": "SerialDevicePositionProvider state 2, missing org.osgi.service.io.ConnectionFactory",
+    "after": "SerialDevicePositionProvider state 8 with ConnectionFactory bound to org.eclipse.kura.core.comm. Two registered position providers.",
+    "remove": "config-files; subsequent official Main had no Linux Position provider",
+    "purge": "not-installed; gpsd.socket original invocation unchanged",
+    "sampleScope": "Two five-second-spaced samples per Main start. Other REST components were still activating in the first baseline sample; assertion applies to Position provider and Core factory records.",
+    "serialHardwareTested": false
+  },
+  "addedPackages": {
+    "kura-networking": {
+      "version": "3.0.0~git202611201617.e01f6ec-1",
+      "sha256": "d3e4c97de8feded272a8acbd4c48fc8a4858588be80690bbdad8f1d74368d312",
+      "commit": "e01f6ec44bf2d5746089071322fe6c0992b9259e"
+    },
+    "kura-management-ui": {
+      "version": "3.0.0~git202611201623.a2ed695-1",
+      "sha256": "2173b07eb7ffc2e94a32dba3e39fb3b1119befbe33d23401321b82110754ba65",
+      "commit": "a2ed6951ede3ccc7787d2858fe3cf438440e6add"
+    },
+    "kura-deployment": {
+      "version": "2.0.0~git202611201456.3772936-1",
+      "sha256": "e363fca545e09da3daee8dea2e5adbc89f4f5a993d4e6958da612eae7a42bd14",
+      "commit": "377293634e426fe4a939fcc5273c15e3d97741b5"
+    },
+    "kura-wires": {
+      "version": "3.0.0~git202611201623.5605b6b-1",
+      "sha256": "f0acfacfec276be93306d1691e3915785f4eefbad1600f24315e0969f4f750dc",
+      "commit": "5605b6b70b785f70d5c13afab74343afc7a73114"
+    },
+    "kura-management-agent": {
+      "version": "0.1.0~cohort20261120163743.ab1cf33-1",
+      "sha256": "27392d0a42d078e0be615b875ea32098f5aaa78b142b94e3992a63f2676d8a1a",
+      "commit": "ab1cf33ef0c9f09db5ca7e1d55365694c3a620bf"
+    }
+  },
+  "agentBuild": {
+    "reusedVerifiedInputs": 226,
+    "nativeBinarySha256": "d028e5a9dc72baaf4c03aabfdc4ea5223373756bd2f708523cc34e051e9ccc3b",
+    "sourceTree": "05adba66135d95c21ce2eb68212797f8aa272cc2",
+    "initialization": "absent; disabled and inactive",
+    "javaBridge": "ACTIVE in Core after installing the native package"
+  },
+  "conversion": {
+    "initialState": "kura-core installed, five candidate packages absent",
+    "unpack": "all five unpacked; original four tracked files exact",
+    "interrupted": {
+      "code": 1,
+      "dpkg": 5607,
+      "interruptedWiresLockWorker": 5632,
+      "lock": [
+        1048582,
+        6404355
+      ],
+      "states": {
+        "kura-wires": "half-configured",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-management-agent": "installed"
+      },
+      "order": [
+        "networking",
+        "management-ui",
+        "deployment"
+      ]
+    },
+    "resumed": "only dpkg --configure kura-wires; all six installed; dpkg audit empty",
+    "order": [
+      "networking",
+      "management-ui",
+      "deployment",
+      "wires"
+    ],
+    "main": {
+      "unit": {
+        "MainPID": "6867",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "131e08f4b7774e789f59c9c24c3be77e"
+      },
+      "ticks": "37870989",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001402",
+      "nnp": "1"
+    },
+    "bundleLocations": {
+      "org.eclipse.kura.core": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.core.deployment": "initial@reference:file:../kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.hook.file.move.provider": "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.management.bridge": "initial@reference:file:../../../usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar",
+      "org.eclipse.kura.nm": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.web2": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.wire.provider": "initial@reference:file:../kura/siblings/wires/4s/org.eclipse.kura.wire.provider-3.0.0-SNAPSHOT.jar"
+    }
+  },
+  "returnToStandalone": {
+    "remove": "all five config-files",
+    "purge": "all five not-installed; dpkg audit empty. Dpkg warned about four shared nonempty directories left in place.",
+    "bundleCounts": [
+      216,
+      216
+    ],
+    "removedBundleNames": [
+      "org.eclipse.kura.core.deployment",
+      "org.eclipse.kura.hook.file.move.provider",
+      "org.eclipse.kura.management.bridge",
+      "org.eclipse.kura.nm",
+      "org.eclipse.kura.web2",
+      "org.eclipse.kura.wire.provider"
+    ],
+    "main": {
+      "unit": {
+        "MainPID": "15036",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "a7adcf3b06d849c8b38bd369d9375ce0"
+      },
+      "ticks": "37877687",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001402",
+      "nnp": "1"
+    },
+    "dropIns": [],
+    "effectiveCapabilitiesBeforeDuringAndAfter": "0000000000001402",
+    "coreActive": true
+  },
+  "statePreservation": {
+    "coreKeyProvisionAndSnapshotExact": true,
+    "networkingProperties": "All original 799 bytes retained. Installing Networking appended two true flags. After removal/purge the marker and final false flags remained.",
+    "duplicateDebCopiesRetiredBytes": 375009702,
+    "systemdGuestExitCode": 0,
+    "protectedOriginals": {
+      "original13StartTimesExact": true,
+      "originalThree": "original-three-after.json",
+      "personalFilesExact": 25,
+      "original7fdStateExact": true,
+      "original7fdLastStopped": {
+        "inputs": 41,
+        "receipts": 16
+      },
+      "originalSixBindDhcpStateExact": true,
+      "primaryAndWip18ExactBeforeCheckpoint": true,
+      "precedingGitInventorySha256": "e46dc2f1e796961f2ee4b96b32e08263c7e33b544c8b854aa4d6858c0b907755"
+    }
+  },
+  "qualification": "Independent new test installation. The original six-component Root remains parked after its earlier device-number mismatch. No initialized Agent, registered business cohort, physical Position device, or full Main-to-RTC write tested here.",
+  "parents": {
+    "closed": 0,
+    "total": 12,
+    "frozenSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7"
+  },
+  "externalDeferred": [
+    "real NetworkManager/cloud-init/physical hardware handoff",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "receiptSha256": {
+    "base.json": "d44aea21f7431af5b6d9167a21dca699a933c6b94f566078608aaffd4a98e276",
+    "old-scr.json": "312b12b9bb184af37b62ae260676c409f7ee75415caea2c5968ec67ad0c76052",
+    "new-scr.json": "d3ee47d82fe2150603ee1413d083877b32b4c47598a14c2db4ae7b3044ef529a",
+    "removed.json": "d37596806c6f9c66997745e60f41630e5a4e865e9d07558358364f0383ce578a",
+    "removed-scr.json": "fc9a3576ad53960a2501e8f85d47499616776903ee7f9c4ff6a4ab961cb244a1",
+    "purged.json": "f87fefdf654b0c65f55bab1186566584b4021b8b80e515fa84e331c9be093d66",
+    "conversion-packages.json": "6e110636f216dae890bf9e2deb9557ddcd0befcebcbe4e7c3dc1d710f7e0a6ca",
+    "before-conversion.json": "effa12bf910a05481e545a35ec7f9f0203119bbf238a5ab218257ca308bd0a81",
+    "five-unpacked.json": "75bac2cf863a1beb24dcc609cfd2103541cbaae24785bf67955221fa12eaa1d8",
+    "networking-configured.json": "be7313c4b4ceb0c834b45f34eadba8e2e0e27636901a1be28486d402f4090764",
+    "network-properties-diff.json": "a32330d7abc396ce1a58407a9b94cde2de85e1fd58b650dba87f7bf848533e80",
+    "wire-joint-result.json": "c8e5d555587cf472711a199912ccfc6e1ce5d8e9b7cbf16e9bc3a57b26a154a1",
+    "after-configure-interruption.json": "d13a1cecf4405fb392a998843555bf7145b7dbb8fa77db809ade908a6b2b873a",
+    "resume-original-wires-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+    "all-configured.json": "2a55094524a57dbe85fa1c073dd3825266f99288b55b5df667b702b2a2061589",
+    "converted-main.json": "d42565386e01aafc641a6e1d3d5db826c00af47eaeafdb0165f74af2d3970500",
+    "detach-five-result.json": "ae88573862fa890f936c39359a16957b2980065457109fdfbba1db250f0132d1",
+    "purge-detached-result.json": "3f0ffbd40d1754a9bf7c0799a6060c699258d234646aafa4ea23702a3876a454",
+    "standalone-returned.json": "86e4b11e77618d69de81ca84d3d040f26516b8023bed204f6f16c58aba89855b",
+    "final-site.json": "3708ebb789e9a83228455cbce02f68edac57c009fd39cfe8ecbfbaafe3be612e",
+    "parked.json": "7bb8604784fff1d48aa215ffc19bbbdf4f7a6b470314d3ebb38fea09ff3224bc",
+    "original-three-after.json": "075341e9562b8008302a96d8fba0a9fd766f2bafd68f9cc0f570ac19cbb88b99",
+    "preservation.json": "ec3097bed9d1bd5ed2b21e37c1f8e9668502bf23e9b2e8110c5e4e24198ad040"
+  }
+}

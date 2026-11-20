@@ -1,3 +1,11 @@
+## 2026-11-21 独立 Core 的 Position 升级、六组件转换中断与拆回
+
+在新的 Debian 13 ARM64 测试安装上，Core `bdf7690c8e` 用发行版 systemd 单元独立启动。旧 Position 的串口 provider 缺少连接工厂，原地升级至 `fd742d9` 后，正式 Main 内的串口 provider 与 Core 工厂都为 active，绑定指向 `org.eclipse.kura.core.comm`。remove 后再次启动 Main，定位 provider 消失；purge 完成。gpsd socket 的 invocation 保持。此次观察了真实服务绑定，未打开物理串口。
+
+同一 Root 将独立 Core 转为六个网关包。五个新增包同时解包，Networking 先完成配置，随后在四包联合配置中，向等待注册表锁的 Wires 子进程发出 SIGTERM。发送前已核对其进程祖先及锁的设备号和 inode。dpkg 返回 1，Wires 留在 half-configured，GWT、Deployment、agent 均完成配置。只续配原 Wires 后六包 installed，dpkg audit 为空。正式 Main 加载 Core、Networking、GWT、Deployment、FileMove、Wires 和 agent bridge 七个指定 bundle。此时 agent 从未初始化，仍 disabled/inactive。
+
+五包联合 remove 全部进入 config-files，联合 purge 后全部退出安装。正式 Main 随后独立启动，两次观察各 216 个 bundle，Core active，六个附加 bundle 均已消失，Networking drop-in 已撤下。Core 密钥、发放记录、原快照的内容及元数据一致。Networking 安装时在原 799 字节属性后追加两个 true，卸载后最终值均为 false。现场以 exit 0 停机，核实宿主原件后移除 12 份夹具内重复 deb（375,009,702 字节）。原六组件现场此前的 Root 配对拒绝继续保留；沿原 Root 的绑定业务与剩余 provider、launcher、typed brokers 和完整 Main/RTC 仍待验。冻结 0/12。[实装检查点](actual-standalone-position-six-conversion-checkpoint.json)
+
 ## 2026-11-21 十个附加包的 dpkg 回滚与 GWT 配置中断恢复
 
 在同一隔离 Debian 13 ARM64 Root，旧 GWT 与 Wires 遇到后继包 preinst 拒绝后，dpkg 将原本 installed 的包留在 unpacked。两包原地装入修订版恢复。十个缺少 prerm 的附加包现已能完成 abort-upgrade、abort-remove、abort-deconfigure，实测 30 次回调。后继包仍被拒绝，原包均保持 installed。八包联合验证中，81 份文件指纹在每类回滚前后吻合。构建复用现有 Java 产物，只重新组装发行包。
