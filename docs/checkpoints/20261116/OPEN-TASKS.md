@@ -1,3 +1,9 @@
+## 2026-11-20 原 BIND Root 上的联合包升级与正式 Main 锁竞争
+
+在独立 ARM64 夹具 `20b36ea5`，原 Root 的设备号、inode、机器及作用域吻合。实际 dpkg 联合升级 Core 至 `db514f2a57`、Networking 至 `0789499`；原 BIND 五份文件、凭据、密钥及既有包回执逐项吻合，新增一份本次包回执。13 份原配置及测试数据在 Core 恢复复制后 inode、ctime 改变，内容、所有权、模式、大小及 mtime 保持。升级期间 Main 保持 disabled、inactive，named 的 PID 及 invocation 连续。
+
+随后启动该安装的正式 Main，经 OSGi DNS 服务发出一次独立的原目录锁竞争请求。原锁由独立进程实际持有，原调用返回 REFUSED，同 Root 查询该新编号返回 NOT_FOUND。未写入新意图；named 的 invocation 和原五份记录保持。停机后探针已归档。另一次启动准备验证修复版 Position 时，原目录 inode 仍为 4928376，设备号由 1048815 变为 1048582。配对校验拒绝，未查询操作编号、未启动 Main、未发出 dpkg，夹具正常停机。Position 修复版完整安装验收继续待办。原三现场 7 个进程、38 份受保护文件和 6 份运行数据复核通过，冻结闭环 0/12。[实装检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 BIND、DHCP 原意图写入途中保留操作编号
 
 Core `db514f2a57` 修复写入失败后的回执分类。旧实现将同 Root 下无法解析的部分意图报告为 REFUSED，BIND Java 调用者会据此清除原编号。BIND、DHCP 和 modem 现在共用同一处理逻辑。只有在确认原 Root、固定原目录并查明该编号的意图文件缺席后，才报告写入被拒绝。原 Root 的只读查询遇到可安全读取但无法解码的意图或结果，返回 UNKNOWN。Root、文件所有权、权限以及可解析记录的配对校验继续生效。

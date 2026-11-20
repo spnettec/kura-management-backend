@@ -1207,5 +1207,162 @@
     "modemScope": "shared classifier, packaging and regression tests; no modem reset or GPS command issued",
     "releaseInstallation": "Packaged inputs exercised in ephemeral Linux processes. This specific candidate has not been installed in the retained six-component Main.",
     "originals": ".management-close-20261116/core-rtc-hotplug-20261120/typed-broker-interrupted-intent/original-three-after.json"
+  },
+  "installedBindOriginalRootAdmission": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/bind-original-root-admission",
+    "positionAdmissionEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/bind-root-position-provider",
+    "container": "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f",
+    "packages": [
+      "kura-core 6.0.0~git20261120154141.db514f2-1 installed",
+      "kura-networking 3.0.0~git202611200952.0789499-1 installed"
+    ],
+    "maintenance": {
+      "main": {
+        "MainPID": "0",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "named": {
+        "MainPID": "175",
+        "ActiveState": "active",
+        "InvocationID": "5001cecb0a5c46d4a65c92d75fb9febf"
+      },
+      "state": {
+        "bind": {
+          "missing": [],
+          "added": [],
+          "changed": {}
+        },
+        "historic": {
+          "missing": [],
+          "added": [
+            "/var/lib/kura-key-service/package-history/96bcf02e-a836-485d-b8b5-b9f272550d46.json"
+          ],
+          "changed": {}
+        },
+        "issuer": {
+          "missing": [],
+          "added": [],
+          "changed": {}
+        },
+        "config": {
+          "missing": [],
+          "added": [],
+          "changed": {
+            "/opt/eclipse/kura/data/bind-outcome-proof/acknowledge": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/acknowledged": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/check-fence": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/fenced": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/observed": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/original-ready": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/original-request": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/original-started": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/original-unknown": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/recovery-ready": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/data/bind-outcome-proof/recovery-request": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/user/kura_custom.properties": [
+              2,
+              9
+            ],
+            "/opt/eclipse/kura/user/snapshots/snapshot_0.xml": [
+              2,
+              9
+            ]
+          }
+        }
+      },
+      "packageAuditEmpty": true
+    },
+    "mainProbe": {
+      "main": {
+        "MainPID": "2584",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "1a2877abb35b4ca4a891a94a561db30b"
+      },
+      "providerVersion": "3.0.0.202611200952",
+      "purpose": "caa06fd0-c735-4461-ae68-36e3acc9c626",
+      "reply": "REFUSED",
+      "readOnlyOutcome": "NOT_FOUND",
+      "scopePaired": true,
+      "heldOriginalLock": true,
+      "retainedLedgerExact": 5,
+      "named": {
+        "MainPID": "175",
+        "ActiveState": "active",
+        "InvocationID": "5001cecb0a5c46d4a65c92d75fb9febf"
+      },
+      "cohort": {
+        "files": 15,
+        "sha256": "336776ec43cd8a2268f4cf8ade7a3f48a9a21bac9b9bb1cbe3d2c9bb6dee84ee"
+      }
+    },
+    "originalRoot": "1048815:4928376",
+    "nextBoot": {
+      "id": "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f",
+      "expectedRoot": "1048815:4928376",
+      "observedRoot": "1048582:4928376",
+      "match": false,
+      "main": {
+        "MainPID": "0",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled"
+      },
+      "packages": [
+        "kura-core 6.0.0~git20261120154141.db514f2-1 installed",
+        "kura-networking 3.0.0~git202611200952.0789499-1 installed"
+      ],
+      "operationIdLookups": 0,
+      "packageDispatches": 0
+    },
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T15:50:26.595913662Z",
+      "FinishedAt": "2026-11-20T15:50:26.920630455Z"
+    },
+    "preservedSites": 38,
+    "sixComponentInstance": false
   }
 }
