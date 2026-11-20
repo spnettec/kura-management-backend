@@ -1,0 +1,175 @@
+{
+  "recordedAt": "2026-11-20T09:32:27.198686+00:00",
+  "scope": "Installed PKCS11 CRL cache and Jetty mutual TLS across a clean offline restart",
+  "source": {
+    "core": "4535c821c6735b7f4fa31ffedb80274d24588e58",
+    "coreTree": "2b44214a408f234445554204aca02c10e3d64bef",
+    "previousConsole": "817ed51aba8abdd084a515809a3ffb17bb83587f"
+  },
+  "package": {
+    "sha256": "929a9c42eabc36f9da3f32bfc650d470ecfd2d1cdbe0a90053e9f380b632ae23",
+    "git": "4535c821c6735b7f4fa31ffedb80274d24588e58",
+    "tree": "2b44214a408f234445554204aca02c10e3d64bef",
+    "version": "6.0.0~git20261120075023.4535c82-1"
+  },
+  "platform": {
+    "distribution": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "softHsm": "2.6.1-3",
+    "network": "none",
+    "hostMounts": 0,
+    "softwareTokenCount": 1
+  },
+  "previousParkedState": {
+    "id": "226d6468e73c7ac43e8191d5a441d4fc9f20bb0c35b20b882e8285ce273a7592",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T07:54:25.956786565Z",
+      "FinishedAt": "2026-11-20T09:28:43.902998479Z"
+    }
+  },
+  "sameRootVerifiedBeforeMain": {
+    "root": {
+      "cid": "226d6468e73c7ac43e8191d5a441d4fc9f20bb0c35b20b882e8285ce273a7592",
+      "metadata": "1048815:6030138",
+      "machineSha256": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "unit": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "loadLogOccurrences": 0,
+    "inputFingerprintsExact": 14,
+    "originOffline": true
+  },
+  "runtime": {
+    "root": {
+      "cid": "226d6468e73c7ac43e8191d5a441d4fc9f20bb0c35b20b882e8285ce273a7592",
+      "metadata": "1048815:6030138",
+      "machineSha256": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "unit": {
+      "MainPID": "845",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "fc0f2dcd061a4341938f49ee585c2c5e",
+      "ticks": "36239758",
+      "uid": [
+        "997",
+        "997",
+        "997",
+        "997"
+      ],
+      "noNewPrivileges": 1
+    },
+    "originOffline": true,
+    "cachedDerSha256": "e5a89bb4ad4c93bb2c1bcd56862a58b6a17b552bc68b6e8610dddd4ac483899d",
+    "originalPlanId": "op-783a6945-e8e4-4d83-9ece-18b8f14f3d2a",
+    "recordsExact": 4,
+    "protectedFingerprintsExact": 14,
+    "reloadLogOccurrences": 1,
+    "tlsOutcomes": {
+      "TLSv1_2": {
+        "survivor": {
+          "result": "http",
+          "status": 404,
+          "tls": "TLSv1.2",
+          "peerSha256": "56e0e0c21d7ca43136bf4c7e43754fb761c1d67f14b4f49e6b3ab516ca2ecb84"
+        },
+        "revocable": {
+          "result": "tls-alert",
+          "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+          "verifyMessage": null
+        },
+        "none": {
+          "result": "tls-alert",
+          "reason": "SSLV3_ALERT_HANDSHAKE_FAILURE",
+          "verifyMessage": null
+        },
+        "untrusted": {
+          "result": "tls-alert",
+          "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+          "verifyMessage": null
+        }
+      },
+      "TLSv1_3": {
+        "survivor": {
+          "result": "http",
+          "status": 404,
+          "tls": "TLSv1.3",
+          "peerSha256": "56e0e0c21d7ca43136bf4c7e43754fb761c1d67f14b4f49e6b3ab516ca2ecb84"
+        },
+        "revocable": {
+          "result": "tls-alert",
+          "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+          "verifyMessage": null
+        },
+        "none": {
+          "result": "tls-alert",
+          "reason": "TLSV13_ALERT_CERTIFICATE_REQUIRED",
+          "verifyMessage": null
+        },
+        "untrusted": {
+          "result": "tls-alert",
+          "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+          "verifyMessage": null
+        }
+      }
+    },
+    "observationRounds": 13
+  },
+  "replayedConfigurationWrites": 0,
+  "newCrlPublications": 0,
+  "fixtureProbePresentDuringRestart": false,
+  "seedPinFilePresentDuringRestart": false,
+  "exactProtectedFileHashesReadFromStoppedRoot": 14,
+  "fixture": {
+    "id": "226d6468e73c7ac43e8191d5a441d4fc9f20bb0c35b20b882e8285ce273a7592",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T09:31:13.2086747Z",
+      "FinishedAt": "2026-11-20T09:31:28.697321133Z"
+    }
+  },
+  "mainNormallyStoppedAndDisabled": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "shared-slot providers and token removal or replacement",
+    "remaining providers, full Core/OSGi, typed brokers, six-component release matrix and all twelve parents"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}

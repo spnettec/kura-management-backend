@@ -1,3 +1,11 @@
+## 2026-11-20 继续实施 — PKCS#11 签名 CRL 的离线冷启动
+
+复用实装 Core `4535c821c6` 的原隔离 Debian 13 ARM64 Root。原容器重新启动后先核对设备号、Root inode、machine-id 摘要、原已装包及 14 份受保护文件的完整指纹，再显式启动禁用状态下的正式 Main。回环 CRL 源端口全程拒绝连接，配置探针和临时 PIN 文件继续移出运行目录。没有配置派发、令牌重建或 CRL 发布。
+
+新 Main 的日志记录一次原 CRL 载入。首次观察到两种协议均接受未吊销客户端时，TLS 1.2 与 TLS 1.3 都拒绝被吊销客户端、缺证书及不受信客户端。未吊销客户端验证原服务器证书并得到 HTTP 响应，普通 HTTPS 可用。沿用原计划四份持久记录、快照、令牌对象和缓存指纹。正式 Main 保持 disabled，正常停止后再次停放原容器，退出 0，停机后读回 14 份文件。
+
+共享槽位、令牌拔出或替换、全部 provider 重加密、完整 Core/OSGi、其余 typed brokers 和完整六组件生命周期继续内部待办。冻结父项仍 0/12，external deferred 仍仅原三项。原三现场及 7fd 的 41 输入／16 回执保留。见 [离线冷启动检查点](actual-native-core-pkcs11-crl-offline-restart-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式 Main 的 PKCS#11 签名吊销与 Jetty 双向 TLS
 
 隔离 Debian 13 ARM64 Root 用 JDK 21 实装 Core `4535c821c6` 与 SoftHSM2 2.6.1-3。首个 Core 安装在解包时因 ENOSPC 明确退出 1。确认未安装、Main 未启动、原凭据齐全后，磁盘有空间时将同一已核摘要的包在同 Root 续接一次，退出 0。dpkg audit 清空，已装 keystore bundle 与原 Git 配对制品摘要一致。此为本次实装故障恢复，磁盘满／硬断电完整矩阵仍按原台账处理。
