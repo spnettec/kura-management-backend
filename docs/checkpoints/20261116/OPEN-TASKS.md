@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — Core 已发布副本及旧树移出后恢复
+
+Core 4803d29dde 验证已发布副本的 HMAC、Root、boot、原围栏、源树与链接、preinst 指纹及两边版本。确认 Main 停止后，将旧物理运行树整体原子移入私有副本目录。解包前再次进入原 preinst 时，验证并接回同一树，再运行原 provider 和维护准入。已进入 configure 的围栏、外来源树、其他包、其他 boot 和无原记录的旧副本继续拒绝。包安装阶段按已配对脚本位置选择新物理目录，夹具同前缀的相邻目录保持原文件和元数据。
+
+Debian 13 ARM64 用 JDK 21 从 Git 构建两代 Core。在同一实际 dpkg 升级中，先中断于副本发布后、旧树移出前，再中断于旧树移出完成后、dpkg 解包前。两次中断后 dpkg 都保留旧包 installed。正式副本的 inode、四份数据、原 HMAC 记录及围栏精确保持。旧树移出后，旧 prerm 因缺原 broker 代码拒绝，dpkg 切换到新包的 failed-upgrade 路径。配对 preinst 接回旧树，经正常前置检查后继续。全程只生成一次正式副本，最终解包配置成功，18 份 configure 记录通过核验。四类恢复数据、原 AES 和旧维护历史保持，仅新增原编号维护回执。
+
+正式 Main 在 incoming 物理目录运行，回环 HTTPS 探针有实际响应。ARM64 Linux 定向 76 项通过、2 项跳过。新夹具正常停放。dpkg 已开始写入新载荷后的中断、跨 boot、其余 Core/OSGi、typed brokers 和完整六组件生命周期矩阵继续内部待办。父项 0/12，external deferred 仍仅原三项。原三现场、个人文件和 7fd 的 41 输入/16 回执保持。见 [实际检查点](actual-core-preinst-published-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core preinst 旧树副本发布前中断恢复
 
 Core 4f71bda2b3 将旧数据复制到私有目录。暂存记录绑定原维护围栏、Root 和旧目录身份、incoming preinst 指纹与两侧版本。原子发布 .kura-preserve 前须全部复制成功并同步。再次 unpack 只清理与同一 Root、源目录、包和围栏匹配的未发布暂存。已存在的正式恢复副本及历史保留副本仍拒绝覆盖。
