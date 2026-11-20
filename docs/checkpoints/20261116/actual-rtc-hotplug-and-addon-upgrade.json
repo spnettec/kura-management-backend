@@ -615,5 +615,112 @@
     "original13Running": true,
     "original7fdExited": true,
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-clock-quiesce"
+  },
+  "deploymentRuntimeMask": {
+    "package": {
+      "path": "/root/native-wires-upgrade/kura-deployment_2.0.0~git202611201456.3772936-1_all.deb",
+      "version": "2.0.0~git202611201456.3772936-1",
+      "sha256": "e363fca545e09da3daee8dea2e5adbc89f4f5a993d4e6958da612eae7a42bd14",
+      "broker": "59b90a2624ffd1b52e3dcabfdebf9b3bcc4aedcd457e9a1abb9f8827b4d3c77b",
+      "commit": "377293634e426fe4a939fcc5273c15e3d97741b5",
+      "tree": "651363cf6ad9452c830dd8d7069f6c51e066a263"
+    },
+    "maven": {
+      "jdk": 21,
+      "passed": 240,
+      "failures": 0,
+      "skipped": 0
+    },
+    "six": {
+      "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+      "fromVersion": "2.0.0~git202611201404.c93c39e-1",
+      "installed": {
+        "kura-core": "6.0.0~git20261120145024.5f6be61-1",
+        "kura-management-ui": "3.0.0~git202611201404.b62f67a-1",
+        "kura-networking": "3.0.0~git202611200952.0789499-1",
+        "kura-deployment": "2.0.0~git202611201456.3772936-1",
+        "kura-wires": "3.0.0~git202611201404.89d5f57-1",
+        "kura-management-agent": "0.1.0~cohort20261120143330.e28abfa-1",
+        "kura-management-console": "0.1.0~cohort20261120142931.930cab3-1",
+        "kura-management-console-installer": "0.1.0~cohort20261120142931.930cab3-1"
+      },
+      "order": [
+        "networking",
+        "management-ui",
+        "deployment",
+        "wires"
+      ],
+      "fileMoveFence": {
+        "action": "upgrade",
+        "active": "inactive",
+        "enabled": "masked-runtime",
+        "root": "1048582:6123658:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+        "runtimeMask": {
+          "boot": "38663672-c6a8-476d-a08f-437f4ca99f72",
+          "ctimeNs": 1795186779254830016,
+          "device": 2097160,
+          "inode": 260
+        },
+        "schema": 2
+      },
+      "halfConfigured": "half-configured 2.0.0~git202611201456.3772936-1",
+      "originalMaskInodeAndTimestampsRetained": true,
+      "originalMainGateAndFileMoveWereRetained": true,
+      "sourceAndCenterReceiptsPreserved": [
+        2,
+        2
+      ],
+      "protected": 10,
+      "centerPidDuringDpkg": "213",
+      "exitCode": 0
+    },
+    "fileMoveHistoryRootReadback": {
+      "id": "e5f3de3d521da4b60958ce58bf8ffa2c9e32e59ff178c49e256f553f5729ea1d",
+      "actual": "1048582:4507035:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "original": "1048812:4507035:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "matches": false
+    },
+    "fileMoveHistoryParked": 0,
+    "singleProvider": {
+      "id": "d533a299e6a3a4275cafb2c56cb0eefa867b408bbcc9cd53d1ec53ea30546405",
+      "before": "installed 2.0.0~git202611190816.11f4c37-1",
+      "removed": "config-files 2.0.0~git202611201456.3772936-1",
+      "purged": "not-installed",
+      "reinstalled": {
+        "status": "installed 2.0.0~git202611201456.3772936-1",
+        "order": [
+          "deployment"
+        ],
+        "mask": {
+          "stat": "2097161:228:0:0:1:2026-11-20 15:01:42.875197542 +0000",
+          "target": "/dev/null",
+          "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+        },
+        "mainPid": "0",
+        "coreAndThreePublicationSlotsExact": true
+      },
+      "receiptThroughPurge": {
+        "action": "remove",
+        "active": "inactive",
+        "enabled": "masked-runtime",
+        "root": "1048815:4467022:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+        "runtimeMask": {
+          "boot": "38663672-c6a8-476d-a08f-437f4ca99f72",
+          "ctimeNs": 1795186902875197542,
+          "device": 2097161,
+          "inode": 228
+        },
+        "schema": 2
+      },
+      "originalMaskInodeAndTimestampsRetained": true,
+      "exitCode": 0
+    },
+    "originalRunning": 13,
+    "originalPersonal": 25,
+    "old7fd": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7"
   }
 }

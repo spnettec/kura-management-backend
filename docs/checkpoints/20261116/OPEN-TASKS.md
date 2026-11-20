@@ -1,3 +1,9 @@
+## 2026-11-20 Deployment 在管理员临时屏蔽 FileMove 时升级、移除和恢复
+
+Deployment `3772936` 将管理员创建的临时 mask 与原 Root、boot、符号链接设备号、inode 和 ctime 配对。六组件原夹具实际从 `c93c39e` 升级。持有 sibling 注册表锁后，真实 dpkg configure 返回 1，包进入 half-configured。释放锁后，沿原 Main 与 FileMove 两份围栏完成 configure。四项注册顺序、临时 mask、中心进程以及原密钥、Agent 和中心回执均保持。JDK 21 验证通过 240 项。
+
+在原 Deployment 单 provider 夹具 `d533a299`，装入同一包后执行 remove、purge、重新解包和配置。实测包状态依次为 config-files、not-installed、installed，原 mask 与移除围栏贯穿 purge，配置完成后原 socket 仍受管理员屏蔽。原三组发布记录和三份 Core 文件逐项吻合，Main 启动次数为零。两夹具均已撤销本次测试创建的 mask 并正常停机。历史 MOVE 夹具 `e5f3de3d` 的挂载设备号与原回执不同，仅核对 Root 后正常停机，未发包维护或业务请求。本轮冻结仍为 0/12。[检查点](actual-rtc-hotplug-and-addon-upgrade.json)
+
 ## 2026-11-20 六组件原 Root 的时钟服务和 socket 联合停机
 
 Parallels 组件停机时，systemd 提示 RTC 服务停止后其 socket 仍可激活服务。Core `5f6be61f46` 将八个时钟服务及 socket 纳入同一个 PID 1 停止事务，并逐项核对终态。95 项时钟合同在 Debian 13 ARM64 以非 Root 身份通过；首次以 Root 运行时，模拟普通调用者的用例被准入检查拒绝。
