@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Debian 正式 Core 的双向 TLS、动态吊销与离线缓存续接
+
+新 Debian 13 ARM64 无外网隔离 Root 安装当前正式 Core `f6beac005c` 的 Debian 包，当前 Core `b0ac48556b` 仅有测试变更。四份已装 Equinox、配置、HTTP 和 keystore JAR 与归档 SHA-256 精确。实际 systemd Main 由 kurad 在 NNP 下运行。正式 OSGi 配置计划仅派发一次，创建文件 keystore，切换 Jetty 到独立测试端口和严格 CRL_ONLY。配置回执为 CORE_COMMITTED。真实 TLS 使用隔离测试 CA，客户端核对服务端证书链、主机名和叶证书摘要。
+
+初始 CRL 下，两位受信客户端均收到实际 HTTP 404。双向 TLS 拒绝无证书及非受信客户端，普通 TLS 仍可用。回环 CRL 源一次原子发布新版签名 CRL，实际 provider 加载，Jetty 在同一 Main PID、出生时间和 InvocationID 内刷新。被吊销客户端在 TLS 1.2 与 TLS 1.3 均拒绝，另一位受信客户端仍可访问。原四份配置记录与四份受保护文件精确。
+
+新版 CRL 索引和 DER 文件落盘。正常停 Main、移出探针并关闭回环 CRL 源后，沿同一 Root 显式启动。新的 Main 从原快照配置和原 CRL 文件加载，源端口仍拒绝连接，原吊销策略继续生效。两份缓存、原回执和受保护文件精确，最终 Main 禁用、正常停机，夹具正常停放。验证期间仅调整隔离客户端对缺少 AKI 的合成证书检查方式，保留信任链、主机名与精确摘要校验。测试误建在缓存文件位置的空目录已移出保留，两次停源辅助命令在宿主参数检查处拒绝，实际只停止一次源。
+
+本轮覆盖正式文件 keystore 与 Jetty 的 TCP、TLS 和 CRL 生命周期。其他 provider、证书到期、业务路由授权、完整 Core/OSGi、其余 typed brokers、六组件发行矩阵和全部 12 父项仍内部待办。原三现场、个人文件与 7fd 41 输入/16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-core-jetty-mtls-crl-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core Linux 自解包安装器
 
 Core `f6beac005c` 让 Linux 自解包安装器封装同次 Maven 生成的正式 `kura-core.deb`。先在私有目录核对完整载荷 SHA-256，再走正常 `dpkg --install`。旧入口的全局 Java 终止、目录删除和原始 watchdog 路径写入已移除。现有 dpkg 围栏和配对检查照常执行。未受 dpkg 管理的历史目录，以及已解包或半配置状态，在解包前拒绝。

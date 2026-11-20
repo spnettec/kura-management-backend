@@ -1,0 +1,188 @@
+{
+  "recordedAt": "2026-11-20T05:55:52.600885+00:00",
+  "core": {
+    "head": "b0ac48556b2f94d9f526bc7ccba63afeac3ff05e",
+    "packagedRevision": "f6beac005c3c0c09324c90e43a0b76a79dd38d25",
+    "version": "6.0.0~git20261120054157.f6beac0-1",
+    "packageSha256": "4b02b5bb58ca0b6cf09f44ec1f4635a63fa959c6f3873c427947567d45d7f55c",
+    "installedJarDigests": {
+      "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar": "a5c0d238a37bd9499ff1591bd808581682d2f0d13cd6059f5900fe709d5275af",
+      "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.keystore-2.0.0-SNAPSHOT.jar": "60f27bb8555f8881f41dde0d382372dde8607973c2242f30715b83379a48e9aa",
+      "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/5s/org.eclipse.kura.http.server.manager-2.0.0-SNAPSHOT.jar": "e18d159a6558514f12d1b3faa5ccd3f6f7c480afac83c83ea3ab963d700ee828",
+      "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/org.eclipse.osgi-3.24.100.jar": "d20f892030596fbc2c25da00acdbd2750f77cefd68136c33a3e279b8949867a8"
+    },
+    "productionChangeThisTurn": false
+  },
+  "platform": {
+    "system": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "systemd": true,
+    "externalNetwork": false,
+    "hostMounts": false
+  },
+  "configuration": {
+    "operationId": "op-ec9eebf3-b48f-48be-a3f5-885a7ed3d977",
+    "dispatches": 1,
+    "state": "CORE_COMMITTED",
+    "configurationReceiptFilesExact": 4,
+    "protectedFilesExact": 4,
+    "liveProvider": "org.eclipse.kura.core.keystore.FilesystemKeystoreServiceImpl",
+    "revocation": "CRL_ONLY",
+    "softFail": false
+  },
+  "initial": {
+    "serverSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e",
+    "crlDerSha256": "c2f0c2316188286c733b4c0c8d7fdc6c2b41b7554a29cf35ac476225b2cc8481",
+    "ordinary": {
+      "result": "http",
+      "status": 404,
+      "tls": "TLSv1.2",
+      "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+    },
+    "mtls": {
+      "revocable": {
+        "result": "http",
+        "status": 404,
+        "tls": "TLSv1.2",
+        "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+      },
+      "survivor": {
+        "result": "http",
+        "status": 404,
+        "tls": "TLSv1.2",
+        "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+      },
+      "none": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_HANDSHAKE_FAILURE",
+        "verifyMessage": null
+      },
+      "untrusted": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+        "verifyMessage": null
+      }
+    }
+  },
+  "updated": {
+    "crlDerSha256": "a66776eae4e7b13acb4b7203bad80b99d4aa8619c63b08ec89aadd1f7d7a8857",
+    "signedCrlPublications": 1,
+    "sameMainPidTicksAndInvocation": true,
+    "ordinary": {
+      "result": "http",
+      "status": 404,
+      "tls": "TLSv1.2",
+      "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+    },
+    "tls12": {
+      "revocable": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+        "verifyMessage": null
+      },
+      "survivor": {
+        "result": "http",
+        "status": 404,
+        "tls": "TLSv1.2",
+        "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+      },
+      "none": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_HANDSHAKE_FAILURE",
+        "verifyMessage": null
+      },
+      "untrusted": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+        "verifyMessage": null
+      }
+    },
+    "tls13": {
+      "revocable": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+        "verifyMessage": null
+      },
+      "survivor": {
+        "result": "http",
+        "status": 404,
+        "tls": "TLSv1.3",
+        "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+      }
+    }
+  },
+  "restart": {
+    "sameRoot": true,
+    "newMainPidTicksAndInvocation": true,
+    "originOffline": true,
+    "crlIndexAndBodyExact": 2,
+    "withoutProbeAutoload": true,
+    "configurationReceiptAndProtectedFilesExact": true,
+    "mtls": {
+      "revocable": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+        "verifyMessage": null
+      },
+      "survivor": {
+        "result": "http",
+        "status": 404,
+        "tls": "TLSv1.2",
+        "peerSha256": "b497519ba85d92fd286f2e89e3c18659765a5e394e3b96427a069564442a900e"
+      },
+      "none": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_HANDSHAKE_FAILURE",
+        "verifyMessage": null
+      },
+      "untrusted": {
+        "result": "tls-alert",
+        "reason": "SSLV3_ALERT_CERTIFICATE_UNKNOWN",
+        "verifyMessage": null
+      }
+    }
+  },
+  "fixtureCorrections": [
+    "synthetic server leaf did not have AKI; test client kept chain, hostname and exact fingerprint verification",
+    "moved an empty directory created at the file-cache path before publishing updated CRL",
+    "two malformed host helper invocations failed at spawn; actual publisher stop occurred once"
+  ],
+  "fixture": {
+    "id": "4d906313b9f3115c3ef95c8d440ad20ac34ba3e1868c0b6652dd2d4c028592ed",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:49:35.382922718Z",
+      "FinishedAt": "2026-11-20T05:55:20.506226307Z"
+    }
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "stopped": true,
+    "disabled": true
+  },
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "other keystore providers and CA custody",
+    "CRL expiry and wider lifecycle cases",
+    "complete Core/OSGi, remaining typed brokers, complete six-component release and all 12 parents"
+  ],
+  "previousUnknownRedispatched": false,
+  "pushed": false
+}
