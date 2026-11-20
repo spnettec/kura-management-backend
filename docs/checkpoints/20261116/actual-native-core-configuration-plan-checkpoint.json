@@ -1,0 +1,366 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "ed46f8237cbd14b5b79b5973f08491559266b7fc",
+  "core": {
+    "head": "2a74ac1c38e126de24a31ae9c6a422fa367af7f9",
+    "tree": "0175c1654ee191cd2c62970470877b0ebbe1c2bb"
+  },
+  "predecessorCore": {
+    "head": "981d71c3931d20943a4843916a40e8b9a0fa5c47",
+    "tree": "ce01b977098c9e2d82e9655802bf6ea8c18d58db"
+  },
+  "jdk": 21,
+  "maven": "3.10.1",
+  "platform": "Debian 13 ARM64 systemd, isolated network none, regular Core launcher",
+  "firstPackage": {
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "root": {
+      "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+      "ident": "1048825:5376943",
+      "boot": "2026-11-20T01:18:49.804164475Z"
+    },
+    "operationId": "op-4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf",
+    "release": {
+      "package": "kura-core",
+      "path": "/root/kura-native-configuration-plan/kura_6.0.0~git20261120011843.981d71c-1_arm64.deb",
+      "sha256": "99a4b94b4a6f931fe855ddb664fa687b77290021417df68a64f587aad2b20ea7",
+      "version": "6.0.0~git20261120011843.981d71c-1"
+    },
+    "coreArtifactSha": "531cfa373f2ddadc900971b3eb94975873d9d306fdaecbfd338a339f845d6cc9",
+    "fixtureProbeSha": "dc6110015aea658547418ac6fd90301b74aa0339091bd7c0a5422078086fd324",
+    "encryptionBefore": {
+      "sha256": "323cc5e30e97812ae55e1b525500222aac67b129bc26d2b2521c54fd7781a7fa",
+      "stat": "5379810:997:995:600:1:799:318211200"
+    },
+    "encryptionAfter": {
+      "sha256": "d6d07ac311feacad629eb1c8a19d8138cb3f14cec273f8c08eb69f538627e9d8",
+      "stat": "5379810:997:995:600:1:798:1795137722"
+    },
+    "credential": {
+      "sha256": "30f90e7a20ef8d154e43bfcf6662b7782588d6a7b4292a38410d32f2a4ee4fe8",
+      "stat": "5379165:0:0:400:1:32:1795137685"
+    },
+    "snapshot0": {
+      "sha256": "3c243e86b8ae8a09a6dec2d282a7693ff771658a126355721d89798a2e6a5446",
+      "stat": "5379463:997:995:600:1:24182:1795137693"
+    }
+  },
+  "originalPredispatchRejection": {
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "root": {
+      "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+      "ident": "1048825:5376943",
+      "boot": "2026-11-20T01:18:49.804164475Z"
+    },
+    "operationId": "op-4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf",
+    "classification": "REJECTED",
+    "reason": "UNSUPPORTED",
+    "originalPlanReachedMutation": false,
+    "userFixtureKeystoreMissing": true,
+    "coreAdmissionLine": 787,
+    "files": {
+      "client-operations/4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf.request": {
+        "sha256": "4dc5a2966673dd7023eafbe2ea205396676ece508e6b10f4b14faf69ecbc0142",
+        "stat": "5380502:997:995:600:1:241:1795137727"
+      },
+      "client-operations/4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf.rejected": {
+        "sha256": "f9738ba87633897b0f50b91d01242a8ffefe3a7ad2bdebfaa773b336b3dc8037",
+        "stat": "5380503:997:995:600:1:100:1795137727"
+      }
+    },
+    "main": {
+      "unit": {
+        "MainPID": "1791",
+        "NRestarts": "0",
+        "NoNewPrivileges": "yes",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "dac075e2f4bf401eb02a2982ae44adba"
+      },
+      "process": {
+        "pid": 1791,
+        "comm": "java",
+        "ticks": "33304442",
+        "parent": 1,
+        "uids": [
+          997,
+          997,
+          997,
+          997
+        ],
+        "group": "0::/system.slice/kura.service",
+        "nnp": 1,
+        "caps": {
+          "CapInh": 13314,
+          "CapPrm": 13314,
+          "CapEff": 13314,
+          "CapBnd": 13314,
+          "CapAmb": 13314
+        }
+      }
+    },
+    "snapshot0AfterEncryptedBoot": {
+      "sha256": "42e82629479ab8f6d4bd722101e8f945c1c3d19f49a4a2a38c273e6b7441c0d8",
+      "stat": "5379463:997:995:600:1:32081:1795137724"
+    }
+  },
+  "upgradedPackage": {
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "root": {
+      "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+      "ident": "1048825:5376943",
+      "boot": "2026-11-20T01:18:49.804164475Z"
+    },
+    "operationId": "op-71cf6c45-671b-4228-8738-4eefac1b8b69",
+    "release": {
+      "package": "kura-core",
+      "path": "/root/kura-native-configuration-plan/kura_6.0.0~git20261120012414.2a74ac1-1_arm64.deb",
+      "sha256": "6e3c5c397e55ee1680b465019f132082729e1ce0c1e1c79c377e4967d36d9a6e",
+      "version": "6.0.0~git20261120012414.2a74ac1-1"
+    },
+    "coreArtifactSha": "f39c20ea4d0256a4693a5add5846b52e7f8d5c53751060211725f746ce6624ac",
+    "fixtureProbeSha": "c40d1e50686ca3c75e4bfc7e5ec3b26c2fb749709d56026b8bb4f67aad044e57",
+    "encryptionBefore": {
+      "sha256": "d6d07ac311feacad629eb1c8a19d8138cb3f14cec273f8c08eb69f538627e9d8",
+      "stat": "5383414:997:995:600:1:798:1795137722"
+    },
+    "encryptionAfter": {
+      "sha256": "d6d07ac311feacad629eb1c8a19d8138cb3f14cec273f8c08eb69f538627e9d8",
+      "stat": "5383414:997:995:600:1:798:1795137722"
+    },
+    "credential": {
+      "sha256": "30f90e7a20ef8d154e43bfcf6662b7782588d6a7b4292a38410d32f2a4ee4fe8",
+      "stat": "5379165:0:0:400:1:32:1795137685"
+    },
+    "snapshot0": {
+      "sha256": "42e82629479ab8f6d4bd722101e8f945c1c3d19f49a4a2a38c273e6b7441c0d8",
+      "stat": "5383073:997:995:600:1:32081:1795137724"
+    }
+  },
+  "retainedRejection": {
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "originalRoot": {
+      "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+      "ident": "1048825:5376943",
+      "boot": "2026-11-20T01:18:49.804164475Z"
+    },
+    "operationId": "op-4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf",
+    "historicalFiles": {
+      "client-operations/4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf.request": {
+        "sha256": "4dc5a2966673dd7023eafbe2ea205396676ece508e6b10f4b14faf69ecbc0142",
+        "stat": "5383563:997:995:600:1:241:1795137727"
+      },
+      "client-operations/4ae5d0fb-1047-4276-b2f5-2eeeb788ddbf.rejected": {
+        "sha256": "f9738ba87633897b0f50b91d01242a8ffefe3a7ad2bdebfaa773b336b3dc8037",
+        "stat": "5383564:997:995:600:1:100:1795137727"
+      }
+    },
+    "snapshot0": {
+      "sha256": "42e82629479ab8f6d4bd722101e8f945c1c3d19f49a4a2a38c273e6b7441c0d8",
+      "stat": "5383073:997:995:600:1:32081:1795137724"
+    },
+    "logProviderSha": "9605e28dc2728dfdb3bb571d3d6067b68f66757bf9f44e499dfe38719ba7c8d2"
+  },
+  "configuredMain": {
+    "main": {
+      "unit": {
+        "MainPID": "3910",
+        "NRestarts": "0",
+        "NoNewPrivileges": "yes",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "f2f3d8acf14b43b2bcb1c19b71cf9f5e"
+      },
+      "process": {
+        "pid": 3910,
+        "comm": "java",
+        "ticks": "33325105",
+        "parent": 1,
+        "uids": [
+          997,
+          997,
+          997,
+          997
+        ],
+        "group": "0::/system.slice/kura.service",
+        "nnp": 1,
+        "caps": {
+          "CapInh": 13314,
+          "CapPrm": 13314,
+          "CapEff": 13314,
+          "CapBnd": 13314,
+          "CapAmb": 13314
+        }
+      }
+    },
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "root": {
+      "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+      "ident": "1048825:5376943",
+      "boot": "2026-11-20T01:18:49.804164475Z"
+    },
+    "operationId": "op-71cf6c45-671b-4228-8738-4eefac1b8b69",
+    "receipt": "CORE_COMMITTED",
+    "providers": [
+      "org.eclipse.kura.core.keystore",
+      "org.eclipse.kura.log.filesystem.provider"
+    ],
+    "logCallbackObserved": true,
+    "keystoreOpened": true,
+    "liveAndSnapshotPasswordRoundTrip": true,
+    "encryptedSnapshotNoCleartext": true,
+    "originalRejectionReadBack": true,
+    "requestCount": 1,
+    "files": {
+      "client-operations/71cf6c45-671b-4228-8738-4eefac1b8b69.request": {
+        "sha256": "417e5f709073e7f263e770461d8436238d96b48e07a1c5894291952acec4a320",
+        "stat": "5383693:997:995:600:1:241:1795137934"
+      },
+      "client-operations/71cf6c45-671b-4228-8738-4eefac1b8b69.dispatch": {
+        "sha256": "51f149ec975e9fb767770e5816a9a3b5ef9bbf00fb6d790dc9aa9180421c3f1b",
+        "stat": "5383695:997:995:600:1:119:1795137934"
+      },
+      "71cf6c45-671b-4228-8738-4eefac1b8b69.intent": {
+        "sha256": "9db9917dbb0af54fa12c5c1a641784480e3b8f8955720b1c0a8212a22fb8dd39",
+        "stat": "5383694:997:995:600:1:110:1795137934"
+      },
+      "71cf6c45-671b-4228-8738-4eefac1b8b69.complete": {
+        "sha256": "c8f54f74cb3ff886f6ed487da1a5e6602cece196344c127ffe2bfe50082feb33",
+        "stat": "5383700:997:995:600:1:84:1795137934"
+      }
+    },
+    "snapshotId": "1795137934074",
+    "snapshot": {
+      "sha256": "8f14b027f5b7d059284de496c92ff0f8b5c410d81b1ec61831abeb5953bfe94a",
+      "stat": "5383699:997:995:600:1:54009:1795137934"
+    },
+    "keystore": {
+      "sha256": "7c661ab96284102eed6decc9b0bf295561e45e916fe07151e624acf09ae40790",
+      "stat": "5383696:997:995:600:1:103:1795137934"
+    }
+  },
+  "afterMainRestart": {
+    "main": {
+      "unit": {
+        "MainPID": "4738",
+        "NRestarts": "0",
+        "NoNewPrivileges": "yes",
+        "ActiveState": "active",
+        "DropInPaths": "",
+        "InvocationID": "23823ea55eed43bcbd4ec6facce63a3d"
+      },
+      "process": {
+        "pid": 4738,
+        "comm": "java",
+        "ticks": "33326497",
+        "parent": 1,
+        "uids": [
+          997,
+          997,
+          997,
+          997
+        ],
+        "group": "0::/system.slice/kura.service",
+        "nnp": 1,
+        "caps": {
+          "CapInh": 13314,
+          "CapPrm": 13314,
+          "CapEff": 13314,
+          "CapBnd": 13314,
+          "CapAmb": 13314
+        }
+      }
+    },
+    "originMain": "f2f3d8acf14b43b2bcb1c19b71cf9f5e",
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "root": {
+      "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+      "ident": "1048825:5376943",
+      "boot": "2026-11-20T01:18:49.804164475Z"
+    },
+    "operationId": "op-71cf6c45-671b-4228-8738-4eefac1b8b69",
+    "receipt": "CORE_COMMITTED",
+    "providers": [
+      "org.eclipse.kura.core.keystore",
+      "org.eclipse.kura.log.filesystem.provider"
+    ],
+    "logCallbackObserved": true,
+    "keystoreOpened": true,
+    "liveAndSnapshotPasswordRoundTrip": true,
+    "encryptedSnapshotNoCleartext": true,
+    "originalRejectionReadBack": true,
+    "requestCount": 1,
+    "files": {
+      "client-operations/71cf6c45-671b-4228-8738-4eefac1b8b69.request": {
+        "sha256": "417e5f709073e7f263e770461d8436238d96b48e07a1c5894291952acec4a320",
+        "stat": "5383693:997:995:600:1:241:1795137934"
+      },
+      "client-operations/71cf6c45-671b-4228-8738-4eefac1b8b69.dispatch": {
+        "sha256": "51f149ec975e9fb767770e5816a9a3b5ef9bbf00fb6d790dc9aa9180421c3f1b",
+        "stat": "5383695:997:995:600:1:119:1795137934"
+      },
+      "71cf6c45-671b-4228-8738-4eefac1b8b69.intent": {
+        "sha256": "9db9917dbb0af54fa12c5c1a641784480e3b8f8955720b1c0a8212a22fb8dd39",
+        "stat": "5383694:997:995:600:1:110:1795137934"
+      },
+      "71cf6c45-671b-4228-8738-4eefac1b8b69.complete": {
+        "sha256": "c8f54f74cb3ff886f6ed487da1a5e6602cece196344c127ffe2bfe50082feb33",
+        "stat": "5383700:997:995:600:1:84:1795137934"
+      }
+    },
+    "snapshotId": "1795137934074",
+    "snapshot": {
+      "sha256": "8f14b027f5b7d059284de496c92ff0f8b5c410d81b1ec61831abeb5953bfe94a",
+      "stat": "5383699:997:995:600:1:54009:1795137934"
+    },
+    "keystore": {
+      "sha256": "7c661ab96284102eed6decc9b0bf295561e45e916fe07151e624acf09ae40790",
+      "stat": "5383696:997:995:600:1:103:1795137934"
+    }
+  },
+  "parking": {
+    "id": "49a745ace9380f5148a4420e36f80ae2a2f94079afe426796cce3321f3faf5b1",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T01:18:49.804164475Z",
+      "FinishedAt": "2026-11-20T01:25:51.343729429Z"
+    },
+    "mainDisabled": true,
+    "probeArchived": true
+  },
+  "trial": {
+    "identifiedPlansExecuted": 1,
+    "priorRejectedPlanResubmitted": false,
+    "remoteWriteAttempted": false,
+    "configuredLogProvider": true,
+    "createdEmptyFileKeystore": true,
+    "brokerFamilyOrExternalProvidersCovered": false
+  },
+  "internalPending": [
+    "远程写入授权、异步结果及其他 provider/launcher/模式",
+    "其余 typed brokers、完整六组件生命周期与全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stateExact": true
+  },
+  "pushed": false
+}

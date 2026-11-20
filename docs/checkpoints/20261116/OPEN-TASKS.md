@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — Debian 正式 Main 配置事务、真实 provider 及重启回执
+
+Debian 13 ARM64 从 Git 和 JDK 21 构建实包。旧 981d71c393 的合法 Main 在 Core 配置准入拒绝第一次尝试。原编号只出现 request、rejected，原因 UNSUPPORTED；无 dispatch、intent、complete，独立密钥库未创建。文件日志 provider 已实现 ConfigurableComponent，但 SCR 未发布该接口。Core 2a74ac1c38 补齐正式注册，原准入和 Root 配对规则保持。采集区分正式插件目录和冷恢复目录的同名配置 JAR。
+
+标准 dpkg 沿同一 Root 升级。两份旧拒绝记录的内容和可保留属性、启动时加密后形成的原快照、原 AES 凭据及 Root 身份保持。原拒绝编号保留，未重发。已装正式 Main 一次提交新计划，更新文件日志 provider 并创建一个独立空 PKCS12。实际日志监听收到新文件事件，实际 keystore provider 打开文件，配置与加密快照均读回合成 Password。原编号的四份记录及加密快照均未包含该合成明文。
+
+显式停止再启动原 systemd Main 后，PID 出生时间与 invocation 改变。只读查回同一 CORE_COMMITTED 和原 REJECTED。新 Main 仍收到相同 provider 的新日志事件并打开原密钥库；回执四份、加密快照及密钥库文件指纹精确。Main 维持 NNP1，两个 Main 都未持有 SYS_TIME 或 SYS_BOOT。现场禁用、正常停放，专用探针退出自动加载。
+
+远程授权和交付、其他 provider/launcher、其余 typed brokers、完整六组件发行与生命周期和全部 12 父项维持原范围。原 7fd 禁用、正常停止且保留 41 输入/16 回执。最终 0/12，external deferred 仅原三项。见 [实际检查点](actual-native-core-configuration-plan-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 实际 Equinox 标识化配置事务与回执
 
 Core 3d84351215 加入真实 Equinox 联合回归。由正式 ConfigurationRevisionService 一次提交单例更新和一个 factory 实例创建，组件和加密快照均读回原 Password 类型及合成值。停用实际配置 bundle 后回执 DS 撤下，重启原 bundle 后只读查询原编号得到相同 CORE_COMMITTED、创建及更新范围。未重新提交，回执的 businessHealthVerified 保持 false。
