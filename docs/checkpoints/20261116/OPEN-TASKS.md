@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 六组件内 Wires 保留式移除和分阶段重装
+
+继续上一轮保留实际 Timer→Logger 的同一 Debian 13 ARM64 测试 Root。正常停启后核对原容器、OverlayFS 底层路径、根 inode 和 machine-id 摘要，十份被保护文件的元数据及内容在新挂载中核定。维护期间 Main disabled、未自启，Agent 保持停止且原初始化读取通过，中心原进程保持。
+
+使用已核归档 SHA 与已装版本的正式 Wires `93f318b`。一次实际 remove 后包为 config-files，provider JAR 与注册行消失，其他三个注册行保留。以原归档一次解包，实际状态 unpacked、原 JAR 摘要配对，Wires 注册行尚未发布。随后一次正式 configure，八包恢复 installed、dpkg audit 为空，Wires 注册行准确恢复一次。三阶段内两份原快照、两份原图提交记录、两份 Core 维护历史和四份原始授权文件完整指纹保持。
+
+显式启动后的正式 Main 从实际 Wires provider 读回两个工厂组件、两秒周期、QUIET 设定及原 0→0 连线，Logger 再次收到真实消息。探针只读配置，原图仍仅提交一次。三服务最终停止，Main disabled，容器退出 0。停机读回八包、原注册行及十份文件。
+
+此次覆盖有实际业务的 Wires 独立保留移除和同 Root 的解包／配置续接。全套已绑定业务、其他 provider／launcher、完整 Core/OSGi、余下 typed brokers 及六组件组合生命周期/中断矩阵继续内部待办。原三现场与停机 7fd 的 41 输入／16 回执保留。冻结 12 父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Main 撤下 DAC_READ_SEARCH 与六组件内 Wires 保留升级
 
 Core `735ebf0c64` 从正式 Main 的 AmbientCapabilities 和 CapabilityBoundingSet 撤下 CAP_DAC_READ_SEARCH。独立测试提交 `67d2dbe926` 让 key cohort 回归夹具带齐正式 Main 声明的辅助程序。JDK 21／Maven 3.10.1 从该生产 Git 提交构建 ARM64 deb。首次发行构建缺 Git 元数据，在同一源码树补齐后完成。定向合同与 Linux writer lease 合计 107 项通过。

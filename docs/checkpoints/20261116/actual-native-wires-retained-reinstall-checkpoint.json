@@ -1,0 +1,122 @@
+{
+  "recordedAt": "2026-11-20T10:12:31.107777+00:00",
+  "source": {
+    "commit": "67d2dbe92670888100237d442dffab0260a9b9c5",
+    "tree": "48ab97f7f3e306142ffc19bb2390d3122771e1ff"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "arch": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1"
+  },
+  "fixture": {
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T10:10:45.105824379Z",
+      "FinishedAt": "2026-11-20T10:12:00.300480837Z"
+    }
+  },
+  "currentRoot": {
+    "id": "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7",
+    "fs": "1048815:6123658",
+    "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+    "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+  },
+  "preservedOverlayBacking": true,
+  "mountDeviceBeforeReopen": "1048815",
+  "installedPackages": {
+    "kura-core": "6.0.0~git20261120100117.735ebf0-1",
+    "kura-deployment": "2.0.0~git202611200952.5a6025b-1",
+    "kura-management-agent": "0.1.0~cohort202611200955.b9b2d3b-1",
+    "kura-management-console": "0.1.0~cohort202611200955.9691fe9-1",
+    "kura-management-console-installer": "0.1.0~cohort202611200955.9691fe9-1",
+    "kura-management-ui": "3.0.0~git202611200952.08712fb-1",
+    "kura-networking": "3.0.0~git202611200952.0789499-1",
+    "kura-wires": "3.0.0~git202611200952.93f318b-1"
+  },
+  "wiresArtifact": {
+    "version": "3.0.0~git202611200952.93f318b-1",
+    "sha256": "81836bd7736b0a30dbbd6f1318a0cfc5154df4941c4ad796ec146cc05f60e963",
+    "commit": "93f318b241f2d53e4291ffa20fdb1836b34e9b52",
+    "tree": "5595aaa31309c77b540eed04967e289e04bac143"
+  },
+  "dpkgPhases": [
+    "config-files",
+    "unpacked",
+    "installed"
+  ],
+  "phaseDispatchCounts": {
+    "remove-wires": 1,
+    "unpack-original-wires": 1,
+    "configure-original-wires": 1
+  },
+  "wireRegistryBefore": [
+    "networking",
+    "management-ui",
+    "deployment",
+    "wires"
+  ],
+  "wireRegistryWhileUnpacked": [
+    "networking",
+    "management-ui",
+    "deployment"
+  ],
+  "wireRegistryAfter": [
+    "networking",
+    "management-ui",
+    "deployment",
+    "wires"
+  ],
+  "stableFilesDuringDpKgPhases": 10,
+  "stoppedRootReadbackFiles": 10,
+  "originalGraphReadOnly": {
+    "main": {
+      "MainPID": "1344",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "364833470000",
+      "CapabilityBoundingSet": "cap_dac_override cap_net_bind_service cap_net_admin",
+      "AmbientCapabilities": "cap_dac_override cap_net_bind_service cap_net_admin",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "ecb9e0b7811b4eb5b1ccfe4f874b66f2"
+    },
+    "providersRestored": 2,
+    "topology": [
+      "native-wire-upgrade.timer",
+      "native-wire-upgrade.logger",
+      "0:0"
+    ],
+    "additionalDeliveries": 1,
+    "originalGraphDispatchedAgain": false
+  },
+  "coreDidNotAutostart": true,
+  "mainDisabledAfterStop": true,
+  "agentInitializationPreserved": true,
+  "consoleUninterruptedDuringDpkg": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false
+}
