@@ -78,9 +78,10 @@ use crate::{
     tls_transport,
 };
 use std::{fs, os::unix::fs::PermissionsExt, path::PathBuf};
-use yofc_management_protocol::v1::{
-    AgentFrame, Hello, agent_frame, console_frame, control_client::ControlClient,
-    control_server::ControlServer,
+use yofc_management_protocol::{
+    CONFIGURATION_UPDATE_CAPABILITY, CONFIGURATION_UPDATE_READINESS,
+    v1::{AgentFrame, Heartbeat, Hello, agent_frame, console_frame, control_client::ControlClient,
+        control_server::ControlServer},
 };
 
 const CA1: &str = include_str!("../tests/fixtures/tls-live/ca-one.pem");
@@ -235,6 +236,21 @@ async fn hello(
     ),
     tonic::Status,
 > {
+    hello_with_capabilities(f, cohort, gateway, &[]).await
+}
+
+async fn hello_with_capabilities(
+    f: &Fixture,
+    cohort: &str,
+    gateway: &str,
+    capabilities: &[&str],
+) -> Result<
+    (
+        tokio::sync::mpsc::Sender<AgentFrame>,
+        tonic::Streaming<yofc_management_protocol::v1::ConsoleFrame>,
+    ),
+    tonic::Status,
+> {
     use tonic::transport::{Certificate, ClientTlsConfig, Endpoint, Identity};
     let (ca, cert, key) = if cohort == "one" {
         (
@@ -270,7 +286,7 @@ async fn hello(
             binding_generation: 1,
             agent_version: "isolated-tls-test".into(),
             boot_id: "tls-test".into(),
-            capabilities: vec![],
+            capabilities: capabilities.iter().map(|capability| (*capability).to_owned()).collect(),
         })),
     })
     .await
@@ -279,6 +295,143 @@ async fn hello(
         .connect(tokio_stream::wrappers::ReceiverStream::new(rx))
         .await?;
     Ok((tx, response.into_inner()))
+}
+
+#[tokio::test]
+#[ignore = "requires a fresh isolated TLS review PostgreSQL instance"]
+async fn configuration_update_readiness_tracks_the_authenticated_stream() {
+    let f = fixture().await;
+    let gateway = "configuration-readiness";
+    let certificate = include_str!("../tests/fixtures/tls-live/client-one.pem");
+    sqlx::query("INSERT INTO mgmt_gateways(id,tenant_id,name,certificate_sha256,enabled) VALUES($1,'tls-review',$1,$2,true)")
+        .bind(gateway).bind(crate::settings::certificate_fingerprint(certificate).unwrap())
+        .execute(&f.app.pool).await.unwrap();
+    let read_capability = "kura.configuration.get";
+    let (negotiated, mut stream) = hello_with_capabilities(
+        &f,
+        "one",
+        gateway,
+        &[
+            read_capability,
+            CONFIGURATION_UPDATE_READINESS,
+            CONFIGURATION_UPDATE_CAPABILITY,
+        ],
+    )
+    .await
+    .unwrap();
+    let Some(console_frame::Payload::Welcome(welcome)) =
+        stream.message().await.unwrap().unwrap().payload
+    else {
+        panic!("expected authenticated welcome");
+    };
+    async fn verify_state(f: &Fixture, gateway: &str, sequence: i64, expected: bool, epoch: &str) {
+        tokio::time::timeout(Duration::from_secs(3), async {
+            loop {
+                let (seen, caps, current): (i64, Value, Uuid) = sqlx::query_as(
+                    "SELECT sequence,capabilities,connection_epoch FROM mgmt_gateways WHERE id=$1",
+                )
+                .bind(gateway)
+                .fetch_one(&f.app.pool)
+                .await
+                .unwrap();
+                if seen == sequence {
+                    assert_eq!(current.to_string(), epoch);
+                    let list = caps.as_array().unwrap();
+                    assert!(list.iter().any(|name| name == "kura.configuration.get"));
+                    assert_eq!(
+                        list.iter()
+                            .filter(|name| *name == CONFIGURATION_UPDATE_CAPABILITY)
+                            .count(),
+                        usize::from(expected)
+                    );
+                    return;
+                }
+                tokio::time::sleep(Duration::from_millis(20)).await;
+            }
+        })
+        .await
+        .expect("heartbeat not observed in PostgreSQL");
+    }
+    async fn heartbeat(
+        tx: &tokio::sync::mpsc::Sender<AgentFrame>,
+        sequence: u64,
+        available: bool,
+        ready: Option<bool>,
+    ) {
+        tx.send(AgentFrame {
+            payload: Some(agent_frame::Payload::Heartbeat(Heartbeat {
+                sequence,
+                kura_available: available,
+                uptime_seconds: sequence,
+                configuration_update_ready: ready,
+            })),
+        })
+        .await
+        .unwrap();
+    }
+    verify_state(&f, gateway, 0, false, &welcome.connection_epoch).await;
+    for (sequence, available, reported, expected) in [
+        (1, false, Some(true), false),
+        (2, true, Some(true), true),
+        (3, true, Some(true), true),
+        (4, true, None, false),
+        (5, true, Some(true), true),
+        (6, true, Some(false), false),
+    ] {
+        heartbeat(&negotiated, sequence, available, reported).await;
+        verify_state(
+            &f,
+            gateway,
+            sequence as i64,
+            expected,
+            &welcome.connection_epoch,
+        )
+        .await;
+    }
+    let response = f
+        .client
+        .post(format!("{}/api/v1/gateways/{gateway}/tasks", f.origin))
+        .json(&json!({
+            "operation":CONFIGURATION_UPDATE_CAPABILITY,"idempotencyKey":Uuid::new_v4().to_string(),
+            "kuraConfigurationUpdate":{"pid":"readiness.fixture","expectedRevision":"a".repeat(64),
+                "properties":[{"id":"enabled","value":{"boolean":true}}]}
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(response.status(), reqwest::StatusCode::UNPROCESSABLE_ENTITY);
+    assert_eq!(
+        sqlx::query_scalar::<_, i64>("SELECT COUNT(*) FROM mgmt_tasks WHERE gateway_id=$1")
+            .bind(gateway)
+            .fetch_one(&f.app.pool)
+            .await
+            .unwrap(),
+        0
+    );
+    heartbeat(&negotiated, 6, true, Some(true)).await;
+    assert_eq!(
+        stream.message().await.unwrap_err().code(),
+        tonic::Code::InvalidArgument
+    );
+    verify_state(&f, gateway, 6, false, &welcome.connection_epoch).await;
+
+    for legacy_advertised in [false, true] {
+        let mut caps = vec![read_capability];
+        if legacy_advertised {
+            caps.push(CONFIGURATION_UPDATE_CAPABILITY);
+        }
+        let (legacy, mut stream) = hello_with_capabilities(&f, "one", gateway, &caps)
+            .await
+            .unwrap();
+        let Some(console_frame::Payload::Welcome(old)) =
+            stream.message().await.unwrap().unwrap().payload
+        else {
+            panic!("expected legacy welcome");
+        };
+        verify_state(&f, gateway, 0, legacy_advertised, &old.connection_epoch).await;
+        heartbeat(&legacy, 1, true, Some(!legacy_advertised)).await;
+        verify_state(&f, gateway, 1, legacy_advertised, &old.connection_epoch).await;
+    }
 }
 
 #[tokio::test]

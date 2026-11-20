@@ -20,7 +20,13 @@ message Hello {
   // Durable cross-center binding generation; zero is pre-handshake and rejected.
   uint64 binding_generation = 6;
 }
-message Heartbeat { uint64 sequence = 1; bool kura_available = 2; uint64 uptime_seconds = 3; }
+message Heartbeat {
+  uint64 sequence = 1;
+  bool kura_available = 2;
+  uint64 uptime_seconds = 3;
+  // Used only when the authenticated Hello negotiated configuration readiness.
+  optional bool configuration_update_ready = 4;
+}
 message ConsoleFrame {
   oneof payload { Welcome welcome = 1; ReadCommand command = 2; TaskQuery task_query = 3; }
 }

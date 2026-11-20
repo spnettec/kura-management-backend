@@ -12,7 +12,7 @@ use tokio_stream::{Stream, wrappers::ReceiverStream};
 use tonic::{Request, Response, Status, Streaming};
 use uuid::Uuid;
 use yofc_management_protocol::{
-    PROTOCOL_MAJOR,
+    CONFIGURATION_UPDATE_CAPABILITY, CONFIGURATION_UPDATE_READINESS, PROTOCOL_MAJOR,
     v1::{agent_frame, console_frame, control_server::Control, *},
 };
 
@@ -32,6 +32,7 @@ struct GatewaySession {
     epoch: Uuid,
     binding_generation: i64,
     reconcile: bool,
+    configuration_update_readiness: bool,
 }
 fn internal(e: impl std::fmt::Display) -> Status {
     tracing::error!(error=%e,"control operation failed");
@@ -109,11 +110,18 @@ impl Control for ControlService {
             return Err(Status::resource_exhausted("RESOURCE_EXHAUSTED"));
         }
         let reconcile = hello.capabilities.iter().any(|s| s == "task.reconcile.v1");
+        let configuration_update_readiness = hello.capabilities.iter()
+            .any(|name| name == CONFIGURATION_UPDATE_READINESS);
+        let mut capabilities = hello.capabilities;
+        if configuration_update_readiness {
+            // On negotiated streams the first heartbeat establishes current readiness.
+            capabilities.retain(|name| name != CONFIGURATION_UPDATE_CAPABILITY);
+        }
         let epoch = Uuid::new_v4();
         let admission = self.gate.enter().map_err(|_|Status::unavailable("MAINTENANCE"))?;
         let mut transaction = self.pool.begin().await.map_err(internal)?;
         // Old queued or running work is not leased by a newer binding generation.
-        let owned=sqlx::query("UPDATE mgmt_gateways SET connection_epoch=$2,agent_version=$3,boot_id=$4,capabilities=$5,sequence=0 WHERE id=$1 AND binding_generation=$6 RETURNING id").bind(&gateway).bind(epoch).bind(hello.agent_version).bind(hello.boot_id).bind(json!(hello.capabilities)).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
+        let owned=sqlx::query("UPDATE mgmt_gateways SET connection_epoch=$2,agent_version=$3,boot_id=$4,capabilities=$5,sequence=0 WHERE id=$1 AND binding_generation=$6 RETURNING id").bind(&gateway).bind(epoch).bind(hello.agent_version).bind(hello.boot_id).bind(json!(capabilities)).bind(binding_generation).fetch_optional(&mut *transaction).await.map_err(internal)?;
         if owned.is_none() {
             return Err(Status::permission_denied("FORBIDDEN"));
         }
@@ -140,6 +148,7 @@ impl Control for ControlService {
                     epoch,
                     binding_generation,
                     reconcile,
+                    configuration_update_readiness,
                 },
                 &mut input,
                 &tx,
@@ -251,7 +260,24 @@ async fn run_stream(
                     Some(agent_frame::Payload::Heartbeat(h))=>{
                         if h.sequence>i64::MAX as u64 || h.uptime_seconds>i64::MAX as u64{return Err(Status::invalid_argument("INVALID_ARGUMENT"));}
                         let mut transaction=pool.begin().await.map_err(internal)?;
-                        let updated=sqlx::query("UPDATE mgmt_gateways SET last_seen=now(),kura_available=$3,uptime_seconds=$4,sequence=$5,revision=revision+1,online_reported=true WHERE id=$1 AND connection_epoch=$2 AND sequence<$5 RETURNING revision").bind(gateway).bind(epoch).bind(h.kura_available).bind(h.uptime_seconds as i64).bind(h.sequence as i64).fetch_optional(&mut *transaction).await.map_err(internal)?;
+                        let configuration_ready = session.configuration_update_readiness
+                            .then_some(h.kura_available && h.configuration_update_ready == Some(true));
+                        let updated = sqlx::query(
+                            "UPDATE mgmt_gateways SET last_seen=now(), kura_available=$3, uptime_seconds=$4,
+                                sequence=$5, revision=revision+1, online_reported=true,
+                                capabilities=CASE
+                                    WHEN NOT $6::boolean THEN capabilities - ($7::text)
+                                    WHEN $6::boolean AND NOT (capabilities ? $7::text)
+                                        THEN capabilities || jsonb_build_array($7::text)
+                                    ELSE capabilities
+                                END
+                             WHERE id=$1 AND connection_epoch=$2 AND sequence<$5
+                               AND enabled AND certificate_sha256=$8 AND binding_generation=$9
+                             RETURNING revision")
+                            .bind(gateway).bind(epoch).bind(h.kura_available).bind(h.uptime_seconds as i64)
+                            .bind(h.sequence as i64).bind(configuration_ready).bind(CONFIGURATION_UPDATE_CAPABILITY)
+                            .bind(fingerprint).bind(binding_generation)
+                            .fetch_optional(&mut *transaction).await.map_err(internal)?;
                         let Some(updated)=updated else{return Err(Status::invalid_argument("CONFLICT"))};
                         last_heartbeat=tokio::time::Instant::now();
                         db::event(&mut *transaction,tenant,"gateway",gateway,updated.get("revision"),json!({"online":true,"kuraAvailable":h.kura_available})).await.map_err(internal)?;

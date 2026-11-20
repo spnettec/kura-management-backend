@@ -11,9 +11,17 @@ agent 与 Java 通过 UDS 和操作系统身份验证，不传递 Kura Web 密�
 
 远程操作为 `kura.configuration.update`，Protobuf Operation=12，ReadCommand 新字段 9。
 `ReadCommand` 是历史消息名；此操作始终分类为写，绝不走只读失败映射或重新租约执行。
-仅在 `AGENT_KURA_CONFIGURATION_UPDATE=1` 时 agent 宣告能力；默认 0，其他值启动失败。
+Agent 写入开关为 `AGENT_KURA_CONFIGURATION_UPDATE=1`，默认 0，其他值启动失败。
 Java 另需 `-Dkura.management.configuration.update.pids=<审核后的逗号分隔PID>`；默认空。
 只有非空 allowlist 才登记写方法。两侧开关互不替代，旧读取方法仍必需，写方法注册可选。
+
+支持动态就绪状态的 agent 在开启写入开关时于 Hello 声明
+`kura.configuration.update.readiness.v1`。只有当前已注册的本地桥接提供更新方法，
+心跳才报告配置写入就绪。中心根据同一认证连接的心跳更新写能力；本地桥接尚未注册
+或已断开时，下一份心跳撤下该能力。尚在途的写入继续沿原结果和 UNKNOWN 契约处理。
+Java 每次写入仍检查原 PID allowlist、
+字段元数据及版本。未声明就绪协议的旧 agent 沿用 Hello 能力。
+旧中心可读取新 agent 在连接时已就绪的能力，后续变化需要重连或升级中心后才可见。
 
 get 中 `writable` 表示核心条件更新可用；`updateEnabled` 表示 PID 已显式开放，属性 `editable`
 表示该字段符合本轮受限规则。React 还检查 admin、online、agent capability 和有效 revision。

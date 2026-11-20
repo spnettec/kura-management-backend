@@ -12,6 +12,8 @@ use tokio::io::{AsyncRead, AsyncReadExt, AsyncWrite, AsyncWriteExt};
 
 pub const PROTOCOL_MAJOR: u32 = 1;
 pub const MAX_FRAME: usize = 1_048_576;
+pub const CONFIGURATION_UPDATE_CAPABILITY: &str = "kura.configuration.update";
+pub const CONFIGURATION_UPDATE_READINESS: &str = "kura.configuration.update.readiness.v1";
 // Unrecognized future operations are conservative until explicitly classified.
 pub fn has_side_effect(operation: i32) -> bool {
     !matches!(operation, 1 | 2 | 3 | 4 | 8 | 9 | 11 | 15 | 20 | 23 | 30 | 34 | 38 | 39 | 45 | 46 | 48)
@@ -512,8 +514,18 @@ mod tests {
             sequence: 1,
             kura_available: true,
             uptime_seconds: 10,
+            configuration_update_ready: None,
         };
         assert_eq!(h.encode_to_vec(), vec![8, 1, 16, 1, 24, 10]);
+        let heartbeat_withdrawal = v1::Heartbeat {
+            configuration_update_ready: Some(false),
+            ..h
+        };
+        assert_eq!(heartbeat_withdrawal.encode_to_vec(), vec![8, 1, 16, 1, 24, 10, 32, 0]);
+        assert_eq!(
+            v1::Heartbeat::decode(&[8, 1, 16, 1, 24, 10][..]).unwrap().configuration_update_ready,
+            None
+        );
         assert!(terminal(v1::TaskState::Unknown));
         assert!(!terminal(v1::TaskState::Running));
     }
