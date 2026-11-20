@@ -1,0 +1,194 @@
+{
+  "recordedAt": "2026-11-20T06:30:19.361276+00:00",
+  "fixture": {
+    "id": "14099ae8ba425f78e888da7f073193cc901539219afa2e15bc2c02ce2016cff5",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:23:59.008360191Z",
+      "FinishedAt": "2026-11-20T06:27:42.971593068Z"
+    }
+  },
+  "legacyContinuityFixture": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:21:32.008118007Z",
+      "FinishedAt": "2026-11-20T06:23:58.793419514Z"
+    }
+  },
+  "source": {
+    "core": "015e6dce60be11a253f69113c405a0053a0bc80b",
+    "coreTree": "2f56e8ce31b25806e51fa8b624bdff7efd6f9a86",
+    "agent": "b9b2d3b31ab3d97fd69960c603fc3ee6d13d83d5",
+    "agentTree": "ab9caf6e0662542f111fb20a7cd05aa7314bcd2c"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "noExternalNetwork": true
+  },
+  "legacyContinuity": {
+    "oldDevice": 1048812,
+    "actualDevice": 1048828,
+    "oldProofUnchanged": true,
+    "rootOverlayProvenanceAbsent": true,
+    "zeroServiceStarts": true
+  },
+  "agentArtifact": {
+    "sha256": "53df537878155d2cc34bd7da628aedd1c7489fffae7288544145848104b02f92",
+    "version": "0.1.0~cohort20261120062221.5.e5cb79d-1",
+    "head": "e5cb79d11e72b48cf4ac6727824060509c5a148c",
+    "tree": "96599afa02fa8fda88a6ff2ea4a6e89b8e28d67b",
+    "binarySha256": "c95f26432a23766b6402f5fa80ae27e5f9a290ef2d4a1126be6efd61a8b50434",
+    "bridgeSha256": "3d4512c759ddb6610880a629ebcd047dfc5482159f7c037956070ade38bf82ad",
+    "loaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+    "sourceManifestSha256": "b692a80da092219ebbfc59473594097d781421d4cc927d81c0aadc93cba57366"
+  },
+  "agentRustInputs": {
+    "unchangedRustInputs": 218,
+    "protocolSha256": "c1304333bba2b54d79751091eb8f8b92d5d50b73ddcafcdf5a7c9f7bc97f1e64"
+  },
+  "agentUpgrade": {
+    "priorOrdinaryEntryRejectedChangedBridge": true,
+    "retainedOriginalInitializationOnFreshIsolatedRoot": true,
+    "requestId": "29bdde3a-ad83-44bf-b693-2ff6e414a630",
+    "state": "APPLIED",
+    "oldBridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+    "sameBootRootAndCoreLoader": true,
+    "sameCoreServiceAndLastStart": true,
+    "unitStarted": false,
+    "replayed": false,
+    "protectedFileCounts": {
+      "coreKeys": 2,
+      "agent": 6,
+      "console": 3
+    }
+  },
+  "coreAndNetworking": {
+    "directUpgradeExitCode": 1,
+    "refusal": [
+      "Incoming Core required a typed Networking release proof",
+      "Incoming Networking required the installed Core modem brokers"
+    ],
+    "oldNetworkingAfterAbort": "unpacked",
+    "oldCoreAfterAbort": "installed",
+    "gwtAndDeploymentCompletedInOriginalDpkg": true,
+    "recovery": [
+      "configure old Networking",
+      "remove old Networking",
+      "install approved Core on original fence",
+      "install new Networking"
+    ],
+    "originalMaintenanceId": "3af3f384-66e8-4b02-9bf1-4662f1f4a927",
+    "exactOriginalMaintenanceFiles": 3,
+    "originalMaintenanceReceiptSha256": "951716e9713b790a0431b1fcd75a5054183b00227fd8d480773ef182049d98f8",
+    "preservedSyntheticData": [
+      "sha256",
+      "mode",
+      "uid",
+      "gid",
+      "linkCount",
+      "size",
+      "mtime"
+    ]
+  },
+  "cohort": {
+    "before": {
+      "kura-core": "6.0.0~git202611190914.2a3b588-1",
+      "kura-networking": "3.0.0~git202611190914.4ee16c9-1",
+      "kura-management-ui": "3.0.0~git202611190914.1205092-1",
+      "kura-deployment": "2.0.0~git202611190915.fddf031-1",
+      "kura-wires": "3.0.0~git202611190915.93f318b-1",
+      "kura-management-agent": "0.1.0~cohort202611190917.0f48c7d-1",
+      "kura-management-console-installer": "0.1.0~cohort202611190917.e094676-1",
+      "kura-management-console": "0.1.0~cohort202611190917.e094676-1"
+    },
+    "after": {
+      "kura-core": "6.0.0~git20261120061225.015e6dc-1",
+      "kura-networking": "3.0.0~git202611200436.6ab7101-1",
+      "kura-management-ui": "3.0.0~git202611200220.08712fb-1",
+      "kura-deployment": "2.0.0~git202611190922.5a6025b-1",
+      "kura-wires": "3.0.0~git202611190915.93f318b-1",
+      "kura-management-agent": "0.1.0~cohort20261120062221.5.e5cb79d-1",
+      "kura-management-console-installer": "0.1.0~cohort20261120060040.6798af7-1",
+      "kura-management-console": "0.1.0~cohort20261120060040.6798af7-1"
+    },
+    "versionsChanged": 7,
+    "installedPackages": 8,
+    "emptyDpkgAudit": true,
+    "sameCenterMaintenanceId": "4e51ad1a-15fa-4450-bb64-73a190ef5019",
+    "centerPhase": "COMPLETE",
+    "noAutoStart": true
+  },
+  "runtime": {
+    "activeBundleLocations": {
+      "org.eclipse.kura.core": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.core.deployment": "initial@reference:file:../kura/siblings/deployment/4s/org.eclipse.kura.core.deployment-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.hook.file.move.provider": "initial@reference:file:../kura/siblings/deployment/5s/org.eclipse.kura.hook.file.move.provider-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.management.bridge": "initial@reference:file:../../../usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar",
+      "org.eclipse.kura.nm": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+      "org.eclipse.kura.web2": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar"
+    },
+    "gwtPinnedHttps": {
+      "auth": {
+        "status": 200,
+        "location": null,
+        "serverSha256": "2fb8c7cf98d0f9cd491ea4e78d2ed7a8c7fc719050ac41ad954a051bf32085e3"
+      },
+      "console": {
+        "status": 302,
+        "location": "/admin/auth",
+        "serverSha256": "2fb8c7cf98d0f9cd491ea4e78d2ed7a8c7fc719050ac41ad954a051bf32085e3"
+      }
+    },
+    "centerReady": true,
+    "noNewPrivilegesOnAllThree": true,
+    "normalStop": true
+  },
+  "tests": {
+    "agentTargetedPassed": 24,
+    "agentPackagingTotal": 326,
+    "agentPackagingPassed": 324,
+    "agentPackagingSkipped": 2,
+    "testOnlyChangeSeparateFromPackage": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "direct in-place Core and legacy Networking cutover and additional interruption states",
+    "enrolled and authenticated business upgrade and remote operations",
+    "additional provider and launcher combinations, complete Core/OSGi, remaining typed brokers",
+    "full six-component matrix and all 12 parents"
+  ]
+}

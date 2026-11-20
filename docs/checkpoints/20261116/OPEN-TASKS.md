@@ -1,3 +1,15 @@
+## 2026-11-20 继续实施 — 未绑定 Agent 的 Java bridge 换版及原生组合有序升级
+
+历史六组件隔离现场挂载后设备号改变，原 Agent 初始化证明没有 OverlayFS 底层来源信息。已装代码拒绝续接，旧证明字节精确、三服务零启动，现场正常停放。使用独立 Debian 13 ARM64 Root 安装同版八个旧正式包，并在该 Root 同一次 boot 内合法初始化和验证。
+
+Agent `e5cb79d` 增加显式的 `prepare-unbound-java-bridge-update`。只接受远程关闭、未绑定且停机的已初始化 Agent。原初始化编号、审批归档、bridge 身份和协议、原 Core loader、Core 单元及版本、同一停机 Main、物理目录、Root 和 boot 在准入及发布时核对。旧普通入口实测拒绝 bridge 变化，显式入口后实际 dpkg 以原编号结算为 APPLIED。两份 Core 凭据、六份 Agent 文件和三份中心文件精确。正式包源自 Agent `e5cb79d`，218 项 Rust 编译输入一致后复用已核对 ELF。针对性回归 24 项通过。独立测试提交 `b9b2d3b` 修正旧故障注入参数，Debian ARM64 包装套件 326 项中 324 项通过、2 项跳过。
+
+直接联合 dpkg 时，新 Core 要求 typed Networking 证明，新 Networking 依赖新 Core broker。Core 保持旧版已装，旧 Networking 留在 unpacked，GWT 和 Deployment 已升级。沿同一 Root 核对原三份围栏、旧数据和历史后，实际配置并移除旧 Networking，再用原围栏完成批准的 Core 升级并安装新 Networking。原 Core 编号只增加一份关联回执，Core 凭据、旧历史及原 Agent 证明精确。合成用户文件的内容、模式、UID/GID 与原修改时间保持。
+
+中心工具与中心沿正式维护入口升级，原中心编号 COMPLETE。八包均已安装，七包变更版本，Wires 已是匹配版本，dpkg audit 无输出，三服务均未自启。显式启动后，JDK 21 探针在实际 Main 核对六个 ACTIVE OSGi bundle，包括已审阅的 Agent bridge。GWT HTTPS 按已装叶证书固定核对 200／302，中心 READY。三个进程均启用 NNP，全部正常停止并维持 disabled，隔离 Root 正常停放。
+
+直接原位联合换版、已绑定和认证业务、其余 provider／launcher 与中断点、完整 Core/OSGi、余下 typed brokers 和完整六组件矩阵继续内部待办。原三现场、个人文件及 7fd 的 41 输入／16 回执保留，未重派 UNKNOWN。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-unbound-java-bridge-cohort-upgrade-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 全 purge 后联合复装与解包态重启续接
 
 Core `015e6dce60` 移除 dpkg 首装时对 `/opt/eclipse/kura*` 的清理，独立 provider 状态由各自软件包维护。自解包入口只按原 Core 链接和历史目录名检查旧安装。同一 purge 现场先用旧安装器头部复现旧路径拒绝。JDK 21、Maven 3.10.1 从当前 Git 构建新正式 ARM64 deb 和自解包。实际新自解包保留六个 Deployment 目录和三份文件完整指纹，Core 写入原移除编号的正常包回执，保留的 AES 不变。Linux ARM64 25 项通过，macOS 24 项通过、1 项平台跳过。
