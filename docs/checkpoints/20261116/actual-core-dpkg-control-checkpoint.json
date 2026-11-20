@@ -1,0 +1,728 @@
+{
+  "date": "2026-11-20",
+  "platform": "Debian 13 ARM64, actual dpkg and systemd",
+  "java": "21.0.13",
+  "maven": "3.10.1",
+  "coreOriginal": {
+    "head": "9f8a090a350137a9ebd0ac3d6917535e6dc7f70d",
+    "tree": "8cb404aa999476a657727a6383614bc2b3a6685c"
+  },
+  "coreSuccessor": {
+    "head": "a95523d46a194cb9c1de40681a5da74ffb32ed83",
+    "tree": "06ce70605e7bd57d78fa5807e8c00ae0f50611e2"
+  },
+  "packages": [
+    {
+      "archive": "/root/kura-dpkg-control/kura_6.0.0~git20261120032056.9f8a090-1_arm64.deb",
+      "sha256": "b9cfa34d20bea9304a179770eafa65520b49cf7878ae0230bcd2bb3ad061d415",
+      "package": "kura-core",
+      "version": "6.0.0~git20261120032056.9f8a090-1"
+    },
+    {
+      "archive": "/root/kura-dpkg-control/kura_6.0.0~git20261120033001.a95523d-1_arm64.deb",
+      "sha256": "9ba69b9f29bae6257af25e00689f93fce9b12a6f0ff6840423e9105454246c06",
+      "package": "kura-core",
+      "version": "6.0.0~git20261120033001.a95523d-1"
+    }
+  ],
+  "packagedMaintainerScripts": {
+    "controls": {
+      "preinst": "8c8e63f6c4296d91911771db209d9ecdbdd5aecc12a3423d9ac6799a0ace2e97",
+      "postinst": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a",
+      "prerm": "edefb606d06563ceca056b76321156dca8cbf408e4097136a1f7c1620fa2a41e",
+      "postrm": "1dcfb1c2df76e366529d2f439517e7ccc7583602df762403ce2987acfa30c23b"
+    },
+    "embeddedWithPreinst": true
+  },
+  "pairedDpkgBackupInventory": {
+    "count": 434,
+    "recordsSha256": "7f10fd2c58fce871ecb8cd72e412b29a016829d22bc79247a5a7888d9b532890"
+  },
+  "firstCandidate": {
+    "head": "a666c7cda9f0b72cacd2c34224ff3a07732c0475",
+    "tree": "a57e4ce1d5dc7483c571d57371ed771ad34d726a",
+    "outcome": {
+      "dpkgState": [
+        "6.0.0~git20261120032417.a666c7c-1",
+        "half-installed",
+        "reinstreq"
+      ],
+      "sameOriginalCapture": true,
+      "original": "feee041f-7ab9-40d4-9b36-38839ea90332",
+      "main": "MainPID=0\nExecMainStartTimestampMonotonic=0\nActiveState=inactive\nUnitFileState=disabled",
+      "canonicalFilesWithMatchingDpkgBackup": 434,
+      "rootAndFenceExact": true,
+      "refusal": "Unexpected file in interrupted dpkg payload"
+    },
+    "parking": {
+      "id": "763ba72e31240e520df7ca8ebf0b479805d1fd26336da140981a79358be5ab72",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T03:20:27.211291869Z",
+        "FinishedAt": "2026-11-20T03:29:49.69466425Z"
+      }
+    }
+  },
+  "afterInstalledPostinstReplacement": {
+    "original": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+    "witness": {
+      "mode": "control",
+      "dpkgPid": 1744,
+      "completedRenameSyscall": 38,
+      "packageState": [
+        "6.0.0~git20261120032056.9f8a090-1",
+        "half-installed",
+        "reinstreq"
+      ],
+      "postinstBefore": {
+        "device": 1048815,
+        "inode": 5655706,
+        "size": 64662,
+        "sha256": "341d206460f523d295e4c8abae95efc8d6cfb5332d78ca98d8e8ba29d0645ca8"
+      },
+      "newControl": {
+        "device": 1048815,
+        "inode": 5657519,
+        "size": 64662,
+        "sha256": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a"
+      },
+      "controlFiles": {
+        "kura-core.preinst": {
+          "device": 1048815,
+          "inode": 5657521,
+          "size": 624162,
+          "sha256": "8c8e63f6c4296d91911771db209d9ecdbdd5aecc12a3423d9ac6799a0ace2e97"
+        },
+        "kura-core.postinst": {
+          "device": 1048815,
+          "inode": 5657519,
+          "size": 64662,
+          "sha256": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a"
+        },
+        "kura-core.prerm": {
+          "device": 1048815,
+          "inode": 5657522,
+          "size": 32180,
+          "sha256": "edefb606d06563ceca056b76321156dca8cbf408e4097136a1f7c1620fa2a41e"
+        },
+        "kura-core.postrm": {
+          "device": 1048815,
+          "inode": 5657520,
+          "size": 3034,
+          "sha256": "1dcfb1c2df76e366529d2f439517e7ccc7583602df762403ce2987acfa30c23b"
+        },
+        "kura-core.list": {
+          "device": 1048815,
+          "inode": 5658293,
+          "size": 42488,
+          "sha256": "8b5d60befc58e0c8b42d0a8b6c8e0306acae474715070f277c052d868c1e9f77"
+        }
+      },
+      "updates": {
+        "0000": {
+          "device": 1048815,
+          "inode": 5657516,
+          "size": 1387,
+          "sha256": "e4e8796b81562a5e428e9b9bf10a369d78a1a6c09056174dda1c3fb53ac13e7a"
+        },
+        "0001": {
+          "device": 1048815,
+          "inode": 5657527,
+          "size": 1380,
+          "sha256": "c4d6d89632bb960df6a566c918a4539de0c980a6147934bc9601f0be78a7722e"
+        },
+        "0002": {
+          "device": 1048815,
+          "inode": 5657538,
+          "size": 1386,
+          "sha256": "ad546abdc29104ae6af4b543147fbe79eb6e848b524af899cc3e6caf6a774920"
+        },
+        "0003": {
+          "device": 1048815,
+          "inode": 5657539,
+          "size": 1386,
+          "sha256": "ad546abdc29104ae6af4b543147fbe79eb6e848b524af899cc3e6caf6a774920"
+        }
+      },
+      "maintenanceId": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+      "capture": {
+        "device": 1048815,
+        "inode": 5657548,
+        "size": 628,
+        "sha256": "f7f576e5921e1c6cd0bb39e2ee4db5c1f7a931bdb107c7a8711fe92adfcfcb37"
+      }
+    },
+    "fence": {
+      "sha256": "87ef72f2445536d861d32408b9732ac9376ccb531b25eb9ca85973d8e9b24213",
+      "identity": "1048815:5657534:1:0:0:600:102:2026-11-20 03:30:46.935102485 +0000:2026-11-20 03:30:46.935102485 +0000"
+    },
+    "capture": {
+      "schema": 2,
+      "maintenanceId": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+      "preinstSha256": "8c8e63f6c4296d91911771db209d9ecdbdd5aecc12a3423d9ac6799a0ace2e97",
+      "oldVersion": "6.0.0~git20261120032056.9f8a090-1",
+      "newVersion": "6.0.0~git20261120033001.a95523d-1",
+      "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "logical": {
+        "device": 1048815,
+        "inode": 5656393,
+        "target": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux"
+      },
+      "source": {
+        "name": "kura_6.0.0-SNAPSHOT_linux",
+        "device": 1048815,
+        "inode": 5655890
+      },
+      "root": {
+        "device": 1048815,
+        "inode": 5655408
+      },
+      "stage": {
+        "device": 1048815,
+        "inode": 5657547
+      },
+      "tag": "0e163f99d6062fd9b1ffc93e1fe597dc94f16ea0103d979e1f12cd4baa693c58"
+    },
+    "captureFile": {
+      "sha256": "f7f576e5921e1c6cd0bb39e2ee4db5c1f7a931bdb107c7a8711fe92adfcfcb37",
+      "identity": "1048815:5657548:1:0:0:600:628:2026-11-20 03:30:47.854101107 +0000:2026-11-20 03:30:47.857650264 +0000"
+    },
+    "issuedFile": {
+      "sha256": "86d10294e5832bd27d9033c35e4e3e7b79f5b97eea3f93cd1ff7a2858bace0d2",
+      "identity": "1048815:5657587:1:0:0:600:220:2026-11-20 03:30:48.108847363 +0000:2026-11-20 03:30:48.111652554 +0000"
+    },
+    "copiedInputs": {
+      "user/preinst-capture/opaque": {
+        "sha256": "9ae6ebd76f1302de451eb82214c00a0f47d953a859c26249433c1e04ee7afc04",
+        "metadata": "640:997:995:27:2026-11-18 17:30:01.123456789 +0000:5657557:1048815:2026-11-20 03:30:47.865948547 +0000"
+      },
+      "data/preinst-capture/original.record": {
+        "sha256": "bb93104fe7d525b1c2ac62a94567249116870ad40cb8a90d9781b567a3ad293a",
+        "metadata": "640:997:995:3400000:2026-11-18 17:30:01.123456789 +0000:5657560:1048815:2026-11-20 03:30:47.866501760 +0000"
+      },
+      "packages/preinst-capture/opaque": {
+        "sha256": "6aba27b76a504822891ef4057823c28b19bbe9f73254ebc9dcef8264bd2f6edf",
+        "metadata": "640:997:995:31:2026-11-18 17:30:01.123456789 +0000:5657564:1048815:2026-11-20 03:30:47.867116849 +0000"
+      },
+      "log/preinst-capture/opaque": {
+        "sha256": "6b06fdd37e42357d4ed8fff59f71755cae5d6549fdcdb340c2de41f7ffee4464",
+        "metadata": "640:997:995:26:2026-11-18 17:30:01.123456789 +0000:5657568:1048815:2026-11-20 03:30:47.868132150 +0000"
+      }
+    }
+  },
+  "afterNewUnpackedReinstreq": {
+    "original": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+    "witness": {
+      "mode": "unpacked",
+      "dpkgPid": 2406,
+      "completedRenameSyscall": 38,
+      "packageState": [
+        "6.0.0~git20261120033001.a95523d-1",
+        "unpacked",
+        "reinstreq"
+      ],
+      "postinstBefore": {
+        "device": 1048815,
+        "inode": 5657519,
+        "size": 64662,
+        "sha256": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a"
+      },
+      "newControl": {
+        "device": 1048815,
+        "inode": 5658326,
+        "size": 64662,
+        "sha256": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a"
+      },
+      "controlFiles": {
+        "kura-core.preinst": {
+          "device": 1048815,
+          "inode": 5658328,
+          "size": 624162,
+          "sha256": "8c8e63f6c4296d91911771db209d9ecdbdd5aecc12a3423d9ac6799a0ace2e97"
+        },
+        "kura-core.postinst": {
+          "device": 1048815,
+          "inode": 5658326,
+          "size": 64662,
+          "sha256": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a"
+        },
+        "kura-core.prerm": {
+          "device": 1048815,
+          "inode": 5658329,
+          "size": 32180,
+          "sha256": "edefb606d06563ceca056b76321156dca8cbf408e4097136a1f7c1620fa2a41e"
+        },
+        "kura-core.postrm": {
+          "device": 1048815,
+          "inode": 5658327,
+          "size": 3034,
+          "sha256": "1dcfb1c2df76e366529d2f439517e7ccc7583602df762403ce2987acfa30c23b"
+        },
+        "kura-core.list": {
+          "device": 1048815,
+          "inode": 5659009,
+          "size": 42488,
+          "sha256": "8b5d60befc58e0c8b42d0a8b6c8e0306acae474715070f277c052d868c1e9f77"
+        }
+      },
+      "updates": {
+        "0000": {
+          "device": 1048815,
+          "inode": 5658292,
+          "size": 1386,
+          "sha256": "ad546abdc29104ae6af4b543147fbe79eb6e848b524af899cc3e6caf6a774920"
+        },
+        "0001": {
+          "device": 1048815,
+          "inode": 5658332,
+          "size": 1386,
+          "sha256": "ad546abdc29104ae6af4b543147fbe79eb6e848b524af899cc3e6caf6a774920"
+        },
+        "0002": {
+          "device": 1048815,
+          "inode": 5659008,
+          "size": 1380,
+          "sha256": "948bf78b03d711425a2acc0b8ed3b994ebe96569e17c20f05718d383aa3fc4e2"
+        }
+      },
+      "maintenanceId": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+      "capture": {
+        "device": 1048815,
+        "inode": 5657548,
+        "size": 628,
+        "sha256": "f7f576e5921e1c6cd0bb39e2ee4db5c1f7a931bdb107c7a8711fe92adfcfcb37"
+      }
+    },
+    "relocation": {
+      "sha256": "1fc6a47655927a0edb6bb629c03464bf2058a271ee6d17c26eedc09eb08ea6cd",
+      "identity": "1048815:5658334:1:0:0:600:268:2026-11-20 03:30:57.064319421 +0000:2026-11-20 03:30:57.066733318 +0000"
+    }
+  },
+  "sameVersionReinstall": {
+    "original": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+    "source": "1048815:5657547",
+    "result": {
+      "preinstArguments": [
+        "6.0.0~git20261120033001.a95523d-1",
+        "6.0.0~git20261120033001.a95523d-1"
+      ],
+      "actions": [
+        "restore",
+        "detach"
+      ],
+      "captureCopies": [],
+      "outcomes": [
+        {
+          "action": "restore",
+          "oldRoot": {
+            "device": 1048815,
+            "inode": 5655890
+          },
+          "incomingRoot": {
+            "device": 1048815,
+            "inode": 5657801
+          },
+          "packageState": [
+            "6.0.0~git20261120033001.a95523d-1",
+            "half-installed",
+            "reinstreq"
+          ],
+          "pairedBackupCount": 434,
+          "pairedBackupsSha256": "7f10fd2c58fce871ecb8cd72e412b29a016829d22bc79247a5a7888d9b532890"
+        },
+        {
+          "action": "detach",
+          "oldRoot": {
+            "device": 1048815,
+            "inode": 5655890
+          },
+          "incomingRoot": {
+            "device": 1048815,
+            "inode": 5657801
+          },
+          "packageState": [
+            "6.0.0~git20261120033001.a95523d-1",
+            "half-installed",
+            "reinstreq"
+          ],
+          "pairedBackupCount": 434,
+          "pairedBackupsSha256": "7f10fd2c58fce871ecb8cd72e412b29a016829d22bc79247a5a7888d9b532890"
+        }
+      ],
+      "packageExit": 0,
+      "sourceCapture": {
+        "device": 1048815,
+        "inode": 5657548,
+        "size": 628,
+        "sha256": "f7f576e5921e1c6cd0bb39e2ee4db5c1f7a931bdb107c7a8711fe92adfcfcb37"
+      }
+    },
+    "dpkgState": [
+      "6.0.0~git20261120033001.a95523d-1",
+      "unpacked",
+      "ok"
+    ],
+    "sameCaptureExact": true
+  },
+  "finalConfigure": {
+    "original": "25cb78ac-5d6d-4582-86ba-4ab030f87b58",
+    "postinstSha256": "450399d0f6610b2b0ac4a849fe33478644f6544135177ac180ec7594ee9c800a",
+    "manifestSha256": "7ba229535e88e36aa1f8a492262939460fa6690fad1d0bf466a5791e6b393e0b",
+    "configure": {
+      "intent": {
+        "sha256": "e2106ea4896c64ed4983252b2aa0f2c36d5393eada1cbcfc0c6b3ae009dcd0d6",
+        "ino": 5659691,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 441,
+        "mtime": 1795145481040237528,
+        "ctime": 1795145481040237528,
+        "links": 1
+      },
+      "setup-layout-intent": {
+        "sha256": "70ecd3c142c04308f2407863795f12bbf0726bf8e9420699db7fbef6c904e951",
+        "ino": 5659693,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 454,
+        "mtime": 1795145481083988631,
+        "ctime": 1795145481084949931,
+        "links": 1
+      },
+      "setup-layout-returned": {
+        "sha256": "e868b2ecf2ee7e1f23716bc49ecc8e2daf383969646b467e67b2b65c6c4d93a5",
+        "ino": 5659706,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 456,
+        "mtime": 1795145481434898254,
+        "ctime": 1795145481437953115,
+        "links": 1
+      },
+      "setup-layout-complete": {
+        "sha256": "20b656aa7c43b13a02b52474434f1c55309fd8a29aaaadf8794a27f6340f36a2",
+        "ino": 5659708,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 456,
+        "mtime": 1795145481479227904,
+        "ctime": 1795145481479953494,
+        "links": 1
+      },
+      "setup-brokers-intent": {
+        "sha256": "e532d0f2e7b2e48d866392095835c68490cceccf04145dca2f96b3a514229152",
+        "ino": 5659712,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 455,
+        "mtime": 1795145481520774487,
+        "ctime": 1795145481521953873,
+        "links": 1
+      },
+      "setup-brokers-returned": {
+        "sha256": "5ef61b90a8f50d8ccb8b9b2627226bec0fef3505f59ac295eb75a2080a22064f",
+        "ino": 5659767,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 457,
+        "mtime": 1795145482158985118,
+        "ctime": 1795145482160959636,
+        "links": 1
+      },
+      "setup-brokers-complete": {
+        "sha256": "957e7ec396afd37f32429dac8da8ab4c8b75ceb2f14367e2b445c413582d2f9d",
+        "ino": 5659769,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 457,
+        "mtime": 1795145482202821180,
+        "ctime": 1795145482205960042,
+        "links": 1
+      },
+      "setup-runtime-intent": {
+        "sha256": "275f55c472845a233b51768ba5f8e98697ab6e8d54aaff7a29448f0d45d08c4c",
+        "ino": 5659771,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 455,
+        "mtime": 1795145482248183589,
+        "ctime": 1795145482249960438,
+        "links": 1
+      },
+      "setup-runtime-returned": {
+        "sha256": "f48ee7f7b751be112740b463f57b69f6c65f45631732359a08a03a75bd7eedde",
+        "ino": 5659782,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 457,
+        "mtime": 1795145482327127009,
+        "ctime": 1795145482327961142,
+        "links": 1
+      },
+      "setup-runtime-complete": {
+        "sha256": "f465a91f7733290cb27b42c2783ca36dcbfa764bccf5d80842f7164849f3f92e",
+        "ino": 5659784,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 457,
+        "mtime": 1795145482369155972,
+        "ctime": 1795145482371961539,
+        "links": 1
+      },
+      "setup-https-intent": {
+        "sha256": "2f0db92a6e9f00e30651390df4353ad2b6f1c10c6539738cd5fc49e029ba4109",
+        "ino": 5659786,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 453,
+        "mtime": 1795145482413048076,
+        "ctime": 1795145482413961917,
+        "links": 1
+      },
+      "setup-https-returned": {
+        "sha256": "e78a8385ec6f870ac194ecf146a06f190365111902a02ddd71ba4990aabb5bb7",
+        "ino": 5659795,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 455,
+        "mtime": 1795145482696270797,
+        "ctime": 1795145482699964497,
+        "links": 1
+      },
+      "setup-https-complete": {
+        "sha256": "78da28229c71e31bc36e26628ca539f0f18ab85f0e197a54ff281e9dfea0c0af",
+        "ino": 5659797,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 455,
+        "mtime": 1795145482740738656,
+        "ctime": 1795145482742964885,
+        "links": 1
+      },
+      "setup-ownership-intent": {
+        "sha256": "3d029158eaff03da928c1c7ad5dae3c9fd308fef9fc3ce6699a6071b45cfeaba",
+        "ino": 5659801,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 457,
+        "mtime": 1795145482784607552,
+        "ctime": 1795145482786965281,
+        "links": 1
+      },
+      "setup-ownership-returned": {
+        "sha256": "77e0da5ff2eca14863c8af8bf55a113aecf749015ccc8e9322b1a05896f18157",
+        "ino": 5659803,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 459,
+        "mtime": 1795145482822080556,
+        "ctime": 1795145482824965624,
+        "links": 1
+      },
+      "setup-ownership-complete": {
+        "sha256": "2d48948a1c4f89d917b0cba7131cb23e972c267e2949fe09ceb2b70f88931b23",
+        "ino": 5659807,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 459,
+        "mtime": 1795145482866029161,
+        "ctime": 1795145482867966012,
+        "links": 1
+      },
+      "prepared": {
+        "sha256": "fbeaadd7a7faa1b1e1ee52f37a1607b695b3499fd1a9cd7335e4f3acf6025489",
+        "ino": 5659811,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 443,
+        "mtime": 1795145483015263090,
+        "ctime": 1795145483017967365,
+        "links": 1
+      },
+      "ready": {
+        "sha256": "13e0aade9ba98547f78b1dd75f2d8cb67b29d55430f5e0393e4c380e4220f74f",
+        "ino": 5659826,
+        "dev": 1048815,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 440,
+        "mtime": 1795145483555297419,
+        "ctime": 1795145483561972271,
+        "links": 1
+      }
+    },
+    "originalHistoryExact": true,
+    "maintenance": {
+      "sha256": "2ecf8f2838ce8fba4afbf3fd09fca449ddf29d96ea19fc8585d7f5145c5ef666",
+      "identity": "1048815:5659829:1:0:0:600:342:2026-11-20 03:31:23.761171818 +0000:2026-11-20 03:31:23.761171818 +0000"
+    },
+    "restored": {
+      "user/preinst-capture/opaque": {
+        "sha256": "9ae6ebd76f1302de451eb82214c00a0f47d953a859c26249433c1e04ee7afc04",
+        "metadata": "640:997:995:27:2026-11-18 17:30:01.123456789 +0000"
+      },
+      "data/preinst-capture/original.record": {
+        "sha256": "bb93104fe7d525b1c2ac62a94567249116870ad40cb8a90d9781b567a3ad293a",
+        "metadata": "640:997:995:3400000:2026-11-18 17:30:01.123456789 +0000"
+      },
+      "packages/preinst-capture/opaque": {
+        "sha256": "6aba27b76a504822891ef4057823c28b19bbe9f73254ebc9dcef8264bd2f6edf",
+        "metadata": "640:997:995:31:2026-11-18 17:30:01.123456789 +0000"
+      },
+      "log/preinst-capture/opaque": {
+        "sha256": "6b06fdd37e42357d4ed8fff59f71755cae5d6549fdcdb340c2de41f7ffee4464",
+        "metadata": "640:997:995:26:2026-11-18 17:30:01.123456789 +0000"
+      }
+    },
+    "keyAndRootExact": true,
+    "main": "MainPID=0\nExecMainStartTimestampMonotonic=0\nActiveState=inactive\nUnitFileState=disabled",
+    "dpkgState": [
+      "6.0.0~git20261120033001.a95523d-1",
+      "installed",
+      "ok"
+    ],
+    "unrelatedTreeExact": true
+  },
+  "provenance": {
+    "firstCutAtSuccessfulControlRename": true,
+    "secondCutAtSuccessfulStatusPublication": true,
+    "sameVersionDpkgArgumentsObserved": true,
+    "exactIncomingHookContentAtReinstreq": true,
+    "originalCaptureAndFenceUnchanged": true,
+    "releaseVersionsAndBootBound": true,
+    "recaptureCount": 0,
+    "unrelatedPhysicalDirectoryExact": true
+  },
+  "actualMain": {
+    "active": true,
+    "mainPid": 4936,
+    "home": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+    "configuredHome": "/opt/eclipse/kura",
+    "launcher": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/org.eclipse.equinox.launcher-1.7.100.jar",
+    "launcherSha256": "0209ecc491bdb20a0f09661e11696a8e0cdbd60cf14e2c55dbcb633d5fdd10bf",
+    "loopbackHttps": 404,
+    "systemd": {
+      "MainPID": "4936",
+      "NRestarts": "0",
+      "ExecMainStartTimestampMonotonic": "340827870000",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "disabled",
+      "InvocationID": "fc602c828d204757a27efaa10ec7eb80"
+    },
+    "processStatus": {
+      "Uid": "997\t997\t997\t997",
+      "Gid": "995\t995\t995\t995",
+      "CapInh": "0000000000003402",
+      "CapPrm": "0000000000003402",
+      "CapEff": "0000000000003402",
+      "CapBnd": "0000000000003402",
+      "CapAmb": "0000000000003402",
+      "NoNewPrivs": "1"
+    },
+    "observedOsgiServices": {
+      "httpsKeystore": [
+        "2026-11-20T03:31:48,192 [ConfigurationListener Event Queue] INFO  o.e.k.c.k.FilesystemKeystoreServiceImpl - Bundle HttpsKeystore has started!"
+      ],
+      "sslKeystore": [
+        "2026-11-20T03:31:48,193 [ConfigurationListener Event Queue] INFO  o.e.k.c.k.FilesystemKeystoreServiceImpl - Bundle SSLKeystore has started!"
+      ],
+      "certificatesManager": [
+        "2026-11-20T03:31:48,047 [Start Level: Equinox Container: 166645ab-3edd-44ac-91e7-38125aceec8e] INFO  o.e.k.c.c.CertificatesManager - Bundle org.eclipse.kura.core.certificates.CertificatesManager has started!"
+      ],
+      "felixHttpBridge": [
+        "2026-11-20T03:31:49,839 [Start Level: Equinox Container: 166645ab-3edd-44ac-91e7-38125aceec8e] INFO  o.a.f.http - Started bridged http services"
+      ]
+    }
+  },
+  "tests": {
+    "linuxPassed": 96,
+    "linuxSkipped": 0,
+    "hostPassed": 90,
+    "hostSkipped": 6,
+    "firstLinuxRunFixtureModeWasGroupWritable": true
+  },
+  "parking": {
+    "id": "70b5221cadbf73927f26dd9f07397ae264822d59de92095e8aeb58de625f75c8",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T03:29:49.998690617Z",
+      "FinishedAt": "2026-11-20T03:33:16.856040465Z"
+    },
+    "main": [
+      "MainPID=0",
+      "Result=success",
+      "ActiveState=inactive",
+      "UnitFileState=disabled"
+    ]
+  },
+  "earlierPayloadCheckpoint": "66a1e30",
+  "earlierPreparedCheckpoint": "67bf3c5",
+  "earlierInFilePreparedCheckpoint": "c83759e",
+  "rootPairingRelaxed": false,
+  "historicalOperationsRedispatched": false,
+  "original7fdInputs": 41,
+  "original7fdReceipts": 16,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "actual NM/cloud-init/physical hardware",
+    "amd64",
+    "disk full/hard power loss"
+  ],
+  "internalPending": [
+    "other dpkg flags, metadata and cross-boot transitions",
+    "remaining Core/OSGi, typed brokers and six-component provider/launcher/lifecycle matrix"
+  ]
+}

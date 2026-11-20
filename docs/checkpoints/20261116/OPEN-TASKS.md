@@ -1,5 +1,15 @@
 
 
+## 2026-11-20 继续实施 — Core dpkg 控制替换及新版 reinstreq 恢复
+
+原 HTTPS 步骤仍按原编号保留 UNKNOWN。可信记录只有派发证据。已实际验证的 PREPARED 文件回拷和原围栏续接继续沿用。
+
+Core a666c7cda9 在新版版本已由 dpkg 持久发布时，按原 Root、boot、围栏、捕获记录、两边版本及四个原维护脚本的精确指纹识别同版重装。首次实装仍在新版重装时拒绝，保留现场。实际 dpkg 在上一轮解包重试为同一候选的 434 个文件生成了 `.dpkg-tmp`。Core a95523d46a 只在同一目录 inode 已有原 HMAC 交接时接纳逐一匹配入包大小和 SHA-256 的完整备份。无原交接、未列入包清单或不一致的文件均拒绝。[Debian dpkg 手册](https://dyn.manpages.debian.org/trixie/dpkg/dpkg.1.en.html)
+
+在独立 Debian 13 ARM64 Root 从 Git 用 JDK 21 构建并实际安装。第一次中断紧随 dpkg 替换新 postinst，数据库仍为旧版 half-installed reinstreq；沿同包补续解包，第二次中断紧随新版 unpacked reinstreq 状态发布。真实重装传给 preinst 的两个版本参数均为新版，恢复期间 dpkg 显示新版 half-installed reinstreq。旧树、同一个入包目录 inode 及 434 份备份的 inode 和内容沿原维护围栏交还 dpkg。实际安装最终为 installed ok，18 份配置记录通过 HMAC 验证，原 AES、四类数据、历史回执和相邻目录保持，只新增一份原编号维护回执。
+
+正式 Main 装载本包 Equinox，实际非 Root 且 NNP=1。观察到 HTTPS/SSL keystore、CertificatesManager 及 Felix HTTP bridge 启动，回环 HTTPS 实际返回 404。Linux 96 项通过，macOS 90 项通过、6 项跳过。两个隔离现场均正常停放，原三现场、25 份个人文件和 7fd 的 41 输入/16 回执保持。其他 dpkg 边界、跨 boot、完整 Core/OSGi、其余 typed brokers 以及六组件 provider/launcher/生命周期矩阵继续内部待办。冻结父项 0/12，external deferred 仅原三项。见 [实际检查点](actual-core-dpkg-control-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core 包载荷写入后沿原围栏恢复
 
 Core ebdfbd77ca 为同一次升级持久记录 dpkg 载荷交接，只有原 Root、boot、维护围栏、版本和 preinst 配对，且 dpkg 为原版本 half-installed 时才处理已出现的载荷。包内清单对照实际 deb 的 434 个文件和 40 个目录完全一致。完整文件核对大小与 SHA-256，.dpkg-new 临时文件核对路径、类型、属主和大小上限。接回原旧树之前，半成品在同一文件系统进入专用暂存，原目录及文件 inode 保持。原前置检查通过后把同一目录交回 dpkg。已开始 configure 的围栏和文件身份歧义仍拒绝。
