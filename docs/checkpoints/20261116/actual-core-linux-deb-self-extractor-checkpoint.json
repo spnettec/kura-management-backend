@@ -1,0 +1,153 @@
+{
+  "recordedAt": "2026-11-20T05:47:35.436658+00:00",
+  "core": {
+    "packageRevision": "f6beac005c3c0c09324c90e43a0b76a79dd38d25",
+    "packageTree": "d78d166c8981062668c886331a0766284f816264",
+    "testRevision": "b0ac48556b2f94d9f526bc7ccba63afeac3ff05e",
+    "testTree": "fa10d63f7594da0939b9dfca76e4602cf0cf3247"
+  },
+  "artifact": {
+    "package": "kura_6.0.0~git20261120054157.f6beac0-1_arm64.deb",
+    "version": "6.0.0~git20261120054157.f6beac0-1",
+    "payloadSha256": "4b02b5bb58ca0b6cf09f44ec1f4635a63fa959c6f3873c427947567d45d7f55c",
+    "installer": "kura_6.0.0-SNAPSHOT_linux_installer.sh",
+    "installerSha256": "4b851182af5041ad0f288d8c4af23ecece169158c97f6c75e117466afaf3d6dd",
+    "size": 204169160,
+    "architecture": "arm64",
+    "embeddedPayloadExact": true,
+    "dpkgMaintenance": true
+  },
+  "operationPlatform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "isolatedSystemd": true,
+    "externalNetwork": false,
+    "hostMounts": false
+  },
+  "fresh": {
+    "dispatches": 1,
+    "initialDpkgResult": "unpacked, missing iputils-ping",
+    "rejectedUnmanagedLayoutWithoutWrites": true,
+    "rejectedTruncatedPayloadBeforeDpkg": true,
+    "rejectedLauncherWithPendingConfigure": true,
+    "notes": [
+      "same Root after original dpkg unpack and missing iputils-ping",
+      "pre-existing fixture parent at 0777 refused before a new installer dispatch",
+      "corrected fixture parent only, 0755, and completed the original configure"
+    ],
+    "originalKeyFingerprintsExact": 2,
+    "addedNormalHistory": 1,
+    "main": {
+      "user": "kurad",
+      "noNewPrivileges": true,
+      "restarts": 0,
+      "osgiConfigurationServiceActivated": true,
+      "initialSnapshotLoaded": true,
+      "normalStop": true
+    }
+  },
+  "upgrade": {
+    "fromRevision": "27a64d73f3ed466475f8c9c4a045126441c71018",
+    "fromVersion": "6.0.0~git20261120043757.27a64d7-1",
+    "sameRoot": true,
+    "preexistingHistoryPreserved": true,
+    "initialDataHashAndMetadataPreservedExceptCopyIdentity": true,
+    "canonicalKeysExact": 2,
+    "disabledMainRetained": true,
+    "removeThenRetainedReinstallViaSameWrapper": true
+  },
+  "direct": {
+    "freshInstalledFromWrapper": true,
+    "purgeCompleted": true,
+    "mainAndActorUnitsRemoved": true,
+    "originalKeyFingerprintsExact": 2,
+    "originalHistoryExact": true,
+    "removalFencesRetained": 3
+  },
+  "independentJvmPreservedThroughWrapperAndDpkgInAllFixtures": true,
+  "fixtures": {
+    "fresh": {
+      "id": "2a0bd2eb66b9fc18e73bd3ae15b863a6c283a0d54acb1735d38ef1c0fb8f97d4",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:42:12.817396018Z",
+        "FinishedAt": "2026-11-20T05:46:17.436463205Z"
+      }
+    },
+    "upgrade": {
+      "id": "a847d5908c30b244073f91c7f95810c752705a04185b84786ce7e3e58c365039",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:42:13.032909654Z",
+        "FinishedAt": "2026-11-20T05:46:33.141229169Z"
+      }
+    },
+    "direct": {
+      "id": "2347f729f70f928b357124f372135cb896be80fde79e96d600b2f1da7356e543",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:45:50.196213022Z",
+        "FinishedAt": "2026-11-20T05:46:52.084808184Z"
+      }
+    }
+  },
+  "tests": {
+    "macOS": {
+      "passed": 23,
+      "skipped": 1
+    },
+    "linuxArm64": {
+      "passed": 24,
+      "skipped": 0
+    }
+  },
+  "original7fd": {
+    "inputFingerprints": 41,
+    "normalHistoryReceipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "migration from unregistered raw TAR installation",
+    "old systemd units and positive watchdog device handling",
+    "non-Debian native launcher, other providers, complete Core/OSGi and typed brokers",
+    "complete six-component release lifecycle and recovery matrix",
+    "all 12 parent items"
+  ],
+  "unknownRedispatched": false,
+  "pushed": false
+}

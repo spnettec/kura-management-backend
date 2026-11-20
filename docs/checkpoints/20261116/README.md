@@ -1,3 +1,7 @@
+## 2026-11-20 Core Linux 自解包安装器实装
+
+Core `f6beac005c` 生成的自解包安装器使用同次构建的正式 Debian 载荷。三处实际 Debian 13 ARM64 隔离 Root 验证直接首装、升级、保留重装、purge，以及已解包后的同 Root 配置续接。见 [实装检查点](actual-core-linux-deb-self-extractor-checkpoint.json) 和 [完整台账](OPEN-TASKS.md)。
+
 ## 2026-11-18 历史 Main 迁移与安装态 OSGi
 
 Core `77d53eda4a`。ARM64 已过配对 schema 1 static、永久/runtime linked 和原 `40268c05c3` 发布包的 linked 后升级。实际已装 Main 通过 AES 流及两类配置视图，完整业务和全部父项继续实施。先读 [审查](../../reviews/core-historical-main-migration-review-20261118.md)、[机器检查点](core-historical-main-migration-checkpoint.json) 和 [完整台账](OPEN-TASKS.md)。

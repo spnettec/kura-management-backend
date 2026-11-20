@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Core Linux 自解包安装器
+
+Core `f6beac005c` 让 Linux 自解包安装器封装同次 Maven 生成的正式 `kura-core.deb`。先在私有目录核对完整载荷 SHA-256，再走正常 `dpkg --install`。旧入口的全局 Java 终止、目录删除和原始 watchdog 路径写入已移除。现有 dpkg 围栏和配对检查照常执行。未受 dpkg 管理的历史目录，以及已解包或半配置状态，在解包前拒绝。
+
+JDK 21／Maven 3.10.1 从 Git 构建。三处 Debian 13 ARM64 隔离 Root 用同一自解包产物验证。直接首装及标准 purge 通过，原密钥、历史及三个移除围栏保留，Main 与对应 socket 已移除。由旧正式包升级保留原数据、密钥、历史和 Main 禁用选择，标准 remove 后用同一安装器保留重装通过。三处独立 JVM 的 PID 和出生时间均精确。
+
+缺少 `iputils-ping` 的首装实际返回 1，留在 unpacked。补齐依赖后，configure 先正确拒绝验证脚本误建的 0777 父目录。只修正该测试目录为 0755，原 Root、围栏、密钥和已装控制脚本精确，再沿原 dpkg configure 完成并增加一份正常回执。正式 Main 由 kurad 运行，NNP 生效，OSGi ConfigurationService 实际激活并加载初始快照，Main 正常停机。三个隔离 Root 均正常停放。
+
+独立测试提交 `b0ac48556b` 补齐先前已加入 Main 的 modem cohort 断言，Linux ARM64 24 项通过，macOS 23 项通过、1 项平台跳过。本轮覆盖 Debian 自解包发行入口。既有未登记 TAR 安装的迁移、非 Debian 原生入口、实际 watchdog 硬件，以及完整 Core/OSGi、剩余 typed brokers 和六组件全矩阵继续内部待办。冻结父项 0/12，external deferred 仅原三项。原三现场、个人文件与 7fd 41 输入/16 回执保留。见 [实装检查点](actual-core-linux-deb-self-extractor-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 受保护 FileMove 跨系统管理器重启续接
 
 在新的 Debian 13 ARM64 无外网隔离 Root 实际安装当前 Core 27a64d73f3 和 Deployment 5a6025b。按 Git 和既有正式归档 SHA 复用已构建包，从实际已装 JAR 以 JDK 21 构建单次验证 bundle。首个编译前探针同时匹配了运行库和独立恢复库，校正为正式 Main 的运行库后继续，未重新安装。
