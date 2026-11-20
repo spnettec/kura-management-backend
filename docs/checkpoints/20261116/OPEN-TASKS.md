@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — PKCS#11 同槽位 PIN 变更必须重新认证
+
+旧 Core `96cd580d8a` 在隔离 Debian 13 ARM64 中一次提交同槽位错误 PIN，OSGi provider 仍可打开原令牌。Jetty 实际刷新后，TLS 1.2 和 TLS 1.3 仍返回原证书。OpenJDK SunPKCS11 对已登录令牌会跳过再次登录。首次观察探针因未声明 KuraException OSGi 导入失败，未派发配置，原探针归档后修正。
+
+Core `4535c821c6` 在库、槽位或 PIN 改变时退出现有 provider 的令牌会话，退出失败时阻止加载。SunPKCS11 明确拒绝 PIN 后，保留该凭据配置的失败状态，后续消费者读取不重试原生登录。Keystore Maven 86 项通过。JDK 21/Maven 3.10.1 从 Git 构建正式 ARM64 deb，已装 keystore bundle 与构建摘要一致。
+
+第二个独立 Root 正式实装修正版。一次原错误 PIN 配置提交后，实际 provider 返回 SECURITY_EXCEPTION。Jetty 刷新后两种 TLS 新连接均拒绝。后续消费者读取及 Jetty 刷新共只观察到一次原生 PIN 拒绝。随后一份新的合法配置通过原修订号检查，沿同一 Main、同一 OSGi 服务恢复原证书的 TLS 1.2/1.3。原错误请求未重发。两个 Root 均正常停止并保持 Main disabled。停机后读回 25 份回执和快照，配置内容只有加密 PIN 改变，Jetty 配置条目字节一致。令牌原证书和私钥对象保留。
+
+这次实装覆盖每 Root 一个 SoftHSM 令牌与一个 provider。共享槽位、令牌拔出或替换、物理令牌状态和 CRL 分发仍待验证。完整 Core/OSGi、其余 typed brokers、六组件矩阵和所有 12 父项继续内部待办。原三现场及 7fd 的 41 输入／16 回执保持，闭环 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-core-pkcs11-pin-revalidation-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式 Main 的 PKCS#11 令牌运行期切换
 
 独立 Debian 13 ARM64 Root 实装 Core `96cd580d8a` 与已验签 SoftHSM2 2.6.1-3，用两个不同槽位、不同 PIN 和不同证书的独立软件令牌。真实 Main 一次创建 PKCS#11 配置并绑定实际 Jetty。TLS 1.2 和 TLS 1.3 均在 18443 完成证书校验和 HTTP 请求，首枚证书与原令牌一致。

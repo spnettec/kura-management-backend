@@ -1,0 +1,167 @@
+{
+  "recordedAt": "2026-11-20T07:53:27.559160+00:00",
+  "scope": "Native Core PKCS11 credential refresh with a live Jetty consumer after a same-slot PIN update",
+  "source": {
+    "originalCore": "96cd580d8abd6167ee227e7e49f158ccf8ea05f9",
+    "core": "4535c821c6735b7f4fa31ffedb80274d24588e58",
+    "coreTree": "2b44214a408f234445554204aca02c10e3d64bef"
+  },
+  "platform": {
+    "distribution": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "softHsm": "2.6.1-3",
+    "network": "none",
+    "oneSoftwareTokenAndOneProviderPerFixture": true
+  },
+  "fixtures": {
+    "baseline": {
+      "id": "289d7dcd036224a02574d5eaa9a7d58f21aff70a1f5b1cadee7e2c26bda83703",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T07:46:00.106812422Z",
+        "FinishedAt": "2026-11-20T07:49:22.135305658Z"
+      }
+    },
+    "candidate": {
+      "id": "41368cd4ed826313d5fcda78566fdc4f8dd0cdccb70d7f156fad731d07233a97",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T07:50:13.678812782Z",
+        "FinishedAt": "2026-11-20T07:52:32.084031028Z"
+      }
+    }
+  },
+  "candidatePackage": {
+    "sha256": "929a9c42eabc36f9da3f32bfc650d470ecfd2d1cdbe0a90053e9f380b632ae23",
+    "git": "4535c821c6735b7f4fa31ffedb80274d24588e58",
+    "tree": "2b44214a408f234445554204aca02c10e3d64bef",
+    "version": "6.0.0~git20261120075023.4535c82-1"
+  },
+  "deployedKeystoreBundleSha256": "8966c621d5d97fb8e9eb03d783bc094ee256f6f05f9e2320e4ae9e646f58d2ee",
+  "originalInvalidPin": {
+    "operationId": "op-02bad862-4151-43ce-8ae5-52975c46bcd3",
+    "originalReceiptsPreserved": true,
+    "originalTls": [
+      {
+        "version": "TLSv1_2",
+        "result": "http",
+        "leaf": "fc1e41bac135dff830fe876f4260a7dc5c2655b0df0232a645b4968a37a5c7da",
+        "status": 404
+      },
+      {
+        "version": "TLSv1_3",
+        "result": "http",
+        "leaf": "fc1e41bac135dff830fe876f4260a7dc5c2655b0df0232a645b4968a37a5c7da",
+        "status": 404
+      }
+    ],
+    "tlsAfterActualJettyRefresh": [
+      {
+        "version": "TLSv1_2",
+        "result": "http",
+        "leaf": "fc1e41bac135dff830fe876f4260a7dc5c2655b0df0232a645b4968a37a5c7da",
+        "status": 404
+      },
+      {
+        "version": "TLSv1_3",
+        "result": "http",
+        "leaf": "fc1e41bac135dff830fe876f4260a7dc5c2655b0df0232a645b4968a37a5c7da",
+        "status": 404
+      }
+    ],
+    "providerRetainedOldTokenSession": true
+  },
+  "candidateInvalidPin": {
+    "operationId": "op-bbc390e6-f00d-46d9-b242-5ccb65a82e46",
+    "configurationCommitted": true,
+    "provider": "SECURITY_EXCEPTION",
+    "tlsAfterActualJettyRefresh": [
+      {
+        "version": "TLSv1_2",
+        "result": "unavailable",
+        "reason": "ConnectionRefusedError"
+      },
+      {
+        "version": "TLSv1_3",
+        "result": "unavailable",
+        "reason": "ConnectionRefusedError"
+      }
+    ],
+    "oneNativeInvalidPinRejection": true,
+    "sameMainAndService": true
+  },
+  "candidateAuthorizedRecovery": {
+    "newOperationId": "op-6769ec3e-dbca-41f7-8c85-28c49c354e44",
+    "verifiedTls": [
+      {
+        "version": "TLSv1_2",
+        "result": "http",
+        "leaf": "6c5e7b13869359eeca2a2e948601b72289bed7eab0f5a9f71197e52c5c91fded",
+        "status": 404
+      },
+      {
+        "version": "TLSv1_3",
+        "result": "http",
+        "leaf": "6c5e7b13869359eeca2a2e948601b72289bed7eab0f5a9f71197e52c5c91fded",
+        "status": 404
+      }
+    ],
+    "sameMainAndService": true,
+    "sameOriginalCertificate": true,
+    "priorArtifactsExact": true
+  },
+  "postStopReadback": {
+    "filesVerifiedAfterStop": {
+      "baseline": 10,
+      "candidate": 15
+    },
+    "pinWasTheOnlyChangedProperty": true,
+    "encryptedPin": true,
+    "httpConfigurationExact": true,
+    "restarted": false
+  },
+  "testFixtureCorrection": "Original probe did not import the KuraException OSGi package. No configuration was issued by that probe. The same fixture was stopped and the original probe was retained before the corrected startup.",
+  "tests": {
+    "keystoreMavenPassed": 86,
+    "specificPkcs11MethodsPassed": 4
+  },
+  "mainDisabledAndNormalStop": true,
+  "noPriorUnknownRedispatched": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "pushed": false,
+  "internalPending": [
+    "shared-slot independent providers, token removal or replacement, hardware token and PIN-lock scenarios",
+    "PKCS11 CRL distribution, broader provider re-encryption, complete Core/OSGi",
+    "remaining typed brokers, six-component matrix, and all twelve parents"
+  ]
+}
