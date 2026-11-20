@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-21",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "source": {
+    "core": "c3a6b4f54959966664a2285fe4392537b2df1af5",
+    "coreTree": "502c1cd3bbd622ac14509baa468e6b3b83774204",
+    "networking": "4741b5e9751394f19c3de945c21f4f3212542261"
+  },
+  "site": {
+    "id": "61eae8e243979baa4296367388077c40d523091930102caf2b194e20b3b8760b",
+    "mount": "1048582:6444634",
+    "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+  },
+  "enable": {
+    "operation": "c655d0d6-8c99-461c-8504-f3d7cdbf90b6",
+    "mainPid": "1319",
+    "daemonPid": "6956",
+    "observer": "resumed the waiting client after checking a missing result field; client received and acknowledged the original result"
+  },
+  "stopWithLostReply": {
+    "interrupted": {
+      "main": 8225,
+      "child": 13767,
+      "op": "da8fcb2c-2bdb-474a-b877-ee499477e91d",
+      "model": "",
+      "scope": "3b7282abf1b79a5fae3310db4c5624b0a54a75611f3d8376136b1fba39d36559",
+      "root": [
+        1048582,
+        6445976
+      ]
+    },
+    "pendingSha256": "b77a3295c673a1467659ed417b900cd30b4f18b62cab177dbdafd9242acc6492",
+    "actor": "APPLIED",
+    "caller": "UNKNOWN",
+    "deliveredBeforeRecovery": false
+  },
+  "maintenance": {
+    "remove": {
+      "packageState": "config-files",
+      "originalRequest": "da8fcb2c-2bdb-474a-b877-ee499477e91d",
+      "pendingExact": true,
+      "allActorRecordsExact": 6,
+      "configFileExact": true,
+      "registry": [
+        "management-ui",
+        "deployment",
+        "wires"
+      ]
+    },
+    "purge": {
+      "packageState": "not-installed",
+      "originalRequest": "da8fcb2c-2bdb-474a-b877-ee499477e91d",
+      "pendingExact": true,
+      "allActorRecordsExact": 6,
+      "configFileExact": true,
+      "registry": [
+        "management-ui",
+        "deployment",
+        "wires"
+      ]
+    },
+    "unpack": {
+      "packageState": "unpacked",
+      "originalRequest": "da8fcb2c-2bdb-474a-b877-ee499477e91d",
+      "pendingExact": true,
+      "allActorRecordsExact": 6,
+      "configFileExact": true,
+      "registry": [
+        "management-ui",
+        "deployment",
+        "wires"
+      ]
+    },
+    "resume": {
+      "packageState": "installed",
+      "originalRequest": "da8fcb2c-2bdb-474a-b877-ee499477e91d",
+      "pendingExact": true,
+      "allActorRecordsExact": 6,
+      "configFileExact": true,
+      "registry": [
+        "management-ui",
+        "deployment",
+        "wires",
+        "networking"
+      ]
+    }
+  },
+  "interruptedConfigure": {
+    "dpkgExit": 1,
+    "dpkgPid": 17273,
+    "worker": 17305,
+    "lock": [
+      1048582,
+      6466335
+    ],
+    "state": "half-configured",
+    "registry": [
+      "management-ui",
+      "deployment",
+      "wires"
+    ]
+  },
+  "confirmed": {
+    "mainPid": "19224",
+    "receipt": {
+      "operationId": "da8fcb2c-2bdb-474a-b877-ee499477e91d",
+      "resultSha256": "557a6c10501f6f46b70b2c1057e6b80faf267092b7a6a48ee2c89dc04f4e5f90",
+      "schema": 1
+    },
+    "onlyAddedActorFile": "/var/lib/kura-dhcp-service/da8fcb2c-2bdb-474a-b877-ee499477e91d.delivered",
+    "senderAfterConfirmation": "only lock",
+    "daemonState": "inactive",
+    "keysExact": true
+  },
+  "retiredPackageCopy": {
+    "bytes": 9381874,
+    "count": 1
+  },
+  "normalShutdown": true,
+  "preservation": {
+    "originalRunningStartTimesExact": 13,
+    "stopped7fdStateExact": true,
+    "lastParked7fdCounts": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "retainedStoppedStatesExact": {
+      "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7": 0,
+      "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f": 0,
+      "206dcf6fd115c242fde27134c9cec0f43d9b1d1e0cbf3b6c40bec0f91c367a1e": 0,
+      "c1eb8b16dc685d46b9a4d7408f2ad34a351cfab8f2842604c01f05f332ec4a70": 137,
+      "556d6e892febc940ac176a0952812801ebf8f9da03547b8064cc19a18eb8c6d9": 0,
+      "790f23d522aa916ae01b770fa49f0531c1f6604d3c42cdf1db0501127bfba6da": 0,
+      "dd038ad9373558ebacb2d58c4eb2ad5114d729e0551afe3c7599da90206a9965": 0,
+      "1f169a814d77603a4effde239c50e9bea843fe862a38a1ca12d323a1fb6e6d4a": 0,
+      "61eae8e243979baa4296367388077c40d523091930102caf2b194e20b3b8760b": 0,
+      "bf60ae2d47c5fd085ea9bad9cf474be811537df0110755b4ad7a0f955a61c731": 0
+    },
+    "personalFilesExact": 25,
+    "originalThree": "original-three-after.json"
+  },
+  "originalThree": {
+    "recordedAt": "2026-11-20T17:57:17.993106+00:00",
+    "allSevenOriginalProcessIdsAndTicksExact": true,
+    "allProtectedPrivateFileMetadataExact": 38,
+    "oldKeyWritersReplayed": false,
+    "remoteUnknownRedispatch": false,
+    "readOnly": true
+  },
+  "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/registered-main-dhcp-recovery",
+  "open": "Core purge with a pending DHCP, BIND or modem sender needs independent evidence. The original Java pending record resides in runtime data copied by prerm and removed by postrm purge."
+}

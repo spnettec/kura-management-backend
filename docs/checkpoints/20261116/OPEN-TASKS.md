@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 的 DHCP 停用回执跨 Networking purge 和配置中断恢复
+
+六组件 Debian ARM64 现场用原 Root 启动正式 Main。第一次启用请求启动了专用 dnsmasq。观察器误读结果格式，启用已正常确认。随后独立的停用请求使服务停止，观察器核对意图摘要及 APPLIED 后中断等待回复的客户端，Main 记录 UNKNOWN。该笔 pending 和六份服务端记录完整经过 Networking 移除、purge、解包、真实 postinst 中断及原包配置续接。重启正式 Main 后，仅新增原停用编号的送达回执，pending 清除，服务维持 inactive。两个凭据一致，现场正常停机。Core 自身 purge 时三类 Java 发送端的未确认记录仍待处理。冻结 0/12。[检查点](actual-registered-main-dhcp-maintenance-checkpoint.json)
+
 ## 2026-11-21 启用中 DNS 跨 Main 重启和包维护，修复普通启动漏读快照
 
 六组件 ARM64 现场复现了普通快照解析按字面 `esf:` 查找配置的问题。同一命名空间换用另一前缀后，旧 Main 加载快照却漏掉 LAN 配置，DNS 监视器执行停用。用发行前缀表达同一棵 XML 树，旧 Main 即发布 IPv6 LAN 模型。Core `c3a6b4f549` 按命名空间和父子关系读取普通快照；受控恢复继续执行原有严格格式校验。实际原地升级后，正式 Main 用原混合前缀文件恢复已启用的模型，原 BIND 操作与密钥保留。
