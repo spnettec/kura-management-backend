@@ -1,0 +1,304 @@
+{
+  "date": "2026-11-20",
+  "platform": "Debian 13 ARM64 with real systemd and isolated PostgreSQL",
+  "jdk": 21,
+  "sources": {
+    "kura": {
+      "head": "2a74ac1c38e126de24a31ae9c6a422fa367af7f9",
+      "tree": "0175c1654ee191cd2c62970470877b0ebbe1c2bb"
+    },
+    "kura-networking": {
+      "head": "82dc2cd68938781549e4cc92e2b0b5781f253319",
+      "tree": "9815284c2950e44e6cb9a6f8921ff9cb6dde89d6"
+    },
+    "kura-management-agent": {
+      "head": "03b2b8077d825baf2cb5a0f81b4d74e0ccdae901",
+      "tree": "d425ac1eb277beaac839e40b3bfe76b2220974b1"
+    },
+    "kura-management-console": {
+      "head": "8eec49f94ace596c2c9d8f56eb9e94321c3e5056",
+      "tree": "ecba2e183f67475e327cffe155823ec432b22c4c"
+    },
+    "kura-management-ui": {
+      "head": "08712fbc8e7acca19182cd253c2d614332c0b6e9",
+      "tree": "60259c3899777b060334418fba6cffdca5ff7aa1"
+    }
+  },
+  "tests": {
+    "networking-final-tests": {
+      "result": "Tests run: 165, Failures: 0, Errors: 0, Skipped: 0",
+      "sha256": "4a7cca7a9a6c5499cbd70642c212b0c2cd0019766959e06c2a8712acd5a99c76"
+    },
+    "agent-git-suite": {
+      "result": "OK (skipped=2)",
+      "sha256": "4744c4a7797ae8ef5ff35a79c4497e52e4e2e3fdc44a65be9e3015feef366d72"
+    },
+    "agent-runtime-tests": {
+      "result": "17 passed; 0 failed; 0 ignored",
+      "sha256": "a05d4c4a7dc7cd9171f8c17f9740d1670336468d740e1c29d4dab9e7c761cf6e"
+    }
+  },
+  "packages": {
+    "kura-core": {
+      "version": "6.0.0~git20261120014805.2a74ac1-1",
+      "sha256": "2b8c762450fe0a99c032a061c3c847f0371e8c261ff965cb4ef32d9997df7c07"
+    },
+    "kura-management-agent": {
+      "version": "0.1.0~cohort202611200156.818fe8f-1",
+      "sha256": "e6a4a63af870c2d874deffc94bad814d9625780ffd2d6aec70dbc1a6f5c3e015"
+    },
+    "kura-networking": {
+      "version": "3.0.0~git202611200155.82dc2cd-1",
+      "sha256": "299755ca00d8c7a0bf2250dfeea44b918fb920fb47662726fb22636ca3ef8c33"
+    },
+    "kura-management-ui": {
+      "version": "3.0.0~git202611200149.08712fb-1",
+      "sha256": "d2427ae4117d753fe6b175c7c997e9bf1e169fecf8164adc356b34d27af71825"
+    },
+    "kura-management-console-installer": {
+      "version": "0.1.0~cohort202611200156.8eec49f-1",
+      "sha256": "fe6068e1a35fcbf5caaf2b4a20d752535758db7fd89a969b027005522f036658"
+    },
+    "kura-management-console": {
+      "version": "0.1.0~cohort202611200156.8eec49f-1",
+      "sha256": "4225228f620586074940a957c48b4a0d6742fd6781c9195ca60a304c10cabd2c"
+    },
+    "successorAgent": {
+      "version": "0.1.0~cohort202611200202.03b2b80-1",
+      "sha256": "c8c3f202d9b8b4ffef1107838c19f533d278ecaedeef192f0a36ab2ee0cd686f"
+    }
+  },
+  "packageLoaderPair": {
+    "/opt/eclipse/kura/bin/gen_config_ini.sh": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+    "/usr/share/kura-management-agent/java/org.eclipse.kura.management.bridge.jar": "cdcb7febdd21091c3c6214f31f94a1802de7c81975a6f152a6e1eccf2f89714a",
+    "/usr/bin/yofc-management-agent": "fa3ba9ce1035dde544f050ca444f038527c34a4bf87d27619aea48608bea1cd8"
+  },
+  "preliminaryRefusal": {
+    "beforeRemoteTasks": 0,
+    "unissuedDpkgConfigurationRecovered": true,
+    "noEffectiveRootChange": true,
+    "archivedGrant": {
+      "gateway": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "archivedRefusedFile": "/var/tmp/yofc-native-current/original-refused-authorization.env",
+      "checksum": "db8ba7fd956c10d1cc7f707fcc82c60562b8677a53c662505824474c0af34553",
+      "servicesInactive": true
+    }
+  },
+  "sourceUpdate": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "receipt": {
+      "schemaVersion": 1,
+      "requestId": "45ea7e2b-c9d5-46c2-8760-d2ec684575f7",
+      "state": "APPLIED",
+      "unitStarted": false,
+      "replayed": false
+    },
+    "assetsExact": true,
+    "originalBoot": "38663672-c6a8-476d-a08f-437f4ca99f72",
+    "reinitialized": false
+  },
+  "rootGrant": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "grant": {
+      "schemaVersion": 1,
+      "initializationId": "98c06f03-2437-4ee2-96e0-b642637d0a3c",
+      "enabled": true,
+      "unitStarted": false
+    },
+    "sha256": "e2e3c11ce67f1325e2a4e38e08531a073a7d2ac25ad129b60cd0d8b7348fb51f",
+    "agentEnvSha256": "208ea066bae3fac51955375384b8bac88aa992812613fb40fd1792cb46031026"
+  },
+  "readiness": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "before": {
+      "epoch": "37fac9ae-f260-4aaf-afc3-65242eec83e8",
+      "sequence": 1,
+      "certificate": "1a9c271beae2778f59b750c2b2ae86f2f9d1247466b3433a4c578e210a138ba9",
+      "generation": 1,
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "permitted": {
+      "epoch": "37fac9ae-f260-4aaf-afc3-65242eec83e8",
+      "sequence": 3,
+      "certificate": "1a9c271beae2778f59b750c2b2ae86f2f9d1247466b3433a4c578e210a138ba9",
+      "generation": 1,
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "agentRetained": {
+      "MainPID": "8253",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "f376b0482b7840d593bfb16ca0dd8f5a"
+    },
+    "mainBefore": {
+      "MainPID": "8640",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "51af85cc5e5644a592b47e508088df95"
+    },
+    "mainAfter": {
+      "MainPID": "9448",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "d8be28628ff14458a89fc34f12d27bd0"
+    },
+    "originalPairExact": true
+  },
+  "beforeJavaPolicy": {
+    "http": 422,
+    "noTaskId": true
+  },
+  "deniedPid": {
+    "id": "cd430550-c359-47d7-8a1f-edc2cd8c6926",
+    "code": "FORBIDDEN",
+    "javaReceiptPresent": false
+  },
+  "operation12": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "center": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+    "id": "ffd240ae-5c5d-4105-bc84-9a4ed4b047be",
+    "java": {
+      "receipt": {
+        "source": "configuration.journal.v1",
+        "commandId": "ffd240ae-5c5d-4105-bc84-9a4ed4b047be",
+        "operation": 12,
+        "pid": "filesystem-kura-log",
+        "previousRevision": "33f5d602e906a87c9f500e8c1108e0e3bad021f98d1d47b6c75856457a901ea0",
+        "submitted": true,
+        "paramsSha256": "afa7800709dd123409548737e1407addbaeef1a461c54f37a4475eb7fdab53ae"
+      },
+      "sha256": "4420c8a5a7bb985e080abba5bf713e3482669b15ac4c75b1c7fd1bc80896a5bf",
+      "stat": "5557365:993:991:317:1795140408:1795140408"
+    },
+    "postgres": {
+      "state": "SUCCEEDED",
+      "inputSealed": "1",
+      "resultSealed": "1"
+    },
+    "agent": {
+      "operation": 12,
+      "state": "SUCCEEDED",
+      "key": "8fcb43c2-ab94-48ce-8df4-6416376229af",
+      "plan": "f912b376afa36af876c6dbf640efe66de147334d97db42167bc63893af947d27",
+      "result": "e334479049db6a1b5d5dd9516f25ae47422ffdcf233690d5d1d4e945d819138c",
+      "inputNotPlaintext": true
+    },
+    "unapproved": "cd430550-c359-47d7-8a1f-edc2cd8c6926",
+    "exactOriginalAuthorityFiles": true
+  },
+  "mainRestart": {
+    "gatewayRoot": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+    "center": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+    "originalTask": "ffd240ae-5c5d-4105-bc84-9a4ed4b047be",
+    "sameRoot": true,
+    "finalMain": {
+      "MainPID": "10060",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "1552855251ca40e3b1be09bff379bf06"
+    },
+    "beforeRestartMain": {
+      "MainPID": "9448",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "InvocationID": "d8be28628ff14458a89fc34f12d27bd0"
+    },
+    "agentUnchanged": {
+      "MainPID": "8253",
+      "ActiveState": "active",
+      "DropInPaths": "",
+      "InvocationID": "f376b0482b7840d593bfb16ca0dd8f5a"
+    },
+    "originalReceipt": {
+      "receipt": {
+        "source": "configuration.journal.v1",
+        "commandId": "ffd240ae-5c5d-4105-bc84-9a4ed4b047be",
+        "operation": 12,
+        "pid": "filesystem-kura-log",
+        "previousRevision": "33f5d602e906a87c9f500e8c1108e0e3bad021f98d1d47b6c75856457a901ea0",
+        "submitted": true,
+        "paramsSha256": "afa7800709dd123409548737e1407addbaeef1a461c54f37a4475eb7fdab53ae"
+      },
+      "sha256": "4420c8a5a7bb985e080abba5bf713e3482669b15ac4c75b1c7fd1bc80896a5bf",
+      "stat": "5557365:993:991:317:1795140408:1795140408"
+    },
+    "noActionRedispatched": true,
+    "remoteReadBackConfirmed": true,
+    "unknownTasksReissued": 0,
+    "durableReleaseFilesExact": true
+  },
+  "remoteSwitch": {
+    "authority": "local Root UDS",
+    "gwtEnrollmentSucceeded": true,
+    "gwtToggleDispatched": false,
+    "postSuccessorGwtLoginRejected": true
+  },
+  "parked": {
+    "gateway": {
+      "id": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:52:49.300295642Z",
+        "FinishedAt": "2026-11-20T02:07:10.93538692Z"
+      }
+    },
+    "center": {
+      "id": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:52:48.908136883Z",
+        "FinishedAt": "2026-11-20T02:07:10.934953132Z"
+      }
+    },
+    "postgres": {
+      "id": "5e9d3da46418f94d2383b9443f857e1a5b135f44a21cf28b5d5bb26c767460d9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T01:52:49.82841672Z",
+        "FinishedAt": "2026-11-20T02:07:11.211821058Z"
+      }
+    },
+    "dbVolume": "yofc-configuration-native-db-20261120",
+    "sameReceiptAndOffSwitch": true,
+    "systemdUnitsDisabled": true
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stateExact": true
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

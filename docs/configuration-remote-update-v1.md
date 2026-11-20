@@ -11,9 +11,18 @@ agent 与 Java 通过 UDS 和操作系统身份验证，不传递 Kura Web 密�
 
 远程操作为 `kura.configuration.update`，Protobuf Operation=12，ReadCommand 新字段 9。
 `ReadCommand` 是历史消息名；此操作始终分类为写，绝不走只读失败映射或重新租约执行。
-Agent 写入开关为 `AGENT_KURA_CONFIGURATION_UPDATE=1`，默认 0，其他值启动失败。
-Java 另需 `-Dkura.management.configuration.update.pids=<审核后的逗号分隔PID>`；默认空。
-只有非空 allowlist 才登记写方法。两侧开关互不替代，旧读取方法仍必需，写方法注册可选。
+native Agent 默认关闭配置写入。Root 在 Agent 已停且拥有原配对 Kura peer 时可执行
+`kura-agent-setup configure-configuration-write --initialization-id <原初始化 UUID> --enabled yes`。
+同一命令的 `--enabled no` 撤回授权，`configuration-write-status --initialization-id <原初始化 UUID>`
+只读检查当前选择。这些命令不会启动服务或打开到中心的连接。native Agent 启动时从受保护的
+`/etc/kura-management-runtime/configuration-write.json` 读取授权，并复核原初始化。
+`AGENT_KURA_CONFIGURATION_UPDATE=1` 适用于 legacy 和开发进程，默认 0。
+
+正式 Main 的 Java 桥接读取 `/etc/kura/management-configuration-update.pids`。
+该文件须为 Root:Root 0644 普通文件，内容为审核后的逗号分隔 PID。修改后重启 Main
+以重新注册桥接。文件缺失时兼容 JVM 属性 `kura.management.configuration.update.pids`。
+两种来源同时设置或名单不安全时禁用写入。Java 同时需要非空 allowlist 和可定位的原回执存储
+才登记写方法。Agent 的授权与 Java 的授权各自生效。
 
 支持动态就绪状态的 agent 在开启写入开关时于 Hello 声明
 `kura.configuration.update.readiness.v1`。只有当前已注册的本地桥接提供更新方法，

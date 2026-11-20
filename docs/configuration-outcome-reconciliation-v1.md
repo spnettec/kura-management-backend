@@ -6,10 +6,12 @@
 ## 记录
 
 成功执行 `ConfigurationRevisionService.updateRevision` 后，Java bridge 在
-`${kura.data}/management-outcomes`（可用
-`-Dkura.management.configuration.outcome.dir` 显式覆盖）写一个命令专用记录。
+`${kura.data}/management-outcomes` 写一个命令专用记录。
+正式 Main 使用 Core `SystemService` 的数据目录。部署可用
+`-Dkura.management.configuration.outcome.dir` 显式覆盖。缺少可定位的存储时，带原命令编号的请求在调用 Core 前被拒绝。
 记录只含 source、commandId、operation、pid、previousRevision、submitted 和
-`paramsSha256`，不含属性值、密码或当前配置。目录 0700，记录 0600，临时文件原子改名。
+`paramsSha256`，不含属性值、密码或当前配置。目录 0700，记录 0600。
+发布前同步临时文件，以原编号原子创建记录，成功前同步目录。
 `paramsSha256` 使用与 Rust agent 共享的 canonical vector，覆盖 PID、revision 和全部提交属性，
 已用 Java/Rust 相同 golden 向量核对。它绑定原请求，但不用于展示配置内容。
 

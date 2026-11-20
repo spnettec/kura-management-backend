@@ -1,5 +1,17 @@
 
 
+## 2026-11-20 继续实施 — 正式包的远程配置授权、真实提交及原回执
+
+Agent 03b2b80 使用与原初始化绑定的 Root 配置授权。非 Root 进程核验原数据库、原密钥、初始化和 Kura peer，仍拒绝环境注入的写入开关。Networking 82dc2cd 从受保护文件读取 Java PID 名单，通过正式 SystemService 定位回执目录。缺少可定位的存储时，带编号的请求在调用 Core 前被拒绝。Java 同步落盘并按原编号创建回执。
+
+从当前 Git 构建 Core、Networking、GWT、Agent、console 和安装器。Debian 13 ARM64 真实 dpkg 在首轮发现缺少平台依赖，补齐后只配置原 unpacked 包。首个 Agent 候选仅通过 Root 预检，非 Root 运行门禁拒绝写入开关，当时数据库零任务。保留失败授权原文件，沿同一 Root、boot、原注册和加密状态按正式 source-update 流程装入修正候选。前两次准备在目录与包文件权限预检中拒绝，原 UUID 未发布，经合规暂存后首次获准发布。原注册、初始化、SQLite 与凭据指纹保持。
+
+新 Root 授权启用后，实际 mTLS 中心在 Java PID 名单缺失时返回 422，数据库零任务。加名单并启用正式 Main 后，Agent 进程、认证连接、证书及绑定代次保持，中心开始报告可写。名单外任务在 Java 拒绝为 FORBIDDEN，未产生 Java 回执。名单内对 filesystem-kura-log 的 Operation 12 只派发一次，Java 原编号回执、Agent 加密执行及 PostgreSQL 密封任务一致。Main 再次启动后，只读查回原回执与新的 provider 配置值。该回执证明 Core 接受提交，异步业务健康仍需单独核验。
+
+新现场用实际 GWT 完成注册。换版后 GWT 登录复验拒绝原密码，远程开关的两次操作经正式本地 Root UDS 执行，原权限检查保持。三台隔离容器已正常停放，服务禁用，现场数据保留。Java bridge 165 项通过，Agent ARM64 Rust 身份合同 17 项通过，Agent Debian 包合同 315 项中 2 项跳过、0 失败。完整正向交付仍需覆盖其他 provider、字段、launcher 和中断，原 UNKNOWN 持久核定继续内部待办。
+
+原三现场和 7fd 的 41 输入/16 回执保持。完整 Core/OSGi、其余 typed brokers、完整六组件及全部 12 父项维持原范围。闭环 0/12，external deferred 仅原三项。见 [实际检查点](actual-native-remote-configuration-write-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 认证心跳中的远程配置写入能力
 
 Agent 25e295a 仅在本地 opt-in 且当前注册的 Java bridge 宣告 update 时报告写就绪。console 043e83d 在认证 Hello 协商后，通过有序心跳更新原连接的配置写能力。读取能力、证书与绑定代次、Java PID allowlist、实时派发门禁及 UNKNOWN 合同保持。没有协商标记的旧 agent 保留原 Hello 静态行为。
