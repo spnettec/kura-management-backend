@@ -182,6 +182,31 @@
         "stderr": "dpkg: error processing archive /tmp/kura-debian-callback/2.deb (--unpack):\n new kura-test-abort-callback package pre-installation script subprocess returned error exit status 1\nErrors were encountered while processing:\n /tmp/kura-debian-callback/2.deb\n"
       }
     },
-    "remaining": "Exercise refused replacement and ordinary dpkg configure resumption in the installed full Core package."
+    "remaining": "Exercise refused replacement and ordinary dpkg configure resumption in the installed full Core package.",
+    "fullPackageFollowup": {
+      "admission": {
+        "id": "60c7aec0e6cd7c36d5eceecbe8669031ac8b0f059af1b44a7498a18a3f6f9065",
+        "original": {
+          "id": "60c7aec0e6cd7c36d5eceecbe8669031ac8b0f059af1b44a7498a18a3f6f9065",
+          "mount": "1048815:6481777",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "current": {
+          "id": "60c7aec0e6cd7c36d5eceecbe8669031ac8b0f059af1b44a7498a18a3f6f9065",
+          "mount": "1048582:6481777",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "ledgerDevicesAndInodes": {
+          "modem-control": "1048582:6482791",
+          "dhcp-control": "1048582:6482786",
+          "bind-control": "1048582:6482783"
+        },
+        "admitted": false,
+        "noOperationLookup": true
+      },
+      "originalFixtureStoppedNormally": true,
+      "attemptedPackageReplacement": false,
+      "attemptedMainStart": false
+    }
   }
 }
