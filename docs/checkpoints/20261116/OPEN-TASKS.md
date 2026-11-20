@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 原 Native Kura peer 的同 Root 联合升级
+
+Agent 1f74d99 增加 `prepare-kura-companion-update`。正式入口沿原初始化、原本地授权和同一 Root/boot 记录显式升级意图，固定两个实际 Debian 归档、版本、维护脚本和新 Main/drop-in。仅接受原版已审查 drop-in 到无能力声明版的过渡，Core 的能力范围只能收窄。沿用原源码维护回执链与启动准入。已绑定、材料及额外授权仍走其独立维护合同。
+
+用 Rust 1.95.0 从当前 Git 构建 ARM64 Agent，隔离 Debian 13 上实装到原旧 Core/Networking 配对。按已审查发布的 Core 与 Networking 正式包一次性固定各自 SHA-256。真实 dpkg 只配置完 Core 时，同编号完成请求拒绝，原公开授权与 pending 保持。Networking 配置后，沿同一编号完成，结果 APPLIED，原授权为 READY。原 AES、初始化、授权、SQLite 与 plan key 等 12 份保留输入精确，只有 Core unit 与 Networking drop-in 两个授权指纹变化。
+
+实际 Main 和非 Root Native Agent 显式启动，Unix socket 对端与正式 Agent PID/UID/GID 一致，正常 Java/OSGi 桥注册。Agent 五组 capabilities 为零、NNP 1，Main 为 0x1402、NNP 1，远程 OFF。夹具正常停放。Debian 132 项 Native 包装测试通过，含新指纹权限越界、另一编号拒绝、安装不完整及写入一部分后原编号恢复。旧拒绝夹具保持原停放记录。
+
+已有材料、已绑定及附加授权的联合迁移、跨 boot、其余实际中断边界、完整 Core/OSGi、typed brokers 和六组件矩阵继续内部待办。原三现场、个人文件及 7fd 禁用停机和 41 输入/16 回执保持。冻结 12 父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-companion-maintenance-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 当前 Native Agent 启动与现有 Kura peer 授权边界
 
 从 Git 用 JDK 21、Maven 3.10.1 和 Rust 1.95.0 构建 Core 27a64d73f3、Networking 6ab7101、Native Agent bd69cc1。正式 Agent 包固定当前协议、Java bridge、Core loader 以及 ARM64 ELF 指纹。首次并行构建的 Debian 时间戳排序不符合升级顺序，派发前重新生成正式归档。旧包和首次输出保留作为证据。
