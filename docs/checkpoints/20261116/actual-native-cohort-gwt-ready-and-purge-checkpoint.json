@@ -1,0 +1,111 @@
+{
+  "recordedAt": "2026-11-20T06:09:42.509781+00:00",
+  "fixture": {
+    "id": "a2e211d35629523fdaab766f9d19f1288e402af10a54aea43abde52fc9b698f1",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:07:02.365859851Z",
+      "FinishedAt": "2026-11-20T06:08:59.820770099Z"
+    }
+  },
+  "continuedFrom": {
+    "checkpoint": "actual-native-combined-package-retained-reinstall-checkpoint.json",
+    "sameContainer": true,
+    "sameBackingMetadata": true,
+    "rootDeviceInodeAndMachineIdentityExact": true,
+    "consolePackagingCode": "6798af73ce14e4992c11eae003979887c6364210"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "network": "none",
+    "hostMounts": false
+  },
+  "reinstalledRuntime": {
+    "mainAgentCenterExplicitlyStarted": true,
+    "allNoNewPrivileges": true,
+    "gwtPinnedHttps": {
+      "auth": {
+        "status": 200,
+        "location": null,
+        "serverSha256": "f6d2930e51a1d720d5a4b752f0e31767ca7c1266f6b3dd2bb3f2f9806c4dbe2c"
+      },
+      "console": {
+        "status": 302,
+        "location": "/admin/auth",
+        "serverSha256": "f6d2930e51a1d720d5a4b752f0e31767ca7c1266f6b3dd2bb3f2f9806c4dbe2c"
+      }
+    },
+    "nativeCenterReady": true,
+    "oldAgentOperation": "REINSTALLED",
+    "oldCenterOperation": "COMPLETE",
+    "scope": "unauthenticated GWT routes, setup center, unbound agent"
+  },
+  "installerDependency": {
+    "earlyPurgeRefused": true,
+    "dependency": "kura-management-console",
+    "sameThreeProcessesAndInstallerProgramExact": true
+  },
+  "purge": {
+    "packages": {
+      "kura-core": "not-installed",
+      "kura-networking": "not-installed",
+      "kura-management-ui": "not-installed",
+      "kura-deployment": "not-installed",
+      "kura-wires": "not-installed",
+      "kura-management-agent": "not-installed",
+      "kura-management-console-installer": "not-installed",
+      "kura-management-console": "not-installed"
+    },
+    "dpkgAuditEmpty": true,
+    "coreVendorFilesRemoved": 7,
+    "purgeOrder": [
+      "kura-management-agent",
+      "kura-management-console",
+      "kura-deployment",
+      "kura-wires",
+      "kura-management-ui",
+      "kura-networking",
+      "kura-core",
+      "kura-management-console-installer"
+    ],
+    "fixtureOnlySyntheticCoreDataPurged": true,
+    "protectedRetainedFilesExact": 10,
+    "previousCenterAndAgentRecordsExact": 5,
+    "previousCoreHistoryExact": 2,
+    "newCoreRemovalFences": 3,
+    "newAgentReceiptFiles": 4,
+    "newCenterStopReceiptRetained": true
+  },
+  "productionSourceChanged": false,
+  "unknownRedispatched": false,
+  "pushed": false,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "combined post-purge reinstall and version upgrades",
+    "authenticated and enrolled business",
+    "multi-component interruption and other provider/launcher matrices",
+    "complete Core/OSGi, typed brokers, six components and all 12 parent items"
+  ]
+}

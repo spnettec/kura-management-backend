@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 联合重装后的 GWT 就绪与八包完整 purge
+
+续接前一原生组合的同一隔离 Debian 13 ARM64 Root。真实 Docker 停启后，容器 ID、底层挂载信息、根目录设备和 inode、machine-id 摘要及原四份 Agent 回执精确。原 Agent 和中心回执仍为 REINSTALLED 和 COMPLETE。按正常 systemd 入口显式启动 Agent、Main 与中心。真实 HTTPS 按已装 Core keystore 的叶证书 SHA-256 固定核对，GWT 认证入口响应 200，未认证的控制台入口响应 302。正式中心安装器返回 READY，三个进程均为 NNP。
+
+中心仍安装时，实际 dpkg 拒绝提前 purge 主机安装器，原三个进程、安装器文件和原记录保持。沿独立的本轮合法审核目的建立中心及 Agent 围栏，沿原已初始化资料停机。真实 dpkg 按 Agent、中心、Deployment、Wires、GWT、Networking、Core、安装器的顺序完成 purge。八包均为 not-installed，dpkg audit 无输出。三服务单元、七个核对的发行文件及已装工具入口不再存在。隔离测试用例的合成 Core 用户数据按 purge 语义清除。
+
+Core、Agent 和中心共十份保留输入、前轮五份 Agent 与中心记录、原 Core 包历史的指纹精确。三个新 Core 移除围栏、四份新 Agent 记录及原编号中心 STOPPED 回执保留。同一隔离 Root 正常停放。生产源码无变化。
+
+本轮覆盖同一组合重装后的 GWT 未认证入口、已初始化未绑定 Agent、无 PostgreSQL 任务中心及完整八包 purge。全 purge 后联合重装、联合换版、已绑定业务和其余中断、provider、launcher、Core/OSGi、typed brokers 继续内部待办。原三现场、个人文件和 7fd 41 输入/16 回执保留。冻结 12 父项最终 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-cohort-gwt-ready-and-purge-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 原生联合发行保留式移除与同 Root 重装
 
 Debian 13 systemd 257 在未安装中心且没有命名实例时，`list-unit-files` 实际返回 1，stdout 和 stderr 均为空。原正式安装器因此拒绝进入包概览。console `6798af7` 识别这一种空清单，继续核对持久和运行期链接、已加载实例和保留实例目录，真实系统错误仍上报。Debian ARM64 包装回归 139 项通过。由当前 Git 构建正式中心及安装器，207 项编译输入精确后复用现有正式 ARM64 ELF 和 Web 文件。
