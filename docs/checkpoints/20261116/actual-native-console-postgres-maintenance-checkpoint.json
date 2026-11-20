@@ -1,0 +1,234 @@
+{
+  "recordedAt": "2026-11-20T05:22:57.182560+00:00",
+  "packageSource": {
+    "commit": "768b0fa8226a98cb4626df72c8baa97d37e3615b",
+    "tree": "10755e1b7bd6bd20019422adccf0d058a5f52895"
+  },
+  "sourceObserved": "cee854dcd910cb532fef0fe813907e557765f337",
+  "testedPlatform": "Debian 13 arm64; original separate PostgreSQL 16",
+  "archives": {
+    "console": {
+      "version": "0.1.0~cohort20261120051418.768b0fa-2",
+      "architecture": "arm64",
+      "sha256": "6c5302efb08e36f41b7a5ac0e2dc2154b5790bef0921cff748dc7b8280b374b5",
+      "sourceManifestSha256": "401e555308a85797f1aef9171085e7622bc3a36efe6ae7ddfbcbdf63afb479f7"
+    },
+    "installer": {
+      "version": "0.1.0~cohort20261120051418.768b0fa-2",
+      "architecture": "all",
+      "sha256": "f2309b4e3b97d01003927cffe2b5322f557bbc1ac529c85020e4271386aa5f86",
+      "sourceManifestSha256": "401e555308a85797f1aef9171085e7622bc3a36efe6ae7ddfbcbdf63afb479f7"
+    }
+  },
+  "compiledArtifactReuse": "Prior sealed c42b025 executable and web assets were used to build the exact already-tested 768b0fa-2 debs",
+  "fixtureBefore": {
+    "gateway": {
+      "id": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.833605246Z",
+        "FinishedAt": "2026-11-20T02:15:41.20555029Z"
+      }
+    },
+    "center": {
+      "id": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.836343117Z",
+        "FinishedAt": "2026-11-20T02:15:41.203848251Z"
+      }
+    },
+    "postgres": {
+      "id": "5e9d3da46418f94d2383b9443f857e1a5b135f44a21cf28b5d5bb26c767460d9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.67086167Z",
+        "FinishedAt": "2026-11-20T02:15:41.452883716Z"
+      }
+    },
+    "dbVolume": "yofc-configuration-native-db-20261120",
+    "sameReceiptAndOffSwitch": true,
+    "systemdUnitsDisabled": true
+  },
+  "fixtureAfter": {
+    "gateway": {
+      "id": "c620f6c140747274d8fa51fff47d05b94aaf31d732035fd51cfe534d8184e1e9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T02:11:38.833605246Z",
+        "FinishedAt": "2026-11-20T02:15:41.20555029Z"
+      }
+    },
+    "center": {
+      "id": "81bdbdb063a73dabbfc944c41cd6d35f1d9a6934d280b64c8375dac874223f37",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:22:03.89123383Z",
+        "FinishedAt": "2026-11-20T05:22:09.640986455Z"
+      }
+    },
+    "postgres": {
+      "id": "5e9d3da46418f94d2383b9443f857e1a5b135f44a21cf28b5d5bb26c767460d9",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T05:22:03.690148746Z",
+        "FinishedAt": "2026-11-20T05:22:09.804139978Z"
+      }
+    },
+    "dbVolume": "yofc-configuration-native-db-20261120",
+    "sameReceiptAndOffSwitch": true,
+    "systemdUnitsDisabled": true
+  },
+  "database": {
+    "originalSystemIdentifierExact": true,
+    "originalInstallationIdExact": true,
+    "originalDatabaseOidExact": true,
+    "originalPostgresVersion": "16.15",
+    "originalVolume": "yofc-configuration-native-db-20261120",
+    "rowFingerprintsExactAfterOldCenterStartup": 14,
+    "taskRowsExact": 6,
+    "encryptedTaskResultsReadOverApi": 2,
+    "priorClockExpiryBeforeMaintenance": {
+      "gatewayOfflineUpdate": 1,
+      "appendedEvent": 1,
+      "priorEventPrefixAndOtherTablesExact": true,
+      "oldTasksExact": true
+    },
+    "preservedCenterPrivateEntries": 24
+  },
+  "upgrade": {
+    "maintenanceOperation": "d2d01810-3ba2-43d8-a3b4-250eb72c5451",
+    "freezeStopAndUnpack": [
+      {
+        "dispatchOrdinal": 1,
+        "exitCode": 0
+      },
+      {
+        "dispatchOrdinal": 1,
+        "exitCode": 0
+      },
+      {
+        "dispatchOrdinal": 1,
+        "exitCode": 0
+      }
+    ],
+    "firstConfigureWithPostgresStopped": {
+      "dispatchOrdinal": 1,
+      "exitCode": 1
+    },
+    "maintainedOriginalFenceAndNoCompletionProof": true,
+    "resumedAfterSamePostgresVolume": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "originalStopReceipt": {
+      "after": {
+        "ActiveState": "inactive",
+        "Job": "",
+        "MainPID": "0"
+      },
+      "commandIssued": true,
+      "returncode": 0,
+      "state": "APPLIED"
+    },
+    "sameRootAndBoot": true,
+    "originalInitializationReceiptExact": true,
+    "originalTlsPinExact": true,
+    "verifiedOriginalApiTasks": [
+      "ffd240ae-5c5d-4105-bc84-9a4ed4b047be",
+      "09982d6a-abe9-4d90-94ca-7d46753fc4f2"
+    ],
+    "phase": "COMPLETE"
+  },
+  "retainedReinstall": {
+    "maintenanceOperation": "3b34226f-8683-4654-ab62-e966c92b288b",
+    "remove": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "purge": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "unpack": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "configure": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "explicitStart": {
+      "dispatchOrdinal": 1,
+      "exitCode": 0
+    },
+    "originalUpgradeReceiptExact": true,
+    "sameRootAndBoot": true,
+    "packageRemovedWhileOriginalDatabaseRunning": true,
+    "originalDatabaseExact": true,
+    "originalProtectedEntriesExact": true,
+    "sameArchive": true,
+    "originalTlsPinExact": true,
+    "phase": "COMPLETE"
+  },
+  "packageTestsPass": 135,
+  "oldGatewayNotStarted": true,
+  "taskActionsDispatched": 0,
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pushed": false
+}

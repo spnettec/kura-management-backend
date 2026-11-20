@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Native 中心带原 PostgreSQL 任务的换版与保留态重装
+
+在原 Debian ARM64 远程配置实验现场复用独立 PostgreSQL 与已初始化中心。原网关保持停放。中心初次显式启动时收敛一条已过期的网关在线状态，实际只多一条 offline 事件，原事件前缀、其他表与任务精确。随后把启动后已结算的 14 张表、6 个原任务和 24 项中心私有输入作为维护基线。
+
+从当前 Git 核对发行源码，使用前轮已实装的 768b0fa-2 正式中心和安装器包。只更新安装器时中心进程不变。正式中心维护沿同一 UUID 停机、解包。原 PostgreSQL 正常停止后实际 configure 拒绝，dpkg 保留 half-configured，原 STOPPED 围栏和回执精确且没有完成记录。恢复同一 PostgreSQL 容器和数据卷，沿原 UUID configure 成功。显式启动后原 TLS 指纹及安装回执一致，两笔成功配置任务经原认证会话只读得到同一结果，原数据库标识和 14 表指纹保持。
+
+独立维护目的在同一 Root 用真实 dpkg 完成 remove、purge 和同归档解包配置。原 PostgreSQL 全程在线，原移除围栏保持至配置结束，包负载、单元和控制文件在 purge 后实际缺席。中心仍禁用，显式启动返回 READY；14 表、6 条任务、原安装回执、24 项私有输入及两项 API 原结果再核精确。未重新初始化、登录或派发任务，原网关一直未启动。中心与原 PostgreSQL 均正常停放。135 项 Debian 包装回归通过。
+
+更早的中断断点、跨 boot 续接、命名实例和其他 launcher/provider 继续内部待办。完整 Core/OSGi、typed brokers、六组件矩阵和 12 父项维持。原三现场、个人文件及 7fd 的 41 输入/16 回执保持。最终闭环 0/12，external deferred 仍仅原三项。见 [实装检查点](actual-native-console-postgres-maintenance-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Native 中心 postinst 完成后原编号恢复
 
 console 768b0fa 在直接 dpkg 配置中于释放围栏前记录原维护编号、Debian 前后版本、实际已装 postinst inode 和摘要、Root 和 boot。没有活动围栏时，只有 dpkg 的同一半配置包、精确配对记录和原终态才能续接，原 stopped 回执、参与单元和已装程序来源仍核对。启动检查在 dpkg 报 installed 前拒绝。独立安装器 worker 仍需要自己的 dpkg 完成回执。
