@@ -1,0 +1,145 @@
+{
+  "recordedAt": "2026-11-20T06:39:49.062867+00:00",
+  "source": {
+    "core": "910493756d630d818f969379028a93812c7a358e",
+    "coreTree": "d6ec5714557d799560262c9f3566040c62b5ccf3",
+    "networking": "6ab7101"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true
+  },
+  "fixture": {
+    "id": "85dacccd7fdfa36fc113629fcfac9b5b5e38c0cb2e262825fcf2e217cd726be0",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T06:33:29.007941644Z",
+      "FinishedAt": "2026-11-20T06:39:10.832294799Z"
+    }
+  },
+  "archives": {
+    "kura-core": {
+      "sha256": "f9589c71e43d250e97c7477d7aa06a6d643eb5c7de95c4a57315fa3a64df34ff",
+      "version": "6.0.0~git20261120063656.9104937-1",
+      "artifact": "kura_6.0.0~git20261120063656.9104937-1_arm64.deb"
+    },
+    "kura-networking": {
+      "version": "3.0.0~git202611200436.6ab7101-1",
+      "sha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f"
+    }
+  },
+  "preflight": {
+    "sameNativeDpkgRootAndMountNamespace": true,
+    "reviewedNetworkingArchiveSha256": "e4935e20d5e482db208444e71c18d9c12965f2de75bf52f33c4de88b0958ba5f",
+    "verifiedProviderContracts": 9,
+    "unapprovedHashRejectedByReadOnlyArchiveCheck": true,
+    "ordinaryMainRuleStillUsesInstalledProvider": true
+  },
+  "operation": {
+    "sameBootAndRoot": true,
+    "before": {
+      "kura-core": "6.0.0~git202611190914.2a3b588-1",
+      "kura-networking": "3.0.0~git202611190914.4ee16c9-1",
+      "kura-management-ui": "3.0.0~git202611190914.1205092-1",
+      "kura-deployment": "2.0.0~git202611190915.fddf031-1",
+      "kura-wires": "3.0.0~git202611190915.93f318b-1"
+    },
+    "after": {
+      "kura-core": "6.0.0~git20261120063656.9104937-1",
+      "kura-networking": "3.0.0~git202611200436.6ab7101-1",
+      "kura-management-ui": "3.0.0~git202611190914.1205092-1",
+      "kura-deployment": "2.0.0~git202611190915.fddf031-1",
+      "kura-wires": "3.0.0~git202611190915.93f318b-1"
+    },
+    "installInvocations": 1,
+    "dpkgAuditEmpty": true,
+    "coreUpgrades": 1,
+    "networkingUpgrades": 1,
+    "removals": 0,
+    "actualProviderCheckAsKurad": true,
+    "noMainStartDuringUpgrade": true,
+    "coreCredentialFilesExact": 2,
+    "retainedCoreDataFiles": 2,
+    "priorPackageReceiptsExact": 1,
+    "receipt": {
+      "id": "88f56ada-f091-46ae-bd67-f09c58ae2973",
+      "sha256": "c5aa097b5cf28b96bd16c6d9582eaa293ae56437b8b66efcd8ff58defbcbc126"
+    }
+  },
+  "runtime": {
+    "coreNnp": true,
+    "activeBundles": {
+      "org.eclipse.kura.core": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.linux.net": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.linux.systemd.provider": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/networking/4/org.eclipse.kura.linux.systemd.provider-3.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.nm": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar"
+      },
+      "org.eclipse.kura.web2": {
+        "state": "ACTIVE",
+        "location": "initial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar"
+      }
+    },
+    "pinnedGwt": {
+      "auth": {
+        "status": 200,
+        "location": null,
+        "serverSha256": "e1006aee95ac4a24ef800f2ed7cddd98e234f3b44e2239b017eba08cd284eaef"
+      },
+      "console": {
+        "status": 302,
+        "location": "/admin/auth",
+        "serverSha256": "e1006aee95ac4a24ef800f2ed7cddd98e234f3b44e2239b017eba08cd284eaef"
+      }
+    },
+    "stopSucceeded": true,
+    "disabledAfterStop": true,
+    "probeRetired": true
+  },
+  "observationCorrection": "Inactive unit start timestamps reset after the known successful stop. The existing stop result, service result and the observed Main PID were checked without reissuing start or stop.",
+  "tests": {
+    "corePackagingDebianArm64Passed": 75
+  },
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "additional provider variants, launchers, in-place upgrade interruption and cross-boot recovery",
+    "enrolled/authenticated business upgrade and remote operations",
+    "complete Core/OSGi, remaining typed brokers, full six-component matrix and all 12 parents"
+  ]
+}

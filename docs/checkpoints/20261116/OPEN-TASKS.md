@@ -1,3 +1,15 @@
+## 2026-11-20 继续实施 — 旧 Networking 与 Core 单次 dpkg 原位联合换版
+
+Core `910493756d` 增加显式的联合换版准入。旧 Networking 缺少未由旧包声明的证明时，仅从实际调用新 Core preinst 的同 Root、同挂载命名空间 dpkg 进程识别有序归档。核对 Core 目标版本、显式审批的 Networking SHA-256、九个 typed provider 合同及只读 ModemManager 策略。已装包声明但缺失的文件、错误证明、游离 provider 仍拒绝。Main 继续按实际已配置包及文件配对。
+
+独立 Debian 13 ARM64 Root 实装旧 Core、Networking、GWT、Deployment 与 Wires。JDK 21、Maven 3.10.1 从当前 Core Git 建成正式 ARM64 deb。新版 Networking 归档实际只读校验通过，错误摘要实测拒绝。单次真实 `dpkg --install` 以 Core 后接 Networking 的顺序成功。日志中各有一次 upgrade、零 remove，dpkg audit 无输出。GWT、Deployment 和 Wires 保持原已装版本。
+
+升级期间 Main 保持 disabled 且未启动。两份 Core 凭据及原包历史精确，合成用户数据和实际快照的内容、模式、属主、组、链接数、大小、mtime 保留。新增一份原维护编号的完成回执。以 kurad 身份核对已装 typed provider 成功。
+
+实际 systemd Main 显式启动后保持 NNP，JDK 21 探针核对 Core、GWT、NM、Linux 网络和 systemd provider 五个 ACTIVE bundle。固定已装叶证书验证 GWT 认证入口 200 和未认证入口 302。原 systemd stop 成功，Main PID 退出且保持 disabled。观测器误期望 inactive 后仍保留启动计时，按同一 stop 的退出码、systemd 结果及 PID 补验，未重派启动或停止。探针移出自动加载，隔离 Root 正常停放。Debian ARM64 75 项针对回归通过。
+
+直接联合升级的中断和跨 boot、其他已授权／已绑定业务、provider／launcher、完整 Core/OSGi、剩余 typed brokers 和完整六组件矩阵继续内部待办。原三现场、个人文件及 7fd 的 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-direct-core-networking-upgrade-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 未绑定 Agent 的 Java bridge 换版及原生组合有序升级
 
 历史六组件隔离现场挂载后设备号改变，原 Agent 初始化证明没有 OverlayFS 底层来源信息。已装代码拒绝续接，旧证明字节精确、三服务零启动，现场正常停放。使用独立 Debian 13 ARM64 Root 安装同版八个旧正式包，并在该 Root 同一次 boot 内合法初始化和验证。
