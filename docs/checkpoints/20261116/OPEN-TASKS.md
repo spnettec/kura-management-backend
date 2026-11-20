@@ -1,3 +1,9 @@
+## 2026-11-21 十个附加包的 dpkg 回滚与 GWT 配置中断恢复
+
+在同一隔离 Debian 13 ARM64 Root，旧 GWT 与 Wires 遇到后继包 preinst 拒绝后，dpkg 将原本 installed 的包留在 unpacked。两包原地装入修订版恢复。十个缺少 prerm 的附加包现已能完成 abort-upgrade、abort-remove、abort-deconfigure，实测 30 次回调。后继包仍被拒绝，原包均保持 installed。八包联合验证中，81 份文件指纹在每类回滚前后吻合。构建复用现有 Java 产物，只重新组装发行包。
+
+GWT 的 remove 保留四份图标配置；配置中断后，注册表未变，dpkg 进入 half-configured。原包继续 configure 后恢复唯一注册行和用户图标，显式 purge 移除四份配置。相邻 Wires 的 14 份 JAR 及独立业务数据保持。Cloud 在合成现场因上级目录属主不符而首次配置失败，调整夹具后仅续配原包；已为 true 的属性文件字节相同，inode 和时间戳有变动。该现场仅用最小 Core 依赖包，正式 Main、原六组件与 provider/launcher 全维护矩阵继续待验。冻结 0/12。[实测检查点](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 BIND Java 已观察成功后的确认中断恢复
 
 Networking `e01f6ec` 保留原 BIND 请求和 JVM 已实际收到的成功令牌。送达确认失败时，下一次调用或原 DNS 监视器先核对作用域，再只送原编号的确认。actor 用原 Root、意图、结果及令牌核验。相同动作在恢复后直接返回，IPv4 及双栈模型在确认后发布。原回复未知、令牌无效和 Root 改变仍维持围栏；监视器遇到有未决请求的旧 provider 时继续保留原配对。

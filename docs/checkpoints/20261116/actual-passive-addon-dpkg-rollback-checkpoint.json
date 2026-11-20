@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-21",
+  "scope": "Debian 13 ARM64 isolated package maintenance; real dpkg, ten repository-built all-architecture add-ons, minimal synthetic kura-core dependency, no installed Main",
+  "root": [
+    1048815,
+    6393140
+  ],
+  "fixture": "c1eb8b16dc685d46b9a4d7408f2ad34a351cfab8f2842604c01f05f332ec4a70",
+  "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/passive-addon-dpkg-rollback",
+  "packages": {
+    "kura-wires": {
+      "commit": "5605b6b70b785f70d5c13afab74343afc7a73114",
+      "tree": "4e7fff1f246987ea018487106fdef2279a092a5d",
+      "archive": "kura-wires_3.0.0~git202611201623.5605b6b-1_all.deb",
+      "sha256": "f0acfacfec276be93306d1691e3915785f4eefbad1600f24315e0969f4f750dc"
+    },
+    "kura-management-ui": {
+      "commit": "a2ed6951ede3ccc7787d2858fe3cf438440e6add",
+      "tree": "c55d86775378e096fa451da4067ad9aecc634edc",
+      "archive": "kura-management-ui_3.0.0~git202611201623.a2ed695-1_all.deb",
+      "sha256": "2173b07eb7ffc2e94a32dba3e39fb3b1119befbe33d23401321b82110754ba65"
+    },
+    "kura-artemis": {
+      "commit": "576ee7f33c58b5d7ba6c2955bd90e8a8360b60b6",
+      "tree": "6e518b0d3684aae60ad46107102200f24573e473",
+      "archive": "kura-artemis_1.0.0~git202611201627.576ee7f-1_all.deb",
+      "sha256": "f0cd8d24ebad55153f9eaad8e46b249f10e77798f7eddbbc94258f5563f440e8"
+    },
+    "kura-camel": {
+      "commit": "47dbcab9aebad281fc12eeca9e18ea026347fcc8",
+      "tree": "f702f18074f1626404bf917e616b92175271afae",
+      "archive": "kura-camel_1.0.0~git202611201627.47dbcab-1_all.deb",
+      "sha256": "0f809d1ad20113be1b049082104b4eba1cf570270a2c2cf173a53aee76a2a330"
+    },
+    "kura-cloud": {
+      "commit": "24f1df33c61ddbdea793b607b917eab4efdb5594",
+      "tree": "a13ad3f8b6f0d0ae576f6a97ef60065acd44eb5e",
+      "archive": "kura-cloud_3.0.0~git202611201627.24f1df3-1_all.deb",
+      "sha256": "72ece424a9159f5f5bfc8c7b47a46eebcfa9d3a3360bb0402b49bae0347f68e1"
+    },
+    "kura-container": {
+      "commit": "ee10ec298c73b39f8f3618f8b9920dded1d2be02",
+      "tree": "93e672e5420a4ab9077f35a1646de813f7191569",
+      "archive": "kura-container_3.0.0~git202611201627.ee10ec2-1_all.deb",
+      "sha256": "653661eff20b54cd70ab7e64ddf43b7ebb8f7b0ec4095b1ab23c667355045c88"
+    },
+    "kura-opcua": {
+      "commit": "4280b5769599014dc7c2f51f11deefb35cb2160b",
+      "tree": "0fe98a273f793180b4fa8b859be05bb36dffceb1",
+      "archive": "kura-opcua_2.0.0~git202611201627.4280b57-1_all.deb",
+      "sha256": "7ce29278bb449250ea53ac9b2404e2f6915f0ebf50d84b6e79aaa7c5560fcdd8"
+    },
+    "kura-position": {
+      "commit": "fd742d9b97b3215f6c0e750e521739e8d1b1309e",
+      "tree": "8b994ec62c91e679fa2b075acab282a9dc8ccc3a",
+      "archive": "kura-position_2.0.0~git202611201627.fd742d9-1_all.deb",
+      "sha256": "1686a730f448fbed479131195d70ca612c3f52bbd186c8c0938e4cf7a78c3948"
+    },
+    "kura-triton": {
+      "commit": "7abe6826f4f256a11dc6be4bed95e896b01a7d54",
+      "tree": "7662f20d2d9c83239a47c769e6aa3de6a2b07ffc",
+      "archive": "kura-triton_2.0.0~git202611201627.7abe682-1_all.deb",
+      "sha256": "e4cb8bb18414813008490026b08146827ee3a60abce81a6f518c40097cd47220"
+    },
+    "kura-yofc-runtime": {
+      "commit": "f1204e6e5385fb4aba4baac08d11e3740d8587ca",
+      "tree": "28b58d32a54b328e67bb773e9cd09abe7dd05ffa",
+      "archive": "kura-yofc-runtime_1.0.0~git202611201627.f1204e6-1_all.deb",
+      "sha256": "9bdefc48985e07dac364ba12798a8c0f336d5664cb20ec9e5cac3909670ff40a"
+    }
+  },
+  "build": "JDK 21 / Maven 3.10.1 distribution assembly using existing Java payloads. Wires provider and Position SPI differ only in the OSGi build qualifier. Eight other data payloads identical.",
+  "baseline": "Actual old GWT and Wires went from installed to unpacked after rejected successor preinst; dpkg --install of corrected debs recovered on same Root.",
+  "callbackContract": "https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html#summary-of-ways-maintainer-scripts-are-called",
+  "nativeRollback": {
+    "packages": 10,
+    "callbacksPerPackage": [
+      "abort-upgrade",
+      "abort-deconfigure",
+      "abort-remove"
+    ],
+    "successfulCallbacks": 30,
+    "successorRefused": true,
+    "previousVersionsInstalled": true,
+    "eightPackageSeriesFilesExact": 81,
+    "auditEmpty": true
+  },
+  "gwt": {
+    "root": [
+      1048815,
+      6393140
+    ],
+    "oldOrder": [
+      "networking",
+      "deployment",
+      "wires",
+      "management-ui"
+    ],
+    "removedOrder": [
+      "networking",
+      "deployment",
+      "wires"
+    ],
+    "resumedOrder": [
+      "networking",
+      "deployment",
+      "wires",
+      "management-ui"
+    ],
+    "endOrder": [
+      "networking",
+      "deployment",
+      "wires"
+    ],
+    "phases": [
+      "installed",
+      "config-files",
+      "unpacked",
+      "half-configured",
+      "installed",
+      "not-installed"
+    ],
+    "preservedWiresFiles": 14,
+    "customIconSha256": "44b1ccd70a7d2d7f3e687adce88d357c269af8220416ebf61dfb2080e2388ae0",
+    "retainedFourIconsAfterRemove": true,
+    "customIconBytesExactThroughRecovery": true,
+    "packageConffilesRemovedByExplicitPurge": 4,
+    "registryExactThroughInterruptedConfigure": true,
+    "independentDataExactThroughout": true,
+    "finalAuditEmpty": true
+  },
+  "observations": [
+    "GWT configure lock worker received SIGTERM while waiting on the original registry lock. Same Root and package resumed from half-configured. A test-only intent initially failed serialization before unpack. Verified config-files and no dispatch, then continued at unpack.",
+    "Initial Cloud configure in the synthetic site failed at sed because the test user directory was root-owned. Corrected synthetic site ownership, then configured the same package. Existing true property kept its bytes while sed replaced its inode and changed mtime/ctime."
+  ],
+  "preservation": {
+    "original13StartTimesExact": true,
+    "originalThree": "original-three-after.json",
+    "personalFilesExact": 25,
+    "original7fdStateExact": true,
+    "original7fdAtShutdown": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "originalSixBindDhcpStateExact": true,
+    "hostArchivesCompared": 12
+  },
+  "parking": {
+    "scratchExitCode": 137,
+    "OOMKilled": false,
+    "trigger": "docker stop timeout after checks and sync of fixture with sleep as PID 1",
+    "retiredVerifiedArchiveCopies": 12,
+    "retiredBytes": 402848554
+  },
+  "parents": {
+    "closed": 0,
+    "total": 12,
+    "frozenSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7"
+  },
+  "remaining": "Full legal Main/OSGi and original six-component lifecycle, typed brokers and provider/launcher recovery remain open. External deferred only real NM/cloud-init/physical hardware handoff, amd64 and disk-full/hard-power.",
+  "receiptSha256": {
+    "old-kura-wires.json": "b38e5ec944a52ebaeb506195f6bfb17cc181f63d599cae68f759a22f386e9524",
+    "old-kura-management-ui.json": "14ed747cdf09932b468cca9fada460c6a04e581e63a970a217893658566540c3",
+    "fixed-kura-wires.json": "caf87d99215e62812b9fa496d27351e0f99f867af3955e511c49ef00a0e37ee0",
+    "fixed-kura-management-ui.json": "97b960aa4f1062b8f9421637d8f7b1dc4bd6454bd69cdf2ded5a5f8fdbd08ec7",
+    "recovered-native-upgrade.json": "25f86ae583e35ed204a83d0b20d091713b09163185eedf33e934ed17246e3d36",
+    "breaks.json": "0b1dc10a7a54fa90e58563727be1bd550d3f67aba572f5e0219e13d7d57e3668",
+    "conflict.json": "c7f730e0fe2cb99a0b786b2f4fbea746ddcc6d225983ddbe9771071d82319dd1",
+    "gwt-result.json": "4ca0238cee723bc1e3a86f7b334b36f8682e6401db91778bb9325181eee6dabb",
+    "guest-family/cloud-resumed.json": "b5c7587389b6bc43402bd49d76aaa246041230b78f507b13df3740ff14598927",
+    "guest-family/abort-upgrade.json": "460256135fd4a6bb1785dc4b7f4161e27db97c3e66a0a2e3d3eb9f325a934fd3",
+    "guest-family/abort-deconfigure.json": "439a1d5796962b1014bce51243049a12a37d7c46cac5a43d61083e568f587e84",
+    "guest-family/abort-remove.json": "09dd20ef433c389a2762adc28a29d95efc5df7dc8879fc5092c85c673bd1a743",
+    "script-provider-content.json": "641dded80a8a3d77e2d641f6b52312160313733a710ddf788eae912af84e7b50",
+    "position-spi-content.json": "1c4e0b602cd197b7ff5550ed023be3606dc55d9db1dfaf05e693bb5ff2445b94",
+    "preservation.json": "8a2219220ffe3daafe6e236cbb521f1dc4e1551c6398d0b4fba54007367a4cb6",
+    "original-three-after.json": "d45bad15589753a3399d4804c115baf75bbcefe00e321aa7566378eac22dfc96",
+    "parked.json": "3481f8936d18ba2df39d38d695342dc8baa8d5331a9705c77f3f0e18e1cef7b4",
+    "retire-test-copies.json": "bc96a6d87eec71e79bc25706d1f9e21e3ae7304b8280b5439b2313d0ba93c8e0"
+  }
+}
