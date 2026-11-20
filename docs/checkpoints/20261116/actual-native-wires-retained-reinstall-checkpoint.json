@@ -2031,5 +2031,258 @@
       "original-three-after.json": "9e6b5f89f9689f5bb381d76098646e2da6d7706bfcbe2aae73669193152eb07d",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "launcherPidAdmission": {
+    "package": {
+      "source": "7f91ef9024d6f01d70bcbc15791bdd6d20051fcb",
+      "tree": "82c4eb71f4b8892e56c83a59eaaf9a6ae1ebed25",
+      "version": "6.0.0~git20261120233729.7f91ef9-1",
+      "sha256": "3fcb777b519dd5d81a0cd499a8e926fb6a32558161c1a6af584afbae401223b0"
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "diagnosis": {
+      "workerThread": {
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "main": {
+          "unit": {
+            "MainPID": "8519",
+            "NRestarts": "0",
+            "LoadState": "loaded",
+            "ActiveState": "active",
+            "UnitFileState": "disabled",
+            "InvocationID": "83f8b9af39d1433aaff20975e09c40f0"
+          },
+          "ticks": "40361311",
+          "uid": "997\t997\t997\t997",
+          "capEff": "0000000000001402",
+          "nnp": "1"
+        },
+        "threadBefore": "0000000000001402",
+        "threadAfter": "0000000000001400",
+        "childAfter": "0000000000001400",
+        "icmpActorReturnedUnreachable": true,
+        "journalBytes": 23647,
+        "retainedBusinessActive": true,
+        "rootOnlyMarkerReadDeniedAfter": true,
+        "pidPath": "/run/kura.pid",
+        "pidMetadata": "kurad:kurad:600"
+      },
+      "initialObservation": {
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "outcome": "java.lang.IllegalStateException: ICMP",
+        "rootPing": {
+          "-4": {
+            "exit": 1,
+            "loss": "100%"
+          },
+          "-6": {
+            "exit": 1,
+            "loss": "100%"
+          }
+        },
+        "inputPolicy": "-P INPUT DROP",
+        "probe": "3832c075b969570bb5ee49ad86aae11f812e1757ab1b6c9dff2840504cb15856"
+      },
+      "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/main-dac-paths",
+      "unprivilegedPaths": {
+        "/run": [
+          0,
+          0,
+          "0o755",
+          true,
+          false,
+          true
+        ],
+        "/var/run/kura.pid": [
+          2
+        ],
+        "/var/log": [
+          0,
+          0,
+          "0o755",
+          true,
+          false,
+          true
+        ],
+        "/var/log/kura-console.log": [
+          997,
+          995,
+          "0o600",
+          true,
+          true,
+          false
+        ],
+        "/var/log/kura.log": [
+          997,
+          995,
+          "0o600",
+          true,
+          true,
+          false
+        ],
+        "/var/log/kura-audit.log": [
+          997,
+          995,
+          "0o600",
+          true,
+          true,
+          false
+        ],
+        "/var/log/kura-heapdump.hprof": [
+          2
+        ],
+        "/var/log/kura-error.log": [
+          2
+        ],
+        "/tmp/.kura": [
+          2
+        ],
+        "/tmp/.kura/configuration": [
+          2
+        ],
+        "/opt/eclipse/kura/data": [
+          997,
+          995,
+          "0o700",
+          true,
+          true,
+          true
+        ],
+        "/opt/eclipse/kura/user": [
+          997,
+          995,
+          "0o700",
+          true,
+          true,
+          true
+        ],
+        "/opt/eclipse/kura/packages": [
+          997,
+          995,
+          "0o700",
+          true,
+          true,
+          true
+        ],
+        "/opt/eclipse/kura/log": [
+          997,
+          995,
+          "0o700",
+          true,
+          true,
+          true
+        ],
+        "/opt/eclipse/kura/.data": [
+          997,
+          995,
+          "0o700",
+          true,
+          true,
+          true
+        ],
+        "/usr/lib/kura": [
+          2
+        ],
+        "/run/kura-key-service": [
+          0,
+          0,
+          "0o755",
+          true,
+          false,
+          true
+        ]
+      },
+      "scope": "Only a dedicated platform thread dropped DAC_OVERRIDE from its effective, permitted and inheritable sets; the Main leader retained 0x1402. The ICMP actor reported unreachable on the existing loopback firewall; direct root ping likewise received no reply."
+    },
+    "detached": {
+      "exit": 1,
+      "pidOpen": "EACCES",
+      "noJava": true,
+      "noNewWriter": true,
+      "unchangedWriterFiles": 2
+    },
+    "background": {
+      "exit": 2,
+      "pidOpen": "EACCES",
+      "noJava": true,
+      "noNewWriter": true,
+      "unchangedWriterFiles": 2
+    },
+    "normalStartup": {
+      "main": {
+        "unit": {
+          "MainPID": "3972",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "f8dfe3de2a72481f85e52368796c535d"
+        },
+        "ticks": "40386345",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "config": {
+        "sha256": "a8e5810b3d8b435c5bb33e50fecdd55ea51e8ae4912b2cb91628dba81e6046a5",
+        "meta": "2097165|32|600|997|995|1|22583|2026-11-20 23:38:46.274019564 +0000|2026-11-20 23:38:46.274019564 +0000"
+      },
+      "writerLease": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "business": "fixture.retained.business.bundle",
+      "agent": "org.eclipse.kura.management.bridge",
+      "publishedPidVerified": true
+    },
+    "tests": {
+      "macPassed": 11,
+      "arm64NonRootPassed": 11,
+      "oldRegressionFailures": 2
+    },
+    "size": {
+      "debBytes": 204239930,
+      "currentDebCount": 32,
+      "totalArm64DebBytes": 6535240550,
+      "reactorBuild": false,
+      "assembledSeconds": 8.478
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "remaining": "First-start log creation, RollingFile archive publication, JVM diagnostics and the legacy PID contract still need explicit ownership before removing the capability from the packaged service.",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/launcher-pid-admission",
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/launcher-pid-admission/parked-readback.py",
+    "sha256": {
+      "main-dac-paths/audit.json": "8afc6064f686a514c2e0b020667c7a98732585aed59eda01246e17027bedbd3a",
+      "main-dac-paths/observed.json": "79c95e32cf86f66f3f3efbe764764c1b71e41f336c1f2ec0197bc05a9d207ac8",
+      "main-dac-paths/pid-old-both.log": "1c019de7f51d15ece534bdc9a8f4e263dce3fcbef81afae0180cd7af884b5c29",
+      "main-dac-paths/pid-tests-final.log": "709cd4a1b31f96328074d8d3001f6288d081a6f516f99b6639245ed901d9ed75",
+      "launcher-pid-admission/linux-ordinary-tests.log": "c6af216ba20a72bcb0f948f732e7c441d9961bfab4b7a9119623edf65464f03d",
+      "launcher-pid-admission/package.json": "208b1f86f3d8ffb3a435bdba1619054afe6419a3d365d8304a5642732aa1a146",
+      "launcher-pid-admission/upgraded.json": "47f1f27c5bccea6d020a8775aee763d1b8a9d7879b0389a5eb031a5504ec564d",
+      "launcher-pid-admission/background-result.json": "2ebbf49b9cf34022fe7a81cd84122e2583311ae770a5e63788d8e253a897f0d4",
+      "launcher-pid-admission/detached-result.json": "c17bb22507a7f1cbea9f35e35f14ca30241e4a2f9f50bcd1486910c19e9a67e3",
+      "launcher-pid-admission/main.json": "a0702a725bcc3568779900f402d7ad74f378e835a4654ae7577c918b9b245425",
+      "launcher-pid-admission/parked.json": "5d337a6bf8e92b6ec71b86fb5b3c4092084f0470ccaaa5b8ff9f21268f2ad0d1",
+      "launcher-pid-admission/offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "launcher-pid-admission/preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "launcher-pid-admission/original-three-after.json": "21e4134980e7ad88c3231c6d271a45be0bff517e9a4a43a4a094f2da01b0b35c",
+      "launcher-pid-admission/parallels-final.json": "72acc42108adecfb99616c442be614e356e32388b5f61ea1e862b5507cfba52a"
+    }
   }
 }

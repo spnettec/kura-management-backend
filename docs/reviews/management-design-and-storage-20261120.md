@@ -37,6 +37,8 @@
 
 从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。Main 的 DAC_OVERRIDE 仍是完整最小权限验收中的一项。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
 
+进一步实测表明，Main 中单个线程撤去绕过文件权限的能力后，仍能读取原业务包，并让日志 broker 导出 23,647 字节。冷启动还有具体的文件权限依赖：PID 目标在 root 所有的 /run，已有三个日志可由 kurad 续写，但该账号不能在 /var/log 创建首份日志或新的归档。现已修复两个后台启动入口在 PID 文件打不开时仍派生 JVM 的问题。整项服务撤权还需要覆盖首次创建、滚动归档及 JVM 错误转储。权限实测复用了已装包；随后为两个启动器打包一次，耗时 8.478 秒，新 deb 为 204.24 MB。此时 Core 目录内共 32 个 ARM64 deb，合计 6.54 GB。[权限与启动器实装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 普通命令的独立服务还影响两个用户可见的行为。在原六组件卷上停止一个正在运行的命令实例，Main 和监听 socket 均继续运行，下一条命令成功。对于 Main 私有数据目录，worker 可以相对读取已知文件，调用 getcwd() 则返回 EACCES。站点另设的目录给命令组穿越权后，worker 可以取得绝对路径并读指定文件，仍无法列举目录。两次实测复用已安装的 Core，没有新增 deb 或构建镜像。[普通命令与目录验证](../checkpoints/20261116/actual-core-command-worker-lifecycle-checkpoint.json)
 
 ### 六个网关包已经验证到哪一步

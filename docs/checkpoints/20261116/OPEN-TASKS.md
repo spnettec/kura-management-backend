@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 的文件权限与启动 PID
+
+原六组件 Root 上，正式 Main 的独立线程撤去 DAC_OVERRIDE 后，原业务 DP 可读，typed journal 导出 23,647 字节。ICMP actor 返回不可达，本机 root 直接 ping 也丢包。Main 主线程继续持有原权限。原启动器无法写 PID 时仍会派生 JVM；Core 7f91ef9024 调整了后台及分离启动顺序。新包原位升级后，两个入口在 PID 被拒绝时均无 Java 进程、无新 writer，正常 Main 的实际 PID、writer lease、业务 DP 和 agent bridge 已核对。启动所需的 PID 与日志所有权仍待收敛。当前停机核对入口为 launcher-pid-admission/parked-readback.py。冻结 0/12。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Deployment 同版本归档替换
 
 原六组件卷上，旧版两条安装路径遇到跨文件系统复制失败时均丢失原归档，云端通过目录别名安装还会在返回成功后删除归档。Deployment 15c50ca 通过 240 项测试，同样条件下三次均保留原注册行、文件内容和 inode。故障对照使用实装 bundle、独立普通用户 JVM 和替代的 DeploymentAdmin；随后正式 Main 通过实际 Felix 读回原业务资源。六包正常停机，83 份文件已核对。当前只读入口为 deployment-archive-publication/parked-readback.py。冻结 0/12。[实装记录](actual-native-wires-retained-reinstall-checkpoint.json)
