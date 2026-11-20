@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — Core 包载荷写入后沿原围栏恢复
+
+Core ebdfbd77ca 为同一次升级持久记录 dpkg 载荷交接，只有原 Root、boot、维护围栏、版本和 preinst 配对，且 dpkg 为原版本 half-installed 时才处理已出现的载荷。包内清单对照实际 deb 的 434 个文件和 40 个目录完全一致。完整文件核对大小与 SHA-256，.dpkg-new 临时文件核对路径、类型、属主和大小上限。接回原旧树之前，半成品在同一文件系统进入专用暂存，原目录及文件 inode 保持。原前置检查通过后把同一目录交回 dpkg。已开始 configure 的围栏和文件身份歧义仍拒绝。
+
+Debian 13 ARM64 用 JDK 21 实际构建两代 Core。第一个中断点是 dpkg 对 org.eclipse.kura.api JAR 的 .dpkg-new 文件成功写入 32,768 字节之后，读回字节与候选包前缀一致。第二个中断点是已接回原树、暂存半成品之后。第三次沿同一 Root 和围栏把同一 inode 与原字节交回 dpkg，完成解包和配置，两个续接均未重新捕获旧数据。原 AES、旧备份与维护历史、四类恢复文件及相邻安装目录保持。18 份 configure 记录通过核验，仅新增原编号维护回执。
+
+正式 Main 使用与构建产物 SHA-256 一致的 Equinox launcher，回环 HTTPS 404。ARM64 定向 77 项通过、2 项跳过。新夹具正常停放。Core 9f8a090a35 只修正回归测试。后续 dpkg 控制信息替换等中断、跨 boot、其余 Core/OSGi、typed brokers 和六组件矩阵继续内部待办。原三现场、个人文件和 7fd 的 41 输入/16 回执保持。12 父项 0/12，external deferred 仅原三项。见 [实际检查点](actual-core-dpkg-payload-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core 已发布副本及旧树移出后恢复
 
 Core 4803d29dde 验证已发布副本的 HMAC、Root、boot、原围栏、源树与链接、preinst 指纹及两边版本。确认 Main 停止后，将旧物理运行树整体原子移入私有副本目录。解包前再次进入原 preinst 时，验证并接回同一树，再运行原 provider 和维护准入。已进入 configure 的围栏、外来源树、其他包、其他 boot 和无原记录的旧副本继续拒绝。包安装阶段按已配对脚本位置选择新物理目录，夹具同前缀的相邻目录保持原文件和元数据。
