@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 正式 Main 隔离原始凭据并保留加密连续性
+
+Core `bcf8c24f5c` 将 `/etc/kura/credentials` 加入正式 systemd Main 的 InaccessiblePaths。systemd 继续加载配对凭据，Root broker 继续核对原始凭据及发放 writer lease。原配对检查保持。JDK 21／Maven 3.10.1 由 Git 构建正式 ARM64 deb，包合同和普通 launcher 相关回归 75 通过、3 跳过。
+
+在同一 Debian 13 ARM64 隔离 Root，基准 Main 用真实 OSGi CryptoService 写入一份合成密文，正常停止后原位升级一次。升级完成的候选 Main 仍具有 CAP_DAC_OVERRIDE 和 NNP=1。进程内打开原始 AES 记录、provision 回执和锁均被拒绝，注入的凭据与原 AES 摘要相同，继承的 Root writer lease 有效。新进程用真实 OSGi 服务解密升级前的原密文，新加密往返通过。前后 HTTPS 回环请求均返回 404，服务端证书摘要相同。
+
+首次观测因隔离系统缺 curl 超时，沿原已运行 Main 以 Python HTTPS 补采。原启动和密文写入保持一次。升级保留原凭据完整指纹、密文字节与指定属性、原包历史，仅新增一份配对维护回执。正式 Main 保持 disabled、正常停止，夹具退出 0，停机后读回 6 份文件。
+
+本次覆盖 systemd 正式 Main 单代凭据的原位升级。多代、其他 launcher、剩余 Core 权限收敛、typed brokers、全部 provider 和六组件生命周期仍为内部待办。原三现场和 7fd 的 41 输入／16 回执保留。冻结 12 父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-core-main-credential-isolation-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — PKCS#11 共享令牌的 PIN 校验与既有会话
 
 Core `9d490f6195` 使用独立 JVM 验证显式 PIN，PIN 通过匿名管道传递。错误 PIN 或已启动后结果未明的校验阻止后续读取，直到认证配置改变。认证前确认不可用可以重试。JDK 21／Maven 3.10.1 的 88 项 keystore 测试通过，正式 ARM64 deb 由该 Git 树顺序构建。
