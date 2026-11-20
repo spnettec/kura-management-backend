@@ -4,6 +4,8 @@ Core `abefdec533` 修复公开 ClockService 在调时尚未确认时就报告同
 
 随后 Core `d0f5bed692` 将确认时间写入提前到 OSGi 事件发布之前。复用同一六组件安装升级后，正式 Main 收到一次无需改动系统时钟的回环样本。事件回调和随后公开 API 读到同一毫秒，actor 操作数为零。该提交的时钟模块 35 项、Equinox 集成 67 项通过。原图、凭据、快照和六包已在正常停机卷上只读核对。[事件、安装与停机证据](actual-registered-main-clock-and-purge-checkpoint.json)
 
+Core `6bfda3c94c` 更新构建脚本。相同安装版本在复用目录重建八个 broker 配对清单后，整个 ARM64 deb 与实装原包逐字节等价。冻结 0/12。[构建回执](actual-rtc-hotplug-and-addon-upgrade.json)
+
 六组件独立安装从 Wires 89d5f57 解包升级到 5605b6b，在真实 postinst 等待注册锁时中断。带着 half-configured 状态正常停机，再启动后外层设备号变化，PID 1、dpkg 和 Main 的原 Root 均精确匹配。仅续配原 Wires 后，dpkg audit 为空，正式 Main 读回已提交一次的原 Timer→Logger 图并再次收到消息。两个启动共用同一内核 boot ID。原凭据、图回执与快照保持，六包已在停机卷上只读复核。冻结 0/12。[Wires 升级和停机恢复](actual-native-wires-retained-reinstall-checkpoint.json)
 
 ## 2026-11-21 六组件中 GWT 与 Wires 联合移除在 postrm 中断

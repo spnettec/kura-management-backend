@@ -1629,5 +1629,33 @@
       "inputs": 41,
       "receipts": 16
     }
+  },
+  "repeatableBrokerPackageAssembly": {
+    "builder": "6bfda3c94c5d079fb47af706d31dffcf68ab4d46",
+    "tree": "5f8e52bdc031a0cb7ec668c67ed107579f235294",
+    "verifiedVersion": "d0f5bed6921d8e369fef28e0f2319a6490df788b",
+    "identicalArm64Deb": "426d1af381bcb6cf156a51d9a7d6ec73d5cf227c5dbe3fe3d86f151349fc7de8",
+    "debBytes": 204228536,
+    "freshCohorts": {
+      "bind-service": "6f05c3900212f28feae88dcd7120dc0f10caa707ea8bb9b412ebecc48cfd41c5",
+      "clock-broker": "ee20b8ef769a423fa094f55ea85b77267979af258b13bdcd90f9575bf0bd5578",
+      "command-executor": "f53ddfcee8ad01f229fcce1e4d10daf6504ef6083f2fe6ca30b130b27f86ee11",
+      "dhcp-service": "d104aa1f296c7cc28e20a424d1368ec28a75bbb4e1848ad041488efff074d6a1",
+      "journal-export": "f91b2008f6799fc4d61f45a6fc1135bc99d6868936ec8fbe6171254ee8f602e1",
+      "modem-driver": "f2950b0c398401a3950c64421efc0dfa9677923c6a518412e90249cfcf2182ef",
+      "modem-reset": "b522f57077ba6df1e1daf1181e722eefaf826011ca57fb2f1235d7fb70192dd1",
+      "reboot-broker": "534c9b0113f8d44a6a31d60795571fe17951475ba7bed8c24fbe24644842dc6c"
+    },
+    "tests": 10,
+    "input": "All eight prior broker outputs contained a retired file. Reused the assembly, official prepare-package and jdeb with the installed release snapshot pinned for byte comparison.",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/repeat-package",
+    "evidenceSha256": {
+      "before.log": "8a1c96760e6501f901724a56f783c160bd03d3053c4adfd69aad056bbc9d58d6",
+      "verified.log": "a3823c0be1e6c02d30b59ffa78f3046a09f11b9b444d022b8509ff2ef6b9d787",
+      "committed.log": "31742c842fbaf62c18bf4fc81f161994b1c7ab0bf99e0988dcf6ecc94beb5313",
+      "reused.json": "749103f8bbd32cc73f33b9122877abedc837d8d129c27de4793c7a737783f8b3",
+      "committed.json": "749103f8bbd32cc73f33b9122877abedc837d8d129c27de4793c7a737783f8b3",
+      "clock-package.log": "e88c4ab207d59a90e751aa03e99ba1ff282661cf8fb4ddbd67b8a36807a6f760"
+    }
   }
 }
