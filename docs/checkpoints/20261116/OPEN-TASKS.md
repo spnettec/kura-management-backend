@@ -1,5 +1,13 @@
 
 
+## 2026-11-20 继续实施 — 实际 Equinox 标识化配置事务与回执
+
+Core 3d84351215 加入真实 Equinox 联合回归。由正式 ConfigurationRevisionService 一次提交单例更新和一个 factory 实例创建，组件和加密快照均读回原 Password 类型及合成值。停用实际配置 bundle 后回执 DS 撤下，重启原 bundle 后只读查询原编号得到相同 CORE_COMMITTED、创建及更新范围。未重新提交，回执的 businessHealthVerified 保持 false。
+
+JDK 21 和 Maven 3.10.1 在独立 Git 检出构建。新用例单次通过。另有 64 项真实 Equinox 用例通过，两个系统服务用例因夹具缺少 RebootBrokerClient 实际要求的 Gson 解析失败。Core 981d71c393 补齐同发行包版本的 2.11.0，并核对两个 package wire，两个已失败用例复验通过。三次合计 67 个不同 Equinox 用例均有成功证据。旧 pin 2603adefae 的标准 Maven 依赖范围结果为 BUILD FAILURE，已报告 1206 项、0 失败、2 错误、2 跳过。两个提交仅修改测试及夹具依赖，生产包和原现场保持。统计范围和回执见 [检查点](actual-core-osgi-configuration-plan-receipt-checkpoint.json)。
+
+Debian 实际 Main 的该配置业务、其他 provider/launcher、远程授权和异步业务结果仍待验。其余 typed brokers、完整六组件安装升级移除 purge/中断和 12 父项维持原范围。原 7fd 禁用、正常停止且保留 41 输入/16 回执。父项最终 0/12，external deferred 仅原三项。
+
 ## 2026-11-20 继续实施 — Core 已派发步骤核定与 PREPARED 部分回拷恢复
 
 在历史原容器保持 stopped 的情况下只读核对八份原阶段文件、围栏以及 dpkg 半配置状态。此前实际 HTTPS keytool 已派发，但无可信成功退出证据或完成回执，保持 UNKNOWN。原现场未启动，原号及所有原证据保留。

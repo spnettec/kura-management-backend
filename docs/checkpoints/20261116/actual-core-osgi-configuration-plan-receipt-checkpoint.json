@@ -1,0 +1,191 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "67bf3c510aa2f707bbf42d74aacb8b2ca2a1bebe",
+  "core": {
+    "head": "981d71c3931d20943a4843916a40e8b9a0fa5c47",
+    "tree": "ce01b977098c9e2d82e9655802bf6ea8c18d58db"
+  },
+  "scenario": "Equinox/SCR/ConfigurationAdmin loads built bundles on macOS ARM64",
+  "jdk": 21,
+  "maven": "3.10.1",
+  "baseReactor": {
+    "core": {
+      "head": "2603adefae47588f11ab0d16fd272e92e113bec2",
+      "tree": "c14c9705fa592d8298c19ae045bab136805c1489"
+    },
+    "outcome": "BUILD FAILURE",
+    "command": "Maven -Posgi-it -pl :kura-workspace,:kura-osgi-tests -am verify",
+    "counts": {
+      "tests": 1206,
+      "errors": 2,
+      "failures": 0,
+      "skipped": 2
+    },
+    "reports": 157,
+    "failingReports": [
+      {
+        "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.SystemServicesRuntimeIT.xml",
+        "name": "org.eclipse.kura.testing.SystemServicesRuntimeIT",
+        "errors": 2,
+        "failures": 0,
+        "sha256": "32b486a04b5b97e7e5bd438e9ddfa8d568b30afb093504abcb5511ed509db4a7"
+      }
+    ],
+    "statusSource": "Maven log and XML reports; local zsh wrapper reserved variable prevented exit capture"
+  },
+  "equinoxPreviouslyPassing": [
+    {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.BundleRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.BundleRuntimeIT",
+      "sha256": "7d1023aefb496e977720fce0114eddd60fd0402754f5256c3f08fded75f00e74",
+      "tests": 6,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 6
+    },
+    {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.CommServiceRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.CommServiceRuntimeIT",
+      "sha256": "ec912514b8eec6b4fc9137056b0539d2fdc629b2b58be34ce7b939e5c069a44d",
+      "tests": 1,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 1
+    },
+    {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.ConfigurationOperationReceiptsRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.ConfigurationOperationReceiptsRuntimeIT",
+      "sha256": "ab3ba6fa58eda5341e0f26002b1952853261c7a20342835fffe5332f2b6f6e5e",
+      "tests": 1,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 1
+    },
+    {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.ConfigurationServiceRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.ConfigurationServiceRuntimeIT",
+      "sha256": "8ccc83d099882bbacff21b6509a9003da6804fbe267324cfc70066efd5deee20",
+      "tests": 47,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 47
+    },
+    {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.LegacyCoreRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.LegacyCoreRuntimeIT",
+      "sha256": "385bbc1ee0705ab36774f3d2412d5c6847a5160181d7ebf25d3bac1ac2d05dc0",
+      "tests": 8,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 8
+    },
+    {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.SqliteNativeRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.SqliteNativeRuntimeIT",
+      "sha256": "a02b0f17476f0d12833473035e38ff813cab672896e04d46b90e6dff77c0de59",
+      "tests": 1,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 1
+    }
+  ],
+  "systemFixtureDefect": {
+    "priorReport": {
+      "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.SystemServicesRuntimeIT.xml",
+      "name": "org.eclipse.kura.testing.SystemServicesRuntimeIT",
+      "sha256": "696671bb717af7c1eedd42999d9f49b4801f57db67f4e1804e3e61ca014d15a2",
+      "tests": 2,
+      "errors": 2,
+      "failures": 0,
+      "skipped": 0,
+      "testcaseCount": 2
+    },
+    "lineage": {
+      "head": "3d84351215b20aa6ebacfd67aa74f1a148df4db4",
+      "tree": "2c7e8cc5fb7d2d4171788ce0b545a6f42abd94ad"
+    },
+    "missingWires": [
+      "com.google.gson",
+      "com.google.gson.stream"
+    ],
+    "versionRestored": "2.11.0",
+    "resolutionReportSha256": [
+      "e0f859d4b379cc08668286f402ea746509f46218367ddbeaae2446908f8ffbf9",
+      "e0f859d4b379cc08668286f402ea746509f46218367ddbeaae2446908f8ffbf9"
+    ]
+  },
+  "correctedSystemProvider": {
+    "source": "kura-osgi-tests/target/failsafe-reports/TEST-org.eclipse.kura.testing.SystemServicesRuntimeIT.xml",
+    "name": "org.eclipse.kura.testing.SystemServicesRuntimeIT",
+    "sha256": "f385c7810843f09164a86838c319c0cb26a28c6da212b6ec34e3d9dda0074277",
+    "tests": 2,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "testcaseCount": 2,
+    "testcases": [
+      "testServiceExists(String, EquinoxRuntime)[1]",
+      "testServiceExists(String, EquinoxRuntime)[2]"
+    ]
+  },
+  "equinoxCounts": {
+    "tests": 67,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "focusedConfigurationPlan": {
+    "source": "identified-plan-report.xml",
+    "name": "org.eclipse.kura.testing.ConfigurationServiceRuntimeIT",
+    "sha256": "b4d2452cf1691559886f9ef267b884c8604fd1f38904c4beb4783aa0a7103198",
+    "tests": 1,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "testcaseCount": 1,
+    "testcases": [
+      "identifiedPlanSurvivesConfigurationBundleRestart(EquinoxRuntime)"
+    ]
+  },
+  "testOnlyChanges": [
+    "build-support/kura-configuration-test-fixtures/src/main/java/org/eclipse/kura/testing/configuration/fixture/ConfigurationServiceScenarios.java",
+    "kura-osgi-tests/pom.xml",
+    "kura-osgi-tests/src/test/java/org/eclipse/kura/testing/ConfigurationServiceRuntimeIT.java",
+    "kura-osgi-tests/src/test/java/org/eclipse/kura/testing/SystemServicesRuntimeIT.java"
+  ],
+  "verifiedPlan": {
+    "submissions": 1,
+    "singletonUpdates": 1,
+    "factoryCreations": 1,
+    "passwordInLiveAndSnapshot": true,
+    "providerStoppedAndStarted": true,
+    "originalReadOnlyReceiptBeforeAndAfter": "CORE_COMMITTED",
+    "resubmissions": 0,
+    "businessHealthVerified": false
+  },
+  "internalPending": [
+    "实际 Debian Main 的同类配置事务、其他 provider/launcher 和远程审批/业务回执",
+    "其余 typed brokers、完整六组件生命周期、全部 12 父项"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stateExact": true
+  },
+  "pushed": false
+}
