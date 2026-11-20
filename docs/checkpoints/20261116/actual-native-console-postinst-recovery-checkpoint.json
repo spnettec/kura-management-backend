@@ -1,0 +1,165 @@
+{
+  "recordedAt": "2026-11-20T05:17:20.609477+00:00",
+  "source": {
+    "commit": "768b0fa8226a98cb4626df72c8baa97d37e3615b",
+    "tree": "10755e1b7bd6bd20019422adccf0d058a5f52895"
+  },
+  "platform": "Debian 13 arm64",
+  "archives": {
+    "console": {
+      "version": "0.1.0~cohort20261120051418.768b0fa-2",
+      "architecture": "arm64",
+      "sha256": "6c5302efb08e36f41b7a5ac0e2dc2154b5790bef0921cff748dc7b8280b374b5",
+      "sourceManifestSha256": "401e555308a85797f1aef9171085e7622bc3a36efe6ae7ddfbcbdf63afb479f7",
+      "binarySha256": "de23eda73205a354c16d265f3c3887c01fc92daef8564e6ab446defc01ce0c48"
+    },
+    "installer": {
+      "version": "0.1.0~cohort20261120051418.768b0fa-2",
+      "architecture": "all",
+      "sha256": "f2309b4e3b97d01003927cffe2b5322f557bbc1ac529c85020e4271386aa5f86",
+      "sourceManifestSha256": "401e555308a85797f1aef9171085e7622bc3a36efe6ae7ddfbcbdf63afb479f7",
+      "maintainerScripts": [],
+      "nativePackageCatalogSha256": "fafcf9314302710b1b3fb7ab51afa11159033ee169f6c4ce68cac6bbac5dec61",
+      "approvedNativePackages": 1
+    }
+  },
+  "reusedFormalRelease": {
+    "sourceInputs": 207,
+    "sealedArchiveSha256": "b1277d34cc59a409898414b9023c19d5fcedafd46fb5974f53c73b1276414514",
+    "sealedVersion": "0.1.0~cohort20261120051418.768b0fa-1",
+    "binarySha256": "de23eda73205a354c16d265f3c3887c01fc92daef8564e6ab446defc01ce0c48",
+    "webFiles": 3
+  },
+  "fixtureBefore": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:09:50.336446151Z",
+      "FinishedAt": "2026-11-20T05:10:09.975273321Z"
+    }
+  },
+  "fixtureAfter": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:15:30.93186977Z",
+      "FinishedAt": "2026-11-20T05:16:44.073666465Z"
+    }
+  },
+  "firstControlCompleted": {
+    "packageVersion": "0.1.0~cohort20261120051418.768b0fa-1",
+    "operation": "d6ec2fe9-3031-40d0-97d9-728a6abe6721",
+    "initialTracerMissedOperationsDirectory": true,
+    "replayed": false
+  },
+  "trial": {
+    "operation": "d7f2e5c0-9e6d-41ee-a847-a787a30cd5da",
+    "sameRootAndBoot": true,
+    "installedPostinstSha256": "b576541209ae95bb1efc018b8be49b8d8711b2f02280f5e5ff59453b840aed9d",
+    "originalCommandStopDispatched": false,
+    "identitySurvivedBothFaults": true,
+    "afterCompletionFsyncBeforeRelease": {
+      "mode": "completed-held",
+      "dpkg": 868,
+      "child": 869,
+      "directoryFsyncReturnedSuccess": true,
+      "syncedPath": "/var/lib/yofc-console-maintenance/operations",
+      "originalFencePresent": true,
+      "operation": "d7f2e5c0-9e6d-41ee-a847-a787a30cd5da",
+      "journal": {
+        "inode": 5795414,
+        "device": 1048815,
+        "mode": 420,
+        "mtimeNs": 1795151801624625243,
+        "ctimeNs": 1795151801625342847,
+        "sha256": "eae1c82ca18c1182ddad30bcf08edb21f4f78ffd88c7d4d416cc64ca24ad3bd9"
+      },
+      "proof": {
+        "inode": 5795413,
+        "device": 1048815,
+        "mode": 420,
+        "mtimeNs": 1795151801619922941,
+        "ctimeNs": 1795151801621342732,
+        "sha256": "7fa4c79a2bf79748580a26a0dc34090d0ca4999aec115b7ed0058bae74d4f264"
+      },
+      "realDpkgStatus": 1,
+      "maintainerSignal": "SIGKILL"
+    },
+    "afterFenceReleaseFsync": {
+      "mode": "completed-released",
+      "dpkg": 971,
+      "child": 972,
+      "directoryFsyncReturnedSuccess": true,
+      "syncedPath": "/var/lib/yofc-console-maintenance",
+      "originalFencePresent": false,
+      "operation": "d7f2e5c0-9e6d-41ee-a847-a787a30cd5da",
+      "journal": {
+        "inode": 5795414,
+        "device": 1048815,
+        "mode": 420,
+        "mtimeNs": 1795151801624625243,
+        "ctimeNs": 1795151801625342847,
+        "sha256": "eae1c82ca18c1182ddad30bcf08edb21f4f78ffd88c7d4d416cc64ca24ad3bd9"
+      },
+      "proof": {
+        "inode": 5795413,
+        "device": 1048815,
+        "mode": 420,
+        "mtimeNs": 1795151801619922941,
+        "ctimeNs": 1795151801621342732,
+        "sha256": "7fa4c79a2bf79748580a26a0dc34090d0ca4999aec115b7ed0058bae74d4f264"
+      },
+      "realDpkgStatus": 1,
+      "maintainerSignal": "SIGKILL",
+      "serviceLaunchGateRefusedHalfConfiguredPackage": true
+    },
+    "halfConfiguredAfterEachCut": true,
+    "completeWithOriginalFiles": {
+      "id": "d7f2e5c0-9e6d-41ee-a847-a787a30cd5da",
+      "dpkg": "installed",
+      "unchangedTerminalJournalAndProof": true,
+      "originalStopReceiptIntact": true,
+      "dataEntriesExact": 13,
+      "originalTlsPinExact": true,
+      "actualServiceLaunchGatePass": true,
+      "consoleKeptDisabled": true,
+      "originalInstallReceiptIntact": true
+    },
+    "originalFixtureDataPreserved": true,
+    "systemServicesStayedDisabled": true
+  },
+  "tests": {
+    "nativePackagingTestsPassed": 135
+  },
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pending": [
+    "含实际 PostgreSQL 和任务数据的换版",
+    "较早 postinst 持久断点和跨 boot",
+    "命名实例和其他 launcher/provider",
+    "完整 Core/OSGi、其余 typed brokers 与完整六组件矩阵"
+  ],
+  "pushed": false
+}

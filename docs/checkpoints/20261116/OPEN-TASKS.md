@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Native 中心 postinst 完成后原编号恢复
+
+console 768b0fa 在直接 dpkg 配置中于释放围栏前记录原维护编号、Debian 前后版本、实际已装 postinst inode 和摘要、Root 和 boot。没有活动围栏时，只有 dpkg 的同一半配置包、精确配对记录和原终态才能续接，原 stopped 回执、参与单元和已装程序来源仍核对。启动检查在 dpkg 报 installed 前拒绝。独立安装器 worker 仍需要自己的 dpkg 完成回执。
+
+从当前 Git 生成 Debian ARM64 中心及安装器包，复核已发布包和 207 项编译输入，沿用已核实 ELF 和三个 Web 文件。首轮追踪器观察了错误的同步目录，原配置实际成功，原编号和回执保留。修正追踪器后以规格相同的下一正式 Debian 修订为独立维护目的，未重做已完成目的。
+
+Debian 13 ARM64 原六组件隔离 Root 上，实际 postinst 第一次在原完成回执的 operations 目录 fsync 成功后、释放活动围栏前被杀停。第二次沿原编号配置，在原活动围栏移除且其父目录同步后被杀停。两次真实 dpkg 均 exit 1 并保留 half-configured。两份终态文件在第二次和随后成功配置中均未重写。半配置期间实际 launch-check 拒绝；第三次 configure exit 0，达到 installed，原护栏检查允许启动。中心未启动，原 TLS 指纹、安装回执和 13 项受保护输入精确。三个服务禁用，隔离现场正常停放。135 项 Debian 包装回归通过。
+
+更早的持久断点、跨 boot、含 PostgreSQL 任务的中心、命名实例和其他 launcher/provider，连同完整 Core/OSGi、其余 typed brokers、六组件矩阵和全部 12 父项继续内部待办。原三现场、个人文件和 7fd 的 41 输入/16 回执保持，原 UNKNOWN 未重派。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-console-postinst-recovery-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Native 中心运行态换版和保留态重装
 
 console c42b025 让主机维护准入和取消共用中心就绪的受保护程序摘要。宿主直接读取被拒时，固定服务账号仍须核对运行程序与已装包的同一摘要。摘要变化时不创建围栏，原停机和 UNKNOWN 约束继续生效。Debian ARM64 包装回归 133 项通过。
