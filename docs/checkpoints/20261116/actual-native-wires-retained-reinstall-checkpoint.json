@@ -2284,5 +2284,80 @@
       "launcher-pid-admission/original-three-after.json": "21e4134980e7ad88c3231c6d271a45be0bff517e9a4a43a4a094f2da01b0b35c",
       "launcher-pid-admission/parallels-final.json": "72acc42108adecfb99616c442be614e356e32388b5f61ea1e862b5507cfba52a"
     }
+  },
+  "directLauncherLogOwnership": {
+    "source": "7f91ef9024d6f01d70bcbc15791bdd6d20051fcb",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "legacy": {
+      "kura": {
+        "originalInode": 6964038,
+        "currentInode": 6964038,
+        "archiveCount": 0,
+        "beforeInActive": true,
+        "afterInActive": true,
+        "legacyPathReadsSameFile": true,
+        "alias": false
+      },
+      "kura-audit": {
+        "originalInode": 6964039,
+        "currentInode": 6964039,
+        "archiveCount": 0,
+        "beforeInActive": true,
+        "afterInActive": true,
+        "legacyPathReadsSameFile": true,
+        "alias": false
+      }
+    },
+    "private": {
+      "kura": {
+        "originalInode": 6964181,
+        "currentInode": 6964211,
+        "archiveCount": 1,
+        "beforeInActive": false,
+        "afterInActive": true,
+        "legacyPathReadsSameFile": true,
+        "alias": true
+      },
+      "kura-audit": {
+        "originalInode": 6964182,
+        "currentInode": 6964213,
+        "archiveCount": 1,
+        "beforeInActive": false,
+        "afterInActive": true,
+        "legacyPathReadsSameFile": true,
+        "alias": true
+      }
+    },
+    "capEff": "0000000000001400",
+    "installedForegroundLauncher": true,
+    "retainedBusinessActiveBoth": true,
+    "originalHostLogsExact": 3,
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "scope": "Packaged foreground launcher ran under two transient units on the same six-package Root. Only their /var/log mounts and one Log4j logging-directory setting were replaced with test inputs. The packaged systemd Main unit itself remained disabled. Both real appenders were asked to roll once per layout; no production log was rotated.",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/direct-main-log-permissions",
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/direct-main-log-permissions/parked-readback.py",
+    "sha256": {
+      "legacy.json": "2cd374ec763a41731711b9002f6da630a6c1b6638dfab96df5ec0eb9c5c2c235",
+      "private.json": "e4d1237ab14d3df4af0080042a7c64521b186258c3f3089da0d45585ea686c99",
+      "original-logs.json": "498ca3a0c6e5fd3128c493d9e790c69acd9c9e2637706c1efdafee1066d58968",
+      "private-log4j.xml": "a4f4787180059c60966601428d5e22843196b577632f9c1feb163504e29878ec",
+      "observer.jar": "70d0d6c410deb67266f759093c2feef6419028586e1d5eca2b3c356d52aa4a15",
+      "final-check.json": "23a7b7e4f345d8e6b9e185198981ba66a68643dd2024f8f08342313dc990b4ad",
+      "parked.json": "a37f8eeb62071baf05842f67d8aca671b118a2aee475974b8b2b69a65beb4317",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "original-three-after.json": "d8f6a643e89177771f8f34a18c7ae04acce03fb92967de5df0435d6e05de8fab"
+    }
   }
 }

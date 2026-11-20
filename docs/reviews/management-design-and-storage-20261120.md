@@ -39,6 +39,8 @@
 
 进一步实测表明，Main 中单个线程撤去绕过文件权限的能力后，仍能读取原业务包，并让日志 broker 导出 23,647 字节。冷启动还有具体的文件权限依赖：PID 目标在 root 所有的 /run，已有三个日志可由 kurad 续写，但该账号不能在 /var/log 创建首份日志或新的归档。现已修复两个后台启动入口在 PID 文件打不开时仍派生 JVM 的问题。整项服务撤权还需要覆盖首次创建、滚动归档及 JVM 错误转储。权限实测复用了已装包；随后为两个启动器打包一次，耗时 8.478 秒，新 deb 为 204.24 MB。此时 Core 目录内共 32 个 ARM64 deb，合计 6.54 GB。[权限与启动器实装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
+整台前台 JVM 的日志实测说明，单看文件可写会漏掉容量故障。两个 ARM64 进程均以 kurad 和有效能力 0x1400 运行，并恢复原业务 DP。使用 Debian 默认日志布局时，应用和审计日志写入成功，强制轮换后都没有压缩归档，仍向原 inode 追加。换成 Docker 已用的 /var/log/kura 私有目录，两个 Log4j appender 各生成一份含旧标记的压缩档，旧日志路径仍能读到新文件。试验复用已装包，只替换两个前台进程看到的日志挂载。原三份宿主日志的完整指纹保持。这为发行方案提供了实测依据：正式单元撤权还需要把现有普通日志文件安全迁移到这种布局，并覆盖历史归档的下载与保留。[同一安装上的两种日志布局](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 普通命令的独立服务还影响两个用户可见的行为。在原六组件卷上停止一个正在运行的命令实例，Main 和监听 socket 均继续运行，下一条命令成功。对于 Main 私有数据目录，worker 可以相对读取已知文件，调用 getcwd() 则返回 EACCES。站点另设的目录给命令组穿越权后，worker 可以取得绝对路径并读指定文件，仍无法列举目录。两次实测复用已安装的 Core，没有新增 deb 或构建镜像。[普通命令与目录验证](../checkpoints/20261116/actual-core-command-worker-lifecycle-checkpoint.json)
 
 ### 六个网关包已经验证到哪一步

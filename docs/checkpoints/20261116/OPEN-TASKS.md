@@ -1,3 +1,7 @@
+## 2026-11-21 整个前台 JVM 撤去 DAC_OVERRIDE 后的日志轮换
+
+六组件原 Root 上，两次使用已安装的前台脚本、原凭据和 writer lease，整个 JVM 的有效能力为 0x1400，原业务 DP 均为 ACTIVE。两种私有挂载分别模拟 Debian 默认目录及 Docker 已用的 Kura 专属目录。前者的应用和审计日志都可续写，但强制轮换后 inode 保持，压缩归档为零；后者两条日志均完成压缩并换新 inode，旧路径可读到轮换后的新行。原宿主三个日志完整指纹相同。六包已正常停机，83 份文件完成只读复核。当前入口为 direct-main-log-permissions/parked-readback.py。正式单元整体撤权、历史日志升级迁移和完整维护仍待验。冻结 0/12。[实装对照](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的文件权限与启动 PID
 
 原六组件 Root 上，正式 Main 的独立线程撤去 DAC_OVERRIDE 后，原业务 DP 可读，typed journal 导出 23,647 字节。ICMP actor 返回不可达，本机 root 直接 ping 也丢包。Main 主线程继续持有原权限。原启动器无法写 PID 时仍会派生 JVM；Core 7f91ef9024 调整了后台及分离启动顺序。新包原位升级后，两个入口在 PID 被拒绝时均无 Java 进程、无新 writer，正常 Main 的实际 PID、writer lease、业务 DP 和 agent bridge 已核对。启动所需的 PID 与日志所有权仍待收敛。当前停机核对入口为 launcher-pid-admission/parked-readback.py。冻结 0/12。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
