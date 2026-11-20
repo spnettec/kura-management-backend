@@ -1,3 +1,11 @@
+## 2026-11-20 继续实施 — 正式 Main 的 PKCS#11 令牌运行期切换
+
+独立 Debian 13 ARM64 Root 实装 Core `96cd580d8a` 与已验签 SoftHSM2 2.6.1-3，用两个不同槽位、不同 PIN 和不同证书的独立软件令牌。真实 Main 一次创建 PKCS#11 配置并绑定实际 Jetty。TLS 1.2 和 TLS 1.3 均在 18443 完成证书校验和 HTTP 请求，首枚证书与原令牌一致。
+
+同一 Main 内第二份正式配置计划只更新该 provider 的 slot 和 AES 包装 PIN。原配置计划保持，收到实际 keystore 变更事件。Main PID、出生时间、systemd InvocationID、OSGi service.id 和 Jetty 配置 revision 一致。两个协议新连接均验证到第二枚令牌证书并获得 HTTP 响应。两份计划各仅派发一次、各有四份持久文件，先前快照和回执完整指纹保持。两套证书与私钥对象及 Core 凭据保持，所核对快照、回执及日志无两份明文 PIN。探针在最后误用 Java 对象实例等价核对回执，随后只读比对原回执完整指纹并核对实际 TLS，未重新提交。正式 Main 与隔离现场正常停止，Main 保持 disabled。停机后读回八份回执和两份快照，只有 provider 的 slot 和加密 PIN 改变，Jetty 配置条目字节一致。
+
+本轮使用此前完整 Git 配对构建的同一正式包。此次验证覆盖运行中进程及绑定消费者切换，TLS 读回在探针修正后采样，尚无完整切换期间的可用性测量。令牌拔出、无效 PIN、PKCS#11 CRL 分发、全部 provider 重加密、完整 Core/OSGi、余下 typed brokers 及完整六组件矩阵继续内部待办。原三现场及 7fd 的 41 输入／16 回执保持。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-core-pkcs11-live-tls-switch-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 正式 Core Main 的 PKCS#11 令牌与配置连续性
 
 隔离 Debian 13 ARM64 Root 从 Debian 签名索引校验 SoftHSM2 2.6.1-3 正式包。旧 Core `96ffee3741` 的一次正式配置计划成功提交，但实际 SCR 激活未获得 provider。原日志显示默认 CRL 路径读取了尚未创建的 PKCS#11 选项。首次 SoftHSM 令牌准备因 `kurad` 无法读取配置而停止。只读确认令牌目录为空后，测试夹具将该配置的读取组配给 Main，沿原 PIN 输入完成首次令牌初始化。

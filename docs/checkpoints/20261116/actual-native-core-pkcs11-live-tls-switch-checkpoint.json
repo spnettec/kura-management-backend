@@ -1,0 +1,152 @@
+{
+  "recordedAt": "2026-11-20T07:45:18.726324+00:00",
+  "scope": "Hot PKCS11 token update with an active Jetty TLS consumer under an unchanged native Main",
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "softHsm": "2.6.1-3",
+    "network": "none"
+  },
+  "source": {
+    "core": "96cd580d8abd6167ee227e7e49f158ccf8ea05f9",
+    "coreTree": "96f04bc8d056138833dc7e4bb50504b18e0526cc"
+  },
+  "approvedCorePackage": {
+    "sha256": "ab0afe80be000b5c56a3ab0de22e382e49d3038a8174df4f66c24c6df9aa68d4",
+    "version": "6.0.0~git20261120073651.96cd580-1",
+    "package": "kura-core",
+    "architecture": "arm64",
+    "git": "96cd580d8abd6167ee227e7e49f158ccf8ea05f9"
+  },
+  "fixture": {
+    "id": "0e75de9c64bc0ea280fd5b733092b819061dd790f79f0308934e5fde9128a60a",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T07:40:27.237149963Z",
+      "FinishedAt": "2026-11-20T07:44:24.234056833Z"
+    }
+  },
+  "epoch": {
+    "root": {
+      "id": "0e75de9c64bc0ea280fd5b733092b819061dd790f79f0308934e5fde9128a60a",
+      "mount": "1048826:6015520",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "boot": "38663672-c6a8-476d-a08f-437f4ca99f72"
+  },
+  "originalMain": {
+    "unit": {
+      "MainPID": "2161",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "5ec0c69d7ffa415db61c1d8bdf16b590"
+    },
+    "ticks": "35590324",
+    "uid": "997\t997\t997\t997",
+    "capEff": "0000000000001402",
+    "nnp": "1"
+  },
+  "originalOsGiServiceId": "169",
+  "oneOriginalCreate": {
+    "operationId": "op-91cfa7f2-1bef-4868-b758-ec56ec77c6ec",
+    "terminalStatus": "CORE_COMMITTED",
+    "verifiedProtocols": [
+      {
+        "version": "TLSv1_2",
+        "result": "http",
+        "leaf": "535a31d617b105574adc8e6a5c5dff06e00862bdba16000e5f2cab2382bc198c",
+        "status": 404
+      },
+      {
+        "version": "TLSv1_3",
+        "result": "http",
+        "leaf": "535a31d617b105574adc8e6a5c5dff06e00862bdba16000e5f2cab2382bc198c",
+        "status": 404
+      }
+    ],
+    "persistedOriginalArtifacts": 4
+  },
+  "oneOriginalChange": {
+    "operationId": "op-f458b215-fbd9-40f1-a28b-bb57cd75e546",
+    "terminalStatus": "CORE_COMMITTED",
+    "verifiedProtocols": [
+      {
+        "version": "TLSv1_2",
+        "result": "http",
+        "leaf": "5f20ac9bfda1b03f1a323ec1a35c9804634f5f558246965f914d5d38791ec989",
+        "status": 404
+      },
+      {
+        "version": "TLSv1_3",
+        "result": "http",
+        "leaf": "5f20ac9bfda1b03f1a323ec1a35c9804634f5f558246965f914d5d38791ec989",
+        "status": 404
+      }
+    ],
+    "matchingKeystoreEventObserved": true,
+    "persistedOriginalArtifacts": 4,
+    "changedOnlyProviderSlotAndPin": true
+  },
+  "realTlsReadback": {
+    "distinctIndependentlyTrustedLeafCertificates": true,
+    "trustedHost": "localhost",
+    "newLeafFirstObservedSecondsAfterObserverStarted": 0.06,
+    "sampleSetsWithAnUnavailableProtocol": 0,
+    "availabilityMeasurementIsSampled": true
+  },
+  "preservation": {
+    "mainPidStartAndInvocationExact": true,
+    "sameProviderServiceId": true,
+    "httpRevisionExact": true,
+    "fourPreviousReceiptFilesExact": true,
+    "previousSnapshotExact": true,
+    "separateCertificateAndKeyFilesExact": 4,
+    "coreCredentialsExact": true,
+    "noRawPinsInRetainedOutputs": true
+  },
+  "observationCorrection": "The probe reached the final original-receipt check and compared Java DTO identity. Exact retained receipt files and the live TLS endpoint were then verified read-only. No dispatch was repeated.",
+  "parkedSnapshotAndReceiptReadback": {
+    "httpSerializedEntryExact": true,
+    "changedTokenProperties": [
+      "pin",
+      "slot"
+    ],
+    "bothPinsEncrypted": true,
+    "originalReceiptsAndSnapshotsVerifiedAfterStop": 10,
+    "restarted": false
+  },
+  "normalMainAndFixtureStop": true,
+  "mainDisabled": true,
+  "noPreviousUnknownRedispatched": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "software or hardware token removal and invalid credentials during provider update",
+    "PKCS11 CRL distribution and provider re-encryption inventory",
+    "complete Core/OSGi, remaining typed brokers, six component matrix and all twelve parents"
+  ],
+  "pushed": false
+}
