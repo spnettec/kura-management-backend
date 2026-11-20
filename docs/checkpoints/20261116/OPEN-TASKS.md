@@ -1,3 +1,9 @@
+## 2026-11-21 启用中 DNS 跨 Main 重启和包维护，修复普通启动漏读快照
+
+六组件 ARM64 现场复现了普通快照解析按字面 `esf:` 查找配置的问题。同一命名空间换用另一前缀后，旧 Main 加载快照却漏掉 LAN 配置，DNS 监视器执行停用。用发行前缀表达同一棵 XML 树，旧 Main 即发布 IPv6 LAN 模型。Core `c3a6b4f549` 按命名空间和父子关系读取普通快照；受控恢复继续执行原有严格格式校验。实际原地升级后，正式 Main 用原混合前缀文件恢复已启用的模型，原 BIND 操作与密钥保留。
+
+Networking 单独 remove、purge、重装后，五个其他包保持 installed，dpkg audit 为空。已启用的 named 全程保持 PID 16251 和原启动时间。正式 Main 运行时，独立 IPv6 客户端经仅允许一个来源、接口和端口的规则访问 named；合成 IPv4 上游实际收到一次请求，客户端读回 198.51.100.27。测试链路由夹具准备，NetworkManager 上报 unmanaged。收尾用正常配置撤销测试规则和 DNS 模型，保留历史，恢复原解析器文件内容，仅保留原启动快照，容器退出 0。JDK 21 完整 Core/OSGi 82 模块 2129 项通过、2 项跳过。冻结 0/12。[实装检查点](actual-enabled-dns-snapshot-upgrade-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 RTC 缺失回执跨 Core purge 恢复
 
 六组件原 Root 的正式 Main 通过 ConfigAdmin 选择不存在的 `/dev/rtc1`，触发一次生产 ClockService 回调。该现场的 PID 1 缺少 CAP_SYS_TIME，时钟进程五次启动均记录 UNSAFE_ACTOR；发送端只创建了锁。再次启动 Main 读回默认配置，原 BIND 四份记录及两份凭据逐项一致。

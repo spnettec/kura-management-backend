@@ -23,6 +23,21 @@
 | 需要系统权限的操作 | Main 调用按操作类型限定的本机服务。peer 校验调用身份，actor 执行获准的系统动作，安装器校验成套代码和单元。 | 六组件夹具的正式 Main 已撤下 DAC_READ_SEARCH。上次 Wires 验收读到 DAC_OVERRIDE、NET_BIND_SERVICE、NET_ADMIN。旧现场有自己的权限集。 |
 | RTC 热插拔 | 草稿把启动时的设备投影改成请求时重验节点及别名，再向时钟 actor 传递只读 FD。 | 复盘时为草稿。报告送达后，已完成 ARM64 热插拔、只读 FD 和新包的两条原 Root 升级路径。随后在原 Parallels 组件完成正式 actor 经 relay 接收 FD 并写入虚拟 DS1307，实测回执 APPLIED。正式 Main 已取得设备缺失的 ENOENT 回执，并在 Core purge、重装后读回原记录。完整 Main 正向写入虚拟 DS1307 和物理 RTC 仍待验。 |
 
+### 六个网关包已经验证到哪一步
+
+截至 11 月 21 日，首装和组件能启动已有联合现场。下面按实际业务区分维护证据，便于续接时直接选取尚缺的模式或中断点。每行只覆盖所列现场，冻结父项仍为 0/12。
+
+| 网关包 | 已取得的现场证据 | 仍需区分的条件 |
+| --- | --- | --- |
+| Core | 正式 Main 取得缺失 RTC 的 ENOENT，Core 移除、purge、重装后原回执和密钥仍在。[时钟实装记录](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json) | 完整 Main 对虚拟 DS1307 的成功写入。 |
+| Networking | 启用 DNS 的六组件现场经过 Core 升级及 Networking 移除、purge、重装。正式 Main 恢复原模型，IPv6 客户端收到合成 IPv4 上游的回答。[启用 DNS 实装记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json) | 本次网络设备由夹具准备。真实 NM/cloud-init 和物理硬件交接仍归原延期项。 |
+| GWT | 单独移除后观察到 unpacked、half-configured，原地续配成功，随后 purge；核对了自定义图标和 Wires 文件。[中断回滚记录](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 维护脚本通过后，仍需对照各项实际页面流程单独验收。 |
+| Deployment | FileMove 发布后丢回执，系统服务管理器重启后仍按原记录完成源端收尾。[FileMove 续接记录](../checkpoints/20261116/actual-deployment-filemove-manager-reboot-checkpoint.json) | 这次是服务管理器重启，Linux boot ID 保持。 |
+| Wires | 保留式移除和分阶段重装后，正式 Main 读回原 Timer→Logger 图，Logger 再次收到消息，原图仅提交一次。[原图重装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 联合配置中断有另一套现场及原 Root。[六组件转换记录](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) |
+| Agent | 同 Root 实际经过移除、purge、解包及重装，另有已绑定和未绑定场景。[保留式维护记录](../checkpoints/20261116/actual-native-agent-retained-removal-checkpoint.json) | 续接前要确认原注册身份、业务记录和 launcher 模式。 |
+
+这次验证启用中的 DNS 复用了原六组件容器、已有 Core 工作树和 Maven 缓存。修复后的 Core deb 为 204,224,080 字节，逐项核对了运行时和恢复工具中的两份 XML provider JAR。收尾从测试容器移除了已核对宿主原件的两个临时 deb，共 213,605,954 字节。[本轮安装与空间记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json)
+
 ## 磁盘增长的实测解释
 
 以下采用十进制 GB。11 月 16 日清理时工作区从 483.49 GB 降至 96.39 GB。11 月 20 日上次会话中途量到 491.68 GB，清理完成时为 335.18 GB，宿主可用空间净增 154.45 GB。两次读数之间有新构建，APFS 共享块也会影响目录计量，不能把两次节省量相加。

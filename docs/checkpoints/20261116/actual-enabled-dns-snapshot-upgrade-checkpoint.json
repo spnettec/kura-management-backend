@@ -1,0 +1,205 @@
+{
+  "date": "2026-11-21",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "source": {
+    "core": "c3a6b4f54959966664a2285fe4392537b2df1af5",
+    "coreTree": "502c1cd3bbd622ac14509baa468e6b3b83774204",
+    "networking": "4741b5e9751394f19c3de945c21f4f3212542261",
+    "package": "kura_6.0.0~git20261120173940.c3a6b4f-1_arm64.deb",
+    "archiveBytes": 204224080,
+    "archiveSha256": "4530188bd524d65a6b133e7caf3c3b3def6d69472df1e1801c8623b3616e49fc",
+    "packagedXmlProviders": {
+      "opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-recovery/lib/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar": "eb79028f91d0f4aeadba526bc2a47a56c4da7ce77ba6ce9249f5ae16c8099094",
+      "opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/3s/org.eclipse.kura.xml.marshaller.unmarshaller.provider-2.0.0-SNAPSHOT.jar": "eb79028f91d0f4aeadba526bc2a47a56c4da7ce77ba6ce9249f5ae16c8099094"
+    },
+    "ordinarySnapshot": "Match direct ESF children by namespace, retain legacy unqualified property fields. Other document types keep their existing parser settings.",
+    "controlledRecovery": "Exact-prefix validation remains before the mapper. SnapshotToolTest checks a noncanonical document is refused."
+  },
+  "tests": {
+    "xmlProvider": 9,
+    "offlineRecovery": 74,
+    "coreOsgi": {
+      "commit": "c3a6b4f54959966664a2285fe4392537b2df1af5",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:42 min",
+      "testTotals": {
+        "tests": 2131,
+        "passed": 2129,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.3,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.578 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "c68d80a026984e8522dff95c940640899c32c3bc1524bff74dfd686aa6a129f3"
+    }
+  },
+  "fixture": {
+    "platform": "Debian 13 ARM64 six installed gateway packages, private network with no external path or device mappings",
+    "originalContainer": "61eae8e243979baa4296367388077c40d523091930102caf2b194e20b3b8760b",
+    "root": "1048582:6444634",
+    "workspaceRepositories": 18,
+    "observedDistroNamedOnContainerBoot": "128",
+    "previousCompletedDisableAtEntry": "5cca9aef-e5d2-4cb9-9b10-4b16af65a536",
+    "badPrefixOnOldCore": {
+      "pid": "1348",
+      "snapshot": "047467eb8a77762614b9e07a24e23f74b9783b5caeb289dc88f148a81d9a257e",
+      "observation": "java.lang.IllegalStateException: [] [] unresolved=false",
+      "action": "disable"
+    },
+    "canonicalSnapshotOnOldCore": {
+      "pid": "10434",
+      "restartPid": "17166",
+      "newId": "ef90b443-bd7a-4baf-93d1-8134362bb9e9",
+      "typedConfiguration": {
+        "forwarders": [
+          "192.0.2.53"
+        ],
+        "mode": "enable-lan-dual",
+        "networks": [
+          "fd37:7::/64"
+        ]
+      },
+      "newOperationCountOnMainRestart": 0
+    },
+    "coreUpgrade": {
+      "prior": "5a47412895",
+      "dpkg": 0,
+      "priorSourceSnapshotReusedBySha256": "047467eb8a77762614b9e07a24e23f74b9783b5caeb289dc88f148a81d9a257e",
+      "newRegisteredMain": "25930",
+      "published": "[192.0.2.53] [fd37:7:0:0:0:0:0:0/64] unresolved=false",
+      "existingActorFilesExact": 13,
+      "keysExact": 2,
+      "sourceSnapshotsContentExact": true
+    },
+    "networking": {
+      "package": "3.0.0~git202611201717.4741b5e-1",
+      "phases": {
+        "remove": "config-files",
+        "purge": "not-installed",
+        "reinstall": "installed"
+      },
+      "readbackMain": "35116",
+      "otherFiveInstalled": true,
+      "dpkgAuditClean": true,
+      "priorActorFilesExact": true
+    },
+    "namedService": {
+      "pid": "16251",
+      "invocation": "e14bcffd95ca43f4a9f6385fd3ebe256",
+      "startTicks": "38215476",
+      "continuousFromEnableThroughMaintenanceAndBothDnsQueries": true
+    },
+    "traffic": {
+      "privateTestAddresses": true,
+      "untestedUpstreamInternet": true,
+      "initialRead": 1,
+      "initialObservation": "DNS client timed out. The temporary veth did not retain its configuration while Main was handling hotplug; the timeout alone does not isolate a firewall cause.",
+      "scopedReadBeforeStableNic": 1,
+      "activeMainHotplugAttempt": 1,
+      "temporaryRule": "-A input-kura -s fd37:7::11/128 -i dnstestserv -p udp -m udp --dport 53 -j ACCEPT",
+      "otherRulesExact": true,
+      "mainStopped": {
+        "upstream": "192.0.2.53",
+        "matchingUpstreamQueries": 1,
+        "reply": {
+          "client": "fd37:7::11",
+          "server": "fd37:7::10",
+          "address": "198.51.100.27",
+          "answerCount": 1
+        }
+      },
+      "mainRunning": {
+        "upstream": "192.0.2.53",
+        "matchingUpstreamQueries": 1,
+        "reply": {
+          "client": "fd37:7::11",
+          "server": "fd37:7::10",
+          "address": "198.51.100.27",
+          "answerCount": 1
+        }
+      },
+      "liveMain": "52674",
+      "activeInterface": "10 (unmanaged)",
+      "nmAppliedSyntheticLink": false
+    },
+    "retirement": {
+      "normalCleanupDisable": "46f85774-253c-4a42-91bd-4f5bffc44fde",
+      "startingBindFilesPreserved": true,
+      "originalFirewallRulesRestored": true,
+      "originalResolverContentRestored": true,
+      "onlyOriginalSnapshotAtPark": true,
+      "originalSnapshotContent": "3c243e86b8ae8a09a6dec2d282a7693ff771658a126355721d89798a2e6a5446",
+      "restoredCoreMain": "disabled/inactive",
+      "exitCode": 0,
+      "retiredArchiveCopies": {
+        "archives": 2,
+        "bytes": 213605954
+      }
+    }
+  },
+  "preservation": {
+    "originalSites": 3,
+    "originalProcessesExact": 7,
+    "privateFilesExact": 38,
+    "personalFilesExact": 25,
+    "runningDockerStartTimesExact": 13,
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "parallels": {
+      "originalRoot": true,
+      "originalFence": true,
+      "unchangedOperationNames": 2,
+      "unchangedIssuedNames": 2,
+      "unit": {
+        "UnitFileState": "static",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/kura.service",
+        "MainPID": "0"
+      },
+      "rtc": [
+        "rtc0"
+      ],
+      "running": true
+    }
+  },
+  "remaining": [
+    "Full Main positive RTC write to a virtual DS1307",
+    "Other typed brokers and remaining six-component/provider/launcher modes and interruption points",
+    "All 12 parent requirements remain open"
+  ],
+  "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/registered-main-dns-enabled"
+}
