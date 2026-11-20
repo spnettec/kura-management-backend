@@ -1098,5 +1098,112 @@
       ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/historical-size-kib.tsv": "4c42eb46e852d7549a5b2dc870428731db0816c399aaa0bee3e6f2ac8c7ea829",
       ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/console-target-kib.tsv": "86330b81baadf269050d154d8a7b40cb1b2b4a62025f010d77e633423ecb7bf1"
     }
+  },
+  "registeredBusinessDpAcrossDeploymentPurge": {
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "core": "8a70d2e518fedbc82f43c8db326133593f7e6ea8",
+    "deployment": "377293634e426fe4a939fcc5273c15e3d97741b5",
+    "deploymentDebSha256": "e363fca545e09da3daee8dea2e5adbc89f4f5a993d4e6958da612eae7a42bd14",
+    "archive": {
+      "sha256": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef",
+      "meta": "39|6692980|600|997|995|1|853|2026-11-20 21:23:05.427056000 +0000|2026-11-20 21:23:13.641076460 +0000"
+    },
+    "registry": {
+      "sha256": "b6abe3968279084b583666ee8357431fbc7cec69112cb0c103beb941583cd32c",
+      "meta": "39|6681222|600|997|995|1|124|2026-11-20 21:23:13.645076469 +0000|2026-11-20 21:23:13.645076469 +0000"
+    },
+    "requestCount": 1,
+    "application": "Synthetic OSGi deployment package fixture.retained.business 1.0.0. Normal DeploymentAgentService accepted the single explicit install. Felix reported the package and its version. The ACTIVE bundle supplied the expected business resource.",
+    "whileRemoved": "Real dpkg removal reached config-files, then purge reached not-installed. With five gateway packages the normal Main started. The deployment agent service was absent and Felix did not list this DP. Its registered archive and dpa.properties retained their exact content and inode metadata.",
+    "recovery": "Unpacked the same SHA-256-verified Deployment deb. An owned postinst flock waiter was interrupted under the actual sibling registry lock. dpkg returned 1 and the package became half-configured. After a normal container shutdown a new systemd PID 1 retained the original Root, gate, actor maintenance file and DP files. dpkg --configure resumed without another unpack. A third Main restored the original DP automatically and returned the application resource.",
+    "mainInvocations": [
+      {
+        "unit": {
+          "MainPID": "1680",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "cdbe07191af04145854b2b29b1a631c0"
+        },
+        "ticks": "39572436",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "8593",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "9537734a359c45e9a72145b0fa64d09d"
+        },
+        "ticks": "39573877",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "1380",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "89435b7dd1fa41f1b9731ba226c57242"
+        },
+        "ticks": "39576965",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      }
+    ],
+    "maintenanceStatuses": [
+      "installed",
+      "config-files",
+      "not-installed",
+      "unpacked",
+      "half-configured",
+      "half-configured after cold shutdown",
+      "installed"
+    ],
+    "frozenScope": "This tests a native deployment package across Debian Deployment add-on removal. The input is a synthetic ordinary OSGi bundle; cloud notification and system-update execution have separate lifecycle requirements.",
+    "readback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-retained-dp/parked-readback.py",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-retained-dp",
+    "sha256": {
+      "original.json": "1d02ca4c2f2f71662e32d5b2d7bc5f1ad4d7e511fd8c33c750a2031bd3eac2c8",
+      "install-stopped.json": "6f89ff55e19267421bbfa00b0d7b4f138f9d2ea0b41d9cf1656b51ff61fda2a0",
+      "removed.json": "53debbd96685717b726f81610903d741a9958825ae7d93f6e1b89a9b766b400c",
+      "purged.json": "ce857b01713686278ed38dfde0554e59ca29d0e1f747853f8da356227966f81b",
+      "absent-stopped.json": "3db870c2d163dff10cc6930e4a779086023ae6c1c06fa683cad1138095584262",
+      "interrupted-process.json": "10b669ed2227aa79664519051853c71f649d07a3a3cfe5f1552f789e1f96af9a",
+      "interrupted.json": "9581389ea53660a5b32c96fe263e5ce78070a73aa549ba93167f9fe4cf1c9c98",
+      "interrupted-parked.json": "142f26e39974125c1f74ce2e22c792d893cf30fae0f254610bb27155d6ca2a6f",
+      "cold-admission.json": "9581389ea53660a5b32c96fe263e5ce78070a73aa549ba93167f9fe4cf1c9c98",
+      "configured.json": "3a6dc1ebec15a865609d54890b54bb57457ea5676065025ea3112603786de269",
+      "restored-stopped.json": "1fda557b71cacb630e5347721a023031fabe541a43431f02009f3462edc4e63a",
+      "final-check.json": "101208dfd56e6a0bb93af47192294d12b764fc50c8fc26e62fe7e51a3ac1677d",
+      "parked.json": "6048b9dd68a05c396928b758cb2332b3745e06c28d2219456a7fe831f57f9888",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "original-three-after.json": "71174a3b5bbcc260519fedc1b225dd0481b5b6253a3fef538152e138487d726c",
+      "business.dp": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef",
+      "DpMain.java": "2d7f96aa38310d625f886a7668f6595bb2be85b0d3140c6d2a5589ef05e7254f",
+      "cut.py": "189662f342cbbd07849d5597a0c2eb3be8e4520a4bd0b580249e4c2a4a889723"
+    }
   }
 }

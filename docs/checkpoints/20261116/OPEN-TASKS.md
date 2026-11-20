@@ -1,3 +1,7 @@
+## 2026-11-21 原业务 DP 跨 Deployment 移除、purge 和中断重装
+
+六组件正式 Main 通过 DeploymentAgentService 一次安装合成业务 DP，收到成功事件，从 ACTIVE bundle 读出资源。Deployment 包普通移除后进入 config-files，purge 后包缺席。以余下五包启动正式 Main，部署服务缺席，Felix 未列出该 DP，磁盘上的原注册表和归档仍在。重装同版 deb 时在 postinst 等待注册锁处中断，dpkg 进入 half-configured。正常停机、以新的 systemd PID 1 启动后，原 Root、Main 围栏、FileMove 维护文件、注册表及归档均匹配。直接续配，第三次正式 Main 从原登记自动恢复同版本 ACTIVE bundle，资源读回成功。注册表和 DP 的内容、inode 与元数据在各阶段一致。六包、83 份文件已停机只读复核。冻结 0/12。[三次 Main 与续接入口](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 PKCS12 文件发布中断、原业务钥和数字 UID
 
 Core `6621e1fa64` 将文件密钥库的保存改为同文件系统暂存并原子发布。ARM64 上在旧库替换前、首次建库发布后分别终止独立写进程，冷读者均能用原口令签名，下一写者收回暂存。另对真实 PKCS12 序列化施加单文件大小限制，原文件、元数据及签名钥保持。原六组件正式 Main 拒绝已锁文件，释放后保存一个新的受信任证书。冷启动以及再次原地升级到 `8a70d2e518` 后，均能读回该证书并用原业务钥验签。发行包支持只有数字 UID 的写者。JDK 21 密钥库模块 94 项通过，完整 82 模块 2148 项通过、2 项跳过。夹具正常停机，按最新回执只读核对六包与 72 份文件。跨口令记录与库文件的随机改密中断、网关包装钥跨代、其他 provider/launcher 与维护矩阵继续待验。冻结 0/12。[实装和续接入口](actual-native-wires-retained-reinstall-checkpoint.json)
