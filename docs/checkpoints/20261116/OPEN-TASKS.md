@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 防火墙启动恢复与 Debian 包维护互斥
+
+Networking `3e15d6a` 为两种正式防火墙启动器增加实际 dpkg 数据库锁，并在两种 deb 的四个维护脚本中内嵌同一准入检查。检查读取原 Root 的记录目录，有未决记录时拒绝包维护。保留未决记录的 postinst abort 以无副作用返回，避免自动回退操作再次修改现场。从 Git 使用 JDK 21、Maven 3.10.1 构建两种正式 deb，Networking Maven 2239 项、宿主和 ARM64 包装各 10 项通过。
+
+独立 Debian 13 ARM64 Root 实装 Core `96ffee3741` 和新 firewall-only。在已装启动器持有数据库 POSIX 读锁且未写入 pending 时，真实 `dpkg --remove` 退出 2。继续同一启动器，两族规则正常生效，只归档一份完成回执。
+
+对该新 Root 的另一个独立操作，在真实 IPv6 子进程返回 0 后、持久完成回执写入前中断。用同代码较新版本的正式 deb 真实升级，旧、新 prerm 均拒绝。真实 remove、purge 也在准入阶段退出 1。原包仍为 installed，dpkg 期望状态仍可记录请求的 deinstall 或 purge。已装维护脚本、启动器及 helper、原未决和先前完成回执共八份指纹精确，站点输入、两族内核规则和 Core 保护文件精确。同期标准 deb 的原始 preinst 在同一 Root 单独执行准入检查时同样拒绝，尚待标准版完整实装正向和中断验证。Main 全程 disabled 且未启动，dpkg audit 无输出，新夹具正常停放。
+
+未决结果的原证据结算仍待完成，无重派。完整 Core/OSGi、其余 typed brokers、provider／launcher、六组件及剩余维护矩阵继续内部待办。原三现场、个人文件和 7fd 的 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-firewall-boot-package-guard-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — 防火墙启动器保留已完成地址族并拒绝重派未决步骤
 
 Networking `6a98ed1` 在两种正式启动器共用的站点规则恢复路径中记录原意图。私有记录绑定 Root、boot、网络命名空间、原文件指纹、实际工具和 helper。每族派发前同步意图，成功退出和内核读回后同步完成。恢复时已完成族须匹配内核读回，只派发尚无意图的族。已有派发意图而缺完成证明时保留原编号并拒绝写入。JDK 21 和 Maven 3.10.1 从 Git 构建两种正式 deb，Networking Maven 2239 项、宿主和 ARM64 包装各 8 项通过。

@@ -1,0 +1,136 @@
+{
+  "recordedAt": "2026-11-20T07:20:05.405436+00:00",
+  "source": {
+    "core": "96ffee3741fda1c4535a715a8ff33b2bb84f80f5",
+    "networking": "3e15d6a64ce566e17dabd0d8e0305ed1f5e4a7b4",
+    "networkingTree": "ca45f2fc53ce7cae45f7fe72815a21fe2fe0e6c6"
+  },
+  "platform": {
+    "os": "Debian 13",
+    "architecture": "arm64",
+    "jdk": 21,
+    "maven": "3.10.1",
+    "noExternalNetwork": true
+  },
+  "fixture": {
+    "id": "1d2a61630d882124edd5ffd3370dfae3b10418be1969eab4249ad4e997754392",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T07:16:49.988591891Z",
+      "FinishedAt": "2026-11-20T07:19:15.894374065Z"
+    }
+  },
+  "archives": {
+    "kura-networking": {
+      "sha256": "2fde3a1075e5f457a1da8e76fcd82a8d8483c53d6556b0a984080a59dcaba24f",
+      "version": "3.0.0~git202611200716.3e15d6a-1"
+    },
+    "kura-firewall-only": {
+      "sha256": "d4176de36f5a6346c2f515c90d882211a11757fed1430938ff8bbc4797a47f0d",
+      "version": "3.0.0~git202611200716.3e15d6a-1"
+    }
+  },
+  "guardedSuccessor": {
+    "version": "3.0.0~git202611200719.3e15d6a-1",
+    "sha256": "99ae69b652ddc0bbf46a5a2589583c0aad584ae876568ea3f063c754424e7102"
+  },
+  "nativeLock": {
+    "lock": {
+      "boundary": "db-lock-active",
+      "parent": 2275,
+      "actualDpkgExit": 2,
+      "lockFields": [
+        "1:",
+        "POSIX",
+        "ADVISORY",
+        "READ",
+        "2275",
+        "00:209:4524148",
+        "0",
+        "EOF"
+      ],
+      "pendingBeforeWrite": false
+    },
+    "sameInstalledLauncherCompletedBothFamilies": true,
+    "operationId": "89da81c0-9d9b-4217-9d6e-eb1526c6914c",
+    "receiptSha256": "b4615d74d3f34a7af180fc3adc647cac24da1e7887a5de08c56c266363ea7e21"
+  },
+  "pendingGuard": {
+    "isolatedOriginalIpv6ChildExit": 0,
+    "originalCompletionReceiptAbsent": true,
+    "sameRootBootAndNetworkNamespace": true,
+    "issuedFamily": "ip6tables",
+    "originalPendingSha256": "cee815382722b174c1bdc37f1f5a2556fa61d5072a905ce3aad9f3300328f07b",
+    "guardedSuccessorOldAndNewPrermRefused": true,
+    "epoch": {
+      "root": {
+        "id": "1d2a61630d882124edd5ffd3370dfae3b10418be1969eab4249ad4e997754392",
+        "mount": "2097161:5991875",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "boot": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "net": "5:4026534395"
+    },
+    "pending": "fafed12c-545d-4d70-9909-1e136abae138",
+    "attempts": [
+      {
+        "action": "reject-guarded-firewall-upgrade",
+        "selection": "install installed",
+        "existingPayloadAndHistoryExact": true
+      },
+      {
+        "action": "reject-guarded-firewall-remove",
+        "selection": "deinstall installed",
+        "existingPayloadAndHistoryExact": true
+      },
+      {
+        "action": "reject-guarded-firewall-purge",
+        "selection": "purge installed",
+        "existingPayloadAndHistoryExact": true
+      }
+    ],
+    "oldPackageInstalled": true,
+    "originalRecordExact": true,
+    "comparedProtectedFiles": 8,
+    "standardPreinstRefused": true,
+    "kernelAndSitesExact": true,
+    "dpkgAuditEmpty": true,
+    "originalOperationRedispatched": false,
+    "standardControlScope": "Exact preinst extracted from the real deb, executed read-only in the same Root"
+  },
+  "tests": {
+    "networkingMavenPassed": 2239,
+    "arm64PackagePassed": 10,
+    "hostPackagePassed": 10
+  },
+  "mainDisabledAndNeverStarted": true,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "disabled": true,
+    "stopped": true
+  },
+  "previousUnknownRedispatched": false,
+  "pushed": false,
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "internalPending": [
+    "authenticated settlement of issued family without durable completion, operation remains unresolved",
+    "full installed standard launcher positive and interruption, downgrade boundary and Core package maintenance interaction",
+    "complete Core/OSGi, remaining typed brokers, providers and six-component matrix and all 12 parents"
+  ]
+}
