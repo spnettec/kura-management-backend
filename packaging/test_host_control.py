@@ -24,7 +24,8 @@ class MaintenanceTests(unittest.TestCase):
         self.control=HostControl(self.setup)
         self.id=str(uuid.uuid4())
         self.guard=patch.object(Setup,'guard_all_instances');self.addCleanup(self.guard.stop);self.check=self.guard.start()
-        self.inventory=patch.object(Setup,'template_units',return_value=[]);self.addCleanup(self.inventory.stop);self.inventory.start()
+        self.inventory=patch.object(Setup,'template_units',return_value=[])
+        self.addCleanup(self.inventory.stop);self.listed=self.inventory.start()
         self.protocol=patch.object(HostControl,'supported',return_value=True);self.addCleanup(self.protocol.stop);self.protocol.start()
         self.active_proof=patch.object(HostControl,'verify_active_participants')
         self.addCleanup(self.active_proof.stop);self.active_proof.start()
@@ -141,6 +142,37 @@ class MaintenanceTests(unittest.TestCase):
                 self.control.complete(None, 'a'*64, 'b'*64, debian=context)
         self.assertEqual(self.control.journal(self.id)['phase'],'STOPPED')
         self.assertEqual(len(self.stops()),1)
+
+    def test_exact_dormant_enablement_remains_in_the_original_removal_fence(self):
+        name = 'kura-management-console@later.service'
+        self.listed.return_value = [name]
+        self.control.begin(self.id)
+        stopped = self.control.stop(self.id)
+        self.assertEqual(stopped['units'], [self.setup.unit, name])
+
+        def enablement(item):
+            if item.unit==self.setup.unit:
+                return 'disabled'
+            if ['/bin/systemctl','disable','--runtime',name] in self.calls:
+                self.listed.return_value = []
+                return 'disabled'
+            return 'enabled-runtime'
+        with patch.object(Setup, 'removal_enablement', enablement):
+            self.control.disable_for_removal(self.id)
+            self.control.disable_for_removal(self.id)
+        disables = [call for call in self.calls if call[1]=='disable']
+        self.assertEqual(disables, [['/bin/systemctl','disable','--runtime',name]])
+        value = self.control.journal(self.id)
+        self.assertEqual(value['disabledDormantUnits'], [name])
+        self.assertEqual(value['stopReceipts'], stopped['stopReceipts'])
+        with patch.object(Setup,'verify_local_command',return_value={
+                'maintenanceProtocolVersion':1,'binarySha256':'a'*64,'sourceManifestSha256':'b'*64}):
+            new_state = self.root/'var/lib/kura-management-console-later'
+            new_state.mkdir()
+            with self.assertRaisesRegex(RuntimeError,'dormant console participant acquired state'):
+                self.control.complete(self.id)
+            new_state.rmdir()
+            self.assertEqual(self.control.complete(self.id)['phase'],'COMPLETE')
 
     def test_wrong_identity_malformed_or_dangling_fence_cannot_release_writes(self):
         self.control.begin(self.id)

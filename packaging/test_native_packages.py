@@ -98,7 +98,7 @@ class NativeControlTests(unittest.TestCase):
     def run_command(self, arguments, **kwargs):
         self.calls.append(arguments)
         if Path(arguments[0]).name == 'systemctl':
-            if arguments[1] == 'list-units':
+            if arguments[1] in ('list-units', 'list-unit-files'):
                 return subprocess.CompletedProcess(arguments, 0, '', '')
             if arguments[1] == 'show':
                 active = self.process_state

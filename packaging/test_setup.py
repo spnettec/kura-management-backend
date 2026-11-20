@@ -97,6 +97,11 @@ class ConsoleInstanceTests(unittest.TestCase):
         self.addCleanup(lambda: shutil.rmtree(root))
         (root / 'run/systemd/system').mkdir(parents=True)
         def run(command, **kwargs):
+            if command[1]=='list-unit-files':
+                return SimpleNamespace(returncode=0, stdout=(
+                    'kura-management-console@.service indirect enabled\n'
+                    'kura-management-console@later.service enabled enabled\n'
+                ))
             return SimpleNamespace(returncode=0, stdout=(
                 'kura-management-console@center2.service loaded active running Console center2\n'
                 'kura-management-console@center3.service loaded active running Console center3\n'
@@ -105,7 +110,21 @@ class ConsoleInstanceTests(unittest.TestCase):
         self.assertEqual(setup.template_units(), [
             'kura-management-console@center2.service',
             'kura-management-console@center3.service',
+            'kura-management-console@later.service',
         ])
+
+    def test_removal_rejects_enabled_override_without_disabling_it(self):
+        commands = []
+        def run(command, **kwargs):
+            commands.append(command)
+            return SimpleNamespace(stdout='UnitFileState=enabled\nFragmentPath=/etc/systemd/system/local.service\n')
+        with tempfile.TemporaryDirectory() as root:
+            base = Path(root)
+            (base/'run/systemd/system').mkdir(parents=True)
+            setup = console_setup.Setup(base, run, 'center2')
+            with self.assertRaisesRegex(RuntimeError, 'does not use the installed package unit'):
+                setup.removal_enablement()
+        self.assertEqual([command[1] for command in commands], ['show'])
 
     def test_release_stages_instance_service_and_example(self):
         parent = Path(tempfile.mkdtemp())

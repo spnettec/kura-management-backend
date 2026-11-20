@@ -135,9 +135,20 @@ class HostControl:
             if value['phase']!='COMPLETE':result.append(value)
         return result
 
-    def participants(self):
-        names=[None]+[name.removeprefix('kura-management-console@').removesuffix('.service') for name in self.setup.template_units()]
-        return [type(self.setup)(self.setup.root,self.setup.run,name) for name in names]
+    def participants(self, journal=None):
+        units = set(self.setup.template_units())
+        selected = type(self.setup)
+        dormant = journal.get('disabledDormantUnits', []) if journal is not None else []
+        for unit in dormant:
+            instance = self.setup.instance_from_unit(unit)
+            if instance is None or unit not in journal['units']:
+                raise RuntimeError('Invalid original dormant console participant')
+            item = selected(self.setup.root, self.setup.run, instance)
+            if any(item.path(path).exists() for path in (item.config, item.state)):
+                raise RuntimeError('A dormant console participant acquired state during removal')
+            units.add(unit)
+        names = [None] + [self.setup.instance_from_unit(unit) for unit in sorted(units)]
+        return [selected(self.setup.root, self.setup.run, name) for name in names]
 
     def state(self,setup):
         result=setup.systemctl('show',setup.unit,'-p','ActiveState','-p','MainPID','-p','Job')
@@ -245,9 +256,8 @@ class HostControl:
             if active is None or active['operationId']!=identity: raise RuntimeError('Original maintenance fence required')
             value=self.journal(identity)
             if value['phase']=='STOPPED':
-                if require_stopped and (self.participants_units()!=value['units'] or not all(
-                        self.stopped(self.state(item)) for item in self.participants())):
-                    raise RuntimeError('Original stopped participants changed')
+                if require_stopped:
+                    self.stopped_participants(value)
                 return value
             if value['phase']!='FROZEN' or value['stopIntents']:
                 raise RuntimeError('Original stop outcome is UNKNOWN; do not repeat it')
@@ -272,6 +282,41 @@ class HostControl:
             self.setup.guard_all_instances()
             value['phase']='STOPPED';self.save(value)
             return value
+
+    def stopped_participants(self, value):
+        participants = self.participants(value)
+        if [item.unit for item in participants]!=value['units'] or not all(
+                self.stopped(self.state(item)) for item in participants):
+            raise RuntimeError('All original participants must be verifiably stopped')
+        return participants
+
+    def disable_for_removal(self, identity):
+        with self.locked(),self.locked(writers=True):
+            active = self.active()
+            value = self.journal(identity)
+            if active is None or active['operationId']!=identity or value['phase']!='STOPPED' \
+                    or value['stopIntents'].keys()!=value['stopReceipts'].keys():
+                raise RuntimeError('Original maintenance stop required for package removal')
+            enabled = ('enabled', 'enabled-runtime')
+            participants = self.stopped_participants(value)
+            enablement = [(item, item.removal_enablement()) for item in participants]
+            dormant = set(value.get('disabledDormantUnits', []))
+            for item, state in enablement:
+                if state in enabled and item.instance_from_unit(item.unit) is not None and not any(
+                        item.path(path).exists() for path in (item.config, item.state)):
+                    dormant.add(item.unit)
+            if dormant and sorted(dormant)!=value.get('disabledDormantUnits'):
+                value['disabledDormantUnits'] = sorted(dormant)
+                self.save(value)
+            for item, state in enablement:
+                if state=='enabled':
+                    item.systemctl('disable', item.unit)
+                    state = item.removal_enablement()
+                if state=='enabled-runtime':
+                    item.systemctl('disable', '--runtime', item.unit)
+            self.stopped_participants(value)
+            if any(item.removal_enablement() in enabled for item in participants):
+                raise RuntimeError('Original console units remain enabled after package removal preparation')
 
     def cancel(self,identity,finalize_only=False):
         """Retire the original UUID, fencing even a delayed GUI request.
@@ -339,9 +384,7 @@ class HostControl:
             allowed = ['FROZEN','STOPPED','COMPLETE'] if debian is None else ['STOPPED','COMPLETE']
             if (active is not None and active['operationId']!=identity) or value['phase'] not in allowed:
                 raise RuntimeError('Maintenance has an uncertain outcome; retain the fence')
-            participants=self.participants()
-            if [item.unit for item in participants]!=value['units'] or not all(self.stopped(self.state(item)) for item in participants):
-                raise RuntimeError('All original participants must be verifiably stopped')
+            self.stopped_participants(value)
             if value['stopIntents'].keys()!=value['stopReceipts'].keys(): raise RuntimeError('A stop receipt is missing')
             record=self.setup.verify_local_command('installation-maintenance-check')
             hold=self.package_hold()
@@ -393,9 +436,6 @@ class HostControl:
             (self.directory/'active.json').unlink();self.sync()
             return value  # No enable/start/restart is performed.
 
-    def participants_units(self):
-        return [item.unit for item in self.participants()]
-
     def package_hold(self):
         value=self.read('package-install.json',optional=True)
         if value is None:return None
@@ -411,10 +451,9 @@ class HostControl:
         with self.locked(),self.locked(writers=True):
             active=self.active();value=self.journal(identity)
             if active is None or active['operationId']!=identity or value['phase']!='STOPPED' \
-                    or self.participants_units()!=value['units'] \
-                    or not all(self.stopped(self.state(item)) for item in self.participants()) \
                     or value['stopIntents'].keys()!=value['stopReceipts'].keys():
                 raise RuntimeError('All original stopped participants and receipts required')
+            self.stopped_participants(value)
             self.setup.guard_all_instances()
             hold={'schemaVersion':1,'operationId':identity,'packageOperationId':package_operation,
                   'packageSha256':package['archiveSha256'],'binarySha256':package['binarySha256'],
@@ -460,9 +499,9 @@ class HostControl:
                     or hold['sourceManifestSha256']!=expected['sourceManifestSha256']:
                 raise RuntimeError('Original package hold differs')
             if active is not None:
-                if active['operationId']!=identity or self.participants_units()!=value['units'] \
-                        or not all(self.stopped(self.state(item)) for item in self.participants()):
+                if active['operationId']!=identity:
                     raise RuntimeError('Original stopped participants required for package release')
+                self.stopped_participants(value)
                 self.setup.guard_all_instances()
                 (self.directory/'active.json').unlink();self.sync()
             (self.directory/'package-install.json').unlink();self.sync()

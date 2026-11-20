@@ -77,7 +77,7 @@ def lifecycle(script, action, previous_version=''):
         control.begin(identity)
         control.stop(identity)
         if action == 'remove':
-            setup.systemctl('disable', UNIT)
+            control.disable_for_removal(identity)
     elif script == 'postrm':
         if action in ('remove', 'purge'):
             setup.systemctl('daemon-reload')

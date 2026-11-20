@@ -21,6 +21,7 @@ CONFIG = '/etc/kura-management-console'
 STATE = '/var/lib/kura-management-console'
 LOGDIR = '/var/log/kura-management-console'
 UNIT = 'kura-management-console.service'
+TEMPLATE = 'kura-management-console@.service'
 BINARY = '/usr/bin/yofc-management-console'
 SERVICE_USER = 'yofc-console'
 RUNUSER = '/usr/sbin/runuser'
@@ -156,15 +157,24 @@ class Setup:
         settings = self.settings()
         return {**os.environ, **settings}
 
+    @staticmethod
+    def instance_from_unit(unit):
+        if unit.startswith('kura-management-console@') and unit.endswith('.service'):
+            name = unit.removeprefix('kura-management-console@').removesuffix('.service')
+            if valid_instance(name):
+                return name
+        return None
+
     def template_units(self):
-        result = self.systemctl('list-units', 'kura-management-console@*.service', '--all', '--no-legend', '--plain')
+        pattern = 'kura-management-console@*.service'
+        loaded = self.systemctl('list-units', pattern, '--all', '--no-legend', '--plain')
+        installed = self.systemctl('list-unit-files', pattern, '--no-legend', '--no-pager')
         units = set()
-        for line in result.stdout.splitlines() if result else []:
-            unit = line.split()[0] if line.split() else ''
-            if unit.startswith('kura-management-console@') and unit.endswith('.service'):
-                instance = unit.removeprefix('kura-management-console@').removesuffix('.service')
-                if valid_instance(instance):
-                    units.add(unit)
+        for result in (loaded, installed):
+            for line in result.stdout.splitlines() if result is not None else []:
+                fields = line.split()
+                if fields and self.instance_from_unit(fields[0]) is not None:
+                    units.add(fields[0])
         # An inactive, unloaded instance can still own encrypted tasks. Its
         # retained directories are authoritative even when systemd lists none.
         for base in [CONFIG, STATE]:
@@ -176,6 +186,18 @@ class Setup:
                         self.path(str(path.relative_to(self.root)))
                         units.add('kura-management-console@' + instance + '.service')
         return sorted(units)
+
+    def removal_enablement(self):
+        result = self.systemctl('show', self.unit, '-p', 'UnitFileState', '-p', 'FragmentPath')
+        if result is None:
+            raise RuntimeError('A running systemd host is required for package removal')
+        fields = dict(line.split('=', 1) for line in result.stdout.splitlines() if '=' in line)
+        state = fields['UnitFileState']
+        if state in ('enabled', 'enabled-runtime'):
+            vendor = '/usr/lib/systemd/system/' + (UNIT if self.unit==UNIT else TEMPLATE)
+            if fields.get('FragmentPath') != vendor:
+                raise RuntimeError('Enabled console unit does not use the installed package unit')
+        return state
 
     def guard_all_instances(self):
         self.guard_tasks()
