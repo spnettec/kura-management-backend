@@ -1528,5 +1528,83 @@
       "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "sqlcipherNativeLibraryMaintenance": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/sqlcipher-native-maintenance",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "originalPackage": "4.6.1-2",
+    "originalArchiveSha256": "f10e0835b08ba7c1671602cf8712248f0405656f25efad00ba21b2f14ae96d38",
+    "purge": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "status": "not-installed",
+      "businessFilesExact": 81,
+      "keysExact": 2,
+      "libraryAbsent": true
+    },
+    "interruption": {
+      "boundary": "dpkg --unpack returned and dpkg --configure had not started; orderly shutdown, cold read-only volume inspection and resume on the original Root",
+      "cold": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "unpackedVersion": "4.6.1-2",
+        "protectedFilesExact": 83,
+        "originalSubmitWithdrawn": true
+      },
+      "audit": "The following packages have been unpacked but not yet configured.\nThey must be configured using dpkg --configure or the configure\nmenu option in dselect for them to work:\n libsqlcipher1:arm64  SQLCipher shared library"
+    },
+    "configured": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "package": "install ok installed 4.6.1-2",
+      "auditEmpty": true,
+      "originalFilesExact": 83
+    },
+    "legalMain": {
+      "result": "11135 2.0.0.202611202029 3.47.1.0 SQLCipher-4.6.1",
+      "activation": {
+        "selection": "8 4 initial@reference:file:../kura/plugins/4/fixture-sqlite-provider.jar initial@reference:file:../kura/plugins/3/fixture-sqlcipher-jdbc.jar",
+        "statePersistentAndReferenceCount": "8 true 1",
+        "transientStartIssued": false,
+        "result": "11135 2.0.0.202611202029 3.47.1.0 SQLCipher-4.6.1"
+      },
+      "initialObservation": "The first readback waited for ACTIVE before requesting the lazy provider. It timed out, without a data read. The corrected observer found the existing service reference in STARTING state and used the normal service entry point; no explicit bundle start occurred. Both pre-existing database rows and encrypted page integrity passed."
+    },
+    "deliveryScope": "The OSGi DP had already completed its separate lifecycle. Native ABI recovery used the original two fixture JARs and the original OS package, on the same stopped installation. The physical hardware, hard power loss and different OS package versions were not exercised here.",
+    "coldReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "nextColdCheck": ".management-close-20261116/core-rtc-hotplug-20261120/sqlcipher-native-maintenance/parked-readback.py",
+    "evidenceSha256": {
+      "original.json": "06cf79a59fc921d67db318fdfeea420ac86dd0ca0f2618a55bf6b7e9948df091",
+      "purge.log": "347334bb94b3394174da75cb6ae88457f5b71256acf4984f4b2685f9a2df2a60",
+      "purged.json": "ba92073465102970a7053cb436bea189058f4882ba7ee2ee5b156812738fd79c",
+      "unpack.log": "5604fb7ea2836f8eb6f67dca60cbddada58430f478db5ed01fa820ca4de3600f",
+      "unpacked-parked.json": "308d335f6c7f8b49e4d4dce4de3d4966c34c56e005873a1e4b82fd70729392a3",
+      "cold-unpacked.json": "d342946a429a988f8c9ce0cc6a04e576c3662397e01dd28b938bd103d9f6454c",
+      "configure.log": "68d40087b53f365983519fbe9bd738a4d5c3d1c81d4f4f082ef132c420162c90",
+      "configured.json": "bb33f22a7839dfc5176d1b7fa83eb5f14c969a81a8dd895d228a835bd0c4e794",
+      "initial-main-observation.json": "cf35a966f3832d5e9ba681fcc89a1e209cfc8d227af93d73d7e5e35f10cdba04",
+      "activation-readback.json": "a7329d606817dddbb9d1c1c25d0b3a0fbd8117de1ae3473ce0cd801cfbafdffa",
+      "observed.json": "9c0b72163304853f1f3fe53a6c00f7d3933d7b6d888c02ed168cb47feb591ee7",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }

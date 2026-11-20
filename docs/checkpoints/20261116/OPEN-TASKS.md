@@ -1,3 +1,7 @@
+## 2026-11-21 系统 SQLCipher 库 purge 与解包后续配
+
+六组件原 Root 停服后实际 purge libsqlcipher1，链接器缓存和已安装库文件均已核对。重新解包原 4.6.1-2 后，在 configure 之前正常停机；卷上冷读确认该包为 unpacked，六组件为 installed，原 83 份文件精确匹配。同 Root 续配并执行 libc-bin 触发器，dpkg 审计为空。正式 Main 经原夹具 provider 读回两个数据库和加密页。首次观察在取服务前等待 lazy bundle 进入 ACTIVE 超时；复测证实 STARTING 时已有服务引用，经正常入口即可读回，全程无需显式启动 bundle。停机只读入口更新为 sqlcipher-native-maintenance/parked-readback.py。不同系统库版本升级和维护脚本内部被中断仍待验。冻结 0/12。[dpkg、冷卷与正式 Main 记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 加密 SQLite provider 的发行包与维护
 
 Core 0ffa1325cd 生成可选 Linux ARM64 部署包，在一个 DP 内交付 provider 和按原 Xerial 源码编译的 SQLCipher JNI。两次相同构建的 DP 逐字节一致。六组件原 Root 上，正式 Main 通过部署服务安装、升级，随后冷启动恢复。三个阶段均由 DP 所属 provider 读回原明文库与加密库业务行，加密页完整性检查通过。首次升级观察时框架已发布 DeploymentAdmin，原 DP 仍在异步恢复，等到指定版本后才派发一次升级。移除后两个 bundle 消失，只剩原业务 DP 登记。停机只读追溯到未登记的旧版本归档 294,611 字节，保留待核查历史用途。当前只读入口为 sqlite-provider-distribution/parked-readback.py。系统 SQLCipher 包的移除、purge 与中断恢复仍待验。冻结 0/12。[发行、实装与归档记录](actual-native-wires-retained-reinstall-checkpoint.json)
