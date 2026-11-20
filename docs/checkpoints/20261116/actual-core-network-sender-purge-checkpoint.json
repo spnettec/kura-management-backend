@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-21",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "source": {
+    "core": "4857c3128ca3637aaff17d48cb6b287dc84e2b1d",
+    "tree": "6dab34ad31f0c22da50bf22953ebc0df24e56268",
+    "firstCandidate": "5c1524c27f",
+    "networking": "4741b5e9751394f19c3de945c21f4f3212542261",
+    "package": "kura_6.0.0~git20261120180425.4857c31-1_arm64.deb",
+    "sha256": "1857e410c8efc25a5620beef7d5472f29fa5607bdc8510081836a887b6a09536",
+    "bytes": 204225764
+  },
+  "scope": "Three Java sender records persisted before actor dispatch. Separate registered Main DHCP loss after actor completion is recorded in .management-close-20261116/core-rtc-hotplug-20261120/registered-main-dhcp-recovery.",
+  "site": {
+    "id": "60c7aec0e6cd7c36d5eceecbe8669031ac8b0f059af1b44a7498a18a3f6f9065",
+    "mount": "1048815:6481777",
+    "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+  },
+  "originalOperations": {
+    "dhcp-control": "ff7449cb-8e3d-449a-8123-7bfe5e560712",
+    "bind-control": "1ead9a2c-19f5-4997-8306-0b23f2b415a3",
+    "modem-control": "f9646654-92b0-47f3-bd76-4b9b211c3969"
+  },
+  "javaStoreJarSha256": "0b8a23f487ce915c158d6a6051263365fb1290c89590fb52bc3744dee40b0c2d",
+  "tests": {
+    "debianArm64": 61,
+    "includesRetentionCases": 4
+  },
+  "firstInstallFailure": {
+    "originalReportedState": "half-configured",
+    "configurePhase": "PREPARED",
+    "reason": "unprivileged restore could not traverse the protected versioned install directory",
+    "archiveSurvived": true,
+    "replacementWasRefused": true,
+    "afterAbort": {
+      "reportedState": "installed",
+      "phase": "PREPARED install /opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+      "originalFence": true,
+      "originalArchive": true
+    },
+    "reconfigureAlsoRefused": true,
+    "boundedRecovery": "Original Root and fence, verified five inputs from fixed deb, restored the three sender files with the packaged helper. Compared original installed postinst with original deb and ran its configure phase under both dpkg locks. No original actor request ran.",
+    "outcome": {
+      "phase": "READY install /opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+      "matchedPostinst": "a96d3e49f168c161302a0cf9eeb6c03c65f4c12cd336c76f530e292626f7533d",
+      "originalFenceReleased": true,
+      "boundedRepair": true
+    }
+  },
+  "normalFixedPackage": {
+    "upgrade": {
+      "exitCode": 0
+    },
+    "remove": {
+      "archive": {
+        "sha256": "e532b2bbaf104c9c503380b53a60aca85473dd98beceda6110f17badacd6a6e1",
+        "meta": "1048815|6489798|600|0|0|1|507|2026-11-20 18:07:29.411691709 +0000|2026-11-20 18:07:29.413691715 +0000"
+      },
+      "fence": {
+        "sha256": "0812ba0c42d8cf4e5916120a09013bd5e56b119c36cd35dda74f01741c243ce2",
+        "meta": "1048815|6489763|600|0|0|1|101|2026-11-20 18:07:29.030030995 +0000|2026-11-20 18:07:29.030030995 +0000"
+      },
+      "state": "config-files"
+    },
+    "purge": {
+      "state": "not-installed",
+      "archiveExact": true,
+      "fenceExact": true
+    },
+    "cleanInstallAfterPurge": {
+      "exitCode": 0
+    },
+    "records": {
+      "/opt/eclipse/kura/data/dhcp-control/pending": {
+        "sha256": "67fa8353e37868b7d31a37d79ddb178352783caaaf074e7700fc2aed7235350c",
+        "sameOwnerModeLinksSize": true
+      },
+      "/opt/eclipse/kura/data/bind-control/pending": {
+        "sha256": "aab43e0dd5b5af37fe5093c6e47fd0fd69e3910a068abf968151c2bd87748c5e",
+        "sameOwnerModeLinksSize": true
+      },
+      "/opt/eclipse/kura/data/modem-control/pending": {
+        "sha256": "4a075e8f1b01c792929df6ef9336fc401ff76d7d0094f9d77c20b279ae805423",
+        "sameOwnerModeLinksSize": true
+      }
+    },
+    "unchangedActorRoots": {
+      "dhcp-control": {
+        "inode": "1048815:6482786",
+        "files": {}
+      },
+      "bind-control": {
+        "inode": "1048815:6482783",
+        "files": {}
+      },
+      "modem-control": {
+        "inode": "1048815:6482791",
+        "files": {}
+      }
+    },
+    "credentialsExact": true,
+    "auditEmpty": true,
+    "archiveRetired": true,
+    "parkedDisabled": true,
+    "stoppedExit": 0
+  },
+  "preservation": {
+    "originalRunningStartTimesExact": 13,
+    "stopped7fdStateExact": true,
+    "lastParked7fdCounts": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "retainedStoppedStatesExact": {
+      "60df52cf998b7806d2adf01307612e22b2b063383f46a5954afa939535149fc7": 0,
+      "20b36ea5a2439aff5d6eaf4f4d862e5f401b115a44a320e592e37ec6853eae6f": 0,
+      "206dcf6fd115c242fde27134c9cec0f43d9b1d1e0cbf3b6c40bec0f91c367a1e": 0,
+      "c1eb8b16dc685d46b9a4d7408f2ad34a351cfab8f2842604c01f05f332ec4a70": 137,
+      "556d6e892febc940ac176a0952812801ebf8f9da03547b8064cc19a18eb8c6d9": 0,
+      "790f23d522aa916ae01b770fa49f0531c1f6604d3c42cdf1db0501127bfba6da": 0,
+      "dd038ad9373558ebacb2d58c4eb2ad5114d729e0551afe3c7599da90206a9965": 0,
+      "1f169a814d77603a4effde239c50e9bea843fe862a38a1ca12d323a1fb6e6d4a": 0,
+      "60c7aec0e6cd7c36d5eceecbe8669031ac8b0f059af1b44a7498a18a3f6f9065": 0,
+      "61eae8e243979baa4296367388077c40d523091930102caf2b194e20b3b8760b": 0,
+      "bf60ae2d47c5fd085ea9bad9cf474be811537df0110755b4ad7a0f955a61c731": 0
+    },
+    "personalFilesExact": 25,
+    "originalThree": "original-three-after.json"
+  },
+  "storage": {
+    "inputsMountedReadOnly": 5,
+    "retiredCopy": {
+      "count": 1,
+      "bytes": 204225764
+    }
+  },
+  "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/network-sender-core-retention",
+  "remaining": [
+    "Abort callback can report installed while an existing configure transaction remains PREPARED.",
+    "Core purge with an applied but unacknowledged operation from a registered Main remains a separate case."
+  ]
+}

@@ -1,3 +1,9 @@
+## 2026-11-21 三类网络发送端的原编号经过 Core purge
+
+Core 原先在 purge 时删除运行数据保留副本，DHCP、BIND 和 modem 的 Java 待确认文件也会随之消失。Core `4857c3128c` 在移除时按各自的机器标识、actor 目录设备号和 inode 核对记录，重装时在 Main 停止的条件下以原 kurad 身份发布。Debian ARM64 的正式 Core 包原地升级、移除、purge、重装通过。发行版 Java 发送端读回三条原记录，编号、字节、属主、权限、链接数和长度匹配，三个 actor 目录均保留且没有写入作业。凭据一致，dpkg audit 为空。该现场验证派发前的持久化。正式 Main 已生效、未确认的 DHCP 经 Networking purge 的证据见下一条。
+
+首个候选降权后无法穿越版本安装目录。它保住原归档并停在 half-configured。一次替换升级被围栏拒绝，旧 abort 回调成功返回导致 dpkg 报 installed，实际原配置阶段仍为 PREPARED。该次故障用修正版 deb 的保留工具及原包已核对的 postinst 在同一围栏内局部修复。后续独立的修正版正常维护路径通过；旧 abort 回调的状态误报继续跟踪。61 项 ARM64 定向回归通过。新隔离现场 Main disabled、正常停机。冻结 0/12。[实装检查点](actual-core-network-sender-purge-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 DHCP 停用回执跨 Networking purge 和配置中断恢复
 
 六组件 Debian ARM64 现场用原 Root 启动正式 Main。第一次启用请求启动了专用 dnsmasq。观察器误读结果格式，启用已正常确认。随后独立的停用请求使服务停止，观察器核对意图摘要及 APPLIED 后中断等待回复的客户端，Main 记录 UNKNOWN。该笔 pending 和六份服务端记录完整经过 Networking 移除、purge、解包、真实 postinst 中断及原包配置续接。重启正式 Main 后，仅新增原停用编号的送达回执，pending 清除，服务维持 inactive。两个凭据一致，现场正常停机。Core 自身 purge 时三类 Java 发送端的未确认记录仍待处理。冻结 0/12。[检查点](actual-registered-main-dhcp-maintenance-checkpoint.json)
