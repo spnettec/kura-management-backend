@@ -1,3 +1,15 @@
+## 2026-11-21 Docker 挂载目录中的 bundle 热加载和移除
+
+旧镜像中的 FileInstall 已解析但未启动，普通 Main 可以读到 /load 的 JAR，观察包始终没有激活。Docker `9f9aad6` 将原 FileInstall 放入镜像的 6s 启动目录，原四个 deb 及四个 DP 的输入均保持。相同只读挂载、同一数据卷上的新镜像自动激活原观察包。另一次正式 Main 从空目录运行，在宿主发布观察包后取得 ACTIVE 及其 OSGi 回调，撤下该文件后两次查询均已无该 bundle，HTTPS 返回 200。两次都复核了原四个 DP、注册表、回执与密钥。冻结 0/12。[正式镜像和 OSGi 状态](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
+## 2026-11-21 正式日志 provider 跨应用及审计日志轮换
+
+在同一 ARM64 数据卷、原快照与 HTTPS 身份上，实际让 Log4j 的应用和审计 appender 各轮换一次。旧版两个监听器能收到轮换前的标记，新文件已经写入标记，两路仍收不到。Core `f4b364bdf5` 识别文件替换、排空旧文件并重开原路径，支持已观察到的截短，等待未写完的 UTF-8 行。正式修复包实测两个新 inode 上的标记各送达一次。两版 Main 均以 UID 122、零有效能力运行，原四个 DP、注册表和凭据精确复核。四项模块回归通过；JDK 21 完整 Core/OSGi 共 82 个模块、2137 项通过、2 项跳过。冻结 0/12。[新旧包、日志 inode 和监听回执](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
+## 2026-11-21 Parallels 上的 USB 串口 modem 识别实测
+
+在原 ARM64 虚拟机上，发行内核通过仅回环可达的 USB/IP 接入 Linux CDC ACM gadget。AT 应答器在接入前就绪。内核创建 ttyACM0，udev 标为候选，40 秒内无 AT 探测。ModemManager 记录没有插件支持该设备，NetworkManager 没有建立 GSM 或 CDMA 对象。卸载夹具后，原 USB 设备、内核模块、RTC、网络连接、默认路由及两个 daemon 的运行身份均匹配，原时钟围栏保留。此次未派发 modem 业务，原操作跨双包 purge 仍待验。冻结 0/12。[设备和服务端记录](actual-modem-sender-restart-and-upgrade-checkpoint.json)
+
 ## 2026-11-21 ARM64 Docker 四个 YOFC 部署包与保留快照的日志服务
 
 JDK 21 从源码构建 Runtime DP、组件 API、业务组件和 OPC UA Server，应用模块 43 项测试通过。正式镜像首次启动收到四项安装成功事件。保留同一数据卷，回滚到不内置这四包的基础镜像，再切回新版，DeploymentAdmin 两次均列出四个原版本，四个 bundle 连续采样均为 ACTIVE。四个 DP、注册表、两份回执、加密密钥与 TLS 文件的内容、inode、权限、属主及 mtime 保持。

@@ -103,6 +103,10 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 
 四个 YOFC 可选 DP 合计 25,075,532 字节。这次 ARM64 实装将四包安装在同一卷上，回滚到基础镜像后，DeploymentAdmin 仍读到四个原版本，四个 bundle 均 ACTIVE。核对宿主原件后移除了构建上下文中的四个 deb 和四个 DP，合计 383,170,410 字节逻辑长度。这些上下文文件是 APFS 克隆，未据此推算物理磁盘释放量。[可选包、数据卷与日志实装记录](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)
 
+11 月 21 日 03:32，单独复用的续接目录约 7.50 GB。Core 组装目录保留 18 个 ARM64 deb，逻辑长度合计 3.68 GB。日志轮换修复使 provider JAR 增长 841 字节，整个新 Core deb 为 204.23 MB，比旧包大 956 字节。版本间增量很小，保留每个可独立安装的完整包仍有固定成本。[实际包及目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/log-provider-rotation/size.json)
+
+在随后验证 Docker 加载目录时，同一份 Core deb、三个 sibling deb 和四个 DP 都沿用原件。镜像组装后移除了已对摘要的上下文副本，逻辑长度共 383.17 MB。两个临时 Main 已完成对照，回收其 Docker 可写层共 692.60 MB，原数据卷与最后的停机实例保留。Docker 可写层大小和 APFS 文件逻辑长度分开计量。[启动器实测与回收记录](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ### 时钟包与串口定位的实际成本
 
 11 月 21 日的时钟修复让 bundle 从 43,064 字节增至 43,144 字节。旧、新 Core deb 分别为 204,226,474 和 204,226,478 字节。为比较停用后的网络请求，保留两份正式包要再计约 204 MB 逻辑长度。文件系统实际新增物理块未单测。[发行包和 UDP 计数](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)

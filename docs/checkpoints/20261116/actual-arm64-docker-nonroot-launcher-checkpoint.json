@@ -460,5 +460,263 @@
       "apps.log": "b11b589a32262e59801e68808f37509e3af3696bba241b63e751e7d9d67bbf4a",
       "runtime.log": "fe77f15083880045fe035954df34f5cb65a0b141fe9519202555af0709e89fdc"
     }
+  },
+  "filesystemLogRollover20261121": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/log-provider-rotation",
+    "core": "f4b364bdf52884b5a402d3111ead04cad360f716",
+    "coreTree": "9fda5c24a0539400d988f83e8d0d815bf5f42161",
+    "coreDeb": "83e81fe4a40dc1d1f715e0e702f10f17cf47416e52c6a43db57c29a20fba6ead",
+    "installedProviderJar": "1c605809945418ac9d2a81d02fb1c57f74ec3e0e0a729d0d1c0250752363d81a",
+    "image": "sha256:d9d3e554ff538321bcdc3f1b9a54b222b9f248e5584b04a9cd8303edb6ca0a54",
+    "previous": "sha256:e3e7effa4fbe28a5da1c8bcf742a80225a010049a5e93be61610b8d727f40cfc",
+    "root": [
+      39,
+      6566861
+    ],
+    "scope": "Two production Log4j RollingFile managers, two retained filesystem provider configurations and listener callbacks in installed ARM64 Equinox. A read-only mounted test bundle requests one real rollover on each appender per version and logs test messages.",
+    "old": {
+      "observations": [
+        "FIXTURE_ROTATION before=filesystem-kura-audit-log",
+        "FIXTURE_ROTATION before=filesystem-kura-log",
+        "FIXTURE_ROTATION app=RollingFile old=6576680 new=6577262",
+        "FIXTURE_ROTATION app=audit old=6576681 new=6577264",
+        "FIXTURE_ROTATION submitted-after=2"
+      ],
+      "written": [
+        {
+          "provider": "filesystem-kura-log",
+          "path": "/var/log/kura/kura.log",
+          "count": 1
+        },
+        {
+          "provider": "filesystem-kura-audit-log",
+          "path": "/var/log/kura/kura-audit.log",
+          "count": 1
+        }
+      ],
+      "postRotationObservationSeconds": 4.829,
+      "root": [
+        39,
+        6566861
+      ],
+      "httpsStatus": 200,
+      "proc": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ]
+    },
+    "fixed": {
+      "observations": [
+        "FIXTURE_ROTATION before=filesystem-kura-audit-log",
+        "FIXTURE_ROTATION before=filesystem-kura-log",
+        "FIXTURE_ROTATION app=RollingFile old=6583544 new=6583761",
+        "FIXTURE_ROTATION app=audit old=6583545 new=6583763",
+        "FIXTURE_ROTATION submitted-after=2",
+        "FIXTURE_ROTATION after=filesystem-kura-audit-log",
+        "FIXTURE_ROTATION after=filesystem-kura-log"
+      ],
+      "written": [
+        {
+          "provider": "filesystem-kura-log",
+          "path": "/var/log/kura/kura.log",
+          "count": 1
+        },
+        {
+          "provider": "filesystem-kura-audit-log",
+          "path": "/var/log/kura/kura-audit.log",
+          "count": 1
+        }
+      ],
+      "postRotationObservationSeconds": 0.286,
+      "root": [
+        39,
+        6566861
+      ],
+      "httpsStatus": 200,
+      "proc": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ]
+    },
+    "rolloverSource": "stat inode before and after each actual appender rollover",
+    "originalVolume": {
+      "fourPackagesAndRegistryExact": true,
+      "originalCredentialKeystoreAndReceiptsExact": true,
+      "temporaryInstancesStopped": true
+    },
+    "unitTests": 4,
+    "reactor": {
+      "commit": "f4b364bdf52884b5a402d3111ead04cad360f716",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:49 min",
+      "testTotals": {
+        "tests": 2139,
+        "passed": 2137,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.3,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.637 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "8328e51fe4317b9fb1da0af8d5b79b80eed93dc021352e3f109b16b97651139f"
+    },
+    "receipts": {
+      "package.json": "e63efdea5382d366fee0c5978b423df44b72208d84db4e26a4cbaf512eb4197f",
+      "image.json": "3232f986c66184c582b379334cb4013fcccfd409215b5864df8ef75e29271e83",
+      "old-sample.json": "ddde3be340361119e24843ee88f722e4beb77c06a2ccbaa9e867a4856ce8eb15",
+      "fixed-sample.json": "b8e76067240bca426e6bb9628ca59b4816e17024323a95242cb7f6b7257f2f8d",
+      "old-stopped.json": "5fb8e9a39311d9e74be28bce01dd24e53d2b4e9feba76e0d934bc34f1c3ac494",
+      "fixed-stopped.json": "f5d3c3529a490c2d13d2e167acbbb0e54cf1fc8247a3a3a943c3bebc6cf998e6",
+      "retired.json": "f7e763e08277cba21a57e59a554ba9803e20a2b5c2c3196f314493fad4949f2b",
+      "core-osgi-result.json": "1290e08b1dd6efa1b7f30d625349e5eae1eda6be2ad3aa48415e3256b9f19933",
+      "core-osgi.log": "8328e51fe4317b9fb1da0af8d5b79b80eed93dc021352e3f109b16b97651139f",
+      "before.log": "8feb1c19f88fccd4643153bb4d9c5294fdee774dda3732a7e624f000097b80dd",
+      "verified.log": "54ed05a44cfdcee94595f49343fd6be398aa3d133379c2b0087a168a323007da",
+      "size.json": "823e91f06a09816f2bf7e1ce3e85f1742d96a62e906a9fce9397241e7548cc35",
+      "original-three-after.json": "e243d6ec4bce56989e73a9cd0ce0d74e5e1bb23adc361de3a8318e13562314be",
+      "preservation-final.json": "26558632aa1ccf7175b58b49bbe415e949974d6f01bff4687b3c23239ca32871"
+    }
+  },
+  "dockerFileInstall20261121": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/docker-load-activation",
+    "previous": "sha256:d9d3e554ff538321bcdc3f1b9a54b222b9f248e5584b04a9cd8303edb6ca0a54",
+    "release": {
+      "id": "sha256:32581cc4149fb912ba8834d08342118796446cd6df8066201df1ba19774adb3e",
+      "tag": "yofc-kura-launcher:load-activation-20261121",
+      "commit": "9f9aad67a3e0752b94663387bc76ce4a38d3b879",
+      "tree": "309a8f2de9a2eaecf1e6d51ae5032f376cc09b41",
+      "packageInputs": [
+        "kura-core\t6.0.0~git20261120192633.f4b364b-1\tarm64\t83e81fe4a40dc1d1f715e0e702f10f17cf47416e52c6a43db57c29a20fba6ead",
+        "kura-management-ui\t3.0.0~git202611201910.6b7442f-1\tall\te089f60cbd9b87afb58dc5e071911d76225338b66782286d557258dd2fbaa507",
+        "kura-deployment\t2.0.0~git202611201456.3772936-1\tall\te363fca545e09da3daee8dea2e5adbc89f4f5a993d4e6958da612eae7a42bd14",
+        "kura-wires\t3.0.0~git202611201623.5605b6b-1\tall\tf0acfacfec276be93306d1691e3915785f4eefbad1600f24315e0969f4f750dc"
+      ]
+    },
+    "probeSha256": "db04ca4a6153c878ef6f4e3e89a3296695c06f81e500ed375cae715b072246c3",
+    "old": {
+      "fileinstall": [
+        "FIXTURE_LOAD state=4 persistent=false dir=/load readable=true",
+        "FIXTURE_LOAD state=4 persistent=false dir=/load readable=true",
+        "FIXTURE_LOAD state=4 persistent=false dir=/load readable=true"
+      ],
+      "samples": [],
+      "line": "reference\\:file\\:/opt/eclipse/kura/plugins/6/org.apache.felix.fileinstall-3.7.4.jar@6",
+      "https": "200",
+      "proc": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ],
+      "root": [
+        39,
+        6566861
+      ]
+    },
+    "fixed": {
+      "fileinstall": [
+        "FIXTURE_LOAD state=32 persistent=true dir=/load readable=true",
+        "FIXTURE_LOAD state=32 persistent=true dir=/load readable=true",
+        "FIXTURE_LOAD state=32 persistent=true dir=/load readable=true"
+      ],
+      "samples": [
+        "FIXTURE_OPTIONAL_DP admin=true packages=kura-yofc-runtime.dp@1.0.0.202611201918,yofc-iot-api-comp@0.0.1.202611201918,yofc-iot-apps-comp@0.0.1.202611201918,yofc-iot-apps-opcuaserver@0.0.1.202611201918 bundles=com.yofc.iot.runtime@32,com.yofc.iot.yofc-iot-api-comp@32,com.yofc.iot.yofc-iot-apps-comp@32,com.yofc.iot.yofc-iot-apps-opcuaserver@32",
+        "FIXTURE_OPTIONAL_DP admin=true packages=kura-yofc-runtime.dp@1.0.0.202611201918,yofc-iot-api-comp@0.0.1.202611201918,yofc-iot-apps-comp@0.0.1.202611201918,yofc-iot-apps-opcuaserver@0.0.1.202611201918 bundles=com.yofc.iot.runtime@32,com.yofc.iot.yofc-iot-api-comp@32,com.yofc.iot.yofc-iot-apps-comp@32,com.yofc.iot.yofc-iot-apps-opcuaserver@32"
+      ],
+      "line": "reference\\:file\\:/opt/eclipse/kura/plugins/6s/org.apache.felix.fileinstall-3.7.4.jar@6\\:start",
+      "https": "200",
+      "proc": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ],
+      "root": [
+        39,
+        6566861
+      ]
+    },
+    "afterStartup": {
+      "beforePublication": 2,
+      "activated": [
+        "FIXTURE_OPTIONAL_DP admin=true packages=kura-yofc-runtime.dp@1.0.0.202611201918,yofc-iot-api-comp@0.0.1.202611201918,yofc-iot-apps-comp@0.0.1.202611201918,yofc-iot-apps-opcuaserver@0.0.1.202611201918 bundles=com.yofc.iot.runtime@32,com.yofc.iot.yofc-iot-api-comp@32,com.yofc.iot.yofc-iot-apps-comp@32,com.yofc.iot.yofc-iot-apps-opcuaserver@32",
+        "FIXTURE_OPTIONAL_DP admin=true packages=kura-yofc-runtime.dp@1.0.0.202611201918,yofc-iot-api-comp@0.0.1.202611201918,yofc-iot-apps-comp@0.0.1.202611201918,yofc-iot-apps-opcuaserver@0.0.1.202611201918 bundles=com.yofc.iot.runtime@32,com.yofc.iot.yofc-iot-api-comp@32,com.yofc.iot.yofc-iot-apps-comp@32,com.yofc.iot.yofc-iot-apps-opcuaserver@32"
+      ],
+      "withdrawal": {
+        "bundle": "fixture.readonly.optional.dp",
+        "active": 32,
+        "absentReadbacks": 2,
+        "https": "200"
+      }
+    },
+    "sameVolume": true,
+    "retainedFourDpRegistryArchivesTlsAndReceiptsExact": true,
+    "root": [
+      39,
+      6566861
+    ],
+    "cleanup": {
+      "context": {
+        "logicalBytes": 383171366,
+        "files": 8
+      },
+      "instances": {
+        "measured": {
+          "old": {
+            "id": "84b1def3227b338c2f114990970a5fe5347084f7785f0e2ecd0e5abbb83cff8c",
+            "writableSize": 346296487
+          },
+          "fixed": {
+            "id": "67a60b2e8a69b1dd6bb1a1d6a59b4061fe5318a4eef2e14ac547781eacd710b8",
+            "writableSize": 346302532
+          },
+          "hot": {
+            "id": "23eeca7cbe212d82ef27440299c651cb5270487aa3e152b024becddf685397ca",
+            "writableSize": 346298182
+          }
+        },
+        "removedWritableBytes": 692599019,
+        "originalVolumeExact": true,
+        "retainedStopped": "23eeca7cbe212d82ef27440299c651cb5270487aa3e152b024becddf685397ca"
+      }
+    },
+    "evidenceSha256": {
+      "old-observation": "96c3f1ce405d5c19bd547dcf0a46b1da62a600b355276a252ef10a5d6aebbbf5",
+      "old-stopped": "b930bea5d0425a38c240a1160f278fc8bc602b432e021a0135bbc088487e532e",
+      "fixed-observation": "7d52abbe238ca394f97fb1936e63e21a819547db70127d1e8ca9b3d131e8365a",
+      "fixed-stopped": "6d75f4c855ca655f3f15860f314536bd5e8425f25f9340ad8f3a3dd8ab6d0e04",
+      "hot-publish-intent": "331c26164ecef8fb34b0009140960f1e08893e24752c55a9d9c52a0e1eb8707b",
+      "hot-observation": "7d52abbe238ca394f97fb1936e63e21a819547db70127d1e8ca9b3d131e8365a",
+      "removal": "0a87ddb02b783a8c16131580a7147aadb4ddbe1bf2019e7fa19c587daf114f08",
+      "hot-stopped": "6336038f19d592c047ad60164c1adbabeadd0cac143488bec3eda7e3ccf536f1",
+      "release": "9c260a03e64d1be424631af75806e5dbf9d918e6264e12f7eb072a4644ac0f91",
+      "retired-context": "34bbd3a867dee4be74c4fbb0ae9ab13024d77e7a4951dfb552caa9e126ffa61f",
+      "retired-comparisons": "263a101b08526cd31a9025f30aa4ceb2f75f58ac381ae9b2339769c45e0d8237",
+      "preservation-final": "7404d4879d04b25cefb6f99aa2a6541c83a3db95b402bd8e333a027b82ccb0c4"
+    }
   }
 }

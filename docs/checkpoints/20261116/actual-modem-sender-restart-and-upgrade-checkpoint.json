@@ -230,5 +230,59 @@
       "wwan-and-usbip-readonly.json": "84fe0b0e2bd2c4bd53774d8686506e4c70d5a6adc649c11379d5d971b7e9c2af",
       "hwsim.json": "c083780deb2e143e134c400cc8907c1a3fb53c8bf9971b6fdc9530d8316b864d"
     }
+  },
+  "virtualUsbSerialDiscovery": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/modem-virtual-platform/usb-serial",
+    "driver": "cdc_acm",
+    "product": "Linux-USB Serial Gadget 0525:a4a7",
+    "transport": "Kernel USB/IP with only loopback in the temporary network namespace",
+    "observationSeconds": 40,
+    "usb": "/sys/devices/platform/vhci_hcd.0/usb4/4-1",
+    "tty": "/sys/devices/platform/vhci_hcd.0/usb4/4-1/4-1:2.0/tty/ttyACM0",
+    "udev": [
+      "ID_MODEL_ID=a4a7",
+      "ID_VENDOR_ID=0525",
+      "ID_USB_DRIVER=cdc_acm",
+      "ID_MM_CANDIDATE=1"
+    ],
+    "mmList": "No modems were found",
+    "managerDiagnostics": [
+      "<msg> [base-manager] couldn't check support for device '/sys/devices/platform/vhci_hcd.0/usb4/4-1': not supported by any plugin"
+    ],
+    "nmModems": [],
+    "probeCommandKinds": [],
+    "responder": "Started on ttyGS0 before host attachment",
+    "restoration": {
+      "beforeEqualsAfter": true,
+      "mainPid": 0,
+      "clockFenceMatched": true,
+      "guestRoot": "2050:2",
+      "rtc": [
+        "rtc0"
+      ],
+      "verified": [
+        "boot",
+        "modules",
+        "original USB devices",
+        "tty and UDC",
+        "MM and NM InvocationID",
+        "active connections and default route digests"
+      ]
+    },
+    "earlierObservations": [
+      "Numeric export ID returned Device not found and restored the guest.",
+      "Named export attached. An early port read preceded kernel enumeration. Observed and detached that same instance. A later independent read confirmed the baseline after correcting tuple/list comparison."
+    ],
+    "businessOperations": 0,
+    "remaining": "Pending dispatched modem reset across joint purge still requires a modem paired by the production MM and NM services.",
+    "sha256": {
+      "result.json": "a2fa29247b44911a48a518ac18107542f3ac92ee91f758b93452eee90faa14c5",
+      "exported-name/intent.json": "b1b51e231200d899de9185781e85c3f6c74cac9ada81ba700817a7e453d73a99",
+      "exported-name/observe-attached.log": "4894f0a20c1d8794a690674747e0a45421efa51e74ee935ff8bcb3fa3a757a00",
+      "exported-name/restoration-readback.json": "896acb0f9009291ab88c47814362e4d9ec6ea3fb70b9fd847c7d989a25d26b6b",
+      "ready-before-attach/guest.py": "c40d31c65ce987b5df65496d14055529ac02a6a7c5a08e13e2ac2aa880758152",
+      "ready-before-attach/intent.json": "b1b51e231200d899de9185781e85c3f6c74cac9ada81ba700817a7e453d73a99",
+      "ready-before-attach/result.json": "098f047ccb3236645cba698d227467f906e07aac33c638650e02ed8041b51f03"
+    }
   }
 }
