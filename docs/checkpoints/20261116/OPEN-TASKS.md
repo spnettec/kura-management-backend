@@ -1,3 +1,9 @@
+## 2026-11-21 正式 GWT 的 agent 条件菜单和 Cloud 移除后页面
+
+在隔离 Debian ARM64 的正式 Main 上，未装 agent 时进入设置，旧 GWT 的隐藏面板仍读取续期状态。修复后只查询包是否存在。实装 agent 后选择远程标签，离线状态在面板内显示，Core 的 CSR 控件可用；手动读取状态仍会提示连接失败。普通 dpkg 移除并 purge 未初始化的 agent 后，同一个 Main 上的远程标签立即隐藏，快照标签可用。GWT 包 `6b7442f` 以 JDK 21 构建，532 项测试通过。
+
+同一 Root 的六组件另装 Cloud 后，网页列出一个断开的 CloudService。移除并 purge Cloud 后，八份 JAR 消失，客户属性中的 true、文件内容和元数据保留。正式 Main 再启动，菜单仍可进入，显示无可用连接；列举连接与工厂的 RPC 均成功。未提交远程控制、登记或云连接写操作。原两个快照和两份凭据保持，夹具 disabled、正常停机。冻结 0/12。[正式包、页面和维护回执](actual-native-cohort-gwt-ready-and-purge-checkpoint.json)
+
 ## 2026-11-21 GPSD 正式定位跨 daemon、socket 与 Position 包升级
 
 Debian ARM64 六组件现场通过真实 gpsd 和伪终端输入取得定位。旧包能在 gpsd 服务重启后恢复坐标，但两次都把报文中的 .375 秒截成整秒。Position `eafa1d3` 保留 UTC 小数，在还没有时间时返回空值；74 项 Position 和 8 项 REST 测试通过。同一 Root 升级后直接沿用原配置，gpsd 服务和 socket 在包升级期间保持运行。随后停止并重建两者，同一个正式 Main 再次从新的坐标和 UTC 取得锁定，输入停止后按配置失锁。两快照、两份凭据与其他六包均保持，夹具 disabled、正常停机。物理接收机仍在原硬件边界，冻结 0/12。[GPSD 实装检查点](actual-standalone-position-six-conversion-checkpoint.json)

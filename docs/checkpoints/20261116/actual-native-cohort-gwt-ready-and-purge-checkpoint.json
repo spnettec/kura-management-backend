@@ -107,5 +107,173 @@
     "authenticated and enrolled business",
     "multi-component interruption and other provider/launcher matrices",
     "complete Core/OSGi, typed brokers, six components and all 12 parent items"
-  ]
+  ],
+  "authenticatedAgentMenuMaintenance20261121": {
+    "root": {
+      "id": "4fff38e018eadb606d2b3ea8c934c4b46fbaf5e2f8f6878393c0163b8b8f3c39",
+      "mount": "1048828:6547626",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/six-gwt-agent-menu",
+    "source": "6b7442f24fbd27fb70f823259354de3c5a6eec97",
+    "tree": "0155aa4503cb16a20a4cfcb98283a23dad7e0a81",
+    "package": "3.0.0~git202611201910.6b7442f-1",
+    "packageSha256": "e089f60cbd9b87afb58dc5e071911d76225338b66782286d557258dd2fbaa507",
+    "testsPassed": 532,
+    "testFixtureCorrection": "Archive capacity test now takes two IDs from successful preparations before testing refusal.",
+    "releaseJsVerified": {
+      "fixed": [
+        {
+          "key": "www/denali/41D9FF79638BF936189BC102A6B7991B.cache.js",
+          "sha256": "53bd4454dee883e8c95296e10376d50e275eff7f1ed50f939fde9b95a7e4d2e0"
+        }
+      ],
+      "restarted": [
+        {
+          "key": "www/denali/6C8FB1E0213E7B89B87A5A6FD0FD84A1.cache.js",
+          "sha256": "25523ea9c681b866c5ab3248b67193aeb969eb3566bdd72903ca75cdf5646260"
+        }
+      ],
+      "removed": [
+        {
+          "key": "www/denali/6C8FB1E0213E7B89B87A5A6FD0FD84A1.cache.js",
+          "sha256": "25523ea9c681b866c5ab3248b67193aeb969eb3566bdd72903ca75cdf5646260"
+        }
+      ],
+      "purged": [
+        {
+          "key": "www/denali/6C8FB1E0213E7B89B87A5A6FD0FD84A1.cache.js",
+          "sha256": "25523ea9c681b866c5ab3248b67193aeb969eb3566bdd72903ca75cdf5646260"
+        }
+      ]
+    },
+    "baselineHiddenReads": [
+      "getIdentityRenewalStatus",
+      "isAgentInstalled"
+    ],
+    "repairedHiddenTabReads": [
+      "isAgentInstalled"
+    ],
+    "liveInstalledOnSameMain": true,
+    "preFixDialog": "CONNECTION_FAILURE prevented leaving the selected tab",
+    "afterFixAutomatic": [
+      {
+        "method": "isAgentInstalled",
+        "successful": true,
+        "code": null
+      },
+      {
+        "method": "getRemoteStatus",
+        "successful": false,
+        "code": "CONNECTION_FAILURE"
+      },
+      {
+        "method": "getEnrollmentStatus",
+        "successful": false,
+        "code": "CONNECTION_FAILURE"
+      },
+      {
+        "method": "getIdentityRequestContext",
+        "successful": true,
+        "code": null
+      },
+      {
+        "method": "getIdentityRenewalStatus",
+        "successful": false,
+        "code": "CONNECTION_FAILURE"
+      },
+      {
+        "method": "listIdentityRequests",
+        "successful": true,
+        "code": null
+      },
+      {
+        "method": "isAgentInstalled",
+        "successful": true,
+        "code": null
+      }
+    ],
+    "controls": {
+      "automaticWarnings": 0,
+      "generateVisible": true,
+      "generateEnabled": true,
+      "switchDisabled": true
+    },
+    "explicitStatusReadShowsConnectionFailure": true,
+    "mainSurvivedAgentRemovalAndPurge": true,
+    "agentWasDisabledAndUninitialized": true,
+    "cloud": {
+      "package": "24f1df33c61ddbdea793b607b917eab4efdb5594",
+      "packageSha256": "72ece424a9159f5f5bfc8c7b47a46eebcfa9d3a3360bb0402b49bae0347f68e1",
+      "jarsRemoved": 8,
+      "flagAndFileMetadataRetained": true,
+      "whileInstalled": "CloudService row, Disconnected",
+      "afterPurge": "Cloud Connections menu visible; No Cloud Connections Available",
+      "readReplies": [
+        [
+          {
+            "method": "findCloudEntries",
+            "ok": true,
+            "length": 466,
+            "bodySha256": "ed64e34cecea014e2e856f5a351464b4f8c5b1a7569922d409d4080ccfc4224e"
+          },
+          {
+            "method": "getCloudComponentFactories",
+            "ok": true,
+            "length": 3076,
+            "bodySha256": "6f7fc3b2c4c9062efe40ab51f2f984a6bf88b8a627dbf8e5d86d18a1d735b448"
+          }
+        ],
+        [
+          {
+            "method": "findCloudEntries",
+            "ok": true,
+            "length": 48,
+            "bodySha256": "42fd88d04da940981a43ae51c54d54092c446ab134cc36033586a1ef86886e96"
+          },
+          {
+            "method": "getCloudComponentFactories",
+            "ok": true,
+            "length": 544,
+            "bodySha256": "5bc5cb27a307a0158a26eebbd2b6c40d5a64adadc802fb5d02a358c5e2af7f66"
+          }
+        ]
+      ]
+    },
+    "customerOperationsSubmitted": 0,
+    "remaining": "Authenticated enrollment, connected remote business, other pages, provider/launcher and interruption combinations remain open.",
+    "fixtureExit": 0,
+    "retiredTemporaryDebBytes": 72440756,
+    "sha256": {
+      "absent-browser.json": "ea65b09ee36c5057a3dbc250fea0fe6560bdb8d40cf4b9ea0b0f4386900f2522",
+      "gwt-release.json": "f0af8234ecc0fda87a9951ae1e44b72699923653e1900cd0844623de5f762205",
+      "offline-release.json": "e9e917635a8c6918d0f87dc8f8641ea473d6285780f8bac6bb5f66ceb78b7dad",
+      "early-offline-warning.json": "84108affd9af5e61a3e1c6653f732bcab2fbd16ea72082899e6baff65cafb49b",
+      "fixed-verified.json": "b1bfc1b91fab246be44e03c229ea633fbb524b7eb3875df50af23a3cfb61b54a",
+      "live-install-agent-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "installed-main.json": "1179b6f40da10f0e5f4beac52225218e993e66d84c2c7a839b5ea589705851d1",
+      "restarted-verified.json": "c5dbfb57d2f76990adbf1f6936965cef090876b80b945c38872b4d5a317a3077",
+      "restarted-explicit.json": "9a0e9d7fae29c962122c6f66d7a644d0da1a123d3e1c42cc438650cf18e23ce8",
+      "cloud-input.json": "ea23137c571ffaafa9e2e59996d6ac9834b9c3a9f473d638168e7a70b4fa4f2e",
+      "cloud-installed-package.json": "0692b9bd3b7f05f7b09df07e577c996313a8397c1149489fc2d91f1b8364048d",
+      "cloud-installed-cloud.json": "46ad10a001886f220bb6aa2a8d0af992f311044a9cfebf3bd262dc8923a32c4c",
+      "cloud-remove-package.json": "bf7a570d0f86295b3add83737e52a605d93e75eb3b43a404ec92753ff997b1bb",
+      "cloud-purge-package.json": "d6ea0ce840e7f12e9d0512ab7d1c6ec7973555ff1b8ae3e98255d7b89d620b27",
+      "cloud-purged-cloud.json": "810b688a24f27da66d47f03ab273bf8bb973ba20bccc150d11c1f82382960220",
+      "remove-uninitialized-agent-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "removed-verified.json": "6f252ce8a1a15fa66b135944fa2806a9461d330a9a41ace69b0d914269690674",
+      "purge-uninitialized-agent-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "purged-verified.json": "f16cf280844cb38353a280da75df6102f3b93482261b9d3572eb824e3a5754d6",
+      "park-intent.json": "0087a6b8574761f08441571966b0124bf21451bb6c385db1ec2f2f7059ef462c",
+      "parked.json": "0c314ba63cdb68f991621164afeca99aeec5a92d7085ae682b48876ee27a5c8b",
+      "original-three-after.json": "46e1402abc55cad72b8d7fc9ccae259f43851b0a99262df5be0981cbbd867cd1",
+      "preservation-final.json": "ea954e67cce8bd8ffe19f37a037d086f097f06e6b466f4b64ca0e70a099da50a",
+      "cloud-installed-cloud.png": "11877adae8c72ee2bea77f651b3ed050f2e11bbc69a8fc8899f22f39c10ad7a1",
+      "cloud-purged-cloud.png": "3f924d48b2c267352ad6413ab17d4ba5ea1517eb768c0808e4473b89d0d51e25",
+      "offline-release.log": "c1982ff3086890a9ef1d2af08726957222d395f91b778525930fab081ac82006",
+      "offline-first-reactor.log": "f961a134962a6e95f767e1cccff369c99f1bf396f42cdfd1cc6bb75e0313fecc",
+      "restarted-remote.png": "3acfa65b2fba9da67b7c4e35f8cce1523183d9e6a40c5b00fef1ce7a6d97a889",
+      "installed-remote.png": "024c8640bc26d0b6c2018dd94cd541e615e3e2c44714f1e03bb42eca305310b0"
+    }
+  }
 }
