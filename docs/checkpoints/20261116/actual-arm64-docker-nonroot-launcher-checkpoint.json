@@ -322,5 +322,143 @@
     },
     "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/docker-four-package-volume-upgrade",
     "scope": "Four base packages, two retained volumes, existing empty /load and same TLS. Optional deployment packages, purge of persistent volumes and six-component installation are outside this observation."
+  },
+  "optionalDeploymentPackagesAndRetainedLogProviders20261121": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/docker-optional-dp",
+    "initialLauncher": "34fabd8fdf3b4bf64e883d6b4888fbc1d7b9af80",
+    "fixedLauncher": "448cdd029b8f494ab9a8b19948312d132dc832dc",
+    "fixedTree": "596136ecff17cef024b46935750c0329b2ea7aca",
+    "debs": {
+      "kura-core": "3fe46eeefb841b87be9a4f9eabb51e767a21d25d",
+      "kura-wires": "5605b6b70b785f70d5c13afab74343afc7a73114",
+      "kura-deployment": "377293634e426fe4a939fcc5273c15e3d97741b5",
+      "kura-management-ui": "6b7442f24fbd27fb70f823259354de3c5a6eec97"
+    },
+    "optionalPackages": {
+      "kura-yofc-runtime.dp": {
+        "sourceCommit": "f1204e6e5385fb4aba4baac08d11e3740d8587ca",
+        "sha256": "d48bf06e2e6c0c195c79f9e274f986ab6f21fe55a6700897ec0ded1ac125920f",
+        "size": 10528480,
+        "version": "1.0.0.202611201918"
+      },
+      "yofc-iot-api-comp": {
+        "sourceCommit": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+        "sha256": "d09664f9756b3c1cbcc40d4ed2beb9f701de8344792828d6b16baf01ce4ca2eb",
+        "size": 223225,
+        "version": "0.0.1.202611201918"
+      },
+      "yofc-iot-apps-comp": {
+        "sourceCommit": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+        "sha256": "7affb0e77cff489a65145afa99ac60c09cf1ddb2ab594f97cc6868e2b705f2e5",
+        "size": 128326,
+        "version": "0.0.1.202611201918"
+      },
+      "yofc-iot-apps-opcuaserver": {
+        "sourceCommit": "a652e29910ee74e62f572a93318a6ca5e6a8a5c7",
+        "sha256": "4d6544973efe795af2b679485d3292f08710d6aa8813e781ba7d31d32652485f",
+        "size": 14195501,
+        "version": "0.0.1.202611201918"
+      }
+    },
+    "yofcTestsPassed": 43,
+    "optionalArchiveBytes": 25075532,
+    "root": [
+      39,
+      6566861
+    ],
+    "images": [
+      "sha256:5657fbe01f9b6f1a5a64c6906eee20f7f0ac38a17a15ccf86d54e6e49326c38f",
+      "sha256:e39e1ebfc914dc06a1bcfa9ba2328326687e6e3716866b023081b336b12f95b8",
+      "sha256:e3e7effa4fbe28a5da1c8bcf742a80225a010049a5e93be61610b8d727f40cfc"
+    ],
+    "fresh": {
+      "https": 200,
+      "installedEvents": 4,
+      "uid": 122,
+      "launcherCapabilities": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      }
+    },
+    "rollbackAndRestore": {
+      "https": [
+        200,
+        200
+      ],
+      "deploymentAdminReports": 4,
+      "activeBundles": 4,
+      "recapturedSamplesPerPhase": 2,
+      "archiveAndRegistryMetadataExact": true,
+      "credentialsReceiptsAndKeystoreMetadataExact": true
+    },
+    "logProviders": {
+      "beforeMissing": [
+        "filesystem-kura-log",
+        "filesystem-kura-audit-log"
+      ],
+      "afterDelivered": [
+        "filesystem-kura-log",
+        "filesystem-kura-audit-log"
+      ],
+      "submissionCount": 2,
+      "observationCount": 2,
+      "paths": {
+        "files": {
+          "kura.log": {
+            "target": "kura/kura.log",
+            "owner": [
+              122,
+              122,
+              "0o600"
+            ],
+            "size": 92315
+          },
+          "kura-audit.log": {
+            "target": "kura/kura-audit.log",
+            "owner": [
+              122,
+              122,
+              "0o600"
+            ],
+            "size": 232
+          }
+        },
+        "parents": [
+          [
+            0,
+            0,
+            "0o755"
+          ],
+          [
+            122,
+            122,
+            "0o700"
+          ]
+        ]
+      }
+    },
+    "testObserver": "Mounted an immutable read-only observer bundle in plugins/6s for rollback and restore. The initial observer in /load emitted no samples; its activation was not used as evidence.",
+    "finalStopExit": 143,
+    "temporaryBuildContextFileBytesRetired": 383170410,
+    "pending": "Log rotation while listeners are active, automatic nonempty /load, interrupted deployment with pending business and explicit persistent-volume purge remain separate.",
+    "sha256": {
+      "inputs.json": "3e0163e90c5ae29a634be370d8e450272644efa27f8b6fdb7b13a2a59d86e637",
+      "candidate.json": "d218692c684776ce5562bc97de1e4388ec556824fde3c4d91bf754e1b9494d97",
+      "fixed-candidate.json": "6b937c8b5fc14f1b16d98c0852d3a0caad0e152bb0111abffb74a4dce95980a5",
+      "fresh-runtime.json": "17e5685f6cead2cd30cea2fe1f598b404a54bda7d359088483c4adac0dd92cd9",
+      "before-maintenance.json": "f4d7778820e9b7319d25e83d08ed1621c124abe4d340fbbce9710d1595d11328",
+      "rollback-observed.json": "060eabc479b2b775aa9c92c73d3cd6a2b2c829450f2b562fc13bbe1e2827ef60",
+      "restore-observed.json": "723cd9357128c00074ff0b14db50a501659090b6d7087c7d76b665e43ad8da07",
+      "logs-readback.json": "a33a49dc7490e2ac34eb8a17e3382ebf13a475b57fd764ca1bec66e3417ce0e6",
+      "restore-stopped.json": "4ca0c51fb0ea241cc1d10aa77ec58fc85cbcd669c42cc66283284c3496d867d5",
+      "retired.json": "dee9af185ed6a9dafdbd46a5f3568062a0de0bcad96326691bdc1427d3d40c16",
+      "original-three-after.json": "03515bd42e97ca8d1f25b9124ac7a1dbe6fefd7a56ac170b56733da60b1f6585",
+      "preservation-final.json": "8260389312f492849b87d7b6d517dc70ecbf6b1c3fe9978d3205e2e9143a1fbf",
+      "apps.log": "b11b589a32262e59801e68808f37509e3af3696bba241b63e751e7d9d67bbf4a",
+      "runtime.log": "fe77f15083880045fe035954df34f5cb65a0b141fe9519202555af0709e89fdc"
+    }
   }
 }

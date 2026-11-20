@@ -101,6 +101,8 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 
 本轮复用现成的四个正式 deb；核对原件后移除构建上下文的四份 APFS 克隆，逻辑文件长度合计 358.09 MB。升级和回滚还复用了原数据卷与空的 /load 卷，保存两套数据副本的开销在这一步可以避免。[镜像层、发行包与原卷检查点](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)
 
+四个 YOFC 可选 DP 合计 25,075,532 字节。这次 ARM64 实装将四包安装在同一卷上，回滚到基础镜像后，DeploymentAdmin 仍读到四个原版本，四个 bundle 均 ACTIVE。核对宿主原件后移除了构建上下文中的四个 deb 和四个 DP，合计 383,170,410 字节逻辑长度。这些上下文文件是 APFS 克隆，未据此推算物理磁盘释放量。[可选包、数据卷与日志实装记录](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ### 时钟包与串口定位的实际成本
 
 11 月 21 日的时钟修复让 bundle 从 43,064 字节增至 43,144 字节。旧、新 Core deb 分别为 204,226,474 和 204,226,478 字节。为比较停用后的网络请求，保留两份正式包要再计约 204 MB 逻辑长度。文件系统实际新增物理块未单测。[发行包和 UDP 计数](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)
