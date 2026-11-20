@@ -217,5 +217,18 @@
       "preservation.json": "0eee4219014866fd773add4c3298f93c26ddd04aa3515743b3135549a63049d8",
       "original-three-after.json": "425e868fbdef58af4fc8b61f3ae5c1309914ad4028f93168a5d11932a467d420"
     }
+  },
+  "virtualWwanDiscovery": {
+    "guest": "Ubuntu 26.04 ARM64 Parallels, 7.0.0-43-generic",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/modem-virtual-platform",
+    "modules": "Loaded the distribution wwan_hwsim with devices=1 after confirming zero existing WWAN devices and no loaded simulator. Both AT ports received ID_MM_CANDIDATE=1 and ID_MM_PORT_TYPE_AT_PRIMARY=1 through the installed rules.",
+    "observed": "Within 35 seconds, the original ModemManager exposed no modem and NetworkManager exposed no GSM device. No reset, policy change, send or operation query was issued. The guest has the USB/IP vUDC and VHCI modules installed; their ability to provide a supported modem has not been tested.",
+    "cleanup": "The temporary ports and newly loaded simulator, WWAN and GNSS modules were removed. Active connection and default route digests, NM/MM invocation IDs, clock fence, rtc0 and static inactive Main matched the preflight.",
+    "qualification": "Negative discovery evidence on this kernel/driver; positive modem delivery and joint purge remain open.",
+    "receipts": {
+      "parallels-readonly.json": "89c69c1dd1a64d875e68f1cad854c7b5b925d726cd703d181c3cbf774e2cf536",
+      "wwan-and-usbip-readonly.json": "84fe0b0e2bd2c4bd53774d8686506e4c70d5a6adc649c11379d5d971b7e9c2af",
+      "hwsim.json": "c083780deb2e143e134c400cc8907c1a3fb53c8bf9971b6fdc9530d8316b864d"
+    }
   }
 }

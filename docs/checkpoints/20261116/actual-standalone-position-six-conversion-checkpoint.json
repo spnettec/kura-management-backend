@@ -345,5 +345,98 @@
     "parkedFullMainVersion": "b908c47",
     "scope": "The full systemd Main maintenance cycle above used b908c47. The follow-up pairs the release JARs outside Main and checks PTY reads and position delivery.",
     "receiptSha256": "00c2df42887158725c4d6884a788ab21442a8036c16c381c8e26a6b80b19082f"
+  },
+  "sixComponentGpsdMaintenance": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/six-position-gpsd-maintenance",
+    "root": {
+      "id": "7c88016555c36e56851ddbf5964633b37084000c6abba07df3bbf4a444ce56ae",
+      "mount": "1048827:6539850",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "initialPackages": {
+      "kura-core": "installed 6.0.0~git20261120183545.3fe46ee-1",
+      "kura-networking": "installed 3.0.0~git202611201717.4741b5e-1",
+      "kura-management-ui": "installed 3.0.0~git202611201623.a2ed695-1",
+      "kura-deployment": "installed 2.0.0~git202611201456.3772936-1",
+      "kura-wires": "installed 3.0.0~git202611201623.5605b6b-1",
+      "kura-management-agent": "installed 0.1.0~cohort20261120163743.ab1cf33-1",
+      "kura-position": "installed 2.0.0~git202611201848.3af724e-1"
+    },
+    "release": {
+      "commit": "eafa1d3cf4f4b6f96451421b24cf24f2a5380d9d",
+      "tree": "94e907c32b53837c9f5e07a031596382158aba99",
+      "version": "2.0.0~git202611201855.eafa1d3-1",
+      "sha256": "4d1cac0021a7731507f732f2104506e7be24071cc3a74a1d40e108577e0ca568",
+      "jar": "a097303aae88efd1f88c57f3f1e3fdce74de9ba7c39275859a46f599a5fd7dbc"
+    },
+    "positionTests": 74,
+    "restTests": 8,
+    "initialFailure": "GPSD TPV retained fractional UTC, the public GPSD PositionService discarded the fraction. An uninitialized or missing timestamp also returned 1970-01-01. Two focused regressions failed on 3af724e.",
+    "gpsd": "Debian ARM64 gpsd 3.25-5+deb13u2, systemd vendor socket and service, test PTY hot-added via gpsdctl. Independent TCP WATCH compared each first valid TPV to the installed Main PositionService. No physical GNSS receiver.",
+    "configuration": "One production ConfigurationService update for 127.0.0.1:2947, three seconds maximum validity. The same two snapshots and two credentials were verified on the same Root. The six other packages kept their versions. The original defaults file and PTY source survived every maintenance step.",
+    "rows": {
+      "baseline": {
+        "main": "2669",
+        "gpsd": "2226",
+        "wireUtc": "2026-11-21T12:04:10.375Z",
+        "mainUtc": "2026-11-21T12:04:10",
+        "latitude": 31.2,
+        "longitude": 121.5,
+        "lockExpired": true
+      },
+      "restart": {
+        "main": "2669",
+        "gpsd": "9911",
+        "wireUtc": "2026-11-21T12:05:10.375Z",
+        "mainUtc": "2026-11-21T12:05:10",
+        "latitude": 31.3,
+        "longitude": 121.6,
+        "lockExpired": true
+      },
+      "upgrade": {
+        "main": "11630",
+        "gpsd": "9911",
+        "wireUtc": "2026-11-21T12:06:10.375Z",
+        "mainUtc": "2026-11-21T12:06:10.375",
+        "latitude": 31.4,
+        "longitude": 121.7,
+        "lockExpired": true
+      },
+      "renew": {
+        "main": "11630",
+        "gpsd": "18074",
+        "wireUtc": "2026-11-21T12:07:10.375Z",
+        "mainUtc": "2026-11-21T12:07:10.375",
+        "latitude": 31.5,
+        "longitude": 121.8,
+        "lockExpired": true
+      }
+    },
+    "maintenance": "Baseline Main recovered after actual gpsd.service restart. During Position dpkg upgrade both gpsd service and socket retained their original invocation. After upgrade, the socket and daemon were both stopped, seen inactive, and started anew. The same Main relocked and later expired its fix.",
+    "cleanup": {
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "retiredDebBytes": 137842,
+      "testDeviceRemoved": true,
+      "containerExit": 0
+    },
+    "receipts": {
+      "release.json": "7520d81cfb6ce6b86005c77bfcaed652397ccc9304b8cd797627c1859a416358",
+      "baseline-observation.json": "7f0b271803cf14004512ead06ab6be8ff244a49643bc1681417c4eb545681ba9",
+      "restart-observation.json": "0513c3ac29569647f10533430f15990589bebeba86851f0755a9afd991698d16",
+      "upgraded.json": "775570e9b40af731f7506a41433c21c3725e9469cd00ce25594bc199354d48fb",
+      "upgrade-observation.json": "416f4a8a82e890a68ebb533aad5a74b81303d0783578f0ed2becfd70ccde4096",
+      "disconnected.json": "b6c9a8a6bfae7decb0158d49f654fb48a3771ec3e7c53dc15c94b4710587e21d",
+      "renewed.json": "ea07d7f12eed5a0f176538c1e53067cf2a5b6e132492260edf45e742d806a63d",
+      "renew-observation.json": "dd0fe4d9778dbe96178928ec2f58003876951620631a39886d8689d313bb98c9",
+      "parked.json": "1d0c51c13c4f135660beb0a1f256ed8e371bcd1ff591ac501b5f230a823ceeac",
+      "preservation-final.json": "429a35086513f35927169f3334c2036d1c828f246a262f319532877800f29c13"
+    }
   }
 }

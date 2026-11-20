@@ -1,3 +1,9 @@
+## 2026-11-21 GPSD 正式定位跨 daemon、socket 与 Position 包升级
+
+Debian ARM64 六组件现场通过真实 gpsd 和伪终端输入取得定位。旧包能在 gpsd 服务重启后恢复坐标，但两次都把报文中的 .375 秒截成整秒。Position `eafa1d3` 保留 UTC 小数，在还没有时间时返回空值；74 项 Position 和 8 项 REST 测试通过。同一 Root 升级后直接沿用原配置，gpsd 服务和 socket 在包升级期间保持运行。随后停止并重建两者，同一个正式 Main 再次从新的坐标和 UTC 取得锁定，输入停止后按配置失锁。两快照、两份凭据与其他六包均保持，夹具 disabled、正常停机。物理接收机仍在原硬件边界，冻结 0/12。[GPSD 实装检查点](actual-standalone-position-six-conversion-checkpoint.json)
+
+Parallels 另实测了一种 modem 输入：发行内核的 `wwan_hwsim` 产生两个 AT 端口，udev 都标为 ModemManager 候选；35 秒观察中 MM 无 modem、NM 无 GSM 设备。原两个服务持续运行，测试后模块、端口、连接和默认路由已核对复原。此次没有派发 reset，已派发 modem 双包 purge 继续待验。[平台实测](actual-modem-sender-restart-and-upgrade-checkpoint.json)
+
 ## 2026-11-21 串口 Position 从升级、重装和配置中断中恢复定位
 
 旧包在串口空闲时退出接收线程。六个网关包联合安装后，正式 Main 仅提交一次 Position 配置。将 Position 从 `fd742d9` 升至 `b908c47`、单独移除并 purge 重装、在 postinst 等待注册锁时中断并直接续配，三次均在同一 Root 从伪终端读到各自的 NMEA 定位和 UTC 毫秒。其他六包、两个快照和两份凭据均保持可核对。夹具正常停机，物理 GPS 仍在原硬件边界内。随后用同一 Core 串口实现、两版正式 Position 包和 ARM64 伪终端定量复核。`3af724e` 在无字节时等待 25 毫秒，实测空闲读取从每秒约 110 万次降至 34 次，仍能收到有效定位。该版本 Position 与 REST 共 80 项测试通过。[六组件串口与 dpkg 记录](actual-standalone-position-six-conversion-checkpoint.json)
