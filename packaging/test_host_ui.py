@@ -280,6 +280,9 @@ class ActualTlsCertificateTests(unittest.TestCase):
         self.addCleanup(listener.close)
         port = listener.getsockname()[1]
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        # The certificate-only client closes as soon as the handshake has
+        # supplied the leaf. Keep post-handshake tickets out of this fixture.
+        context.num_tickets = 0
         context.load_cert_chain(FIXTURES / 'server-one.pem', FIXTURES / 'server-one.key')
         received, errors = [], []
         def serve():
