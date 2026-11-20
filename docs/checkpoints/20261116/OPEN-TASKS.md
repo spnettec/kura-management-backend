@@ -1,3 +1,11 @@
+## 2026-11-21 Linux ARM64 全量 Core/OSGi 与原卷升级
+
+以 ba84bdcfb4 在隔离 Debian ARM64、非 root、JDK 21 下运行完整 osgi-it 构建。同一六组件卷先安装 cbaadd1984，随后原地升级到与全量构建相同的 ba84bdcfb4。共 82 模块，2151 项通过、2 项跳过。修正独立解压进程的类文件及目录权限，并修正 TLS 显式本地地址被远端地址覆盖。正式 Main 上实际 TLS 客户端与服务端均见 127.0.0.2 源地址，普通命令用户 UID 1000 解压出正确内容。
+
+Equinox 异步注册期间曾在生产代码复现 ConcurrentModificationException。修正版在同一个注册锁下复制 PID 集合，再查询 provider。新版正式 Main 上实测注册并注销 64 次，另一线程完成 32 次枚举，早先取得的 PID 集合在注销后仍保持原值且不可修改。已正常停机，续接从 config-pid-snapshot-arm64/parked-readback.py 核对六包和 83 份文件。OrbStack 只有共享 rtc0，Parallels 原组件围栏和 21 份文件仍匹配。正式 Main 的正向 RTC 写继续待验。停机时另按实装 deb 的八份 broker 清单核对卷上 102 个文件及容器 /usr 中 105 个文件，其中包括 26 个 systemd 单元。摘要、root 所有权和组及其他用户无写权限均通过。
+
+该版本的系统 SQLCipher 包声明 activate-noawait ldconfig，控制归档中没有包自身的维护脚本。原卷实测暂缓触发器后，库为 installed，libc-bin 为 triggers-pending。停机冷读原缓存及 83 份文件，重新启动后仅处理该触发器，动态链接器再次解析到原版库。链接器缓存换了 inode，内容摘要相同，dpkg 审计为空。本次 Debian trixie ARM64 软件源索引只列出 4.6.1-2，跨版本升级仍待验。冻结 0/12。[完整构建与实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 系统 SQLCipher 库 purge 与解包后续配
 
 六组件原 Root 停服后实际 purge libsqlcipher1，链接器缓存和已安装库文件均已核对。重新解包原 4.6.1-2 后，在 configure 之前正常停机；卷上冷读确认该包为 unpacked，六组件为 installed，原 83 份文件精确匹配。同 Root 续配并执行 libc-bin 触发器，dpkg 审计为空。正式 Main 经原夹具 provider 读回两个数据库和加密页。首次观察在取服务前等待 lazy bundle 进入 ACTIVE 超时；复测证实 STARTING 时已有服务引用，经正常入口即可读回，全程无需显式启动 bundle。停机只读入口更新为 sqlcipher-native-maintenance/parked-readback.py。不同系统库版本升级和维护脚本内部被中断仍待验。冻结 0/12。[dpkg、冷卷与正式 Main 记录](actual-native-wires-retained-reinstall-checkpoint.json)

@@ -1606,5 +1606,337 @@
       "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "linuxArm64ReactorAndMain": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi",
+    "source": "cbaadd198497505d4fe8e87886938a1e99c1f191",
+    "tree": "df2486db20844688c17ce57a9366ddfb957485c9",
+    "releaseBytes": 204239828,
+    "releaseSha256": "0affc565459d0e24672012cda7f230528c20859710c436f2c7f43f515a5667fe",
+    "tlsAndExtractionVersion": "6.0.0~git20261120223620.cbaadd1-1",
+    "classPairing": {
+      "org.eclipse.kura.core": {
+        "path": "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+        "jarSha256": "c33304ab897d5912ba7c105a3a5684bf05a65c2e240384b0ea48c799d5bb366b",
+        "classSha256": "bfaf39f545317816c601367495561725a9819216e1d28fd99e36eaf1f7131be5",
+        "oldClassSha256": "e77a44ebb8cb222bf43aa5e4efa1921a5d9b909907bdf50f49ad89358f0fe27d",
+        "linuxClassIdentical": true
+      },
+      "org.eclipse.kura.util": {
+        "path": "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.util-2.0.0-SNAPSHOT.jar",
+        "jarSha256": "055b8d4fd8f7d431fd679e5b12b36208d955cbdc8b0ecee0b85b7280f54d6046",
+        "classSha256": "d3232c658854524a8af22f80a0d4a625700fe12fd1da8656d61a3f71251cbd49",
+        "oldClassSha256": "8c8a56fe4788f83ecac1e4370d934decc4a799d9a4871629b0d39b925128efc7",
+        "linuxClassIdentical": true
+      }
+    },
+    "reactor": {
+      "source": "ba84bdcfb43f69b174faa735bb1e610d37278b43",
+      "tree": "92ef05377c35ba670e369878cd4560ed6ff51d67",
+      "modules": 82,
+      "wallTime": "11:40 min",
+      "platform": "Debian 13 ARM64, non-root UID 1000, JDK 21, external network disconnected",
+      "tests": {
+        "tests": 2153,
+        "passed": 2151,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "osgi": {
+        "tests": 68,
+        "passed": 68,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "skips": [
+        "org.eclipse.kura.core.system.SystemServiceTest.testActivateWithUpdatedDefaults",
+        "org.eclipse.kura.core.system.SystemServiceTest.testActivateRelativeConfigFilePathsUpdate"
+      ],
+      "crl": [
+        {
+          "seconds": "424.157",
+          "cases": 13
+        }
+      ]
+    },
+    "finalInstallation": {
+      "directory": ".management-close-20261116/core-rtc-hotplug-20261120/config-pid-snapshot-arm64",
+      "release": {
+        "source": "ba84bdcfb43f69b174faa735bb1e610d37278b43",
+        "tree": "92ef05377c35ba670e369878cd4560ed6ff51d67",
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/wip-core/kura/distrib/kura-core/target/kura_6.0.0~git20261120230500.ba84bdc-1_arm64.deb",
+        "sha256": "b74f01aea5e6365d2058fbe26ab3538fb175364943f4444b9812e8bb87de6bda",
+        "bytes": 204239796,
+        "version": "6.0.0~git20261120230500.ba84bdc-1",
+        "configuration": {
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-recovery/lib/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar": {
+            "jarSha256": "6bd62b7ad7df727ce5088e989c5aa2f46d038bd38d2604c2024fda2f7f1f12d5",
+            "classSha256": "cc9ddf78bff3fc99c6740a741bf915f11bdb9a6e43f5a113a7a319eca1e35ff1"
+          },
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar": {
+            "jarSha256": "6bd62b7ad7df727ce5088e989c5aa2f46d038bd38d2604c2024fda2f7f1f12d5",
+            "classSha256": "cc9ddf78bff3fc99c6740a741bf915f11bdb9a6e43f5a113a7a319eca1e35ff1"
+          }
+        },
+        "previous": {
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-recovery/lib/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar": {
+            "jarSha256": "0bd7b299b6c08590b61c130e69fc02b4a98b0e35775346b986015b5d9e60c884",
+            "classSha256": "a0c911b5815258679cdd475e21edf8e15bd967e537f75d54209e389762dd4677"
+          },
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar": {
+            "jarSha256": "0bd7b299b6c08590b61c130e69fc02b4a98b0e35775346b986015b5d9e60c884",
+            "classSha256": "a0c911b5815258679cdd475e21edf8e15bd967e537f75d54209e389762dd4677"
+          }
+        },
+        "classSha256": "cc9ddf78bff3fc99c6740a741bf915f11bdb9a6e43f5a113a7a319eca1e35ff1"
+      },
+      "runningMain": {
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "main": {
+          "unit": {
+            "MainPID": "3730",
+            "NRestarts": "0",
+            "LoadState": "loaded",
+            "ActiveState": "active",
+            "UnitFileState": "disabled",
+            "InvocationID": "a2cd0777b99d484da0cba1a1b4f972eb"
+          },
+          "ticks": "40189678",
+          "uid": "997\t997\t997\t997",
+          "capEff": "0000000000001402",
+          "nnp": "1"
+        },
+        "configurationClass": "cc9ddf78bff3fc99c6740a741bf915f11bdb9a6e43f5a113a7a319eca1e35ff1",
+        "registrationRemovalCycles": 64,
+        "concurrentReads": 32,
+        "retainedSnapshotImmutable": true,
+        "keysExact": true
+      },
+      "cold": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 83,
+        "originalSubmitWithdrawn": true
+      },
+      "sameEightTypedCohorts": {
+        "bind-service": 15,
+        "clock-broker": 14,
+        "command-executor": 11,
+        "dhcp-service": 16,
+        "journal-export": 8,
+        "modem-driver": 10,
+        "modem-reset": 13,
+        "reboot-broker": 9
+      },
+      "parallelsAdmission": {
+        "root": "2050:2",
+        "originalPlusNewFiles": 21,
+        "operations": 3,
+        "maintenancePurpose": "ebf6a548-01d4-4278-926b-691d7a2be5b7",
+        "clockUnitsInactive": 8,
+        "rtc": [
+          "rtc0"
+        ],
+        "currentDpkgPreinstLayoutDecision": "Main unit has no paired package definition; preserve installation",
+        "keyStateAbsent": true,
+        "core": "ba84bdcfb43f69b174faa735bb1e610d37278b43",
+        "debSha256": "b74f01aea5e6365d2058fbe26ab3538fb175364943f4444b9812e8bb87de6bda",
+        "preinstSha256": "2bc02dfaaacf027bb62eae42bcfdac7cd0afe93aa79e758e7c5bf32c1e6240b8"
+      },
+      "evidenceSha256": {
+        "release.json": "b1fa2fe6c9b2cdee4a8931c11ddd1cf0b36c42b9bef85b15ee9ec63272ca8f3a",
+        "upgrade.log": "9d978e8697f34e6f2af925bcf6f074281ab5910aa9468fc15685a072fb469efa",
+        "observed.json": "4fefdfdb2ee5eb5cf954ddb490d234539708aa73fe2b7cb51c63e6cb004f5889",
+        "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+        "typed-release-readback.json": "410b21a0c69822d5f02c78fbfecb0bc91431ecc729ff6e8b0e95b19088c23225",
+        "parallels-final.json": "e8133c314f12d1ecf317391e3260d5efbb949f99b287e535892fe8a691f1b84b",
+        "generated-copy-cleanup.json": "78c43118521191c87aeb93501bf232fb8aeeaaa9bb724725c21ec8d224840e13"
+      }
+    },
+    "buildHostname": {
+      "host": "d8dd898377e2",
+      "before": "127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::\tip6-localnet\nff00::\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n",
+      "after": "127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::\tip6-localnet\nff00::\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n127.0.1.1 d8dd898377e2\n"
+    },
+    "beforeFix": {
+      "configurationPidRace": "ConfigurationServiceRuntimeIT failed in a complete reactor while the SCR callback changed the PID HashSet. A deterministic unit check failed on the previous implementation. Membership is copied under the registration monitor and provider lookup takes place after that copy.",
+      "localizationFixture": "The c10n 1.2 mapper checks the JVM default locale before falling back to the message key. Installing the real localization fragment under en-US and zh-CN independently now verifies both branches.",
+      "recoveryFixture": "A fresh-VM release test created a world-writable evidence directory under umask 0000. The production publisher refused it. The test now gives success cases a private directory and separately checks group-writable rejection and the absence of a receipt.",
+      "extractor": "The ordinary Linux build user inherited umask 0000; the existing filesystem assertion failed because package directories allowed other users to write. Group and other write bits are now cleared when publishing both directories and class files.",
+      "tls": "A wrapper test depended on google.com:443. Loopback covers the same socket parameters. The new source-bind test also failed on the old implementation because it passed the peer address as the local address."
+    },
+    "typedBrokerInstalledCohorts": {
+      "manifestEntries": {
+        "bind-service": 15,
+        "clock-broker": 14,
+        "command-executor": 11,
+        "dhcp-service": 16,
+        "journal-export": 8,
+        "modem-driver": 10,
+        "modem-reset": 13,
+        "reboot-broker": 9
+      },
+      "volumeFiles": 102,
+      "containerUsrFiles": 105,
+      "systemdUnits": 26,
+      "rootOwnedAndNotGroupOrOtherWritable": true,
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      }
+    },
+    "ldconfigTrigger": {
+      "packageControl": {
+        "packageSha256": "f10e0835b08ba7c1671602cf8712248f0405656f25efad00ba21b2f14ae96d38",
+        "entries": [
+          "control",
+          "md5sums",
+          "shlibs",
+          "symbols",
+          "triggers"
+        ],
+        "trigger": "# Triggers added by dh_makeshlibs/13.20\nactivate-noawait ldconfig\n",
+        "cache": {
+          "sha256": "def6d5e71af2b8a623964faef49354071648cb5be7cde718b0e3a3d241eb1bdf",
+          "meta": "39|6759827|644|0|0|1|16883|2026-11-20 22:27:56.228845817 +0000|2026-11-20 22:27:56.231845823 +0000"
+        },
+        "consumer": "install ok installed|2.41-12+deb13u4|"
+      },
+      "trixieAptPolicy": "libsqlcipher1:\n  Installed: (none)\n  Candidate: 4.6.1-2\n  Version table:\n     4.6.1-2 500\n        500 http://deb.debian.org/debian trixie/main arm64 Packages\n",
+      "pending": {
+        "consumer": "install ok triggers-pending|2.41-12+deb13u4|ldconfig",
+        "pendingConsumer": "ldconfig",
+        "linkerCacheExact": true,
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 83,
+        "originalSubmitWithdrawn": true
+      },
+      "recovered": {
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "cacheBefore": {
+          "sha256": "def6d5e71af2b8a623964faef49354071648cb5be7cde718b0e3a3d241eb1bdf",
+          "meta": "39|6759827|644|0|0|1|16883|2026-11-20 22:27:56.228845817 +0000|2026-11-20 22:27:56.231845823 +0000"
+        },
+        "cacheAfter": {
+          "sha256": "def6d5e71af2b8a623964faef49354071648cb5be7cde718b0e3a3d241eb1bdf",
+          "meta": "39|6870532|644|0|0|1|16883|2026-11-20 22:53:29.764204333 +0000|2026-11-20 22:53:29.766204336 +0000"
+        },
+        "library": "/usr/lib/aarch64-linux-gnu/libsqlcipher.so.1.8.0",
+        "consumer": "install ok installed|2.41-12+deb13u4|",
+        "auditEmpty": true,
+        "protectedFiles": 83
+      },
+      "finalCold": {
+        "consumer": "install ok installed|2.41-12+deb13u4|",
+        "pendingConsumer": "",
+        "linkerCacheExact": true,
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 83,
+        "originalSubmitWithdrawn": true
+      },
+      "firstObservation": "The first status comparison included the whitespace returned by dpkg-query. The next observation read the already queued trigger, with no second installation."
+    },
+    "installedMain": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3738",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "c3a1d122ae234c0292481c57fa1c3948"
+        },
+        "ticks": "40025371",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "sourceBind": "127.0.0.2 127.0.0.2 HTTPS",
+      "extractionUid": 1000,
+      "fileOwnerUid": 1000,
+      "extractedSha256": "be2337250f6f873fd7c816d6c103386e6edaffcfd2aa929c19583b4cec635170",
+      "classFiles0644": 2,
+      "directories0755": 6
+    },
+    "coldReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "optionalSqliteFixture": "Two manually installed JARs were held while Core was unpacked, then restored before starting Main. The separate DP/native lifecycle remains in the preceding evidence.",
+    "rtc": {
+      "orbStack": {
+        "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+        "rtc": [
+          [
+            "rtc0",
+            "rtc-pl031 40002000.rtc"
+          ]
+        ],
+        "registeredI2cAdapters": [],
+        "installedRtcModules": [],
+        "builtinRtc": [
+          "kernel/drivers/rtc/rtc-pl030.ko",
+          "kernel/drivers/rtc/rtc-pl031.ko"
+        ]
+      },
+      "parallels": "Checked the new ARM64 deb’s embedded admission policy read-only on the original component Root. Three original clock operations and 21 protected files matched; the static Main still has no paired Core package manifest. Formal Main positive RTC write is pending."
+    },
+    "nextColdCheck": ".management-close-20261116/core-rtc-hotplug-20261120/config-pid-snapshot-arm64/parked-readback.py",
+    "evidenceSha256": {
+      "reactor.log": "0c488bf397f4490f0f3f0529a92b1ffa427b5e92840c382ba77e503fcea3b53a",
+      "fixed-reactor.log": "52419f34bbba6ebf1e0ceaf3692c7d732cec71d728af8dcf7d03bc6dccfc1fda",
+      "ssl-before.log": "f05aa647e73a8eae701bf35a7adb1beeb1b1ca611920715697730ad379680bce",
+      "ssl-reactor.log": "af0184ddbefe09172dc6daec8e95f063cecec9113ca902940ac72a0fa605ba79",
+      "remaining.log": "029c3dbd30317efe24b3c20d576c63044fb78417249b57d1aa4fd8b01828ec18",
+      "remaining-fixed.log": "2fe11ae9c8a4cc92d91c106807e03e5857b4c25647bc88ff87c38d899263c683",
+      "pid-race-reactor.log": "33337492e4b58999c7e455970e26680466830df9a8f29e9e26c837596e7349d0",
+      "pid-race-before.log": "defecd1a50a4f475b4ed453c108cfe6a03a6e5117ca5d017901da56de8430948",
+      "pid-race-after.log": "4ec51f3bd481b1518d09867d22d786ba23857c355676a28b131e61de2fb28a28",
+      "build-hostname.json": "b729d9ae378fed68e2832e7a97df54250e5ef5ec8ab28ecc93a029c2aea4b7d3",
+      "final-reactor.log": "78f0171148de9922018dc4e8b29be79d9df91f3a7382a4556df2421bef79fa01",
+      "reactor-result.json": "a5fd943afb347953ce7f6092b7f9c4fcd7a92f2e7b37a0394a5571659cdd42c2",
+      "release.json": "ca04673e51309e93fc133c2a7d161121c008cf505c38457901700a2bcf9a2c75",
+      "release-readback.json": "90677fde9ab00ecb4b37f0265ce871a67df0f49d1b890d0e1e8c8bfee9b0c209",
+      "typed-release-readback.json": "01abad789611e22edab2e1691bcdf1edba09fd2f374a9630bdc3f3cb836c4b3b",
+      "typed-unit-declarations.json": "1ce5fd5ffdca754ef520a3a14c2613eebe20a27a147a0e640c0ffd29d7ed5100",
+      "observed.json": "3349d596db17a74c7a3400f84837c8e8591941e5c9caea372e54f6f85a69f057",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "builder-removed.json": "9a829ca4d6e1bac895795fe24d4ba8d58e813c630a789d6f762798cafd15b0bf",
+      "storage.json": "fbe075bb2eeb8ccbc918b627a5538e845e9ee36e891d937816301f23c1ab65c7",
+      "ldconfig-queue.log": "bae4e20070f666945a347e2d3cdc00bf1fe3c59bb900b7a15ea3a3dc58cdbb76",
+      "ldconfig-process.log": "062e97cde24277aaf59cb6d5e4f4d44a8d9975db40445687f490860bc352d042",
+      "ldconfig-cold-pending.json": "e17beea257cefe08ffeb7944cd7935742da4889b4f7a974accdf63d4b7e3a557",
+      "ldconfig-cold-final.json": "5d6d59afe0075c04775c2d334bbeb8debc1faea24c5c29ce463c1fec2a1b9bd5",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "parallels-final.json": "c7d286b286f41b1e37a6f4c9439699f77144053cb113e8415bb276e519157285"
+    }
   }
 }

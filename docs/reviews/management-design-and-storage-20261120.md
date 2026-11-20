@@ -6,7 +6,9 @@
 
 **有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
 
-11 月 21 日 05:08 前后，工作区按 `du -k` 实测 **343.88 GB**，宿主可用 **147.51 GB**。其中历史工作目录 **249.77 GB**，中心仓的 `target` **78.76 GB**，两者合计约 **95.5%**。中心 `target` 中，网络权限与注册现场占 49.12 GB，上游逻辑同步目录占 17.73 GB。当前 Core 打包目录留有 24 个 ARM64 deb，文件长度合计 4.90 GB。APFS 可共享数据块，上述目录计量不能直接换算为可释放空间。[本次容量明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json)
+11 月 21 日 07:06 起按工作区目录计量，工作区为 **345.36 GB**，较 05:08 增加 1.48 GB。历史工作目录占 251.25 GB，中心 target 单独复测为 78.76 GB，两者约占 95.6%。Core 打包目录现有 31 个 ARM64 deb，共 6.33 GB。较上次多出的 7 个包合计 1.43 GB。两种计量数值接近，APFS 共享块仍影响实际物理增长。本轮 Linux 编译容器为普通构建用户复制了 0.67 GB 缓存，源码与临时缓存已随容器回收，六组件卷另行保留。Docker 的销毁事件已核对。清理程序未及时保存可写层总量，因此无法量化此次容器实际释放的空间。[目录与发行包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/storage.json) · [临时构建回收记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/builder-removed.json)
+
+11 月 21 日 05:08 前后，工作区按 `du -k` 实测 **343.88 GB**，宿主可用 **147.51 GB**。其中历史工作目录 **249.77 GB**，中心仓的 `target` **78.76 GB**，两者合计约 **95.5%**。中心 `target` 中，网络权限与注册现场占 49.12 GB，上游逻辑同步目录占 17.73 GB。当时 Core 打包目录留有 24 个 ARM64 deb，文件长度合计 4.90 GB。APFS 可共享数据块，上述目录计量不能直接换算为可释放空间。[本次容量明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json)
 
 这次还定位到一种可以避免的重组装。API、Crypto 和 Configuration 三个 JAR 在运行时与冷恢复目录的内容逐项相同，只有清单中的 OSGi `Bundle-Version` 不同。例如 API 的构建后缀分别为 `202611202101` 和 `202611202040`。打包正确拒绝该组输入，从同一缓存重建恢复工具后通过。正式 `build-all.sh` 会为一次构建固定 `KURA_BUILD_QUALIFIER`。拆开运行 Maven 时，同一批候选也应显式传递相同的 `-Dkura.build.qualifier`，并让运行时和恢复工具使用同一批依赖。从当前 Git 只取 API 模块和构建父 POM，用同一个固定后缀连续执行两次干净打包，606 个文件条目以及整个 JAR 的 SHA-256 均相同。该验证复用了 Maven 缓存，临时源码和编译目录随即回收。[两次构建摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json) · [实际差异](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json) · [正式构建入口](../../../.management-close-20261116/core-rtc-hotplug-20261120/wip-core/build-all.sh)
 
@@ -22,6 +24,8 @@
 
 单次完整测试也有可量出的等待成本。11 月 21 日的 JDK 21 Core/OSGi 构建从头跑完 82 个模块，用时 11 分 42 秒。仅证书吊销列表的 13 项集成测试就用了 424 秒，约占总时长的 60%；这些用例要观察下载、刷新和到期的时序。2128 项测试通过、2 项跳过。调整验证频率时，可以把这类整套时序验收与局部维护脚本的定向验证分别估时。[完整构建记录](../checkpoints/20261116/actual-rtc-hotplug-and-addon-upgrade.json)
 
+这轮 Linux 全量构建还解释了重复验证中的一部分。一次从恢复模块开始的续跑，68 项 Equinox 测试全过；随后完整构建在异步注册组件时暴露了配置服务枚举 PID 的并发错误。先用一个确定性测试在旧实现上复现，再用原六组件卷中的正式 Main 并发枚举和注册。最终这次完整构建耗时 11:40 min，2151 项通过、2 项跳过。一个临时容器和同一份缓存支撑了各次构建。回归覆盖和重复存储可以分别安排。[完整构建及原卷验证](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 当前部署与权限
 
 | 位置 | 当前职责 | 已验证的边界 |
@@ -30,6 +34,8 @@
 | 网关本地 | Kura/OSGi 支持独立运行，保留 NetworkManager。可选 agent 常驻，远程开关控制中心通道。原 GWT 在安装 agent 后显示远程菜单。Core 生成私钥和 CSR。 | 原运行现场与新候选分开核验。当前六组件为 Core、Networking、GWT、Deployment、Wires、agent；加中心和安装器共八个 deb。 |
 | 需要系统权限的操作 | Main 调用按操作类型限定的本机服务。peer 校验调用身份，actor 执行获准的系统动作，安装器校验成套代码和单元。 | 六组件夹具的正式 Main 已撤下 DAC_READ_SEARCH。上次 Wires 验收读到 DAC_OVERRIDE、NET_BIND_SERVICE、NET_ADMIN。旧现场有自己的权限集。 |
 | RTC 热插拔 | 草稿把启动时的设备投影改成请求时重验节点及别名，再向时钟 actor 传递只读 FD。 | 复盘时为草稿。报告送达后，已完成 ARM64 热插拔、只读 FD 和新包的两条原 Root 升级路径。随后在原 Parallels 组件完成正式 actor 经 relay 接收 FD 并写入虚拟 DS1307，实测回执 APPLIED。正式 Main 已取得设备缺失的 ENOENT 回执，并在 Core purge、重装后读回原记录。在原组件上，独占打开的 DS1307 使实际 relay 返回 EBUSY，Root 与发送端保存同一笔失败。当前 Core 安装器只读核对后拒绝此静态组件单元。完整 Main 正向写入虚拟 DS1307 和物理 RTC 仍待验。 |
+
+从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。Main 的 DAC_OVERRIDE 仍是完整最小权限验收中的一项。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
 
 ### 六个网关包已经验证到哪一步
 
@@ -49,6 +55,8 @@ Deployment 的本地和云端入口各自维护同一份业务 DP 注册表。�
 H2 文件库提供了一个只有跨升级才看得清的风险。旧版遇到首次打开失败会删除数据库重试，凭据不匹配也可能丢失业务行。六组件的旧 Main 建库、写入一次业务记录，原地升级后的 Main 在拒绝错误凭据后恢复原凭据，再次读回同一行。整个场景复用 Wires 中断恢复的原容器和卷。[H2 实装与停机读回](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 这次验证启用中的 DNS 复用了原六组件容器、已有 Core 工作树和 Maven 缓存。修复后的 Core deb 为 204,224,080 字节，逐项核对了运行时和恢复工具中的两份 XML provider JAR。收尾从测试容器移除了已核对宿主原件的两个临时 deb，共 213,605,954 字节。[本轮安装与空间记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json)
+
+正式 Main 安装过两个版本的加密 SQLite 部署包。升级后注册表指向新版，卸载按当前登记地址删除了新版。冷卷上还留有旧版的 294,611 字节归档，SHA-256 与首次安装的发行件一致。DeploymentAgent 启动时遍历注册表，因此该旧文件不会仅凭位于 packages 目录就被重新安装。这解释了运行卷上的一处小额留存，完整构建目录和多版 deb 的占用要大得多。[旧归档和注册行](../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution/archive-identities.json) · [启动和卸载代码](../../../.management-close-20261116/core-rtc-hotplug-20261120/kura-deployment/bundles/org.eclipse.kura.deployment.agent/src/main/java/org/eclipse/kura/deployment/agent/impl/DeploymentAgent.java)
 
 ## 磁盘增长的实测解释
 
