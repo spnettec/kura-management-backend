@@ -59,3 +59,5 @@
 | 只组装 deb | 8.585 秒 | 上述三份保留件的内容、inode、mtime 均保持 |
 
 两份 deb 的整体 SHA-256 相同。另逐项比对了 7 个控制条目和 595 个载荷条目的内容与元数据。比对用的临时 deb 已删除，正式包及回执保留。在新验收目录只需 deb 时，本例可少生成约 408 MB 的附带产物。客户安装器和 ZIP 交付的验证仍采用完整发行构建。[构建对照回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/deb-only-comparison/verified.json)
+
+jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名为 `validation.deb`，清单也会引用这个名字。对照打包时应在独立目录沿用正式包名。已用此方法重新生成清单，并以保留的正式包核验文件名、大小、MD5、SHA-1 和 SHA-256，原包 inode 和修改时间均保持。[发行清单核对回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/deb-only-comparison/canonical-manifest.json)
