@@ -340,5 +340,130 @@
       ],
       "logSha256": "7b48e5d31777257709942117dc8a13965d28b4f2bc32043eaf6b5d14678fa494"
     }
+  },
+  "confirmedJavaNtpSample": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/clock-sync-confirmation",
+    "source": "abefdec533b8ba2a7e11cf36ba68adcf0c9dec9a",
+    "tree": "5276804447d62f1e72b5c816d1ca9b8fad8cc873",
+    "deb": "81338ed6af662024aa84ca3229637974e6936ade66f365eddaf303f946c60a80",
+    "installedJar": "3d989ef42b0cc1005c6fe74e062e39ec14d4ae91e554427c5182e1c547ae32f0",
+    "oldRegression": "First rejected system correction returned a non-null ClockService.getLastSync().",
+    "clockModule": 35,
+    "reactor": {
+      "commit": "abefdec533b8ba2a7e11cf36ba68adcf0c9dec9a",
+      "jdk": "21.0.13",
+      "maven": "3.10.1",
+      "profile": "osgi-it",
+      "selection": "all modules from workspace pom; no -pl or -rf",
+      "modules": 82,
+      "totalTime": "11:45 min",
+      "testTotals": {
+        "tests": 2140,
+        "passed": 2138,
+        "skipped": 2,
+        "failures": 0,
+        "errors": 0
+      },
+      "crossModule": {
+        "module": "kura-unit-tests",
+        "kind": "surefire",
+        "tests": 127,
+        "passed": 127,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "equinox": {
+        "module": "kura-osgi-tests",
+        "kind": "failsafe",
+        "tests": 67,
+        "passed": 67,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "crlIntegrationSeconds": 424.3,
+      "skips": [
+        "[WARNING] Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.603 s -- in org.eclipse.kura.core.system.SystemServiceTest"
+      ],
+      "logSha256": "f23511853279367b01e50e16862e5f9c8cf8db1776d310370605aeb0f39fe212"
+    },
+    "registeredMain": {
+      "unit": {
+        "MainPID": "1735",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "1bc5be75a3da493fa4d22d8250df45ba"
+      },
+      "ticks": "39011777",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001402",
+      "nnp": "1"
+    },
+    "sample": 2000,
+    "decision": {
+      "errno": 1,
+      "namespace": "788d7a4e-59a9-465f-b296-54f84e26bc61",
+      "observedMonotonicNs": 390125913313608,
+      "observedRealtimeNs": 1795204188739929735,
+      "reason": "OS_ERROR",
+      "requestId": "588f6954-12f1-4922-81d8-b644db1c1b0d",
+      "requestSha256": "d0ec0f8648d6c902f6b7fef1a76ca208f2e8cf064bc0eab332b906ad0c5fd0e7",
+      "schema": 1,
+      "state": "FAILED"
+    },
+    "publicReadback": "getLastSync=null after one valid reply; no second packet during 2400ms",
+    "restoration": "original disabled ClockService restored",
+    "parkedNormally": true,
+    "scope": "system-clock synchronization timestamp; the isolated kernel denied clock changes and RTC writes, and no RTC device was passed through.",
+    "parallels": {
+      "root": "2050:2",
+      "installedCore": null,
+      "componentBundles": 1,
+      "framework": false,
+      "staticUnit": {
+        "FragmentPath": "/usr/lib/systemd/system/kura.service",
+        "MainPID": "0",
+        "UnitFileState": "static",
+        "ActiveState": "inactive",
+        "DropInPaths": ""
+      },
+      "candidateRootsFound": [],
+      "searched": [
+        "/opt",
+        "/srv",
+        "/var/lib/machines",
+        "/var/lib/containers",
+        "/var/local"
+      ],
+      "preserved": {
+        "root": "2050:2",
+        "originalMainExact": true,
+        "originalClockFilesExact": 15,
+        "originalMaintenanceFenceExact": true,
+        "unitsInactive": 8,
+        "rtc0Alias": "rtc0"
+      }
+    },
+    "appliedPermissionChecks": "Docker capabilities compared after normalizing CAP_ prefixes; nine actual creation configurations inspected.",
+    "evidenceSha256": {
+      "before.log": "655e73dbc889a0bc3d3959dc9e68c8f82cde0562f237f252998125626d46a529",
+      "after.log": "14eeff81c0659fd29121af664d38ea70c1a31833b8a9abc69047fd6858965d37",
+      "package.json": "3a1e116f18f2b92bc3fd5f4161717cc65e2fd4825076e8ed4c9eedadc175eb8a",
+      "inputs.json": "65c6a36bc518eae8831f00b8a40537a296139b72e4cfa26f0bd23d875fc835ce",
+      "installed.json": "fd238731fe3be05da7da92ba57a048ed3de80577d1dd01b6f2a2bfcdd8603188",
+      "dispatch-intent.json": "b02cd0c893d772f604fe1cbd86b27f580ddfb22556d04362f7f342a02c4dbc39",
+      "observed.json": "07d2fd0c51681cb67dc0dfa0069255f33a246b68b10000081623f5d3418fbcdc",
+      "parked.json": "bc83c653922668d5951430fbc5f4e7e098caa7ff41c4448599e5c39a87f46548",
+      "core-osgi-result.json": "2724ca00c7c12090e7f7237b74a821a111e5b2df82507e4a4f7faf4e1b5d598e",
+      "core-osgi.log": "f23511853279367b01e50e16862e5f9c8cf8db1776d310370605aeb0f39fe212",
+      "original-three-after.json": "a664f6c64b12bbe399c8f5a987ed864ae913a20ee33968d73ca9eaa447584f6f",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "permission-readback.json": "f7a30f8536c414afb9d6449a97b2f6ea4aca7d3ae6e3ec962d5d32ca194985c2",
+      "../full-main-rtc/existing-roots/inventory.json": "d9469d0d98381c535e4bbeeb621f7eb11562c19281870186c9099c9e7505b4c0",
+      "../full-main-rtc/existing-roots/preserved.json": "faf997db0a7d0eea0fed0fee9df368d7b673657cc3bb5432b60f92238fffc3a6"
+    }
   }
 }

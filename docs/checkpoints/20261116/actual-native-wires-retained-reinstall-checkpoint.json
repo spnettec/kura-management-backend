@@ -118,5 +118,113 @@
     "disk-full/hard-power"
   ],
   "frozenParentSha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
-  "pushed": false
+  "pushed": false,
+  "sameRootColdInterruptedWiresUpgrade": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/stable-native-root/systemd",
+    "container": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+    "volume": "yofc-kura-six-package-cold-root-20261121",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "sixOriginalVersions": {
+      "kura-core": "6.0.0~git20261120194814.abefdec-1",
+      "kura-networking": "3.0.0~git202611201717.4741b5e-1",
+      "kura-management-ui": "3.0.0~git202611201910.6b7442f-1",
+      "kura-deployment": "2.0.0~git202611201456.3772936-1",
+      "kura-wires": "3.0.0~git202611201404.89d5f57-1",
+      "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+    },
+    "wiresUpgrade": "3.0.0~git202611201623.5605b6b-1",
+    "originalGraphSubmissions": 1,
+    "recoveryGraphSubmissions": 0,
+    "postinst": "Original dpkg configure interrupted at the Wires registry lock after unpacking the upgrade.",
+    "before": {
+      "containerRoot": "2097164:6615741",
+      "pidOneTicks": "39024274",
+      "kernelBootId": "38663672-c6a8-476d-a08f-437f4ca99f72"
+    },
+    "coldAdmission": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "outer": "2097165:6615741",
+      "pidOneTicks": "39037422",
+      "bootId": "38663672-c6a8-476d-a08f-437f4ca99f72",
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "state": "half-configured",
+      "otherFiveExact": true,
+      "graphAndKeysExact": true
+    },
+    "sameFiles": {
+      "credentials": 2,
+      "graphAndSnapshots": 4
+    },
+    "recovery": {
+      "dpkgAudit": "",
+      "topology": [
+        "native-wire-upgrade.timer",
+        "native-wire-upgrade.logger",
+        "0:0"
+      ],
+      "additionalNaturalDeliveries": 1,
+      "finalMain": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "exitCode": 0,
+      "offline": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "protectedFilesExact": 6,
+        "originalSubmitWithdrawn": true
+      }
+    },
+    "disk": {
+      "initialVolumeKiB": 61256,
+      "finalVolumeKiB": 447028,
+      "parkedContainerWritableBytes": 25387574
+    },
+    "firstBoot": "Default container policy refused pivot_root before package installation. Used chroot for PID 1 and dpkg on the same volume. /usr belongs to the dedicated container layer.",
+    "evidenceSha256": {
+      "inputs.json": "cc9f35c380542e6b099b7a85410fc7f41126227f168bae0b16885cddeb5608b9",
+      "volume.json": "23aa42f19d438ea927fe670d2dd4fa19303442e1c176f57db7e2a5cecce36969",
+      "installed.json": "173582eecff33c4495ccf1e67ce5fd41ef1d6d5f2c5c41fe0ee33673d76bd9b8",
+      "original-graph.json": "7325b9acf89b52eecd1685591efd485b8c48a77493e6b8127ae96d2d618b6540",
+      "preserved-graph.json": "2c9354178e83a92e53731afbe4cb56acd0c0181e3e6d36cf97cae6a1f803b508",
+      "unpack-upgrade-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "interrupted.json": "ce2cb7ed2d1690570950989c32af013982e4581374563acc9b6e4f1fc00954ed",
+      "before-cold-stop.json": "49f349b08029f60d1a4e7a4d3f5d5738e20e045ea123bd1d49c264d07f7c6a98",
+      "interrupted-park.json": "332faf5bed5d4b89f44157f9037d096975fc06122b8578ad5357b434465fdc54",
+      "outer-sample.json": "cb9208ee3d54d74e076158dbd1c312f38de811a7292207bdfce9e4a9d07770a8",
+      "cold-admitted.json": "48284bea9d6fe8aa262e92a0e75c37a8c2af38447f26b7be0c007232cc65a077",
+      "original-configure-after-cold-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "restored.json": "1cd11e904851db0430ac602bb685e992048a727d51a3453ef5cd3f1d893ec61e",
+      "final-check.json": "cc5038d68beb1e08ab0930eaadcac2e2e822bd1dc47ff52272402fc4fc95198d",
+      "parked.json": "02ae00ed34a49d6aec7c25d179c03369044257c12fb1be13a0aedbfd745b3511",
+      "offline-readback.json": "6983bb460c10db7053b186213bc2187e1e40b95c83bb88e550a183cee625a9fc",
+      "initial-pivot-refused.json": "e536ad0d389575fd58c0a5e63ec8e5fc7ae1f1540d250a40542204eec571ecdb",
+      "bootstrap.sh": "aac2f1864fe5215849651a6792e7e698c4792e638c889ab83015a3b74b983409",
+      "old-wires.json": "4704bcf5c36142870ac5b904c8221456374e6dc6820d0002c9144863eac0b3c9",
+      "parked-readback.py": "9d34324553d1ca2d95efecc0218069d238c282dc9764df90af94c3ecc1e403d2",
+      "native.py": "3c66d36b1e2a53c57003cdad32d99c682c3637d2fe4aef77243d155121600e80"
+    },
+    "nextReadOnlyAdmission": "parked-readback.py",
+    "storagePairing": "Retain both the dedicated stopped container and its named volume. PID 1 and package processes use the volume as /. The /usr mount belongs to the same original container."
+  }
 }
