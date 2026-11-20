@@ -56,6 +56,8 @@ Core 自身的升级也会产生临时复制。安装脚本在替换旧目录前
 
 相邻两次 Core 发行更直接地说明了磁盘为什么随迭代增长。修正包维护对正式 Main 的识别后，两个 ARM64 deb 各约 204.24 MB。逐个解包计算内容摘要，540 个常规文件中有 538 个完全相同，占新版常规文件总字节的 99.93%。变化集中在维护脚本和记录其摘要的清单。以最终 deb 为基准试做差分，88.03 MB 即可逐字节恢复 204.24 MB 的中间 deb，SHA-256 与原包一致。这是一次临时测量，两个发行原件仍保留，未计为已回收空间。[包内逐文件比较](../../../.management-close-20261116/core-rtc-hotplug-20261120/package-writer-quiescence/payload-difference.json) · [差分还原实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/package-writer-quiescence/delta-estimate.json)
 
+网关运行时也会积累少量旧发行件。本次 SQLite 可选 provider 直接用现有部署入口交付，两个版本各约 0.295 MB，沿用同一六组件卷。升级及卸载后，旧版本的 294,611 字节仍在 packages/，摘要与首次安装包完全一致。部署服务启动时按 dpa.properties 恢复，卸载时只删除当期登记的归档；停机时注册表只剩原业务 DP。这个实例解释了单个旧文件的来源，不能据此推算工作区数百 GB 的总量，也不足以决定其他历史包的删除策略。[现场归档与摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution/archive-identities.json)
+
 以下采用十进制 GB。11 月 16 日清理时工作区从 483.49 GB 降至 96.39 GB。11 月 20 日上次会话中途量到 491.68 GB，清理完成时为 335.18 GB，宿主可用空间净增 154.45 GB。两次读数之间有新构建，APFS 共享块也会影响目录计量，不能把两次节省量相加。
 
 | 11 月 20 日清理后的目录 | 占用 | 对工期和保全的意义 |

@@ -1414,5 +1414,119 @@
       "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "sqlcipherDeploymentPackage": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution",
+    "code": "0ffa1325cd4769206d388086b32f257e00f1483f",
+    "tree": "5693fabc9cb6f02b55a29444203863876fb88356",
+    "coreInstalled": "6.0.0~git20261120221047.3e1bc49-1",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "delivery": "Opt-in Maven sqlcipher-dp profile. The DP contains the SQLite provider and an ARM64 Xerial JNI built from matching sources against system SQLCipher. Runtime libsqlcipher1 was already installed, version 4.6.1-2.",
+    "packages": {
+      "first": {
+        "sha256": "94c209676241d7e0d1da143b47f3b04578a57cfcc1ebf1149fd0dc7619245ad7",
+        "bytes": 294611,
+        "payload": {
+          "org.eclipse.kura.db.sqlite.provider_2.0.0.202611210700.jar": "2a4cea73935a6260c7eaebb3ee33a9d12fea68525d9c1bc043ff5ad22cbdac91",
+          "jni": "b5236447360fd7a8bcc69384ebba1f165561919b197b053908466122f6e858f2",
+          "org.xerial.sqlite-jdbc_3.47.1.0_sqlcipher.jar": "5bb4023a82f35d3ed59e9254594fd332f464417c4411cb50e75939dbcd4b9806"
+        }
+      },
+      "update": {
+        "sha256": "702e65cdb0d047d56e597f3ef963f312dafdc52f7f3ec8ec9deb0ccaa8e83c33",
+        "bytes": 294610,
+        "payload": {
+          "org.eclipse.kura.db.sqlite.provider_2.0.0.202611210701.jar": "a2afbe32685125220210dcff45b21a597b156f79776bd2de6f5e12753c07d696",
+          "jni": "b5236447360fd7a8bcc69384ebba1f165561919b197b053908466122f6e858f2",
+          "org.xerial.sqlite-jdbc_3.47.1.0_sqlcipher.jar": "5bb4023a82f35d3ed59e9254594fd332f464417c4411cb50e75939dbcd4b9806"
+        }
+      }
+    },
+    "tests": {
+      "mavenDpPlugin": 5,
+      "sqliteProvider": 83,
+      "repeatBuildByteIdentical": true,
+      "missingNativeDependency": "JDBC refused before creating the database in a disposable ARM64 runtime without libsqlcipher.so.1."
+    },
+    "stages": {
+      "first": {
+        "prior": "absent",
+        "result": "6.0.0.202611210700 3.47.1.0_sqlcipher 2.0.0.202611210700 32",
+        "registryLines": [
+          "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp",
+          "kura-sqlite-dp=file\\:/opt/eclipse/kura/packages/kura-sqlite-dp_6.0.0.202611210700.dp"
+        ],
+        "retainedBusinessDpSha256": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef"
+      },
+      "update": {
+        "prior": "6.0.0.202611210700",
+        "result": "6.0.0.202611210701 3.47.1.0_sqlcipher 2.0.0.202611210701 32",
+        "registryLines": [
+          "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp",
+          "kura-sqlite-dp=file\\:/opt/eclipse/kura/packages/kura-sqlite-dp_6.0.0.202611210701.dp"
+        ],
+        "retainedBusinessDpSha256": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef"
+      },
+      "cold": {
+        "prior": "6.0.0.202611210701",
+        "result": "6.0.0.202611210701 3.47.1.0_sqlcipher 2.0.0.202611210701 32",
+        "registryLines": [
+          "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp",
+          "kura-sqlite-dp=file\\:/opt/eclipse/kura/packages/kura-sqlite-dp_6.0.0.202611210701.dp"
+        ],
+        "retainedBusinessDpSha256": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef"
+      },
+      "remove": {
+        "prior": "6.0.0.202611210701",
+        "result": "absent",
+        "registryLines": [
+          "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp"
+        ],
+        "retainedBusinessDpSha256": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef"
+      }
+    },
+    "observations": "The registered Main read the pre-existing plain and encrypted rows through the DP-owned provider on install, update and cold restart, and ran cipher_integrity_check. The first probe observed DeploymentAdmin before startup had restored the existing DP. It issued no update. After waiting for the exact registered generation it dispatched the update once. Only the original business DP remained registered after uninstall. The two fixture JARs were held out of the framework during the whole test and then returned.",
+    "coldReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "archivesAfterRemoval": {
+      "fixture.retained.business_1.0.0.dp": {
+        "bytes": 853,
+        "sha256": "55304c32fdf1807aa89582e073f30698835506a06cdb531ea9b7d4b96177c1ef",
+        "inRegistry": true
+      },
+      "kura-sqlite-dp_6.0.0.202611210700.dp": {
+        "bytes": 294611,
+        "sha256": "94c209676241d7e0d1da143b47f3b04578a57cfcc1ebf1149fd0dc7619245ad7",
+        "inRegistry": false
+      }
+    },
+    "nextColdCheck": ".management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution/parked-readback.py",
+    "remaining": "Native OS library upgrade/removal/purge, coordinated maintenance interruption and treatment of previously retained version archives remain separate. No cleanup policy has been applied to older archives.",
+    "evidenceSha256": {
+      "release.json": "e051c0a90f7f8cbe10a58388813193202168f91986fd93765fe3ba600085d57b",
+      "debian-inputs.tsv": "fecb731b05cd9dd3eade2aa47bd50d614d6900d7f258428f0e6cf2c11c25937d",
+      "release.log": "7f0f5e4f64aadfdf31e7a2e8ffb796954224fc38c6742794a773b92189b95276",
+      "checked-release.log": "82ecb89625c67ba42a621d904a138cfca2b81bcafb57325c481f519e1b0b8eca",
+      "variants.log": "2f12a047f3bba513cbe9c9e07f8877a63f3ce0fb507866991c6cb8491d20c87e",
+      "missing-library.log": "7a63540523f02e93468fecc75e3458a02c6561d0b0a3ee4d371e743921da5c5f",
+      "early-update-observation.json": "6f12b13501ca87ceb36807d9d4c7bb24d648fcf694efecd02217befc246d23e0",
+      "observed-first.json": "8e767739b2355af92b4fafde9f033f1175dcf7c3cdb7ae478409b0cabd57a078",
+      "observed-update.json": "49cd8347e6cdc01df1ab320121753b2cac9e4cbe1d20f59842460512db2728ef",
+      "observed-cold.json": "e29fc3a2828f81f4d9723cc2f66c421aa35c228c1bc9d387371a682769315bd8",
+      "observed-remove.json": "f2051217d7c87fd5195252ee4d806cc0c819f6d4d7ece58e050d36ae08cd321c",
+      "archive-identities.json": "38199778e977a455198480af8445c48e647e0905c870ac4af2d630813431daa4",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }

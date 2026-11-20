@@ -1,3 +1,7 @@
+## 2026-11-21 加密 SQLite provider 的发行包与维护
+
+Core 0ffa1325cd 生成可选 Linux ARM64 部署包，在一个 DP 内交付 provider 和按原 Xerial 源码编译的 SQLCipher JNI。两次相同构建的 DP 逐字节一致。六组件原 Root 上，正式 Main 通过部署服务安装、升级，随后冷启动恢复。三个阶段均由 DP 所属 provider 读回原明文库与加密库业务行，加密页完整性检查通过。首次升级观察时框架已发布 DeploymentAdmin，原 DP 仍在异步恢复，等到指定版本后才派发一次升级。移除后两个 bundle 消失，只剩原业务 DP 登记。停机只读追溯到未登记的旧版本归档 294,611 字节，保留待核查历史用途。当前只读入口为 sqlite-provider-distribution/parked-readback.py。系统 SQLCipher 包的移除、purge 与中断恢复仍待验。冻结 0/12。[发行、实装与归档记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 和直接启动 JVM 跨包维护
 
 六组件原 Root 上，直接启动的 JVM 持有写者锁时，已安装 prerm 和传入 preinst 均拒绝重装，原进程、密钥及历史保留。首版依赖读取另一 UID 的 FD，在实装中被拒。最终 Core 3e1bc49711 使用现有 Root 租约登记识别正式 Main；停服后仍须取得内核独占锁。正式 Main 运行中用 dpkg 重装成功，手动再启动后，原业务 DP 和 agent bridge 均 ACTIVE。六组件已正常停机，续接入口为 package-writer-quiescence/parked-readback.py，复核六包和 83 份文件。[实装与续接证据](actual-native-wires-retained-reinstall-checkpoint.json)
