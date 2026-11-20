@@ -1,3 +1,7 @@
+## 2026-11-21 SQLite 加密配置与正式 Main 冷启动
+
+Core `f6c57008b7` 在打开持久库前核对原生 SQLite 引擎支持的加密和换钥指令。Git 指定的 Xerial 驱动在 ARM64 请求加密时拒绝操作，业务文件和凭据记录均未创建。SQLite 模块 83 项通过。同一六组件 Root 的正式 Main 加载测试用 SQLCipher 4.6.1 驱动后，实际通过配置工厂创建加密库、写入一行业务数据并换钥。第二次 Main 冷启动读回同一行，通过加密页完整性检查，两次均读回此前普通 SQLite 库的原行。正常停机后只读核对六包、SQLCipher 库包与 40 份文件。加密版 JDBC 的正式交付及网关包装钥轮换仍待验。冻结 0/12。[构建输入、两次 Main 与停机回执](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 SQLite 可选 provider 安装、升级、卸载与原文件重开
 
 Core 源码 `2bc1de1a76` 的 SQLite provider 保留打开成功后的数据文件。保存凭据和换钥失败时直接返回错误。缺省配置保留不可读文件，主动启用重建的旧配置仍可在没有候选加密钥且 SQLite 明确报告文件格式错误时重建。82 项模块测试通过，包括真实 SQLite 文件打开成功、随后保存凭据失败，恢复后读回原行。在同一 ARM64 六组件 Main 上实际安装 JDBC 和旧 provider、创建一次工厂配置、写入一行。原地更新 provider、卸载并从相同 bundle location 重装后，原服务重新注册并分别读回同一行。该验证采用可选 OSGi 安装方式，持久库使用普通 SQLite。冻结 0/12。[维护阶段与停机状态](actual-native-wires-retained-reinstall-checkpoint.json)

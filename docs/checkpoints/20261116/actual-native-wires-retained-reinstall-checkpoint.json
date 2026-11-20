@@ -486,5 +486,121 @@
       "SqliteLifecycle.java": "56ad89baeff31d1fbcd97594926941ad7c875636e7d55e1d69133c8f3fd23c9a",
       "probe.jar": "876c4f8d2c06e1d29dd6834e25193df3f58d4c960fc2911a0fc73f1ea05a9588"
     }
+  },
+  "sqlcipherRegisteredMain": {
+    "providerSource": "f6c57008b75aeb9254f8398681f9eaf6d1682c9d",
+    "tree": "96ac257ef4c82db7b18c05167c94fcb54f1b16d0",
+    "sixPackageVersions": {
+      "kura-core": "6.0.0~git20261120201409.5e80d67-1",
+      "kura-networking": "3.0.0~git202611201717.4741b5e-1",
+      "kura-management-ui": "3.0.0~git202611201910.6b7442f-1",
+      "kura-deployment": "2.0.0~git202611201456.3772936-1",
+      "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+      "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "driver": {
+      "original": "4164d95347aeab42b754cabb7945b93e54f29ddb2eded967dbe979b4045cb685",
+      "testDriver": "c7b3cb72d160a941fb5f78cc196b1d0c5e57f33e607697b0721de21e1d5117d8",
+      "changedEntry": "org/sqlite/native/Linux/aarch64/libsqlitejdbc.so",
+      "nativeLibrary": "2cf7e22614fc0d61a1ea6cd18a2b3e526cef5f8174276781b72b3597f1d41098",
+      "unchangedEntries": 213,
+      "sourceJar": "3d043283658ba47a5a66df546c0c1044393e516635fca4f920147ae44aeac63e",
+      "runtimePackage": "f10e0835b08ba7c1671602cf8712248f0405656f25efad00ba21b2f14ae96d38",
+      "fetchedFrom": "Signed Debian trixie ARM64 package index",
+      "sqlcipher": "4.6.1-2"
+    },
+    "moduleTests": 83,
+    "independentArm64": [
+      "stock Xerial driver refused before creating a business file or recording a credential",
+      "SQLCipher test-only JNI created an encrypted file, rekeyed, and read the original row using a test wrapping store"
+    ],
+    "mainInvocations": [
+      {
+        "unit": {
+          "MainPID": "1287",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "52bf9bef814b45f4a240b30e62467170"
+        },
+        "ticks": "39273412",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      {
+        "unit": {
+          "MainPID": "7937",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "ca72e084d54c4d3fbb0bceee68a69f4f"
+        },
+        "ticks": "39274672",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      }
+    ],
+    "application": "Real registered ConfigurationService factory, CryptoService and BaseDbService. One factory creation, one business insert, one configuration rekey. Original plaintext factory row read on both starts. New encrypted file and row checked after rekey and after a cold Main start. Encrypted header and cipher_integrity_check verified. Original wrapping-store entries retained.",
+    "scope": "Xerial 3.47.1.0 with a single substituted fixture JNI and Debian libsqlcipher1 arm64. Packaging a cipher-enabled JDBC, product-wide rotation, old-key retirement and other providers remain open.",
+    "installedVolumeKiB": 481784,
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 40,
+      "originalSubmitWithdrawn": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-20T20:33:10.394676928Z",
+        "FinishedAt": "2026-11-20T20:33:44.877941872Z"
+      }
+    },
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/sqlite-cipher-provider",
+    "nextReadOnlyAdmission": ".management-close-20261116/core-rtc-hotplug-20261120/sqlite-cipher-provider/parked-readback.py",
+    "evidenceSha256": {
+      "inputs.json": "cbe72d4621f1d934c089df7a59c099ac61781a6a63d9bd0ec3fd222156d04799",
+      "driver.json": "526908a862681f7d05993ae4bcad7d1915a2878006fd76bb5eff11e09eb84484",
+      "engine-stock.log": "8b411e4dba92bc23f6eb623e2f2d0d5bbdc3d1c42a9d0f0a3f5bcf695a519598",
+      "engine-codec.log": "3a06967daaff42781c7821c99e4c977e46f7ab33301873fa8bbcfeb5bd6c6012",
+      "native-stock.log": "a8e5660a0865342f1bd0d7a28273cfc54b81ec7180dcaa3d2ca91c4cca2b06c7",
+      "native-codec.log": "cc4cec114b387c286fcaab239ab1a6f0603e438ff89b0ff9d14bdb45f24d56a8",
+      "module.log": "92ca8fc546a85392b44a68faa61ed4152aec3929a79300e6c97278fc03395c76",
+      "SqlcipherMain.java": "ba0326d50e89acbbcc538548dac505a87640b18ee6b755e36599820f4f724462",
+      "probe.jar": "911ee10ef3680bbd1746fdead8f96392244c36961195b25e9c12d9bbea971dbc",
+      "create-intent.json": "b0fbf05c7153dcc4b366fd7d29e63369a40fc6238ff4e686693e8210df4d33e1",
+      "create-observed.json": "6240b6de5315d185c532ebe05f2f846b33110c0ff45bd91e6a2e35436833ff6e",
+      "create-stopped.json": "72dfb4eadf8d95f4cf1b185d50559fcb2f50dd06ab0381ba141f6f9b779ee22d",
+      "cold-intent.json": "518a0176b44ba34ddbccb9d1293d72b28729380b797404e7997e3b40ceaac2ba",
+      "cold-observed.json": "6372904f26a84b3cb6323214a83a0c83f6c9608cb5353c32396da3f852af17ec",
+      "cold-stopped.json": "c2f93802868e35b33db77b477c7ffe1305085203ccc4d463fe6c908c80eb878f",
+      "final-check.json": "e5fd84d0c48ea417acbc3dfd8f053cd3906364c1bc2607acee1d904141385cc5",
+      "parked.json": "260e660c253c46a35b851d36814fcb5151e6583008bc0ae882f938ef250d7646",
+      "offline-readback.json": "3036011275e154110816c1c7b68edc872e9cfafc252a218623019609612d14b0",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "original-three-after.json": "fbd81d790af2d07c1cdba5ee3f0eec7d3d1f330a9a3d3dd60c86dc3bd087ee8b",
+      "parked-readback.py": "53ff701f051fc8d5ae136029e2b813641ca1e600b7b7cf5a8770fa6531f47646",
+      "live.py": "0a5e63baaa7e090d7aecd9d66fa30ae640d3b6e3d06bd1e57593c14c8333d216"
+    }
   }
 }

@@ -23,3 +23,7 @@ NM测试使用合法自定义原钥；默认弱钥继续拒绝新模板。代号
 ## 2026-11-21 文件数据库的实际进度
 
 正式六组件 Main 已验证两条独立的文件保留路径。H2 工厂沿原凭据重开原库，凭据被拒绝后仍能读回升级前的记录。可选 SQLite provider 在原地更新、卸载及重新安装后仍能通过原工厂读回原记录。SQLite JDBC 回归另验证凭据记录保存失败后的原文件重开。两条路径均未更换网关包装钥，SQLCipher、旧钥退役与其他 provider 仍按原台账待验。[实装回执](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-21 SQLCipher 文件库
+
+ARM64 六组件正式 Main 已验证同一 SQLite 工厂内的数据库凭据换钥，以及第二次 Main 启动后的业务行与加密页完整性。现场使用测试专用 JNI 和 Debian libsqlcipher1，原包装钥及先前存储项保留。发行驱动选择、跨代包装钥轮换、旧钥退役仍待验证。[驱动来源、实装与离线复核](actual-native-wires-retained-reinstall-checkpoint.json)
