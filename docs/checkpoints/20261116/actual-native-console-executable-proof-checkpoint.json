@@ -1,0 +1,111 @@
+{
+  "recordedAt": "2026-11-20T05:04:48.682533+00:00",
+  "corePostinstAdmission": {
+    "consoleCheckpoint": "67bf3c510aa2f707bbf42d74aacb8b2ca2a1bebe",
+    "historicalHttpsOriginalOutcome": "UNKNOWN",
+    "historicalWriterDispatchedAgain": false,
+    "preparedCopyVerifiedOnOriginalFence": true,
+    "linkedInterruptionCheckpoint": "c83759e"
+  },
+  "installerSource": {
+    "commit": "45a973e6e73dc7107509c887b970d8fb99c168cf",
+    "tree": "0e115ba9a2dfb2c736b80aa888bbefd3a771c2ef"
+  },
+  "testSource": {
+    "commit": "10998befc668dfc747a803f621f5d6261d317415",
+    "tree": "e0a7a935823c2ccfea51d5e0e8645f189e41b2ca"
+  },
+  "installerPackage": {
+    "version": "0.1.0~cohort20261120050154.45a973e-1",
+    "sha256": "c17c7e855e35e1e7d529019c68dc03c575d968f9aa5a21475434a9000e147c23",
+    "architecture": "all",
+    "sourceManifestSha256": "6af6e7ca97d51c0f5e4c4cf243eb8eb4d77aeeb54a73086f7c452aed051c9389",
+    "maintainerScripts": [],
+    "approvedNativePackages": 1,
+    "nativePackageCatalogSha256": "718433764c7ba6646a85dc5fc2bb13454b0f5a9b95a87450264571bf13ecac0f",
+    "guiEntrypointDependency": true
+  },
+  "fixtureBefore": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-19T09:16:59.862476172Z",
+      "FinishedAt": "2026-11-19T09:22:21.908387236Z"
+    }
+  },
+  "fixtureAfter": {
+    "id": "7c7f8413910fcd90238fd8729f5ba027c447a9eced4ab9411ba8066a53fa2030",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T05:02:46.137967821Z",
+      "FinishedAt": "2026-11-20T05:03:22.776209985Z"
+    }
+  },
+  "actualDebianArm64": {
+    "centerStartedOnFixtureBootBecausePreviouslyEnabled": true,
+    "explicitCenterStartDispatched": false,
+    "packageDispatchOrdinal": 1,
+    "sameRootAndBootAcrossUpgrade": true,
+    "livenessBefore": "UNVERIFIED",
+    "livenessAfter": "READY",
+    "httpsPort": 18443,
+    "retainedCenterProcess": {
+      "capabilities": {
+        "CapInh": "0000000000000000",
+        "CapPrm": "0000000000000000",
+        "CapEff": "0000000000000000",
+        "CapBnd": "0000000000000000",
+        "CapAmb": "0000000000000000"
+      },
+      "noNewPrivileges": 1,
+      "ticks": "34628789",
+      "pid": "267",
+      "uid": "990"
+    },
+    "retainedSystemdInvocation": "9efdd56f5bb74e67ba4e978bdf42c7b5",
+    "changedPackageCount": 1,
+    "originalPackageInstallOperation": "f5f9fffc-abb2-4455-b8b3-9febd39a7636",
+    "originalInstallReceiptSha256": "4835eba8476f7adde4c2a1add1fc1bedbde2ec1d7e23e20232b807b6df060bcf",
+    "preservedMetadataAndContentEntries": 21,
+    "mainAndAgentKeptStopped": true,
+    "hostRootDirectExecutableReadDeniedBeforeAndAfter": true,
+    "fixedProbeUidAndGid": true,
+    "credentialDropCapabilitiesAllZero": true,
+    "credentialDropSupplementaryGroups": 0,
+    "credentialDropNoNewPrivileges": true
+  },
+  "regression": {
+    "debianArm64PackagingPassCount": 132,
+    "focusedTestsPassCount": 42,
+    "priorTestFailureReproduced": 5,
+    "productionFilesIdenticalBetweenInstalledAndFullTestSource": true
+  },
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "finalParentsClosed": 0,
+  "finalParentsTotal": 12,
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "pending": [
+    "其他安装及生命周期组合、launcher、Cockpit 界面、完整 Core/OSGi、其余 typed brokers 和完整六组件矩阵"
+  ],
+  "pushed": false
+}

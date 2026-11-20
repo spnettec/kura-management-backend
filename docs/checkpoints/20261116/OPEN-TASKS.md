@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Native 中心安装器在受限宿主核验运行程序
+
+console 45a973e 在管理员读取内核程序链接被拒时，以固定中心账号、空附加组、空 capabilities 和 NNP 1 核对同一数字 PID 的程序摘要。已安装包的来源证明和精确 TLS 叶证书检验仍必需，成功探测后再次核对 systemd 原 MainPID 和 InvocationID。读不出原摘要、摘要不匹配或运行代次变化均不会返回 READY。
+
+沿已有六组件 Debian 13 ARM64 原隔离现场继续。中心因原 enablement 在启动时自动恢复，未显式再次启动。旧安装器实际返回 UNVERIFIED，管理员进程没有 CAP_SYS_PTRACE，直接读 /proc/PID/exe 确实被拒。只以真实 dpkg 升级新默认图形入口工具包一次。同一中心 PID、启动时钟和 InvocationID 上，安装器经原证书和存活端点返回 READY。直接读取仍拒绝，受控摘要命令的账号、五组能力、附加组和 NNP 已在实际系统核对。
+
+其他七包版本和 21 项受保护输入的内容及元数据保持，原中心安装编号和 APPLIED 回执精确。Core 和 Agent 未启动，原隔离现场正常停放，中心原启用策略保持。42 项 Debian ARM64 定向包装回归通过。未触及的证书测试在 Debian 新 TLS 栈的 BrokenPipeError 由旧源码同环境复现五次；10998be 只调整测试端 TLS session tickets，保留零 HTTP 字节断言。现有整套 132 项通过。实际安装包来自 45a973e，新测试只改测试文件。
+
+旧 HTTPS 已派发步骤仍为 UNKNOWN；沿原 Root、围栏恢复 PREPARED 回拷继续使用 67bf3c5 及 c83759e 的实装证据。原三现场、个人配置及 7fd 禁用停机、41 输入/16 回执保持。完整 Core/OSGi、其余 typed brokers、全部六组件/provider/launcher 与其余安装恢复仍内部待办。冻结 12 父项 0/12，external deferred 仅原三项。见 [实际检查点](actual-native-console-executable-proof-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core 与 Networking 联合升级保留原只读材料授权
 
 Agent 7d58d7b 为联合维护增加显式原材料授权编号。沿原 peer、初始化和同一 Root/boot，准备时固定公开授权、私有 relay grant、原指针和四份回执。两条原材料 socket 必须停用且连接归零。完成校验在新 Core 上重算原授权上下文，拒绝文件、权限或源目录变化，原材料授权保留。保留此前无需材料授权的流程。
