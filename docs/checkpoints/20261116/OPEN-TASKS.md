@@ -1,3 +1,7 @@
+## 2026-11-21 纠正 Core 旧配置尚未完成时 dpkg 误报 installed
+
+Core `fcf1206435` 在 abort 回调中核对活跃围栏与对应原 configure 目录。两个隔离 ARM64 dpkg 事务直接调用正式 deb 内的完整 postinst。替换解包被拒后，原 configure 未完成的一组由 half-configured 转为 unpacked，普通已安装的一组保持 installed，两个原围栏内容均一致。另有 29 项 configure 与普通启动回归通过。两个测试的 configure 入口由载体构造；实际全包原现场的同类中断后续接继续待验。冻结 0/12。[包维护检查点](actual-core-network-sender-purge-checkpoint.json)
+
 ## 2026-11-21 三类网络发送端的原编号经过 Core purge
 
 Core 原先在 purge 时删除运行数据保留副本，DHCP、BIND 和 modem 的 Java 待确认文件也会随之消失。Core `4857c3128c` 在移除时按各自的机器标识、actor 目录设备号和 inode 核对记录，重装时在 Main 停止的条件下以原 kurad 身份发布。Debian ARM64 的正式 Core 包原地升级、移除、purge、重装通过。发行版 Java 发送端读回三条原记录，编号、字节、属主、权限、链接数和长度匹配，三个 actor 目录均保留且没有写入作业。凭据一致，dpkg audit 为空。该现场验证派发前的持久化。正式 Main 已生效、未确认的 DHCP 经 Networking purge 的证据见下一条。

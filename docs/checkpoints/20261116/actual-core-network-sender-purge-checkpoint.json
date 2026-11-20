@@ -143,7 +143,45 @@
   },
   "localEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/network-sender-core-retention",
   "remaining": [
-    "Abort callback can report installed while an existing configure transaction remains PREPARED.",
+    "Full Core resumption through its corrected abort callback needs a real installed interruption. The two isolated dpkg carrier paths passed.",
     "Core purge with an applied but unacknowledged operation from a registered Main remains a separate case."
-  ]
+  ],
+  "abortCallbackFix": {
+    "core": "fcf120643543ceccab710edc5e9d270eac6ab2ea",
+    "tree": "36eafecd3a4121e5c146c8f6be4ddc6a6f28bd9a",
+    "package": "kura_6.0.0~git20261120180944.fcf1206-1_arm64.deb",
+    "packageSha256": "f57365d15db4c04a12caec5ee2cbd6c9ead783291563b41c99c2c914a8297a02",
+    "tests": 29,
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/core-aborted-configure-status",
+    "actualDpkg": {
+      "method": "Two isolated dpkg carrier packages delegated abort-upgrade to the unmodified postinst extracted from the shipped ARM64 Core deb. Configure and preinst failure were fixture-controlled.",
+      "prepared": {
+        "fixture": "prepared",
+        "postinstSha256": "179d0132e0102eb1642cd9645627bfaa7d7901659c2d44386d82ff073793e245",
+        "before": "half-configured",
+        "after": "unpacked",
+        "actions": [
+          "configure",
+          "abort-upgrade"
+        ],
+        "replaceExit": 1,
+        "fenceExact": true,
+        "stderr": "dpkg: error processing archive /tmp/kura-debian-callback/2.deb (--unpack):\n new kura-test-abort-callback package pre-installation script subprocess returned error exit status 1\nCore configure refused: Original Core configure is still fenced; keep the package unconfigured\ndpkg: error while cleaning up:\n installed kura-test-abort-callback package post-installation script subprocess returned error exit status 1\nErrors were encountered while processing:\n /tmp/kura-debian-callback/2.deb\n"
+      },
+      "ordinary": {
+        "fixture": "ordinary",
+        "postinstSha256": "179d0132e0102eb1642cd9645627bfaa7d7901659c2d44386d82ff073793e245",
+        "before": "installed",
+        "after": "installed",
+        "actions": [
+          "configure",
+          "abort-upgrade"
+        ],
+        "replaceExit": 1,
+        "fenceExact": true,
+        "stderr": "dpkg: error processing archive /tmp/kura-debian-callback/2.deb (--unpack):\n new kura-test-abort-callback package pre-installation script subprocess returned error exit status 1\nErrors were encountered while processing:\n /tmp/kura-debian-callback/2.deb\n"
+      }
+    },
+    "remaining": "Exercise refused replacement and ordinary dpkg configure resumption in the installed full Core package."
+  }
 }
