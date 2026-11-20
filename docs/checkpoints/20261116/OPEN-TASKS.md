@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — 正式 Main 的 PKCS#11 签名吊销与 Jetty 双向 TLS
+
+隔离 Debian 13 ARM64 Root 用 JDK 21 实装 Core `4535c821c6` 与 SoftHSM2 2.6.1-3。首个 Core 安装在解包时因 ENOSPC 明确退出 1。确认未安装、Main 未启动、原凭据齐全后，磁盘有空间时将同一已核摘要的包在同 Root 续接一次，退出 0。dpkg audit 清空，已装 keystore bundle 与原 Git 配对制品摘要一致。此为本次实装故障恢复，磁盘满／硬断电完整矩阵仍按原台账处理。
+
+从新建的合成令牌生成服务端私钥。安全官登记客户端 CA，JDK 实际读为受信条目。三个探针启动因夹具输入将换行写成字面字符而在提交前退出，记录保留。确认 journal 只有锁文件后，修正输入并沿原计划 UUID 在正式 ConfigurationRevisionService 提交一次。结果 CORE_COMMITTED，四份持久记录。真实 PKCS#11 OSGi 服务在 CRL 更新前后分别以不可导出私钥签名并验证，确认同一受信 CA 和同一服务。
+
+实际 Jetty 使用签名校验和 CRL_ONLY。在空 CRL 生效时，两名受信客户端在 TLS 1.2 和 TLS 1.3 下均成功，缺证书和不受信证书拒绝。回环源一次发布同 CA 签名的吊销列表。两种 TLS 均拒绝被吊销客户端，另一受信客户端及普通 HTTPS 继续完成 HTTP 请求。PID、出生时间、InvocationID、OSGi 服务、原快照及四份配置记录保持。即时磁盘观察早于缓存落盘，稍后只读核对确认磁盘 DER 摘要与 OSGi 所读吊销列表一致。令牌证书和私钥对象文件指纹保持。Main 禁用并正常退出，新夹具停放后读回 14 份文件，所核对日志、快照和回执无明文 PIN。
+
+本次覆盖单枚软件令牌的运行期 CRL 分发。PKCS#11 缓存冷启动、共享槽位、令牌拔出和替换、全部 provider 重加密、完整 Core/OSGi、其余 typed brokers、六组件/provider/launcher 和全部生命周期矩阵继续内部待办。原三现场及 7fd 的 41 输入／16 回执保留。冻结父项 0/12，external deferred 仅原三项。见 [实装检查点](actual-native-core-pkcs11-crl-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — PKCS#11 同槽位 PIN 变更必须重新认证
 
 旧 Core `96cd580d8a` 在隔离 Debian 13 ARM64 中一次提交同槽位错误 PIN，OSGi provider 仍可打开原令牌。Jetty 实际刷新后，TLS 1.2 和 TLS 1.3 仍返回原证书。OpenJDK SunPKCS11 对已登录令牌会跳过再次登录。首次观察探针因未声明 KuraException OSGi 导入失败，未派发配置，原探针归档后修正。
