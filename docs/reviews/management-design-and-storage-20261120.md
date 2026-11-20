@@ -37,6 +37,8 @@
 
 从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。Main 的 DAC_OVERRIDE 仍是完整最小权限验收中的一项。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
 
+普通命令的独立服务还影响两个用户可见的行为。在原六组件卷上停止一个正在运行的命令实例，Main 和监听 socket 均继续运行，下一条命令成功。对于 Main 私有数据目录，worker 可以相对读取已知文件，调用 getcwd() 则返回 EACCES。站点另设的目录给命令组穿越权后，worker 可以取得绝对路径并读指定文件，仍无法列举目录。两次实测复用已安装的 Core，没有新增 deb 或构建镜像。[普通命令与目录验证](../checkpoints/20261116/actual-core-command-worker-lifecycle-checkpoint.json)
+
 ### 六个网关包已经验证到哪一步
 
 截至 11 月 21 日，首装和组件能启动已有联合现场。下面按实际业务区分维护证据，便于续接时直接选取尚缺的模式或中断点。每行只覆盖所列现场，冻结父项仍为 0/12。

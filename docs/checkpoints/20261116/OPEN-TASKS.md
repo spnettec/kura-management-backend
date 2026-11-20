@@ -1,3 +1,9 @@
+## 2026-11-21 中断普通命令实例及工作目录实测
+
+六组件原 Root 的正式 Main 通过 OSGi 启动普通命令。确认 worker 实例、子进程及其 cgroup 后，仅停止这个实例。调用收到退出码 1、空 stdout 和 EXECUTOR_RESULT_UNAVAILABLE。原子进程及 cgroup 退出，Main 和监听 socket 的 InvocationID 保持。下一条独立请求以 UID 1000 成功执行。
+
+对于 Main 的私有数据目录，普通命令能相对读取已知文件，Python 的 getcwd() 实际返回 EACCES。另建的站点测试目录和子目录归 kurad:kura，模式 0710，样本归同一用户组、模式 0440。正式 Main 经同一 worker 得到完整工作路径，按相对和绝对路径均读到同一内容，父目录和子目录都拒绝列举。两阶段都已正常停机。私有目录的透明绝对路径兼容及其他命令账号继续待验。最新冷读入口为 command-site-directory/parked-readback.py，核对六包、SQLCipher 和 83 份文件。冻结 0/12。[实例、目录及停机证据](actual-core-command-worker-lifecycle-checkpoint.json)
+
 ## 2026-11-21 Linux ARM64 全量 Core/OSGi 与原卷升级
 
 以 ba84bdcfb4 在隔离 Debian ARM64、非 root、JDK 21 下运行完整 osgi-it 构建。同一六组件卷先安装 cbaadd1984，随后原地升级到与全量构建相同的 ba84bdcfb4。共 82 模块，2151 项通过、2 项跳过。修正独立解压进程的类文件及目录权限，并修正 TLS 显式本地地址被远端地址覆盖。正式 Main 上实际 TLS 客户端与服务端均见 127.0.0.2 源地址，普通命令用户 UID 1000 解压出正确内容。

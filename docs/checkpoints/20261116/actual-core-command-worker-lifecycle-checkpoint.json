@@ -392,5 +392,80 @@
     "receipts": 16,
     "disabled": true
   },
-  "pushed": false
+  "pushed": false,
+  "acceptedInstanceInterruptionOnSixPackageRoot": {
+    "source": "ba84bdcfb43f69b174faa735bb1e610d37278b43",
+    "tree": "92ef05377c35ba670e369878cd4560ed6ff51d67",
+    "debSha256": "b74f01aea5e6365d2058fbe26ab3538fb175364943f4444b9812e8bb87de6bda",
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "worker": {
+      "unit": {
+        "MainPID": "7232",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "static",
+        "InvocationID": "44b27c9702b445138951192cb65781d9"
+      },
+      "ticks": "40276024",
+      "uid": "1000\t1000\t1000\t1000",
+      "capEff": "0000000000000000",
+      "nnp": "1"
+    },
+    "sameListenerAndMain": true,
+    "firstResult": [
+      "1",
+      "",
+      "EXECUTOR_RESULT_UNAVAILABLE"
+    ],
+    "cgroupAndChildGone": true,
+    "nextCommandUid": 1000,
+    "privateDirectory": {
+      "relativeRead": true,
+      "getcwdExit": 1,
+      "getcwdError": "PermissionError: [Errno 13] Permission denied"
+    },
+    "siteDirectory": {
+      "workerUid": 1000,
+      "workerGid": 1000,
+      "cwd": "/var/lib/kura-command-site-directory/leaf",
+      "modes": [
+        "kurad:kura:710",
+        "kurad:kura:710",
+        "kurad:kura:440"
+      ],
+      "relativeAndAbsoluteRead": true,
+      "directoryListingDenied": true
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "scope": "Interrupted an accepted systemd worker running sleep. The resulting status describes lost delivery of the result. The separate site directory grants group search only. No package operation was needed in this exercise.",
+    "evidence": {
+      ".management-close-20261116/core-rtc-hotplug-20261120/command-instance-recovery": {
+        "active.json": "5d9974e88ee78b6f7170bc4d151b36966517dd58023619a5d262021c1a3f8ec1",
+        "observed.json": "3047a4b87e5de0b88527fd412a1f4f44ec7a594f3b1370bb43a70f610f4f3ccf",
+        "stop-accepted-instance-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+        "parked.json": "07db122f84927b23061867d04b9a32257142feb42a758aeb3240ed6ced8e48fd",
+        "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5"
+      },
+      ".management-close-20261116/core-rtc-hotplug-20261120/command-site-directory": {
+        "observed.json": "71d04f01d43cf1a7c2da8e75ab461e662920309d05a5a55f71eeeaf9d88624a8",
+        "site.json": "d0035dd857b8c43f9b9f2cbfff4a8e4f3b58b202452511222fe92e7be0c6d5c2",
+        "parked.json": "85fd5b7b6c118c90de2d1143c30e432a18feff26450a977b265e1bc81674b4cc",
+        "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+        "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+      }
+    },
+    "nextColdCheck": ".management-close-20261116/core-rtc-hotplug-20261120/command-site-directory/parked-readback.py"
+  }
 }
