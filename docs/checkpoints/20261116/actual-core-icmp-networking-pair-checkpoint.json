@@ -1,0 +1,245 @@
+{
+  "date": "2026-11-20",
+  "previousConsole": "197c1f66c1f2b4815510b8d7d80800d4025a0871",
+  "core": {
+    "head": "27a64d73f3ed466475f8c9c4a045126441c71018",
+    "tree": "1bbc379b62cae04048ee1d55f21d4150257282d0"
+  },
+  "networking": {
+    "head": "6ab7101295702d3ba01d1c3aaf017305637170b0",
+    "tree": "86a5a881b720532d1b3754c1d504d5025d7df025"
+  },
+  "managementAgent": {
+    "head": "bd69cc1b0668705ec09d1b4ee2c3d21f1cd42fff",
+    "tree": "cd9ad9c9df08743b7c2a517ec54ee30209ff0127"
+  },
+  "initialCorePairing": {
+    "head": "5ce4a95ddf00d2e86637fdfc4281dc71bb93ec1a",
+    "tree": "cc4a0a902d733046852dbea17b8b00210350c5e3"
+  },
+  "platform": "Debian 13 ARM64 with systemd, isolated Docker network none and local veth peers",
+  "jdk": 21,
+  "maven": "3.10.1",
+  "originalPair": {
+    "core": {
+      "path": "/root/kura-icmp-networking/kura_6.0.0~git20261120042027.6d768e5-1_arm64.deb",
+      "sha256": "7912d62310cf6257e172798ca7fbecbbbf56035043e5222cfaa3ad27dec2a666",
+      "package": "kura-core",
+      "architecture": "arm64",
+      "version": "6.0.0~git20261120042027.6d768e5-1"
+    },
+    "networking": {
+      "path": "/root/kura-icmp-networking/kura-networking-3.0.0~git202611200421.82dc2cd-1_all.deb",
+      "sha256": "f2e38ae60e89b2126268c4a42b2052868316cffcfcb412db7542814afbc2444e",
+      "package": "kura-networking",
+      "architecture": "all",
+      "version": "3.0.0~git202611200421.82dc2cd-1"
+    },
+    "dropIn": {
+      "sha256": "eb1079ba9bc662b196ef873cfc860cc1b53ab3b50813c2ee4437352c4cd65b18",
+      "stat": "1048815:5708045 0 0 644 1"
+    },
+    "main": {
+      "main": {
+        "MainPID": "1959",
+        "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+        "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin cap_net_raw",
+        "NoNewPrivileges": "yes",
+        "ActiveState": "active",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "UnitFileState": "disabled",
+        "NeedDaemonReload": "no",
+        "InvocationID": "9ea655793ebe4dc0bd047b560499ef1a"
+      },
+      "process": {
+        "Uid": "997\t997\t997\t997",
+        "Gid": "995\t995\t995\t995",
+        "CapInh": "0000000000001402",
+        "CapPrm": "0000000000001402",
+        "CapEff": "0000000000001402",
+        "CapBnd": "0000000000001402",
+        "CapAmb": "0000000000001402",
+        "NoNewPrivs": "1"
+      }
+    }
+  },
+  "migration": {
+    "core": {
+      "path": "/root/kura-icmp-networking/kura_6.0.0~git20261120042316.5ce4a95-1_arm64.deb",
+      "sha256": "f626f7021db6e1fdbe683d516a025a48f11061fc163ca6b71223d2e0ab21d352",
+      "package": "kura-core",
+      "architecture": "arm64",
+      "version": "6.0.0~git20261120042316.5ce4a95-1"
+    },
+    "networking": {
+      "path": "/root/kura-icmp-networking/kura-networking-3.0.0~git202611200423.6ab7101-1_all.deb",
+      "sha256": "e2e91c4bfdab2d1c1bdb076e3f03b6864a291234c9b86e1974686e45344d9cc3",
+      "package": "kura-networking",
+      "architecture": "all",
+      "version": "3.0.0~git202611200423.6ab7101-1"
+    },
+    "template": {
+      "sha256": "06589b8dede5926f63d760ec0a94a51aa6ef6ce6ddffee1c78dfcf978ec30473",
+      "stat": "1048815:5711424 0 0 644 1"
+    },
+    "dropIn": {
+      "sha256": "06589b8dede5926f63d760ec0a94a51aa6ef6ce6ddffee1c78dfcf978ec30473",
+      "stat": "1048815:5711444 0 0 644 1"
+    },
+    "sameRootAndBoot": true,
+    "canonicalKeyUnchanged": true,
+    "newCoreMaintenanceReceipts": 1,
+    "previousHistoryExact": true
+  },
+  "reverseDns": {
+    "initialSystemServiceStatus": "IP_ONLY",
+    "diagnostic": {
+      "nss-dual": {
+        "exit": 0,
+        "seconds": 0.03
+      },
+      "numeric-output": {
+        "exit": 0,
+        "seconds": 4.12
+      },
+      "default-output": {
+        "exit": 124,
+        "seconds": 12.043
+      }
+    },
+    "positiveAAndAaaaNodata": true,
+    "simulatedPtrTimeout": true,
+    "addressResolutionScope": "isolated test DNS only"
+  },
+  "finalRelease": {
+    "core": {
+      "path": "/root/kura-icmp-networking/kura_6.0.0~git20261120042946.27a64d7-1_arm64.deb",
+      "sha256": "e3730a4833f12998517c4b560b15e3d18dca3266e1098e48b963704f968d983e",
+      "package": "kura-core",
+      "architecture": "arm64",
+      "version": "6.0.0~git20261120042946.27a64d7-1"
+    },
+    "networking": {
+      "path": "/root/kura-icmp-networking/kura-networking-3.0.0~git202611200423.6ab7101-1_all.deb",
+      "sha256": "e2e91c4bfdab2d1c1bdb076e3f03b6864a291234c9b86e1974686e45344d9cc3",
+      "package": "kura-networking",
+      "architecture": "all",
+      "version": "3.0.0~git202611200423.6ab7101-1"
+    },
+    "agentPackageSourceReadOnlyCheck": {
+      "method": "KuraPeer.networking_drop_in",
+      "mainUnit": "/usr/lib/systemd/system/kura.service",
+      "pairedTemplateSha256": "06589b8dede5926f63d760ec0a94a51aa6ef6ce6ddffee1c78dfcf978ec30473",
+      "dispatches": 0
+    },
+    "newCoreMaintenanceReceiptsAfterDnsFix": 1,
+    "previousHistoryExact": true
+  },
+  "runtime": {
+    "main": {
+      "MainPID": "15551",
+      "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+      "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+      "NoNewPrivileges": "yes",
+      "ActiveState": "active",
+      "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+      "UnitFileState": "disabled",
+      "NeedDaemonReload": "no",
+      "InvocationID": "50f975f8198d4ffd805aa221a4204e9d"
+    },
+    "process": {
+      "Uid": "997\t997\t997\t997",
+      "Gid": "995\t995\t995\t995",
+      "CapInh": "0000000000001402",
+      "CapPrm": "0000000000001402",
+      "CapEff": "0000000000001402",
+      "CapBnd": "0000000000001402",
+      "CapAmb": "0000000000001402",
+      "NoNewPrivs": "1"
+    },
+    "osgiStatus": [
+      "FULL",
+      "main.icmp-pair.test",
+      "org.eclipse.kura.core.system",
+      "org.eclipse.kura.core.configuration",
+      "org.eclipse.kura.linux.systemd.provider"
+    ],
+    "networkManagerInvocationUnchanged": true,
+    "dns": {
+      "operation": "73007f47-0e42-497f-8194-fc732896eb46",
+      "config": {
+        "mode": "enable-lan-dual",
+        "forwarders": [
+          "192.0.2.53"
+        ],
+        "networks": [
+          "fd62:45::/64"
+        ]
+      },
+      "packageRootPaired": true,
+      "delivered": true,
+      "namedConfiguration": "a62c2611a359e855685308fd812574e95039ed7b85f752ed5ca8c29c72456289"
+    },
+    "lanQuery": {
+      "name": "lan.icmp-pair.test",
+      "source": "fd62:45::2",
+      "resolver": "fd62:45::1",
+      "answer": "192.0.2.61"
+    },
+    "fixtureRuleRestrictedToOneLanClientAndUdp53": true
+  },
+  "focusedTests": {
+    "corePythonPassed": 10,
+    "agentPeerLinuxPassed": 14,
+    "networkingMavenPassed": 2239,
+    "networkingFileMigrationContractsPassed": true
+  },
+  "fixture": {
+    "id": "94c2ff1a978c61d63259e6dd5a3aa2585bd6f42a4cdf91b194079ef3929fbd4c",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-20T04:21:01.778384117Z",
+      "FinishedAt": "2026-11-20T04:31:16.89737624Z"
+    }
+  },
+  "stopped": {
+    "MainPID": "0",
+    "CapabilityBoundingSet": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+    "AmbientCapabilities": "cap_dac_override cap_dac_read_search cap_net_bind_service cap_net_admin",
+    "NoNewPrivileges": "yes",
+    "ActiveState": "inactive",
+    "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+    "UnitFileState": "disabled",
+    "NeedDaemonReload": "no",
+    "InvocationID": ""
+  },
+  "internalPending": [
+    "actual Native Agent start and existing peer grant transition with current package cohort",
+    "other launchers, complete Core/OSGi, remaining typed brokers",
+    "full six-component/provider/launcher/lifecycle/interruption matrix",
+    "all 12 parent tasks"
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
+  "parentsClosed": 0,
+  "parentsTotal": 12,
+  "original7fd": {
+    "inputs": 41,
+    "receipts": 16,
+    "enabled": false,
+    "running": false
+  },
+  "pushed": false
+}

@@ -1,3 +1,13 @@
+## 2026-11-20 继续实施 — Core 与 Networking 的 Main 配对及域名探测
+
+旧 Networking drop-in 请求 cap_net_raw，实际 systemd 进程受 Core bounding set 限制，仍为 0x1402，但 systemd 的声明值与旧 Agent 配对条件不符。Core 5ce4a95ddf 只接受两个指纹固定的 Networking 模板，并声明新包依赖。Networking 6ab7101 改用无能力声明的依赖 drop-in，仅在升级中精确识别并替换原模板。Agent bd69cc1 核对包归属、原模板、实际 vendor 文件与 Core 已加载能力声明。两个指纹均有回归覆盖，历史规则继续生效。
+
+Debian 13 ARM64 上从 Git 用 JDK 21 和 Maven 3.10.1 构建并实际升级 Core 和 Networking。在同一 Root 和 boot 上，原 Core 兼容的旧 drop-in 保留到 Networking 正式后置配置，随后新模板与 vendor 文件精确匹配。实际新 Main 的声明和五个进程能力掩码都没有 CAP_NET_RAW；原 AES 与原维护回执保持。Agent 守卫读取真实已安装包和 systemd 状态通过。独立挂载测试确认旧模板只能按升级路径替换，修改内容和硬链接拒绝，同字节续接不更换 inode。
+
+域名首轮实测观察到 IP_ONLY。补齐夹具 AAAA 空响应后，单独比较反向超时，普通输出在 12 秒退出，数字输出在约 4.1 秒收到 5 个回复。Core 27a64d73f3 固定使用 iputils-ping 的 -n，仍用正向解析选择目的地址。再沿同一 Root 升级并启动，实际 OSGi SystemService 报 FULL。同一 Main 的正式 ConfigurationService 发布 IPv6 LAN，BIND 返回精确同 Root 的 APPLIED/送达回执。独立 LAN 客户端经 IPv6 访问代理，得到指定上游 IPv4 答案。防火墙只在夹具中为该客户端放通目标 UDP 53。 [Debian ping(8)](https://manpages.debian.org/trixie/iputils-ping/ping.8.en.html#n)
+
+Networking Maven 2239 项、Core Python 10 项、Linux Agent 配对 14 项通过。夹具正常停放，原三现场与 7fd 禁用停止及 41 输入/16 回执保持。Native Agent 实际启动和已有授权迁移、其他 launcher、完整 Core/OSGi、其余 typed brokers 和六组件矩阵继续内部待办，冻结 12 父项为 0/12，external deferred 仅原三项。见 [实际检查点](actual-core-icmp-networking-pair-checkpoint.json)。
+
 ## 2026-11-20 继续实施 — Core Main ICMP 专用 worker
 
 Core 6d768e52b3 将实际 OSGi SystemService 的联网探测交给按需启动、独立账号的 ICMP worker。只接纳来自实际 systemd Main 的直接子进程，重新核对 cgroup、PID、已加载单元与包指纹。使用固定 iputils-ping 指令和有界运行时间。正式 Main 移除 CAP_NET_RAW，普通命令 worker 的能力集仍为空。发行包显式依赖 Debian iputils-ping。
