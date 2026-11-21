@@ -1,3 +1,7 @@
+## 2026-11-22 已发布两代密钥的原卷在移除停机后沿原号完成 purge
+
+Core fc17697eba 在原 Root 39:8285453 完成最终 purge。正式 remove 后正常停机并冷读，重启后沿 990fac5c-9991-4e8b-b46e-d013e45366ae 清除，dpkg 审计为空。最终停机冷读 33 份受保护文件及三笔历史的 57 条签名记录，卷内 root 私有归档保留原测试快照、证书库和启动脚本。冻结 0/12。 原卷当前只读入口 published-generation-final-purge/cold.py final。
+
 ## 2026-11-22 自设 SSL 信任库口令跨密钥换代及已发布代的清除
 
 Core fc17697eba 的两个正式 ARM64 Main 从换代前后两份加密快照读回站点自设 SSL 口令，均能打开同一 JKS，两张信任证书及 HTTPS 签名证书匹配。该临时安装沿同一维护号完成 remove 和 purge，17 份凭据与密钥服务记录在停机前核对一致，容器正常退出。原两代卷仍停放，冻结 0/12。 原两代停放卷的最终 purge 仍待验。见 ssl-trust-generation-purge/HANDOFF.md。

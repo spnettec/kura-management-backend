@@ -8429,5 +8429,22 @@
     "persistentVolumes": 0,
     "originalPublishedRoot": "39:8285453",
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/ssl-trust-generation-purge/HANDOFF.md"
+  },
+  "publishedGenerationFinalPurge": {
+    "root": "39:8285453",
+    "operation": "990fac5c-9991-4e8b-b46e-d013e45366ae",
+    "publication": "1d654a98-64f1-4d54-8644-69b6bc4def26",
+    "phase": "final",
+    "archiveBytes": 125276,
+    "archiveEntries": 37,
+    "protectedFiles": 33,
+    "signedHistories": 3,
+    "signedPhases": 57,
+    "checkedArchiveMembers": 10,
+    "source": "fc17697eba897b45590bedb019c90fee40f6218a",
+    "packageState": "not-installed",
+    "allocatedKiB": 78680,
+    "parked": true,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-final-purge/HANDOFF.md"
   }
 }
