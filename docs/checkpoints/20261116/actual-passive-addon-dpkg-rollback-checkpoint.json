@@ -917,6 +917,17 @@
       "atCorePostrm": "absent",
       "physicalDirectorySurvivesPackagePayloadRemoval": true
     },
-    "frozen": "0/12"
+    "frozen": "0/12",
+    "installedLastOwnerCold": {
+      "root": [
+        2050,
+        2271189
+      ],
+      "alias": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux",
+      "dpkgOwners": [
+        "kura-networking"
+      ],
+      "coreListed": false
+    }
   }
 }
