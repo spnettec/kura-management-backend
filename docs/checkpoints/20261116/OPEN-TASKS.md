@@ -1,3 +1,13 @@
+## 2026-11-22 未决安装回执下的 Core 移除、直接 purge 与 dpkg 选择状态
+
+独立 Debian ARM64 系统的 Root 为 `39:7997146`，实装 Core `796e0ba` 与 Deployment `1b043a4`。正式 Main 接受一次 47001 并完成业务包安装。独立的 47002 也只提交一次。在 Felix 同步发出其目标 bundle 的 INSTALLED 事件时，测试探针核对原 job 回执并中断 JVM。重启后原安装服务读回 47001 COMPLETED、47002 UNKNOWN，后者的私有暂存 DP 和原未决回执保留。
+
+正常停止 Main，移除 Deployment，消除了 Debian 对 Core 的包依赖。分别执行原生 `dpkg --remove kura-core` 和 `dpkg --purge kura-core`，二者都进入已安装 Core 的 prerm，因原部署发布未决返回 1，并调用 postinst abort-remove。Core 实装状态仍为 installed，没有生成 /var/lib/kura-retained，dpkg 审计为空。两次失败后的完整选择状态分别为 `deinstall ok installed` 和 `purge ok installed`。
+
+沿原 Root 重装同一 Deployment，正式 Main 按原编号再次读回 47001 COMPLETED、47002 UNKNOWN。重装 addon 后 Core 的期望状态仍是 purge。取消本夹具的测试移除请求，将 Core 的选择恢复为 install。19 个 Core 配置历史文件的 inode、mtime、摘要逐一相同。Main 随后保持 disabled/inactive，容器正常退出 0。冷读验证 dpkg 选择及安装状态均为 install installed，已完成业务归档、未决输入副本、两份回执、注册表、凭据等 12 个文件的身份、时间戳和内容均与维护前相同。
+
+本轮证明的是已安装 Core 在安装类业务回执未决时的拒绝路径；两次调用都在 prerm 返回，未执行成功删除。下一步应检查只有已完成业务回执时，Core 维护成功后能否保留回执绑定的注册表目录身份并读回原结果。该问题应独立核对；本现场保持停放。原六组件、绑定网关及历史未决分别从各自原入口只读核对，7fd 保持停机、41 输入／16 回执。冻结 12 父项、闭环 0/12。外部延期仅原三项。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 原生 dpkg 在云端卸载未决时升级、移除、purge 和恢复 Deployment
 
 在独立的 Debian ARM64 systemd 安装上，Core `796e0ba` 和 Deployment `c77e34a` 的正式 Main 接受业务包安装 46001，随后只接收一次卸载 46002。Felix 同步发出该业务 bundle 的 UNINSTALLED 事件时，探针记录原回执摘要并终止 JVM。旧 handler 在同一 Root 读回 46002 UNKNOWN。失去完成回执的卸载保持未决。Root 为 `39:7987236`。

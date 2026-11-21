@@ -6676,5 +6676,46 @@
       "upgraded.json": "a6f957e9f5cfa3e338e3e743039137dc51eb183f95ac121562bdf4d21d760b22",
       "volume.json": "c2b12f22dea928a04ca2b6e3ced786c716dbe6abad0ae790fb7aae4a52cf1704"
     }
+  },
+  "nativeCoreRemovePendingInstall20261122": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/native-core-pending-install",
+    "root": "39:7997146",
+    "completed": 47001,
+    "unknown": 47002,
+    "removeResult": "deinstall ok installed 6.0.0~git20261121235952.796e0ba-1",
+    "purgeResult": "purge ok installed 6.0.0~git20261121235952.796e0ba-1",
+    "parkedSelection": "install ok installed 6.0.0~git20261121235952.796e0ba-1",
+    "hashes": {
+      "HANDOFF.md": "1d487b38a4363b84115acf99c476a2088fedbe6ce3a38f01e516ed18b68c1b33",
+      "inputs.json": "e569a3cebeebe5236ae492cff8574a74d5c4a73a190e6b484ed3f499632ebd75",
+      "field.py": "7e8354a678b15cf1fea1d8d6ffd7c7af7c23ba22e9181eeab1a2f6d3d5227313",
+      "maintenance.py": "596a64bfe372588cb03bbfedf0f945143a1f86922576de732fd49ca8dd208b45",
+      "standby.py": "8b71743bee56ec54323662d19514cdb9941e0e78400bb50cae12a84e4c411bbd",
+      "park.py": "0c30bebacd66c0b0a9946cee9e1b766a4172b8b61c1f83e7fbe6dac639798d92",
+      "Probe.java": "5af58c0b37dd057b62752920e9f55d7cdb3daeb688458b1997eb5bee201f6556",
+      "observer.jar": "34dfd6a91b6e68f96b6e5878c448b769965e2f6e702a1a6be69c2a8b747a932c",
+      "installed.json": "038b60a5ea09d7e2d6c12eceb8b915d3d681c4a4bd27082907178d72b6a24ee5",
+      "first-main.json": "d23064a4e94a92de971bdf3228cd2d74e499b4e0d462334bfc2bfa8455cb5e2e",
+      "dispatch-intent.json": "f78a358c144833f5bac9e07c84b8c5283d6fb781ae76cced6456ce0e6e827136",
+      "pending.json": "41f098efd00926a755736caf796f35c45c936d0ac262078911c834e13d3040fa",
+      "removed-deployment.json": "75e4a666b386a745047a060ea5da2ce9c136d62258e81ad06048899d924bc696",
+      "core-remove.log": "cc859612a8891b3115f84fca54a5db11331b723d0baeee21e4aac673f1c7ee77",
+      "refused-remove.json": "edbec55cc46182dcabd02033238c95981def72049716be6be32f8820813b49d3",
+      "core-purge.log": "d52697998b26a92e6d03a28c28f14c4a92555302c711a2c68551801adc31d0fb",
+      "refused-purge.json": "91c000eafee070eccd7ce30135df9f2c6da2b37ad13decb90ed7732c76127ed8",
+      "restored.json": "20bba53786d32f1da1a5c3be86f585ecb52f00156ffe5a2415c68c89f4239348",
+      "readback.json": "3965badd63567b36f7d0313225be6e10ab977feef71475eaf5a2c6d997887f04",
+      "final-check.json": "20bba53786d32f1da1a5c3be86f585ecb52f00156ffe5a2415c68c89f4239348",
+      "selection-intent.json": "2561ef5f7080b1f9159963ea45f8220e7a2dc7102f098cb4a8458542c7ff8b31",
+      "selection-restored.json": "ec3571fc60f4c2265a0720af56c3933763a742aba58fc6c559e91a0c0dd4e12c",
+      "final-parked.json": "adcb560f75afbd5880e08784f53d85770eadda1d060bb9eb140fb9f0211e2c35",
+      "final-cold.json": "d003a505cfa2b2050c049525936222b407bf7ef9e75471c84d78f11b08b9d887",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "storage.json": "29d3cfab993dad7ed9cfb8c674f6b9806648fcad0e6fccb78f59dbf58c36833b",
+      "original-three-after.json": "e1f5ae02369ad6e34337a355aaddcc5dfb7af264ae9b187f809c7ed229b1a1cc",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
+    }
   }
 }
