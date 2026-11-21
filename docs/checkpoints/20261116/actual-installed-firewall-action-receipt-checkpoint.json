@@ -3881,5 +3881,77 @@
       "repos-final.json"
     ],
     "coldReader": "durable-firewall-forwarding/cold.py"
+  },
+  "configurationServiceRouteAcrossMainRestart": {
+    "root": "39:7320076",
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-configuration-snapshot",
+    "api": "ConfigurationService.updateConfiguration(pid, properties, true)",
+    "pid": "org.eclipse.kura.net.admin.ipv6.FirewallConfigurationServiceIPv6",
+    "property": "firewall.ipv6.nat",
+    "versions": {
+      "kura-core": "6.0.0~git20261121075913.7f04a99-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1"
+    },
+    "submissions": {
+      "installRoute": 1,
+      "removeRoute": 1
+    },
+    "snapshotIdBeforeAndAfterRestart": 1795248549312,
+    "snapshotSha256": "0ed051b49a899f543e44634040a7d8e1e195e258e0616ea26c5675664d36dfb9",
+    "initialGrant": "68c88153-4386-4a24-95ea-ca994304fafe",
+    "grantAfterProviderReactivation": "29e62af7-07a8-4b12-bfb2-502e0315c7b6",
+    "positiveRules": [
+      "-A forward-kura-ipf -s 2001:db8::81/128 -d 2001:db8::82/128 -i lo -o lo -p udp -m udp -j ACCEPT",
+      "-A forward-kura-ipf -s 2001:db8::82/128 -i lo -o lo -p udp -m state --state RELATED,ESTABLISHED -j ACCEPT"
+    ],
+    "controlsBeforeAndAfterColdMain": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "distinctSystemdInvocationIds": [
+      "7e58dff93b0d4df69cecd2a84fda33b8",
+      "ba9b1b154c234a328e0ea6cc0048f152"
+    ],
+    "revocationSnapshotId": 1795248649849,
+    "revocationKernelRules": [],
+    "forwardingAfterLiveRemoval": [
+      0,
+      1
+    ],
+    "observerCorrections": "The registered provider omits the terminal rule separator. The first comparison failed after the positive API call. The first withdrawal comparison stopped before its API call. Read back the original snapshot and worker result. Corrected comparisons and used the single existing withdrawal signal. No business operation was resubmitted.",
+    "packageChanges": 0,
+    "newVMsOrVolumes": 0,
+    "coldRead": {
+      "root": "39:7320076",
+      "versions": {
+        "kura-core": "6.0.0~git20261121075913.7f04a99-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1"
+      },
+      "records": 34,
+      "files": 159,
+      "bootRecords": 11,
+      "forwarding": {},
+      "worker": "e65c48adf2d4b25918d4260ae0145d64e8d21025fcf4d86588be826b8b5a12d8"
+    },
+    "coldReader": "firewall-configuration-snapshot/cold.py",
+    "files": [
+      "persist-verified.json",
+      "first-observer-finding.json",
+      "before-cold-main.json",
+      "cold-verified.json",
+      "before-cleanup.json",
+      "remove-verified.json",
+      "retained-snapshots.json",
+      "final-park.json",
+      "cold-final-park.json",
+      "preservation-final.json",
+      "repos-final.json"
+    ]
   }
 }

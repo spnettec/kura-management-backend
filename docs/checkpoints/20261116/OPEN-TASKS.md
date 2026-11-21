@@ -1,3 +1,9 @@
+## 2026-11-21 ConfigurationService 保存的 IPv6 规则跨完整 Main 重启保留
+
+临时防火墙安装 `39:7320076` 的正式 Main 通过注册的 ConfigurationService 保存一条回环 IPv6 转发配置。正常停机后沿原 Root 启动，在没有站点规则文件的新网络命名空间中，firewall.service 先恢复规则；完整 Main 启动后，注册 provider 仍返回原规则，原快照 `1795248549312` 的文件指纹保持，两条内核规则均逐条通过。随后同一配置 API 撤销规则，新快照 `1795248649849` 中 NAT 为空，内核规则和开机授权均已移除；当时 IPv6 转发开关仍为 1。观察器修正了末尾分号的比较，两次配置写入各提交一次。
+
+复用既有 Core 和 Networking deb。临时安装正常停机，最终冷读 159 份文件、34 对发布记录、11 份启动记录。防火墙续接入口 `firewall-configuration-snapshot/cold.py`，原六组件仍用 `six-local-sqlcipher-upgrade/cold-maintenance.py`。其余 provider/launcher 及六组件维护矩阵继续。冻结 **0/12**，外部延期仅原三项。[快照、正式 Main 与内核证据](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 授权的 IPv6 转发经正常停机后恢复
 
 防火墙临时安装 `39:7320076` 升级至 Core `7f04a990f3` 和 Networking `671a90f`。正式 Main 经注册的 IPv6 provider 加入两条回环规则。正常停机再启动，标准 firewall.service 看到两个地址族均无站点文件，依原 Root 的 Main 回执执行 85 条内核命令，两族转发从 `[0,0]` 变为 `[0,1]`。逐条核对两条内核规则通过。正式 Main 随后按原 OSGi 配置自动移除临时规则和启动授权，当时 IPv6 转发仍为 1。再次正常停机启动后两族均为 0、两条规则均已消失。隔离 ARM64 内核另验双族授权、旧请求、撤销和中断续办。IPv4 正向尚限隔离 worker；业务配置经 ConfigurationService 保存并跨完整 Main 重启仍待验。
