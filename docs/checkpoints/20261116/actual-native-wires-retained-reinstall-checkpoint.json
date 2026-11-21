@@ -9124,5 +9124,32 @@
     },
     "evidenceSha256": "cd3b7980366fb2230475b416c27cd3c00f097079ccf1fd02292539a387a7f6a6",
     "cold": "container-oci-lifecycle/cold.py"
+  },
+  "coreNativeContracts484c4c8": {
+    "packageSource": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "testSource": "50c02de8bc5cb08ad3bf849b40126846469bea00",
+    "packageSha256": "99d3a824acb9c5e65c470cacef2f33069ecc6bab2e4f739b6889664a1747eb32",
+    "moduleCount": 79,
+    "linux": 1220,
+    "macosJs": 7,
+    "standaloneArchiveUds": true,
+    "pendingHarnesses": [
+      "test_core_snapshot_systemd",
+      "test_key_generation_core_systemd",
+      "test_key_handoff_systemd",
+      "test_key_package_upgrade_systemd",
+      "test_key_preparation_systemd",
+      "test_key_publication_recovery_systemd",
+      "test_key_start_lease_systemd",
+      "test_key_writer_systemd",
+      "test_managed_core_recovery_systemd",
+      "test_managed_recovery_systemd",
+      "test_unprivileged_executor_linux"
+    ],
+    "cohortCount": 9,
+    "cohortEntries": 103,
+    "vendorCopies": 21,
+    "evidenceSha256": "c4adbd9458d473a69a3933f2563f326fd5c8ddfc4698fb0850b6d87257e1b18a",
+    "cold": "core-native-contracts-484c4c8/cold.py"
   }
 }

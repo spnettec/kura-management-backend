@@ -1,3 +1,7 @@
+## 2026-11-22 Core ARM64 原生发行合同与 broker 配对
+
+Core 484c4c843c 的 Debian ARM64 原生合同测试完成汇总。79 个测试模块中 1220 项在 Linux ARM64 通过，7 项 polkit JavaScript 在 macOS ARM64 补验通过，另通过真实 Unix peer 归档入口。Core 50c02de8bc 只更新归档测试夹具，覆盖 writer 持锁拒绝及正常释放后同一历史续接。正式 deb 的 9 份 broker 清单共 103 项文件及 21 份 systemd 单元副本，摘要与配对全部通过。独立 systemd 和宿主编排的 11 个场景入口单独登记。构建容器已回收。冷读入口 core-native-contracts-484c4c8/cold.py。冻结 0/12。
+
 ## 2026-11-22 Container 正向 OCI 验证的 OrbStack 环境边界
 
 Container 9a7cda7 的 OCI 正向验证定位了 OrbStack 的内核限制。Docker 内的独立系统在运行时选用无会话 keyring 模式后收到 pivot_root 拒绝。另在 OrbStack 隔离 Debian ARM64 系统重建独立 systemd 运行环境，正式 Core 484c4c843c 的 Main 成功通过凭据准入，但 runc 无法附加 BPF_CGROUP_DEVICE，进程仍为 PID 0。两笔明确失败均已封存，provider 已 purge，两套系统均停放。实际 OCI 启动、跨 Main 重启和 TERM 停止仍待验。冷读入口 container-oci-lifecycle/cold.py。冻结 0/12。
