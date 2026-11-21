@@ -2916,5 +2916,60 @@
       "parallels-final.json": "af513a3505cc9408cba0f3381eabaf9643b00f3f3310937d0cc3a7d292782701",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "authenticatedSystemLogDownload": {
+    "root": "39:6611544",
+    "receipt": {
+      "requestMatched": true,
+      "header": {
+        "status": 200,
+        "type": "application/zip",
+        "disposition": "attachment; filename=\"Kura_Logs.zip\"",
+        "length": 3666808,
+        "finishedCookie": true
+      },
+      "downloadedBytes": 3666808,
+      "filename": "Kura_Logs.zip",
+      "page": "/admin/console"
+    },
+    "sha256": "2d553f4d0287f4a16413f495396534739eaad7accdbe65304c46a6a903cb38f1",
+    "entries": 99,
+    "testedCrc": true,
+    "samples": {
+      "kura-11-21-26-00-08-20-1.log.gz": "e4e180e04d34dcb34d31011674d18259834597610b3245ff9cd595f3ab46496d",
+      "kura-audit-11-21-26-00-08-20-1.log.gz": "67d86245f64a7b55688be2ad1d75bc84c2b0eb059e7ea40fc0acff5de6de6b72",
+      "kura-http-download-20261121.log.gz": "e4e180e04d34dcb34d31011674d18259834597610b3245ff9cd595f3ab46496d"
+    },
+    "logs": {
+      "kura.log": 281917,
+      "kura-console.log": 2720123,
+      "kura-audit.log": 25703,
+      "kura_journal.log": 47391,
+      "system_journal.log": 28099639
+    },
+    "account": {
+      "accounts": 1,
+      "oldSnapshot": "snapshot_1795207350959.xml",
+      "newSnapshot": "snapshot_1795223609366.xml",
+      "previousCount": 8,
+      "originalAccount": true,
+      "newCredential": true,
+      "changeRequired": false,
+      "providerServicePidRefreshes": 15
+    },
+    "core": "b1b8060be2619b156f147bb76d682a287b656898",
+    "gwt": "6fd074cdc001edd791f07c5aa7c7655f7a6a2808",
+    "installedWebJar": "ecae459384eabd886159a121c611950cc3b9f226bda3431b02caea26e2117686",
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "loopback": "Isolated official GWT HTTP listener on port 80; no TLS listener on 443 in this installation.",
+    "evidence": "http-download-session/parked-readback.py",
+    "accountHandling": "Only the original fixture administrator was changed through the first-login form. The generated password is stored privately outside Git. The eight previous snapshots were preserved. The temporary downloaded ZIP was removed after verification."
   }
 }

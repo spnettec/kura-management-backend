@@ -1,3 +1,9 @@
+## 2026-11-21 原六组件管理页登录与日志下载
+
+正式 Main 的 GWT 页面在已获准的原夹具账号上完成首次改密，使用新密码再次登录后，经 Device → System Logs → Download 取回 Kura_Logs.zip。隔离安装的 80 端口提供该页面，宿主只监听回环；443 未监听。响应为 200、application/zip，Content-Length 与 3,666,808 字节实际下载一致，完成 cookie 已收到。99 个 ZIP 条目 CRC 全过，新旧目录三份样本逐项匹配 SHA-256，另有两份非空 journal 和三份 Kura 活动日志。
+
+原八份快照保持精确。新增快照中仍只有原管理员，其首次改密标志已清除，另外 15 个配置条目只更新了 service.pid。冷读共 84 份文件，六组件已正常停机。续接入口 http-download-session/parked-readback.py。旧 PID 导致首次服务启动失败、其他 provider/launcher 维护模式继续。冻结 0/12。[浏览器、快照与冷读记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 在配置生成途中停机后恢复
 
 原六组件卷沿用 Core b1b8060be2。正式启动器生成 Equinox 配置时执行 systemd 停机。当时 PID 文件为空，JVM 尚未启动；424 字节临时配置在停机前后 inode 和摘要相同。单元正常退出，PID 文件消失，写入登记未变。原地启动一次后临时文件消失，完整配置为 22,494 字节。JVM 进程号与 PID 文件相符，其写入登记匹配进程启动时刻和锁文件，独占取锁探测证实内核锁已被持有。再次正常停机后冷读核对六个包、SQLCipher 和 83 份文件，续接入口为 main-launch-cancel/parked-readback.py。

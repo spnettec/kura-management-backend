@@ -43,7 +43,9 @@
 
 Core 910cb9bd9a 已将活动日志首次创建交给 Debian 安装器。用发行包的配置阶段在 ARM64 实测，三个文件均以 kurad、0600 创建；同一配置步骤保留已有站点文件、别名及目标暂时离线的别名。原六组件卷真实升级后，三份旧日志的内容、inode、权限和时间戳一致。后台启动器先打开控制台，避免日志失败时误写 PID。归档布局、GC 和错误转储仍待正式发行验证。此轮只组装一个现有 bundle 集合的 Core 包，耗时 8.685 秒。[首建与升级实装](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
-Core 5aa5aad4f1 将专属归档目录接入 Linux 发行包，沿用原活动文件和 inode；因此升级无需搬迁旧日志。JVM 转储和错误报告使用安装目录已有的私有 log 子目录，调试入口的 GC 日志也写入其中。对三个启动器分别用隔离的 12 MiB 测试堆触发诊断，临时文件随测试容器回收。GWT 6fd074c 的服务端 ZIP 同时收取旧路径的日志和新目录中的应用、审计归档。原六组件卷装入两包后，对三条 ZIP 记录逐项核对了 SHA-256。已登录 HTTP 响应仍待验。[升级、诊断与 ZIP 核对](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+Core 5aa5aad4f1 将专属归档目录接入 Linux 发行包，沿用原活动文件和 inode；因此升级无需搬迁旧日志。JVM 转储和错误报告使用安装目录已有的私有 log 子目录，调试入口的 GC 日志也写入其中。对三个启动器分别用隔离的 12 MiB 测试堆触发诊断，临时文件随测试容器回收。GWT 6fd074c 的服务端 ZIP 同时收取旧路径的日志和新目录中的应用、审计归档。原六组件卷装入两包后，对三条 ZIP 记录逐项核对了 SHA-256。正式管理页的已登录 HTTP 下载已在同一安装验证。[升级、诊断与 ZIP 核对](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
+同一六组件卷随后通过正式管理页完成首次改密并重新登录，从系统日志标签下载了 3,666,808 字节的 ZIP。浏览器收到 HTTP 200，99 个条目通过 CRC；两份新目录归档和一份旧路径归档的 SHA-256 与输入相符。原卷实际开放的是 HTTP 80，验证期间连接仅经过宿主和夹具回环。八份原快照完整，新快照保留原账号。此次复用了已安装的 Core 和 GWT，两份 systemd journal 也随 ZIP 交付。[登录下载与冷读](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 原六组件安装升级到 Core b1b8060be2 后，正式 Main 已撤去 DAC_OVERRIDE。systemd 在 fork 前为 kurad 准备历史 PID 路径，进程运行时只保留管理网络与绑定低端口两项能力。两次正式启动的五组能力掩码均为 0x1400，两次停机后 PID 文件都由 systemd 移除。同卷的启动中断实测中，生成配置途中停机留下 424 字节临时文件。再次启动后，正式 JVM 取得写入锁，完整配置为 22,494 字节。这次复用了现有安装和发行包。独立启动器遗留 PID 文件的兼容性仍待验证。[原安装的两次启动及停机](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
