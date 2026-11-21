@@ -8,6 +8,8 @@ Core `e660ca6d67`、Networking `d0a80e0`。原防火墙临时 Root `39:7320076` 
 
 **仍待实施**：没有站点策略的默认启动现场，保存模型有 17 条防洪 mangle 规则，重启后的 Java 模型缺少这些规则。匹配检查拒绝发布，未产生新操作。该路径继续作为内部恢复任务；其余 broker、组件和 provider/launcher 维护矩阵继续。冻结闭环 **0/12**，外部延期仍为原三项。[整进程权限、回执、升级和停机证据](actual-installed-firewall-action-receipt-checkpoint.json)
 
+用 JDK 21 对当前发行类做离线冷读，IPv4 和 IPv6 的附加规则均还原为零。用防洪 provider 的默认配置独立补回 IPv4 的 17 条 mangle 规则，以及 IPv6 的 38 条 filter 和 26 条 mangle 规则后，两个模型均逐字节匹配各自输入。启动器在没有站点策略时仅建基础链，内核和 Java 模型的冷恢复均需验收。原卷的两个 SQLCipher 测试 JAR 由夹具注入，正式部署包的登记恢复已有独立验收。[双族读数](../../../../.management-close-20261116/core-rtc-hotplug-20261120/main-process-network-capability/parser-readback/result.log)
+
 ## 2026-11-21 正式 NetworkService 的 Wi-Fi 扫描与原六组件升级
 
 Networking `d0a80e0` 将旧 OSGi API 的扫描请求交给 NetworkManager，nl80211 和 WEXT 读取驱动缓存，保留旧接口的每个 BSSID、支持速率和能力标志。完整 Networking 构建 2266 项通过。ARM64 无网络、零有效能力的 JVM 使用私有 D-Bus 无线服务和受控驱动输出，生产调用链发出一次 RequestScan，仅执行接口查询和缓存读取。原六组件 Root `39:6611544` 经 dpkg 升级后，正式 Main 的 SCR 确认 NetworkService 为 ACTIVE，绑定的服务来自新版 NM bundle。该进程实测 0x1400。停止后，六包、SQLCipher、82 份业务文件、两份凭据及注册表和锁冷读通过。原六组件续接入口为 `main-network-service-scan/six/parked-readback.py`。防火墙 Root `39:7320076` 仍用 `main-firewall-reduced-caller/cold.py assert-final`。

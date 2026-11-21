@@ -2945,6 +2945,20 @@
       "firewall": "main-process-network-capability/cold.py",
       "six": "main-process-network-capability/six/parked-readback.py"
     },
-    "frozen": "0/12"
+    "frozen": "0/12",
+    "coldJavaParserReadback": {
+      "stage": ".management-close-20261116/core-rtc-hotplug-20261120/main-process-network-capability/parser-readback",
+      "result": [
+        "iptables restored additional filter=0 nat=0 mangle=0 match=false",
+        "iptables defaults filter=0 nat=0 mangle=17 match=true",
+        "ip6tables restored additional filter=0 nat=0 mangle=0 match=false",
+        "ip6tables defaults filter=38 nat=0 mangle=26 match=true"
+      ],
+      "sha256": {
+        "ParserReadback.java": "267b43f75e74ed8f731947f2ce6926b10ad47cc41da22b1b7c6273a651d0d964",
+        "result.log": "0b3a58de1c17f511a917d7d8afcd1a7d14389ae4977d654a2349a7a937bea098"
+      },
+      "environment": "Host JDK 21 with packaged Networking classes and independently rendered test inputs. No gateway or network operation."
+    }
   }
 }
