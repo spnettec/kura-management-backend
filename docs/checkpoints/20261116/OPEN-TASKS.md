@@ -1,3 +1,11 @@
+## 2026-11-21 Core 配置快照完整写入后原子发布
+
+Core d97260d035 将快照写入同目录私有暂存文件。加密模式直接向 AES 流写 XML。完成认证标签和文件同步后原子发布，在 POSIX 文件系统同步父目录。ARM64、JDK 21 上分别中断明文和加密写入，覆盖已有编号和创建新编号共四种场景。中断前后独立读取进程都能用原快照口令签名，完成发布的后继快照也能签名。配置组件 304 项、离线恢复工具 74 项测试通过。
+
+原六组件 Root 39:6611544 经维护号 9ff19a93-2f26-46c6-9039-0bcaf8f3c282 升级。正式 Main 在 9 份原快照、保留上限 10 的现场通过注册的 ConfigurationService 写入 1795273664995，读回口令打开原业务 PKCS12，并以原证书验签。Main 停机后，仅撤下本轮快照和探针，9 份原快照、原业务库和 store.save 的指纹保持。六组件正常停机，46 笔维护、835 条签名阶段通过冷读。
+
+最新六组件停机读回使用 snapshot-publication/cold.py。单包移除仍沿 pkcs12-retained-root-readback/check.py cold，绑定网关沿 bound-agent-packaged-receipt-field/cold-business.py。独立写进程在发布前被终止时，可留下权限受限且不被快照枚举的暂存文件。正式 Main 本轮验证正常写读；业务库随机改密、其配置快照写入与 Main 进程中断连为同一笔的恢复仍待验。保留 12 父项，冻结闭环 0/12，外部延期仅原三项。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 单包 Core 移除后的 Root 配对核验
 
 原单包 ARM64 夹具的移除围栏与 removal-home.json 均指向 5201d2d4-df9f-4387-a82b-787e7e194c8b。启动原容器后，machine-id 摘要及 Root inode 7724412 匹配，设备号从 1048716 变为 2097163。核验在包操作前结束，容器正常关机，退出 0。停机前后的两次冷读均确认包状态为 config-files、原移除围栏仍在、保留的六个文件逐一匹配移除时的 SHA-256。

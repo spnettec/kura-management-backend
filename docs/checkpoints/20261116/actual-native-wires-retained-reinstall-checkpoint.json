@@ -6172,5 +6172,55 @@
     "coldRetainedFiles": 6,
     "status": "deinstall ok config-files",
     "parkedExit": 0
+  },
+  "snapshotPublication20261121": {
+    "release": "d97260d035e1e3ae62015cd1c4f2db79dc6e9672",
+    "artifactSha": "cee000837df7aac02a0913847d6afa33b5e4b7147b3f4078b0d63d8079cc0954",
+    "packageVersion": "6.0.0~git20261121230523.d97260d-1",
+    "packageMaintenance": "9ff19a93-2f26-46c6-9039-0bcaf8f3c282",
+    "releaseJarChanges": [
+      "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-recovery/lib/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar"
+    ],
+    "arm64InterruptedWrites": 4,
+    "configurationTests": 304,
+    "recoveryToolTests": 74,
+    "formalMain": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "pid": "4419",
+      "snapshot": "1795273664995",
+      "stamp": {
+        "sha256": "394e1bc922092f8ed1e267342e69051d078df7a5081b28fa1ed1d013a19c1ea9",
+        "meta": "39|7740073|600|997|995|1|58802|2026-11-21 15:07:45.031364499 +0000|2026-11-21 15:07:45.037364584 +0000"
+      },
+      "certificate": "7533f7be951a8c9ae0e804b7bc3348463e04bfeeaa238c5a66835899864a2bd4",
+      "signed": true,
+      "originalSnapshotsUnchanged": 9
+    },
+    "retention": 10,
+    "cold": {
+      "root": "39:6611544",
+      "request": "9ff19a93-2f26-46c6-9039-0bcaf8f3c282",
+      "status": {
+        "kura-core": "6.0.0~git20261121230523.d97260d-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7740138,
+      "allSigned": 835,
+      "histories": 46,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false
+    },
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/snapshot-publication",
+    "remaining": "same Main password randomization and snapshot interruption"
   }
 }
