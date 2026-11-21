@@ -5878,5 +5878,53 @@
     "parked": 0,
     "boundMaintenance": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-profile-trigger/HANDOFF.md"
+  },
+  "currentCoreOsgiDistributionParity20261121": {
+    "currentCore": "1af242d3e8147df12d9e968c1a017a1087e37d74",
+    "currentTree": "f8c895537bb22e844e850416136f2616c13b7289",
+    "currentDeb": "137729efc3f197fb1941628022daad6f6441e7665b23288a242ae6c7ec18c394",
+    "oldCore": "ba84bdcfb43f69b174faa735bb1e610d37278b43",
+    "oldTree": "92ef05377c35ba670e369878cd4560ed6ff51d67",
+    "oldDeb": "b74f01aea5e6365d2058fbe26ab3538fb175364943f4444b9812e8bb87de6bda",
+    "reactorLog": "78f0171148de9922018dc4e8b29be79d9df91f3a7382a4556df2421bef79fa01",
+    "previousReactor": {
+      "tests": 2153,
+      "passed": 2151,
+      "skipped": 2,
+      "failures": 0,
+      "errors": 0
+    },
+    "reactorModules": 82,
+    "installedCoreJars": 233,
+    "changedDistributionPaths": 51,
+    "comparedChangedPayloads": 123,
+    "comparedControls": 6,
+    "exactFiles": 118,
+    "launcherHeapOnly": 3,
+    "retiredStaging": 8,
+    "installedUnitsVerified": 7,
+    "distributionModuleTests": {
+      "test_addon_code_policy": 14,
+      "test_clock_package": 10,
+      "test_clock_unit_pairing": 21,
+      "test_core_removal_home": 7,
+      "test_firewall_tables": 2,
+      "test_framework_pid": 2,
+      "test_key_generation_cohort": 22,
+      "test_key_service_lifecycle": 27,
+      "test_main_layout_admission": 15,
+      "test_ordinary_launcher": 14,
+      "test_ownership_markers": 2,
+      "test_postinst_configure": 15,
+      "test_preinst_upgrade_copy": 7,
+      "test_runtime_ownership": 24,
+      "test_watchdog_maintenance": 7
+    },
+    "isolatedPathTests": [
+      "org.eclipse.kura.core.system.SystemServiceTest.testActivateWithUpdatedDefaults",
+      "org.eclipse.kura.core.system.SystemServiceTest.testActivateRelativeConfigFilePathsUpdate"
+    ],
+    "root": "39:6611544",
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/core-osgi-distribution-parity/HANDOFF.md"
   }
 }
