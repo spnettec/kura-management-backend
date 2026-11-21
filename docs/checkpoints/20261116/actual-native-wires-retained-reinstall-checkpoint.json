@@ -2528,5 +2528,183 @@
       "original-three-after.json": "9058953b87df21fb0eeab539d7bfc1b4a05047490e62efcae33969bf6755c4ba",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "packagedRollingLogsAndDiagnostics": {
+    "core": {
+      "source": "5aa5aad4f1e7818f9187e65dfe780117203e4674",
+      "tree": "d5126a80b44186264939d8f87cca36d866e9274a",
+      "version": "6.0.0~git20261121000629.5aa5aad-1",
+      "sha256": "4d989895e373f1125edc4d3795bce1781a26ab1f66617e3f830a454a1c5eb696",
+      "bytes": 204239992
+    },
+    "ui": {
+      "source": "6fd074cdc001edd791f07c5aa7c7655f7a6a2808",
+      "tree": "17010fd095ee3f854758a0531585356beed7dd97",
+      "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/kura-management-ui/distrib/target/deb/kura-management-ui_3.0.0~git202611210011.6fd074c-1_all.deb",
+      "version": "3.0.0~git202611210011.6fd074c-1",
+      "sha256": "e8be14616c96e5de1e851029174f8a296319bafced7551a160881089e30fb732",
+      "jar": "ecae459384eabd886159a121c611950cc3b9f226bda3431b02caea26e2117686",
+      "installedJar": "/opt/eclipse/kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+      "servlet": "d6838325eb73db24bd015fea8b03c56856f3060255bdb44f78415389c58ee365",
+      "bytes": 34136068
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "packagedMain": {
+      "main": {
+        "unit": {
+          "MainPID": "4051",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "c19759faf1574b779e41733caa0ea9f8"
+        },
+        "ticks": "40560867",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "config": {
+        "sha256": "1f845f64c55886f9ba87b855751fe1c1cfac735b8f08733b7de56adcb35f01f7",
+        "meta": "2097163|32|600|997|995|1|22578|2026-11-21 00:07:51.490711327 +0000|2026-11-21 00:07:51.490711327 +0000"
+      },
+      "writerLease": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "business": "fixture.retained.business.bundle",
+      "agent": "org.eclipse.kura.management.bridge",
+      "publishedPidVerified": true
+    },
+    "rollover": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "10043",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "transient",
+          "InvocationID": "8fb5e572bf80470ea6c6a4cd4a15b3ad"
+        },
+        "ticks": "40563785",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "registeredBusinessActive": true,
+      "writer": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "appenders": {
+        "kura": {
+          "originalInode": 6986719,
+          "currentInode": 6986719,
+          "archiveCount": 1,
+          "beforeInActive": false,
+          "afterInActive": true,
+          "legacyPathReadsSameFile": true,
+          "alias": false
+        },
+        "kura-audit": {
+          "originalInode": 6986720,
+          "currentInode": 6986720,
+          "archiveCount": 1,
+          "beforeInActive": false,
+          "afterInActive": true,
+          "legacyPathReadsSameFile": true,
+          "alias": false
+        }
+      }
+    },
+    "diagnosticProbe": {
+      "jvm": "openjdk version \"21.0.13\" 2026-10-20",
+      "effectiveCapabilities": 0,
+      "launchers": {
+        "bin/start_kura.sh": {
+          "exit": 1,
+          "heapBytes": 3452533,
+          "errorBytes": 42621,
+          "gcBytes": 564,
+          "extraCoreFiles": []
+        },
+        "bin/start_kura_background.sh": {
+          "exit": 1,
+          "heapBytes": 3535847,
+          "errorBytes": 42285,
+          "gcBytes": null,
+          "extraCoreFiles": []
+        },
+        "bin/start_kura_debug.sh": {
+          "exit": 1,
+          "heapBytes": 3452586,
+          "errorBytes": 42404,
+          "gcBytes": 6784,
+          "extraCoreFiles": []
+        }
+      }
+    },
+    "diagnosticScope": "Packaged JVM flags, isolated ARM64 Java 21, empty 12 MiB test heap; no Kura credentials or business data loaded.",
+    "download": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "2021",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "80211a3572fd43779076f9a9a4c32b7f"
+        },
+        "ticks": "40588941",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001402",
+        "nnp": "1"
+      },
+      "entries": {
+        "kura-diagnostic-download-20261121.log.gz": "e4e180e04d34dcb34d31011674d18259834597610b3245ff9cd595f3ab46496d",
+        "kura-11-21-26-00-08-20-1.log.gz": "e4e180e04d34dcb34d31011674d18259834597610b3245ff9cd595f3ab46496d",
+        "kura-audit-11-21-26-00-08-20-1.log.gz": "67d86245f64a7b55688be2ad1d75bc84c2b0eb059e7ea40fc0acff5de6de6b72"
+      },
+      "zipBytes": 14038,
+      "sha256": "c0eba947cf3df3d3677f12f223afda672c017dc805e0769e794070b694e82776",
+      "jar": "ecae459384eabd886159a121c611950cc3b9f226bda3431b02caea26e2117686",
+      "scope": "installed GWT backend ZIP assembly loaded from active bundle; no HTTP session created"
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "actualDpkgUpgrades": 2,
+    "jvmLauncherTestsLinux": 14,
+    "servletTestsLinux": 13,
+    "servletTestsMac": 13,
+    "remaining": "Authenticated HTTP delivery on this retained installation; formal service PID and removal of DAC_OVERRIDE; remaining frozen maintenance rows.",
+    "evidence": "packaged-main-diagnostics/download/parked-readback.py",
+    "sha256": {
+      "package.json": "51ededb2ff414a52d17d0673fd8d10a3e826218ab45ebdde0350ec51c1a1ff3f",
+      "main.json": "854cfd178be6d68bd329bd355b9a2ba6227befd0a50b765a8c73170b0c7449d2",
+      "archives.json": "b81ff67a81138c6b2b1195d494fc198a3f50ba0a7c1089c5c1adaa99cec7e918",
+      "hotspot.json": "56e3b45bc794ac2903053f0b79a1527c53c0895b61d3f4a41b6695accd007a9c",
+      "launcher-linux.log": "779d4b1d3f037af8ef7d5ffe52f2d5cb4255e85f7e0fad2d3bdc17cdcbc9b3d8",
+      "gwt-test-final.log": "b1e1a043cea811bc22d2a511c504cbadcab28e862c990f07d43531b033fcfd2c",
+      "archive-tests-linux.log": "4fcd4ae40fd6034c530fefae981ce041200f845a0ccde754de4f6d840925cec1",
+      "download/release.json": "3656f73fe02734319166e345718acf68373fd5b179b00353424f1514480c9572",
+      "download/download.json": "93de6e4941b9d340264a781f398160f025d95849010c77257532c8300a684adb",
+      "download/offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "original-three-after.json": "12dc46c30310ba83cafde72875201ae5b6812be99a832dc176f861e6641b4a28",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }

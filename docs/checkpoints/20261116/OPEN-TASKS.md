@@ -1,3 +1,9 @@
+## 2026-11-21 发行包日志轮换、JVM 诊断及 GWT 下载
+
+Core 5aa5aad4f1 与 GWT 6fd074c 已在原六组件 Root 实际升级。安装器创建 kurad 私有归档目录，Linux 默认 Log4j 在其中保存应用和审计归档。已安装的前台 JVM 以 0x1400 运行，使用发行包原 XML 和私有日志挂载，两个活动文件均保持 inode，旧标记各出现在一份 gzip，新标记继续写入。正式 Main 读回包中的堆转储和错误日志参数。隔离 ARM64 JDK 21 用三个启动器的实际参数分别产生堆转储、错误报告，两个调试入口也写出 GC 日志。
+
+GWT 服务端随 /var/log 收集固定格式的 Kura 轮换文件，逐级使用已打开的目录且拒绝跟随链接。正式 Main 从已激活的 web2 bundle 加载 LogServlet，组装来自旧目录及新目录的三条 ZIP 记录，逐项 SHA-256 核对。此项覆盖服务端 ZIP 生成。当前安装的已登录 HTTP 下载、PID 生命周期及正式单元撤去 DAC_OVERRIDE 继续待验。六组件已正常停机，83 份文件已冷读；续接入口 packaged-main-diagnostics/download/parked-readback.py。冻结 0/12。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的首份日志与后台 PID
 
 Core 910cb9bd9a 在发行包配置阶段为 kurad 创建缺少的应用、审计和控制台日志。实际 ARM64 安装脚本首建三份 0600 文件，零能力账号均可续写；已有站点文件、别名和目标暂时缺失的别名均保留。原六组件卷完成真实 dpkg 升级，正式 Main 启动前，三份旧日志的完整指纹与升级前一致。
