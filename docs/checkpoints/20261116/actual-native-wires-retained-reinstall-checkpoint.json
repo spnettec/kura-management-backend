@@ -4738,5 +4738,129 @@
     },
     "readOnlyEntry": "sibling-restore-syncfs/cold.py final",
     "pending": "Registry lock continuity with an active holder across a Core upgrade."
+  },
+  "coreUpgradeWhileSiblingRegistryIsOwned20261121": {
+    "core": "8f2952d302f92836d789a2a46f4a386637a7c809",
+    "tree": "64ee72494d845202f7a51305814c1e2c37fc2d16",
+    "deb": "071b997d205cd76ddb27637149e4a0999b8726222b271a33fc51ceb5615a5963",
+    "version": "6.0.0~git20261121211856.8f2952d-1",
+    "preinst": "5e4505d715e98ded0be2cd19ce0caa63d4ab7be1db79f2ca35c40b495923639c",
+    "directedArm64Tests": 41,
+    "packagedPrevious": {
+      "request": "ca9a64d5-d10d-49d0-9179-32a136bc33ae",
+      "sourceInode": 7613600,
+      "prepare": "passed",
+      "publish": "passed",
+      "detach": "passed",
+      "core": "46e5c9543a05f7355498cb30d362c84eb6e15504",
+      "version": "6.0.0~git20261121210801.46e5c95-1",
+      "deb": "0b900b263172168afd4b4efab3fafa639bd48ec0d13717274e4588066795b287",
+      "preinst": "3ce5d3bd07455ffeeef04d212af58cd39e3eee27b2b2db3f7beb79fb9bc217a4"
+    },
+    "packagedCurrent": {
+      "request": "a12785a4-092a-41e9-b751-d8cf3e0a4fd4",
+      "sourceInode": 7613987,
+      "prepare": "held",
+      "publish": "held",
+      "staleSnapshotRefused": true,
+      "detach": "held",
+      "core": "8f2952d302f92836d789a2a46f4a386637a7c809",
+      "version": "6.0.0~git20261121211856.8f2952d-1",
+      "deb": "071b997d205cd76ddb27637149e4a0999b8726222b271a33fc51ceb5615a5963",
+      "preinst": "5e4505d715e98ded0be2cd19ce0caa63d4ab7be1db79f2ca35c40b495923639c"
+    },
+    "holder": {
+      "pid": 1420,
+      "inode": 7599906
+    },
+    "refused": {
+      "root": "39:6611544",
+      "request": "8608465c-37ba-4776-864b-51f0edf6e993",
+      "status": {
+        "kura-core": "6.0.0~git20261121210801.46e5c95-1",
+        "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1",
+        "kura-wires": "3.0.0~git202611210453.4f13cf1-1"
+      },
+      "holderInode": 7599906,
+      "allSigned": 684,
+      "histories": 38,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 0,
+      "fenced": true
+    },
+    "final": {
+      "root": "39:6611544",
+      "request": "8608465c-37ba-4776-864b-51f0edf6e993",
+      "status": {
+        "kura-core": "6.0.0~git20261121211856.8f2952d-1",
+        "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1",
+        "kura-wires": "3.0.0~git202611210453.4f13cf1-1"
+      },
+      "holderInode": 7613316,
+      "allSigned": 702,
+      "histories": 39,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false
+    },
+    "unpacked": {
+      "maintenance": {
+        "firstAction": "upgrade",
+        "id": "8608465c-37ba-4776-864b-51f0edf6e993",
+        "schema": 1,
+        "state": "MAINTENANCE"
+      },
+      "parkedSource": "39:7596907",
+      "savedRegistry": {
+        "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+        "meta": "39|7611928|640|0|990|1|42|2026-11-21 09:37:57.603809362 +0000|2026-11-21 13:20:55.284588716 +0000"
+      }
+    },
+    "registry": {
+      "file": {
+        "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+        "meta": "39|7612730|640|0|990|1|42|2026-11-21 09:37:57.603809362 +0000|2026-11-21 13:21:05.551314618 +0000"
+      },
+      "lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "meta": "39|7613316|600|0|0|1|0|2026-11-21 13:21:13.998119770 +0000|2026-11-21 13:21:13.998119770 +0000"
+      },
+      "lines": [
+        "management-ui",
+        "wires",
+        "deployment",
+        "networking"
+      ]
+    },
+    "actualAdmissionDiagnostic": "Key-service package admission refused; retain keys, receipts, backups and installation",
+    "archiveCommandExitCodes": [
+      1,
+      0,
+      0
+    ],
+    "main": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "agent": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "readOnlyEntry": "sibling-registry-core-lock/cold.py final",
+    "remaining": "A waiter that already opened the old lock across a home transition has not been exercised."
   }
 }
