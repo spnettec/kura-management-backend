@@ -1,3 +1,7 @@
+## 2026-11-22 本地卸载先进入 Felix 时，云端安装等待原注册表
+
+独立 ARM64 正式 Main 实测本地卸载先进入 Felix，云端安装 74002 的虚拟线程等待同一注册表的 dispatch。释放后通知与原号 GET 均为 COMPLETED，业务包资源可读。另一笔云端卸载 74001 也按原号读回 COMPLETED，其等待位置未采到。停机冷读两份完成回执、四个出厂包及一个业务包。当前入口 deployment-local-first-dispatch/cold.py。冻结 0/12。
+
 ## 2026-11-22 未决安装回执跨 Deployment 后继升级、直接 purge 与重装
 
 ARM64 原 Root 39:7997146 上，Deployment 由 1b043a4 升至 6c0da58。解包停机后沿原围栏续配，随后直接 purge、停机并沿原 FileMove 围栏重装。升级和重装后的正式 Main 均只读查回 47001 COMPLETED、47002 UNKNOWN。12 份原文件、19 份 Core 配置历史和业务目录身份保持，最终正常停放。冷读入口 pending-install-deployment-upgrade/cold.py restored。冻结 0/12。

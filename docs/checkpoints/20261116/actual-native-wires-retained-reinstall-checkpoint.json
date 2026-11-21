@@ -8875,5 +8875,33 @@
     "unpackedCold": "pending-install-deployment-upgrade/unpacked-cold.json",
     "purgedCold": "pending-install-deployment-upgrade/purged-cold.json",
     "cold": "pending-install-deployment-upgrade/cold.py restored"
+  },
+  "deploymentLocalFirstDispatch": {
+    "dataRoot": "39:8391076",
+    "deployment": "6c0da58428ab9e7828d4987b141af5635291f92d",
+    "main": {
+      "uid": 122,
+      "pid": 1,
+      "capEff": 0,
+      "nnp": 1
+    },
+    "completedUninstall": 74001,
+    "uninstallWaitSample": false,
+    "completedInstall": 74002,
+    "localHolder": "DeploymentAgent.uninstallRegistered",
+    "cloudWaiter": "DeploymentPackageRegistry.dispatch",
+    "scope": "same JVM",
+    "archives": 5,
+    "receipts": 2,
+    "storage": {
+      "addedImageBytes": 282987,
+      "parentLayers": 6,
+      "addedLayers": 4,
+      "volumeKiB": 24696,
+      "volume": "yofc-deployment-local-first-6c0da58-data",
+      "containerWritableBytes": 359642
+    },
+    "proof": "deployment-local-first-dispatch/verified.json",
+    "cold": "deployment-local-first-dispatch/cold.py"
   }
 }
