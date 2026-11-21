@@ -8369,5 +8369,30 @@
     "originalFiles": 42,
     "originalMaintenancePhases": 19,
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-direct-launchers/HANDOFF.md"
+  },
+  "publishedGenerationKeystoreProviders": {
+    "source": "fc17697eba897b45590bedb019c90fee40f6218a",
+    "originalRoot": "39:8285453",
+    "oldSnapshotFieldsMatchFactory": 4,
+    "originalStoreFileAbsent": true,
+    "freshRoot": "2097228:1",
+    "verifiedPids": [
+      1648,
+      2202
+    ],
+    "snapshotId": "1795294764296",
+    "providers": [
+      "HttpsKeystore",
+      "SSLKeystore"
+    ],
+    "keystoreTypes": [
+      "PKCS12",
+      "JKS"
+    ],
+    "freshPackageSha256": "6466a297878ba4574c6f2d68131b2f17f6f02714608173fa4a7be69c896f2424",
+    "freshDebBytes": 205112250,
+    "newPersistentVolumes": 0,
+    "parked": true,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-keystore-providers/HANDOFF.md"
   }
 }

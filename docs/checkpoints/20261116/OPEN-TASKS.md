@@ -1,3 +1,7 @@
+## 2026-11-22 HTTPS 身份库与 SSL 信任库的出厂快照口令
+
+Core fc17697eba 移除两份工厂模板中绑定旧 AES 钥的密文。旧 Root 39:8285453 的两代快照均保留相同的出厂字段，两份库实际依靠 CryptoService 的默认口令打开。修正版独立 ARM64 安装的两个正式 Main 从同一加密快照直接打开 HTTPS PKCS12 与 SSL JKS，验过原签名、回环 TLS 和两张信任证书。两个现场正常停机，旧快照迁移仍待验。冻结 0/12。 当前原两代卷冷读入口 published-generation-keystore-providers/run.py cold。
+
 ## 2026-11-22 已发布密钥代在五种直接启动方式下的实读
 
 Core 075ea8b733 在原 ARM64 安装 39:8285453 通过五种直接启动方式读回两代原加密快照。四种 start_kura.sh 参数组合及专用调试脚本各有独立 JVM，账号均为 kurad，有效能力均为 CAP_NET_BIND_SERVICE，writer 登记与原发布 cohort 匹配。正常停机后 42 份文件、19 份原签名记录及三个启动脚本核对一致。复用原卷和已装包。冻结 0/12。 当前停机入口为 published-generation-direct-launchers/remaining.py cold。
