@@ -1,3 +1,7 @@
+## 2026-11-22 已发布密钥代的 Core 原生移除
+
+Core 1590e368c1 复用 Root 39:8195025 完成实际 dpkg remove。包状态为 config-files，移除编号 69b222b6-002f-46d5-aaa7-03a99b67e906。保留的三份启动脚本与签名回执共 9533 字节，停机核对原发布记录、两代快照和 42 份文件。现行 preinst 仍要求已移除的 /opt/eclipse/kura，保留重装与 purge 待验。最新冷读入口为 retained-generation-launchers/cold.py。冻结 0/12。 详见 retained-generation-launchers/HANDOFF.md。
+
 ## 2026-11-22 已发布密钥代跨包升级后的正式 Main 冷读
 
 Core b57e5bccfe 在 ARM64 Root 39:8195025 从 09851262d5 升级。两包密钥读取器清单相同。解包停机后沿 20ea89bb-deb1-4809-bb3a-f285cf967417 续配，三份启动脚本按发布回执恢复，19 份维护记录 HMAC 均通过。正式 Main 冷启动读回两代快照 1795290300532、1795290311731，值为 24101 和 24102。现场 disabled、正常停机。旧版已派发布局且缺成功见证的原围栏，以及不同 cohort 的原围栏，各按原入口保留。冻结 0/12。 证据见 published-launcher-reinstall/HANDOFF.md。

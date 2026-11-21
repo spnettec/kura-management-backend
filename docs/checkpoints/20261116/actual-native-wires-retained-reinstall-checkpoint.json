@@ -8010,5 +8010,34 @@
     "nnp": 1,
     "parkExitCode": 0,
     "frozen": "0/12"
+  },
+  "publishedGenerationRemoval20261122": {
+    "evidence": "retained-generation-launchers/HANDOFF.md",
+    "source": "1590e368c1989dafcd580e1c5c3c2f8d4ee327d9",
+    "debSha256": "81d66c8ce707891c7725e5092165c2902bf482d84fa45d36e3145a4e731875ec",
+    "root": "39:8195025",
+    "upgrade": "34d5b846-1ff4-4f8e-8d12-4f3e7112d043",
+    "remove": "69b222b6-002f-46d5-aaa7-03a99b67e906",
+    "publication": "e58bc8f7-9379-40a8-b612-fe70049c9532",
+    "dpkg": "deinstall ok config-files 6.0.0~git20261122034936.1590e36-1",
+    "retainedBytes": 9533,
+    "checks": {
+      "root": "39:8195025",
+      "maintenance": "69b222b6-002f-46d5-aaa7-03a99b67e906",
+      "publication": "e58bc8f7-9379-40a8-b612-fe70049c9532",
+      "retainedReceiptTagVerified": true,
+      "filesChecked": 42,
+      "launchersChecked": 3,
+      "incomingInstalledHomeCheck": "requires missing /opt/eclipse/kura",
+      "priorPhases": 19,
+      "newSignedPhases": 19,
+      "installedPackage": "config-files"
+    },
+    "parkExit": 0,
+    "pending": [
+      "retained reinstall",
+      "purge"
+    ],
+    "frozen": "0/12"
   }
 }
