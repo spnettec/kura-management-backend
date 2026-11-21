@@ -6717,5 +6717,63 @@
       "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
     }
+  },
+  "nativeCoreCompletedDeploymentDirectory20261122": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/native-completed-core-upgrade",
+    "root": "39:8007036",
+    "originalPackages": "39:8011751",
+    "stagedCopy": "39:8016294",
+    "deploymentRequest": 48001,
+    "maintenanceRequest": "6f333f4c-7c2b-4f92-918a-00c0c3d58294",
+    "installedPredecessor": "ac9b8bb",
+    "deployment": "1b043a4",
+    "release": {
+      "commit": "76f0c6b671323470addb5c1db6a5581e7c2d3d75",
+      "tree": "1825c5558951a94c9106f7208dbf205558e1a99b",
+      "version": "6.0.0~git20261122012548.76f0c6b-1",
+      "source": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/wip-core/kura/distrib/kura-core/target/kura_6.0.0~git20261122012548.76f0c6b-1_arm64.deb",
+      "sha256": "5be3d26d08bc09d75ca0d477e51bc9cd81be4f4998059e8a68483f30ee0aa10e",
+      "preinst": "167a4162d95fe3949c47db3c1b18a123b0220e9586ffd95471274fa581947d00",
+      "postinst": "f93661d89540bed26fab0f6190b29c6e12cfee8f25ed1edfa5d304fa3ae75332",
+      "jarsCompared": 233,
+      "matchingPreviousCore": "796e0bacf54a12315dd3365abc62aa17d299dec5"
+    },
+    "phaseTests": 52,
+    "readback": [
+      "GET install/result 48001 COMPLETED",
+      "Felix fixture.history.sealed"
+    ],
+    "haltExit": 0,
+    "sha256": {
+      "HANDOFF.md": "58a08a03adb66a4b823c78e35078c7586df12b7bd8631af60d952e37eb28db9b",
+      "before-upgrade.json": "226c93d35b7e74eeab98e5820c30e973daad11e2f287815be41f1bb605cef8d9",
+      "release.json": "07235b1e7c95b001e4e9f483c2cf8b8cef63981ad1b363be3b5ae092d84219d2",
+      "build-core.sh": "2c7e412dc3cd19fe67945c428cc0d291be7096f4c6d2bd17a995efb418f5137b",
+      "build.log": "13f3b5ec096cf3c400332b3e2996b13b4a2c711ebfb9a47f0ce4267a53faceae",
+      "unpack-intent.json": "89aa15795eaa23d12a3311bcebf5ac95bdbf62e63a440875939a946ff325b0fb",
+      "unpack-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "unpacked.json": "c4365f6191bcc6ca6c4b79a15e15f9c879f5e9fd60d6e47ef32d885709057ed3",
+      "configure-intent.json": "89b88bf1f9bcac48417888c9e46c7fd9479b4b2fb1ebec113a09dac819a8ba4c",
+      "configure-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "configured.json": "5223955055aab048b817e5cba4d155825ca681585a48fd27457e3e659a658114",
+      "start-readback-intent.json": "a7a87b39608c0d52c1e31ca830e371130831cbe54452ad4e19ea09b123939799",
+      "readback.json": "2c0d663bed9830bce5629b2ef988da5a1969cc5c1772c74352681423e62c0a40",
+      "stop-readback-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "parked.json": "778fb34383414cd35b65f09b4827fc7d2fe5735c705d10f83ba0192e3700bc01",
+      "cold-final.json": "1766b173e4ae3816b75045b5e4a6df0ca90affee111fce042c72e3765e92131e",
+      "storage.json": "7457a139a3ec8969c4be913684a50c6e8291b62b699a74b4616cff162f30b454",
+      "phase-tests.log": "556cfed8ac0fd79ebcadbb8513e035141e5da5f0cf26534954690eb7c1408092",
+      "Probe.java": "6d6dbe2638929e93caab36d1edcb7eb586ac9486928860769efd7473b81116e3",
+      "observer.jar": "fef50cd4580605c8df449c9e85b03582c788b40dbca1de6f70c044a1e9e50c14",
+      "field.py": "a31b1801bdfe76e2151edaada47293dca8356c5b3bb1eccd9cf3386812d4bb78",
+      "run.py": "87c7d8077c493d45fa719d74c3dbeab411333a4ab8e8967920ba0e54184058e0",
+      "release.py": "9537b24bd74f26cb8202c900329ff2a986957db0c040f3b322843fc0c7bed68b",
+      "standby.py": "a2165def62a6547441dbaed0db57bbae6900ffea7701ba6497ebda76d5b75e0f",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "original-three-after.json": "12213b04896571cf02ca8989361395ecf7f3edefd2fa7b460eafb54ef07a3514",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609"
+    }
   }
 }

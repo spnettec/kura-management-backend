@@ -1,3 +1,11 @@
+## 2026-11-22 Core 原位升级后，正式 Main 沿原目录读回已完成的部署任务
+
+在 Debian ARM64 的正式 Main 上，安装任务 `48001` 只提交一次。原生 dpkg 将 Core 从 `ac9b8bb` 升到 `76f0c6b`，Deployment 为 `1b043a4`。解包时，Root 为 `39:8007036`，原 packages 目录为 `39:8011751`，暂存副本为 `39:8016294`。配置完成后，正式 packages 路径仍指向原目录。显式启动新 Main 后，原 handler 返回 `GET install/result 48001 COMPLETED`，Felix 查到原业务包 `fixture.history.sealed`。
+
+云端部署回执绑定注册表目录的路径、设备号和 inode。此前的升级代码复制目录内容后清退原目录。新版本用已有签名维护记录绑定原目录，在同一 Core home 内原子交换目录；历史中的同名文件优先，新增的发行文件先校验再补入。ARM64 上 52 个定向测试通过，其中一项在实际目录交换后注入异常，验证沿原维护记录续办和目录被替换时拒绝继续。本次原生 dpkg 实装走正常升级路径，云端回调由本机夹具接收。
+
+Main 已正常停止，保持 disabled/inactive，容器退出 0。只读挂载冷查确认业务 DP、完成回执、注册表、锁及两份凭据的内容和文件身份与升级前一致。下一处缺口是有完成回执时 Core 移除后保留重装能否沿原目录查回同一任务。非标准目录布局也尚待实装验证。冻结 12 父项、闭环 0/12，外部延期仍限真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 未决安装回执下的 Core 移除、直接 purge 与 dpkg 选择状态
 
 独立 Debian ARM64 系统的 Root 为 `39:7997146`，实装 Core `796e0ba` 与 Deployment `1b043a4`。正式 Main 接受一次 47001 并完成业务包安装。独立的 47002 也只提交一次。在 Felix 同步发出其目标 bundle 的 INSTALLED 事件时，测试探针核对原 job 回执并中断 JVM。重启后原安装服务读回 47001 COMPLETED、47002 UNKNOWN，后者的私有暂存 DP 和原未决回执保留。
