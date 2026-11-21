@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 在清链前核验候选规则
+
+Networking `cecf20f` 用发行系统自带的 IPv4、IPv6 解析器检查暂存文件。无效的附加规则原先会改写已运行的链，新包在隔离 ARM64 上拒绝后保留规则、磁盘文件和可读模型。原六组件卷标准版升级后，正式 Main 调用两次解析器均返回 2，六张表一致。原 Root 正常停机，最新冷读入口是 `firewall-native-policy-compiler/parked-readback.py`。跨表原子写入、已配对独立写服务和原操作结果恢复继续，冻结 0/12。[发行件、解析器和停机记录](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 原配置服务按地址族一次发布开放端口、转发及 NAT
 
 Networking bd5fb9b 将同一次 ConfigAdmin 更新的三类规则一起准备，保留独立维护的自动 NAT。ARM64 上真实旧包面对只读且关闭的转发开关，IPv4/IPv6 各发布四次，改写规则文件并发送一次变更事件。新包两族均在第一条内核命令前拒绝，原模型、表、规则文件保持，事件数为零。转发已开时，两族均一次发布、一次通知，原有其他软件的规则链保留。2240 项 Networking 测试通过。

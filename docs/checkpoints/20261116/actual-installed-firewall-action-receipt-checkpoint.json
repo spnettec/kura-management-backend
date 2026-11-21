@@ -939,5 +939,56 @@
       }
     },
     "remaining": "Legacy kernel writes still use NET_ADMIN in Main. Paired write broker, durable outcome and original-ID recovery are pending. The isolated nft test covers only two fixture chains per family."
+  },
+  "stagedFirewallSyntax": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler",
+    "source": "cecf20f8280fe83c523717d3a0a5fa22d708000b",
+    "tree": "00ea39c4de834ed92cea88e69210ecf27fc41fdb",
+    "version": "3.0.0~git202611210236.cecf20f-1",
+    "testsPassed": 2241,
+    "release": "releases.json",
+    "standalone": {
+      "previous": [
+        "ipv4 invalidCandidateRejected=true parserChecks=0 writes=64 kernelEqual=false savedEqual=true modelEqual=false",
+        "ipv6 invalidCandidateRejected=true parserChecks=0 writes=100 kernelEqual=false savedEqual=true modelEqual=false"
+      ],
+      "current": [
+        "ipv4 invalidCandidateRejected=true parserChecks=1 writes=0 kernelEqual=true savedEqual=true modelEqual=true",
+        "ipv6 invalidCandidateRejected=true parserChecks=1 writes=0 kernelEqual=true savedEqual=true modelEqual=true"
+      ]
+    },
+    "installedMain": {
+      "parserExit": {
+        "ipv4": 2,
+        "ipv6": 2
+      },
+      "tablesUnchanged": 6,
+      "details": "observed.json",
+      "validSyntaxCanPassWithoutNetAdmin": "first-observer.json",
+      "localizedErrorObserver": "localized-observer.json"
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "protectedContentsIdentical": 84,
+    "parkedReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/parked-readback.py",
+    "systemTranslator": {
+      "ip": {
+        "javaRules": 49,
+        "installedRules": 49,
+        "commentedRules": 0
+      },
+      "ip6": {
+        "javaRules": 85,
+        "installedRules": 85,
+        "commentedRules": 25
+      }
+    },
+    "remaining": "Atomic publication, authenticated standalone writer and original-ID outcome recovery. The restore syntax check is advisory for kernel commit. Both packaging variants built. Only standard Networking was upgraded on this Root."
   }
 }

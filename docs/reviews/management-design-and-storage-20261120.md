@@ -28,6 +28,8 @@ Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普
 
 这次还定位到一种可以避免的重组装。API、Crypto 和 Configuration 三个 JAR 在运行时与冷恢复目录的内容逐项相同，只有清单中的 OSGi `Bundle-Version` 不同。例如 API 的构建后缀分别为 `202611202101` 和 `202611202040`。打包正确拒绝该组输入，从同一缓存重建恢复工具后通过。正式 `build-all.sh` 会为一次构建固定 `KURA_BUILD_QUALIFIER`。拆开运行 Maven 时，同一批候选也应显式传递相同的 `-Dkura.build.qualifier`，并让运行时和恢复工具使用同一批依赖。从当前 Git 只取 API 模块和构建父 POM，用同一个固定后缀连续执行两次干净打包，606 个文件条目以及整个 JAR 的 SHA-256 均相同。该验证复用了 Maven 缓存，临时源码和编译目录随即回收。[两次构建摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json) · [实际差异](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json) · [正式构建入口](../../../.management-close-20261116/core-rtc-hotplug-20261120/wip-core/build-all.sh)
 
+这次防火墙修复复用系统已安装的 `iptables-restore` 做语法核验。发行包生成的 49 条 IPv4、85 条 IPv6 规则均能装入隔离内核；使用系统的 nft 文本翻译器时，25 条 ICMPv6 规则只留下了注释，其中有针对具体类型、代码和链路本地来源的限制。agent 的原布局编译器已有这些匹配项的实现，后续独立写服务应复用其规则语义，并保持 Kura 可单独安装。这轮只构建 Networking 和 firewall-only 两个 deb，合计约 9.83 MB，复用了原 Core 包、原 VM 和原六组件卷。[规则逐项对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/kernel-observation.json) · [两份发行包](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/releases.json)
+
 ## 工期花在哪里
 
 最初的多网关管理中心已经扩展到网关操作系统、原 Kura 本地控制台、密钥保管、发行包维护及故障后的业务连续性。同一张 Timer→Logger 图能在首次安装时送达，只证明运行时可用。要证明客户升级可用，还需在原安装上升级 Core，确认原图只提交过一次；要证明 Wires 可独立拆装，又需经过 config-files、unpacked、installed，查看注册行并观察原图再次送达。后三项已有现场记录。其余组件及中断点不能借用这个结果。
