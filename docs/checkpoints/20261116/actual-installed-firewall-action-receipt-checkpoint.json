@@ -126,5 +126,75 @@
     }
   },
   "remaining": "Real firewall actor, kernel and ordinary/recovery ownership transitions retain their independent evidence and open acceptance items.",
-  "frozen": "0/12"
+  "frozen": "0/12",
+  "standaloneKernelPreflight": {
+    "source": {
+      "source": "9a5007ad9dfa302ade001214a678394da2a75e56",
+      "tree": "395cca1d691747e95f707efa36001f1e36b40c26",
+      "debSha": "f02977cd594ce5519dabf1917cae7cb9d6393b8c8592a331a8c90404bab14086",
+      "path": "/opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+      "jarSha": "b728157da1c29e4a058fd33cd3eb8a8c3fa9e46b59c2f2eeeb7dae2913a49b4b",
+      "classSha": "13e8b1c0ecfa5d8b409413f0b05b174c04bf741d03f53f8d2636d44a29be2a70",
+      "probe": "cd2a55c855cfd3c43afd71c21a49fd5585fc53082ec8662a9c449ab0ad1f5a7e"
+    },
+    "observerRegistration": {
+      "probe": "0dbc446728e542f698138d0c1486e69611f9320f13b3ba1441c3d1badc6f1586",
+      "registration": "org.eclipse.kura.executor.PrivilegedExecutorService"
+    },
+    "initialLookup": {
+      "lookup": "CommandExecutorService",
+      "registration": "PrivilegedExecutorService",
+      "probeInspected": false
+    },
+    "observed": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3697",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "c822ec339c284077b8225ff08d94ecc8"
+        },
+        "ticks": "40929117",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "results": [
+        "3697 org.eclipse.kura.core",
+        "prior 0000000000001400 0000000000001400 0000000000001400 0000000000001400",
+        "prior ipv4 ok",
+        "prior ipv6 ok",
+        "lower 0000000000000400 0000000000001400 0000000000000400 0000000000000400",
+        "lower ipv4 Generic Error - IO_ERROR: {1}",
+        "lower ipv6 Generic Error - IO_ERROR: {1}"
+      ],
+      "tables": {
+        "iptables-filter": "105388773b1fcccdb899420a6f6de2088695e186b8363092a88ffeb17406bf18",
+        "iptables-nat": "62a390ea933591c715ea8dacd8f81f488bfe80ce8ded373ea486a1ef63a59a9d",
+        "iptables-mangle": "555d3a0df1022d070dcc5dbe20eadd616e8c766d899b7c98a4880e1022060af8",
+        "ip6tables-filter": "105388773b1fcccdb899420a6f6de2088695e186b8363092a88ffeb17406bf18",
+        "ip6tables-nat": "62a390ea933591c715ea8dacd8f81f488bfe80ce8ded373ea486a1ef63a59a9d",
+        "ip6tables-mangle": "555d3a0df1022d070dcc5dbe20eadd616e8c766d899b7c98a4880e1022060af8"
+      },
+      "sixTablesExact": true,
+      "probeWritesKernel": false
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "readback": "main-net-admin-preflight/parked-readback.py",
+    "scope": "Installed legacy IPv4 and IPv6 table preflight using the registered PrivilegedExecutorService with agent stopped. Only the observer platform thread dropped NET_ADMIN. The Main thread retained it. The observer only listed tables."
+  }
 }

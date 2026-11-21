@@ -1,3 +1,9 @@
+## 2026-11-21 独立运行时的防火墙读表权限
+
+在原六组件 Root、agent 停用的正式 Main 中，Networking 已安装的 IPv4 和 IPv6 实现分别通过其真实注册的 PrivilegedExecutorService 执行读表前置检查。测试线程持有 0x1400 时，两族均通过。只撤去该线程的 NET_ADMIN 后，直接子进程和执行服务创建的子进程均为 0x0400，两个前置检查均返回 IO_ERROR。Main 主线程保持 0x1400。测量前后两族的 filter、nat、mangle 六张表逐项摘要相同。
+
+独立运行 Kura 的旧防火墙路径仍依赖 NET_ADMIN。迁移需覆盖读表、规则发布及已有所有权交接。原六组件正常停机；续接入口 main-net-admin-preflight/parked-readback.py，冷读六包、SQLCipher 和 84 份文件。冻结 0/12。[调用链与现场读数](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 防火墙确认及回滚回包丢失后的原编号查询
 
 原六组件安装共同升级 GWT 8870575 与 Networking 9a5007a。正式 Main 装载两个发行包的类，用内存传输端分别模拟确认和回滚的畸形回包。两个场景均只派发一次操作，适配器报告该次派发的原始关联编号。服务端按准备编号查询三次，前两次旧状态保持 UNKNOWN 和禁止操作，第三次分别取得 COMMITTED 和 ROLLED_BACK。真实 agent 未启动，内核防火墙未改动。GWT 两个模块合计 535 项、Networking 构建 2235 项通过。

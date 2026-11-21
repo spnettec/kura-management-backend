@@ -6,6 +6,8 @@
 
 **有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
 
+11 月 21 日 09:40 完成的目录复测为 **346.48 GB**，其中历史工作目录 **252.37 GB**、中心 target **78.76 GB**，两者合计 95.6%。Core 打包目录保留 36 个 ARM64 deb，文件长度合计 7.35 GB。这轮只构建有代码变动的 GWT 和 Networking，两个新 deb 共 43.52 MB。SQLCipher 联合恢复和 Main 权限实测均复用了现有包和原安装卷。[目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-net-admin-preflight/storage.json)
+
 11 月 21 日 09:19 起按同一口径复测，工作区 **346.43 GB**，其中历史工作目录 **252.32 GB**，中心 target **78.76 GB**。Core 打包目录有 36 个 ARM64 deb，文件长度合计 7.35 GB。较 07:06 增加 5 个包，共 1.02 GB；同期工作区目录计量增加 1.07 GB。已登录 HTTP 下载复用了安装包和测试卷。修复旧 PID 接管后另建了一个 204.24 MB 的 Core 包。宿主卷当时可用 141.79 GB，APFS 共享块和虚拟机卷分别计量。[目录与发行件复测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-pid-handover/storage.json)
 
 11 月 21 日 07:06 起按工作区目录计量，工作区为 **345.36 GB**，较 05:08 增加 1.48 GB。历史工作目录占 251.25 GB，中心 target 单独复测为 78.76 GB，两者约占 95.6%。Core 打包目录现有 31 个 ARM64 deb，共 6.33 GB。较上次多出的 7 个包合计 1.43 GB。两种计量数值接近，APFS 共享块仍影响实际物理增长。本轮 Linux 编译容器为普通构建用户复制了 0.67 GB 缓存，源码与临时缓存已随容器回收，六组件卷另行保留。Docker 的销毁事件已核对。清理程序未及时保存可写层总量，因此无法量化此次容器实际释放的空间。[目录与发行包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/storage.json) · [临时构建回收记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/builder-removed.json)
@@ -38,6 +40,8 @@
 | RTC 热插拔 | 草稿把启动时的设备投影改成请求时重验节点及别名，再向时钟 actor 传递只读 FD。 | 复盘时为草稿。报告送达后，已完成 ARM64 热插拔、只读 FD 和新包的两条原 Root 升级路径。随后在原 Parallels 组件完成正式 actor 经 relay 接收 FD 并写入虚拟 DS1307，实测回执 APPLIED。正式 Main 已取得设备缺失的 ENOENT 回执，并在 Core purge、重装后读回原记录。在原组件上，独占打开的 DS1307 使实际 relay 返回 EBUSY，Root 与发送端保存同一笔失败。当前 Core 安装器只读核对后拒绝此静态组件单元。随后在同一 Parallels 虚机的独立新安装，正式 Main 通过已注册的 ClockService 向专属 DS1307 成功写入一次，设备读数及两端回执均已核实。物理 RTC 仍待验。 |
 
 从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。当时的 Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。后续 b1b8060be2 已在同一安装撤去 DAC_OVERRIDE。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
+
+Main 目前保留的 NET_ADMIN 有一个已实测的依赖。在 agent 停用的原六组件安装上，旧 IPv4 和 IPv6 防火墙实现通过 Core 注册的执行服务检查内核表。有 NET_ADMIN 时两族检查通过；只从观察线程撤去该能力后，子进程也失去它，两族均返回 IO_ERROR，六份内核表摘要前后一致。后续撤权需把独立运行时的这条路径连同规则发布一起迁出 Main。此次沿用已安装包。[安装态权限对照](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 进一步实测表明，Main 中单个线程撤去绕过文件权限的能力后，仍能读取原业务包，并让日志 broker 导出 23,647 字节。冷启动还有具体的文件权限依赖：PID 目标在 root 所有的 /run，已有三个日志可由 kurad 续写，但该账号不能在 /var/log 创建首份日志或新的归档。现已修复两个后台启动入口在 PID 文件打不开时仍派生 JVM 的问题。整项服务撤权还需要覆盖首次创建、滚动归档及 JVM 错误转储。权限实测复用了已装包；随后为两个启动器打包一次，耗时 8.478 秒，新 deb 为 204.24 MB。此时 Core 目录内共 32 个 ARM64 deb，合计 6.54 GB。[权限与启动器实装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
