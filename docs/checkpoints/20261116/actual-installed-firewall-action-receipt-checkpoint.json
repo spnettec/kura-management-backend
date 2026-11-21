@@ -196,5 +196,140 @@
     },
     "readback": "main-net-admin-preflight/parked-readback.py",
     "scope": "Installed legacy IPv4 and IPv6 table preflight using the registered PrivilegedExecutorService with agent stopped. Only the observer platform thread dropped NET_ADMIN. The Main thread retained it. The observer only listed tables."
+  },
+  "legacyKernelForwardingAndReset": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission",
+    "testsPassed": 2238,
+    "testsSkipped": 0,
+    "publicationsPerResetBefore": 5,
+    "packages": {
+      "networking": {
+        "source": "3494a9e435df0a5c243bf248fc8b46d6e92b6d51",
+        "tree": "eff0833b52eb5f846c0f62113e2d9ba05a8c9d3b",
+        "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210143.3494a9e-1_all.deb",
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210143.3494a9e-1_all.deb",
+        "sha256": "bb26a3a8fd5df28046d0b308f888d8d9219c8f006d669bff7d83891b2f77cad1",
+        "package": "kura-networking",
+        "version": "3.0.0~git202611210143.3494a9e-1",
+        "installedJar": "/opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "jar": "ca4439058080e032ce8041c2190b6c3fcabb6ade6c26695255272ff36a8dd4e1",
+        "classSha": "3d040667da4e7f4e1766e2d58cda08bd8146f9fe3dc342f6694a40bf3606b79c",
+        "bytes": 9382032
+      },
+      "firewall-only": {
+        "source": "3494a9e435df0a5c243bf248fc8b46d6e92b6d51",
+        "tree": "eff0833b52eb5f846c0f62113e2d9ba05a8c9d3b",
+        "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210143.3494a9e-1_all.deb",
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210143.3494a9e-1_all.deb",
+        "sha256": "79a8ae0cacb36a5f712ef1d7ebb37b95e0ddb5eb81493bd0bff134baa6af52ec",
+        "package": "kura-firewall-only",
+        "version": "3.0.0~git202611210143.3494a9e-1",
+        "installedJar": "/opt/eclipse/kura/siblings/firewall/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "jar": "ca4439058080e032ce8041c2190b6c3fcabb6ade6c26695255272ff36a8dd4e1",
+        "classSha": "3d040667da4e7f4e1766e2d58cda08bd8146f9fe3dc342f6694a40bf3606b79c",
+        "bytes": 431386
+      },
+      "previousJar": "b728157da1c29e4a058fd33cd3eb8a8c3fa9e46b59c2f2eeeb7dae2913a49b4b"
+    },
+    "readOnlyForwardingOff": {
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "arch": "aarch64",
+      "jdk": 21,
+      "enabled": "0",
+      "network": "none",
+      "user": 997,
+      "netAdminOnly": true,
+      "rows": [
+        "ipv4 refused kernelCommands=0 threeTablesExact=true savedExact=true",
+        "ipv6 refused kernelCommands=0 threeTablesExact=true savedExact=true"
+      ]
+    },
+    "readOnlyForwardingOn": {
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "arch": "aarch64",
+      "jdk": 21,
+      "enabled": "1",
+      "network": "none",
+      "user": 997,
+      "netAdminOnly": true,
+      "rows": [
+        "ipv4 applied kernelCommands=97 resetKernelCommands=99 resetPublications=1 foreignRetained=true",
+        "ipv6 applied kernelCommands=95 resetKernelCommands=97 resetPublications=1 foreignRetained=true"
+      ]
+    },
+    "installedSix": {
+      "dpkg": {
+        "exitCode": 0
+      },
+      "admission": {
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "main": {
+          "unit": {
+            "MainPID": "1988",
+            "NRestarts": "0",
+            "LoadState": "loaded",
+            "ActiveState": "active",
+            "UnitFileState": "disabled",
+            "InvocationID": "4f976875586c4663aa6793679ef6376c"
+          },
+          "ticks": "40974177",
+          "uid": "997\t997\t997\t997",
+          "capEff": "0000000000001400",
+          "nnp": "1"
+        },
+        "observed": "java.lang.IllegalStateException: FIREWALL_OWNERSHIP_UNREADABLE: preserve the installation",
+        "metadata": {
+          "/etc/kura": {
+            "mode": 448,
+            "uid": 0,
+            "gid": 0
+          },
+          "/etc/kura/firewall-owner-agent": {
+            "errno": 2
+          },
+          "/opt/eclipse/kura/framework": {
+            "mode": 488,
+            "uid": 0,
+            "gid": 990
+          },
+          "/opt/eclipse/kura/framework/firewall-owner-agent": {
+            "errno": 2
+          }
+        },
+        "ordinary": {
+          "/etc/kura": {
+            "mode": 448,
+            "uid": 0,
+            "gid": 0
+          },
+          "/etc/kura/firewall-owner-agent": {
+            "errno": 13
+          },
+          "/opt/eclipse/kura/framework": {
+            "mode": 488,
+            "uid": 0,
+            "gid": 990
+          },
+          "/opt/eclipse/kura/framework/firewall-owner-agent": {
+            "errno": 2
+          }
+        },
+        "forwardingEntered": false,
+        "package": "3494a9e435df0a5c243bf248fc8b46d6e92b6d51"
+      },
+      "cold": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 84,
+        "originalSubmitWithdrawn": true
+      }
+    },
+    "resume": "firewall-forwarding-admission/parked-readback.py"
   }
 }

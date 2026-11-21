@@ -6,6 +6,8 @@
 
 **有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
 
+11 月 21 日的两种 Networking 发行包复用同一份防火墙 JAR，共 9.81 MB。两个 ARM64 网络命名空间也复用同一镜像。实测发现旧代码清空一族规则时重复发布五次，现已合并为一次。原六组件只升级标准包，正式 Main 又暴露出一个跨组件约定：Core 把 /etc/kura 设为 root 专属的 0700，Networking 却要求普通 JVM 能判断其下两个归属标记。这使独立运行的 Main 在修改规则前拒绝操作。[发行件](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/releases.json) · [原卷权限实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/ownership-refusal.json)
+
 11 月 21 日 09:40 完成的目录复测为 **346.48 GB**，其中历史工作目录 **252.37 GB**、中心 target **78.76 GB**，两者合计 95.6%。Core 打包目录保留 36 个 ARM64 deb，文件长度合计 7.35 GB。这轮只构建有代码变动的 GWT 和 Networking，两个新 deb 共 43.52 MB。SQLCipher 联合恢复和 Main 权限实测均复用了现有包和原安装卷。[目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-net-admin-preflight/storage.json)
 
 11 月 21 日 09:19 起按同一口径复测，工作区 **346.43 GB**，其中历史工作目录 **252.32 GB**，中心 target **78.76 GB**。Core 打包目录有 36 个 ARM64 deb，文件长度合计 7.35 GB。较 07:06 增加 5 个包，共 1.02 GB；同期工作区目录计量增加 1.07 GB。已登录 HTTP 下载复用了安装包和测试卷。修复旧 PID 接管后另建了一个 204.24 MB 的 Core 包。宿主卷当时可用 141.79 GB，APFS 共享块和虚拟机卷分别计量。[目录与发行件复测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-pid-handover/storage.json)

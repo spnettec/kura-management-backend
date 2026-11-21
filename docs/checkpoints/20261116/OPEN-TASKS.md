@@ -1,3 +1,9 @@
+## 2026-11-21 独立 Kura 防火墙转发与归属检查
+
+Networking 3494a9e 的标准包及 firewall-only 包通过 2238 项测试。在隔离 ARM64 内核中，当 IPv4 或 IPv6 转发处于关闭且开关只读时，该族在发出第一条内核命令前拒绝，已有三张表和保存文件保持原样。转发已开启时，两族均可在开关只读的条件下发布及撤销 NAT。清空全部规则由五次发布减为一次，并保留其他软件的规则链。
+
+原六组件原位升级一次标准包。正式 Main 在更早的所有权检查收到 FIREWALL_OWNERSHIP_UNREADABLE。root 观察到标记缺失，kurad 遍历 root 所有的 0700 目录 /etc/kura 时收到 EACCES。网络和防火墙两处均需能在保留原目录权限的条件下判断归属。原卷已正常停机，六包、SQLCipher 及 84 份文件冷读相符。续接入口 firewall-forwarding-admission/parked-readback.py。冻结 0/12。[实装及内核对照](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 独立运行时的防火墙读表权限
 
 在原六组件 Root、agent 停用的正式 Main 中，Networking 已安装的 IPv4 和 IPv6 实现分别通过其真实注册的 PrivilegedExecutorService 执行读表前置检查。测试线程持有 0x1400 时，两族均通过。只撤去该线程的 NET_ADMIN 后，直接子进程和执行服务创建的子进程均为 0x0400，两个前置检查均返回 IO_ERROR。Main 主线程保持 0x1400。测量前后两族的 filter、nat、mangle 六张表逐项摘要相同。
