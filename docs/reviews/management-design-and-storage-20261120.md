@@ -291,3 +291,5 @@ Deployment 的一次进程中断解释了为什么成功验证原子替换单个
 在同一业务卷验证六包保留式卸载与重装时，Core 的卸载脚本漏存站点 provider 顺序，修复后新增一个 205,066,056 字节的 Core deb。其余五包沿用原件。此时 Core 打包目录保留 61 个 ARM64 deb，长度合计 12,476,421,778 字节。一次正式 Main 启动同时检查原部署归档和三种数据库的原始记录。[包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/core-remove-sibling-order/storage.json)
 
 站点自装的两个 OSGi provider 随 Core 保留式重装恢复。本轮仍复用同一卷、五份网关包和两个既有 provider JAR，仅因 Core 卸载程序变动新增一个 205,066,338 字节的 deb。当前同目录 62 个 ARM64 Core deb 合计 12,681,488,116 字节。[包长度](../../../.management-close-20261116/core-rtc-hotplug-20261120/site-provider-retained-remove/storage.json)
+
+Docker 启动器的三版真实 OSGi 工厂更新复用了原镜像、原卷及三个已经构建的 Cloud deb。仅提取的三个工厂 JAR 合计 29,471 字节，新增 deb 和镜像均为零。缺少 Cloud 基础 bundle 时工厂无法注册；提供依赖后基础 bundle 也被激活，既有 MQTT 配置参与了启动。仅凭启动级别或部署目录无法判断这类副作用，需读取 OSGi 服务及运行日志。[服务更新与依赖实测](../checkpoints/20261116/actual-arm64-docker-nonroot-launcher-checkpoint.json)

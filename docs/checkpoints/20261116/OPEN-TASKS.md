@@ -1,3 +1,9 @@
+## 2026-11-21 Alpine 启动器热更正式 Cloud 工厂，并在停机换版后重新注册服务
+
+原 Docker 业务卷 `39:6566861`、现有 ARM64 镜像及只读 `/load` 目录验证了三个正式 Cloud deb 中的工厂 JAR。单独投放首版时，FileInstall 已安装 bundle；OSGi 缺少 `org.eclipse.kura.core.data.util`，没有注册工厂。补入同包的 Cloud 基础 bundle 后，第一版真实服务可调用。在同一 Main、同一 OSGi bundle ID 上替换第二版，先收到旧服务 244 注销，再收到新服务 245 注册。停机发布第三版，重开同一容器后如期注册；撤下后收到注销，并连续两次查到零个服务。三版的工厂实现类字节相同，限定版本不同，分别从原发行包逐字节提取。每次调用均由预期 bundle 返回原工厂 PID。
+
+测试给基础 bundle 配置了第 4 级，发行包本身位于第 1 级；两者均无显式 start 标记。实测基础 bundle 仍为 ACTIVE，注册了三个服务，已有 MQTT 组件因配置无效报错。容器只有回环网络，未提交业务配置。原四个 DP、注册表和四份身份文件的指纹核对通过，三个原快照时间均早于本轮。原卷上仅三个目录的时间发生变化。正式 Main 为 UID 122、有效能力为零、NNP=1，HTTPS 为 200；夹具已正常停机，测试挂载目录已清空。最新读回 `docker-load-service-update/cold.py`。六组件继续沿 `site-provider-retained-remove/cold.py final`。G021 的 27 个 OSGi 过滤查询沿用原检查点，冻结 0/12，外部延期仍仅原三项。[启动、服务变更和原卷实证](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ## 2026-11-21 站点自装的 OSGi provider 随 Core 保留式重装恢复
 
 旧 Core 的 prerm 只保存 sibling 维护脚本，站点没有自带维护脚本时，即使保住顺序表也会失去 JAR。Core `71eb1087ae` 把受保护的 sibling 代码目录保存到同一卸载暂存区，沿用原有配对和 postinst 恢复。ARM64 旧版回归实际缺少目录，修复后 48 项定向测试通过。

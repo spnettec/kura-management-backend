@@ -718,5 +718,198 @@
       "retired-comparisons": "263a101b08526cd31a9025f30aa4ceb2f75f58ac381ae9b2339769c45e0d8237",
       "preservation-final": "7404d4879d04b25cefb6f99aa2a6541c83a3db95b402bd8e333a027b82ccb0c4"
     }
+  },
+  "publishedFactoryHotAndStoppedUpdate": {
+    "root": [
+      39,
+      6566861
+    ],
+    "image": "sha256:32581cc4149fb912ba8834d08342118796446cd6df8066201df1ba19774adb3e",
+    "launcher": "9f9aad67a3e0752b94663387bc76ce4a38d3b879",
+    "imageCore": "kura-core\t6.0.0~git20261120192633.f4b364b-1\tarm64\t83e81fe4a40dc1d1f715e0e702f10f17cf47416e52c6a43db57c29a20fba6ead",
+    "inputCloudPackages": [
+      {
+        "file": "/Users/heyoulin/iot-kura-develop/git/kura-cloud/distrib/target/deb/kura-cloud_3.0.0~git202611170136.198e876-1_all.deb",
+        "debSha256": "adbe6398cb62049949e3493872201f09686c51d3e658338d12ac79607aa6a02e",
+        "commit": "198e876dc26f35111ad96e80465983158f441a63",
+        "tree": "86cf39d93fa688e55f416cbde88b8da790fd36fb",
+        "member": "./opt/eclipse/kura/siblings/cloud/4s/org.eclipse.kura.core.cloud.factory-3.0.0-SNAPSHOT.jar",
+        "version": "3.0.0.202611170136",
+        "sha256": "cdc3f16c4362c5e0ae5c58297cc46a6bcea67db40ba52230cea7ede936aff70c",
+        "bytes": 9824,
+        "factoryClassSha256": "f62980783a2973cd8f8ebc952177ea5602f4ff710b1876fd07cc462236166bf7"
+      },
+      {
+        "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-service-pid-runtime-20261120/current/kura-cloud/distrib/target/deb/kura-cloud_3.0.0~git202611200347.9faaec1-1_all.deb",
+        "debSha256": "72520fb1346ecfcebc67c5433fc4ff55dbeb94dcaff27b06ce4c282ba5faf10d",
+        "commit": "9faaec10dc7e69dc2fa1970c44cd7b6b2a782fb0",
+        "tree": "8c40f87c084e4d18a09eb0e661f2032103dac249",
+        "member": "./opt/eclipse/kura/siblings/cloud/4s/org.eclipse.kura.core.cloud.factory-3.0.0-SNAPSHOT.jar",
+        "version": "3.0.0.202611200347",
+        "sha256": "1d18f910a5df458f4b775f48c11a5a6fb472a851e8766365b12c2ee747d67ebf",
+        "bytes": 9824,
+        "factoryClassSha256": "f62980783a2973cd8f8ebc952177ea5602f4ff710b1876fd07cc462236166bf7"
+      },
+      {
+        "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/sibling-maintenance/kura-cloud/distrib/target/deb/kura-cloud_3.0.0~git202611210452.e08fb5d-1_all.deb",
+        "debSha256": "f9fb082cfbe3d181eafbf3948b417815a29798968d7f44522af7c726e057d190",
+        "commit": "e08fb5deb59148533bd8a3089960eca94176cc63",
+        "tree": "21da9b8bb494e6f30b0c08238c38de7e84e135a8",
+        "member": "./opt/eclipse/kura/siblings/cloud/4s/org.eclipse.kura.core.cloud.factory-3.0.0-SNAPSHOT.jar",
+        "version": "3.0.0.202611201440",
+        "sha256": "adfc6f3dcfd46bd352d95b30360c2802db6f6123d7a5d795eca94717caa71fa1",
+        "bytes": 9823,
+        "factoryClassSha256": "f62980783a2973cd8f8ebc952177ea5602f4ff710b1876fd07cc462236166bf7"
+      }
+    ],
+    "missingExporter": {
+      "root": [
+        39,
+        6566861
+      ],
+      "resolution": [
+        "FACTORY_DIAG bundle=org.apache.felix.fileinstall version=3.7.4 state=32 loc=initial@reference:file:../kura/plugins/6s/org.apache.felix.fileinstall-3.7.4.jar",
+        "FACTORY_DIAG bundle=org.eclipse.kura.core.cloud.factory version=3.0.0.202611170136 state=2 loc=file:/load/cloud-factory.jar",
+        "FACTORY_DIAG missing=osgi.wiring.package (&(osgi.wiring.package=org.eclipse.kura.core.data.util)(&(version>=1.0.0)(!(version>=2.0.0))))"
+      ],
+      "serviceReadbacks": 0,
+      "started": "2026-11-21T09:42:32.363939054Z"
+    },
+    "library": {
+      "source": "/Users/heyoulin/iot-kura-develop/git/kura-cloud/distrib/target/deb/kura-cloud_3.0.0~git202611170136.198e876-1_all.deb",
+      "debSha256": "adbe6398cb62049949e3493872201f09686c51d3e658338d12ac79607aa6a02e",
+      "member": "./opt/eclipse/kura/siblings/cloud/1/org.eclipse.kura.cloud.base.provider-3.0.0-SNAPSHOT.jar",
+      "sha256": "8ceae60abeb2f0fd4b5fc26a4518f88d103f3a894d9e14763c5a9db1fb09f632",
+      "path": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4/org.eclipse.kura.cloud.base.provider-3.0.0-SNAPSHOT.jar"
+    },
+    "generatedEntry": "reference\\:file\\:/opt/eclipse/kura/plugins/4/org.eclipse.kura.cloud.base.provider-3.0.0-SNAPSHOT.jar@4",
+    "exporterObserved": [
+      "FACTORY_EXPORTER state=32 services=3"
+    ],
+    "mqttInvalidClientConfiguration": true,
+    "first": {
+      "version": "3.0.0.202611170136",
+      "bundle": 238,
+      "service": 244,
+      "location": "file:/load/cloud-factory.jar",
+      "factoryPid": "org.eclipse.kura.cloud.CloudService",
+      "started": "2026-11-21T09:46:12.587616663Z",
+      "pid": 2525137,
+      "http": 200,
+      "process": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ],
+      "volumeRoot": [
+        39,
+        6566861
+      ]
+    },
+    "hot": {
+      "version": "3.0.0.202611200347",
+      "bundle": 238,
+      "service": 245,
+      "location": "file:/load/cloud-factory.jar",
+      "factoryPid": "org.eclipse.kura.cloud.CloudService",
+      "started": "2026-11-21T09:46:12.587616663Z",
+      "pid": 2525137,
+      "http": 200,
+      "process": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ],
+      "volumeRoot": [
+        39,
+        6566861
+      ],
+      "oldUnregistered": "WATCH_FACTORY_EVENT 4 3.0.0.202611170136 244",
+      "newRegistered": "WATCH_FACTORY_EVENT 1 3.0.0.202611200347 245"
+    },
+    "afterStoppedUpdate": {
+      "version": "3.0.0.202611201440",
+      "bundle": 238,
+      "service": 244,
+      "location": "file:/load/cloud-factory.jar",
+      "factoryPid": "org.eclipse.kura.cloud.CloudService",
+      "started": "2026-11-21T09:46:28.67049958Z",
+      "pid": 2526714,
+      "http": 200,
+      "process": [
+        "Uid:\t122\t122\t122\t122",
+        "CapEff:\t0000000000000000",
+        "NoNewPrivs:\t1"
+      ],
+      "volumeRoot": [
+        39,
+        6566861
+      ]
+    },
+    "withdraw": {
+      "health": {
+        "started": "2026-11-21T09:46:28.67049958Z",
+        "pid": 2526714,
+        "http": 200,
+        "process": [
+          "Uid:\t122\t122\t122\t122",
+          "CapEff:\t0000000000000000",
+          "NoNewPrivs:\t1"
+        ],
+        "volumeRoot": [
+          39,
+          6566861
+        ]
+      },
+      "unregistered": "WATCH_FACTORY_EVENT 4 3.0.0.202611201440 244",
+      "readbacks": 2
+    },
+    "originalFourDpsExact": 4,
+    "originalIdentityFilesExact": 4,
+    "originalRegistryExact": true,
+    "snapshots": [
+      {
+        "file": "snapshot_0.xml",
+        "sha256": "ce805a1646faafe5c7c33d183f0849e5208548b8eb53324b37979799f7cc31a3",
+        "predatesTest": true
+      },
+      {
+        "file": "snapshot_1795202383145.xml",
+        "sha256": "e2d74854dffce2bba5c63acc136d7da5bfc8646f532422b98405a15d6c4687a7",
+        "predatesTest": true
+      },
+      {
+        "file": "snapshot_1795202383187.xml",
+        "sha256": "e561c0418adfbcc0eb6d3460583e3574af4216899d41255d8b7094b5a1ac67a0",
+        "predatesTest": true
+      }
+    ],
+    "volumeChanges": [
+      {
+        "path": "data",
+        "type": "directory",
+        "afterDependencyStart": true,
+        "bytes": 108
+      },
+      {
+        "path": "data/persistance",
+        "type": "directory",
+        "afterDependencyStart": true,
+        "bytes": 24
+      },
+      {
+        "path": "data/persistance/verification",
+        "type": "directory",
+        "afterDependencyStart": true,
+        "bytes": 0
+      }
+    ],
+    "normalDockerStop": 143,
+    "loadDirectoryEmpty": true,
+    "newImageBytes": 0,
+    "newDebBytes": 0,
+    "identicalFactoryClassAcrossVersions": true,
+    "scope": "FileInstall lifecycle on the retained Docker volume. Configuration and cloud connection writes were not dispatched. The supporting Cloud bundle reached ACTIVE.",
+    "readback": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/docker-load-service-update/cold.py"
   }
 }
