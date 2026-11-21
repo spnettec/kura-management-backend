@@ -18,6 +18,8 @@
 
 在已有 Networking 的安装上，Core 即使把公共目录写进了 deb，条目的顺序也会影响升级。前版先遇到暂时悬空的旧链接，被 dpkg 拒绝。仅调整打包顺序后，修正版比前版小 42 字节，但仍需一个 205,003,220 字节的完整包。修正包先在与失败现场相同版本的前任上完成升级，再用于原六组件卷。当前 Core 打包目录有 46 份 ARM64 deb，逻辑长度合计 9,400,800,076 字节；此处未重新测量整个工作空间。失败的 Parallels 安装保留其原始维护记录。[升级现场及两份正式包](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
 
+普通 Main 的转发写入复用了既有 socket、两次批准校验和原操作日志。新协议同时核对网络命名空间、协议族和开关原值。隔离安装完成正向调用后又用于 Networking 移除、purge、重装，三次均从该 Root 查回同一结果。该安装正常停机时容器可写层为 262,439,298 字节；新 Core 包、两个 Networking 变体和共享编译缓存分别计量。[实装与维护数据](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
 防火墙这一轮说明了两种不同的工期来源。正式 Main 遇到现场实际保存的洪泛防护规则，原 worker 在批准前拒绝。补齐 TCP flags、MSS 和 IPv6 扩展头后，ARM64 内核收下了针对这些规则的变更。随后发现 Cargo 复用了旧二进制，即使源归档已更新。构建现在核对成品自报的源码摘要。这些问题都影响交付。另一部分工期和磁盘来自为每个中间改动生成完整的约 205 MB Core 包、再逐轮安装。可将同一交付的修改合并组包，日常验证直接运行变更的安装钩子或只构建 worker，到真实跨组件验收时再保留完整包。[实际调用与发行件](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)

@@ -1,3 +1,9 @@
+## 2026-11-21 普通 Main 的受限转发和原回执跨 Networking 包维护
+
+ARM64 实装 Core `668c7c596e`、Networking `71f30b6`、worker 源 `1200e75`。只含回环接口的独立 Root `2097164:7248502` 上，正式 Main 以 kurad 经 systemd socket 发布两条 UDP 转发规则。内核先接受规则，再从固定控制文件读回 IPv4 为 1，IPv6 保持 0。原号为 `af4cfded-7405-49a3-b558-8d9ff1389bbc`。临时规则移除后，原保存文件摘要恢复。Networking 实际 remove、purge、重装均成功，每次都用原号查回 APPLIED；14 份历史文件及两份凭据核对一致。Main 的有效能力掩码仍为 0x1400，NNP 为 1。原六组件已升级两包，冷读入口为 `main-firewall-forwarding/six/parked-readback.py`。
+
+测试还发现 iptables 1.8.11 无法显示这条原生 conntrack 状态表达式；实际规则由 libnftables 读回，旧工具的可读性继续处理。协议同时验证了错误命名空间、无对应转发规则、错误批准和批准前开关漂移。Rust ARM64 工作区 806 项通过、50 项忽略；Networking reactor 2260 项通过，启动归属 15 项通过。其余 provider/launcher 和完整维护矩阵继续，冻结 0/12。[原 Main、内核回执和维护](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 原六组件已升级公共目录修正，Parallels 保留一次失败的升级
 
 原六组件 Root `39:6611544` 已升级到 Core `e14d06eae1` 和 Networking `e5422d2`。dpkg 为公共安装目录登记了 Core、Networking、Deployment、Wires 和 GWT 五个所有者。六包、SQLCipher、84 份保护文件以及注册表和锁已停机冷读。最新六组件入口是 `six-registered-directory-upgrade/parked-readback.py`。[正式包和原卷核对](actual-passive-addon-dpkg-rollback-checkpoint.json)

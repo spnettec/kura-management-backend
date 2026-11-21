@@ -2098,5 +2098,141 @@
     "nextColdReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains/park-failed.py cold",
     "ordinaryMainForwarding": "pending",
     "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains"
+  },
+  "ordinaryMainForwarding": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-forwarding",
+    "core": {
+      "source": "668c7c596ebca0faea09cc584232b97af9639fa1",
+      "tree": "68fc899cedd8d646abb70b6875ab6cbdfbf4e215",
+      "sha256": "e49589e917b3ce57dd115e744943723365619f69fb201aa37fbbb52da2c0558e",
+      "version": "6.0.0~git20261121052355.668c7c5-1",
+      "bytes": 205012836,
+      "native": {
+        "source": "99855469fd51e76c744496f7dd14f0ec9ecbc1ec3019d7f914a4708fd73aa7ff",
+        "revision": "1200e756976c3a2d6b263335bf31681af877604c",
+        "architecture": "arm64",
+        "sourceVerifiedByExecutable": true,
+        "sha256": "ca4f77d9af0632ee492203cfa8a79a1e9c7fe69223db932c4cf95e62ecd3826f"
+      }
+    },
+    "networking": {
+      "networking": {
+        "source": "71f30b6b18af9211a9fcbc4a672b20700737b748",
+        "tree": "c89cc9a10490cc6fdad86ec9b2578292a0b0f18d",
+        "version": "3.0.0~git202611210524.71f30b6-1",
+        "sha256": "93522a0f866db397133e20050234536da6de2b622a3421fe9a06eea3cd71a326",
+        "bytes": 9406436
+      },
+      "firewall-only": {
+        "source": "71f30b6b18af9211a9fcbc4a672b20700737b748",
+        "tree": "c89cc9a10490cc6fdad86ec9b2578292a0b0f18d",
+        "version": "3.0.0~git202611210524.71f30b6-1",
+        "sha256": "0312bd3729089ea33ab1a9fba402f037afb0a545f08d277897b88e272e4de9bd",
+        "bytes": 460192
+      }
+    },
+    "actualMain": {
+      "root": {
+        "id": "ad1f255e547d96280d5a6615f8b9bb6ce30b315f5fedfdf34f1d735fb69cd851",
+        "mount": "2097164:7248502",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "pid": "2213",
+      "capEff": "0000000000001400",
+      "uid": "997",
+      "noNewPrivileges": true,
+      "original": "af4cfded-7405-49a3-b558-8d9ff1389bbc",
+      "commands": 2,
+      "kernelForwardingBefore": [
+        0,
+        0
+      ],
+      "kernelForwardingAfter": [
+        1,
+        0
+      ],
+      "originalConfigurationRestored": true
+    },
+    "worker": {
+      "namespace-refusal": {
+        "refusedBeforeIntent": true
+      },
+      "no-forwarding-model": {
+        "refusedBeforeIntent": true
+      },
+      "wrong-approval": {
+        "refusedBeforeIntent": true
+      },
+      "state-changed-before-approval": {
+        "refusedBeforeIntent": true
+      },
+      "ipv6-already-enabled": {
+        "id": "0a8ca911-497f-483f-ba1b-c607809bf3f0",
+        "state": "UNCHANGED",
+        "commands": 0,
+        "readback": [
+          0,
+          1
+        ],
+        "sameIdReceipt": true
+      },
+      "ipv4-forwarding-only": {
+        "id": "c87de235-08bf-4882-8516-ba9914a0fe77",
+        "state": "APPLIED",
+        "commands": 0,
+        "readback": [
+          1,
+          1
+        ],
+        "sameIdReceipt": true
+      },
+      "ipv6-rule-and-forwarding": {
+        "id": "3560d2dd-488f-41b7-a78c-2fd9cbac9edf",
+        "state": "APPLIED",
+        "commands": 1,
+        "readback": [
+          1,
+          1
+        ],
+        "sameIdReceipt": true
+      }
+    },
+    "maintenance": {
+      "root": {
+        "id": "ad1f255e547d96280d5a6615f8b9bb6ce30b315f5fedfdf34f1d735fb69cd851",
+        "mount": "2097164:7248502",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "package": "3.0.0~git202611210524.71f30b6-1",
+      "historyFilesExact": 14,
+      "originalId": "af4cfded-7405-49a3-b558-8d9ff1389bbc",
+      "keysExact": true
+    },
+    "siteParked": 0,
+    "sixCold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "sixVersions": {
+      "kura-core": "6.0.0~git20261121052355.668c7c5-1",
+      "kura-networking": "3.0.0~git202611210524.71f30b6-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "sixReadback": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-forwarding/six/parked-readback.py",
+    "tests": {
+      "rustPassed": 806,
+      "rustIgnored": 50,
+      "networking": 2260,
+      "bootAndOwnership": 15
+    },
+    "xtables": "iptables -S and iptables-save could not represent the installed forwarding chain on iptables 1.8.11. Native kernel readback verified the two rules before removal. Isolated comparison shows native ct state causes this diagnostic; original iptables uses xt conntrack revision 3."
   }
 }
