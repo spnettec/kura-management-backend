@@ -374,3 +374,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 同一 agent 提交为何生成不同的六组件包
 
 六组件和绑定网关所用的两个 bridge 有八份 class 和两份 OSGi 元数据不同，虽然其 Core loader 相同。直接复用绑定网关的 deb 会将六组件打包输入中的 bridge 从 11 月 20 日版换回 11 月 19 日版。本轮复用同一已配对 ARM64 二进制与源码清单，保留六组件原 bridge，用独立 Debian 版本发布 7.07 MB 的包。同一安装在解包后关机，继续 configure 并再次关机。新增持久卷为零。[原包比较及六组件源码对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/six-agent-cohort/HANDOFF.md)
+
+## 六个实装包与当前源码的差异
+
+六组件 Core 由 d97260d 升至 e99caab 后，五个包直接匹配当前提交，Deployment 的后续提交仅改文档。复用了已有的 205.09 MB ARM64 包和同一原卷，停机前移除了临时上传副本。这次从实装而非版本标签比对六包 755 项，264 个 JAR 全部匹配；归档路径存在差异的 77 项中，61 项为安装后撤下的模板。实际发现的一项配置问题是没有以太网时板型仍为占位符。[逐项核对与运行结果](../../../.management-close-20261116/core-rtc-hotplug-20261120/six-core-cohort/HANDOFF.md)

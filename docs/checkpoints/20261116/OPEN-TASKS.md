@@ -1,3 +1,7 @@
+## 2026-11-22 六组件原卷完成当前 Core 升级与合法 Main 实读
+
+原 Root 39:6611544 已装 e99caab，六包运行源码与当前 WIP 对齐，Deployment 仅差说明文档。正式 Main 读回原九份快照及原业务包资源。47 笔 Core 维护的 854 条签名阶段和 319 个可变文件均核实。六包 264 个 JAR 全部配对。无以太网时安装器漏掉板型替换，kura.device.name 留下 device_name，须继续修正。当前六组件冷读为 `six-core-cohort/cold.py final`，见 `six-core-cohort/HANDOFF.md`。冻结 0/12。
+
 ## 2026-11-22 原六组件沿本现场 bridge 升级 agent
 
 原 Root 39:6611544 的 agent 已由 5be64b7 升至 6910532，沿用原 bridge 532c124e 和 loader。解包后正常停机，原 Root 续配一次后再次正常停机。已核对原业务、18 个实际发行文件、4 个包钩子、46 笔 Core 历史及 835 条签名记录。新的六组件冷读入口为 `six-agent-cohort/cold.py final`。当前六组件与 WIP 的剩余产品源码差异集中在 Core d97260d → e99caab，Deployment 的后继仅改文档。详见 `six-agent-cohort/HANDOFF.md`。冻结 0/12。

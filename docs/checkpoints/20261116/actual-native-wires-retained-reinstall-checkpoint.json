@@ -7725,5 +7725,84 @@
       "candidate": "e99caab"
     },
     "frozen": "0/12"
+  },
+  "installedSixCurrentCore20261122": {
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/six-core-cohort/HANDOFF.md",
+    "source": {
+      "kura-core": {
+        "version": "6.0.0~git20261122020638.e99caab-1",
+        "installed": "e99caab526662eafe4a6d8f38a331f8cf3ab9d4c",
+        "wip": "e99caab526662eafe4a6d8f38a331f8cf3ab9d4c",
+        "deltaFiles": []
+      },
+      "kura-deployment": {
+        "version": "2.0.0~git202611211658.1b043a4-1",
+        "installed": "1b043a4b6d8a70aa28284da08ea9798e15660f79",
+        "wip": "38bb97c07a39aca4dfe72fa8f27ba80eba09698f",
+        "deltaFiles": [
+          "docs/deployment-package-publication-recovery.md"
+        ]
+      },
+      "kura-management-agent": {
+        "version": "0.1.0~cohort20261121125537.6910532-1+bridge532c124eb37f",
+        "installed": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+        "wip": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+        "deltaFiles": []
+      },
+      "kura-management-ui": {
+        "version": "3.0.0~git202611211325.b881a3a-1",
+        "installed": "b881a3ad0ee4c7c6510f903400dbdf7a66130251",
+        "wip": "b881a3ad0ee4c7c6510f903400dbdf7a66130251",
+        "deltaFiles": []
+      },
+      "kura-networking": {
+        "version": "3.0.0~git202611211339.83f237e-1",
+        "installed": "83f237eea441dd0e8290372e80e7b7193601a9bf",
+        "wip": "83f237eea441dd0e8290372e80e7b7193601a9bf",
+        "deltaFiles": []
+      },
+      "kura-wires": {
+        "version": "3.0.0~git202611211325.277954b-1",
+        "installed": "277954b2fd88e8eaaa6c585e34a351382b204c44",
+        "wip": "277954b2fd88e8eaaa6c585e34a351382b204c44",
+        "deltaFiles": []
+      }
+    },
+    "request": "de171f0e-06c0-4c42-952d-9aff56584409",
+    "coreDeb": "9443032d4f28948543d089fb17487dd9cf04d8f2991a87f1064de58517730c68",
+    "root": "39:6611544",
+    "pid": "3399",
+    "originalSnapshots": [
+      0,
+      1795204400339,
+      1795205738106,
+      1795206392261,
+      1795206803461,
+      1795206803594,
+      1795207080183,
+      1795207350959,
+      1795223609366
+    ],
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-21T19:05:47.56350518Z",
+      "FinishedAt": "2026-11-21T19:05:50.97107252Z"
+    },
+    "signedPhases": 854,
+    "histories": 47,
+    "mutableFiles": 319,
+    "payloadCompared": 755,
+    "payloadAtArchivePathExact": 678,
+    "matchedJars": 264,
+    "remainingDefect": "Without ethernet, the installer leaves the board name at device_name",
+    "frozen": "0/12"
   }
 }
