@@ -3953,5 +3953,57 @@
       "preservation-final.json",
       "repos-final.json"
     ]
+  },
+  "configuredIpv4MainAgainstDifferentSitePolicy": {
+    "root": "39:7320076",
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-ipv4-configured-main",
+    "registeredPid": "org.eclipse.kura.net.admin.FirewallConfigurationService",
+    "property": "firewall.nat",
+    "originalSubmission": 1,
+    "main": "bc9d188ca1e54e3e921c78098cb3c9aa",
+    "previousSnapshot": "snapshot_1795248649849.xml",
+    "savedTestSnapshot": "snapshot_1795250193822.xml",
+    "held": "/opt/eclipse/kura/user/snapshots/snapshot_1795250193822.xml.held-ipv4-test",
+    "originalAndHeldSha256": "1c9d9eafafcbc63f89b833b8eec90127a5012ca3db1eeb7f23068564ca16fb39",
+    "keptOriginalInode": true,
+    "originalActiveSnapshots": 3,
+    "siteRules": 4,
+    "savedInputRules": 6,
+    "absentFromSiteTcpPorts": [
+      22,
+      443
+    ],
+    "installedWorkerObserved": "Firewall publication failed: CONFLICT: managed model rules missing,reordered or ambiguous",
+    "socketResponse": "EOF before PREPARED",
+    "publicationHistoryCountBeforeAndAfterRequest": 36,
+    "kernelTestRules": 0,
+    "applicationReceipt": false,
+    "outcome": "Saved test configuration, worker planning refusal; no prepared approval, pending sender, kernel change or successful API application readback. Retain original, do not resubmit.",
+    "cold": {
+      "root": "39:7320076",
+      "versions": {
+        "kura-core": "6.0.0~git20261121075913.7f04a99-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1"
+      },
+      "records": 36,
+      "files": 170,
+      "bootRecords": 12,
+      "forwarding": {},
+      "worker": "e65c48adf2d4b25918d4260ae0145d64e8d21025fcf4d86588be826b8b5a12d8"
+    },
+    "coreWip": "3f7c435b0ea7a920b4b435a0057e296d285d3c05",
+    "workerSource": {
+      "source": "805dc2d150cc1f667d41b075d85bc577e39fdd64fbce834e3c8f529ff3618b19",
+      "revision": "4ecdaa653b387b3e7c4e36da1e517c7369ee7775",
+      "architecture": "arm64",
+      "sourceVerifiedByExecutable": true,
+      "sha256": "d191b6e6154fb0c6d218052115191e7d4b696ad7e6afbf8646fc7919fb6ef5f4"
+    },
+    "crateTests": 12,
+    "isolatedPlanDiagnostic": "CONFLICT: managed rule 4 missing or out of order (ipv4/filter/input-kura)",
+    "releaseScope": "Core production ARM64 worker build only; exact reduced site mismatch tested offline with published source. Installed fixture retains prior release. No new deb or VM.",
+    "externalDeferredUnchanged": true,
+    "coldVerifier": "firewall-ipv4-configured-main/cold.py",
+    "sixColdVerifier": "deployment-paired-archive-commit/access/cold-maintenance.py"
   }
 }

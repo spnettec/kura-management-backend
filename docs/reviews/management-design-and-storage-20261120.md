@@ -22,6 +22,8 @@
 
 11 月 21 日的 Felix 验收复用了 Deployment 发行件与已有 Core 插件。三份独立业务包及其 Equinox 存储共占 324 KiB（宿主 du），没有新增 deb、Docker 数据卷或虚机。三次进程中断后，业务 JAR 字节全部保留，其中两次 Felix 也能列出包版本，但 Equinox 冷启动均未登记业务 bundle。排查时可以先对照既有包清单与运行时清单。只有涉及正式 Main 和安装维护的结论才需要回到对应安装上验证。[逐项结果和适用范围](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
+正式 Main 的 IPv4 试验显示，配置快照可以在内核拒绝规则时保存成功。临时安装的站点规则缺少保存模型声明的两条入站规则。核对两份清单就能定位这一差异，单纯重装或重启会使结论更难判断。为改善定位，这次仅重建了 50,482 字节的源 crate 和 ARM64 worker，复用原安装、构建缓存及已有 deb。测试快照保留在原目录，恢复了原三份启动候选。[IPv4 现场与磁盘范围](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 工期花在哪里
 
 最初的多网关管理中心已经扩展到网关操作系统、原 Kura 本地控制台、密钥保管、发行包维护及故障后的业务连续性。同一张 Timer→Logger 图能在首次安装时送达，只证明运行时可用。要证明客户升级可用，还需在原安装上升级 Core，确认原图只提交过一次；要证明 Wires 可独立拆装，又需经过 config-files、unpacked、installed，查看注册行并观察原图再次送达。后三项已有现场记录。其余组件及中断点不能借用这个结果。

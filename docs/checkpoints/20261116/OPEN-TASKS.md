@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 的 IPv4 配置因现场规则不同而被拒绝
+
+临时防火墙安装 `39:7320076` 的正式 Main 通过 ConfigurationService 提交了一次回环 IPv4 NAT。快照保存成功，worker 在 PREPARED 前拒绝发布。原保存模型的 filter/input-kura 链有六条，内核有四条，缺 TCP 22、443。未新增内核业务规则。原发送端无 pending，本次操作前后的 36 对发布记录相同。配置服务保存与内核生效需分别验收。该请求保留原件，未重发。
+
+停 Main 后将本次独有快照在原目录改名留存，inode 和内容一致，原三份启动快照保持。夹具正常停机、Main disabled。新版 worker 在冲突日志中提供地址族、表、链和模型中的规则序号；ARM64 原生测试 12 项通过，另用发行 crate 对照六条与四条，定位到第 4 条。Core 正式 worker 构建已校验源归档，现场仍装上版。本轮未用拒绝代替 IPv4 正向验收，正式 Main 正向仍待有配对的 IPv4 站点模型。六组件沿原入口冷读，防火墙改用 `firewall-ipv4-configured-main/cold.py`。冻结 **0/12**，外部延期仅原三项。[快照、现场差异和源码版本](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 真实 Felix 安装中断后的包索引与业务 bundle
 
 用 Deployment `ba4bc90` 发行包中的本地、云端安装方法，在 ARM64 Equinox 3.24.100 中调用实际注册的 Felix 0.9.10。三份独立业务 DP 分别只提交一次。安装命令执行后、索引替换前中断时，原 Felix 临时目录保留，冷启动查询不到包。索引替换后、方法返回前中断，以及 Felix 返回给本地代码、Kura 尚未登记时中断，冷启动均查到包版本 1.0.0。三次 Equinox 枚举均缺少业务 bundle，磁盘上的 bundleFile 仍与原输入内 JAR 逐字节一致。原 Kura 注册表其他行保留，未发布新的业务归档。三次结果维持 UNKNOWN。现有云端 GET PACKAGES 读取 Felix 声明，GET BUNDLES 枚举运行时，两者可分别核验。
