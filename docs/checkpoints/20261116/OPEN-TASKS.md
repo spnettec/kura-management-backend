@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 的首份日志与后台 PID
+
+Core 910cb9bd9a 在发行包配置阶段为 kurad 创建缺少的应用、审计和控制台日志。实际 ARM64 安装脚本首建三份 0600 文件，零能力账号均可续写；已有站点文件、别名和目标暂时缺失的别名均保留。原六组件卷完成真实 dpkg 升级，正式 Main 启动前，三份旧日志的完整指纹与升级前一致。
+
+后台启动器改为先打开控制台日志，再打开 PID 文件及派生 Java。旧脚本在控制台被拒时覆盖了原 PID。新包在原卷遇到只读日志时以 EROFS 退出，未留下 PID、JVM 或新增 writer；正常启动时，两条控制台输出流、真实 PID、writer lease、原业务 DP 和 agent bridge 已核对。六组件已停机，83 份文件及 SQLCipher 已复核。停机入口为 packaged-main-log-layout/parked-readback.py。归档目录的发行接入、JVM 诊断文件及正式单元撤权仍待验。冻结 0/12。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 向隔离虚拟 RTC 写入、六组件卷日志归档
 
 在现有 Parallels 内获准另建 ARM64 安装。发行包安装的 Main 以 kurad 启动，通过注册的 ClockService 将系统时间同步到专属虚拟 DS1307。初始设备读数为 EINVAL；唯一一次回调后，设备秒值与 actor 写入时刻相符，发送端和 Root 的同一编号均为 APPLIED，errno 为 0。新安装已正常停机并保留围栏。续接入口为 parallels-registered-main-rtc/parked-readback.py。原 Parallels 组件的 21 份文件、3 个操作和原围栏已复核。物理硬件仍在原延期项内。[时钟实装检查点](actual-registered-main-clock-and-purge-checkpoint.json)

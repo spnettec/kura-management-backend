@@ -2416,5 +2416,117 @@
     "originalLogFingerprintsExact": 3,
     "scope": "Installed foreground launcher with private log mounts. Packaged first creation, diagnostic files, archive downloads and the formal unit capability remain open.",
     "evidence": "direct-log-archive-only/parked-readback.py"
+  },
+  "packagedMainActiveLogs": {
+    "source": "910cb9bd9aabc98351aa25457056393a59312fe7",
+    "tree": "1ef53ec8729b4018850e0068803569aa8b3b681b",
+    "version": "6.0.0~git20261121000106.910cb9b-1",
+    "debSha256": "241d9832717d92554355645b8c164b9319adbb116c82553f754753d941e27538",
+    "freshRuntimePhase": {
+      "architecture": "aarch64",
+      "fresh": {
+        "kura.log": {
+          "ino": 6980613,
+          "mode": 33152,
+          "uid": 997,
+          "gid": 995,
+          "size": 8,
+          "mtime": 1795219341073953843,
+          "ctime": 1795219341073953843,
+          "sha256": "e80b71cd14d3cbd65f4173abcbfcf01a545dbca32a72d575108b553a648cc96f"
+        },
+        "kura-audit.log": {
+          "ino": 6980614,
+          "mode": 33152,
+          "uid": 997,
+          "gid": 995,
+          "size": 8,
+          "mtime": 1795219341074953844,
+          "ctime": 1795219341074953844,
+          "sha256": "e80b71cd14d3cbd65f4173abcbfcf01a545dbca32a72d575108b553a648cc96f"
+        },
+        "kura-console.log": {
+          "ino": 6980615,
+          "mode": 33152,
+          "uid": 997,
+          "gid": 995,
+          "size": 8,
+          "mtime": 1795219341075953845,
+          "ctime": 1795219341075953845,
+          "sha256": "e80b71cd14d3cbd65f4173abcbfcf01a545dbca32a72d575108b553a648cc96f"
+        }
+      },
+      "owner": 997,
+      "group": 995,
+      "caplessAppend": 3,
+      "existingRegularExact": true,
+      "configuredAliasExact": true,
+      "danglingAliasExact": true,
+      "backend": "shipped --configure-runtime",
+      "systemd": "systemd 257 (257.13-1~deb13u1)"
+    },
+    "upgradeRoot": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "preexistingLogFingerprintsExactBeforeMain": 3,
+    "denied": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "error": "EROFS",
+      "pidFileAbsent": true,
+      "logFingerprintExact": true,
+      "newJvm": false,
+      "newWriter": false
+    },
+    "formalMain": {
+      "unit": {
+        "MainPID": "4643",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "699ebd21779041f5a62ebfa9cd925dae"
+      },
+      "business": "fixture.retained.business.bundle",
+      "bridge": "org.eclipse.kura.management.bridge",
+      "writerLease": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "bothConsoleStreamsVerified": true,
+      "extraConsoleDescriptorClosed": true
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "validation": {
+      "arm64LauncherTests": 13,
+      "macLauncherTests": 13,
+      "oldRegression": "previous PID overwritten on console-open failure",
+      "installerScope": "Fresh and pre-existing site layouts exercised with the shipped --configure-runtime phase; dpkg upgrade exercised on the retained six-component Root."
+    },
+    "evidence": "packaged-main-log-layout/parked-readback.py",
+    "packageBytes": 204240068,
+    "inputBundleChanges": false,
+    "sha256": {
+      "package.json": "fcb74b3c22b22b25abd579e070f3cd6ca246ade5f920da327f6e456aabc16fcf",
+      "phase.json": "4a27fcbc71f4c2640d4c684894469564235465186349e89241a5b2b982005562",
+      "upgrade-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "upgraded.json": "f763b0ce4b0c2095ff94bdb01b8b37a54e136daeb6b3a62bcb215a9d2ccb647f",
+      "denied.json": "249419b362927cd7b0fb6aa725b22ad2f5a1e23c7620667956116e5dfb707f64",
+      "main.json": "453ba2bb5bc84c236dd3bf3ab901d8cbfd543dbebb90941430adcb0eda6ff96d",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "linux-final.log": "86abb03e73d7d9787915f5d765e9bf9f1e8b2102e7c938e27af700bd63fd9b78",
+      "mac-final.log": "363fc6b0288b8ed4ee3553dfa03e5bcca171babc32960c3c47759fdd0571355f",
+      "original-three-after.json": "9058953b87df21fb0eeab539d7bfc1b4a05047490e62efcae33969bf6755c4ba",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }

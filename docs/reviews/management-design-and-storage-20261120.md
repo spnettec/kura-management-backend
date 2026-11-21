@@ -41,6 +41,8 @@
 
 整台前台 JVM 的日志实测说明，单看文件可写会漏掉容量故障。两个 ARM64 进程均以 kurad 和有效能力 0x1400 运行，并恢复原业务 DP。使用 Debian 默认日志布局时，应用和审计日志写入成功，强制轮换后都没有压缩归档，仍向原 inode 追加。换成 Docker 已用的 /var/log/kura 私有目录，两个 Log4j appender 各生成一份含旧标记的压缩档，旧日志路径仍能读到新文件。试验复用已装包，只替换两个前台进程看到的日志挂载。原三份宿主日志的完整指纹保持。第三次启动只将归档目录指向 /var/log/kura/archives。两个活动文件均保持原路径和 inode，各自产生一份含旧内容的压缩档，并继续接收新行。已有普通活动日志可原地保留。正式发行仍需覆盖首次创建、历史归档下载及保留。[同一安装上的两种日志布局](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
+Core 910cb9bd9a 已将活动日志首次创建交给 Debian 安装器。用发行包的配置阶段在 ARM64 实测，三个文件均以 kurad、0600 创建；同一配置步骤保留已有站点文件、别名及目标暂时离线的别名。原六组件卷真实升级后，三份旧日志的内容、inode、权限和时间戳一致。后台启动器先打开控制台，避免日志失败时误写 PID。归档布局、GC 和错误转储仍待正式发行验证。此轮只组装一个现有 bundle 集合的 Core 包，耗时 8.685 秒。[首建与升级实装](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 普通命令的独立服务还影响两个用户可见的行为。在原六组件卷上停止一个正在运行的命令实例，Main 和监听 socket 均继续运行，下一条命令成功。对于 Main 私有数据目录，worker 可以相对读取已知文件，调用 getcwd() 则返回 EACCES。站点另设的目录给命令组穿越权后，worker 可以取得绝对路径并读指定文件，仍无法列举目录。两次实测复用已安装的 Core，没有新增 deb 或构建镜像。[普通命令与目录验证](../checkpoints/20261116/actual-core-command-worker-lifecycle-checkpoint.json)
 
 ### 六个网关包已经验证到哪一步
