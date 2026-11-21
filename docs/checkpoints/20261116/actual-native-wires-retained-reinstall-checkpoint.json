@@ -6543,5 +6543,45 @@
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
       "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609"
     }
+  },
+  "cloudInstallReturnedPair20261122": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/felix-returned-pair",
+    "job": 45001,
+    "root": "39:7983752",
+    "completed": ".dpa.properties.install-68209da4eed964b2ed6bf4bfb09fe768ed8c76f8d282176d8a483999762699cf.done",
+    "result": [
+      "GET install/result 45001 COMPLETED",
+      "file:/opt/eclipse/kura/packages/fixture.returned.pair_1.0.0.dp",
+      "Felix fixture.returned.pair 1.0.0"
+    ],
+    "debianCoreWriterCheck": 1,
+    "hashes": {
+      "HANDOFF.md": "0024818ad12f5db8b9a792b9dae3daf8f3fc0e1673ab1d470bf64959f1c7acce",
+      "field.py": "e4998f1c4f9cabe388eab1cacdc41d73f3bd384e19720f3d634a0d77cac1fd58",
+      "Probe.java": "212b1cae2ae50d7f496f9558926edf870b8fe0f0e9194dcf9c18f1a81d42182d",
+      "Cut.java": "4ee68ee16547aa2b2c9b526f449cce01d71923c54d1d6683b2edc980341b5435",
+      "Cut.class": "94762e3ec31f2f33f15c18d9df2c7e231667e35f94857fd991b9b90ca3b2fb4c",
+      "observer.jar": "a8bf54050d686173d43f960301f2d3aedf906af6b35165280284d57b3d840671",
+      "instance.json": "c00712a80ee49f2d7f6578dcd643b98d71f61cd301dc988732a5d63e2601a80b",
+      "dispatch-intent.json": "a3eb50ea57446c434e1aff87f3a336a99eee9e82f15cbb34f9020c09d31e7a5c",
+      "first-main.json": "e5e91fc172538dfaa987237798c0a235faa0e3c3efcb5e6703d37ee6f7a3d060",
+      "cut-intent.json": "d3671b162ab7fdf63ee9104af376eb32e3f8123edd1c11b360689b297413e1fa",
+      "cut.json": "2dc25cb6bff30692b3bca66bf1c37b274d621aae20b546848e7642ab7aebafc4",
+      "core-admission.json": "c3ddb986c563e98e6c51207c8ca9ea3e469eefa2c61eb6f22ff3e6145e369c29",
+      "readback-intent.json": "e87997ee3fa33d2038710be48c5463966ba1283a9a228ff3e81360d3a2a3cd37",
+      "readback-main.json": "043c738a28caeba4b16b82d7c22c396db44b7e2dd75a822f016d818c42200452",
+      "live.json": "8d68eb7a0d31dcbcaf7e0e2f5b55646d7824d83b1de13a81a62c4a4a37e65a3a",
+      "parked.json": "2f6e0b74312c872d03f1f96758da16b9b5e42ec4f5d7ac6c90af12f71d89a180",
+      "cold-final.json": "e53120afe9f89e971a95f78af27b9e7ac0f964053d691a787df81635babd2f85",
+      "storage.json": "d3ee6c0286d83cb4f6f9c9e581f4a0396bfbdee74151e1c4f464d5caa89404cd",
+      "package-proof.json": "2be82eefacadd018e4ff17d03ad1f90b3c18270b0a68e3fa0483f852a6b83bba",
+      "original-three-after.json": "27a97f79e97d5bef942e8cea14d8da63f3cf19a233baeee7f96b8b5665ec34ad",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "first.log": "b4f69da3e0d4150e36bcefff6e243e2d4ebf7c534ffdaa51405cee61c5de8a2e",
+      "readback.log": "ec69766076419d92af7170f1e90095292fc0d66bd5260a8bef7967cc45d06b11"
+    }
   }
 }

@@ -1,3 +1,11 @@
+## 2026-11-22 云端安装 45001 在归档发布后中断，原 Main 安装现场重启恢复
+
+隔离 ARM64 网关的正式 Main 通过已注册的云端 RequestHandler 接受一次安装，编号为 `45001`。回执已持久化为 `phase=returned` 后，测试夹具在同一工作线程发布归档、同步目录、即将替换注册表时暂停 JVM。归档摘要与提交的 DP 相同，当前注册表与受理时的 inode 和摘要相符，待发布注册表已包含新包。用该 JVM 的 UID 中断进程，退出码为 137。中断后原容器保持运行；JVM 已退出。实装 Core 的 `--check-stopped-writers` 在这时返回 1，指出必须先处理原发布回执。执行前后的磁盘指纹相同。
+
+沿原容器、文件系统 Root 和数据卷 `39:7983752` 重启正式 Main，按原编号读取 `GET install/result`，结果为 `COMPLETED`。原 pending 回执的 inode、摘要和 mtime 与最终完成回执相同，原暂存注册表也原样成为正式注册表。发布过的归档和四个出厂归档指纹一致。启动日志记录本地 DeploymentAgent 按新注册表装载业务 DP，Felix 读回 `fixture.returned.pair 1.0.0`。云端 EXEC 只提交一次。Main 收到 TERM 后停止，容器正常退出 0，原卷已只读复核。
+
+本次验证了已落盘的成对发布回执及 Core 停机写入检查。带未决业务回执运行原生 dpkg 的升级、移除、purge 及相应维护恢复仍待实测。六组件停机入口继续使用 six-deployment-receipt-upgrade/cold.py，绑定网关继续使用 bound-agent-packaged-receipt-field/cold-business.py。先前的 42002 和 44002 分属各自原 Root，本轮仅停机核对。原三现场、原运行进程及 7fd 的 41 输入／16 回执已核对。冻结闭环 0/12。external deferred 仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 原六组件 ARM64 网关完成 Deployment 升级，正式 Main 读回原业务包
 
 原 Root `39:6611544` 从 Deployment `de17bd5` 升至 `1b043a4`。本次直接使用上轮已核对源码的 deb。正式 dpkg 解包后，Main 处于 masked-runtime、inactive，Deployment 的 replace 围栏和生成器硬链接对应 inode 7978837。沿该围栏配置一次后，dpkg 审计为空，Main 和 agent 恢复 disabled、inactive。其余五个组件版本和 Core 的 46 笔原维护编号均与升级前一致。
