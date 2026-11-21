@@ -4062,5 +4062,90 @@
     },
     "sixCold": "deployment-paired-archive-commit/access/cold-maintenance.py",
     "next": "Retain the original boot, namespace, IDs, root evidence and observer. Any recovery on this installation must account for the old helper and reader identities and the existing kernel receipt. Full Main cold readback of this IPv4 configuration is open."
+  },
+  "retainedNativeIpv4PendingPackageAdmission20261121": {
+    "root": "39:7320076",
+    "container": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+    "operation": "9ba61fcd-75a9-42cc-973c-b188fb003e2b",
+    "ipv4": "APPLIED",
+    "ipv6": "undispatched",
+    "namespace": [
+      5,
+      4026534179
+    ],
+    "packages": {
+      "kura-core": {
+        "source": "71eb1087ae1ae3c7bd8261977f5d6c7fc4ddb18f",
+        "sha256": "3b3fa09c65147f807193a82890231642d3b86fa0cc0744099ff4a5e91d411959"
+      },
+      "kura-networking": {
+        "source": "671a90fb3d42be84d404764cd31257ce5fdecada",
+        "sha256": "e4c04e4f4422fcd49836cd879372a1c06cf39293ce7d3a9509ab175719142eb2"
+      },
+      "kura-firewall-only": {
+        "source": "671a90fb3d42be84d404764cd31257ce5fdecada",
+        "sha256": "c81033c6cc74b35a89a859d59111d950f17ca8daea0386d719980b6975775a51"
+      }
+    },
+    "programSha256": "9d2d57f3bbddb72dd49e6d9898ff69000774083aa90c543233a8552cefd6956d",
+    "decisions": {
+      "preinst/install": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "preinst/upgrade": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "prerm/remove": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "prerm/upgrade": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "prerm/failed-upgrade": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "prerm/deconfigure": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "postinst/configure": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "postinst/abort-remove": {
+        "exit": 0,
+        "decision": "preserve"
+      },
+      "postinst/abort-upgrade": {
+        "exit": 0,
+        "decision": "preserve"
+      },
+      "postinst/abort-deconfigure": {
+        "exit": 0,
+        "decision": "preserve"
+      },
+      "postrm/remove": {
+        "exit": 1,
+        "decision": "refuse"
+      },
+      "postrm/purge": {
+        "exit": 1,
+        "decision": "refuse"
+      }
+    },
+    "dpkgStarted": false,
+    "knownPublications": 44,
+    "rules": 3,
+    "forwarding": [
+      1,
+      0
+    ],
+    "probeCorrection": "Discarded a read-only admission observation in the outer container root. Final checks assert the installed chroot device and inode before invoking extracted package guards.",
+    "evidence": "firewall-pending-package-admission/result.json"
   }
 }

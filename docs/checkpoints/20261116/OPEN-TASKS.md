@@ -1,3 +1,7 @@
+## 2026-11-21 原防火墙启动事务阻止包维护
+
+在原临时安装 Root `39:7320076` 上执行当前 Core、Networking 与 firewall-only 发行包共同包含的只读维护检查。四种钩子共 12 种参数，九项拒绝继续，三种 postinst abort 返回保留。Networking 的打包提交与现分支仅差一份测试文件。这里实际运行的是包内检查，未启动 dpkg。第一次探测位于外层容器，结果已剔除；最终检查在 chroot 内先断言 Root 身份。前后均核实原 IPv4 回执 APPLIED、IPv6 未派发、原 44 对发布记录及三条规则保持。开机恢复和完整 Main 冷读仍待办，冻结 0/12。[原请求及包维护检查](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 当前四个网关包在原 Docker 业务卷启动
 
 ARM64 镜像使用共同分支的 Core `71eb1087ae`、GWT `9de7a7b`、Deployment `8f5927e`、Wires `4f13cf1` 及原四份 DP。镜像内四包的版本、架构与 SHA-256 全部匹配，随四包进入插件目录的 235 个 JAR 逐一对上原 deb。原卷 `39:6566861` 启动后，正式 Java Main 为 UID 122、有效能力零、NNP=1，HTTPS 返回 200。DeploymentAdmin 查到四个原版本，四个业务 bundle 均为 ACTIVE。正常停机后冷读，四份 DP、注册表、四份身份文件和三个快照均与启动前一致。最新 Docker 卷读回入口为 `docker-current-gateway-release/runtime.py cold`。六组件、原防火墙 Root、完整安装维护矩阵沿各自检查点续接。冻结 0/12。[镜像与原卷实测](actual-arm64-docker-nonroot-launcher-checkpoint.json)
