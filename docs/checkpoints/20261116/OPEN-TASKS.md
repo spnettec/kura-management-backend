@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 持久化 Chrony STOP 原回执
+
+Core 075ea8b733 已由三个正式 ARM64 Main 续办一次 Chrony STOP。Root actor 在 d3cf526a-d20c-4e09-97a0-e4197aa54676 写入 APPLIED/CHRONY_STOPPED。第一进程遇到本地完成目录权限拒绝，第二进程已落盘完成回执、pending 文件仍为挂载点，第三进程核对原回执后清除 pending。本地完成 inode 4974 和四份 actor 文件指纹相同，Chrony 从未启动。冻结 0/12。 详见 chrony-main-sender-recovery/HANDOFF.md。
+
 ## 2026-11-22 重启与时钟回执同步失败后的原号恢复
 
 Core 075ea8b733 修复重启与时钟调用方遇到回执同步失败后过早清除 pending。独立 ARM64 正式安装核对 39 个包内副本。两种调用方各在两个进程的同步点先后退出，第三个进程沿原号只读查询后清除 pending，回执 inode 和内容保持，夹具动作各一次。148 个不同定向用例通过，原六组件仍装 89dfd6a，冻结 0/12。 实测采用进程退出与测试动作端，详见 typed-sender-receipt-sync/HANDOFF.md。

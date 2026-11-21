@@ -8263,5 +8263,25 @@
     "persistentVolumes": 0,
     "sixCore": "89dfd6a",
     "frozen": "0/12"
+  },
+  "chronyMainSenderRecovery": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/chrony-main-sender-recovery",
+    "root": "2097228:1",
+    "operation": "d3cf526a-d20c-4e09-97a0-e4197aa54676",
+    "main": [
+      "1907",
+      "2978",
+      "3825"
+    ],
+    "java": [
+      "threw java.io.IOException",
+      "threw java.io.IOException",
+      "returned false"
+    ],
+    "chronyStarted": false,
+    "completionInode": "4974",
+    "actorFiles": 4,
+    "stopped": 2,
+    "frozen": "0/12"
   }
 }
