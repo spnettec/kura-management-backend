@@ -1158,5 +1158,40 @@
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
       "original-three-after.json": "5c63b661384b70c115ef7e4424dc8d1a3c1bffd38e04303b1bdf6b48b32cd3f9"
     }
+  },
+  "selectedDockerReleaseInputs20261122": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/docker-release-inputs",
+    "docker": "896b97611afe98c24928e8e96abbc60bc0f04ebc",
+    "releaseImage": "sha256:4c4a3673a2608b84ed44b91f493e1f9ec808e52325ca39e238a068b49d14f9cb",
+    "coreSelection": [
+      "796e0ba",
+      "ac9b8bb",
+      "796e0ba"
+    ],
+    "jarCount": 235,
+    "matchingObjects": 603,
+    "cacheHitBytes": 395674305,
+    "hashes": {
+      "fixed-source.json": "d7fd052c6284e27068b25b3233198953f93bfc752531cd8a32cb863c835275e0",
+      "final.json": "99044dfb715c407b4aa5efc2d03f4cdd0cef5b21b42826d30c47cbfa0aea37a7",
+      "rollback.json": "6775bc057cae4e7bf000927eb6228ede6b33f2e1055b0342821d88ccea90c750",
+      "select-older.json": "f21d101967f02917ea3fb511918c60f098aa3f773cefaefaa579fa02c70d64fd",
+      "select-older-launcher.json": "78a2d370eb82820e30eaa7432f2c5d3462a436658abb95f7ba7a81d9180fe89a",
+      "final-profiles.json": "7f76c468e8d33d765699fcc9d3c885d0e0dd3e9979eb5a90517888f00a363278",
+      "profiles.json": "c19ab63ce26502fdc2f16bd4ec88ce5b2537f68f92663ccbde24367ac3892beb",
+      "parity.json": "89a140dca93236e54fe05a7af4cfdb840bcedcbbcd0f594ac5a17a7dde51e5bc",
+      "payload.json": "7911854fd19964af00c8a4c7138f55fe3cd71dcb44ba7e6cc7be3b86c0461bca",
+      "storage.json": "79ab7df3e18504f88fc02c633d2e14dfce3fcafe02fda2f948966ffebc01987e",
+      "retired.json": "af348c5796e47b995d3b4ebb189e8b1f50a1dc8143e25072b0155edffafed1d4",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "bound-maintenance.log": "746fa1fd6d85a6e9c797f4246a6dce4226a4a03ee61dcd96c106bbe17cf88d84",
+      "six.json": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "original-three-after.json": "ec7ceb927e30e49bb2133810dfb93636bbeac1e3e1846c379d324182725d6e8a",
+      "current.log": "fa44d1eec8b0fc77d644bba9562ec43675761cafd2d921d3c0f6a52de772094b",
+      "missing-selected.log": "505fb6539711c19850c1310d717716609bb7d2166071f90d3cf83c6210144854",
+      "HANDOFF.md": "ef9864f5d4ad65155f0f08dcdfcd17c783156cb1bc0082ecd94707ca7fa2deab"
+    }
   }
 }
