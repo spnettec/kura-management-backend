@@ -1336,5 +1336,282 @@
       "debBytes": 7044798
     },
     "remaining": "Installed standalone Main request, Root and ownership admission, sender and broker journals and recovery at the original operation ID. The independent writer used an isolated ARM64 network namespace."
+  },
+  "pairedMainFirewallAndConfigureAdmission": {
+    "installedSix": {
+      "core": {
+        "source": "a87db8ac33f3669732316c2dbcfff4487b883779",
+        "tree": "fa6bd377ac6cbfdbc6d71aaa1360fa44c6b2f0f1",
+        "package": "kura-core",
+        "version": "6.0.0~git20261121040737.a87db8a-1",
+        "sha256": "5cde14c13fd2cc1f7773e4d538995935a26722e581012c7a3e4933b19b9118d4"
+      },
+      "networking": {
+        "source": "180ea1771c270a2453ed9bd2a07d80e40b853c87",
+        "tree": "b0a3d10e36829e5c17970ce17d031fbb3a9b7625",
+        "package": "kura-networking",
+        "version": "3.0.0~git202611210407.180ea17-1",
+        "sha256": "283b64fdb12f50b2e430138abc2e1a21625cb7b8ff1b74669b7d98013442897b"
+      },
+      "allVersions": {
+        "kura-core": "6.0.0~git20261121040737.a87db8a-1",
+        "kura-networking": "3.0.0~git202611210407.180ea17-1",
+        "kura-management-ui": "3.0.0~git202611210130.8870575-1",
+        "kura-deployment": "2.0.0~git202611202327.15c50ca-1",
+        "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+      },
+      "coldReadback": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 84,
+        "originalSubmitWithdrawn": true
+      },
+      "originalSpool": "firewall-flooding-publication/parked-readback.py",
+      "contentCheck": "84 protected files retained across upgrade. Some restored data inodes and ctimes changed."
+    },
+    "registeredMainOnPriorBuild": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3194",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "e8eea65b0d2b44e9bb70cf877065490c"
+        },
+        "ticks": "41780052",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "workerRefusals": 6,
+      "preparationFailure": "UNSUPPORTED: non-model rule option",
+      "existingSavedFamilies": 2,
+      "originalKernelKuraChainsPresent": false,
+      "firewallUnit": "disabled",
+      "retainedRulesAndSixTablesExact": true,
+      "rootIntents": 0,
+      "senderPending": false
+    },
+    "durableWorker": {
+      "disconnect": {
+        "commands": 10,
+        "sent": false
+      },
+      "wrong": {
+        "commands": 10,
+        "sent": false
+      },
+      "first": {
+        "commands": 10,
+        "state": "APPLIED",
+        "generation": 11,
+        "operationId": "f6ae89a6-b850-4e04-9d48-0d1138b81bbc"
+      },
+      "verifiedFirst": {
+        "commands": 0,
+        "state": "UNCHANGED",
+        "generation": 12,
+        "operationId": "0f1ff3a6-8d47-46e4-a3ee-5474cba6d10f"
+      },
+      "second": {
+        "commands": 6,
+        "state": "APPLIED",
+        "generation": 12,
+        "operationId": "2d575621-c83d-47b7-bb1a-8cc4fc6f38b3"
+      },
+      "verifiedSecond": {
+        "commands": 0,
+        "state": "UNCHANGED",
+        "generation": 13,
+        "operationId": "44fac1a1-9a73-44d5-8f35-6530642089d6"
+      },
+      "originalForeignRulesRetained": 4,
+      "ambiguousCandidateRefused": true,
+      "coldOriginalOutcomes": 4,
+      "wrongRootAndRequestRefused": true,
+      "completedStagedReceiptRecovered": true,
+      "missingOriginalResult": "UNKNOWN",
+      "newIdBlocked": true,
+      "kernelIdenticalDuringRecovery": true
+    },
+    "floodingOptions": {
+      "actualRulesFromJava": {
+        "ipv4": 17,
+        "ipv6": 26
+      },
+      "operations": [
+        [
+          0,
+          "UNCHANGED",
+          "4655961b-5c13-436c-8a83-64fc1a57aa3f"
+        ],
+        [
+          2,
+          "APPLIED",
+          "0ad31128-6548-4cfc-92a5-b3ad0a3232d1"
+        ],
+        [
+          0,
+          "UNCHANGED",
+          "b1440ce6-c0b6-47b7-a462-a0cb34c062c9"
+        ],
+        [
+          7,
+          "APPLIED",
+          "0db9ab76-a083-4d00-b978-b2fa1f85ed6b"
+        ],
+        [
+          9,
+          "APPLIED",
+          "94536f35-f8b7-4049-8477-803bca5f0db8"
+        ],
+        [
+          0,
+          "UNCHANGED",
+          "549147b6-e427-4eb0-bcca-91d7556c3601"
+        ]
+      ]
+    },
+    "maintenance": {
+      "arm64": true,
+      "guardChecksPerState": 6,
+      "checkedTransitions": [
+        "empty",
+        "live publisher",
+        "approval deadline",
+        "original completed",
+        "malformed receipt",
+        "original receipt restored"
+      ],
+      "deadlineSeconds": 15,
+      "originalId": "189796fe-6b5f-47fa-83ba-d2a41ce6be3d",
+      "badReceipt": "UNKNOWN",
+      "newIdRejectedBeforeIntent": true,
+      "privatePreparedMessage": true
+    },
+    "freshFirewallSite": {
+      "root": [
+        2050,
+        2265822
+      ],
+      "versions": [
+        "kura-core install ok half-configured 6.0.0~git20261121040737.a87db8a-1",
+        "kura-networking install ok unpacked 3.0.0~git202611210407.180ea17-1"
+      ],
+      "final": {
+        "original": "95dfe963-d5f0-44be-adce-59c903d82ad2",
+        "coldReceipts": 5,
+        "sizeKiB": 1161068,
+        "outerRoot": "2050:2",
+        "status": "inactive",
+        "result": "success"
+      },
+      "reason": "Root filesystem from the streamed base archive was 0700. D-Bus exited with 200/CHDIR. The installer had issued brokers and had no success receipt. D-Bus was repaired. Normal dpkg configure refused to issue the step again. Main never started.",
+      "positiveFirewallWrite": false
+    },
+    "candidate": {
+      "core": {
+        "source": "857015576ff70cbd8d712249a4d780353b91b924",
+        "tree": "6d15e5a24d49c99650967c57872fb063ec79e8ef",
+        "package": "kura-core",
+        "version": "6.0.0~git20261121041734.8570155-1",
+        "sha256": "39948f9bd796647de076a319cc4698e0bf912d8728eb957cde8daa06a6d88a08"
+      },
+      "workerSource": {
+        "source": "82387927c5bc2d3fb9d81a58a638487b81b031aa33babb67cb5f106cfc0145f4",
+        "revision": "5ebb3c90a2d7d6a8a710fa418ac33793a6a9ddc5",
+        "architecture": "arm64",
+        "sourceVerifiedByExecutable": true,
+        "sha256": "1059e0736b0ff68431730b10a8fd7a062e09a9797e97da388a7652ae9768bae4"
+      },
+      "networking": {
+        "networking": {
+          "source": "2a2deca9282b6b8d46f1e87f7bae7386c426dbff",
+          "tree": "148e83d279abe023c9637ae404bbbf22f040faf2",
+          "package": "kura-networking",
+          "version": "3.0.0~git202611210417.2a2deca-1",
+          "sha256": "338b955387e82f6741b1183a8c24c9bd4ec70085734da97d6b97fbffaf6b959a"
+        },
+        "firewall-only": {
+          "source": "2a2deca9282b6b8d46f1e87f7bae7386c426dbff",
+          "tree": "148e83d279abe023c9637ae404bbbf22f040faf2",
+          "package": "kura-firewall-only",
+          "version": "3.0.0~git202611210417.2a2deca-1",
+          "sha256": "32ba974f3e356267d5ec200747e752a69e927f7a75aa9038045eb3c1638f60ce"
+        }
+      },
+      "coreTestsArm64": 13,
+      "networkingTestsPassed": 2245,
+      "shippedHookResults": {
+        "kura-core": {
+          "preinst install": 1,
+          "preinst upgrade": 1,
+          "prerm remove": 1,
+          "postrm purge": 1,
+          "postinst configure": 1,
+          "postinst abort-upgrade": 0
+        },
+        "kura-firewall-only": {
+          "preinst install": 1,
+          "preinst upgrade": 1,
+          "prerm remove": 1,
+          "postrm purge": 1,
+          "postinst configure": 1,
+          "postinst abort-upgrade": 0
+        },
+        "kura-networking": {
+          "preinst install": 1,
+          "preinst upgrade": 1,
+          "prerm remove": 1,
+          "postrm purge": 1,
+          "postinst configure": 1,
+          "postinst abort-upgrade": 0
+        }
+      },
+      "oldReceipt": {
+        "oldWorker": "11dd3b2b5c2fcf0c503158e0ec1917d6770a50ff6af71c91654e741b51cab5f7",
+        "currentWorker": "1059e0736b0ff68431730b10a8fd7a062e09a9797e97da388a7652ae9768bae4",
+        "sameRoot": true,
+        "originalId": "cba67288-1389-4d0d-84f3-c03138cf6f1b",
+        "originalState": "UNCHANGED",
+        "historicReceiptDigest": "c8813cc401818272512576ace7d62113218e045850a92a8c418f9335f6efad9b",
+        "forgedResult": "UNPAIRED, no terminal response",
+        "coldQueryRestored": true
+      },
+      "installedOnOriginalSix": false
+    },
+    "priorNativeSuite": {
+      "revision": "c9c4c89ee41bcd0fabbd45cdfe361fcfa35022e2",
+      "passed": 806,
+      "ignored": 50,
+      "failed": 0
+    },
+    "storage": {
+      "started": "2026-11-21T12:15:53.508847+08:00",
+      "finished": "2026-11-21T12:17:48.711811+08:00",
+      "workspaceKiB": 342442420,
+      "historicalWorkKiB": 249711304,
+      "consoleTargetKiB": 76913248,
+      "workspaceAvailableKiB": 132788804,
+      "coreDebCount": 42,
+      "coreDebBytes": 8580793778,
+      "scope": "du on parent workspace; VM backing storage excluded; deb file lengths"
+    },
+    "pending": [
+      "Formal positive firewall publication on a registered Main with a paired original kernel baseline",
+      "Legacy startup and forwarding/sysctl still use Main privileges",
+      "Full Core/OSGi, additional typed brokers and component/provider/launcher lifecycle matrix"
+    ],
+    "frozenClosedParents": 0,
+    "parentCount": 12
   }
 }
