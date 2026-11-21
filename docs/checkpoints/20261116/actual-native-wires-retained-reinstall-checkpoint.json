@@ -4564,5 +4564,179 @@
       "arm64CoreDebBytes": 12681488116,
       "newReleaseBytes": 205066338
     }
+  },
+  "installedSiblingWritebackRecovery20261121": {
+    "core": "46e5c9543a05f7355498cb30d362c84eb6e15504",
+    "tree": "18794630f5d4a43ebd2536b96ae4d6e716696fa4",
+    "version": "6.0.0~git20261121210801.46e5c95-1",
+    "packageSha256": "0b900b263172168afd4b4efab3fafa639bd48ec0d13717274e4588066795b287",
+    "postinstSha256": "58997bf63a67dd6e0de87eba5614df95b3043dddf6e50f8e24c211ea18edbeb0",
+    "sourceTests": 24,
+    "packagedControls": {
+      "previous": {
+        "packageVersion": "6.0.0~git20261121173515.71eb108-1",
+        "request": "7f94a167-29e9-4328-9742-39499faee959",
+        "releasePostinst": "150396c698fb15680642b2ac55a2ad8cb48b2fd5839ea905461901c97535af21",
+        "error": null,
+        "publishedAtFault": [
+          "site-driver",
+          "site-provider"
+        ],
+        "finalJarHashes": {
+          "site-driver/4/driver.jar": "c7b3cb72d160a941fb5f78cc196b1d0c5e57f33e607697b0721de21e1d5117d8",
+          "site-provider/4/provider.jar": "4e8cebcb26c389297eaf8d24be11818fee6aa6ad0ce05c1d3604c9f803f8583e"
+        },
+        "originalHistoryUnchanged": 17,
+        "rootInode": 3,
+        "syscalls": [
+          "sync()                                  = -1 EIO (Input/output error) (INJECTED)"
+        ],
+        "embeddedSha256": "e4f3f1e902a41146d769690301d840379ce6caa387f9bbe81c4338469bb4d0c4",
+        "releaseSha256": "3b3fa09c65147f807193a82890231642d3b86fa0cc0744099ff4a5e91d411959"
+      },
+      "current": {
+        "packageVersion": "6.0.0~git20261121210801.46e5c95-1",
+        "request": "53431d99-9c6d-4a38-88c8-04a7fe66fb13",
+        "releasePostinst": "58997bf63a67dd6e0de87eba5614df95b3043dddf6e50f8e24c211ea18edbeb0",
+        "error": 5,
+        "publishedAtFault": [],
+        "finalJarHashes": {
+          "site-driver/4/driver.jar": "c7b3cb72d160a941fb5f78cc196b1d0c5e57f33e607697b0721de21e1d5117d8",
+          "site-provider/4/provider.jar": "4e8cebcb26c389297eaf8d24be11818fee6aa6ad0ce05c1d3604c9f803f8583e"
+        },
+        "originalHistoryUnchanged": 17,
+        "rootInode": 3,
+        "syscalls": [
+          "syncfs(4)                               = -1 EIO (Input/output error) (INJECTED)",
+          "syncfs(4)                               = 0"
+        ],
+        "embeddedSha256": "9cf82387da551b95b3bbc13f10555cd3714765ce89f2dfd2c3136000428d5d55",
+        "releaseSha256": "0b900b263172168afd4b4efab3fafa639bd48ec0d13717274e4588066795b287"
+      }
+    },
+    "site": [
+      "management-ui",
+      "wires",
+      "deployment",
+      "networking"
+    ],
+    "interrupted": {
+      "root": "39:6611544",
+      "operation": "232e8e77-373d-4bb9-b826-5203f862dc3a",
+      "status": {
+        "kura-core": "half-configured",
+        "kura-deployment": "installed",
+        "kura-management-agent": "installed",
+        "kura-management-ui": "installed",
+        "kura-networking": "installed",
+        "kura-wires": "installed"
+      },
+      "allSigned": 683,
+      "historyDirectories": 38,
+      "fourSiblingTrees": 4,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 0,
+      "phaseFiles": 17
+    },
+    "configured": {
+      "root": "39:6611544",
+      "operation": "232e8e77-373d-4bb9-b826-5203f862dc3a",
+      "status": {
+        "kura-core": "installed",
+        "kura-deployment": "installed",
+        "kura-management-agent": "installed",
+        "kura-management-ui": "installed",
+        "kura-networking": "installed",
+        "kura-wires": "installed"
+      },
+      "allSigned": 684,
+      "historyDirectories": 38,
+      "fourSiblingTrees": 4,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "phaseFiles": 18,
+      "registryLock": "absent"
+    },
+    "parked": {
+      "root": "39:6611544",
+      "operation": "232e8e77-373d-4bb9-b826-5203f862dc3a",
+      "status": {
+        "kura-core": "installed",
+        "kura-deployment": "installed",
+        "kura-management-agent": "installed",
+        "kura-management-ui": "installed",
+        "kura-networking": "installed",
+        "kura-wires": "installed"
+      },
+      "allSigned": 684,
+      "historyDirectories": 38,
+      "fourSiblingTrees": 4,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "phaseFiles": 18,
+      "registryLock": "present"
+    },
+    "scopedFault": [
+      "3710  syncfs(4)                         = -1 EIO (Input/output error) (INJECTED)"
+    ],
+    "registryCheck": {
+      "before": {
+        "file": {
+          "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+          "meta": "39|7597839|640|0|990|1|42|2026-11-21 09:37:57.603809362 +0000|2026-11-21 13:12:50.917475244 +0000"
+        },
+        "lock": null,
+        "lines": [
+          "management-ui",
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "after": {
+        "file": {
+          "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+          "meta": "39|7597839|640|0|990|1|42|2026-11-21 09:37:57.603809362 +0000|2026-11-21 13:12:50.917475244 +0000"
+        },
+        "lock": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "meta": "39|7599906|600|0|0|1|0|2026-11-21 13:14:01.269318641 +0000|2026-11-21 13:14:01.269318641 +0000"
+        },
+        "lines": [
+          "management-ui",
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "oldLock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "meta": "39|7523649|600|0|0|1|0|2026-11-21 09:37:39.986298562 +0000|2026-11-21 09:37:39.986298562 +0000"
+      },
+      "source": "033ef82261d1e6d0025eb9283caf2cff50a665db61c8282a0a863c8d5c263eb4",
+      "noRegistryRewrite": true
+    },
+    "originalMaintenanceCount": 37,
+    "originalSignedRecordsUnchanged": 666,
+    "unitState": {
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "agent": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      }
+    },
+    "readOnlyEntry": "sibling-restore-syncfs/cold.py final",
+    "pending": "Registry lock continuity with an active holder across a Core upgrade."
   }
 }

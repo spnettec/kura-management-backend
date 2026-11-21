@@ -1,3 +1,11 @@
+
+## 2026-11-21 原六组件在 sibling 写回失败后沿原维护号恢复
+
+Core `46e5c9543a` 在复制 sibling 前打开暂存文件系统，四个目录发布前用 `syncfs` 检查写回结果。原六组件卷 `39:6611544` 升级 Core 时，现场只对该维护号暂存目录的 syncfs 注入一次 EIO。dpkg 返回失败，冷读 Core 为 half-configured，其余五包 installed。GWT、Wires、Deployment 和 Networking 四个目录均未发布，原恢复副本完整，当前编号已有 17 份签名记录。重启沿 `232e8e77-373d-4bb9-b826-5203f862dc3a` 续配一次后，四个目录的 30 个文件恢复，原 37 笔历史的 666 份记录逐文件一致。
+
+Core 单包升级后，sibling 注册表保留四行和原权限，原锁文件缺失。正式 Networking 脚本执行一次 check 后按设计新建 root:root 0600 空锁，注册表文件的 inode、时间和内容均保持。锁 inode 已变化。旧锁被持有时跨 Core 换版的互斥连续性仍待验证。
+
+最终六包 installed，Main 与 agent 均 disabled、inactive。停机读回 319 份运行文件、两份凭据、101 个夹具对象及 38 笔维护的 684 份签名记录。当前只读入口为 `sibling-restore-syncfs/cold.py final`。此次为定点注入写回错误；磁盘满与硬断电沿用原外部延期。 [实装包、原编号及冷读](actual-native-wires-retained-reinstall-checkpoint.json)
 ## 2026-11-21 原绑定网关在完成回执已有两个硬链接时恢复后继包
 
 原绑定网关由 `431dedc` 升至 `6910532`。沿经授权的维护编号 `7a1e4339-aaad-4ee0-94fc-8db58592881f`，正式 dpkg 在完成回执建链后，只对删除暂存名的 unlink 返回了一次 EBUSY。停机读回 half-configured、原 pending 和同一份 0600 回执的两个硬链接，启动检查拒绝。重启后沿原 Root、原编号只续配一次。包恢复 installed，状态为 REINSTALLED，pending 和暂存名均已清除。完成回执保留 inode 7585379、mtime 和原摘要，链接数由 2 回到 1。
