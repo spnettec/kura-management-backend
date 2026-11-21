@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Camel 路由跨包维护和 provider 缺席时的快照
+
+真实 dpkg 配置后继包时等待注册表锁超时，状态为 half-configured；原 Root 续配后，正式 Main 从同一编号恢复原路由并再次送达。另一 Root 在 Camel 已 purge、配置工厂缺席时由 Main 保存新快照，重装后从该新编号恢复既有路由并送达。每个 Root 的路由只提交一次。两版六个 JAR 相同，详见 `camel-provider-upgrade/HANDOFF.md`。其他 provider/launcher 和跨代换钥继续待验，冻结 0/12。
+
 ## 2026-11-22 Core 快照转换中断续办
 
 Core `e99caab526` 修复了历史中已有密文时跳过最新明文的问题。ARM64 JVM 在编号 1 发布后被 SIGTERM 终止；旧发行 JAR 在同一目录返回 null，修复版保留编号 1 的完整指纹并恢复编号 2。新的 ARM64 deb 在独立内存系统通过正式 Main 读回运行与快照值 12002。模块及跨模块合计 389 项通过。详见 `snapshot-conversion-resume/HANDOFF.md`。50001 本轮仅冷读；跨代换钥及其他安装、恢复组合仍待验，冻结 0/12。
