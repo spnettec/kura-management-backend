@@ -1106,5 +1106,57 @@
     "scope": "isolated fixture, ordinary packaged Java Main and OSGi services, OSGi observer interrupts before first snapshot payload byte",
     "legacy": "original provider recovery supported; legacy pending hardlinks still prevent ordinary container startup",
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-container-resume"
+  },
+  "legacyLinkedPasswordRecords20261122": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/legacy-keystore-links",
+    "core": "796e0bacf54a12315dd3365abc62aa17d299dec5",
+    "docker": "393b089bb1cb9e44d3984d5b7cc69e20291644c9",
+    "parkedRoot": [
+      39,
+      7855626
+    ],
+    "oldMain": "sha256:1fdfd92a576733c7cd6cc06a8fc51c4e8885bccd6e1b7165bca27e10169283d1",
+    "maintenanceImage": "sha256:ec07a89ed634cedee82ba0941a1712179745b3d099a17dd867a99a0dd52721cb",
+    "coreDeb": "dc67c3a39dd66c210203e9a8df01b52f9a9984bf1f986734a87eea91083209bc",
+    "jars": 235,
+    "providerUnitTests": 97,
+    "launcherTests": 28,
+    "maintenanceProcessCuts": [
+      "before atomic rename",
+      "after rename before directory fsync"
+    ],
+    "storeInode": 7856657,
+    "recordCounts": [
+      2,
+      2,
+      0
+    ],
+    "normalStop": 143,
+    "cold": "legacy.py parked",
+    "evidenceSha256": {
+      "core-release.json": "12cf66df680da756e24102c34d4b88ab1b08f31f0fce812e4a6ec730834fa8da",
+      "final-image/input.json": "512c24c4a06d395d5bf7caba4703c36005a54ef744568960d1effd3c0b073828",
+      "final-image/release.json": "44cd5b5fc9bea92f0695f477b121d8766161de252a246b7f09915ee4aaaaab78",
+      "final-image/payload.json": "1949cea1ffddd2e313b3397a40424c3153098180001e6e6230be9abfa7aedc96",
+      "maintenance-intent.json": "6f8fd594f7cc1897c4768f35ceb60c192518aef416c862918fb1da5533bf3ca6",
+      "verified-maintenance.json": "16a6de8044ca8815170b0e60eea63c7a9b2195d93bf3543649823d0ac4973bf6",
+      "refused.json": "9e3125d27dbe6587615908c34af5338bc02bbe829d3626535abf621613e79783",
+      "joint-seeded.json": "a96a2c439b7923f3fbac4cabbc4be2bac23bf456d88b5793f42c9451bb093c97",
+      "joint-interrupted.json": "a93355acbdeda779f0f030c7e9064f82bf975f7e35fa1bdeee0418535fdc6659",
+      "joint-separated.json": "047c774a987cc4a1dad0f33968b0f235a6e8fe14f5d2ff0b0c31ae4f16b55006",
+      "joint-final-stop-intent.json": "2c7d772a206fae53ca84de0a93764cdee0b23efed169a7288d6069d47c884162",
+      "joint-final.json": "4a4425f345edc1916fa0857dfaef0c1abed4a433198b02be3c836c545c9b0765",
+      "arm64-tests.log": "861302d4d6abe48fefd356ed3256abe9522d49b75fe3f14c369574452882de3c",
+      "final-launcher-tests.log": "f51a0d4e43edb78b6188a7f466dcc0881e7e28bbe9b6231f796e918565aa14b8",
+      "cut-worker.log": "75c5586909e64c5f51622b6f9c83cc53f1a362d8eae1e3c6818a7419e5f5ab76",
+      "RecoveryCut.java": "2f98352b82a67f3d4d902f7dc89f1a0d2995109f6b31e348d0aafb0ff8376baf",
+      "cut-worker.py": "f61784044496521ebc647d9a01ad1372c9c3511e38c13c0888e1c32e9c524fcd",
+      "storage.json": "140ef5cf3853e4caa43a1fae73bacf33852c07c4ede66baf690e466ee98f99ad",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "original-three-after.json": "5c63b661384b70c115ef7e4424dc8d1a3c1bffd38e04303b1bdf6b48b32cd3f9"
+    }
   }
 }
