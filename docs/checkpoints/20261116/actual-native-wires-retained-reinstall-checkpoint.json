@@ -3752,5 +3752,118 @@
     "newDebs": 0,
     "newVMs": 0,
     "newDockerVolumes": 0
+  },
+  "sixCoreNatWorkerJointUpgrade": {
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "versionsBefore": {
+      "kura-core": "6.0.0~git20261121072542.5bd7710-1",
+      "kura-networking": "3.0.0~git202611210733.783a594-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210826.ba4bc90-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "versionsAfter": {
+      "kura-core": "6.0.0~git20261121085222.00c3f8f-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210826.ba4bc90-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "cold": {
+      "root": "39:6611544",
+      "maintenance": [
+        "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+        "ee52e71a-0d98-4830-aa77-b5a2aa194bd8"
+      ],
+      "authenticatedPhases": 36,
+      "heldObjects": 101,
+      "worker": "3d5093c10bc1aabd77a6975eb830c7f0fb84d5d85e4baf1c53f86771fe81b26e",
+      "helper": "98c2e620a2303e150973a398a76529f24abfb420515ad388cfa9de12499c5c09"
+    },
+    "formalMain": {
+      "process": {
+        "unit": {
+          "MainPID": "3477",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "5ebdd6008fe045a4bb0ea7c2313b727c"
+        },
+        "ticks": "43325016",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "deployment": "fixture.retained.business",
+      "version": "1.0.0",
+      "h2": "org.eclipse.kura.db.h2db.provider",
+      "originalBusinessResource": true,
+      "registeredArchive": true,
+      "originalSingleRow": true
+    },
+    "packageBeforeMain": {
+      "protectedFilesSameBytes": 82,
+      "credentialsExact": 2,
+      "networkingBundlesVerified": 3,
+      "installedCoreCohortMembersVerified": 12
+    },
+    "preservation": {
+      "stagedOnSameVolume": [
+        "data/deployment-paired-archive",
+        "data/deployment-registry-lock",
+        "plugins/3/fixture-sqlcipher-jdbc.jar",
+        "plugins/4/fixture-sqlite-provider.jar"
+      ],
+      "heldObjects": 101,
+      "legacyPendingPreserved": true,
+      "registeredBusinessPackageAndH2StayedInPackageUpgrade": true,
+      "postMainH2ComparedByQuery": true
+    },
+    "storage": {
+      "hostDirectory": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/wip-core/kura/distrib/kura-core/target",
+      "arm64Debs": 58,
+      "logicalBytes": 11861225310,
+      "reusedArchiveBytes": 214477656,
+      "newDebs": 0,
+      "newDockerVolumes": 0,
+      "newVMs": 0
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T08:58:41.776385259Z",
+        "FinishedAt": "2026-11-21T08:59:23.60729998Z"
+      }
+    },
+    "coldReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 82,
+      "credentialsExact": 2,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "firewallRoot": "39:7320076",
+    "firewallRecovery": "firewall-ipv4-loopback-port/retained.py",
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-nat-worker-upgrade",
+    "readOnlyEntry": "six-nat-worker-upgrade/cold-maintenance.py"
   }
 }

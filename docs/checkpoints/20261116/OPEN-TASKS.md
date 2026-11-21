@@ -1,3 +1,9 @@
+## 2026-11-21 原六组件卷联合升级 Core 和 Networking，正式 Main 读回原业务
+
+Root `39:6611544` 通过 dpkg 从 Core `5bd7710`、Networking `783a594` 升至 `00c3f8fe08`、`671a90f`。其余四包版本相同。正式 Main 以 UID 997、有效能力 `0x400` 启动，读取已注册的 `fixture.retained.business` 1.0.0 包、活动 bundle 的原资源和 H2 原业务行。随后正常停机，Main、agent 均 disabled。只读续接入口为 `six-nat-worker-upgrade/cold-maintenance.py`。
+
+正式升级脚本保全了业务包、数据库、快照。启动前核对 82 份保护文件的原内容及权限。两个历史部署测试目录和两份本地 SQLCipher 测试 JAR 在同卷暂存归还，冷读核对 101 个对象的身份与内容，包括旧版遗留的 pending 文件。旧、新两次升级各有 18 条已核实的 HMAC。独立防火墙安装仍沿 `firewall-ipv4-loopback-port/retained.py` 保持原启动命名空间和 IPv4 回执。其余 provider、launcher 和包维护矩阵继续，冻结 **0/12**，外部延期仍为原三项。[联合升级与两代回执](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 发布 IPv4 回环端口转发，旧版在开机读回 NAT 表时停止
 
 防火墙 Root `39:7320076` 的旧站点文件有四条入站规则。历史记录显示，Main 应用 TCP 22、443 后，IPv4 保存模型和当时的内核均为六条。此次从原管理员测试输入重建六条规则并核对历史摘要，只在隔离安装首次启动的 firewall.service 中临时只读挂载。原站点文件及上一笔封存的 NAT 快照均保留。正式 Main 经 ConfigurationService 提交独立的 IPv4 端口转发一次，读回新快照与三条内核规则。UDP 49170 转到 127.0.0.2:49171，原生 NAT 查询可见。
