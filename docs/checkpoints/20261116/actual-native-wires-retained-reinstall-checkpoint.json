@@ -8446,5 +8446,63 @@
     "allocatedKiB": 78680,
     "parked": true,
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-final-purge/HANDOFF.md"
+  },
+  "sixKeystoreCohortUpgrade": {
+    "root": "39:6611544",
+    "operation": "199ef4aa-04e9-48ff-aec1-336f088d38d4",
+    "versions": {
+      "kura-core": "6.0.0~git20261122045823.fc17697-1",
+      "kura-deployment": "2.0.0~git202611211658.1b043a4-1",
+      "kura-management-agent": "0.1.0~cohort20261121125537.6910532-1+bridge532c124eb37f",
+      "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+      "kura-networking": "3.0.0~git202611211339.83f237e-1",
+      "kura-wires": "3.0.0~git202611211325.277954b-1"
+    },
+    "oldCore": "6.0.0~git20261122040724.89dfd6a-1",
+    "release": "fc17697eba897b45590bedb019c90fee40f6218a",
+    "archiveBytes": 205112250,
+    "archiveSha256": "6466a297878ba4574c6f2d68131b2f17f6f02714608173fa4a7be69c896f2424",
+    "phaseCount": 19,
+    "coldHistories": 49,
+    "coldSigned": 892,
+    "protectedSha256": 82,
+    "originalCredentialFingerprints": 2,
+    "allJars": 264,
+    "archiveEntries": 755,
+    "originalMutableRows": 319,
+    "changedPackageDifferences": [
+      "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/install/snapshot_0.xml",
+      "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/user/snapshots/snapshot_0.xml"
+    ],
+    "otherFivePackageAuditsExact": true,
+    "main": {
+      "process": {
+        "unit": {
+          "MainPID": "3515",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "3d923696a8f24def9f94ae269efa0786"
+        },
+        "ticks": "46787127",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "snapshot": 1795223609366,
+      "certificateSha256": "7533f7be951a8c9ae0e804b7bc3348463e04bfeeaa238c5a66835899864a2bd4",
+      "provider": "org.eclipse.kura.core.keystore",
+      "pid": "yofc.fixture.retained.p12",
+      "aliases": [
+        "business-signing",
+        "fixture-atomic-trust"
+      ],
+      "signature": "SHA256withRSA",
+      "disk": "PKCS12",
+      "snapshotAndCryptoPasswordMatched": true
+    },
+    "parked": true,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/six-keystore-cohort-upgrade/HANDOFF.md"
   }
 }

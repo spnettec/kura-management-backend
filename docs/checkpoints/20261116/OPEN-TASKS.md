@@ -1,3 +1,7 @@
+## 2026-11-22 六组件原卷升级后用原业务 PKCS12 验签
+
+六组件原 Root 39:6611544 从 89dfd6a 升至 fc17697eba，维护号 199ef4aa-04e9-48ff-aec1-336f088d38d4。正式 Main 从原快照 1795223609366 取到业务口令，打开原 PKCS12 并用原证书验签。最终停机冷读 49 笔维护、892 条签名阶段，六包 264 个 JAR 匹配，319 项可变文件按原记录核对一致。冻结 0/12。 当前停机入口为 six-keystore-cohort-upgrade/cold.py final。
+
 ## 2026-11-22 已发布两代密钥的原卷在移除停机后沿原号完成 purge
 
 Core fc17697eba 在原 Root 39:8285453 完成最终 purge。正式 remove 后正常停机并冷读，重启后沿 990fac5c-9991-4e8b-b46e-d013e45366ae 清除，dpkg 审计为空。最终停机冷读 33 份受保护文件及三笔历史的 57 条签名记录，卷内 root 私有归档保留原测试快照、证书库和启动脚本。冻结 0/12。 原卷当前只读入口 published-generation-final-purge/cold.py final。
