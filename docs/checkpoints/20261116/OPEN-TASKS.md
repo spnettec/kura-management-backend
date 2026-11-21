@@ -1,3 +1,9 @@
+## 2026-11-21 正式防火墙启动器按原安装回执恢复 IPv6
+
+临时安装 `39:7320076` 已升级 Core `5bd7710ed8`、Networking `03917ad`，worker 源码为 `6a80919`。正式 systemd 启动时，运行时挂载使服务看到空的站点目录，两个原文件的内容及元数据保留。启动器以该 Root 已确认的规则恢复 IPv6，83 条内核命令取得 APPLIED，IPv4 的 22、443 未放行。双族转发均为 0。此次 Main 保持 disabled、停止。恢复通用服务定义后停机；BIND 的 rndc 停止客户端等待约 50 秒，经单独发送 TERM 后系统退出码为 0。无干预停机仍缺本次现场证据。
+
+隔离 ARM64 内核验证已落盘和待发布的回执均可沿原编号续办；缺回执、转发开关或内核状态漂移、保存摘要变化均得到拒绝。站点 IPv4 与回执 IPv6 并存时各自生效。停机后冷读 57 份文件，核验 18 笔原编号的终态历史与本次启动回执。现场入口 `firewall-confirmed-boot-service/cold-model.py`，六组件仍用 `firewall-cold-model/six/parked-readback.py`。无站点时的主动转发授权、其余 provider/launcher 和组件维护仍待验。冻结 **0/12**，外部延期仍为原三项。[发行、启动与中断结果](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 原 Root 回执确认开机规则，隔离内核恢复 IPv6
 
 Core `ad2a586c31` 实装 worker 0.1.10（源码 `5781b22`）。成功或无需变更的发布在既有回执中记录该族候选规则摘要，并绑定同一 Root 下的完整终态历史。旧 worker 后续发布会使此前的证明失效，拒绝的变更保留此前确认值；缺少回执仍为 UNKNOWN。新旧 worker 已在 ARM64 隔离内核共同读回原编号，降版、重新升级和未完成回执的边界均有实测。

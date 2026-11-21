@@ -3362,5 +3362,145 @@
     "firewallStoppedEntry": ".management-close-20261116/core-rtc-hotplug-20261120/boot-firewall-policy-proof/cold-model.py",
     "sixStoppedEntry": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-cold-model/six/parked-readback.py",
     "next": "Integrate automatic no-site boot with the paired model, typed delta, route-specific forwarding authorization, and original-ID crash recovery. The isolated IPv6 delta exercised the packaged worker after the standard scaffold. No automatic service recovery claimed."
+  },
+  "installedConfirmedFamilyBoot": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-confirmed-boot-service",
+    "root": "39:7320076",
+    "core": "5bd7710ed8fea07544ef73c3c27ba9913d7d915b",
+    "networking": "03917ad0be9adae5d800a3506ca4667ae43cbbca",
+    "agent": "6a809197aa0521c289b15181cefdb238e952d55f",
+    "workerSha256": "5c39ddcf6ee252208912d4cf6542d81b157ae63dab6f109d293567d5c51eb84a",
+    "helperSha256": "3d8ebc7b0002ca91afd70e439e11d1f3cc93029e86e3bc499b08d2ad189279c9",
+    "packageMetadata": "package.json, packages.json",
+    "main": "disabled, stopped",
+    "service": "firewall.service",
+    "testUnitMount": "TemporaryFileSystem=/etc/sysconfig:ro",
+    "unitMountRemoved": true,
+    "originalSiteFilesPreserved": 2,
+    "boot": "9f606137-1502-42ee-b715-e86902ac96c2",
+    "nativeOperation": "c2509768-b488-4914-9bae-d0045b6f2bc9",
+    "nativeCommands": 83,
+    "nativeState": "APPLIED",
+    "models": {
+      "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+    },
+    "newPublications": 1,
+    "finalPublications": 18,
+    "ipv4AcceptReturnCodes": {
+      "22": 1,
+      "443": 1
+    },
+    "forwarding": [
+      "0",
+      "0"
+    ],
+    "isolatedArm64": {
+      "receipt": {
+        "scenario": "receipt",
+        "boot": "ae9c3493-c499-43a8-b1c8-0f80fd5a5bb8",
+        "families": {
+          "ipv4": "e9253e39-aca7-4c1e-a883-0a08680e2de4",
+          "ipv6": "1b5e2aea-ffde-44ce-83a9-2d8d1d4b183b"
+        },
+        "committed": [
+          "confirmed-ipv4",
+          "confirmed-ipv6",
+          "standard-configuration"
+        ],
+        "preservedForeign": true,
+        "forwarding": [
+          0,
+          0
+        ],
+        "publications": 4
+      },
+      "staged": {
+        "scenario": "staged",
+        "boot": "9b23e219-b22f-401b-9271-b280cd357c75",
+        "families": {
+          "ipv4": "7aaa81aa-fdb2-4898-ac5d-43b6f67b558a",
+          "ipv6": "9136dfd1-2940-49da-8ef3-e8a702defa5b"
+        },
+        "committed": [
+          "confirmed-ipv4",
+          "confirmed-ipv6",
+          "standard-configuration"
+        ],
+        "preservedForeign": true,
+        "forwarding": [
+          0,
+          0
+        ],
+        "publications": 4
+      },
+      "site": {
+        "scenario": "site",
+        "boot": "959719f9-ffc7-4941-b020-bbbe3e6100f6",
+        "families": {
+          "ipv6": "4d45b518-ce9b-4598-ac15-0fb41e15be5e"
+        },
+        "committed": [
+          "confirmed-ipv6",
+          "iptables",
+          "standard-configuration"
+        ],
+        "preservedForeign": true,
+        "forwarding": [
+          1,
+          0
+        ],
+        "publications": 3
+      },
+      "unknown": {
+        "scenario": "unknown",
+        "refused": true,
+        "original": "b5c4418d-abca-4662-bfc2-e895d990ea49"
+      },
+      "drift": {
+        "scenario": "drift",
+        "refused": true,
+        "original": "f1635eaa-5fd1-4c41-a45d-60b012e20dae"
+      },
+      "forward-drift": {
+        "scenario": "forward-drift",
+        "refused": true,
+        "original": "038796c4-c207-40d5-bcf3-0ae03003863d"
+      },
+      "mismatch": {
+        "scenario": "mismatch",
+        "refused": true
+      }
+    },
+    "rustTests": 10,
+    "bootOwnershipTests": 16,
+    "networkingReactor": [
+      2268,
+      0,
+      0,
+      0
+    ],
+    "offline": {
+      "root": "39:7320076",
+      "checked": true,
+      "packages": {
+        "kura-core": "installed",
+        "kura-networking": "installed"
+      },
+      "dpkgStatusUpdates": [],
+      "fileFingerprints": 57,
+      "firewallHistory": 36,
+      "installationKiB": 298424
+    },
+    "shutdownControl": {
+      "control": "rndc",
+      "signal": "TERM",
+      "result": 0,
+      "unit": "ControlPID=9560\nActiveState=deactivating\nSubState=stop\n"
+    },
+    "exitCode": 0,
+    "coldReader": "cold-model.py",
+    "sixReader": "../firewall-cold-model/six/parked-readback.py",
+    "pending": "Affirmative forwarding at boot without site policy, outstanding provider/launcher and component maintenance cases. The manual TERM to the blocked rndc stop client limits the unattended shutdown result.",
+    "frozen": "0/12"
   }
 }
