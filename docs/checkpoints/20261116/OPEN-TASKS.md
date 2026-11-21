@@ -1,3 +1,11 @@
+## 2026-11-21 八个可选包在原六组件卷联合升级，解包停机后续配并清除
+
+原 ARM64 Root `39:6611544` 使用 16 份已核对 SHA-256 的 deb，依次安装八包前版、解包共同分支八包后继版本。八包为 Artemis、Camel、Cloud、Container、OPC UA、Position、Triton 和 YOFC Runtime。解包后正常停机，八包均为 unpacked，Core 有两个待处理路径触发器。原加载顺序、注册表锁、35 个新版 JAR 和 59 项待修正的包代码权限均已只读核对。
+
+重启后在原 Root 配置八包，八包同时等待 Core；处理触发器后十四包均 installed，35 个 JAR 与发行件逐一匹配，权限清单无差异。随后移除八包，八包均进入 config-files，再执行 purge。最终原六包 installed，八个可选包的载荷目录、维护脚本和 dpkg 登记均已清除。原四行加载顺序恢复，原注册表锁保持，dpkg 审计清洁，Main 和 agent 全程 disabled、inactive，正常停机退出 0。
+
+Cloud 安装在原应用配置末尾增加了 34 字节。原生 remove 和 purge 后 `kura.have.cloud.connection=true` 仍在。夹具复原以 kurad 核对原 854 字节摘要、文件身份和完整后缀后，只撤回这 34 字节。319 份运行文件的内容、权限和属主均与开始时一致，仅该配置文件的 mtime 变化。此次覆盖真实包生命周期，卸载后正式 GWT 的 Cloud 菜单仍待核验。42 笔维护的 759 份签名记录、101 个夹具对象及两份凭据停机读回通过。12 个父项冻结闭环 0/12，外部延期仍为原三项。 [包版本及两次冷读](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 原六组件在 firewall-only 和完整 Networking 之间切换后续办 Core 触发器
 
 原 ARM64 Root `39:6611544` 使用 Networking 和 firewall-only 的同一构建 `83f237e`，Core 为 `1af242d3e8`。从完整 Networking 切到 firewall-only 后正常停机。停机读回确认 Core 等待处理三个路径触发器，firewall-only 等待 Core。两份 Root 回执与配置尾部逐字节对应，原配置前缀摘要一致。原卷核对了启动脚本，原停机容器的 /usr 层核对了 systemd 单元。重启后只处理本次积压的触发器，15 项包代码权限恢复；启动脚本为 root:root 0700，kurad 和 kura-key-recovery 均无法读取或执行。

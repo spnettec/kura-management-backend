@@ -1096,5 +1096,199 @@
       ".management-close-20261116/core-rtc-hotplug-20261120/six-registered-directory-upgrade",
       ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains"
     ]
+  },
+  "eightAddonUpgradeOnSixRoot20261121": {
+    "core": "1af242d3e8",
+    "archives": {
+      "kura-artemis": {
+        "old": {
+          "sha256": "4f0d502e36756c5b2a767431f65beb530df7ed4ac5536b21fb9897c2dd25ad4d",
+          "version": "1.0.0~git202611210452.c34b61d-1"
+        },
+        "new": {
+          "sha256": "3f6ca517fa7a8dbb3ecf723e2a4847e4a6f8586e3884eb9ecac72c6a546dc5c7",
+          "version": "1.0.0~git202611211324.1bcdc5d-1"
+        }
+      },
+      "kura-camel": {
+        "old": {
+          "sha256": "0205ae3745c86471f019d78301c9711c757d981f705a0e427ba5bacdf4f2cb79",
+          "version": "1.0.0~git202611210452.b5da84d-1"
+        },
+        "new": {
+          "sha256": "2b167c44c7f6180c0888e89915862f89b404baa8201c29818c344d2b9b4c20c5",
+          "version": "1.0.0~git202611211324.1f48f61-1"
+        }
+      },
+      "kura-cloud": {
+        "old": {
+          "sha256": "f9fb082cfbe3d181eafbf3948b417815a29798968d7f44522af7c726e057d190",
+          "version": "3.0.0~git202611210452.e08fb5d-1"
+        },
+        "new": {
+          "sha256": "aa4ebcd0fe5fd0c32a7eca0322e9a3dbbceca7709e36323caac61567076d427d",
+          "version": "3.0.0~git202611211324.1caad20-1"
+        }
+      },
+      "kura-container": {
+        "old": {
+          "sha256": "b51c5dbb0688c6757cfb8d25cc93fdf26e5f486e0cb375af44a44b12361d86d5",
+          "version": "3.0.0~git202611210452.c608ac2-1"
+        },
+        "new": {
+          "sha256": "588f5bed9454f9acbdc6b792d8723fb158fc1b0b6bb4e5db03442b96134011ad",
+          "version": "3.0.0~git202611211324.717b984-1"
+        }
+      },
+      "kura-opcua": {
+        "old": {
+          "sha256": "0ef065486058cf5f7aa7c55982601e0eefbf90fdf5df5fd4f4aeffd61a0340bb",
+          "version": "2.0.0~git202611210452.ec46173-1"
+        },
+        "new": {
+          "sha256": "39cc74c8b2f10051fef560738d23cc9994ec756c95d8b4501ba2fa4ce412d148",
+          "version": "2.0.0~git202611211325.ab78b76-1"
+        }
+      },
+      "kura-position": {
+        "old": {
+          "sha256": "c80b875ff574ce57fb95d024acafd5faa4a319f491999f67bbe60fa0260dfe7b",
+          "version": "2.0.0~git202611210453.882ea64-1"
+        },
+        "new": {
+          "sha256": "caacb93f9798f2eeb0ad6f14c8f0c2c696c13508f93748445d8d549ade5314a6",
+          "version": "2.0.0~git202611211325.a8b5e57-1"
+        }
+      },
+      "kura-triton": {
+        "old": {
+          "sha256": "60ce0ba862db5bca0f4698bbff994290600a8ef5bb1f93056d0c53925fe08155",
+          "version": "2.0.0~git202611210453.1b6d15b-1"
+        },
+        "new": {
+          "sha256": "af27ede121734102e71594fdea67d3b0e0f6f1a6ff8da6e04d0a42f52ff107b4",
+          "version": "2.0.0~git202611211325.bea8871-1"
+        }
+      },
+      "kura-yofc-runtime": {
+        "old": {
+          "sha256": "504e0cbffe472da61a963f91d1985d481a4e8696e34f0e0a7ce2f7870a33dba0",
+          "version": "1.0.0~git202611210453.ab1416b-1"
+        },
+        "new": {
+          "sha256": "c8e90a6941b3254776b4e87f0e9b3e1b9312b0b16d8e0996e1b443a6110fb29a",
+          "version": "1.0.0~git202611211325.ca74ba9-1"
+        }
+      }
+    },
+    "unpacked": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed",
+        "kura-artemis": "unpacked",
+        "kura-camel": "unpacked",
+        "kura-cloud": "unpacked",
+        "kura-container": "unpacked",
+        "kura-opcua": "unpacked",
+        "kura-position": "unpacked",
+        "kura-triton": "unpacked",
+        "kura-yofc-runtime": "unpacked"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "pending": [
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "checkedJars": {
+        "kura-artemis": 7,
+        "kura-camel": 6,
+        "kura-cloud": 8,
+        "kura-container": 2,
+        "kura-opcua": 6,
+        "kura-position": 4,
+        "kura-triton": 1,
+        "kura-yofc-runtime": 1
+      },
+      "pendingPermissionEntries": 59,
+      "absentAfterPurge": []
+    },
+    "installed": {
+      "kura-core": "installed",
+      "kura-networking": "installed",
+      "kura-management-ui": "installed",
+      "kura-deployment": "installed",
+      "kura-wires": "installed",
+      "kura-management-agent": "installed",
+      "kura-artemis": "installed",
+      "kura-camel": "installed",
+      "kura-cloud": "installed",
+      "kura-container": "installed",
+      "kura-opcua": "installed",
+      "kura-position": "installed",
+      "kura-triton": "installed",
+      "kura-yofc-runtime": "installed"
+    },
+    "removed": {
+      "kura-core": "triggers-pending",
+      "kura-networking": "installed",
+      "kura-management-ui": "installed",
+      "kura-deployment": "installed",
+      "kura-wires": "installed",
+      "kura-management-agent": "installed",
+      "kura-artemis": "config-files",
+      "kura-camel": "config-files",
+      "kura-cloud": "config-files",
+      "kura-container": "config-files",
+      "kura-opcua": "config-files",
+      "kura-position": "config-files",
+      "kura-triton": "config-files",
+      "kura-yofc-runtime": "config-files"
+    },
+    "purged": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "pending": [],
+      "checkedJars": {},
+      "pendingPermissionEntries": 0,
+      "absentAfterPurge": [
+        "kura-artemis",
+        "kura-camel",
+        "kura-cloud",
+        "kura-container",
+        "kura-opcua",
+        "kura-position",
+        "kura-triton",
+        "kura-yofc-runtime"
+      ]
+    },
+    "cloudSettingAfterPurge": "true",
+    "restoredOriginalBytes": 854,
+    "removedTestSuffixBytes": 34,
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/optional-provider-upgrade/HANDOFF.md"
   }
 }
