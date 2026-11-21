@@ -6229,5 +6229,121 @@
     "provider": "bd519550b3fdc8ef2d56cf83092579f40c52a5a2294d602c2d7486456e148075",
     "newReleaseTests": 96,
     "reference": "actual-arm64-docker-nonroot-launcher-checkpoint.json#jointPasswordSnapshotRecovery20261121"
+  },
+  "currentArm64CoreOsgiReactor20261121": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/current-core-osgi-arm64",
+    "head": "37613e040cdc7ec6605e7847992a9414f84a2f11",
+    "tree": "54de4e3c1e04c375c5fc22b016da6bb51094873b",
+    "previousFull": "ba84bdcfb43f69b174faa735bb1e610d37278b43",
+    "productionSource": "ac9b8bb80cd9bc92de611afb693bba71f7a595bd",
+    "modules": 82,
+    "tests": {
+      "tests": 2157,
+      "passed": 2157,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "equinox": {
+      "tests": 68,
+      "passed": 68,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "wall": "11:37 min",
+    "targeted": [
+      [
+        "org.eclipse.kura.core.configuration.SnapshotPersistenceTest.failedWritePreservesPublishedSnapshot(boolean)[1]",
+        "passed"
+      ],
+      [
+        "org.eclipse.kura.core.configuration.SnapshotPersistenceTest.failedWritePreservesPublishedSnapshot(boolean)[2]",
+        "passed"
+      ],
+      [
+        "org.eclipse.kura.core.keystore.KeystoreFileTest.pendingPasswordKeepsTheOriginalRecordIfSecondNameCannotBePublished",
+        "passed"
+      ],
+      [
+        "org.eclipse.kura.core.system.SystemServiceTest.testActivateWithUpdatedDefaults",
+        "passed"
+      ],
+      [
+        "org.eclipse.kura.core.system.SystemServiceTest.testActivateRelativeConfigFilePathsUpdate",
+        "passed"
+      ]
+    ],
+    "comparedBundles": {
+      "org.eclipse.kura.core.configuration": {
+        "debMembers": [
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-recovery/lib/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar"
+        ],
+        "reactorPath": "/work/src/kura/org.eclipse.kura.core.configuration/target/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+        "itPath": "/work/src/kura-osgi-tests/target/config-it-bundles/org.eclipse.kura.core.configuration.jar",
+        "debJar": "f4eb0de0d046d8cb510e52443730fb94d7a341bbccde4fd8be2c5e7266127915",
+        "reactorJar": "74feddbaff78f23cb609b56bc0f8b064f8bc6adbb4a06fe0e3dbbc935fc1c88c",
+        "itJar": "74feddbaff78f23cb609b56bc0f8b064f8bc6adbb4a06fe0e3dbbc935fc1c88c",
+        "classCount": 88,
+        "otherMemberDiffs": [
+          "META-INF/MANIFEST.MF"
+        ],
+        "manifestDiff": [
+          "-Bundle-Version: 3.0.0.202611212305",
+          "+Bundle-Version: 3.0.0.202611212323"
+        ],
+        "differingClasses": []
+      },
+      "org.eclipse.kura.core.keystore": {
+        "debMembers": [
+          "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.keystore-2.0.0-SNAPSHOT.jar"
+        ],
+        "reactorPath": "/work/src/kura/org.eclipse.kura.core.keystore/target/org.eclipse.kura.core.keystore-2.0.0-SNAPSHOT.jar",
+        "itPath": "/work/src/kura-osgi-tests/target/legacy-core-it-bundles/org.eclipse.kura.core.keystore.jar",
+        "debJar": "bd519550b3fdc8ef2d56cf83092579f40c52a5a2294d602c2d7486456e148075",
+        "reactorJar": "cd4e2e9cf497b1e9b97a93a3ca150b9f983930e67a5b23c7e1b5c884edcc5773",
+        "itJar": "cd4e2e9cf497b1e9b97a93a3ca150b9f983930e67a5b23c7e1b5c884edcc5773",
+        "classCount": 34,
+        "otherMemberDiffs": [
+          "META-INF/MANIFEST.MF"
+        ],
+        "manifestDiff": [
+          "-Bundle-Version: 2.0.0.202611211523",
+          "+Bundle-Version: 2.0.0.202611212323"
+        ],
+        "differingClasses": []
+      }
+    },
+    "firstPartyPluginComparison": {
+      "plugins": 41,
+      "classes": 1207,
+      "onlyManifestFieldDifference": "Bundle-Version"
+    },
+    "packageOperationIssued": false,
+    "boundRequest": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+    "evidenceSha256": {
+      "intent.json": "d7b78f9c4f0f88dca20cbd4480f3d2b8111921bfa66d20a24aa8e7a2912fc7b3",
+      "verified-source.json": "eecf0f983d1a0e03ce390e022cac385eb7a28267a4bff0f6e981a589702b7cda",
+      "first-reactor.log": "a889c8e12c752c16c1209cfaf7a8c1c22f7a04b496f72ac0a15f2d7e938bd243",
+      "first-exit.json": "168fc660d5941d298e9234906e586de030b9d47bce5971958a4ce5d4258183a6",
+      "focused.log": "787bd4909ae9ced751d8305c4830344339b442f8a84f4b2d573974d9855e7d00",
+      "first-usage.json": "d8b863a7774bc2ccd19d4c25d0e72bc29060b45410c2ad8a9f7f71ce0a68dbfe",
+      "environment.log": "af50c53d7bc50a014010f46ace8f830ede231cf7ca14ef50217263d95b773bc2",
+      "reactor.log": "268103e68e14e33bfb01fcbd9774bcc57983ad47c301485b21c0c0a0935f7775",
+      "reactor-exit.json": "d6bf4f66d43f078c0ab97c69ce4be4572d57796ef77127856fe45f773dd527d0",
+      "result.json": "f8d4b40dc07c8f59aceb2ba7d444cd1abbc5d0a745af0216a723487b7a25ff1c",
+      "bundles.json": "d8fcb3faeec241879e345be398527d8ea138d30d63569df167abd87a9e75f594",
+      "core-plugins.json": "05b12126823ba3ed0acb439fd4f431357370aa344c770f3002ee605fcd9673f3",
+      "storage.json": "c2ea99de4b36f3a7127d6a8af8ab54650cbde13673c3ace8c955e0636a5f6c34",
+      "cache-direct.json": "649a200b5061d7ab47738a2d13787473ac57e37ade6d544f69afd1ba304f3369",
+      "direct-maven.log": "1f5aedfba4e146b58129294e814af5957da867d686255e9937a85aabc9800e9b",
+      "retired.json": "d9aeb3c8bd88f34b646a6d16fc8ade877b34eabcf73ccbcb1f5ec2387b7fae17",
+      "bound.log": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.log": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "original-three-after.json": "aaedeb164a4f6caa5ed2cb8c0077abb04cdf8ebb5df32f40cfc80e18e00b629b",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
+    }
   }
 }
