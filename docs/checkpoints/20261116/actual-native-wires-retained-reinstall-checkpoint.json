@@ -7684,5 +7684,46 @@
     "scope": "provider inventory, offline disable, engine restart, cold Main, remove/purge",
     "boundUpgrade": "6910532 remains parked; five closed maintenance records",
     "frozen": "0/12"
+  },
+  "sixAgentMatchedBridge20261122": {
+    "root": "39:6611544",
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/six-agent-cohort/HANDOFF.md",
+    "source": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+    "candidateSha": "402ba663f27355eba9e6515328e8c1ae6bd296f594b47ee75f0d156c4503e316",
+    "debVersion": "0.1.0~cohort20261121125537.6910532-1+bridge532c124eb37f",
+    "originalBridge": "532c124eb37f725a70a54f963065ab298a6819bd20dd9f52c64de76a8d40d47d",
+    "originalLoader": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+    "payloadVerified": 18,
+    "dpkgHooksVerified": 4,
+    "signedStages": 835,
+    "histories": 46,
+    "mutable": 319,
+    "beforeConfigure": "unpacked, stopped with exit 0",
+    "afterConfigure": {
+      "kura-core": "install ok installed",
+      "kura-networking": "install ok installed",
+      "kura-management-ui": "install ok installed",
+      "kura-deployment": "install ok installed",
+      "kura-wires": "install ok installed",
+      "kura-management-agent": "install ok installed"
+    },
+    "parked": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-21T18:59:14.351663353Z",
+      "FinishedAt": "2026-11-21T18:59:55.160038978Z"
+    },
+    "remainingCore": {
+      "installed": "d97260d",
+      "candidate": "e99caab"
+    },
+    "frozen": "0/12"
   }
 }

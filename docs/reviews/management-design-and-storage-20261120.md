@@ -370,3 +370,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 2026-11-22 Triton 管理模式与完整运行库的成本
 
 远程 Triton 只需要 gRPC，却曾被本地特权执行器和解密服务的 SCR 引用阻止启动。移除两项依赖后，ARM64 现场用原配置完成端点停启和冷启动。容器模式则保留编排和加密服务。另一个耗时原因是同一 Maven SNAPSHOT 坐标可以留着旧 Crypto API 的导入声明。两个下游包按原 Git 重建后，在同一套其余输入上恢复 ACTIVE。三次 macOS 启动各生成约 325 至 340 MiB 的 Equinox 缓存。测试结束后连同本次临时组装一起回收，删除前计量约 2.03 GiB。保留用于配对的两个下游 JAR 合计约 13.7 MiB。[交接与计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/triton-remote-maintenance/HANDOFF.md)
+
+## 同一 agent 提交为何生成不同的六组件包
+
+六组件和绑定网关所用的两个 bridge 有八份 class 和两份 OSGi 元数据不同，虽然其 Core loader 相同。直接复用绑定网关的 deb 会将六组件打包输入中的 bridge 从 11 月 20 日版换回 11 月 19 日版。本轮复用同一已配对 ARM64 二进制与源码清单，保留六组件原 bridge，用独立 Debian 版本发布 7.07 MB 的包。同一安装在解包后关机，继续 configure 并再次关机。新增持久卷为零。[原包比较及六组件源码对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/six-agent-cohort/HANDOFF.md)
