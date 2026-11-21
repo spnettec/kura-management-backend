@@ -1,3 +1,7 @@
+## 2026-11-22 同名 OPC UA 部署包热升级
+
+旧包 52001 因缺旧 crypto 导出无法启用驱动，52002 安装完成后仍有三个 Milo fragment 未接入，实读失败。db7cedb 将重定位依赖直接声明在四个新版宿主上。52004 同名热升级和 Main 冷启动均通过原工厂读到 Milo 产品名，三个原安装号查询均为 COMPLETED。52003 卸载后保留两份历史 DP 归档。随后原配置跨 Debian 包升级再次实读，purge 与正常停放完成。PDE 依赖入口已统一到 9f914b4。详见 `opcua-deployment-upgrade/HANDOFF.md`。其余 provider/launcher 及六组件矩阵继续待验，冻结 0/12。
+
 ## 2026-11-22 OPC UA 部署包正式投递与卸载
 
 在隔离 ARM64 上安装正式 Core、Deployment 和 Cloud。实装处理器安装 51001 后，Felix 登记 11 个 bundle，7 个 ACTIVE、4 个 fragment RESOLVED。Main 停启后沿原编号读回 COMPLETED，存档、提交标记、bundle ID 和驱动工厂均已核对。卸载 51002 完成，Felix 和 Kura 注册表均已移除该包，系统正常停放。详见 `opcua-deployment-main/HANDOFF.md`。同名部署包跨版及其他 provider/launcher 的维护组合继续待验，冻结 0/12。

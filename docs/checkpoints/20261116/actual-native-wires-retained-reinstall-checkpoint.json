@@ -7434,5 +7434,124 @@
       "withcloud-unit.json": "403f33c0d35dcf87e3398286a2a8e2a705a7f60dd3dba83f69f6457c592a945f",
       "withcloud.py": "3ce069abf677691ea8003abf18098f06245975d1320d7235a20995ad42499d59"
     }
+  },
+  "opcuaDeploymentUpgrade20261122": {
+    "path": ".management-close-20261116/core-rtc-hotplug-20261120/opcua-deployment-upgrade",
+    "package": {
+      "version": "2.0.0.202611211831",
+      "driverVersion": "2.0.0.202611211831",
+      "dp": "75ed06cb4dfe23b9743951a2645bb2aba9b3dcb140e446148f1a76e1369a0549",
+      "deb": "d50fab09f590613b2ff172f01224c27789bc094f10ebf04b5551117ffaacba14",
+      "hosts": {
+        "stack-core": {
+          "sha": "f5c9c04f7345c5d8e9059ac98719d2d756ec8bbbdd9166fb26c9345eb9fc98df",
+          "upstream": "9159873030fa2ba04b48278aa65a3a2d4dd6a4d5b4291d3d04a5c289fd385a63",
+          "unchangedMembers": 2300,
+          "headers": [
+            "Bundle-Version",
+            "Export-Package"
+          ]
+        },
+        "transport": {
+          "sha": "cefd87b7e24f1b162ac7655e29f914bc91c4515e8459dfd63a8086dc3e5cdaee",
+          "upstream": "561ef4afe0f0b03a3f87026e8d26decb417ff883df0aed6b055fbf2d438c3cb7",
+          "unchangedMembers": 63,
+          "headers": [
+            "Bundle-Version",
+            "Import-Package"
+          ]
+        },
+        "sdk-core": {
+          "sha": "0948917fda8da616fcb07ad504b654c1e952c1971bfe2bda200e6ec3fe4713d6",
+          "upstream": "044859397ce31422779f4d2753ff2493541b419388dc493507f797b7e6c3e9db",
+          "unchangedMembers": 85,
+          "headers": [
+            "Bundle-Version",
+            "Import-Package"
+          ]
+        },
+        "sdk-client": {
+          "sha": "631b09798b6a1ab12f61a9759f4ebd2fce4a41e4930a79cc42d0b224f4dd5a88",
+          "upstream": "21c87b018e381a99b0253cd1b6297eb37c48c4e21de8656fdf7ead3ea7297653",
+          "unchangedMembers": 809,
+          "headers": [
+            "Bundle-Version",
+            "Import-Package"
+          ]
+        }
+      },
+      "source": "db7cedb27e7696fa6d5af7ebe6585882e4320bd6"
+    },
+    "pde": {
+      "targetCommit": "9f914b42a95a929f80b32515bedb2813a4556675",
+      "matchedClassifiers": [
+        "sdk-client",
+        "sdk-core",
+        "stack-core",
+        "transport"
+      ],
+      "IDEStarted": false
+    },
+    "snapshot": "1795285813894",
+    "jobs": [
+      52001,
+      52002,
+      52004,
+      52003
+    ],
+    "frozen": "0/12",
+    "evidence": {
+      "HANDOFF.md": "f5df5cf99a9df2ec774ce60df5434dc6c234b2c665b44fd16dc654a877dbe7cd",
+      "Probe.java": "c6c1ce9b3ac6c6c4032971bc9fbb051355c2091576a1bbc36204619dc32f58e3",
+      "ProbeBefore.java.source": "5fbf9c25adf3cf703ae14fd2774d4efdde5d3ec24c2d9a94bb29a29a2a9f5db4",
+      "ProbeFirstUpgrade.java.source": "a3551c87dbf2c9fd4f3185fc47fc79dfec84cc46efd1523c3da9ce5ee998123c",
+      "before-repair.json": "14f78f18664a2fb2c43b3a1e177c6c849a7d831f42be8dcc81495e0634c1a2da",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "build.log": "55383d9ba64b6988d14498f862ed3677c8479db390208b7dfb9ef81c7ead478b",
+      "compile.py": "3484cc75135490288ae0f5d7b56db7bcca07616a56a16312a3f8a92582d187d6",
+      "continue_old.py": "4b15241530d983b56b9c3ca22f8cc1b9ddef368f521cf456ab58fd42bce52616",
+      "dp-observer.jar": "95557946bcb463894ab43293a3bbeb9f37a7a95d9dba73736cb5fbbe6c427e01",
+      "endpoint-parked.json": "31bf654c9ec9eca7f8d01de6b936f619b3e62bd685d282c3c5ad96bf6db13185",
+      "exercise.py": "50610b5bd065b15fe1e576b78bb1a524913e170d6cebca113c47dd433599b1f4",
+      "field.py": "03d6cc93561a7694d4d1ebd4deb6f31ccd31dae9a779b67bbf97f7761fe97216",
+      "first-start.json": "3d9313243b6467066adf1e157f69553dc3f72ce2abf0a481b7de61a41afdd867",
+      "first-upgrade-observer.jar": "bad7475fe11f02e3a849987ebb8511168bdd89df29af003d1c6cdd37df8cb5a4",
+      "first-upgrade.json": "0abce8f4e9bc3e42c7f471267ce480f858e59ea5dec25252bc97786de23504f2",
+      "fixed.json": "95c45ee353f928d38c7d165ce1f7b0a4c78ff2d5271fd06eb56d1655fef68ce2",
+      "initial-observer.jar": "ac65aef91e1db62b2fdcc42764783376f933791e73e86bcba553c25b7b3edbb1",
+      "main-installed.json": "ca16f33717310c8471930dea65b88c5c17f9c5817c9c2946e0d04ecd957db8ff",
+      "native-business.json": "09f33447a003784a34d92ca553cb1fd2d72a974137d9459fbf8e78d1ac68cdae",
+      "native-new.json": "689cebb3f3749724d12f99a803f72470d0787c36b9763d80c1aeade8e6a03a26",
+      "native-observer/Probe.java": "b49a1fc7a2b0b5ea0c021f976eee038a5ecc400a240d019ca6ce901c08eedb4a",
+      "native-observer/compile.py": "e4ae4747d3eb8367c88d86c69e8607cffb8880c3651257dedd8a2dd6a1c1bc89",
+      "native-observer/dp-observer.jar": "5d0ad8dc76739076932e6c9dd146640d9f9fda5d0078714c696fb918d2310ff8",
+      "native-old.json": "c66e020a6d33a383b8e40dacb6a8c27127f052ad117335cc49a315eb8ba06c4b",
+      "native-start.json": "c482d4af3a29b3b979e25d20f62d9814df830db98190a998e9d7068778d0748e",
+      "native.py": "2e5a26f04933e0c60dfb4535e9dddd38380faa47e3a10a167b7647fbc3b9c580",
+      "old-reopened.json": "106cbf67f171d191f585fa6debbc5133106229cf9d6b1bcb12046114dfd79b9c",
+      "old.json": "4c691cfe6e948135a7efb0da227233b05bbbabd532a42cf3bf1b34a6db992bf8",
+      "original-three-after.json": "d4984a8d245430460b992a4070b2e93510a63d7dedc0d0181a8c89102a1c7805",
+      "pair.py": "6f03f876379745a8a63711735f36a3866592d241c9c1b3dbe64ed9ec48c36c72",
+      "paired.json": "6db8c3037d2d802a3b81a3f690571aeab1b92c15a8d0d941584cd2aab2a83c38",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "parked.json": "e70b7aaef3318611d1a0564773184fdd8f19b11d9026d6f3d09e3bf2f4fd1de0",
+      "pde-build.log": "7499d6c1d4e2241a1a974b54b863909a27b59d4b028ee29d34a4cc2965390f32",
+      "pde.json": "5af6dd22523cf9e3ac367952e80f5d7548a2f0d8a24706409e60722da3bb78a6",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "previous.dp": "8229ba5f8e0e26f6cea438c616b7721085eb4fb99e66ebe0e628b997863a4874",
+      "removed.json": "8dda16437069ca8186d46589c1ba01eff713d9c6c518bb3525bd3bbbfd610179",
+      "reopened.json": "0b24cc6acc4f990b6d97fe4860bd0e05f90ddfd36b18106c29cf1bbfb92ffbf9",
+      "repair-start.json": "f96c204994cb3308b4a650b5eba6a147ea94820e944ba781dc88a57276fbd1b7",
+      "repair.py": "4a70bbb08a1ab5d5dee5a6b5d1f3901adb627cc1783efa390ce6e0175292ad26",
+      "retained-50001.json": "3478436111f60c4f293fb37d26ac85a559ac3b07c3432623a5c5ddcfb0eb341b",
+      "run.py": "69b52cce0fdffca8fe87279b5717ab1fb03eb300bbf96fd857fc6e3ebdf51811",
+      "second-observed.json": "0b24cc6acc4f990b6d97fe4860bd0e05f90ddfd36b18106c29cf1bbfb92ffbf9",
+      "server.json": "6ec42d95f8fa04303fbc49c6ea4b099eacf3e8a1c5626b7035e140bb5f2fcb3b",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "storage.json": "feb74149d36ad33307b44927b7187f4c6150b0fa3b5476a82e423353d71de869",
+      "system.json": "0930069f354d40c098a8a1d6c13622aebe815777c39d027b4b8a748c4896dbf3",
+      "upgrade-start.json": "f8db4c541fd4bb5500bbd23d539c84aed51498b980faf370fca46aff64e5ecef",
+      "verify.py": "2eec29db204656d718d821e98856fead05a5c05e1ab3bf32a654fdfbc51ac219"
+    }
   }
 }

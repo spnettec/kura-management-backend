@@ -356,3 +356,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 2026-11-22 OPC UA 两种安装入口的成本
 
 正式 Main 走 Debian 插件路径时发现 Milo 的 OSGi 导入导出不全和属性默认值失效，为验证修复生成两份 deb，各约 5.6 MiB。验证 Deployment 路径时复用同一修复版本的 5,827,108 字节部署包、已有镜像和 Core、Cloud、Deployment 发行包。本次隔离系统使用内存根目录，停机后容器可写层为 4,629,167 字节，持久卷为零。这个数值只计停机后的容器可写层。两次测试分别检验驱动实际读节点，以及交付包在 Felix 中的登记、重启保留与卸载。[驱动实装](../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-provider-main/HANDOFF.md) · [部署包实装](../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-deployment-main/HANDOFF.md)
+
+## 2026-11-22 为何这次升级需要修改 Milo 发行件
+
+上一轮四个补丁 fragment 在新装系统均能解析。同名热升级时，已在运行的宿主保持原版本，结果只有一个 fragment 解析成功，驱动拿到完成回执后读节点失败。修订后的发行件直接在四个 Milo 宿主中声明所需依赖，并使用新的 OSGi 版本让 Felix 更新宿主。上游代码和资源逐字节相同。DP 的 bundle 数从 11 减至 7，Debian 包内 JAR 从 10 减至 6。新 deb 和 DP 各约 5.6 MiB，另保留一份上一轮精确测试过的 5,827,108 字节 DP。两个容器停机后可写层合计 4,826,915 字节，持久卷为零。[升级与业务证据](../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-deployment-upgrade/HANDOFF.md)
