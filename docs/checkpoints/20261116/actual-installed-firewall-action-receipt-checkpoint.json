@@ -1106,6 +1106,104 @@
       "originalThree": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/original-three-after.json",
       "parallels": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/parallels-final.json",
       "otherFixturesAndPersonalFiles": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/preservation-final.json"
+    },
+    "originalRuleBinding": {
+      "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-rule-binding",
+      "releaseSourceCrate": {
+        "source": "86bfc22834f6b898e1cc363c9aff071d73c5988d",
+        "tree": "b03d3d849ec8a416ea99c69f699dc4463379fcb8",
+        "sha256": "dc7d47bcece20c14f1e8f640027f950ef01e4b2c45150bbb55d3ba5fd2482d76",
+        "bytes": 21944,
+        "files": 13,
+        "vcs": {
+          "git": {
+            "sha1": "86bfc22834f6b898e1cc363c9aff071d73c5988d"
+          },
+          "path_in_vcs": "crates/firewall-policy"
+        }
+      },
+      "kernelSelection": {
+        "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+        "originalRules": 134,
+        "matchedOriginalHandles": 134,
+        "foreignWithinManagedChains": 4,
+        "foreignInSiteChains": 2,
+        "opaqueInManagedChains": 2,
+        "uniqueMatchGeneration": 9,
+        "duplicateGeneration": 10,
+        "duplicateRejected": "Error: \"ip6/filter/input-kura: CONFLICT: managed model rules missing,reordered or ambiguous\"",
+        "noKernelChangesDuringEitherReview": true
+      },
+      "siteMetadata": {
+        "originalRules": 134,
+        "ruleHandle": 14,
+        "generation": 8,
+        "refused": "Error: \"ip6/filter/input-kura: CONFLICT: selected original rule has unmodeled userdata\"",
+        "originalCommentPreserved": true,
+        "fullRulesetUnchanged": true
+      },
+      "installedSourceCompatibility": {
+        "originalManifest": "b2635d70715c6fb5f0e152eff554774970b6b884955db80b099702c75ffcd9f1",
+        "cases": [
+          {
+            "classification": "d92da91ef960b760e3244cf515f8a6544e2811460387e27867e47f10b18d353d",
+            "forward": "a39b1780b2eb12da2d188ca36a31e8f95ac1681fe220a2d498a7c5b12db8f4b0",
+            "label": "basic",
+            "rules": 116,
+            "transfer": "6233ad28f13fb40d32936e37161bbd5ec1bbfdf4d9bc5c803d84e5dee1a65fb5",
+            "wire": "4121bd017aee02c4198ea892fe90a3697811ef755742d5b27ab9af1a3a202811"
+          },
+          {
+            "classification": "c006c0282ce965d67d07b0e6cb7ff1b6920d64759b8ad7cad206d2ffcb1726bb",
+            "forward": "5790e53a66b9edff863a75e3f71970aec0f8f712be600c8ca28541f9ff420544",
+            "label": "rich",
+            "rules": 144,
+            "transfer": "b81c8704099bc659585bad01849cf2706c0ab90fb8206f85da56fadb4206c466",
+            "wire": "e61ce08d67df018c8b3c70bf8d47cc7b7cc3a4317522d82c592fc0a0d4835d13"
+          }
+        ]
+      },
+      "sourceArchiveTest": "source-crate-tests.log",
+      "siteScope": "Isolated ARM64 Linux network namespaces. Read raw kernel data in chain order. The independently compiled reader derived matches without the fixture handles. The site recorder checked its output against the kernel handles before adding the foreign rules. No write service started on the retained six-component Root.",
+      "remaining": "Wire the independent writer to normal Main publication, original authority and durable original-ID outcomes; verify accepted changes and package interruption at the installed entry point.",
+      "previousInstalledVersion": "0.1.0~cohort20261121025927.a1f1ebe-1",
+      "installedRelease": {
+        "version": "0.1.0~cohort20261121031254.86bfc22-1",
+        "sha256": "c3701b6d2beb8884bb1695295b1b9c8f033523ed72fa66c1fe3b05e8f2948934",
+        "bytes": 7048836,
+        "binary": "306fac0afe9116f23a0b75c7c31ac00d027f49319bebbd4a947dae0c74de2184",
+        "sourceManifest": "d662ca5b3c56f4d874f1109d02e52aaef502a0f152d35b49c3fef1ffed9fd66a"
+      },
+      "offlineReadback": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 84,
+        "originalSubmitWithdrawn": true
+      },
+      "parkedReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-rule-binding/parked-readback.py",
+      "normalStop": true,
+      "mainAndAgentDuringUpgrade": "disabled, MainPID 0",
+      "previousProtectedContentAndMetadataExact": 84,
+      "sourceProvenance": "release-cohort.json",
+      "verification": {
+        "linuxArm64Workspace": {
+          "passed": 806,
+          "ignored": 50,
+          "failed": 0,
+          "log": "linux-final.log"
+        },
+        "independentArm64SourceCrate": {
+          "passed": 6,
+          "log": "source-crate-tests.log"
+        },
+        "sourceCohortTests": 9,
+        "historicalSourceMatches": "parity.json",
+        "retainedSites": "preservation-final.json",
+        "originalThree": "original-three-after.json",
+        "parallels": "parallels-final.json"
+      }
     }
   }
 }

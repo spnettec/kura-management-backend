@@ -1,3 +1,7 @@
+## 2026-11-21 独立防火墙规则归属核对
+
+Agent `86bfc22` 与独立调用方共用内核规则匹配。ARM64 现场 140 条中准确定位原 134 个句柄，另外 6 条保留。等价条目有两个位置时拒绝，即使只匹配到一条，带有原 Java 模型未声明的现场标注也拒绝。两份历史语料的规则分类、原操作绑定、批次内容和发送字节摘要均与已实装版本一致。原六组件卷已从 `a1f1ebe` 升级至 `86bfc22`，Main 和 agent 均为 disabled，84 份保护文件内容和元数据一致。ARM64 离线工作区测试 806 项通过、50 项忽略。最新冷读入口为 `firewall-rule-binding/parked-readback.py`。正式 Main 的受限写服务及原编号结算继续。冻结 0/12。[原句柄、源码发行件与兼容性核对](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 双族六表原子提交和启动操作锁
 
 Agent 共用原规则编译库。在 ARM64 隔离网络中，134 条 Java 规则一次提交成功，六表同批的最后一条被拒时完整规则集保持。原六组件 Root 先升级共享库版 2096a04，再升级启动锁修正版 a1f1ebe。写者已结束但子进程仍保有描述符时，下一阶段现在可接回原操作。两次停机均冷读六包、SQLCipher 及 84 份保护文件。最终 ARM64 离线测试通过 802 项，显式忽略 50 项。最新入口为 `startup-execution-release/parked-readback.py`。正式 Main 的受限写服务、同编号结果恢复及其余组件维护继续，冻结 0/12。[发行件和验证记录](actual-installed-firewall-action-receipt-checkpoint.json)
