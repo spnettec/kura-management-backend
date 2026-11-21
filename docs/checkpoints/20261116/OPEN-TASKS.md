@@ -2,7 +2,7 @@
 
 获准的独立 ARM64 Root `2050:2271189` 安装了 Core `857015576f` 和标准 Networking `2a2deca`。正式 Main 以 kurad 通过 OSGi 加入且随后移除仅限 `lo`、来源 `127.0.0.1/32` 的 TCP 19897 规则。每笔操作单独获得内核 ACK 和 APPLIED 回执。六张表的规则内容和原保存文件恢复，独立进程按原编号查回两份结果。Main disabled，临时安装正常停机并冷读。该结果补齐上一条记录中的正式 Main 防火墙正向写入。旧六组件卷和此前中断的新装 Root 仍各按原围栏续接。
 
-安装现场同时发现，标准 iptables-save 和 ip6tables-save 对 mangle 返回 0，却没有输出这张表。启动恢复对不完整读回的处理、转发和 Main 剩余网络权限继续。冻结 0/12。[原操作、回执与冷读](actual-installed-firewall-action-receipt-checkpoint.json)
+安装现场的 iptables-save 和 ip6tables-save 对 mangle 返回 0，却没有输出这张表。另用隔离 ARM64 内核测得两份不同原生规则产生同一旧摘要。Networking `ce26379` 的两个构建包均在创建恢复意图前拒绝不完整输出，内核规则保持原样，13 项归属及恢复测试通过。此修正已打包，两个已停机的安装保留各自实装版本。原生规则的完整启动恢复、转发和 Main 剩余网络权限继续。冻结 0/12。[原操作、回执与冷读](actual-installed-firewall-action-receipt-checkpoint.json)
 
 ## 2026-11-21 正式 Main 的防火墙调用与安装中断
 

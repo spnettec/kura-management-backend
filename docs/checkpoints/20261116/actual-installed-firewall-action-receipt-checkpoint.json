@@ -1735,6 +1735,42 @@
       "sizeKiB": 1161212
     },
     "scope": "Separate temporary Parallels installation authorized for firewall acceptance. The earlier incomplete Root and the original six-component Root were left parked.",
-    "tables": "Compared six ordered libnftables listings with runtime packet and byte counters removed. Approved add and inverse each carried one original Netfilter command. Original Java saved rules digest restored."
+    "tables": "Compared six ordered libnftables listings with runtime packet and byte counters removed. Approved add and inverse each carried one original Netfilter command. Original Java saved rules digest restored.",
+    "bootReaderFollowup": {
+      "oldDigest": "0d764277f3043a01f562023818baae33b54b01fe6dbfa73bd7e763bd15d2a225",
+      "distinctNativeViews": 2,
+      "nativeHashes": [
+        "ef369a553b8da83a14006e3f35df1233cfbc3934fe71af35940d4d18dd7e1964",
+        "fc38b91ad6ad10a7343c32e071fdad589eb5eb380dabb622d077f1e19eea8892"
+      ],
+      "candidate": {
+        "networking": {
+          "exit": 1,
+          "netfilterUnchanged": true,
+          "restoreOperations": 0
+        },
+        "firewall-only": {
+          "exit": 1,
+          "netfilterUnchanged": true,
+          "restoreOperations": 0
+        }
+      },
+      "releases": {
+        "networking": {
+          "source": "ce263794c6a0990f0383c65a24eb9117f5dd7f25",
+          "tree": "b3c57e822c949946c193cbd148274c69404dac78",
+          "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210428.ce26379-1_all.deb",
+          "sha256": "9ac3a08f71cdb32a5ba216c7814cb4fa4d54dbd718b62bd766fd068996e74f12"
+        },
+        "firewall-only": {
+          "source": "ce263794c6a0990f0383c65a24eb9117f5dd7f25",
+          "tree": "b3c57e822c949946c193cbd148274c69404dac78",
+          "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210428.ce26379-1_all.deb",
+          "sha256": "e1e68bc4a1996290104d6d24b85b68b0524b394dde6fe17ebb585e5f803ac22f"
+        }
+      },
+      "ownershipTestsPassed": 13,
+      "installedOnParkedSites": false
+    }
   }
 }
