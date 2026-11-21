@@ -2960,5 +2960,152 @@
       },
       "environment": "Host JDK 21 with packaged Networking classes and independently rendered test inputs. No gateway or network operation."
     }
+  },
+  "coldFloodingModel20261121": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-cold-model",
+    "release": {
+      "source": "a7dfc510f58ddb1c0f3bbb02648835cf75423f08",
+      "tree": "d7c50cb7f7e11c5ca77a9db58eaefc4192b69f95",
+      "packages": {
+        "kura-networking": {
+          "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210705.a7dfc51-1_all.deb",
+          "version": "3.0.0~git202611210705.a7dfc51-1",
+          "bytes": 9411168,
+          "sha256": "01fa2356215bf44988e72e9f535a22aefbe5e8c88ceba55a3500b7f6b3049785",
+          "bundles": {
+            "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar": {
+              "sha256": "85c4b1d0aed676c213196f27df877d1c5905512b9403ae3545ae493ea1376920",
+              "path": "/opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar"
+            },
+            "org.eclipse.kura.network.threat.manager-3.0.0-SNAPSHOT.jar": {
+              "sha256": "542eeb2f53865b41e666176e6fca36938e4ee3c9483ec4af1cc6cdfc11630872",
+              "path": "/opt/eclipse/kura/siblings/networking/4s/org.eclipse.kura.network.threat.manager-3.0.0-SNAPSHOT.jar"
+            },
+            "org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar": {
+              "sha256": "cebe024652c19afeab4354e94c563ac8c446805d1f756008ae6475e3fa6107dc",
+              "path": "/opt/eclipse/kura/siblings/networking/4s/org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar"
+            }
+          }
+        },
+        "kura-firewall-only": {
+          "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210705.a7dfc51-1_all.deb",
+          "version": "3.0.0~git202611210705.a7dfc51-1",
+          "bytes": 465586,
+          "sha256": "2fc96b722be2dc3e54e56f722b9e48aae8a0e800322be426c5c40a2932d59328",
+          "bundles": {
+            "org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar": {
+              "sha256": "85c4b1d0aed676c213196f27df877d1c5905512b9403ae3545ae493ea1376920",
+              "path": "/opt/eclipse/kura/siblings/firewall/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar"
+            },
+            "org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar": {
+              "sha256": "cebe024652c19afeab4354e94c563ac8c446805d1f756008ae6475e3fa6107dc",
+              "path": "/opt/eclipse/kura/siblings/firewall/4s/org.eclipse.kura.core.net-3.0.0-SNAPSHOT.jar"
+            }
+          }
+        }
+      },
+      "inputs": {
+        "iptables": "6921fc1b2432264cf73bff6b49ac133ecef53db8ef8a23784e1def20d23b82e2",
+        "ip6tables": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+      },
+      "reactor": [
+        2268,
+        0,
+        0,
+        0
+      ]
+    },
+    "arm64ReleaseReadback": {
+      "kura-networking": [
+        "ipv4 exact=true filter=0 nat=0 mangle=17",
+        "ipv6 exact=true filter=38 nat=0 mangle=26"
+      ],
+      "kura-firewall-only": [
+        "ipv4 exact=true filter=0 nat=0 mangle=17",
+        "ipv6 exact=true filter=38 nat=0 mangle=26"
+      ]
+    },
+    "mainBinding": {
+      "main": {
+        "unit": {
+          "MainPID": "2389",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "14da4a0796b64e268fefd257e8ebfc36"
+        },
+        "ticks": "42654367",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "package": "org.eclipse.kura.core.net.firewall",
+      "exporter": "org.eclipse.kura.core.net",
+      "consumers": [
+        "org.eclipse.kura.linux.net",
+        "org.eclipse.kura.network.threat.manager"
+      ],
+      "sameClass": true,
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      }
+    },
+    "sixReadback": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 82,
+      "credentialsExact": 2,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "sixVersions": {
+      "kura-core": "6.0.0~git20261121065702.e660ca6-1",
+      "kura-networking": "3.0.0~git202611210705.a7dfc51-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "sixStoppedEntry": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-cold-model/six/parked-readback.py",
+    "firewallStoppedEntry": ".management-close-20261116/core-rtc-hotplug-20261120/main-process-network-capability/cold.py",
+    "oldPublishedOperationShape": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "operation": "738a021b-a7a3-4857-b709-7b746dd22df8",
+      "shape": {
+        ".intent": {
+          "schema": "int",
+          "operationId": "str",
+          "rootScope": "str",
+          "requestSha256": "str",
+          "wireSha256": "str",
+          "wire": "str",
+          "commands": "int",
+          "generation": "int"
+        },
+        ".result": {
+          "schema": "int",
+          "intentSha256": "str",
+          "outcomeSha256": "str",
+          "outcome": {
+            "ack": "str",
+            "operationId": "str",
+            "requestSha256": "str",
+            "rootScope": "str",
+            "state": "str",
+            "wireSha256": "str"
+          }
+        }
+      }
+    },
+    "kernelWithoutSite": "Open. The old intent records the approved netlink batch and request digest. Neither Java model readback nor an earlier dispatch batch restores an authenticated full desired kernel policy on boot."
   }
 }

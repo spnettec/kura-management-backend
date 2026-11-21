@@ -1,3 +1,11 @@
+## 2026-11-21 正式六组件绑定共同防洪规则，双族保存模型冷读恢复
+
+Networking `a7dfc51` 修复了保存文件没有标记防洪规则来源时的 Java 冷读。读取器用发行件定义和已解析的业务规则重建模型，仅在整份输出与原始字节一致时恢复防洪设置及 ICMP 状态。IPv6 的 38 条共享规则现在只有一处定义。IPv4、IPv6 的防洪及 ICMP 开关八种组合、残缺规则和额外内容已纳入回归。完整 Networking 构建 2268 项通过。标准和 firewall-only 两个 deb 的发行类分别在无网络、零能力的 ARM64 JDK 21 进程冷读上轮原样输入，两族均逐字节匹配。
+
+原六组件 Root `39:6611544` 已实际升级标准 Networking 包。正式 Main 的两个 OSGi 消费者都通过包连线取得同一规则类，实测有效能力 0x0400。正常停机后六包、SQLCipher、82 份文件、两份凭据、注册表与锁通过冷读。最新入口 `firewall-cold-model/six/parked-readback.py`。防火墙临时安装继续用 `main-process-network-capability/cold.py`。
+
+无站点策略时的内核冷恢复仍待实施。原临时安装上只读核对已配对发布意图与回执，其中保存的是当次变更的内核批次与请求摘要。原号没有重发。其余 broker 和维护矩阵继续，冻结 **0/12**，外部延期仍为原三项。[两种发行件、OSGi 绑定和原卷证据](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 整进程撤去 NET_ADMIN 与 Networking 启动器恢复
 
 Core `e660ca6d67`、Networking `d0a80e0`。原防火墙临时 Root `39:7320076` 先拒绝不兼容的旧 Networking。升级后定位到 systemd 203/EXEC：Core 替换了 bin 目录，dpkg 登记的 Networking 启动器随之消失。保留及恢复逻辑现核对已登记提供包、校验和及代码权限，联合解包时保留新版本，移除的提供包不恢复。正式 Core 单包升级后，dpkg 校验通过，启动器为 root:root 0700。ARM64 维护与权限测试 59 项通过。

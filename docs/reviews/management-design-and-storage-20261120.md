@@ -238,3 +238,5 @@ Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普
 11 月 21 日 14:02 的 Networking 修复复用了现有 NetworkManager 扫描实现。旧 OSGi 接口还依赖每个接入点的完整速率列表和能力标志，直接返回新状态 API 的最高速率会丢失数据。因此保留原解析器，主动扫描由 NetworkManager 负责。标准 Networking deb 为 9.41 MB，本轮复用原六组件卷和 Core 发行件。完整 Networking 构建通过 2266 项测试，原卷上的正式 Main 已绑定新版 provider。该次 JVM 的有效能力仍为 0x1400。[发行件和运行证据](../checkpoints/20261116/actual-nm-typed-wifi-scan-checkpoint.json)
 
 11 月 21 日 14:58 的两次实装暴露了另一笔可量化的构建成本。撤去 Main 的网络管理能力、恢复 Core 单独升级时丢失的 Networking 启动器，以及修正恢复后的文件权限，共产生三个 ARM64 Core deb，文件长度合计 615.06 MB。两处实装均沿用现有 Root。实际发布时，正式 Main 的 134 个线程均只保留低端口绑定能力，内核写入由独立 worker 完成。未提供站点策略时，默认启动仍有 17 条已保存防洪规则未被 Java 模型还原，这一差异单独保留。[安装、进程能力和包长度](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+Networking `a7dfc51` 的双族冷读修复合并了网络运行时和防洪 provider 重复定义的 38 条 IPv6 规则。只组装标准和 firewall-only 两份 deb，共 9.88 MB，并复用原 Core 与六组件卷。ARM64 验证后的 9,949,754 字节临时 JAR 均已逐一核对包内摘要并回收。两种发行件均还原了上轮保留的规则文件；没有站点策略时的内核冷恢复继续单独验收。[发行件、冷读与实装](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
