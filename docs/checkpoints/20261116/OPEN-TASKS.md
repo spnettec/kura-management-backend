@@ -1,3 +1,11 @@
+## 2026-11-21 Core 与 Deployment 联合解包，正常停机后直接配置成功
+
+Core `e8d57815e0` 在 systemd 报告 Main 已屏蔽时检查实际 FragmentPath。对 Deployment 的 early generator，核对同一 Root 的 schema 2 替换记录、生成器与原锚点的 inode 和内容、指向 /dev/null 的屏蔽、MainPID、ControlPID 及队列任务。时钟服务和 socket 继续沿各自原围栏核对。ARM64 用原 Deployment 生成器验证配对；时钟回归 97 项通过，4 项跳过。
+
+原六组件卷 `39:6611544` 先解包 Core，再解包 Deployment，正常停机并重新启动同一容器。Main 仍被原生成器屏蔽。85 份维护期文件和编号 `1eecebe3-aabe-4833-8dc8-09e92e9a722f` 保持。一条 `dpkg --configure kura-core kura-deployment` 返回 0，生成器由 Deployment 正常退役。此前需要移除再安装 Deployment 的直接配置故障在该顺序已修复。正式 Main 以 UID 997 启动，两个真实 bundle 读回原业务注册。最终正常停机，Main 和 agent 均 disabled。四代 72 条 HMAC、82 份保护文件及两份凭据已冷读；两个历史测试目录和两份本地 JAR 仍按同卷暂存归位，101 个对象保留原身份。Deployment 用相同 Git 源码重新组包，版本推进，四个 JAR 摘要与前任相同。
+
+六组件只读入口 `deployment-generator-joint/cold-maintenance.py`，独立防火墙仍沿 `firewall-ipv4-loopback-port/retained.py` 保持原启动命名空间。其余联合维护顺序、provider/launcher 及内部父项按原台账继续，冻结 **0/12**，外部延期仍仅原三项。[联合配置和冷读检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 部署回执阻止 Core 复制原文件，六组件按原维护号恢复
 
 Core `ef207249bf` 在维护准入和 Main 停止后的写入者检查中识别标准包注册表的未结发布。Deployment `8f5927e` 提供停机续办入口，原存储属主持原回执 SHA-256，在注册表锁内完成剩余重命名。ARM64 的发行 JAR 实测同一安装、原始两份暂存文件；错摘要与 Root 调用均拒绝，原输入只提交一次。该隔离中断使用测试 DeploymentAdmin；原六组件实装后的正式 Main 另行核对两个真实 bundle 的注册表读入和原活动业务包。

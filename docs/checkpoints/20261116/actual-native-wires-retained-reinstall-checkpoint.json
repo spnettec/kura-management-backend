@@ -4033,5 +4033,153 @@
       "newVolumes": 0
     },
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-core-maintenance"
+  },
+  "pairedDeploymentGeneratorJointConfigure": {
+    "core": "e8d57815e0ca4985bf775252b07a0351d0d3aeee",
+    "deployment": "8f5927eff552427d7ffc738bf7e0c93ef2040ad9",
+    "versions": {
+      "kura-core": "6.0.0~git20261121171544.e8d5781-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "coreDebSha256": "e48c91dfacf9fa743313d73d40f364737a55ba672f47bf8aa905e68609a98263",
+    "deploymentDebSha256": "be5b66fcdbe3a637156894830f3beb9f48e61ea09f5ae609c2a9e38aad336451",
+    "clockSetupSha256": "e5d87da0db3b89702f177479683934aabb36e8ece5cb973ee612e873f7698697",
+    "deploymentJarsMatchPreviousBuild": true,
+    "clockTests": {
+      "total": 101,
+      "passed": 97,
+      "skipped": 4
+    },
+    "isolated": {
+      "providerSchema": 2,
+      "actualGeneratorSha256": "6d7919409e75149b0c94472b32831c615c09c7a60e898a8afbc6dd478e356f7b",
+      "acceptedOriginal": true,
+      "rejectedDifferentRootActionInodeDigestAndAnchor": 5,
+      "acceptedRestoredOriginal": true
+    },
+    "unpackedParked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T09:16:46.546558631Z",
+        "FinishedAt": "2026-11-21T09:17:05.159062518Z"
+      }
+    },
+    "reopened": {
+      "id": "1eecebe3-aabe-4833-8dc8-09e92e9a722f",
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "masked",
+        "ActiveState": "inactive",
+        "UnitFileState": "masked-runtime",
+        "InvocationID": ""
+      },
+      "protectedDuringUnpack": 85,
+      "installationRoot": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "generator": {
+        "action": "replace",
+        "anchor": ".kura-deployment-dc122e4d53a54ddfbd3bb6dbfc2a9c84",
+        "device": 39,
+        "inode": 7492806,
+        "root": "39:6611544:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+        "schema": 2,
+        "sha256": "2d67fe57bb3b86787ad89ea66c1b3f03e40f3df8b38aad6bea4b079e321840d8"
+      }
+    },
+    "directDpkg": {
+      "cid": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "argv": [
+        "dpkg",
+        "--configure",
+        "kura-core",
+        "kura-deployment"
+      ],
+      "ordinal": 1
+    },
+    "directExit": {
+      "exitCode": 0
+    },
+    "main": {
+      "process": {
+        "unit": {
+          "MainPID": "2920",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "3f631912c5b54e24ac6a360a9d7a5211"
+        },
+        "ticks": "43435179",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "classes": {
+        "org.eclipse.kura.core.deployment": "642601bf13679007513f55a65238aab79f0aa1b7b46ba00710997ee80cdf8ecd",
+        "command": "c7b1ee3c91aace33c31881f1f86219dac1b805894ddf21157541280ee995b5b6",
+        "org.eclipse.kura.deployment.agent": "642601bf13679007513f55a65238aab79f0aa1b7b46ba00710997ee80cdf8ecd"
+      },
+      "originalDeploymentActive": true,
+      "registeredArchiveReadByBothBundles": true,
+      "receiptAbsent": true
+    },
+    "parked": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T09:17:05.269684738Z",
+        "FinishedAt": "2026-11-21T09:17:45.037730883Z"
+      }
+    },
+    "cold": {
+      "root": "39:6611544",
+      "maintenance": [
+        "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+        "ee52e71a-0d98-4830-aa77-b5a2aa194bd8",
+        "c21c3730-171a-42b6-9f49-0a21d545f746",
+        "1eecebe3-aabe-4833-8dc8-09e92e9a722f"
+      ],
+      "authenticatedPhases": 72,
+      "heldObjects": 101,
+      "worker": "3d5093c10bc1aabd77a6975eb830c7f0fb84d5d85e4baf1c53f86771fe81b26e",
+      "helper": "17f300b57e729efb9bd0c55a04fa5b3550a9f2e32ecba1a2c812de591fe5f785"
+    },
+    "heldFixtureObjects": 101,
+    "storage": {
+      "coreBytes": 205065436,
+      "deploymentBytes": 242858,
+      "coreArm64DebCount": 60,
+      "coreArm64DebFileBytes": 12271355722,
+      "newDockerVolumes": 0,
+      "newVMs": 0
+    },
+    "scope": "Standard six-package ARM64 Root. Core unpacked before Deployment. Normal PID 1 stop and restart before joint configure. Same OrbStack kernel.",
+    "readOnlyEntry": "deployment-generator-joint/cold-maintenance.py",
+    "independentFirewall": "firewall-ipv4-loopback-port/retained.py"
   }
 }
