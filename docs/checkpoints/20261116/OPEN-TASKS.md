@@ -1,3 +1,7 @@
+## 2026-11-22 Core purge 删除部分文件后的原编号恢复
+
+Core 89dfd6a53d 的正式 purge 在删除 4096 个测试文件中的 3 个后被 SIGTERM 中断。ARM64 Root 39:8230388 正常停机，冷读 HMAC 和原目录 inode 后沿移除编号 71230014-dfd7-4eb8-b195-dcfeb014645d 续办。最终包已清除、审计为空、四份凭据与维护文件指纹一致。原发布密钥代的半配置 Root 39:8195025 继续停放。冻结 0/12。 见 core-purge-partial-tree/HANDOFF.md。
+
 ## 2026-11-22 Core purge 保留目录挂载拒绝与原编号续办
 
 Core e7b690954a 完成保留 user/ 内有挂载时的正式 purge 验证。ARM64 Root 39:8221140 在 purge 删除前拒绝，正常停机检查八份原文件；重启后沿 022bd80f-97eb-4319-b0ed-b37f2df7604f 续办成功，包已清除，四份凭据和维护文件指纹相同。原半配置 Root 39:8195025 继续停放，空目录尚待用户确认移存。递归删除中途退出仍待验，冻结 0/12。 见 retention-purge-mounts/HANDOFF.md。

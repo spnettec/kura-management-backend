@@ -8097,5 +8097,31 @@
     "arm64TargetedTests": 40,
     "protectedCoreRoot": "39:8195025",
     "frozen": "0/12"
+  },
+  "corePurgePartialRetainedTree": {
+    "core": "89dfd6a53d",
+    "interrupted": {
+      "root": "39:8230388",
+      "maintenance": "71230014-dfd7-4eb8-b195-dcfeb014645d",
+      "status": "purge ok config-files",
+      "phase": "interrupted",
+      "remaining": 4093,
+      "total": 4096,
+      "privateFiles": 4,
+      "volumeKiB": 70028
+    },
+    "final": {
+      "root": "39:8230388",
+      "maintenance": "71230014-dfd7-4eb8-b195-dcfeb014645d",
+      "status": "not-installed",
+      "phase": "final",
+      "remaining": 0,
+      "total": 4096,
+      "privateFiles": 4,
+      "volumeKiB": 69940
+    },
+    "signal": "SIGTERM",
+    "arm64TargetedTests": 41,
+    "frozen": "0/12"
   }
 }
