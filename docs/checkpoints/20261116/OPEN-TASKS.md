@@ -1,3 +1,15 @@
+## 2026-11-21 原六组件 ARM64 包维护自动恢复 70 项代码权限
+
+原六组件安装的 Core 已升至 `b4ba0e06b9`，Networking 已升至 `83f237e`。Core 根据 dpkg 文件清单核对 sibling JAR、libexec、console 及防火墙入口。完成 Core 安装时记录带签名的 configured 回执，绑定安装 Root、原维护编号和包脚本。触发器失败后，dpkg 以普通 configure 续办时先核对这份回执，再单独恢复权限。
+
+在原 Root `39:6611544`，GWT、Wires、Deployment 的包操作留下 31 项差异。持有原权限锁时 dpkg 触发器返回 1，Core 进入 half-configured。释放锁后只续配 Core 一次，31 项全部恢复。Main、agent、密钥服务 socket 和恢复服务的 systemd 调用标识及活动时间均与续办前一致。
+
+联合维护时旧 Networking preinst 因 Core 已有待处理触发器，在解包前退出。新 Networking preinst 识别四个已登记的权限触发路径，继续核对四组 broker 的归属、脚本、socket、service 和协议。在 Core 已挂起 siblings 触发器时，原卷成功解包并配置 Networking 后继版，余下 39 项由正常触发器恢复。Networking 与 firewall-only 两个 deb 的业务载荷、权限和属主逐项等同上一版。本轮在原卷安装 Networking，firewall-only 只核对发行包。
+
+最终六包 installed，Main 和 agent 均 disabled、inactive，正常关机退出 0。冷读核对 70 项相对于各自解包后的 inode、字节和 mtime，注册表锁在两次权限恢复中保持 inode 7632058、root:root 0600。40 笔 Core 维护的 721 份签名记录、319 份运行文件、两份凭据和 101 个夹具对象通过核验。ARM64 两组 Core 定向测试共 39 项通过，Networking 另有 7 项包内准入用例通过。
+
+绑定网关沿原编号 7a1e4339-aaad-4ee0-94fc-8db58592881f 完成的 431dedc → 6910532 升级保持封存，五笔维护和三代来源回执已停机复核，原任务 SUCCEEDED、远程 OFF。7fd 保持正常停机，41 输入、16 回执。完整台账保留 12 个父项，冻结 0/12。后续仍需核对新触发器在移除、purge 和其余组件组合中的实际行为。外部延期仍限真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [发行包与原卷冷读](actual-native-wires-retained-reinstall-checkpoint.json)
+
 
 ## 2026-11-21 排队的 sibling 注册表请求在 Core 切换目录后退出
 

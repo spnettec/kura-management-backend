@@ -5072,5 +5072,141 @@
       "keptOriginalInodes": true
     },
     "remaining": "Ordinary sibling package configuration needs to reconcile Core code ownership automatically."
+  },
+  "siblingPackageOwnershipTrigger20261121": {
+    "core": {
+      "triggers": [
+        "interest /opt/eclipse/kura/siblings",
+        "interest /opt/eclipse/kura/libexec/addons",
+        "interest /opt/eclipse/kura/console",
+        "interest /opt/eclipse/kura/bin/firewall"
+      ],
+      "ownership": "5f6167ed6b3fb13950130444ecce79ade0dfe2d1b166faf6c22087725ac497bf",
+      "core": "b4ba0e06b931d50f3777420fa4543254ca8157fc",
+      "tree": "449c114dbae88dae4ee80b1bf4ca9f3b3e855d0e",
+      "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/wip-core/kura/distrib/kura-core/target/kura_6.0.0~git20261121213727.b4ba0e0-1_arm64.deb",
+      "version": "6.0.0~git20261121213727.b4ba0e0-1",
+      "sha256": "95f2a3928ac878de98f31f51616b3e76f193f2d087e672d21bf649ac206194e9",
+      "size": 205068340,
+      "helperSha": "17f300b57e729efb9bd0c55a04fa5b3550a9f2e32ecba1a2c812de591fe5f785",
+      "members": {
+        "/usr/libexec/kura-firewall-publish/worker": "3d5093c10bc1aabd77a6975eb830c7f0fb84d5d85e4baf1c53f86771fe81b26e",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/bin/kura_clock_setup.py": "e5d87da0db3b89702f177479683934aabb36e8ece5cb973ee612e873f7698697",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/bin/kura_key_service_lifecycle.py": "17f300b57e729efb9bd0c55a04fa5b3550a9f2e32ecba1a2c812de591fe5f785",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/bin/kura_runtime_ownership.py": "5f6167ed6b3fb13950130444ecce79ade0dfe2d1b166faf6c22087725ac497bf",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-backup/manifest.json": "56a846ed4df546406486ae1e0acba0e019cc901c309086f0cb76b8d94c28c958"
+      },
+      "preinst": "b42faa29c4b3f419182fe5a35868ad25a25a9def752e0ae5b90c1829851bc3e0",
+      "postinst": "cf497e1c2a347ba69b8451cf68be114d8749a4e2e052c4e50076d6c67f56dad9",
+      "prerm": "645a915ead45d9455f490fb7348b59063dfddbc4a3d0cddf3a062726aeff8585",
+      "postrm": "f07183749410b06acec5621e8c5a5f63b2de0441da6a310c96a1298faa22e8ac",
+      "removalHome": "26bb5734d5e15decb70be5bce8197b865c436b756c9da70f32e5d127b6acc6ba",
+      "addonPolicy": "94d4fdfd5a8661a78c604e9334eeb892e4e6dc5d6c4e4f625e89bfc178325c87"
+    },
+    "networking": {
+      "head": "83f237eea441dd0e8290372e80e7b7193601a9bf",
+      "packages": {
+        "kura-networking": {
+          "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611211339.83f237e-1_all.deb",
+          "version": "3.0.0~git202611211339.83f237e-1",
+          "sha256": "747d210aca37386ea0f1f61f667ed7807c2625db0fa793cf3c2ac875ecf580ba",
+          "controlChanges": [
+            "preinst",
+            "control"
+          ],
+          "payloadEntries": 71,
+          "postrm": "e649ce5ad9791aa1a813f5b998dbab43eacf47ce8fe128159aaf02a3cbe2de4b"
+        },
+        "kura-firewall-only": {
+          "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611211339.83f237e-1_all.deb",
+          "version": "3.0.0~git202611211339.83f237e-1",
+          "sha256": "9b0c3ca2d508094ab6d8609bb4f5af111f5170417e3f3beeb112ae671e4a3cc0",
+          "controlChanges": [
+            "preinst",
+            "control"
+          ],
+          "payloadEntries": 31,
+          "postrm": "bd5cf100bcdca2d6a9cc89ac9af81f67ef6bea11bac8ab619af205c66e3e5dd6"
+        }
+      }
+    },
+    "originalCoreMaintenance": "517f1726-b284-4fb8-81af-2ce4994911c0",
+    "firstPackages": [
+      "kura-management-ui",
+      "kura-wires",
+      "kura-deployment"
+    ],
+    "busyPermissions": 31,
+    "ordinaryPermissions": 39,
+    "busy": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "services": {
+        "kura.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-management-agent-v2.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-key-service.socket": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=440505767624\nInvocationID=680cb6d888c841bc83b3538037318eb2",
+        "kura-key-recovery.service": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=440505816481\nInvocationID=77da44adbf2940619f03d35508c1c069"
+      },
+      "status": "half-configured",
+      "original": "517f1726-b284-4fb8-81af-2ce4994911c0"
+    },
+    "resumed": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "services": {
+        "kura.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-management-agent-v2.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-key-service.socket": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=440505767624\nInvocationID=680cb6d888c841bc83b3538037318eb2",
+        "kura-key-recovery.service": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=440505816481\nInvocationID=77da44adbf2940619f03d35508c1c069"
+      },
+      "permissions": {
+        "policy": "5f6167ed6b3fb13950130444ecce79ade0dfe2d1b166faf6c22087725ac497bf",
+        "changed": [],
+        "otherPolicyDifferences": [
+          "framework/sibling-install-order.lock"
+        ]
+      },
+      "original": "517f1726-b284-4fb8-81af-2ce4994911c0"
+    },
+    "networkingAdmission": {
+      "pending": [
+        "/opt/eclipse/kura/siblings"
+      ],
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "version": "3.0.0~git202611211339.83f237e-1"
+    },
+    "cold": {
+      "root": "39:6611544",
+      "request": "517f1726-b284-4fb8-81af-2ce4994911c0",
+      "status": {
+        "kura-core": "6.0.0~git20261121213727.b4ba0e0-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7632058,
+      "allSigned": 721,
+      "histories": 40,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "verifiedPostrm": 4,
+      "verifiedInstalledHelpers": 4,
+      "registryUnchangedAcrossRecovery": true,
+      "permissionsRestored": 70
+    },
+    "open": "Installed remove/purge and the remaining component combinations for this trigger."
   }
 }
