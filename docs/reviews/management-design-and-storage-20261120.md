@@ -8,6 +8,8 @@
 
 09:58 的目录复测为 **346.70 GB**，其中历史工作目录 **252.59 GB**、中心 target **78.76 GB**，合计 95.6%。较 09:40 增加 227.0 MB。两个读权限实现随原包交付，本次另存一个 204.31 MB 的 Core 完整包。37 份 Core ARM64 deb 的文件长度合计 7.56 GB。上述统计按宿主目录计量，虚拟机卷另计。[最新目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/storage.json)
 
+11 月 21 日 10:20 在原六组件卷测得，正式 Main 的调用线程撤去 NET_ADMIN 后，仍可通过独立读取服务核对 IPv4、IPv6 各三张内核表。服务和调用线程的有效能力分别为 0x1000 和 0x0400。内核规则发布仍走旧路径。这次沿用同一卷和 Maven 缓存；核对最终 Core deb 后移除了本轮未安装的中间包，逻辑长度 204.37 MB。[实装读数与包记录](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
 Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普通 Main 遇到目录拒绝时向本机只读服务查询两个固定标记；服务核对正式 Main 并返回当时的存在性。原卷保留 0700，三次查询共 33 ms。这个进程使用 root 身份遍历原目录，Linux 能力集为空。内核防火墙的读写权限仍在旧执行路径上。[正式 Main 实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/reader.json)
 
 11 月 21 日的两种 Networking 发行包复用同一份防火墙 JAR，共 9.81 MB。两个 ARM64 网络命名空间也复用同一镜像。实测发现旧代码清空一族规则时重复发布五次，现已合并为一次。原六组件只升级标准包，正式 Main 又暴露出一个跨组件约定：Core 把 /etc/kura 设为 root 专属的 0700，Networking 却要求普通 JVM 能判断其下两个归属标记。这使独立运行的 Main 在修改规则前拒绝操作。[发行件](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/releases.json) · [原卷权限实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/ownership-refusal.json)

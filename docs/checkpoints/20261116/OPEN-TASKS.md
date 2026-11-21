@@ -1,3 +1,7 @@
+## 2026-11-21 正式 Main 在调用线程撤去 NET_ADMIN 后读取双族防火墙表
+
+原 ARM64 六组件 Root 联合升级 Core 002b0b545e 与 Networking 6fa4232。正式 Main 通过独立 socket 对每一族检查 filter、nat、mangle。读取服务配对已加载的 Main 并验证调用进程，只接受族别、返回状态。测试线程及其普通子进程的有效能力由 0x1400 降为 0x0400 后，两族查询均成功。仅读取服务使用 0x1000，Main 主线程仍为 0x1400。六张表前后摘要相同，六包、SQLCipher 和 84 份文件冷读通过，84 份文件的内容与升级前一致。Core 后续 f956cc3314 只修订组装测试，最新停机入口 main-firewall-table-reader/parked-readback.py。规则写入、其他 provider/launcher 与整体撤权继续，冻结 0/12。[实装进程、发行件和测试范围](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 firewall-only 在 dpkg 撤销时保留启用链接
 
 原 ARM64 六组件卷上，旧版 7a57c4f 碰到替换包 preinst 拒绝后仍显示 installed，但 firewall.service 由 enabled 变为 disabled。Networking 40a6a79 将注销移到成功移除之后。三次真实的 abort-upgrade、abort-deconfigure、abort-remove 均保留原启用链接、注册文件的 inode 与顺序，dpkg audit 为空。随后成功 remove、purge 并装回标准 Networking。原卷正常停机，六包、SQLCipher 和 84 份保护文件已冷读；最新停机入口 firewall-only-dpkg-unwind/parked-readback.py。Main 的内核防火墙权限与其他 provider/launcher 组合继续，冻结 0/12。[回调及发行件记录](actual-installed-firewall-action-receipt-checkpoint.json)

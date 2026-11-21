@@ -706,5 +706,109 @@
       "inputs": 41,
       "receipts": 16
     }
+  },
+  "managedFirewallTableReader": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-table-reader",
+    "core": "002b0b545eb2e0820b0aa045e24fb6d593f59317",
+    "coreVerificationOnly": "f956cc3314",
+    "networking": "6fa423209b3bfc18210b55d8696bba4e12864b93",
+    "installedVersions": {
+      "kura-core": "6.0.0~git20261121021850.002b0b5-1",
+      "kura-networking": "3.0.0~git202611210219.6fa4232-1",
+      "kura-management-ui": "3.0.0~git202611210130.8870575-1",
+      "kura-deployment": "2.0.0~git202611202327.15c50ca-1",
+      "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+      "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+    },
+    "cohort": {
+      "files": {
+        "kura-firewall-tables.service": "00943263838e696585dcbee44f3654dc4941f8ca86b097eeff4ee8a1d4928402",
+        "kura-firewall-tables.socket": "7ceb803c2713dee852dd3080357bc7e7b43db072162256dc5d3facd5476fe5a2",
+        "kura_clock_broker.py": "4ca071f6c87010880c1b1f1828efd6db9877054d51c610247d8770d29a76e40a",
+        "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+        "kura_firewall_tables.py": "5cb799f7835e3eea1e04b0083827c0faaddd27f1b691690f74e3e19667c0c241",
+        "kura_journal_export.py": "ef165faa67dd35cb61beb7dee22c55648ac87444791618389a983c1c568eb388",
+        "kura_ownership_markers.py": "14a7cabb71b3f07012246693e88a61ea04954e620ab52e3b9c069b406b17c9f9",
+        "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+        "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+        "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+      },
+      "mainUnitSha256": "2d39338b7f93d2de0b043fca88b9fe523750283a6017ac3da9d48cca3e135218",
+      "schema": 1
+    },
+    "live": {
+      "main": {
+        "unit": {
+          "MainPID": "3178",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "4779a35aa2d24e7ba195f0133bad885a"
+        },
+        "ticks": "41178377",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "actor": {
+        "unit": {
+          "MainPID": "3475",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "static",
+          "InvocationID": "90ea98fe4e97474da24180f803d15411"
+        },
+        "ticks": "41178829",
+        "uid": "0\t0\t0\t0",
+        "capEff": "0000000000001000",
+        "nnp": "1"
+      },
+      "lines": [
+        "3178 org.eclipse.kura.core",
+        "prior 0000000000001400 0000000000001400 0000000000001400 0000000000001400",
+        "prior ipv4 ok",
+        "prior ipv6 ok",
+        "lower 0000000000000400 0000000000001400 0000000000000400 0000000000000400",
+        "lower ipv4 ok",
+        "lower ipv6 ok"
+      ],
+      "sixTablesExact": true,
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "jar": "e02d8936463a21c2a789525bcf7df27ddb7d01457aaaa46595adac6b5a7589a9"
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "beforeAfterContentHashesEqual": 84,
+    "networkingTestsPassed": 2238,
+    "coreTestEntryPoints": {
+      "assembly": 10,
+      "generation": 22,
+      "preparationHistoryArm64": 15,
+      "keyServiceMac": {
+        "ran": 71,
+        "skipped": 21
+      },
+      "separateArm64ReaderContracts": 4,
+      "hostDiscovery": "Initial macOS blanket discovery had 3 failures, 87 errors and 455 skips. Three fixture suites require CLI configuration, two require fresh Linux systemd. The stale eight-directory assertion was fixed. The two systemd-only historical test entry points were not rerun."
+    },
+    "remaining": "Main kernel policy writes and other network providers still use NET_ADMIN. The comparison lowered the worker thread; the process main thread kept 0x1400.",
+    "intermediate": {
+      "discardedUninstalledDeb": "kura_6.0.0~git20261121021830.bbe8ee4-1_arm64.deb",
+      "sha256": "23a5b30e6266ec8d0fd822c0063ba017a0e75df5a0279e6a08971ee29e180da7",
+      "logicalBytes": 204372620,
+      "retained": "6.0.0~git20261121021850.002b0b5-1"
+    }
   }
 }
