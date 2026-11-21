@@ -1,3 +1,9 @@
+## 2026-11-21 已绑定网关第二代来源回执与正常停放
+
+原网关在保留第一代来源回执的情况下安装了 agent `431dedc`。沿用原初始化和本次维护编号 `65ed1487-76c1-499c-8eac-4c9995c15c55`，暂停后从 installed 状态只读续验。当前指针指向第二代，第二代按编号和摘要指回第一代，第一代无前项。98 个原对象中，92 个完整指纹保持，5 份代码授权或指针文件按计划更新。`source-pairs` 父目录增加第二代子目录，原 inode、属组、权限和链接数保留。两代各有一份完整回执。
+
+正式 Main、agent 显式启动，各自重启计数为零。回环 HTTPS 返回 200，agent UID 991、有效能力零、NNP=1，运行二进制匹配发行包。原任务 `523ec79a-731b-4bb6-b274-9008a750b34d` 在网关与 PostgreSQL 均为 SUCCEEDED，中心仍只有原来一笔任务，原输入与结果密文指纹一致。原 OFF 决策及版本保持。网关和数据库正常停机，中心全程停放；停机后按原容器冷读两代回执、当前指针和 OFF 版本。ARM64 release 定向测试 26 通过、0 失败、3 忽略，另有 820 项未在此筛选范围运行。最新只读入口为 `bound-agent-second-successor/cold.py`。冻结闭环 0/12。[两代来源与停机证据](actual-native-agent-bound-successor-checkpoint.json)
+
 ## 2026-11-21 原防火墙启动事务阻止包维护
 
 在原临时安装 Root `39:7320076` 上执行当前 Core、Networking 与 firewall-only 发行包共同包含的只读维护检查。四种钩子共 12 种参数，九项拒绝继续，三种 postinst abort 返回保留。Networking 的打包提交与现分支仅差一份测试文件。这里实际运行的是包内检查，未启动 dpkg。第一次探测位于外层容器，结果已剔除；最终检查在 chroot 内先断言 Root 身份。前后均核实原 IPv4 回执 APPLIED、IPv6 未派发、原 44 对发布记录及三条规则保持。开机恢复和完整 Main 冷读仍待办，冻结 0/12。[原请求及包维护检查](actual-installed-firewall-action-receipt-checkpoint.json)
