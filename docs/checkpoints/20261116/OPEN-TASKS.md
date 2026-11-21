@@ -1,3 +1,11 @@
+## 2026-11-21 原六组件已升级公共目录修正，Parallels 保留一次失败的升级
+
+原六组件 Root `39:6611544` 已升级到 Core `e14d06eae1` 和 Networking `e5422d2`。dpkg 为公共安装目录登记了 Core、Networking、Deployment、Wires 和 GWT 五个所有者。六包、SQLCipher、84 份保护文件以及注册表和锁已停机冷读。最新六组件入口是 `six-registered-directory-upgrade/parked-readback.py`。[正式包和原卷核对](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
+在原防火墙临时安装 `2050:2271189`，上一版 Core `92ea89ba15` 的 deb 先声明了公共目录。preinst 暂存原物理目录后，dpkg 遇到了由 Networking 登记、此时目标暂缺的链接，拒绝解包。随后 Networking 解包将逻辑路径变成了目录，原捕获的链接 inode 已不匹配。Core 留在 `5884bf5a6a`，Networking 为 `half-configured`。该 Root 已正常停机；原物理目录、原升级凭据、18 份防火墙记录和两份密钥文件均保留。冷读入口为 `firewall-exact-forwarding-chains/park-failed.py cold`。修正版将公共目录条目排到物理安装文件之后，另一个安装同版前任的 ARM64 Root 及原六组件升级均通过。前述失败现场仍按原围栏保留。
+
+旧 Networking 会把站点自建的 `forward-kura-site` 链当作开启转发的请求。正式启动器对照中，旧包将 IPv4 和 IPv6 都设为 1，修正包保留 IPv4 为 0，并为实际使用 Kura 链的 IPv6 开启转发。两条规则均在内核读回。普通 Main 的受限转发授权和其余维护矩阵继续，冻结 0/12，external deferred 仅原三项。[双族内核值和原回执](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Core 保住最后一个 sibling 的安装链接，并从实际卸载中断续办
 
 Core `92ea89ba15` 在 deb 中登记 `/opt/eclipse/kura`。独立 ARM64 安装 `2097163:7204836` 上，八个可选包全部移除并 purge 后，原链接和物理目录的 inode 保持一致，注册表准确保留站点末行。随后正常移除 Core 保留了应用数据及原凭据，显式 purge 清除普通保留目录，两份凭据仍一致。

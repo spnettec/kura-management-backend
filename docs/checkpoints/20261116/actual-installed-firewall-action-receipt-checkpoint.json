@@ -2011,5 +2011,92 @@
     "coreReused": "5884bf5a6a",
     "retainedInstallationVersions": "See nativeFamilyBootRecovery",
     "frozen": "0/12"
+  },
+  "bootForwardingExactChainNames": {
+    "source": "e5422d2b7a996a85d55aef3dba10cbc5fcf87cef",
+    "packages": {
+      "networking": {
+        "sha256": "229746e42403a6689531a24c94b378eff377466858111fcc2d17b061fddc613e",
+        "source": "e5422d2b7a996a85d55aef3dba10cbc5fcf87cef",
+        "tree": "387108649a6dd4abef214fe4c9678ab319877a4e",
+        "bytes": 9405486
+      },
+      "firewall-only": {
+        "sha256": "a1c6282f6f2a00a30372c3f39581eef9e93f53fa98660edeb078c0e2fd1fc3f4",
+        "source": "e5422d2b7a996a85d55aef3dba10cbc5fcf87cef",
+        "tree": "387108649a6dd4abef214fe4c9678ab319877a4e",
+        "bytes": 459310
+      }
+    },
+    "old": {
+      "arch": "aarch64",
+      "interfaces": [
+        "lo"
+      ],
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        1,
+        1
+      ],
+      "rootOperation": "d70c892f-39e5-4176-9ccb-addbc2d6b580",
+      "receipt": "09703515f01efeb22e80d940de559d03076082ab8704d750211473fc28af4819",
+      "siteInputsExact": true,
+      "siteChainRuleInKernel": true,
+      "requestedIPv6RuleInKernel": true
+    },
+    "fixed": {
+      "arch": "aarch64",
+      "interfaces": [
+        "lo"
+      ],
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        0,
+        1
+      ],
+      "rootOperation": "9359c130-280e-4348-a3f5-1b12a855dd3f",
+      "receipt": "7612bb173cf9afa0fe8574d3871df25b8db18c45b3cd8556949f50dd4bcd5f05",
+      "siteInputsExact": true,
+      "siteChainRuleInKernel": true,
+      "requestedIPv6RuleInKernel": true
+    },
+    "testsPassed": 15,
+    "installedSixVersions": {
+      "kura-core": "6.0.0~git20261121051614.e14d06e-1",
+      "kura-networking": "3.0.0~git202611210513.e5422d2-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "parallelsHeld": {
+      "root": [
+        2050,
+        2271189
+      ],
+      "states": {
+        "kura-core": "installed 6.0.0~git20261121044005.5884bf5-1",
+        "kura-networking": "half-configured 3.0.0~git202611210513.e5422d2-1"
+      },
+      "originalFiles": 18,
+      "originalKeysExact": true,
+      "originalHome": [
+        2050,
+        2401445
+      ],
+      "capturedAlias": 2400441,
+      "currentPublicDirectory": 2400637,
+      "capture": "76cc89ddeecd92430e06375b3fcecef7377d38c6c534cf02d3b94447d905c6b3",
+      "issued": "e52926d3b09eb7ff99a377a920a0ce73b731e0539dc5c82c082887fc678f2576"
+    },
+    "nextColdReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains/park-failed.py cold",
+    "ordinaryMainForwarding": "pending",
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains"
   }
 }

@@ -1002,5 +1002,99 @@
       "readonlyPackages": 13
     },
     "parkedExitCode": 0
+  },
+  "existingRegisteredDirectoryUpgrade": {
+    "predecessorFailure": {
+      "root": [
+        2050,
+        2271189
+      ],
+      "states": {
+        "kura-core": "installed 6.0.0~git20261121044005.5884bf5-1",
+        "kura-networking": "half-configured 3.0.0~git202611210513.e5422d2-1"
+      },
+      "originalFiles": 18,
+      "originalKeysExact": true,
+      "originalHome": [
+        2050,
+        2401445
+      ],
+      "capturedAlias": 2400441,
+      "currentPublicDirectory": 2400637,
+      "capture": "76cc89ddeecd92430e06375b3fcecef7377d38c6c534cf02d3b94447d905c6b3",
+      "issued": "e52926d3b09eb7ff99a377a920a0ce73b731e0539dc5c82c082887fc678f2576"
+    },
+    "failedRootReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains/park-failed.py cold",
+    "reason": "dpkg encountered public directory before the physical target. Subsequent sibling unpack replaced the captured symlink with a directory. Original signed capture, physical source and issued record remain under the same Root.",
+    "fixedPackage": {
+      "source": "e14d06eae16314a7051f1d0acb96447acf2a2fc5",
+      "tree": "37d269aae1a3295fef96e34e3fb44b4040d3aa31",
+      "bytes": 205003220,
+      "sha256": "ee780547330356aa580ccbbde4e191b568c8d17cbf1035b4838b0f227b56f203",
+      "version": "6.0.0~git20261121051614.e14d06e-1",
+      "package": "kura-core",
+      "aliasDirectoryMode": "0755",
+      "physicalLastIndex": 683,
+      "publicDirectoryIndex": 684,
+      "prerm": "37ea33b1823ff5632da529e2c2e3dec33f2c4b88c6bf01d09f794536572336a2",
+      "postrm": "e2a439110ae374837443e2d79081a3171b83ff64b9c049cf79a5be2beb3c35a6"
+    },
+    "isolatedBeforeOwner": "kura-networking",
+    "isolatedUpgrade": {
+      "root": {
+        "id": "aa44368b872172be174b365bcabb88a0433dd6718363657895ab9e72e8213aaf",
+        "mount": "2097163:7222563",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "versions": {
+        "kura-core": "6.0.0~git20261121051614.e14d06e-1",
+        "kura-networking": "3.0.0~git202611210513.e5422d2-1"
+      },
+      "keysExact": true,
+      "registryContentExact": true,
+      "owners": [
+        "kura-core",
+        "kura-networking"
+      ],
+      "sameLogicalTarget": true
+    },
+    "originalSix": {
+      "owners": [
+        "kura-core",
+        "kura-networking",
+        "kura-deployment",
+        "kura-wires",
+        "kura-management-ui"
+      ],
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "target": "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux"
+    },
+    "originalSixVersions": {
+      "kura-core": "6.0.0~git20261121051614.e14d06e-1",
+      "kura-networking": "3.0.0~git202611210513.e5422d2-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "originalSixCold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "sixReadback": ".management-close-20261116/core-rtc-hotplug-20261120/six-registered-directory-upgrade/parked-readback.py",
+    "evidenceDirectories": [
+      ".management-close-20261116/core-rtc-hotplug-20261120/core-shared-directory-upgrade",
+      ".management-close-20261116/core-rtc-hotplug-20261120/six-registered-directory-upgrade",
+      ".management-close-20261116/core-rtc-hotplug-20261120/firewall-exact-forwarding-chains"
+    ]
   }
 }
