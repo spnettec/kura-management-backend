@@ -1,3 +1,11 @@
+## 2026-11-21 正式 Main 发布 IPv4 回环端口转发，旧版在开机读回 NAT 表时停止
+
+防火墙 Root `39:7320076` 的旧站点文件有四条入站规则。历史记录显示，Main 应用 TCP 22、443 后，IPv4 保存模型和当时的内核均为六条。此次从原管理员测试输入重建六条规则并核对历史摘要，只在隔离安装首次启动的 firewall.service 中临时只读挂载。原站点文件及上一笔封存的 NAT 快照均保留。正式 Main 经 ConfigurationService 提交独立的 IPv4 端口转发一次，读回新快照与三条内核规则。UDP 49170 转到 127.0.0.2:49171，原生 NAT 查询可见。
+
+正常关机后在原 Root 无站点配置启动，IPv4 原生恢复回执 APPLIED，转发开关为 1。旧 worker 写出的 DNAT 形式使 iptables-save 无法列出它负责核对的 NAT 表，启动器停在已派发 IPv4 的读回阶段。IPv6 尚未派发，Main disabled、未启动。**临时安装当前开机保留原命名空间**。以 `firewall-ipv4-loopback-port/retained.py` 只读核对，不使用上轮停机入口。原六组件仍沿 `deployment-paired-archive-commit/access/cold-maintenance.py`。
+
+worker `c09b059` 为原 iptables 模型写出对应的 xtables NAT 动作。Core `00c3f8fe08` 已构建 ARM64 deb。隔离内核分别验证两族五种规则的发布、开机恢复和撤销；最终 deb 的 worker 能替换并移除旧版已确认的 DNAT 且保留旧回执。13 项 crate 测试通过。原临时安装没有升级或重发；其启动回执及完整 Main 冷读仍待续办。冻结 **0/12**，外部延期仍为原三项。[原编号、包摘要及验收范围](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的 IPv4 配置因现场规则不同而被拒绝
 
 临时防火墙安装 `39:7320076` 的正式 Main 通过 ConfigurationService 提交了一次回环 IPv4 NAT。快照保存成功，worker 在 PREPARED 前拒绝发布。原保存模型的 filter/input-kura 链有六条，内核有四条，缺 TCP 22、443。未新增内核业务规则。原发送端无 pending，本次操作前后的 36 对发布记录相同。配置服务保存与内核生效需分别验收。该请求保留原件，未重发。

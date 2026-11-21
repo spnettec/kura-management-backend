@@ -4005,5 +4005,62 @@
     "externalDeferredUnchanged": true,
     "coldVerifier": "firewall-ipv4-configured-main/cold.py",
     "sixColdVerifier": "deployment-paired-archive-commit/access/cold-maintenance.py"
+  },
+  "registeredIpv4PortForwardAcrossBoot": {
+    "root": "39:7320076",
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-ipv4-loopback-port",
+    "site": {
+      "historicalVerifiedSixRuleSha256": "283b337e072f4dcdb972b95143bae8d58934b0b0db7dae3cc478c771f2e68138",
+      "originalFourRuleSha256": "6921fc1b2432264cf73bff6b49ac133ecef53db8ef8a23784e1def20d23b82e2",
+      "method": "temporary, service-only read-only mount reconstructed from the original administrator profile plus its two historically applied input rules; original site files unchanged; isolated lo only"
+    },
+    "operation": {
+      "property": "firewall.port.forwarding",
+      "snapshot": 1795250827089,
+      "main": "c2ac4e49ee174aa7b2fbacd3a54a7cc2",
+      "submissionCount": 1,
+      "rules": [
+        "filter -A forward-kura-pf -s 127.0.0.1/32 -d 127.0.0.2/32 -i lo -o lo -p udp -m udp -j ACCEPT",
+        "filter -A forward-kura-pf -s 127.0.0.2/32 -i lo -o lo -p udp -m state --state RELATED,ESTABLISHED -j ACCEPT",
+        "nat -A prerouting-kura-pf -s 127.0.0.1/32 -i lo -p udp -m udp --dport 49170 -j DNAT --to-destination 127.0.0.2:49171"
+      ],
+      "source": "914910a7-52ff-42da-a2c3-89f0213b34dd",
+      "origin": "APPLIED",
+      "priorNatSnapshotStillHeld": "1c9d9eafafcbc63f89b833b8eec90127a5012ca3db1eeb7f23068564ca16fb39"
+    },
+    "oldBoot": {
+      "id": "9ba61fcd-75a9-42cc-973c-b188fb003e2b",
+      "nativeIds": {
+        "ipv4": "6ae92781-e6c8-43e8-a2c3-ff0123c2ed8d",
+        "ipv6": "24dcb0c2-9504-4419-a801-8286b7e56d2e"
+      },
+      "ipv4": "APPLIED",
+      "commands": 43,
+      "controls": [
+        1,
+        0
+      ],
+      "readbackFailure": "iptables-save omitted its claimed NAT table as incompatible",
+      "ipv6Issued": false,
+      "rootNamespaceHeld": true,
+      "fullMainColdStarted": false,
+      "receiptUnfinished": true,
+      "inspect": "firewall-ipv4-loopback-port/retained.py"
+    },
+    "fix": {
+      "core": "00c3f8fe08816728181af6c7a0274c07412242f1",
+      "agent": "c09b059d29b3f6a4596a615b7a2e7014b210b165",
+      "source": "70ca07cf1e6f5082d1d9ac385fe289ca2724d3103214b5772187e90f43015919",
+      "debSha256": "c209d6447ee34a34abcfbb09611fd7b6749807962983421e9b9314f329a45796",
+      "debBytes": 205064424,
+      "arm64Tests": 13,
+      "worker": "3d5093c10bc1aabd77a6975eb830c7f0fb84d5d85e4baf1c53f86771fe81b26e",
+      "ordinaryXtablesReference": "xt-reference.json",
+      "kernel": "final-compatible.json",
+      "releasedWorkerUpgrade": "final-upgraded.json",
+      "scope": "new complete Debian package built; namespace tests of both families and previous confirmed representation; exact packaged worker tested for replacement and removal. No package upgrade or replay on the retained installation."
+    },
+    "sixCold": "deployment-paired-archive-commit/access/cold-maintenance.py",
+    "next": "Retain the original boot, namespace, IDs, root evidence and observer. Any recovery on this installation must account for the old helper and reader identities and the existing kernel receipt. Full Main cold readback of this IPv4 configuration is open."
   }
 }
