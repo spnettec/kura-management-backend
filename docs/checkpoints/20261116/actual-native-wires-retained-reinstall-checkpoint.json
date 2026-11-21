@@ -6998,5 +6998,59 @@
       "verify.py": "9dcef9aa3d9469593579e52d7ef87258f35ec5e97171c657c7706c650752e17c",
       "volume.json": "282fe437650160a9ae9c689ef634a030c32fe9792fa5244e9e954bc64896b5e9"
     }
+  },
+  "artemisSimpleMqttProviderMain20261122": {
+    "path": ".management-close-20261116/core-rtc-hotplug-20261120/artemis-provider-main",
+    "root": "39:8063827",
+    "package": "1.0.0~git202611211324.1bcdc5d-1",
+    "business": {
+      "root": {
+        "id": "ef68316f16706239f0c5e79422717e8994351f9c1eed8ac8d69d568f80587ab0",
+        "mount": "39:8063827",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "bundles": "org.apache.aries.spifly.dynamic.bundle 32 1.3.7\nfixture.artemis.provider.check 32 1.0.0\norg.eclipse.kura.broker.artemis.core 32 2.0.0.202611201423\norg.eclipse.kura.broker.artemis.simple.mqtt 32 2.0.0.202611201423\norg.eclipse.kura.broker.artemis.xml 32 2.0.0.202611201423",
+      "configured": "org.eclipse.kura.broker.artemis.simple.mqtt.BrokerInstance",
+      "first": "MQTT 3.1.1 QoS 1 yofc/fixture/artemis/first 08010624-ba78-43bf-a997-f709b44934bd",
+      "stopped": "bundle 4 listener closed",
+      "second": "MQTT 3.1.1 QoS 1 yofc/fixture/artemis/second f4195c97-52a7-4221-8ec0-4f0a1ec09731",
+      "done": "pid 6448 original configuration restored, listener closed"
+    },
+    "cold": {
+      "root": "39:8063827",
+      "businessFiles": 4,
+      "directory": "39:8068535",
+      "keys": 2,
+      "receipt": "000bc1d0-d35f-4572-94de-0d85f0e25a30",
+      "provider": "unknown ok not-installed",
+      "registry": [
+        "deployment"
+      ],
+      "snapshots": 1,
+      "volumeKiB": 288480
+    },
+    "evidence": {
+      "HANDOFF.md": "1f393b54b29933b49ca57e633abd6dd4e58abcffaa2be0fa8f1cdbbb88947f03",
+      "baseline.json": "c37979a8477f891593a35fcac270edb8113bc1e70911cb9652fb0b1361f498a1",
+      "installed.json": "381f56341dc2e9f506c7c6ad242b84a62d7e1b6accdf22cea2acaeb28e52e86d",
+      "business.json": "8ccac3993f6693e07d0b1813a78c03e3c035fe4f70b18ba4373ad424a1e5a1a0",
+      "factory-attempt.json": "f08c7160c48eef04791b422dc58ecdf1b07cc9c41a9e91e1a86c99502a1a1960",
+      "singleton-activation-failure.json": "5b33b2f9e733ed9917040479df5a35feebb54490f498ae6edbadcac0350715f4",
+      "wired-main.json": "e45e5e536a59b040f2d3bada8fbcb4319aacc76284791b744ef4c9d1b74ed96c",
+      "final.json": "29905f42a416dd38a6d2cee834b7011fc5cbe3da63adab63f2cd7a2fa3f60cc4",
+      "parked.json": "5653f3035c7120aa5c2360bf7b355f613d6b18c847a852db896289c0045ef9aa",
+      "cold.py": "b6153d79759e0b516cc4143d5f7731bfbe405f94416fe6a28606e9085feb7a6c",
+      "cold-final.json": "efe90bfb65c427a3677dbcae76ec9de4ef941374e6e57c6996b81f0037e7b8d4",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "original-three-after.json": "e076328257ad7eba06010a7e614aea01419f8377b0c8ec9c13ef68e221b7914c",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "singleton-wired/ArtemisProbe.java": "e8b1445797a9847bfea11f7ac8d8769f4c97da1d41bebaf424031c2b55bbde23",
+      "singleton-wired/observer.mf": "f199e1b74947d0fc9209bd9a65bc5fddfb1662221b98aae5c428e438147e1bdb",
+      "singleton-wired/observer.jar": "b177665bb7e84f45301609fadaa48ac6b6a7d93477fde44abe24c6367c07126e",
+      "remove-provider-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "purge-provider-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305"
+    }
   }
 }
