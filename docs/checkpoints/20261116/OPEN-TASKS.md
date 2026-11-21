@@ -1,3 +1,15 @@
+## 2026-11-22 Core 移除见证已写入、保留目录尚未发布时的原位续办
+
+Core `fb9b6760a4` 修复 prerm 在写完移除见证后重新分配暂存目录的问题。新钩子从原移除围栏定位见证，逐项核对 Root、原安装目录、暂存目录和移除记录；有部署历史时还校验签名及私有保管目录。发布采用禁止替换目标的改名，随后核对正式路径并同步父目录。ARM64 定向测试通过 79 项，涵盖内容相同但 inode 不同的替代目录，以及维护编号变更时的拒绝。
+
+在独立 Debian ARM64 系统的正式 Main 上，业务包安装任务 `50001` 只提交一次。第一次故障注入因夹具命令位于 noexec 的 /run 而未命中，dpkg 使用系统 mv 并正常移除。这笔对照维护 `32e3fa84-b3f5-440e-9e3e-f906d1a0681b` 已按原围栏完成保留重装，单独归档。
+
+随后同一 Root `39:8063827` 发起独立移除，编号 `000bc1d0-d35f-4572-94de-0d85f0e25a30`。在已写完见证、即将改名时，夹具对该笔 prerm 发送 SIGTERM。dpkg 记录子进程因信号终止，执行 abort-remove，Core 状态为 `deinstall ok installed`。正常关机后冷读确认：正式保留路径尚未出现，原暂存目录为 `39:8071960`，业务目录为 `39:8068535`，见证、暂存副本、原业务文件和两份凭据均可按原指纹核对。
+
+原 Root 重启后，沿此编号续办，原暂存目录直接成为正式保留目录，设备号和 inode、移除记录及暂存业务副本均一致。沿同一笔移除围栏重新安装 Core，再装回同版本 Deployment。只读观察组件经正式 Main 得到 `GET install/result 50001 COMPLETED`，Felix 查到 `fixture.history.staged`。最终 Core、Deployment 均 installed，Main disabled/inactive，系统退出 0；停机读回四个原业务文件和两份凭据的身份、摘要与时间戳。
+
+本项验证了移除见证已落盘至正式目录发布之间的进程中断。全套 provider、launcher、typed broker 与六组件联合生命周期仍有内部缺项。12 父项冻结闭环 0/12，外部延期仍限真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 Core 原生 purge 遇到业务包挂载时拒绝，停机后沿原维护编号续办
 
 独立 Debian ARM64 系统复用 Core `8894de2ca2` 和 Deployment `1b043a4` 的发行包。正式 Main 受理新任务 `49001` 一次，原 handler 返回 `GET install/result 49001 COMPLETED`。Root 为 `39:8041092`。停止 Main，依次移除 Deployment、Core。Core 进入 `deinstall ok config-files`，原业务目录由维护编号 `4e937f6d-923f-479c-bfb8-40c0631035ff` 保管。

@@ -344,3 +344,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 2026-11-22 带挂载的 Core purge 续办
 
 这次 purge 验收使用独立卷，保留了 48001 的原业务回执。复用此前构建的 Core 和 Deployment deb 及 ARM64 镜像，只编译测试用的 OSGi 观察组件。新卷初始 61,256 KiB，postrm 因业务包仍挂载而拒绝时为 70,932 KiB，解除挂载并完成 purge 后为 69,968 KiB。测量对象是测试卷。[实测记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/native-completed-core-purge/HANDOFF.md)
+
+## 2026-11-22 移除中断后复用已写好的暂存目录
+
+以前 prerm 在发布失败后会删除已完成的暂存副本，进程退出后重试也会重新分配目录。现在按原维护号找回同一个目录，完成一次改名。实测在中断冷读时记录 284,580 KiB，保留重装、业务读回并停机后为 285,956 KiB，始终复用同一测试卷。单次发行打包耗时 10.684 秒，复用已有 ARM64 镜像。首次夹具未命中中断点的普通移除单独记账。[实测记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/native-core-removal-publication/HANDOFF.md)
