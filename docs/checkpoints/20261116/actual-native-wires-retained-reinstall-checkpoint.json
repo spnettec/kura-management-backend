@@ -9104,5 +9104,25 @@
     "parked": true,
     "archiveSha256": "5d246fbaa445ff54a72a0bd9eca82cd700e154ff809502586c7cd2caf8ff4cc6",
     "cold": "container-command-errors/cold.py"
+  },
+  "containerOciPlatformAdmission": {
+    "core": "484c4c843c",
+    "provider": "9a7cda7",
+    "ociPositivePending": true,
+    "isolatedDocker": {
+      "root": "2097233:1",
+      "reason": "pivot_root EPERM"
+    },
+    "orbMachine": {
+      "root": "2097218:21885",
+      "id": "01M807Q37JZHYH2JQWY0ETCPCF",
+      "reason": "BPF_CGROUP_DEVICE attach unavailable",
+      "snapshot": "1795304899731",
+      "containerId": "5ad916028fb782eaff66f5dbf044936d730190acc3b3e2f33ef3efebbb981d1d",
+      "state": "created",
+      "pid": 0
+    },
+    "evidenceSha256": "cd3b7980366fb2230475b416c27cd3c00f097079ccf1fd02292539a387a7f6a6",
+    "cold": "container-oci-lifecycle/cold.py"
   }
 }

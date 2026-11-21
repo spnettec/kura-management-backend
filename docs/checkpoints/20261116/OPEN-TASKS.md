@@ -1,3 +1,7 @@
+## 2026-11-22 Container 正向 OCI 验证的 OrbStack 环境边界
+
+Container 9a7cda7 的 OCI 正向验证定位了 OrbStack 的内核限制。Docker 内的独立系统在运行时选用无会话 keyring 模式后收到 pivot_root 拒绝。另在 OrbStack 隔离 Debian ARM64 系统重建独立 systemd 运行环境，正式 Core 484c4c843c 的 Main 成功通过凭据准入，但 runc 无法附加 BPF_CGROUP_DEVICE，进程仍为 PID 0。两笔明确失败均已封存，provider 已 purge，两套系统均停放。实际 OCI 启动、跨 Main 重启和 TERM 停止仍待验。冷读入口 container-oci-lifecycle/cold.py。冻结 0/12。
+
 ## 2026-11-22 正式 Main 传递 Container 命令失败状态
 
 Container 9a7cda7 保留 OS_COMMAND_ERROR，补齐操作、对象及可用的 Docker HTTP 状态，并保留异常原因。JDK 21 共 133 项测试通过。ARM64 独立系统使用 Core 484c4c843c，同一 Root 从 d060603 解包并续配至 9a7cda7。正式 Main 按原快照从独立 Docker 26.1.5 引擎收到启动 HTTP 404 和移除镜像 HTTP 409，两个错误均准确返回。原夹具容器与镜像保持，provider 已 remove、purge，系统正常停放。冷读入口 container-command-errors/cold.py。冻结 0/12。
