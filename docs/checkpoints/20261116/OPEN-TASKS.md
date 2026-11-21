@@ -1,3 +1,7 @@
+## 2026-11-22 公开 OSGi 系统管理服务核对原 UNKNOWN
+
+独立 ARM64 正式 Main 通过 OSGi SystemAdminService.reboot() 核对原重启请求。原 actor 回执在调用期间被读取，SystemAdminServiceImpl 记录 UNKNOWN 告警，void 方法返回。原 Root 39:8337304 正常停机，九份请求相关文件和三份凭据完整指纹相符。当前冷读入口 reboot-system-admin-unknown/cold.py final。绑定网关 6910532 停机核对五笔维护、三代来源、原任务 SUCCEEDED 和远程 OFF。冻结 0/12。 watchdog 超时入口和后继实现接管原 pending 待实测。
+
 ## 2026-11-22 正式 Main 的重启配对修复与 UNKNOWN 跨 purge 恢复
 
 Core 2cecea4bad 修复 /etc/kura 为 0700 时正式 Main 无法读取重启配对的问题。独立 ARM64 原 Root 39:8337304 中，真实 actor 在屏蔽重启目标时记录 UNKNOWN。经历 remove、purge、解包停机与续配后，第二个 Main 仅查询原号 63ec28ee-ad3b-4302-92ac-33b7be6a5083，pending 保留，九份原文件和三份凭据指纹一致。冻结 0/12。 当前停机入口 reboot-original-unknown-cohort/cold.py final。
