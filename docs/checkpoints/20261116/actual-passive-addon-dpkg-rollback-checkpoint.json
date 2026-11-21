@@ -929,5 +929,78 @@
       ],
       "coreListed": false
     }
+  },
+  "registeredCoreLastAddonAndRemoval": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/core-home-directory-owner",
+    "product": {
+      "source": "92ea89ba1526e94b7ec5bf11468f62d839312a29",
+      "tree": "1b57bce16374e86bec1d72ec849cf8633612882a",
+      "version": "6.0.0~git20261121050619.92ea89b-1",
+      "sha256": "3883edea2841017f84f64771ae865d0a1e0ad09fc64adf9cdeb289b02f60bcdb",
+      "bytes": 205003262,
+      "aliasDirectoryMode": "0755"
+    },
+    "testOnlyCommit": "db963f956e",
+    "root": {
+      "id": "25a37fbec58259231ccb2f6a48118154b5b3c39f54bcab77b58c2af9403cc33b",
+      "mount": "2097163:7204836",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "addons": [
+      "kura-artemis",
+      "kura-camel",
+      "kura-cloud",
+      "kura-container",
+      "kura-opcua",
+      "kura-position",
+      "kura-triton",
+      "kura-yofc-runtime"
+    ],
+    "lastAddon": {
+      "singleOwner": "kura-core",
+      "siteRegistryFinalLineExact": true,
+      "logicalAndPhysicalInodesExact": true,
+      "keysExact": true
+    },
+    "regularRemove": {
+      "root": {
+        "id": "25a37fbec58259231ccb2f6a48118154b5b3c39f54bcab77b58c2af9403cc33b",
+        "mount": "2097163:7204836",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "operation": "c993586c-3be9-4424-a635-45b71891e2e0",
+      "targetGone": true,
+      "aliasGone": true,
+      "retainedDataExact": true,
+      "keysExact": true,
+      "registryOwner": "kura-core"
+    },
+    "regularPurge": {
+      "root": {
+        "id": "25a37fbec58259231ccb2f6a48118154b5b3c39f54bcab77b58c2af9403cc33b",
+        "mount": "2097163:7204836",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "credentialsExact": true,
+      "retainedPurged": true,
+      "core": "not-installed"
+    },
+    "interruptedCleanup": {
+      "operation": "1af9175b-916f-40ca-a402-7dca388a536d",
+      "signal": "SIGKILL",
+      "dpkgExit": 1,
+      "stateAtCut": "half-installed",
+      "stateAfter": "config-files",
+      "sameRetainedFiles": 3,
+      "credentialsExact": true,
+      "dpkgAuditEmpty": true
+    },
+    "linuxReplacementAndInterruptionTests": 4,
+    "storage": {
+      "sizeRw": 32163461,
+      "readonlyInputBytes": 300839316,
+      "readonlyPackages": 13
+    },
+    "parkedExitCode": 0
   }
 }

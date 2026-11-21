@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Core 保住最后一个 sibling 的安装链接，并从实际卸载中断续办
+
+Core `92ea89ba15` 在 deb 中登记 `/opt/eclipse/kura`。独立 ARM64 安装 `2097163:7204836` 上，八个可选包全部移除并 purge 后，原链接和物理目录的 inode 保持一致，注册表准确保留站点末行。随后正常移除 Core 保留了应用数据及原凭据，显式 purge 清除普通保留目录，两份凭据仍一致。
+
+同一 Root 按正式入口重装后，在原物理目录已改名时终止 postrm 清理进程。dpkg 返回 1，状态为 `half-installed`。沿原维护编号续办后进入 `config-files`，三份保留文件和两份凭据保持一致，dpkg 审计为空，现场正常停机。另有四项 Linux 路径替换及中断回归通过，测试提交为 `db963f956e`。原六组件仍实装 Core `5884bf5a6a`，六包及 84 份保护文件冷读一致。其余正式 Main、typed broker 和六组件维护继续，冻结 0/12。[发行件、正常卸载与中断回执](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 六组件升级保留站点注册表权限及八个 provider 续配
 
 原 ARM64 六组件 Root `39:6611544` 已升级至 Core `5884bf5a6a`、Networking `448909b`、GWT `9de7a7b`、Deployment `ef50b67`、Wires `4f13cf1`，agent 保持 `5be64b7`。Core 复制保留了注册表的四行、0640 及属组 990，重建 framework 后旧锁不在，原 inode 无内核锁。随后四个 sibling 联合升级，注册表的 inode、权限、属组、时间和内容全部相同。六包、SQLCipher 和 84 份保护文件均已停机冷读。最新入口为 `sibling-registry-maintenance/parked-readback.py`。
