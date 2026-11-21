@@ -6496,5 +6496,52 @@
       "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
     }
+  },
+  "sixDeploymentReceiptUpgrade20261122": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/six-deployment-receipt-upgrade",
+    "source": "1b043a4b6d8a70aa28284da08ea9798e15660f79",
+    "root": "39:6611544",
+    "container": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+    "replaced": "2.0.0~git202611211324.de17bd5-1",
+    "installed": "2.0.0~git202611211658.1b043a4-1",
+    "gate": {
+      "action": "replace",
+      "anchor": ".kura-deployment-d1c00d99729d405f96e541a86ebca98b",
+      "device": 39,
+      "inode": 7978837,
+      "root": "39:6611544:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "schema": 2,
+      "sha256": "cd3904c0921b2261f90ca9c8f27c22ece366d12656b1d24660c9af95e6168d82"
+    },
+    "protected": 82,
+    "mutable": 319,
+    "histories": 46,
+    "signedPhases": 835,
+    "hashes": {
+      "HANDOFF.md": "fbca7512b61d127d80aec60ddfc815712f006e80efafc1b5b1944efae92aa9cb",
+      "release.json": "3eeeb43a3a61991cdc59cddb931adf21020bee4a2fc3357d715510f12ffac9c8",
+      "before-cold.json": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "baseline.json": "ed6469bc952fae8e040625aac675ce9965e611c7af9d231d267f75f2991fe962",
+      "boot-intent.json": "4e914944f7ea0331f18e6d6514323f2b241173ca53e687ad5f737f4e1a4999d3",
+      "unpack-intent.json": "b275184319210cdc7a82b611c44b95277dde6a79362c57820ff5726178d0952c",
+      "unpack-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "unpacked.json": "1ab9b3fe8c29690a50d07184614dbd302aa4a75e9f84ebcad445bf8f912a3add",
+      "configure-intent.json": "024ca2841210a362d5eb88134f11e0f65d55681ba03fcfd2064fd43c3a36d91c",
+      "configure-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "installed.json": "47fc7417cd58abb554577dd08d02a5b6fadcb5563abfdbdb8c2fe22280527a0f",
+      "main.json": "ef69e5ea93241734f166de3b05612af1ecf8917a6a01cc9ca68b56daf8361575",
+      "final-check.json": "61c5adf16f3bb4ce53a9025f06c105a9de00319166bf7f762f28cd5139647db1",
+      "final-mutable.json": "9cd773b1847ddb358c9b9dc4c76e6d31c2a88e0f03f9a277fab18504e8befc40",
+      "parked.json": "6f5f7186ade9b12efb6333f7db835eb65ee41051e56b0f1153e250fa5620eebd",
+      "cold.py": "c2ad1bcb3472d8ca9d5acb29c17f36e33fd8922e39c0c4bc6fdba65a727d9c0d",
+      "cold-final.json": "04fb4d75c07706dcb19b00b4077aabde0ba044bc5cb9ee9325f9cd752b106bbf",
+      "InstalledRead.java": "d3781c159ba17175ee9a96db0c538de5bb57dc8ba116dbb31c7a1a3de66da483",
+      "observer.jar": "5c7a4b0f43fb1e67f65f7b7e95160605febddd43df8769add324092af224cf46",
+      "field.py": "e95d97e7ba2cc2c193796837bff5b6e4f9fd8297d8e54b2fc2eb2d4efe37c003",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "original-three-after.json": "3173a65bdf0a470af4dc498a6388c9b0ce8056b2b5b2d43bb2a6f3eb4631bf4f",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609"
+    }
   }
 }
