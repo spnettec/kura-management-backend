@@ -1,3 +1,9 @@
+## 2026-11-21 四个 sibling 在原业务卷共同 purge，停机后按原顺序重装
+
+原六组件 ARM64 Root `39:6611544` 共同移除 GWT、Wires、Deployment 和 Networking。四包均进入 `config-files`，随后共同 purge。正常停机后的只读挂载确认 Core、agent 和原 SQLCipher 库仍在，注册表为空，原锁、82 份业务文件、两份凭据、四代 72 条签名记录及 101 个夹具对象均通过核对。
+
+原系统重启后，从四份原始 deb 按站点顺序重装，恢复了四行注册表、0640 和属组 990。正式 Main 中两个 Deployment bundle 均读到原业务归档，原业务 bundle 为 ACTIVE。再次正常停机，Main 与 agent 均 disabled，82 份文件连同 inode、时间和内容均与本轮开始时一致。最新冷读入口是 `four-addon-business-purge/cold.py final`。Core 与 agent 的联合保留式移除、其余 provider/launcher 组合继续，冻结 0/12。[四包维护回执](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Core 与 Deployment 联合解包，正常停机后直接配置成功
 
 Core `e8d57815e0` 在 systemd 报告 Main 已屏蔽时检查实际 FragmentPath。对 Deployment 的 early generator，核对同一 Root 的 schema 2 替换记录、生成器与原锚点的 inode 和内容、指向 /dev/null 的屏蔽、MainPID、ControlPID 及队列任务。时钟服务和 socket 继续沿各自原围栏核对。ARM64 用原 Deployment 生成器验证配对；时钟回归 97 项通过，4 项跳过。

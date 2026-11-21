@@ -285,3 +285,5 @@ Deployment 的一次进程中断解释了为什么成功验证原子替换单个
 本轮在生成 Core 安装脚本后，先用 ARM64 小夹具证明旧脚本会放行一份仍依赖 inode 的回执，再合并组装最终的 Core 和 Deployment。两个新增包分别为 205,064,976 和 242,858 字节。真实联合升级发现两个组件对同一个 Main 停机状态的识别方式不同，必须先用正式包管理流程移除 Deployment，才能沿原编号恢复。这是跨包维护合同带来的工期。默认 Core 打包目录当前有 59 份 ARM64 deb，逻辑长度 12,066,290,286 字节。[实际维护顺序与成本](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 上次实装需要移除 Deployment 才能继续 Core 配置。本次保留同一个 systemd 生成器及原有维护机制，由时钟安装脚本核对其原始记录。原卷在解包后正常停机，重启后一次 dpkg 配置完成两个包。新增 Core 包 205,065,436 字节，Deployment 包 242,858 字节；后者复用相同实现，四个 JAR 摘要未变。Core 打包目录现有 60 个 ARM64 包，逻辑长度合计 12,271,355,722 字节。本次复用原卷和已有镜像。[同卷中断恢复及组包计量](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
+本轮共同移除和重装沿用原六组件卷及四份既有 deb，合计 163,316,262 字节。验证只临时把这四份包传入原卷，重装读回后删除临时包，新增发行包 0 字节。两次正常停机分别保留了四包 purge 后和重装后的证据。[四包维护记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)

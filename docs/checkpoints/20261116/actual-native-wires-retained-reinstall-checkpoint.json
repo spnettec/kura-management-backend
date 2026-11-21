@@ -4181,5 +4181,108 @@
     "scope": "Standard six-package ARM64 Root. Core unpacked before Deployment. Normal PID 1 stop and restart before joint configure. Same OrbStack kernel.",
     "readOnlyEntry": "deployment-generator-joint/cold-maintenance.py",
     "independentFirewall": "firewall-ipv4-loopback-port/retained.py"
+  },
+  "fourAddonJointPurgeOnBusinessRoot": {
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "originalVersions": {
+      "kura-core": "6.0.0~git20261121171544.e8d5781-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "packages": {
+      "kura-management-ui": {
+        "bytes": 34136630,
+        "sha256": "036b66153015c8a83f8b5cc6c5b8a1c844917944ac96418ba77fbfb2e3731efb"
+      },
+      "kura-wires": {
+        "bytes": 119523542,
+        "sha256": "2db70b2498a525f20bf107c3920afb56d39d98bc38022f9c4c35ae8d5118062e"
+      },
+      "kura-deployment": {
+        "bytes": 242858,
+        "sha256": "be5b66fcdbe3a637156894830f3beb9f48e61ea09f5ae609c2a9e38aad336451"
+      },
+      "kura-networking": {
+        "bytes": 9413232,
+        "sha256": "e4c04e4f4422fcd49836cd879372a1c06cf39293ce7d3a9509ab175719142eb2"
+      }
+    },
+    "intermediateStatuses": {
+      "kura-management-ui": "config-files",
+      "kura-wires": "config-files",
+      "kura-deployment": "config-files",
+      "kura-networking": "config-files"
+    },
+    "purgedCold": {
+      "root": "39:6611544",
+      "versions": {
+        "kura-core": "6.0.0~git20261121171544.e8d5781-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "libsqlcipher1": "4.6.1-2"
+      },
+      "protectedFiles": 82,
+      "credentials": 2,
+      "authenticatedPhases": 72,
+      "originalFixtureObjects": 101,
+      "registryAndLockExact": true
+    },
+    "finalCold": {
+      "root": "39:6611544",
+      "versions": {
+        "kura-core": "6.0.0~git20261121171544.e8d5781-1",
+        "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1",
+        "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+        "libsqlcipher1": "4.6.1-2"
+      },
+      "protectedFiles": 82,
+      "credentials": 2,
+      "authenticatedPhases": 72,
+      "originalFixtureObjects": 101,
+      "registryAndLockExact": true
+    },
+    "installedBusiness": {
+      "process": {
+        "unit": {
+          "MainPID": "1625",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "d1efd4ce8dae4177828ea0a8c8b356b3"
+        },
+        "ticks": "43470847",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "originalBusinessDeploymentActive": true,
+      "observedByBothRegistryReaders": true
+    },
+    "unchangedBusinessFilesIncludingMetadata": 82,
+    "originalSiteRegistryLines": [
+      "management-ui",
+      "wires",
+      "deployment",
+      "networking"
+    ],
+    "finalRegistryMode": "0640",
+    "finalRegistryGid": 990,
+    "originalLockExact": true,
+    "existingDebBytes": 163316262,
+    "newDebBytes": 0,
+    "coreAndAgentRetained": true,
+    "parked": 0,
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/four-addon-business-purge",
+    "resume": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/four-addon-business-purge/cold.py final"
   }
 }
