@@ -5208,5 +5208,124 @@
       "permissionsRestored": 70
     },
     "open": "Installed remove/purge and the remaining component combinations for this trigger."
+  },
+  "siblingTriggerRemoval20261121": {
+    "core": "b4ba0e06b9",
+    "networking": "83f237e",
+    "packageHashes": {
+      "kura-wires": "b7807ba6607960547e00e141fa650e1963fb76d18c4484ce0af15208ac8d5ad2",
+      "kura-deployment": "1e78e0fb036480e8767ca6db7e29157b0e3f3c8a3683d344c2a75655b95d8fed",
+      "kura-networking": "747d210aca37386ea0f1f61f667ed7807c2625db0fa793cf3c2ac875ecf580ba"
+    },
+    "removed": {
+      "kura-core": "triggers-pending",
+      "kura-networking": "installed",
+      "kura-management-ui": "installed",
+      "kura-deployment": "config-files",
+      "kura-wires": "config-files",
+      "kura-management-agent": "installed"
+    },
+    "purged": {
+      "root": "39:6611544",
+      "request": "517f1726-b284-4fb8-81af-2ce4994911c0",
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "not-installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "not-installed",
+        "kura-wires": "not-installed",
+        "kura-management-agent": "installed"
+      },
+      "holderInode": 7632058,
+      "allSigned": 721,
+      "histories": 40,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "pending": [
+        "/opt/eclipse/kura/bin/firewall",
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "verifiedOwnershipPaths": 7,
+      "gwtObjects": 4,
+      "purged": true
+    },
+    "capability": {
+      "original": "24158c25541ce9f7ffba84db53ed169f77dab7eb7b2b3586201cb3c37f9d1379",
+      "suffixBytes": 126,
+      "receipt": {
+        "meta": "39|7636382|600|0|0|1|33|2026-11-21 13:43:53.251876141 +0000|2026-11-21 13:43:53.253488345 +0000",
+        "sha256": "2633442e799a1edc038b1feac5e63f1b738ce41b3a3fa792c3399bfe46648ed6"
+      }
+    },
+    "resumed": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "operation": "517f1726-b284-4fb8-81af-2ce4994911c0",
+      "services": {
+        "kura.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-management-agent-v2.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-key-service.socket": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=440882843846\nInvocationID=f3ec8892068f402dbed8350d4293e6bf",
+        "kura-key-recovery.service": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=440882921484\nInvocationID=22b2efd345fe413ebd6c21a397ba0ee0"
+      },
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "not-installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "not-installed",
+        "kura-wires": "not-installed",
+        "kura-management-agent": "installed"
+      }
+    },
+    "final": {
+      "root": "39:6611544",
+      "request": "517f1726-b284-4fb8-81af-2ce4994911c0",
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed"
+      },
+      "holderInode": 7632058,
+      "allSigned": 721,
+      "histories": 40,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "pending": [],
+      "verifiedOwnershipPaths": 84,
+      "gwtObjects": 4,
+      "purged": false
+    },
+    "access": {
+      "packages": {
+        "kura-wires": 14,
+        "kura-deployment": 4,
+        "kura-networking": 10
+      },
+      "roles": {
+        "kurad": {
+          "role": "kurad",
+          "uid": 997,
+          "readerGroup": 990,
+          "readableJars": 28,
+          "launcherDenied": true
+        },
+        "kura-key-recovery": {
+          "role": "kura-key-recovery",
+          "uid": 991,
+          "readerGroup": 990,
+          "readableJars": 28,
+          "launcherDenied": true
+        }
+      }
+    },
+    "normalizedOnInstall": 77
   }
 }

@@ -1,3 +1,13 @@
+## 2026-11-21 三个 sibling 的移除、purge 与停机后触发器续办
+
+原六组件 Root `39:6611544` 保留 GWT，将 Wires 和 Deployment 移除到 config-files，随后 purge 两包并直接 purge 已安装的 Networking。三包卸载后，Core 的 dpkg 记录仍有 siblings、libexec/addons 和 bin/firewall 三条待处理路径。正常关机后，以只读方式确认三包已清除、GWT 原目录保持、原注册表只剩 management-ui。重启后执行一次正式 dpkg 触发器，Core 回到 installed，三个已清除的组件目录保持缺席。处理前后 Main、agent、密钥 socket 和恢复服务的 systemd 活动时间及调用标识一致。
+
+Networking 移除时在原配置末尾追加 126 字节能力停用块。读回其 Root 私有回执，核对停用块与回执编号配对，剥离该块后的原配置字节与卸载前 SHA-256 一致。沿原顺序装回三个正式包后，配置文件恢复原摘要，停用回执已撤销。Core 触发器自动修正 77 项重装产生的代码权限，注册表恢复原字节与顺序，锁仍为 inode 7632058、root:root 0600。
+
+最终六包 installed，pending 为空，Main 和 agent 均 disabled、inactive，正常停机退出 0。两次冷读均核对 319 份运行文件、两份凭据、101 个夹具对象与 40 笔维护的 721 份签名记录。最终还核对了 77 项重装条目和 7 项保留条目。在停机卷上分别切换到 kurad 和 kura-key-recovery 的实际 UID/GID 和补充组，两者均可打开三包的 28 个 JAR，逐包内容与正式 deb 相符，Root 专用防火墙启动入口均拒绝读取。此项验证文件读取权限，OSGi 激活沿用原有独立证据。
+
+原绑定网关继续停放，五笔维护封存、三代来源可读。原三现场、7fd 的正常停机状态及 41 输入、16 回执均已复核。新触发器的 GWT 独立 purge、firewall-only 模式及其余 provider/launcher 组合继续留在内部台账。冻结闭环 0/12；外部延期仅原三项。 [包状态、触发路径和冷读记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 原六组件 ARM64 包维护自动恢复 70 项代码权限
 
 原六组件安装的 Core 已升至 `b4ba0e06b9`，Networking 已升至 `83f237e`。Core 根据 dpkg 文件清单核对 sibling JAR、libexec、console 及防火墙入口。完成 Core 安装时记录带签名的 configured 回执，绑定安装 Root、原维护编号和包脚本。触发器失败后，dpkg 以普通 configure 续办时先核对这份回执，再单独恢复权限。
