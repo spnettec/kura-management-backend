@@ -6032,5 +6032,66 @@
     },
     "directoryErrorEvidence": "injected regression",
     "pendingParents": 12
+  },
+  "randomPasswordPublicationRecovery20261121": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-random-recovery",
+    "source": "9450cd883fc5b37ee020b7082f862d6fdf7cc9a8",
+    "package": {
+      "core": "9450cd883fc5b37ee020b7082f862d6fdf7cc9a8",
+      "member": "plugins/4s/org.eclipse.kura.core.keystore-2.0.0-SNAPSHOT.jar",
+      "jar": "c9c7896a49c09ac4a60ad1c2dd6f42c75d8e6415c31f6e4e04d7f1014456d7e4",
+      "oldJar": "9b1c49fbc997aef627996d7b9ba0a6e504dc7fb2b5024900567817ce0c38f72e",
+      "classes": {
+        "FilesystemKeystoreServiceImpl": "456f924a8a98d393d585021318e0b2246d6cc98cb00a17e8b5e2d3a7b7e37976",
+        "PendingStorePassword": "a2b7d8614858221dfea6c0464cb84e6c6d62566174dda0dd72a23e72a5b0dca3",
+        "KeystoreFile": "03dcf8337cd683aa37767318a4df7c3e738af2fa80b78dad44deb17329f8adfd"
+      },
+      "changedFiles": [
+        "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.keystore-2.0.0-SNAPSHOT.jar"
+      ],
+      "jars": 233,
+      "logicalBytes": 205077978
+    },
+    "installedBusiness": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "pid": "4364",
+      "certificate": "7533f7be951a8c9ae0e804b7bc3348463e04bfeeaa238c5a66835899864a2bd4",
+      "classes": {
+        "FilesystemKeystoreServiceImpl": "456f924a8a98d393d585021318e0b2246d6cc98cb00a17e8b5e2d3a7b7e37976",
+        "PendingStorePassword": "a2b7d8614858221dfea6c0464cb84e6c6d62566174dda0dd72a23e72a5b0dca3",
+        "KeystoreFile": "03dcf8337cd683aa37767318a4df7c3e738af2fa80b78dad44deb17329f8adfd"
+      },
+      "signed": true,
+      "originalStoreAndCryptoRecordUnchanged": true
+    },
+    "offlineTests": {
+      "modulePassed": 95,
+      "compoundInterruptedProcesses": 2,
+      "configurationReceiver": "test implementation",
+      "originalCertificateVerified": true
+    },
+    "cold": {
+      "root": "39:6611544",
+      "request": "dfbcbc7a-fb1a-4d93-aad5-f05446c437f0",
+      "status": {
+        "kura-core": "6.0.0~git20261121224651.9450cd8-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7715196,
+      "allSigned": 797,
+      "histories": 44,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false
+    },
+    "remaining": "Core maintenance during outstanding password change, real configuration snapshot interruption, wrapping key generations"
   }
 }
