@@ -287,3 +287,5 @@ Deployment 的一次进程中断解释了为什么成功验证原子替换单个
 上次实装需要移除 Deployment 才能继续 Core 配置。本次保留同一个 systemd 生成器及原有维护机制，由时钟安装脚本核对其原始记录。原卷在解包后正常停机，重启后一次 dpkg 配置完成两个包。新增 Core 包 205,065,436 字节，Deployment 包 242,858 字节；后者复用相同实现，四个 JAR 摘要未变。Core 打包目录现有 60 个 ARM64 包，逻辑长度合计 12,271,355,722 字节。本次复用原卷和已有镜像。[同卷中断恢复及组包计量](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 本轮共同移除和重装沿用原六组件卷及四份既有 deb，合计 163,316,262 字节。验证只临时把这四份包传入原卷，重装读回后删除临时包，新增发行包 0 字节。两次正常停机分别保留了四包 purge 后和重装后的证据。[四包维护记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
+在同一业务卷验证六包保留式卸载与重装时，Core 的卸载脚本漏存站点 provider 顺序，修复后新增一个 205,066,056 字节的 Core deb。其余五包沿用原件。此时 Core 打包目录保留 61 个 ARM64 deb，长度合计 12,476,421,778 字节。一次正式 Main 启动同时检查原部署归档和三种数据库的原始记录。[包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/core-remove-sibling-order/storage.json)

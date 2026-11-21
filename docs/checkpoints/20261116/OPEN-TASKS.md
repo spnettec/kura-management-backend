@@ -1,3 +1,11 @@
+## 2026-11-21 原六组件共同移除、停机、原编号重装及三种数据库读回
+
+Core 升级能保存 provider 加载顺序，保留式卸载曾漏掉 `framework/sibling-install-order`，现场自定义顺序会在重装时丢失。Core `8414993dc9` 将普通注册文件放入原恢复目录。ARM64 回归覆盖站点末行无换行、属组、权限、mtime、扩展属性、没有注册文件的旧布局及链接拒绝；相关 42 项测试通过。
+
+原网关 Root `39:6611544` 实装修正版后，Core、agent、GWT、Wires、Deployment 和 Networking 一起移除，全部进入 `config-files`。正常停机后冷读 252 份保留文件、两份凭据、101 个暂存夹具对象及五代 90 条签名记录。重启后六包一次重装成功，沿原卸载维护号完成 reinstall。252 份文件内容全部恢复；Networking 维护改写的 `kura_custom.properties` 字节和权限恢复，mtime 有变化。两份本地 provider JAR 和两处旧测试目录按原 inode 归位。agent 此前尚未初始化。
+
+正式 Main 同时核对原活动业务部署、H2、SQLite、SQLCipher 三条原始业务记录和加密页完整性。再次停机后六包均 installed，Main 和 agent 均 disabled。82 份重点文件中，仅 H2 数据库经实际打开后字节有变化。冷读 318 份运行文件、两份凭据、101 个夹具对象和六代 108 条签名记录通过。六组件入口改为 `core-remove-sibling-order/cold.py final`。本轮为保留式移除；已初始化 agent 的受控归档及其余 provider/launcher 组合按原台账续接。冻结 0/12。[原编号、包指纹与实际 Main](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 四个 sibling 在原业务卷共同 purge，停机后按原顺序重装
 
 原六组件 ARM64 Root `39:6611544` 共同移除 GWT、Wires、Deployment 和 Networking。四包均进入 `config-files`，随后共同 purge。正常停机后的只读挂载确认 Core、agent 和原 SQLCipher 库仍在，注册表为空，原锁、82 份业务文件、两份凭据、四代 72 条签名记录及 101 个夹具对象均通过核对。

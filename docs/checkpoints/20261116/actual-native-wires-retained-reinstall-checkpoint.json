@@ -4284,5 +4284,151 @@
     "parked": 0,
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/four-addon-business-purge",
     "resume": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/four-addon-business-purge/cold.py final"
+  },
+  "wholeGatewayRetainedReinstall": {
+    "core": "8414993dc958d0a9bb8e0868d9775b065768b942",
+    "tree": "31da8b72b4709f5b70da8af6e38f2953fe5c3a81",
+    "debSha256": "09b4ae4a139e876888f64a69491f2759b0e70487d8b4fe1ebacfcddfb4596bc3",
+    "prerm": "33e13e5338a050f41c8ba3bb73d823bbab31b26c50b39c63379d8df3184ea662",
+    "postrm": "f07183749410b06acec5621e8c5a5f63b2de0441da6a310c96a1298faa22e8ac",
+    "registryRegressionBefore": "FileNotFoundError",
+    "arm64Tests": {
+      "passed": 42,
+      "skipped": 0
+    },
+    "coreBytes": 205066056,
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "versions": {
+      "kura-core": "6.0.0~git20261121172637.8414993-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "removed": {
+      "root": "39:6611544",
+      "status": {
+        "kura-core": "config-files",
+        "kura-deployment": "config-files",
+        "kura-management-agent": "config-files",
+        "kura-management-ui": "config-files",
+        "kura-networking": "config-files",
+        "kura-wires": "config-files"
+      },
+      "mutableFiles": 252,
+      "credentialsExact": 2,
+      "originalFixtureObjects": 101,
+      "verifiedPhases": 90,
+      "additionalTransactions": {
+        "90e13c7a-fa38-4fea-b8fd-28491527bcec": "upgrade"
+      },
+      "operation": "1c791fac-a35e-4362-99f0-7ba6c2fa2300"
+    },
+    "restored": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "files": 252,
+      "allOriginalMutableContents": true,
+      "customTimestampRestored": false,
+      "originalBusinessFiles": 82,
+      "versions": {
+        "kura-core": "6.0.0~git20261121172637.8414993-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1",
+        "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+        "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+        "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+      },
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "agent": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      }
+    },
+    "main": {
+      "process": {
+        "unit": {
+          "MainPID": "3181",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "90dd51072cae4af09ae50ed21256637e"
+        },
+        "ticks": "43517724",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "originalDeploymentActive": true,
+      "pairedRegistryReaders": true,
+      "originalH2Row": true,
+      "originalSqliteRow": true,
+      "originalSqlcipherRow": true,
+      "encryptedPageIntegrity": true
+    },
+    "final": {
+      "root": "39:6611544",
+      "status": {
+        "kura-core": "installed",
+        "kura-deployment": "installed",
+        "kura-management-agent": "installed",
+        "kura-management-ui": "installed",
+        "kura-networking": "installed",
+        "kura-wires": "installed"
+      },
+      "mutableFiles": 318,
+      "credentialsExact": 2,
+      "originalFixtureObjects": 101,
+      "verifiedPhases": 108,
+      "additionalTransactions": {
+        "90e13c7a-fa38-4fea-b8fd-28491527bcec": "upgrade",
+        "1c791fac-a35e-4362-99f0-7ba6c2fa2300": "reinstall"
+      },
+      "operation": "1c791fac-a35e-4362-99f0-7ba6c2fa2300"
+    },
+    "lastMain": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "lastAgent": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "normalExit": 0,
+    "providerRemovalChanges": [
+      "user/kura_custom.properties"
+    ],
+    "lastBusinessDataChange": "business.mv.db after Main opened the H2 database",
+    "agentProfile": "uninitialized and disabled throughout",
+    "resume": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/core-remove-sibling-order/cold.py final",
+    "firewall": "firewall-ipv4-loopback-port/retained.py"
   }
 }
