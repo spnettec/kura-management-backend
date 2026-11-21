@@ -1613,5 +1613,128 @@
     ],
     "frozenClosedParents": 0,
     "parentCount": 12
+  },
+  "registeredMainFirewallPositive": {
+    "versions": {
+      "package": "kura-core",
+      "version": "6.0.0~git20261121041734.8570155-1",
+      "sha256": "39948f9bd796647de076a319cc4698e0bf912d8728eb957cde8daa06a6d88a08",
+      "source": "857015576ff70cbd8d712249a4d780353b91b924"
+    },
+    "networking": {
+      "version": "3.0.0~git202611210417.2a2deca-1",
+      "sha256": "338b955387e82f6741b1183a8c24c9bd4ec70085734da97d6b97fbffaf6b959a",
+      "source": "2a2deca9282b6b8d46f1e87f7bae7386c426dbff"
+    },
+    "preflight": {
+      "dbus": "active",
+      "root": [
+        2050,
+        2271189
+      ],
+      "java": [
+        "openjdk version \"21.0.13\" 2026-10-20"
+      ],
+      "procnet": "rw,nosuid,nodev,noexec,relatime\nrw,nosuid,nodev,noexec,relatime",
+      "interfaces": [
+        "lo"
+      ],
+      "rtc0": false
+    },
+    "dpkg": {
+      "code": 0,
+      "root": [
+        2050,
+        2271189
+      ],
+      "packages": [
+        "libkmod2",
+        "kmod",
+        "python3-dbus",
+        "iputils-ping",
+        "kura-core",
+        "kura-networking"
+      ]
+    },
+    "main": {
+      "Uid": "997\t997\t997\t997",
+      "CapEff": "0000000000001400",
+      "NoNewPrivs": "1"
+    },
+    "mainPid": "1907",
+    "observed": {
+      "root": [
+        2050,
+        2271189
+      ],
+      "add": "a0e5c01c-e814-4765-b642-fe7bdf6ecbb3",
+      "remove": "73db82c7-bff7-4559-91a6-eca807224523",
+      "state": "APPLIED",
+      "sixTablesExact": true,
+      "configurationExact": true
+    },
+    "rule": "-A input-kura -s 127.0.0.1/32 -i lo -p tcp -m tcp --dport 19897 -j ACCEPT",
+    "shutdown": {
+      "main": "disabled, stopped",
+      "root": [
+        2050,
+        2271189
+      ],
+      "originalOutcomes": {
+        "a0e5c01c-e814-4765-b642-fe7bdf6ecbb3": {
+          "state": "APPLIED",
+          "commands": 1,
+          "ackBytes": 36,
+          "intent": "27c78d8de356dd3b1a86f3e3ec8c14ae835c6c2bfa3c73ad0390d83a220d00bc",
+          "receipt": "94ffdd94cbad2b7070c13d3a0486abea4482dcb7b91c4a75282f760a9fde2334",
+          "scope": "546a8c1adf89f36cea25bc865740e43f52fbf45e885d9a196c307ef11a0789dc"
+        },
+        "73db82c7-bff7-4559-91a6-eca807224523": {
+          "state": "APPLIED",
+          "commands": 1,
+          "ackBytes": 36,
+          "intent": "9c0ab4727f4230c3c7be89a996f17afad459bd4c0784599f018778413d60577a",
+          "receipt": "50b51cbc6bf1540fe740ae097c87d0c048f7b1aeefb5429bfc65b8d68b1932ee",
+          "scope": "546a8c1adf89f36cea25bc865740e43f52fbf45e885d9a196c307ef11a0789dc"
+        }
+      },
+      "legacyMangleReaders": {
+        "iptables-save": {
+          "code": 0,
+          "hasMangle": false,
+          "stderr": ""
+        },
+        "ip6tables-save": {
+          "code": 0,
+          "hasMangle": false,
+          "stderr": ""
+        }
+      },
+      "rules": "6921fc1b2432264cf73bff6b49ac133ecef53db8ef8a23784e1def20d23b82e2",
+      "packageAudit": "",
+      "workerSha": "1059e0736b0ff68431730b10a8fd7a062e09a9797e97da388a7652ae9768bae4"
+    },
+    "cold": {
+      "root": [
+        2050,
+        2271189
+      ],
+      "outerRoot": "2050:2",
+      "distinctOriginalIds": [
+        "73db82c7-bff7-4559-91a6-eca807224523",
+        "a0e5c01c-e814-4765-b642-fe7bdf6ecbb3"
+      ],
+      "coldRules": "6921fc1b2432264cf73bff6b49ac133ecef53db8ef8a23784e1def20d23b82e2",
+      "coldReceipts": 2,
+      "main": "disabled",
+      "unit": "inactive",
+      "unitResult": "success",
+      "rtc": [
+        "rtc0"
+      ],
+      "sizeKiB": 1161212
+    },
+    "scope": "Separate temporary Parallels installation authorized for firewall acceptance. The earlier incomplete Root and the original six-component Root were left parked.",
+    "tables": "Compared six ordered libnftables listings with runtime packet and byte counters removed. Approved add and inverse each carried one original Netfilter command. Original Java saved rules digest restored."
   }
 }

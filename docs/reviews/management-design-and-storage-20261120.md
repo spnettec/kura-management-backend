@@ -10,7 +10,9 @@
 
 防火墙这一轮说明了两种不同的工期来源。正式 Main 遇到现场实际保存的洪泛防护规则，原 worker 在批准前拒绝。补齐 TCP flags、MSS 和 IPv6 扩展头后，ARM64 内核收下了针对这些规则的变更。随后发现 Cargo 复用了旧二进制，即使源归档已更新。构建现在核对成品自报的源码摘要。这些问题都影响交付。另一部分工期和磁盘来自为每个中间改动生成完整的约 205 MB Core 包、再逐轮安装。可将同一交付的修改合并组包，日常验证直接运行变更的安装钩子或只构建 worker，到真实跨组件验收时再保留完整包。[实际调用与发行件](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
-当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本，正式 Main 防火墙正向写入仍待验。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)
+当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)
+
+获准用于防火墙验收的另一临时安装占 1,161,212 KiB。它复用同一份基础镜像和只读 deb，实际安装了 Core 和标准 Networking。正式 Main 通过 OSGi 完成一次仅限回环的规则增加和移除，两笔均有内核回执。新安装与前一中断现场在 Parallels 客体内合计约 2.38 GB。计量是客体目录占用，PVM 在宿主的实际分配量另计。[正向回执、六表及冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 10:30 的宿主目录计量为 **346.96 GB**，其中历史工作目录 **252.85 GB**、中心 target **78.76 GB**，两者占 95.6%。较 09:58 增加 259.7 MB；同期保留的 Core ARM64 包从 37 份增至 38 份。这一轮防火墙发布只重建两个 Networking 变体，复用同一 ARM64 镜像和六组件卷。[10:30 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-configuration-publication/storage.json)
 

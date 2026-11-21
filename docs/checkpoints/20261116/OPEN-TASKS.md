@@ -1,3 +1,9 @@
+## 2026-11-21 防火墙临时安装的正式 Main 正向回执
+
+获准的独立 ARM64 Root `2050:2271189` 安装了 Core `857015576f` 和标准 Networking `2a2deca`。正式 Main 以 kurad 通过 OSGi 加入且随后移除仅限 `lo`、来源 `127.0.0.1/32` 的 TCP 19897 规则。每笔操作单独获得内核 ACK 和 APPLIED 回执。六张表的规则内容和原保存文件恢复，独立进程按原编号查回两份结果。Main disabled，临时安装正常停机并冷读。该结果补齐上一条记录中的正式 Main 防火墙正向写入。旧六组件卷和此前中断的新装 Root 仍各按原围栏续接。
+
+安装现场同时发现，标准 iptables-save 和 ip6tables-save 对 mangle 返回 0，却没有输出这张表。启动恢复对不完整读回的处理、转发和 Main 剩余网络权限继续。冻结 0/12。[原操作、回执与冷读](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的防火墙调用与安装中断
 
 原六组件卷上的正式 Main 已完成配对并调用独立 worker。原文件含洪泛防护规则，内核没有原 Kura 链，防火墙服务为 disabled。批准前拒绝，发送端和 Root 均无发布意图。修正后的 Core `a87db8ac33` 与 Networking `180ea17` 已装回原卷，六包和 84 份文件内容经停机冷读。隔离 ARM64 另验了原 Java 生成的 43 条洪泛防护规则、双族变更和原编号回执。正式 Main 的防火墙正向写入仍待验。
