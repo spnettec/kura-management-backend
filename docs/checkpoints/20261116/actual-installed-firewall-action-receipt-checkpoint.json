@@ -1260,5 +1260,81 @@
     "preservation": "preservation-final.json",
     "parkedReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-java-original-model/parked-readback.py",
     "remaining": "Authenticate the standalone firewall writer, bind its operation to the original Root and registered Main, dispatch with owned handles and recover its durable original-ID outcome. The dual-stack comparison used the packaged Java provider inside an isolated namespace."
+  },
+  "originalCommandReceipt": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-original-command-receipt",
+    "source": "5be64b744bcf8f69f62b80ea39295a80968e3565",
+    "tree": "bcb99a2e7e8d260fb3a5874fe158544cfb6cf449",
+    "packageVersion": "0.1.0~cohort20261121033315.5be64b7-1",
+    "debSha256": "c8d1c413d060d709bb25a7d9296aace150fd807a616b3cf81918e8598b6cb1bd",
+    "sourceManifestSha256": "f1a08917b7b5c592eb527376a74c727c2cc5f588ba4b677ccd164861ba0b174d",
+    "sourceCrate": {
+      "source": "5be64b744bcf8f69f62b80ea39295a80968e3565",
+      "tree": "bcb99a2e7e8d260fb3a5874fe158544cfb6cf449",
+      "sha256": "482a1ca1090f8c5ed30b05693254cbf08e34470db9012d6250692efce78e90f7",
+      "bytes": 26161,
+      "files": 15,
+      "vcs": {
+        "git": {
+          "sha1": "5be64b744bcf8f69f62b80ea39295a80968e3565"
+        },
+        "path_in_vcs": "crates/firewall-policy"
+      }
+    },
+    "acceptedDelta": {
+      "after": 10,
+      "before": 9,
+      "boundRejections": 4,
+      "endAckHex": "240000000200000103464f590c00000000000000140000001100050003464f5900000000",
+      "originalRulesChanged": [
+        [
+          "ip",
+          18
+        ],
+        [
+          "ip6",
+          54
+        ]
+      ],
+      "wireBytes": 1732,
+      "totalKernelRules": 140,
+      "otherRulesAndMetadataExact": 138,
+      "oldAndNewNegativeCommandsChecked": true
+    },
+    "staleGeneration": {
+      "atReadback": 10,
+      "beginAckHex": "300000000200000000464f590c000000abffffff1c0000001000010000464f59000000000000000a0800010000000009",
+      "errno": 85,
+      "originalGeneration": 9,
+      "sequence": 1498367488,
+      "originalRowsStillExact": 140,
+      "originalSubmissionCount": 1,
+      "journalLookupDispatched": false
+    },
+    "replyScope": "The NACK must echo the full original command. Historical per-command ACK encoding is selected by the wire digest in the original intent. A positive batch-END ACK is bound to its live, single-use kernel socket.",
+    "arm64": {
+      "passed": 806,
+      "failed": 0,
+      "ignored": 50
+    },
+    "sourceCrateVerification": "crate-tests.log",
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "parkedReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-original-command-receipt/parked-readback.py",
+    "temporaryPayload": {
+      "debSha256": "c8d1c413d060d709bb25a7d9296aace150fd807a616b3cf81918e8598b6cb1bd",
+      "checkedEntries": 41,
+      "regularFiles": 28,
+      "regularFileBytes": 24764546,
+      "temporaryDirectory": "package/current/root",
+      "debBytes": 7044798
+    },
+    "remaining": "Installed standalone Main request, Root and ownership admission, sender and broker journals and recovery at the original operation ID. The independent writer used an isolated ARM64 network namespace."
   }
 }
