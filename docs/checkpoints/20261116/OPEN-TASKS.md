@@ -1,3 +1,7 @@
+## 2026-11-22 Core purge 保留目录挂载拒绝与原编号续办
+
+Core e7b690954a 完成保留 user/ 内有挂载时的正式 purge 验证。ARM64 Root 39:8221140 在 purge 删除前拒绝，正常停机检查八份原文件；重启后沿 022bd80f-97eb-4319-b0ed-b37f2df7604f 续办成功，包已清除，四份凭据和维护文件指纹相同。原半配置 Root 39:8195025 继续停放，空目录尚待用户确认移存。递归删除中途退出仍待验，冻结 0/12。 见 retention-purge-mounts/HANDOFF.md。
+
 ## 2026-11-22 Core 保留重装的解包与配置停点
 
 Core 3b3fc8df46 在 ARM64 原 Root 39:8195025 沿移除编号 69b222b6-002f-46d5-aaa7-03a99b67e906 完成实际重装解包。configure 意图已签名，layout 尚未派发。dpkg 创建了归 kura-core 独占的空目录 39:8216097，原 postinst 拒绝继续。现场已正常停机，冷读 42 份文件、原 38 份阶段记录及本次意图。后继 3654dc4f8b 已构建，40 项 ARM64 测试通过，已在原卷只读识别该目录。原编号续配、Main 冷读和 purge 待验，冻结 0/12。 详见 retained-generation-reconfigure/HANDOFF.md。

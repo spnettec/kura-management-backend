@@ -8074,5 +8074,28 @@
       "purge"
     ],
     "frozen": "0/12"
+  },
+  "corePurgeRetainedUserMount": {
+    "core": "e7b690954a",
+    "refused": {
+      "root": "39:8221140",
+      "maintenance": "022bd80f-97eb-4319-b0ed-b37f2df7604f",
+      "status": "purge ok config-files",
+      "verifiedFiles": 8,
+      "phase": "refused",
+      "volumeKiB": 70092
+    },
+    "purged": {
+      "root": "39:8221140",
+      "maintenance": "022bd80f-97eb-4319-b0ed-b37f2df7604f",
+      "status": "not-installed",
+      "verifiedFiles": 4,
+      "phase": "final",
+      "volumeKiB": 69936
+    },
+    "hookMatchesPackage": true,
+    "arm64TargetedTests": 40,
+    "protectedCoreRoot": "39:8195025",
+    "frozen": "0/12"
   }
 }
