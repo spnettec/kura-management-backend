@@ -340,3 +340,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 2026-11-22 移除重装的实际存储增量
 
 沿用 48001 的原容器和原卷，Core 移除时先把原目录保管在同一安装文件系统，重装后将它交还给正式 Main，清除临时保管目录。系统卷从 285,824 KiB 变为 286,804 KiB，两次正常停机之间相差 980 KiB。本轮另外生成一个发行 deb，通过硬链接挂入原现场。发行物、保留卷和宿主 APFS 空闲量使用不同计量口径。[实测明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/native-completed-core-reinstall/storage.json)
+
+## 2026-11-22 带挂载的 Core purge 续办
+
+这次 purge 验收使用独立卷，保留了 48001 的原业务回执。复用此前构建的 Core 和 Deployment deb 及 ARM64 镜像，只编译测试用的 OSGi 观察组件。新卷初始 61,256 KiB，postrm 因业务包仍挂载而拒绝时为 70,932 KiB，解除挂载并完成 purge 后为 69,968 KiB。测量对象是测试卷。[实测记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/native-completed-core-purge/HANDOFF.md)

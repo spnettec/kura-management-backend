@@ -1,3 +1,13 @@
+## 2026-11-22 Core 原生 purge 遇到业务包挂载时拒绝，停机后沿原维护编号续办
+
+独立 Debian ARM64 系统复用 Core `8894de2ca2` 和 Deployment `1b043a4` 的发行包。正式 Main 受理新任务 `49001` 一次，原 handler 返回 `GET install/result 49001 COMPLETED`。Root 为 `39:8041092`。停止 Main，依次移除 Deployment、Core。Core 进入 `deinstall ok config-files`，原业务目录由维护编号 `4e937f6d-923f-479c-bfb8-40c0631035ff` 保管。
+
+在单次 dpkg 进程的私有挂载命名空间内，把已保管的业务 DP 自绑定为只读挂载。已安装的 postrm 识别到该挂载并返回 1，dpkg 状态为 `purge ok config-files`，审计输出为空。正常关闭系统后，独立只读挂载核对原目录及其四个文件、常规备份、移除记录、两份凭据和三份密钥服务文件，身份与内容均符合移除时基线。
+
+再次启动同一容器和原系统卷，核实挂载已解除、维护编号及全部指纹仍匹配，再执行一次原 purge 请求。dpkg 返回 0，Core 状态为 `unknown ok not-installed`，Deployment 为 `config-files`。原保管目录、保留副本和 Core 的 postrm 已清除。密钥服务仍保存同一笔 remove 围栏、日志密钥和前代包历史；两份凭据亦保持原 inode、摘要和时间戳。系统第二次正常退出 0，最终状态已冷查。
+
+本次覆盖从 config-files 发起 purge、postrm 拒绝、正常停机和原 Root 续办。业务任务的完成回执在 purge 前核对；成功 purge 按包语义清除该业务目录。此项不覆盖删除目录进行到一半时的进程中断。原 48001 现场仍按其保留重装交接冷查。冻结 12 父项、闭环 0/12，外部延期仍限真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 Core 移除后保留重装，48001 沿原目录读回 COMPLETED
 
 沿上一轮的 Debian ARM64 原卷和容器续办，Root 为 `39:8007036`。先装入 Core `8894de2ca2`，用发行包核对四个实装 dpkg 钩子。因 Debian 包依赖先移除 Deployment，然后移除 Core。dpkg 返回成功，Core 进入 `config-files`。移除维护编号为 `753e06e8-3932-4a1d-ba7b-39ec7f7f5f95`。原 packages 目录在 Core 安装文件系统的私有目录里保持 `39:8011751`，常规保留副本为 `39:8037268`。业务 DP、注册表、锁和完成回执的文件身份、内容与时间戳逐一匹配。
