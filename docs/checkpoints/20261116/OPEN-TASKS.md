@@ -1,3 +1,7 @@
+## 2026-11-22 Artemis XML 用户表快照与冷启动
+
+原包关闭整份快照加密，0600 XML 中可直接匹配测试口令。临时开启整份快照加密后，新快照为密文。两种设置下均经正常关机、按原编号读回和 MQTT QoS 1 收发验证。开启加密时 Core 自动转换了原夹具 snapshot_0；已从同 Root、同摘要副本恢复字节、权限和 mtime，inode 与 ctime 已改变。当前停机读回为 `artemis-xml-snapshot/encrypted/cold.py`，证据见 `artemis-xml-snapshot/HANDOFF.md`。跨代换钥与历史转换的中断恢复仍待验，冻结 0/12。
+
 ## 2026-11-22 Artemis XML 配置热更新
 
 在 50001 的 ARM64 卷复用既有发行包，正式 Main PID 1381 经 XML provider 在回环端口 22883 收发认证 MQTT，更新 brokerXml 后原端口关闭、22884 收发第二条消息；两次均在订阅端核验 QoS 1 和载荷。恢复原配置，两端口关闭，remove、purge 后正常停机。该卷的当前停机入口为 `artemis-xml-main/cold.py`，记录见同目录 HANDOFF.md。XML 用户表的持久化与跨代密钥处理仍列入 provider 盘点，冻结 0/12。

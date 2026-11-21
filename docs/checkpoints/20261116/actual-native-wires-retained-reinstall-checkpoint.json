@@ -7103,5 +7103,87 @@
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
       "HANDOFF.md": "dcc828c181adb365eb081a9df9371e3f2e19c6aefef9242643ea119c5e7253a4"
     }
+  },
+  "artemisXmlSnapshotCold20261122": {
+    "path": ".management-close-20261116/core-rtc-hotplug-20261120/artemis-xml-snapshot",
+    "plain": {
+      "sid": "1795283874146",
+      "bytes": 46824,
+      "mode": "600",
+      "xml": true,
+      "rawPasswordPresent": true,
+      "base64UserTablePresent": false,
+      "rawTargetPidPresent": true
+    },
+    "encrypted": {
+      "sid": "1795283939776",
+      "bytes": 62473,
+      "mode": "600",
+      "xml": false,
+      "rawPasswordPresent": false,
+      "base64UserTablePresent": false,
+      "rawTargetPidPresent": false
+    },
+    "snapshotIdentity": {
+      "root": {
+        "id": "ef68316f16706239f0c5e79422717e8994351f9c1eed8ac8d69d568f80587ab0",
+        "mount": "39:8063827",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "before": {
+        "sha256": "3c243e86b8ae8a09a6dec2d282a7693ff771658a126355721d89798a2e6a5446",
+        "meta": "39|8072672|600|997|995|1|24182|2026-11-21 17:42:13.712344814 +0000|2026-11-21 17:44:33.743269447 +0000"
+      },
+      "after": {
+        "sha256": "3c243e86b8ae8a09a6dec2d282a7693ff771658a126355721d89798a2e6a5446",
+        "meta": "39|8086836|600|997|995|1|24182|2026-11-21 17:42:13.712344814 +0000|2026-11-21 18:00:17.673312494 +0000"
+      },
+      "source": {
+        "sha256": "3c243e86b8ae8a09a6dec2d282a7693ff771658a126355721d89798a2e6a5446",
+        "meta": "39|8073145|600|997|995|1|24182|2026-11-21 17:42:13.742296847 +0000|2026-11-21 17:44:33.745864454 +0000"
+      }
+    },
+    "cold": {
+      "root": "39:8063827",
+      "businessFiles": 4,
+      "directory": "39:8068535",
+      "keys": 2,
+      "receipt": "000bc1d0-d35f-4572-94de-0d85f0e25a30",
+      "provider": "unknown ok not-installed",
+      "registry": [
+        "deployment"
+      ],
+      "snapshots": 1,
+      "volumeKiB": 293056
+    },
+    "evidence": {
+      "HANDOFF.md": "eece58416b92268601da1e2a7fddbafab1b310d73d12e26e3b09e487cb4f3f20",
+      "snapshot_field.py": "64979c0af92713758568146e821ba1363e2a977b3c45aea80392ce190a4aef90",
+      "ArtemisProbe.java": "df3cbdef0f08dbb5445fec1f8c257ef6d5426554093a4bada1c966fae4537019",
+      "observer.jar": "5f49a949f68024352ae669f6243574f984833268b2e2b93cd2ff65aabe55fea7",
+      "installed.json": "a2625fb00b5d3c223c338147e1f103067a5aa70d61192c13a01c00d0453f3079",
+      "main.json": "1173919aa980f575d93e597b3e6cd07e6d8418208e06d0c543a7a28d16fd4f9b",
+      "saved.json": "54fe66f63a6bd88bca154d2aa5a02299a558ac26ea52932680bd9cf285d1aa84",
+      "saved-cold.json": "e583b62c50c4f7a2210b185643ccd0760f98031df474dfcdd93e3f8a2d76b29a",
+      "restored.json": "45399962ab952f22dd0b7eb49d173e81d6c7ea04482f4e8ee7ccb774d2446fc0",
+      "cold-final.json": "3509125d901d916643a5a411f3a057feaf0a60fb8df306965f649736652c4f0a",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "original-three-after.json": "1f7086c24d6056af06399ea42b310f2ef54931759468868abb237150e9929f32",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "encrypted/vault_run.py": "64426733022be4828d8b6f58d6d5b69750abe7b0daec93de79c49b30303a0fcc",
+      "encrypted/cold.py": "d24636a1c52e9eca673908f8720ea9f5a3b56f89b2c573606a98b22256596829",
+      "encrypted/installed.json": "6f48c59208632071c3acf96b4f2135041760be0648436e5078693d4b4f499f13",
+      "encrypted/main.json": "aa0e5c6c96d09a2e1b7ba29889d87f82218e8f31f375879b23f2b7bddd603a52",
+      "encrypted/saved-cold.json": "b709dcb9fe8d07d8d3600805409abff7cb503828fd107c7bfa97fc096230c5ce",
+      "encrypted/restored.json": "7eafe3447dd3252650372c8c7d4b31cf3f65b00b83d6560a79acbba0109ba5de",
+      "encrypted/conversion.json": "9e2ab346343917d6e3f24c296d4f1cece7ecf218d427ed9956acc39322a12c11",
+      "encrypted/original-content-recovered.json": "764cafe20a5133b4dc05c6b14768f651ee293e66ca7f6be5ee73a33140298329",
+      "encrypted/final.json": "864dad886c453f7096a81a1ba6ac4eadc770b814e8bc1c91bfa8f76d08641033",
+      "encrypted/parked.json": "c1013300bf95e8d7d2eb74e844a48c02495bfff859e452f670b538648349b497",
+      "encrypted/cold-final.json": "0e3afdb75cc90d971de2f3ac43152dda51be88aca37328adc316d9adf480c3fc",
+      "encrypted/config-cold.json": "71ef9a0c6931849923c7981b6fa9e4abaa6496a4649853d96c025c93090a16b6"
+    }
   }
 }
