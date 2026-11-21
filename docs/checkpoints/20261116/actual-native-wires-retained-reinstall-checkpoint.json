@@ -7804,5 +7804,40 @@
     "matchedJars": 264,
     "remainingDefect": "Without ethernet, the installer leaves the board name at device_name",
     "frozen": "0/12"
+  },
+  "coreBoardInstall20261122": {
+    "evidence": "core-board-install/HANDOFF.md",
+    "core": "a16b65c37f75921a7bf93e787f9a39149b1e0226",
+    "tree": "137a83d2dde398469fa4d0ac5d4afa372302a147",
+    "debSha256": "ff09b50e90e679184e5837dda7aa6b1495ac9fb925d5ee8087e79ca6d0cf5b04",
+    "jarHashesIdentical": 233,
+    "cases": {
+      "loopback": {
+        "root": "2097227:1",
+        "service": [
+          "1642",
+          "org.eclipse.kura.core.system",
+          "generic-device",
+          "aarch64",
+          "eth0"
+        ],
+        "parked": 0
+      },
+      "wired": {
+        "root": "2097228:1",
+        "service": [
+          "1649",
+          "org.eclipse.kura.core.system",
+          "generic-device",
+          "aarch64",
+          "enxboard0"
+        ],
+        "parked": 0
+      }
+    },
+    "originalSix": "e99caab",
+    "boundRequest": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+    "remaining": "installed upgrade with site override",
+    "frozen": "0/12"
   }
 }

@@ -1,3 +1,7 @@
+## 2026-11-22 无以太网时的 Core 板型修复
+
+Core a16b65c 已完成两种 ARM64 新安装的正式 Main 验证。仅 lo 时 SystemService 返回 generic-device、aarch64、eth0；有两个 dummy 有线接口时返回 enxboard0。原六组件仍装 e99caab，旧安装升级后的属性与用户覆盖仍待验。绑定网关 6910532 原五笔维护均已结束，停机冷读与上轮一致。见 core-board-install/HANDOFF.md。冻结 0/12。
+
 ## 2026-11-22 六组件原卷完成当前 Core 升级与合法 Main 实读
 
 原 Root 39:6611544 已装 e99caab，六包运行源码与当前 WIP 对齐，Deployment 仅差说明文档。正式 Main 读回原九份快照及原业务包资源。47 笔 Core 维护的 854 条签名阶段和 319 个可变文件均核实。六包 264 个 JAR 全部配对。无以太网时安装器漏掉板型替换，kura.device.name 留下 device_name，须继续修正。当前六组件冷读为 `six-core-cohort/cold.py final`，见 `six-core-cohort/HANDOFF.md`。冻结 0/12。
