@@ -1,3 +1,9 @@
+## 2026-11-21 原绑定网关在完成回执已有两个硬链接时恢复后继包
+
+原绑定网关由 `431dedc` 升至 `6910532`。沿经授权的维护编号 `7a1e4339-aaad-4ee0-94fc-8db58592881f`，正式 dpkg 在完成回执建链后，只对删除暂存名的 unlink 返回了一次 EBUSY。停机读回 half-configured、原 pending 和同一份 0600 回执的两个硬链接，启动检查拒绝。重启后沿原 Root、原编号只续配一次。包恢复 installed，状态为 REINSTALLED，pending 和暂存名均已清除。完成回执保留 inode 7585379、mtime 和原摘要，链接数由 2 回到 1。
+
+第三代来源回执指回第二代，第二代指回第一代。100 个原对象中，94 个完整指纹保持，5 份授权或指针文件按计划更新，另一个变动是 source-pairs 父目录。四个已安装 dpkg 钩子的摘要均匹配新包。两次停机冷读的五笔维护 JSON 摘要全部一致；原任务 SUCCEEDED，原 OFF 版本保持。网关正常停放，数据库和中心全程停放。此轮验证后继包维护，Main、agent 保持停用。建链前中断及目录 fsync 失败仍只有隔离测试证据。最新只读入口 `bound-agent-packaged-receipt-field/cold.py final`。冻结 0/12。[实装检查点](actual-native-agent-bound-business-removal-checkpoint.json)
+
 ## 2026-11-21 已绑定 agent 恢复重装回执的硬链接与目录同步中断
 
 旧版在回执写完但尚未建立最终硬链接时续配遇到 FileExistsError；链接已建但暂存名仍在时，由于文件有两个链接而拒绝。另一个缺陷是首次目录 fsync 失败后，第二次配置会跳过该同步并清除 pending。agent `6910532` 只在原安装、原意图和 install-admitted 阶段匹配时继续：核实 Root 持有的 0600 完整回执，确认暂存和最终名称的 inode 及链接数，将原文件发布并同步目录，再清除 pending。内容不完整或两个名称对应不同文件时保留现场。

@@ -510,5 +510,112 @@
     "deployedOnParkedGateway": false,
     "parkedGatewayColdVerifier": "bound-agent-package-interruption/cold.py final",
     "testsLogSha256": "4eb3b372069710afc460e75858b8635db16776174ad26e60736a65de2af2afe7"
+  },
+  "installedSuccessorLinkedReinstallReceiptRecovery20261121": {
+    "architecture": "arm64",
+    "previous": "29df31cf4d8e1f32e22e1983a75190c883e28d107bc1f9102b8d2543922a19e7",
+    "releaseVersion": "0.1.0~cohort20261121125537.6910532-1",
+    "source": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+    "sha256": "c159f1a47377de02fc1a943add92006940d1c00adcee1be9320ca97b261a91be",
+    "packageControlSha256": {
+      "preinst": "884a522bc867bcf2a6d7e888a51610da757e777781117f7277c5e8d69e6bd393",
+      "prerm": "d1f80f1d2d10785aaadaf65a6b0e7c61d954a75f5b4b47fd79ed844d2f5885b9",
+      "postinst": "5452ed944555db3f1ad111142a73dce32e8175e1d7fc1f45ccc53e687328faa2",
+      "postrm": "a2455a639deb504ec0ae9a2fe302ba1285c5fa7f44daa75dfa406e05c4ecfa0e"
+    },
+    "request": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+    "rootBefore": {
+      "device": 1048716,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "rootAfter": {
+      "device": 1048716,
+      "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+    },
+    "fault": [
+      "1592  unlinkat(AT_FDCWD, \"/var/lib/kura-management-agent-admin/retained-removals/7a1e4339-aaad-4ee0-94fc-8db58592881f/.reinstalled.json.native-new\", 0) = -1 EBUSY (Device or resource busy) (INJECTED)"
+    ],
+    "halfConfigured": {
+      "schemaVersion": 1,
+      "requestId": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+      "phase": "INSTALL_ADMITTED",
+      "unitStarted": false
+    },
+    "originalIntent": "b2e6ac6ffa17473db916d409923e1021cb5fff965da6ea5ab4da2f080940588c",
+    "finalStatus": {
+      "schemaVersion": 1,
+      "requestId": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+      "phase": "REINSTALLED",
+      "unitStarted": false
+    },
+    "receiptSha256": "7100dd60e17fdd49b7bcc3af5a11308c9d634989a86f1fe3242d73ed3da8c91e",
+    "receiptInode": "7585379",
+    "sameMtime": "2026-11-21 12:59:54.609987173 +0000",
+    "linksBefore": 2,
+    "linksAfter": 1,
+    "inventory": {
+      "pointer": {
+        "schemaVersion": 1,
+        "requestId": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+        "sha256": "c38f49b3f0832e8def6fc150d7c9b9acebf11d3e14831dddcb8b8313c4e51cfd"
+      },
+      "unchanged": 94,
+      "changed": [
+        "/etc/kura-management-agent-runtime/enrollment-relay-grant.json",
+        "/etc/kura-management-runtime/agent.json",
+        "/etc/kura-management-runtime/enrollment-reader.json",
+        "/etc/kura-management-runtime/kura-peer.json",
+        "/var/lib/kura-management-agent-admin/source-pair-current.json",
+        "/var/lib/kura-management-agent-admin/source-pairs"
+      ]
+    },
+    "sourceHistory": [
+      {
+        "requestId": "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+        "schemaVersion": 1,
+        "sha256": "150c8e0edec4015f213eff008698c0718b6208116295d89f0960e149852054c4"
+      },
+      {
+        "requestId": "65ed1487-76c1-499c-8eac-4c9995c15c55",
+        "schemaVersion": 1,
+        "sha256": "21214f9473fb75fb42ac905ae6ea3f515b45ac239405fb93d4785a123d07dc07"
+      },
+      {
+        "schemaVersion": 1,
+        "requestId": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+        "sha256": "c38f49b3f0832e8def6fc150d7c9b9acebf11d3e14831dddcb8b8313c4e51cfd"
+      }
+    ],
+    "terminalTask": [
+      "523ec79a-731b-4bb6-b274-9008a750b34d",
+      3,
+      "SUCCEEDED",
+      114,
+      88
+    ],
+    "remoteOff": {
+      "version": 1,
+      "revision": "8ffa3330-f758-4652-be4b-861efe2c8401",
+      "enabled": false,
+      "actor": "kura-uid:997"
+    },
+    "fullColdHistoryCount": 5,
+    "gatewayStopped": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-21T13:00:35.655564111Z",
+      "FinishedAt": "2026-11-21T13:00:43.883206953Z"
+    },
+    "centerAndDbParked": true,
+    "realMainOrAgentStart": false,
+    "readOnlyEntry": "bound-agent-packaged-receipt-field/cold.py final",
+    "remaining": "The pre-link and failed directory-fsync cases have fixture coverage; neither was injected into this enrolled gateway."
   }
 }
