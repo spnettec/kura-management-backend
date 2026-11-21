@@ -4,6 +4,8 @@
 
 冷读核对全部六包、SQLCipher、82 份最终文件、两份原凭据、注册表与锁，以及同一维护编号的 18 个 HMAC。Main、agent 均 disabled 并已正常停机。六组件最新入口 `six-local-sqlcipher-upgrade/cold-maintenance.py`。防火墙安装沿用 `firewall-boot-package-recovery/cold-model.py`。Core `bb1aa463cc` 修正联合升级期间的错误提示，已通过生成脚本及独立 dpkg 状态测试，现场安装仍为 `5bd7710ed8`。其余 provider、launcher、组件中断矩阵与无站点转发授权仍未结。冻结 **0/12**，外部延期仍为原三项。[联合升级和业务读回](actual-native-wires-retained-reinstall-checkpoint.json)
 
+补验两个 sibling 目录先后发布时的进程中断。在隔离 ARM64 测试进程发布第一个目录后发送 SIGKILL，恢复沿原围栏，只补第二个目录并保留首个 JAR 的 inode，同组 14 项通过。六个包各自的实装和中断证据已列入[设计与磁盘报告](../../reviews/management-design-and-storage-20261120.md)。
+
 ## 2026-11-21 防火墙暂存回执的启动配对与 Networking 包恢复
 
 Networking `783a594` 把暂存回执的发布移到完整启动配对之后。ARM64 实际启动器在包模式改变、另一个地址族出现站点策略、出现站点扩展三种情况下均保留原暂存回执、意图与操作编号。恢复原条件后，两族按原编号续办。Networking 2268 项测试及启动归属 17 项通过。

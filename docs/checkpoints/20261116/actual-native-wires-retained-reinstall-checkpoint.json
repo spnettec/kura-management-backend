@@ -3383,6 +3383,17 @@
       "inputs": 41,
       "receipts": 16
     },
-    "newDebs": 0
+    "newDebs": 0,
+    "twoSiblingPublicationTest": {
+      "commit": "d103b3fb480c54b3529c9bdfe9f15ed68d03a8f2",
+      "platform": "isolated Debian arm64; production controller with fixture lifecycle and generation pairing",
+      "cut": "SIGKILL after first directory publication, before second publication",
+      "originalFence": true,
+      "firstInodePreserved": true,
+      "secondRecovered": true,
+      "unpublishedStageRetired": true,
+      "tests": 14,
+      "logSha256": "b342b4259a5f1e89dcb9213d526c7c28e881366f4f53008db028591bc3472301"
+    }
   }
 }

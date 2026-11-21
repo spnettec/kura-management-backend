@@ -90,6 +90,21 @@ SQLCipher 的现场还验证了两个包管理层如何共同恢复。在同一�
 
 正式 Main 安装过两个版本的加密 SQLite 部署包。升级后注册表指向新版，卸载按当前登记地址删除了新版。冷卷上还留有旧版的 294,611 字节归档，SHA-256 与首次安装的发行件一致。DeploymentAgent 启动时遍历注册表，因此该旧文件不会仅凭位于 packages 目录就被重新安装。这解释了运行卷上的一处小额留存，完整构建目录和多版 deb 的占用要大得多。[旧归档和注册行](../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution/archive-identities.json) · [启动和卸载代码](../../../.management-close-20261116/core-rtc-hotplug-20261120/kura-deployment/bundles/org.eclipse.kura.deployment.agent/src/main/java/org/eclipse/kura/deployment/agent/impl/DeploymentAgent.java)
 
+## 六个网关包的维护实证
+
+下表按最近复核过的 ARM64 检查点列出能复用的结果。每行的安装版本、Root 和维护编号见该行记录。六包跨不同版本的记录不能拼成一次同版本联合验收。
+
+| 网关包 | 已实测的维护与恢复 | 业务或运行时核对 |
+| --- | --- | --- |
+| Core | 与 Networking 联合升级时，两包解包后停机，重启沿原编号配置。独立安装另验 remove、purge 和移除过程中断续办。[联合升级](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) · [移除](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 正式 Main 分别读回明文 SQLite、SQLCipher 与 H2 原业务行。 |
+| Networking | 已在六包安装上升级、remove、purge 和重装；防火墙专用 Root 另验 purge 后重装、解包停机及重启配置。[BIND](../checkpoints/20261116/actual-bind-main-recovery-and-six-component-networking-checkpoint.json) · [防火墙](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) | 正式服务保留原 DNS 模型，防火墙核验原 IPv6 启动回执。无站点时主动开启转发仍待验。 |
+| Management UI（GWT） | 配置遇注册锁中断后原地续配。与 Wires 联合移除时，GWT 在 postrm 中断，随后续办、共同 purge 并重装。[dpkg 阶段](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 已检查保留的图标、正式 HTTPS 入口，以及安装和移除 agent 时菜单的变化。[页面实证](../checkpoints/20261116/actual-native-cohort-gwt-ready-and-purge-checkpoint.json) |
+| Wires | 原安装上升级进入 half-configured，正常停机后续配。另验与 GWT 共同移除、purge 和重装。[原图与升级](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) · [联合移除](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 正式 Main 读回原 Timer→Logger 图并再次送达，原图只提交过一次。 |
+| Deployment | 业务 DP 随包移除、purge、同包解包和恢复。postinst 在注册锁处中断，跨停机仅续配原包。[DP 生命周期](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 原 DP 自动恢复并返回业务资源。注册的 SQLCipher DP 和原生库联合拆装另有实证。 |
+| Management Agent | 已初始化与已绑定分别验收。已初始化样本有原编号 postrm 续办；已绑定样本以同一业务状态完成 remove、后继版本 unpack、configure 与显式启动。[postrm](../checkpoints/20261116/actual-native-agent-postrm-only-recovery-checkpoint.json) · [已绑定样本](../checkpoints/20261116/actual-native-agent-bound-successor-checkpoint.json) | 保留原任务及远程开关决定。已绑定现场的后继换版不能代替其他绑定代和来源历史。 |
+
+多目录恢复又核对了一个中断点。在隔离 ARM64 进程中，正式配置器发布第一个 sibling 目录后收到 SIGKILL；新进程沿原围栏恢复第二个目录，首个目录中的 JAR inode 保持，未发布暂存已撤下。该次使用文件系统夹具，同组 14 项通过。完整 dpkg 现场已有单个 JAR 写至一半的中断记录。后续选择覆盖点时，可据此区分文件复制、目录发布和业务恢复三个阶段。[多目录回归](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) · [单包实装中断](../checkpoints/20261116/actual-core-prepared-torn-copy-checkpoint.json)
+
 ## 磁盘增长的实测解释
 
 防火墙两代包的恢复实测共用一个持久 Root。新建的具名卷为 61,256 KiB，最终冷读为 293,460 KiB。设备号在宿主 overlay 中改变时，持久 Root 和两份原凭据仍保持身份连续。修正 unit 的 Core deb 长 205,016,000 字节，当前组装目录有 49 份 ARM64 deb，逻辑长度共 10,015,844,740 字节。此轮复用 Maven 缓存、ARM64 worker 和 Networking 包。[双包 purge、中断与分项计量](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
