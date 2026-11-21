@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 的容器编排与引擎离线停用
+
+Container 3ea6634 修复专属 Unix socket 连接和离线客户端清理。ARM64 实装从原快照读回真实引擎内的停放容器，引擎离线时停用编排，恢复后原服务及冷启动 Main 均维持停用。133 项测试通过，remove、purge、正常停机已核对。容器进程执行与其他业务维护组合仍待验。详见 `container-engine-maintenance/HANDOFF.md`，冻结 0/12。
+
 ## 2026-11-22 Triton 远程模式解除多余本机服务依赖
 
 ARM64 实装前版在无匹配执行器和解密服务时无法满足远程实例引用。7de1cc0 移除这两项，容器模式也移除未使用的执行器引用。正式 Main 沿同一快照完成真实回环 gRPC 健康和模型状态查询、端点停启、冷启动、remove 和 purge。119 项模块测试通过。macOS 独立 SCR 验收通过；按同一 Git 重建两个过期 YOFC 缓存输入后，两个下游 bundle 均为 ACTIVE，43 项下游测试通过。实际模型推理及容器/原生模式的正向执行仍待验。详见 `triton-remote-maintenance/HANDOFF.md`，冻结 0/12。

@@ -7626,5 +7626,63 @@
       "unpacked.json": "9d2047b24a6283e53135e679f1c096ec0138aef1ca275b249d9bf72fd4ca3ada",
       "verify.py": "ce68cd0ded6eac3c8a7dff329c35eec9a84341c53765b1d1d3be47873c800914"
     }
+  },
+  "containerEngineMaintenance20261122": {
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/container-engine-maintenance/HANDOFF.md",
+    "source": "3ea6634",
+    "unitTests": 133,
+    "oldSnapshot": "1795287015758",
+    "offSnapshot": "1795287186648",
+    "engine": {
+      "ID": "8c180a64-5b3a-4e63-8b1d-6990304fdda5",
+      "ServerVersion": "26.1.5+dfsg1",
+      "Driver": "vfs",
+      "DockerRootDir": "/var/lib/fixture-docker",
+      "Containers": 1,
+      "Images": 1,
+      "OSType": "linux",
+      "Architecture": "aarch64"
+    },
+    "container": {
+      "id": "ee8e0dfcbcd2175f2423aa0e406c9a56920c4bf279b0ed961003655bdc661685",
+      "image": "sha256:b9525c72d86835b103b1328c10f5da348b7235133033ed7ecbd84655db3c6347",
+      "status": "created"
+    },
+    "outcome": "MainPID=4765 service=132 snapshot=1795287186648 refused",
+    "parked": {
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T18:49:07.624747004Z",
+        "FinishedAt": "2026-11-21T18:53:29.508741889Z"
+      },
+      "sizeRw": 4582826,
+      "volumes": 0,
+      "network": "none"
+    },
+    "storage": {
+      "debs": {
+        "81a89b5": 15973432,
+        "893fa95": 16449318,
+        "3ea6634": 16454006
+      },
+      "newDebTotal": 48876756,
+      "engineInputBytes": 37515912,
+      "parkedContainerRwBytes": 4582826,
+      "volumes": 0,
+      "newOuterImages": 0,
+      "guestStorage": "tmpfs",
+      "engineMarker": "one stopped container and one local fixture image in tmpfs"
+    },
+    "scope": "provider inventory, offline disable, engine restart, cold Main, remove/purge",
+    "boundUpgrade": "6910532 remains parked; five closed maintenance records",
+    "frozen": "0/12"
   }
 }

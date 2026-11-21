@@ -1,6 +1,12 @@
 # YOFC Kura 管理改造：设计、工期与磁盘复盘
 
-2026-11-20 初稿，2026-11-21 更新。复核对象为会话《YOFC Kura 管理体系改造》、父工作区暂停交接、12 项冻结台账、实际八包安装与 Wires 重装检查点、两次清理回执和当前 Git 引用。
+2026-11-20 初稿，2026-11-22 更新。复核对象为会话《YOFC Kura 管理体系改造》、父工作区暂停交接、12 项冻结台账、实际八包安装与 Wires 重装检查点、两次清理回执和当前 Git 引用。
+
+## 11 月 22 日工作区复测与容器发行包
+
+北京时间 02:55，按同一文件系统的 `du -kx` 计量，父工作区合计 **364.70 GB**。其中历史工作目录 269.74 GB，整个中心仓 81.46 GB，两处合计 96.3%。这些是目录块使用量，APFS 共享块与虚拟机磁盘另计。下面 11 月 21 日的 95.5% 使用了中心仓内 target 的较窄口径。[本次分目录读数](../../../.management-close-20261116/core-rtc-hotplug-20261120/container-engine-maintenance/workspace-kib.txt)
+
+本轮的两次发行修订各有现场原因。正式 Main 先遇到类缺失，补齐依赖后又发现旧适配器错误连接 TCP。直接在已有 ARM64 内存系统对比两个适配器并复用同一快照，最终从专属 Unix socket 读到原容器。三份新 deb 合计 48.88 MB，引擎输入 37.52 MB，停机可写层 4.58 MB，新增宿主持久卷为零。发行件还存在可量化的重复打包：16 个相同 JAR 同时位于编排 bundle 根目录与 lib/，第二份在 ZIP 内占 8.19 MB，占整个 bundle 的近一半。这个数字针对该 bundle，不能外推到整个工作区。[发行包明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/container-engine-maintenance/embedded-size.json) · [本轮现场](../../../.management-close-20261116/core-rtc-hotplug-20261120/container-engine-maintenance/HANDOFF.md)
 
 ## 目前的判断
 
