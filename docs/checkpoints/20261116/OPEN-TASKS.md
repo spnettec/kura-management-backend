@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 授权的 IPv6 转发经正常停机后恢复
+
+防火墙临时安装 `39:7320076` 升级至 Core `7f04a990f3` 和 Networking `671a90f`。正式 Main 经注册的 IPv6 provider 加入两条回环规则。正常停机再启动，标准 firewall.service 看到两个地址族均无站点文件，依原 Root 的 Main 回执执行 85 条内核命令，两族转发从 `[0,0]` 变为 `[0,1]`。逐条核对两条内核规则通过。正式 Main 随后按原 OSGi 配置自动移除临时规则和启动授权，当时 IPv6 转发仍为 1。再次正常停机启动后两族均为 0、两条规则均已消失。隔离 ARM64 内核另验双族授权、旧请求、撤销和中断续办。IPv4 正向尚限隔离 worker；业务配置经 ConfigurationService 保存并跨完整 Main 重启仍待验。
+
+临时安装最终正常停机，Main disabled，冷读 136 份文件、25 对发布记录及 9 份启动记录。防火墙续接入口 `durable-firewall-forwarding/cold.py`，原六组件沿 `six-local-sqlcipher-upgrade/cold-maintenance.py`。12 项父任务全部保留，冻结 **0/12**。外部延期仍仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。[安装、内核规则与冷读证据](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 暂存防火墙回执在内核和原历史均核对后发布
 
 worker `6b26fdd` 在开机续办中先核对原编号、完整历史、内核规则与世代，再发布已暂存的回执。正式 ARM64 worker 在隔离内核中实测三种边界。内核世代改变时，七个原条目指纹保持，下一族没有派发。普通查询遇到启动器的暂存回执会要求沿原启动编号续办；另一个普通发送方仍能核对并完成自己的暂存回执。条件吻合时两个地址族沿原启动记录完成，双族转发均为 0。当前明确转发的 Main 请求只绑定当次操作与命名空间，无站点时的持久转发授权继续待验。

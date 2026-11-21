@@ -99,7 +99,7 @@ SQLCipher 的现场还验证了两个包管理层如何共同恢复。在同一�
 | 网关包 | 已实测的维护与恢复 | 业务或运行时核对 |
 | --- | --- | --- |
 | Core | 与 Networking 联合升级时，两包解包后停机，重启沿原编号配置。独立安装另验 remove、purge 和移除过程中断续办。[联合升级](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) · [移除](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 正式 Main 分别读回明文 SQLite、SQLCipher 与 H2 原业务行。 |
-| Networking | 已在六包安装上升级、remove、purge 和重装；防火墙专用 Root 另验 purge 后重装、解包停机及重启配置。[BIND](../checkpoints/20261116/actual-bind-main-recovery-and-six-component-networking-checkpoint.json) · [防火墙](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) | 正式服务保留原 DNS 模型，防火墙核验原 IPv6 启动回执。无站点时主动开启转发仍待验。 |
+| Networking | 已在六包安装上升级、remove、purge 和重装；防火墙专用 Root 另验 purge 后重装、解包停机及重启配置。[BIND](../checkpoints/20261116/actual-bind-main-recovery-and-six-component-networking-checkpoint.json) · [防火墙](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) | 正式服务保留原 DNS 模型，防火墙核验原 IPv6 启动回执。正式 Main 授权的 IPv6 转发已在无站点文件时跨正常停机恢复。Main 按原配置撤销规则后，下一次启动双族转发均为 0。业务配置经 ConfigurationService 保存并跨完整 Main 重启仍待验。 |
 | Management UI（GWT） | 配置遇注册锁中断后原地续配。与 Wires 联合移除时，GWT 在 postrm 中断，随后续办、共同 purge 并重装。[dpkg 阶段](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 已检查保留的图标、正式 HTTPS 入口，以及安装和移除 agent 时菜单的变化。[页面实证](../checkpoints/20261116/actual-native-cohort-gwt-ready-and-purge-checkpoint.json) |
 | Wires | 原安装上升级进入 half-configured，正常停机后续配。另验与 GWT 共同移除、purge 和重装。[原图与升级](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) · [联合移除](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json) | 正式 Main 读回原 Timer→Logger 图并再次送达，原图只提交过一次。 |
 | Deployment | 业务 DP 随包移除、purge、同包解包和恢复。postinst 在注册锁处中断，跨停机仅续配原包。[DP 生命周期](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 原 DP 自动恢复并返回业务资源。注册的 SQLCipher DP 和原生库联合拆装另有实证。 |
@@ -265,3 +265,5 @@ Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普
 Networking `a7dfc51` 的双族冷读修复合并了网络运行时和防洪 provider 重复定义的 38 条 IPv6 规则。只组装标准和 firewall-only 两份 deb，共 9.88 MB，并复用原 Core 与六组件卷。ARM64 验证后的 9,949,754 字节临时 JAR 均已逐一核对包内摘要并回收。两种发行件均还原了上轮保留的规则文件；没有站点策略时的内核冷恢复继续单独验收。[发行件、冷读与实装](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 Core `ad2a586c31` 在已有发布回执中保存经确认的每族规则摘要，继续使用同一份安装日志。隔离内核恢复 83 条 IPv6 命令时沿用了正式发布 worker 的差异计算和内核匹配。worker 源码包为 46,569 字节，更新后的 ARM64 Core deb 为 205,042,346 字节。实装复用既有防火墙临时卷，六组件卷本轮保持停机。[原安装冷读及恢复试验](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+此次转发恢复复用了同一临时安装和编译缓存。Core deb 占 205,062,620 字节，标准 Networking 与 firewall-only 两个 deb 合计 9,880,928 字节。三包文件长度合计 214,943,548 字节；宿主物理占用增量没有单独测量。此次两次启动将费用对应到一项具体风险：防火墙服务先于 Main 恢复授权后，Main 仍会按自身保存的配置重新应用规则。要证明一条业务路由能持续生效，还需沿其配置保存入口验收。[发行件与正式 Main 验收](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)

@@ -3793,5 +3793,93 @@
     },
     "next": "Durable route-specific permission to enable forwarding without a site policy, full provider/launcher lifecycle and six-component matrix.",
     "frozen": "0/12"
+  },
+  "durableForwardingAcrossNoSiteBoot": {
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/durable-firewall-forwarding",
+    "installedRoot": "39:7320076",
+    "coreSource": "7f04a990f3016373ba227fb112a2faf76ef267a5",
+    "workerRevision": "3c0bd7acc80858b3ba5b34622be9ca743767077b",
+    "networkingPackageSource": "671a90fb3d42be84d404764cd31257ce5fdecada",
+    "versions": {
+      "kura-core": "6.0.0~git20261121075913.7f04a99-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1"
+    },
+    "packageBytes": {
+      "kura-core": 205062620,
+      "kura-networking": 9413232,
+      "kura-firewall-only": 467696
+    },
+    "tests": {
+      "networkingMaven": 2268,
+      "bootOwnership": 18,
+      "arm64KernelScenarios": [
+        "final-both.json",
+        "final-interrupted.json",
+        "final-legacy.json",
+        "final-lost-sysctl.json",
+        "final-same-model-legacy.json",
+        "final-v6-only.json",
+        "final-withdraw.json"
+      ]
+    },
+    "installedMain": {
+      "entry": "LinuxFirewallIPv6.addNatRules on registered Main executor",
+      "sourceOperation": "bce3a7bb-864b-46b1-8370-c8e2b039f5e9",
+      "runtimeCapabilities": "0x400",
+      "bootOperation": "dc926a3a-f36f-42f6-92cf-9c159f372c27",
+      "bootBefore": [
+        "0",
+        "0"
+      ],
+      "bootAfter": [
+        0,
+        1
+      ],
+      "kernelCommandCount": 85,
+      "kernelResult": "APPLIED",
+      "ruleReadback": "both original rules checked using full ip6tables arguments",
+      "siteInputs": [
+        null,
+        null
+      ]
+    },
+    "nextMainStart": {
+      "effect": "Original OSGi configuration automatically removed temporary route and its IPv6 boot grant",
+      "forwardingImmediatelyAfterRemoval": [
+        0,
+        1
+      ],
+      "nextBoot": [
+        0,
+        0
+      ],
+      "rulesAbsentOnNextBoot": true
+    },
+    "coldRead": {
+      "root": "39:7320076",
+      "versions": {
+        "kura-core": "6.0.0~git20261121075913.7f04a99-1",
+        "kura-networking": "3.0.0~git202611210758.671a90f-1"
+      },
+      "records": 25,
+      "files": 136,
+      "bootRecords": 9,
+      "forwarding": {},
+      "worker": "e65c48adf2d4b25918d4260ae0145d64e8d21025fcf4d86588be826b8b5a12d8"
+    },
+    "fixtureState": "Main disabled, container stopped normally",
+    "separatePending": "Persist a business route through ConfigurationService and verify across complete Main restarts. Installed positive path covered IPv6. Positive IPv4 covered isolated native worker.",
+    "evidenceFiles": [
+      "authorized.json",
+      "restored.json",
+      "withdrawn.json",
+      "withdrawal-boot.json",
+      "parked-final.json",
+      "cold-final.json",
+      "preservation-final.json",
+      "parallels-final.json",
+      "repos-final.json"
+    ],
+    "coldReader": "durable-firewall-forwarding/cold.py"
   }
 }
