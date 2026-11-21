@@ -1,3 +1,7 @@
+## 2026-11-22 原生启动器并发与正常接管
+
+Core 484c4c843c 修复原生启动器的并发窗口。ARM64 正式 deb 的四种启动方式遇到持锁者均返回 1；正式 Main 两次从自身读到数据目录的同一 FD 8 inode，独立进程在运行时取锁失败、正常停机后成功。运行中三个直接入口均被拒，原 config.ini 与 PID 文件指纹一致。两个临时系统正常停机，现场入口 native-launch-exclusion/cold.py。六组件原卷仍使用 fc17697eba。冻结 0/12。
+
 ## 2026-11-22 Docker 启动器同卷争用、接管和进程中断恢复
 
 ARM64 正式 Docker 启动器在同一持久卷上只允许一个 Main 持锁。后继 5be1a75 在卷占用时明确说明原因并返回 1。正常交接和 JVM 被 SIGKILL 后均沿同一卷、同一锁 inode 恢复，HTTPS 证书及 11 份文件完整指纹一致。三个实例最终均正常停放。当前入口 docker-instance-lock-handoff/successor.py cold。冻结 0/12。

@@ -8927,5 +8927,59 @@
       "addedImageBytes": 33783
     },
     "cold": "docker-instance-lock-handoff/successor.py cold"
+  },
+  "nativeLauncherInstanceExclusion": {
+    "commit": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "debSha256": "99d3a824acb9c5e65c470cacef2f33069ecc6bab2e4f739b6889664a1747eb32",
+    "preJvmCompetition": "recording exec with shipped launchers",
+    "installedRefusals": [
+      [
+        "start_kura.sh",
+        [],
+        1
+      ],
+      [
+        "start_kura.sh",
+        [
+          "--detached"
+        ],
+        1
+      ],
+      [
+        "start_kura_background.sh",
+        [],
+        1
+      ],
+      [
+        "start_kura_debug.sh",
+        [],
+        1
+      ]
+    ],
+    "first": {
+      "MainPID": "1619",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "7dcca90f41924127a4721a48473a4e03"
+    },
+    "successor": {
+      "MainPID": "2225",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "37e45d96f3fd4e8993ad5ea41975cdfb"
+    },
+    "directory": "2097233:4752",
+    "parked": [
+      "941d0506c6b43d8789e0ac1c751e43d9b51c9c89cd2ef4d2280b0e5cb224deb0",
+      "fe104b1fd9ed0b07f933357127eb57c17713ad2b7323d570381b80279c56d4d2"
+    ],
+    "testCounts": {
+      "macOS": 17,
+      "arm64": 68
+    },
+    "sixVolumeCandidateInstalled": false,
+    "cold": "native-launch-exclusion/cold.py"
   }
 }
