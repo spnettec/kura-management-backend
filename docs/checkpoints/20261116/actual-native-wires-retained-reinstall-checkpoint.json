@@ -5327,5 +5327,179 @@
       }
     },
     "normalizedOnInstall": 77
+  },
+  "independentGwtPurgeAndSkinPreservation20261121": {
+    "package": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "version": "3.0.0~git202611211325.b881a3a-1",
+      "package": "8a5e4073f9a9ab6908bc15d4a7a25115cc1ae251d1440a39f11a68803d80e421",
+      "icons": {
+        "/opt/eclipse/kura/console/skin/favicon-16x16.png": "d95c49aef87f65b5afa66439707f8a92266a6a526d61bb0a9897292a05d0a4b7",
+        "/opt/eclipse/kura/console/skin/favicon-32x32.png": "44b1ccd70a7d2d7f3e687adce88d357c269af8220416ebf61dfb2080e2388ae0",
+        "/opt/eclipse/kura/console/skin/favicon-96x96.png": "e7bcdc27085e805b1cff337a6ff5234ade281238d429d41e0a6abd6c31a97a43",
+        "/opt/eclipse/kura/console/skin/favicon.ico": "6967027d9679b5ab037bf2c0903684ce5e334c646716af8e61a100aea22048c3"
+      }
+    },
+    "afterPurge": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "pending": [
+        "/opt/eclipse/kura/console",
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "registry": {
+        "file": {
+          "sha256": "61a5fae3a41dc798a706e4d2e9ec5a17b9b37a69a153825a25139c4f7bf78200",
+          "meta": "39|7640628|640|0|990|1|28|2026-11-21 13:48:30.041745751 +0000|2026-11-21 13:48:30.044508202 +0000"
+        },
+        "lock": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "meta": "39|7632058|600|0|0|1|0|2026-11-21 13:38:57.786302220 +0000|2026-11-21 13:38:57.786302220 +0000"
+        },
+        "lines": [
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "site": {
+        "sha256": "8b9b369d611500a3ff9eabea070a62bacf9571803598560c67623232ed54a6f4",
+        "meta": "39|7640598|640|0|990|1|55|2026-11-21 13:48:28.331234645 +0000|2026-11-21 13:48:28.331234645 +0000"
+      },
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "installed",
+        "kura-management-ui": "not-installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed"
+      }
+    },
+    "afterReinstall": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "registry": {
+        "file": {
+          "sha256": "938ae1819a0b6750b3d3efec855653c6badf1f5485b6289e8bfedb365bd8fc9c",
+          "meta": "39|7640756|640|0|990|1|42|2026-11-21 13:48:36.554932645 +0000|2026-11-21 13:48:36.556363600 +0000"
+        },
+        "lock": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "meta": "39|7632058|600|0|0|1|0|2026-11-21 13:38:57.786302220 +0000|2026-11-21 13:38:57.786302220 +0000"
+        },
+        "lines": [
+          "wires",
+          "deployment",
+          "networking",
+          "management-ui"
+        ]
+      },
+      "icons": {
+        "/opt/eclipse/kura/console/skin/favicon-16x16.png": {
+          "sha256": "d95c49aef87f65b5afa66439707f8a92266a6a526d61bb0a9897292a05d0a4b7",
+          "meta": "39|7640735|640|0|990|1|1704|1980-02-01 00:00:00.000000000 +0000|2026-11-21 13:48:39.152721240 +0000"
+        },
+        "/opt/eclipse/kura/console/skin/favicon-32x32.png": {
+          "sha256": "44b1ccd70a7d2d7f3e687adce88d357c269af8220416ebf61dfb2080e2388ae0",
+          "meta": "39|7640736|640|0|990|1|2473|1980-02-01 00:00:00.000000000 +0000|2026-11-21 13:48:39.152721240 +0000"
+        },
+        "/opt/eclipse/kura/console/skin/favicon-96x96.png": {
+          "sha256": "e7bcdc27085e805b1cff337a6ff5234ade281238d429d41e0a6abd6c31a97a43",
+          "meta": "39|7640737|640|0|990|1|9767|1980-02-01 00:00:00.000000000 +0000|2026-11-21 13:48:39.152721240 +0000"
+        },
+        "/opt/eclipse/kura/console/skin/favicon.ico": {
+          "sha256": "6967027d9679b5ab037bf2c0903684ce5e334c646716af8e61a100aea22048c3",
+          "meta": "39|7640738|640|0|990|1|1150|1980-02-01 00:00:00.000000000 +0000|2026-11-21 13:48:39.152721240 +0000"
+        }
+      },
+      "services": {
+        "kura.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-management-agent-v2.service": "ActiveState=inactive\nUnitFileState=disabled\nActiveEnterTimestampMonotonic=0\nInvocationID=",
+        "kura-key-service.socket": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=441084252655\nInvocationID=4b2f6011fb5b444fb7eb0e9ed27426a0",
+        "kura-key-recovery.service": "ActiveState=active\nUnitFileState=enabled\nActiveEnterTimestampMonotonic=441084320735\nInvocationID=cca2c1fef3554b9f9badb7539b9c4541"
+      }
+    },
+    "explicitFixtureRestoration": {
+      "recoveredOrder": true,
+      "removedVerifiedNewDefaults": 4,
+      "removedFixtureAsset": true,
+      "lockInode": 7632058,
+      "registry": {
+        "file": {
+          "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+          "meta": "39|7640597|640|0|990|1|42|2026-11-21 13:45:09.702284205 +0000|2026-11-21 13:49:03.458655849 +0000"
+        },
+        "lock": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "meta": "39|7632058|600|0|0|1|0|2026-11-21 13:38:57.786302220 +0000|2026-11-21 13:38:57.786302220 +0000"
+        },
+        "lines": [
+          "management-ui",
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "personalSkinState": "original four paths absent"
+    },
+    "automaticPermissionRepairs": 12,
+    "cold": {
+      "root": "39:6611544",
+      "request": "517f1726-b284-4fb8-81af-2ce4994911c0",
+      "status": {
+        "kura-core": "6.0.0~git20261121213727.b4ba0e0-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7632058,
+      "allSigned": 721,
+      "histories": 40,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "verifiedPackageEntries": 85,
+      "absentConffiles": 4,
+      "restoredRegistryOrder": [
+        "management-ui",
+        "wires",
+        "deployment",
+        "networking"
+      ]
+    },
+    "corePreservationGap": {
+      "source": "b4ba0e06b931d50f3777420fa4543254ca8157fc",
+      "policy": "94d4fdfd5a8661a78c604e9334eeb892e4e6dc5d6c4e4f625e89bfc178325c87",
+      "cases": [
+        {
+          "action": "upgrade",
+          "callbackRestored": true,
+          "recoverySkin": false,
+          "recoveredSiteAsset": false,
+          "recoveredPackageConffile": false
+        },
+        {
+          "action": "reinstall",
+          "callbackRestored": true,
+          "recoverySkin": false,
+          "recoveredSiteAsset": false,
+          "recoveredPackageConffile": false
+        }
+      ],
+      "scope": "packaged preserve/restore helper in disposable ARM64 containers"
+    }
   }
 }

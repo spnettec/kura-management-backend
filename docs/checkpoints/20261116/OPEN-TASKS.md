@@ -1,3 +1,11 @@
+## 2026-11-21 GWT 独立 purge、原皮肤配置与 Core 保留缺口
+
+原六组件 Root `39:6611544` 对已装 GWT 单独执行 purge。开始时 dpkg 登记的四个 favicon 配置文件均缺失。测试在空的 console/skin 内放置了一份可单独识别的站点文件。GWT 清除后，其包脚本和 JAR 目录已删除，Wires、Deployment、Networking 三个 sibling 目录和站点文件逐项保持。Core 收到 console、siblings 和 libexec/addons 三条触发路径，一次处理完成。
+
+同版 GWT 重新安装时恢复四个默认图标，并把 management-ui 追加到注册表末尾。Core 触发器自动修复 12 项权限。为恢复夹具，取得原锁后逐项核对四个新默认图标的指纹、测试文件和两份注册表，再恢复原注册顺序和四个配置文件缺失的原状。该复原是现场维护步骤。四个 conffile 的 dpkg 登记与维护前完全相同。最终六包 installed、pending 为空，Main 与 agent 均 disabled、inactive，正常停机退出 0。冷读核对 85 个已装代码条目、319 份运行文件、101 个夹具对象、两份凭据及 40 笔维护的 721 份签名记录。
+
+另在一次性 ARM64 环境中，从 Core `b4ba0e06b9` 正式 deb 的 preinst、prerm、postinst 提取出相同的保留脚本。分别沿升级和保留数据重装的路径调用该脚本，维护回调在两例均恢复，console/skin 下的测试站点文件和 favicon 均未进入恢复副本。证据覆盖包内脚本，其范围不含整包 dpkg 的历史缺失归因。下一项优先修复 Core 对现有皮肤内容的保留与恢复，并核对管理员删除的配置文件、联合解包时 dpkg 新文件和已清除组件的边界。完整台账保留 12 个父项，冻结 0/12，外部延期仅原三项。 [安装回执与保留脚本覆盖](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 三个 sibling 的移除、purge 与停机后触发器续办
 
 原六组件 Root `39:6611544` 保留 GWT，将 Wires 和 Deployment 移除到 config-files，随后 purge 两包并直接 purge 已安装的 Networking。三包卸载后，Core 的 dpkg 记录仍有 siblings、libexec/addons 和 bin/firewall 三条待处理路径。正常关机后，以只读方式确认三包已清除、GWT 原目录保持、原注册表只剩 management-ui。重启后执行一次正式 dpkg 触发器，Core 回到 installed，三个已清除的组件目录保持缺席。处理前后 Main、agent、密钥 socket 和恢复服务的 systemd 活动时间及调用标识一致。
