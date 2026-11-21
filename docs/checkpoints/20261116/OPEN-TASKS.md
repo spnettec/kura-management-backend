@@ -1,3 +1,7 @@
+## 2026-11-22 已发布密钥代在五种直接启动方式下的实读
+
+Core 075ea8b733 在原 ARM64 安装 39:8285453 通过五种直接启动方式读回两代原加密快照。四种 start_kura.sh 参数组合及专用调试脚本各有独立 JVM，账号均为 kurad，有效能力均为 CAP_NET_BIND_SERVICE，writer 登记与原发布 cohort 匹配。正常停机后 42 份文件、19 份原签名记录及三个启动脚本核对一致。复用原卷和已装包。冻结 0/12。 当前停机入口为 published-generation-direct-launchers/remaining.py cold。
+
 ## 2026-11-22 已发布密钥代的保留重装与两代快照读回
 
 Core 075ea8b733 的 ARM64 保留重装在独立 Root 39:8285453 通过。解包后正常停机，dpkg 创建的空目录由包自行恢复为链接。沿原移除编号 448acb95-e358-4c69-af41-f1ff27c25a9d 验过 19 条签名记录，三个启动脚本与发布时一致。正式 Main 读回两代加密快照 24101 和 24102，随后正常停放。原半配置卷仍在原编号下停放。冻结 0/12。 见 published-generation-current-reinstall/HANDOFF.md。

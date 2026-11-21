@@ -8325,5 +8325,49 @@
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-current-reinstall/HANDOFF.md",
     "pending": "provider/launcher and eventual purge on the retained installed Root",
     "originalHalfConfiguredRoot": "39:8195025"
+  },
+  "publishedGenerationDirectLaunchers": {
+    "root": "39:8285453",
+    "source": "075ea8b7338a67a96379414c8f616cf6ec3ad04d",
+    "modes": {
+      "foreground": {
+        "pid": "495",
+        "invocation": "847ff87502f54a0f915ba553be075253",
+        "debug": false
+      },
+      "debug": {
+        "pid": "1225",
+        "invocation": "b1ac5a94b17d46d9a54472e27edc4abb",
+        "debug": true
+      },
+      "detached-debug": {
+        "pid": "2155",
+        "invocation": "0d764956eaef4c6a8911939386face15",
+        "debug": true
+      },
+      "detached": {
+        "pid": "746",
+        "invocation": "f83e6a05a4c44ccf9f41013512239a62",
+        "debug": false
+      },
+      "foreground-debug": {
+        "pid": "1155",
+        "invocation": "b329e690cd2b4fd88920fd9c4dbc26ab",
+        "debug": true
+      }
+    },
+    "snapshots": [
+      "1795293880824",
+      "24101",
+      "1795293891353",
+      "24102"
+    ],
+    "uid": 997,
+    "effectiveCapabilities": "0x400",
+    "noNewPrivileges": 1,
+    "parked": true,
+    "originalFiles": 42,
+    "originalMaintenancePhases": 19,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-direct-launchers/HANDOFF.md"
   }
 }
