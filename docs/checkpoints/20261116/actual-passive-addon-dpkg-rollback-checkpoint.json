@@ -1412,5 +1412,173 @@
       "restoredOriginalSettings": true
     },
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/cloud-native-removal/HANDOFF.md"
+  },
+  "pairedCloudSettingPublication20261121": {
+    "source": "d969371ac49e0172f0147cafdc8e2cc70c8c2cb4",
+    "version": "3.0.0~git202611211421.d969371-1",
+    "packageSha256": "f77df9355da3b82c0dc9abf0019e6377661dd3ef2c833cde26c9073ede97639e",
+    "previous": "e683e71da9a88af4fcf12e864978d6888d48bb28",
+    "before": {
+      "existing-before-publish": {
+        "pendingFiles": 1,
+        "remainingFiles": 1,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": false
+      },
+      "existing-after-publish": {
+        "pendingFiles": 0,
+        "remainingFiles": 0,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": true
+      },
+      "absent-before-publish": {
+        "pendingFiles": 1,
+        "remainingFiles": 1,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": false
+      },
+      "absent-after-publish": {
+        "pendingFiles": 0,
+        "remainingFiles": 0,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": true
+      }
+    },
+    "after": {
+      "existing-before-publish": {
+        "pendingFiles": 1,
+        "remainingFiles": 0,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": false
+      },
+      "existing-after-publish": {
+        "pendingFiles": 0,
+        "remainingFiles": 0,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": true
+      },
+      "absent-before-publish": {
+        "pendingFiles": 1,
+        "remainingFiles": 0,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": false
+      },
+      "absent-after-publish": {
+        "pendingFiles": 0,
+        "remainingFiles": 0,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": true
+      }
+    },
+    "shortWritesAndConflicts": {
+      "existing-before-publish": {
+        "pendingFiles": 1,
+        "remainingFiles": 0,
+        "conflictPreserved": true,
+        "partialFileAdopted": true,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": false
+      },
+      "existing-after-publish": {
+        "pendingFiles": 0,
+        "remainingFiles": 0,
+        "conflictPreserved": false,
+        "partialFileAdopted": false,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": true
+      },
+      "absent-before-publish": {
+        "pendingFiles": 1,
+        "remainingFiles": 0,
+        "conflictPreserved": true,
+        "partialFileAdopted": true,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": false
+      },
+      "absent-after-publish": {
+        "pendingFiles": 0,
+        "remainingFiles": 0,
+        "conflictPreserved": false,
+        "partialFileAdopted": false,
+        "desiredValueExact": true,
+        "publishedIdentityPreserved": true
+      }
+    },
+    "fieldInstall": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed",
+        "kura-cloud": "half-configured"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 318,
+      "fenced": false,
+      "registeredCloud": false,
+      "pending": [
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "originalSettingsPrefix": true,
+      "stagedCount": 1
+    },
+    "fieldRemove": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed",
+        "kura-cloud": "half-installed"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 318,
+      "fenced": false,
+      "registeredCloud": false,
+      "pending": [
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "originalSettingsPrefix": true,
+      "stagedCount": 0
+    },
+    "final": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "registeredCloud": false,
+      "pending": [],
+      "originalSettingsPrefix": true,
+      "restoredOriginalSettings": true,
+      "stagedCount": 0
+    },
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/cloud-option-publication/HANDOFF.md"
   }
 }
