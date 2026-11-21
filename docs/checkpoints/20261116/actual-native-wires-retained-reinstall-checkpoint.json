@@ -8283,5 +8283,21 @@
     "actorFiles": 4,
     "stopped": 2,
     "frozen": "0/12"
+  },
+  "clockPendingPurgeReinstall": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/clock-pending-purge-reinstall",
+    "root": "2097227:1",
+    "container": "fb8bb3bd108fabac1ca9fe65f5317cb6fbe1c9a2a17d2ba7d3c78d5ce8dee966",
+    "operation": "47c340de-41a5-4bc8-aa7e-5278c0a6dfe7",
+    "coreMaintenance": "03e8e82f-845c-4cba-aa28-1e32cd11975d",
+    "clockPurpose": "fa5f565b-9782-45f2-a3de-cb0ff96f5942",
+    "archiveBytes": 944,
+    "restoredSenderFiles": 3,
+    "firstMain": "1907",
+    "restoredMain": "5387",
+    "completed": "7a2634092eb1abdc5e6fd2d3c0cf871daec3389727452c1a3f4b09ec2681278c",
+    "exitCode": 0,
+    "volumes": 0,
+    "frozen": "0/12"
   }
 }

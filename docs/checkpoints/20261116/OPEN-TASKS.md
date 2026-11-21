@@ -1,3 +1,7 @@
+## 2026-11-22 Chrony 调用方的原 pending 跨 Core purge 和重装
+
+单独 ARM64 安装在 Chrony STOP 的 actor 回执已为 APPLIED、调用方仍有 pending 和 issued 时实际 remove、purge、unpack、configure。944 字节私有档跨 purge 保持原 inode 和摘要，重装按原 Core 维护号恢复三份调用方文件。正式 Main 沿原时钟编号完成结算，actor 仍只有一笔操作，系统正常停机。冻结 0/12。 详见 clock-pending-purge-reinstall/HANDOFF.md。
+
 ## 2026-11-22 正式 Main 持久化 Chrony STOP 原回执
 
 Core 075ea8b733 已由三个正式 ARM64 Main 续办一次 Chrony STOP。Root actor 在 d3cf526a-d20c-4e09-97a0-e4197aa54676 写入 APPLIED/CHRONY_STOPPED。第一进程遇到本地完成目录权限拒绝，第二进程已落盘完成回执、pending 文件仍为挂载点，第三进程核对原回执后清除 pending。本地完成 inode 4974 和四份 actor 文件指纹相同，Chrony 从未启动。冻结 0/12。 详见 chrony-main-sender-recovery/HANDOFF.md。
