@@ -9051,5 +9051,32 @@
     "deniedMain": "4071",
     "reason": "Bad_CertificateRevoked",
     "cold": "opcua-server-crl/cold.py"
+  },
+  "coreReactor484c4c8": {
+    "source": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "tree": "6c7f4ec62fedf4d23da132eb9ef15965bda69fd4",
+    "debSha256": "99d3a824acb9c5e65c470cacef2f33069ecc6bab2e4f739b6889664a1747eb32",
+    "evidenceSha256": "4aebf3639ba28a5a4ba20a145e1af9202e9b1f59d5134944d07b9928c30b8efc",
+    "resumedContainer": "95d02fdc38e0b0bbeeaf9f872c88205e7d7c9afe02df34aef0673f0c3ea2925a",
+    "modules": 82,
+    "testReports": 259,
+    "tests": {
+      "tests": 2161,
+      "passed": 2161,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "equinoxCases": 68,
+    "observedBundleDigests": 68,
+    "corePlugins": 41,
+    "matchedClasses": 1208,
+    "coreManifestDifferences": [
+      "Bundle-Version qualifier"
+    ],
+    "allPluginPaths": 217,
+    "otherPluginPaths": 176,
+    "distinctOtherJars": 175,
+    "cold": "core-reactor-484c4c8/cold.py"
   }
 }
