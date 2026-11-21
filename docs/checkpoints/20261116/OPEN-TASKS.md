@@ -1,3 +1,13 @@
+## 2026-11-22 Core 移除后保留重装，48001 沿原目录读回 COMPLETED
+
+沿上一轮的 Debian ARM64 原卷和容器续办，Root 为 `39:8007036`。先装入 Core `8894de2ca2`，用发行包核对四个实装 dpkg 钩子。因 Debian 包依赖先移除 Deployment，然后移除 Core。dpkg 返回成功，Core 进入 `config-files`。移除维护编号为 `753e06e8-3932-4a1d-ba7b-39ec7f7f5f95`。原 packages 目录在 Core 安装文件系统的私有目录里保持 `39:8011751`，常规保留副本为 `39:8037268`。业务 DP、注册表、锁和完成回执的文件身份、内容与时间戳逐一匹配。
+
+沿这一笔移除围栏执行原生 unpack 和 configure，Core 依次为 unpacked、installed。配置恢复了原 packages 目录，随后重新安装原 Deployment `1b043a4`。显式启动正式 Main 后，只读观察组件从已注册的 handler 得到 `GET install/result 48001 COMPLETED`，并从 Felix 查到原业务包 `fixture.history.sealed`。48001 仍只有首次安装的一次派发。
+
+Main 最后为 disabled/inactive，系统正常退出 0。冷查确认两包均为 installed、原维护编号已进入历史、围栏和私有保管目录已清除。四个业务文件及两份凭据的摘要、inode、属主、权限、链接数及时间戳均与上一轮升级前的基线吻合。
+
+ARM64 上 78 项定向测试通过，涵盖交换目录后注入中断、按原维护号续办，以及 purge 时拒绝替换目录。本现场执行了正常移除和保留重装。原生 dpkg 在上述交接点中断后的恢复、带完成业务回执的原生 purge 和非标准注册表布局仍待验证。停放的 48001 保留供原编号只读查询。原 7fd 维持正常停机和 41 输入／16 回执。12 父项冻结闭环 0/12。外部延期仍限真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 Core 原位升级后，正式 Main 沿原目录读回已完成的部署任务
 
 在 Debian ARM64 的正式 Main 上，安装任务 `48001` 只提交一次。原生 dpkg 将 Core 从 `ac9b8bb` 升到 `76f0c6b`，Deployment 为 `1b043a4`。解包时，Root 为 `39:8007036`，原 packages 目录为 `39:8011751`，暂存副本为 `39:8016294`。配置完成后，正式 packages 路径仍指向原目录。显式启动新 Main 后，原 handler 返回 `GET install/result 48001 COMPLETED`，Felix 查到原业务包 `fixture.history.sealed`。
