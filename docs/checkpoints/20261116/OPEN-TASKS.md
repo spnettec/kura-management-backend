@@ -1,3 +1,9 @@
+## 2026-11-21 连接状态规则经新旧发行包交接，原六组件升级到 Core b1c664aaeb
+
+防火墙 worker 0.1.9 保留 Java 规则中 state、conntrack 及取反的原意。ARM64 发行件在 IPv4 和 IPv6 上写入后，iptables-save 与 ip6tables-save 均输出完整 filter 表，六条源规则逐条通过 -C。另在同一隔离 Root 用 0.1.8 写入两族规则，换 0.1.9 后按各自原编号取回 APPLIED，再各用一条内核命令改为新状态条件。新规则可导出和匹配，原四份意图和结果文件的摘要一致。ARM64 Rust 工作区 807 项通过，50 项忽略。
+
+六组件原 Root `39:6611544` 已安装新 Core。正式 dpkg 升级返回 0，审计为空。冷读确认六包、SQLCipher、82 份受保护文件、两份凭据和注册表。旧锁随 framework 重建移除，原 inode 无持锁者。续接入口为 `main-firewall-xt-state/six/parked-readback.py`。前版正式 Main 已有转发正向记录；复用该临时安装时 Root 由 `2097164:7248502` 变为 `2097166:7248502`，升级前即拒绝，未查原编号，已正常停机。新版正式 Main 的正向调用仍待验。冻结 0/12。[双版本、原回执及冷读](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 普通 Main 的受限转发和原回执跨 Networking 包维护
 
 ARM64 实装 Core `668c7c596e`、Networking `71f30b6`、worker 源 `1200e75`。只含回环接口的独立 Root `2097164:7248502` 上，正式 Main 以 kurad 经 systemd socket 发布两条 UDP 转发规则。内核先接受规则，再从固定控制文件读回 IPv4 为 1，IPv6 保持 0。原号为 `af4cfded-7405-49a3-b558-8d9ff1389bbc`。临时规则移除后，原保存文件摘要恢复。Networking 实际 remove、purge、重装均成功，每次都用原号查回 APPLIED；14 份历史文件及两份凭据核对一致。Main 的有效能力掩码仍为 0x1400，NNP 为 1。原六组件已升级两包，冷读入口为 `main-firewall-forwarding/six/parked-readback.py`。

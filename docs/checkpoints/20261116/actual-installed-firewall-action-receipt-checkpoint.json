@@ -2234,5 +2234,202 @@
       "bootAndOwnership": 15
     },
     "xtables": "iptables -S and iptables-save could not represent the installed forwarding chain on iptables 1.8.11. Native kernel readback verified the two rules before removal. Isolated comparison shows native ct state causes this diagnostic; original iptables uses xt conntrack revision 3."
+  },
+  "ordinaryMainXtablesState": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-xt-state",
+    "core": {
+      "source": "b1c664aaeba97c1b6b01d2a679fcd18919f38c52",
+      "tree": "eecf9036fe39666c6f5b3140af4087441e7416d1",
+      "version": "6.0.0~git20261121053316.b1c664a-1",
+      "bytes": 205015828,
+      "sha256": "8c6883471f59fada2054c048e7f526a7cee8ed7c0e9578f2b3299aae0df776a4",
+      "native": {
+        "source": "0625c4b03159d6fc98e255896630b1fc200b73b66c6e974a15639dc50a122206",
+        "revision": "4d1e929c294cc69295b55f69157d124b3d24fd43",
+        "architecture": "arm64",
+        "sourceVerifiedByExecutable": true,
+        "sha256": "21266279ad43ed45816e818c8c088de18c64bfc9bd512885d0877cae677c75f6"
+      }
+    },
+    "networking": "71f30b6b18af9211a9fcbc4a672b20700737b748",
+    "previousProductionMain": "af4cfded-7405-49a3-b558-8d9ff1389bbc",
+    "workerProtocol": 2,
+    "ordinaryJavaRules": "xt_conntrack_mtinfo3 revision 3 preserves state/conntrack and negation. General agent publication retains native encoding.",
+    "packagedKernel": {
+      "ipv4-install-state": {
+        "id": "7cffb26a-4ccd-4912-b907-1d3bdddda380",
+        "state": "APPLIED",
+        "commands": 3,
+        "readback": [
+          1,
+          0
+        ],
+        "sameIdReceipt": true,
+        "rendered": [
+          "-A forward-kura-ipf -s 127.0.0.8/32 -i lo -o lo -p udp -m udp -j ACCEPT",
+          "-A forward-kura-ipf -s 127.0.0.8/32 -i lo -o lo -p udp -m state --state RELATED,ESTABLISHED -j ACCEPT",
+          "-A forward-kura-ipf -s 127.0.0.8/32 -i lo -o lo -p udp -m conntrack ! --ctstate INVALID,NEW -j ACCEPT"
+        ]
+      },
+      "ipv4-restore-state": {
+        "id": "09609594-4590-4ae4-b3d2-6b6cb3999ddc",
+        "state": "APPLIED",
+        "commands": 3,
+        "readback": [
+          1,
+          0
+        ],
+        "sameIdReceipt": true
+      },
+      "ipv6-install-state": {
+        "id": "14f4d2a4-45b3-48b5-b6c5-38b5c88aaaee",
+        "state": "APPLIED",
+        "commands": 3,
+        "readback": [
+          1,
+          1
+        ],
+        "sameIdReceipt": true,
+        "rendered": [
+          "-A forward-kura-ipf -s fd00::8/128 -i lo -o lo -p udp -m udp -j ACCEPT",
+          "-A forward-kura-ipf -s fd00::8/128 -i lo -o lo -p udp -m state --state RELATED,ESTABLISHED -j ACCEPT",
+          "-A forward-kura-ipf -s fd00::8/128 -i lo -o lo -p udp -m conntrack ! --ctstate INVALID,NEW -j ACCEPT"
+        ]
+      },
+      "ipv6-restore-state": {
+        "id": "48233345-7707-4a7a-9032-aca09a20c34b",
+        "state": "APPLIED",
+        "commands": 3,
+        "readback": [
+          1,
+          1
+        ],
+        "sameIdReceipt": true
+      }
+    },
+    "oldToNewSameRoot": {
+      "root": "00edd15fef0fa4af0802a9236b0d6ce4eebfcbe1036915be338638bfcb321381",
+      "oldWorker": "0.1.8",
+      "currentWorker": "0.1.9",
+      "originalFilesExact": 4,
+      "cases": {
+        "prior-ipv4": {
+          "requestSha256": "bfc43b5c9242c4039714dffd558a9a6355b85fccbbbc27548046bc93f6e48719",
+          "id": "194809e5-1dcd-4bb1-837c-156dec677ba5",
+          "state": "APPLIED",
+          "commands": 1,
+          "readback": [
+            1,
+            0
+          ],
+          "sameIdReceipt": true
+        },
+        "prior-ipv6": {
+          "requestSha256": "1975f2fc8975301121402e9fed19f20dd32cec7f68ebc5b2cb3bc3342921c24d",
+          "id": "e3ba7b41-e0f4-4c54-8923-3775e5d6a0d9",
+          "state": "APPLIED",
+          "commands": 1,
+          "readback": [
+            1,
+            1
+          ],
+          "sameIdReceipt": true
+        },
+        "amended-ipv4": {
+          "requestSha256": "727543ce8991c7ff7356345dacbead892b268e7733341a3d62eecd4f1b0df7fb",
+          "id": "495e46f8-c6f3-4f16-92d9-3ce203f1df90",
+          "state": "APPLIED",
+          "commands": 1,
+          "readback": [
+            1,
+            1
+          ],
+          "sameIdReceipt": true
+        },
+        "amended-ipv6": {
+          "requestSha256": "0e6dcdb230ce799b9ae318a6be232b8d9af8607ef802468e3ec9a684b1567f9f",
+          "id": "d82c7525-d248-4112-ae7a-78f9e4b03b98",
+          "state": "APPLIED",
+          "commands": 1,
+          "readback": [
+            1,
+            1
+          ],
+          "sameIdReceipt": true
+        }
+      }
+    },
+    "sixVersions": {
+      "kura-core": "6.0.0~git20261121053316.b1c664a-1",
+      "kura-networking": "3.0.0~git202611210524.71f30b6-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "sixCold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 82,
+      "credentialsExact": 2,
+      "registryExact": true,
+      "retiredLockAbsent": true,
+      "originalSubmitWithdrawn": true
+    },
+    "sixReadback": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-xt-state/six/parked-readback.py",
+    "sixCoreUpgradeExit": 0,
+    "retiredLock": {
+      "original": [
+        39,
+        7273063
+      ],
+      "kernelLocks": []
+    },
+    "refusedOldMainRoot": {
+      "original": "2097164:7248502",
+      "observed": "2097166:7248502",
+      "mainPid": 0,
+      "upgraded": false,
+      "queryIssued": false,
+      "exitCode": 0
+    },
+    "tests": {
+      "rustWorkspacePassed": 807,
+      "failed": 0,
+      "ignored": 50
+    },
+    "storage": {
+      "count": 48,
+      "bytes": 9810828740,
+      "lastTwoBytes": 410028664,
+      "started": "2026-11-21T13:37:26.332963+08:00",
+      "finished": "2026-11-21T13:40:21.134459+08:00",
+      "directoriesKiB": {
+        ".management-close-20261116": 255494720,
+        "kura-management-console/target": 76913248,
+        ".": 348204912
+      },
+      "sharedRustBuildKiB": {
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug": 5368128,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/release": 618536,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-cargo": 570328
+      },
+      "debugChildrenKiB": {
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug/.fingerprint": 10136,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug/incremental": 2025736,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug/examples": 0,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug/deps": 3097088,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug/build": 202216,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug": 5368128
+      },
+      "previousSharedRustKiB": {
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/debug": 588224,
+        ".management-close-20261116/configuration-capability-20261120/linux-agent-target/release": 508688
+      }
+    },
+    "remaining": "The 0.1.9 worker is installed on the six-component Root. A successful Java Main write with this precise worker release is unverified. The temporary Main site rejected its changed root device before any operation.",
+    "frozen": "0/12"
   }
 }

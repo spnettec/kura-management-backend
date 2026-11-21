@@ -6,53 +6,11 @@
 
 **有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
 
-11 月 21 日 12:15–12:17（上海时间），宿主工作空间实测 **350.66 GB**。历史工作目录占 **255.70 GB**，中心的 `target` 占 **78.76 GB**，合计 **95.4%**。与 10:30 的同口径读数相比，工作空间增加 3.70 GB，中心 `target` 的读数相同。Core 构建目录的 ARM64 deb 从 38 份、7.76 GB 增至 42 份、8.58 GB，解释了其中约 0.82 GB。计量采用目录占用，deb 采用文件长度，Parallels 虚拟磁盘另计。[12:17 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/storage.json)
+截至 11 月 21 日 13:40，宿主工作区目录占 **356.56 GB**。历史工作目录占 **261.63 GB**，中心仓的 target 占 **78.76 GB**，两处合计 **95.5%**。单个 Core 打包目录有 48 个 ARM64 deb，文件长度合计 9.81 GB，本次两代完整包共 410.03 MB。宿主目录使用 du 计量，Parallels 虚机另计。[目录与包实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-firewall-xt-state/storage.json)
 
-12:44 再数同一 Core 打包目录，已有 44 个 ARM64 deb，文件长度合计 8,990,793,594 字节。最新两份完整包共 409,999,816 字节。两轮修复共用已有 worker 和 VM，分别在原六组件卷和防火墙专用安装验证。后者通过只读挂载使用 deb，冷停机时占用 1,161,408 KiB。这里没有重测整个宿主工作空间。[两次实装、版本和冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+共享 ARM64 Cargo 的 debug 目录现占 5.50 GB，相对较早的同目录读数 0.60 GB 增加 4.89 GB。12:17 到 13:40 的工作区目录读数增加 5.90 GB，同期 Core 完整包从 42 份增到 48 份，新增文件长度 1.23 GB。Cargo 的早次读数取自另一检查点，不能据此把两个增量相加。[Cargo 原读数](../../../.management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/storage.json) · [本次分类实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-firewall-xt-state/storage.json)
 
-随后修复了从注释误判转发请求的问题。只重建两个 Networking deb，文件长度共 9,864,350 字节，复用现有 Core。同一组站点输入在 ARM64 上分别运行旧、新启动器，旧版将两族转发都开启，修正后只有含真实转发链规则的 IPv6 开启。Linux 文档说明改变 IPv4 的全局转发开关会调整主机与路由器的默认参数。[新旧包与内核读回](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) · [Linux 内核转发参数](https://docs.kernel.org/networking/ip-sysctl.html)
-
-12 个 sibling 仓需要各自携带安装和卸载用的注册表维护脚本，同一项权限修复因此涉及 13 个 deb。它们的总长度是 259,283,908 字节，比上一组只多 5,034 字节。逐包解包后，仅 Wires 和 Position 各有一个额外变化的 JAR，差异都是 OSGi 版本后缀。此次直接复用已构建的 Core 完成原六组件升级，八个可选包的旧、新发行件也以只读方式挂入同一测试环境。[两组发行件与实装对照](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
-
-最后一个 sibling 卸载时，dpkg 会按数据库中的目录归属处理安装链接。真实 Core 首装、八包联合移除，以及 Core 自身正常和中断卸载共用了一个 ARM64 环境。此次新增一个 205,003,262 字节的 Core deb；13 个输入包共 300,839,316 字节，以只读方式挂载，其中已包括该 Core 包。停机时容器可写层为 32,163,461 字节。三组数字的口径不同，不能相加作为宿主净增量。[包归属、卸载回执与计量](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
-
-在已有 Networking 的安装上，Core 即使把公共目录写进了 deb，条目的顺序也会影响升级。前版先遇到暂时悬空的旧链接，被 dpkg 拒绝。仅调整打包顺序后，修正版比前版小 42 字节，但仍需一个 205,003,220 字节的完整包。修正包先在与失败现场相同版本的前任上完成升级，再用于原六组件卷。当前 Core 打包目录有 46 份 ARM64 deb，逻辑长度合计 9,400,800,076 字节；此处未重新测量整个工作空间。失败的 Parallels 安装保留其原始维护记录。[升级现场及两份正式包](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
-
-普通 Main 的转发写入复用了既有 socket、两次批准校验和原操作日志。新协议同时核对网络命名空间、协议族和开关原值。隔离安装完成正向调用后又用于 Networking 移除、purge、重装，三次均从该 Root 查回同一结果。该安装正常停机时容器可写层为 262,439,298 字节；新 Core 包、两个 Networking 变体和共享编译缓存分别计量。[实装与维护数据](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
-
-防火墙这一轮说明了两种不同的工期来源。正式 Main 遇到现场实际保存的洪泛防护规则，原 worker 在批准前拒绝。补齐 TCP flags、MSS 和 IPv6 扩展头后，ARM64 内核收下了针对这些规则的变更。随后发现 Cargo 复用了旧二进制，即使源归档已更新。构建现在核对成品自报的源码摘要。这些问题都影响交付。另一部分工期和磁盘来自为每个中间改动生成完整的约 205 MB Core 包、再逐轮安装。可将同一交付的修改合并组包，日常验证直接运行变更的安装钩子或只构建 worker，到真实跨组件验收时再保留完整包。[实际调用与发行件](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
-
-当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)
-
-获准用于防火墙验收的另一临时安装占 1,161,212 KiB。它复用同一份基础镜像和只读 deb，实际安装了 Core 和标准 Networking。正式 Main 通过 OSGi 完成一次仅限回环的规则增加和移除，两笔均有内核回执。新安装与前一中断现场在 Parallels 客体内合计约 2.38 GB。计量是客体目录占用，PVM 在宿主的实际分配量另计。[正向回执、六表及冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
-
-10:30 的宿主目录计量为 **346.96 GB**，其中历史工作目录 **252.85 GB**、中心 target **78.76 GB**，两者占 95.6%。较 09:58 增加 259.7 MB；同期保留的 Core ARM64 包从 37 份增至 38 份。这一轮防火墙发布只重建两个 Networking 变体，复用同一 ARM64 镜像和六组件卷。[10:30 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-configuration-publication/storage.json)
-
-09:58 的目录复测为 **346.70 GB**，其中历史工作目录 **252.59 GB**、中心 target **78.76 GB**，合计 95.6%。较 09:40 增加 227.0 MB。两个读权限实现随原包交付，本次另存一个 204.31 MB 的 Core 完整包。37 份 Core ARM64 deb 的文件长度合计 7.56 GB。上述统计按宿主目录计量，虚拟机卷另计。[最新目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/storage.json)
-
-本轮发现，一份 ConfigAdmin 配置原先分三类先删除再追加，遇到 NAT 拒绝时已经修改其他规则并发出了变更通知。两种地址族都复现了四次发布。现在先准备完整配置，转发开关不满足时执行零条内核命令，成功时每族发布一次。一次 Java 发布在当前后端仍涉及多条命令，跨表提交的中断恢复仍有单独成本。[配置与内核实测](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
-
-11 月 21 日 10:20 在原六组件卷测得，正式 Main 的调用线程撤去 NET_ADMIN 后，仍可通过独立读取服务核对 IPv4、IPv6 各三张内核表。服务和调用线程的有效能力分别为 0x1000 和 0x0400。内核规则发布仍走旧路径。这次沿用同一卷和 Maven 缓存；核对最终 Core deb 后移除了本轮未安装的中间包，逻辑长度 204.37 MB。[实装读数与包记录](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
-
-Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普通 Main 遇到目录拒绝时向本机只读服务查询两个固定标记；服务核对正式 Main 并返回当时的存在性。原卷保留 0700，三次查询共 33 ms。这个进程使用 root 身份遍历原目录，Linux 能力集为空。内核防火墙的读写权限仍在旧执行路径上。[正式 Main 实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/reader.json)
-
-11 月 21 日的两种 Networking 发行包复用同一份防火墙 JAR，共 9.81 MB。两个 ARM64 网络命名空间也复用同一镜像。实测发现旧代码清空一族规则时重复发布五次，现已合并为一次。原六组件只升级标准包，正式 Main 又暴露出一个跨组件约定：Core 把 /etc/kura 设为 root 专属的 0700，Networking 却要求普通 JVM 能判断其下两个归属标记。这使独立运行的 Main 在修改规则前拒绝操作。[发行件](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/releases.json) · [原卷权限实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/ownership-refusal.json)
-
-11 月 21 日 09:40 完成的目录复测为 **346.48 GB**，其中历史工作目录 **252.37 GB**、中心 target **78.76 GB**，两者合计 95.6%。Core 打包目录保留 36 个 ARM64 deb，文件长度合计 7.35 GB。这轮只构建有代码变动的 GWT 和 Networking，两个新 deb 共 43.52 MB。SQLCipher 联合恢复和 Main 权限实测均复用了现有包和原安装卷。[目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-net-admin-preflight/storage.json)
-
-11 月 21 日 09:19 起按同一口径复测，工作区 **346.43 GB**，其中历史工作目录 **252.32 GB**，中心 target **78.76 GB**。Core 打包目录有 36 个 ARM64 deb，文件长度合计 7.35 GB。较 07:06 增加 5 个包，共 1.02 GB；同期工作区目录计量增加 1.07 GB。已登录 HTTP 下载复用了安装包和测试卷。修复旧 PID 接管后另建了一个 204.24 MB 的 Core 包。宿主卷当时可用 141.79 GB，APFS 共享块和虚拟机卷分别计量。[目录与发行件复测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-pid-handover/storage.json)
-
-11 月 21 日 07:06 起按工作区目录计量，工作区为 **345.36 GB**，较 05:08 增加 1.48 GB。历史工作目录占 251.25 GB，中心 target 单独复测为 78.76 GB，两者约占 95.6%。Core 打包目录现有 31 个 ARM64 deb，共 6.33 GB。较上次多出的 7 个包合计 1.43 GB。两种计量数值接近，APFS 共享块仍影响实际物理增长。本轮 Linux 编译容器为普通构建用户复制了 0.67 GB 缓存，源码与临时缓存已随容器回收，六组件卷另行保留。Docker 的销毁事件已核对。清理程序未及时保存可写层总量，因此无法量化此次容器实际释放的空间。[目录与发行包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/storage.json) · [临时构建回收记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/builder-removed.json)
-
-11 月 21 日 05:08 前后，工作区按 `du -k` 实测 **343.88 GB**，宿主可用 **147.51 GB**。其中历史工作目录 **249.77 GB**，中心仓的 `target` **78.76 GB**，两者合计约 **95.5%**。中心 `target` 中，网络权限与注册现场占 49.12 GB，上游逻辑同步目录占 17.73 GB。当时 Core 打包目录留有 24 个 ARM64 deb，文件长度合计 4.90 GB。APFS 可共享数据块，上述目录计量不能直接换算为可释放空间。[本次容量明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json)
-
-这次还定位到一种可以避免的重组装。API、Crypto 和 Configuration 三个 JAR 在运行时与冷恢复目录的内容逐项相同，只有清单中的 OSGi `Bundle-Version` 不同。例如 API 的构建后缀分别为 `202611202101` 和 `202611202040`。打包正确拒绝该组输入，从同一缓存重建恢复工具后通过。正式 `build-all.sh` 会为一次构建固定 `KURA_BUILD_QUALIFIER`。拆开运行 Maven 时，同一批候选也应显式传递相同的 `-Dkura.build.qualifier`，并让运行时和恢复工具使用同一批依赖。从当前 Git 只取 API 模块和构建父 POM，用同一个固定后缀连续执行两次干净打包，606 个文件条目以及整个 JAR 的 SHA-256 均相同。该验证复用了 Maven 缓存，临时源码和编译目录随即回收。[两次构建摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json) · [实际差异](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json) · [正式构建入口](../../../.management-close-20261116/core-rtc-hotplug-20261120/wip-core/build-all.sh)
-
-这次防火墙修复复用系统已安装的 `iptables-restore` 做语法核验。发行包生成的 49 条 IPv4、85 条 IPv6 规则均能装入隔离内核；使用系统的 nft 文本翻译器时，25 条 ICMPv6 规则只留下了注释，其中有针对具体类型、代码和链路本地来源的限制。这次发现促成了后面的共享规则库。这轮只构建 Networking 和 firewall-only 两个 deb，合计约 9.83 MB，复用了原 Core 包、原 VM 和原六组件卷。[规则逐项对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/kernel-observation.json) · [两份发行包](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/releases.json)
-
-原布局的防火墙解析和内核规则编码现已抽为一个 Rust 库，agent 和独立调用方共用。Linux ARM64 实测将 134 条规则放入一个 40,848 字节的事务，其中 40 个 ICMP 匹配的类型、代码范围和取反位都从内核读回。最后一条规则被拒绝时，六张表一起保持原值。独立读取程序随后从混有现场规则的六张表找回了全部原句柄。它与 agent 共用的 Rust 源码包是 21,944 字节，ARM64 能单用这个包离线构建。原六组件卷升级使用的 agent deb 为 7,048,836 字节。正式 Main 接入写服务和按原操作编号恢复仍需实装。[规则归属及源码包](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) · [内核接受回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/kernel-valid.json) · [内核拒绝回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/kernel-invalid.json)
-
-这轮两次实际升级复用同一六组件卷，各保留约 7.0 MB 的 agent 安装包。构建现场的 macOS debug 目录为 594 MiB，Linux debug 与 release 分别为 574 MiB、497 MiB。它们供多轮构建共用。这解释了为什么小范围的规则变更也会伴随较大的目录占用。两份 deb 的文件长度已知，APFS 独占块及本轮缓存净增量没有单独计量。[本轮目录和包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/storage.json)
+**可以压缩的是重复组装、独立缓存和逐场景重建安装的成本。** 目前三个主要部署位置各有明确职责，中心管多网关，网关 Core 和本地控制台可独立运行，可选 agent 负责远程通道。已派发写操作必须能在原安装查回结果，这项约束影响停机、升级和恢复的验收安排。此次沿用原六组件卷升级 Core，并把旧、新 worker 的 IPv4、IPv6 交接放在一次隔离内核测试中。临时安装的根设备号改变时在升级前被拒绝；这类必须跨停机核对的场景，需要能保持根目录身份的安装介质。[六组件、原回执与升级](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 ## 工期花在哪里
 
@@ -81,7 +39,7 @@ Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普
 
 从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。当时的 Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。后续 b1b8060be2 已在同一安装撤去 DAC_OVERRIDE。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
 
-Main 目前保留的 NET_ADMIN 有一个已实测的依赖。在 agent 停用的原六组件安装上，旧 IPv4 和 IPv6 防火墙实现通过 Core 注册的执行服务检查内核表。有 NET_ADMIN 时两族检查通过；只从观察线程撤去该能力后，子进程也失去它，两族均返回 IO_ERROR，六份内核表摘要前后一致。后续撤权需把独立运行时的这条路径连同规则发布一起迁出 Main。此次沿用已安装包。[安装态权限对照](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+普通 Main 在 Core 668c7c596e 上以 kurad、NNP=1 运行，通过本机 socket 发布转发规则并读回内核结果。调用线程撤去 NET_ADMIN 后，通过独立服务读取两族内核表也已有实测。主进程仍持有 NET_ADMIN 与 NET_BIND_SERVICE。Core b1c664aaeb 进一步修正了旧工具的连接状态规则编码，六组件已装入该版本。该版本的两族写入和升级验证使用了发行包中的 worker；正式 Main 的那笔成功操作属于前版。[读表、写入与升级范围](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 进一步实测表明，Main 中单个线程撤去绕过文件权限的能力后，仍能读取原业务包，并让日志 broker 导出 23,647 字节。冷启动还有具体的文件权限依赖：PID 目标在 root 所有的 /run，已有三个日志可由 kurad 续写，但该账号不能在 /var/log 创建首份日志或新的归档。现已修复两个后台启动入口在 PID 文件打不开时仍派生 JVM 的问题。整项服务撤权还需要覆盖首次创建、滚动归档及 JVM 错误转储。权限实测复用了已装包；随后为两个启动器打包一次，耗时 8.478 秒，新 deb 为 204.24 MB。此时 Core 目录内共 32 个 ARM64 deb，合计 6.54 GB。[权限与启动器实装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
@@ -224,3 +182,53 @@ jdeb 在模块的 target 中写入 Debian 发行清单。临时输出若命名�
 这次复用了已有 Parallels VM 和六组件卷。Linux 的两个设备入口指向同一只软件 watchdog，独立进程持有设备、Java 服务退出和安装器接手都可在同一轮观察。它揭示了旧版在设备不允许停用时仍放行包维护的问题。新版 Core 的完整 ARM64 deb 为 204,236,454 字节。打包时曾在源码提交前生成一份带旧提交号的候选；核对正式包和原安装包后移除了该未安装候选的 204,236,452 字节文件。两者是文件长度，实际释放的 APFS 块数未计量。[发行包、Java 与 Linux 交接记录](../checkpoints/20261116/actual-arm64-watchdog-maintenance-admission-checkpoint.json)
 
 11 月 21 日，复用已构建的 ARM64 Core 包，在现有 Parallels 虚机内另建 Debian 安装，完成正式 Main 写虚拟 RTC 的实测。保留该安装及原回执占用 1,149,644 KiB。核对摘要后移除了宿主的 308,849,518 字节传输归档和虚机内的 204,535,994 字节安装包副本。两处分别计量，未测量 APFS 实际回收量。[独立安装、回执与存储记录](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)
+
+## 11 月 21 日较早的计量与验证记录
+
+11 月 21 日 12:15–12:17（上海时间），宿主工作空间实测 **350.66 GB**。历史工作目录占 **255.70 GB**，中心的 `target` 占 **78.76 GB**，合计 **95.4%**。与 10:30 的同口径读数相比，工作空间增加 3.70 GB，中心 `target` 的读数相同。Core 构建目录的 ARM64 deb 从 38 份、7.76 GB 增至 42 份、8.58 GB，解释了其中约 0.82 GB。计量采用目录占用，deb 采用文件长度，Parallels 虚拟磁盘另计。[12:17 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/storage.json)
+
+12:44 再数同一 Core 打包目录，已有 44 个 ARM64 deb，文件长度合计 8,990,793,594 字节。最新两份完整包共 409,999,816 字节。两轮修复共用已有 worker 和 VM，分别在原六组件卷和防火墙专用安装验证。后者通过只读挂载使用 deb，冷停机时占用 1,161,408 KiB。这里没有重测整个宿主工作空间。[两次实装、版本和冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+随后修复了从注释误判转发请求的问题。只重建两个 Networking deb，文件长度共 9,864,350 字节，复用现有 Core。同一组站点输入在 ARM64 上分别运行旧、新启动器，旧版将两族转发都开启，修正后只有含真实转发链规则的 IPv6 开启。Linux 文档说明改变 IPv4 的全局转发开关会调整主机与路由器的默认参数。[新旧包与内核读回](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) · [Linux 内核转发参数](https://docs.kernel.org/networking/ip-sysctl.html)
+
+12 个 sibling 仓需要各自携带安装和卸载用的注册表维护脚本，同一项权限修复因此涉及 13 个 deb。它们的总长度是 259,283,908 字节，比上一组只多 5,034 字节。逐包解包后，仅 Wires 和 Position 各有一个额外变化的 JAR，差异都是 OSGi 版本后缀。此次直接复用已构建的 Core 完成原六组件升级，八个可选包的旧、新发行件也以只读方式挂入同一测试环境。[两组发行件与实装对照](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
+
+最后一个 sibling 卸载时，dpkg 会按数据库中的目录归属处理安装链接。真实 Core 首装、八包联合移除，以及 Core 自身正常和中断卸载共用了一个 ARM64 环境。此次新增一个 205,003,262 字节的 Core deb；13 个输入包共 300,839,316 字节，以只读方式挂载，其中已包括该 Core 包。停机时容器可写层为 32,163,461 字节。三组数字的口径不同，不能相加作为宿主净增量。[包归属、卸载回执与计量](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
+
+在已有 Networking 的安装上，Core 即使把公共目录写进了 deb，条目的顺序也会影响升级。前版先遇到暂时悬空的旧链接，被 dpkg 拒绝。仅调整打包顺序后，修正版比前版小 42 字节，但仍需一个 205,003,220 字节的完整包。修正包先在与失败现场相同版本的前任上完成升级，再用于原六组件卷。当前 Core 打包目录有 46 份 ARM64 deb，逻辑长度合计 9,400,800,076 字节；此处未重新测量整个工作空间。失败的 Parallels 安装保留其原始维护记录。[升级现场及两份正式包](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)
+
+普通 Main 的转发写入复用了既有 socket、两次批准校验和原操作日志。新协议同时核对网络命名空间、协议族和开关原值。隔离安装完成正向调用后又用于 Networking 移除、purge、重装，三次均从该 Root 查回同一结果。该安装正常停机时容器可写层为 262,439,298 字节；新 Core 包、两个 Networking 变体和共享编译缓存分别计量。[实装与维护数据](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+防火墙这一轮说明了两种不同的工期来源。正式 Main 遇到现场实际保存的洪泛防护规则，原 worker 在批准前拒绝。补齐 TCP flags、MSS 和 IPv6 扩展头后，ARM64 内核收下了针对这些规则的变更。随后发现 Cargo 复用了旧二进制，即使源归档已更新。构建现在核对成品自报的源码摘要。这些问题都影响交付。另一部分工期和磁盘来自为每个中间改动生成完整的约 205 MB Core 包、再逐轮安装。可将同一交付的修改合并组包，日常验证直接运行变更的安装钩子或只构建 worker，到真实跨组件验收时再保留完整包。[实际调用与发行件](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)
+
+获准用于防火墙验收的另一临时安装占 1,161,212 KiB。它复用同一份基础镜像和只读 deb，实际安装了 Core 和标准 Networking。正式 Main 通过 OSGi 完成一次仅限回环的规则增加和移除，两笔均有内核回执。新安装与前一中断现场在 Parallels 客体内合计约 2.38 GB。计量是客体目录占用，PVM 在宿主的实际分配量另计。[正向回执、六表及冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+10:30 的宿主目录计量为 **346.96 GB**，其中历史工作目录 **252.85 GB**、中心 target **78.76 GB**，两者占 95.6%。较 09:58 增加 259.7 MB；同期保留的 Core ARM64 包从 37 份增至 38 份。这一轮防火墙发布只重建两个 Networking 变体，复用同一 ARM64 镜像和六组件卷。[10:30 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-configuration-publication/storage.json)
+
+09:58 的目录复测为 **346.70 GB**，其中历史工作目录 **252.59 GB**、中心 target **78.76 GB**，合计 95.6%。较 09:40 增加 227.0 MB。两个读权限实现随原包交付，本次另存一个 204.31 MB 的 Core 完整包。37 份 Core ARM64 deb 的文件长度合计 7.56 GB。上述统计按宿主目录计量，虚拟机卷另计。[最新目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/storage.json)
+
+本轮发现，一份 ConfigAdmin 配置原先分三类先删除再追加，遇到 NAT 拒绝时已经修改其他规则并发出了变更通知。两种地址族都复现了四次发布。现在先准备完整配置，转发开关不满足时执行零条内核命令，成功时每族发布一次。一次 Java 发布在当前后端仍涉及多条命令，跨表提交的中断恢复仍有单独成本。[配置与内核实测](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+11 月 21 日 10:20 在原六组件卷测得，正式 Main 的调用线程撤去 NET_ADMIN 后，仍可通过独立读取服务核对 IPv4、IPv6 各三张内核表。服务和调用线程的有效能力分别为 0x1000 和 0x0400。内核规则发布仍走旧路径。这次沿用同一卷和 Maven 缓存；核对最终 Core deb 后移除了本轮未安装的中间包，逻辑长度 204.37 MB。[实装读数与包记录](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普通 Main 遇到目录拒绝时向本机只读服务查询两个固定标记；服务核对正式 Main 并返回当时的存在性。原卷保留 0700，三次查询共 33 ms。这个进程使用 root 身份遍历原目录，Linux 能力集为空。内核防火墙的读写权限仍在旧执行路径上。[正式 Main 实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/reader.json)
+
+11 月 21 日的两种 Networking 发行包复用同一份防火墙 JAR，共 9.81 MB。两个 ARM64 网络命名空间也复用同一镜像。实测发现旧代码清空一族规则时重复发布五次，现已合并为一次。原六组件只升级标准包，正式 Main 又暴露出一个跨组件约定：Core 把 /etc/kura 设为 root 专属的 0700，Networking 却要求普通 JVM 能判断其下两个归属标记。这使独立运行的 Main 在修改规则前拒绝操作。[发行件](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/releases.json) · [原卷权限实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-forwarding-admission/ownership-refusal.json)
+
+11 月 21 日 09:40 完成的目录复测为 **346.48 GB**，其中历史工作目录 **252.37 GB**、中心 target **78.76 GB**，两者合计 95.6%。Core 打包目录保留 36 个 ARM64 deb，文件长度合计 7.35 GB。这轮只构建有代码变动的 GWT 和 Networking，两个新 deb 共 43.52 MB。SQLCipher 联合恢复和 Main 权限实测均复用了现有包和原安装卷。[目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-net-admin-preflight/storage.json)
+
+11 月 21 日 09:19 起按同一口径复测，工作区 **346.43 GB**，其中历史工作目录 **252.32 GB**，中心 target **78.76 GB**。Core 打包目录有 36 个 ARM64 deb，文件长度合计 7.35 GB。较 07:06 增加 5 个包，共 1.02 GB；同期工作区目录计量增加 1.07 GB。已登录 HTTP 下载复用了安装包和测试卷。修复旧 PID 接管后另建了一个 204.24 MB 的 Core 包。宿主卷当时可用 141.79 GB，APFS 共享块和虚拟机卷分别计量。[目录与发行件复测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-pid-handover/storage.json)
+
+11 月 21 日 07:06 起按工作区目录计量，工作区为 **345.36 GB**，较 05:08 增加 1.48 GB。历史工作目录占 251.25 GB，中心 target 单独复测为 78.76 GB，两者约占 95.6%。Core 打包目录现有 31 个 ARM64 deb，共 6.33 GB。较上次多出的 7 个包合计 1.43 GB。两种计量数值接近，APFS 共享块仍影响实际物理增长。本轮 Linux 编译容器为普通构建用户复制了 0.67 GB 缓存，源码与临时缓存已随容器回收，六组件卷另行保留。Docker 的销毁事件已核对。清理程序未及时保存可写层总量，因此无法量化此次容器实际释放的空间。[目录与发行包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/storage.json) · [临时构建回收记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/builder-removed.json)
+
+11 月 21 日 05:08 前后，工作区按 `du -k` 实测 **343.88 GB**，宿主可用 **147.51 GB**。其中历史工作目录 **249.77 GB**，中心仓的 `target` **78.76 GB**，两者合计约 **95.5%**。中心 `target` 中，网络权限与注册现场占 49.12 GB，上游逻辑同步目录占 17.73 GB。当时 Core 打包目录留有 24 个 ARM64 deb，文件长度合计 4.90 GB。APFS 可共享数据块，上述目录计量不能直接换算为可释放空间。[本次容量明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json)
+
+这次还定位到一种可以避免的重组装。API、Crypto 和 Configuration 三个 JAR 在运行时与冷恢复目录的内容逐项相同，只有清单中的 OSGi `Bundle-Version` 不同。例如 API 的构建后缀分别为 `202611202101` 和 `202611202040`。打包正确拒绝该组输入，从同一缓存重建恢复工具后通过。正式 `build-all.sh` 会为一次构建固定 `KURA_BUILD_QUALIFIER`。拆开运行 Maven 时，同一批候选也应显式传递相同的 `-Dkura.build.qualifier`，并让运行时和恢复工具使用同一批依赖。从当前 Git 只取 API 模块和构建父 POM，用同一个固定后缀连续执行两次干净打包，606 个文件条目以及整个 JAR 的 SHA-256 均相同。该验证复用了 Maven 缓存，临时源码和编译目录随即回收。[两次构建摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json) · [实际差异](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json) · [正式构建入口](../../../.management-close-20261116/core-rtc-hotplug-20261120/wip-core/build-all.sh)
+
+这次防火墙修复复用系统已安装的 `iptables-restore` 做语法核验。发行包生成的 49 条 IPv4、85 条 IPv6 规则均能装入隔离内核；使用系统的 nft 文本翻译器时，25 条 ICMPv6 规则只留下了注释，其中有针对具体类型、代码和链路本地来源的限制。这次发现促成了后面的共享规则库。这轮只构建 Networking 和 firewall-only 两个 deb，合计约 9.83 MB，复用了原 Core 包、原 VM 和原六组件卷。[规则逐项对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/kernel-observation.json) · [两份发行包](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/releases.json)
+
+原布局的防火墙解析和内核规则编码现已抽为一个 Rust 库，agent 和独立调用方共用。Linux ARM64 实测将 134 条规则放入一个 40,848 字节的事务，其中 40 个 ICMP 匹配的类型、代码范围和取反位都从内核读回。最后一条规则被拒绝时，六张表一起保持原值。独立读取程序随后从混有现场规则的六张表找回了全部原句柄。它与 agent 共用的 Rust 源码包是 21,944 字节，ARM64 能单用这个包离线构建。原六组件卷升级使用的 agent deb 为 7,048,836 字节。正式 Main 接入写服务和按原操作编号恢复仍需实装。[规则归属及源码包](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) · [内核接受回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/kernel-valid.json) · [内核拒绝回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/kernel-invalid.json)
+
+这轮两次实际升级复用同一六组件卷，各保留约 7.0 MB 的 agent 安装包。构建现场的 macOS debug 目录为 594 MiB，Linux debug 与 release 分别为 574 MiB、497 MiB。它们供多轮构建共用。这解释了为什么小范围的规则变更也会伴随较大的目录占用。两份 deb 的文件长度已知，APFS 独占块及本轮缓存净增量没有单独计量。[本轮目录和包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/storage.json)
