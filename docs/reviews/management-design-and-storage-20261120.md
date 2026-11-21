@@ -14,6 +14,8 @@
 
 截至 11 月 21 日 15:27，同一打包目录已累计 54 个 ARM64 Core deb，文件长度合计 11.04 GB。最近一次启动恢复改动复用了现有卷与编译缓存，产出一个 Core 和两个 Networking 变体，合计 214.93 MB，其中 Core 一包占 205.05 MB。即使不复制虚拟机，只要每次修改都保留整包，历史目录仍会增长。[本次包长度与数量](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-confirmed-boot-service/storage.json)
 
+后续一次只涉及 Networking 启动脚本的修订，沿用上轮 Core、原测试卷及两份编译缓存。标准包和 firewall-only 包的文件长度合计 9.88 MB，较上轮三包的 214.93 MB 少 205.05 MB。原安装上的卸载、purge、解包后停机及重启续配使用同一份标准包。[包长度与测试范围](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-bind-shutdown/packages.json)
+
 ## 工期花在哪里
 
 最初的多网关管理中心已经扩展到网关操作系统、原 Kura 本地控制台、密钥保管、发行包维护及故障后的业务连续性。同一张 Timer→Logger 图能在首次安装时送达，只证明运行时可用。要证明客户升级可用，还需在原安装上升级 Core，确认原图只提交过一次；要证明 Wires 可独立拆装，又需经过 config-files、unpacked、installed，查看注册行并观察原图再次送达。后三项已有现场记录。其余组件及中断点不能借用这个结果。

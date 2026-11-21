@@ -1,3 +1,9 @@
+## 2026-11-21 防火墙暂存回执的启动配对与 Networking 包恢复
+
+Networking `783a594` 把暂存回执的发布移到完整启动配对之后。ARM64 实际启动器在包模式改变、另一个地址族出现站点策略、出现站点扩展三种情况下均保留原暂存回执、意图与操作编号。恢复原条件后，两族按原编号续办。Networking 2268 项测试及启动归属 17 项通过。
+
+临时防火墙安装 `39:7320076` 已实测 Networking 移除、purge、解包后停机、重启原地配置。原 IPv6 启动操作在各阶段一直按同一编号取得 APPLIED。两次冷读均核对 63 份文件，含 6 份启动记录，18 次发布的意图与结果完整。最终 Main disabled、停止，最新入口 `firewall-boot-package-recovery/cold-model.py`；六组件仍从 `firewall-cold-model/six/parked-readback.py` 续接。此前 BIND 关机等待另在同一 Root 查清：仅提供 IPv6 站点时，IPv4 回环受缺省入站策略限制，正式 rndc 连接 127.0.0.1:953 超时；named 随后自行退出，系统退出码 0，从发出关机信号到停止为 60.25 秒。启动时无站点的转发授权、其余 provider/launcher 与六组件维护仍待验。冻结 **0/12**，外部延期仍为原三项。[检查点](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式防火墙启动器按原安装回执恢复 IPv6
 
 临时安装 `39:7320076` 已升级 Core `5bd7710ed8`、Networking `03917ad`，worker 源码为 `6a80919`。正式 systemd 启动时，运行时挂载使服务看到空的站点目录，两个原文件的内容及元数据保留。启动器以该 Root 已确认的规则恢复 IPv6，83 条内核命令取得 APPLIED，IPv4 的 22、443 未放行。双族转发均为 0。此次 Main 保持 disabled、停止。恢复通用服务定义后停机；BIND 的 rndc 停止客户端等待约 50 秒，经单独发送 TERM 后系统退出码为 0。无干预停机仍缺本次现场证据。

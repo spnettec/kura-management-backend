@@ -3502,5 +3502,123 @@
     "sixReader": "../firewall-cold-model/six/parked-readback.py",
     "pending": "Affirmative forwarding at boot without site policy, outstanding provider/launcher and component maintenance cases. The manual TERM to the blocked rndc stop client limits the unattended shutdown result.",
     "frozen": "0/12"
+  },
+  "stagedBootReceiptAndNetworkingMaintenance": {
+    "source": "783a594983528108919fe6529a54a4d14ccfe527",
+    "tree": "4866b2419a60a53cc6287dac09c76af72ed053da",
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-boot-package-recovery",
+    "regressionStage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-bind-shutdown",
+    "helperSha256": "bbbf4107da8a5a5e9a7f1756376dcee3667bd1de283d69dd2ee3684c248cd7b3",
+    "packageBytes": {
+      "kura-networking": 9412772,
+      "kura-firewall-only": 467250
+    },
+    "newCoreDeb": false,
+    "networkingTests": [
+      2268,
+      0,
+      0,
+      0
+    ],
+    "bootTests": 17,
+    "staged": {
+      "scenario": "staged-binding",
+      "refusedBeforePromotion": [
+        "alternate-package-profile",
+        "other-family-site-policy",
+        "site-extension"
+      ],
+      "boot": "ebcb6980-126f-4367-9be1-0ccf2a83ef48",
+      "families": {
+        "ipv4": "bec1e69a-4a90-4f1d-8ed2-d094bc281f13",
+        "ipv6": "6f755965-b514-4953-8357-514de9a90ca2"
+      },
+      "committed": [
+        "confirmed-ipv4",
+        "confirmed-ipv6",
+        "standard-configuration"
+      ],
+      "preservedForeign": true,
+      "forwarding": [
+        0,
+        0
+      ],
+      "publications": 4
+    },
+    "bindShutdown": {
+      "root": "39:7320076",
+      "originalPublications": 18,
+      "stopSeconds": 60.25,
+      "exitCode": 0,
+      "unitStopTimeout": "90s",
+      "manualIntervention": false,
+      "observations": [
+        {
+          "time": 1795246331.817516,
+          "comm": "rndc",
+          "message": "rndc: connect failed: 127.0.0.1#953: timed out"
+        },
+        {
+          "time": 1795246331.829257,
+          "comm": "named",
+          "message": "shutting down"
+        },
+        {
+          "time": 1795246331.840971,
+          "comm": "named",
+          "message": "exiting"
+        }
+      ]
+    },
+    "actual": {
+      "root": "39:7320076",
+      "core": "6.0.0~git20261121072542.5bd7710-1",
+      "networking": "3.0.0~git202611210733.783a594-1",
+      "original": {
+        "id": "c2509768-b488-4914-9bae-d0045b6f2bc9",
+        "state": "APPLIED",
+        "requestSha256": "ad1f0cf417852d5cb7a00a46c97a7b893418c6c28e87da37261318c402061dea",
+        "rootScope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798"
+      },
+      "historyCount": 18,
+      "bootRecordCount": 6,
+      "phases": [
+        "config-files",
+        "not-installed",
+        "unpacked",
+        "cold-unpacked",
+        "installed",
+        "cold-installed"
+      ],
+      "interrupted": {
+        "root": "39:7320076",
+        "checked": true,
+        "packages": {
+          "kura-core": "installed",
+          "kura-networking": "unpacked"
+        },
+        "dpkgStatusUpdates": [],
+        "fileFingerprints": 63,
+        "firewallHistory": 36,
+        "installationKiB": 307628,
+        "status": "unpacked"
+      },
+      "final": {
+        "root": "39:7320076",
+        "checked": true,
+        "packages": {
+          "kura-core": "installed",
+          "kura-networking": "installed"
+        },
+        "dpkgStatusUpdates": [],
+        "fileFingerprints": 63,
+        "firewallHistory": 36,
+        "installationKiB": 298440
+      },
+      "main": "disabled, stopped",
+      "coldReader": "firewall-boot-package-recovery/cold-model.py"
+    },
+    "pending": "Affirmative forwarding without site policy, provider and launcher lifecycle coverage, and the full six-component maintenance matrix.",
+    "frozen": "0/12"
   }
 }
