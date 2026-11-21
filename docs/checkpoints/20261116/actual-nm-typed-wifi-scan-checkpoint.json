@@ -143,5 +143,145 @@
     "receipts": 16,
     "disabled": true
   },
-  "pushed": false
+  "pushed": false,
+  "installedLegacyNetworkService20261121": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/main-network-service-scan",
+    "networking": {
+      "source": "d0a80e0d09bebc46844d43438100efa04986a8cc",
+      "tree": "cef5c9ae275c1021046771302f2c59aa6dc99d39",
+      "packages": {
+        "kura-networking": {
+          "version": "3.0.0~git202611210559.d0a80e0-1",
+          "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210559.d0a80e0-1_all.deb",
+          "bytes": 9409084,
+          "sha256": "8ee99a6bdb8b19b79ac431d95754e972523054f1e7208be328790606cc9ac442",
+          "bundles": {
+            "org.eclipse.kura.linux.net": {
+              "path": "/opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+              "sha256": "e9f67ca70927c249a5cfdf4cdfb7afc42e50915c0fd83cb86adddf7ffea56648"
+            },
+            "org.eclipse.kura.nm": {
+              "path": "/opt/eclipse/kura/siblings/networking/5s/org.eclipse.kura.nm-2.0.0-SNAPSHOT.jar",
+              "sha256": "88739964e2b8328eade33bbff9bfa9e8b3a233c8daff6b632cfd27e0d1aeaa74"
+            }
+          }
+        },
+        "kura-firewall-only": {
+          "version": "3.0.0~git202611210559.d0a80e0-1",
+          "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210559.d0a80e0-1_all.deb",
+          "bytes": 462198,
+          "sha256": "39186f1969b991a5c6b68cc5763009a9270e53a21ccc07e01fabd07f67b810bb",
+          "bundles": {
+            "org.eclipse.kura.linux.net": {
+              "path": "/opt/eclipse/kura/siblings/firewall/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+              "sha256": "e9f67ca70927c249a5cfdf4cdfb7afc42e50915c0fd83cb86adddf7ffea56648"
+            }
+          }
+        }
+      },
+      "reactor": [
+        2266,
+        0,
+        0,
+        0
+      ]
+    },
+    "previousNetworking": "3.0.0~git202611210524.71f30b6-1",
+    "privateArm64": {
+      "effectiveCapabilities": 0,
+      "bus": "private dbus-daemon with a wireless test service",
+      "driver": "controlled iw output",
+      "requests": [
+        {
+          "path": "/org/freedesktop/NetworkManager/Devices/21",
+          "sender": ":1.1",
+          "ordinal": 1
+        }
+      ],
+      "driverCalls": [
+        "dev wlan-test info",
+        "dev wlan-test scan dump"
+      ],
+      "output": "RESULT CapEff:\t0000000000000000 42:8c:8d:9b:e6:c6 isolated-wireless [1000000, 2000000, 5500000, 11000000, 6000000, 9000000, 12000000, 18000000, 24000000, 36000000, 48000000, 54000000] [ESS, Privacy, ShortPreamble, ShortSlotTime, RadioMeasure, (0x1431)]",
+      "physicalRadio": false
+    },
+    "registeredMain": {
+      "main": {
+        "unit": {
+          "MainPID": "2377",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "c7b443ac85084a6b84e820b9df136a42"
+        },
+        "ticks": "42503017",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "consumer": "org.eclipse.kura.linux.net",
+      "provider": "org.eclipse.kura.nm",
+      "serviceId": 188,
+      "scrState": "ACTIVE",
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      }
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "packages": {
+      "kura-core": "6.0.0~git20261121053316.b1c664a-1",
+      "kura-networking": "3.0.0~git202611210559.d0a80e0-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "stopped": {
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "agent": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "exitCode": 0
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "retained": {
+      "originalFiles": 82,
+      "credentials": 2,
+      "registryOrderUnchanged": true,
+      "contentChangesFromMainStart": []
+    },
+    "nextSix": ".management-close-20261116/core-rtc-hotplug-20261120/main-network-service-scan/six/parked-readback.py",
+    "remaining": [
+      "whole Main NET_ADMIN removal",
+      "unmanaged or physical radio and AP mode acceptance",
+      "remaining Core and component lifecycle matrix"
+    ]
+  }
 }

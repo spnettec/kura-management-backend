@@ -1,3 +1,9 @@
+## 2026-11-21 正式 NetworkService 的 Wi-Fi 扫描与原六组件升级
+
+Networking `d0a80e0` 将旧 OSGi API 的扫描请求交给 NetworkManager，nl80211 和 WEXT 读取驱动缓存，保留旧接口的每个 BSSID、支持速率和能力标志。完整 Networking 构建 2266 项通过。ARM64 无网络、零有效能力的 JVM 使用私有 D-Bus 无线服务和受控驱动输出，生产调用链发出一次 RequestScan，仅执行接口查询和缓存读取。原六组件 Root `39:6611544` 经 dpkg 升级后，正式 Main 的 SCR 确认 NetworkService 为 ACTIVE，绑定的服务来自新版 NM bundle。该进程实测 0x1400。停止后，六包、SQLCipher、82 份业务文件、两份凭据及注册表和锁冷读通过。原六组件续接入口为 `main-network-service-scan/six/parked-readback.py`。防火墙 Root `39:7320076` 仍用 `main-firewall-reduced-caller/cold.py assert-final`。
+
+整进程撤去 NET_ADMIN、其余网络直接写入消费者与维护矩阵继续。真实无线与 AP 模式的设备行为尚待实证。冻结闭环 **0/12**，原三项外部延期照旧。[发行件、ARM64 调用与正式绑定](actual-nm-typed-wifi-scan-checkpoint.json)
+
 ## 2026-11-21 正式 Main 的低权限调用及共同 purge 后的 Core 配置恢复
 
 在仅有回环的 ARM64 安装 `39:7320076`，Core `b1c664aaeb` 的正式 Main 调用线程从 0x1400 降到 0x0400，经 0.1.9 worker 写入两条 UDP 规则。iptables-save 导出了状态规则，两条均由 iptables -C 核对。IPv4 转发从 0 变为 1，IPv6 保持 0，移除临时规则后两族 filter 表和保存文件恢复。主线程仍为 0x1400。原号 `9726c608-97e8-4f85-9930-8d87593af441` 的结果为 APPLIED。
