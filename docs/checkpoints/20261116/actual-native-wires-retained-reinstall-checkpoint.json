@@ -8123,5 +8123,38 @@
     "signal": "SIGTERM",
     "arm64TargetedTests": 41,
     "frozen": "0/12"
+  },
+  "opcuaSubscriptionMaintenance": {
+    "system": "a8dc105827f7efe1ed6f37ba31bd2b58b039537efab99edc426171688193d74c",
+    "results": {
+      "root": "2097227:1",
+      "sid": "1795291901848",
+      "before": [
+        "2026-11-21T20:11:42.721Z",
+        "2026-11-21T20:11:42.976Z"
+      ],
+      "after": [
+        "2026-11-21T20:12:05.668Z",
+        "2026-11-21T20:12:05.924Z"
+      ],
+      "afterReinstall": [
+        "2026-11-21T20:12:21.223Z",
+        "2026-11-21T20:12:21.477Z"
+      ],
+      "unsubscribeQuietSeconds": 2,
+      "core": "89dfd6a53d93d04b9fe354e7ecf3ff75873a1e60",
+      "opcuaPackage": "2.0.0~git202611211831.db7cedb-1",
+      "pairedJars": 6,
+      "firstPID": "1882",
+      "reinstalledPID": "3184",
+      "coreRwBytes": 4582826,
+      "peerRwBytes": 197748,
+      "mainExit": 0,
+      "peerExit": 143,
+      "persistentVolumes": 0
+    },
+    "configurationSubmissions": 1,
+    "endpointSecurity": "anonymous loopback",
+    "frozen": "0/12"
   }
 }

@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 的 OPC UA 订阅恢复与保留重装
+
+正式 ARM64 Main PID 1882 通过既有 OPC UA db7cedb 订阅服务器时间。Milo 端点退出并重启后，原监听收到新的时间，未再次注册。移除、解包和续配后，新 Main PID 3184 从原快照 1795291901848 再次收到订阅回调，两次取消注册后均观察到计数稳定。最终 purge，Main 正常停放。未新增持久卷。签名加密及其他 provider/launcher 仍待验，冻结 0/12。 见 opcua-subscription-maintenance/HANDOFF.md。
+
 ## 2026-11-22 Core purge 删除部分文件后的原编号恢复
 
 Core 89dfd6a53d 的正式 purge 在删除 4096 个测试文件中的 3 个后被 SIGTERM 中断。ARM64 Root 39:8230388 正常停机，冷读 HMAC 和原目录 inode 后沿移除编号 71230014-dfd7-4eb8-b195-dcfeb014645d 续办。最终包已清除、审计为空、四份凭据与维护文件指纹一致。原发布密钥代的半配置 Root 39:8195025 继续停放。冻结 0/12。 见 core-purge-partial-tree/HANDOFF.md。
