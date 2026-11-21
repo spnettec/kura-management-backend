@@ -35,3 +35,7 @@ ARM64 六组件正式 Main 已验证同一 SQLite 工厂内的数据库凭据换
 ## 2026-11-21 PKCS12 文件发布中断
 
 既有业务库在序列化错误和发布前写进程退出后保持可读。首次建库已发布且暂存硬链接尚在时，后续写进程只回收可核对的临时链接。正式 Main 遇到已有文件锁返回可观察的失败，原钥仍可签名。此次没有更换网关包装钥。库文件、密码记录和配置三者在随机改密过程中的共同恢复仍待验证。[文件发布和实际 Main](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 Artemis 的两种凭据入口
+
+在发行包 `1bcdc5d` 中，Simple MQTT 的 `password` 声明为 Password，由组件调用 CryptoService 解密再配置 broker。XML provider 的 `users` 声明为 String，组件用 Java Properties 解析用户名、口令和角色。正式 Main 已通过这两条配置入口分别收发认证 MQTT。本轮 XML 更新显式跳过快照，恢复了原配置。持久化验收仍需覆盖历史 String 用户表、快照的实际保护、冷启动认证和换钥后原业务凭据的连续性。盘点时应按字段和配置保存模式识别这两条路径。[本轮检查点](actual-native-wires-retained-reinstall-checkpoint.json)

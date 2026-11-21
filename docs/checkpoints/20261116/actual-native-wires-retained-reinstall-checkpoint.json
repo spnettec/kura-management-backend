@@ -7052,5 +7052,56 @@
       "remove-provider-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
       "purge-provider-result.json": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305"
     }
+  },
+  "artemisXmlMain20261122": {
+    "path": ".management-close-20261116/core-rtc-hotplug-20261120/artemis-xml-main",
+    "business": {
+      "root": {
+        "id": "ef68316f16706239f0c5e79422717e8994351f9c1eed8ac8d69d568f80587ab0",
+        "mount": "39:8063827",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "bundles": "org.apache.aries.spifly.dynamic.bundle 32 1.3.7\nfixture.artemis.provider.check 32 1.0.0\norg.eclipse.kura.broker.artemis.core 32 2.0.0.202611201423\norg.eclipse.kura.broker.artemis.simple.mqtt 32 2.0.0.202611201423\norg.eclipse.kura.broker.artemis.xml 32 2.0.0.202611201423",
+      "configured": "org.eclipse.kura.broker.artemis.xml.BrokerInstance",
+      "first": "MQTT 3.1.1 QoS 1 yofc/fixture/xml/first a8d6ac5f-41b8-404c-b346-6605602393c7",
+      "stopped": "original XML listener closed, successor XML listener opened",
+      "second": "MQTT 3.1.1 QoS 1 yofc/fixture/xml/second 8280f1d3-e4c9-48b1-a828-749994a39b17",
+      "done": "pid 1381 original configuration restored, listener closed"
+    },
+    "cold": {
+      "root": "39:8063827",
+      "businessFiles": 4,
+      "directory": "39:8068535",
+      "keys": 2,
+      "receipt": "000bc1d0-d35f-4572-94de-0d85f0e25a30",
+      "provider": "unknown ok not-installed",
+      "registry": [
+        "deployment"
+      ],
+      "snapshots": 1,
+      "volumeKiB": 289364
+    },
+    "evidence": {
+      "field.py": "59ab674f2e02f3e2922d49227e53c4929e4d3181e34dd295b7384b2745f768a0",
+      "ArtemisProbe.java": "b186b35e432f40df05445e369ab672c5060f0842f05436b21213786b2dbef6db",
+      "observer.jar": "8202da156df95a3a163a6b8b0044c336542daaabeee6851fda3c1c4d2ead3f32",
+      "observer.mf": "f199e1b74947d0fc9209bd9a65bc5fddfb1662221b98aae5c428e438147e1bdb",
+      "custom-broker.xml": "2547343c2ce5bcaaee5c33bfb51f8658af865daf50c2d33423abca0c1d47c877",
+      "main.json": "e0a6d325f650842f7a0d23440ba749fea15d2c58baec02daa0f74c12354dd992",
+      "baseline.json": "ae2f904778d210251f158e082c1d341c009fe58bd55e03ac7378fe1256db6274",
+      "xml-intent.json": "a2a1173feda50ee6eebd5d5031b755a8df328a78cd0b553a6c18477e1d6242e0",
+      "business.json": "884977f441a10af336f606236be53637d92fa7607cfce79867f87aca4e8c0c0a",
+      "installed.json": "f1ba6537c198d59685bddf79ef90c321a75a0e9c775d111a88847b3993b192a9",
+      "final.json": "09ccef7ff0e49410e3be3c3e35aba037fa16be887821541e3a73884b64b4db72",
+      "parked.json": "d1b6b4ac1d0a15bca2fcace2723c6fabbbeeb32e0f020903897f6ebdc03c4b33",
+      "cold-final.json": "f9626a4e8a707d8823eff802a939986b79b9e19abe94f72bb07abdb6c070ad5e",
+      "cold.py": "5220b8c0f32711e4bafd6a7b0b84fc40d2e22b1126faa727740e975f90c57c08",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "original-three-after.json": "016613b01376d5cd20682b44ee5bbcc44fb8f387bc09c9e58f253bd831f263d3",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "HANDOFF.md": "dcc828c181adb365eb081a9df9371e3f2e19c6aefef9242643ea119c5e7253a4"
+    }
   }
 }

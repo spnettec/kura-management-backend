@@ -1,3 +1,7 @@
+## 2026-11-22 Artemis XML 配置热更新
+
+在 50001 的 ARM64 卷复用既有发行包，正式 Main PID 1381 经 XML provider 在回环端口 22883 收发认证 MQTT，更新 brokerXml 后原端口关闭、22884 收发第二条消息；两次均在订阅端核验 QoS 1 和载荷。恢复原配置，两端口关闭，remove、purge 后正常停机。该卷的当前停机入口为 `artemis-xml-main/cold.py`，记录见同目录 HANDOFF.md。XML 用户表的持久化与跨代密钥处理仍列入 provider 盘点，冻结 0/12。
+
 ## 2026-11-22 正式 Main 上的 Artemis Simple MQTT
 
 复用 50001 的 ARM64 卷和已有发行包。Artemis 七个 JAR 与包配对，正式 Main PID 6448 通过两个客户端完成两轮认证 MQTT 3.1.1 QoS 1 收发，中间停启 Simple MQTT bundle，端口随之关闭、重开。恢复原配置后端口关闭，实际 remove、purge 后正常停机。原业务目录、快照、凭据、维护回执已冷读。详见工作空间 `artemis-provider-main/HANDOFF.md`，该目录的 `cold.py` 是 50001 的当前冷读入口。XML provider 的自定义配置及其业务行为仍待实装验证，12 父项冻结 0/12。
