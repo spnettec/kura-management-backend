@@ -1,3 +1,13 @@
+## 2026-11-21 原六组件完整移除后沿同一编号恢复 Core 皮肤
+
+原 ARM64 Root `39:6611544` 已完成 Core `1af242d3e8` 的整包保留数据重装。使用与已安装版本一致的六个正式 deb。移除 GWT、Wires、Deployment、Networking、agent 和 Core 后，六包均为 config-files，原运行目录已撤下。Core 的保留副本内有原 GWT conffile 登记、定制图标与非包站点图片。四组续接夹具按原围栏临时保管，101 个对象均已逐项核对。
+
+六包联合解包后正常停机。只读挂载确认六包均为 unpacked，四个发行图标均以 .dpkg-new 等待处理。两份测试文件的原内容位于保留副本中。移除回执和重装围栏使用同一编号 `1b8d270e-0a1d-45f7-b02a-13c5512a04a4`。该状态下核验了 740 份既有签名记录和保留副本内的 254 份运行文件。
+
+重启后沿该编号先配置 Core，再按原顺序配置 sibling 和 agent。使用 dpkg 的 confold 保留本地配置选择。Core 恢复了定制图标和站点图片，GWT 配置后另三个原先删除的图标继续缺失。两种运行账号读取的摘要均与输入一致。已核实并移除两份测试输入，恢复原有的四个配置图标缺失状态和四组续接夹具。最终六包 installed，dpkg 审计清洁，Main 和 agent 均 disabled、inactive，正常停机退出 0。42 笔维护共 759 份签名记录，319 份运行文件的内容、属主和权限与开始时一致，只有 kura_custom.properties 的 mtime 改变。原加载顺序、两份凭据和 85 项代码条目均已冷读。
+
+原绑定网关仍停放，五笔维护封存，原任务 SUCCEEDED、远程 OFF。原三现场和 7fd 的停机状态、41 输入与 16 回执已复核。后续继续核对 firewall-only 与完整 Networking 切换时的独立配置、Root 启动入口和待处理代码权限触发器。仅保留原三项外部延期，12 个父项冻结闭环 0/12。 [移除、解包与重装核验](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Core 升级保留 GWT 定制图标与站点皮肤
 
 原六组件 Root `39:6611544` 已实装 Core `1af242d3e8`。升级前在原本为空的 console/skin 放入一个有别于发行默认值的有效 PNG 和一份独立站点图片。正式 dpkg 解包后，两份原件均可从同一维护编号的恢复副本中读回，GWT 的四项 conffile 登记与原包版本配对。配置后，两份文件的字节、属主、组、权限和 mtime 均与输入相同；kurad 和 kura-key-recovery 分别读出了原摘要。其余三个原先缺失的图标在升级中继续缺失。

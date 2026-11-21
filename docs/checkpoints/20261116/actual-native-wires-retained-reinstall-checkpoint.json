@@ -5657,5 +5657,147 @@
     },
     "tests": 53,
     "remaining": "Whole Core retained-data reinstall with a site skin; remaining provider/launcher modes."
+  },
+  "wholeCoreSkinRetainedReinstall20261121": {
+    "core": "1af242d3e8",
+    "versions": {
+      "kura-core": "6.0.0~git20261121215400.1af242d-1",
+      "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+      "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+      "kura-networking": "3.0.0~git202611211339.83f237e-1",
+      "kura-wires": "3.0.0~git202611211325.277954b-1"
+    },
+    "retained": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "operation": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "removed": {
+        "kura-core": "config-files",
+        "kura-networking": "config-files",
+        "kura-management-ui": "config-files",
+        "kura-deployment": "config-files",
+        "kura-wires": "config-files",
+        "kura-management-agent": "config-files"
+      },
+      "registration": {
+        "files": {
+          "favicon-16x16.png": "133cdc4a8696a6e87390874f1f4ad96c",
+          "favicon-32x32.png": "ab2d376e4b9b246a321157be135cd463",
+          "favicon-96x96.png": "2513117dc238ff3ba59f9d3391f2eaa7",
+          "favicon.ico": "72e5555bff6c27e5054783c1c1f10f5d"
+        },
+        "generation": [
+          39,
+          7655306,
+          1795269478169183670
+        ],
+        "state": "config-files",
+        "version": "3.0.0~git202611211325.b881a3a-1"
+      },
+      "files": {
+        "favicon-16x16.png": {
+          "sha256": "44b1ccd70a7d2d7f3e687adce88d357c269af8220416ebf61dfb2080e2388ae0",
+          "meta": "39|7655721|640|0|990|1|2473|2026-11-21 13:57:54.262548439 +0000|2026-11-21 13:57:59.820101380 +0000"
+        },
+        "fixture-site-logo.png": {
+          "sha256": "e7bcdc27085e805b1cff337a6ff5234ade281238d429d41e0a6abd6c31a97a43",
+          "meta": "39|7655722|640|0|990|1|9767|2026-11-21 13:57:54.347087250 +0000|2026-11-21 13:57:59.821179169 +0000"
+        }
+      }
+    },
+    "interruption": {
+      "root": "39:6611544",
+      "removal": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "maintenance": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "signed": 740,
+      "skinNames": [
+        "favicon-16x16.png.dpkg-new",
+        "favicon-32x32.png.dpkg-new",
+        "favicon-96x96.png.dpkg-new",
+        "favicon.ico.dpkg-new"
+      ],
+      "retainedSkin": [
+        "favicon-16x16.png",
+        "fixture-site-logo.png"
+      ],
+      "retainedMutable": 254,
+      "status": {
+        "kura-core": "unpacked",
+        "kura-deployment": "unpacked",
+        "kura-management-agent": "unpacked",
+        "kura-management-ui": "unpacked",
+        "kura-networking": "unpacked",
+        "kura-wires": "unpacked"
+      },
+      "heldObjects": 101
+    },
+    "coreConfigured": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "skin": [
+        "favicon-16x16.png",
+        "favicon-16x16.png.dpkg-new",
+        "favicon-32x32.png.dpkg-new",
+        "favicon-96x96.png.dpkg-new",
+        "favicon.ico.dpkg-new",
+        "fixture-site-logo.png"
+      ],
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "unpacked",
+        "kura-management-ui": "unpacked",
+        "kura-deployment": "unpacked",
+        "kura-wires": "unpacked",
+        "kura-management-agent": "unpacked"
+      }
+    },
+    "restored": {
+      "favicon-16x16.png": {
+        "sha256": "44b1ccd70a7d2d7f3e687adce88d357c269af8220416ebf61dfb2080e2388ae0",
+        "meta": "39|7657796|640|0|990|1|2473|2026-11-21 13:57:54.262548439 +0000|2026-11-21 13:58:46.308052588 +0000"
+      },
+      "fixture-site-logo.png": {
+        "sha256": "e7bcdc27085e805b1cff337a6ff5234ade281238d429d41e0a6abd6c31a97a43",
+        "meta": "39|7657797|640|0|990|1|9767|2026-11-21 13:57:54.347087250 +0000|2026-11-21 13:58:46.309052585 +0000"
+      }
+    },
+    "sameMaintenance": true,
+    "confold": true,
+    "cold": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "6.0.0~git20261121215400.1af242d-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "verifiedPackageEntries": 85,
+      "absentConffiles": 4,
+      "restoredRegistryOrder": [
+        "management-ui",
+        "wires",
+        "deployment",
+        "networking"
+      ]
+    },
+    "mutableTimestampChange": [
+      "user/kura_custom.properties"
+    ]
   }
 }
