@@ -1,3 +1,11 @@
+## 2026-11-22 同一 Main 内的云端安装和本地卸载等待注册表发布
+
+Deployment 本地提交 `ea8da2c` 将同一 Main、同一注册表的本地及云端 Felix 变更串行到注册项和归档处理结束。读回和云端通知仍在各自原路径。异步队列中的出厂归档在取得执行权后重新核对注册 URL。本地卸载入队遭拒会释放本次包名，避免后续请求一直显示已在卸载。
+
+在独立 ARM64 发行镜像的正式 Main 中（PID 1、UID 122、有效能力为零、NNP=1），本机探针通过已注册的云端 RequestHandler 提交安装 `43001`。夹具持有注册表的 POSIX 文件锁，等到 Felix 已能查询新包、磁盘注册表仍只有四个原包时，通过独立的 DeploymentAgentService 请求卸载同一个包。线程栈捕获到本地 DeploymentAgent 在 DeploymentPackageRegistry.dispatch 上处于 BLOCKED，此时安装尚未发出完成通知。释放文件锁后，43001 返回 COMPLETED，本地卸载也完成；Felix 包、注册项和归档均消失。原卷 `39:7966465` 正常 TERM 停放，退出码 143，四份出厂归档与发行输入摘要逐份匹配，注册表没有 pending。正式 deb 的四个 JAR 与安装文件逐字节一致，JDK 21 全仓 257 项通过，零失败、零跳过。
+
+此次实测顺序为云端安装先进入 Felix、本地卸载随后到达。反向次序、本地与云端跨进程，以及云端安装在 Felix 接单后进程退出的持久判定均不能从此结果推出。后续先接云端安装的同编号只读判定和对应的实装中断点。原 42002 保持 UNKNOWN，沿 felix-uninstall-receipt/cold.py 只读续接。原绑定 agent 6910532 的五笔维护、三代来源、原任务 SUCCEEDED 和 OFF 已停机冷读。原六组件及原三现场已核对，7fd 维持 disabled、正常停机、41 输入及 16 回执。12 个父项冻结 0/12；external deferred 仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装证据](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 Felix 已执行云端卸载后，Main 重启按原编号返回 UNKNOWN
 
 隔离 ARM64 正式 Main 在原测试卷 `39:7959247` 安装了测试 DP（42001）。42002 仅派发一次卸载。在同步收到目标业务 bundle 的 UNINSTALLED 事件时，夹具令 JVM 以 76 退出。沿同一容器挂载、原卷和来源启动另一 JVM，通过实际注册的 RequestHandler 只发 GET，读回 `42002 UNKNOWN`。此时 Felix 查不到原包，磁盘上原归档和注册项仍在；注册项、五份 DP 及未决回执的 inode、权限、mtime 和摘要均与中断时一致。四个出厂 DP 可从 Felix 查询到，日志显示未决包的自动安装被拒绝。两次 Main 均以 UID 122、零有效能力、NNP=1 运行。正式 deb 的四个 JAR 与实装逐字节核对，运行 handler 类匹配。JDK 21 全仓 254 项测试通过，零失败、零跳过。
