@@ -8581,5 +8581,45 @@
     "cold": "reboot-system-admin-unknown/cold.py final",
     "newDebs": 0,
     "newVolumes": 0
+  },
+  "watchdogDeviceGraceOriginalUnknown": {
+    "root": "39:8337304",
+    "operation": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+    "installedCore": "2cecea4bad",
+    "contractTestCommit": "9c9fe1f916",
+    "observation": {
+      "operation": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+      "pid": "597",
+      "startOffset": 177068,
+      "secondsToReceipt": 301.913,
+      "enabledWindow": 65.064,
+      "restoredWindow": 65.07,
+      "originalConfigRestored": true,
+      "statusAfterDisable": "REBOOT_REQUESTED",
+      "deviceAfterDisable": "/dev/watchdog",
+      "originalReason": "Watchdog device '/run/watchdog-window-proof/absent-device' does not exist",
+      "observations": [
+        "2026-11-21T21:47:29,274 [WatchdogServiceImpl] ERROR o.e.k.l.w.WatchdogServiceImpl - Watchdog device is still unavailable after the grace period. Requesting reboot",
+        "2026-11-21T21:47:30,636 [WatchdogServiceImpl] ERROR o.e.k.l.w.WatchdogServiceImpl - System reboot outcome is unknown. The watchdog will preserve the original request"
+      ],
+      "snapshots": {
+        "snapshot_0.xml": "19dd96430bf2d5b577c38c9babb94bb78c26eb5eb7f3f3180fa744c5077708c4"
+      }
+    },
+    "storage": {
+      "previousRootKiB": 284528,
+      "currentRootKiB": 286488,
+      "debBytes": 205114036,
+      "debSha256": "c84df0d57218604c9253e9f4b5030b16f292f2bf98641bc509dc096f73482f08",
+      "observerJars": {
+        "watchdog-unavailable-original-receipt": 4439,
+        "watchdog-original-retry-window": 4795
+      },
+      "newDebs": 0,
+      "newVolumes": 0
+    },
+    "originalFiles": 9,
+    "credentials": 3,
+    "cold": "watchdog-original-retry-window/cold.py final"
   }
 }

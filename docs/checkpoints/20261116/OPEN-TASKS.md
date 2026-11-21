@@ -1,3 +1,7 @@
+## 2026-11-22 watchdog 超时读取原 UNKNOWN 与配置恢复
+
+ARM64 正式 Main 的 watchdog 在设备缺席宽限期后沿原编号读取 UNKNOWN。启用期间和恢复原禁用配置后分别观察 65.1 秒、65.1 秒，均未再读原回执，日志无软件重试。原 Root 39:8337304 正常停机，九份请求相关文件、三份凭据均与基线一致。停机入口 watchdog-original-retry-window/cold.py final。冻结 0/12。 打开设备后的关键组件超时、实际后继包接管原 pending 仍待验。
+
 ## 2026-11-22 公开 OSGi 系统管理服务核对原 UNKNOWN
 
 独立 ARM64 正式 Main 通过 OSGi SystemAdminService.reboot() 核对原重启请求。原 actor 回执在调用期间被读取，SystemAdminServiceImpl 记录 UNKNOWN 告警，void 方法返回。原 Root 39:8337304 正常停机，九份请求相关文件和三份凭据完整指纹相符。当前冷读入口 reboot-system-admin-unknown/cold.py final。绑定网关 6910532 停机核对五笔维护、三代来源、原任务 SUCCEEDED 和远程 OFF。冻结 0/12。 watchdog 超时入口和后继实现接管原 pending 待实测。
