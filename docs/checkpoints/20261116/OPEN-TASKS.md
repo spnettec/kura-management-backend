@@ -1,3 +1,9 @@
+## 2026-11-21 Deployment 在注册表锁竞争时保住原业务归档
+
+原六组件 Root `39:6611544` 上，旧版本地和云端安装入口都在取得注册表锁前替换同名业务归档。等待锁时终止测试 JVM，注册表和候选源仍是原值，目标归档已变化。Deployment `eaec433` 让两处归档替换与注册表写入共用锁。实装后，两入口在等待处遭 SIGKILL 均保住原归档和 inode；在另一次验收中释放锁，原进程完成发布，其他注册行保留。竞争试验用可控的 DeploymentAdmin 返回值。正式 Main 另行核对两份已加载的类、原业务 DP 的 ACTIVE bundle 及资源。
+
+后继 `d53e20b` 保留首次使用时创建共同目录的行为。最终 deb 为 228,322 字节，JDK 21 完整构建 242 项测试通过。最终版本在原卷上通过本地和云端入口首次创建目录、归档及注册行。冷读核对六包、82 份文件、两份凭据和原 Core 维护的 18 份 HMAC；Main 和 agent 均 disabled、正常停机。最新六组件入口 `deployment-registry-publication-lock/first-use/cold-maintenance.py`，防火墙入口 `firewall-configuration-snapshot/cold.py`。Felix 返回后，归档与注册表两次重命名之间的中断仍待验。冻结 **0/12**，外部延期仅原三项。[两版对照与实装证据](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 ConfigurationService 保存的 IPv6 规则跨完整 Main 重启保留
 
 临时防火墙安装 `39:7320076` 的正式 Main 通过注册的 ConfigurationService 保存一条回环 IPv6 转发配置。正常停机后沿原 Root 启动，在没有站点规则文件的新网络命名空间中，firewall.service 先恢复规则；完整 Main 启动后，注册 provider 仍返回原规则，原快照 `1795248549312` 的文件指纹保持，两条内核规则均逐条通过。随后同一配置 API 撤销规则，新快照 `1795248649849` 中 NAT 为空，内核规则和开机授权均已移除；当时 IPv6 转发开关仍为 1。观察器修正了末尾分号的比较，两次配置写入各提交一次。

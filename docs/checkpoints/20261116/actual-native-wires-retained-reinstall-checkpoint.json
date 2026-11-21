@@ -3395,5 +3395,159 @@
       "tests": 14,
       "logSha256": "b342b4259a5f1e89dcb9213d526c7c28e881366f4f53008db028591bc3472301"
     }
+  },
+  "deploymentArchivePublicationLock": {
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-registry-publication-lock",
+    "root": "39:6611544",
+    "installedDeploymentVersion": "2.0.0~git202611210817.d53e20b-1",
+    "source": "d53e20bf7edeb29cf1917379422c65d1730e5140",
+    "tree": "852ff856de1f841a755dc524d1edd1c379ec425b",
+    "comparedReleases": [
+      {
+        "source": "eaec433b6b7ca816255b322844abe4c42c1f164d",
+        "sha256": "02d89219d4d2a0c3dac8fa0098ed9883f002495691625611a375ce0792fb28e7",
+        "bytes": 228300,
+        "tests": {
+          "tests": 241,
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "source": "d53e20bf7edeb29cf1917379422c65d1730e5140",
+        "sha256": "8e7407e1ffc27ee4ebabc18f02d1bcb734b3ecd5364fd04bfe02851f25382ea0",
+        "bytes": 228322,
+        "tests": {
+          "tests": 242,
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "installedEntryComparison": {
+      "basis": "Local and cloud installation methods from real installed bundles, with controlled DeploymentAdmin return. Separate kurad JVMs, real Linux file locks and SIGKILL. Fixture files isolated from actual business registry.",
+      "old": [
+        {
+          "role": "local",
+          "completion": "kill",
+          "beforeUnlockArchiveAndInodeExact": false,
+          "originalRegistryBeforeUnlock": true,
+          "originalSourceBeforeUnlock": true,
+          "exit": -9
+        },
+        {
+          "role": "cloud",
+          "completion": "kill",
+          "beforeUnlockArchiveAndInodeExact": false,
+          "originalRegistryBeforeUnlock": true,
+          "originalSourceBeforeUnlock": true,
+          "exit": -9
+        }
+      ],
+      "fixed": [
+        {
+          "role": "local",
+          "completion": "kill",
+          "beforeUnlockArchiveAndInodeExact": true,
+          "originalRegistryBeforeUnlock": true,
+          "originalSourceBeforeUnlock": true,
+          "exit": -9
+        },
+        {
+          "role": "local",
+          "completion": "unlock",
+          "beforeUnlockArchiveAndInodeExact": true,
+          "originalRegistryBeforeUnlock": true,
+          "originalSourceBeforeUnlock": true,
+          "exit": 0
+        },
+        {
+          "role": "cloud",
+          "completion": "kill",
+          "beforeUnlockArchiveAndInodeExact": true,
+          "originalRegistryBeforeUnlock": true,
+          "originalSourceBeforeUnlock": true,
+          "exit": -9
+        },
+        {
+          "role": "cloud",
+          "completion": "unlock",
+          "beforeUnlockArchiveAndInodeExact": true,
+          "originalRegistryBeforeUnlock": true,
+          "originalSourceBeforeUnlock": true,
+          "exit": 0
+        }
+      ]
+    },
+    "formalMain": {
+      "installedSource": "eaec433b6b7ca816255b322844abe4c42c1f164d",
+      "invocation": "3aa257e8bab54a129cb0bd500808bcab",
+      "capEff": "0000000000000400",
+      "nnp": "1",
+      "registryClasses": {
+        "org.eclipse.kura.core.deployment": "a80ac45a0289c46a1cc63ea1ef8f993c84d30cfb10d24257c0ff9e55849cc2f5",
+        "org.eclipse.kura.deployment.agent": "a80ac45a0289c46a1cc63ea1ef8f993c84d30cfb10d24257c0ff9e55849cc2f5"
+      },
+      "registeredOriginalBusinessDpActive": true,
+      "businessResourceMatched": true
+    },
+    "firstUse": {
+      "source": "d53e20bf7edeb29cf1917379422c65d1730e5140",
+      "installedJars": 4,
+      "newDirectories": [
+        {
+          "entry": "local",
+          "newDirectory": true,
+          "registered": "example_1.0.0.dp",
+          "sourceConsumed": true
+        },
+        {
+          "entry": "cloud",
+          "newDirectory": true,
+          "registered": "example_1.0.0.dp",
+          "sourceConsumed": true
+        }
+      ]
+    },
+    "originalData": {
+      "stopped": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T08:17:50.962965707Z",
+        "FinishedAt": "2026-11-21T08:17:59.171603667Z"
+      },
+      "sixComponentColdCheck": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 82,
+        "credentialsExact": 2,
+        "registryAndLockExact": true,
+        "originalSubmitWithdrawn": true
+      },
+      "priorCoreMaintenance": {
+        "root": "39:6611544",
+        "id": "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+        "phases": 18,
+        "boundToInstalledPostinst": true,
+        "copyRetired": true
+      }
+    },
+    "boundaries": [
+      "This work serializes archive publication with registry writers and preserves original files at lock contention.",
+      "Felix deployment, archive rename and registry rename are separate commits. An abrupt stop between renames has not been demonstrated recoverable. No uncertain Felix call was retried."
+    ],
+    "coldReader": "deployment-registry-publication-lock/first-use/cold-maintenance.py",
+    "otherFixtureReader": "firewall-configuration-snapshot/cold.py"
   }
 }
