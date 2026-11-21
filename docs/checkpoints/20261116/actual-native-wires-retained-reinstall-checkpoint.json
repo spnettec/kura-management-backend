@@ -7839,5 +7839,44 @@
     "boundRequest": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
     "remaining": "installed upgrade with site override",
     "frozen": "0/12"
+  },
+  "boardUpgradeContainerRefusal20261122": {
+    "boardUpgrade": {
+      "root": "2097227:1",
+      "container": "63c18248a35d5ab6f571ac06f637a870caf94e5a54e548bda94e1872354c66ce",
+      "maintenance": "6f4ca88d-ffde-4fba-9c58-1191f687ec11",
+      "phases": 19,
+      "before": [
+        "1674",
+        "org.eclipse.kura.core.system",
+        "fixture-board-site-22",
+        "aarch64",
+        "eth0"
+      ],
+      "after": [
+        "3363",
+        "org.eclipse.kura.core.system",
+        "fixture-board-site-22",
+        "aarch64",
+        "eth0"
+      ],
+      "packagedBoard": "generic-device",
+      "preservedUserAndSeed": true
+    },
+    "containerProcess": {
+      "rootContainer": "896fbe8e1ff56893a4e88c094153df9c78e037332625df90190ffb9eef49863e",
+      "workload": "78fa58c6408a61bc960a8c369e1377d1ea1a36d95470fe47b135b955192e75d7",
+      "engineState": "created",
+      "engineError": "failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: unable to join session keyring: unable to create session key: operation not permitted: unknown",
+      "snapshot": "1795288712200",
+      "observedAfterRemovalAndReinstall": true,
+      "positiveStart": false,
+      "parkedExitCode": 0
+    },
+    "evidence": [
+      "core-board-upgrade/HANDOFF.md",
+      "container-process-maintenance/HANDOFF.md"
+    ],
+    "frozen": "0/12"
   }
 }

@@ -1,3 +1,7 @@
+## 2026-11-22 Core 旧安装的用户设备名与容器启动拒绝后的恢复
+
+同一 ARM64 Root 上 e99caab 升级 a16b65c 后，包内 device_name 已修复为 generic-device，前后两次正式 Main 均读到原用户设备名；用户属性和原快照的内容及元数据通过核对。独立 Container 3ea6634 现场的 OCI 引擎在会话 keyring 阶段拒绝进程启动，随后 remove、解包、续配、冷启动 Main 查回原 ID、purge 均已核实。正向运行仍为内部待验，原六组件和绑定网关只读。详见 core-board-upgrade/HANDOFF.md 与 container-process-maintenance/HANDOFF.md。冻结 0/12。
+
 ## 2026-11-22 无以太网时的 Core 板型修复
 
 Core a16b65c 已完成两种 ARM64 新安装的正式 Main 验证。仅 lo 时 SystemService 返回 generic-device、aarch64、eth0；有两个 dummy 有线接口时返回 enxboard0。原六组件仍装 e99caab，旧安装升级后的属性与用户覆盖仍待验。绑定网关 6910532 原五笔维护均已结束，停机冷读与上轮一致。见 core-board-install/HANDOFF.md。冻结 0/12。
