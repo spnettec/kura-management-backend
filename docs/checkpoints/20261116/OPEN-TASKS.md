@@ -1,3 +1,9 @@
+## 2026-11-21 Networking 的 dpkg 事务撤销与真实移除
+
+在原六组件 Root 上，一个故意返回 42 的测试包触发了真实 dpkg 升级撤销。旧标准版 96cc512 的 postinst 也报错，原包从 installed 降为 unpacked。Networking 7a57c4f 原位升级后分别触发 abort-upgrade、abort-deconfigure 和 abort-remove。三次测试均由 dpkg 拒绝候选，原标准包已配置，dpkg audit 为空；原属性和 systemd drop-in 内容一致，组件注册顺序文件内容、inode 和时间戳精确，84 份受保护文件相符。
+
+真实移除成功后，postrm 删除了 Networking 的注册行，其他行保持原序；再次安装同版并结算原移除记录后六包、SQLCipher 和 84 份文件已冷读。firewall-only 新包的 abort-upgrade 和 abort-deconfigure 两个脚本分支另在 ARM64 直接核实。最新停机入口 networking-dpkg-unwind/parked-readback.py。Main 与 agent 在本次包回滚中均停用。冻结 0/12，旧内核防火墙权限及其余 provider/launcher 矩阵继续。[dpkg 回调、发行件与冷读](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 标准 Networking 切换 firewall-only 后中断续配，再恢复标准版
 
 原六组件 Root 有 9 份快照：最新配置已有防火墙服务，原始 snapshot_0.xml 未配置。此前 firewall-only 会把跨包换型当作首次安装，给原始快照补写默认值。Networking 96cc512 使用既有 Root 能力记录区分首次引导与保留式安装；preinst 和 postinst 使用同一判定。20 项包测试通过，真实 deb 内读取器在 ARM64 验证了初装、两种保留记录和记录损坏的拒绝。

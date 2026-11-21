@@ -76,6 +76,8 @@ Core 5aa5aad4f1 将专属归档目录接入 Linux 发行包，沿用原活动文
 | Wires | 保留式移除和分阶段重装后，正式 Main 读回原 Timer→Logger 图，Logger 再次收到消息，原图仅提交一次。[原图重装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 联合配置中断有另一套现场及原 Root。[六组件转换记录](../checkpoints/20261116/actual-standalone-position-six-conversion-checkpoint.json) |
 | Agent | 同 Root 实际经过移除、purge、解包及重装，另有已绑定和未绑定场景。[保留式维护记录](../checkpoints/20261116/actual-native-agent-retained-removal-checkpoint.json) | 续接前要确认原注册身份、业务记录和 launcher 模式。 |
 
+标准 Networking 的原包即使未被替换，也曾因后继包拒绝安装而降为 unpacked。原六组件实测定位到旧包自身的回滚脚本。修订后，升级、依赖停配和冲突移除三种撤销都保住了原包和组件加载顺序。真正移除才注销组件。本次复用了原 Core 包、原卷和 Java 构建结果。[原包状态与 dpkg 回调](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
 标准版与 firewall-only 共用的安装状态让换型能够复用原卷。11 月 21 日在原六组件安装上验证，firewall-only 解包后停机，重新配置后两族 OSGi 防火墙服务可读；移除运行中的 provider、purge 并装回标准版后，9 份原始快照的内容和元数据均保持。此次复用已安装的 Core，两种 Networking deb 合计 9.82 MB。[换型及冷卷记录](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 防火墙确认流程中有两个编号。适配器用动作派发编号定位丢失回包的那次调用，GWT 会话用原准备编号读取整笔事务。新版在派发前收回按钮对应的服务端权限，连续读到旧的等待状态也不会再次派发。原六组件卷中，正式 Main 装载两个升级包，模拟确认、回滚各丢失一次回包，分别在第三次只读查询取得终态。两个新 deb 合计 43.52 MB，复用原 Core 和测试卷。[实装验证与回执](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)

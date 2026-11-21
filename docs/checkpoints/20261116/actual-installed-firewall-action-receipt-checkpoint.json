@@ -560,5 +560,108 @@
       "originalSubmitWithdrawn": true
     },
     "resume": "firewall-variant-reader/parked-readback.py"
+  },
+  "nativeNetworkingAbortedMaintenance": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/networking-dpkg-unwind",
+    "source": "7a57c4f5dfcabb3125ee0a30e68e6aabb95e2a86",
+    "tree": "6b119241602b13dbf79008f515c1bcf0dccb20f8",
+    "fixturePurpose": "A synthetic incoming preinst explicitly refuses before its payload is unpacked. dpkg and installed provider maintainer scripts are real.",
+    "previous": {
+      "status": "unpacked 3.0.0~git202611210202.96cc512-1",
+      "callbacks": [
+        "D000002: fork/exec /var/lib/dpkg/info/kura-networking.postinst ( abort-upgrade 99~unwind1 )"
+      ],
+      "audit": "The following packages have been unpacked but not yet configured.\nThey must be configured using dpkg --configure or the configure\nmenu option in dselect for them to work:\n kura-networking      Eclipse Kura Networking UI add-on"
+    },
+    "current": {
+      "upgrade": {
+        "providerInstalled": true,
+        "dpkgAuditClean": true,
+        "protectedFilesExact": 84,
+        "registryIdentityExact": true,
+        "propertiesBytesExact": true,
+        "dropInBytesExact": true,
+        "callbacks": [
+          "D000002: fork/exec /var/lib/dpkg/info/kura-networking.postinst ( abort-upgrade 99~unwind1 )"
+        ]
+      },
+      "deconfigure": {
+        "providerInstalled": true,
+        "dpkgAuditClean": true,
+        "protectedFilesExact": 84,
+        "registryIdentityExact": true,
+        "propertiesBytesExact": true,
+        "dropInBytesExact": true,
+        "callbacks": [
+          "D000002: fork/exec /var/lib/dpkg/info/kura-networking.postinst ( abort-deconfigure in-favour fixture-kura-networking-breaks 99~unwind1 )"
+        ]
+      },
+      "remove": {
+        "providerInstalled": true,
+        "dpkgAuditClean": true,
+        "protectedFilesExact": 84,
+        "registryIdentityExact": true,
+        "propertiesBytesExact": true,
+        "dropInBytesExact": true,
+        "callbacks": [
+          "D000002: fork/exec /var/lib/dpkg/info/kura-networking.postinst ( abort-remove in-favour fixture-kura-networking-removal 99~unwind1 )"
+        ]
+      }
+    },
+    "successfulRemoval": {
+      "removed": true,
+      "registry": [
+        "management-ui",
+        "wires",
+        "deployment"
+      ],
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "receipt": {
+        "sha256": "b08abef67d8b95406746566d57fa7f97d98a29df12d5c4878e2781237a7bf322",
+        "meta": "39|7060519|600|0|0|1|33|2026-11-21 02:09:27.428890652 +0000|2026-11-21 02:09:27.429856946 +0000"
+      }
+    },
+    "archives": {
+      "networking": {
+        "sha256": "78267f4045c25a4dd6d140af69cc9dd9c60062a2fd874418f9ba14352d488a11",
+        "version": "3.0.0~git202611210208.7a57c4f-1",
+        "bytes": 9387398
+      },
+      "firewall-only": {
+        "sha256": "97a2583093506dc4aa455c17172ff2bd1beba36912c545537b0618edb5174b07",
+        "version": "3.0.0~git202611210208.7a57c4f-1",
+        "bytes": 438072
+      }
+    },
+    "firewallOnlyDirectHookCheck": {
+      "previous": {
+        "package": "3.0.0~git202611210202.96cc512-1",
+        "directPackagedPostinst": {
+          "abort-upgrade": 1,
+          "abort-deconfigure": 1
+        }
+      },
+      "candidate": {
+        "package": "3.0.0~git202611210208.7a57c4f-1",
+        "directPackagedPostinst": {
+          "abort-upgrade": 0,
+          "abort-deconfigure": 0
+        }
+      }
+    },
+    "packageTestsPassed": 20,
+    "resume": "networking-dpkg-unwind/parked-readback.py",
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    }
   }
 }
