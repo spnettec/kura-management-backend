@@ -1,3 +1,7 @@
+## 2026-11-22 OPC UA 加密会话与原证书保留重装
+
+OPC UA c963584 修复 Milo 客户端证书链缺失，支持显式选择 SignAndEncrypt。正式 ARM64 Main PID 2944 与保留重装后的 PID 3795 从同一快照 1795292258810 成功读节点。服务端两次均报告 Basic256Sha256 / SignAndEncrypt，双方证书摘要一致。11 项测试通过，最终 purge、正常停放。示例服务端有终端证书 KeyUsage 检查被抑制的告警，严格用途与撤销验证仍待验。冻结 0/12。 详见 opcua-secure-maintenance/HANDOFF.md。
+
 ## 2026-11-22 正式 Main 的 OPC UA 订阅恢复与保留重装
 
 正式 ARM64 Main PID 1882 通过既有 OPC UA db7cedb 订阅服务器时间。Milo 端点退出并重启后，原监听收到新的时间，未再次注册。移除、解包和续配后，新 Main PID 3184 从原快照 1795291901848 再次收到订阅回调，两次取消注册后均观察到计数稳定。最终 purge，Main 正常停放。未新增持久卷。签名加密及其他 provider/launcher 仍待验，冻结 0/12。 见 opcua-subscription-maintenance/HANDOFF.md。

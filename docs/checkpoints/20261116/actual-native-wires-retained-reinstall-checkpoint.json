@@ -8156,5 +8156,31 @@
     "configurationSubmissions": 1,
     "endpointSecurity": "anonymous loopback",
     "frozen": "0/12"
+  },
+  "opcuaSecureRetainedReinstall": {
+    "firstRelease": "1fcc0c1",
+    "fixedRelease": "c963584",
+    "tests": 11,
+    "evidence": {
+      "root": "2097228:1",
+      "coreContainer": "cf555e74d9690c750b5ec31d0b2a8189ad4a7966daec19f9bd63e3e5a1c400d8",
+      "coreVersion": "6.0.0~git20261122040724.89dfd6a-1",
+      "opcua": "2.0.0~git20261122041816.c963584-1",
+      "sid": "1795292258810",
+      "firstMain": "2944",
+      "nextMain": "3795",
+      "mode": "SignAndEncrypt",
+      "policy": "http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256",
+      "certificatesMatched": true,
+      "coreExit": 0,
+      "peerExit": 143,
+      "coreRW": 4582826,
+      "peerRW": 194790,
+      "volumes": 0,
+      "peerWarnings": [
+        "check suppressed: certificate failed end-entity KeyUsage check: CN=YOFC isolated OPC UA client"
+      ]
+    },
+    "frozen": "0/12"
   }
 }
