@@ -43,3 +43,7 @@ ARM64 六组件正式 Main 已验证同一 SQLite 工厂内的数据库凭据换
 ## 2026-11-22 Artemis XML 用户表在磁盘上的保护
 
 原包配置关闭整份快照加密，0600 XML 中直接匹配合成口令。显式开启后，新快照使用 Core 的整份加密；正式 Main 整机重启后通过 getSnapshot 读回同一用户表，并以原测试口令在 MQTT 3.1.1 完成 QoS 1 收发。XML provider 的 users 仍是 String，本次使用原网关包装钥。启动自动转换旧明文快照会替换其 inode；转换中断、跨代重新包装和旧钥退役继续待验。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 历史快照转换的原位续办
+
+Core 已在第一份快照转换完成、最新一份仍为明文时通过进程中断验收。已有密文按当前钥认证并保留，最新编号成功续办并加载。新的 ARM64 deb 由正式 Main 读回混合历史中的最新业务设置，尚待验证的是跨代重新包装及旧钥退役。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)

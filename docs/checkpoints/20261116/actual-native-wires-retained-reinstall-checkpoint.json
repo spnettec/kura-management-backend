@@ -7185,5 +7185,121 @@
       "encrypted/cold-final.json": "0e3afdb75cc90d971de2f3ac43152dda51be88aca37328adc316d9adf480c3fc",
       "encrypted/config-cold.json": "71ef9a0c6931849923c7981b6fa9e4abaa6496a4649853d96c025c93090a16b6"
     }
+  },
+  "snapshotConversionResume20261122": {
+    "path": ".management-close-20261116/core-rtc-hotplug-20261120/snapshot-conversion-resume",
+    "core": "e99caab526662eafe4a6d8f38a331f8cf3ab9d4c",
+    "packageSha256": "9443032d4f28948543d089fb17487dd9cf04d8f2991a87f1064de58517730c68",
+    "tests": 389,
+    "process": {
+      "machine": "aarch64",
+      "java": "openjdk version \"21.0.13\" 2026-10-20",
+      "exitCode": 143,
+      "root": 2097225,
+      "original": [
+        {
+          "dev": 2097225,
+          "inode": 7,
+          "mtimeNs": 1795284428219061687,
+          "ctimeNs": 1795284428219061687,
+          "sha256": "2ea5c5a576be86e25a414f5a759d301a3c80db7fbfcfeec9a3a8942ba8ce76c0"
+        },
+        {
+          "dev": 2097225,
+          "inode": 8,
+          "mtimeNs": 1795284428220061689,
+          "ctimeNs": 1795284428220061689,
+          "sha256": "69783d9a1a980bd49910fd749a2c4913d36a12704de06cf637601bb667bd0aa8"
+        }
+      ],
+      "mixed": [
+        {
+          "dev": 2097225,
+          "inode": 11,
+          "mtimeNs": 1795284428405062031,
+          "ctimeNs": 1795284428406062033,
+          "sha256": "653e8bb49f9639434e0bec76e3035f507047c20c38fccce3900bc59c4e756914"
+        },
+        {
+          "dev": 2097225,
+          "inode": 8,
+          "mtimeNs": 1795284428220061689,
+          "ctimeNs": 1795284428220061689,
+          "sha256": "69783d9a1a980bd49910fd749a2c4913d36a12704de06cf637601bb667bd0aa8"
+        }
+      ],
+      "final": [
+        {
+          "dev": 2097225,
+          "inode": 11,
+          "mtimeNs": 1795284428405062031,
+          "ctimeNs": 1795284428406062033,
+          "sha256": "653e8bb49f9639434e0bec76e3035f507047c20c38fccce3900bc59c4e756914"
+        },
+        {
+          "dev": 2097225,
+          "inode": 18,
+          "mtimeNs": 1795284428791062744,
+          "ctimeNs": 1795284428791062744,
+          "sha256": "d0e0977d44c7bf7885c20f3589c98e1b5400e9c0976dd989915ad687f9cf2117"
+        }
+      ],
+      "previousRelease": "previous release returned null",
+      "resumed": "latest loaded; both encrypted snapshots authenticated and read back",
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "installedSource": "fb9b6760a4537fb5d41f4accaa8712f6a95c9371",
+      "previousJar": "f4eb0de0d046d8cb510e52443730fb94d7a341bbccde4fd8be2c5e7266127915",
+      "previousJarPath": "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar",
+      "candidateJar": "13b94152fc6640ec82cda528ee014f3f8133cab0bf66ba26bae701324ab332f6"
+    },
+    "main": {
+      "unit": {
+        "MainPID": "2261",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "62a6e74bd3da4b668ebbca9e772d27f7"
+      },
+      "noNewPrivs": "1",
+      "read": "2261 current=12002 saved=12002",
+      "files": {
+        "snapshot_1.xml": {
+          "sha256": "ed732eef3a422edc3bf86b7a0e0c4038068f5431b24ae0c05ef74c7ad91bade5",
+          "meta": "2097227|4951|600|997|995|1|32081|2026-11-21 18:09:11.674291279 +0000|2026-11-21 18:09:11.674291279 +0000"
+        },
+        "snapshot_2.xml": {
+          "sha256": "0c8bff95a81db432105ad1f380a284bb09711081379c8622ecf9a66d5974a58f",
+          "meta": "2097227|4955|600|997|995|1|32081|2026-11-21 18:09:18.883304843 +0000|2026-11-21 18:09:18.883304843 +0000"
+        }
+      }
+    },
+    "persistentSystemVolumes": 0,
+    "evidence": {
+      "HANDOFF.md": "3c2c489aaad2d8fe2f870972839713808ab82e92592b2a9c4289de0b08bca50b",
+      "ConversionProcess.java": "179c0136231baa8dde67e947faa78d6917e6cb95245ce701b0a15a2baf9017cd",
+      "supervisor.py": "541c28dfd33539dfa4b30055f14e1727a0e8208c81013cf34201a26f1b2aedc7",
+      "field_test.py": "4f12442e05bed39a0be6f88b8ea05a0562c500f3dde56c457c6addabfc0d7771",
+      "release_check.py": "21d695a4288c987fd8b8ad3a38eebb0cc7d86a7b38564d1a4303b6c9026810b6",
+      "test.sh": "8aaea3cf178f20223efcab3354356bedc88f5e8675807bf840285e385246f73b",
+      "release.json": "0ce323fac82fb7fae4961e325fc777ff9148936cf864e9431f457e89e3d76d61",
+      "process-result.json": "34ee31dd3b8649dd9b6d66d120c65d89ac6fcc450c66cc9ebdf52d7aa97a3b94",
+      "final-tests.log": "fce0b1452b9b08e366bf3a72ae26418e4be6c5f9389d915edbbfc8039c01a934",
+      "final-field.log": "15a5dcc3e777d08ea391069407fce9943a16237d5676a065e95314d6cd3e0e2e",
+      "main_field.py": "d4d74e88baa8b6d9edab0f6ec8bae1755b25f77561587f0374be4e68109eaa7d",
+      "MainRead.java": "83ba682d11d907dad19430c167c5dbb3bd4775f39ec07a04e2137ee3cbef9f7d",
+      "main-read.jar": "90be76fd67df7cbe4f9619fd98b2f4122c6c804f9f495797f88004907f67fc1d",
+      "boot.sh": "49e85255a5cf75d83fbe1116287da60530083b3ea9b1c20bdf8cb52af270fcbc",
+      "main-installed.json": "79e9906c8279004ef1c876d34fa78ead2a421afe7216408b81550215f0a64be7",
+      "main-mixed.json": "80c37a1b4e289fe9c72f0fb3f2a23cd2cbc3016f4a6ef151506665e838cf3060",
+      "main-read-1.json": "ea19e7db1713ea5a9746daab4243d5e9072fc4f27b2fbd023c0cfb772adf6499",
+      "main-read-2.json": "b77b981da66f8125d48af6186d3e5ae8cfc749875cb60bd39cc8607a87882244",
+      "main-parked.json": "82c5a1d6a94ccb975df023de954a37984dba2718b7b8ab5377da61d6a18d3165",
+      "retained-50001.json": "3478436111f60c4f293fb37d26ac85a559ac3b07c3432623a5c5ddcfb0eb341b",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "original-three-after.json": "6a55f3e0bf563e47892f66e5e29eebc3b49ced6fe6d5a0e495679826d12db0b9",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609"
+    }
   }
 }

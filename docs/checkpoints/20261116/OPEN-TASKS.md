@@ -1,3 +1,7 @@
+## 2026-11-22 Core 快照转换中断续办
+
+Core `e99caab526` 修复了历史中已有密文时跳过最新明文的问题。ARM64 JVM 在编号 1 发布后被 SIGTERM 终止；旧发行 JAR 在同一目录返回 null，修复版保留编号 1 的完整指纹并恢复编号 2。新的 ARM64 deb 在独立内存系统通过正式 Main 读回运行与快照值 12002。模块及跨模块合计 389 项通过。详见 `snapshot-conversion-resume/HANDOFF.md`。50001 本轮仅冷读；跨代换钥及其他安装、恢复组合仍待验，冻结 0/12。
+
 ## 2026-11-22 Artemis XML 用户表快照与冷启动
 
 原包关闭整份快照加密，0600 XML 中可直接匹配测试口令。临时开启整份快照加密后，新快照为密文。两种设置下均经正常关机、按原编号读回和 MQTT QoS 1 收发验证。开启加密时 Core 自动转换了原夹具 snapshot_0；已从同 Root、同摘要副本恢复字节、权限和 mtime，inode 与 ctime 已改变。当前停机读回为 `artemis-xml-snapshot/encrypted/cold.py`，证据见 `artemis-xml-snapshot/HANDOFF.md`。跨代换钥与历史转换的中断恢复仍待验，冻结 0/12。
