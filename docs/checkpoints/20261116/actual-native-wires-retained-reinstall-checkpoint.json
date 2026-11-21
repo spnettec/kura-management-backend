@@ -3691,5 +3691,66 @@
     "scope": "The interrupted registry edits used separate fixture files. The installed production readers ran in the real Main. Recovery never invokes Felix. An unknown result inside Felix or exit before an original paired receipt exists is outside this evidence. Ordinary framework activation of registered packages keeps its existing semantics.",
     "coldReader": "deployment-paired-archive-commit/access/cold-maintenance.py",
     "otherFixtureReader": "firewall-configuration-snapshot/cold.py"
+  },
+  "interruptedFelixFrameworkIndex": {
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-felix-process-recovery",
+    "deployment": "ba4bc907543806831fbf17aec55eb7a1064b8558",
+    "releaseSha256": "934556189e7dcbde1ffece6f33bc0f2089ef333d07afb4222bd8d6bf21cdbf95",
+    "equinox": "3.24.100",
+    "felix": "0.9.10",
+    "java": 21,
+    "container": "893905d0055b4ff49a2d422a8218ddfe8ced6daf142e84d7286f1469da6aed3a",
+    "controllerExit": 137,
+    "role": "isolated ARM64 Equinox, original deployment binaries, same-container cold reads",
+    "cases": {
+      "local-session": {
+        "entry": "local",
+        "stop": "org.apache.felix.deploymentadmin.DeploymentAdminImpl.installDeploymentPackage:232",
+        "containerRoot": "2097163:7449538",
+        "caseRoot": "36:1303998",
+        "felixPackage": "absent",
+        "frameworkBundle": "absent",
+        "providerFiles": "temp",
+        "registryEntriesAdded": 0,
+        "archiveCopiesPublished": 0,
+        "submissions": 1,
+        "outcome": "UNKNOWN"
+      },
+      "cloud-index": {
+        "entry": "cloud",
+        "stop": "org.apache.felix.deploymentadmin.DeploymentAdminImpl.installDeploymentPackage:265",
+        "containerRoot": "2097163:7449538",
+        "caseRoot": "36:1304017",
+        "felixPackage": "1.0.0",
+        "frameworkBundle": "absent",
+        "providerFiles": "packages",
+        "registryEntriesAdded": 0,
+        "archiveCopiesPublished": 0,
+        "submissions": 1,
+        "outcome": "UNKNOWN"
+      },
+      "local-returned": {
+        "entry": "local",
+        "stop": "org.eclipse.kura.deployment.agent.impl.DeploymentAgent.installDeploymentPackageInternal:548",
+        "containerRoot": "2097163:7449538",
+        "caseRoot": "36:1304036",
+        "felixPackage": "1.0.0",
+        "frameworkBundle": "absent",
+        "providerFiles": "packages",
+        "registryEntriesAdded": 0,
+        "archiveCopiesPublished": 0,
+        "submissions": 1,
+        "outcome": "UNKNOWN"
+      }
+    },
+    "readback": "One submission per independent input. Before and after cold JVM read in the same retained container, each case used its own original framework store. Input, submission marker, unrelated registry row, provider content/index and framework bundleFile were preserved. Provider gzip contents and framework bundleFile matched the business JAR in the original input.",
+    "limitations": "Packaged local and cloud installation methods bound to the real Felix OSGi service in minimal Equinox. No production Main, remote cloud transport, hard power loss or automatic production recovery tested here. One setup-only ephemeral framework registered Felix without submitting a package. Network isolation caused a logger hostname warning. After all three readback JVMs stopped, Docker stop timed out on the idle sleep process (137). The retained root is stopped with restart policy no.",
+    "coldVerifier": "deployment-felix-process-recovery/verify-cold.py",
+    "sixColdVerifier": "deployment-paired-archive-commit/access/cold-maintenance.py",
+    "firewallColdVerifier": "firewall-configuration-snapshot/cold.py",
+    "retainedCaseAllocatedKiB": 324,
+    "newDebs": 0,
+    "newVMs": 0,
+    "newDockerVolumes": 0
   }
 }
