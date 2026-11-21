@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 在配置生成途中停机后恢复
+
+原六组件卷沿用 Core b1b8060be2。正式启动器生成 Equinox 配置时执行 systemd 停机。当时 PID 文件为空，JVM 尚未启动；424 字节临时配置在停机前后 inode 和摘要相同。单元正常退出，PID 文件消失，写入登记未变。原地启动一次后临时文件消失，完整配置为 22,494 字节。JVM 进程号与 PID 文件相符，其写入登记匹配进程启动时刻和锁文件，独占取锁探测证实内核锁已被持有。再次正常停机后冷读核对六个包、SQLCipher 和 83 份文件，续接入口为 main-launch-cancel/parked-readback.py。
+
+这次覆盖配置生成中的正常服务中断。独立启动器遗留 PID、其余包维护和已登录日志下载仍待验。原卷最新快照只有出厂管理员，首次登录要求改密。冻结 0/12。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 正式 Main 撤去 DAC_OVERRIDE
 
 Core b1b8060be2 在原六组件 Root 原位升级。新包先核对旧单元与原包配对，升级后冷读的维护链把两份实际发行清单直接相连。正式单元在每次 fork 前准备原 /run/kura.pid；固定 tmpfiles 规则只为新文件设置 kurad:kurad 和 0600。setpriv 将准备进程的 capability bounding set 限定为 CHOWN 和 FOWNER。原 Java 调用方及 systemd 继续读取同一普通 PID 文件。

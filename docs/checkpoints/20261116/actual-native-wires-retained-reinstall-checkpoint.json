@@ -2836,5 +2836,85 @@
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
       "parallels-final.json": "af513a3505cc9408cba0f3381eabaf9643b00f3f3310937d0cc3a7d292782701"
     }
+  },
+  "formalMainCancelledDuringConfiguration": {
+    "source": "b1b8060be2619b156f147bb76d682a287b656898",
+    "root": "39:6611544",
+    "beforeAndAfterStop": {
+      "beforeStop": {
+        "phase": "start",
+        "invocation": "fa96e8026938444e86f68ffb70745e31",
+        "controlPid": 1429,
+        "worker": 1435,
+        "pidFileBytes": 0,
+        "pidMode": "0o600",
+        "partial": {
+          "inode": 19,
+          "bytes": 424,
+          "hash": "7c45f14c02d2225e0f0d7c956e5d06c4499afd57f019652b87666b850e7edfdb"
+        },
+        "previousConfig": null
+      },
+      "after": {
+        "main": "0",
+        "active": "inactive",
+        "result": "success",
+        "restarts": 0,
+        "pidPresent": false,
+        "config": null,
+        "partial": {
+          "inode": 19,
+          "bytes": 424,
+          "hash": "7c45f14c02d2225e0f0d7c956e5d06c4499afd57f019652b87666b850e7edfdb"
+        },
+        "writersUnchanged": true
+      }
+    },
+    "recovered": {
+      "main": {
+        "unit": {
+          "MainPID": "2071",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "6869a1c01cd247f48148313559b1a9f9"
+        },
+        "ticks": "40665793",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "pidFile": {
+        "sha256": "8fae9bf0308cd1d73bcfff8a247ff071402a76b18db98c9d20b4ba2eac8efee9",
+        "meta": "2097175|233|600|997|995|1|5|2026-11-21 00:25:20.760010539 +0000|2026-11-21 00:25:20.760010539 +0000"
+      },
+      "configuration": {
+        "sha256": "7bdc69c14835a30c5fefed944102f0ee8d96772fd264b74b63fa3125f6d0f995",
+        "meta": "2097165|20|600|997|995|1|22494|2026-11-21 00:25:20.755010525 +0000|2026-11-21 00:25:20.755010525 +0000"
+      },
+      "writerLease": true
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "stopExit": 0,
+    "method": "Normal systemd stop while the packaged configuration generator was suspended, followed by one ordinary start on the same installation.",
+    "evidence": "main-launch-cancel/parked-readback.py",
+    "sha256": {
+      "cancel-guest.py": "75bd6ddd83e2f571858afa2db7c2ee6627c0c030d4ac557b95013f3701d46947",
+      "cancelled.json": "b098d5ec2ace755a029d405598122260beb588563e76d0b0a5cfcb97c596b6e1",
+      "recovered.json": "a7a014fe07196ea58e329b608c3ab328415eb7e7ed30675a7d505146505f5f6f",
+      "parked.json": "7b48b0af62a83b0cabdfbeedaf7f7a0f7ddd3f9bce61408d6fa11671ec60cfd7",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "original-three-after.json": "6d450ed0343a900bcc10f7452a58b685964e8be78286ec5bb99c5993fc1079e8",
+      "parallels-final.json": "af513a3505cc9408cba0f3381eabaf9643b00f3f3310937d0cc3a7d292782701",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
+    }
   }
 }
