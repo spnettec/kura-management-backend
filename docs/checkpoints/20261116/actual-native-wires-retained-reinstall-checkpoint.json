@@ -9078,5 +9078,31 @@
     "otherPluginPaths": 176,
     "distinctOtherJars": 175,
     "cold": "core-reactor-484c4c8/cold.py"
+  },
+  "containerCommandErrors": {
+    "core": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "source": "9a7cda7b06c2e86a8d557ee03d5033d73b2e3cb3",
+    "tree": "f2a86fbb4f5b9b567087c17ed597a4e1b06df5f0",
+    "previous": "d0606034686397de6422519b3779e07f998c54ce",
+    "debSha256": "03c696a69449e65c0cda24dc9547ea5c10910ae7ad38ef063ac7c0aca7a7895c",
+    "tests": 133,
+    "root": "2097233:1",
+    "snapshot": "1795304246479",
+    "stableEngine": true,
+    "cases": {
+      "start": [
+        "OS_COMMAND_ERROR",
+        "NotFoundException",
+        404
+      ],
+      "remove": [
+        "OS_COMMAND_ERROR",
+        "ConflictException",
+        409
+      ]
+    },
+    "parked": true,
+    "archiveSha256": "5d246fbaa445ff54a72a0bd9eca82cd700e154ff809502586c7cd2caf8ff4cc6",
+    "cold": "container-command-errors/cold.py"
   }
 }

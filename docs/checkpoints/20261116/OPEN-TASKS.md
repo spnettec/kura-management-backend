@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 传递 Container 命令失败状态
+
+Container 9a7cda7 保留 OS_COMMAND_ERROR，补齐操作、对象及可用的 Docker HTTP 状态，并保留异常原因。JDK 21 共 133 项测试通过。ARM64 独立系统使用 Core 484c4c843c，同一 Root 从 d060603 解包并续配至 9a7cda7。正式 Main 按原快照从独立 Docker 26.1.5 引擎收到启动 HTTP 404 和移除镜像 HTTP 409，两个错误均准确返回。原夹具容器与镜像保持，provider 已 remove、purge，系统正常停放。冷读入口 container-command-errors/cold.py。冻结 0/12。
+
 ## 2026-11-22 ARM64 原构建容器续跑完整 Core/OSGi 验证
 
 Core 484c4c843c 在原 ARM64 构建容器解冻后完成离线验证。82 个模块成功，259 份 XML 与日志均为 2161 项通过，其中真实 Equinox 68 项，失败、错误、跳过均为零。Equinox 实际打开的配置与 keystore bundle 均与本轮模块输出逐字节一致。正式 deb 的 41 个 Core 插件共 1208 个 class 完全一致，全部条目差异仅为 Bundle-Version 时间限定符；其余 176 个依赖路径均匹配只读 Maven 输入。证据入口 core-reactor-484c4c8/cold.py。冻结 0/12。
