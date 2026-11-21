@@ -5799,5 +5799,84 @@
     "mutableTimestampChange": [
       "user/kura_custom.properties"
     ]
+  },
+  "firewallProfileOwnershipTrigger20261121": {
+    "core": "1af242d3e8",
+    "networking": "83f237e",
+    "interruption": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "config-files",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed",
+        "kura-firewall-only": "triggers-awaited"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 318,
+      "fenced": false,
+      "pending": [
+        "/opt/eclipse/kura/bin/firewall",
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "packageOwnedEntries": 15,
+      "launcherOwner": "kura-firewall-only",
+      "capabilityRecords": 2,
+      "unchangedBaseProperties": true
+    },
+    "final": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "pending": [],
+      "packageOwnedEntries": 44,
+      "launcherOwner": "kura-networking",
+      "capabilityRecords": 0,
+      "unchangedBaseProperties": true
+    },
+    "versions": {
+      "kura-core": "6.0.0~git20261121215400.1af242d-1",
+      "kura-networking": "3.0.0~git202611211339.83f237e-1",
+      "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+      "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+      "kura-wires": "3.0.0~git202611211325.277954b-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "kernel": {
+      "iptables-save": {
+        "exit": 0,
+        "lines": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ip6tables-save": {
+        "exit": 0,
+        "lines": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "rootLauncher": "0700 root:root",
+    "parked": 0,
+    "boundMaintenance": "7a1e4339-aaad-4ee0-94fc-8db58592881f",
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-profile-trigger/HANDOFF.md"
   }
 }

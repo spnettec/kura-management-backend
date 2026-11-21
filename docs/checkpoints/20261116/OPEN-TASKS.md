@@ -1,3 +1,11 @@
+## 2026-11-21 原六组件在 firewall-only 和完整 Networking 之间切换后续办 Core 触发器
+
+原 ARM64 Root `39:6611544` 使用 Networking 和 firewall-only 的同一构建 `83f237e`，Core 为 `1af242d3e8`。从完整 Networking 切到 firewall-only 后正常停机。停机读回确认 Core 等待处理三个路径触发器，firewall-only 等待 Core。两份 Root 回执与配置尾部逐字节对应，原配置前缀摘要一致。原卷核对了启动脚本，原停机容器的 /usr 层核对了 systemd 单元。重启后只处理本次积压的触发器，15 项包代码权限恢复；启动脚本为 root:root 0700，kurad 和 kura-key-recovery 均无法读取或执行。
+
+清除 firewall-only 后按原版本装回完整 Networking，处理触发器后 44 项代码权限符合 Core 安装策略。两个包分别在自己生效期间独占原启动文件。原 sibling 加载顺序和锁恢复，两个能力回执均已退出，六包均 installed，dpkg 审计清洁。319 份运行文件的内容、权限和属主与开始时一致，仅 kura_custom.properties 的修改时间变化。Main、agent 和 firewall.service 均 disabled、inactive，六组件正常停机退出 0。停机复核了 42 笔维护的 759 份签名、101 个夹具对象及原凭据。六组件隔离网络的 IPv4、IPv6 规则导出始终为空。另一个已配置防火墙现场的 44 笔发布和 3 条规则已单独只读核对。
+
+原绑定网关仍停放，6910532 对应编号 `7a1e4339-aaad-4ee0-94fc-8db58592881f`，原任务 SUCCEEDED、远程 OFF、三代来源与上次停放一致。原三现场与 7fd 停机证据已复核，7fd 为 41 输入、16 回执。12 个父项冻结闭环 0/12；外部延期仍为真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [维护与停机核验](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 原六组件完整移除后沿同一编号恢复 Core 皮肤
 
 原 ARM64 Root `39:6611544` 已完成 Core `1af242d3e8` 的整包保留数据重装。使用与已安装版本一致的六个正式 deb。移除 GWT、Wires、Deployment、Networking、agent 和 Core 后，六包均为 config-files，原运行目录已撤下。Core 的保留副本内有原 GWT conffile 登记、定制图标与非包站点图片。四组续接夹具按原围栏临时保管，101 个对象均已逐项核对。
