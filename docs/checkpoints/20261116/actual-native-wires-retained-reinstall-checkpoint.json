@@ -8903,5 +8903,29 @@
     },
     "proof": "deployment-local-first-dispatch/verified.json",
     "cold": "deployment-local-first-dispatch/cold.py"
+  },
+  "dockerInstanceLockHandoff": {
+    "dataRoot": "39:8396014",
+    "lock": "39:8396143",
+    "commit": "5be1a757cebc20cc819cb985f22af02dae9f1e19",
+    "image": "sha256:6ae428c9bf6931ca0d2a37b4dfaec2e8eb58c5549af61a4108278f224379a096",
+    "oldExit": 1,
+    "newExit": 1,
+    "message": "Kura persistent volume is in use by another instance or maintenance operation.",
+    "processInterruption": 137,
+    "otherRefusal": 1,
+    "sameCertificate": true,
+    "protectedFiles": 11,
+    "arm64Tests": 28,
+    "storage": {
+      "volumeKiB": 24640,
+      "containerWritableBytes": [
+        348253,
+        527694,
+        337134
+      ],
+      "addedImageBytes": 33783
+    },
+    "cold": "docker-instance-lock-handoff/successor.py cold"
   }
 }

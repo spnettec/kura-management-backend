@@ -1,3 +1,7 @@
+## 2026-11-22 Docker 启动器同卷争用、接管和进程中断恢复
+
+ARM64 正式 Docker 启动器在同一持久卷上只允许一个 Main 持锁。后继 5be1a75 在卷占用时明确说明原因并返回 1。正常交接和 JVM 被 SIGKILL 后均沿同一卷、同一锁 inode 恢复，HTTPS 证书及 11 份文件完整指纹一致。三个实例最终均正常停放。当前入口 docker-instance-lock-handoff/successor.py cold。冻结 0/12。
+
 ## 2026-11-22 本地卸载先进入 Felix 时，云端安装等待原注册表
 
 独立 ARM64 正式 Main 实测本地卸载先进入 Felix，云端安装 74002 的虚拟线程等待同一注册表的 dispatch。释放后通知与原号 GET 均为 COMPLETED，业务包资源可读。另一笔云端卸载 74001 也按原号读回 COMPLETED，其等待位置未采到。停机冷读两份完成回执、四个出厂包及一个业务包。当前入口 deployment-local-first-dispatch/cold.py。冻结 0/12。
