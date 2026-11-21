@@ -1,3 +1,9 @@
+## 2026-11-21 已绑定 agent 在重装回执落盘后中断，沿原编号续配
+
+原绑定网关的三笔维护均已 REINSTALLED。本次经授权为同版本维护单独登记 `ae9f4d4e-dad1-4be4-80ca-e6634b86748c`，复用实装包 `431dedc` 和原初始化。真实 dpkg 在私有挂载命名空间内写成重装回执，随后 unlink 原 pending 文件遇到 EBUSY。停机冷读为 half-configured，回执和 pending 同时存在，状态查询为 INSTALL_ADMITTED，启动检查拒绝。
+
+原 OverlayFS 重挂后设备号从 1048716 变为 2097163，原 backing 摘要匹配。沿该编号续配一次，dpkg 回到 installed，pending 清除，查询为 REINSTALLED。完成回执的 inode、mtime、ctime 和摘要保持；跨两次停机读回，四笔维护的全部 JSON 文件摘要一致。100 个原对象指纹、两代来源回执、原任务 SUCCEEDED 和原 OFF 版本均通过。网关正常停机，Main 与 agent 停用；中心与 PostgreSQL 全程保持原停放状态。已有 ARM64 发行包无须重建，定向回归 5 项通过。最新只读入口为 `bound-agent-package-interruption/cold.py final`。冻结 0/12。[实装检查点](actual-native-agent-bound-business-removal-checkpoint.json)
+
 ## 2026-11-21 已绑定网关第二代来源回执与正常停放
 
 原网关在保留第一代来源回执的情况下安装了 agent `431dedc`。沿用原初始化和本次维护编号 `65ed1487-76c1-499c-8eac-4c9995c15c55`，暂停后从 installed 状态只读续验。当前指针指向第二代，第二代按编号和摘要指回第一代，第一代无前项。98 个原对象中，92 个完整指纹保持，5 份代码授权或指针文件按计划更新。`source-pairs` 父目录增加第二代子目录，原 inode、属组、权限和链接数保留。两代各有一份完整回执。

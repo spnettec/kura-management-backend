@@ -315,5 +315,131 @@
     "disk-full/hard-power"
   ],
   "frozen12Sha256": "4e1aaca54eb94c3fc36266506c87a0781498aa797f0c18a01036f74a21584cc7",
-  "pushed": false
+  "pushed": false,
+  "sameVersionReinstallInterruptedBeforePendingUnlink20261121": {
+    "request": "ae9f4d4e-dad1-4be4-80ca-e6634b86748c",
+    "installedVersion": "0.1.0~cohort20261121095918.431dedc-1",
+    "testCommit": "8887d729705c1c41d4d986990f3b2211a1465b7c",
+    "originalClosedOperations": [
+      "615f99e1-dc6f-42b3-8b99-41e8a3665807",
+      "65ed1487-76c1-499c-8eac-4c9995c15c55",
+      "90d442b0-ce49-4284-9863-45a65e53d477"
+    ],
+    "fault": "In the private mount namespace of dpkg the original pending file was a bind mount of itself. Its unlink returned EBUSY after the genuine reinstalled receipt was durable.",
+    "interrupted": {
+      "root": {
+        "device": 1048716,
+        "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+      },
+      "status": "install ok half-configured",
+      "reported": {
+        "schemaVersion": 1,
+        "requestId": "ae9f4d4e-dad1-4be4-80ca-e6634b86748c",
+        "phase": "INSTALL_ADMITTED",
+        "unitStarted": false
+      },
+      "receipt": "fe6b02da0f5e72d1d75504fa8e4f919c772f07be7b26ab753df8316c047b25dd",
+      "receiptIdentity": "7557960|0|0|600|1|175|2026-11-21 12:50:34.065186088 +0000|2026-11-21 12:50:34.066253465 +0000",
+      "pending": "a4f108f411ed878ba56509ac3d0c886306e3177d280fb5a937702d14f10f8758",
+      "assets": 100
+    },
+    "recovered": {
+      "root": {
+        "device": 2097163,
+        "overlaySha256": "22a9f426f5a897eb50157dbc0f1e62a176ed2c5d4b6be5ec013c7ffd67c5f427"
+      },
+      "receipt": "fe6b02da0f5e72d1d75504fa8e4f919c772f07be7b26ab753df8316c047b25dd",
+      "unchangedReceiptIdentity": "7557960|0|0|600|1|175|2026-11-21 12:50:34.065186088 +0000|2026-11-21 12:50:34.066253465 +0000",
+      "request": {
+        "schemaVersion": 1,
+        "requestId": "ae9f4d4e-dad1-4be4-80ca-e6634b86748c",
+        "phase": "REINSTALLED",
+        "unitStarted": false
+      },
+      "sameAssets": 100,
+      "priorPair": {
+        "requestId": "65ed1487-76c1-499c-8eac-4c9995c15c55",
+        "schemaVersion": 1,
+        "sha256": "21214f9473fb75fb42ac905ae6ea3f515b45ac239405fb93d4785a123d07dc07"
+      },
+      "originalTask": [
+        "523ec79a-731b-4bb6-b274-9008a750b34d",
+        3,
+        "SUCCEEDED",
+        114,
+        88
+      ],
+      "remoteOff": {
+        "version": 1,
+        "revision": "8ffa3330-f758-4652-be4b-861efe2c8401",
+        "enabled": false,
+        "actor": "kura-uid:997"
+      },
+      "version": "0.1.0~cohort20261121095918.431dedc-1"
+    },
+    "maintenanceDispatches": {
+      "prepare": 1,
+      "remove": 1,
+      "unpack": 1,
+      "configureInterrupted": 1,
+      "configureContinuation": 1
+    },
+    "halfConfiguredColdCheck": "install ok half-configured",
+    "finalColdCheck": "install ok installed",
+    "allFourHistoryDirectoriesMatched": true,
+    "sourcePairDigests": [
+      "150c8e0edec4015f213eff008698c0718b6208116295d89f0960e149852054c4",
+      "21214f9473fb75fb42ac905ae6ea3f515b45ac239405fb93d4785a123d07dc07"
+    ],
+    "regression": {
+      "arch": "arm64",
+      "distribution": "Debian 13",
+      "passed": 5,
+      "logSha256": "e848fe0ad5def2dd55ec83a169675a3966885d03c631dd5cc8b5f3c1db484388"
+    },
+    "parked": {
+      "gateway": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T12:50:55.352900074Z",
+        "FinishedAt": "2026-11-21T12:51:00.506518092Z"
+      },
+      "postgres": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-21T10:00:23.35895468Z",
+        "FinishedAt": "2026-11-21T12:44:17.027466776Z"
+      },
+      "center": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-19T14:33:12.996199758Z",
+        "FinishedAt": "2026-11-19T14:41:14.104538153Z"
+      }
+    },
+    "coldVerifier": "bound-agent-package-interruption/cold.py final",
+    "frozenClosed": 0,
+    "frozenTotal": 12
+  }
 }
