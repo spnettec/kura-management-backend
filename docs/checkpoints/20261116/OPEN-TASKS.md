@@ -1,3 +1,7 @@
+## 2026-11-22 Container 编排依赖去重与正式 Main 升级
+
+Container d060603 取消 16 份 lib/ 重复 JAR，deb 从 16,454,006 降为 8,262,616 字节。JDK 21 的 133 项测试通过，PDE 目录布局与 ARM64 实装均加载 15 个类。原 Root 升级后保留快照，正式 Main 查询到原镜像及新增镜像，remove、purge、正常停机完成。进程正向运行仍为内部待验。冻结 0/12。 证据见 container-bundle-layout/HANDOFF.md。
+
 ## 2026-11-22 Core 旧安装的用户设备名与容器启动拒绝后的恢复
 
 同一 ARM64 Root 上 e99caab 升级 a16b65c 后，包内 device_name 已修复为 generic-device，前后两次正式 Main 均读到原用户设备名；用户属性和原快照的内容及元数据通过核对。独立 Container 3ea6634 现场的 OCI 引擎在会话 keyring 阶段拒绝进程启动，随后 remove、解包、续配、冷启动 Main 查回原 ID、purge 均已核实。正向运行仍为内部待验，原六组件和绑定网关只读。详见 core-board-upgrade/HANDOFF.md 与 container-process-maintenance/HANDOFF.md。冻结 0/12。

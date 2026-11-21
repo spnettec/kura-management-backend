@@ -7878,5 +7878,21 @@
       "container-process-maintenance/HANDOFF.md"
     ],
     "frozen": "0/12"
+  },
+  "containerBundleLayout20261122": {
+    "evidence": "container-bundle-layout/HANDOFF.md",
+    "source": "d0606034686397de6422519b3779e07f998c54ce",
+    "tree": "9c7bad02b2bb189ca00880035d84d66479c3c64d",
+    "sha256": "bb3f6014ff4f6e04d2dfe389d486f9a58de42fedde8a03e133f95ef23e89023b",
+    "debBytes": 8262616,
+    "previousDebBytes": 16454006,
+    "duplicateJarsRemoved": 16,
+    "classesMatched": 15,
+    "snapshot": "1795289070864",
+    "beforeImages": 1,
+    "afterImages": 2,
+    "exitCode": 0,
+    "positiveWorkloadStart": "pending",
+    "frozen": "0/12"
   }
 }
