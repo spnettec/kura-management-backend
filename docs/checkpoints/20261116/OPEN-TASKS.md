@@ -1,3 +1,7 @@
+## 2026-11-22 Deployment 的安装、卸载及后续重启判定
+
+独立 ARM64 正式 Main 的 Deployment 安装任务 71001 与卸载任务 71002 均为 COMPLETED。两次部署后重启调用均只读原 UNKNOWN，原 Root 39:8337304 的 actor 始终只有同一编号。正常停机后核对两份部署回执、原九份请求相关文件、三份凭据和 11 个发行文件。当前冷读入口 deployment-original-reboot-receipt/cold.py final。冻结 0/12。 实测通过 JVM 内已注册的请求处理器。真实传输和内核重启后的业务恢复仍待验。
+
 ## 2026-11-22 watchdog 超时读取原 UNKNOWN 与配置恢复
 
 ARM64 正式 Main 的 watchdog 在设备缺席宽限期后沿原编号读取 UNKNOWN。启用期间和恢复原禁用配置后分别观察 65.1 秒、65.1 秒，均未再读原回执，日志无软件重试。原 Root 39:8337304 正常停机，九份请求相关文件、三份凭据均与基线一致。停机入口 watchdog-original-retry-window/cold.py final。冻结 0/12。 打开设备后的关键组件超时、实际后继包接管原 pending 仍待验。

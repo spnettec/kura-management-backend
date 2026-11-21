@@ -8621,5 +8621,72 @@
     "originalFiles": 9,
     "credentials": 3,
     "cold": "watchdog-original-retry-window/cold.py final"
+  },
+  "deploymentPostActionOriginalReboot": {
+    "root": "39:8337304",
+    "operation": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+    "install": {
+      "action": "install",
+      "result": "71001 COMPLETED true true",
+      "reboot": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+      "receiptAccess": true,
+      "logStart": 250766,
+      "warning": "2026-11-21T21:52:53,988 [] WARN  o.e.k.c.s.SystemAdminServiceImpl - Reboot broker outcome UNKNOWN or unavailable"
+    },
+    "uninstall": {
+      "action": "uninstall",
+      "result": "71002 COMPLETED false false",
+      "reboot": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+      "receiptAccess": true,
+      "logStart": 250879,
+      "warning": "2026-11-21T21:52:56,182 [] WARN  o.e.k.c.s.SystemAdminServiceImpl - Reboot broker outcome UNKNOWN or unavailable"
+    },
+    "coldBusiness": {
+      "root": "39:8337304",
+      "completed": {
+        "install": {
+          "job": "71001",
+          "file": ".dpa.properties.install-e672824999ad553aece0661c1a8e253ce83804ea988ea955268fc519fba2ff03.done",
+          "inode": 8367826,
+          "sha256": "ce8011713b6187e52466bec450cc2e150a09b7e5c72d438a1a0f2dc3da997e24",
+          "size": 1725
+        },
+        "uninstall": {
+          "job": "71002",
+          "file": ".dpa.properties.uninstall-b88eda019eca25e4e9e1b3423b07cb96a74ff24d6ff1c8b407c246d23fff3c8c.done",
+          "inode": 8367871,
+          "sha256": "60124d885dce4a77518a2992f3c785dd8040e1dfcfda659dc85b59372590acb2",
+          "size": 776
+        }
+      },
+      "registrySha256": "904055aa19ba6ecbb8c96a640ae6c8dc8a1f0c64e7fcf7763ad6d5001e4912f2",
+      "businessRegistered": false,
+      "payloadVerified": 7,
+      "native": {
+        "kura-cloud": "install ok installed 3.0.0~git202611211421.d969371-1",
+        "kura-deployment": "install ok installed 2.0.0~git202611211658.1b043a4-1"
+      },
+      "containerUsrVerified": 4
+    },
+    "storage": {
+      "beforeKiB": 286488,
+      "afterKiB": 291968,
+      "existingArchives": [
+        {
+          "sha256": "f77df9355da3b82c0dc9abf0019e6377661dd3ef2c833cde26c9073ede97639e",
+          "bytes": 4177800
+        },
+        {
+          "sha256": "4f085bd59ea93be407407eeacf2a80677a8a784b96c53a2a86f6f3beaedddd00",
+          "bytes": 278108
+        }
+      ],
+      "newDebs": 0,
+      "newVolumes": 0,
+      "observerBytes": 5650
+    },
+    "actualCloudTransport": false,
+    "kernelReboot": false,
+    "entry": "deployment-original-reboot-receipt/cold.py final"
   }
 }
