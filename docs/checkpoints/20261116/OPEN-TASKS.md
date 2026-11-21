@@ -1,3 +1,9 @@
+## 2026-11-21 原配置服务按地址族一次发布开放端口、转发及 NAT
+
+Networking bd5fb9b 将同一次 ConfigAdmin 更新的三类规则一起准备，保留独立维护的自动 NAT。ARM64 上真实旧包面对只读且关闭的转发开关，IPv4/IPv6 各发布四次，改写规则文件并发送一次变更事件。新包两族均在第一条内核命令前拒绝，原模型、表、规则文件保持，事件数为零。转发已开时，两族均一次发布、一次通知，原有其他软件的规则链保留。2240 项 Networking 测试通过。
+
+原六组件卷原位升级标准 Networking。正式 Main 的 OSGi 实际解析到 iptables 包版本 1.6.0，双族配置回调在只读夹具上均无部分提交。六包、SQLCipher 和 84 个原内容摘要已冷读。最新停机入口 firewall-configuration-publication/parked-readback.py。另在隔离网络命名空间量得 iptables-restore 的分表提交可留下先前的修改；nft 单批两张测试表在拒绝时均保留。受限写入 broker、原编号结算和 Main 整体撤权继续，冻结 0/12。[内核对照、发行件与原卷](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 在调用线程撤去 NET_ADMIN 后读取双族防火墙表
 
 原 ARM64 六组件 Root 联合升级 Core 002b0b545e 与 Networking 6fa4232。正式 Main 通过独立 socket 对每一族检查 filter、nat、mangle。读取服务配对已加载的 Main 并验证调用进程，只接受族别、返回状态。测试线程及其普通子进程的有效能力由 0x1400 降为 0x0400 后，两族查询均成功。仅读取服务使用 0x1000，Main 主线程仍为 0x1400。六张表前后摘要相同，六包、SQLCipher 和 84 份文件冷读通过，84 份文件的内容与升级前一致。Core 后续 f956cc3314 只修订组装测试，最新停机入口 main-firewall-table-reader/parked-readback.py。规则写入、其他 provider/launcher 与整体撤权继续，冻结 0/12。[实装进程、发行件和测试范围](actual-installed-firewall-action-receipt-checkpoint.json)

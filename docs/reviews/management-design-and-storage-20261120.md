@@ -6,7 +6,11 @@
 
 **有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
 
+10:30 的宿主目录计量为 **346.96 GB**，其中历史工作目录 **252.85 GB**、中心 target **78.76 GB**，两者占 95.6%。较 09:58 增加 259.7 MB；同期保留的 Core ARM64 包从 37 份增至 38 份。这一轮防火墙发布只重建两个 Networking 变体，复用同一 ARM64 镜像和六组件卷。[10:30 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-configuration-publication/storage.json)
+
 09:58 的目录复测为 **346.70 GB**，其中历史工作目录 **252.59 GB**、中心 target **78.76 GB**，合计 95.6%。较 09:40 增加 227.0 MB。两个读权限实现随原包交付，本次另存一个 204.31 MB 的 Core 完整包。37 份 Core ARM64 deb 的文件长度合计 7.56 GB。上述统计按宿主目录计量，虚拟机卷另计。[最新目录计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers/storage.json)
+
+本轮发现，一份 ConfigAdmin 配置原先分三类先删除再追加，遇到 NAT 拒绝时已经修改其他规则并发出了变更通知。两种地址族都复现了四次发布。现在先准备完整配置，转发开关不满足时执行零条内核命令，成功时每族发布一次。一次 Java 发布在当前后端仍涉及多条命令，跨表提交的中断恢复仍有单独成本。[配置与内核实测](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 11 月 21 日 10:20 在原六组件卷测得，正式 Main 的调用线程撤去 NET_ADMIN 后，仍可通过独立读取服务核对 IPv4、IPv6 各三张内核表。服务和调用线程的有效能力分别为 0x1000 和 0x0400。内核规则发布仍走旧路径。这次沿用同一卷和 Maven 缓存；核对最终 Core deb 后移除了本轮未安装的中间包，逻辑长度 204.37 MB。[实装读数与包记录](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 

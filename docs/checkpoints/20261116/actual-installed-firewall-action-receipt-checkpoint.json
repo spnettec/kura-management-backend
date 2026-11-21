@@ -810,5 +810,134 @@
       "logicalBytes": 204372620,
       "retained": "6.0.0~git20261121021850.002b0b5-1"
     }
+  },
+  "configuredFirewallPublication": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-configuration-publication",
+    "source": "bd5fb9b7b2200a6aee0a6cb3afbbe4343733b614",
+    "tree": "df075145a3e7226c7c4a1cc852bcd5e211849cc3",
+    "version": "3.0.0~git202611210227.bd5fb9b-1",
+    "oldRefusal": {
+      "package": "ebee97b53e42d7428d58d75671f72776b53c103fa3f16ed7f7bd962d9ad741a3",
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "observations": [
+        "ipv4 commands=394 publications=4 events=1 unchangedKernel=false unchangedFile=false hasPort=true",
+        "ipv6 commands=386 publications=4 events=1 unchangedKernel=false unchangedFile=false hasPort=true"
+      ]
+    },
+    "candidateRefusal": {
+      "package": "74d078cc447c7ad23a6659ff00437fc015bb27262de6b666a190392e9c3562b1",
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "observations": [
+        "ipv4 commands=0 publications=0 events=0 unchangedKernel=true unchangedFile=true hasPort=false",
+        "ipv6 commands=0 publications=0 events=0 unchangedKernel=true unchangedFile=true hasPort=false"
+      ]
+    },
+    "successfulPublication": {
+      "package": "74d078cc447c7ad23a6659ff00437fc015bb27262de6b666a190392e9c3562b1",
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "observations": [
+        "ipv4 commands=98 publications=1 events=1 unchangedKernel=false unchangedFile=false hasPort=true",
+        "ipv6 commands=96 publications=1 events=1 unchangedKernel=false unchangedFile=false hasPort=true"
+      ]
+    },
+    "main": {
+      "main": {
+        "unit": {
+          "MainPID": "2008",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "baf565b765ab495882e7f2ee8b1876b1"
+        },
+        "ticks": "41226921",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "lines": [
+        "2008 9412417a05125e9efe55575dc93f57d5f0e53ce94989a461b64c94bec7c5c84f",
+        "org.eclipse.kura.net.admin.firewall c8e35f85a0442a9873a5612b69dd00d001ee0d268bb552c436b411cb0176aa66 import=1.6.0",
+        "ipv4 refused commands=0 events=0 originalModelAndFile=true",
+        "ipv6 refused commands=0 events=0 originalModelAndFile=true"
+      ],
+      "tablesExact": 6,
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "provider": "089bfd414d1becc6db0e6fc7726d25cd7b00ad3f68d5e39b505d76afa6cbd8c5",
+      "admin": "3771c3c471cf346073f055a1274e06d2e16e33bcb3412b64c63f048e6014bf4b"
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "protectedContentMatchesBeforeUpgrade": 84,
+    "testsPassed": 2240,
+    "backends": {
+      "iptablesRestore": {
+        "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+        "tools": [
+          "iptables v1.8.11 (nf_tables)",
+          "ip6tables v1.8.11 (nf_tables)"
+        ],
+        "observation": {
+          "iptables": {
+            "version": "iptables v1.8.11 (nf_tables)",
+            "checkLeftFilterExact": true,
+            "invalidSecondTableExit": 1,
+            "firstTableChangedAfterFailure": true,
+            "hooksAfterFailure": 1,
+            "hooksAfterValidCommit": 2,
+            "siteChainRetained": true,
+            "checkExit": 0
+          },
+          "ip6tables": {
+            "version": "ip6tables v1.8.11 (nf_tables)",
+            "checkLeftFilterExact": true,
+            "invalidSecondTableExit": 1,
+            "firstTableChangedAfterFailure": true,
+            "hooksAfterFailure": 1,
+            "hooksAfterValidCommit": 2,
+            "siteChainRetained": true,
+            "checkExit": 0
+          }
+        }
+      },
+      "nftBatch": {
+        "image": "sha256:b4e9fe9ae550f0f3f3053acd4bf25e6625db5247d42e6cd804876dd1fd67f80f",
+        "tools": [
+          "iptables v1.8.11 (nf_tables)",
+          "ip6tables v1.8.11 (nf_tables)",
+          "nftables v1.1.3 (Commodore Bullmoose #4)"
+        ],
+        "observation": {
+          "nft": "nftables v1.1.3 (Commodore Bullmoose #4)",
+          "families": {
+            "ip": {
+              "checkRejected": 1,
+              "applyRejected": 1,
+              "twoTablesExactOnRefusal": true,
+              "validCommitVisibleFromIptables": true,
+              "siteChainsRetained": true
+            },
+            "ip6": {
+              "checkRejected": 1,
+              "applyRejected": 1,
+              "twoTablesExactOnRefusal": true,
+              "validCommitVisibleFromIptables": true,
+              "siteChainsRetained": true
+            }
+          }
+        }
+      }
+    },
+    "remaining": "Legacy kernel writes still use NET_ADMIN in Main. Paired write broker, durable outcome and original-ID recovery are pending. The isolated nft test covers only two fixture chains per family."
   }
 }
