@@ -1,3 +1,7 @@
+## 2026-11-22 OPC UA 正式 Main 的节点读取与恢复
+
+ARM64 实装修复 Milo 1.1.2 重定位依赖缺少 OSGi 声明，以及通道省略 attribute 时默认值未生效。WIP `107da42` 通过 10 项模块测试。原 Main 的同一 PreparedRead 在服务器停止时返回 ConnectionException，服务重启后读到新的时间。remove、解包和续配后，新 Main 用原工厂和同一份快照再次读取产品名与时间，随后 purge、正常停放。匿名回环读已验，签名加密、订阅、实际部署包投递及其他 provider/launcher 仍待验。见 `opcua-provider-main/HANDOFF.md`，冻结 0/12。
+
 ## 2026-11-22 正式 Camel 路由跨包维护和 provider 缺席时的快照
 
 真实 dpkg 配置后继包时等待注册表锁超时，状态为 half-configured；原 Root 续配后，正式 Main 从同一编号恢复原路由并再次送达。另一 Root 在 Camel 已 purge、配置工厂缺席时由 Main 保存新快照，重装后从该新编号恢复既有路由并送达。每个 Root 的路由只提交一次。两版六个 JAR 相同，详见 `camel-provider-upgrade/HANDOFF.md`。其他 provider/launcher 和跨代换钥继续待验，冻结 0/12。
