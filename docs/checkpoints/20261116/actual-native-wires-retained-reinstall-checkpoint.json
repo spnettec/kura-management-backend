@@ -7984,5 +7984,31 @@
       "parkedExit": 0
     },
     "frozen": "0/12"
+  },
+  "publishedGenerationLauncherUpgrade20261122": {
+    "evidence": "published-launcher-reinstall/HANDOFF.md",
+    "source": "b57e5bccfeed08fac0b877f05fd0ffc00d87ed64",
+    "debSha256": "aeee4c487d3895bafbf69241635c841ddbd5c41f1f736db5d45ed1d98f12553a",
+    "debBytes": 205090778,
+    "arm64Tests": 105,
+    "root": "39:8195025",
+    "volume": "yofc-published-launcher-reinstall-root",
+    "maintenance": "20ea89bb-deb1-4809-bb3a-f285cf967417",
+    "manifest": "649d76c49eaf4ec763f741fb98d618ea7beef9dbbed3dcb023de0801664df743",
+    "publishedCohort": "57f0270a899024a5bdd6c202b484911fb05467d813e826690508b02022f184bd",
+    "incomingUnconfiguredCohort": "50baf12d236767751f5f7e6fb0df78265c28f47b1f398ae4bdb0cc19064a163f",
+    "installedCohort": "57f0270a899024a5bdd6c202b484911fb05467d813e826690508b02022f184bd",
+    "signedPhases": 19,
+    "mainRead": [
+      "1555",
+      "1795290300532",
+      "24101",
+      "1795290311731",
+      "24102"
+    ],
+    "mainUid": "997",
+    "nnp": 1,
+    "parkExitCode": 0,
+    "frozen": "0/12"
   }
 }
