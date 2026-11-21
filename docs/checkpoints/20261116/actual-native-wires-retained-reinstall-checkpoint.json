@@ -8411,5 +8411,23 @@
     "addedDebs": 0,
     "addedSystemVolumes": 0,
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-keystore-upgrade/HANDOFF.md"
+  },
+  "sslTrustGenerationPurge": {
+    "source": "fc17697eba897b45590bedb019c90fee40f6218a",
+    "root": "2097227:1",
+    "publication": "0260ed8c-f5f7-4542-8315-7be44de7a18a",
+    "maintenance": "bf349627-dbd1-487b-a441-8c3e61ae44a4",
+    "initialSnapshot": "1795295184968",
+    "newSnapshot": "1795295195841",
+    "mainPids": [
+      1698,
+      2507
+    ],
+    "trustedCertificates": 2,
+    "protectedFilesAfterPurge": 17,
+    "parked": true,
+    "persistentVolumes": 0,
+    "originalPublishedRoot": "39:8285453",
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/ssl-trust-generation-purge/HANDOFF.md"
   }
 }

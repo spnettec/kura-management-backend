@@ -1,3 +1,7 @@
+## 2026-11-22 自设 SSL 信任库口令跨密钥换代及已发布代的清除
+
+Core fc17697eba 的两个正式 ARM64 Main 从换代前后两份加密快照读回站点自设 SSL 口令，均能打开同一 JKS，两张信任证书及 HTTPS 签名证书匹配。该临时安装沿同一维护号完成 remove 和 purge，17 份凭据与密钥服务记录在停机前核对一致，容器正常退出。原两代卷仍停放，冻结 0/12。 原两代停放卷的最终 purge 仍待验。见 ssl-trust-generation-purge/HANDOFF.md。
+
 ## 2026-11-22 两代快照与站点自设 HTTPS 口令跨 Core 升级
 
 Core 075ea8b733 至 fc17697eba 的原位升级经两个 ARM64 安装实测。原两代卷解包停机后沿 d15469c5-fae4-4bcc-9cd1-809cdbf06522 续配，正式 Main 读回两代值、原 TLS 身份与两张信任证书。独立安装通过配置服务设置测试 HTTPS 口令；升级后从原加密快照用该口令打开 PKCS12、验签并核对 TLS。两卷均正常停机，本轮新增发行包与持久卷均为零。冻结 0/12。 原两代卷当前停机入口为 published-generation-keystore-upgrade/cold-read.py final。
