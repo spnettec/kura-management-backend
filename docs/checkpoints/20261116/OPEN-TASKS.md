@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 读取系统防火墙及网络归属
+
+原六组件 Root 一次 dpkg 调用联合升级 Core 67c6a50045 与 Networking 6d4cc37，按原指纹暂存和归还两个可选 SQLite 测试 JAR。agent 停用，/etc/kura 仍为 root:root 0700。新的 systemd 读取服务以 UID 0、空能力集运行，按包的单元摘要和内核 pidfd 核对正式 Main，仅对两个固定标记返回一次最新存在性。正式 Main 及 NM 读取路径实际得到缺失，三次查询共 33 ms。IPv4/IPv6 继续进入转发预检，各自在执行任何内核命令前拒绝不可写的关闭开关。
+
+同一套 Networking 发行测试 2238 项通过。ARM64 读取器实测悬空标记出现及移除、非文件标记和父目录缺失。正常停机后读取服务退出、socket 消失。六包、SQLCipher 及 84 份文件冷读相符。续接入口 main-ownership-markers/parked-readback.py。旧内核读表和规则发布仍需 NET_ADMIN；正式 Main 撤权及其余包维护矩阵继续，冻结 0/12。[实装读数及发行件](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 独立 Kura 防火墙转发与归属检查
 
 Networking 3494a9e 的标准包及 firewall-only 包通过 2238 项测试。在隔离 ARM64 内核中，当 IPv4 或 IPv6 转发处于关闭且开关只读时，该族在发出第一条内核命令前拒绝，已有三张表和保存文件保持原样。转发已开启时，两族均可在开关只读的条件下发布及撤销 NAT。清空全部规则由五次发布减为一次，并保留其他软件的规则链。

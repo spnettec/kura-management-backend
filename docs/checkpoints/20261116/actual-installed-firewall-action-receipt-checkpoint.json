@@ -331,5 +331,128 @@
       }
     },
     "resume": "firewall-forwarding-admission/parked-readback.py"
+  },
+  "systemOwnershipMarkers": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/main-ownership-markers",
+    "core": {
+      "source": "67c6a50045969b088cc7f11a7de4c7352c0390a2",
+      "tree": "2d82bdab0a287a27b759875f2342863342ccb2c5",
+      "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/wip-core/kura/distrib/kura-core/target/kura_6.0.0~git20261121015504.67c6a50-1_arm64.deb",
+      "version": "6.0.0~git20261121015504.67c6a50-1",
+      "sha256": "74ecf7f8121e38ec16718fd3b4f1e948524ef27d7ac2f1babac536a72e3298cd",
+      "readerCohort": {
+        "files": {
+          "kura-ownership-markers.service": "378352323dab73057692d975b759143eb5a5d18135f8111e1f6e355142837bd4",
+          "kura-ownership-markers.socket": "a09af13066f724a3de6f6b934a560224a376bc5a5989557f2cc28c01ec8ca514",
+          "kura_clock_broker.py": "4ca071f6c87010880c1b1f1828efd6db9877054d51c610247d8770d29a76e40a",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_journal_export.py": "ef165faa67dd35cb61beb7dee22c55648ac87444791618389a983c1c568eb388",
+          "kura_ownership_markers.py": "47bc2ee04f7bf9ef996821680bbb736eebdefeb6dd3cc30f62ec2fb326ad8f53",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1"
+        },
+        "mainUnitSha256": "992f09bc317178b2802ee455298e91e4b9762458890306b1bd08163b103fd7b8",
+        "schema": 1
+      }
+    },
+    "networking": {
+      "networking": {
+        "source": "6d4cc370ab2b8f3deacb3d9b39a38ffb03126ccc",
+        "tree": "0f3b39db93931d2acf6a13f4f34135f6926c2ce0",
+        "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210155.6d4cc37-1_all.deb",
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210155.6d4cc37-1_all.deb",
+        "sha256": "2a25c5b9f3c4a4e9ea119362e86138318924ead61a83b515bd73b44f62fe745d",
+        "package": "kura-networking",
+        "version": "3.0.0~git202611210155.6d4cc37-1",
+        "installedJar": "/opt/eclipse/kura/siblings/networking/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "jar": "c2877302bb30a486c424359d49cc3f83062b32e91ca91c1932b45f1ad3968c7a",
+        "classSha": "3d040667da4e7f4e1766e2d58cda08bd8146f9fe3dc342f6694a40bf3606b79c",
+        "bytes": 9386002
+      },
+      "firewall-only": {
+        "source": "6d4cc370ab2b8f3deacb3d9b39a38ffb03126ccc",
+        "tree": "0f3b39db93931d2acf6a13f4f34135f6926c2ce0",
+        "file": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210155.6d4cc37-1_all.deb",
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210155.6d4cc37-1_all.deb",
+        "sha256": "8afc878f7b34f4dea968c0b8ae84d9e9ae33b019fedc1f61db450f1a6199067b",
+        "package": "kura-firewall-only",
+        "version": "3.0.0~git202611210155.6d4cc37-1",
+        "installedJar": "/opt/eclipse/kura/siblings/firewall/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "jar": "c2877302bb30a486c424359d49cc3f83062b32e91ca91c1932b45f1ad3968c7a",
+        "classSha": "3d040667da4e7f4e1766e2d58cda08bd8146f9fe3dc342f6694a40bf3606b79c",
+        "bytes": 434958
+      },
+      "previousJar": "ca4439058080e032ce8041c2190b6c3fcabb6ade6c26695255272ff36a8dd4e1"
+    },
+    "readerAndCaller": {
+      "actor": {
+        "unit": {
+          "MainPID": "3332",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "static",
+          "InvocationID": "10a7ca4ce7e441a8bf999b525bb3c569"
+        },
+        "ticks": "41038024",
+        "uid": "0\t0\t0\t0",
+        "capEff": "0000000000000000",
+        "nnp": "1"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3168",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "6ca7f1ecaf0d46d29d34aa5d9f988ed3"
+        },
+        "ticks": "41037837",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "directoryMode": "0700",
+      "agentInactive": true,
+      "observations": [
+        "3168 3d040667da4e7f4e1766e2d58cda08bd8146f9fe3dc342f6694a40bf3606b79c",
+        "both system owners absent; NM legacy active; elapsedMs=33",
+        "ipv4 denied zero-commands",
+        "ipv6 denied zero-commands"
+      ]
+    },
+    "coreRegressionTests": {
+      "arm64": {
+        "passed": 2
+      },
+      "host": {
+        "passed": 31,
+        "skipped": 4
+      }
+    },
+    "networkingPackageTests": {
+      "passed": 2238,
+      "skipped": 0
+    },
+    "upgrade": {
+      "exitCode": 0
+    },
+    "resume": "main-ownership-markers/parked-readback.py",
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "remaining": "Standalone kernel table readers and publishers still need NET_ADMIN. The new reader provides metadata only."
   }
 }
