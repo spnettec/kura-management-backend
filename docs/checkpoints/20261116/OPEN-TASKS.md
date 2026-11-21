@@ -1,3 +1,11 @@
+## 2026-11-21 Core 升级保留 GWT 定制图标与站点皮肤
+
+原六组件 Root `39:6611544` 已实装 Core `1af242d3e8`。升级前在原本为空的 console/skin 放入一个有别于发行默认值的有效 PNG 和一份独立站点图片。正式 dpkg 解包后，两份原件均可从同一维护编号的恢复副本中读回，GWT 的四项 conffile 登记与原包版本配对。配置后，两份文件的字节、属主、组、权限和 mtime 均与输入相同；kurad 和 kura-key-recovery 分别读出了原摘要。其余三个原先缺失的图标在升级中继续缺失。
+
+Core 的三个维护钩子现在携带同一份皮肤保留脚本。它记录捕获时的 GWT 配置文件登记，恢复时核对当前登记，保留已到位的新包文件，并把缺失的站点文件逐项恢复。若站点的两个版本冲突且缺乏 dpkg 决定依据，原副本继续保留。ARM64 的 53 项定向测试通过。另从新 deb 提取脚本，配合具有真实 dpkg 配置状态的轻量 GWT 夹具，验证保留数据重装、联合解包后按 confold 配置、remove 至 config-files 和 purge 四种情况。联合解包保住了用户修改和删除选择；purge 后仅恢复非包站点图片。完整 Core 保留数据重装中的皮肤恢复仍待同 Root 整包验收。
+
+已逐项核实并移除两份测试输入，夹具恢复到四个已登记 favicon 均缺失的原状。原加载顺序保持，六包 installed，Main 和 agent 均 disabled、inactive，正常关机退出 0。冷读验过 41 笔维护的 740 份签名记录、319 份运行文件、两份凭据、101 个夹具对象及 85 项代码条目。原绑定网关仍为 6910532，五笔维护封存、三代来源配对、原任务 SUCCEEDED、远程 OFF。原三现场和 7fd 均已复核。冻结闭环 0/12，外部延期仍限原三项。 [新包、原编号及停机核对](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 GWT 独立 purge、原皮肤配置与 Core 保留缺口
 
 原六组件 Root `39:6611544` 对已装 GWT 单独执行 purge。开始时 dpkg 登记的四个 favicon 配置文件均缺失。测试在空的 console/skin 内放置了一份可单独识别的站点文件。GWT 清除后，其包脚本和 JAR 目录已删除，Wires、Deployment、Networking 三个 sibling 目录和站点文件逐项保持。Core 收到 console、siblings 和 libexec/addons 三条触发路径，一次处理完成。
