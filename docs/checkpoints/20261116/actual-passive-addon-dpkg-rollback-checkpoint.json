@@ -1290,5 +1290,41 @@
     "restoredOriginalBytes": 854,
     "removedTestSuffixBytes": 34,
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/optional-provider-upgrade/HANDOFF.md"
+  },
+  "cloudMenuAfterPurge20261121": {
+    "root": "39:6611544",
+    "residual": {
+      "mode": "residual",
+      "root": "39:6611544",
+      "sessionPath": "/admin/console",
+      "deviceAvailable": true,
+      "cloudItemPresent": true,
+      "cloudVisible": true,
+      "cloudOpened": true
+    },
+    "restored": {
+      "mode": "restored",
+      "root": "39:6611544",
+      "sessionPath": "/admin/console",
+      "deviceAvailable": true,
+      "cloudItemPresent": true,
+      "cloudVisible": false,
+      "cloudOpened": false
+    },
+    "originalSha256": "24158c25541ce9f7ffba84db53ed169f77dab7eb7b2b3586201cb3c37f9d1379",
+    "observedResidualSha256": "d621555ecbfd18bed5b0b1e9c02d5a4e98dcba2545c0ef2da59eac9edeb47cd6",
+    "versions": {
+      "kura-core": "6.0.0~git20261121215400.1af242d-1",
+      "kura-networking": "3.0.0~git202611211339.83f237e-1",
+      "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+      "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+      "kura-wires": "3.0.0~git202611211325.277954b-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "parkedExit": 0,
+    "runtimeChanges": {
+      "user/kura_custom.properties": "metadata"
+    },
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/cloud-menu-after-purge/HANDOFF.md"
   }
 }

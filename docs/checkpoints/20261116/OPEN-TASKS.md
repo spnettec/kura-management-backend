@@ -1,3 +1,11 @@
+## 2026-11-21 确认 Cloud 包清除后残留标志会显示并打开正式 GWT 云连接菜单
+
+原 ARM64 六组件 Root `39:6611544` 保持 Cloud 包已清除，直接复用既有卸载回执。以 kurad 在原 854 字节配置后补回此前记录的 34 字节，文件摘要与原 purge 后的摘要完全相同。显式启动正式 Main，Chromium 使用已改密的原夹具管理员登录 /admin/console。Device 正常可用，Cloud Connections 菜单可见，点击后显示云连接页面。两次观察均限制在原回环端点。
+
+停止 Main，核对文件身份、原前缀和完整后缀后撤回这 34 字节。重启同一安装并用同一账号登录，Device 和 System Logs 可用，Cloud Connections 菜单已隐藏。GWT 的 denali.init 读取 SystemService 实际属性，EntryClassUi 同时检查云管理权限和会话中的能力标志。Core 默认值为 false。当前 Cloud deb 的 postrm 只删除注册表行，未在实际卸载时撤销安装写入的 true。修复目标是 Cloud 包的原生移除路径，须覆盖升级、卸载失败续办、保留站点配置和 purge 后重新安装。
+
+本轮两次启动均未创建业务任务或改密。六包最终 installed，Main 和 agent disabled、inactive，正常停机退出 0。319 份运行文件逐项对照，仅原属性文件的修改时间变化。42 笔维护的 759 份签名记录、101 个夹具对象与凭据均由停机卷读回。冻结闭环 0/12，外部延期仍限原三项。 [浏览器和停机核验](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 八个可选包在原六组件卷联合升级，解包停机后续配并清除
 
 原 ARM64 Root `39:6611544` 使用 16 份已核对 SHA-256 的 deb，依次安装八包前版、解包共同分支八包后继版本。八包为 Artemis、Camel、Cloud、Container、OPC UA、Position、Triton 和 YOFC Runtime。解包后正常停机，八包均为 unpacked，Core 有两个待处理路径触发器。原加载顺序、注册表锁、35 个新版 JAR 和 59 项待修正的包代码权限均已只读核对。
