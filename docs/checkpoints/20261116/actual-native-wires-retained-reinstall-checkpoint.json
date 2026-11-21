@@ -2706,5 +2706,135 @@
       "original-three-after.json": "12dc46c30310ba83cafde72875201ae5b6812be99a832dc176f861e6641b4a28",
       "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377"
     }
+  },
+  "formalMainWithoutDacOverride": {
+    "source": "b1b8060be2619b156f147bb76d682a287b656898",
+    "tree": "374e26401f9d8bd20dcb2be58ec092054f180a5b",
+    "debSha256": "56457f8d132745a5d1fb8614de4da70ab5ae659ce0138ecb1f502e52c8026f0b",
+    "version": "6.0.0~git20261121001832.b1b8060-1",
+    "debBytes": 204240508,
+    "upgradeReceipt": {
+      "root": "39:6611544",
+      "prior": "5ee2828f-7440-472f-bf93-4c1d754a9814",
+      "priorManifest": "afd3d2d74ab8fc62c8f332c06d80267869ed372e4aa64eec079ebdabb282ae5b",
+      "current": "711d8255-828c-4e69-bfc7-50e09eb60c64",
+      "currentManifest": "d089d437ebd367d1d45ad520a5cf991653d749b40054c3792c03d93d1399fe21",
+      "firstAction": "upgrade",
+      "historyEntries": 18
+    },
+    "first": {
+      "main": {
+        "unit": {
+          "MainPID": "4087",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "b45271a2e0a647d0816b8c141bea9e54"
+        },
+        "ticks": "40631865",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "config": {
+        "sha256": "89987585e961e20eb70870ff292f9523c79b06fb4597dc31331c6e073cf22a17",
+        "meta": "2097165|32|600|997|995|1|22578|2026-11-21 00:19:41.477750563 +0000|2026-11-21 00:19:41.477750563 +0000"
+      },
+      "writerLease": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "business": "fixture.retained.business.bundle",
+      "agent": "org.eclipse.kura.management.bridge",
+      "pid": "4087",
+      "pidFile": [
+        "regular file",
+        "600",
+        "kurad",
+        "kurad",
+        "1",
+        "457"
+      ],
+      "capabilities": {
+        "CapInh": 5120,
+        "CapPrm": 5120,
+        "CapEff": 5120,
+        "CapBnd": 5120,
+        "CapAmb": 5120
+      },
+      "noNewPrivs": "1",
+      "javaPidConsumer": true
+    },
+    "firstStop": {
+      "pidAbsent": true,
+      "mainPid": 0,
+      "result": "success"
+    },
+    "second": {
+      "main": {
+        "unit": {
+          "MainPID": "4963",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "2e9c6ca6a16f4b1d8531de6d5b5edc5f"
+        },
+        "ticks": "40632716",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "config": {
+        "sha256": "89987585e961e20eb70870ff292f9523c79b06fb4597dc31331c6e073cf22a17",
+        "meta": "2097165|308|600|997|995|1|22578|2026-11-21 00:19:49.982801200 +0000|2026-11-21 00:19:49.982801200 +0000"
+      },
+      "writerLease": "/validation-root/run/kura-key-service/writers/lease.lock",
+      "business": "fixture.retained.business.bundle",
+      "agent": "org.eclipse.kura.management.bridge",
+      "pid": "4963",
+      "pidFile": [
+        "regular file",
+        "600",
+        "kurad",
+        "kurad",
+        "1",
+        "478"
+      ],
+      "capabilities": {
+        "CapInh": 5120,
+        "CapPrm": 5120,
+        "CapEff": 5120,
+        "CapBnd": 5120,
+        "CapAmb": 5120
+      },
+      "noNewPrivs": "1",
+      "javaPidConsumer": true
+    },
+    "secondStop": {
+      "pidAbsent": true,
+      "mainPid": 0,
+      "result": "success"
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 83,
+      "originalSubmitWithdrawn": true
+    },
+    "prestart": "Fixed tmpfiles rule in paired vendor unit; setpriv bounds the PID preparation process to CHOWN and FOWNER. Existing path /var/run/kura.pid still resolves to /run/kura.pid. Only absent files receive mode and ownership.",
+    "remaining": "Legacy standalone PID ownership and interrupted pre-start handling, authenticated HTTP log download, other provider/launcher and privilege boundaries and package matrix.",
+    "evidence": "main-without-dac-override/parked-readback.py",
+    "sha256": {
+      "host-cohort.log": "9eff9566e5927c259f95984ea9dcbaed5aa415e2115fd5fd91756caef332e697",
+      "package.json": "b19130c0f9c7b1b4970e862fba8b5c6c47ee7276833da3115254f351a24c6cf9",
+      "main.json": "9aa0cb22811e5472ddb95e6d3d409f8524dd12914b43e6bcf3dc33757f11a9af",
+      "second-main.json": "b06e47aeb363361395ae2cf201baa5db779d732c7806d27b4e91bae2f48a8685",
+      "receipt.json": "ffcf24a953160967d2161c1520c80a99c96ee49c7f75f45570dea2d83bac4e8d",
+      "offline-readback.json": "c2a46b9ea5002f76bef881c53523768554e3bbc50a041775680429453492dfb5",
+      "original-three-after.json": "a8be23aad1629b6a2e41e0c548c51cff9459644562c28805b6c6214cacabcaee",
+      "preservation-final.json": "92d2ac1685f0c5f145fa5a6d893e73d2334ed86e1f3751b17f055ae66e5d4377",
+      "parallels-final.json": "af513a3505cc9408cba0f3381eabaf9643b00f3f3310937d0cc3a7d292782701"
+    }
   }
 }

@@ -45,6 +45,8 @@ Core 910cb9bd9a 已将活动日志首次创建交给 Debian 安装器。用发�
 
 Core 5aa5aad4f1 将专属归档目录接入 Linux 发行包，沿用原活动文件和 inode；因此升级无需搬迁旧日志。JVM 转储和错误报告使用安装目录已有的私有 log 子目录，调试入口的 GC 日志也写入其中。对三个启动器分别用隔离的 12 MiB 测试堆触发诊断，临时文件随测试容器回收。GWT 6fd074c 的服务端 ZIP 同时收取旧路径的日志和新目录中的应用、审计归档。原六组件卷装入两包后，对三条 ZIP 记录逐项核对了 SHA-256。已登录 HTTP 响应及正式单元文件权限仍待验。[升级、诊断与 ZIP 核对](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
+原六组件安装升级到 Core b1b8060be2 后，正式 Main 已撤去 DAC_OVERRIDE。systemd 在 fork 前为 kurad 准备历史 PID 路径，进程运行时只保留管理网络与绑定低端口两项能力。两次正式启动的五组能力掩码均为 0x1400，两次停机后 PID 文件都由 systemd 移除。独立启动器遇到遗留 PID 文件及启动中断时的兼容性仍须单独验证。[原安装的两次启动及停机](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 普通命令的独立服务还影响两个用户可见的行为。在原六组件卷上停止一个正在运行的命令实例，Main 和监听 socket 均继续运行，下一条命令成功。对于 Main 私有数据目录，worker 可以相对读取已知文件，调用 getcwd() 则返回 EACCES。站点另设的目录给命令组穿越权后，worker 可以取得绝对路径并读指定文件，仍无法列举目录。两次实测复用已安装的 Core，没有新增 deb 或构建镜像。[普通命令与目录验证](../checkpoints/20261116/actual-core-command-worker-lifecycle-checkpoint.json)
 
 ### 六个网关包已经验证到哪一步

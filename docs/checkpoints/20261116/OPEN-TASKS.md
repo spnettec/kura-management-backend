@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 撤去 DAC_OVERRIDE
+
+Core b1b8060be2 在原六组件 Root 原位升级。新包先核对旧单元与原包配对，升级后冷读的维护链把两份实际发行清单直接相连。正式单元在每次 fork 前准备原 /run/kura.pid；固定 tmpfiles 规则只为新文件设置 kurad:kurad 和 0600。setpriv 将准备进程的 capability bounding set 限定为 CHOWN 和 FOWNER。原 Java 调用方及 systemd 继续读取同一普通 PID 文件。
+
+两次独立启动的正式 JVM 均为 kurad，CapInh、CapPrm、CapEff、CapBnd、CapAmb 均为 0x1400，NoNewPrivs=1。每次均核对 Java 读取的 PID、systemd MainPID、写者 lease、原业务 DP 内容和 agent bridge；每次正常停止后 PID 文件消失。六包、SQLCipher 和 83 份文件已冷读，续接入口 main-without-dac-override/parked-readback.py。独立启动器的遗留 PID 状态、启动准备中断、已登录 HTTP 下载及其余维护矩阵仍待验。冻结 0/12。[发行包、进程和维护回执](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 发行包日志轮换、JVM 诊断及 GWT 下载
 
 Core 5aa5aad4f1 与 GWT 6fd074c 已在原六组件 Root 实际升级。安装器创建 kurad 私有归档目录，Linux 默认 Log4j 在其中保存应用和审计归档。已安装的前台 JVM 以 0x1400 运行，使用发行包原 XML 和私有日志挂载，两个活动文件均保持 inode，旧标记各出现在一份 gzip，新标记继续写入。正式 Main 读回包中的堆转储和错误日志参数。隔离 ARM64 JDK 21 用三个启动器的实际参数分别产生堆转储、错误报告，两个调试入口也写出 GC 日志。
