@@ -1,3 +1,7 @@
+## 2026-11-22 Deployment 执行前校验显式重启延迟
+
+Deployment 6c0da58 在下载、安装、卸载的 EXEC 入口拒绝显式重启的负延迟。262 项 Maven 测试通过。原 ARM64 Root 原位升级后，正式 Main 对三个新请求均返回 BAD_REQUEST，两笔原部署任务经 GET 仍为 COMPLETED。原重启 UNKNOWN 保留，正常停机。当前冷读入口 deployment-reboot-delay-admission/cold.py final。冻结 0/12。
+
 ## 2026-11-22 原部署完成回执跨 Cloud 与 Deployment 联合 purge、停机和重装
 
 同一 ARM64 Root 的 Cloud 与 Deployment 经 purge、重新解包和停机后，沿原围栏续配。正式 Main 只读查询 71001 安装与 71002 卸载，两者均为 COMPLETED；业务包保持已卸载，原重启 UNKNOWN 保留。两份部署回执与原注册表身份、元数据、摘要一致。当前停机入口 cloud-deployment-receipt-reinstall/cold.py final。冻结 0/12。
