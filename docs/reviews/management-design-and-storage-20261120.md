@@ -72,6 +72,8 @@ H2 文件库提供了一个只有跨升级才看得清的风险。旧版遇到�
 
 这次验证启用中的 DNS 复用了原六组件容器、已有 Core 工作树和 Maven 缓存。修复后的 Core deb 为 204,224,080 字节，逐项核对了运行时和恢复工具中的两份 XML provider JAR。收尾从测试容器移除了已核对宿主原件的两个临时 deb，共 213,605,954 字节。[本轮安装与空间记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json)
 
+SQLCipher 的现场还验证了两个包管理层如何共同恢复。在同一六组件安装上登记 SQLite 部署包后，共同清除了 Debian 的 Deployment 包和原生 SQLCipher 库。只解包 Deployment 时关机，其维护围栏阻止 Main 提前启动。原地恢复两包后，正式 Main 从原注册行加载部署包，读回原明文和加密业务行，两份数据库内容摘要均保持。此次复用了原部署包和两个 deb，驱动和 provider 由部署包交付。[联合维护记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 正式 Main 安装过两个版本的加密 SQLite 部署包。升级后注册表指向新版，卸载按当前登记地址删除了新版。冷卷上还留有旧版的 294,611 字节归档，SHA-256 与首次安装的发行件一致。DeploymentAgent 启动时遍历注册表，因此该旧文件不会仅凭位于 packages 目录就被重新安装。这解释了运行卷上的一处小额留存，完整构建目录和多版 deb 的占用要大得多。[旧归档和注册行](../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution/archive-identities.json) · [启动和卸载代码](../../../.management-close-20261116/core-rtc-hotplug-20261120/kura-deployment/bundles/org.eclipse.kura.deployment.agent/src/main/java/org/eclipse/kura/deployment/agent/impl/DeploymentAgent.java)
 
 ## 磁盘增长的实测解释

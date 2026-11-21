@@ -1,3 +1,9 @@
+## 2026-11-21 已登记 SQLCipher 部署包跨 Deployment、原生库共同维护
+
+原六组件安装通过公开 Deployment 服务登记 SQLCipher 部署包一次。包内 provider 读到原明文和加密业务行后停机。共同 remove、purge Deployment 和 libsqlcipher1，只解包 Deployment。其安装器在原 Root 留下配对生成器和 Main 运行时 mask。正常关机后的只读挂载证实 Deployment 待配置，libsqlcipher1 未安装，90 个卷内路径指纹吻合。
+
+在原 Root 恢复后解包原生库并配置两包。新启动的正式 Main 自动恢复原登记，两个数据库由部署包内的 provider 读回，SQLCipher 版本及加密页完整性均通过。注册表、归档和首次派发凭据的完整指纹跨停机保持。退役测试 DP 后，原业务 DP 注册行和历史旧归档保留，两个原数据库内容摘要不变，六包和 84 份文件已冷读。最新版停机入口为 registered-sqlcipher-joint-maintenance/parked-readback.py。冻结 0/12。[实装与恢复记录](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 独立启动器旧 PID 与正式 Main 接管
 
 同一六组件 Root 上，用已退出子进程的编号构造 root 所有的常规旧 PID 文件。旧包首次 systemctl start 返回 1，随后服务自动起来。Core 8b275f0ece 在发行清单中配对新的 PID 准备程序，只向这个短时进程授予 CHOWN。实际 dpkg 原位升级后，正式服务首调返回 0，旧 PID 文件保持 inode 并由 kurad 接管，文件中的新编号和 systemd 相同。JVM 取得 writer lease，能力掩码 0x1400，管理页返回 200，重启计数为 0。正常停机后 PID 文件消失。原维护回执相邻，原八份快照和获准改密后的第九份均保留，最新冷读入口 main-pid-handover/parked-readback.py。

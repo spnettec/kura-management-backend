@@ -3059,5 +3059,202 @@
     },
     "scope": "Fixture provided a root-owned, mode-0600, regular PID file containing an exited child PID in the original namespace. Package pre-start only needs CHOWN. The JVM grants remain NET_ADMIN and NET_BIND_SERVICE. Two optional fixture SQLCipher JARs were held during the Core upgrade and restored before startup.",
     "evidence": "main-pid-handover/parked-readback.py"
+  },
+  "registeredSqlcipherJointMaintenance": {
+    "original": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "rows": [
+        "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp"
+      ],
+      "orphan": {
+        "sha256": "94c209676241d7e0d1da143b47f3b04578a57cfcc1ebf1149fd0dc7619245ad7",
+        "meta": "39|7020726|600|997|995|1|294611|2026-11-20 22:22:14.465148000 +0000|2026-11-21 01:19:19.800718453 +0000"
+      },
+      "dp": "702e65cdb0d047d56e597f3ef963f312dafdc52f7f3ec8ec9deb0ccaa8e83c33",
+      "depDeb": "7e39e23626854058569a260361eca043b59b4519edb92f8efc9843c3130a7196",
+      "nativeDeb": "f10e0835b08ba7c1671602cf8712248f0405656f25efad00ba21b2f14ae96d38",
+      "providerSource": "0ffa1325cd4769206d388086b32f257e00f1483f",
+      "currentSource": "8b275f0ece8a398d724ec0f0f4d85c609b6b1708",
+      "changedInputFiles": [
+        "kura/distrib/kura-sqlite-dp/README.md"
+      ]
+    },
+    "purge": {
+      "removed": {
+        "kura-deployment": "config-files",
+        "libsqlcipher1": "not-installed"
+      },
+      "purged": true,
+      "registry": {
+        "sha256": "bf4e1ac24be650a796ab1e399ab06dd8235f6eb46add4863c2c3292324db739e",
+        "meta": "39|7024316|600|997|995|1|209|2026-11-21 01:23:48.489242373 +0000|2026-11-21 01:23:48.490242374 +0000"
+      },
+      "archive": {
+        "sha256": "702e65cdb0d047d56e597f3ef963f312dafdc52f7f3ec8ec9deb0ccaa8e83c33",
+        "meta": "39|7024314|640|997|995|1|294610|2026-11-21 01:23:40.906231000 +0000|2026-11-21 01:23:48.482242363 +0000"
+      },
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      }
+    },
+    "mixedCold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "nativeAbsent": true,
+      "unpackedPackage": "kura-deployment",
+      "protectedPaths": 90
+    },
+    "restoredPackages": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "versions": {
+        "kura-core": "6.0.0~git20261121011827.8b275f0-1",
+        "kura-networking": "3.0.0~git202611201717.4741b5e-1",
+        "kura-management-ui": "3.0.0~git202611210011.6fd074c-1",
+        "kura-deployment": "2.0.0~git202611202327.15c50ca-1",
+        "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+        "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+      },
+      "native": "install ok installed 4.6.1-2",
+      "registered": true,
+      "archive": {
+        "sha256": "702e65cdb0d047d56e597f3ef963f312dafdc52f7f3ec8ec9deb0ccaa8e83c33",
+        "meta": "39|7024314|640|997|995|1|294610|2026-11-21 01:23:40.906231000 +0000|2026-11-21 01:23:48.482242363 +0000"
+      },
+      "librarySha": "52557fdfb6c2f1d7877e8d57f72dfcacebe29de62aefc02bcd3df8e95612623c"
+    },
+    "before": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "2061",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "cd1556b6d51341adbdfe81cf59d28342"
+        },
+        "ticks": "40836471",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "result": "6.0.0.202611210701 3.47.1.0_sqlcipher 2.0.0.202611210701 32",
+      "rows": [
+        "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp",
+        "kura-sqlite-dp=file\\:/opt/eclipse/kura/packages/kura-sqlite-dp_6.0.0.202611210701.dp"
+      ],
+      "archive": {
+        "sha256": "702e65cdb0d047d56e597f3ef963f312dafdc52f7f3ec8ec9deb0ccaa8e83c33",
+        "meta": "39|7024314|640|997|995|1|294610|2026-11-21 01:23:40.906231000 +0000|2026-11-21 01:23:48.482242363 +0000"
+      },
+      "registry": {
+        "sha256": "bf4e1ac24be650a796ab1e399ab06dd8235f6eb46add4863c2c3292324db739e",
+        "meta": "39|7024316|600|997|995|1|209|2026-11-21 01:23:48.489242373 +0000|2026-11-21 01:23:48.490242374 +0000"
+      },
+      "submitted": {
+        "sha256": "5ad38304b535c2987dbd24657c1a11b884984ff600d9f389deb0d4e634fee792",
+        "meta": "39|7024312|600|997|995|1|6|2026-11-21 01:23:48.440242300 +0000|2026-11-21 01:23:48.440242300 +0000"
+      }
+    },
+    "after": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "2830",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "456082912b1843409b4a7f275703f826"
+        },
+        "ticks": "40845478",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "result": "6.0.0.202611210701 3.47.1.0_sqlcipher 2.0.0.202611210701 32",
+      "rows": [
+        "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp",
+        "kura-sqlite-dp=file\\:/opt/eclipse/kura/packages/kura-sqlite-dp_6.0.0.202611210701.dp"
+      ],
+      "archive": {
+        "sha256": "702e65cdb0d047d56e597f3ef963f312dafdc52f7f3ec8ec9deb0ccaa8e83c33",
+        "meta": "39|7024314|640|997|995|1|294610|2026-11-21 01:23:40.906231000 +0000|2026-11-21 01:23:48.482242363 +0000"
+      },
+      "registry": {
+        "sha256": "bf4e1ac24be650a796ab1e399ab06dd8235f6eb46add4863c2c3292324db739e",
+        "meta": "39|7024316|600|997|995|1|209|2026-11-21 01:23:48.489242373 +0000|2026-11-21 01:23:48.490242374 +0000"
+      },
+      "submitted": {
+        "sha256": "5ad38304b535c2987dbd24657c1a11b884984ff600d9f389deb0d4e634fee792",
+        "meta": "39|7024312|600|997|995|1|6|2026-11-21 01:23:48.440242300 +0000|2026-11-21 01:23:48.440242300 +0000"
+      }
+    },
+    "retired": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3875",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "4f569367b5324df7aee240bb00756a06"
+        },
+        "ticks": "40846457",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "result": "absent",
+      "rows": [
+        "fixture.retained.business=file\\:/opt/eclipse/kura/packages/fixture.retained.business_1.0.0.dp"
+      ],
+      "archive": null,
+      "registry": {
+        "sha256": "51b94413fc37802fa2c35138b541e507f2fb0d262e3014dbf0dc879f2a2eabfb",
+        "meta": "39|7025709|600|997|995|1|124|2026-11-21 01:25:28.277389508 +0000|2026-11-21 01:25:28.283389517 +0000"
+      },
+      "submitted": {
+        "sha256": "5ad38304b535c2987dbd24657c1a11b884984ff600d9f389deb0d4e634fee792",
+        "meta": "39|7024312|600|997|995|1|6|2026-11-21 01:23:48.440242300 +0000|2026-11-21 01:23:48.440242300 +0000"
+      }
+    },
+    "originalDatabaseSha256": {
+      "/opt/eclipse/kura/data/sqlite-retained-provider/business.sqlite": "1d751e268f518a6bdaeb5689512182cae0d333438f18dee271b41a3b236c1d2b",
+      "/opt/eclipse/kura/data/sqlcipher-main-proof/encrypted.sqlite": "feac0a8f370b09aa934ab1503968d1ae4e51d90bf84c0354bafec2ff07c1cf9d"
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "readback": "registered-sqlcipher-joint-maintenance/parked-readback.py",
+    "scope": "Registered SQLCipher DP and the original business DP on the original six-component installation. Deployment and libsqlcipher1 were removed and purged together, only Deployment was unpacked before orderly shutdown. Native library absence was checked on the live installation; the cold check verified the dpkg database and 90 volume paths. Recovery did not submit a second install. The two direct fixture JARs stayed outside plugin discovery until the tested DP was retired."
   }
 }
