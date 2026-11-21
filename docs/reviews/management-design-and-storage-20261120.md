@@ -141,6 +141,8 @@ Core 自身的升级也会产生临时复制。安装脚本在替换旧目录前
 
 ## 本次续接采用的简化
 
+验证未决改密时，六组件升级和单包移除共用一个 205,079,022 字节的 Core deb。独立单包容器正常移除后保留 6 份已核对的合成业务文件，Docker 报告该停机容器的可写层为 29,324,301 字节。包长度与可写层属不同口径。此处未创建整机快照。[原始发行长度](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-package-admission/core-release.json) · [单包冷读与可写层计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-package-admission/core-only/cold.json)
+
 PKCS12 随机口令修订复用原六组件卷。205,077,978 字节的新版 Core deb 中，只有一个 keystore provider JAR 改变。中断前后的多次 JVM 冷读共用每组临时密钥库，只在原网关部署一次后继包。正式 Main 使用原业务钥验签，原库与口令文件的指纹保持。[包差异与大小](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-random-recovery/provider.json)
 
 启动器同步修订复用原六组件卷和缓存。新 ARM64 Core deb 长 205,072,788 字节，621 个常规载荷文件中仅发布器和配对清单内容变化，233 个 JAR 均与上版相同。三个入口的故障注入和正式 Main 启动共用这一包。此处计包文件长度，未测 APFS 独占块。[包内逐文件核对](../../../.management-close-20261116/core-rtc-hotplug-20261120/launcher-writeback/package-difference.json)

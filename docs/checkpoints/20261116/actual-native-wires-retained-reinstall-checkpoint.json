@@ -6093,5 +6093,71 @@
       "fenced": false
     },
     "remaining": "Core maintenance during outstanding password change, real configuration snapshot interruption, wrapping key generations"
+  },
+  "pendingPkcs12PackageMaintenance20261121": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-package-admission",
+    "core": "c5381c2e5591216f2192b55412fa9b40dd551d65",
+    "bytes": 205079022,
+    "refusal": {
+      "root": "39:6611544",
+      "original": "4fede114-d501-4969-b465-f6b8c1e67749",
+      "sixInstalled": true,
+      "fixtureFiles": 8,
+      "archivePaired": true,
+      "previousHistories": 44,
+      "preservationCopyAbsent": true
+    },
+    "recovery": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "signed": true,
+      "sameInodeAndDigest": true,
+      "certificate": "f76e488e6cff74b161d161b9e27f62c43c57a7d89d6ad744ea97269c0f3051e7"
+    },
+    "final": {
+      "root": "39:6611544",
+      "request": "4fede114-d501-4969-b465-f6b8c1e67749",
+      "status": {
+        "kura-core": "6.0.0~git20261121225223.c5381c2-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7723650,
+      "allSigned": 816,
+      "histories": 45,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false
+    },
+    "singleCore": {
+      "container": "3ed12993ad3c4a4135ffaffd795f76003f081e13fa9c79a0935299651ad35217",
+      "status": "deinstall ok config-files",
+      "root": {
+        "id": "3ed12993ad3c4a4135ffaffd795f76003f081e13fa9c79a0935299651ad35217",
+        "mount": "1048716:7724412",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "retainedFileDigestsMatched": 6,
+      "rwBytes": 29324301
+    },
+    "timingFixture": [
+      {
+        "action": "upgrade",
+        "sameFence": true,
+        "refusedAfterEntry": true
+      },
+      {
+        "action": "remove",
+        "sameFence": true,
+        "refusedAfterEntry": true
+      }
+    ],
+    "remaining": "Managed Main configuration snapshot in flight during package maintenance and wrapping-key transitions"
   }
 }

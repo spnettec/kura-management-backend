@@ -1,3 +1,9 @@
+## 2026-11-21 Core 包维护在复制前保留原 PKCS12 改密文件
+
+Core c5381c2e55 已在原六组件 ARM64 Root 39:6611544 实装。PKCS12 已经替换、store.save 尚未更新时，真实 dpkg 升级在复制前拒绝。原六包保持 installed，正常停机后核实原文件身份，重启后在原测试库恢复同一随机口令并验签。沿旧 prerm 已建立的维护号 4fede114-d501-4969-b465-f6b8c1e67749 完成后继升级。独立 Core 单包容器中，真实 dpkg 移除在建立围栏前拒绝；恢复后正常移除，config-files 与保留区 6 份文件已停机冷读。
+
+85 项 ARM64 定向回归通过；另有两项夹具核实围栏建立后才出现恢复记录时仍拒绝复制并保留原编号。六组件最新冷读为 pkcs12-package-admission/cold.py，45 笔维护、816 条签名阶段。新单包现场沿 pkcs12-package-admission/core-only/cold.py。正式配置快照与维护并发、包装钥跨代继续内部 pending。冻结 0/12，外部延期维持原三项。[包维护和冷读检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 PKCS12 随机改密中断后沿原文件恢复
 
 Core 9450cd883f 已修复 PKCS12 替换后、随机口令尚未写入 store.save 即退出可能导致的原钥不可读。ARM64 独立临时库验证替换前、口令写入前后、配置确认后退出，以及配置起初已过期时的连续两次进程中断。恢复沿原文件与 PID，同字节不同 inode 和其他 PID 在两份常规口令均不可用时均被拒绝。配置回调使用测试接收器，正式 Main 另行验证原注册服务、实装类和原业务私钥签名。95 项 keystore 测试通过。
