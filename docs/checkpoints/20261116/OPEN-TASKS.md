@@ -1,3 +1,9 @@
+## 2026-11-21 Deployment 两次重命名之间停机后，正式 Main 补回原注册表
+
+原六组件 Root `39:6611544` 的新版 Deployment 在 DeploymentAdmin 成功返回后，把归档和注册表两份暂存文件与原安装配对。实装对照在归档已发布、注册表尚未改名处终止 ARM64 测试 JVM。旧版无配对凭据。新版两条入口保住原暂存；停机并沿原卷重启后，正式 Main 内的本地和云端读取代码分别补完登记。注册表 inode 与各自暂存一致，归档、输入和一次调用记录均保持。故障注入使用单独的试验文件和受控 DeploymentAdmin；原业务 DP 另由真实 Felix 读回 ACTIVE bundle 资源。首次观察把目录别名和规范路径当成不同归档，后续按文件身份核实已完成的本地结果，只续办云端待办。
+
+最终安装 `ba4bc90` 另验两种状态：凭据可被组写时拒绝发布，恢复权限后沿原文件提交；两份文件均已发布时只退役凭据。JDK 21 构建 247 项通过，最终 deb 240,140 字节。六组件已正常停机，Main、agent 均 disabled。最新六组件冷读入口 `deployment-paired-archive-commit/access/cold-maintenance.py` 同时核对 82 份文件、两份凭据、原 Core 18 份 HMAC 和本次四组结果。防火墙沿 `firewall-configuration-snapshot/cold.py`。Felix 内部结果不明及原配对凭据形成前的中断仍待验。12 父项冻结 **0/12**，外部延期仅原三项。[检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Deployment 在注册表锁竞争时保住原业务归档
 
 原六组件 Root `39:6611544` 上，旧版本地和云端安装入口都在取得注册表锁前替换同名业务归档。等待锁时终止测试 JVM，注册表和候选源仍是原值，目标归档已变化。Deployment `eaec433` 让两处归档替换与注册表写入共用锁。实装后，两入口在等待处遭 SIGKILL 均保住原归档和 inode；在另一次验收中释放锁，原进程完成发布，其他注册行保留。竞争试验用可控的 DeploymentAdmin 返回值。正式 Main 另行核对两份已加载的类、原业务 DP 的 ACTIVE bundle 及资源。

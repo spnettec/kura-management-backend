@@ -3549,5 +3549,147 @@
     ],
     "coldReader": "deployment-registry-publication-lock/first-use/cold-maintenance.py",
     "otherFixtureReader": "firewall-configuration-snapshot/cold.py"
+  },
+  "deploymentArchiveAndRegistryRenameRecovery": {
+    "root": "39:6611544",
+    "evidenceRoot": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-paired-archive-commit",
+    "installedReleases": [
+      {
+        "source": "8354f7d5af72aa3125ac5e2798e3051d66a8067a",
+        "tree": "8ffea5c142f6941afaa1a2c45bd7c337cf3b0370",
+        "sha256": "c9994e7d60ac0dcfdf1c5ec7a81d7701fc44054030a5783da0e88518dcd07b25",
+        "bytes": 239302,
+        "tests": {
+          "tests": 246,
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "source": "ba4bc907543806831fbf17aec55eb7a1064b8558",
+        "tree": "bfb5d4de8008a9a527e1950dfa473288b7f1cba2",
+        "sha256": "934556189e7dcbde1ffece6f33bc0f2089ef333d07afb4222bd8d6bf21cdbf95",
+        "bytes": 240140,
+        "tests": {
+          "tests": 247,
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "protocol": "After a successful DeploymentAdmin return, retain both original staged identities and bind the registry, package directory and installation Root before the two renames. Configured readers can finish either rename or retire a completed receipt. New installs refuse a pending receipt before invoking DeploymentAdmin.",
+    "workerCut": {
+      "original": {
+        "local": {
+          "breakpoint": [
+            "STOP org.eclipse.kura.internal.deployment.registry.DeploymentPackageRegistry:212",
+            "SIGKILL after accepted test input"
+          ],
+          "archiveInode": 7442910,
+          "registryInode": 7442901,
+          "sourceInode": 7442902,
+          "hasReceipt": false,
+          "accepted": 1
+        }
+      },
+      "recoveryVersion": {
+        "local": {
+          "breakpoint": [
+            "STOP org.eclipse.kura.internal.deployment.registry.ArchivePublication:136",
+            "SIGKILL after accepted test input"
+          ],
+          "archiveInode": 7443001,
+          "registryInode": 7442992,
+          "sourceInode": 7442993,
+          "hasReceipt": true,
+          "accepted": 1
+        },
+        "cloud": {
+          "breakpoint": [
+            "STOP org.eclipse.kura.internal.deployment.registry.ArchivePublication:136",
+            "SIGKILL after accepted test input"
+          ],
+          "archiveInode": 7443021,
+          "registryInode": 7443006,
+          "sourceInode": 7443007,
+          "hasReceipt": true,
+          "accepted": 1
+        }
+      },
+      "injection": "ARM64 unprivileged fixture JVMs with the installed local/cloud entry and a controlled DeploymentAdmin result. JDI breakpoint before registry rename followed by SIGKILL."
+    },
+    "restart": {
+      "exit": 0,
+      "sameVolume": true,
+      "localMain": "888cc9d714d04131b71dd4d3f14686be",
+      "cloudMain": "89a1a77c8470464da9cda436d306167a",
+      "capabilities": "0000000000000400",
+      "originalBusinessDpResourceMatched": true,
+      "readers": {
+        "local": {
+          "archiveInode": 7443001,
+          "originalStagedRegistryInode": "7442999",
+          "committedInode": "7442999",
+          "accepted": 1
+        },
+        "cloud": {
+          "archiveInode": 7443021,
+          "originalStagedRegistryInode": "7443019",
+          "committedInode": "7443019",
+          "accepted": 1
+        }
+      },
+      "observerCorrection": "The first observer compared two spellings of the same archive path. Local recovery had already completed. Subsequent readback validated the original inode and hash; only the pending cloud reader was invoked."
+    },
+    "finalVersionRefusalAndRetirement": [
+      {
+        "case": "shared-receipt",
+        "archiveInode": 7445324,
+        "originalRegistryInode": 7445313,
+        "committedRegistryInode": 7445322,
+        "registryChanged": true,
+        "sourceRetained": true,
+        "admissions": 1,
+        "privateReceiptRequired": true
+      },
+      {
+        "case": "committed-pair",
+        "archiveInode": 7445352,
+        "originalRegistryInode": 7445350,
+        "committedRegistryInode": 7445350,
+        "registryChanged": false,
+        "sourceRetained": true,
+        "admissions": 1,
+        "privateReceiptRequired": false
+      }
+    ],
+    "completedPairColdRead": {
+      "root": "39:6611544",
+      "matchedFiles": 8,
+      "completedPairs": 4,
+      "acceptedOnceEach": true
+    },
+    "sixColdRead": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 82,
+      "credentialsExact": 2,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "coreMaintenance": {
+      "root": "39:6611544",
+      "id": "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+      "phases": 18,
+      "boundToInstalledPostinst": true,
+      "copyRetired": true
+    },
+    "scope": "The interrupted registry edits used separate fixture files. The installed production readers ran in the real Main. Recovery never invokes Felix. An unknown result inside Felix or exit before an original paired receipt exists is outside this evidence. Ordinary framework activation of registered packages keeps its existing semantics.",
+    "coldReader": "deployment-paired-archive-commit/access/cold-maintenance.py",
+    "otherFixtureReader": "firewall-configuration-snapshot/cold.py"
   }
 }
