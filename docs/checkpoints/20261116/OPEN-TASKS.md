@@ -1,3 +1,9 @@
+## 2026-11-21 暂存防火墙回执在内核和原历史均核对后发布
+
+worker `6b26fdd` 在开机续办中先核对原编号、完整历史、内核规则与世代，再发布已暂存的回执。正式 ARM64 worker 在隔离内核中实测三种边界。内核世代改变时，七个原条目指纹保持，下一族没有派发。普通查询遇到启动器的暂存回执会要求沿原启动编号续办；另一个普通发送方仍能核对并完成自己的暂存回执。条件吻合时两个地址族沿原启动记录完成，双族转发均为 0。当前明确转发的 Main 请求只绑定当次操作与命名空间，无站点时的持久转发授权继续待验。
+
+防火墙临时安装 `39:7320076` 已升级 Core `76986fa98f`，原 18 次发布保留。其间首包 `4ec4b02ed4` 暴露了 Maven 过滤 postinst 时把 Networking 版本写死为 Core 项目版本的问题。修正后从最终 deb 提取脚本，验证混合 dpkg 状态、独立 Core 两种情况；原安装实际输出 Networking `3.0.0~git202611210733.783a594-1 installed`。Main 为 disabled，正常停机冷读 99 份文件。最新防火墙入口 `firewall-boot-receipt-admission/cold-model.py`，六组件入口仍为 `six-local-sqlcipher-upgrade/cold-maintenance.py`。冻结 **0/12**，外部延期仍为原三项。[安装与内核证据](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 原六组件联合升级自动保留本地 SQLCipher provider
 
 在原六组件 Root `39:6611544` 上，将夹具的 SQLCipher driver 与 provider 放入启动器支持的本地 `siblings/` 目录。Core `5bd7710ed8` 与 Networking `783a594` 均解包后正常停机，重启沿原维护编号恢复。两个 JAR 由安装脚本自动放回，正式 Main 从恢复目录加载它们，读回原明文及加密 SQLite 业务行，SQLCipher 页完整性通过。首版观察程序未识别 Equinox 相对地址，只更换了观察程序。验收后两只原文件按原 inode 放回夹具。另由正式 Main 通过原 H2 服务只读核验唯一业务行。相较升级前，82 份受保护文件中，仅 H2 数据文件内容指纹有变化。

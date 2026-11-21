@@ -3620,5 +3620,178 @@
     },
     "pending": "Affirmative forwarding without site policy, provider and launcher lifecycle coverage, and the full six-component maintenance matrix.",
     "frozen": "0/12"
+  },
+  "stagedBootReceiptKernelReadback": {
+    "evidenceDirectory": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-boot-receipt-admission",
+    "worker": {
+      "source": "724eb9beb9d129a6739dc99af9db6d4c056107e1be7b75a3190371612c1fbb47",
+      "revision": "6b26fddff369d3ec6a9af1fee2bf6cc65f992d03",
+      "architecture": "arm64",
+      "sourceVerifiedByExecutable": true,
+      "sha256": "58eadfefd010a702aa9258abe10b4c3ed602a45007b1e9bf830f14032c31d20e"
+    },
+    "source": "76986fa98f549cfe24d163ddf583fb2b238c6356",
+    "tree": "632bdfd4dc028529c3254c117a2f222d9eca0d4f",
+    "debSha256": "aff59e05b0151115bab7472f2a3aa3d8e145b2abda54288dbb910d2c6e4c3fa3",
+    "kernelCases": [
+      {
+        "scenario": "staged-generation",
+        "refusedBeforePromotion": true,
+        "original": "b151246b-6b85-4660-b222-fe9325e82753",
+        "stable": 7,
+        "laterFamilyNotIssued": true
+      },
+      {
+        "scenario": "sender-query",
+        "refusedBeforePromotion": [
+          "sender-query-kept-boot-stage"
+        ],
+        "boot": "78df4111-47da-4109-853b-86e1e5c91d10",
+        "families": {
+          "ipv4": "b30d6aa7-6a98-4baf-bb78-8088020cadc4",
+          "ipv6": "7b0218f2-acf0-4664-b567-2067c5397d8e"
+        },
+        "committed": [
+          "confirmed-ipv4",
+          "confirmed-ipv6",
+          "standard-configuration"
+        ],
+        "preservedForeign": true,
+        "forwarding": [
+          0,
+          0
+        ],
+        "publications": 4
+      },
+      {
+        "scenario": "pending-history",
+        "refusedBeforePromotion": [
+          "sender-query-kept-boot-stage",
+          "other-staged-sender-held-and-recovered"
+        ],
+        "boot": "07b98248-d9be-4a9a-ad62-4eb7dfdaf7e8",
+        "families": {
+          "ipv4": "2f7fd955-fad5-43fb-841c-858e4548d693",
+          "ipv6": "2375f431-0fc6-41ab-b4f0-45bf91df2632"
+        },
+        "committed": [
+          "confirmed-ipv4",
+          "confirmed-ipv6",
+          "standard-configuration"
+        ],
+        "preservedForeign": true,
+        "forwarding": [
+          0,
+          0
+        ],
+        "publications": 4
+      }
+    ],
+    "testScope": "Separate loopback-only ARM64 namespaces. The original valid result was placed at its pre-rename staged path after deliberately interrupting the harness. Generation drift used a real kernel table change. No changes to original installed journal entries.",
+    "rustTests": 10,
+    "firstInstalledCore": "4ec4b02ed495f94f9734a7a376a3ab74fc3a6bc0",
+    "maintenanceMessage": {
+      "firstWrong": "6.0.0-SNAPSHOT",
+      "actual": "3.0.0~git202611210733.783a594-1",
+      "final": "kura-networking 3.0.0~git202611210733.783a594-1 installed",
+      "source": "final postinst extracted from the deb",
+      "mixed": [
+        "Other Kura package versions and dpkg states during Core configuration",
+        "    kura-deployment 2.0.0~git202611210452.ef50b67-1 installed",
+        "    kura-management-agent 0.1.0~cohort20261121033315.5be64b7-1 installed",
+        "    kura-management-ui 3.0.0~git202611210452.9de7a7b-1 installed",
+        "    kura-networking 3.0.0~git202611210733.783a594-1 unpacked",
+        "    kura-wires 3.0.0~git202611210453.4f13cf1-1 installed"
+      ]
+    },
+    "installation": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "worker": {
+        "source": "724eb9beb9d129a6739dc99af9db6d4c056107e1be7b75a3190371612c1fbb47",
+        "revision": "6b26fddff369d3ec6a9af1fee2bf6cc65f992d03",
+        "architecture": "arm64",
+        "sourceVerifiedByExecutable": true,
+        "sha256": "58eadfefd010a702aa9258abe10b4c3ed602a45007b1e9bf830f14032c31d20e"
+      },
+      "receipt": {
+        "id": "c2509768-b488-4914-9bae-d0045b6f2bc9",
+        "state": "APPLIED",
+        "requestSha256": "ad1f0cf417852d5cb7a00a46c97a7b893418c6c28e87da37261318c402061dea",
+        "rootScope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798"
+      },
+      "versions": {
+        "kura-core": "6.0.0~git20261121075343.76986fa-1",
+        "kura-networking": "3.0.0~git202611210733.783a594-1"
+      },
+      "maintenance": "4b587263-241b-4dce-8e1a-f68d2fe13c48",
+      "main": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "UnitFileState": "disabled",
+        "InvocationID": ""
+      },
+      "reported": "kura-networking 3.0.0~git202611210733.783a594-1 installed"
+    },
+    "parkedExit": 0,
+    "cold": {
+      "root": "39:7320076",
+      "checked": true,
+      "packages": {
+        "kura-core": "installed",
+        "kura-networking": "installed"
+      },
+      "dpkgStatusUpdates": [],
+      "fileFingerprints": 99,
+      "firewallHistory": 36,
+      "installationKiB": 298604
+    },
+    "storage": {
+      "packages": [
+        {
+          "source": "4ec4b02ed495f94f9734a7a376a3ab74fc3a6bc0",
+          "version": "6.0.0~git20261121075212.4ec4b02-1",
+          "debBytes": 205051414,
+          "parts": {
+            "control.tar.gz": {
+              "bytes": 204149,
+              "sha256": "c7fb8bc009102a2ad147d5eca389ab8164f476e7f2574b3d1c537a9443e94127"
+            },
+            "data.tar.gz": {
+              "bytes": 204847072,
+              "sha256": "4de11a31289a6eb96ea80edac562ab8439d0026c966b71d5edb5f912f70fc383"
+            }
+          }
+        },
+        {
+          "source": "76986fa98f549cfe24d163ddf583fb2b238c6356",
+          "version": "6.0.0~git20261121075343.76986fa-1",
+          "debBytes": 205051440,
+          "parts": {
+            "control.tar.gz": {
+              "bytes": 204176,
+              "sha256": "dc425c9e83d723cdb9c22f69a67b9d54bb9b4ddb1d613fbf74bbd91b91a228d9"
+            },
+            "data.tar.gz": {
+              "bytes": 204847072,
+              "sha256": "4de11a31289a6eb96ea80edac562ab8439d0026c966b71d5edb5f912f70fc383"
+            }
+          }
+        }
+      ],
+      "totalArchiveBytes": 410102854,
+      "sameData": true
+    },
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16
+    },
+    "next": "Durable route-specific permission to enable forwarding without a site policy, full provider/launcher lifecycle and six-component matrix.",
+    "frozen": "0/12"
   }
 }
