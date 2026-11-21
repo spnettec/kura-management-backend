@@ -1,3 +1,7 @@
+## 2026-11-22 原部署完成回执跨 Cloud 与 Deployment 联合 purge、停机和重装
+
+同一 ARM64 Root 的 Cloud 与 Deployment 经 purge、重新解包和停机后，沿原围栏续配。正式 Main 只读查询 71001 安装与 71002 卸载，两者均为 COMPLETED；业务包保持已卸载，原重启 UNKNOWN 保留。两份部署回执与原注册表身份、元数据、摘要一致。当前停机入口 cloud-deployment-receipt-reinstall/cold.py final。冻结 0/12。
+
 ## 2026-11-22 Deployment 的安装、卸载及后续重启判定
 
 独立 ARM64 正式 Main 的 Deployment 安装任务 71001 与卸载任务 71002 均为 COMPLETED。两次部署后重启调用均只读原 UNKNOWN，原 Root 39:8337304 的 actor 始终只有同一编号。正常停机后核对两份部署回执、原九份请求相关文件、三份凭据和 11 个发行文件。当前冷读入口 deployment-original-reboot-receipt/cold.py final。冻结 0/12。 实测通过 JVM 内已注册的请求处理器。真实传输和内核重启后的业务恢复仍待验。

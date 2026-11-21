@@ -8688,5 +8688,99 @@
     "actualCloudTransport": false,
     "kernelReboot": false,
     "entry": "deployment-original-reboot-receipt/cold.py final"
+  },
+  "cloudDeploymentOriginalJobReinstall": {
+    "root": "39:8337304",
+    "phases": {
+      "remove": {
+        "kura-cloud": "installed",
+        "kura-deployment": "config-files"
+      },
+      "purge": {
+        "kura-cloud": "not-installed",
+        "kura-deployment": "not-installed"
+      },
+      "unpack": {
+        "kura-cloud": "unpacked",
+        "kura-deployment": "unpacked"
+      },
+      "deployment-configure": {
+        "kura-cloud": "unpacked",
+        "kura-deployment": "installed"
+      },
+      "cloud-configure": {
+        "kura-cloud": "installed",
+        "kura-deployment": "installed"
+      }
+    },
+    "unpackedGates": {
+      "/opt/eclipse/kura-deployment-main-gate/transition.json": {
+        "inode": 8371932,
+        "dev": 39,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 295,
+        "sha256": "873f43a707cd612dcbaa6e0f774ffb6e584622a0212f951e98a6b243fb793b0e",
+        "mtime": 1795298185687805981
+      },
+      "/opt/eclipse/kura-filemove-state/.maintenance.json": {
+        "inode": 8371812,
+        "dev": 39,
+        "mode": 384,
+        "uid": 0,
+        "gid": 0,
+        "size": 154,
+        "sha256": "dce8aa2297a7da32e25c6ee5b13abd5aaf3d60f1eb2fedb834142dd09b193aa0",
+        "mtime": 1795298183153417078
+      }
+    },
+    "query": {
+      "results": [
+        "install 71001 COMPLETED",
+        "uninstall 71002 COMPLETED"
+      ],
+      "rebootReceiptAccess": false,
+      "logStart": 335837,
+      "unit": {
+        "MainPID": "1105",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "5cee7a1a19ec42bd8afd8d52f0a0963e"
+      }
+    },
+    "retainedReceipts": {
+      "install": {
+        "inode": 8367826,
+        "dev": 39,
+        "mode": 384,
+        "uid": 997,
+        "gid": 995,
+        "size": 1725,
+        "sha256": "ce8011713b6187e52466bec450cc2e150a09b7e5c72d438a1a0f2dc3da997e24",
+        "mtime": 1795297972407288297
+      },
+      "uninstall": {
+        "inode": 8367871,
+        "dev": 39,
+        "mode": 384,
+        "uid": 997,
+        "gid": 995,
+        "size": 776,
+        "sha256": "60124d885dce4a77518a2992f3c785dd8040e1dfcfda659dc85b59372590acb2",
+        "mtime": 1795297975238298130
+      }
+    },
+    "reboot": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+    "rebootState": "UNKNOWN",
+    "storage": {
+      "previousKiB": 291968,
+      "currentKiB": 292892,
+      "newDebs": 0,
+      "newVolumes": 0,
+      "observerBytes": 4655
+    },
+    "cold": "cloud-deployment-receipt-reinstall/cold.py final"
   }
 }
