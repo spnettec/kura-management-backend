@@ -1,3 +1,9 @@
+## 2026-11-21 防火墙确认及回滚回包丢失后的原编号查询
+
+原六组件安装共同升级 GWT 8870575 与 Networking 9a5007a。正式 Main 装载两个发行包的类，用内存传输端分别模拟确认和回滚的畸形回包。两个场景均只派发一次操作，适配器报告该次派发的原始关联编号。服务端按准备编号查询三次，前两次旧状态保持 UNKNOWN 和禁止操作，第三次分别取得 COMMITTED 和 ROLLED_BACK。真实 agent 未启动，内核防火墙未改动。GWT 两个模块合计 535 项、Networking 构建 2235 项通过。
+
+六组件在原 Root 正常停机，冷读核对六个包、SQLCipher 和 84 份文件。续接入口为 firewall-action-receipt/parked-readback.py。真实防火墙 actor 与完整权限及包维护矩阵继续按原台账验收，冻结 0/12。[发行与实装记录](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 已登记 SQLCipher 部署包跨 Deployment、原生库共同维护
 
 原六组件安装通过公开 Deployment 服务登记 SQLCipher 部署包一次。包内 provider 读到原明文和加密业务行后停机。共同 remove、purge Deployment 和 libsqlcipher1，只解包 Deployment。其安装器在原 Root 留下配对生成器和 Main 运行时 mask。正常关机后的只读挂载证实 Deployment 待配置，libsqlcipher1 未安装，90 个卷内路径指纹吻合。

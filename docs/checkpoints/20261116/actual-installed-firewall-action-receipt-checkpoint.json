@@ -1,0 +1,130 @@
+{
+  "branch": "wip/management-close-20261116",
+  "priorCheckpoint": "actual-native-wires-retained-reinstall-checkpoint.json",
+  "packages": [
+    {
+      "source": "8870575aab531b54ab2e18a75b008bdd6d8195dc",
+      "tree": "c7af2cfa6d42063bc791be5e0029c6082405ecad",
+      "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/kura-management-ui/distrib/target/deb/kura-management-ui_3.0.0~git202611210130.8870575-1_all.deb",
+      "version": "3.0.0~git202611210130.8870575-1",
+      "package": "kura-management-ui",
+      "sha256": "69f99f8af51d6c681423ec0acf4314b89854e5b2eac68b9139165abf7ecae4da",
+      "installedJar": "/opt/eclipse/kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+      "jar": "2d6086028372399a64ceb1db2049958ce7fa01be7135d3519235956a83599863",
+      "oldJar": "ecae459384eabd886159a121c611950cc3b9f226bda3431b02caea26e2117686",
+      "classes": {
+        "org/eclipse/kura/web/server/FirewallSession.class": "2a10c28c7dd2446a400916b71b007f9d766bedf3ebda9d5c2042dc03368f07b9",
+        "org/eclipse/kura/web/server/FirewallSession$Pending.class": "6522228e805e17784aff969525c091f9c14cb4dbbbe74d5431e10b0905f42387"
+      },
+      "bytes": 34136204
+    },
+    {
+      "source": "9a5007ad9dfa302ade001214a678394da2a75e56",
+      "tree": "395cca1d691747e95f707efa36001f1e36b40c26",
+      "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210130.9a5007a-1_all.deb",
+      "version": "3.0.0~git202611210130.9a5007a-1",
+      "package": "kura-networking",
+      "sha256": "f02977cd594ce5519dabf1917cae7cb9d6393b8c8592a331a8c90404bab14086",
+      "installedJar": "/opt/eclipse/kura/siblings/networking/5s/org.eclipse.kura.firewall.agent-1.0.0-SNAPSHOT.jar",
+      "jar": "8f79b0e2d14835afe599ce7f3839c389f8426fa3e216bde33d90988c7a1a9f52",
+      "oldJar": "4570b02e9a154ffa53ebe15e1d3fd16b29981ee5ebcb9d616a8c7442bdf828a3",
+      "classes": {
+        "org/eclipse/kura/firewall/agent/AgentFirewall.class": "5c6701f39e10cc71a6622adc275860924a4c4896fbc8e2747ece917020d4fc7e"
+      },
+      "bytes": 9381880
+    }
+  ],
+  "previousVersions": {
+    "kura-core": "6.0.0~git20261121011827.8b275f0-1",
+    "kura-networking": "3.0.0~git202611201717.4741b5e-1",
+    "kura-management-ui": "3.0.0~git202611210011.6fd074c-1",
+    "kura-deployment": "2.0.0~git202611202327.15c50ca-1",
+    "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+    "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+  },
+  "finalVersions": {
+    "kura-core": "6.0.0~git20261121011827.8b275f0-1",
+    "kura-networking": "3.0.0~git202611210130.9a5007a-1",
+    "kura-management-ui": "3.0.0~git202611210130.8870575-1",
+    "kura-deployment": "2.0.0~git202611202327.15c50ca-1",
+    "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+    "kura-management-agent": "0.1.0~cohort20261120163743.ab1cf33-1"
+  },
+  "build": {
+    "gwtTestsByModule": [
+      43,
+      492
+    ],
+    "gwtPermutations": [
+      6,
+      6
+    ],
+    "networkingTestsByModule": [
+      165,
+      21,
+      15,
+      236,
+      178,
+      3,
+      14,
+      15,
+      1534,
+      19,
+      35
+    ]
+  },
+  "installedObservation": {
+    "main": {
+      "unit": {
+        "MainPID": "2087",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "fc68f6cc6ba64dc9b23faa81490c9256"
+      },
+      "ticks": "40901445",
+      "uid": "997\t997\t997\t997",
+      "capEff": "0000000000001400",
+      "nnp": "1"
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "confirm": {
+      "prepare": 1,
+      "action": 1,
+      "reads": 3,
+      "terminal": "COMMITTED"
+    },
+    "rollback": {
+      "prepare": 1,
+      "action": 1,
+      "reads": 3,
+      "terminal": "ROLLED_BACK"
+    },
+    "scope": "installed GWT and typed Networking adapter with in-process transport",
+    "journalWrites": 0
+  },
+  "cold": {
+    "readOnly": true,
+    "root": "39:6611544",
+    "sixPackageVersionsExact": 6,
+    "sqlcipherPackage": "4.6.1-2",
+    "protectedFilesExact": 84,
+    "originalSubmitWithdrawn": true
+  },
+  "readback": "firewall-action-receipt/parked-readback.py",
+  "otherSites": {
+    "actual": 38,
+    "personal": 25,
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16
+    }
+  },
+  "remaining": "Real firewall actor, kernel and ordinary/recovery ownership transitions retain their independent evidence and open acceptance items.",
+  "frozen": "0/12"
+}
