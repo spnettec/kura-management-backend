@@ -28,13 +28,19 @@ Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普
 
 这次还定位到一种可以避免的重组装。API、Crypto 和 Configuration 三个 JAR 在运行时与冷恢复目录的内容逐项相同，只有清单中的 OSGi `Bundle-Version` 不同。例如 API 的构建后缀分别为 `202611202101` 和 `202611202040`。打包正确拒绝该组输入，从同一缓存重建恢复工具后通过。正式 `build-all.sh` 会为一次构建固定 `KURA_BUILD_QUALIFIER`。拆开运行 Maven 时，同一批候选也应显式传递相同的 `-Dkura.build.qualifier`，并让运行时和恢复工具使用同一批依赖。从当前 Git 只取 API 模块和构建父 POM，用同一个固定后缀连续执行两次干净打包，606 个文件条目以及整个 JAR 的 SHA-256 均相同。该验证复用了 Maven 缓存，临时源码和编译目录随即回收。[两次构建摘要](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/qualifier-proof.json) · [实际差异](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/unpaired-build.json) · [正式构建入口](../../../.management-close-20261116/core-rtc-hotplug-20261120/wip-core/build-all.sh)
 
-这次防火墙修复复用系统已安装的 `iptables-restore` 做语法核验。发行包生成的 49 条 IPv4、85 条 IPv6 规则均能装入隔离内核；使用系统的 nft 文本翻译器时，25 条 ICMPv6 规则只留下了注释，其中有针对具体类型、代码和链路本地来源的限制。agent 的原布局编译器已有这些匹配项的实现，后续独立写服务应复用其规则语义，并保持 Kura 可单独安装。这轮只构建 Networking 和 firewall-only 两个 deb，合计约 9.83 MB，复用了原 Core 包、原 VM 和原六组件卷。[规则逐项对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/kernel-observation.json) · [两份发行包](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/releases.json)
+这次防火墙修复复用系统已安装的 `iptables-restore` 做语法核验。发行包生成的 49 条 IPv4、85 条 IPv6 规则均能装入隔离内核；使用系统的 nft 文本翻译器时，25 条 ICMPv6 规则只留下了注释，其中有针对具体类型、代码和链路本地来源的限制。这次发现促成了后面的共享规则库。这轮只构建 Networking 和 firewall-only 两个 deb，合计约 9.83 MB，复用了原 Core 包、原 VM 和原六组件卷。[规则逐项对照](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/kernel-observation.json) · [两份发行包](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-native-policy-compiler/releases.json)
+
+原布局的防火墙解析和内核规则编码现已抽为一个 Rust 库，agent 和独立调用方共用。Linux ARM64 实测将 134 条规则放入一个 40,848 字节的事务，其中 40 个 ICMP 匹配的类型、代码范围和取反位都从内核读回。最后一条规则被拒绝时，六张表一起保持原值。正式 Main 接入该写服务和按原操作编号恢复仍需实装。[内核接受回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/kernel-valid.json) · [内核拒绝回执](../../../.management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/kernel-invalid.json)
+
+这轮两次实际升级复用同一六组件卷，各保留约 7.0 MB 的 agent 安装包。构建现场的 macOS debug 目录为 594 MiB，Linux debug 与 release 分别为 574 MiB、497 MiB。它们供多轮构建共用。这解释了为什么小范围的规则变更也会伴随较大的目录占用。两份 deb 的文件长度已知，APFS 独占块及本轮缓存净增量没有单独计量。[本轮目录和包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/storage.json)
 
 ## 工期花在哪里
 
 最初的多网关管理中心已经扩展到网关操作系统、原 Kura 本地控制台、密钥保管、发行包维护及故障后的业务连续性。同一张 Timer→Logger 图能在首次安装时送达，只证明运行时可用。要证明客户升级可用，还需在原安装上升级 Core，确认原图只提交过一次；要证明 Wires 可独立拆装，又需经过 config-files、unpacked、installed，查看注册行并观察原图再次送达。后三项已有现场记录。其余组件及中断点不能借用这个结果。
 
 历史方案确有过渡。旧中心使用 Java/Spring Boot、Vue 和 MQTT，新中心采用 Rust 和 React。早期 Netplan 接管原型在 11 月 5 日调整为保留 NetworkManager。两次变化都留下代码、包、旧状态和夹具。另有一类长期设计成本来自同一安装身份上的安全恢复。写操作派发后丢回执可能已经生效，产品需要识别原编号、原 Root 和维护围栏；旧版本与新版本都需要理解可恢复的中间状态。
+
+交接本身也逐轮变长。11 月 21 日 11 时许，父库的 Tasks.md 与 Session Summaries.md 经官方 CLI 全文读出分别为 881,441 和 886,889 字节，Git 未结台账约 482 KB。全文读取会增加每次续接的工时，这三份文档合计约 2.25 MB。从磁盘数字看，更大的开销集中在历史工作树、包与构建目录。
 
 再看 Git，从北京时间 11 月 16 日零时到本次交接 HEAD，沿提交历史排除 merge 后，中心仓有 267 次提交，242 次只修改 `docs/`，占 90.6%。同期 Core 有 185 次提交，其中 178 次涉及 `docs/` 外的路径。中心仓承担了跨仓验收台账，Core 则在持续改实现。这能解释为什么看中心提交数量会高估功能迭代次数，也能看出逐场景单独交接的维护成本。统计按提交计数，不能换算工时。
 

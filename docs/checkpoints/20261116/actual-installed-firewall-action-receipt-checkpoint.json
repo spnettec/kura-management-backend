@@ -990,5 +990,122 @@
       }
     },
     "remaining": "Atomic publication, authenticated standalone writer and original-ID outcome recovery. The restore syntax check is advisory for kernel commit. Both packaging variants built. Only standard Networking was upgraded on this Root."
+  },
+  "sharedNativeRuleCompiler": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy",
+    "originalAgent": "ab1cf33",
+    "release": {
+      "source": "2096a04bee0d2dec69d3a0452294bf8fccf8818f",
+      "tree": "528756048dac581225ba6b49bd5f06a6b53c4a8b",
+      "sha256": "d81db04682ce5535296584c24618440dbdbe7f247e02763ab9fc29a2ff8f59a7",
+      "bytes": 7036720
+    },
+    "sourceInputs": 272,
+    "sourceLibraryFiles": 7,
+    "wireParity": [
+      {
+        "attributeBytesExact": 10056,
+        "family": "ip",
+        "rules": 49
+      },
+      {
+        "attributeBytesExact": 22532,
+        "family": "ip6",
+        "rules": 85
+      }
+    ],
+    "parityInput": "Original installed agent source manifest and ab1cf33, 134 candidate rows including expression attributes and compatibility context.",
+    "kernel": {
+      "scope": "Fresh ARM64 network namespaces, no non-loopback interface. Test sender used known fixture rule handles. The shared production parser and rule encoder supplied all expression attributes.",
+      "valid": {
+        "mode": "valid",
+        "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+        "batchBytes": 40848,
+        "attemptedRules": 134,
+        "acknowledgedSequence": 235,
+        "errno": 0,
+        "genBefore": 11,
+        "genAfter": 12,
+        "sameKernelState": false,
+        "matchedIcmpTypeCodeAndInversion": 40,
+        "foreignRulesAndChainsExact": true
+      },
+      "invalid": {
+        "mode": "invalid",
+        "kernel": "7.2.12-orbstack-00394-gbecdd6130068",
+        "batchBytes": 40848,
+        "attemptedRules": 134,
+        "acknowledgedSequence": 234,
+        "errno": -2,
+        "genBefore": 11,
+        "genAfter": 11,
+        "sameKernelState": true,
+        "matchedIcmpTypeCodeAndInversion": null,
+        "foreignRulesAndChainsExact": true
+      },
+      "preserved": "Site chain, site rule within a Kura chain, and OUTPUT DROP; changed local range in both families."
+    },
+    "agentStartupExecution": {
+      "stage": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release",
+      "release": {
+        "source": "a1f1ebea7602f7393c006733a69535c3f052f781",
+        "tree": "3f432e9f96bcfce674880313eba06e7add6c2b21",
+        "sha256": "ddadb2ed89887c1a08fdcc4b2982ef329ad26537ccae3a5c4904b13c58a22bae",
+        "bytes": 7024666,
+        "binary": "a90cd75bca6d3ff94a098b58b0c5b6698a3ddc177ff82cf9f79b80fe4e4c95b8",
+        "sourceManifest": "b2635d70715c6fb5f0e152eff554774970b6b884955db80b099702c75ffcd9f1",
+        "bridge": "532c124eb37f725a70a54f963065ab298a6819bd20dd9f52c64de76a8d40d47d",
+        "loader": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+      },
+      "reason": "Explicitly release the completed operation lock even if a pre-exec child still holds the same file description. Lock identity and active concurrent refusal are retained.",
+      "testBefore": "lock-before.log",
+      "testAfter": "lock-fixed-startup.log",
+      "root": "39:6611544",
+      "cold": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 84,
+        "originalSubmitWithdrawn": true
+      },
+      "unitsAtEachUpgrade": {
+        "main": "disabled, MainPID 0",
+        "agent": "disabled, MainPID 0"
+      },
+      "upgradesOnOriginalRoot": 2,
+      "normalStopEachTime": true,
+      "protectedFilesAndMetadataExactAcrossBoth": 84,
+      "parkedReadback": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/parked-readback.py"
+    },
+    "hostTests": {
+      "beforeFix": {
+        "passed": 785,
+        "failed": 2,
+        "ignored": 30
+      },
+      "afterFixTargeted": {
+        "passed": 4,
+        "log": ".management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/host-final.log"
+      },
+      "remaining": "macOS lacks the Linux /proc/self/fd SQLite reopen used by the retained database check. Same positive test passed on ARM64 Linux.",
+      "isolatedMacFailure": ".management-close-20261116/core-rtc-hotplug-20261120/standalone-firewall-policy/host-database-test.log"
+    },
+    "remaining": "Authenticate and bind the standalone writer to the original installed Main and Root, select owned kernel handles using the authenticated previous model, durably record original-ID outcomes and integrate normal Java publication and package maintenance.",
+    "linuxTests": {
+      "releaseSource": "a1f1ebea7602f7393c006733a69535c3f052f781",
+      "agentPassed": 800,
+      "libraryIntegrationPassed": 2,
+      "failed": 0,
+      "ignored": 50,
+      "log": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/linux-full-tests.log",
+      "cargoArgs": "test --workspace --locked --offline -j 4 -- --test-threads=6",
+      "container": "Network none, read-only root, private writable temporary and root cache mounts."
+    },
+    "unchangedSites": {
+      "originalThree": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/original-three-after.json",
+      "parallels": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/parallels-final.json",
+      "otherFixturesAndPersonalFiles": ".management-close-20261116/core-rtc-hotplug-20261120/startup-execution-release/preservation-final.json"
+    }
   }
 }

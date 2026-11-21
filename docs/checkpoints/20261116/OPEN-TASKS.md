@@ -1,3 +1,7 @@
+## 2026-11-21 双族六表原子提交和启动操作锁
+
+Agent 共用原规则编译库。在 ARM64 隔离网络中，134 条 Java 规则一次提交成功，六表同批的最后一条被拒时完整规则集保持。原六组件 Root 先升级共享库版 2096a04，再升级启动锁修正版 a1f1ebe。写者已结束但子进程仍保有描述符时，下一阶段现在可接回原操作。两次停机均冷读六包、SQLCipher 及 84 份保护文件。最终 ARM64 离线测试通过 802 项，显式忽略 50 项。最新入口为 `startup-execution-release/parked-readback.py`。正式 Main 的受限写服务、同编号结果恢复及其余组件维护继续，冻结 0/12。[发行件和验证记录](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 在清链前核验候选规则
 
 Networking `cecf20f` 用发行系统自带的 IPv4、IPv6 解析器检查暂存文件。无效的附加规则原先会改写已运行的链，新包在隔离 ARM64 上拒绝后保留规则、磁盘文件和可读模型。原六组件卷标准版升级后，正式 Main 调用两次解析器均返回 2，六张表一致。原 Root 正常停机，最新冷读入口是 `firewall-native-policy-compiler/parked-readback.py`。跨表原子写入、已配对独立写服务和原操作结果恢复继续，冻结 0/12。[发行件、解析器和停机记录](actual-installed-firewall-action-receipt-checkpoint.json)
