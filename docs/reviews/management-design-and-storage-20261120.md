@@ -360,3 +360,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 2026-11-22 为何这次升级需要修改 Milo 发行件
 
 上一轮四个补丁 fragment 在新装系统均能解析。同名热升级时，已在运行的宿主保持原版本，结果只有一个 fragment 解析成功，驱动拿到完成回执后读节点失败。修订后的发行件直接在四个 Milo 宿主中声明所需依赖，并使用新的 OSGi 版本让 Felix 更新宿主。上游代码和资源逐字节相同。DP 的 bundle 数从 11 减至 7，Debian 包内 JAR 从 10 减至 6。新 deb 和 DP 各约 5.6 MiB，另保留一份上一轮精确测试过的 5,827,108 字节 DP。两个容器停机后可写层合计 4,826,915 字节，持久卷为零。[升级与业务证据](../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-deployment-upgrade/HANDOFF.md)
+
+## 2026-11-22 Triton 管理模式与完整运行库的成本
+
+远程 Triton 只需要 gRPC，却曾被本地特权执行器和解密服务的 SCR 引用阻止启动。移除两项依赖后，ARM64 现场用原配置完成端点停启和冷启动。容器模式则保留编排和加密服务。另一个耗时原因是同一 Maven SNAPSHOT 坐标可以留着旧 Crypto API 的导入声明。两个下游包按原 Git 重建后，在同一套其余输入上恢复 ACTIVE。三次 macOS 启动各生成约 325 至 340 MiB 的 Equinox 缓存。测试结束后连同本次临时组装一起回收，删除前计量约 2.03 GiB。保留用于配对的两个下游 JAR 合计约 13.7 MiB。[交接与计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/triton-remote-maintenance/HANDOFF.md)

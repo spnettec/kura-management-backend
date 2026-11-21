@@ -1,3 +1,7 @@
+## 2026-11-22 Triton 远程模式解除多余本机服务依赖
+
+ARM64 实装前版在无匹配执行器和解密服务时无法满足远程实例引用。7de1cc0 移除这两项，容器模式也移除未使用的执行器引用。正式 Main 沿同一快照完成真实回环 gRPC 健康和模型状态查询、端点停启、冷启动、remove 和 purge。119 项模块测试通过。macOS 独立 SCR 验收通过；按同一 Git 重建两个过期 YOFC 缓存输入后，两个下游 bundle 均为 ACTIVE，43 项下游测试通过。实际模型推理及容器/原生模式的正向执行仍待验。详见 `triton-remote-maintenance/HANDOFF.md`，冻结 0/12。
+
 ## 2026-11-22 同名 OPC UA 部署包热升级
 
 旧包 52001 因缺旧 crypto 导出无法启用驱动，52002 安装完成后仍有三个 Milo fragment 未接入，实读失败。db7cedb 将重定位依赖直接声明在四个新版宿主上。52004 同名热升级和 Main 冷启动均通过原工厂读到 Milo 产品名，三个原安装号查询均为 COMPLETED。52003 卸载后保留两份历史 DP 归档。随后原配置跨 Debian 包升级再次实读，purge 与正常停放完成。PDE 依赖入口已统一到 9f914b4。详见 `opcua-deployment-upgrade/HANDOFF.md`。其余 provider/launcher 及六组件矩阵继续待验，冻结 0/12。
