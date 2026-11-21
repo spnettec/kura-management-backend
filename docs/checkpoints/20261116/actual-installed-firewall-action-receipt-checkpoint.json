@@ -1205,5 +1205,60 @@
         "parallels": "parallels-final.json"
       }
     }
+  },
+  "incrementalJavaPublication": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-java-original-model",
+    "source": "8025d5641d459800bfc17615527a573cc108f52f",
+    "tree": "a19fa24d3c80cee57e2adfeedda0d08bd91399ce",
+    "packages": {
+      "networking": {
+        "sha256": "eb5285504f4276387f14f6d2e5dc56bea15f081af86ff16c400f4092af10e8ab",
+        "bytes": 9390668,
+        "version": "3.0.0~git202611210323.8025d56-1",
+        "package": "kura-networking",
+        "classSha": "1f86786816f400a50238b1725cf1774f863b447d8078719888fc8396b3fb5f26",
+        "jar": "edb02aa9c1cf1891fa739d65ec782f50bcf0b8f2f49f1496717bdef95711c6d6"
+      },
+      "firewall-only": {
+        "sha256": "1637669aed266050ba4bfda102d91fbfd86c2f111dde392f4ad215775b28b092",
+        "bytes": 444186,
+        "version": "3.0.0~git202611210323.8025d56-1",
+        "package": "kura-firewall-only",
+        "classSha": "1f86786816f400a50238b1725cf1774f863b447d8078719888fc8396b3fb5f26",
+        "jar": "edb02aa9c1cf1891fa739d65ec782f50bcf0b8f2f49f1496717bdef95711c6d6"
+      }
+    },
+    "testsPassed": 2245,
+    "previousPackage": {
+      "package": "ef090f66492f0a6b4e1aa2f5e4dac0f39d913f74948b36e479bbab1c7b63b7c9",
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "observations": [
+        "ipv4 refusedKernelWrites=0 retainedModel=false retainedSet=false acceptedRuleInstalled=false acceptedCommandCount=0 foreignChainRetained=true",
+        "ipv6 refusedKernelWrites=0 retainedModel=false retainedSet=false acceptedRuleInstalled=false acceptedCommandCount=0 foreignChainRetained=true"
+      ]
+    },
+    "testedPackage": {
+      "package": "eb5285504f4276387f14f6d2e5dc56bea15f081af86ff16c400f4092af10e8ab",
+      "image": "sha256:a500a6cb35cba0746c1cccb673ed18023ba4f7059374a4c78d0824291c485f51",
+      "observations": [
+        "ipv4 refusedKernelWrites=0 retainedModel=true retainedSet=true acceptedRuleInstalled=true acceptedCommandCount=80 foreignChainRetained=true",
+        "ipv6 refusedKernelWrites=0 retainedModel=true retainedSet=true acceptedRuleInstalled=true acceptedCommandCount=78 foreignChainRetained=true"
+      ]
+    },
+    "upgrade": {
+      "exitCode": 0
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "liveSites": "original-three-after.json",
+    "preservation": "preservation-final.json",
+    "parkedReadback": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-java-original-model/parked-readback.py",
+    "remaining": "Authenticate the standalone firewall writer, bind its operation to the original Root and registered Main, dispatch with owned handles and recover its durable original-ID outcome. The dual-stack comparison used the packaged Java provider inside an isolated namespace."
   }
 }
