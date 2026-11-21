@@ -1,3 +1,7 @@
+## 2026-11-22 OPC UA 部署包正式投递与卸载
+
+在隔离 ARM64 上安装正式 Core、Deployment 和 Cloud。实装处理器安装 51001 后，Felix 登记 11 个 bundle，7 个 ACTIVE、4 个 fragment RESOLVED。Main 停启后沿原编号读回 COMPLETED，存档、提交标记、bundle ID 和驱动工厂均已核对。卸载 51002 完成，Felix 和 Kura 注册表均已移除该包，系统正常停放。详见 `opcua-deployment-main/HANDOFF.md`。同名部署包跨版及其他 provider/launcher 的维护组合继续待验，冻结 0/12。
+
 ## 2026-11-22 OPC UA 正式 Main 的节点读取与恢复
 
 ARM64 实装修复 Milo 1.1.2 重定位依赖缺少 OSGi 声明，以及通道省略 attribute 时默认值未生效。WIP `107da42` 通过 10 项模块测试。原 Main 的同一 PreparedRead 在服务器停止时返回 ConnectionException，服务重启后读到新的时间。remove、解包和续配后，新 Main 用原工厂和同一份快照再次读取产品名与时间，随后 purge、正常停放。匿名回环读已验，签名加密、订阅、实际部署包投递及其他 provider/launcher 仍待验。见 `opcua-provider-main/HANDOFF.md`，冻结 0/12。

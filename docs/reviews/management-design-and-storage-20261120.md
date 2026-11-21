@@ -352,3 +352,7 @@ Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停�
 ## 2026-11-22 Camel 两种包维护现场的磁盘用量
 
 这两种验收只要求跨 JVM 保留同一 Root，无需跨整机关机继续。将系统目录放在 tmpfs 后，原快照、注册表和 dpkg 数据在各次 Main 重启间保持，整机退出时释放。复用两版 Camel 和现有 Core deb，两个停止容器的可写层各占 4,582,826 字节；新增持久系统卷和镜像均为零。[计量记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/camel-provider-upgrade/storage.json)
+
+## 2026-11-22 OPC UA 两种安装入口的成本
+
+正式 Main 走 Debian 插件路径时发现 Milo 的 OSGi 导入导出不全和属性默认值失效，为验证修复生成两份 deb，各约 5.6 MiB。验证 Deployment 路径时复用同一修复版本的 5,827,108 字节部署包、已有镜像和 Core、Cloud、Deployment 发行包。本次隔离系统使用内存根目录，停机后容器可写层为 4,629,167 字节，持久卷为零。这个数值只计停机后的容器可写层。两次测试分别检验驱动实际读节点，以及交付包在 Felix 中的登记、重启保留与卸载。[驱动实装](../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-provider-main/HANDOFF.md) · [部署包实装](../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-deployment-main/HANDOFF.md)

@@ -7397,5 +7397,42 @@
       "unpacked.json": "a0df545828bdba878f02e1ae81ec9f2e8458ac24287afa26cdc51d85805ca7e5",
       "verify.py": "9ef5e8261d6ce95ddb89f0290dd8f398664177a498018af30625b09a5b30eb0d"
     }
+  },
+  "opcuaDeploymentMain20261122": {
+    "path": ".management-close-20261116/core-rtc-hotplug-20261120/opcua-deployment-main",
+    "version": "2.0.0.202611211821",
+    "archive": "8229ba5f8e0e26f6cea438c616b7721085eb4fb99e66ebe0e628b997863a4874",
+    "install": 51001,
+    "uninstall": 51002,
+    "bundles": 11,
+    "resolvedFragments": 4,
+    "parked": 0,
+    "frozen": "0/12",
+    "evidence": {
+      "HANDOFF.md": "737786c530a33df58631dc3da004642a6b3acd3f55df3c9a94c9e64ea58eacd6",
+      "Probe.java": "27b2b5d6e53f5961e40074a81e2175fe851da2ba98ec86cac385d7e41e7e1888",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "cloud-installed.json": "c3820726b514fe08f736451b3f48b55c83bfc5218c6dfc9e8f3c5dba5c4689d1",
+      "compile.py": "3484cc75135490288ae0f5d7b56db7bcca07616a56a16312a3f8a92582d187d6",
+      "dp-observer.jar": "4d3bd6720cc56d5a55bc9da1fb0e4bf4d9b807803c6593d4b13d62e1e12d5cb1",
+      "field.py": "ce585f28758b14e920e1e033000c9dcf0da08e415617ce29891d9b9e29dbfa58",
+      "initial-unit.json": "ba5217363a59e6a9122ff02524e9e2bc538c3e6279e9080e1a8abbd1c057cd46",
+      "installed.json": "c4a136c433e6f1f691c934eadc49800843b205adfc0ee05dc458cd14e9815b19",
+      "main-installed.json": "80e089fec1520bb99fd7a0af3264d1f7a16a8f7e9e4e1a51493dcc9f2ece074f",
+      "original-three-after.json": "a49200b42b91c0a08bfcc86224b38188311b501e390417e8b4604fa68235ac79",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "parked.json": "feb08ab36eef86516f5699a13e9293aaf99474f7afcfa2f5e8dd842a3f9871e8",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "removed.json": "a448ab534aacd9faae9b223ba557500474e3e4e82fbbd93dc8fea587a3c7c509",
+      "reopened.json": "b7009d97e892d7a0e82fc1ad1479e71be59c08effd1eb05a21a30c5569437c7b",
+      "resumed-unit.json": "052de71640760fb0bddbe401b396dcd06cbfc9c3a5fd22a37d277446467a3a76",
+      "retained-50001.json": "3478436111f60c4f293fb37d26ac85a559ac3b07c3432623a5c5ddcfb0eb341b",
+      "run.py": "868d7b29f6ed6bbed39d62483d9a515afa676f742e014abafa1a8602c1585327",
+      "six.json": "1cbc3dc7dd5cff8b1080bd548a620e31ff0a48efe45b6f1b3d0e2d8447fd9a5b",
+      "system.json": "8abc4125ce4f8c6a6504983621a228dcc79959800cd8c11077cde678af3c3dab",
+      "verify.py": "a036d1f91bfafe01119703a4286fe4c44e7409de335cedcda632a5bbe2e0fe74",
+      "withcloud-unit.json": "403f33c0d35dcf87e3398286a2a8e2a705a7f60dd3dba83f69f6457c592a945f",
+      "withcloud.py": "3ce069abf677691ea8003abf18098f06245975d1320d7235a20995ad42499d59"
+    }
   }
 }
