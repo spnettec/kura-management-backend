@@ -454,5 +454,111 @@
       "originalSubmitWithdrawn": true
     },
     "remaining": "Standalone kernel table readers and publishers still need NET_ADMIN. The new reader provides metadata only."
+  },
+  "firewallOnlyInterruptedSwitch": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-variant-reader",
+    "source": "96cc51239865f51d5a7180e68485f97a14d415d0",
+    "tree": "01cc1a99eac158ed5454193a197b8ebd3ac12ce3",
+    "archives": {
+      "firewall-only": {
+        "version": "3.0.0~git202611210202.96cc512-1",
+        "sha256": "0cf906e7f83825388ce09c50d409b3e110952a352c3bcb01ebe0d4713f9ad2de",
+        "bytes": 438008
+      },
+      "networking": {
+        "version": "3.0.0~git202611210202.96cc512-1",
+        "sha256": "2682ba3bfc6e547cb49e17bcda237f16673ddf0699417a2226a4d821e01b4375",
+        "bytes": 9386096
+      }
+    },
+    "originalSnapshotDisposition": {
+      "snapshot_0.xml": false,
+      "snapshot_1795223609366.xml": true
+    },
+    "hooks": {
+      "fresh": "bootstrap",
+      "networkRemoved": "retain",
+      "both": "retain",
+      "firewallRemoved": "retain",
+      "brokenPeerRefused": true,
+      "helperSha256": "bc3e9a7bc59943cdaacda1904527e76b4262e1199d025f5fd2b38904a83ae6d0"
+    },
+    "packageTestsPassed": 20,
+    "unpackedCold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "installedPlusUnpacked": 6,
+      "firewallOnly": "unpacked",
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "mainPrestartWhileUnpacked": "Cannot start or replace Kura Main: install the paired typed Networking providers. Networking package is not in a settled state",
+    "provider": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "1841",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "94f1884aca6b44d7b232320b8bfcc444"
+        },
+        "ticks": "41081662",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "actor": {
+        "unit": {
+          "MainPID": "2009",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "static",
+          "InvocationID": "46aab2bef11f4c48bb7dc0f4df4d063f"
+        },
+        "ticks": "41081851",
+        "uid": "0\t0\t0\t0",
+        "capEff": "0000000000000000",
+        "nnp": "1"
+      },
+      "observed": [
+        "1841",
+        "org.eclipse.kura.core\t32\tinitial@reference:file:../kura/plugins/4s/org.eclipse.kura.core-2.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.linux.net\t32\tinitial@reference:file:../kura/siblings/firewall/4/org.eclipse.kura.linux.net-3.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.net.admin.firewall\t32\tinitial@reference:file:../kura/siblings/firewall/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.web2\t32\tinitial@reference:file:../kura/siblings/management-ui/6s/org.eclipse.kura.web2_3.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.net.firewall.FirewallConfigurationService\tinitial@reference:file:../kura/siblings/firewall/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar",
+        "org.eclipse.kura.net.firewall.FirewallConfigurationServiceIPv6\tinitial@reference:file:../kura/siblings/firewall/5s/org.eclipse.kura.net.admin.firewall-3.0.0-SNAPSHOT.jar",
+        "firewall-only system marker absent; legacy owner admitted"
+      ],
+      "originalRelease": "96cc51239865f51d5a7180e68485f97a14d415d0"
+    },
+    "actions": {
+      "remove-standard": 0,
+      "unpack-firewall": 0,
+      "configure-firewall": 0,
+      "start-main": 0,
+      "remove-live-firewall": 0,
+      "purge-firewall": 0,
+      "restore-standard": 0
+    },
+    "originalNineSnapshotsMetadataAndContentExact": true,
+    "standardPropertiesRestoredExactBytes": true,
+    "finalCold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "resume": "firewall-variant-reader/parked-readback.py"
   }
 }

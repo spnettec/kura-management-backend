@@ -1,3 +1,9 @@
+## 2026-11-21 标准 Networking 切换 firewall-only 后中断续配，再恢复标准版
+
+原六组件 Root 有 9 份快照：最新配置已有防火墙服务，原始 snapshot_0.xml 未配置。此前 firewall-only 会把跨包换型当作首次安装，给原始快照补写默认值。Networking 96cc512 使用既有 Root 能力记录区分首次引导与保留式安装；preinst 和 postinst 使用同一判定。20 项包测试通过，真实 deb 内读取器在 ARM64 验证了初装、两种保留记录和记录损坏的拒绝。
+
+移除标准版，解包 firewall-only 后正常关机。冷卷上 firewall-only 仍为 unpacked，84 份文件精确，Main 包配对检查拒绝这个中间状态。原地配置后，正式 Main 从 firewall-only 的 OSGi provider 读回 IPv4 和 IPv6 配置，归属读取器在空能力集下服务。对活跃 provider 执行 remove 正常停 Main，随后 purge 并装回标准版。原属性内容、9 份快照完整指纹保持，六包与 SQLCipher 冷读相符。最新续接入口 firewall-variant-reader/parked-readback.py。独立防火墙内核路径仍需 NET_ADMIN，冻结 0/12。[发行件、包状态和 Main 观测](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 Main 读取系统防火墙及网络归属
 
 原六组件 Root 一次 dpkg 调用联合升级 Core 67c6a50045 与 Networking 6d4cc37，按原指纹暂存和归还两个可选 SQLite 测试 JAR。agent 停用，/etc/kura 仍为 root:root 0700。新的 systemd 读取服务以 UID 0、空能力集运行，按包的单元摘要和内核 pidfd 核对正式 Main，仅对两个固定标记返回一次最新存在性。正式 Main 及 NM 读取路径实际得到缺失，三次查询共 33 ms。IPv4/IPv6 继续进入转发预检，各自在执行任何内核命令前拒绝不可写的关闭开关。
