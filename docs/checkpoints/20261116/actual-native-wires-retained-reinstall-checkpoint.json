@@ -6385,5 +6385,43 @@
       "original-three-after.json": "8791bcd6d231464930341d6992e2887b0d94431f4d30ac4cb79cfe8057c50595",
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
     }
+  },
+  "cloudFelixUninstallReceipt20261122": {
+    "root": "39:7959247",
+    "request": 42002,
+    "status": "UNKNOWN",
+    "onlyBusinessQueryAfterCut": "GET uninstall",
+    "source": "c77e34ad550aa23ff753501cda9a11afb6159922",
+    "tests": 254,
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/felix-uninstall-receipt",
+    "hashes": {
+      "HANDOFF.md": "8e86d2abb5160f69130537ad7cb4e90b011fe90037927a6c9b1f45c8016e0b50",
+      "cut.json": "4f83d038ae69227a4a350e815e63c0a389478830cc2a50df5b94d0dbe7ecfdfe",
+      "live.json": "51e8443323a4d83eedd606a1b05b77f74527f461b6193e76d2eb6c34c5fad70f",
+      "package-proof.json": "3d90d355025a86fe7c49e7f9b6f4f82a251f47e16fdcb376ce4fd65541669de4",
+      "final.json": "a935c0e6b6598b6eb39b1a946f3594a36524194994a623ddfee5ded39a5ce7b2",
+      "input.json": "6ee4b36151ebac958010b31ffed49a83e7291de2c4ca2daa4b537c5a534833c1",
+      "Probe.java": "b5783bf8be7cfef6369e4149c660ab6c81f3293ba8a44d321b331d9dacebd229",
+      "observer.jar": "08fff3d14093ff1fca83fedb58200052b30b8e6d151aee60c4e34d07b58dd69a",
+      "transport.json": "f9b592502c08d09bbfe1e221141f0dfa493a28b802c393e4a8b1ab5676c25304",
+      "fixture-mode-correction.json": "041fcbd55646c8c88256c64416193eee2e3c1fb5c0409426d7516912f9749508",
+      "first-intent.json": "325d8c2c42964b76f5f05cfb4dd387d231c25c0d15bc066f79316c7c84a8cf3a",
+      "first-main.json": "fe607939cfae210d60aabbb8dfb43af5c592464d085f538f96c22b048c325dfe",
+      "readback-intent.json": "325d8c2c42964b76f5f05cfb4dd387d231c25c0d15bc066f79316c7c84a8cf3a",
+      "readback-main.json": "43b256fdce7c1998f9a7058a0b88ec3ee4cd85c32c59d26f49551cf33b5e177c",
+      "first-main.log": "8f1b5b70e07491e01f63090a11280dfe736fa2d59bf1f24ea1a1cd826f9afc6e",
+      "readback-main.log": "42e7082cb8bf2374916a189fdd991b17b364ef37c0bf33a262813f36b2b7bb03",
+      "second-main.log": "c9ac14f02404d4a7a9d595ac9f7533365811208e8e3181d68b7af41c70a29ddd",
+      "parked.json": "1b45bb31ce573726701865fe7c4a36901f30b0786b7e5856e7ed05049d8ae0c7",
+      "cold.py": "0963cf9b62c114210912cc6011f279d2cce22d874e461d7481831ae8b8630c99",
+      "cold-final.json": "f77ae7447d25a44dc64f291f69afa01944c8b1e57ba443fa917f1e6f6df008bf",
+      "storage.json": "b39c25b3289dd10ab8cd88c9b546dc6fc7eee2f39a2cad12a9971a6fb7a91b4f",
+      "full-build.log": "b08648a6c0fe6a477b5ff08bc7e90b9afe9217bdf328a8e1a3f8676663b5d6c2",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "original-three-after.json": "8f39a55666e47f617b6839011328a615e09cb9465730419c941030786b53f0ec",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
+    }
   }
 }
