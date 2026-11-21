@@ -8230,5 +8230,38 @@
     "signed": 873,
     "mainPID": 2448,
     "frozen": "0/12"
+  },
+  "typedSenderReceiptSync": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/typed-sender-receipt-sync",
+    "source": "075ea8b7338a67a96379414c8f616cf6ec3ad04d",
+    "sha256": "cb9014bd43c8ad225ac2a5dfda50794032dc1b54595006061067c17d826b29a7",
+    "installedFiles": 39,
+    "cases": {
+      "clock": {
+        "operation": "576fe46b-e771-4146-9154-8c6fd0c8e638",
+        "receiptInode": 4975,
+        "pids": [
+          1589,
+          1595,
+          1601
+        ],
+        "calls": 1
+      },
+      "reboot": {
+        "operation": "c3848695-5314-497a-a23d-1750f2cace2b",
+        "receiptInode": 4956,
+        "pids": [
+          1565,
+          1571,
+          1577
+        ],
+        "calls": 1
+      }
+    },
+    "testsPassed": 148,
+    "actuation": "private test callbacks",
+    "persistentVolumes": 0,
+    "sixCore": "89dfd6a",
+    "frozen": "0/12"
   }
 }
