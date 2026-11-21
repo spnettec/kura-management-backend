@@ -1,3 +1,11 @@
+## 2026-11-21 Cloud 原生卸载撤回云连接能力，原 Root 中断续办与正式菜单已验证
+
+Cloud `e683e71` 修复了原生包卸载后正式 GWT 仍显示 Cloud Connections 的问题。原六组件 ARM64 Root `39:6611544` 从旧版 `1caad20` 升级。新 deb 的八个业务 JAR 均与旧包一致，postrm 内含与安装路径相同的配置更新脚本。维护以 kurad 写入能力值，保留独立站点属性、文件权限和扩展属性。purge 从 config-files 继续时保留卸载后新增的站点设置。
+
+持有原注册表锁时，真实 dpkg 移除 Cloud 载荷后返回失败。正常停机并只读核对，Cloud 为 half-installed，Core 有两个待处理路径，Cloud 注册行、旧启用值和已安装 postrm 均在。重启后从该状态只续办移除，注册行退出，能力值为 false，Cloud 为 config-files。处理原 Core 触发器后审计清洁。随后 purge、重装当前版本、直接 purge，均按预期切换同一设置。正式 Main 中同一管理员可访问 Device 和 System Logs，Cloud Connections 已隐藏。包关闭标志后才进行浏览器验收，夹具原 854 字节配置在验收后复原。
+
+正式包在隔离 ARM64 上验证八种属性文件输入，覆盖空文件、缺文件、续行、CRLF、旧版文件与站点追加配置。独立属性测试用日志输出接收器代替 systemd 日志；原六组件的 dpkg 运行使用真实 systemd。最终六包 installed，Main 和 agent 均 disabled、inactive，正常停机退出 0。原 319 份运行文件仅属性文件 mtime 变化，42 笔维护、759 份签名、101 个夹具对象及两份凭据通过停机核对。冻结闭环 0/12，外部延期仅原三项。 [修复、实装与停机冷读](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 确认 Cloud 包清除后残留标志会显示并打开正式 GWT 云连接菜单
 
 原 ARM64 六组件 Root `39:6611544` 保持 Cloud 包已清除，直接复用既有卸载回执。以 kurad 在原 854 字节配置后补回此前记录的 34 字节，文件摘要与原 purge 后的摘要完全相同。显式启动正式 Main，Chromium 使用已改密的原夹具管理员登录 /admin/console。Device 正常可用，Cloud Connections 菜单可见，点击后显示云连接页面。两次观察均限制在原回环端点。

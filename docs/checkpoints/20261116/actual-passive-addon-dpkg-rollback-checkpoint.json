@@ -1326,5 +1326,91 @@
       "user/kura_custom.properties": "metadata"
     },
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/cloud-menu-after-purge/HANDOFF.md"
+  },
+  "nativeCloudCapabilityRemoval20261121": {
+    "source": "e683e71da9a88af4fcf12e864978d6888d48bb28",
+    "tree": "225d6bc45d1495721c7caa84993005fe796aecf2",
+    "version": "3.0.0~git202611211415.e683e71-1",
+    "debSha256": "8dfdb141e836ebaa1ee6952e76fe314a07ee9572baede944c23f189014564b4e",
+    "postrm": "8763015d98592f4bace4e0ddd7b5121147599c35e71bcea06c9208ba3b2ba661",
+    "helper": "0b99e5eb24b56ac237c9fb40bf356e6bf48376fac997d335b9ba3eb1380fb5f3",
+    "unchangedJars": 8,
+    "oldInstalled": "1caad202b190ed19a6d15fd3265df8ed9c92e528",
+    "isolated": {
+      "cases": [
+        "absent",
+        "empty",
+        "unterminated",
+        "continued",
+        "CRLF",
+        "explicit-site-setting",
+        "old-installed",
+        "post-install-site-edit"
+      ],
+      "idempotent": true,
+      "siteModeAndXattrPreserved": true,
+      "absentRemoveCreatesFile": false,
+      "purgePreservesSubsequentEdit": true
+    },
+    "interrupted": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "triggers-pending",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed",
+        "kura-cloud": "half-installed"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 318,
+      "fenced": false,
+      "registeredCloud": true,
+      "pending": [
+        "/opt/eclipse/kura/libexec/addons",
+        "/opt/eclipse/kura/siblings"
+      ],
+      "originalSettingsPrefix": true
+    },
+    "removed": "disabled",
+    "purged": "not-installed",
+    "ui": {
+      "mode": "native",
+      "root": "39:6611544",
+      "sessionPath": "/admin/console",
+      "deviceAvailable": true,
+      "cloudItemPresent": true,
+      "cloudVisible": false,
+      "cloudOpened": false
+    },
+    "cold": {
+      "root": "39:6611544",
+      "request": "1b8d270e-0a1d-45f7-b02a-13c5512a04a4",
+      "status": {
+        "kura-core": "installed",
+        "kura-networking": "installed",
+        "kura-management-ui": "installed",
+        "kura-deployment": "installed",
+        "kura-wires": "installed",
+        "kura-management-agent": "installed"
+      },
+      "holderInode": 7657870,
+      "allSigned": 759,
+      "histories": 42,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "registeredCloud": false,
+      "pending": [],
+      "originalSettingsPrefix": true,
+      "browserMenuVisible": false,
+      "restoredOriginalSettings": true
+    },
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/cloud-native-removal/HANDOFF.md"
   }
 }
