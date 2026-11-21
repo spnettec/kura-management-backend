@@ -10,6 +10,8 @@
 
 12:44 再数同一 Core 打包目录，已有 44 个 ARM64 deb，文件长度合计 8,990,793,594 字节。最新两份完整包共 409,999,816 字节。两轮修复共用已有 worker 和 VM，分别在原六组件卷和防火墙专用安装验证。后者通过只读挂载使用 deb，冷停机时占用 1,161,408 KiB。这里没有重测整个宿主工作空间。[两次实装、版本和冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
+随后修复了从注释误判转发请求的问题。只重建两个 Networking deb，文件长度共 9,864,350 字节，复用现有 Core。同一组站点输入在 ARM64 上分别运行旧、新启动器，旧版将两族转发都开启，修正后只有含真实转发链规则的 IPv6 开启。Linux 文档说明改变 IPv4 的全局转发开关会调整主机与路由器的默认参数。[新旧包与内核读回](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json) · [Linux 内核转发参数](https://docs.kernel.org/networking/ip-sysctl.html)
+
 防火墙这一轮说明了两种不同的工期来源。正式 Main 遇到现场实际保存的洪泛防护规则，原 worker 在批准前拒绝。补齐 TCP flags、MSS 和 IPv6 扩展头后，ARM64 内核收下了针对这些规则的变更。随后发现 Cargo 复用了旧二进制，即使源归档已更新。构建现在核对成品自报的源码摘要。这些问题都影响交付。另一部分工期和磁盘来自为每个中间改动生成完整的约 205 MB Core 包、再逐轮安装。可将同一交付的修改合并组包，日常验证直接运行变更的安装钩子或只构建 worker，到真实跨组件验收时再保留完整包。[实际调用与发行件](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)

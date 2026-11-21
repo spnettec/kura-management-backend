@@ -1,3 +1,7 @@
+## 2026-11-21 防火墙启动时从实际规则识别转发需求
+
+正式启动器曾把注释里的 `-A forward-kura` 当作开启网关转发的请求。在只有回环接口的两个 ARM64 网络中，分别运行旧版和修正版的标准发行包启动器。两边均成功装入 IPv4 注释规则和 IPv6 转发链规则，站点文件内容一致。旧版把两族转发都由 0 设为 1；Networking `bd8ccdd` 保留 IPv4 为 0，仅将 IPv6 设为 1。两种 deb 共用相同修正，15 项测试通过，沿用 Core `5884bf5a6a`。此修正尚未装入两个停机保留现场；转发 broker 及其余维护矩阵继续，冻结 0/12。[发行件和实际内核结果](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 实装防火墙启动恢复和原编号双族续接
 
 防火墙专用 Parallels Root `2050:2271189` 已升级至 Core `5884bf5a6a`、Networking `51c157c`。在其私有网络内建立一条会被 iptables-save 静默省略表达式的原生规则，再由正式 firewall.service 按标准配置启动。独立进程从内核重算双族规则和转发状态，匹配原回执，外部规则和原有 17 份文件内容均保留。Main 保持 disabled，现场正常停机，冷读入口为 `firewall-family-readback/installed-boot.py cold`。

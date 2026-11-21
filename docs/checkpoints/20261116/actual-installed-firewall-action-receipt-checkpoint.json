@@ -1949,5 +1949,67 @@
       "Core and OSGi, provider and launcher package maintenance matrix"
     ],
     "frozen": "0/12"
+  },
+  "bootForwardingChainSelection": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-site-forwarding",
+    "packages": {
+      "networking": {
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib/target/deb/kura-networking-3.0.0~git202611210448.bd8ccdd-1_all.deb",
+        "sha256": "9ad1c2b2b1b7b732c53486b4394dfdacaf8119b5c0d167e4a1c0fe0710a3de0e",
+        "source": "bd8ccddce43c9a699af0bef3d044a368376593f8",
+        "tree": "d14762037ff5c45b5967850a6cd595c3797447dd",
+        "bytes": 9405266
+      },
+      "firewall-only": {
+        "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/dhcp-original-java-confirmation/kura-networking/distrib-firewall/target/deb/kura-firewall-only-3.0.0~git202611210448.bd8ccdd-1_all.deb",
+        "sha256": "b8ece4d6a59277153a3448f7e7c276997008e9f8c0756256c4e6d20966bfc943",
+        "source": "bd8ccddce43c9a699af0bef3d044a368376593f8",
+        "tree": "d14762037ff5c45b5967850a6cd595c3797447dd",
+        "bytes": 459084
+      }
+    },
+    "previous": {
+      "arch": "aarch64",
+      "interfaces": [
+        "lo"
+      ],
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        1,
+        1
+      ],
+      "rootOperation": "f431ee18-9276-428e-8f9c-73cc57e510f8",
+      "receipt": "f29769c200097ac2aff3b6619ea18ee67e7e4eb1f20e5e2f6fd40dde90996acd",
+      "siteInputsExact": true,
+      "oldCommentRuleInKernel": true,
+      "requestedIPv6RuleInKernel": true
+    },
+    "corrected": {
+      "arch": "aarch64",
+      "interfaces": [
+        "lo"
+      ],
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        0,
+        1
+      ],
+      "rootOperation": "b0241768-5fce-4693-bc5a-35cccec8584a",
+      "receipt": "4a2363f4f1b0f86315be487e93849fc1247fcb178ed1733d0ec73851a477ec6f",
+      "siteInputsExact": true,
+      "oldCommentRuleInKernel": true,
+      "requestedIPv6RuleInKernel": true
+    },
+    "scope": "Real ARM64 private network with loopback only. Standard package launcher and helper against live sysctls and both rule families. The firewall-only package carries the same helper.",
+    "regressionTests": 15,
+    "coreReused": "5884bf5a6a",
+    "retainedInstallationVersions": "See nativeFamilyBootRecovery",
+    "frozen": "0/12"
   }
 }
