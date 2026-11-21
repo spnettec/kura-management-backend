@@ -1,3 +1,7 @@
+## 2026-11-22 六组件原卷 Deployment 后继升级与解包停机恢复
+
+六组件 ARM64 原 Root 39:6611544 已由 Deployment 1b043a4 升至 6c0da58。解包后正常停机，沿原 Main 和 FileMove 围栏仅续配一次。正式 Main 读回原业务 DP 资源，七个实装类摘要与发行件一致。观察时云端 handler 未注册。停机核对 49 笔维护、892 条签名阶段及 319 项可变文件。当前冷读入口 six-deployment-delay-upgrade/cold.py final。冻结 0/12。
+
 ## 2026-11-22 Deployment 执行前校验显式重启延迟
 
 Deployment 6c0da58 在下载、安装、卸载的 EXEC 入口拒绝显式重启的负延迟。262 项 Maven 测试通过。原 ARM64 Root 原位升级后，正式 Main 对三个新请求均返回 BAD_REQUEST，两笔原部署任务经 GET 仍为 COMPLETED。原重启 UNKNOWN 保留，正常停机。当前冷读入口 deployment-reboot-delay-admission/cold.py final。冻结 0/12。

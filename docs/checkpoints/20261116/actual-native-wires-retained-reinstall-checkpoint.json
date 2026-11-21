@@ -8810,5 +8810,33 @@
     "operation": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
     "state": "UNKNOWN",
     "cold": "deployment-reboot-delay-admission/cold.py final"
+  },
+  "sixDeploymentDelayUpgrade": {
+    "root": "39:6611544",
+    "prior": "2.0.0~git202611211658.1b043a4-1",
+    "version": "2.0.0~git202611212200.6c0da58-1",
+    "commit": "6c0da58428ab9e7828d4987b141af5635291f92d",
+    "debSha256": "1c8f2590efff0d75e1d47a9ba328056f1dbfdc8bd756b6579ed9d9594cbd9783",
+    "unpackedCold": "six-deployment-delay-upgrade/cold-unpacked.json",
+    "gateInode": 8382413,
+    "fileMoveInode": 8382410,
+    "configureCalls": 1,
+    "main": {
+      "MainPID": "1506",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "UnitFileState": "disabled",
+      "InvocationID": "467cf098d60c4bac81fcafe4590e925e"
+    },
+    "handlerAtObservation": "unregistered",
+    "business": "retained application resource",
+    "matchedClasses": 7,
+    "protectedFiles": 82,
+    "credentials": 2,
+    "mutableFiles": 319,
+    "histories": 49,
+    "signedPhases": 892,
+    "cold": "six-deployment-delay-upgrade/cold.py final"
   }
 }
