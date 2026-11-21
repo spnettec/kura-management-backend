@@ -240,3 +240,5 @@ Core 和 Networking 已在原六组件卷修正归属标记的读取路径。普
 11 月 21 日 14:58 的两次实装暴露了另一笔可量化的构建成本。撤去 Main 的网络管理能力、恢复 Core 单独升级时丢失的 Networking 启动器，以及修正恢复后的文件权限，共产生三个 ARM64 Core deb，文件长度合计 615.06 MB。两处实装均沿用现有 Root。实际发布时，正式 Main 的 134 个线程均只保留低端口绑定能力，内核写入由独立 worker 完成。未提供站点策略时，默认启动仍有 17 条已保存防洪规则未被 Java 模型还原，这一差异单独保留。[安装、进程能力和包长度](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 Networking `a7dfc51` 的双族冷读修复合并了网络运行时和防洪 provider 重复定义的 38 条 IPv6 规则。只组装标准和 firewall-only 两份 deb，共 9.88 MB，并复用原 Core 与六组件卷。ARM64 验证后的 9,949,754 字节临时 JAR 均已逐一核对包内摘要并回收。两种发行件均还原了上轮保留的规则文件；没有站点策略时的内核冷恢复继续单独验收。[发行件、冷读与实装](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
+Core `ad2a586c31` 在已有发布回执中保存经确认的每族规则摘要，继续使用同一份安装日志。隔离内核恢复 83 条 IPv6 命令时沿用了正式发布 worker 的差异计算和内核匹配。worker 源码包为 46,569 字节，更新后的 ARM64 Core deb 为 205,042,346 字节。实装复用既有防火墙临时卷，六组件卷本轮保持停机。[原安装冷读及恢复试验](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)

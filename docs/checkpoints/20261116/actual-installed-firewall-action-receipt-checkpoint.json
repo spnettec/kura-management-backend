@@ -3107,5 +3107,260 @@
       }
     },
     "kernelWithoutSite": "Open. The old intent records the approved netlink batch and request digest. Neither Java model readback nor an earlier dispatch batch restores an authenticated full desired kernel policy on boot."
+  },
+  "pairedBootModel20261121": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/boot-firewall-policy-proof",
+    "core": {
+      "source": "ad2a586c31077eaa3a27f2be97f3e29f5e702e22",
+      "tree": "612aace28593cf14ff3b13d4ccf60d98c1136408",
+      "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/wip-core/kura/distrib/kura-core/target/kura_6.0.0~git20261121071413.ad2a586-1_arm64.deb",
+      "version": "6.0.0~git20261121071413.ad2a586-1",
+      "package": "kura-core",
+      "bytes": 205042346,
+      "sha256": "138df43aa97b1c5f3b531eda8481fa8328f3dee81e41020859c53150280488b5",
+      "maintenanceSha256": "882ceac27857a25359428476e045a28cf76ac24b0eb05a59d9d94c90cded6140",
+      "readerCohort": {
+        "files": {
+          "kura-firewall-publish.socket": "49bf001276384b3377b19ff1b255e8d44a05306a305ec2e80e067686c5f9e96e",
+          "kura-firewall-publish@.service": "b0a0bde1efac25ecdd18ae51aa8ca083b2477071489c108c40fcaff754d12490",
+          "kura_clock_broker.py": "4ca071f6c87010880c1b1f1828efd6db9877054d51c610247d8770d29a76e40a",
+          "kura_clock_journal.py": "72bab47ae5130b4526d66ed865ce5569a743b406d03826fd1373f5d1e675826b",
+          "kura_firewall_publish.py": "b2fd84a6e5a20ce1ab2a71f11bfe1964ce7adc37ba84f345a9daa4a6a5d4ac3e",
+          "kura_journal_export.py": "ef165faa67dd35cb61beb7dee22c55648ac87444791618389a983c1c568eb388",
+          "kura_ownership_markers.py": "14a7cabb71b3f07012246693e88a61ea04954e620ab52e3b9c069b406b17c9f9",
+          "kura_reboot_broker.py": "f46439edd80fcdb1751cac6ab9b7b925f4878ac6c61e36a42409cdfd957c0078",
+          "kura_reboot_journal.py": "ed8a72911fc6dad2a0c8e24f6f486e33d3a412db9d385e9ad00b799f8f10d939",
+          "kura_reboot_protocol.py": "0691ae43dd32f22e8aa6b35d7c26815f1a3ccc0194c5179eec5a5eb4d8a5a3e1",
+          "worker": "9416a90b78fd9148529ec3a8b20ce905cf5bdbb2bcdeb3c9d4cbcbd992aaf617"
+        },
+        "mainUnitSha256": "44fa94a2bf674c4668b8a82853aad22fd5d376b8a45a9a7d84e64bf3d38adf29",
+        "schema": 1
+      },
+      "native": {
+        "source": "06c1581d9c39dd0ca10f053f6d124ea0396497552beb756a6c5d1a8352af2710",
+        "revision": "5781b22ad32d3b240fc86217c42cbd43059cd49c",
+        "architecture": "arm64",
+        "sourceVerifiedByExecutable": true,
+        "sha256": "9416a90b78fd9148529ec3a8b20ce905cf5bdbb2bcdeb3c9d4cbcbd992aaf617"
+      }
+    },
+    "nativeTests": 10,
+    "mixedVersions": {
+      "previous": "21266279ad43ed45816e818c8c088de18c64bfc9bd512885d0877cae677c75f6",
+      "worker": "e0d5a63f3720a8886190836bbf21b47b9781060ffe42e9c72fea9eb8ebb9fdf3",
+      "result": {
+        "scope": "69f064f3160e1360545df8e634d24fc7802d1525999b5a3d930574730fa699f5",
+        "initial": {
+          "models": {},
+          "publications": 0,
+          "rootScope": "69f064f3160e1360545df8e634d24fc7802d1525999b5a3d930574730fa699f5",
+          "schema": 1
+        },
+        "one": {
+          "models": {
+            "ipv4": "77c82bd6a6791fa77ef0fb61dd3ab35810b1001e762ccb9cd6fdb520627dfe06"
+          },
+          "publications": 1,
+          "rootScope": "69f064f3160e1360545df8e634d24fc7802d1525999b5a3d930574730fa699f5",
+          "schema": 1
+        },
+        "both": {
+          "models": {
+            "ipv4": "77c82bd6a6791fa77ef0fb61dd3ab35810b1001e762ccb9cd6fdb520627dfe06",
+            "ipv6": "723e3fe1de99f2666b725ae58bdbe7afc77793c469f049d69347c200e0154f6d"
+          },
+          "publications": 2,
+          "rootScope": "69f064f3160e1360545df8e634d24fc7802d1525999b5a3d930574730fa699f5",
+          "schema": 1
+        },
+        "afterOldWorker": {
+          "models": {},
+          "publications": 3,
+          "rootScope": "69f064f3160e1360545df8e634d24fc7802d1525999b5a3d930574730fa699f5",
+          "schema": 1
+        },
+        "afterNewWorker": {
+          "models": {
+            "ipv4": "580ce27a644149d5882d5551f833dfa20ecdc944829b799e66b84f0268a7d4f6"
+          },
+          "publications": 4,
+          "rootScope": "69f064f3160e1360545df8e634d24fc7802d1525999b5a3d930574730fa699f5",
+          "schema": 1
+        },
+        "originalFilesExact": 4,
+        "kernelRuleMatched": true,
+        "missingReceipt": "UNKNOWN",
+        "readOnlyQuery": true
+      }
+    },
+    "skeleton": {
+      "architecture": "aarch64",
+      "rootScope": "70179361fe9a0024f047ca8ab4c66ee84dafafd5babcffda538d4eb9053a623c",
+      "first": {
+        "commands": 0,
+        "id": "d5e096fe-be9e-4e12-a51d-529740920080",
+        "state": "UNCHANGED"
+      },
+      "boot": {
+        "commands": 83,
+        "id": "1e944ce6-4f0a-4bc6-8738-e74d7b277fa5",
+        "state": "APPLIED"
+      },
+      "allChainsMatched": true,
+      "independentChainExact": true,
+      "forwarding": "0",
+      "approved": {
+        "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+      }
+    },
+    "oldHistory": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "tip": {
+        "models": {},
+        "publications": 15,
+        "rootScope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798",
+        "schema": 1
+      },
+      "versions": {
+        "kura-core": "6.0.0~git20261121071413.ad2a586-1",
+        "kura-networking": "3.0.0~git202611210705.a7dfc51-1"
+      }
+    },
+    "startupObservations": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "tip": {
+        "models": {
+          "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+        },
+        "publications": 17,
+        "rootScope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798",
+        "schema": 1
+      },
+      "newOutcomes": {
+        "2df139bf-22bd-4a84-a980-748d05b010fe": {
+          "state": "UNCHANGED",
+          "models": {
+            "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+          },
+          "forwarding": null
+        },
+        "95e696c6-6489-4ee5-bed5-46897e4e7aa8": {
+          "state": "UNCHANGED",
+          "models": {
+            "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+          },
+          "forwarding": null
+        }
+      },
+      "portCheck": {
+        "22": 1,
+        "443": 1
+      }
+    },
+    "priorToUpgradeIpv4Digest": "283b337e072f4dcdb972b95143bae8d58934b0b0db7dae3cc478c771f2e68138",
+    "differences": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "models": {
+        "ipv4": {
+          "saved": "283b337e072f4dcdb972b95143bae8d58934b0b0db7dae3cc478c771f2e68138",
+          "site": "6921fc1b2432264cf73bff6b49ac133ecef53db8ef8a23784e1def20d23b82e2",
+          "changed": [
+            "--- \n",
+            "+++ \n",
+            "@@ -18,0 +19,2 @@\n",
+            "+-A input-kura -p tcp -s 0.0.0.0/0 --dport 22 -j ACCEPT",
+            "+-A input-kura -p tcp -s 0.0.0.0/0 --dport 443 -j ACCEPT"
+          ]
+        },
+        "ipv6": {
+          "saved": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476",
+          "site": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476",
+          "changed": []
+        }
+      },
+      "tip": {
+        "models": {
+          "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+        },
+        "publications": 17,
+        "rootScope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798",
+        "schema": 1
+      }
+    },
+    "main": {
+      "process": {
+        "unit": {
+          "MainPID": "6469",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "bb8211ed86cf4397b797d167ec3e8828"
+        },
+        "ticks": "42704094",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "threads": {
+        "threads": 128,
+        "main": {
+          "CapInh": 1024,
+          "CapPrm": 1024,
+          "CapEff": 1024,
+          "CapBnd": 1024,
+          "CapAmb": 1024
+        },
+        "boundingMax": 1024
+      },
+      "systemd": "CapabilityBoundingSet=cap_net_bind_service\nAmbientCapabilities=cap_net_bind_service\nNoNewPrivileges=yes"
+    },
+    "installedPackages": {
+      "kura-core": "6.0.0~git20261121071413.ad2a586-1",
+      "kura-networking": "3.0.0~git202611210705.a7dfc51-1"
+    },
+    "offline": {
+      "root": "39:7320076",
+      "checked": true,
+      "packages": {
+        "kura-core": "installed",
+        "kura-networking": "installed"
+      },
+      "dpkgStatusUpdates": [],
+      "fileFingerprints": 55,
+      "firewallHistory": 34,
+      "installationKiB": 298268
+    },
+    "coldModel": {
+      "root": "39:7320076",
+      "tip": {
+        "models": {
+          "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+        },
+        "publications": 17,
+        "rootScope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798",
+        "schema": 1
+      },
+      "saved": {
+        "ipv4": "283b337e072f4dcdb972b95143bae8d58934b0b0db7dae3cc478c771f2e68138",
+        "ipv6": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+      },
+      "readOnly": true
+    },
+    "firewallStoppedEntry": ".management-close-20261116/core-rtc-hotplug-20261120/boot-firewall-policy-proof/cold-model.py",
+    "sixStoppedEntry": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-cold-model/six/parked-readback.py",
+    "next": "Integrate automatic no-site boot with the paired model, typed delta, route-specific forwarding authorization, and original-ID crash recovery. The isolated IPv6 delta exercised the packaged worker after the standard scaffold. No automatic service recovery claimed."
   }
 }
