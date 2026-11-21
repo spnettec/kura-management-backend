@@ -8182,5 +8182,27 @@
       ]
     },
     "frozen": "0/12"
+  },
+  "sixPackagePermissions": {
+    "root": "39:6611544",
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/six-package-permissions",
+    "packageEntries": 755,
+    "matching": 193,
+    "absent": 70,
+    "changedPermissionsOrIdentity": 492,
+    "readAccess": {
+      "uid": 997,
+      "gid": 995,
+      "groups": [
+        20,
+        990,
+        995
+      ],
+      "controlGroup": 990,
+      "jars": 263
+    },
+    "coreCandidateChanges": 9,
+    "candidateInstalledOnSix": false,
+    "frozen": "0/12"
   }
 }

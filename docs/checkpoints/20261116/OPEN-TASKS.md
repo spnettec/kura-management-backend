@@ -1,3 +1,7 @@
+## 2026-11-22 六组件原卷文件权限与后继包差异
+
+六组件原 Root 39:6611544 停机核对 755 个包文件和链接。以原 kurad 账号的 UID、GID 和附加组在只读挂载上打开 263 个 /opt 下的 JAR，摘要全部匹配。Core e99caab 至候选 89dfd6a 的文件与钩子共九处内容变化，233 个 Core JAR 相同。绑定网关 6910532 的五笔维护已结束，原任务 SUCCEEDED、OFF 保持，冻结 0/12。 详见 six-package-permissions/HANDOFF.md。
+
 ## 2026-11-22 OPC UA 加密会话与原证书保留重装
 
 OPC UA c963584 修复 Milo 客户端证书链缺失，支持显式选择 SignAndEncrypt。正式 ARM64 Main PID 2944 与保留重装后的 PID 3795 从同一快照 1795292258810 成功读节点。服务端两次均报告 Basic256Sha256 / SignAndEncrypt，双方证书摘要一致。11 项测试通过，最终 purge、正常停放。示例服务端有终端证书 KeyUsage 检查被抑制的告警，严格用途与撤销验证仍待验。冻结 0/12。 详见 opcua-secure-maintenance/HANDOFF.md。
