@@ -1,3 +1,7 @@
+## 2026-11-22 已发布密钥代的 Core 配置快照和包维护
+
+ARM64 独立 Root 39:8169098 的正式 Main 在密钥代切换后读回旧快照 1795289323248 与新快照 1795289334086。随后同版本重装的 prerm、preinst 均拒绝 Root 生成的 systemd 凭据配置。dpkg 仍为 installed，原维护围栏 f791ff07-6fa2-4a19-97bf-cd2b39dc1757 处于 MAINTENANCE。现场 disabled、正常停机，42 个原文件的冷读指纹一致。包维护恢复待实现，冻结 0/12。 证据见 snapshot-generation-field/HANDOFF.md。
+
 ## 2026-11-22 Container 编排依赖去重与正式 Main 升级
 
 Container d060603 取消 16 份 lib/ 重复 JAR，deb 从 16,454,006 降为 8,262,616 字节。JDK 21 的 133 项测试通过，PDE 目录布局与 ARM64 实装均加载 15 个类。原 Root 升级后保留快照，正式 Main 查询到原镜像及新增镜像，remove、purge、正常停机完成。进程正向运行仍为内部待验。冻结 0/12。 证据见 container-bundle-layout/HANDOFF.md。

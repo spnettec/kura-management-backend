@@ -7894,5 +7894,41 @@
     "exitCode": 0,
     "positiveWorkloadStart": "pending",
     "frozen": "0/12"
+  },
+  "snapshotGenerationField20261122": {
+    "evidence": "snapshot-generation-field/HANDOFF.md",
+    "root": "39:8169098",
+    "container": "261a84d2fa2d8da29e648230e3029bc97d9733f61bf5ace29327696e49c48906",
+    "volume": "yofc-snapshot-generation-field-root",
+    "snapshots": [
+      {
+        "id": "1795289323248",
+        "value": "24101",
+        "generation": "legacy"
+      },
+      {
+        "id": "1795289334086",
+        "value": "24102",
+        "generation": "3bf3eb684bea7fb366baf300547cc9a71281582e870d1c111285d5bb6b9bd88f"
+      }
+    ],
+    "operations": {
+      "prepare": "00df7d76-398b-423a-99fc-9c763eccb8e9",
+      "verify": "90792c4e-8639-4b6a-9a26-b503d9d1903c",
+      "publish": "cc316d13-5342-4023-bcac-8cbc0f9c8711",
+      "start": "660a88eb-89c0-4b9c-9d73-1782c1e4ba49"
+    },
+    "packageStatus": "install ok installed 6.0.0~git20261122031052.a16b65c-1",
+    "fence": {
+      "firstAction": "upgrade",
+      "id": "f791ff07-6fa2-4a19-97bf-cd2b39dc1757",
+      "schema": 1,
+      "state": "MAINTENANCE"
+    },
+    "templateSha256": "1bd470f1d538623fb3c02201a52feb21f25b57e49bb7c2e7d45b8511802adb45",
+    "originalFilesMatched": 42,
+    "parkExitCode": 0,
+    "pending": "published-generation package maintenance and service read after recovery",
+    "frozen": "0/12"
   }
 }
