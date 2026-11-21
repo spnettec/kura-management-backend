@@ -1,3 +1,11 @@
+## 2026-11-21 站点自装的 OSGi provider 随 Core 保留式重装恢复
+
+旧 Core 的 prerm 只保存 sibling 维护脚本，站点没有自带维护脚本时，即使保住顺序表也会失去 JAR。Core `71eb1087ae` 把受保护的 sibling 代码目录保存到同一卸载暂存区，沿用原有配对和 postinst 恢复。ARM64 旧版回归实际缺少目录，修复后 48 项定向测试通过。
+
+在原六组件 Root `39:6611544` 将 SQLCipher JDBC 驱动与 SQLite provider 分别登记为两个站点目录。共同移除后，保留目录中有这两份原 JAR 和两行登记。六包重新解包即正常停机，冷读六包均为 unpacked、两份源 JAR 仍在，另有 253 份保留文件、两份凭据、101 个夹具对象和 126 条签名记录。重启后直接 configure 六包，沿原卸载维护号恢复，两个站点 provider 的相对顺序保留。正式 Main 按两个还原路径加载，明文和加密库原行以及加密页完整性均通过。
+
+测试登记和额外副本已退役，原四行顺序恢复。原夹具文件归位后正常停机，六包均 installed，Main 和 agent 均 disabled。停机冷读通过 319 份运行文件、两份凭据、101 个夹具对象、八代 144 条签名记录。最新入口 `site-provider-retained-remove/cold.py final`。其他 provider/launcher、完整 Core/OSGi、已绑定 agent 维护和其余父项照原范围继续；冻结 0/12。[包、维护号与两个实际 OSGi 路径](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 原六组件共同移除、停机、原编号重装及三种数据库读回
 
 Core 升级能保存 provider 加载顺序，保留式卸载曾漏掉 `framework/sibling-install-order`，现场自定义顺序会在重装时丢失。Core `8414993dc9` 将普通注册文件放入原恢复目录。ARM64 回归覆盖站点末行无换行、属组、权限、mtime、扩展属性、没有注册文件的旧布局及链接拒绝；相关 42 项测试通过。

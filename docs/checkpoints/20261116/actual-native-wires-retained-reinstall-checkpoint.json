@@ -4430,5 +4430,139 @@
     "agentProfile": "uninitialized and disabled throughout",
     "resume": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/core-remove-sibling-order/cold.py final",
     "firewall": "firewall-ipv4-loopback-port/retained.py"
+  },
+  "siteProvidersAcrossRetainedRemoval": {
+    "core": "71eb1087ae1ae3c7bd8261977f5d6c7fc4ddb18f",
+    "tree": "dca16457207d82f06cc2f7b91429d6259e5b5a4d",
+    "debSha256": "3b3fa09c65147f807193a82890231642d3b86fa0cc0744099ff4a5e91d411959",
+    "policySha256": "94d4fdfd5a8661a78c604e9334eeb892e4e6dc5d6c4e4f625e89bfc178325c87",
+    "tests": 48,
+    "versions": {
+      "kura-core": "6.0.0~git20261121173515.71eb108-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210915.8f5927e-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "siteSource": {
+      "site-sqlcipher-provider": {
+        "sha256": "4e8cebcb26c389297eaf8d24be11818fee6aa6ad0ce05c1d3604c9f803f8583e",
+        "meta": "39|7520897|640|0|990|1|56625|2026-11-20 20:33:15.101708452 +0000|2026-11-21 09:36:30.114067156 +0000"
+      },
+      "site-sqlcipher-driver": {
+        "sha256": "c7b3cb72d160a941fb5f78cc196b1d0c5e57f33e607697b0721de21e1d5117d8",
+        "meta": "39|7520902|640|0|990|1|13698227|2026-11-20 20:33:14.794423166 +0000|2026-11-21 09:36:30.309764870 +0000"
+      }
+    },
+    "unpackedReadOnly": {
+      "root": "39:6611544",
+      "status": {
+        "kura-core": "unpacked",
+        "kura-deployment": "unpacked",
+        "kura-management-agent": "unpacked",
+        "kura-management-ui": "unpacked",
+        "kura-networking": "unpacked",
+        "kura-wires": "unpacked"
+      },
+      "mutableFiles": 253,
+      "credentialsExact": 2,
+      "originalFixtureObjects": 101,
+      "verifiedPhases": 126,
+      "additionalTransactions": {
+        "0bfdd49b-7212-448c-88a7-227c0511878b": "upgrade",
+        "90e13c7a-fa38-4fea-b8fd-28491527bcec": "upgrade",
+        "1c791fac-a35e-4362-99f0-7ba6c2fa2300": "reinstall"
+      },
+      "operation": "457cdc42-8829-4ae5-8c77-5199897715fa"
+    },
+    "siteOrder": [
+      "site-sqlcipher-provider",
+      "site-sqlcipher-driver"
+    ],
+    "restoredOrder": [
+      "site-sqlcipher-provider",
+      "site-sqlcipher-driver",
+      "management-ui",
+      "wires",
+      "deployment",
+      "networking"
+    ],
+    "main": {
+      "process": {
+        "unit": {
+          "MainPID": "2875",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "3fe2f7eb3074431bba61c0c68db610fe"
+        },
+        "ticks": "43556582",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "driver": "initial@reference:file:../kura/siblings/site-sqlcipher-driver/3/fixture-sqlcipher-jdbc.jar",
+      "provider": "initial@reference:file:../kura/siblings/site-sqlcipher-provider/4/fixture-sqlite-provider.jar",
+      "originalPlainRow": true,
+      "originalEncryptedRow": true,
+      "encryptedPageIntegrity": true
+    },
+    "originalRegistryRestored": [
+      "management-ui",
+      "wires",
+      "deployment",
+      "networking"
+    ],
+    "finalCold": {
+      "root": "39:6611544",
+      "status": {
+        "kura-core": "installed",
+        "kura-deployment": "installed",
+        "kura-management-agent": "installed",
+        "kura-management-ui": "installed",
+        "kura-networking": "installed",
+        "kura-wires": "installed"
+      },
+      "mutableFiles": 319,
+      "credentialsExact": 2,
+      "originalFixtureObjects": 101,
+      "verifiedPhases": 144,
+      "additionalTransactions": {
+        "0bfdd49b-7212-448c-88a7-227c0511878b": "upgrade",
+        "457cdc42-8829-4ae5-8c77-5199897715fa": "reinstall",
+        "90e13c7a-fa38-4fea-b8fd-28491527bcec": "upgrade",
+        "1c791fac-a35e-4362-99f0-7ba6c2fa2300": "reinstall"
+      },
+      "operation": "457cdc42-8829-4ae5-8c77-5199897715fa"
+    },
+    "mainFinal": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "agentFinal": {
+      "MainPID": "0",
+      "NRestarts": "0",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "InvocationID": ""
+    },
+    "resume": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/site-provider-retained-remove/cold.py final",
+    "storage": {
+      "arm64CoreDebCount": 62,
+      "arm64CoreDebBytes": 12681488116,
+      "newReleaseBytes": 205066338
+    }
   }
 }

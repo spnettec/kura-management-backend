@@ -48,7 +48,7 @@ IPv4 回环端口转发说明了保留原现场的另一项成本。正式 Main 
 | --- | --- | --- |
 | 浏览器和中心 | React 经 HTTPS API/SSE 连接中心。Rust 中心保存任务、审计和结果；agent 主动建立双向 gRPC/mTLS 通道。方案 A 使用外部 CA。 | 中心、安装器和六个网关包已在一套 ARM64 夹具联合首装。多人 CA 保管、客户旧库及完整部署 GUI 仍待验。 |
 | 网关本地 | Kura/OSGi 支持独立运行，保留 NetworkManager。可选 agent 常驻，远程开关控制中心通道。原 GWT 在安装 agent 后显示远程菜单。Core 生成私钥和 CSR。 | 原运行现场与新候选分开核验。当前六组件为 Core、Networking、GWT、Deployment、Wires、agent；加中心和安装器共八个 deb。 |
-| 需要系统权限的操作 | Main 调用按操作类型限定的本机服务。peer 校验调用身份，actor 执行获准的系统动作，安装器校验成套代码和单元。 | 原六组件卷的正式 Main 已撤去 DAC_READ_SEARCH 和 DAC_OVERRIDE。Core b1b8060be2 两次启动均只保留 NET_BIND_SERVICE 和 NET_ADMIN。旧安装仍按各自版本核对。 |
+| 需要系统权限的操作 | Main 调用按操作类型限定的本机服务。peer 校验调用身份，actor 执行获准的系统动作，安装器校验成套代码和单元。 | 原六组件卷上，Core 71eb1087ae 的正式 Main 以 UID 997 运行，NoNewPrivileges 为 1，有效能力只保留 NET_BIND_SERVICE（0x0400）。NET_ADMIN、DAC_READ_SEARCH、DAC_OVERRIDE 均已撤去。旧安装仍按各自版本核对。 |
 | RTC 热插拔 | 草稿把启动时的设备投影改成请求时重验节点及别名，再向时钟 actor 传递只读 FD。 | 复盘时为草稿。报告送达后，已完成 ARM64 热插拔、只读 FD 和新包的两条原 Root 升级路径。随后在原 Parallels 组件完成正式 actor 经 relay 接收 FD 并写入虚拟 DS1307，实测回执 APPLIED。正式 Main 已取得设备缺失的 ENOENT 回执，并在 Core purge、重装后读回原记录。在原组件上，独占打开的 DS1307 使实际 relay 返回 EBUSY，Root 与发送端保存同一笔失败。当前 Core 安装器只读核对后拒绝此静态组件单元。随后在同一 Parallels 虚机的独立新安装，正式 Main 通过已注册的 ClockService 向专属 DS1307 成功写入一次，设备读数及两端回执均已核实。物理 RTC 仍待验。 |
 
 从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。当时的 Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。后续 b1b8060be2 已在同一安装撤去 DAC_OVERRIDE。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
@@ -289,3 +289,5 @@ Deployment 的一次进程中断解释了为什么成功验证原子替换单个
 本轮共同移除和重装沿用原六组件卷及四份既有 deb，合计 163,316,262 字节。验证只临时把这四份包传入原卷，重装读回后删除临时包，新增发行包 0 字节。两次正常停机分别保留了四包 purge 后和重装后的证据。[四包维护记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 在同一业务卷验证六包保留式卸载与重装时，Core 的卸载脚本漏存站点 provider 顺序，修复后新增一个 205,066,056 字节的 Core deb。其余五包沿用原件。此时 Core 打包目录保留 61 个 ARM64 deb，长度合计 12,476,421,778 字节。一次正式 Main 启动同时检查原部署归档和三种数据库的原始记录。[包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/core-remove-sibling-order/storage.json)
+
+站点自装的两个 OSGi provider 随 Core 保留式重装恢复。本轮仍复用同一卷、五份网关包和两个既有 provider JAR，仅因 Core 卸载程序变动新增一个 205,066,338 字节的 deb。当前同目录 62 个 ARM64 Core deb 合计 12,681,488,116 字节。[包长度](../../../.management-close-20261116/core-rtc-hotplug-20261120/site-provider-retained-remove/storage.json)
