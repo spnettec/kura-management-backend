@@ -2671,5 +2671,280 @@
     "sixComponentInstalledCore": "b1c664aaeba97c1b6b01d2a679fcd18919f38c52",
     "pending": "The firewall call dropped NET_ADMIN on the invoking Java thread. The service-wide NET_ADMIN grant remains, as do the other provider and launcher cases.",
     "frozen": "0/12"
+  },
+  "fullMainCapability20261121": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/main-process-network-capability",
+    "corePackages": {
+      "capability": {
+        "source": "ff8abfa11b08aecaa3bf3c6406dc1388c6b35b15",
+        "tree": "59c88903ba80e8cd2feaa1b0c6e6715f846e4b3c",
+        "version": "6.0.0~git20261121060455.ff8abfa-1",
+        "sha256": "54c775ab1839f3fdfb12dcd822026e94188c2fa155f42971f4d9c82c1255cdc3",
+        "bytes": 205015922
+      },
+      "retention": {
+        "source": "ea9e46610ac4538f3dbeef41ce6164723077c8e2",
+        "tree": "58a633b3aac83ac68c93387618ce578b4657e19b",
+        "version": "6.0.0~git20261121065352.ea9e466-1",
+        "sha256": "5ee07d381a0bd8dadcf12868244727446c8b9231308bbfce203550d3a3f27984",
+        "bytes": 205020248
+      },
+      "rootOnly": {
+        "source": "e660ca6d672bed591df4665ac209b2aafb1ee0a5",
+        "tree": "0bef882de6f379258dc7f1a754e096058e8e4dfc",
+        "version": "6.0.0~git20261121065702.e660ca6-1",
+        "sha256": "cb94249c9ddd0b2f8b9f921dd9992b34611dc55c03f1e3411d957e4d755cdc62",
+        "bytes": 205020456
+      }
+    },
+    "oldPair": {
+      "exit": 1,
+      "versions": {
+        "kura-core": "6.0.0~git20261121054702.bba8b1d-1",
+        "kura-networking": "3.0.0~git202611210524.71f30b6-1"
+      },
+      "dryRun": true
+    },
+    "retainedLauncher": {
+      "missing": {
+        "root": {
+          "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+          "mount": "39:7320076",
+          "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+        },
+        "versions": {
+          "kura-core": "6.0.0~git20261121060455.ff8abfa-1",
+          "kura-networking": "3.0.0~git202611210559.d0a80e0-1"
+        },
+        "registered": "/opt/eclipse/kura/bin/firewall",
+        "missing": true,
+        "execStatus": 203,
+        "history": 14
+      },
+      "firstFix": {
+        "root": {
+          "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+          "mount": "39:7320076",
+          "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+        },
+        "file": {
+          "sha256": "26d42bcb80e411f59a22cc0c5b827fd973905bcd4568418d99fb23a3f107d520",
+          "meta": "39|7353058|750|0|990|1|4275|2026-11-21 06:54:51.109578878 +0000|2026-11-21 06:54:51.484923539 +0000"
+        },
+        "before": {
+          "sha256": "26d42bcb80e411f59a22cc0c5b827fd973905bcd4568418d99fb23a3f107d520",
+          "meta": "39|7350480|700|0|0|1|4275|1980-02-01 00:00:00.000000000 +0000|2026-11-21 06:52:14.474734331 +0000"
+        },
+        "versions": {
+          "kura-core": "6.0.0~git20261121065352.ea9e466-1",
+          "kura-networking": "3.0.0~git202611210559.d0a80e0-1"
+        },
+        "verifiedByDpkg": true
+      },
+      "final": {
+        "versions": {
+          "kura-core": "6.0.0~git20261121065702.e660ca6-1",
+          "kura-networking": "3.0.0~git202611210559.d0a80e0-1"
+        },
+        "root": {
+          "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+          "mount": "39:7320076",
+          "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+        },
+        "launcher": {
+          "sha256": "26d42bcb80e411f59a22cc0c5b827fd973905bcd4568418d99fb23a3f107d520",
+          "meta": "39|7355523|700|0|0|1|4275|2026-11-21 06:57:24.359182440 +0000|2026-11-21 06:57:24.652522002 +0000"
+        },
+        "dpkgExact": true
+      }
+    },
+    "configuredFirewall": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "versions": {
+        "kura-core": "6.0.0~git20261121065702.e660ca6-1",
+        "kura-networking": "3.0.0~git202611210559.d0a80e0-1"
+      },
+      "sourceInputs": {
+        "root": {
+          "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+          "mount": "39:7320076",
+          "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+        },
+        "files": {
+          "iptables": "6921fc1b2432264cf73bff6b49ac133ecef53db8ef8a23784e1def20d23b82e2",
+          "ip6tables": "d68498306a972f2b0b594b6214158455ec35842d7165cfaef218f6e7434d4476"
+        },
+        "hostRenderer": "a2ed46f5fc77ad16968bd991fe44943a417f4a6c2024e7201e883527d7ad5bff",
+        "originalHistory": 14,
+        "originalForwarding": [
+          0,
+          0
+        ]
+      },
+      "siteFilesRetained": [
+        "/etc/sysconfig/iptables",
+        "/etc/sysconfig/ip6tables"
+      ],
+      "forwardingAtSiteStart": [
+        1,
+        1
+      ],
+      "before": {
+        "pid": "14708",
+        "restarts": "0",
+        "uid": "997",
+        "capabilities": {
+          "threads": 151,
+          "main": {
+            "CapInh": 1024,
+            "CapPrm": 1024,
+            "CapEff": 1024,
+            "CapBnd": 1024,
+            "CapAmb": 1024
+          },
+          "boundingMax": 1024
+        },
+        "noNewPrivileges": "1"
+      },
+      "published": {
+        "pid": "14708",
+        "restarts": "0",
+        "uid": "997",
+        "capabilities": {
+          "threads": 134,
+          "main": {
+            "CapInh": 1024,
+            "CapPrm": 1024,
+            "CapEff": 1024,
+            "CapBnd": 1024,
+            "CapAmb": 1024
+          },
+          "boundingMax": 1024
+        },
+        "noNewPrivileges": "1"
+      },
+      "id": "738a021b-a7a3-4857-b709-7b746dd22df8",
+      "outcome": "APPLIED",
+      "kernelRule": "-A input-kura -s 127.0.0.1/32 -i lo -p tcp -m tcp --dport 19743 -j ACCEPT",
+      "commands": 1,
+      "originalId": "9726c608-97e8-4f85-9930-8d87593af441",
+      "originalOutcome": "APPLIED",
+      "afterInverse": {
+        "pid": "14708",
+        "restarts": "0",
+        "uid": "997",
+        "capabilities": {
+          "threads": 133,
+          "main": {
+            "CapInh": 1024,
+            "CapPrm": 1024,
+            "CapEff": 1024,
+            "CapBnd": 1024,
+            "CapAmb": 1024
+          },
+          "boundingMax": 1024
+        },
+        "noNewPrivileges": "1"
+      },
+      "bothFamiliesRestored": true,
+      "savedRestored": true,
+      "cold": {
+        "root": "39:7320076",
+        "checked": true,
+        "packages": {
+          "kura-core": "installed",
+          "kura-networking": "installed"
+        },
+        "dpkgStatusUpdates": [],
+        "fileFingerprints": 51,
+        "firewallHistory": 30,
+        "installationKiB": 297320
+      }
+    },
+    "six": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "versions": {
+        "kura-core": "6.0.0~git20261121065702.e660ca6-1",
+        "kura-networking": "3.0.0~git202611210559.d0a80e0-1",
+        "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+        "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+        "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+      },
+      "main": {
+        "pid": "3509",
+        "restarts": "0",
+        "uid": "997",
+        "capabilities": {
+          "threads": 132,
+          "main": {
+            "CapInh": 1024,
+            "CapPrm": 1024,
+            "CapEff": 1024,
+            "CapBnd": 1024,
+            "CapAmb": 1024
+          },
+          "boundingMax": 1024
+        },
+        "noNewPrivileges": "1"
+      },
+      "bound": [
+        "3509",
+        "org.eclipse.kura.linux.net",
+        "org.eclipse.kura.nm",
+        "188",
+        "8"
+      ],
+      "launcher": {
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "file": {
+          "sha256": "26d42bcb80e411f59a22cc0c5b827fd973905bcd4568418d99fb23a3f107d520",
+          "meta": "39|7357596|700|0|0|1|4275|2026-11-21 06:57:52.276283829 +0000|2026-11-21 06:57:52.278555290 +0000"
+        },
+        "owner": "kura-networking: /opt/eclipse/kura/bin/firewall"
+      },
+      "cold": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 82,
+        "credentialsExact": 2,
+        "registryExact": true,
+        "retiredLockAbsent": true,
+        "originalSubmitWithdrawn": true
+      },
+      "optionalBundlesTemporarilyHeld": true
+    },
+    "withoutSiteFiles": {
+      "firstRefusal": "java.lang.Exception: Original saved and observed model disagree",
+      "historyAtRefusal": 14,
+      "compiledDefaultsMatchBothSavedFamilies": true,
+      "floodingMangleRulesMissingFromRestartedJavaModel": 17,
+      "publishNotDispatched": true,
+      "status": "Open: cold startup reconciliation without site policies"
+    },
+    "tests": {
+      "rootOnlyAndMaintenance": 59,
+      "networkingSource": "d0a80e0",
+      "previousNetworkingReactor": 2266
+    },
+    "continuation": {
+      "firewall": "main-process-network-capability/cold.py",
+      "six": "main-process-network-capability/six/parked-readback.py"
+    },
+    "frozen": "0/12"
   }
 }

@@ -1,3 +1,13 @@
+## 2026-11-21 正式 Main 整进程撤去 NET_ADMIN 与 Networking 启动器恢复
+
+Core `e660ca6d67`、Networking `d0a80e0`。原防火墙临时 Root `39:7320076` 先拒绝不兼容的旧 Networking。升级后定位到 systemd 203/EXEC：Core 替换了 bin 目录，dpkg 登记的 Networking 启动器随之消失。保留及恢复逻辑现核对已登记提供包、校验和及代码权限，联合解包时保留新版本，移除的提供包不恢复。正式 Core 单包升级后，dpkg 校验通过，启动器为 root:root 0700。ARM64 维护与权限测试 59 项通过。
+
+在同一临时安装，用当前 Networking 发行件的默认配置生成 IPv4 和 IPv6 站点规则，两份摘要分别与该安装原保存值相同。正式防火墙服务启动后，非 Root Main 发布一条仅接受回环 TCP 19743 的规则。原编号 738a021b-a7a3-4857-b709-7b746dd22df8 回执 APPLIED；应用前、发布后和逆操作后分别检查 151、134、133 个线程，能力上限均为 0x0400。内核逐条核对成功；撤回后两族 filter 表和保存值均恢复。先前转发业务的原号仍可在原 Root 查询 APPLIED。正常停机后冷读 51 份文件。临时安装保留两份测试站点策略，续接用 `main-process-network-capability/cold.py`。
+
+原六组件 Root `39:6611544` 单独升级同一 Core 后，系统启动器权限正确。正式 Main 的 132 个线程均已撤去 NET_ADMIN，SCR 绑定 Networking 的 NM 扫描 provider。按原夹具流程，两个可选 SQLCipher bundle 在升级时暂存并放回，未计作无人值守保留验收。停机后六包、SQLCipher、82 份业务文件、两份凭据和注册表冷读通过，续接用 `main-process-network-capability/six/parked-readback.py`。
+
+**仍待实施**：没有站点策略的默认启动现场，保存模型有 17 条防洪 mangle 规则，重启后的 Java 模型缺少这些规则。匹配检查拒绝发布，未产生新操作。该路径继续作为内部恢复任务；其余 broker、组件和 provider/launcher 维护矩阵继续。冻结闭环 **0/12**，外部延期仍为原三项。[整进程权限、回执、升级和停机证据](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 正式 NetworkService 的 Wi-Fi 扫描与原六组件升级
 
 Networking `d0a80e0` 将旧 OSGi API 的扫描请求交给 NetworkManager，nl80211 和 WEXT 读取驱动缓存，保留旧接口的每个 BSSID、支持速率和能力标志。完整 Networking 构建 2266 项通过。ARM64 无网络、零有效能力的 JVM 使用私有 D-Bus 无线服务和受控驱动输出，生产调用链发出一次 RequestScan，仅执行接口查询和缓存读取。原六组件 Root `39:6611544` 经 dpkg 升级后，正式 Main 的 SCR 确认 NetworkService 为 ACTIVE，绑定的服务来自新版 NM bundle。该进程实测 0x1400。停止后，六包、SQLCipher、82 份业务文件、两份凭据及注册表和锁冷读通过。原六组件续接入口为 `main-network-service-scan/six/parked-readback.py`。防火墙 Root `39:7320076` 仍用 `main-firewall-reduced-caller/cold.py assert-final`。
