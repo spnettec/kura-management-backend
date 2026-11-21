@@ -1,3 +1,7 @@
+## 2026-11-21 当前四个网关包在原 Docker 业务卷启动
+
+ARM64 镜像使用共同分支的 Core `71eb1087ae`、GWT `9de7a7b`、Deployment `8f5927e`、Wires `4f13cf1` 及原四份 DP。镜像内四包的版本、架构与 SHA-256 全部匹配，随四包进入插件目录的 235 个 JAR 逐一对上原 deb。原卷 `39:6566861` 启动后，正式 Java Main 为 UID 122、有效能力零、NNP=1，HTTPS 返回 200。DeploymentAdmin 查到四个原版本，四个业务 bundle 均为 ACTIVE。正常停机后冷读，四份 DP、注册表、四份身份文件和三个快照均与启动前一致。最新 Docker 卷读回入口为 `docker-current-gateway-release/runtime.py cold`。六组件、原防火墙 Root、完整安装维护矩阵沿各自检查点续接。冻结 0/12。[镜像与原卷实测](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ## 2026-11-21 Alpine 启动器热更正式 Cloud 工厂，并在停机换版后重新注册服务
 
 原 Docker 业务卷 `39:6566861`、现有 ARM64 镜像及只读 `/load` 目录验证了三个正式 Cloud deb 中的工厂 JAR。单独投放首版时，FileInstall 已安装 bundle；OSGi 缺少 `org.eclipse.kura.core.data.util`，没有注册工厂。补入同包的 Cloud 基础 bundle 后，第一版真实服务可调用。在同一 Main、同一 OSGi bundle ID 上替换第二版，先收到旧服务 244 注销，再收到新服务 245 注册。停机发布第三版，重开同一容器后如期注册；撤下后收到注销，并连续两次查到零个服务。三版的工厂实现类字节相同，限定版本不同，分别从原发行包逐字节提取。每次调用均由预期 bundle 返回原工厂 PID。

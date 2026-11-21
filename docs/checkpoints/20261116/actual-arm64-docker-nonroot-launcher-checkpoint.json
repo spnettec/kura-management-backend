@@ -911,5 +911,83 @@
     "identicalFactoryClassAcrossVersions": true,
     "scope": "FileInstall lifecycle on the retained Docker volume. Configuration and cloud connection writes were not dispatched. The supporting Cloud bundle reached ACTIVE.",
     "readback": "python3 -B .management-close-20261116/core-rtc-hotplug-20261120/docker-load-service-update/cold.py"
+  },
+  "currentFourGatewayPackagesOnOriginalDockerVolume20261121": {
+    "image": "sha256:69153d10729dd0d030c8bd885d9c208a955c059ec68c0fbd3056f6500c76bf26",
+    "priorImage": "sha256:32581cc4149fb912ba8834d08342118796446cd6df8066201df1ba19774adb3e",
+    "launcher": "9f9aad67a3e0752b94663387bc76ce4a38d3b879",
+    "tree": "309a8f2de9a2eaecf1e6d51ae5032f376cc09b41",
+    "packages": [
+      "kura-core\t6.0.0~git20261121173515.71eb108-1\tarm64\t3b3fa09c65147f807193a82890231642d3b86fa0cc0744099ff4a5e91d411959",
+      "kura-management-ui\t3.0.0~git202611210452.9de7a7b-1\tall\t036b66153015c8a83f8b5cc6c5b8a1c844917944ac96418ba77fbfb2e3731efb",
+      "kura-deployment\t2.0.0~git202611210915.8f5927e-1\tall\tbe5b66fcdbe3a637156894830f3beb9f48e61ea09f5ae609c2a9e38aad336451",
+      "kura-wires\t3.0.0~git202611210453.4f13cf1-1\tall\t2db70b2498a525f20bf107c3920afb56d39d98bc38022f9c4c35ae8d5118062e"
+    ],
+    "jarCounts": {
+      "debs/kura-core.deb": 215,
+      "debs/kura-management-ui.deb": 2,
+      "debs/kura-deployment.deb": 4,
+      "debs/kura-wires.deb": 14
+    },
+    "runtime": {
+      "http": 200,
+      "dp": "admin=true packages=kura-yofc-runtime.dp@1.0.0.202611201918,yofc-iot-api-comp@0.0.1.202611201918,yofc-iot-apps-comp@0.0.1.202611201918,yofc-iot-apps-opcuaserver@0.0.1.202611201918 bundles=com.yofc.iot.runtime@32,com.yofc.iot.yofc-iot-api-comp@32,com.yofc.iot.yofc-iot-apps-comp@32,com.yofc.iot.yofc-iot-apps-opcuaserver@32",
+      "process": {
+        "Name": [
+          "java"
+        ],
+        "Uid": [
+          "122",
+          "122",
+          "122",
+          "122"
+        ],
+        "CapEff": [
+          "0000000000000000"
+        ],
+        "NoNewPrivs": [
+          "1"
+        ]
+      },
+      "root": [
+        39,
+        6566861
+      ],
+      "emptyLoad": true,
+      "registryRows": 4,
+      "identityFingerprints": 4
+    },
+    "normalStop": 143,
+    "snapshotsVerified": 3,
+    "container": "88a7d6dccfa46fcf63f835073fc5aeb5d15434e68b308866d2f18a91e5b05fdf",
+    "storage": {
+      "dockerSystemDf": [
+        "yofc-kura-launcher                 gateway-71eb108-20261121            69153d10729d   About a minute ago   705MB     308.9MB       395.7MB       1",
+        "yofc-kura-launcher                 load-activation-20261121            32581cc4149f   14 hours ago         704MB     308.9MB       395.3MB       2"
+      ],
+      "history": [
+        "0B ENTRYPOINT [\"/usr/bin/python3\" \"-I\" \"-B\" \"/u…",
+        "0B VOLUME [/load /var/lib/kura]",
+        "0B EXPOSE [443/tcp 80/tcp]",
+        "32.7kB RUN |1 KURA_APK_MIRROR=dl-cdn.alpinelinux.or…",
+        "880B COPY /usr/local/share/kura /usr/local/share/…",
+        "32.7kB COPY /usr/local/bin /usr/local/bin # buildkit",
+        "396MB COPY /opt/eclipse /opt/eclipse # buildkit",
+        "300MB RUN |1 KURA_APK_MIRROR=dl-cdn.alpinelinux.or…",
+        "0B ENV KURA_DIR=/opt/eclipse/kura PERSISTENT_DI…",
+        "0B ARG KURA_APK_MIRROR=dl-cdn.alpinelinux.org",
+        "0B CMD [\"/bin/sh\"]",
+        "8.66MB ADD alpine-minirootfs-3.24.4-aarch64.tar.gz …"
+      ],
+      "identicalLayerDigests": 2,
+      "imageSizeDifference": 466245,
+      "transfer": {
+        "logicalBytes": 384044900,
+        "clones": 8
+      }
+    },
+    "coldVerifier": "docker-current-gateway-release/runtime.py cold",
+    "frozenClosed": 0,
+    "frozenParents": 12
   }
 }
