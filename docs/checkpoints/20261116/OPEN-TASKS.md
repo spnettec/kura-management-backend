@@ -1,3 +1,7 @@
+## 2026-11-22 两代快照与站点自设 HTTPS 口令跨 Core 升级
+
+Core 075ea8b733 至 fc17697eba 的原位升级经两个 ARM64 安装实测。原两代卷解包停机后沿 d15469c5-fae4-4bcc-9cd1-809cdbf06522 续配，正式 Main 读回两代值、原 TLS 身份与两张信任证书。独立安装通过配置服务设置测试 HTTPS 口令；升级后从原加密快照用该口令打开 PKCS12、验签并核对 TLS。两卷均正常停机，本轮新增发行包与持久卷均为零。冻结 0/12。 原两代卷当前停机入口为 published-generation-keystore-upgrade/cold-read.py final。
+
 ## 2026-11-22 HTTPS 身份库与 SSL 信任库的出厂快照口令
 
 Core fc17697eba 移除两份工厂模板中绑定旧 AES 钥的密文。旧 Root 39:8285453 的两代快照均保留相同的出厂字段，两份库实际依靠 CryptoService 的默认口令打开。修正版独立 ARM64 安装的两个正式 Main 从同一加密快照直接打开 HTTPS PKCS12 与 SSL JKS，验过原签名、回环 TLS 和两张信任证书。两个现场正常停机，旧快照迁移仍待验。冻结 0/12。 当前原两代卷冷读入口 published-generation-keystore-providers/run.py cold。

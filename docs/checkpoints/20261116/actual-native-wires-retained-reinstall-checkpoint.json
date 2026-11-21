@@ -8394,5 +8394,22 @@
     "newPersistentVolumes": 0,
     "parked": true,
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-keystore-providers/HANDOFF.md"
+  },
+  "publishedGenerationKeystoreUpgrade": {
+    "source": "fc17697eba897b45590bedb019c90fee40f6218a",
+    "predecessor": "075ea8b7338a67a96379414c8f616cf6ec3ad04d",
+    "originalRoot": "39:8285453",
+    "originalMaintenance": "d15469c5-fae4-4bcc-9cd1-809cdbf06522",
+    "signedUpgradePhases": 19,
+    "providerMain": 1706,
+    "oldFields": "factory ciphertext preserved, both registered stores retain the previous fallback",
+    "customHttpsRoot": "2097227:1",
+    "customHttpsMaintenance": "ff9be4c9-1d0e-440f-a02b-a987d664c3db",
+    "customSnapshot": "1795295027979",
+    "customFileDigestsPreserved": 3,
+    "customInodesChanged": 3,
+    "addedDebs": 0,
+    "addedSystemVolumes": 0,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-keystore-upgrade/HANDOFF.md"
   }
 }
