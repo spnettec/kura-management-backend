@@ -2971,5 +2971,93 @@
     "loopback": "Isolated official GWT HTTP listener on port 80; no TLS listener on 443 in this installation.",
     "evidence": "http-download-session/parked-readback.py",
     "accountHandling": "Only the original fixture administrator was changed through the first-login form. The generated password is stored privately outside Git. The eight previous snapshots were preserved. The temporary downloaded ZIP was removed after verification."
+  },
+  "staleStandalonePidHandover": {
+    "source": "8b275f0ece8a398d724ec0f0f4d85c609b6b1708",
+    "tree": "577b5100dc69f7ac9abad2fe391eaecd34fcdea0",
+    "version": "6.0.0~git20261121011827.8b275f0-1",
+    "sha256": "3c03cb82e6c1a3281f5f33a332ed65735ad8c11424521f04ea3fe99118e04bc2",
+    "old": {
+      "unit": {
+        "MainPID": "2243",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "a5d9f7bec9674beebd2a87313e72ee0d"
+      },
+      "pidMatches": true,
+      "permissionDeniedOnPid": true,
+      "started": false,
+      "remainingFile": {
+        "sha256": "7bce5ac70285bca95158ee2dfbb20d99c320a38ddce8d1e106b5b2975d1a9b57",
+        "meta": "2097175|233|600|997|995|1|5|2026-11-21 00:29:31.945496263 +0000|2026-11-21 00:29:31.945496263 +0000"
+      }
+    },
+    "new": {
+      "main": {
+        "unit": {
+          "MainPID": "4118",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "715ed136ae314a1f8580da3b86df764e"
+        },
+        "ticks": "40811557",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "pidFile": {
+        "sha256": "1f573721c10205f974c66637f05693ad1ac6fc0be5d3dca2d9bdb0d93c3145b7",
+        "meta": "2097175|437|600|997|995|1|5|2026-11-21 01:19:34.354866178 +0000|2026-11-21 01:19:34.354866178 +0000"
+      },
+      "acquiredWriter": true,
+      "httpAuthPage": 200,
+      "firstStartExit": 0,
+      "sameInode": true
+    },
+    "input": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "file": {
+        "sha256": "076c203bd6cef2be9e96ddc596ef271579a77a6d0c682716c6a9b58174167761",
+        "meta": "2097175|437|600|0|0|1|5|2026-11-21 01:19:33.432629395 +0000|2026-11-21 01:19:33.432629395 +0000"
+      },
+      "exitedPid": "3734"
+    },
+    "upgrade": {
+      "root": "39:6611544",
+      "prior": "711d8255-828c-4e69-bfc7-50e09eb60c64",
+      "priorManifest": "d089d437ebd367d1d45ad520a5cf991653d749b40054c3792c03d93d1399fe21",
+      "current": "796fed6d-26eb-403c-aa32-bc1e250c2958",
+      "currentManifest": "f4c5ebb0d53d45aa199fb4be7efcb0ef92f4786cd070002063be4c359cf06c74",
+      "firstAction": "upgrade",
+      "historyEntries": 19
+    },
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "storage": {
+      "workspaceKiB": 338309756,
+      "historicalWorkKiB": 246406056,
+      "consoleTargetKiB": 76913248,
+      "coreDebCount": 36,
+      "coreDebBytes": 7352202838,
+      "currentDebBytes": 204241720,
+      "hostAvailableKiB": 138461980,
+      "workspaceDuSha256": "584f8a0c4c934014701fba291f3901bca4e522540ba5a83f8ebc28cb984bd8fa"
+    },
+    "scope": "Fixture provided a root-owned, mode-0600, regular PID file containing an exited child PID in the original namespace. Package pre-start only needs CHOWN. The JVM grants remain NET_ADMIN and NET_BIND_SERVICE. Two optional fixture SQLCipher JARs were held during the Core upgrade and restored before startup.",
+    "evidence": "main-pid-handover/parked-readback.py"
   }
 }

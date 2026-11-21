@@ -1,3 +1,9 @@
+## 2026-11-21 独立启动器旧 PID 与正式 Main 接管
+
+同一六组件 Root 上，用已退出子进程的编号构造 root 所有的常规旧 PID 文件。旧包首次 systemctl start 返回 1，随后服务自动起来。Core 8b275f0ece 在发行清单中配对新的 PID 准备程序，只向这个短时进程授予 CHOWN。实际 dpkg 原位升级后，正式服务首调返回 0，旧 PID 文件保持 inode 并由 kurad 接管，文件中的新编号和 systemd 相同。JVM 取得 writer lease，能力掩码 0x1400，管理页返回 200，重启计数为 0。正常停机后 PID 文件消失。原维护回执相邻，原八份快照和获准改密后的第九份均保留，最新冷读入口 main-pid-handover/parked-readback.py。
+
+六包、SQLCipher 和 84 份文件已冷读。升级期间暂存的两个测试用可选 SQLCipher JAR 已按原摘要归位。其余 provider、启动模式、包维护中断与 12 父项仍按原台账续接，冻结 0/12。[实装与原版本对照](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 原六组件管理页登录与日志下载
 
 正式 Main 的 GWT 页面在已获准的原夹具账号上完成首次改密，使用新密码再次登录后，经 Device → System Logs → Download 取回 Kura_Logs.zip。隔离安装的 80 端口提供该页面，宿主只监听回环；443 未监听。响应为 200、application/zip，Content-Length 与 3,666,808 字节实际下载一致，完成 cookie 已收到。99 个 ZIP 条目 CRC 全过，新旧目录三份样本逐项匹配 SHA-256，另有两份非空 journal 和三份 Kura 活动日志。

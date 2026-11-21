@@ -6,6 +6,8 @@
 
 **有过渡设计，也有可以直接压缩的验证成本。** 旧 Java/Vue 中心与早期 Netplan 接管留下了代码和夹具。现行路径是 Rust/React 中心、可选常驻 agent、可独立运行的 Kura 与 NetworkManager。涉及系统权限的写操作由本机 broker 核对调用者、设备和原安装，再保存操作编号与回执。对已经派发的操作，这些记录决定能否安全续办。
 
+11 月 21 日 09:19 起按同一口径复测，工作区 **346.43 GB**，其中历史工作目录 **252.32 GB**，中心 target **78.76 GB**。Core 打包目录有 36 个 ARM64 deb，文件长度合计 7.35 GB。较 07:06 增加 5 个包，共 1.02 GB；同期工作区目录计量增加 1.07 GB。已登录 HTTP 下载复用了安装包和测试卷。修复旧 PID 接管后另建了一个 204.24 MB 的 Core 包。宿主卷当时可用 141.79 GB，APFS 共享块和虚拟机卷分别计量。[目录与发行件复测](../../../.management-close-20261116/core-rtc-hotplug-20261120/main-pid-handover/storage.json)
+
 11 月 21 日 07:06 起按工作区目录计量，工作区为 **345.36 GB**，较 05:08 增加 1.48 GB。历史工作目录占 251.25 GB，中心 target 单独复测为 78.76 GB，两者约占 95.6%。Core 打包目录现有 31 个 ARM64 deb，共 6.33 GB。较上次多出的 7 个包合计 1.43 GB。两种计量数值接近，APFS 共享块仍影响实际物理增长。本轮 Linux 编译容器为普通构建用户复制了 0.67 GB 缓存，源码与临时缓存已随容器回收，六组件卷另行保留。Docker 的销毁事件已核对。清理程序未及时保存可写层总量，因此无法量化此次容器实际释放的空间。[目录与发行包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/storage.json) · [临时构建回收记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/builder-removed.json)
 
 11 月 21 日 05:08 前后，工作区按 `du -k` 实测 **343.88 GB**，宿主可用 **147.51 GB**。其中历史工作目录 **249.77 GB**，中心仓的 `target` **78.76 GB**，两者合计约 **95.5%**。中心 `target` 中，网络权限与注册现场占 49.12 GB，上游逻辑同步目录占 17.73 GB。当时 Core 打包目录留有 24 个 ARM64 deb，文件长度合计 4.90 GB。APFS 可共享数据块，上述目录计量不能直接换算为可释放空间。[本次容量明细](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-file-writer-identity/storage.json)
@@ -47,7 +49,7 @@ Core 5aa5aad4f1 将专属归档目录接入 Linux 发行包，沿用原活动文
 
 同一六组件卷随后通过正式管理页完成首次改密并重新登录，从系统日志标签下载了 3,666,808 字节的 ZIP。浏览器收到 HTTP 200，99 个条目通过 CRC；两份新目录归档和一份旧路径归档的 SHA-256 与输入相符。原卷实际开放的是 HTTP 80，验证期间连接仅经过宿主和夹具回环。八份原快照完整，新快照保留原账号。此次复用了已安装的 Core 和 GWT，两份 systemd journal 也随 ZIP 交付。[登录下载与冷读](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
-原六组件安装升级到 Core b1b8060be2 后，正式 Main 已撤去 DAC_OVERRIDE。systemd 在 fork 前为 kurad 准备历史 PID 路径，进程运行时只保留管理网络与绑定低端口两项能力。两次正式启动的五组能力掩码均为 0x1400，两次停机后 PID 文件都由 systemd 移除。同卷的启动中断实测中，生成配置途中停机留下 424 字节临时文件。再次启动后，正式 JVM 取得写入锁，完整配置为 22,494 字节。这次复用了现有安装和发行包。独立启动器遗留 PID 文件的兼容性仍待验证。[原安装的两次启动及停机](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+原六组件安装升级到 Core b1b8060be2 后，正式 Main 已撤去 DAC_OVERRIDE。systemd 在 fork 前为 kurad 准备历史 PID 路径，进程运行时只保留管理网络与绑定低端口两项能力。两次正式启动的五组能力掩码均为 0x1400，两次停机后 PID 文件都由 systemd 移除。同卷的启动中断实测中，生成配置途中停机留下 424 字节临时文件。再次启动后，正式 JVM 取得写入锁，完整配置为 22,494 字节。这次复用了现有安装和发行包。旧 PID 的实测又发现，root 遗留的记录会使首次启动返回失败。Core 8b275f0ece 在同一卷核对已退出进程后接管原 inode，首调成功，正式 JVM 维持原能力集。[原安装的两次启动及停机](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 普通命令的独立服务还影响两个用户可见的行为。在原六组件卷上停止一个正在运行的命令实例，Main 和监听 socket 均继续运行，下一条命令成功。对于 Main 私有数据目录，worker 可以相对读取已知文件，调用 getcwd() 则返回 EACCES。站点另设的目录给命令组穿越权后，worker 可以取得绝对路径并读指定文件，仍无法列举目录。两次实测复用已安装的 Core，没有新增 deb 或构建镜像。[普通命令与目录验证](../checkpoints/20261116/actual-core-command-worker-lifecycle-checkpoint.json)
 
@@ -57,7 +59,7 @@ Core 5aa5aad4f1 将专属归档目录接入 Linux 发行包，沿用原活动文
 
 | 网关包 | 已取得的现场证据 | 仍需区分的条件 |
 | --- | --- | --- |
-| Core | 正式 Main 取得缺失 RTC 的 ENOENT，Core 移除、purge、重装后原回执和密钥仍在。[时钟实装记录](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)。三类网络发送端在派发前保存的原编号已通过正式 Core purge、重装及 Java 读回。同一发行系列的真实首装在 PREPARED 中断后，原 17 份回执经拒绝替换与正常续配保持一致。[网络发送端记录](../checkpoints/20261116/actual-core-network-sender-purge-checkpoint.json) | 虚拟 DS1307 正向写入已在独立首装的正式 Main 实测。现行正式单元已验证两次撤权后的启动和停机，配置生成途中停机已在原地恢复，独立启动器遗留 PID 仍待验。 |
+| Core | 正式 Main 取得缺失 RTC 的 ENOENT，Core 移除、purge、重装后原回执和密钥仍在。[时钟实装记录](../checkpoints/20261116/actual-registered-main-clock-and-purge-checkpoint.json)。三类网络发送端在派发前保存的原编号已通过正式 Core purge、重装及 Java 读回。同一发行系列的真实首装在 PREPARED 中断后，原 17 份回执经拒绝替换与正常续配保持一致。[网络发送端记录](../checkpoints/20261116/actual-core-network-sender-purge-checkpoint.json) | 虚拟 DS1307 正向写入已在独立首装的正式 Main 实测。现行正式单元已验证两次撤权后的启动和停机，配置生成途中停机已在原地恢复，已验证常规 root 所有的过期 PID 文件可在首次启动时接管。 |
 | Networking | 启用 DNS 的六组件现场经过 Core 升级及 Networking 移除、purge、重装。正式 Main 恢复原模型，IPv6 客户端收到合成 IPv4 上游的回答。[启用 DNS 实装记录](../checkpoints/20261116/actual-enabled-dns-snapshot-upgrade-checkpoint.json)。DHCP 停用丢回执后，经 Networking purge、配置中断及重装，正式 Main 按原编号取回结果。[DHCP 实装记录](../checkpoints/20261116/actual-registered-main-dhcp-maintenance-checkpoint.json)。在 Core 与 Networking 同时 purge、重装的现场，重新提供同一停用测试配置后，正式 Main 也只确认原停用编号。BIND 的停用回执也已跨两个包的共同 purge；出厂快照启动后只新增原回执。[共同 purge 实装记录](../checkpoints/20261116/actual-core-network-sender-purge-checkpoint.json) | 本次网络设备由夹具准备。真实 NM/cloud-init 和物理硬件交接仍归原延期项。 |
 | GWT | 单独移除后观察到 unpacked、half-configured，原地续配成功，随后 purge；核对了自定义图标和 Wires 文件。[中断回滚记录](../checkpoints/20261116/actual-passive-addon-dpkg-rollback-checkpoint.json)。六组件联合移除中实际得到 GWT half-installed、Wires config-files，续办移除、共同 purge 和原版重装后，正式 Main 加载两者并恢复 HTTPS。 | 正式 Main 已验证 agent 安装、离线、移除和 purge 时的远程标签及手动状态提示；Cloud purge 后保留 true 时，页面显示无可用连接。已登记 agent 的远程业务及其他页面流程仍待分别验收。[浏览器与包回执](../checkpoints/20261116/actual-native-cohort-gwt-ready-and-purge-checkpoint.json) |
 | Deployment | 单次安装的业务 DP 在 Deployment 移除和 purge 后保留了归档与注册表。重装在 half-configured 状态正常关机，原 Root 续配后，正式 Main 自动恢复 ACTIVE bundle 并读出资源。[业务包维护](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json) | 仅装余下五包时，部署服务缺席，Felix 未列出该 DP。FileMove 发布丢回执另有原地恢复实证。[FileMove 恢复](../checkpoints/20261116/actual-deployment-filemove-manager-reboot-checkpoint.json) |
