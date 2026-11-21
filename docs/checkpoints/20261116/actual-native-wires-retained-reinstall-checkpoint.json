@@ -3256,5 +3256,133 @@
     },
     "readback": "registered-sqlcipher-joint-maintenance/parked-readback.py",
     "scope": "Registered SQLCipher DP and the original business DP on the original six-component installation. Deployment and libsqlcipher1 were removed and purged together, only Deployment was unpacked before orderly shutdown. Native library absence was checked on the live installation; the cold check verified the dpkg database and 90 volume paths. Recovery did not submit a second install. The two direct fixture JARs stayed outside plugin discovery until the tested DP was retired."
+  },
+  "unregisteredSiblingAcrossCoreNetworkingInterruption": {
+    "root": {
+      "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+      "mount": "39:6611544",
+      "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+    },
+    "packages": {
+      "kura-core": {
+        "version": "6.0.0~git20261121072542.5bd7710-1",
+        "sha256": "9e4ef4dfe4de4d01c7e6668613d639ab3e2e73a615f1349dbf06b471858d4a45",
+        "bytes": 205051700,
+        "source": "5bd7710ed8fea07544ef73c3c27ba9913d7d915b"
+      },
+      "kura-networking": {
+        "version": "3.0.0~git202611210733.783a594-1",
+        "sha256": "85a44cdfd3b33ee64341e0512f016146bb085882396173ac6eb7288c226e6bac",
+        "bytes": 9412772,
+        "source": "783a594983528108919fe6529a54a4d14ccfe527"
+      }
+    },
+    "interrupted": {
+      "root": "39:6611544",
+      "id": "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+      "files": 6,
+      "packages": {
+        "kura-core": [
+          "unpacked",
+          "6.0.0~git20261121072542.5bd7710-1"
+        ],
+        "kura-deployment": [
+          "installed",
+          "2.0.0~git202611210452.ef50b67-1"
+        ],
+        "kura-management-agent": [
+          "installed",
+          "0.1.0~cohort20261121033315.5be64b7-1"
+        ],
+        "kura-management-ui": [
+          "installed",
+          "3.0.0~git202611210452.9de7a7b-1"
+        ],
+        "kura-networking": [
+          "unpacked",
+          "3.0.0~git202611210733.783a594-1"
+        ],
+        "kura-wires": [
+          "installed",
+          "3.0.0~git202611210453.4f13cf1-1"
+        ]
+      },
+      "readOnly": true
+    },
+    "authenticatedConfiguration": {
+      "root": "39:6611544",
+      "id": "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+      "phases": 18,
+      "boundToInstalledPostinst": true,
+      "copyRetired": true
+    },
+    "placement": "Test-only unregistered local sibling holding the original SQLCipher driver and provider. dpkg completed without manually replacing either JAR. The original fixture plugin inodes were returned to their initial paths after observation.",
+    "firstProbe": "The first observer could not resolve an Equinox initial@reference:file relative location and exited before reading SQL. Only the observer was replaced.",
+    "registeredSQLite": {
+      "main": {
+        "unit": {
+          "MainPID": "3312",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "e02ed37a5d7e46d5874510d0a61e036f"
+        },
+        "ticks": "42856126",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "driver": "initial@reference:file:../kura/siblings/fixture-sqlcipher-upgrade/3/fixture-sqlcipher-jdbc.jar",
+      "provider": "initial@reference:file:../kura/siblings/fixture-sqlcipher-upgrade/4/fixture-sqlite-provider.jar",
+      "plainRow": true,
+      "encryptedRow": true,
+      "integrity": true
+    },
+    "registeredH2": {
+      "main": {
+        "unit": {
+          "MainPID": "855",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "disabled",
+          "InvocationID": "e1f7a59c19b14805bf3c6c537af422f9"
+        },
+        "ticks": "42875227",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000000400",
+        "nnp": "1"
+      },
+      "provider": "org.eclipse.kura.db.h2db.provider",
+      "pid": "yofc.fixture.retained.h2",
+      "originalSingleRowMatched": true
+    },
+    "contentChangedSinceEarlierBoot": [
+      "/opt/eclipse/kura/data/h2-provider-recovery/business.mv.db"
+    ],
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 82,
+      "credentialsExact": 2,
+      "registryAndLockExact": true,
+      "originalSubmitWithdrawn": true
+    },
+    "mainAndAgentDisabled": true,
+    "exitCode": 0,
+    "readOnlyVerifier": ".management-close-20261116/core-rtc-hotplug-20261120/six-local-sqlcipher-upgrade/cold-maintenance.py",
+    "packagingMessage": {
+      "source": "bb1aa463ccf55ae6f61b6494a26162791a2dd3e0",
+      "verification": "JDK 21 prepare-package, filtered shell syntax, actual dpkg-query against mixed-state and standalone databases. Message-only change has not been installed from a new Core deb."
+    },
+    "original7fd": {
+      "disabled": true,
+      "inputs": 41,
+      "receipts": 16
+    },
+    "newDebs": 0
   }
 }

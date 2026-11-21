@@ -16,6 +16,8 @@
 
 后续一次只涉及 Networking 启动脚本的修订，沿用上轮 Core、原测试卷及两份编译缓存。标准包和 firewall-only 包的文件长度合计 9.88 MB，较上轮三包的 214.93 MB 少 205.05 MB。原安装上的卸载、purge、解包后停机及重启续配使用同一份标准包。[包长度与测试范围](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-bind-shutdown/packages.json)
 
+这次六组件联合升级直接复用了 Core 和 Networking 两份已有 deb，输入文件合计 214,464,472 字节。三个只读观察 JAR 共 12,898 字节，新建发行包、卷及虚机快照均为零。每次变更都生成整包会扩大磁盘占用，读取旧数据库和验证安装器自动保留本地组件则可以直接使用已有包。本次仅修改包维护提示的 Core 提交运行到 Maven `prepare-package`。这些数字统计产物长度，未计日志、数据库写入和编译缓存的实际块变化。[联合升级检查点](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 工期花在哪里
 
 最初的多网关管理中心已经扩展到网关操作系统、原 Kura 本地控制台、密钥保管、发行包维护及故障后的业务连续性。同一张 Timer→Logger 图能在首次安装时送达，只证明运行时可用。要证明客户升级可用，还需在原安装上升级 Core，确认原图只提交过一次；要证明 Wires 可独立拆装，又需经过 config-files、unpacked、installed，查看注册行并观察原图再次送达。后三项已有现场记录。其余组件及中断点不能借用这个结果。

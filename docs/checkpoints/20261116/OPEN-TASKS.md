@@ -1,3 +1,9 @@
+## 2026-11-21 原六组件联合升级自动保留本地 SQLCipher provider
+
+在原六组件 Root `39:6611544` 上，将夹具的 SQLCipher driver 与 provider 放入启动器支持的本地 `siblings/` 目录。Core `5bd7710ed8` 与 Networking `783a594` 均解包后正常停机，重启沿原维护编号恢复。两个 JAR 由安装脚本自动放回，正式 Main 从恢复目录加载它们，读回原明文及加密 SQLite 业务行，SQLCipher 页完整性通过。首版观察程序未识别 Equinox 相对地址，只更换了观察程序。验收后两只原文件按原 inode 放回夹具。另由正式 Main 通过原 H2 服务只读核验唯一业务行。相较升级前，82 份受保护文件中，仅 H2 数据文件内容指纹有变化。
+
+冷读核对全部六包、SQLCipher、82 份最终文件、两份原凭据、注册表与锁，以及同一维护编号的 18 个 HMAC。Main、agent 均 disabled 并已正常停机。六组件最新入口 `six-local-sqlcipher-upgrade/cold-maintenance.py`。防火墙安装沿用 `firewall-boot-package-recovery/cold-model.py`。Core `bb1aa463cc` 修正联合升级期间的错误提示，已通过生成脚本及独立 dpkg 状态测试，现场安装仍为 `5bd7710ed8`。其余 provider、launcher、组件中断矩阵与无站点转发授权仍未结。冻结 **0/12**，外部延期仍为原三项。[联合升级和业务读回](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 防火墙暂存回执的启动配对与 Networking 包恢复
 
 Networking `783a594` 把暂存回执的发布移到完整启动配对之后。ARM64 实际启动器在包模式改变、另一个地址族出现站点策略、出现站点扩展三种情况下均保留原暂存回执、意图与操作编号。恢复原条件后，两族按原编号续办。Networking 2268 项测试及启动归属 17 项通过。
