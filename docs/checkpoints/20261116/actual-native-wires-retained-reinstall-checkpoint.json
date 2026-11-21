@@ -8299,5 +8299,31 @@
     "exitCode": 0,
     "volumes": 0,
     "frozen": "0/12"
+  },
+  "publishedGenerationCurrentReinstall": {
+    "root": "39:8285453",
+    "maintenance": "448acb95-e358-4c69-af41-f1ff27c25a9d",
+    "placeholder": "39:8292757",
+    "placeholderOwner": "kura-core: /opt/eclipse/kura",
+    "source": "075ea8b7338a67a96379414c8f616cf6ec3ad04d",
+    "publication": "1d654a98-64f1-4d54-8644-69b6bc4def26",
+    "main": [
+      "1956",
+      "1795293880824",
+      "24101",
+      "1795293891353",
+      "24102"
+    ],
+    "signed": 19,
+    "protectedFiles": 42,
+    "launchers": 3,
+    "operations": 4,
+    "volume": "yofc-published-generation-current-reinstall-root",
+    "initialKiB": 61256,
+    "finalKiB": 286076,
+    "exitCode": 0,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/published-generation-current-reinstall/HANDOFF.md",
+    "pending": "provider/launcher and eventual purge on the retained installed Root",
+    "originalHalfConfiguredRoot": "39:8195025"
   }
 }

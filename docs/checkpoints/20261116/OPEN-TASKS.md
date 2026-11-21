@@ -1,3 +1,7 @@
+## 2026-11-22 已发布密钥代的保留重装与两代快照读回
+
+Core 075ea8b733 的 ARM64 保留重装在独立 Root 39:8285453 通过。解包后正常停机，dpkg 创建的空目录由包自行恢复为链接。沿原移除编号 448acb95-e358-4c69-af41-f1ff27c25a9d 验过 19 条签名记录，三个启动脚本与发布时一致。正式 Main 读回两代加密快照 24101 和 24102，随后正常停放。原半配置卷仍在原编号下停放。冻结 0/12。 见 published-generation-current-reinstall/HANDOFF.md。
+
 ## 2026-11-22 Chrony 调用方的原 pending 跨 Core purge 和重装
 
 单独 ARM64 安装在 Chrony STOP 的 actor 回执已为 APPLIED、调用方仍有 pending 和 issued 时实际 remove、purge、unpack、configure。944 字节私有档跨 purge 保持原 inode 和摘要，重装按原 Core 维护号恢复三份调用方文件。正式 Main 沿原时钟编号完成结算，actor 仍只有一笔操作，系统正常停机。冻结 0/12。 详见 clock-pending-purge-reinstall/HANDOFF.md。

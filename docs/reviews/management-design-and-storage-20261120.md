@@ -402,3 +402,7 @@ Container 编排 bundle 原先按根目录和 lib/ 两套布局各存一份依�
 Core 构建输出当前保留 85 个 deb，文件逻辑大小合计 17.40 GB。六组件原卷 e99caab 与候选 89dfd6a 的 233 个 Core JAR 相同。逐项比较普通文件、链接和维护脚本，仅五个载荷文件和四个钩子内容有差异。两个版本各携带完整的约 205 MB 发行件。全量打包和多版本留存共同放大了测试存储成本。这个计量只覆盖 Core 输出目录，APFS 实际可回收空间需另测。
 
 原 Root 的签名回执、维护号和密钥连续性需要保留。分析当前版本改动、匹配安装文件权限和验证账号可读性都可以直接复用归档和停放卷。本轮新增发行件与持久卷均为零。详见工作区 six-package-permissions 下的 audit.json 和 storage.json。
+
+## 2026-11-22 跨停机验证两代快照的存储成本
+
+本次重装复用了 205,112,358 字节的现成 Core deb。为在解包后正常停机、再沿原文件系统身份续配，需要保留同一安装卷。该 ARM64 卷初始为 61,256 KiB，保留两代快照和已安装的 Core 后为 286,076 KiB（279.37 MiB）。这是卷内 `du -skx` 的分配量。宿主 APFS 的物理增量未测。后续 provider 与 purge 可沿这一卷验证。[测量与配对依据](../../../.management-close-20261116/core-rtc-hotplug-20261120/published-generation-current-reinstall/final-check.json)
