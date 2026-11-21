@@ -8039,5 +8039,40 @@
       "purge"
     ],
     "frozen": "0/12"
+  },
+  "publishedGenerationRetainedReinstallPreunpack": {
+    "installed": "3b3fc8df46",
+    "successor": "3654dc4f8b",
+    "cold": {
+      "root": "39:8195025",
+      "maintenance": "69b222b6-002f-46d5-aaa7-03a99b67e906",
+      "state": "Status: install ok half-configured",
+      "files": 42,
+      "earlierPhases": 38,
+      "currentPhases": 1,
+      "launchers": 3,
+      "layoutIssued": false,
+      "manifest": "649d76c49eaf4ec763f741fb98d618ea7beef9dbbed3dcb023de0801664df743",
+      "placeholder": [
+        39,
+        8216097
+      ]
+    },
+    "pairedSuccessorCheck": {
+      "root": "39:8195025",
+      "candidate": "6.0.0~git20261122040005.3654dc4-1",
+      "matchedDirectory": [
+        39,
+        8216097
+      ],
+      "owner": "kura-core",
+      "mountedReadOnly": true
+    },
+    "pending": [
+      "same-fence configure",
+      "formal Main two-generation read",
+      "purge"
+    ],
+    "frozen": "0/12"
   }
 }

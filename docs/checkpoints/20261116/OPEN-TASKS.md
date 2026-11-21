@@ -1,3 +1,7 @@
+## 2026-11-22 Core 保留重装的解包与配置停点
+
+Core 3b3fc8df46 在 ARM64 原 Root 39:8195025 沿移除编号 69b222b6-002f-46d5-aaa7-03a99b67e906 完成实际重装解包。configure 意图已签名，layout 尚未派发。dpkg 创建了归 kura-core 独占的空目录 39:8216097，原 postinst 拒绝继续。现场已正常停机，冷读 42 份文件、原 38 份阶段记录及本次意图。后继 3654dc4f8b 已构建，40 项 ARM64 测试通过，已在原卷只读识别该目录。原编号续配、Main 冷读和 purge 待验，冻结 0/12。 详见 retained-generation-reconfigure/HANDOFF.md。
+
 ## 2026-11-22 已发布密钥代的 Core 原生移除
 
 Core 1590e368c1 复用 Root 39:8195025 完成实际 dpkg remove。包状态为 config-files，移除编号 69b222b6-002f-46d5-aaa7-03a99b67e906。保留的三份启动脚本与签名回执共 9533 字节，停机核对原发布记录、两代快照和 42 份文件。现行 preinst 仍要求已移除的 /opt/eclipse/kura，保留重装与 purge 待验。最新冷读入口为 retained-generation-launchers/cold.py。冻结 0/12。 详见 retained-generation-launchers/HANDOFF.md。
