@@ -1,3 +1,13 @@
+## 2026-11-21 正式容器 Main 在随机改密快照写入中断后恢复原业务钥
+
+Core ac9b8bb80c 把同一份加密恢复记录分别同步并原子发布到前后两个指纹名称。两个名称的 inode 独立，权限 0600。原 PID、配置路径、实际路径、文件身份和内容指纹继续配对。旧版使用硬链接，在旧配置和 store.save 均打不开已换口令的 PKCS12 时，实装容器启动器的状态检查会拒绝启动。新版有 96 项 keystore 测试通过，和上一版 Core deb 对照，仅 keystore provider JAR 变化。新镜像四包的 235 个插件 JAR 与 deb 配对。
+
+在独立 ARM64 测试卷 39:7766080，正式入口三次启动同一容器的 Java PID 1，使用同一业务 PID 和证书。首次用正式工厂创建 RSA 业务钥，注册随机改密，读回配置快照并正常停机。第二次启动，测试 OSGi 观察器在真实配置写线程同时经过 FilesystemKeystoreServiceImpl 和 ConfigurationServiceImpl.writeSnapshot、出现暂存文件时使测试 JVM 退出 76。停机卷上的五份原快照保持，暂存文件 0 字节，两份恢复记录各自只有一个链接，后继业务库 inode 为 7767200。第三次沿原卷启动，Main 生成第六份正式快照。快照口令与 store.save 一致，与此前快照口令不同；可打开原业务库，原钥签名通过原证书验签。已发布 PKCS12 的内容和 inode 保持，两份恢复记录均退出。测试卷正常 TERM 停放，退出 143；中断产生的空暂存文件仍在且未参与快照枚举。
+
+旧双硬链接记录另经新版 provider 在独立同 Root 进程读回、恢复和验签，换 PID、同字节换 inode 均拒绝。已有双链接未决的旧容器在正式启动器这一关仍会停下，本轮未实现旧容器自动迁移。中断实测发生在文件已创建、尚未写入内容的时点。该试验使用新合成业务钥，测试卷独立于原 Docker 业务卷和原六组件卷。
+
+当前测试卷停机读回 pkcs12-container-resume/joint.py parked。原 Docker 业务卷继续沿 docker-launcher-config-publication/runtime.py cold。原六组件仍为 d97260d035，沿 snapshot-publication/cold.py 读回 46 笔历史、835 条签名。绑定网关仍为 6910532，五笔维护封存、原任务 SUCCEEDED、开关 OFF。单包移除号仍只沿 pkcs12-retained-root-readback/check.py cold。12 个父项冻结闭环 0/12，外部延期仍限原三项。 [实装检查点](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ## 2026-11-21 Alpine 启动器在 Equinox 配置不完整时停止
 
 旧容器启动器在模板已存在但读失败时仍发布了 18,816 字节的 bundle 列表。Docker a71f3cf 改为先复制模板，再让已安装的生成器追加 bundle 列表；文件同步成功才改名，目录同步成功才继续启动。27 项容器回归通过。旧版和当期 Core 的隔离 ARM64 夹具都验证了未改名时文件同步报错保留旧配置，以及改名后目录同步报错时完整配置已可见。撤去故障后正常发布得到相同摘要。两处 EIO 由独立 Python 驱动定向注入。

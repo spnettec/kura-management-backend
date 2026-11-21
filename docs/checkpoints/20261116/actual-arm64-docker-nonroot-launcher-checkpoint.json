@@ -1084,5 +1084,27 @@
       "mode": "0600",
       "owner": "122:122"
     }
+  },
+  "jointPasswordSnapshotRecovery20261121": {
+    "source": "ac9b8bb80cd9bc92de611afb693bba71f7a595bd",
+    "image": "sha256:bddb6a20931d1943b6b55e76a54a853e832daba6a506a56d4694330976a814ca",
+    "root": [
+      39,
+      7766080
+    ],
+    "container": "0986cdf082f72c1d668491a2ef626b360d804867ac33c2f8908348c123f85d81",
+    "initialSnapshot": "1795274759946",
+    "recoveredSnapshot": "1795274773516",
+    "businessInode": 7767200,
+    "originalCertificate": "f562375bee90b63e1c1ba959c2d16363b8ab90fc65e35fce7396bb733dd7c99a",
+    "oldSnapshots": 5,
+    "finalSnapshots": 6,
+    "recordsAtCut": 2,
+    "recordsAfter": 0,
+    "cutExit": 76,
+    "finalExit": 143,
+    "scope": "isolated fixture, ordinary packaged Java Main and OSGi services, OSGi observer interrupts before first snapshot payload byte",
+    "legacy": "original provider recovery supported; legacy pending hardlinks still prevent ordinary container startup",
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-container-resume"
   }
 }

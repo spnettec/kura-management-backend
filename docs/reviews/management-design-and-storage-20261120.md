@@ -307,3 +307,5 @@ Docker 启动器的三版真实 OSGi 工厂更新复用了原镜像、原卷及�
 已绑定 agent 的回执恢复修正只改变 Python 维护代码及测试。将新旧发行清单逐项比较后，复用同一份 ARM64 Rust 二进制和网关原 bridge，本轮新增一个 7,061,640 字节的 deb。四个进程中断检查使用同一包；原网关、中心和数据库保持停放。[构建输入与包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/bound-agent-receipt-publication/release.json)
 
 2026-11-21 的容器启动器修复复用了四份已构建的当前 deb 和四份原 DP。新镜像比前一版仅多 12,523 字节，两版各约 705 MB，但最终六层只有两层摘要相同。Docker 报告新版共享 308.9 MB、独占 395.7 MB。八个构建输入使用 APFS 克隆，文件长度合计 384,058,352 字节，镜像验完已逐个核对并撤下。构建日志还显示，Dockerfile 在复制启动脚本之后才为 builder 安装 JRE 等依赖；这次启动脚本变化使该步骤重新下载包，单是 headless JRE 这一步就跨过数分钟。没有单独测量宿主物理空间增量。[镜像大小及构建输入](../../../.management-close-20261116/core-rtc-hotplug-20261120/docker-launcher-config-publication/storage.json)
+
+2026-11-21 的独立正式 Main 改密试验，三次启动共用一份合成业务卷和一个容器。停机时该卷占 24,788 KiB，Docker 报告容器可写层为 346,448,373 字节。只读统计容器内 /run/kura-container/configuration/org.eclipse.osgi，177 个常规文件的逻辑长度合计 345,975,616 字节。这一现场的主要写层开销来自 Equinox 框架缓存。应用数据卷、镜像独占层、容器可写层分别计量，宿主物理增量未单独测量。[容器、业务卷与缓存实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs12-container-resume/storage.json)

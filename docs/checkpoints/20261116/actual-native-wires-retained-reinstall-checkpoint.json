@@ -6222,5 +6222,12 @@
     },
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/snapshot-publication",
     "remaining": "same Main password randomization and snapshot interruption"
+  },
+  "containerProviderCompatibility20261121": {
+    "candidate": "ac9b8bb80cd9bc92de611afb693bba71f7a595bd",
+    "originalSixInstalled": "6.0.0~git20261121230523.d97260d-1",
+    "provider": "bd519550b3fdc8ef2d56cf83092579f40c52a5a2294d602c2d7486456e148075",
+    "newReleaseTests": 96,
+    "reference": "actual-arm64-docker-nonroot-launcher-checkpoint.json#jointPasswordSnapshotRecovery20261121"
   }
 }
