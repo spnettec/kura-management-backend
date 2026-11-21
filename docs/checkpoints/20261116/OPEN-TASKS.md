@@ -1,3 +1,11 @@
+## 2026-11-22 当前 Core 全量验证与 HTTPS keystore provider 的同卷回退、升级
+
+Core `796e0bacf5` 在 Debian ARM64、UID 1000、JDK 21 和 Maven 3.10.1 上离线执行 `-Posgi-it verify`。82 个模块构建成功，2158 项测试通过，其中真实 Equinox 68 项，失败、错误、跳过均为零。包含本版新增的旧式双硬链接恢复用例。与本版正式 deb 对照，41 个 Core 插件的 1,208 个 class 内容相同；Equinox 用到的配置和 keystore JAR 均与该次模块输出逐字节相同。
+
+在同一正式容器 Main 中，瞬时停用 keystore bundle 后，HttpsKeystore 服务注销，回环 HTTPS 拒绝连接。重新启动同一 bundle，服务编号从 84 变为 248，Main 的 PID 与启动时间保持。重新取得的服务用 localhost 私钥签署随机挑战，原证书验签成功，新的 HTTPS 连接出示同一证书并返回 200。
+
+专属卷 Root `39:7909345` 随后通过两个完整 ARM64 发行镜像从 796e0ba 回退至 ac9b8bb，再升回 796e0ba。两版均从真实服务验证签名，并通过回环 HTTPS 核对证书指纹。各版运行中的 bundle 实际返回的 PendingStorePassword.class 与本版镜像对应的正式 provider JAR 匹配，两个 class 的摘要不同。三份原快照、HTTPS 密钥库和两份身份文件的 inode、内容、权限、属主、大小和 mtime 在各阶段一致。各 Main 为 UID 122，NNP=1，有效能力为零，全部正常 TERM 停机。 原绑定网关及六组件停放，冻结 0/12。[对应运行记录](actual-arm64-docker-nonroot-launcher-checkpoint.json)
+
 ## 2026-11-22 ARM64 Docker 发行输入与启动器分层
 
 Docker 896b976 在 Maven 复用同一工作目录时按所选输入发布。旧版和当前 Core 双向切换后的 deb、provider JAR、启动器与各自来源配对；带遗留 DP、禁用 DP 和缺失指定 DP 三种边界已验证。固定包只换启动器时 395,674,305 字节的安装层命中缓存。四包 235 个 JAR 与发行输入配对。原绑定 agent 的 6910532 升级沿既有编号完成；本轮停机冷读核对五笔维护、三代来源、SUCCEEDED 和 OFF。完整父项冻结 0/12。[Docker 实装检查点](actual-arm64-docker-nonroot-launcher-checkpoint.json)

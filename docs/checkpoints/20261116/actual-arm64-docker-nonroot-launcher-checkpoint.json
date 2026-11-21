@@ -1193,5 +1193,67 @@
       "missing-selected.log": "505fb6539711c19850c1310d717716609bb7d2166071f90d3cf83c6210144854",
       "HANDOFF.md": "ef9864f5d4ad65155f0f08dcdfcd17c783156cb1bc0082ecd94707ca7fa2deab"
     }
+  },
+  "httpsProviderCycleAndReleaseHandover20261122": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/core-provider-reactor-796e0ba",
+    "core": "796e0bacf54a12315dd3365abc62aa17d299dec5",
+    "tree": "1815fe0445447930ddb2a95df47d0079d557389f",
+    "modules": 82,
+    "totals": {
+      "tests": 2158,
+      "passed": 2158,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "equinox": 68,
+    "comparedCoreClasses": 1208,
+    "providerRoot": [
+      39,
+      7909345
+    ],
+    "httpsServiceIds": [
+      "84",
+      "248"
+    ],
+    "beforeAfterCertificate": "b56205e6ae955c3a9ef6287e4140ec6defc39d222ad4e9f2adf1df533d9fe046",
+    "providerVersions": [
+      "2.0.0.202611211523",
+      "2.0.0.202611212359"
+    ],
+    "frozen": "0/12",
+    "hashes": {
+      "result.json": "3700853c091d74205faa4f913844f96118641f646577285c3347395b180817e0",
+      "intent.json": "023997cd66cb89e8c7799c016f92ee7da037340da529ee4fdfc530333d351c18",
+      "verified-source.json": "4f5ab75dd9173be48821a6688c528a94864044770fd83188e3dfb3a5d31e071f",
+      "environment.log": "af50c53d7bc50a014010f46ace8f830ede231cf7ca14ef50217263d95b773bc2",
+      "removed-original.log": "898881fc0a1fc777c9c0c4bfe1cec52e797595fc5523fa6061ff774bb14da546",
+      "bundles.json": "85a9bbd5bbcb8c24cd72616b82497399651a1d1f32109179190a5a6c8333aee9",
+      "core-plugins.json": "bb0e6a4d5612ef946ef2a5ed68176659b64c1561f961cca65657a15f9b2b8965",
+      "field-before.json": "7481a85853b9db24a2e88e2c7d4bdffac1b6774903e74cc326c0a6bd9a172e13",
+      "provider-stopped.json": "d1027e009d0406ed8ec9e63e9ab53236d124cc4bb791d31070fa9847ca69042a",
+      "provider-resumed.json": "0cd4bb458bb562ba167d9978664f09487ade0a4d8897c822966fe9c9327a91ff",
+      "field-parked.json": "760f3c69a58084246565f34f083637175bdf7acb810e43e9e702edb3deea8b20",
+      "rollback-intent.json": "3b58624b9aadbab71920ee8ad507b8fe497ac222728bef26e5113ac5744e8e4d",
+      "rollback-live.json": "e29c7661b5ceeabcdecb429bfb1b15cf187287128b56796675c7aae44d6e2c05",
+      "rollback-field.json": "2490c72a5119f1bea970605286f1dba294159439edd3678b8a1cec0483e570f0",
+      "upgrade-intent.json": "08331c747aafc2ac1dd7939a7eb154c7b21ed3e615b23a61f679a8249013790a",
+      "upgrade-live.json": "0b018aefe48a5d3e14b733fbe946efeb92cfea5d01a48426bf7b748708b866f5",
+      "upgrade-field.json": "7cf0c5e0d7621e623413f865ad0547c16305b2c34e72b37c1fdac47a2042ad33",
+      "field-storage.json": "571ae4ee211bfcbb0e5a1d5c34fbb4530c1011050c01fd5d7a420efdcdc51806",
+      "framework-storage.json": "c7e2b531229b3a543e1e7f5a822cee4b4d415186b464e3592f61c8a269a3c382",
+      "storage.json": "d70bbb60a6a9af1465cc702353f014425452777e8c9371a475a9597a4d7e5f94",
+      "retired.json": "7029c335061c7587c37306c800d8e424488f2a139367947a91cce2db3b4379b9",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "original-three-after.json": "3518b48260c063e6ac79cedaa6ae4f8c82ebad25c308a0c1a348f19c026fd5f4",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd",
+      "ProviderCycle.java": "be1924fdfa1d2ca03779a29136866bcd98567c13016a5c3ae41f25fd7f5fe272",
+      "ReadHttps.java": "9f23a170a9f2d100910487a72d7047369a22902e93cfe33fbe09b0187e0890f4",
+      "observer.jar": "a98c6394adfe3becf2bf60e7b5827ec921d6aa25a047bc05d9f3588205806f56",
+      "read.jar": "44e37a20c20c8ad466fb1329452d77366adabf9edc645f1e19a1cc5010780206",
+      "HANDOFF.md": "f3b09ff2d282828d322a86eb03c4c298b2af3a262d1b9fa97fde32d2cfb7a76d"
+    }
   }
 }
