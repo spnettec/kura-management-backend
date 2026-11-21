@@ -1,3 +1,9 @@
+## 2026-11-21 三个实装启动入口处理配置同步失败
+
+Core 09691dad70 已在原六组件 Root 39:6611544 升级。三个实装启动器使用正式凭据，在私有临时单元的 fsync 返回 EIO 时均退出 1，保留原配置和 writer 状态。恢复正常同步后，正式 Main 以 UID 997 运行，生成的配置与独立发布器摘要一致，HTTP /admin/auth 为 200。15 项 ARM64 启动回归通过。目录同步失败后已改名的新文件和下一次启动的处理另有定向测试。
+
+Core 升级后，原加载顺序保持，锁由正式注册表检查重新建立。最终六包 installed，Main 和 agent 均 disabled、inactive，正常停机后核对 43 笔维护、778 条签名阶段、319 份运行文件和 101 个夹具对象。最新只读入口为 launcher-writeback/cold.py。冻结闭环 0/12，外部延期维持原三项。[实装与启动检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 当前 Core 实装与 ARM64 全量 OSGi 基线核对
 
 上次完整构建 `ba84bdcfb4` 的 ARM64/JDK 21 日志摘要与原回执一致，82 模块、2151 项通过、2 项跳过。当前实装 Core `1af242d3e8` 相对该版的 51 个 Git 路径改动全部位于 kura/distrib。两个正式 ARM64 deb 的 233 个 JAR 路径与 SHA-256 完全相同，原六组件 Root `39:6611544` 停机只读挂载后，dpkg 登记的 233 个 Core JAR 也逐一匹配当前 deb。

@@ -5926,5 +5926,111 @@
     ],
     "root": "39:6611544",
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/core-osgi-distribution-parity/HANDOFF.md"
+  },
+  "installedLauncherConfigurationWriteback20261121": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/launcher-writeback",
+    "core": "09691dad70082d44d00fbf008ffcba383be94cd8",
+    "packageBytes": 205072788,
+    "cohort": {
+      "regularFiles": 621,
+      "unchangedJars": 233,
+      "changed": {
+        "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/bin/kura_framework_config.py": {
+          "before": [
+            1697,
+            "b76e04a4e455785ef93485901a45b72ca773179a3bd5c65a34e8159bacab6405"
+          ],
+          "after": [
+            1766,
+            "bf12e9dbf45569b0d04672e57ff1a6d3fa1ed26286c79f06e288fd37c9b95b27"
+          ]
+        },
+        "./opt/eclipse/kura_6.0.0-SNAPSHOT_linux/libexec/key-backup/manifest.json": {
+          "before": [
+            6177,
+            "56a846ed4df546406486ae1e0acba0e019cc901c309086f0cb76b8d94c28c958"
+          ],
+          "after": [
+            6177,
+            "11603191bbebb751fcee2d18e33402b5be0da2cbb63cdc46786c40625bd76913"
+          ]
+        }
+      }
+    },
+    "launchers": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "unitConditions": [
+        "User=kurad",
+        "Group=kurad",
+        "UMask=0077",
+        "NoNewPrivileges=yes",
+        "PrivateTmp=yes",
+        "LoadCredential=kura_encryption_key:/etc/kura/credentials/kura_encryption_key",
+        "InaccessiblePaths=/etc/kura/credentials /var/lib/kura-key-service"
+      ],
+      "negative": {
+        "foreground": {
+          "exit": 1,
+          "writeback": "EIO",
+          "originalInodeAndContent": true,
+          "noStagingFile": true,
+          "writerSetUnchanged": true
+        },
+        "background": {
+          "exit": 1,
+          "writeback": "EIO",
+          "originalInodeAndContent": true,
+          "noStagingFile": true,
+          "writerSetUnchanged": true
+        },
+        "debug": {
+          "exit": 1,
+          "writeback": "EIO",
+          "originalInodeAndContent": true,
+          "noStagingFile": true,
+          "writerSetUnchanged": true
+        }
+      },
+      "positiveConfig": "4975a3f675177b9859c3ef37d8711229e14f7e730ef7cd019f8f34d23f0c31e8"
+    },
+    "main": {
+      "root": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "mount": "39:6611544",
+        "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+      },
+      "pid": "5637",
+      "config": {
+        "sha256": "4975a3f675177b9859c3ef37d8711229e14f7e730ef7cd019f8f34d23f0c31e8",
+        "bytes": 22494,
+        "mode": "0o600"
+      },
+      "http": 200,
+      "uid": "997"
+    },
+    "cold": {
+      "root": "39:6611544",
+      "request": "3b394c9a-6765-4094-9de2-c979461a5fd8",
+      "status": {
+        "kura-core": "6.0.0~git20261121223356.09691da-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211339.83f237e-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7704360,
+      "allSigned": 778,
+      "histories": 43,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false
+    },
+    "directoryErrorEvidence": "injected regression",
+    "pendingParents": 12
   }
 }
