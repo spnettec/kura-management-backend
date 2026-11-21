@@ -1,3 +1,9 @@
+## 2026-11-21 六组件升级保留站点注册表权限及八个 provider 续配
+
+原 ARM64 六组件 Root `39:6611544` 已升级至 Core `5884bf5a6a`、Networking `448909b`、GWT `9de7a7b`、Deployment `ef50b67`、Wires `4f13cf1`，agent 保持 `5be64b7`。Core 复制保留了注册表的四行、0640 及属组 990，重建 framework 后旧锁不在，原 inode 无内核锁。随后四个 sibling 联合升级，注册表的 inode、权限、属组、时间和内容全部相同。六包、SQLCipher 和 84 份保护文件均已停机冷读。最新入口为 `sibling-registry-maintenance/parked-readback.py`。
+
+12 仓的 13 个 deb 统一保留站点注册表的属组、访问 ACL 和末行。修复前，已登记或没有登记的组件在维护时都能把 0640 改成 0644。另以真实 dpkg 和仅提供依赖的 Core 验证八个可选包升级：锁争用使 Artemis 半配置，放锁后在原 Root 续配，全部八包通过 dpkg 校验，原 ACL 和 inode 保持。移除八包返回 0，但最后一个包的移除使逻辑安装链接消失，物理表残留 yofc-runtime；该现场已停止，未发起 purge。对照实测表明，Core 声明共同目录可保住最后一个 sibling 移除时的链接，但 Core 自身的 postrm 此时也要能识别原物理目录。正式 Core 修复和最后一个 sibling 的完整卸载仍待验。冻结 0/12。[发行件、原六组件与八包中断记录](actual-passive-addon-dpkg-rollback-checkpoint.json)
+
 ## 2026-11-21 防火墙启动时从实际规则识别转发需求
 
 正式启动器曾把注释里的 `-A forward-kura` 当作开启网关转发的请求。在只有回环接口的两个 ARM64 网络中，分别运行旧版和修正版的标准发行包启动器。两边均成功装入 IPv4 注释规则和 IPv6 转发链规则，站点文件内容一致。旧版把两族转发都由 0 设为 1；Networking `bd8ccdd` 保留 IPv4 为 0，仅将 IPv6 设为 1。两种 deb 共用相同修正，15 项测试通过，沿用 Core `5884bf5a6a`。此修正尚未装入两个停机保留现场；转发 broker 及其余维护矩阵继续，冻结 0/12。[发行件和实际内核结果](actual-installed-firewall-action-receipt-checkpoint.json)

@@ -386,5 +386,537 @@
       "paired/final-installed.json": "1688a4edfa43c73479007fc764b547d81f89fe6d2e63a2b8b95ec1f383857ccc",
       "paired/parked.json": "84c0e2728de5c883da56115ce0b399388d16a5e0decb8cb038f40cec8561c7f4"
     }
+  },
+  "privateRegistryMaintenance": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/sibling-registry-maintenance",
+    "original": {
+      "registered": {
+        "exact": false,
+        "mode": "0o644",
+        "group": 0,
+        "bytes": "wires\nsite-last"
+      },
+      "absent": {
+        "exact": false,
+        "mode": "0o644",
+        "group": 0,
+        "bytes": "wires\nsite-last\n"
+      },
+      "remove": {
+        "exact": false,
+        "mode": "0o644",
+        "group": 0,
+        "bytes": "site-last\n"
+      },
+      "install": {
+        "exact": false,
+        "mode": "0o644",
+        "group": 0,
+        "bytes": "site-last\nwires\n"
+      }
+    },
+    "corrected": [
+      {
+        "registered": {
+          "exact": true,
+          "mode": "0o640",
+          "group": 1234,
+          "bytes": "wires\nsite-last"
+        },
+        "absent": {
+          "exact": true,
+          "mode": "0o640",
+          "group": 1234,
+          "bytes": "wires\nsite-last"
+        },
+        "remove": {
+          "exact": false,
+          "mode": "0o640",
+          "group": 1234,
+          "bytes": "site-last"
+        },
+        "install": {
+          "exact": false,
+          "mode": "0o640",
+          "group": 1234,
+          "bytes": "site-last\nwires\n"
+        }
+      },
+      {
+        "accessAclExactAfterInstallAndRemove": true,
+        "unsafeRootModeRefused": true
+      }
+    ],
+    "packages": {
+      "kura-artemis": {
+        "source": "c34b61d4edefbf031c872fe300105e66ee669664",
+        "tree": "18b35b68d195f3ff48a7d22545f210cfce34c863",
+        "sha256": "4f0d502e36756c5b2a767431f65beb530df7ed4ac5536b21fb9897c2dd25ad4d",
+        "bytes": 15378906
+      },
+      "kura-camel": {
+        "source": "b5da84df9e345ab45e76c55e0ba058aed6926ffd",
+        "tree": "f44a44056594c8ce1f8d5b821fb3897a21c4035c",
+        "sha256": "0205ae3745c86471f019d78301c9711c757d981f705a0e427ba5bacdf4f2cb79",
+        "bytes": 31547644
+      },
+      "kura-cloud": {
+        "source": "e08fb5deb59148533bd8a3089960eca94176cc63",
+        "tree": "21da9b8bb494e6f30b0c08238c38de7e84e135a8",
+        "sha256": "f9fb082cfbe3d181eafbf3948b417815a29798968d7f44522af7c726e057d190",
+        "bytes": 4174288
+      },
+      "kura-container": {
+        "source": "c608ac29df20b4a178f4756e30f4b143ab423481",
+        "tree": "d8c267e8f484a0021af181ca153aef3a40ed3cf1",
+        "sha256": "b51c5dbb0688c6757cfb8d25cc93fdf26e5f486e0cb375af44a44b12361d86d5",
+        "bytes": 15973094
+      },
+      "kura-deployment": {
+        "source": "ef50b6727bf1dcfa8f2d8556b64e622c72e5b36c",
+        "tree": "34ffbbaacef6043cfcf01eb7b52a361da4bddf0d",
+        "sha256": "f079f43c814374436966e8c04018f6ea8f063514c45bca7887420c5c352376c0",
+        "bytes": 218966
+      },
+      "kura-firewall-only": {
+        "source": "448909bf9167ce27150bab2005606bfcdb570a7f",
+        "tree": "fbd5a3599f9aa142b2239af78e5fa2641cb269ee",
+        "sha256": "154c688399007808ace3bb3f3ae4e51ca9b06e75c87d8fc651449f6eabe1716e",
+        "bytes": 459302
+      },
+      "kura-management-ui": {
+        "source": "9de7a7ba540f217d921c2abfeecb064499a340c4",
+        "tree": "ba043b92da7e8b1c97f3e4ae26407b5544417b93",
+        "sha256": "036b66153015c8a83f8b5cc6c5b8a1c844917944ac96418ba77fbfb2e3731efb",
+        "bytes": 34136630
+      },
+      "kura-networking": {
+        "source": "448909bf9167ce27150bab2005606bfcdb570a7f",
+        "tree": "fbd5a3599f9aa142b2239af78e5fa2641cb269ee",
+        "sha256": "03caa3c5292641dc2ac944c633752c6d287d43c8e7f9d79063230336ad806ce2",
+        "bytes": 9405478
+      },
+      "kura-opcua": {
+        "source": "ec46173fce605e90c2c7c3e8767919c78f26bf71",
+        "tree": "d7533ae3681098359b3af1115d58579388cdca9e",
+        "sha256": "0ef065486058cf5f7aa7c55982601e0eefbf90fdf5df5fd4f4aeffd61a0340bb",
+        "bytes": 5839712
+      },
+      "kura-position": {
+        "source": "882ea648a5298968fcfe1322421cad1fc85fa4b1",
+        "tree": "cd4a93718490bde4406bde3141250b27d5e553d1",
+        "sha256": "c80b875ff574ce57fb95d024acafd5faa4a319f491999f67bbe60fa0260dfe7b",
+        "bytes": 138270
+      },
+      "kura-triton": {
+        "source": "1b6d15b5f9a29e6bd9f17d68da74e284be6dbad9",
+        "tree": "a2d260b79bf03cc3567618eb5d59b9a0829ae6c2",
+        "sha256": "60ce0ba862db5bca0f4698bbff994290600a8ef5bb1f93056d0c53925fe08155",
+        "bytes": 11954614
+      },
+      "kura-wires": {
+        "source": "4f13cf163300c528c098cba5360b2d7ff781df1f",
+        "tree": "f0f471d8aaeb14678099be1678b8e780d7cd825d",
+        "sha256": "2db70b2498a525f20bf107c3920afb56d39d98bc38022f9c4c35ae8d5118062e",
+        "bytes": 119523542
+      },
+      "kura-yofc-runtime": {
+        "source": "ab1416b1f0a5d47c0659028b6bd64c3f09294058",
+        "tree": "2b839e1d9aaf379f3ee38e0092326f05a047015c",
+        "sha256": "504e0cbffe472da61a963f91d1985d481a4e8696e34f0e0a7ce2f7870a33dba0",
+        "bytes": 10533462
+      }
+    },
+    "packageDiffs": {
+      "kura-artemis": {
+        "version": "1.0.0~git202611210452.c34b61d-1",
+        "previousVersion": "1.0.0~git202611201627.576ee7f-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/artemis/sibling_registry.sh"
+        ],
+        "entries": 20,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-camel": {
+        "version": "1.0.0~git202611210452.b5da84d-1",
+        "previousVersion": "1.0.0~git202611201627.47dbcab-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/camel/sibling_registry.sh"
+        ],
+        "entries": 19,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-cloud": {
+        "version": "3.0.0~git202611210452.e08fb5d-1",
+        "previousVersion": "3.0.0~git202611201627.24f1df3-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/cloud/sibling_registry.sh"
+        ],
+        "entries": 22,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-container": {
+        "version": "3.0.0~git202611210452.c608ac2-1",
+        "previousVersion": "3.0.0~git202611201627.ee10ec2-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/container/sibling_registry.sh"
+        ],
+        "entries": 14,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-deployment": {
+        "version": "2.0.0~git202611210452.ef50b67-1",
+        "previousVersion": "2.0.0~git202611202327.15c50ca-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/deployment/sibling_registry.sh"
+        ],
+        "entries": 27,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-firewall-only": {
+        "version": "3.0.0~git202611210452.448909b-1",
+        "previousVersion": "3.0.0~git202611210448.bd8ccdd-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/firewall/sibling_registry.sh"
+        ],
+        "entries": 31,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-management-ui": {
+        "version": "3.0.0~git202611210452.9de7a7b-1",
+        "previousVersion": "3.0.0~git202611210130.8870575-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/management-ui/sibling_registry.sh"
+        ],
+        "entries": 20,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-networking": {
+        "version": "3.0.0~git202611210452.448909b-1",
+        "previousVersion": "3.0.0~git202611210448.bd8ccdd-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/networking/sibling_registry.sh"
+        ],
+        "entries": 71,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-opcua": {
+        "version": "2.0.0~git202611210452.ec46173-1",
+        "previousVersion": "2.0.0~git202611201627.4280b57-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/opcua/sibling_registry.sh"
+        ],
+        "entries": 19,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-position": {
+        "version": "2.0.0~git202611210453.882ea64-1",
+        "previousVersion": "2.0.0~git202611201855.eafa1d3-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/position/sibling_registry.sh",
+          "opt/eclipse/kura/siblings/position/3/org.eclipse.kura.linux.position.spi-1.0.0-SNAPSHOT.jar"
+        ],
+        "entries": 17,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-triton": {
+        "version": "2.0.0~git202611210453.1b6d15b-1",
+        "previousVersion": "2.0.0~git202611201627.7abe682-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/triton/sibling_registry.sh"
+        ],
+        "entries": 13,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-wires": {
+        "version": "3.0.0~git202611210453.4f13cf1-1",
+        "previousVersion": "3.0.0~git202611201623.5605b6b-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/wires/sibling_registry.sh",
+          "opt/eclipse/kura/siblings/wires/4s/org.eclipse.kura.script.provider-1.0.0-SNAPSHOT.jar"
+        ],
+        "entries": 28,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      },
+      "kura-yofc-runtime": {
+        "version": "1.0.0~git202611210453.ab1416b-1",
+        "previousVersion": "1.0.0~git202611201627.f1204e6-1",
+        "changedControl": [
+          "control",
+          "md5sums",
+          "postrm"
+        ],
+        "changedPayload": [
+          "opt/eclipse/kura/libexec/addons/yofc-runtime/sibling_registry.sh"
+        ],
+        "entries": 13,
+        "digest": "440552558da4de9479c629f1f30d608bfee9d231d31e16b5490e2e5beb735088"
+      }
+    },
+    "jarDiffs": {
+      "kura-position": {
+        "target": "opt/eclipse/kura/siblings/position/3/org.eclipse.kura.linux.position.spi-1.0.0-SNAPSHOT.jar",
+        "entries": 10,
+        "changed": [
+          "META-INF/MANIFEST.MF"
+        ],
+        "manifestDiff": [
+          "--- \n",
+          "+++ \n",
+          "@@ -6,7 +6,7 @@\n",
+          " Bundle-Name: Eclipse Kura Linux Position SPI",
+          " Bundle-SymbolicName: org.eclipse.kura.linux.position.spi",
+          " Bundle-Vendor: Eclipse Kura",
+          "-Bundle-Version: 1.0.0.202611201837",
+          "+Bundle-Version: 1.0.0.202611202108",
+          " Created-By: Apache Maven Bundle Plugin 6.0.0",
+          " Export-Package: org.eclipse.kura.linux.position.options;version=\"1.0.0",
+          "  \",org.eclipse.kura.linux.position.provider;version=\"1.1.0\""
+        ]
+      },
+      "kura-wires": {
+        "target": "opt/eclipse/kura/siblings/wires/4s/org.eclipse.kura.script.provider-1.0.0-SNAPSHOT.jar",
+        "entries": 40,
+        "changed": [
+          "META-INF/MANIFEST.MF"
+        ],
+        "manifestDiff": [
+          "--- \n",
+          "+++ \n",
+          "@@ -13,7 +13,7 @@\n",
+          " Bundle-Name: Kura Script Engine Provider",
+          " Bundle-SymbolicName: org.eclipse.kura.script.provider",
+          " Bundle-Vendor: Eclipse Kura",
+          "-Bundle-Version: 1.0.0.202611201553",
+          "+Bundle-Version: 1.0.0.202611202108",
+          " Created-By: Apache Maven Bundle Plugin 6.0.0",
+          " Eclipse-BuddyPolicy: ext",
+          " Export-Package: org.graalvm.polyglot"
+        ]
+      }
+    },
+    "registeredSix": {
+      "actualVersions": {
+        "kura-core": "6.0.0~git20261121044005.5884bf5-1",
+        "kura-networking": "3.0.0~git202611210452.448909b-1",
+        "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+        "kura-deployment": "2.0.0~git202611210452.ef50b67-1",
+        "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+      },
+      "root": {
+        "readOnly": true,
+        "root": "39:6611544",
+        "sixPackageVersionsExact": 6,
+        "sqlcipherPackage": "4.6.1-2",
+        "protectedFilesExact": 84,
+        "registryAndLockExact": true,
+        "originalSubmitWithdrawn": true
+      },
+      "beforeCore": {
+        "file": {
+          "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+          "meta": "39|7178771|640|0|990|1|42|2026-11-21 02:15:26.420985889 +0000|2026-11-21 04:37:03.466750665 +0000"
+        },
+        "lock": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "meta": "39|7179238|600|0|0|1|0|2026-11-21 04:37:08.134755205 +0000|2026-11-21 04:37:08.134755205 +0000"
+        },
+        "lines": [
+          "management-ui",
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "afterCore": {
+        "file": {
+          "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+          "meta": "39|7193892|640|0|990|1|42|2026-11-21 02:15:26.420985889 +0000|2026-11-21 04:54:54.345881038 +0000"
+        },
+        "lock": null,
+        "lines": [
+          "management-ui",
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "afterFourAddons": {
+        "file": {
+          "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+          "meta": "39|7193892|640|0|990|1|42|2026-11-21 02:15:26.420985889 +0000|2026-11-21 04:54:54.345881038 +0000"
+        },
+        "lock": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "meta": "39|7195248|600|0|0|1|0|2026-11-21 04:55:55.632678437 +0000|2026-11-21 04:55:55.632678437 +0000"
+        },
+        "lines": [
+          "management-ui",
+          "wires",
+          "deployment",
+          "networking"
+        ]
+      },
+      "supersededLock": {
+        "original": [
+          39,
+          7179238
+        ],
+        "kernelLocks": []
+      }
+    },
+    "isolatedEight": {
+      "priorInstalled": {
+        "code": 0,
+        "status": {
+          "kura-artemis": "installed",
+          "kura-camel": "installed",
+          "kura-cloud": "installed",
+          "kura-container": "installed",
+          "kura-opcua": "installed",
+          "kura-position": "installed",
+          "kura-triton": "installed",
+          "kura-yofc-runtime": "installed"
+        }
+      },
+      "unpack": {
+        "code": 0,
+        "status": {
+          "kura-artemis": "unpacked",
+          "kura-camel": "unpacked",
+          "kura-cloud": "unpacked",
+          "kura-container": "unpacked",
+          "kura-opcua": "unpacked",
+          "kura-position": "unpacked",
+          "kura-triton": "unpacked",
+          "kura-yofc-runtime": "unpacked"
+        }
+      },
+      "locked": {
+        "code": 1,
+        "status": {
+          "kura-artemis": "half-configured",
+          "kura-camel": "unpacked",
+          "kura-cloud": "unpacked",
+          "kura-container": "unpacked",
+          "kura-opcua": "unpacked",
+          "kura-position": "unpacked",
+          "kura-triton": "unpacked",
+          "kura-yofc-runtime": "unpacked"
+        }
+      },
+      "resumed": {
+        "code": 0,
+        "status": {
+          "kura-artemis": "installed",
+          "kura-camel": "installed",
+          "kura-cloud": "installed",
+          "kura-container": "installed",
+          "kura-opcua": "installed",
+          "kura-position": "installed",
+          "kura-triton": "installed",
+          "kura-yofc-runtime": "installed"
+        }
+      },
+      "upgraded": {
+        "root": [
+          2097164,
+          7196515,
+          4026534179
+        ],
+        "allVerified": 8,
+        "registry": {
+          "ino": 7196804,
+          "uid": 0,
+          "gid": 1234,
+          "mode": 416,
+          "ctime": 1795237033942378181,
+          "mtime": 1795237033942378181,
+          "acl": "0200000001000600ffffffff02000400ab75000004000000ffffffff10000400ffffffff20000000ffffffff",
+          "sha256": "87426bc91b524996fd041f1366aede29f7aed722d531e090722085b2361029ec"
+        }
+      },
+      "remove": {
+        "originalRoot": [
+          2097164,
+          7196515,
+          4026534179
+        ],
+        "aliasAbsent": true,
+        "actualRegistry": "site-first\nyofc-runtime\nsite-last",
+        "mode": "0o640",
+        "gid": 1234,
+        "purgeIssued": false,
+        "removeExitCode": 0
+      },
+      "disposition": "Original stopped fixture retained. No purge dispatched. Core is a dependency-only package."
+    },
+    "directoryOwnershipProbe": {
+      "lastAddonRemoveAndPurgeAliasExact": true,
+      "atCorePostrm": "absent",
+      "physicalDirectorySurvivesPackagePayloadRemoval": true
+    },
+    "frozen": "0/12"
   }
 }
