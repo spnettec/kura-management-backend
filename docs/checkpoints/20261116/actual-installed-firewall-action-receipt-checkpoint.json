@@ -2431,5 +2431,245 @@
     },
     "remaining": "The 0.1.9 worker is installed on the six-component Root. A successful Java Main write with this precise worker release is unverified. The temporary Main site rejected its changed root device before any operation.",
     "frozen": "0/12"
+  },
+  "reducedCallerAndCoreConfigureAcrossBoot": {
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-reduced-caller",
+    "root": {
+      "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+      "mount": "39:7320076",
+      "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+    },
+    "installedForPublication": "b1c664aaeba97c1b6b01d2a679fcd18919f38c52",
+    "networking": "71f30b6b18af9211a9fcbc4a672b20700737b748",
+    "worker": "4d1e929c294cc69295b55f69157d124b3d24fd43",
+    "actualMain": {
+      "id": "9726c608-97e8-4f85-9930-8d87593af441",
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "scope": "03c2a4322584908eda92d32e0787d488c76227bd69f2ed039e841d29e3a11798",
+      "request": "2e46d2c6cadea5b95f63e1723a83c09310f5fd04846044ca25bdefb8270aaf5a",
+      "commands": 2,
+      "rules": [
+        "-A forward-kura-ipf -s 127.0.0.21/32 -d 127.0.0.21/32 -i lo -o lo -p udp -m udp -j ACCEPT",
+        "-A forward-kura-ipf -s 127.0.0.21/32 -i lo -o lo -p udp -m state --state RELATED,ESTABLISHED -j ACCEPT"
+      ],
+      "caller": "0000000000001400 0000000000000400 0000000000001400",
+      "forwarding": [
+        1,
+        0
+      ]
+    },
+    "restoredFilter": true,
+    "coreAndNetworkingPurged": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "packages": [
+        "not-installed",
+        "not-installed"
+      ],
+      "historyFiles": 14,
+      "keysExact": true,
+      "workerRemoved": true
+    },
+    "oldCoreCold": {
+      "root": "39:7320076",
+      "checked": true,
+      "packages": {
+        "kura-core": "half-configured",
+        "kura-networking": "unpacked"
+      },
+      "dpkgStatusUpdates": [
+        "0000",
+        "0001",
+        "0002"
+      ],
+      "fileFingerprints": 34,
+      "firewallHistory": 14,
+      "installationKiB": 293160
+    },
+    "oldResumeRefused": {
+      "exitCode": 1
+    },
+    "oldMain": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "unit": {
+        "MainPID": "0",
+        "NRestarts": "0",
+        "LoadState": "loaded",
+        "ActiveState": "activating",
+        "UnitFileState": "enabled",
+        "InvocationID": "50f5ef4c3e8f4b6e8176015528ebfd46"
+      },
+      "details": "Restart=on-failure\nControlPID=0\nSubState=auto-restart\nFragmentPath=/usr/lib/systemd/system/kura.service\nDropInPaths=",
+      "head": "14f361ea-d0da-4fd5-961f-5bdeb5e2a52d"
+    },
+    "oldRecovery": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "packages": {
+        "kura-core": "6.0.0~git20261121053316.b1c664a-1",
+        "kura-networking": "3.0.0~git202611210524.71f30b6-1"
+      },
+      "purpose": "14f361ea-d0da-4fd5-961f-5bdeb5e2a52d",
+      "ready": true,
+      "historyFiles": 14,
+      "unchangedPhaseFiles": 17,
+      "originalId": "9726c608-97e8-4f85-9930-8d87593af441",
+      "outcome": "APPLIED",
+      "forwardingAtOriginalCompletion": true,
+      "keysExact": true,
+      "auditEmpty": true
+    },
+    "packagedFix": {
+      "source": "bba8b1d1c8ecd1a6d8664f234175fea079397d7d",
+      "tree": "49a66a47b96109c517955c5472e84dec51645bf2",
+      "version": "6.0.0~git20261121054702.bba8b1d-1",
+      "sha256": "3e2a41bd79abc0005dcdac38fe31bb557a08941033aa53f6a1c9a5a4d12ba14b",
+      "bytes": 205016000
+    },
+    "fixedCold": {
+      "root": "39:7320076",
+      "checked": true,
+      "packages": {
+        "kura-core": "half-configured",
+        "kura-networking": "installed"
+      },
+      "dpkgStatusUpdates": [
+        "0000",
+        "0001",
+        "0002"
+      ],
+      "fileFingerprints": 34,
+      "firewallHistory": 14,
+      "installationKiB": 715888
+    },
+    "fixedBoot": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "purpose": "ca630253-02ae-45b5-b559-19f4db6a158d",
+      "unit": {
+        "MainPID": "0",
+        "ControlPID": "0",
+        "NRestarts": "0",
+        "ActiveState": "inactive",
+        "SubState": "dead",
+        "UnitFileState": "enabled",
+        "AssertResult": "no",
+        "AssertTimestampMonotonic": "424227645020"
+      },
+      "historyFiles": 14
+    },
+    "loadedUnit": {
+      "before": {
+        "sha256": "e4fca02b17fbc05a279d0aee9af7ab45279e4f26e0c5b901791882c9ebc56bbe",
+        "meta": "2097163|7328052|644|0|0|1|3367|2026-11-21 05:47:55.769095430 +0000|2026-11-21 05:47:55.769095430 +0000"
+      },
+      "after": {
+        "sha256": "e4fca02b17fbc05a279d0aee9af7ab45279e4f26e0c5b901791882c9ebc56bbe",
+        "meta": "2097164|7328052|644|0|0|1|3367|2026-11-21 05:47:55.769095430 +0000|2026-11-21 05:47:55.769095430 +0000"
+      },
+      "originalRoot": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "installedPairVerified": true,
+      "properties": {
+        "Id": "kura.service",
+        "Names": "kura.service",
+        "LoadState": "loaded",
+        "FragmentPath": "/usr/lib/systemd/system/kura.service",
+        "SourcePath": "",
+        "DropInPaths": "/usr/lib/systemd/system/kura.service.d/kura-networking.conf",
+        "NeedDaemonReload": "no",
+        "Transient": "no"
+      }
+    },
+    "resume": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "purpose": "ca630253-02ae-45b5-b559-19f4db6a158d",
+      "historyFiles": 14,
+      "phaseFiles": 17,
+      "originalId": "9726c608-97e8-4f85-9930-8d87593af441",
+      "result": "APPLIED",
+      "keysExact": true,
+      "auditEmpty": true,
+      "enabledPreserved": true
+    },
+    "ordinaryStart": {
+      "root": {
+        "id": "43fca803c7f463795b8b1200a348aa46c74023d31ba2b3fbb35d090ebff97a3f",
+        "mount": "39:7320076",
+        "machine": "c331177d222f1bcec78a6e1d86e90e1ddc9ecd8754d16102347a23679300cfb8"
+      },
+      "main": {
+        "unit": {
+          "MainPID": "3135",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "InvocationID": "f3f326f8706b403899831c45d6136f49"
+        },
+        "ticks": "42432631",
+        "uid": "997\t997\t997\t997",
+        "capEff": "0000000000001400",
+        "nnp": "1"
+      },
+      "assertResult": true
+    },
+    "finalCold": {
+      "root": "39:7320076",
+      "checked": true,
+      "packages": {
+        "kura-core": "installed",
+        "kura-networking": "installed"
+      },
+      "dpkgStatusUpdates": [],
+      "fileFingerprints": 33,
+      "firewallHistory": 14,
+      "installationKiB": 293460
+    },
+    "finalFirewallHistory": {
+      "prior": 14,
+      "present": 14,
+      "extra": []
+    },
+    "coldVerifier": ".management-close-20261116/core-rtc-hotplug-20261120/main-firewall-reduced-caller/cold.py assert-final",
+    "tests": {
+      "arm64Passed": 50,
+      "macosPassed": 48,
+      "macosSkipped": 2
+    },
+    "storage": {
+      "initialVolumeKiB": 61256,
+      "finalVolumeKiB": 293460,
+      "finalContainerWritableLayerBytes": 4488757,
+      "coreDebs": 49,
+      "coreDebBytes": 10015844740
+    },
+    "sixComponentInstalledCore": "b1c664aaeba97c1b6b01d2a679fcd18919f38c52",
+    "pending": "The firewall call dropped NET_ADMIN on the invoking Java thread. The service-wide NET_ADMIN grant remains, as do the other provider and launcher cases.",
+    "frozen": "0/12"
   }
 }

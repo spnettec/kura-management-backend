@@ -1,3 +1,9 @@
+## 2026-11-21 正式 Main 的低权限调用及共同 purge 后的 Core 配置恢复
+
+在仅有回环的 ARM64 安装 `39:7320076`，Core `b1c664aaeb` 的正式 Main 调用线程从 0x1400 降到 0x0400，经 0.1.9 worker 写入两条 UDP 规则。iptables-save 导出了状态规则，两条均由 iptables -C 核对。IPv4 转发从 0 变为 1，IPv6 保持 0，移除临时规则后两族 filter 表和保存文件恢复。主线程仍为 0x1400。原号 `9726c608-97e8-4f85-9930-8d87593af441` 的结果为 APPLIED。
+
+共同 remove、purge Core 和 Networking 后，原 14 份防火墙记录及两份凭据保持。重装在 Core 的 PREPARED 阶段实际中断，冷盘为 half-configured 和 unpacked。旧版首次续配被开机自动重试的 Main 挡住。停止经过配对核对的该项 systemd 任务后，沿原维护号完成续配。修正版 Core `bba8b1d1c8` 用 AssertPathExists 在服务进程创建前拒绝开机任务。随后在同一 Root 对修正包的升级配置实施中断；冷启动看到 Main 仍 enabled、inactive，MainPID、ControlPID、重试数均为 0。直接完成原配置，17 份阶段记录完整，原业务回执仍是 APPLIED。正式 Main 随后成功启动并正常停止。停机入口为 `main-firewall-reduced-caller/cold.py assert-final`。原六组件继续从 `main-firewall-xt-state/six/parked-readback.py` 续接。ARM64 定向 50 项通过。整进程撤去 NET_ADMIN 及其余 provider/launcher 矩阵继续，冻结 0/12。[普通 Main、两个维护号及停机冷读](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 连接状态规则经新旧发行包交接，原六组件升级到 Core b1c664aaeb
 
 防火墙 worker 0.1.9 保留 Java 规则中 state、conntrack 及取反的原意。ARM64 发行件在 IPv4 和 IPv6 上写入后，iptables-save 与 ip6tables-save 均输出完整 filter 表，六条源规则逐条通过 -C。另在同一隔离 Root 用 0.1.8 写入两族规则，换 0.1.9 后按各自原编号取回 APPLIED，再各用一条内核命令改为新状态条件。新规则可导出和匹配，原四份意图和结果文件的摘要一致。ARM64 Rust 工作区 807 项通过，50 项忽略。

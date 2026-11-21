@@ -39,7 +39,7 @@
 
 从当前六组件停机安装逐文件核对了八组 broker 的发布清单，覆盖 26 个 systemd 单元。以 RTC 为例，读取设备的服务使用 root 身份，能力集为空，设备策略为 closed；时钟 actor 使用 kura-clock 身份，仅获 CAP_SYS_TIME，并启用私有设备目录。当时的 Main 以 kurad 运行，实测保留网络管理、绑定低端口和 DAC_OVERRIDE 三项能力。分开这两个时钟服务，使接触设备路径和调整时钟成为两个可以分别核验的权限。后续 b1b8060be2 已在同一安装撤去 DAC_OVERRIDE。[实装声明](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/typed-unit-declarations.json) · [正式 Main 进程实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/linux-arm64-core-osgi/observed.json)
 
-普通 Main 在 Core 668c7c596e 上以 kurad、NNP=1 运行，通过本机 socket 发布转发规则并读回内核结果。调用线程撤去 NET_ADMIN 后，通过独立服务读取两族内核表也已有实测。主进程仍持有 NET_ADMIN 与 NET_BIND_SERVICE。Core b1c664aaeb 进一步修正了旧工具的连接状态规则编码，六组件已装入该版本。该版本的两族写入和升级验证使用了发行包中的 worker；正式 Main 的那笔成功操作属于前版。[读表、写入与升级范围](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+普通 Main 的调用线程从 0x1400 降至 0x0400 后，已通过本机服务读取 IPv4、IPv6 内核表，并在 Core b1c664aaeb 上用正式发布 worker 写入两条回环转发规则。iptables-save、逐条匹配与保存文件均已核对。主线程仍持有 NET_ADMIN 与 NET_BIND_SERVICE。两包共同 purge、重装和冷启动中断后，原编号仍可查询。Core bba8b1d1c8 使包维护期间的开机任务在派生进程前失败，原维护程序可以直接续配。[实装状态与恢复记录](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 进一步实测表明，Main 中单个线程撤去绕过文件权限的能力后，仍能读取原业务包，并让日志 broker 导出 23,647 字节。冷启动还有具体的文件权限依赖：PID 目标在 root 所有的 /run，已有三个日志可由 kurad 续写，但该账号不能在 /var/log 创建首份日志或新的归档。现已修复两个后台启动入口在 PID 文件打不开时仍派生 JVM 的问题。整项服务撤权还需要覆盖首次创建、滚动归档及 JVM 错误转储。权限实测复用了已装包；随后为两个启动器打包一次，耗时 8.478 秒，新 deb 为 204.24 MB。此时 Core 目录内共 32 个 ARM64 deb，合计 6.54 GB。[权限与启动器实装记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
@@ -85,6 +85,8 @@ SQLCipher 的现场还验证了两个包管理层如何共同恢复。在同一�
 正式 Main 安装过两个版本的加密 SQLite 部署包。升级后注册表指向新版，卸载按当前登记地址删除了新版。冷卷上还留有旧版的 294,611 字节归档，SHA-256 与首次安装的发行件一致。DeploymentAgent 启动时遍历注册表，因此该旧文件不会仅凭位于 packages 目录就被重新安装。这解释了运行卷上的一处小额留存，完整构建目录和多版 deb 的占用要大得多。[旧归档和注册行](../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlite-provider-distribution/archive-identities.json) · [启动和卸载代码](../../../.management-close-20261116/core-rtc-hotplug-20261120/kura-deployment/bundles/org.eclipse.kura.deployment.agent/src/main/java/org/eclipse/kura/deployment/agent/impl/DeploymentAgent.java)
 
 ## 磁盘增长的实测解释
+
+防火墙两代包的恢复实测共用一个持久 Root。新建的具名卷为 61,256 KiB，最终冷读为 293,460 KiB。设备号在宿主 overlay 中改变时，持久 Root 和两份原凭据仍保持身份连续。修正 unit 的 Core deb 长 205,016,000 字节，当前组装目录有 49 份 ARM64 deb，逻辑长度共 10,015,844,740 字节。此轮复用 Maven 缓存、ARM64 worker 和 Networking 包。[双包 purge、中断与分项计量](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 Core 自身的升级也会产生临时复制。安装脚本在替换旧目录前把用户配置、数据、部署包、日志和 sibling 目录暂存，再恢复仍由原包持有的内容。这次六组件停机卷中，这些目录的常规文件合计 164.05 MB，其中 sibling 占 163.54 MB（99.7%）。升级前后抽查的 40 份文件内容均一致，36 份运行文件换了 inode。这里量到的是复制范围的逻辑大小；文件系统是否共享物理块、升级瞬间的可用空间峰值尚未计量。该现场说明，小型业务库也要承担同一次 Core 升级中 sibling 发行文件的暂存成本。[升级、文件与目录计量](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
