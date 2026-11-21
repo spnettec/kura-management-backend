@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 的重启配对修复与 UNKNOWN 跨 purge 恢复
+
+Core 2cecea4bad 修复 /etc/kura 为 0700 时正式 Main 无法读取重启配对的问题。独立 ARM64 原 Root 39:8337304 中，真实 actor 在屏蔽重启目标时记录 UNKNOWN。经历 remove、purge、解包停机与续配后，第二个 Main 仅查询原号 63ec28ee-ad3b-4302-92ac-33b7be6a5083，pending 保留，九份原文件和三份凭据指纹一致。冻结 0/12。 当前停机入口 reboot-original-unknown-cohort/cold.py final。
+
 ## 2026-11-22 OPC UA 多级客户端证书跨重装与撤销
 
 ARM64 正式 Main 以三证书链建立加密 OPC UA 会话，服务端仅信任根 CA。保留重装后从原快照 1795295949685 再次读节点；撤销原客户端叶证书后第三个 Main 被拒绝，成功会话仍为二。旧 Milo 0.6.16 的多级链会话未通，Milo 1.1.2 已实测。最终 purge、正常停放。冻结 0/12。 见 opcua-ca-maintenance/HANDOFF.md。

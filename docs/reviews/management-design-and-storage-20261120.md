@@ -414,3 +414,7 @@ Core 构建输出当前保留 85 个 deb，文件逻辑大小合计 17.40 GB。�
 ### 11 月 22 日 OPC UA 证书兼容与空间
 
 本轮在同一网关安装上保留客户端快照、三证书链和两端身份，先后与 Milo 0.6.16 和 1.1.2 两个隔离服务端对照。旧端点接受证书链后仍未完成读节点，新端点完成保留重装后的加密读取，并拒绝已撤销的原客户端证书。原 Core 和 OPC UA 的 deb 直接复用，测试端点的 32 个 Java 依赖合计 22.21 MB，硬链接指向 Maven 缓存的同一批 inode。测试结束后移除了 21.55 MB 的临时编译输入，本次新增持久卷为零。[验收与空间记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
+### 重启代理对私有配置目录的依赖
+
+在 /etc/kura 为 root:root 0700 的现场，重启调用方原先连公开配对文件也读不到。Core 2cecea4bad 通过 Main 的私有只读挂载提供这一份文件；现有目录、账号与 Root 鉴权继续沿用。独立 ARM64 现场真实保留了一笔结果未确认的操作，包清除后重新解包停机，续配的 Main 能查询原号。新 deb 为 205.11 MB，须保留原号的安装卷最终 du 为 284,528 KiB。后续沿该卷冷读即可。[维护及空间实测](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)

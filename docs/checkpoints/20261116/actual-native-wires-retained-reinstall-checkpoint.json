@@ -8526,5 +8526,28 @@
     "persistentVolumes": 0,
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/opcua-ca-maintenance/HANDOFF.md",
     "legacyCompatibility": "channel chain accepted, session read failed"
+  },
+  "rebootMainPrivateAuthorityMaintenance": {
+    "root": "39:8337304",
+    "operation": "63ec28ee-ad3b-4302-92ac-33b7be6a5083",
+    "namespace": "3d2167db-b67e-4592-a2a1-31c2a7e07719",
+    "firstPid": "4053",
+    "secondPid": "1508",
+    "state": "UNKNOWN",
+    "reason": "DISPATCH_UNCONFIRMED",
+    "maintenance": "ac9be567-9e56-41b2-a41f-30d5023868a0",
+    "rebootPurpose": "5b55ef50-266a-40dd-9ad5-ddc32e737c19",
+    "localFiles": 9,
+    "credentials": 3,
+    "core": "2cecea4baded75a38f605e34e08240b40b70aa4d",
+    "installed": "6.0.0~git20261122052726.2cecea4-1",
+    "newArchiveBytes": 205114036,
+    "initialKiB": 61256,
+    "finalRootKiB": 284528,
+    "volume": "yofc-reboot-original-unknown-cohort-root",
+    "queriesAfterMaintenance": 1,
+    "priorAdmissionFailedBeforePending": true,
+    "crossCodeCohortVerified": false,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/reboot-original-unknown-cohort/HANDOFF.md"
   }
 }
