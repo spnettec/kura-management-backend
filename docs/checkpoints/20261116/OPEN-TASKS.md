@@ -1,3 +1,7 @@
+## 2026-11-22 未决安装回执跨 Deployment 后继升级、直接 purge 与重装
+
+ARM64 原 Root 39:7997146 上，Deployment 由 1b043a4 升至 6c0da58。解包停机后沿原围栏续配，随后直接 purge、停机并沿原 FileMove 围栏重装。升级和重装后的正式 Main 均只读查回 47001 COMPLETED、47002 UNKNOWN。12 份原文件、19 份 Core 配置历史和业务目录身份保持，最终正常停放。冷读入口 pending-install-deployment-upgrade/cold.py restored。冻结 0/12。
+
 ## 2026-11-22 六组件原卷 Deployment 后继升级与解包停机恢复
 
 六组件 ARM64 原 Root 39:6611544 已由 Deployment 1b043a4 升至 6c0da58。解包后正常停机，沿原 Main 和 FileMove 围栏仅续配一次。正式 Main 读回原业务 DP 资源，七个实装类摘要与发行件一致。观察时云端 handler 未注册。停机核对 49 笔维护、892 条签名阶段及 319 项可变文件。当前冷读入口 six-deployment-delay-upgrade/cold.py final。冻结 0/12。

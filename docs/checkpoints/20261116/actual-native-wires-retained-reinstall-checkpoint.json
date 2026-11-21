@@ -8838,5 +8838,42 @@
     "histories": 49,
     "signedPhases": 892,
     "cold": "six-deployment-delay-upgrade/cold.py final"
+  },
+  "pendingInstallDeploymentSuccessorPurge": {
+    "root": "39:7997146",
+    "businessDirectory": "39:8001860",
+    "before": "installed 2.0.0~git202611211658.1b043a4-1",
+    "after": "installed 2.0.0~git202611212200.6c0da58-1",
+    "purge": "not-installed",
+    "mains": [
+      "1549",
+      "1727"
+    ],
+    "results": [
+      "GET install/result 47001 COMPLETED",
+      "GET install/result 47002 UNKNOWN",
+      "provider ab0bd14d797dab242afcfe06cfddce5fb0697408a12e1eb54d890af8c8d2f4cd",
+      "registered packages 1",
+      "Felix target present after restart false"
+    ],
+    "retainedFiles": 12,
+    "coreHistoryFiles": 19,
+    "installedPaths": 15,
+    "fileMoveRemoval": {
+      "action": "remove",
+      "active": "active",
+      "enabled": "enabled",
+      "root": "39:7997146:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+      "schema": 1
+    },
+    "restoredSocket": {
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "UnitFileState": "enabled",
+      "InvocationID": "3582f8d7d3644bbe8f9c99e061a408d8"
+    },
+    "unpackedCold": "pending-install-deployment-upgrade/unpacked-cold.json",
+    "purgedCold": "pending-install-deployment-upgrade/purged-cold.json",
+    "cold": "pending-install-deployment-upgrade/cold.py restored"
   }
 }
