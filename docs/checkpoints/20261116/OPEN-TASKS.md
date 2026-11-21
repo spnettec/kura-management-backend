@@ -1,3 +1,7 @@
+## 2026-11-22 六组件原卷 Core 升级与独立 Main 异常退出接管
+
+六组件 ARM64 原 Root 39:6611544 已将 Core fc17697eba 升至 484c4c843c。正式 Main 读回原业务包、九个快照，FD 8 与升级后 data 目录一致，FD 9 与原生 writer lease 一致。停机冷读 50 笔维护、911 条签名阶段。另在独立内存系统确认 JVM 被 SIGKILL 后原锁释放，systemd 自动启动后继 Main 并接管同一目录。六组件入口 six-native-launch-upgrade/cold.py final；独立进程证据 six-native-launch-upgrade/cold-process.py。冻结 0/12。
+
 ## 2026-11-22 原生启动器并发与正常接管
 
 Core 484c4c843c 修复原生启动器的并发窗口。ARM64 正式 deb 的四种启动方式遇到持锁者均返回 1；正式 Main 两次从自身读到数据目录的同一 FD 8 inode，独立进程在运行时取锁失败、正常停机后成功。运行中三个直接入口均被拒，原 config.ini 与 PID 文件指纹一致。两个临时系统正常停机，现场入口 native-launch-exclusion/cold.py。六组件原卷仍使用 fc17697eba。冻结 0/12。

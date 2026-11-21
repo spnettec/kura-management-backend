@@ -8981,5 +8981,57 @@
     },
     "sixVolumeCandidateInstalled": false,
     "cold": "native-launch-exclusion/cold.py"
+  },
+  "sixNativeLaunchUpgrade": {
+    "root": "39:6611544",
+    "version": "6.0.0~git20261122062804.484c4c8-1",
+    "commit": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "operation": "d7c0a362-b0db-4b9f-b584-47182f736821",
+    "oldData": "39:8326005",
+    "data": "39:8413785",
+    "writer": "2097232:464",
+    "snapshots": [
+      0,
+      1795204400339,
+      1795205738106,
+      1795206392261,
+      1795206803461,
+      1795206803594,
+      1795207080183,
+      1795207350959,
+      1795223609366
+    ],
+    "historyCount": 50,
+    "signedPhases": 911,
+    "allJarsMatched": 264,
+    "archiveMatches": 678,
+    "archiveEntries": 755,
+    "processRecovery": {
+      "first": {
+        "MainPID": "1631",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "984116a9d9a54e38ab2d1732f1315c1d"
+      },
+      "interrupted": {
+        "MainPID": "0",
+        "Result": "signal",
+        "NRestarts": "0",
+        "ExecMainCode": "2",
+        "ExecMainStatus": "9",
+        "ActiveState": "activating",
+        "SubState": "auto-restart"
+      },
+      "successor": {
+        "MainPID": "2232",
+        "NRestarts": "0",
+        "ActiveState": "active",
+        "UnitFileState": "disabled",
+        "InvocationID": "a282ebef41e2427d9323249c262d1a9b"
+      },
+      "parkedId": "5f5bf9c4f6a4ef0501f039f07e9c43d5cfbb4c67b580e8eba607178c18c1270b"
+    },
+    "cold": "six-native-launch-upgrade/cold.py final"
   }
 }
