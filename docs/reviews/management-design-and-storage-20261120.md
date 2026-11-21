@@ -8,6 +8,8 @@
 
 11 月 21 日 12:15–12:17（上海时间），宿主工作空间实测 **350.66 GB**。历史工作目录占 **255.70 GB**，中心的 `target` 占 **78.76 GB**，合计 **95.4%**。与 10:30 的同口径读数相比，工作空间增加 3.70 GB，中心 `target` 的读数相同。Core 构建目录的 ARM64 deb 从 38 份、7.76 GB 增至 42 份、8.58 GB，解释了其中约 0.82 GB。计量采用目录占用，deb 采用文件长度，Parallels 虚拟磁盘另计。[12:17 目录实测](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/storage.json)
 
+12:44 再数同一 Core 打包目录，已有 44 个 ARM64 deb，文件长度合计 8,990,793,594 字节。最新两份完整包共 409,999,816 字节。两轮修复共用已有 worker 和 VM，分别在原六组件卷和防火墙专用安装验证。后者通过只读挂载使用 deb，冷停机时占用 1,161,408 KiB。这里没有重测整个宿主工作空间。[两次实装、版本和冷读](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
+
 防火墙这一轮说明了两种不同的工期来源。正式 Main 遇到现场实际保存的洪泛防护规则，原 worker 在批准前拒绝。补齐 TCP flags、MSS 和 IPv6 扩展头后，ARM64 内核收下了针对这些规则的变更。随后发现 Cargo 复用了旧二进制，即使源归档已更新。构建现在核对成品自报的源码摘要。这些问题都影响交付。另一部分工期和磁盘来自为每个中间改动生成完整的约 205 MB Core 包、再逐轮安装。可将同一交付的修改合并组包，日常验证直接运行变更的安装钩子或只构建 worker，到真实跨组件验收时再保留完整包。[实际调用与发行件](../checkpoints/20261116/actual-installed-firewall-action-receipt-checkpoint.json)
 
 当前 Java 防火墙模型继续服务已有调用方。规则发布经本地 systemd socket 交给按请求启动的 worker，独立运行的 Kura 可直接使用它。原六组件 Root 留存的现场规则与本次冷启动内核状态不同，现有证据只证明了 Main 配对、拒绝和内容保全。另建的 Parallels 防火墙验收 Root 以只读挂载复用安装包，正常停机时占 1,161,068 KiB。它在安装阶段留下缺少成功回执的原操作。该 Root 计入本轮验证成本。[原六组件拒绝记录](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-publish-worker/installed-refusal.json) · [新安装停机冷读](../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-flooding-publication/fresh-parked.json)

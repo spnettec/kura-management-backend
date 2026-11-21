@@ -1772,5 +1772,182 @@
       "ownershipTestsPassed": 13,
       "installedOnParkedSites": false
     }
+  },
+  "nativeFamilyBootRecovery": {
+    "workspaceEvidence": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-family-readback",
+    "arm64Packages": [
+      {
+        "package": "kura-core",
+        "version": "6.0.0~git20261121044005.5884bf5-1",
+        "source": "5884bf5a6a20905d5dd9de34e8f19108cd4be1ff",
+        "tree": "97421e150a9effd5b3e51716645ae3c3db59f0ed",
+        "bytes": 205000456,
+        "sha256": "d5dfbbe6245ed14abd7e8771bb1a5e91fc8e0d34fab18ad2995c2f3d625d2bc3"
+      },
+      {
+        "package": "kura-networking",
+        "version": "3.0.0~git202611210440.51c157c-1",
+        "source": "51c157cca0d925c1ecbeaab966270d5ce79645ae",
+        "tree": "a4b5d3e112f7362795ec43f8c216153a5ae22ab6",
+        "bytes": 9405040,
+        "sha256": "870b4239e02b83a068475f37b8a6ab6ffbb73e562fd0fd8c9ef4c6703962c102"
+      },
+      {
+        "package": "kura-firewall-only",
+        "version": "3.0.0~git202611210440.51c157c-1",
+        "source": "51c157cca0d925c1ecbeaab966270d5ce79645ae",
+        "tree": "a4b5d3e112f7362795ec43f8c216153a5ae22ab6",
+        "bytes": 458864,
+        "sha256": "a40a9cb2c7e6e1b74b39c0f9c7945ba90f815f0e52d292247911d2e2c6df81f0"
+      }
+    ],
+    "nativeWorker": {
+      "source": "28ce5a10a6c0131559e51c965e16c6d3deace9c737fb079381d68e5048cb2d40",
+      "revision": "5e4be5dd709dad9279f20d8fbe92a2d23d31acae",
+      "architecture": "arm64",
+      "sourceVerifiedByExecutable": true,
+      "sha256": "459fbed0931c60032fb2592f9515cb7381d052ff12e83bfd870655b57cff59cc"
+    },
+    "sixComponentRoot": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true,
+      "versions": {
+        "kura-core": "6.0.0~git20261121043543.88cc7f2-1",
+        "kura-networking": "3.0.0~git202611210435.2a58770-1",
+        "kura-management-ui": "3.0.0~git202611210130.8870575-1",
+        "kura-deployment": "2.0.0~git202611202327.15c50ca-1",
+        "kura-wires": "3.0.0~git202611201623.5605b6b-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+      },
+      "coldVerifier": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-native-boot-readback/parked-readback.py"
+    },
+    "originalStaticSetContinuation": {
+      "original": "05cdf382-5539-43f2-938a-eafd3a8fff40",
+      "overlapRefusedBeforeIntent": true,
+      "interruptedAfter": "ipv4",
+      "foreignSetDriftRefused": true,
+      "originalPendingExact": true,
+      "originalIPv4HandlesRetained": true,
+      "ipv6Restored": true,
+      "foreignTableExact": true,
+      "nativeHashes": [
+        "dad78feedbbd3b0c85b3d297e7d8a4cdc4af18704045c7e341ee3a16ea3d8e05",
+        "41e035e327ff461c4c435c3488016db8a0a67243b33e0041aaaf15357e2ce6d1"
+      ],
+      "receipts": {
+        "ip6tables": "f2271aafb2873d793f4e9544c070f15493099c7ca169ad0043331b71b4e348cb",
+        "iptables": "2fab9c1095b51c996d4658e88bfd2ce5112f673f5ace3b098175fdc6cacaee42"
+      },
+      "helperSha": "c61c109007b24f8cd50e707f7d5a46d353dbea5b10f37f1f2e13fe21ee917786",
+      "worker": "669d00daf365e0ca36f0840d0331afd49d4093fbe3cb2feba152b8caa84ea66b",
+      "source": "b6df00228b5ef7b6c05cfbc4adbe117e0164332970656200d25b13909bb7b9ee",
+      "matchingVariants": [
+        "networking",
+        "firewall-only"
+      ]
+    },
+    "originalSilentExpressionContinuation": {
+      "original": "8c3d3c6b-b7dc-412b-9304-2da9de4d0c9b",
+      "legacyReadbackUnchanged": true,
+      "warning": false,
+      "ruleHandle": "2",
+      "interruptedAfter": "ipv4",
+      "silentExpressionDriftRefused": true,
+      "originalPendingExact": true,
+      "originalIPv4HandlesRetained": true,
+      "ipv6Restored": true,
+      "foreignTableExact": true,
+      "nativeHashes": [
+        "b63968a239bc4249f2dd2e24c861a4818cb42257e5a75a336a671e686a734fa4",
+        "ec7f3bb9292b6fcb4d2016db9584415bd0eeaae758c98e2c74fe791267c37775"
+      ],
+      "receipts": {
+        "ip6tables": "da893e644042f8610c4fee74ba9dbc6777a28f1d0dac40f81faefbb6ab23c111",
+        "iptables": "c7c991abcc49795cd35eb1aa7afb1c765093c29493a715727768abdcaa98045e"
+      },
+      "helperSha": "36e79daeb129fd3d87decf1210005c3b495e20a6abe314d20e497d9009e5a984",
+      "worker": "459fbed0931c60032fb2592f9515cb7381d052ff12e83bfd870655b57cff59cc",
+      "source": "28ce5a10a6c0131559e51c965e16c6d3deace9c737fb079381d68e5048cb2d40",
+      "matchingVariants": [
+        "networking",
+        "firewall-only"
+      ]
+    },
+    "tableReadback": {
+      "staticSetChangesVisible": true,
+      "ruleChangesVisible": true,
+      "countersStable": true,
+      "hashes": [
+        "522729ce80fe72539ad43470669ab407f6ccbcd29465753bbf9401918fbe6ecd",
+        "d31a8ba41ba34c578820d7a04b7403c8c0668cb4c447caf74a706fd3010d61d3",
+        "635564cffad7a9fec78abf41cb2812292c47b907954d1960ace5747f8a7c82ad"
+      ]
+    },
+    "parallelsFirewallInstallation": {
+      "installed": {
+        "code": 0,
+        "status": [
+          "kura-core install ok installed 6.0.0~git20261121044005.5884bf5-1",
+          "kura-networking install ok installed 3.0.0~git202611210440.51c157c-1"
+        ]
+      },
+      "standardService": {
+        "code": 0,
+        "new": [
+          "boot-restore/29020813-c268-4c3d-ab22-4ee49ac2135b.json"
+        ],
+        "otherFilesExact": true,
+        "unit": "Result=success\nExecMainStatus=0",
+        "journal": "Nov 21 04:43:09 yofc-firewall-positive systemd[1]: Starting firewall.service - Firewall configuration...\nNov 21 04:43:09 yofc-firewall-positive firewall[1424]: 0 0\nNov 21 04:43:09 yofc-firewall-positive systemd[1]: firewall.service: Deactivated successfully.\nNov 21 04:43:09 yofc-firewall-positive systemd[1]: Finished firewall.service - Firewall configuration."
+      },
+      "independentReadback": {
+        "root": [
+          2050,
+          2271189
+        ],
+        "operationId": "29020813-c268-4c3d-ab22-4ee49ac2135b",
+        "receiptHash": "30ed4bec536bd3c7fe765a0d40f631f37531c035d23cd100af84ae35ac31e87a",
+        "standardDigest": "cbabab4743a966229e01e0c050270f81a3f77af55cefa2b6f334942377d3b312",
+        "raw": "7c414051e9f98eabb195bc684922ccfb743ee3e8b4ab031f30c1445a02eecd99",
+        "preserved": 17,
+        "main": "disabled",
+        "netns": [
+          5,
+          4026532403
+        ]
+      },
+      "cold": {
+        "root": [
+          2050,
+          2271189
+        ],
+        "original": [
+          2050,
+          2271189
+        ],
+        "retainedFiles": 17,
+        "receipt": "boot-restore/29020813-c268-4c3d-ab22-4ee49ac2135b.json",
+        "receiptHash": "30ed4bec536bd3c7fe765a0d40f631f37531c035d23cd100af84ae35ac31e87a",
+        "state": "inactive",
+        "result": "success",
+        "guestKiB": 1161408
+      }
+    },
+    "validation": {
+      "arm64CargoPassed": 806,
+      "arm64CargoIgnored": 50,
+      "arm64CargoFailed": 0,
+      "bootOwnershipAndRecoveryTestsPassed": 14
+    },
+    "pending": [
+      "Preservation of a native expression silently omitted by xtables when the same table is selected for full replacement",
+      "Forwarding changes from the registered Main with its remaining network capabilities removed",
+      "Core and OSGi, provider and launcher package maintenance matrix"
+    ],
+    "frozen": "0/12"
   }
 }

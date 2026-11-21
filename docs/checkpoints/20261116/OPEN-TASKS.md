@@ -1,3 +1,11 @@
+## 2026-11-21 实装防火墙启动恢复和原编号双族续接
+
+防火墙专用 Parallels Root `2050:2271189` 已升级至 Core `5884bf5a6a`、Networking `51c157c`。在其私有网络内建立一条会被 iptables-save 静默省略表达式的原生规则，再由正式 firewall.service 按标准配置启动。独立进程从内核重算双族规则和转发状态，匹配原回执，外部规则和原有 17 份文件内容均保留。Main 保持 disabled，现场正常停机，冷读入口为 `firewall-family-readback/installed-boot.py cold`。
+
+发行包中的 worker（源码 `5e4be5d`）还验了两类中断。IPv4 回执落盘后，外部集合或同句柄规则的表达式改变，续办均在写 IPv6 前拒绝。现场恢复原值后，仅补做 IPv6，沿用各自原编号。两个 Networking 变体的恢复脚本一致。ARM64 离线工作区 806 项通过、50 项忽略，启动归属及恢复测试 14 项通过。
+
+原六组件卷 `39:6611544` 实装 Core `88cc7f2ad0` 和 Networking `2a58770`，六包、SQLCipher 和 84 份保护文件已冷读。当前入口为 `firewall-native-boot-readback/parked-readback.py`。同表整体替换时保全被旧工具静默省略的原生表达式、普通 Main 的转发授权、其余 provider/launcher 安装维护继续。冻结 0/12，external deferred 仍为原三项。[发行件、启动回执和冷读](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 防火墙临时安装的正式 Main 正向回执
 
 获准的独立 ARM64 Root `2050:2271189` 安装了 Core `857015576f` 和标准 Networking `2a2deca`。正式 Main 以 kurad 通过 OSGi 加入且随后移除仅限 `lo`、来源 `127.0.0.1/32` 的 TCP 19897 规则。每笔操作单独获得内核 ACK 和 APPLIED 回执。六张表的规则内容和原保存文件恢复，独立进程按原编号查回两份结果。Main disabled，临时安装正常停机并冷读。该结果补齐上一条记录中的正式 Main 防火墙正向写入。旧六组件卷和此前中断的新装 Root 仍各按原围栏续接。
