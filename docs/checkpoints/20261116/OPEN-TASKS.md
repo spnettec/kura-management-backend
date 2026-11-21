@@ -1,3 +1,9 @@
+## 2026-11-21 已绑定 agent 恢复重装回执的硬链接与目录同步中断
+
+旧版在回执写完但尚未建立最终硬链接时续配遇到 FileExistsError；链接已建但暂存名仍在时，由于文件有两个链接而拒绝。另一个缺陷是首次目录 fsync 失败后，第二次配置会跳过该同步并清除 pending。agent `6910532` 只在原安装、原意图和 install-admitted 阶段匹配时继续：核实 Root 持有的 0600 完整回执，确认暂存和最终名称的 inode 及链接数，将原文件发布并同步目录，再清除 pending。内容不完整或两个名称对应不同文件时保留现场。
+
+ARM64 原生包回归 144 项通过。从新 deb 提取实际 postinst 内嵌类，分别在同版本和后继版本夹具的建链前、建链后退出子进程。四个现场均沿各自原 Root、原编号恢复为 REINSTALLED，保留原回执 inode 和字节；systemd 和业务检查使用发行测试夹具。原绑定网关仍装 `431dedc`，保持正常停放，四笔已闭环维护冷读一致。该网关的只读入口仍为 `bound-agent-package-interruption/cold.py final`。冻结 0/12。[包与恢复检查点](actual-native-agent-bound-business-removal-checkpoint.json)
+
 ## 2026-11-21 已绑定 agent 在重装回执落盘后中断，沿原编号续配
 
 原绑定网关的三笔维护均已 REINSTALLED。本次经授权为同版本维护单独登记 `ae9f4d4e-dad1-4be4-80ca-e6634b86748c`，复用实装包 `431dedc` 和原初始化。真实 dpkg 在私有挂载命名空间内写成重装回执，随后 unlink 原 pending 文件遇到 EBUSY。停机冷读为 half-configured，回执和 pending 同时存在，状态查询为 INSTALL_ADMITTED，启动检查拒绝。

@@ -441,5 +441,74 @@
     "coldVerifier": "bound-agent-package-interruption/cold.py final",
     "frozenClosed": 0,
     "frozenTotal": 12
+  },
+  "reinstallReceiptStagingAndSync20261121": {
+    "candidate": {
+      "commit": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+      "tree": "3fb037bb73740f08db815d81c27ee686c6468d06",
+      "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/bound-agent-receipt-publication/package/release/kura-management-agent_0.1.0~cohort20261121125537.6910532-1_arm64.deb",
+      "sha256": "c159f1a47377de02fc1a943add92006940d1c00adcee1be9320ca97b261a91be",
+      "bytes": 7061640,
+      "version": "0.1.0~cohort20261121125537.6910532-1",
+      "original": "431dedc8ea7295020269f2befa1a4cf1f5bec422",
+      "changed": [
+        "packaging/runtime_setup.py",
+        "packaging/test_native_enrolled_removal.py"
+      ],
+      "binarySha256": "ab876ef5cd45ecbf118c293b0b92f96858f01b4ffcef3a11c466e26fff0051e9",
+      "bridgeSha256": "7fd60d73fc22142aa3180a5636802e54d8c7d79a8d3ecc698a19e0d2ae36353d",
+      "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033",
+      "sourceManifestSha256": "4ac6ab59db72fadb5b045203df55d8f23c83aa5f042272b4ba8e329cdd13b952",
+      "protocol": "c1304333bba2b54d79751091eb8f8b92d5d50b73ddcafcdf5a7c9f7bc97f1e64"
+    },
+    "checks": {
+      "controls": {
+        "preinst": "884a522bc867bcf2a6d7e888a51610da757e777781117f7277c5e8d69e6bd393",
+        "prerm": "d1f80f1d2d10785aaadaf65a6b0e7c61d954a75f5b4b47fd79ed844d2f5885b9",
+        "postinst": "5452ed944555db3f1ad111142a73dce32e8175e1d7fc1f45ccc53e687328faa2",
+        "postrm": "a2455a639deb504ec0ae9a2fe302ba1285c5fa7f44daa75dfa406e05c4ecfa0e"
+      },
+      "releasePython": "aacc1e1d6cf524514dc0bfbf5aaa6a91f66c7ba489c2cffd7d7c6c20e571e9b9",
+      "checks": {
+        "sameBeforeLink": {
+          "killedProcessExit": 71,
+          "operation": "e3047c62-a996-4d9a-a809-62662a40d3d2",
+          "inodeRetained": true,
+          "rawSha256": "ee754ef331d8144db3642abfb1b6f1700f7f5f0c6fa80fe947d3feca6a097a73",
+          "final": "REINSTALLED"
+        },
+        "sameAfterLink": {
+          "killedProcessExit": 72,
+          "operation": "463eb314-041e-49d8-8403-5b1317e42192",
+          "inodeRetained": true,
+          "rawSha256": "c8f777627bfb8cbc8387edb6658bddfbedcc89a558774d054113fef78dd6a57b",
+          "final": "REINSTALLED"
+        },
+        "successorBeforeLink": {
+          "killedProcessExit": 71,
+          "operation": "6fa8085d-7ed6-4fb8-9335-58578b7d3c99",
+          "inodeRetained": true,
+          "rawSha256": "5cd2d2841c069e1c6b40de803a1c9e7c7a87eaedd47a426001ef8fd278bf8b4b",
+          "final": "REINSTALLED"
+        },
+        "successorAfterLink": {
+          "killedProcessExit": 72,
+          "operation": "a63a3dae-b8c6-42a6-b561-d6617752f44d",
+          "inodeRetained": true,
+          "rawSha256": "f7855607127f1bd81913b701e3dbe52b2d32db71f4c5da4e637fa8a19af87bdd",
+          "final": "REINSTALLED"
+        }
+      }
+    },
+    "oldBehavior": [
+      "FileExistsError before final hard link",
+      "reader refused the pair after final hard link",
+      "second configure skipped the failed receipt-directory fsync"
+    ],
+    "nativeTests": 144,
+    "fixture": "Linux ARM64, extracted dpkg postinst class in an isolated enrollment fixture. Each child exited at the indicated publication boundary, and the parent resumed on the same fixture Root and request ID. Systemd and business inspection were supplied by the fixture.",
+    "deployedOnParkedGateway": false,
+    "parkedGatewayColdVerifier": "bound-agent-package-interruption/cold.py final",
+    "testsLogSha256": "4eb3b372069710afc460e75858b8635db16776174ad26e60736a65de2af2afe7"
   }
 }
