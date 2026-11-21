@@ -1,3 +1,11 @@
+## 2026-11-22 Deployment 云端安装和卸载在原任务结束前保持占用
+
+Deployment `d8ce761` 修正了两个排队问题。旧版云端卸载在提交给执行器后就清除了占用标志；安装入口也会先覆盖共享参数，再检查能否受理。当前 handler 在检查包和调用 hook 前取得本次维护的占用，排队和执行使用本次请求的参数与卸载对象，直到执行和通知返回才释放。下载完成后的自动安装也检查占用。组件停用时取消尚未执行的任务。GET install 在卸载期间保持 IDLE。
+
+在独立 ARM64 发行镜像中，正式 Main 以 UID 122、有效能力为零、NNP=1 运行。通过 /load 提供来自 Cloud 正式 deb 的 base provider，满足 Deployment 对 MQTT DataTransport 的引用。探针在本机调用实际注册的 RequestHandler.doExec，以本地通知接收器在回调返回前保持工作线程。41001 安装真实 Felix 业务 DP，读回包内资源并看到原包名的 IN_PROGRESS；41002 卸载与 41003 安装被拒绝。41004 卸载原 DP，等待通知时 41005 卸载被拒绝。仅 41001、41004 返回 COMPLETED。四个出厂 DP 及注册项恢复，业务 bundle 和已安装归档均已移除。进程正常 TERM 停放，原卷冷读核对四个 DP 的发行摘要。发行包四个 JAR 与容器内的文件逐字节一致，运行中的 handler 类与 deb 内容匹配。JDK 21 全仓 251 项测试通过，零失败、零跳过。
+
+本轮验收的是单个已注册 handler 的并发受理、状态和生命周期。实装中的 41003 使用未暂存的包名，另有定向测试在输入文件已准备好时验证排队中的安装拒绝竞争请求。云传输通知由本地夹具接收；进程重启后对已派发 Felix 操作的持久判定仍待实施，先前的 UNKNOWN 均按原编号封存。六组件原卷的 Deployment 继续为 de17bd5。绑定网关继续停放，五笔维护、三代来源、原任务 SUCCEEDED 与 OFF 已冷读。7fd 保持 disabled、正常停机及 41 输入／16 回执。12 父项冻结 0/12，external deferred 仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式 Main 检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 当前 Core 全量验证与 HTTPS keystore provider 的同卷回退、升级
 
 Core `796e0bacf5` 在 Debian ARM64、UID 1000、JDK 21 和 Maven 3.10.1 上离线执行 `-Posgi-it verify`。82 个模块构建成功，2158 项测试通过，其中真实 Equinox 68 项，失败、错误、跳过均为零。包含本版新增的旧式双硬链接恢复用例。与本版正式 deb 对照，41 个 Core 插件的 1,208 个 class 内容相同；Equinox 用到的配置和 keystore JAR 均与该次模块输出逐字节相同。

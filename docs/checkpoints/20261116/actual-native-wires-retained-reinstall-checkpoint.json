@@ -6345,5 +6345,45 @@
       "original-three-after.json": "aaedeb164a4f6caa5ed2cb8c0077abb04cdf8ebb5df32f40cfc80e18e00b629b",
       "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
     }
+  },
+  "cloudDeploymentMaintenanceAdmission20261122": {
+    "scope": "one CloudDeploymentHandlerV2 instance, local notification receiver, real ARM64 Main and Felix",
+    "directory": ".management-close-20261116/core-rtc-hotplug-20261120/cloud-deployment-maintenance-admission",
+    "source": "d8ce7611547ea5ee0d82fab1682f3067b2a660b7",
+    "testCount": 251,
+    "root": "39:7948967",
+    "accepted": [
+      41001,
+      41004
+    ],
+    "refused": [
+      41002,
+      41003,
+      41005
+    ],
+    "sixComponentDeployment": "2.0.0~git202611211324.de17bd5-1",
+    "hashes": {
+      "HANDOFF.md": "0758217b93a15b39a30e331147630cb68ecd05e8d7e467cb6f8216ab19756027",
+      "live.json": "8e26e8026677e7b42013639b14e9c5d798537393ec1bfcf064fa64dcd61ef0be",
+      "package-proof.json": "4b3e3692579a1c28cb042e0910c794b3fa6889256fb8cb4b3738626d748fae76",
+      "transport-intent.json": "234f0f486b1d8bb52c92f126838587ded0ca360e263af3ccf02f72b7ef940983",
+      "instance-intent.json": "fb5c4ee775cfb25a8b6278829ee0085fad715b2d9822fc655022afd66bab9b49",
+      "instance.json": "eee323e2c24c0bedf23d102634ae110d54eace35e9a1b593cbf341286c2328b7",
+      "dispatch-intent.json": "7baa83fd784f8d934647dddb1fdc8577bf75bb03511ed5f714935a57842b80d0",
+      "parked.json": "6b7cbb6808f84358422f018a928704fa146a55df5c393db230337d00c1a7d1ee",
+      "cold-final.json": "63c6bfa57f07726c5801c34b09e225c1336f48fabad9b1f7fdde1261a4dae526",
+      "final.json": "00111f0e634828547cfad989ef483fcb29ee6de80b8d24c1aa514c8b24ee684e",
+      "input.json": "cca26d7873e43cf5f290b5dd959f3de8b1f0ddc74fccef214399630ee656acea",
+      "storage.json": "e93c339cb32d03894ddd9fe936bd56a25996f249d53fc1924d381ed4ea32cdc5",
+      "full-build.log": "33ef62f23d73f52cb14de082010b70ac7dbd77b3abaaa79a351fb078f9b15daa",
+      "focused-final.log": "1824d6ecf0f6882ef18e2bbd9b3cb0db36c5a8d1d39246f36419760bbb415e93",
+      "Probe.java": "0df21b8253cc0c0fc4cc822cd3e2e6e8f6f019807f200b92869cba382b9ba3d9",
+      "observer.jar": "af5c43a19155d1fc96a4281f71505d0bef9e1438d29e023d682ce00d3e406883",
+      "bound.json": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "six.json": "dc62d3e3aa821696745e10d064cae725a36dd8ec0eb02b288f13228a7f4d4482",
+      "preservation-final.json": "45a91f62d236683891dcf0bd24fbe0aa8c39f27fdc376879311ef04f733d5609",
+      "original-three-after.json": "8791bcd6d231464930341d6992e2887b0d94431f4d30ac4cb79cfe8057c50595",
+      "parallels-final.json": "1fb5fb71fcd77b303e5bb85a72ad4386ef0658c4f0d7a233fe38ae6df1b1a6bd"
+    }
   }
 }
