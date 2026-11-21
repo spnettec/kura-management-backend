@@ -8504,5 +8504,27 @@
     },
     "parked": true,
     "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/six-keystore-cohort-upgrade/HANDOFF.md"
+  },
+  "opcUaCaMaintenance": {
+    "root": "2097228:1",
+    "core": "fc17697eba897b45590bedb019c90fee40f6218a",
+    "opcua": "c963584812572891ba452f6f8f3d4493685e33ca",
+    "snapshot": "1795295949685",
+    "firstPid": "2760",
+    "nextPid": "3600",
+    "deniedPid": "4238",
+    "legacyServer": "0.6.16",
+    "legacyRead": false,
+    "server": "1.1.2",
+    "certificateChainLength": 3,
+    "trustedAnchors": 1,
+    "crls": 2,
+    "acceptedSessions": 2,
+    "revokedClientRead": false,
+    "revokedValidationRows": 2,
+    "packagePurged": true,
+    "persistentVolumes": 0,
+    "handoff": ".management-close-20261116/core-rtc-hotplug-20261120/opcua-ca-maintenance/HANDOFF.md",
+    "legacyCompatibility": "channel chain accepted, session read failed"
   }
 }

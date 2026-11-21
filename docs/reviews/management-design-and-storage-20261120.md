@@ -410,3 +410,7 @@ Core 构建输出当前保留 85 个 deb，文件逻辑大小合计 17.40 GB。�
 ## 2026-11-22 两代快照卷完成 purge 后的占用
 
 同一测试卷完成保留重装时，卷内分配量为 286,076 KiB。其后经过 provider、升级和最终清除验收，停机实测为 78,680 KiB（76.84 MiB），其中保留区私有压缩归档的文件大小为 125,276 字节。两个数值取自同卷不同停点的 du -skx，两次测量之间还执行过升级和业务验证。宿主 APFS 独占空间未测。[最终归档与卷内测量](../../../.management-close-20261116/core-rtc-hotplug-20261120/published-generation-final-purge/storage.json)
+
+### 11 月 22 日 OPC UA 证书兼容与空间
+
+本轮在同一网关安装上保留客户端快照、三证书链和两端身份，先后与 Milo 0.6.16 和 1.1.2 两个隔离服务端对照。旧端点接受证书链后仍未完成读节点，新端点完成保留重装后的加密读取，并拒绝已撤销的原客户端证书。原 Core 和 OPC UA 的 deb 直接复用，测试端点的 32 个 Java 依赖合计 22.21 MB，硬链接指向 Maven 缓存的同一批 inode。测试结束后移除了 21.55 MB 的临时编译输入，本次新增持久卷为零。[验收与空间记录](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
