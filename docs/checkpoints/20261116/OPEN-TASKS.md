@@ -1,3 +1,13 @@
+## 2026-11-22 原生 dpkg 在云端卸载未决时升级、移除、purge 和恢复 Deployment
+
+在独立的 Debian ARM64 systemd 安装上，Core `796e0ba` 和 Deployment `c77e34a` 的正式 Main 接受业务包安装 46001，随后只接收一次卸载 46002。Felix 同步发出该业务 bundle 的 UNINSTALLED 事件时，探针记录原回执摘要并终止 JVM。旧 handler 在同一 Root 读回 46002 UNKNOWN。失去完成回执的卸载保持未决。Root 为 `39:7987236`。
+
+在 Main 停止后，dpkg 实际尝试重新解包同版本 Core，旧 prerm 和新 preinst 均报告必须先处理原发布回执，dpkg 返回 1，Core 仍为 installed。Deployment 的后继包 `1b043a4` 解包成功。保持 unpacked 状态正常关闭网关，冷读确认原业务回执和原 replace 围栏。原 Root 重启后，生成器仍将 Main 置于 masked-runtime，沿原围栏配置一次，随后 dpkg 审计为空。真实 remove 进入 config-files，purge 进入 not-installed，启动顺序中的 deployment 行已撤去。沿同一 Root 重新安装后继包，恢复一行注册和四个发行 JAR。
+
+再次显式启动正式 Main，后继 handler 按原来源和编号读回 `GET uninstall 46002 UNKNOWN`，新旧 handler 的类摘要分别匹配各自 deb。Felix 中已查不到目标，磁盘业务归档和注册项均保留。各阶段核验原卸载回执、DP、注册表、锁、两个凭据文件和三份派发／中断标记，共 9 个文件的摘要、inode、权限、链接数及时间戳。最后 Main 为 disabled/inactive，容器正常退出 0；最终包状态及上述文件已只读核对。
+
+本轮覆盖业务卸载回执未决时的同版本 Core 拒绝和 Deployment 生命周期。未执行 Core 移除或 purge，也未在原生 dpkg 上验证安装类未决回执。46002 保留原编号，后续仅停机读回。六组件、原绑定网关、42002、44002 和 45001 各自在原现场核对。原 7fd 保持 disabled、停机、41 输入／16 回执。冻结 12 父项、闭环 0/12。外部延期仍限真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-22 云端安装 45001 在归档发布后中断，原 Main 安装现场重启恢复
 
 隔离 ARM64 网关的正式 Main 通过已注册的云端 RequestHandler 接受一次安装，编号为 `45001`。回执已持久化为 `phase=returned` 后，测试夹具在同一工作线程发布归档、同步目录、即将替换注册表时暂停 JVM。归档摘要与提交的 DP 相同，当前注册表与受理时的 inode 和摘要相符，待发布注册表已包含新包。用该 JVM 的 UID 中断进程，退出码为 137。中断后原容器保持运行；JVM 已退出。实装 Core 的 `--check-stopped-writers` 在这时返回 1，指出必须先处理原发布回执。执行前后的磁盘指纹相同。

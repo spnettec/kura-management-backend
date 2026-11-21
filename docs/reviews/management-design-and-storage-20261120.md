@@ -329,3 +329,6 @@ Docker 启动器的三版真实 OSGi 工厂更新复用了原镜像、原卷及�
 ## 2026-11-22 隔离部署测试的运行缓存
 
 本次正式 Main 的临时 Equinox 配置目录 /run/kura-container 挂在上限 512 MiB 的 tmpfs。业务密钥、快照、DP 和注册项继续留在独立持久卷。Main 完成真实 DP 安装和卸载，停机后 Docker 报告可写层为 450,042 字节。上一轮采用容器普通可写层存放 Equinox 缓存，停机时为 346,298,536 字节。两轮运行内容不同，本次结果适用于这个隔离测试配置。tmpfs 空间计入运行时内存，本轮没有测峰值，也没有修改部署默认值。本次构建的 16 份包副本逐项核对后移除，逻辑大小合计 768,124,304 字节。[现场与计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/cloud-deployment-maintenance-admission/HANDOFF.md)
+## 2026-11-22 未决业务回执的原生包维护
+
+Docker 发行路径验证成对发布时，复用原镜像的独立测试卷停机时占 24,648 KiB。Debian 实装路径需保留 dpkg 数据库、systemd 生成器和可跨停机识别的 Root。本次原生测试在同一个 Root 完成后继升级、解包后停机续配、remove、purge 和重装。初始卷为 61,256 KiB，最终为 286,516 KiB，容器可写层为 4,629,167 字节。205,916,532 字节的 deb 均以只读方式挂入。本轮无新发行镜像或 deb 构建，未单独测量 APFS 净增量。[原生现场与计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/native-pending-dpkg/HANDOFF.md)
