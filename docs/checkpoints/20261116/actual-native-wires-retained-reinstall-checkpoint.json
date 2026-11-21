@@ -8204,5 +8204,31 @@
     "coreCandidateChanges": 9,
     "candidateInstalledOnSix": false,
     "frozen": "0/12"
+  },
+  "sixCoreBoardResume": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/six-core-board-resume",
+    "cold": ".management-close-20261116/core-rtc-hotplug-20261120/six-core-board-resume/cold.py final",
+    "result": {
+      "old": "6.0.0~git20261122020638.e99caab-1",
+      "new": "6.0.0~git20261122040724.89dfd6a-1",
+      "operation": "8adedbad-895a-4f04-9743-4d4f75bd0796",
+      "allJars": 264,
+      "frameworkPropertiesSha256": "d60549ea195e605efeab9b1b2e851a218aa3e7b78be8d60387078158e17ce809",
+      "changedComparedToPriorDifferences": [
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/framework/kura.properties",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/install/customize-installation.sh",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/install/customize_kura_properties.py",
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/install/network_tools.py"
+      ],
+      "otherPackagesExact": true,
+      "mutableFiles": 319,
+      "credentials": 2,
+      "newPhases": 19
+    },
+    "root": "39:6611544",
+    "histories": 48,
+    "signed": 873,
+    "mainPID": 2448,
+    "frozen": "0/12"
   }
 }
