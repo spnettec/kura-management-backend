@@ -663,5 +663,48 @@
       "protectedFilesExact": 84,
       "originalSubmitWithdrawn": true
     }
+  },
+  "firewallOnlyDpkgUnwind": {
+    "stage": ".management-close-20261116/core-rtc-hotplug-20261120/firewall-only-dpkg-unwind",
+    "source": "40a6a79850bfd113391b9ccdab3fe8e7482bd744",
+    "tree": "58b18771585b44cf0674851a96d4f52822a0558f",
+    "version": "3.0.0~git202611210214.40a6a79-1",
+    "previous": {
+      "installed": "installed 3.0.0~git202611210208.7a57c4f-1",
+      "beforeEnablement": "enabled",
+      "afterEnablement": "disabled"
+    },
+    "callbacks": {
+      "upgrade": [
+        "D000002: fork/exec /var/lib/dpkg/info/kura-firewall-only.postinst ( abort-upgrade 99~unwind1 )"
+      ],
+      "deconfigure": [
+        "D000002: fork/exec /var/lib/dpkg/info/kura-firewall-only.postinst ( abort-deconfigure in-favour fixture-kura-firewall-only-breaks 99~unwind1 )"
+      ],
+      "remove": [
+        "D000002: fork/exec /var/lib/dpkg/info/kura-firewall-only.postinst ( abort-remove in-favour fixture-kura-firewall-only-removal 99~unwind1 )"
+      ]
+    },
+    "enablement": [
+      "/usr/lib/systemd/system/firewall.service",
+      "39:7065374:0:0:1:2026-11-21 02:14:59.681071422 +0000:2026-11-21 02:14:59.681071422 +0000"
+    ],
+    "checks": [
+      "same installed package, enabled link and registry inode across all three native dpkg callbacks",
+      "preserved site and same-target replacement links in private ARM64 control test",
+      "real remove and purge, restored standard provider"
+    ],
+    "cold": {
+      "readOnly": true,
+      "root": "39:6611544",
+      "sixPackageVersionsExact": 6,
+      "sqlcipherPackage": "4.6.1-2",
+      "protectedFilesExact": 84,
+      "originalSubmitWithdrawn": true
+    },
+    "original7fd": {
+      "inputs": 41,
+      "receipts": 16
+    }
   }
 }

@@ -1,3 +1,7 @@
+## 2026-11-21 firewall-only 在 dpkg 撤销时保留启用链接
+
+原 ARM64 六组件卷上，旧版 7a57c4f 碰到替换包 preinst 拒绝后仍显示 installed，但 firewall.service 由 enabled 变为 disabled。Networking 40a6a79 将注销移到成功移除之后。三次真实的 abort-upgrade、abort-deconfigure、abort-remove 均保留原启用链接、注册文件的 inode 与顺序，dpkg audit 为空。随后成功 remove、purge 并装回标准 Networking。原卷正常停机，六包、SQLCipher 和 84 份保护文件已冷读；最新停机入口 firewall-only-dpkg-unwind/parked-readback.py。Main 的内核防火墙权限与其他 provider/launcher 组合继续，冻结 0/12。[回调及发行件记录](actual-installed-firewall-action-receipt-checkpoint.json)
+
 ## 2026-11-21 Networking 的 dpkg 事务撤销与真实移除
 
 在原六组件 Root 上，一个故意返回 42 的测试包触发了真实 dpkg 升级撤销。旧标准版 96cc512 的 postinst 也报错，原包从 installed 降为 unpacked。Networking 7a57c4f 原位升级后分别触发 abort-upgrade、abort-deconfigure 和 abort-remove。三次测试均由 dpkg 拒绝候选，原标准包已配置，dpkg audit 为空；原属性和 systemd drop-in 内容一致，组件注册顺序文件内容、inode 和时间戳精确，84 份受保护文件相符。
