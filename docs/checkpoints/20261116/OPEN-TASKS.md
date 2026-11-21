@@ -1,3 +1,7 @@
+## 2026-11-22 OPC UA 网关验证服务端证书撤销
+
+OPC UA 网关客户端可通过 server.crl.path 验证服务端证书撤销。独立 ARM64 正式 Main 用 d8dcc4f、原固定叶证书和快照 1795300935890 成功加密读节点。原位 remove、unpack、configure 后仅更新服务端 CRL，同一快照的新 Main 拒绝原证书并记录 Bad_CertificateRevoked。当前 cf0677e 的 14 项测试通过，六个包内 JAR 的 3171 个 class 条目逐项等同于实装版。OPC UA 已 purge，系统正常停放。只读入口 opcua-server-crl/cold.py。冻结 0/12。
+
 ## 2026-11-22 六组件原卷 Core 升级与独立 Main 异常退出接管
 
 六组件 ARM64 原 Root 39:6611544 已将 Core fc17697eba 升至 484c4c843c。正式 Main 读回原业务包、九个快照，FD 8 与升级后 data 目录一致，FD 9 与原生 writer lease 一致。停机冷读 50 笔维护、911 条签名阶段。另在独立内存系统确认 JVM 被 SIGKILL 后原锁释放，systemd 自动启动后继 Main 并接管同一目录。六组件入口 six-native-launch-upgrade/cold.py final；独立进程证据 six-native-launch-upgrade/cold-process.py。冻结 0/12。

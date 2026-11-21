@@ -9033,5 +9033,23 @@
       "parkedId": "5f5bf9c4f6a4ef0501f039f07e9c43d5cfbb4c67b580e8eba607178c18c1270b"
     },
     "cold": "six-native-launch-upgrade/cold.py final"
+  },
+  "opcuaClientServerCrl": {
+    "installedCommit": "d8dcc4ff5dbd51ca0abeeaa3ab3e04cbdf66697b",
+    "installedPackage": "f07ab6dd1074c3e8ec6ced79da8cc97de8addf0250bcc32de6c5b4d84279956c",
+    "currentCommit": "cf0677ef541b1c75cd9d4b7c664187def9c37b5f",
+    "currentPackage": "b3d4cfdedd105073353fcc4f2c2b265f204c1bef8c0bb638cda91853ab1712c8",
+    "equalClassEntries": 3171,
+    "tests": 14,
+    "root": "2097235:1",
+    "snapshot": "1795300935890",
+    "server": "798922162c49ede4f1c8d9cdd831764169eb1f35175930200e17666e729601b7",
+    "client": "39b77027c7ddcbe9e217c9928025a19bf1ff588107071bfe5290cef6dc358838",
+    "mode": "SignAndEncrypt",
+    "policy": "http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256",
+    "acceptedMain": "3051",
+    "deniedMain": "4071",
+    "reason": "Bad_CertificateRevoked",
+    "cold": "opcua-server-crl/cold.py"
   }
 }
