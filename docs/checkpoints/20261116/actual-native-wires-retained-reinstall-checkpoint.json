@@ -7930,5 +7930,59 @@
     "parkExitCode": 0,
     "pending": "published-generation package maintenance and service read after recovery",
     "frozen": "0/12"
+  },
+  "publishedGenerationPackageAdmission20261122": {
+    "evidence": "generation-package-admission/HANDOFF.md",
+    "source": "09851262d55a8e97f67f8823552f8eb0e0e34c08",
+    "debSha256": "1abce00c00ef3a86af73ce7d674deac0f3f1a22179f13f6eba44f13772213208",
+    "arm64Tests": 89,
+    "original": {
+      "root": "39:8169098",
+      "fence": "f791ff07-6fa2-4a19-97bf-cd2b39dc1757",
+      "installedManifest": "c09a15c804d1844d6250288e92851f13478db26157c2cd50f9e624751058a723",
+      "incomingManifest": "649d76c49eaf4ec763f741fb98d618ea7beef9dbbed3dcb023de0801664df743",
+      "decision": "reviewed generation cohort migration required"
+    },
+    "current": {
+      "root": "39:8183920",
+      "maintenance": "4a4f366b-cedb-45df-8edf-d4a871ef3312",
+      "dpkgStatus": "install ok half-configured 6.0.0~git20261122033740.0985126-1",
+      "oldSnapshots": [
+        "1795289965923",
+        "1795289976756"
+      ],
+      "launchers": {
+        "manifestSha256": "649d76c49eaf4ec763f741fb98d618ea7beef9dbbed3dcb023de0801664df743",
+        "launchers": {
+          "start_kura.sh": {
+            "original": "e1bdd854b483df88555357e4179d7015f2287f31030c89568cf4cd94c688221a",
+            "unpacked": "332744e4b5313ecbce71f3daf171a98da194828269e71974978804680c8fdc10",
+            "originalHeap": "-Xms256m -Xmx1024m",
+            "unpackedHeap": "-Xms1024m -Xmx1024m"
+          },
+          "start_kura_background.sh": {
+            "original": "f18c862c44b9e977777f658dabe4fec36a1d20bee04108a17b6410e494e9b869",
+            "unpacked": "1706929969b171df53b11b75d7a8c4598bd1977199062940bc833de1c092f2fb",
+            "originalHeap": "-Xms256m -Xmx1024m",
+            "unpackedHeap": "-Xms1024m -Xmx1024m"
+          },
+          "start_kura_debug.sh": {
+            "original": "54209dcbe2b23b50c54d6cd954c3395e6aa24464ea5841e67794e9348112cf3f",
+            "unpacked": "b05326946296f955ec7fca2e70549b78f8dd729fb3c31f30e599a1737c292e3a",
+            "originalHeap": "-Xms256m -Xmx1024m",
+            "unpackedHeap": "-Xms1024m -Xmx1024m"
+          }
+        },
+        "cohorts": {
+          "original": "57f0270a899024a5bdd6c202b484911fb05467d813e826690508b02022f184bd",
+          "unpacked": "50baf12d236767751f5f7e6fb0df78265c28f47b1f398ae4bdb0cc19064a163f"
+        }
+      },
+      "unpack": "succeeded",
+      "configure": "layout issued without success witness",
+      "coldFilesMatched": 42,
+      "parkedExit": 0
+    },
+    "frozen": "0/12"
   }
 }

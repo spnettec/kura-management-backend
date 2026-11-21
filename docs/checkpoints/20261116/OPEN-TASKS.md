@@ -1,3 +1,7 @@
+## 2026-11-22 已发布密钥代的包维护通过解包，在续配时发现启动脚本差异
+
+Core 09851262d5 以原发布回执、已装 cohort 和入包清单校验维护准入。ARM64 定向测试 89 项通过。在新安装 Root 39:8183920，同版本 deb 解包成功，正常停机，再沿原编号 4a4f366b-cedb-45df-8edf-d4a871ef3312 续配。布局阶段发现三份启动脚本的初始堆由发布时 256m 回到包内 1024m，配对拒绝。现场 half-configured、Main disabled、正常停机，42 个原文件冷读指纹一致。旧 Root 39:8169098 只读核验，仍须跨 cohort 迁移。冻结闭环 0/12。 证据见 generation-package-admission/HANDOFF.md。
+
 ## 2026-11-22 已发布密钥代的 Core 配置快照和包维护
 
 ARM64 独立 Root 39:8169098 的正式 Main 在密钥代切换后读回旧快照 1795289323248 与新快照 1795289334086。随后同版本重装的 prerm、preinst 均拒绝 Root 生成的 systemd 凭据配置。dpkg 仍为 installed，原维护围栏 f791ff07-6fa2-4a19-97bf-cd2b39dc1757 处于 MAINTENANCE。现场 disabled、正常停机，42 个原文件的冷读指纹一致。包维护恢复待实现，冻结 0/12。 证据见 snapshot-generation-field/HANDOFF.md。
