@@ -1,4 +1,14 @@
 
+## 2026-11-21 排队的 sibling 注册表请求在 Core 切换目录后退出
+
+12 个 sibling 仓的注册表脚本现在以原 framework 目录为工作目录。取得 flock 后同时核对公开目录和锁文件与原目录、打开的锁描述符是否配对。13 个正式 deb 的载荷变化均限于注册表脚本，每个 postrm 的内嵌副本已逐包核对，原业务 JAR 字节均保持。
+
+ARM64 上的 install、remove、check 在原目录替换和同目录锁替换两种情况下均拒绝旧请求。使用已发行 Core `8f2952d302` 的 preinst 目录切换代码和新 Networking 包的脚本，在隔离 Root 确认旧请求进入内核等待队列。旧目录切换后，旧 remove 返回 1，两代注册表均保持，新请求在新锁释放后返回 0。这个对照在夹具中同步了进程调度。
+
+原六组件 Root `39:6611544` 实际联合升级 GWT、Wires、Deployment 和 Networking。四包解包后核对了 Deployment 的原 Root 过渡凭据和 Main 的临时 mask。正式配置返回 0，注册表和锁 inode `7613316` 保持。配置期间的观察未取得等待进程记录；随后在同一 Root 单独确认四个已安装脚本的 check 同时排在该 inode，释放后全数成功。
+
+停机发现四包覆盖了 70 项 Core 代码权限，涉及 30 个 sibling JAR、38 个 libexec 条目及两个 console 目录。已单独按已安装 Core 的权限规则修复这些条目，保住原 inode、文件内容、时间戳中的 mtime 和原注册表锁。包操作自动恢复这些权限仍为内部待办。最终六包 installed，Main 和 agent 均 disabled、inactive，冷读核对 319 份运行文件、两份凭据、101 个夹具对象及 39 笔维护的 702 份签名记录。新入口为 `sibling-registry-waiter/cold.py`。冻结 0/12。 [发行包、内核等待与原卷冷读](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Core 升级遇到持有 sibling 注册表锁的进程时保留原安装
 
 Core `8f2952d302` 在分配暂存目录、发布恢复副本和切换原 Core 目录时取得现有注册表的独占锁，并在发布和切换前核对登记文件的内容、权限、属主、组和修改时间。ARM64 两代正式包对照中，旧版在独立进程持锁时仍通过这三步，新版均拒绝；登记顺序在复制后改变时也拒绝发布。41 项定向测试通过。

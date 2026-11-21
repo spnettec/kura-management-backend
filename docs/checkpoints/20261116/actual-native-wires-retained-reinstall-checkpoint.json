@@ -4862,5 +4862,215 @@
     },
     "readOnlyEntry": "sibling-registry-core-lock/cold.py final",
     "remaining": "A waiter that already opened the old lock across a home transition has not been exercised."
+  },
+  "siblingRegistryWaiterGeneration20261121": {
+    "releases": {
+      "kura-artemis": {
+        "repo": "kura-artemis",
+        "source": "1bcdc5d51767ccccb2b7d5ad17bc90562fe332fe",
+        "tree": "25c0dfa58cc9a17f5a869c6f7a5e9cb8c623b3e4",
+        "sha256": "3f6ca517fa7a8dbb3ecf723e2a4847e4a6f8586e3884eb9ecac72c6a546dc5c7",
+        "bytes": 15379146
+      },
+      "kura-camel": {
+        "repo": "kura-camel",
+        "source": "1f48f613031762e5bcedada9b06044f3e032aa8d",
+        "tree": "9e7612dadcf6b9fd9521a1dc1e8faf52fedb20a4",
+        "sha256": "2b167c44c7f6180c0888e89915862f89b404baa8201c29818c344d2b9b4c20c5",
+        "bytes": 31547874
+      },
+      "kura-cloud": {
+        "repo": "kura-cloud",
+        "source": "1caad202b190ed19a6d15fd3265df8ed9c92e528",
+        "tree": "b88540c69cf1f8c4d8750da1a87736b99624746f",
+        "sha256": "aa4ebcd0fe5fd0c32a7eca0322e9a3dbbceca7709e36323caac61567076d427d",
+        "bytes": 4174520
+      },
+      "kura-container": {
+        "repo": "kura-container",
+        "source": "717b984f413ceb983004ef001dce690981631eaa",
+        "tree": "49f546fbc06463e5721195831048a45e0fb47105",
+        "sha256": "588f5bed9454f9acbdc6b792d8723fb158fc1b0b6bb4e5db03442b96134011ad",
+        "bytes": 15973330
+      },
+      "kura-deployment": {
+        "repo": "kura-deployment",
+        "source": "de17bd53775ab508462e4ac118d068e33b542539",
+        "tree": "b4d388cfec37cce1ccd6923b5163e4cc89270f88",
+        "sha256": "1e78e0fb036480e8767ca6db7e29157b0e3f3c8a3683d344c2a75655b95d8fed",
+        "bytes": 243076
+      },
+      "kura-firewall-only": {
+        "repo": "kura-networking",
+        "source": "0f25996e0b96b26d9a4041d13f6e824b2f58af1f",
+        "tree": "66b3cf4efa6a574377a992d57ee5ff5951322ec5",
+        "sha256": "9c0d3a622ab73c862733e08de914baa176d9a6c1757649b327883952ad3e8aef",
+        "bytes": 467902
+      },
+      "kura-management-ui": {
+        "repo": "kura-management-ui",
+        "source": "b881a3ad0ee4c7c6510f903400dbdf7a66130251",
+        "tree": "7b37720e1b7d524a446d07395f0bb917f693ff32",
+        "sha256": "8a5e4073f9a9ab6908bc15d4a7a25115cc1ae251d1440a39f11a68803d80e421",
+        "bytes": 34136870
+      },
+      "kura-networking": {
+        "repo": "kura-networking",
+        "source": "0f25996e0b96b26d9a4041d13f6e824b2f58af1f",
+        "tree": "66b3cf4efa6a574377a992d57ee5ff5951322ec5",
+        "sha256": "88a9150b0826b95cf653342790c3eb09bdcbfa708687137319d75b81786f7e04",
+        "bytes": 9413586
+      },
+      "kura-opcua": {
+        "repo": "kura-opcua",
+        "source": "ab78b7624845b4c836ec9e0b64f02ffef42b830e",
+        "tree": "895ff04652941d12c9f92f7b8deab720d3777fe3",
+        "sha256": "39cc74c8b2f10051fef560738d23cc9994ec756c95d8b4501ba2fa4ce412d148",
+        "bytes": 5839940
+      },
+      "kura-position": {
+        "repo": "kura-position",
+        "source": "a8b5e5777c72bd743eb48e53be8b0f69e64aded3",
+        "tree": "1efc86ecdb441840e205feb167320f4ee9d63e6f",
+        "sha256": "caacb93f9798f2eeb0ad6f14c8f0c2c696c13508f93748445d8d549ade5314a6",
+        "bytes": 138490
+      },
+      "kura-triton": {
+        "repo": "kura-triton",
+        "source": "bea88719c991c98bb87964f745fc278b1dd73932",
+        "tree": "08b681f9fd3f502d5173abf33a3785b982cd5e6b",
+        "sha256": "af27ede121734102e71594fdea67d3b0e0f6f1a6ff8da6e04d0a42f52ff107b4",
+        "bytes": 11954832
+      },
+      "kura-wires": {
+        "repo": "kura-wires",
+        "source": "277954b2fd88e8eaaa6c585e34a351382b204c44",
+        "tree": "00a7bd7ee407ed25a5fc41e065d5e3ea19e15d57",
+        "sha256": "b7807ba6607960547e00e141fa650e1963fb76d18c4484ce0af15208ac8d5ad2",
+        "bytes": 119523780
+      },
+      "kura-yofc-runtime": {
+        "repo": "kura-yofc-runtime",
+        "source": "ca74ba9a2363417a47b6f12ee35fe3690e9c14c8",
+        "tree": "3b4e5de04225dec169f3afc00dbb8b0e71a28336",
+        "sha256": "c8e90a6941b3254776b4e87f0e9b3e1b9312b0b16d8e0996e1b443a6110fb29a",
+        "bytes": 10533706
+      }
+    },
+    "packaged": {
+      "id": "8133ee56-75bd-4b73-bf4b-f2b850a5e7db",
+      "oldLock": 64,
+      "currentLock": 79,
+      "oldWriterExit": 1,
+      "currentWriterExit": 0,
+      "staleRemoveChangedNeitherRegistry": true,
+      "queuedOnActualCoreLock": true,
+      "currentRegistry": [
+        "deployment",
+        "wires",
+        "site-provider"
+      ],
+      "helper": "9a18cb1007d635d82f5fe310d61285df840540a79a6b5e58d297d7163e968e43",
+      "networking": "0f25996e0b96b26d9a4041d13f6e824b2f58af1f",
+      "core": "8f2952d302f92836d789a2a46f4a386637a7c809",
+      "archivesCompared": 13,
+      "unchangedJarContents": true
+    },
+    "kernelObservationDuringDpkgConfigure": false,
+    "installedWaiters": {
+      "holderInode": 7613316,
+      "kernel": [
+        "56: FLOCK  ADVISORY  WRITE 2510 00:26:7613316 0 EOF",
+        "56: -> FLOCK  ADVISORY  WRITE 2593 00:26:7613316 0 EOF",
+        "56:  -> FLOCK  ADVISORY  WRITE 2594 00:26:7613316 0 EOF",
+        "56:   -> FLOCK  ADVISORY  WRITE 2591 00:26:7613316 0 EOF",
+        "56:    -> FLOCK  ADVISORY  WRITE 2592 00:26:7613316 0 EOF"
+      ],
+      "processes": {
+        "2515": {
+          "waiter": "2591",
+          "wchan": "locks_lock_inode_wait",
+          "parents": [
+            2591,
+            2520,
+            2515,
+            2510
+          ]
+        },
+        "2518": {
+          "waiter": "2592",
+          "wchan": "locks_lock_inode_wait",
+          "parents": [
+            2592,
+            2523,
+            2518,
+            2510
+          ]
+        },
+        "2516": {
+          "waiter": "2593",
+          "wchan": "locks_lock_inode_wait",
+          "parents": [
+            2593,
+            2519,
+            2516,
+            2510
+          ]
+        },
+        "2517": {
+          "waiter": "2594",
+          "wchan": "locks_lock_inode_wait",
+          "parents": [
+            2594,
+            2527,
+            2517,
+            2510
+          ]
+        }
+      }
+    },
+    "registry": {
+      "file": {
+        "sha256": "18b311931df159105203da586d28a93bb67a746881d031bc131a95b12de24f07",
+        "meta": "39|7612730|640|0|990|1|42|2026-11-21 09:37:57.603809362 +0000|2026-11-21 13:21:05.551314618 +0000"
+      },
+      "lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "meta": "39|7613316|600|0|0|1|0|2026-11-21 13:21:13.998119770 +0000|2026-11-21 13:21:13.998119770 +0000"
+      },
+      "lines": [
+        "management-ui",
+        "wires",
+        "deployment",
+        "networking"
+      ]
+    },
+    "cold": {
+      "root": "39:6611544",
+      "request": "8608465c-37ba-4776-864b-51f0edf6e993",
+      "status": {
+        "kura-core": "6.0.0~git20261121211856.8f2952d-1",
+        "kura-deployment": "2.0.0~git202611211324.de17bd5-1",
+        "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1",
+        "kura-management-ui": "3.0.0~git202611211325.b881a3a-1",
+        "kura-networking": "3.0.0~git202611211325.0f25996-1",
+        "kura-wires": "3.0.0~git202611211325.277954b-1"
+      },
+      "holderInode": 7613316,
+      "allSigned": 702,
+      "histories": 39,
+      "originalFixtureObjects": 101,
+      "mutableFiles": 319,
+      "fenced": false,
+      "verifiedPostrm": 4,
+      "verifiedInstalledHelpers": 4,
+      "registryUnchanged": true
+    },
+    "correctedPermissions": {
+      "verified": 70,
+      "readerGroup": 990,
+      "keptOriginalInodes": true
+    },
+    "remaining": "Ordinary sibling package configuration needs to reconcile Core code ownership automatically."
   }
 }
