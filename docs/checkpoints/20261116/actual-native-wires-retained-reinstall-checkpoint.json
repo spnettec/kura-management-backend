@@ -6159,5 +6159,18 @@
       }
     ],
     "remaining": "Managed Main configuration snapshot in flight during package maintenance and wrapping-key transitions"
+  },
+  "removedCoreRootReadback20261121": {
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/pkcs12-retained-root-readback",
+    "operation": "5201d2d4-df9f-4387-a82b-787e7e194c8b",
+    "container": "3ed12993ad3c4a4135ffaffd795f76003f081e13fa9c79a0935299651ad35217",
+    "originalRoot": "1048716:7724412",
+    "observedRoot": "2097163:7724412",
+    "machineAndInodeMatch": true,
+    "dpkgIssued": false,
+    "retainedReinstall": "pending",
+    "coldRetainedFiles": 6,
+    "status": "deinstall ok config-files",
+    "parkedExit": 0
   }
 }

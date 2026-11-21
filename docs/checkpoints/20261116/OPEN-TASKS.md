@@ -1,3 +1,9 @@
+## 2026-11-21 单包 Core 移除后的 Root 配对核验
+
+原单包 ARM64 夹具的移除围栏与 removal-home.json 均指向 5201d2d4-df9f-4387-a82b-787e7e194c8b。启动原容器后，machine-id 摘要及 Root inode 7724412 匹配，设备号从 1048716 变为 2097163。核验在包操作前结束，容器正常关机，退出 0。停机前后的两次冷读均确认包状态为 config-files、原移除围栏仍在、保留的六个文件逐一匹配移除时的 SHA-256。
+
+这个编号的保留重装和重装后验签仍待原 Root 配对成立。当前单包停机只读入口为 pkcs12-retained-root-readback/check.py cold。原六组件继续使用 pkcs12-package-admission/cold.py。绑定网关继续使用 bound-agent-packaged-receipt-field/cold-business.py，其 6910532 后继升级已封存，原任务 SUCCEEDED、开关 OFF。冻结闭环 0/12，外部延期维持原三项。 [检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 Core 包维护在复制前保留原 PKCS12 改密文件
 
 Core c5381c2e55 已在原六组件 ARM64 Root 39:6611544 实装。PKCS12 已经替换、store.save 尚未更新时，真实 dpkg 升级在复制前拒绝。原六包保持 installed，正常停机后核实原文件身份，重启后在原测试库恢复同一随机口令并验签。沿旧 prerm 已建立的维护号 4fede114-d501-4969-b465-f6b8c1e67749 完成后继升级。独立 Core 单包容器中，真实 dpkg 移除在建立围栏前拒绝；恢复后正常移除，config-files 与保留区 6 份文件已停机冷读。
