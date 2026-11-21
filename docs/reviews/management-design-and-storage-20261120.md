@@ -281,3 +281,5 @@ Deployment 的一次进程中断解释了为什么成功验证原子替换单个
 这两次重命名的恢复复用原暂存文件与注册表锁。两个 ARM64 样本新增的待办记录分别为 1,093 和 1,094 字节；登记完成后删除。服务进程在新一次启动中凭文件身份和内容摘要补完登记，无需再复制业务包。为验证中断与恢复权限，原六组件卷先后安装了 239,302 和 240,140 字节的 Deployment deb，复用了 Core、其余组件和编译缓存。真实 Felix 在返回结果前中断仍需独立证据。[两次重命名、权限与冷读](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
 
 原六组件卷联合升级复用了 214,477,656 字节的两个现成发行包，安装完成后已移除卷内传输副本。本轮新增零个 deb、虚拟机和 Docker 卷。当前 Core 打包目录的 58 个 ARM64 deb 文件长度合计 11,861,225,310 字节；APFS 共享块使该值与实际可释放容量有别。实际验收只编译了一个 Java 21 只读观察器，由同一次正式 Main 启动核验部署包和 H2。保留两个历史测试目录的 inode 额外需要同卷改名，它们的历史证据才依赖这种身份；正式业务通过包注册、bundle 资源和数据库查询验证。[安装与磁盘计量](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)
+
+本轮在生成 Core 安装脚本后，先用 ARM64 小夹具证明旧脚本会放行一份仍依赖 inode 的回执，再合并组装最终的 Core 和 Deployment。两个新增包分别为 205,064,976 和 242,858 字节。真实联合升级发现两个组件对同一个 Main 停机状态的识别方式不同，必须先用正式包管理流程移除 Deployment，才能沿原编号恢复。这是跨包维护合同带来的工期。默认 Core 打包目录当前有 59 份 ARM64 deb，逻辑长度 12,066,290,286 字节。[实际维护顺序与成本](../checkpoints/20261116/actual-native-wires-retained-reinstall-checkpoint.json)

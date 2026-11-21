@@ -1,3 +1,9 @@
+## 2026-11-21 部署回执阻止 Core 复制原文件，六组件按原维护号恢复
+
+Core `ef207249bf` 在维护准入和 Main 停止后的写入者检查中识别标准包注册表的未结发布。Deployment `8f5927e` 提供停机续办入口，原存储属主持原回执 SHA-256，在注册表锁内完成剩余重命名。ARM64 的发行 JAR 实测同一安装、原始两份暂存文件；错摘要与 Root 调用均拒绝，原输入只提交一次。该隔离中断使用测试 DeploymentAdmin；原六组件实装后的正式 Main 另行核对两个真实 bundle 的注册表读入和原活动业务包。
+
+Core 与 Deployment 同时解包时，Deployment 建立了配对的 systemd early generator 屏蔽。原 Core 配置在 `setup-layout` 结束后因时钟脚本 `UNSAFE_UNIT` 拒绝，Deployment 又依赖已配置的 Core。通过正式 dpkg 移除 Deployment、沿原编号 `c21c3730-171a-42b6-9f49-0a21d545f746` 完成 Core 配置，再装回同一个 Deployment deb。原四条阶段记录保持，原六组件 Root `39:6611544` 现已正常停机，冷读 54 条 HMAC、82 份保护文件及两份凭据。两份本地测试 JAR 和两个依赖 inode 的历史目录按同卷暂存后归还。最新六组件入口 `deployment-core-maintenance/cold-maintenance.py`，独立防火墙继续沿 `firewall-ipv4-loopback-port/retained.py`。Core deb 使用本地时间版本 `6.0.0~git20261121170344.ef20724-1`，后续安装先用 dpkg 比较版本。直接联合 configure 的生成器配对仍待修复。冻结 **0/12**，外部延期仍为原三项。[发行件、原阶段及停机续办证据](actual-native-wires-retained-reinstall-checkpoint.json)
+
 ## 2026-11-21 原六组件卷联合升级 Core 和 Networking，正式 Main 读回原业务
 
 Root `39:6611544` 通过 dpkg 从 Core `5bd7710`、Networking `783a594` 升至 `00c3f8fe08`、`671a90f`。其余四包版本相同。正式 Main 以 UID 997、有效能力 `0x400` 启动，读取已注册的 `fixture.retained.business` 1.0.0 包、活动 bundle 的原资源和 H2 原业务行。随后正常停机，Main、agent 均 disabled。只读续接入口为 `six-nat-worker-upgrade/cold-maintenance.py`。

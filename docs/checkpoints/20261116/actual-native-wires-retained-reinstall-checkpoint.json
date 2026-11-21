@@ -3865,5 +3865,173 @@
     "firewallRecovery": "firewall-ipv4-loopback-port/retained.py",
     "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/six-nat-worker-upgrade",
     "readOnlyEntry": "six-nat-worker-upgrade/cold-maintenance.py"
+  },
+  "deploymentPublicationDuringCoreMaintenance": {
+    "core": "ef207249bf168667b63e69feef91745051e27b80",
+    "deployment": "8f5927eff552427d7ffc738bf7e0c93ef2040ad9",
+    "coreDeb": "93b749e4136d124176ca63d3a3eaf63681179a2d02d4e88454cc3b8a6762c706",
+    "deploymentDeb": "2bb7b97e5f86e3be2ab7efb0dee673fd4792043b8d74faeea865d19cdd8652b8",
+    "installedVersions": {
+      "kura-core": "6.0.0~git20261121170344.ef20724-1",
+      "kura-networking": "3.0.0~git202611210758.671a90f-1",
+      "kura-management-ui": "3.0.0~git202611210452.9de7a7b-1",
+      "kura-deployment": "2.0.0~git202611210906.8f5927e-1",
+      "kura-wires": "3.0.0~git202611210453.4f13cf1-1",
+      "kura-management-agent": "0.1.0~cohort20261121033315.5be64b7-1"
+    },
+    "sourceTests": 27,
+    "deploymentReactor": {
+      "tests": 248,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "isolatedOldAndNew": {
+      "architecture": "aarch64",
+      "rootInode": 7479878,
+      "registryDirectory": 7479939,
+      "copiedDirectory": 7480113,
+      "originalDevice": 2097163,
+      "copiedDevice": 2097163,
+      "refused": {
+        "oldPreinst": 0,
+        "incomingPreinst": 1,
+        "installedHelper": 1
+      },
+      "allowed": {
+        "oldPreinst": 0,
+        "incomingPreinst": 0,
+        "installedHelper": 0
+      },
+      "sourceSubmissions": 1,
+      "archiveAlreadyPublished": true,
+      "originalStagedRegistryBecameCurrent": true,
+      "priorCopyLostIdentities": 7,
+      "predecessorPreinst": "fd16cd26a1fa1c1b99cb3ef66f262990063675e680e4ea5d51110cf28702fc47",
+      "candidatePreinst": "85ab7c2ba8fa35112450de66d0009c9ec7d5442410f69c31c429583392178034",
+      "installedHelper": "17f300b57e729efb9bd0c55a04fa5b3550a9f2e32ecba1a2c812de591fe5f785"
+    },
+    "offlineRelease": {
+      "uid": 997,
+      "originalReceiptSha256": "595a4302b8a8d54cd500467cfaf93e52af2ddeaff97cc1cb70befca19092e240",
+      "jar": "80b313a0c46d865e245701c782292a4014eed1b51089f9b0f2202b08ae6269e0",
+      "mainStarted": false,
+      "sourceSubmissions": 1,
+      "rootRefused": true,
+      "wrongReceiptRefused": true,
+      "archiveInode": 7481917,
+      "registryInode": 7481915,
+      "oldRegisteredArchiveExact": true,
+      "alreadyRetiredRefusedWithoutWrite": true,
+      "packageGateCleared": true,
+      "registryEntries": 3
+    },
+    "field": {
+      "maint": {
+        "id": "c21c3730-171a-42b6-9f49-0a21d545f746",
+        "root": {
+          "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+          "mount": "39:6611544",
+          "machine": "11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b"
+        },
+        "deploymentGate": {
+          "action": "replace",
+          "anchor": ".kura-deployment-12afa4078b804e5f94aae465468ac324",
+          "device": 39,
+          "inode": 7485165,
+          "root": "39:6611544:11e9330e539f3c143c57af536fc5b34a49b0f9d8f748895f872234d39e86b70b",
+          "schema": 2,
+          "sha256": "f40a0cb1d05be374decfd648d1774c0fa705f5e8e8cb5eb852bd9e454c9262cb"
+        },
+        "main": {
+          "MainPID": "0",
+          "NRestarts": "0",
+          "LoadState": "masked",
+          "ActiveState": "inactive",
+          "UnitFileState": "masked-runtime",
+          "InvocationID": ""
+        }
+      },
+      "stoppedWithFourPhases": "Kura su PAM policy check accepted.\nKura private encryption key is ready.\nINSTALLER upgrade /opt/eclipse/kura_6.0.0-SNAPSHOT_linux\nUNSAFE_UNIT\nCore configure refused: Command '['/usr/bin/python3', '-I', '-B', '/opt/eclipse/kura/bin/kura_clock_setup.py', 'reassert_quiescence']' returned non-zero exit status 1.",
+      "actualRemove": {
+        "status": "config-files",
+        "main": {
+          "MainPID": "0",
+          "NRestarts": "0",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "InvocationID": ""
+        },
+        "id": "c21c3730-171a-42b6-9f49-0a21d545f746"
+      },
+      "originalPhaseFilesPreserved": 4,
+      "reinstalledSameDeploymentArchive": true,
+      "main": {
+        "process": {
+          "unit": {
+            "MainPID": "5968",
+            "NRestarts": "0",
+            "LoadState": "loaded",
+            "ActiveState": "active",
+            "UnitFileState": "disabled",
+            "InvocationID": "7e714efb3f004124993a6fb9da6e21db"
+          },
+          "ticks": "43403376",
+          "uid": "997\t997\t997\t997",
+          "capEff": "0000000000000400",
+          "nnp": "1"
+        },
+        "classes": {
+          "org.eclipse.kura.core.deployment": "642601bf13679007513f55a65238aab79f0aa1b7b46ba00710997ee80cdf8ecd",
+          "command": "c7b1ee3c91aace33c31881f1f86219dac1b805894ddf21157541280ee995b5b6",
+          "org.eclipse.kura.deployment.agent": "642601bf13679007513f55a65238aab79f0aa1b7b46ba00710997ee80cdf8ecd"
+        },
+        "originalDeploymentActive": true,
+        "registeredArchiveReadByBothBundles": true,
+        "receiptAbsent": true
+      },
+      "cold": {
+        "root": "39:6611544",
+        "maintenance": [
+          "d9aea84c-1f3a-4ee1-8dfd-a5a195a824e3",
+          "ee52e71a-0d98-4830-aa77-b5a2aa194bd8",
+          "c21c3730-171a-42b6-9f49-0a21d545f746"
+        ],
+        "authenticatedPhases": 54,
+        "heldObjects": 101,
+        "worker": "3d5093c10bc1aabd77a6975eb830c7f0fb84d5d85e4baf1c53f86771fe81b26e",
+        "helper": "17f300b57e729efb9bd0c55a04fa5b3550a9f2e32ecba1a2c812de591fe5f785"
+      },
+      "parked": {
+        "id": "364083639ad0be50c313a6ece7e5f74f95d0ea1c770c0c5f1ea5109e33c670b0",
+        "state": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-11-21T09:09:36.736432559Z",
+          "FinishedAt": "2026-11-21T09:12:27.264541207Z"
+        }
+      }
+    },
+    "pending": "Core clock reassert_quiescence rejects the Deployment schema 2 early generator mask during concurrent dpkg configuration. Original field settled by ordinary Deployment removal, Core configure, same Deployment package install.",
+    "isolation": "Deployment bundle registry and original archive publication used real release classes. The isolated DeploymentAdmin returns a test acceptance. On the retained six-component installation, actual Felix and both bundles read the existing business registration.",
+    "sixReadOnly": "deployment-core-maintenance/cold-maintenance.py",
+    "firewallReadOnly": "firewall-ipv4-loopback-port/retained.py",
+    "storage": {
+      "newCoreBytes": 205064976,
+      "newDeploymentBytes": 242858,
+      "arm64CoreDebs": 59,
+      "arm64CoreLogicalBytes": 12066290286,
+      "newVMs": 0,
+      "newVolumes": 0
+    },
+    "evidence": ".management-close-20261116/core-rtc-hotplug-20261120/deployment-core-maintenance"
   }
 }
