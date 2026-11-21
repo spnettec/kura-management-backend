@@ -989,5 +989,100 @@
     "coldVerifier": "docker-current-gateway-release/runtime.py cold",
     "frozenClosed": 0,
     "frozenParents": 12
+  },
+  "equinoxPublication20261121": {
+    "launcher": "a71f3cfc2360ca28682f7735fdec29b30b4315f1",
+    "image": "sha256:1fdfd92a576733c7cd6cc06a8fc51c4e8885bccd6e1b7165bca27e10169283d1",
+    "packages": [
+      "kura-core\t6.0.0~git20261121230523.d97260d-1\tarm64\tcee000837df7aac02a0913847d6afa33b5e4b7147b3f4078b0d63d8079cc0954",
+      "kura-management-ui\t3.0.0~git202611211325.b881a3a-1\tall\t8a5e4073f9a9ab6908bc15d4a7a25115cc1ae251d1440a39f11a68803d80e421",
+      "kura-deployment\t2.0.0~git202611211324.de17bd5-1\tall\t1e78e0fb036480e8767ca6db7e29157b0e3f3c8a3683d344c2a75655b95d8fed",
+      "kura-wires\t3.0.0~git202611211325.277954b-1\tall\tb7807ba6607960547e00e141fa650e1963fb76d18c4484ce0af15208ac8d5ad2"
+    ],
+    "jarParity": {
+      "image": "sha256:1fdfd92a576733c7cd6cc06a8fc51c4e8885bccd6e1b7165bca27e10169283d1",
+      "total": 235,
+      "packages": {
+        "debs/kura-core.deb": 215,
+        "debs/kura-management-ui.deb": 2,
+        "debs/kura-deployment.deb": 4,
+        "debs/kura-wires.deb": 14
+      },
+      "jarMapSha256": "729d4744f47dd0192e270bcd3fae3c0420ba1e9e27473a082bf4defeea2ea749"
+    },
+    "fieldFailure": {
+      "id": "dae51a9f4ff33ffe91475e1e311ba47ee605ee5bd14366932de951d94612c62f",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 1,
+        "Error": "",
+        "StartedAt": "2026-11-21T15:19:09.783005564Z",
+        "FinishedAt": "2026-11-21T15:19:10.105882383Z"
+      },
+      "root": [
+        39,
+        6566861
+      ],
+      "snapshots": 3,
+      "configurationAbsent": true,
+      "originalObjectsMatched": true
+    },
+    "running": {
+      "http": 200,
+      "dp": "admin=true packages=kura-yofc-runtime.dp@1.0.0.202611201918,yofc-iot-api-comp@0.0.1.202611201918,yofc-iot-apps-comp@0.0.1.202611201918,yofc-iot-apps-opcuaserver@0.0.1.202611201918 bundles=com.yofc.iot.runtime@32,com.yofc.iot.yofc-iot-api-comp@32,com.yofc.iot.yofc-iot-apps-comp@32,com.yofc.iot.yofc-iot-apps-opcuaserver@32",
+      "process": {
+        "Name": [
+          "java"
+        ],
+        "Uid": [
+          "122",
+          "122",
+          "122",
+          "122"
+        ],
+        "CapEff": [
+          "0000000000000000"
+        ],
+        "NoNewPrivs": [
+          "1"
+        ]
+      },
+      "root": [
+        39,
+        6566861
+      ],
+      "emptyLoad": true,
+      "registryRows": 4,
+      "identityFingerprints": 4
+    },
+    "parked": {
+      "id": "dae51a9f4ff33ffe91475e1e311ba47ee605ee5bd14366932de951d94612c62f",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 143,
+        "Error": "",
+        "StartedAt": "2026-11-21T15:19:11.22162732Z",
+        "FinishedAt": "2026-11-21T15:19:22.90835871Z"
+      }
+    },
+    "coldReader": ".management-close-20261116/core-rtc-hotplug-20261120/docker-launcher-config-publication/runtime.py cold",
+    "equinoxConfig": {
+      "bytes": 21004,
+      "sha256": "bc27a2c4d485ed372e8a47767831d679d4a5d504405d58479310e29e5c1d8251",
+      "mode": "0600",
+      "owner": "122:122"
+    }
   }
 }

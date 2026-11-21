@@ -305,3 +305,5 @@ Docker 启动器的三版真实 OSGi 工厂更新复用了原镜像、原卷及�
 本轮 ARM64 启动器复用四份现成 deb 和四份原 DP，仅构建一个本地镜像。八个临时 APFS 克隆的文件长度合计 384,044,900 字节，构建完已移除。新旧镜像的逻辑大小分别为 704,587,864 和 704,121,619 字节，相差 466,245 字节。六个最终层中有两个摘要相同。Docker 对新镜像报告共享 308.9 MB、独占 395.7 MB，其中复制整个 `/opt/eclipse` 的层约 396 MB。因此，同时保留两版的存储成本要看独占层大小；镜像总大小之差只能说明两版各自的文件规模接近。宿主 APFS 的物理增量未单独测量。原业务卷和 235 个在镜像内交付的 JAR 均已核对。[镜像层和包输入](../../../.management-close-20261116/core-rtc-hotplug-20261120/docker-current-gateway-release/storage.json)
 
 已绑定 agent 的回执恢复修正只改变 Python 维护代码及测试。将新旧发行清单逐项比较后，复用同一份 ARM64 Rust 二进制和网关原 bridge，本轮新增一个 7,061,640 字节的 deb。四个进程中断检查使用同一包；原网关、中心和数据库保持停放。[构建输入与包计量](../../../.management-close-20261116/core-rtc-hotplug-20261120/bound-agent-receipt-publication/release.json)
+
+2026-11-21 的容器启动器修复复用了四份已构建的当前 deb 和四份原 DP。新镜像比前一版仅多 12,523 字节，两版各约 705 MB，但最终六层只有两层摘要相同。Docker 报告新版共享 308.9 MB、独占 395.7 MB。八个构建输入使用 APFS 克隆，文件长度合计 384,058,352 字节，镜像验完已逐个核对并撤下。构建日志还显示，Dockerfile 在复制启动脚本之后才为 builder 安装 JRE 等依赖；这次启动脚本变化使该步骤重新下载包，单是 headless JRE 这一步就跨过数分钟。没有单独测量宿主物理空间增量。[镜像大小及构建输入](../../../.management-close-20261116/core-rtc-hotplug-20261120/docker-launcher-config-publication/storage.json)
