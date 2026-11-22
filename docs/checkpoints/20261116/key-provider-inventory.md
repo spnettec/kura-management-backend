@@ -47,3 +47,7 @@ ARM64 六组件正式 Main 已验证同一 SQLite 工厂内的数据库凭据换
 ## 2026-11-22 历史快照转换的原位续办
 
 Core 已在第一份快照转换完成、最新一份仍为明文时通过进程中断验收。已有密文按当前钥认证并保留，最新编号成功续办并加载。新的 ARM64 deb 由正式 Main 读回混合历史中的最新业务设置，尚待验证的是跨代重新包装及旧钥退役。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 历史快照跨代重加密的原位续办
+
+正式 ARM64 Main 已验证固定安装历史上一份旧加密快照的原位重包。原密文单独保留，替换后的中断沿原序号只补签，活跃钥可独立读回完全相同的 XML。Main 正式启动后读回同两份历史配置。Legacy 内嵌密码混合旧代已通过 JDK 21 codec 测试，尚需逐 provider、CM 存储和已登记恢复制品的生命周期验证。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)

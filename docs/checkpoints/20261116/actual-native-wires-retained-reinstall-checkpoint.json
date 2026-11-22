@@ -9544,5 +9544,47 @@
       "data/store.save and the installed PKCS12 provider exercised in this fixture",
       "other providers and CM or snapshot rewrap remain pending"
     ]
+  },
+  "nativeSnapshotHistoryRewrap": {
+    "core": "f6b054eb1762fa7d0cdcc968d66ba6e16f54939f",
+    "coreDeb": "7b7d410fa09e65df042e49a356b533e015ed249fbfbe2bd9bc8921d7bafb2157",
+    "fixtureRoot": "2097297:1",
+    "fixtureContainer": "318692c17fee6dda4f9fd4178eee829b7022b458428562c1d11081636bee0b3e",
+    "fixtureNamespace": "fdb3d2ebc618a649e6d8cf97f631b1517e56b0c1420491c4587ddb1c0ac3ef50",
+    "operationId": "c6530d50-a716-41e5-8a87-ce5457f1f18f",
+    "snapshotId": "1795325341669",
+    "publicationId": "ae69a1fd-7c10-4bd2-88c6-83523c278198",
+    "originalSha256": "73de776c7147a60af667cccfde01de07fff720429e4902b16b17a12bf3514f8c",
+    "rewrappedSha256": "2c45617128a81f43560b7e98d4d9680ce733db369f682d8e5072de81eaf58f46",
+    "fault": "SIGTERM",
+    "mainAdmissionDuringInterrupt": "UNRESOLVED_OPERATION",
+    "packageAdmissionDuringInterrupt": "REFUSED",
+    "completedOutcome": "SUCCEEDED",
+    "newerInodePreservedOnResume": true,
+    "originalCiphertextPreserved": true,
+    "activeKeyAloneReadExactXml": true,
+    "mainReadPid": 5073,
+    "originalMainSnapshotIds": [
+      "1795325341669",
+      "1795325352291"
+    ],
+    "originalMainSnapshotValues": [
+      24101,
+      24102
+    ],
+    "protectedFilesExact": 15,
+    "otherSnapshotsExact": 2,
+    "normalShutdownExit": 0,
+    "arm64Tests": 113,
+    "offlineJavaTests": 78,
+    "matchingJvmPluginPaths": 217,
+    "evidenceSha256": "177c4c82605b65966a6f7127f854774a9c4c29645f415c642fd98c396f3f991c",
+    "cold": "snapshot-rewrap-field/cold.py",
+    "limits": [
+      "standalone fixed package snapshot directory on the same filesystem",
+      "authenticated encrypted snapshots only",
+      "legacy embedded wrapping verified in Java tests",
+      "registered recovery artifacts and CM store rewrap remain separate"
+    ]
   }
 }

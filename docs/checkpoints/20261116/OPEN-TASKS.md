@@ -1,3 +1,7 @@
+## 2026-11-22 历史快照原子重加密与冷读
+
+Core f6b054eb17 正式 ARM64 deb 在独立 Root 2097297:1 将历史快照 1795325341669 重加密。原子替换后、回执发布前 SIGTERM，Main 和包维护准入拒绝。沿原编号 c6530d50-a716-41e5-8a87-ce5457f1f18f 只补签，后继 inode 和原密文副本保持。独立 reader 仅用活跃钥读回与原件逐字节相同的 XML，正式 Main 读回原两份历史快照 24101／24102，系统正常退出 0，Main disabled。78 项离线 Java、113 项 ARM64 定向测试通过，217 个 JVM 插件路径一致。12 父项冻结 0/12。冷读入口 snapshot-rewrap-field/cold.py。
+
 ## 2026-11-22 Provider 凭据重加密与原 Main 验签
 
 Core 91bb7edf7f 的独立 ARM64 Root 2097308:1 在 store.save 原子发布后中断，沿重加密编号 be099020-1da3-452c-9cb1-0be6add86b8b 补签。同一新钥独立读回三条记录，并打开原 PKCS12。续接时只读核对原 Main PID 5996 的 ready-cold 和 verified-cold，证实正式 provider 使用原业务证书通过挑战验签。旧 failure 早于该次启动。18 份保护文件一致，系统正常退出 0，Main disabled。旧现场保持冻结，12 父项冻结 0/12。冷读入口 provider-store-rewrap/cold.py。
