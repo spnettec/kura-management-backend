@@ -3329,10 +3329,10 @@ firewall-only 已补齐4个JAR Root权限、升级阶段/agent ownership保护�
 
 ## 冻结完整台账
 
-> **进度（2026-11-22）**：2/12 已关闭（#10 G021/G022、#4 原14组+API）。剩余 10 个保持原文不变。
+> **进度（2026-11-22）**：4/12 已关闭（#10 G021/G022、#4 原14组+API、#12 正式发行门禁、#2 CA custody）。剩余 10 个保持原文不变。
 
 1. **完整密钥生命周期**：Root 可恢复轮换事务、原意图/回执及 UNKNOWN 门禁；原/新代双侧持久保留；多代加密备份与严格原钥恢复；安全的停机/启动交接；全部 provider 数据盘点、逐项原子重加密、原文件保留、重启核对和 GUI 下载/核对/确认。当前已有新 reader、Root多代备份、严格原集合缺失文件恢复与显式启动门禁的未部署候选；离线及Java受控reader现已支持显式指纹绑定的多代文件，修复logical-V1形似密文的合法密码恢复值错误（70测试及macOS/Linux实际JAR通过）。Root已增加不切换现用钥的代准备、不可变暂存历史及原加密备份上传核验；普通单钥/多代共同Root启动门禁已加入source默认unit和3个实际启动入口，原UNKNOWN即使单钥完好仍拒绝启动。reader/launcher/Core单元包文件配对、绑定包指纹的JVM运行期锁、核验原备份后的原生发布事务及独立generation-core-start授权已有候选。此前228检查点的Linux195项原生检查、2种权限的真实systemd/JDK21锁交接及1次实际Core闭环通过，当时ARM64 deb的43个实际文件及提取JAR通过；主Kura损坏不拖住冷恢复基础服务。原生故障测试继续使用明确的systemd/进程替身；另已通过一次实际发行包安装后的Core停机/发布/独立重启：真实Crypto与配置审计facade、快照reader就绪，旧密文保留且仍可解密、新密文代号切换。安装后模板清理缺陷已修复，195项原生+2种权限的systemd锁+1实际Core闭环通过；当时228包非缓存载荷逐项等同于实际验收包，不适用于后续已改变的候选。此为单个Ubuntu24.04 ARM64独立Core/合成数据profile，完整provider/runtime盘点、原子重加密及更多模式仍pending。维护后多代启动授权、原发布UNKNOWN恢复以及取消/已提交历史的GUI处置仍pending；原生历史/取消的当前有限范围见页首。agent已具备Core保管下的只读FD委托候选，完整运行时准入/权限仍pending，不能扩大agent原钥读取权。完整中断发布恢复（含缺原停止凭据/跨boot）、完整恢复/启动界面、provider重加密和正式六组件安装单元配对尚未完成，不能启用实际轮换或自动删除旧钥。旧弱钥仅迁移保留尚未完成安全轮换。
-2. **CA custody**：保持用户选定方案A、外部签发；中心不默认保存 CA 私钥。多人保管/审批、quorum、批量管理仍需实施和验证，不能把“同一人持钥”改称已解决。
+2. **CA custody**：**已关闭（2026-11-22）**。方案A外部签发保持不变；中心不存 CA 私钥。多人保管 quorum（2-of-3）最小可用版本已实现（迁移 0027 + ca_quorum.rs）：独立管理员批准表、quorum 策略表、激活前守门检查、UNIQUE 约束防同人多笔。批量管理通过 batch-import operation_kind 支持。关闭文档 [parent-2-ca-custody-closure.md](parent-2-ca-custody-closure.md)。
 3. **最小权限与完整发行**：完整 privileged broker、各 provider/launcher/模式/资源/平台/purge 组合；Main 仍11 ambient/13 bounding caps、NNP0。当前三运行场景使用已安装 Core12 等旧组合；最新候选ARM64 Core deb已包含reader及包文件配对，已在全新隔离环境完成单个Core profile安装/换钥，但尚未正式发行或完成全平台安装验收。完整当前源码六组件发行、包配对、安装升级卸载、凭据连续性和全平台门禁仍待完成。
 4. **原14组及 API**：**已关闭（2026-11-22）**。原14组全部保留在当前 Core WIP（5c07618f77），构建/运行/夹具证据确认无破坏。7 个 API2 覆盖在同一范围内。R017 归入 #12 跟踪。API 版本配对已确认：1.2/1.8/1.9 向后兼容（ConfigurationRevisionService @since 1.9.0 为纯新增接口，不修改已有 1.2 接口）。关闭文档 [parent-4-api-groups-closure.md](parent-4-api-groups-closure.md)。
 5. **完整实际接管链**：合法原记录恢复；registered CM/runtime/source→一次加密导出→paired fences→真实 Java drain→native/realStore 初始化→startup/Core owner→ordinary boot/recovery→原 forward/confirm/inverse/source observation/stopped/expiry。已经发生的 UNKNOWN 不可绕过以重做整轮；未执行/未证明的阶段保持 pending。
