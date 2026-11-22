@@ -1,3 +1,7 @@
+## 2026-11-22 正式 ARM64 Main 沿原恢复号完成受保护启动
+
+Core 2a1c3a6608 在独立 ARM64 正式安装沿 Root 2097398:1、原号 rec-1b6b1ffb-7491-4478-867f-781c941c8d3a 承接 MAIN_STOPPED，从同摘要的既有普通快照启动 Main PID 4124，取得 NORMAL_BOOT_ADMITTED。原 Main PID 3066 的 CM_APPLIED、密码密文、Equinox .cfg 指纹及选择围栏保持，普通写入仍拒绝。错原回执和旧快照在启动前拒绝。夹具正常退出 0。81 项 JDK 21、76 项 ARM64 定向测试通过，217 个 JVM 插件字节一致。原生 agent 委托本阶段、从外来快照安全发布至普通目录、同号健康授权、显式写释放及完整维护矩阵仍待办。冻结 0/12。冷读 fixed-guarded-main/cold.py。
+
 ## 2026-11-22 正式 ARM64 Main 受控恢复及原回执健康核验
 
 Core 2625f42958 与 agent b75d7f1 在隔离 ARM64 正式 Main PID 3000 读回原号 rec-ad17f8ca-9bb0-4165-9d5f-10814a13f9b0 的 CM_APPLIED。实际 Equinox 落盘中两个历史逻辑值加密、原包裹密文保留，普通写入拒绝。配对 bridge 的管理员所选 DS 检查通过，缺失检查失败，错回执和已停 Main 拒绝。修复私有只读 reader 的 systemd 启动限流后，六次连读耗时 3.46 秒，随后同号取得 MAIN_STOPPED 并正常退出 0。初测停止 UNKNOWN，原号只有启动回执，原 Main 保留并冻结。80 项 Java、58 项 ARM64 Core 和 7 项 Rust 定向测试通过，217 个 JVM 插件及离线恢复 JAR 字节核对通过。固定链的受保护普通启动与显式写释放、完整维护矩阵仍待办，冻结 0/12。冷读 native-applied-health/cold.py。
