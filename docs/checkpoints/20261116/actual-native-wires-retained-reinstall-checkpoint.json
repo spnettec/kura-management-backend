@@ -9227,8 +9227,26 @@
     "sameUidForeignRefused": true,
     "coreSocketResumed": true,
     "parked": true,
-    "positiveNativeSnapshotFdPending": true,
+    "positiveNativeSnapshotFdPending": false,
+    "positiveNativeSnapshotFdVerifiedBy": "nativeSnapshotValidationRequest",
     "cold": "native-snapshot-validation-broker/cold.py",
     "evidenceSha256": "974bfe5d2483d5b58db669cef26c0c7740fc8a08efa96419fb2667b9ce8a228e"
+  },
+  "nativeSnapshotValidationRequest": {
+    "core": "2ad663286ae18f97c28fa48fc7b38acdf78bc81a",
+    "agent": "a998ebe0853f34d8673bdfbdc1eb3504c02b14c1",
+    "coreDeb": "836a23c42cf4110af2fdad79699d6bce39569fb96cd86a490208291892a55c91",
+    "agentDeb": "ec112c6e052c3d1beae65e17ea89a1f7cd422a943b985bf4d99bb77d095bdf83",
+    "fixtureRoot": "2097245:1",
+    "sourceMaintenance": "0a4b4ce6-b686-493a-a32b-531423a5eb63",
+    "packageState": "APPLIED",
+    "arm64InstalledPositive": true,
+    "passingSnapshotReports": 4,
+    "maximumVerifiedBytes": 33554432,
+    "mainStarted": false,
+    "restoredRecovery": false,
+    "parked": true,
+    "cold": "native-snapshot-validation-request/cold.py",
+    "evidenceSha256": "424c032aa2f2f868501f1c8d3339d053c1f3b170099b856f0f97dc96f3e320c9"
   }
 }

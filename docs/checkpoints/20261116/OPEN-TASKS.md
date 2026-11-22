@@ -1,3 +1,7 @@
+## 2026-11-22 正式 ARM64 非 Root agent 的快照 FD 正向验收
+
+正式 ARM64 agent a998ebe 经本地 Root 证实可向 Core 2ad663286a 交付只读 FD。独立 Root 从 266adf5 沿原初始化与维护号解包、续配并读回 APPLIED。正式命令通过明文、AES-GCM、超过 1 MiB 和恰好 32 MiB 四份快照；截断、尾随、错摘要、额外 unit 参数和 broker 停用均拒绝。四份 Core 保护文件保持，无恢复事务或启动记录，Main disabled，系统正常停放。冷读入口 native-snapshot-validation-request/cold.py。冻结 0/12。
+
 ## 2026-11-22 ARM64 独立快照校验 socket 与 Core 维护
 
 Core 2ad663286a 与 agent 266adf5 接入独立只读快照 socket。ARM64 83 项定向 Python 测试和宿主 3 项 Rust 测试通过。两个正式 deb 在隔离 Root 实装，原 Core 217 个插件路径字节一致。实际非 Root agent 发布同一 Root 的启动凭据，同 UID 同组的独立 peer 被拒绝。Core remove、purge、同版重装沿原维护号完成，agent 调用标识保持，新 socket 恢复。Main 全程无 PID，重装后显式恢复 disabled，系统正常停放。正式非 Root 业务调用与只读 FD 正向验收仍待完成。冷读入口 native-snapshot-validation-broker/cold.py。冻结 0/12。
