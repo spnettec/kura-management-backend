@@ -9970,5 +9970,30 @@
     "agentTests": 7,
     "evidenceSha256": "f56f8e367b74455b66d655fa3e531977a4b923837550f1f04d7eb42c7f7a0892",
     "cold": "native-recovery-input/cold.py"
+  },
+  "fixedControlledMainCommands": {
+    "core": "56b5b2fd56f50e01c3ac79db288099c832c4c313",
+    "coreDeb": "bbf95d71b69a2e968a7d34803a489efc26645bd09f88d404ebd5bd4c848f685e",
+    "agent": "816a67716999caaff75942726130b6d5dab328bd",
+    "root": "2097350:1",
+    "container": "0e8f69e569ea57f6200b69bd6e2a479935d398095f67b45b5c6981c3054e35f7",
+    "restoreId": "rec-e2001005-a0c3-41cb-b819-c6581da7e08a",
+    "planSha256": "f384991f548a69f464de480eb239d03a8b6363529c39b41b7d9efe54851800c8",
+    "selectionSha256": "3a9f004cbe196576a73991e4929b369fbc3c77167731ef2659c102ee20cfb0b0",
+    "jobPath": "/org/freedesktop/systemd1/job/1003",
+    "startState": "MAIN_START_JOB_ACCEPTED",
+    "mainPid": 2692,
+    "invocationId": "5c2dee5d2b134c12a13e75f63afa1033",
+    "cmState": "CM_APPLIED",
+    "cmReceiptSha256": "4aee74a6eae0239a6ba05d3877286f8fee0722d2732d4c8eabab861ad8081a76",
+    "ordinaryWriteBlocked": true,
+    "stopState": "MAIN_STOPPED",
+    "selectionRetained": true,
+    "normalShutdownExit": 0,
+    "recoveryTests": 11,
+    "launcherTests": 17,
+    "lifecycleTests": 30,
+    "evidenceSha256": "1181b2fe781ba60d3a1e2335eef259a3126100c2c73b4cfa186b3e6827c00ad2",
+    "cold": "fixed-recovery-main/cold.py"
   }
 }

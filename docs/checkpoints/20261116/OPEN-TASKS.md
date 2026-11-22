@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 原号固定启停
+
+Core 56b5b2fd56 新增本机 Root 原号固定启停。独立 ARM64 Root 2097350:1 使用正式 kura.service、无 drop-in，原号 rec-e2001005-a0c3-41cb-b819-c6581da7e08a 取得 job 1003。一次性选择和实际 Main PID 2692 的原登记、CM_APPLIED 回执及普通写门禁一致。只对同一进程执行受控停止，读回 MAIN_STOPPED，选择围栏和原回执保持，系统正常退出 0。模拟启动响应丢失时读取原号 UNKNOWN，固定派发只有一次。11 项恢复、17 项 launcher、30 项维护测试通过。原生启停委托、业务健康、普通启动释放和完整编排待办，冻结 0/12。冷读 fixed-recovery-main/cold.py。
+
 ## 2026-11-22 正式原生 agent 委托 Core 暂存恢复输入
 
 Core 7d51226c2a 与原生 agent 816a677 在独立正式 ARM64 Root 2097349:1 完成一次性恢复输入委托。Core 精确授权同一 Root、实时 agent InvocationID 和输入参数，先落盘原尝试再校验 FD。无授权编号和同 UID 的非服务进程被拒绝。原号 rec-cb06eeef-2db1-41a8-acb1-80f6fd046d72 由 Root 与 agent 读回同一 STAGED，随后正式 Main PID 2864 显式启动取得 CM_APPLIED，写门禁保持。独立原号 rec-b36cf2ac-5ac4-491d-b43b-ff2ff0f8a86f 故意丢响应后只读取得 STAGED。正式现场正常退出 0。9 项 Core 暂存、30 项生命周期及 7 项 Rust 测试通过。固定启停、完整编排和全组件发行仍内部待办，冻结 0/12。冷读 native-recovery-input/cold.py。
