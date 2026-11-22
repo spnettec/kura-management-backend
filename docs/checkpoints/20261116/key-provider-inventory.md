@@ -51,3 +51,7 @@ Core 已在第一份快照转换完成、最新一份仍为明文时通过进程
 ## 2026-11-22 历史快照跨代重加密的原位续办
 
 正式 ARM64 Main 已验证固定安装历史上一份旧加密快照的原位重包。原密文单独保留，替换后的中断沿原序号只补签，活跃钥可独立读回完全相同的 XML。Main 正式启动后读回同两份历史配置。Legacy 内嵌密码混合旧代已通过 JDK 21 codec 测试，尚需逐 provider、CM 存储和已登记恢复制品的生命周期验证。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 默认 Debian Main 的 Equinox CM 存储边界
+
+正式 Main 通过 `-configuration /tmp/.kura/configuration` 和 `osgi.clean=true` 启动。Equinox CM 把运行值写成带 CRC 的 `data*.cfg.<代号>`，本场三份旧文件在正常停机后仍可读。切换发布代后原三份文件退出，Main 从未改动的原快照重建标量密码和密码顺序容器，使用活跃钥封装。仅经 ConfigurationAdmin 写入的旧运行覆盖和临时 PID 未回放。这个默认 profile 的持久配置来源是快照，CM backing store 是启动后重建的状态。受控恢复、显式保留的 CM 与自定义 framework 存储另按原配对检查。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)

@@ -9586,5 +9586,39 @@
       "legacy embedded wrapping verified in Java tests",
       "registered recovery artifacts and CM store rewrap remain separate"
     ]
+  },
+  "packagedEquinoxCmSnapshotReseed": {
+    "core": "f6b054eb1762fa7d0cdcc968d66ba6e16f54939f",
+    "coreDeb": "7b7d410fa09e65df042e49a356b533e015ed249fbfbe2bd9bc8921d7bafb2157",
+    "fixtureRoot": "2097298:1",
+    "fixtureContainer": "8c47acdd553918d96bb8bf55edd609eac3925c94bc5edcad2c859c8297f5d722",
+    "fixtureNamespace": "e1ad7b129e9657a10bcde5471a4444e72e0fa691875a45cd2459db78a68027bb",
+    "publicationId": "b59d7fc2-1017-4afa-9cf7-44f2dfb182d3",
+    "startupOperationId": "1ab05f5e-b449-495c-b9a5-9a0bc789a213",
+    "snapshotId": "1795325736902",
+    "sourceSnapshotSha256": "074b41745e6f86902fed76531b19511ae7ab8fa7f72840ff598522fe8c6925a8",
+    "oldMainPid": 2571,
+    "currentMainPid": 3561,
+    "actualEquinoxCmVersion": "1.6.400.v20251209-1342",
+    "cmBundleSha256": "911bbafb958b8020ac8a2cdcd43178b91dcd22dcee10a3332fd49d4cee46542c",
+    "cmStoreClassSha256": "b6ab29dc6c015b0674e96372180539587724a54d67c2eabb5ce6089b11edeffb",
+    "packagedOsgiClean": true,
+    "oldBackingFilesAtStop": 3,
+    "existingBackingFilesRemovedOnStartup": true,
+    "rebuiltPasswordValues": 3,
+    "typedSequenceRebuilt": true,
+    "plainMarkerPreserved": true,
+    "lookalikeLogicalPasswordPreserved": true,
+    "transientPidAbsent": true,
+    "runtimeOnlyOverrideNotReplayed": true,
+    "sourceSnapshotUntouched": true,
+    "normalShutdownExit": 0,
+    "evidenceSha256": "3803210d33f075074b5122cdfd00c02a12754d9bc79f9c75256eb3d5696a7efe",
+    "cold": "cm-snapshot-reseed/cold.py",
+    "limits": [
+      "packaged Debian ARM64 ordinary Main, osgi.clean=true",
+      "synthetic explicitly typed PID",
+      "controlled recovery and custom persistent CM not exercised"
+    ]
   }
 }

@@ -1,3 +1,7 @@
+## 2026-11-22 默认 Main 从加密快照重建 Equinox CM
+
+正式 Core f6b054eb17 的 Debian ARM64 Main 在独立 Root 2097298:1 核实 Equinox CM 默认存储边界。旧 Main 将快照值、仅写 CM 的覆盖值和临时 PID 写到三份真实 .cfg，正式停机后仍在。显式切换发布代后，新 Main 清理原 .cfg，从未改动的原快照用活跃钥重建标量和密码序列；仅写 CM 的覆盖值和临时 PID 未回放。普通 String 与形似密文的逻辑密码保持。旧版受控或不同 framework 配置仍单独核验。系统正常退出 0，Main disabled，12 父项冻结 0/12。冷读入口 cm-snapshot-reseed/cold.py。
+
 ## 2026-11-22 历史快照原子重加密与冷读
 
 Core f6b054eb17 正式 ARM64 deb 在独立 Root 2097297:1 将历史快照 1795325341669 重加密。原子替换后、回执发布前 SIGTERM，Main 和包维护准入拒绝。沿原编号 c6530d50-a716-41e5-8a87-ce5457f1f18f 只补签，后继 inode 和原密文副本保持。独立 reader 仅用活跃钥读回与原件逐字节相同的 XML，正式 Main 读回原两份历史快照 24101／24102，系统正常退出 0，Main disabled。78 项离线 Java、113 项 ARM64 定向测试通过，217 个 JVM 插件路径一致。12 父项冻结 0/12。冷读入口 snapshot-rewrap-field/cold.py。
