@@ -1,3 +1,7 @@
+## 2026-11-22 正式原生 agent 同号受保护启动与健康核验
+
+Core 06d5735f5f 和 agent 575c997 在独立 ARM64 正式包沿 Root 2097389:1、原号 rec-eae7d9a8-80ae-402b-be42-fecb798959ab 实测授权仅生成草案，Main 保持 PID 0。无授权、错快照和错摘要拒绝。正式 agent 发布同一计划，Main PID 4204 取得 NORMAL_BOOT_ADMITTED。原 CM 回执、Equinox 密文落盘及普通写门禁保持。配对 Java bridge 的所选健康检查通过，缺失检查失败，旧阶段／错回执及停机后查询活健康均拒绝。正常停止 Main 并重启独立 agent 后只读取得同一回执，系统正常退出 0。76 项 ARM64 Core、8 项 Rust 定向测试通过，217 个 JVM 插件及离线恢复 JAR 字节一致。外来快照装入普通目录、显式写释放与普通冷启动及完整维护矩阵仍待办。冻结 0/12。冷读 native-guarded-main/cold.py。
+
 ## 2026-11-22 正式 ARM64 Main 沿原恢复号完成受保护启动
 
 Core 2a1c3a6608 在独立 ARM64 正式安装沿 Root 2097398:1、原号 rec-1b6b1ffb-7491-4478-867f-781c941c8d3a 承接 MAIN_STOPPED，从同摘要的既有普通快照启动 Main PID 4124，取得 NORMAL_BOOT_ADMITTED。原 Main PID 3066 的 CM_APPLIED、密码密文、Equinox .cfg 指纹及选择围栏保持，普通写入仍拒绝。错原回执和旧快照在启动前拒绝。夹具正常退出 0。81 项 JDK 21、76 项 ARM64 定向测试通过，217 个 JVM 插件字节一致。原生 agent 委托本阶段、从外来快照安全发布至普通目录、同号健康授权、显式写释放及完整维护矩阵仍待办。冻结 0/12。冷读 fixed-guarded-main/cold.py。
