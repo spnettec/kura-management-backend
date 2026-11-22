@@ -1,3 +1,7 @@
+## 2026-11-22 Provider 凭据重加密与原 Main 验签
+
+Core 91bb7edf7f 的独立 ARM64 Root 2097308:1 在 store.save 原子发布后中断，沿重加密编号 be099020-1da3-452c-9cb1-0be6add86b8b 补签。同一新钥独立读回三条记录，并打开原 PKCS12。续接时只读核对原 Main PID 5996 的 ready-cold 和 verified-cold，证实正式 provider 使用原业务证书通过挑战验签。旧 failure 早于该次启动。18 份保护文件一致，系统正常退出 0，Main disabled。旧现场保持冻结，12 父项冻结 0/12。冷读入口 provider-store-rewrap/cold.py。
+
 ## 2026-11-22 已发布密钥代的 purge 签名与同围栏续装
 
 Core 82b242fa33 在独立 Debian ARM64 正式实装中补齐已发布密钥代的 purge 后合法重装。应用数据已删除、完成签名未写入时 SIGTERM，正式 incoming reader 拒绝；随后沿原维护号 5c743dde-a024-496d-a266-a8a7f0cedc74 续 purge、解包和配置。六份小型原凭据 cohort 文件共 11148 字节，19 份配置签名与五个 vendor 单元配对；HTTPS 原恢复与归档保持。显式 Main 从工厂应用状态写入并读回原发布代加密的新快照，27 份保护文件指纹保持，系统正常停机。91 项 ARM64 测试、217 个 JVM 插件路径字节核对通过。旧半配置和 purge 后拒绝两现场继续冻结，12 父项冻结 0/12。冷读入口 generation-recovery-purge-cohort/cold.py。

@@ -9507,5 +9507,42 @@
       "older refused purge fixture has no completed purge credential witness and remains frozen",
       "provider re-encryption and broader interruption matrices remain pending"
     ]
+  },
+  "nativeProviderStoreRewrap": {
+    "core": "91bb7edf7fdb0dc61c710f179e35ee9570815c93",
+    "coreDeb": "74fb5d385b761e5aa9baeabd4fab1442b70ad4be8b24e800e71a3b0ad74cdef3",
+    "fixtureRoot": "2097308:1",
+    "fixtureContainer": "a73b6986fd61dfb86dd8f563a76aefec79b8b1664122b97032d5012dafc55a85",
+    "fixtureNamespace": "def8a75a9043dd04126a842dba830d16180f2b20664e6dd64e294d8f9cc66e1c",
+    "operationId": "be099020-1da3-452c-9cb1-0be6add86b8b",
+    "publicationId": "7befbab3-1047-4e8c-bead-eb07fbe16b0d",
+    "fault": "SIGTERM after atomic rename before receipt",
+    "interruptedOutcome": "UNKNOWN",
+    "mainAdmissionDuringInterrupt": "UNRESOLVED_OPERATION",
+    "packageAdmissionDuringInterrupt": "REFUSED",
+    "completedOutcome": "SUCCEEDED",
+    "originalStoreSha256": "2c56980a86decbef32ed447816f801439d43764aa3854d3e69481f02426475bb",
+    "rewrappedStoreSha256": "8778212a140a95b61d7fa4d3d6e0b245b7ebe6be5d0b09e597fac2f8f650d3e7",
+    "newerInodePreservedOnResume": true,
+    "entriesRewrapped": 3,
+    "activeKeyAloneOpenedOriginalPkcs12": true,
+    "originalProviderRestartPid": 5996,
+    "originalProviderRestartInvocationId": "c502063f6e104744b4b857ce1be08a3c",
+    "providerClassSha256": "456f924a8a98d393d585021318e0b2246d6cc98cb00a17e8b5e2d3a7b7e37976",
+    "certificateSha256": "19e6acd7bcf47c950dbfe5688f6a601e5a37133e4188cc089834a187da3f30ce",
+    "originalChallengeSignatureVerified": true,
+    "staleObserverFailurePredatesColdStart": true,
+    "protectedFilesExact": 18,
+    "normalShutdownExit": 0,
+    "mainDisabled": true,
+    "arm64Tests": 113,
+    "offlineJavaTests": 76,
+    "matchingJvmPluginPaths": 217,
+    "evidenceSha256": "327b46924c0eb58156da97aea534fb45f163bee6b94ba9a8072a323daad60c79",
+    "cold": "provider-store-rewrap/cold.py",
+    "limits": [
+      "data/store.save and the installed PKCS12 provider exercised in this fixture",
+      "other providers and CM or snapshot rewrap remain pending"
+    ]
   }
 }
