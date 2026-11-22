@@ -9248,5 +9248,25 @@
     "parked": true,
     "cold": "native-snapshot-validation-request/cold.py",
     "evidenceSha256": "424c032aa2f2f868501f1c8d3339d053c1f3b170099b856f0f97dc96f3e320c9"
+  },
+  "nativeGenerationKeyringRestore": {
+    "core": "dc479d3266e1b17ae7181988d54ed85bfc4baa65",
+    "coreDeb": "70c203e82f133348d347b0a86fd8771050727cf4234d6cde69a7b0c693103012",
+    "arm64PublicationTests": 22,
+    "matchingPluginPaths": 217,
+    "restoredRoot": "2097259:1",
+    "originalRestore": "5209371c-4f98-4213-acea-69bf2e8e9080",
+    "keyringRestored": true,
+    "activeKeyChanged": false,
+    "actualMainReadTwoGenerations": true,
+    "nativeAgentReadTwoGenerations": true,
+    "originalUnknown": {
+      "root": "2097235:1",
+      "operation": "600195ad-a98e-4346-a516-35d04242208f",
+      "stoppedProof": false,
+      "frozen": true
+    },
+    "cold": "generation-publication-stop-diagnostic/cold.py",
+    "evidenceSha256": "87bba7ada4ee761ec66342a8b3bd4ec5eb50c5aa7457eb8b4aef76229b7e4a05"
   }
 }

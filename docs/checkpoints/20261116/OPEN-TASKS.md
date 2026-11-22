@@ -1,3 +1,7 @@
+## 2026-11-22 缺失 keyring 的 ARM64 正式恢复与两代读回
+
+ARM64 Core dc479d3266 通过 22 项发布测试，正式 deb 的 217 个插件与 484c4c843c 字节一致。隔离 Root 2097259:1 保留原活跃钥，只按原生成备份恢复缺失 keyring。正规启动的 Main 经 OSGi 读回两代配置 24101／24102，非 Root agent a998ebe 验证同两份密文，原活跃钥、两份回执和旧 keyring 原件保留。该系统正常停放。另一个 Root 2097235:1 的发布 UNKNOWN 因缺原停机证明沿原号冻结，Main 正常停止，未重发。冷读入口 generation-publication-stop-diagnostic/cold.py。冻结 0/12。
+
 ## 2026-11-22 正式 ARM64 非 Root agent 的快照 FD 正向验收
 
 正式 ARM64 agent a998ebe 经本地 Root 证实可向 Core 2ad663286a 交付只读 FD。独立 Root 从 266adf5 沿原初始化与维护号解包、续配并读回 APPLIED。正式命令通过明文、AES-GCM、超过 1 MiB 和恰好 32 MiB 四份快照；截断、尾随、错摘要、额外 unit 参数和 broker 停用均拒绝。四份 Core 保护文件保持，无恢复事务或启动记录，Main disabled，系统正常停放。冷读入口 native-snapshot-validation-request/cold.py。冻结 0/12。
