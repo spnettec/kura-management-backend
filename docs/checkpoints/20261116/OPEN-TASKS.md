@@ -1,3 +1,7 @@
+## 2026-11-22 ARM64 systemd 下的只读快照 FD 验证
+
+Core 快照只读 FD 的 ARM64 systemd 专项通过。Core 484c4c843c 源码和正式 deb 提取件共 19 个执行资产逐字节匹配，复用与 agent 6910532 相同 Rust 源码的 ARM64 测试二进制。实测测试客户端在无 Root socket 时可初始化，Root worker 起后验证明文、新代及旧代密文三份快照。直接读取凭据与备份请求均拒绝，密钥指纹一致，Root 操作及启动表均为空。Core bb2e8b24a0 仅修复 systemd 测试夹具。系统正常停放，入口 core-snapshot-fd-systemd/cold.py。冻结 0/12。
+
 ## 2026-11-22 密钥准备取消跨 Core purge 与同版重装
 
 隔离 Debian ARM64 Root 2097235:1 以 Core 484c4c843c 正式安装。local-admin 各派发一次准备、校验和取消，原取消回执跨实际 Root worker 重启读回。真实 remove、purge、unpack、configure 各执行一次。13 份历史与凭据文件指纹一致，重装后按原编号读回三笔 SUCCEEDED 和 CANCELLED 历史。正式 Main 的 CryptoService 成功解开移除前生成的同一份合成密文，系统正常停放。冷读入口 cancelled-generation-package-lifecycle/cold.py。冻结 0/12。

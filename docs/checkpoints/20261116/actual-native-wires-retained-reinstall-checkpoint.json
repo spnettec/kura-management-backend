@@ -9172,5 +9172,22 @@
     ],
     "evidenceSha256": "18a2bf193855aaf0c244a0c3c074fba0b1a0d1bbd42c5a7b7b3ba04c201cfc11",
     "cold": "cancelled-generation-package-lifecycle/cold.py"
+  },
+  "coreSnapshotFdSystemd": {
+    "packageSource": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "testSource": "bb2e8b24a03bde8e636626f4ae7d2592cf1c0501",
+    "agentRustSource": "431dedc8ea7295020269f2befa1a4cf1f5bec422",
+    "agentRustThrough": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+    "assetCount": 19,
+    "readOnlyModes": [
+      "plain",
+      "current-aes",
+      "prior-aes"
+    ],
+    "rootOperations": 0,
+    "rootStartups": 0,
+    "scope": "current deb assets with actual systemd fixture",
+    "evidenceSha256": "d1887b18b0f1b8384a0104b76edeac478f7ff8b5f115806a564f52928d828bf9",
+    "cold": "core-snapshot-fd-systemd/cold.py"
   }
 }
