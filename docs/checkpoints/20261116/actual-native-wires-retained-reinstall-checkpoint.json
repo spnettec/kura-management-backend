@@ -9738,5 +9738,51 @@
     "jvmPluginPaths": 217,
     "evidenceSha256": "472c29476fd32aefe3f9ea8e4aa6489c0b47ec7d5cd197a3fdb5a52cb4641014",
     "cold": "controlled-legacy-snapshot/cold.py"
+  },
+  "guardedStartupRetainedLegacyCmPasswords": {
+    "core": "a7a053839e26ec06b1d0c56ade809894b514a3ff",
+    "coreDeb": "d99357ed8de099c8ff8941fe186638c93da7cc1c736860d435dc399ee0786fec",
+    "baseline": {
+      "core": "8fa1c85d6a0710477d71e6e1a953019a31d0a401",
+      "container": "60dbc4ab12f747cfda84240af4d109294741bc3da05e5c6b87558e656a9a61dd",
+      "root": "2097298:1",
+      "restoreId": "rec-a0fa659d-169d-4783-8201-b4e693934575",
+      "admission": "NORMAL_BOOT_ADMITTED",
+      "readerContainers": [
+        "snapshot_1.xml Password VECTOR 2",
+        "applied.properties.cm-applied.aes String LIST 2",
+        "guarded.properties.cm-observed.aes String LIST 2"
+      ],
+      "frozen": true
+    },
+    "fixed": {
+      "root": "2097317:1",
+      "container": "d4aecd5b66e40a683e81e6c3d6b41f496a81d2edfde4d814d786ec3aea7c36a1",
+      "sourceRestoreId": "rec-09831ddf-f4d3-4309-b9ec-33080baa3726",
+      "guardedRestoreId": "rec-50aee451-43eb-4d22-9b3b-464e32d252cf",
+      "appliedMainPid": 1972,
+      "guardedMainPid": 2960,
+      "receiptStatus": "NORMAL_BOOT_ADMITTED",
+      "snapshotSha256": "5955842039eb5e3c1b384435efe5fcf173ee41d319cabf73f257117bc73d7cc4",
+      "sourceReceiptSha256": "16ecb71368f3600af48105d0c1196ba2df099a181204d2709cee3146cfce0903",
+      "originalAppliedSha256": "89fc778e8490fe98767537260bda718a8918ed9ee121e82d14bf4a3d2af60903",
+      "observedCmSha256": "bc51ac951f35ef92a346618bf86babadfb9a6d954e8eb8aaeffc80555391eeb8",
+      "normalBootVerified": false,
+      "fullRecoveryVerified": false,
+      "businessHealth": "UNVERIFIED",
+      "startupConvergenceClassSha256": "9249d7010f8fbd792b37f30616d5eb62ec414a7657678671d67a445e38434ab1",
+      "passwordCiphertextFingerprintUnchanged": true,
+      "cmBackingExact": true,
+      "ordinaryWriteBlocked": true,
+      "effectiveCleanDisabled": true,
+      "packagedTemplateCleanTrue": true,
+      "normalShutdownExit": 0
+    },
+    "configurationTests": 306,
+    "offlineRecoveryTests": 79,
+    "jvmPluginPaths": 217,
+    "scope": "direct paired Core bootstrap normal-read-only, explicit administrator JVM profile; no agent inverse orchestration or write release",
+    "evidenceSha256": "5fdeae880614211874e3dbe0786aa29d4a357fabc6c83dfb6a27aa46aaf8f371",
+    "cold": "guarded-cm-retention-fixed/cold.py"
   }
 }

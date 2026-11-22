@@ -63,3 +63,7 @@ Core 已在第一份快照转换完成、最新一份仍为明文时通过进程
 ## 2026-11-22 受控恢复的历史密码来源
 
 正式 ARM64 Main 的恢复 bootstrap 对已判定为逻辑值的旧 XML 密码重新加密，即使值本身可通过原钥认证。同一个混合序列中的原 CM 密文保持原字节，实际 Equinox 读回正确。原 CM_APPLIED 绑定原备份、意图和应用摘要，普通快照写门禁继续生效。完整业务验证与显式写释放留在各自配对验收。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 受保护 Main 对历史密码序列的精确核对
+
+Equinox CM API 与实际存储可把历史 Vector 表示成 List。受保护启动先认证原 CM 记录，再按顺序验证每个密码并保留原密文。在显式选择保留框架存储的安装中，原 CM_APPLIED、启动前观察、同一 .cfg 文件和启动后的密码序列都核验通过。正式默认 launcher 仍发布 osgi.clean=true。agent 全链、业务健康和写释放需各自验收。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)

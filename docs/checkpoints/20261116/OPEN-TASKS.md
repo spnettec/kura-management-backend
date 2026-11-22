@@ -1,3 +1,7 @@
+## 2026-11-22 受保护 Main 保留历史密码序列的 CM 表示
+
+正式 ARM64 旧版的 bootstrap 已写 NORMAL_BOOT_ADMITTED，随后配置服务因历史 XML Vector 与 Equinox List 类型差异拒绝激活。Core a7a053839e 按有序列表逐项认证且保留已准入的 CM 表示。独立修复夹具通过现有管理员 JVM 参数显式保留 CM，正式 Main PID 2960 匹配原 CM_APPLIED、精确密文顺序和 .cfg 指纹。普通快照写仍被拒绝，模板的 osgi.clean=true 保持。306 项配置及 79 项离线恢复通过。修复夹具正常退出 0，旧复现场 Main disabled 并冻结。此场为直连 Core 受控核验，agent 正/逆向编排、业务健康和写释放仍待验。冻结 0/12。只读入口 guarded-cm-retention-fixed/cold.py。
+
 ## 2026-11-22 受控恢复保留历史逻辑密码
 
 Core 8fa1c85d6a 修复旧格式逻辑密码被再次识别为已存储密文的缺陷。独立 Debian ARM64 的正式 Main PID 2190 沿一份请求写出 CM_APPLIED。实际 Equinox 中显式逻辑标量与直接解包的 Vector 元素重新加密，Base64 包裹的已存 CM 密文保持。原逻辑字面值未写进 .cfg，普通快照写仍被拒绝，原备份、意图、应用摘要对齐。首次参数目录拒绝发生在 JVM 启动之前，修正后沿原 Root 和编号只应用一次。305 项配置测试、79 项离线恢复测试通过，217 个插件路径匹配。系统正常停放。受控恢复的业务健康与写释放、自定义 CM 仍待验。冻结 0/12。只读入口 controlled-legacy-snapshot/cold.py。
