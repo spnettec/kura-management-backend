@@ -9196,5 +9196,21 @@
     "scope": "current deb assets with actual systemd fixture",
     "evidenceSha256": "d1887b18b0f1b8384a0104b76edeac478f7ff8b5f115806a564f52928d828bf9",
     "cold": "core-snapshot-fd-systemd/cold.py"
+  },
+  "nativeAgentSnapshotValidationAdmission": {
+    "core": "6.0.0~git20261122062804.484c4c8-1",
+    "agent": "6910532820c88d6ba69c96bf5b2e381fd8585eea",
+    "profile": "native-nonroot-v1",
+    "scope": "isolated-installed-arm64-admission",
+    "coreAssets": 19,
+    "agentAssets": 18,
+    "agentHooks": 4,
+    "agentStartedWithoutKeySocket": true,
+    "nativeSocketAdmission": "EACCES",
+    "trustedReadOnlyFd": true,
+    "nativePositivePathPending": true,
+    "parked": true,
+    "cold": "native-agent-validation-admission/cold.py",
+    "evidenceSha256": "1966b0c5001479be5ceb62fbebfd13300bf83e2b042a1daf0954061d69a6425b"
   }
 }

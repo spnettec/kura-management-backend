@@ -1,3 +1,7 @@
+## 2026-11-22 正式 ARM64 非 Root agent 的快照校验准入
+
+正式 ARM64 Core 484c4c843c 与 native-nonroot-v1 agent 6910532 在隔离 Root 实装。固定 loader、bridge 和 18 个 agent 载荷、4 个钩子及 19 个 Core 资产核对通过。正式 agent 在 Core socket 停用时以非 Root、cap0 启动。恢复 socket 后，同身份探针收到 EACCES，现有权限保持；kurad 交付合成只读 FD，由正式 worker 校验通过。四份受保护文件保持，Root 操作及启动表为空，系统正常停放。非 Root 正向校验仍待专门授权入口。冷读入口 native-agent-validation-admission/cold.py。冻结 0/12。
+
 ## 2026-11-22 ARM64 systemd 下的只读快照 FD 验证
 
 Core 快照只读 FD 的 ARM64 systemd 专项通过。Core 484c4c843c 源码和正式 deb 提取件共 19 个执行资产逐字节匹配，复用与 agent 6910532 相同 Rust 源码的 ARM64 测试二进制。实测测试客户端在无 Root socket 时可初始化，Root worker 起后验证明文、新代及旧代密文三份快照。直接读取凭据与备份请求均拒绝，密钥指纹一致，Root 操作及启动表均为空。Core bb2e8b24a0 仅修复 systemd 测试夹具。系统正常停放，入口 core-snapshot-fd-systemd/cold.py。冻结 0/12。
