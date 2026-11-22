@@ -9077,7 +9077,14 @@
     "allPluginPaths": 217,
     "otherPluginPaths": 176,
     "distinctOtherJars": 175,
-    "cold": "core-reactor-484c4c8/cold.py"
+    "cold": "core-reactor-484c4c8/cold.py",
+      "readback": {
+        "cold": "core-reactor-484c4c8-readback/check.py",
+        "sha256": "b07ba68f74370ee0a4190c4613b6acbbbc839fe62a91f6e0b4581541516696c7",
+        "builderRetired": true,
+        "configurationFrameworkCopies": 57,
+        "keystoreFrameworkCopies": 8
+      }
   },
   "containerCommandErrors": {
     "core": "484c4c843c271c06656346bedb4d02b3f49248f6",

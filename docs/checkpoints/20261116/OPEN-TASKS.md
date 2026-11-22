@@ -20,7 +20,7 @@ Container 9a7cda7 保留 OS_COMMAND_ERROR，补齐操作、对象及可用的 Do
 
 ## 2026-11-22 ARM64 原构建容器续跑完整 Core/OSGi 验证
 
-Core 484c4c843c 在原 ARM64 构建容器解冻后完成离线验证。82 个模块成功，259 份 XML 与日志均为 2161 项通过，其中真实 Equinox 68 项，失败、错误、跳过均为零。Equinox 实际打开的配置与 keystore bundle 均与本轮模块输出逐字节一致。正式 deb 的 41 个 Core 插件共 1208 个 class 完全一致，全部条目差异仅为 Bundle-Version 时间限定符；其余 176 个依赖路径均匹配只读 Maven 输入。证据入口 core-reactor-484c4c8/cold.py。冻结 0/12。
+Core 484c4c843c 在原 ARM64 构建容器解冻后完成离线验证。82 个模块成功，259 份 XML 与日志均为 2161 项通过，其中真实 Equinox 68 项，失败、错误、跳过均为零。Equinox 实际打开的配置与 keystore bundle 均与本轮模块输出逐字节一致。正式 deb 的 41 个 Core 插件共 1208 个 class 完全一致，全部条目差异仅为 Bundle-Version 时间限定符；其余 176 个依赖路径均匹配只读 Maven 输入。证据入口 core-reactor-484c4c8/cold.py。只读复核入口 core-reactor-484c4c8-readback/check.py，已按原 ID 核对构建器回收，重新读取正式 deb 全部插件路径并复算 Equinox 文件记录。冻结 0/12。
 
 ## 2026-11-22 OPC UA 网关验证服务端证书撤销
 
