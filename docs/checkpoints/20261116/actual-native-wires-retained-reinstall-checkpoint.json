@@ -9881,5 +9881,22 @@
     "agentArm64PackagingTests": 16,
     "evidenceSha256": "2299a33be453e6808796549302c177d293e234bd2e05ec6c35345eb34c89bf37",
     "cold": "native-snapshot-inventory/cold.py"
+  },
+  "nativeSnapshotInventoryUpgrade": {
+    "predecessor": "718489e8f228f181f3506ac3eecb6a27667bd43b",
+    "successor": "c97207d95d15c6627a01cccc7fca4625f76d7f2c",
+    "agent": "f250ffb41812bd4aaa404acc581b8ba17acbc411",
+    "root": "2097318:1",
+    "container": "636e9cf48fdd8cb49443af2e9809300e1997676f6ad429112382a4683bb2f39f",
+    "maintenanceId": "939e4404-c7d9-473d-bafb-32961aa35692",
+    "receiptSha256": "4c7da54da8f10e0f9800ec4841d7e828e9c46d0c508a5739df081870c06c2925",
+    "boundary": "dpkg unpacked before configure",
+    "inventoryRefusedDuringBoundary": true,
+    "agentSameInvocation": true,
+    "snapshotEntryExact": true,
+    "mainStarted": false,
+    "normalShutdownExit": 0,
+    "evidenceSha256": "a5e58c8e28766146d48a98aefc0617f4a1a10377b5d7e7a3c435b8ab6e70ad36",
+    "cold": "native-snapshot-inventory-maintenance/cold.py"
   }
 }

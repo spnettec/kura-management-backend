@@ -1,3 +1,7 @@
+## 2026-11-22 正式快照清单跨 Core 升级续配
+
+Core 从 718489e8f2 升至 c97207d95d，正式 ARM64 独立 Root 2097318:1 在解包结束、配置开始之间停顿。原生 agent f250ffb 同一进程维持 cap0、NNP1。原升级围栏 939e4404-c7d9-473d-bafb-32961aa35692 在场时两监听均关闭，清单请求被拒绝。沿原号续配一次后，实际 agent 读回原 snapshot_0.xml 的内容摘要和元数据。原回执、Root 凭据指纹和未启动的 Main 保持，现场正常退出 0。原 Main CM_APPLIED、密码密文和写门禁再经冷读取证，未重做受控恢复。原生快照写入和完整编排仍待实施，冻结 0/12。只读入口 native-snapshot-inventory-maintenance/cold.py。
+
 ## 2026-11-22 正式非 Root agent 读取原快照清单
 
 Core c97207d95d 与 agent f250ffb 在独立 ARM64 正式包实装使用只读清单。原生 agent 保持 cap0 与 NNP1，仍无法直接读取原 0600 快照。Core 通过单独的 kurad 只读 worker 提供原目录设备号、inode、文件元数据及 SHA-256。原操作和启动表均为零，Main 未启动；相同 UID 和组的非 Main 进程、直接访问内部 socket 和链接条目已实测拒绝。39 项 Core ARM64、4 项 Rust、16 项 agent ARM64 打包测试通过。两夹具正常停放。快照写入和固定单元启停的原生授权、完整恢复编排继续待验。冻结 0/12。只读入口 native-snapshot-inventory/cold.py。
