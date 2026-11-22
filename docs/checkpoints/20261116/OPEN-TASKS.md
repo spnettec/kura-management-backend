@@ -1,3 +1,7 @@
+## 2026-11-22 双凭据恢复中断后沿原检查点续办
+
+Core f31e4b965c 在隔离 Debian ARM64 正式 deb 实测双凭据恢复。两份凭据缺失，keyring 落盘后测试进程退出。正式 Root worker 重启后沿原号 cf2da0b0-eace-4c58-9667-a5613357d3c4 和签名检查点仅补齐活跃钥。正式 Main 显式启动后经 OSGi 读回两代配置，非 Root agent 验证同两份密文。128 项 ARM64 回归和 217 个插件路径核对通过，系统正常停放。历史无证明 UNKNOWN 保持冻结。冻结 0/12，恢复界面和完整 provider 密钥生命周期待验。 冷读入口 generation-restore-continuation/cold.py。
+
 ## 2026-11-22 缺失 keyring 的 ARM64 正式恢复与两代读回
 
 ARM64 Core dc479d3266 通过 22 项发布测试，正式 deb 的 217 个插件与 484c4c843c 字节一致。隔离 Root 2097259:1 保留原活跃钥，只按原生成备份恢复缺失 keyring。正规启动的 Main 经 OSGi 读回两代配置 24101／24102，非 Root agent a998ebe 验证同两份密文，原活跃钥、两份回执和旧 keyring 原件保留。该系统正常停放。另一个 Root 2097235:1 的发布 UNKNOWN 因缺原停机证明沿原号冻结，Main 正常停止，未重发。冷读入口 generation-publication-stop-diagnostic/cold.py。冻结 0/12。

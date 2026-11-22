@@ -9279,5 +9279,36 @@
     },
     "cold": "generation-publication-stop-diagnostic/cold.py",
     "evidenceSha256": "87bba7ada4ee761ec66342a8b3bd4ec5eb50c5aa7457eb8b4aef76229b7e4a05"
+  },
+  "nativeGenerationRestoreContinuation": {
+    "core": "f31e4b965ca656f904f02b9ddb218008bb9fb64d",
+    "coreDeb": "4ea92808848f9fa4c92ef44e2869b898037454ce6257d31cac441c14dc4f402a",
+    "agent": "a998ebe0853f34d8673bdfbdc1eb3504c02b14c1",
+    "fixtureRoot": "2097259:1",
+    "fixtureContainer": "b1c08c5fe595e611d770fc8fc7229adecbbc584f7dc8b26adb6ca060175c06f2",
+    "fixtureNamespace": "68aa3495a5736f9d9480bf02a2a4c031342921e623e1d090f39e97a2fee8f18b",
+    "operation": "cf2da0b0-eace-4c58-9667-a5613357d3c4",
+    "parentAdmission": "ff5b8abf-ffc3-447c-8eaf-6c1c76c568b0",
+    "continuationAdmission": "abe0be21-e377-4fb7-a4b5-170b3a750ac1",
+    "checkpointSha256": "0f8e9eec0b1754830a6f3911e78ba48c32864d4c177b79bd17d30b1669c21f79",
+    "arm64Tests": [
+      73,
+      22,
+      33
+    ],
+    "matchingPluginPaths": 217,
+    "faultBoundary": "installed code fixture exits before active-key rename after keyring directory sync",
+    "continuedThroughInstalledSocket": true,
+    "canonicalKeyringUnchangedDuringContinuation": true,
+    "stagedActiveKeyInodePublished": true,
+    "retainedCredentialsAndReceiptsPreserved": true,
+    "mainImplicitStart": false,
+    "actualMainAndNativeAgentReadBothSnapshots": [
+      "1795309070086",
+      "1795309080814"
+    ],
+    "parked": true,
+    "cold": "generation-restore-continuation/cold.py",
+    "evidenceSha256": "7656ce0af8b6537aa8e76eca5c02806411f435c049cf9744cfa2a821e948883f"
   }
 }
