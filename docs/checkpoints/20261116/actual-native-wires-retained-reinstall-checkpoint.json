@@ -9212,5 +9212,23 @@
     "parked": true,
     "cold": "native-agent-validation-admission/cold.py",
     "evidenceSha256": "1966b0c5001479be5ceb62fbebfd13300bf83e2b042a1daf0954061d69a6425b"
+  },
+  "nativeSnapshotValidationBroker": {
+    "core": "2ad663286ae18f97c28fa48fc7b38acdf78bc81a",
+    "agent": "266adf53ddad637219ca9ee049df0c8173a441b7",
+    "coreDeb": "836a23c42cf4110af2fdad79699d6bce39569fb96cd86a490208291892a55c91",
+    "agentDeb": "3e8009f727ee11cce94dfc0631af9110a681e464c2d75ca595a52f10398f4a56",
+    "arm64Python": 83,
+    "hostRust": 3,
+    "identicalCorePluginPaths": 217,
+    "root": "2097247:1",
+    "maintenanceId": "8566000c-57fd-471f-87cc-b6545b961702",
+    "agentSameInvocation": true,
+    "sameUidForeignRefused": true,
+    "coreSocketResumed": true,
+    "parked": true,
+    "positiveNativeSnapshotFdPending": true,
+    "cold": "native-snapshot-validation-broker/cold.py",
+    "evidenceSha256": "974bfe5d2483d5b58db669cef26c0c7740fc8a08efa96419fb2667b9ce8a228e"
   }
 }

@@ -1,3 +1,7 @@
+## 2026-11-22 ARM64 独立快照校验 socket 与 Core 维护
+
+Core 2ad663286a 与 agent 266adf5 接入独立只读快照 socket。ARM64 83 项定向 Python 测试和宿主 3 项 Rust 测试通过。两个正式 deb 在隔离 Root 实装，原 Core 217 个插件路径字节一致。实际非 Root agent 发布同一 Root 的启动凭据，同 UID 同组的独立 peer 被拒绝。Core remove、purge、同版重装沿原维护号完成，agent 调用标识保持，新 socket 恢复。Main 全程无 PID，重装后显式恢复 disabled，系统正常停放。正式非 Root 业务调用与只读 FD 正向验收仍待完成。冷读入口 native-snapshot-validation-broker/cold.py。冻结 0/12。
+
 ## 2026-11-22 正式 ARM64 非 Root agent 的快照校验准入
 
 正式 ARM64 Core 484c4c843c 与 native-nonroot-v1 agent 6910532 在隔离 Root 实装。固定 loader、bridge 和 18 个 agent 载荷、4 个钩子及 19 个 Core 资产核对通过。正式 agent 在 Core socket 停用时以非 Root、cap0 启动。恢复 socket 后，同身份探针收到 EACCES，现有权限保持；kurad 交付合成只读 FD，由正式 worker 校验通过。四份受保护文件保持，Root 操作及启动表为空，系统正常停放。非 Root 正向校验仍待专门授权入口。冷读入口 native-agent-validation-admission/cold.py。冻结 0/12。
