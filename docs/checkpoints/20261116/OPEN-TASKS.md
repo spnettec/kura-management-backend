@@ -1,3 +1,7 @@
+## 2026-11-22 正式写释放提交前中断及原号只读确认
+
+复用 Core 9deadcfa93 和 agent e7cb1aa 的 ARM64 正式包。独立 Root 2097388:1、原号 rec-7ca63ec5-d252-4af7-af01-7430ceaa3319 的写释放意图落盘后，在提交前的健康复查暂停原 Main PID 4389，正常停止 agent，调用方返回 UNKNOWN。agent PID 1832→5353，同号只读取得 GUARDED_RELEASE_UNKNOWN。原 Main 恢复后实际仍拒绝写普通快照。原意图、选择记录、CM 与受保护启动回执保持，提交标记及释放回执均未产生。Main、agent 和相关 broker 正常停止，暂停容器保留未决 tmpfs Root。按轮清理测试编译副本 8 KiB，宿主实测可用空间波动 −12 KiB。本轮无生产包重建。导入格式转换及完整维护矩阵待办，冻结 0/12。冷读 guarded-release-precommit-interrupt/cold.py。
+
 ## 2026-11-22 正式写释放回执丢回复及原号续查
 
 复用 Core 9deadcfa93 和 agent e7cb1aa 的 ARM64 正式包。在独立 Root 2097389:1、原号 rec-ceaab4fb-19c3-41b9-b8db-039e14822221，实际写释放和提交标记落盘后、读取响应前终止调用方。agent PID 1830→5380 后只读取得同一 GUARDED_RELEASE_COMMITTED，原意图、回执与提交标记指纹保持。原 Main PID 4389 已写 1795335510788，Main 和系统正常停放。按轮清理 144 个可重建展开件，宿主可用空间增加 11.66 MiB。历史挂载与正式包保留。提交前中断、格式转换及完整维护矩阵待办，冻结 0/12。冷读 guarded-release-lost-reply/cold.py。
