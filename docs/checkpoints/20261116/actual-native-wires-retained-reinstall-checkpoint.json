@@ -9310,5 +9310,40 @@
     "parked": true,
     "cold": "generation-restore-continuation/cold.py",
     "evidenceSha256": "7656ce0af8b6537aa8e76eca5c02806411f435c049cf9744cfa2a821e948883f"
+  },
+  "nativeGenerationHttpsRecovery": {
+    "core": "2cc010cfd633755f3e6a007c12146eba2f1ede26",
+    "coreDeb": "15dbed7200b289dc1b61236e00df3570f6f8bcc9a95918caa8adb4e99642a512",
+    "fixtureRoot": "2097259:1",
+    "fixtureContainer": "56bea0b6ccf2857e65a59a8e80bc4f6cb39a78dd6594abafa0fe1a193f3f34bb",
+    "fixtureNamespace": "624aed3e5893f3d61801c5534afb2e6a24d452caf5aa3ab896f5399d9c8c7c4e",
+    "restoreOperation": "a4f010d0-688d-42e8-8ad6-7a85a62e01aa",
+    "startupOperation": "b6354660-380e-448c-a013-115ac5c0957a",
+    "receiverUid": "991",
+    "receiverRestartConfirmed": true,
+    "tlsCertificateSha256": "5cedc75885ad14090b670a69f5094edfe7235f8ba1e4c5efc8754ddc31810a82",
+    "publishedIdenticalJvmPluginPaths": 217,
+    "linuxArm64Tests": 188,
+    "nonrootSupplement": 3,
+    "credentialsMissingBeforeRestore": [
+      "keyring",
+      "activeKey"
+    ],
+    "rootOriginalDuringReceiverRestart": "SUCCEEDED",
+    "mainImplicitStart": false,
+    "mainSnapshots": {
+      "old": {
+        "snapshot": "1795309520294",
+        "value": 24101
+      },
+      "new": {
+        "snapshot": "1795309530935",
+        "value": 24102
+      }
+    },
+    "archivePreview": "ARCHIVABLE",
+    "parked": true,
+    "cold": "generation-recovery-https/cold.py",
+    "evidenceSha256": "fe408e8618e314961ca8c17c4b450cc4c38fb25d0296c4da9099c0688395ac89"
   }
 }

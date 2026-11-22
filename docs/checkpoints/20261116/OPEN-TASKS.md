@@ -1,3 +1,7 @@
+## 2026-11-22 独立 HTTPS 双凭据恢复及显式启动
+
+Core 2cc010cfd6 的独立非 Root HTTPS 服务在 Debian ARM64 正式实装中核验原多代加密备份，恢复两份缺失凭据。HTTPS 服务重启后原恢复号读回 SUCCEEDED，Main 仍停机。另经显式 HTTPS 启动使正式 Main 读回两代 OSGi 配置 24101／24102，完成原启动交接并正常停放。归档预览验证两份摘要配对。188 项 ARM64 回归通过，其中三项以普通账号补验，217 个插件路径与既有全量验证包一致。浏览器页面及其端到端验收继续待办。冻结 0/12。 冷读入口 generation-recovery-https/cold.py。
+
 ## 2026-11-22 双凭据恢复中断后沿原检查点续办
 
 Core f31e4b965c 在隔离 Debian ARM64 正式 deb 实测双凭据恢复。两份凭据缺失，keyring 落盘后测试进程退出。正式 Root worker 重启后沿原号 cf2da0b0-eace-4c58-9667-a5613357d3c4 和签名检查点仅补齐活跃钥。正式 Main 显式启动后经 OSGi 读回两代配置，非 Root agent 验证同两份密文。128 项 ARM64 回归和 217 个插件路径核对通过，系统正常停放。历史无证明 UNKNOWN 保持冻结。冻结 0/12，恢复界面和完整 provider 密钥生命周期待验。 冷读入口 generation-restore-continuation/cold.py。
