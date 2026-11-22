@@ -9151,5 +9151,26 @@
     "vendorCopies": 21,
     "evidenceSha256": "c4adbd9458d473a69a3933f2563f326fd5c8ddfc4698fb0850b6d87257e1b18a",
     "cold": "core-native-contracts-484c4c8/cold.py"
+  },
+  "cancelledGenerationPackageLifecycle": {
+    "source": "484c4c843c271c06656346bedb4d02b3f49248f6",
+    "root": "2097235:1",
+    "namespace": "7aaa18a92017f164b38b42620965f67d03a0f57170259a85975a27f015ff1e1d",
+    "operations": {
+      "prepare": "451b8776-2f84-43b0-9d5a-0461b127e919",
+      "verify": "48ea21b9-ce2e-4854-b43d-11d4958eb168",
+      "cancel": "c765038f-50e2-4b6a-adcd-bb78671eefbf"
+    },
+    "originalFiles": 13,
+    "history": "CANCELLED",
+    "sameCiphertext": true,
+    "packagePhases": [
+      "remove",
+      "purge",
+      "unpack",
+      "configure"
+    ],
+    "evidenceSha256": "18a2bf193855aaf0c244a0c3c074fba0b1a0d1bbd42c5a7b7b3ba04c201cfc11",
+    "cold": "cancelled-generation-package-lifecycle/cold.py"
   }
 }

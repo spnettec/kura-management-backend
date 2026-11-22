@@ -1,3 +1,7 @@
+## 2026-11-22 密钥准备取消跨 Core purge 与同版重装
+
+隔离 Debian ARM64 Root 2097235:1 以 Core 484c4c843c 正式安装。local-admin 各派发一次准备、校验和取消，原取消回执跨实际 Root worker 重启读回。真实 remove、purge、unpack、configure 各执行一次。13 份历史与凭据文件指纹一致，重装后按原编号读回三笔 SUCCEEDED 和 CANCELLED 历史。正式 Main 的 CryptoService 成功解开移除前生成的同一份合成密文，系统正常停放。冷读入口 cancelled-generation-package-lifecycle/cold.py。冻结 0/12。
+
 ## 2026-11-22 Core ARM64 原生发行合同与 broker 配对
 
 Core 484c4c843c 的 Debian ARM64 原生合同测试完成汇总。79 个测试模块中 1220 项在 Linux ARM64 通过，7 项 polkit JavaScript 在 macOS ARM64 补验通过，另通过真实 Unix peer 归档入口。Core 50c02de8bc 只更新归档测试夹具，覆盖 writer 持锁拒绝及正常释放后同一历史续接。正式 deb 的 9 份 broker 清单共 103 项文件及 21 份 systemd 单元副本，摘要与配对全部通过。独立 systemd 和宿主编排的 11 个场景入口单独登记。构建容器已回收。冷读入口 core-native-contracts-484c4c8/cold.py。冻结 0/12。
