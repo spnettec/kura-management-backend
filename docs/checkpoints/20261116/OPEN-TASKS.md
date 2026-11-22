@@ -1,3 +1,7 @@
+## 2026-11-22 外来快照发布中断及原 inode 续接
+
+Core 9deadcfa93 在独立 ARM64 正式安装沿 Root 2097388:1、原恢复号 rec-75be3129-825e-47cd-af8a-3fa89b5f8a58 发布原暂存快照 1795335077350。普通快照格式不配时拒绝且未落意图。实测原子改名和 fsync 后、回执前 SIGTERM，只读见 PUBLISHED_UNCONFIRMED，受保护启动拒绝。同号只补原回执，原 inode 与摘要保持，原有快照和凭据保持。正式 agent e7cb1aa 启动同号 Main PID 4649，实际读回原发布快照并取得 NORMAL_BOOT_ADMITTED，CM 密文、普通写门禁和所选健康核验成立，系统正常退出 0。81 项 Java、78 项 ARM64 定向测试通过，217 个 JVM 插件字节一致。格式转换、写释放中断实地验收和完整维护矩阵仍待办。冻结 0/12。冷读 ordinary-snapshot-publication/cold.py。
+
 ## 2026-11-22 原生 agent 同号写释放及正式 Main 普通冷启动
 
 Core 07bb6336eb 和 agent e7cb1aa 在独立 ARM64 正式安装沿 Root 2097388:1、原号 rec-91e6a2b4-75ee-413f-89b9-e87ed70acfed 经显式批准和配对 Java bridge 完成一次写释放。无批准和错授权被拒绝。受保护 Main PID 4209 写出普通快照 1795334533666。活 Main 归档选择记录被拒绝，排空后保留原 inode 归档。默认普通 Main PID 5751 冷启动读回该快照和实际 Equinox CM，再写 1795334620888。初探针调用组件注册视图失败，补采同一 JVM 的 CM 证据，原启动和写释放未重跑。原回执保持，容器正常退出 0。81 项 Java、77 项 ARM64 Core、8 项 Rust 定向测试通过，217 个既有 JVM 插件字节一致。外来快照装入普通目录、释放中断实地验收及完整维护矩阵仍待办。冻结 0/12。冷读 native-guarded-release/cold.py。

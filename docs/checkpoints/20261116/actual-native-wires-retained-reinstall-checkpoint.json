@@ -10160,5 +10160,41 @@
     "unchangedJvmPlugins": 217,
     "evidenceSha256": "c4342f658871ccd780996f45104b8510bc223c660f92e27a12bdee09c2ef36a7",
     "cold": "native-guarded-release/cold.py"
+  },
+  "ordinaryRecoverySnapshotPublication": {
+    "core": "9deadcfa93df5c7634203afaa0d08c31821cb51e",
+    "coreDeb": "c6918274ff188f862d50c64240d51b6885b6572bb85802860a57574f2b686f90",
+    "agent": "e7cb1aa143beb3ed1516f868ef465530187e183e",
+    "agentDeb": "b15e062651e7ef44e79717d7bedb1364d1fb1f8965d9d9667fa571a4635dca7b",
+    "root": "2097388:1",
+    "container": "7914f81177845cf80bec660c20d8a4b4dc8118de210c801b87d6df0bfddab12a",
+    "restoreId": "rec-75be3129-825e-47cd-af8a-3fa89b5f8a58",
+    "originalCmReceiptSha256": "64379a0fcd8bd62c3a69a1fd957a7cc0148f2aff2271ad28b09f9b5263662691",
+    "publicationState": "ORDINARY_SNAPSHOT_PUBLISHED",
+    "intermediatePublicationState": "ORDINARY_SNAPSHOT_PUBLISHED_UNCONFIRMED",
+    "snapshotId": "1795335077350",
+    "snapshotSha256": "797ac6027269ed66a5f4caf883a80ca26dfbb1b8729a6bac7cc61dcf1b9b5522",
+    "ordinaryDirectory": {
+      "device": "2097388",
+      "inode": "4244"
+    },
+    "originalFile": {
+      "device": "2097388",
+      "inode": "5105"
+    },
+    "originalInodeConfirmed": true,
+    "policySha256": "6f3ab2c868ff83b5d060ae573139eaca0b81613a657646fbded999b04076b094",
+    "incompatiblePolicyRefused": true,
+    "prematureGuardedStartRefused": true,
+    "guardedMainPid": 4649,
+    "guardedState": "NORMAL_BOOT_ADMITTED",
+    "guardedReceiptSha256": "46c8b7a68606f60560610c7b0861e8bb605adfb08f0ed019b353145b9f0e2c8b",
+    "ordinaryWritesBlocked": true,
+    "normalShutdownExit": 0,
+    "javaTests": 81,
+    "arm64CoreTests": 78,
+    "unchangedJvmPlugins": 217,
+    "evidenceSha256": "34446f867d15da520e23c5ca5778b4962ba2a18bd79ff097affe049ba87e3db0",
+    "cold": "ordinary-snapshot-publication/cold.py"
   }
 }
