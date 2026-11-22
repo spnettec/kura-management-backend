@@ -1,3 +1,7 @@
+## 2026-11-22 已发布密钥代的 purge 签名与同围栏续装
+
+Core 82b242fa33 在独立 Debian ARM64 正式实装中补齐已发布密钥代的 purge 后合法重装。应用数据已删除、完成签名未写入时 SIGTERM，正式 incoming reader 拒绝；随后沿原维护号 5c743dde-a024-496d-a266-a8a7f0cedc74 续 purge、解包和配置。六份小型原凭据 cohort 文件共 11148 字节，19 份配置签名与五个 vendor 单元配对；HTTPS 原恢复与归档保持。显式 Main 从工厂应用状态写入并读回原发布代加密的新快照，27 份保护文件指纹保持，系统正常停机。91 项 ARM64 测试、217 个 JVM 插件路径字节核对通过。旧半配置和 purge 后拒绝两现场继续冻结，12 父项冻结 0/12。冷读入口 generation-recovery-purge-cohort/cold.py。
+
 ## 2026-11-22 原 READY 签名续配、原归档与双代 Main
 
 Core 78623395ce 的 ARM64 原 Root 2097298:1 已核实 READY 后的进程中断。沿原维护号 46749956-5e81-4ae5-a1e4-6110f01957a9 续配一次，18 份签名保持并新增第 19 份完成回执，五份配对单元核验通过。HTTPS 只读查回原恢复 SUCCEEDED 和原归档 ARCHIVE_RECORDED。随后显式启动正式 Main 读回原两代快照 24101／24102，确认原启动并正常停机，27 份保留文件完整指纹保持。旧版半配置与 purge 后拒绝的两处原现场保持冻结。冻结 0/12。 冷读入口 generation-recovery-retained-current/cold.py。

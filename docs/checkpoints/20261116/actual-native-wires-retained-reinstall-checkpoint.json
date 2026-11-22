@@ -9444,5 +9444,68 @@
     "matchingJvmPluginPaths": 217,
     "evidenceSha256": "82d19e560a7e8948a1c5cc50bfdf2abefd4c64602e63a412fec82ecb142602d5",
     "cold": "generation-recovery-retained-current/cold.py"
+  },
+  "nativeGenerationPurgeCohort": {
+    "core": "82b242fa330d38827c0743c4a41ad7998626235f",
+    "coreDeb": "8414799408c6e6b3fd18413d8715accc1a3e4f86fb4e8daa6297957f363c7715",
+    "fixtureRoot": "2097298:1",
+    "fixtureContainer": "b02c019e670434d6209f48dcf5463d357110797bda470bbf6ef995ea100a7873",
+    "fixtureNamespace": "9ddbed7720a2b15936285ab85f90978efeac2e37225fface6e4da3ca50c63d03",
+    "maintenanceId": "5c743dde-a024-496d-a266-a8a7f0cedc74",
+    "restoreOperation": "0625760a-46ff-4932-8de7-b0eb46cbb4a5",
+    "archiveId": "d8ec6dce-32b4-4ea4-9da5-81ce4295b00e",
+    "startupOperation": "adfd1c7e-bcf6-4cdd-bd46-cef698189513",
+    "interruptedPhase": "application-state-deleted-before-completed-purge-receipt",
+    "interruptedExit": 1,
+    "incompleteIncomingPreflight": "REFUSED",
+    "purgeResumeExit": 0,
+    "purgeCohortFiles": 6,
+    "purgeCohortBytes": 11148,
+    "capturedCohortFilesPreserved": 5,
+    "originalApplicationSnapshotsPurged": true,
+    "configuredSignedPhases": 19,
+    "packageState": "installed",
+    "pairedVendorUnits": {
+      "kura-key-recovery.service": "ca1b8361b17ed195df56cd3dd3dd250b5b614432e59247094d447f2fa348cce5",
+      "kura-key-service.service": "6c8c1a41bc2c0ddc54ee2a60acbbdf9e4122346ae4bfaa9bab8a1a4cbe30facd",
+      "kura-key-service.socket": "9390f6972f0c97380860dbda038680d89e5e42b46d3fb75593d20fe2e063e200",
+      "kura-snapshot-validation.service": "71063cffdb5c44e0d0b22eae270306c0ecc80533586160f3ebe0ce7807f2549f",
+      "kura-snapshot-validation.socket": "6c295709efbeaef4eb1fdf3125b62f0c145b017c629d6973377b41400d7bc5d5"
+    },
+    "finalProtectedFilesExact": 27,
+    "nativeOperations": 5,
+    "nativeStartups": 1,
+    "senderTerminals": 6,
+    "httpsOriginalAfterMaintenance": "SUCCEEDED",
+    "httpsArchiveAfterMaintenance": "ARCHIVE_RECORDED",
+    "postPurgeMainSnapshot": "1795313598340",
+    "postPurgeMainValue": 24101,
+    "postPurgeSnapshotGeneration": "KURA2.d7df5ca2d7dc3a5e16ece5c7b605f3f15e8525c56e5b1f6aa38437d17debc404",
+    "normalShutdownExit": 0,
+    "frozenOriginals": [
+      {
+        "container": "4c91bc3198bfcfded527a7290e30cd2c5a22c6ceba6af15f79fe5268dfa7af8a",
+        "root": "2097260:1",
+        "maintenanceId": "3d040675-cdb0-47af-b607-51f139e31755",
+        "state": "paused",
+        "coldRecord": "generation-recovery-maintenance/purged-frozen.json"
+      },
+      {
+        "container": "fc83226ebbafab1f9975308f8d93b391c886115f1da44be822707bf9d28852b5",
+        "root": "2097279:1",
+        "maintenanceId": "df874961-0d1a-42e7-9392-7d192d66cf2e",
+        "state": "paused",
+        "coldRecord": "generation-recovery-retained-configure/legacy-retained-frozen.json"
+      }
+    ],
+    "arm64Tests": 91,
+    "matchingJvmPluginPaths": 217,
+    "evidenceSha256": "ab43b5bfb1e7bfeda9a3df57df53b0c1cc1dc5c0d4be51418fbde99d4306c38d",
+    "cold": "generation-recovery-purge-cohort/cold.py",
+    "limits": [
+      "same original published reader cohort only",
+      "older refused purge fixture has no completed purge credential witness and remains frozen",
+      "provider re-encryption and broader interruption matrices remain pending"
+    ]
   }
 }
