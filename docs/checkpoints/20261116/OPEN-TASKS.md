@@ -3338,7 +3338,7 @@ firewall-only 已补齐4个JAR Root权限、升级阶段/agent ownership保护�
 7. **中心与部署 GUI**：中心地址、数据库、CSR legacy、半凭据、首次 TLS UNKNOWN、容量与归档；完整主机/实例/容器用户流程及错误恢复。已完成的首次配置、TLS联合切换、CSR、续期和只读恢复资料各自有限范围保留，不能外推整套正式交付。
 8. **数据库与协议**：客户旧加密任务库及完整 GUI 数据库备份/恢复；协议0在线升级、正式发布的校验和协议 crate、跨组件 joint generations。已通过的是合成 schema9 的真实PG备份恢复/当前迁移/rekey，不能重放或替代客户场景。
 9. **R017 及文档/技能**：单机部署中安装器已启动 agent 与要求 inactive 的 import/CSR 顺序；统一方案A、工作空间知识库交接；完整 TLS reload/bulk/证书下载上传及平台体验的父项验收。后续用户操作从界面完成，不能以设置环境变量/运行脚本代替产品流程。
-10. **G021/G022**：实际 LDAP present/absent；Go31 vet 债务、三个非Java模板 POM、可选生成与未执行.NET范围。保持内部 pending。
+10. **G021/G022**：**已关闭（2026-11-22）**。G021：27/27 描述符 LDAP 过滤查询已验证，5 个 Config Admin present/absent 周期已覆盖，真实非 Root Main + JVM 模拟器双环境实测。G022：Go vet 31 条诊断为上游 PLC4X 固有债务（非 YOFC 修改引入，16 文件与上游逐字节一致）；3 个非 Java 模板 POM 已修复并验证；.NET 三协议 11 nupkg 已验证；KNX 数据漂移记录为上游变更。关闭文档 [parent-10-g021-g022-closure.md](parent-10-g021-g022-closure.md)。
 11. **上游逻辑同步**：按实际 fork 与依赖关系继续，非fork不直接 merge。保留11 fork/7 nonfork关系与已审查游标，不能因 WIP 提交/推送而前移。PLC4X 两个新增逻辑组、shared SLMP/.NET 三提交等剩余范围继续 review；不盲目批量 merge，不恢复 YOFC 明确删除的模块。
 12. **正式源码/发行门禁**：WIP 已保存完整447候选并不等于原 guarded apply/正式发布通过。继续以新源码执行必要范围验证和全盘 review，不把旧报告、green manifest 或已闭环写操作重新跑一遍当作证明。
 
