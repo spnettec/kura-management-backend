@@ -1,3 +1,7 @@
+## 2026-11-22 正式非 Root agent 读取原快照清单
+
+Core c97207d95d 与 agent f250ffb 在独立 ARM64 正式包实装使用只读清单。原生 agent 保持 cap0 与 NNP1，仍无法直接读取原 0600 快照。Core 通过单独的 kurad 只读 worker 提供原目录设备号、inode、文件元数据及 SHA-256。原操作和启动表均为零，Main 未启动；相同 UID 和组的非 Main 进程、直接访问内部 socket 和链接条目已实测拒绝。39 项 Core ARM64、4 项 Rust、16 项 agent ARM64 打包测试通过。两夹具正常停放。快照写入和固定单元启停的原生授权、完整恢复编排继续待验。冻结 0/12。只读入口 native-snapshot-inventory/cold.py。
+
 ## 2026-11-22 正式第 6 层受保护 Main 写释放与普通启动
 
 Core 718489e8f2 按已准入 launcher 的精确层级检查释放，agent b48150d 由专属健康授权固定层级，旧授权缺省仍为 5。隔离 ARM64 正式 Main PID 2967 在第 6 层验证真实测试 DS 业务和整个配置集，经显式选择一次写释放后实际写快照。同 Root 独立普通 Main PID 5831 无恢复请求，从该快照读回配置并写下一份，原释放回执指纹保持。初始测试观察器缺 OSGi 导入，在同一受保护 JVM 补齐观察器后继续，原启动保持。79 项 Java、91 项 agent 回归通过，8 项忽略。两份正式 ARM64 候选包已核对，现场正常停放。本场为直接调用已配对 Core 服务，agent 完整编排及全组件健康仍待验。冻结 0/12。只读入口 guarded-framework-completion/cold.py。

@@ -9813,5 +9813,73 @@
     "kuraRecoveryVerified": false,
     "evidenceSha256": "0fd57303eb11e926bc4d02f4c66491bb4e6a1fff9a5c8caa7f0c4b8fea21b1ca",
     "cold": "guarded-framework-completion/cold.py"
+  },
+  "nativeSnapshotInventoryReadOnly": {
+    "core": "c97207d95d15c6627a01cccc7fca4625f76d7f2c",
+    "coreDeb": "715656ba8cb1dfd68be107f421ecb61f12bb797fd1b19134b0bd5ff05685462d",
+    "agent": "f250ffb41812bd4aaa404acc581b8ba17acbc411",
+    "agentDeb": "1b6092d992cd63f90e6ae4a2b1ab4f01d3568fc38676ae99822dd049ef40540e",
+    "baselineContainer": "7c97d9c8b5029bcd16e22521d71da23b60f7dd0f812642b9679eaf6d315559e2",
+    "baselineDirectRead": false,
+    "root": "2097316:1",
+    "container": "09d1f9e987a2b9a12412e8f80d5c5b7695a6d477eca9f31ad2ba9ade2e9c987b",
+    "readerConfiguredIdentity": "kurad",
+    "actualAgent": {
+      "MainPID": "1754",
+      "NRestarts": "0",
+      "ControlGroup": "/system.slice/kura-management-agent-v2.service",
+      "ActiveState": "active",
+      "InvocationID": "d7452ae962724321920c943f5a77e010",
+      "uid": "989",
+      "gid": "988",
+      "groups": [
+        "987",
+        "988"
+      ],
+      "cap0": true,
+      "noNewPrivileges": true
+    },
+    "report": {
+      "coreBindingSha256": "156143cac18674fed09d9fbd5f87f0c768d8d250d9e95d6c2e695376d9298a02",
+      "kuraRecoveryVerified": false,
+      "snapshotInventory": {
+        "directory": {
+          "device": "2097316",
+          "gid": 995,
+          "inode": "4244",
+          "mode": 448,
+          "uid": 997
+        },
+        "files": [
+          {
+            "metadata": {
+              "gid": 995,
+              "mode": 384,
+              "uid": 997
+            },
+            "name": "snapshot_0.xml",
+            "sha256": "19dd96430bf2d5b577c38c9babb94bb78c26eb5eb7f3f3180fa744c5077708c4",
+            "size": 23712
+          }
+        ],
+        "retainedDirectoryPresent": false,
+        "schema": 1
+      }
+    },
+    "rootTables": {
+      "operations": 0,
+      "startups": 0
+    },
+    "sameUidOutsideMainRefused": true,
+    "linkedEntryRefused": true,
+    "internalRootListenerRefused": true,
+    "originalReportExact": true,
+    "actualMainStarted": false,
+    "normalShutdownExit": 0,
+    "coreArm64Tests": 39,
+    "agentRustTests": 4,
+    "agentArm64PackagingTests": 16,
+    "evidenceSha256": "2299a33be453e6808796549302c177d293e234bd2e05ec6c35345eb34c89bf37",
+    "cold": "native-snapshot-inventory/cold.py"
   }
 }
