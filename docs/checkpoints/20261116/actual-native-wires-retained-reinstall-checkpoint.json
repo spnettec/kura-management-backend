@@ -9345,5 +9345,43 @@
     "parked": true,
     "cold": "generation-recovery-https/cold.py",
     "evidenceSha256": "fe408e8618e314961ca8c17c4b450cc4c38fb25d0296c4da9099c0688395ac89"
+  },
+  "nativeGenerationRecoveryBrowser": {
+    "core": "08da5e88d40d3a9072caa912fd335191b7a7e665",
+    "coreDeb": "7c2c8faec8239c823839f38ddd89e5f305d9fa0ab18548325382543f9d41f335",
+    "fixtureRoot": "2097260:1",
+    "fixtureContainer": "eac01d5ce9a1cc27452eae3a6078dd328ffaee5852264efcf7603ee25d315569",
+    "fixtureNamespace": "8a72e87c38aeece938f1a543f62c404fe267ff478a16e9f5810b37ddeab3a6ca",
+    "restoreOperation": "53bfab9b-375c-4aea-b9ae-d490cedc6079",
+    "startupOperation": "bc73353d-9e9f-43d3-af95-c717d183f90c",
+    "browser": "Chromium 390 CSS px",
+    "tlsPinned": true,
+    "keyboardCancel": true,
+    "firstBrowserObservationInterrupted": true,
+    "sameRootReceiptResumedInNewBrowserContext": true,
+    "foreignNamespaceLookups": 0,
+    "rootRestoreCount": 1,
+    "browserContinuationRestoreCount": 0,
+    "startupCount": 1,
+    "mainSnapshots": {
+      "old": {
+        "id": "1795310141666",
+        "value": 24101
+      },
+      "new": {
+        "id": "1795310152071",
+        "value": 24102
+      }
+    },
+    "arm64Tests": 88,
+    "browserRegressionCounts": [
+      17,
+      29,
+      18
+    ],
+    "byteIdenticalJvmPluginPaths": 217,
+    "parked": true,
+    "cold": "generation-recovery-browser/cold.py",
+    "evidenceSha256": "b474cb5c4b640375d5a0cff4467791b182b619289d69bdf65b11588b3bd67275"
   }
 }
