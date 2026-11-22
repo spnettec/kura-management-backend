@@ -1,3 +1,7 @@
+## 2026-11-22 正式第 6 层受保护 Main 写释放与普通启动
+
+Core 718489e8f2 按已准入 launcher 的精确层级检查释放，agent b48150d 由专属健康授权固定层级，旧授权缺省仍为 5。隔离 ARM64 正式 Main PID 2967 在第 6 层验证真实测试 DS 业务和整个配置集，经显式选择一次写释放后实际写快照。同 Root 独立普通 Main PID 5831 无恢复请求，从该快照读回配置并写下一份，原释放回执指纹保持。初始测试观察器缺 OSGi 导入，在同一受保护 JVM 补齐观察器后继续，原启动保持。79 项 Java、91 项 agent 回归通过，8 项忽略。两份正式 ARM64 候选包已核对，现场正常停放。本场为直接调用已配对 Core 服务，agent 完整编排及全组件健康仍待验。冻结 0/12。只读入口 guarded-framework-completion/cold.py。
+
 ## 2026-11-22 受保护 Main 保留历史密码序列的 CM 表示
 
 正式 ARM64 旧版的 bootstrap 已写 NORMAL_BOOT_ADMITTED，随后配置服务因历史 XML Vector 与 Equinox List 类型差异拒绝激活。Core a7a053839e 按有序列表逐项认证且保留已准入的 CM 表示。独立修复夹具通过现有管理员 JVM 参数显式保留 CM，正式 Main PID 2960 匹配原 CM_APPLIED、精确密文顺序和 .cfg 指纹。普通快照写仍被拒绝，模板的 osgi.clean=true 保持。306 项配置及 79 项离线恢复通过。修复夹具正常退出 0，旧复现场 Main disabled 并冻结。此场为直连 Core 受控核验，agent 正/逆向编排、业务健康和写释放仍待验。冻结 0/12。只读入口 guarded-cm-retention-fixed/cold.py。
