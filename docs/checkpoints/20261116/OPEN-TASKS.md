@@ -1,3 +1,7 @@
+## 2026-11-22 正式 ARM64 Main 受控恢复及原回执健康核验
+
+Core 2625f42958 与 agent b75d7f1 在隔离 ARM64 正式 Main PID 3000 读回原号 rec-ad17f8ca-9bb0-4165-9d5f-10814a13f9b0 的 CM_APPLIED。实际 Equinox 落盘中两个历史逻辑值加密、原包裹密文保留，普通写入拒绝。配对 bridge 的管理员所选 DS 检查通过，缺失检查失败，错回执和已停 Main 拒绝。修复私有只读 reader 的 systemd 启动限流后，六次连读耗时 3.46 秒，随后同号取得 MAIN_STOPPED 并正常退出 0。初测停止 UNKNOWN，原号只有启动回执，原 Main 保留并冻结。80 项 Java、58 项 ARM64 Core 和 7 项 Rust 定向测试通过，217 个 JVM 插件及离线恢复 JAR 字节核对通过。固定链的受保护普通启动与显式写释放、完整维护矩阵仍待办，冻结 0/12。冷读 native-applied-health/cold.py。
+
 ## 2026-11-22 正式原生 agent 委托固定 Main 启停
 
 Core c85e22fec9 与 agent e39b3d5 在独立 ARM64 正式 Root 2097349:1 实测原号固定启停委托。一次性启动授权绑定计划摘要，停止独立绑定原 CM_APPLIED 摘要。非服务同 UID、错误计划及未授权停止拒绝。正式 agent 原号 rec-8f3f45b7-8974-434e-bc01-c2a135a80b06 取得 job 1122，实际 Main PID 2847 应用原投影并保留写门禁。同号停止取得 MAIN_STOPPED，原 CM 回执和选择围栏保持。独立 Root 只读 socket 下的 kurad reader 退出，容器正常退出 0。58 项 Core ARM64 和 8 项 Rust 测试通过。业务健康、普通启动释放及完整生命周期待办，冻结 0/12。冷读 native-fixed-recovery-main/cold.py。
