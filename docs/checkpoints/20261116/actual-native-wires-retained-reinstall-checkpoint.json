@@ -9708,5 +9708,35 @@
       "Base64-wrapped old-key inner rewrap verified in Java tests",
       "controlled recovery and custom CM backing stores pending"
     ]
+  },
+  "controlledLegacySnapshotPasswordBootstrap": {
+    "core": "8fa1c85d6a0710477d71e6e1a953019a31d0a401",
+    "coreDeb": "cabc3e1600c04307e372ab5b2adee647995b30e0e40a19b373123b2f76dba141",
+    "root": "2097298:1",
+    "container": "b186cac7d655285fb34f1c3f02bb860286b7b9e323e2da7a2a4b3b2376bf2a25",
+    "restoreId": "rec-0b049ffd-e6b8-40b1-b014-37a407afcf46",
+    "mainPid": 2190,
+    "snapshotSha256": "e1285a8ecdb8bde3e51fc5a34d29bbdeedca05661f58d320ca71a789e2644175",
+    "status": "CM_APPLIED",
+    "fullRecoveryVerified": false,
+    "businessHealth": "UNVERIFIED",
+    "receiptSha256": "9dbbc8bef9e2f4e750efa0104e3fcdbe8dda34c28eacbbb777c5e3a0b6f3cc4f",
+    "cmBackingSha256": "48622b0119d3888d2f3dc05a77f406a442df7a885ba52f017f38d20b4fa13c9d",
+    "cmVersion": "1.6.400.v20251209-1342",
+    "configurationClassSha256": "373fa7b2b6d0f959431f94e9dd6e40509ff0abccc2218f56fbff1ec307efbab0",
+    "bootstrapClassSha256": "3e5f7969641a9f81dd0799629f3ba601854332118301305a12548a099759393b",
+    "explicitLogicalScalarEncrypted": true,
+    "directlyUnwrappedLogicalSequenceElementEncrypted": true,
+    "wrappedStoredCiphertextPreserved": true,
+    "logicalLiteralPresentInCfg": false,
+    "ordinarySnapshotWriteBlocked": true,
+    "preJvmRefusalProved": true,
+    "retainedBackupIntentAndAppliedHashesMatched": true,
+    "normalShutdownExit": 0,
+    "configurationTests": 305,
+    "offlineRecoveryTests": 79,
+    "jvmPluginPaths": 217,
+    "evidenceSha256": "472c29476fd32aefe3f9ea8e4aa6489c0b47ec7d5cd197a3fdb5a52cb4641014",
+    "cold": "controlled-legacy-snapshot/cold.py"
   }
 }

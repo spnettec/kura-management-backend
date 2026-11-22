@@ -59,3 +59,7 @@ Core 已在第一份快照转换完成、最新一份仍为明文时通过进程
 ## 2026-11-22 历史快照类型化密码写入 CM
 
 默认正式 Main 已按旧格式来源逐项解码标量与混合密码序列，在写入 Equinox CM 前重新加密。两份实际 ARM64 deb 的对照分别得到明文 4/5 和 0/5，修复版快照 API 读回 5/5 预期值。离线重加密的 JVM 回归覆盖 Base64 包裹的旧代 CM 密文，以及保留相似字面值。自定义持久 CM、受控恢复和逐 provider 仍按其配对环境验证。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 受控恢复的历史密码来源
+
+正式 ARM64 Main 的恢复 bootstrap 对已判定为逻辑值的旧 XML 密码重新加密，即使值本身可通过原钥认证。同一个混合序列中的原 CM 密文保持原字节，实际 Equinox 读回正确。原 CM_APPLIED 绑定原备份、意图和应用摘要，普通快照写门禁继续生效。完整业务验证与显式写释放留在各自配对验收。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
