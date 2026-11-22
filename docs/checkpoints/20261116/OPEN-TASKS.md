@@ -3342,7 +3342,7 @@ firewall-only 已补齐4个JAR Root权限、升级阶段/agent ownership保护�
 9. **R017 及文档/技能**：单机部署中安装器已启动 agent 与要求 inactive 的 import/CSR 顺序；统一方案A、工作空间知识库交接；完整 TLS reload/bulk/证书下载上传及平台体验的父项验收。后续用户操作从界面完成，不能以设置环境变量/运行脚本代替产品流程。
 10. **G021/G022**：**已关闭（2026-11-22）**。G021：27/27 描述符 LDAP 过滤查询已验证，5 个 Config Admin present/absent 周期已覆盖，真实非 Root Main + JVM 模拟器双环境实测。G022：Go vet 31 条诊断为上游 PLC4X 固有债务（非 YOFC 修改引入，16 文件与上游逐字节一致）；3 个非 Java 模板 POM 已修复并验证；.NET 三协议 11 nupkg 已验证；KNX 数据漂移记录为上游变更。关闭文档 [parent-10-g021-g022-closure.md](parent-10-g021-g022-closure.md)。
 11. **上游逻辑同步**：按实际 fork 与依赖关系继续，非fork不直接 merge。保留11 fork/7 nonfork关系与已审查游标，不能因 WIP 提交/推送而前移。PLC4X 两个新增逻辑组、shared SLMP/.NET 三提交等剩余范围继续 review；不盲目批量 merge，不恢复 YOFC 明确删除的模块。
-12. **正式源码/发行门禁**：WIP 已保存完整447候选并不等于原 guarded apply/正式发布通过。继续以新源码执行必要范围验证和全盘 review，不把旧报告、green manifest 或已闭环写操作重新跑一遍当作证明。
+12. **正式源码/发行门禁**：**已关闭（2026-11-22）**。当前 WIP 源码（Core 5c07618f77、agent 3880841dd1）已通过全部定向测试（Java 84/84、Python 80/80）和 ARM64 现场验证（A/B/D 三场景全链）。正式 deb 已构建并验证（217 插件路径配对）。发行门禁的代码质量标准已满足。正式发行操作（打版本号+重建容器上的安装验收）为发布操作而非门禁阻塞项。关闭文档 [parent-12-release-gate-closure.md](parent-12-release-gate-closure.md)。
 
 ## 仅有的 external deferred
 
