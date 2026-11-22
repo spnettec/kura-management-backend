@@ -9898,5 +9898,27 @@
     "normalShutdownExit": 0,
     "evidenceSha256": "a5e58c8e28766146d48a98aefc0617f4a1a10377b5d7e7a3c435b8ab6e70ad36",
     "cold": "native-snapshot-inventory-maintenance/cold.py"
+  },
+  "coreRecoveryInputStaging": {
+    "core": "5ac056ac30e0fc515e47eeae3b7f298ad52ce4aa",
+    "coreDeb": "def22ae4acc1cb520eec7e9809b83379747d6ee1dc9ba83dd817e2b318dfad70",
+    "root": "2097316:1",
+    "container": "5493be5a3a70f7f3230aa3b94f635db49ae844315ad026946126b7e2c89f6e5b",
+    "restoreId": "rec-9a694285-ac9d-4527-8fc5-eefee7865208",
+    "rejectedRestoreId": "rec-3b622f00-c687-46b4-8bd8-edc4fb4922ee",
+    "interruptSignal": "SIGTERM",
+    "originalStateAfterInterrupt": "RECOVERY_INPUT_READY",
+    "continuedState": "RECOVERY_INPUT_STAGED",
+    "bindingSha256": "0910c228de3b4b4e07284e843c8bd5293093a7622494180f12158c1585deb8ca",
+    "snapshotSha256": "8c69bb5bbe51c0f3e54abb5e98dd4d0f4081ac82b47fc593cf55b8388be96948",
+    "readyReceiptSha256": "2a2e6db66ccecbbc7d6cf420d1c88f005b7783a4e7306fe7ccfa11ed3cfa215e",
+    "preservedInodes": true,
+    "nativeAgentFileAccess": false,
+    "actualMainStarted": false,
+    "normalShutdownExit": 0,
+    "arm64StageTests": 4,
+    "arm64LifecycleTests": 30,
+    "evidenceSha256": "0aef199d072fad1351d2934e07699e426f05a67c5b0830a5337b4ef710a3cc80",
+    "cold": "core-recovery-input/cold.py"
   }
 }

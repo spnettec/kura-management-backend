@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Core 暂存恢复输入及原号续接
+
+Core 5ac056ac30 新增本机 Root 的固定恢复输入暂存区和原号查询。正式 ARM64 隔离容器 5493be5a3a70、Root 2097316:1 使用实际 AES-GCM 和随包 Java 校验器，在回执落盘后、发布前 SIGTERM。原号 rec-9a694285-ac9d-4527-8fc5-eefee7865208 读回 READY，移开测试来源后续接一次为 STAGED，原副本和回执 inode、摘要保持。非 Root agent 无法读取，快照清单、原凭据和原表保持，Main disabled 并正常退出 0。4 项暂存及 30 项生命周期 ARM64 测试通过，217 个 JVM 插件字节一致。原生委托、Core 受控消费、固定启停及完整编排继续待办。冻结 0/12。冷读 core-recovery-input/cold.py。
+
 ## 2026-11-22 正式快照清单跨 Core 升级续配
 
 Core 从 718489e8f2 升至 c97207d95d，正式 ARM64 独立 Root 2097318:1 在解包结束、配置开始之间停顿。原生 agent f250ffb 同一进程维持 cap0、NNP1。原升级围栏 939e4404-c7d9-473d-bafb-32961aa35692 在场时两监听均关闭，清单请求被拒绝。沿原号续配一次后，实际 agent 读回原 snapshot_0.xml 的内容摘要和元数据。原回执、Root 凭据指纹和未启动的 Main 保持，现场正常退出 0。原 Main CM_APPLIED、密码密文和写门禁再经冷读取证，未重做受控恢复。原生快照写入和完整编排仍待实施，冻结 0/12。只读入口 native-snapshot-inventory-maintenance/cold.py。
