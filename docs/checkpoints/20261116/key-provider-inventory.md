@@ -55,3 +55,7 @@ Core 已在第一份快照转换完成、最新一份仍为明文时通过进程
 ## 2026-11-22 默认 Debian Main 的 Equinox CM 存储边界
 
 正式 Main 通过 `-configuration /tmp/.kura/configuration` 和 `osgi.clean=true` 启动。Equinox CM 把运行值写成带 CRC 的 `data*.cfg.<代号>`，本场三份旧文件在正常停机后仍可读。切换发布代后原三份文件退出，Main 从未改动的原快照重建标量密码和密码顺序容器，使用活跃钥封装。仅经 ConfigurationAdmin 写入的旧运行覆盖和临时 PID 未回放。这个默认 profile 的持久配置来源是快照，CM backing store 是启动后重建的状态。受控恢复、显式保留的 CM 与自定义 framework 存储另按原配对检查。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)
+
+## 2026-11-22 历史快照类型化密码写入 CM
+
+默认正式 Main 已按旧格式来源逐项解码标量与混合密码序列，在写入 Equinox CM 前重新加密。两份实际 ARM64 deb 的对照分别得到明文 4/5 和 0/5，修复版快照 API 读回 5/5 预期值。离线重加密的 JVM 回归覆盖 Base64 包裹的旧代 CM 密文，以及保留相似字面值。自定义持久 CM、受控恢复和逐 provider 仍按其配对环境验证。[实装检查点](actual-native-wires-retained-reinstall-checkpoint.json)

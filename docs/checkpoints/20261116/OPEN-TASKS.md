@@ -1,3 +1,7 @@
+## 2026-11-22 历史快照密码的正式 Main 冷启动
+
+Core 16d53cb59d 修复了历史快照的类型化密码写入实际 Equinox CM 的明文问题。同一探针在旧正式 ARM64 包 f6b054eb17 实测 5 个合成密码有 4 个以明文落入 .cfg，一个 Base64 封装的旧 CM 密文也未被快照 API 解开。修复包的 5 个密码均加密落盘，快照 API 全部读回预期逻辑值，普通 String、历史 Vector 顺序和输入快照指纹保持。离线 rewrap 的 Java 测试同时覆盖 Base64 内旧密文切换到活跃钥及字面值兼容。305 项配置测试、78 项离线测试通过。两独立夹具均正常退出 0，Main disabled。受控恢复与自定义 CM 留待各自围栏验收。12 父项冻结 0/12。只读入口 legacy-snapshot-cm/cold.py。
+
 ## 2026-11-22 默认 Main 从加密快照重建 Equinox CM
 
 正式 Core f6b054eb17 的 Debian ARM64 Main 在独立 Root 2097298:1 核实 Equinox CM 默认存储边界。旧 Main 将快照值、仅写 CM 的覆盖值和临时 PID 写到三份真实 .cfg，正式停机后仍在。显式切换发布代后，新 Main 清理原 .cfg，从未改动的原快照用活跃钥重建标量和密码序列；仅写 CM 的覆盖值和临时 PID 未回放。普通 String 与形似密文的逻辑密码保持。旧版受控或不同 framework 配置仍单独核验。系统正常退出 0，Main disabled，12 父项冻结 0/12。冷读入口 cm-snapshot-reseed/cold.py。

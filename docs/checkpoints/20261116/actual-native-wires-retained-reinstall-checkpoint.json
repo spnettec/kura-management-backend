@@ -9620,5 +9620,93 @@
       "synthetic explicitly typed PID",
       "controlled recovery and custom persistent CM not exercised"
     ]
+  },
+  "legacySnapshotCmCredentialBootstrap": {
+    "baseline": {
+      "core": "f6b054eb1762fa7d0cdcc968d66ba6e16f54939f",
+      "deb": "7b7d410fa09e65df042e49a356b533e015ed249fbfbe2bd9bc8921d7bafb2157",
+      "root": "2097298:1",
+      "container": "bb2bdfcf1c684712af48ff3e3caef048f18b637be9d30e2cd720e3eb788cb3a7",
+      "mainPid": 2510,
+      "sourceSnapshot": "1795326031234",
+      "sourceSnapshotSha256": "735b9f15b25aec3881a46978d0c9d655b22ae84b84dc1a1f5e6a3ae1c9ccfad5",
+      "configurationClassSha256": "b76395754753f8c3c427fb10fdb8904d21e8fbf60f8a9ae1ff224078fa03f4cf",
+      "cmBackingSha256": "c0ad2b0d8b74979dce9b355eaabb6624d09ccfbae6e3099f8ce30556522c81ee",
+      "cm": [
+        "PLAINTEXT",
+        "PLAINTEXT",
+        "ENCRYPTED",
+        "PLAINTEXT",
+        "PLAINTEXT"
+      ],
+      "logicalSnapshot": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "plainInBacking": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "ordinaryStringPreserved": true,
+      "normalShutdownExit": 0
+    },
+    "fixed": {
+      "core": "16d53cb59d8089190facdc9dc64aa0850754be79",
+      "deb": "dd9d461008e91ce841a92fb538a06098bad60e202de02df6966a5dfc79313c69",
+      "root": "2097297:1",
+      "container": "96a30340f031861b789c07796e87acfe9b8610d16ea989f7f1ef86bc4a1647e8",
+      "mainPid": 2483,
+      "sourceSnapshot": "1795326330134",
+      "sourceSnapshotSha256": "5ceb2a1fee1d618983ebbe00fc53d3204d0521bda41c968cb1b9a5a856f7430e",
+      "configurationClassSha256": "3dab18f97930d6798e6d879c989108829d94bacb7db8512571dfdd9875b490e8",
+      "cmBackingSha256": "e22637d6f3b673af3ad7afbd164991703ff49a8dc02d9eac295c1d9220bd6118",
+      "cm": [
+        "ENCRYPTED",
+        "ENCRYPTED",
+        "ENCRYPTED",
+        "ENCRYPTED",
+        "ENCRYPTED"
+      ],
+      "logicalSnapshot": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "plainInBacking": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "ordinaryStringPreserved": true,
+      "normalShutdownExit": 0
+    },
+    "configurationTests": 305,
+    "offlineRecoveryTests": 78,
+    "package": {
+      "jvmPluginPaths": 217,
+      "changedPlugins": [
+        "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/plugins/4s/org.eclipse.kura.core.configuration-3.0.0-SNAPSHOT.jar"
+      ],
+      "configurationJarSha256": "61d59a3bbc98eaeb4979c36473db0fc6fa7f70269de17fe59de8a62355d99f68",
+      "offlineJarSha256": "f84aa64c589e38ae95313df47ca33f6b43102c93a254c9dde9e790ebc79de209"
+    },
+    "evidenceSha256": "dd92ec3db0b9d728c7dfe76852e51c8a5d6009dbf6ace9bfdee5b642f6ebda26",
+    "cold": "legacy-snapshot-cm/cold.py",
+    "limits": [
+      "ordinary installed Debian ARM64 Main",
+      "explicitly typed synthetic legacy fixture",
+      "Base64-wrapped old-key inner rewrap verified in Java tests",
+      "controlled recovery and custom CM backing stores pending"
+    ]
   }
 }
