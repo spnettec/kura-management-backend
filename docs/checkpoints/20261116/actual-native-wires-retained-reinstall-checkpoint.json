@@ -9945,5 +9945,30 @@
     "ordinaryLauncherTests": 17,
     "evidenceSha256": "123e90c69532fbaa93765e2b3bb36c1845d935145f579f19132cd285300c9722",
     "cold": "core-recovery-main/cold.py"
+  },
+  "nativeRecoveryInputDelegation": {
+    "core": "7d51226c2a3fb5e49b2a9daa9c7b50372fb7721a",
+    "coreDeb": "487505d487c0e5f74c65beb41f2fdf31aa56553136c17abd297b4a25e42bdfc3",
+    "agent": "816a67716999caaff75942726130b6d5dab328bd",
+    "agentDeb": "cd837515bf1427a4c781e38f041eda7928b7f155b502b13d953b9d1bed8711e3",
+    "root": "2097349:1",
+    "container": "65ecb0bb1a6268a7b1387244b83c3adac6189e527539b15a588e961ddd7a310e",
+    "restoreId": "rec-cb06eeef-2db1-41a8-acb1-80f6fd046d72",
+    "mainPid": 2864,
+    "nativeAgentPid": 1737,
+    "publisherPid": 2023,
+    "attemptSha256": "8ecce49e81264cca279e8ef27ac2f5b5724fb805729d52a7873477097ae411d3",
+    "originalStage": "RECOVERY_INPUT_STAGED",
+    "lostReplyRestoreId": "rec-b36cf2ac-5ac4-491d-b43b-ff2ff0f8a86f",
+    "lostReplyOriginalState": "RECOVERY_INPUT_STAGED",
+    "mainState": "CM_APPLIED",
+    "receiptSha256": "92f511e4ff77c25137d28687128b5511840f9b753d07f6a17772f51370f8060f",
+    "ordinaryWriteBlocked": true,
+    "normalShutdownExit": 0,
+    "coreInputTests": 9,
+    "coreLifecycleTests": 30,
+    "agentTests": 7,
+    "evidenceSha256": "f56f8e367b74455b66d655fa3e531977a4b923837550f1f04d7eb42c7f7a0892",
+    "cold": "native-recovery-input/cold.py"
   }
 }

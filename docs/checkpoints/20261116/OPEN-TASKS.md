@@ -1,3 +1,7 @@
+## 2026-11-22 正式原生 agent 委托 Core 暂存恢复输入
+
+Core 7d51226c2a 与原生 agent 816a677 在独立正式 ARM64 Root 2097349:1 完成一次性恢复输入委托。Core 精确授权同一 Root、实时 agent InvocationID 和输入参数，先落盘原尝试再校验 FD。无授权编号和同 UID 的非服务进程被拒绝。原号 rec-cb06eeef-2db1-41a8-acb1-80f6fd046d72 由 Root 与 agent 读回同一 STAGED，随后正式 Main PID 2864 显式启动取得 CM_APPLIED，写门禁保持。独立原号 rec-b36cf2ac-5ac4-491d-b43b-ff2ff0f8a86f 故意丢响应后只读取得 STAGED。正式现场正常退出 0。9 项 Core 暂存、30 项生命周期及 7 项 Rust 测试通过。固定启停、完整编排和全组件发行仍内部待办，冻结 0/12。冷读 native-recovery-input/cold.py。
+
 ## 2026-11-22 正式 Main 消费原暂存恢复输入
 
 Core b3bfc12ebf 正式 ARM64 Main 从 Root 固定投影读取原暂存输入。旧包 d590b369cc 的 PID 2543 因既有 manifest 的属主权限合同拒绝组只读请求，原认领留下，Main 正常停止后冻结原现场。新独立 Root 2097349:1 使用显式选择器和正式 Main PID 2539 沿同一暂存号取得 CM_APPLIED。实际加载的 bootstrap 属于正式包，认领匹配 PID、启动时钟及 InvocationID，两个逻辑密码加密落盘，已有密文保持，普通写继续拒绝。原快照、凭据和回执指纹保持，现场正常退出 0。79 项 Java、7 项 ARM64 暂存和投影、17 项 launcher 测试通过。原生委托、固定启停、多代安装配置和完整恢复编排待续，冻结 0/12。冷读 core-recovery-main/cold.py。
