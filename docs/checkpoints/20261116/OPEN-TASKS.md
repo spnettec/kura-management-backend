@@ -1,3 +1,7 @@
+## 2026-11-22 正式原生 agent 委托固定 Main 启停
+
+Core c85e22fec9 与 agent e39b3d5 在独立 ARM64 正式 Root 2097349:1 实测原号固定启停委托。一次性启动授权绑定计划摘要，停止独立绑定原 CM_APPLIED 摘要。非服务同 UID、错误计划及未授权停止拒绝。正式 agent 原号 rec-8f3f45b7-8974-434e-bc01-c2a135a80b06 取得 job 1122，实际 Main PID 2847 应用原投影并保留写门禁。同号停止取得 MAIN_STOPPED，原 CM 回执和选择围栏保持。独立 Root 只读 socket 下的 kurad reader 退出，容器正常退出 0。58 项 Core ARM64 和 8 项 Rust 测试通过。业务健康、普通启动释放及完整生命周期待办，冻结 0/12。冷读 native-fixed-recovery-main/cold.py。
+
 ## 2026-11-22 正式 Main 原号固定启停
 
 Core 56b5b2fd56 新增本机 Root 原号固定启停。独立 ARM64 Root 2097350:1 使用正式 kura.service、无 drop-in，原号 rec-e2001005-a0c3-41cb-b819-c6581da7e08a 取得 job 1003。一次性选择和实际 Main PID 2692 的原登记、CM_APPLIED 回执及普通写门禁一致。只对同一进程执行受控停止，读回 MAIN_STOPPED，选择围栏和原回执保持，系统正常退出 0。模拟启动响应丢失时读取原号 UNKNOWN，固定派发只有一次。11 项恢复、17 项 launcher、30 项维护测试通过。原生启停委托、业务健康、普通启动释放和完整编排待办，冻结 0/12。冷读 fixed-recovery-main/cold.py。

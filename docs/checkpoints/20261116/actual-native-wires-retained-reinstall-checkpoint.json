@@ -9995,5 +9995,31 @@
     "lifecycleTests": 30,
     "evidenceSha256": "1181b2fe781ba60d3a1e2335eef259a3126100c2c73b4cfa186b3e6827c00ad2",
     "cold": "fixed-recovery-main/cold.py"
+  },
+  "nativeFixedRecoveryMain": {
+    "core": "c85e22fec9ea66f2287265c98dabbd97b7870b58",
+    "coreDeb": "2b600c7a7fc143dc3f07db437dfb5341f7ffefaf4f94c08a12db250b2afba7f6",
+    "agent": "e39b3d5049f1d7bc800f7da6e5de751de8f8f65b",
+    "agentDeb": "211d056465791fabdd3b7718a4fe7cc82752174550421ef1e37e56297fcfd5ca",
+    "root": "2097349:1",
+    "container": "38ac4330bd4b1885bd0154a8fd64eb820879a8992b92db3512e5fd34136a3522",
+    "restoreId": "rec-8f3f45b7-8974-434e-bc01-c2a135a80b06",
+    "nativeActorPid": 2457,
+    "mainPid": 2847,
+    "invocationId": "7fc8f01dbf274efdaa3bb6c7fb5b2965",
+    "jobPath": "/org/freedesktop/systemd1/job/1122",
+    "startGrantDigest": "544db3d4e303c1e462874e9df839e2e767269d20f9ecc4a03802f542ed1f006a",
+    "stopGrantDigest": "f6471494c2f79f57faa341edb2754db703d49ba5ecc1a22c626461f7503bebe5",
+    "cmState": "CM_APPLIED",
+    "cmReceiptSha256": "f6471494c2f79f57faa341edb2754db703d49ba5ecc1a22c626461f7503bebe5",
+    "stopState": "MAIN_STOPPED",
+    "selectionRetained": true,
+    "wrongPlanLeftNoIntent": true,
+    "ungrantedStopPreservedMain": true,
+    "normalShutdownExit": 0,
+    "coreTests": 58,
+    "agentTests": 8,
+    "evidenceSha256": "411405b142fbc57b93d89d03351b92b6be01bad5abfff8454cc81ea8e0238582",
+    "cold": "native-fixed-recovery-main/cold.py"
   }
 }
