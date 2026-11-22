@@ -9078,13 +9078,24 @@
     "otherPluginPaths": 176,
     "distinctOtherJars": 175,
     "cold": "core-reactor-484c4c8/cold.py",
-      "readback": {
-        "cold": "core-reactor-484c4c8-readback/check.py",
-        "sha256": "b07ba68f74370ee0a4190c4613b6acbbbc839fe62a91f6e0b4581541516696c7",
-        "builderRetired": true,
-        "configurationFrameworkCopies": 57,
-        "keystoreFrameworkCopies": 8
-      }
+    "readback": {
+      "cold": "core-reactor-484c4c8-readback/check.py",
+      "sha256": "b07ba68f74370ee0a4190c4613b6acbbbc839fe62a91f6e0b4581541516696c7",
+      "builderRetired": true,
+      "configurationFrameworkCopies": 57,
+      "keystoreFrameworkCopies": 8
+    },
+    "resumeAudit": {
+      "checkedAt": "2026-11-22T08:51:45+08:00",
+      "handoff": "core-reactor-484c4c8-resume-audit/HANDOFF.md",
+      "verificationSha256": "b07ba68f74370ee0a4190c4613b6acbbbc839fe62a91f6e0b4581541516696c7",
+      "boundBusinessSha256": "9022d42b4172fbfd9dd261d2d203027a66080bf0f95d9e45dbd5127565e717c9",
+      "originalThreeSha256": "2f0b18e11ab58af5c7bca537f2a668f6efe58f4a6fe640d7c2192eb0f5959b04",
+      "preservationSha256": "d7f8ca2204d32c30eddd0ad03823f5203b4558595482af8891f0f990162dbe48",
+      "originalBuilderRetired": true,
+      "newBuildRun": false,
+      "gatewayPackageOperations": 0
+    }
   },
   "containerCommandErrors": {
     "core": "484c4c843c271c06656346bedb4d02b3f49248f6",
