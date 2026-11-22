@@ -1,3 +1,9 @@
+## 2026-11-22 会话暂停汇总
+
+本会话完成 RTC 设备热插拔及专属虚拟 RTC 的正式 Main 正向写入，同 Root 的原六组件维护和绑定网关三代回执、五笔维护封存，Core 484c4c843c 的 ARM64 全量 2161 项及实际 Equinox/发行件核对，多代凭据与原 Main 验签，历史快照及正式受控恢复到写释放的主链。本轮沿原号实测写释放提交前中断后的 UNKNOWN 和持续挡写，服务已正常停止，未决 tmpfs Root 暂停保留。Core WIP 9deadcfa93，GWT b881a3ad0e，agent e7cb1aa。原三现场、六组件卷、绑定网关和停放 7fd 已只读核对，7fd 仍 41 输入、16 回执。按轮清理确认可重建的中间产物。后续先冷读，再处理导入格式转换及剩余完整维护矩阵。父项维持 0/12，外部延期仅原三项。
+
+[会话总结、现场续接与磁盘记录](../../../../.management-close-20261116/core-rtc-hotplug-20261120/session-handoff/PAUSED-20261122.md)
+
 ## 2026-11-22 正式写释放提交前中断及原号只读确认
 
 复用 Core 9deadcfa93 和 agent e7cb1aa 的 ARM64 正式包。独立 Root 2097388:1、原号 rec-7ca63ec5-d252-4af7-af01-7430ceaa3319 的写释放意图落盘后，在提交前的健康复查暂停原 Main PID 4389，正常停止 agent，调用方返回 UNKNOWN。agent PID 1832→5353，同号只读取得 GUARDED_RELEASE_UNKNOWN。原 Main 恢复后实际仍拒绝写普通快照。原意图、选择记录、CM 与受保护启动回执保持，提交标记及释放回执均未产生。Main、agent 和相关 broker 正常停止，暂停容器保留未决 tmpfs Root。按轮清理测试编译副本 8 KiB，宿主实测可用空间波动 −12 KiB。本轮无生产包重建。导入格式转换及完整维护矩阵待办，冻结 0/12。冷读 guarded-release-precommit-interrupt/cold.py。
