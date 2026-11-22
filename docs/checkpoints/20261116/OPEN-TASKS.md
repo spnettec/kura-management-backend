@@ -1,3 +1,7 @@
+## 2026-11-22 正式 Main 消费原暂存恢复输入
+
+Core b3bfc12ebf 正式 ARM64 Main 从 Root 固定投影读取原暂存输入。旧包 d590b369cc 的 PID 2543 因既有 manifest 的属主权限合同拒绝组只读请求，原认领留下，Main 正常停止后冻结原现场。新独立 Root 2097349:1 使用显式选择器和正式 Main PID 2539 沿同一暂存号取得 CM_APPLIED。实际加载的 bootstrap 属于正式包，认领匹配 PID、启动时钟及 InvocationID，两个逻辑密码加密落盘，已有密文保持，普通写继续拒绝。原快照、凭据和回执指纹保持，现场正常退出 0。79 项 Java、7 项 ARM64 暂存和投影、17 项 launcher 测试通过。原生委托、固定启停、多代安装配置和完整恢复编排待续，冻结 0/12。冷读 core-recovery-main/cold.py。
+
 ## 2026-11-22 正式 Core 暂存恢复输入及原号续接
 
 Core 5ac056ac30 新增本机 Root 的固定恢复输入暂存区和原号查询。正式 ARM64 隔离容器 5493be5a3a70、Root 2097316:1 使用实际 AES-GCM 和随包 Java 校验器，在回执落盘后、发布前 SIGTERM。原号 rec-9a694285-ac9d-4527-8fc5-eefee7865208 读回 READY，移开测试来源后续接一次为 STAGED，原副本和回执 inode、摘要保持。非 Root agent 无法读取，快照清单、原凭据和原表保持，Main disabled 并正常退出 0。4 项暂存及 30 项生命周期 ARM64 测试通过，217 个 JVM 插件字节一致。原生委托、Core 受控消费、固定启停及完整编排继续待办。冻结 0/12。冷读 core-recovery-input/cold.py。

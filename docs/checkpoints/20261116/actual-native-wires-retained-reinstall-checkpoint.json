@@ -9920,5 +9920,30 @@
     "arm64LifecycleTests": 30,
     "evidenceSha256": "0aef199d072fad1351d2934e07699e426f05a67c5b0830a5337b4ef710a3cc80",
     "cold": "core-recovery-input/cold.py"
+  },
+  "coreRecoveryMainProjection": {
+    "core": "b3bfc12ebf57d8a54746f8ad31c5f6f90f598839",
+    "coreDeb": "8ef5003db8d20b6b09d0b6b3b086185ed984598ecaf34da8a59aadd8fc868b5e",
+    "refusedCore": "d590b369cc1bc51bd153ea6692f252f0d27c199f",
+    "refusedContainer": "02f09296b1ef3557e13df6ab7725840d4bf5a2cd1b14b667b0bc9a18e091e4c3",
+    "refusedRoot": "2097317:1",
+    "refusedRestoreId": "rec-33c02bab-e04f-4f9c-8597-4b76ccb7667b",
+    "root": "2097349:1",
+    "container": "9e14b4caa58b234aea70e71396706ca7035ee5918336d42c42aed2747260d1a7",
+    "restoreId": "rec-51b6b49d-b890-4a01-8b6c-fb03f42e4789",
+    "mainPid": 2539,
+    "invocationId": "dc2c235622984ec5b23d2fbf358e6222",
+    "state": "CM_APPLIED",
+    "planSha256": "1da9207d1a1ee7dc5426ff3733a2b0eca6d114d744e3bca96ede246e3360179d",
+    "receiptSha256": "a951e585f4814de667003a59a9a0519961794f623d18a7f62bdbd645ff25d7a8",
+    "runtimeBootstrap": "/opt/eclipse/kura/libexec/key-recovery/kura-offline-recovery.jar",
+    "encryptedPasswords": true,
+    "ordinaryWriteBlocked": true,
+    "normalShutdownExit": 0,
+    "javaRecoveryTests": 79,
+    "nativeRecoveryTests": 7,
+    "ordinaryLauncherTests": 17,
+    "evidenceSha256": "123e90c69532fbaa93765e2b3bb36c1845d935145f579f19132cd285300c9722",
+    "cold": "core-recovery-main/cold.py"
   }
 }
