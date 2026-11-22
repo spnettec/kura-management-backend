@@ -1,3 +1,7 @@
+## 2026-11-22 正式写释放回执丢回复及原号续查
+
+复用 Core 9deadcfa93 和 agent e7cb1aa 的 ARM64 正式包。在独立 Root 2097389:1、原号 rec-ceaab4fb-19c3-41b9-b8db-039e14822221，实际写释放和提交标记落盘后、读取响应前终止调用方。agent PID 1830→5380 后只读取得同一 GUARDED_RELEASE_COMMITTED，原意图、回执与提交标记指纹保持。原 Main PID 4389 已写 1795335510788，Main 和系统正常停放。按轮清理 144 个可重建展开件，宿主可用空间增加 11.66 MiB。历史挂载与正式包保留。提交前中断、格式转换及完整维护矩阵待办，冻结 0/12。冷读 guarded-release-lost-reply/cold.py。
+
 ## 2026-11-22 外来快照发布中断及原 inode 续接
 
 Core 9deadcfa93 在独立 ARM64 正式安装沿 Root 2097388:1、原恢复号 rec-75be3129-825e-47cd-af8a-3fa89b5f8a58 发布原暂存快照 1795335077350。普通快照格式不配时拒绝且未落意图。实测原子改名和 fsync 后、回执前 SIGTERM，只读见 PUBLISHED_UNCONFIRMED，受保护启动拒绝。同号只补原回执，原 inode 与摘要保持，原有快照和凭据保持。正式 agent e7cb1aa 启动同号 Main PID 4649，实际读回原发布快照并取得 NORMAL_BOOT_ADMITTED，CM 密文、普通写门禁和所选健康核验成立，系统正常退出 0。81 项 Java、78 项 ARM64 定向测试通过，217 个 JVM 插件字节一致。格式转换、写释放中断实地验收和完整维护矩阵仍待办。冻结 0/12。冷读 ordinary-snapshot-publication/cold.py。

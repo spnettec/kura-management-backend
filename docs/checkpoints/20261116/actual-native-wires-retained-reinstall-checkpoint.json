@@ -10196,5 +10196,29 @@
     "unchangedJvmPlugins": 217,
     "evidenceSha256": "34446f867d15da520e23c5ca5778b4962ba2a18bd79ff097affe049ba87e3db0",
     "cold": "ordinary-snapshot-publication/cold.py"
+  },
+  "guardedReleaseLostClientReply": {
+    "core": "9deadcfa93df5c7634203afaa0d08c31821cb51e",
+    "coreDeb": "c6918274ff188f862d50c64240d51b6885b6572bb85802860a57574f2b686f90",
+    "agent": "e7cb1aa143beb3ed1516f868ef465530187e183e",
+    "agentDeb": "b15e062651e7ef44e79717d7bedb1364d1fb1f8965d9d9667fa571a4635dca7b",
+    "root": "2097389:1",
+    "container": "6b5d2459d4aafd2401b14a71b7d84eb3a49cfa7b9fa44c098f659a53ee44e565",
+    "restoreId": "rec-ceaab4fb-19c3-41b9-b8db-039e14822221",
+    "completionId": "complete-ceaab4fb-19c3-41b9-b8db-039e14822221",
+    "releaseReceiptSha256": "9a358ee99924ad4f349c8fb9a25026d7e84ada7085236d86b611efc9c60eebd1",
+    "decisionSha256": "2ea08c8b5009105ed082012fdc0d545faf7bd8e8a3e52d5c1f200aac6806a4de",
+    "releaseState": "GUARDED_RELEASE_COMMITTED",
+    "callerExitCode": 143,
+    "callerResponseRead": false,
+    "mainPid": 4389,
+    "agentPidBefore": 1830,
+    "agentPidAfter": 5380,
+    "snapshotId": "1795335510788",
+    "normalShutdownExit": 0,
+    "cleanupAllocatedBytes": 12226560,
+    "cleanupAvailableChangeBytes": 12230656,
+    "evidenceSha256": "5f944bc9ca3892fe782d26dd1dc255ce52d80515ae5c0ab6ff7a3a35d191e80f",
+    "cold": "guarded-release-lost-reply/cold.py"
   }
 }
