@@ -9383,5 +9383,66 @@
     "parked": true,
     "cold": "generation-recovery-browser/cold.py",
     "evidenceSha256": "b474cb5c4b640375d5a0cff4467791b182b619289d69bdf65b11588b3bd67275"
+  },
+  "nativeGenerationRetainedReinstallResume": {
+    "core": "78623395ce24e78488b19aae95cf6b2adcb98712",
+    "coreDeb": "810ae24b3230f5fbcdbed3531b1a4acbb005124b8f2a6e69897037af1f77d9ca",
+    "fixtureRoot": "2097298:1",
+    "fixtureContainer": "848c4b57db604126cdd2e82932824873aeb08fb52460f7d8a2858cf75cffa0ac",
+    "fixtureNamespace": "3296cf3546b0df71dd752c55a440d99dee814c46454a28067d051e71570093ab",
+    "maintenanceId": "46749956-5e81-4ae5-a1e4-6110f01957a9",
+    "restoreOperation": "aa44de77-0f41-431e-b967-12e2e9a1a6cf",
+    "archiveId": "1673c214-6cd4-4f43-ba74-1d49531ffc42",
+    "startupOperation": "a3320136-8c45-4fbb-af5d-5777fdd7320e",
+    "originalReadySha256": "eb9e0aa930922a94dadc22c1cf2643ce72c6ff7a569b88a30fb89b916fe30840",
+    "interruptedSignedPhases": 18,
+    "configuredSignedPhases": 19,
+    "configureResumeExit": 0,
+    "packageState": "installed",
+    "pairedVendorUnits": {
+      "kura-key-recovery.service": "ca1b8361b17ed195df56cd3dd3dd250b5b614432e59247094d447f2fa348cce5",
+      "kura-key-service.service": "6c8c1a41bc2c0ddc54ee2a60acbbdf9e4122346ae4bfaa9bab8a1a4cbe30facd",
+      "kura-key-service.socket": "9390f6972f0c97380860dbda038680d89e5e42b46d3fb75593d20fe2e063e200",
+      "kura-snapshot-validation.service": "71063cffdb5c44e0d0b22eae270306c0ecc80533586160f3ebe0ce7807f2549f",
+      "kura-snapshot-validation.socket": "6c295709efbeaef4eb1fdf3125b62f0c145b017c629d6973377b41400d7bc5d5"
+    },
+    "finalProtectedFilesExact": 27,
+    "nativeOperations": 5,
+    "nativeStartups": 1,
+    "senderTerminals": 6,
+    "httpsOriginalAfterMaintenance": "SUCCEEDED",
+    "httpsArchiveAfterMaintenance": "ARCHIVE_RECORDED",
+    "mainSnapshots": {
+      "old": {
+        "id": "1795310961636",
+        "value": 24101
+      },
+      "new": {
+        "id": "1795310972289",
+        "value": 24102
+      }
+    },
+    "normalShutdownExit": 0,
+    "originalAppMetadataCheck": "bytes, uid, gid, mode, nlink, size, mtime",
+    "frozenOriginals": [
+      {
+        "container": "4c91bc3198bfcfded527a7290e30cd2c5a22c6ceba6af15f79fe5268dfa7af8a",
+        "root": "2097260:1",
+        "maintenanceId": "3d040675-cdb0-47af-b607-51f139e31755",
+        "state": "paused",
+        "coldRecord": "generation-recovery-maintenance/purged-frozen.json"
+      },
+      {
+        "container": "fc83226ebbafab1f9975308f8d93b391c886115f1da44be822707bf9d28852b5",
+        "root": "2097279:1",
+        "maintenanceId": "df874961-0d1a-42e7-9392-7d192d66cf2e",
+        "state": "paused",
+        "coldRecord": "generation-recovery-retained-configure/legacy-retained-frozen.json"
+      }
+    ],
+    "priorArm64Tests": 76,
+    "matchingJvmPluginPaths": 217,
+    "evidenceSha256": "82d19e560a7e8948a1c5cc50bfdf2abefd4c64602e63a412fec82ecb142602d5",
+    "cold": "generation-recovery-retained-current/cold.py"
   }
 }
