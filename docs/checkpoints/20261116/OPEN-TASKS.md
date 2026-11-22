@@ -1,3 +1,11 @@
+## 2026-11-22 快照导入跨格式转换核定与实装
+
+本轮核定并实装普通快照导入的跨格式合同：发布文件必须与普通目录当前格式一致；差异方向不再拒绝而是在发布内转换（plain→aes 用当前代密钥按 Main 写路径加密、aes→plain 解密），XML 文档内容永不改写，legacy 表示仍由正式 Main 加载时转换。转换在意图落盘前以内存完成，失败留下干净拒绝（SNAPSHOT_CONVERSION_REFUSED：摘要不符、按计划 passwordPolicy 解码失败、输出超过 32 MiB、工具失败）。意图/就绪/回执新增 publishedSha256/publishedSize/publishedMode，指纹用发布值；计划核对与回执血缘继续用源 snapshotSha256。
+
+Core `b66ee2b13c`（台账 HEAD `5c07618f77` 含测试追加）：正式 ARM64 deb `6.0.0~git20261122195734.b66ee2b-1`，217 个插件路径配对（41 个仅 Bundle-Version 时间限定符、176 个逐字节相同），verified assets 与资源树逐字节一致。Java 84/84（新增 convert 双向、策略拒绝与 25×1MiB 超大拒绝）、ARM64 Python 80/80 通过。agent `3880841dd1`：正式 deb `0.1.0~cohort20261122122144.3880841-1`，fixed_main_health 的 challenge 与 report 交叉核对改用 publishedSha256（无转换时回退源摘要），受保护 outcome 增至第 10 字段；受保护 Main 的普通装载准入（admitNormalLoad）绑定 Main 实际读取的工件摘要，CM_APPLIED、启动回执、写释放决定与健康回执的血缘摘要链保持源值。
+
+独立 ARM64 现场实测：A（plain 暂存 + aes 策略）转换发布 1026→1409 字节，同 Root 受保护 Main 从已发布加密文件 NORMAL_BOOT_ADMITTED，配对健康 selectedChecksVerified=true 且 report 摘要等于发布摘要，正常停放；B（aes 暂存 + plain 策略）解密发布 1409→1026 字节，同链路全过。两个现场各自独立 tmpfs Root、原号各只派发一次。C（超大导入拒绝）字段级链路被宿主内存上限阻塞（OrbStack VM MemAvailable ~600MB、宿主 swap 3.7GB 耗尽，24-26MiB 工件的 CM 应用需 ~1GB），拒绝本身由两侧定向用例覆盖并如实记录为环境受阻；D（发布中断续接）第 1 次实测到 ORDINARY_SNAPSHOT_PUBLISHED_UNCONFIRMED（原 inode 5100、意图/就绪已录），续接链路被同一内存上限阻断（停止 UNKNOWN/CONFLICT 各一次），两个 UNKNOWN 现场按原号冻结保留，未重发。冻结 12 父项 0/12，外部延期仍仅原三项。冷读 `snapshot-import-conversion/cold.py`。台账 `b9a4482`（本轮台账条目随下次提交更新）。
+
 ## 2026-11-22 会话暂停汇总
 
 本会话完成 RTC 设备热插拔及专属虚拟 RTC 的正式 Main 正向写入，同 Root 的原六组件维护和绑定网关三代回执、五笔维护封存，Core 484c4c843c 的 ARM64 全量 2161 项及实际 Equinox/发行件核对，多代凭据与原 Main 验签，历史快照及正式受控恢复到写释放的主链。本轮沿原号实测写释放提交前中断后的 UNKNOWN 和持续挡写，服务已正常停止，未决 tmpfs Root 暂停保留。Core WIP 9deadcfa93，GWT b881a3ad0e，agent e7cb1aa。原三现场、六组件卷、绑定网关和停放 7fd 已只读核对，7fd 仍 41 输入、16 回执。按轮清理确认可重建的中间产物。后续先冷读，再处理导入格式转换及剩余完整维护矩阵。父项维持 0/12，外部延期仅原三项。
