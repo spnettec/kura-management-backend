@@ -1,3 +1,13 @@
+
+## 2026-11-23 E2E 全链部署（Docker console + OrbStack 网关）
+
+管理中心 Docker 容器（console deb + PostgreSQL 16 + React UI）+ 3 台 OrbStack Linux machine 网关（kura-core + agent deb）。Console HTTPS (8443) + gRPC (9443) 运行正常。3 台网关注册到 console API 成功（含 identity bundle 签发和下载）。3 台网关 kura-core + agent 全部 ii，agent 服务 active。
+
+发现并修复 4 处 LXC adapter 兼容性 bug（OrbStack 全局 service.d drop-in 触发安全检查拒绝），涉及 kura preinst、clock_broker、reboot_broker 和 agent runtime_setup.py。
+
+OrbStack LXC 环境限制：systemd LoadCredential 不可用导致 kura.service ExecStartPre 失败，enrollment 流程依赖 kura.service 首次启动因此无法完成。在物理网关或完整 VM 上可正常工作。
+
+操作手册和部署指南见 docs/e2e-deployment-guide-20261122.md（a7d3114）。
 ## 2026-11-22 快照导入跨格式转换核定与实装
 
 本轮核定并实装普通快照导入的跨格式合同：发布文件必须与普通目录当前格式一致；差异方向不再拒绝而是在发布内转换（plain→aes 用当前代密钥按 Main 写路径加密、aes→plain 解密），XML 文档内容永不改写，legacy 表示仍由正式 Main 加载时转换。转换在意图落盘前以内存完成，失败留下干净拒绝（SNAPSHOT_CONVERSION_REFUSED：摘要不符、按计划 passwordPolicy 解码失败、输出超过 32 MiB、工具失败）。意图/就绪/回执新增 publishedSha256/publishedSize/publishedMode，指纹用发布值；计划核对与回执血缘继续用源 snapshotSha256。
