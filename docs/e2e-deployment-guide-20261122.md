@@ -611,3 +611,48 @@ BUILD_DOCKER=0 RUN_TESTS=1 ./build-all.sh
   该机 agent 版本为 c3da8ad-1（LoadCredential 注入路径不需要 5c8ba36 的 0750
   兼容），第 2 轮全新部署统一使用 393051e-1。
 
+## 第九阶段：第 2 轮零绕行终验（2026-11-24，一次走通）
+
+按用户口径"全清环境从头再来"完成：**删 yofc-e2e-console/pg 容器+卷+网络 →
+orb delete ×3 → Parallels snapshot-switch 还原 ce60c087（2026-11-01 初始化点）**
+后，从零一次走通全链，**零绕行零补救**：
+
+### 终验结果（console 权威视图）
+| 网关 | pinned leaf | online | kura_available | 收据 actor |
+|---|---|---|---|---|
+| yofc-gw-1 | 43baaf690d33 | t | t | kura-uid:999 |
+| yofc-gw-2 | 5da5adec0fb4 | t | t | kura-uid:999 |
+| yofc-gw-3 | efc37bb8597e | t | t | kura-uid:999 |
+| yofc-vm-1 | 2a5d2cf7054c | t | t | kura-uid:994 |
+
+- 四台 agent 统一 `0.1.0~cohort202611240042.393051e-1`，core 统一
+  `6.0.0~git20261123053849.9e91f64-1`。
+- console：compose 全新卷 → setup pair→operations（新 server 证书 SAN
+  heyoulin-MacProM3.local + client CA）→ 严格 TLS 锚定 server-ca 验证 200 →
+  admin 登录 → 4 台注册 pin=机器 leaf DER sha。
+- CA 复用同一对（client-ca/server-ca，Linux OpenSSL）——CA 属操作者自备材料，
+  不属"环境"，符合用户定稿口径。
+
+### 第 2 轮实证的机器侧链路（固化为正式顺序）
+1. 依赖安装（python3 libssl3 gpsd openjdk-21-jre-headless dnsmasq-base
+   isc-dhcp-client bind9-utils）→ `dpkg -i agent.deb` → `dpkg -i core.deb`
+   （首遍 kura-core configure 报错可由 `apt-get -f` 收敛，包终态 ii 干净）。
+2. 双服务此时**不会**自动启动：agent unit 有
+   `ConditionPathExists=/etc/kura-management-agent-runtime/agent.env`——必须先
+   `initialize`。
+3. `initialize` → 停双服务 → `authorize-kura-peer`（APPLIED kuraUid）→
+   `authorize-enrollment-reader`（APPLIED）→ 启双服务双 active。
+   **漏掉 authorize-enrollment-reader 时 bind 报 FORBIDDEN**（enrollment.granted()
+   为 false）；第 1 轮的"grant"即此步。
+4. keygen（GW_ID 环境变量必须传给脚本）→ CSR → client-CA 签 leaf → console
+   cert-only 注册 → 材料（leaf/issuer/console-ca）+ stage（`https://` endpoint）→
+   enroll-final（relay socket enable→停 kura→kurad bind→set-enabled→启 kura→
+   轮询 CONNECTED）。
+
+### 环境性操作要点（非产品问题）
+- prlctl exec 大参数（>数百字节 base64）会话会失败：一律改走宿主 httpd
+  文件分发（curl 单命令拉脚本/b64 文件后本地解码）。
+- compose 项目目录即卷前缀：`cd docker && docker compose up` 的卷是
+  `docker_console-data`；全清时按实际前缀删卷。
+
+
