@@ -2,7 +2,7 @@
 //! private key; this module gates trust-anchor generation activation behind
 //! N-of-M distinct admin approvals recorded in `ca_operation_approvals`.
 use crate::db;
-use anyhow::{Context, Result};
+use anyhow::{Context, Result, ensure};
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
 use uuid::Uuid;
@@ -113,11 +113,11 @@ pub async fn status(pool: &PgPool, tenant: &str, operation_id: Uuid, operation_k
         quorum_met,
         approvals: approvals
             .into_iter()
-            .map(|(id, gen, kind, approver, status)| Approval {
+            .map(|(id, generation, kind, approver, status)| Approval {
                 id,
                 operation_id,
                 operation_kind: kind,
-                generation_id: gen,
+                generation_id: generation,
                 approver,
                 status,
                 approved_at: String::new(),
