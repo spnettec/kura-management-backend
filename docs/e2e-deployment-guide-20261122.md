@@ -348,6 +348,15 @@ Chrome headless 截图命令：
 | authorize-kura-peer "Unreviewed effective Core unit" | kura.service 有 LXC drop-in + fields 比较含 DropInPaths 键 | 需要修复 ac88f23+ 的 runtime_setup.py |
 | configure-transport "FileNotFoundError" | enrollment 材料不完整 | 需先完成 identity bundle 部署（3.4） |
 | docker build "invalid reference format" | --pull=never 与非本地镜像冲突 | 去掉 --pull=never 或确保镜像在本地 |
+| core preinst 读 `/etc/kura/clock-broker-account.json` 报 FileNotFoundError | 历史 fixture 的 `/var/lib/kura-clock-broker` 或 `/usr/libexec/kura-clock-broker` 残留 | 归档后删除（kura-clock 账号一并清理） |
+| configure 卡 "Installer step brokers is unresolved" | `--configure-brokers` 中途失败（intent 已签发未回收），resume 按设计不重放 | 清除诱因后原步不可恢复；remove+purge+重装（新 fence） |
+| 半配置 kura-core 无法 dpkg --remove | prerm 的 clock guard 在 unit 未发布时 quiesce 失败 | 恢复路径缺陷（已记录），需按合同手工补齐状态后 remove |
+| enrollment INVALID_ARGUMENT（openssl 均成功） | Mac LibreSSL 生成的 EC 为显式参数编码（无 ASN1 OID 行） | 全部 EC 材料改用 Linux OpenSSL 生成 |
+| enrollment INVALID_ARGUMENT（早期退出） | private.pk8 是传统 EC 格式而非 PKCS#8 | `openssl pkcs8 -topk8 -nocrypt` 重制 |
+| "Invalid retained endpoint or certificate expiry" | manifest.notAfter 用了空格分隔 | 按 `-dateopt iso_8601` 输出把空格替换为 T |
+| bind 后巡检 "Unreviewed retained identity receipt" | bind 由 root 发起（actor=local-uid:0） | 复位身份后以 kurad register 握手重新 bind |
+| remote-switch "Explicitly stop..." | 还需 kura.service 与 enrollment/material sockets 停止 | 全部停止后执行（或改走 enrollment 前的正序） |
+| console "joint TLS material changed" | 手工替换容器内 /etc 证书 | 走 server-csr 受支持轮换（5.2） |
 
 ## 当前部署状态
 
@@ -358,11 +367,115 @@ Chrome headless 截图命令：
 | 网关 1 (yofc-gw-1) | OrbStack machine | ✅ core ii + agent ii + agent active |
 | 网关 2 (yofc-gw-2) | OrbStack machine | ✅ 同上 |
 | 网关 3 (yofc-gw-3) | OrbStack machine | ✅ 同上 |
-| 网关注册 | console API | ✅ 3/3 注册成功 |
+| 网关注册 | console API | ✅ 3/3 + yofc-vm-1 注册成功 |
 | Identity Bundle | console API → 网关 | ✅ 已部署 |
-| Kura Peer 配对 | runtime_setup | ✅ 3/3 APPLIED |
-| Transport Endpoint | runtime_setup | ⏳ 需要完整 enrollment 流程 |
-| 网关在线连接 | gRPC mTLS | ⏳ 需要 enrollment 完整流程 |
+| Kura Peer 配对 | runtime_setup | ✅ 3/3 + VM APPLIED |
+| Enrollment 完整流程 | Parallels VM（完整 systemd） | ✅ 2026-11-23 打通（见第五阶段） |
+| 网关在线连接 | gRPC mTLS | ✅ yofc-vm-1 online=true；OrbStack 3 台待 LoadCredential 兼容（见缺陷任务） |
+
+## 第五阶段：Enrollment 完整流程（Parallels VM，2026-11-23 已验证）
+
+### 5.0 环境前提
+
+- 完整 systemd VM（Parallels/物理机），kura.service + agent 双 active
+- console 可达地址（如 `https://10.211.55.2:9443`），console 服务端证书 SAN 必须包含该地址
+- VM 已清理历史 fixture（否则 clock 账号/key-service 准入拒绝；归档后删除，见故障排除）
+
+### 5.1 网关密钥与证书（必须在 Linux 上生成）
+
+```bash
+# P-256 密钥（PKCS#8！openssl pkey 输出的是传统 EC 格式，agent 会拒绝）
+openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -out gw.key
+openssl pkcs8 -topk8 -nocrypt -in gw.key -outform DER -out gw.pk8
+openssl pkey -in gw.key -pubout -outform DER -out gw.spki.der
+openssl req -new -key gw.key -subj "/CN=yofc-vm-1" -out gw.csr
+```
+
+**网关 leaf 必须由 console 的 client CA 签发**（gRPC 服务端强制 `WebPkiClientVerifier`，
+自签证书无法通过握手；console 不签发 CSR，由操作者用 client CA 私钥签）：
+
+```bash
+# client-ca 在 console 容器 /etc/kura-management-console/tls/client-ca.{crt,key}
+printf 'basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature\nextendedKeyUsage=clientAuth\n' > leaf.ext
+openssl x509 -req -in gw.csr -CA client-ca.crt -CAkey client-ca.key -CAcreateserial \
+  -out gw-leaf.crt -days 3650 -extfile leaf.ext -sha256
+```
+
+在 console 注册该 leaf（或用 rotate 换掉已注册的自签证书）：
+
+```
+POST /api/v1/gateways            {id,name,clientCertificatePem,clientKeyPem}
+POST /api/v1/gateways/{id}/certificate   {previousCertificateSha256,clientCertificatePem}
+```
+
+### 5.2 console 服务端证书轮换（如需新增 SAN，如 VM IP）
+
+走受支持的 server-csr 流程（直接改容器内证书会触发 joint TLS 材料校验拒绝）：
+
+```
+POST /api/v1/settings/server-csr        {origin, requestId}   → csrPem
+（用 Linux OpenSSL 生成 CA 并签 CSR，SAN 加 IP:10.211.55.2 等）
+PUT  /api/v1/settings/server-csr/{id}/certificate  {serverPem}
+POST /api/v1/settings/server-csr/{id}/stage
+GET  /api/v1/settings/tls-activation    → generation + pendingRevision
+POST /api/v1/settings/tls-activation    {operationId,expectedGeneration,pendingRevision}
+```
+
+**注意：签发 CA/证书必须用 Linux OpenSSL 生成。** macOS LibreSSL 的 EC 产物是
+X9.62 显式参数编码（无 namedCurve OID），agent 的公钥强度检查要求 `ASN1 OID:`
+行，会以 `INVALID_ARGUMENT` 拒绝。
+
+### 5.3 Kura 侧 staging（本地控制器角色）
+
+在 `/opt/eclipse/kura_*/data/` 下构建（全部 kurad:kurad，目录 0700 文件 0600）：
+
+```
+management-enrollment-context-v1      # 内容："yofc.kura.remote-request-context.v1\n<uuid4>\n"，0600
+management-enrollment/.enrollment.lock    # 空文件，0600
+management-enrollment/<requestId>/        # requestId = 小写 uuid4
+    private.pk8        # PKCS#8 DER
+    public.der         # SPKI DER（91 字节 P-256）
+    request.pem        # CSR PEM，subject=CN=<gateway-id>
+    gateway.id         # <gateway-id>（无换行）
+    complete           # "kura.remote.identity.v1\n"
+    certificates/
+        client-chain.pem    # leaf（由 console client CA 签发）
+        issuer-ca.pem       # = console client CA 证书
+        console-ca.pem      # = 签发 console 服务端证书的 CA（CA:TRUE 自签锚点！不是服务端叶子）
+        manifest.json       # 见下
+        complete            # "<stageSha256>\n"
+```
+
+manifest.json（紧凑 JSON，键排序）：`{schema:"yofc.kura.remote.certificates.v1",
+requestId, gatewayId, endpoint:"https://10.211.55.2:9443", publicKeySha256,
+clientCertificateSha256(leaf DER 摘要), issuerCaSha256(文件字节摘要),
+consoleCaSha256(文件字节摘要), notAfter}`。
+`notAfter` 由 `openssl x509 -enddate -dateopt iso_8601` 输出**去前缀并把空格替换为 T**。
+
+### 5.4 授权与绑定（bind 必须由 kurad 发起）
+
+```bash
+systemctl stop kura-management-agent-v2
+python3 /usr/lib/kura-management-agent/runtime_setup.py authorize-enrollment-reader --request-id <uuid>
+systemctl start kura-management-agent-v2
+```
+
+bind 走 agent control socket（UDS，4 字节大端长度 + 紧凑 JSON 帧）：
+**第一帧必须是 `kind:"register"` + `method:"kura.register"` + `params:{methods:[...KURA_METHODS]}`**
+（kurad ∈ kura-management 组），之后 `remote.bind`
+params `{expectedRevision, requestId, expectedStageSha256, operator}`。
+root 直连也可以 bind，但 receipt.actor 会是 `local-uid:0`，
+后续 remote-switch/巡检要求 `kura-uid:<kurad-uid>`，所以**必须以 kurad 注册连接发起**。
+
+### 5.5 启用通道
+
+绑定后 `remote.set-enabled {expectedRevision, enabled:true}`（root 本地控制器），
+agent 立即建立 mTLS gRPC（日志 `control connected epoch=...`），
+console `GET /api/v1/gateways` 显示 `online:true`。
+
+正式的 `authorize-kura-remote-switch`（改 agent.env）要求在 enrollment **之前**执行，
+且需要 kura.service 停止 + material sockets 停止；绑定后执行会被
+"unreviewed owned state" 拒绝。
 
 ## OrbStack LXC 环境限制
 
@@ -387,3 +500,114 @@ Chrome headless 截图命令：
 **结论**：OrbStack machine 适合验证 console 管理能力和网关 agent 安装配置，
 但 kura.service 的完整启动和 gRPC 在线连接需要在物理网关或 Parallels/VMware
 等完整虚拟化环境上进行。
+
+## 第六阶段：无凭据注入内核兼容（2026-11-23 已双基线验证）
+
+kura_key_store.py 现内建探测（transient unit 实测 LoadCredential 注入）：
+- 注入可用 → 规范模型不变（root 0400 + systemd 凭据注入）。
+- 注入不可用 → `credential-fallback-setup`（kura_install.sh 用户创建后自动调用）把
+  规范钥的**直接读取副本**发布到 `/var/lib/kura-credentials/`（kurad 0700/0400，
+  不在任何 Main 访问过滤器路径上），launcher 与 check-loaded-managed 自动回退该目录。
+  规范 /etc/kura/credentials 保持 root 0400 0700 不变。
+
+OrbStack 三台（无注入基线）完整流程实测：
+1. 兼容 core deb（6.0.0~git20261123031756.678ea46-1）purge+重装；purge 需先临时挪开
+   `/run/systemd/system/service.d/zzz-lxc-service.conf` 并 daemon-reload（旧 prerm 的
+   DropInPaths 检查不容适配器），装完恢复（OrbStack 会自动重建该文件）。
+2. **必须使用含适配器修复的 agent deb**（0.1.0~cohort20261123034939.c3da8ad-1）：
+   c3da8ad 修复 enrollment-reader 准入、firewall boot 与 fence reader 三处
+   DropInPaths 检查在 LXC 上的拒绝。旧版 agent 在新 core 上会陷入维护死锁。
+3. agent 全新 install→initialize→authorize-kura-peer（APPLIED, kuraUid 绑定新 core）。
+4. grant→stage→**bind 须在 kura.service 停止窗口**（Java 桥接占用 bridge 时新注册
+   被拒）→set-enabled→启动 kura→agent gRPC 连接。
+5. relay 链路四 socket（agent-enrollment / enrollment-reader 两侧）必须在位。
+
+实测结果：三台 kura.service active（NRestarts=0）、agent bound+CONNECTED、
+console online=true ×3；Parallels VM 升级同 deb 后注入路径保持、online=true 不变。
+
+### 已知残留（待后续修复核定）
+- lifecycle `paired_main_unit` 与 agent `prepare-source-update`（联合维护流）的
+  LXC 适配：purge/升级需挪适配器文件；联合包更新未在 LXC 上验证。
+- bind 收据 actor：root 发起为 `local-uid:0`；正规 `kura-uid:*` 收据应由 kurad
+  发起 register 握手（本批 OrbStack 因 kura 桥接占用以 root 完成，收据已记录）。
+
+## 第七阶段：全量测试记录（2026-11-23，兼容落地后）
+
+### 权威全量（build-all RUN_TESTS=1，macOS，JDK 21 / Maven 3.10.2）
+
+```
+BUILD_DOCKER=0 RUN_TESTS=1 ./build-all.sh
+```
+
+- 17 个子构建全部 BUILD SUCCESS（Stage 1 公共 → Stage 2 core 142 模块 →
+  Stage 3 十二个 siblings + yofc-iot → Stage 4 YOFC 应用 → Stage 5 发行包与
+  开发运行集 278 bundles）。
+- surefire 总计 **11,180 tests / 0 failures / 0 errors / 16 skipped**。
+- 产物：`kura_6.0.0~git20261123053849.9e91f64-1_arm64.deb`
+  （heyoulin-kura 9e91f64cac，即含凭据回退兼容与 LXC 适配的提交树）。
+- 已知瞬时抖动：`org.eclipse.kura.http.server.manager` 的 HttpServiceTest
+  曾报 `Connection reset`（socket 读），单模块复测 15/15 全过——复现时按
+  `mvn -pl :org.eclipse.kura.http.server.manager test` 单独复跑即可，无需整轮重跑。
+
+### 补充套件（环境说明）
+
+| 套件 | 环境 | 结果 | 环境限制 |
+|---|---|---|---|
+| agent packaging（21 文件） | macOS 宿主 | 325 过 | test_enrollment_reader 16 项需 Linux（socket.SO_PEERCRED） |
+| agent packaging（21 文件） | 裸 Linux 容器 | 197 过 | 6 文件需 systemd/用户夹具（裸容器不可复现；历史权威基线为专用 Linux 宿主 90 项） |
+| distrib（100 文件） | macOS 原始 unittest | 533 过 | 51 文件需正式 Linux harness（历史在 field fixture 运行）；环境性失败与本次改动无关（改动前后对照一致） |
+
+### 残留验证项
+- LXC 上的联合包更新流（prepare-source-update 需 core+networking 成套）未验证。
+- OrbStack 三台 identity 收据 actor 已规范化为 kura-uid:995（kura 停止窗口内
+  kurad register 重绑；decision 文件须保留 agent 属主写入）。
+
+## 第八阶段：四机全新部署与 enrollment 终态（2026-11-23/24 已验证）
+
+本轮在**全新 OrbStack ×3 + 容器 console + Parallels VM（还原点还原后）**上走通
+完整链路：安装→init/authorize→keygen→签发→console 注册→stage→bind→enable→
+**console 4/4 online=true 且 kura_available=true**。收据 actor 全部 `kura-uid:*`
+（gw-1/2/3=999，yofc-vm-1=994）。
+
+### 版本基线
+- core：`kura_6.0.0~git20261123053849.9e91f64-1_arm64.deb`（heyoulin-kura 9e91f64cac）
+- agent：`kura-management-agent_0.1.0~cohort202611240042.393051e-1_arm64.deb`
+  （agent 393051e：握手拒绝 warn 日志 + 0750 测试对齐；binary sha c14ea7de…，
+  package.json 记录 bridge jar 532c124e…/coreLoader 547a54ef… 与 core 9e91f64 配套）
+- console：正式 Dockerfile 镜像（含 ca_quorum 修复 5a963d1），compose 路径 18443/18444
+
+###本轮修复的三个 bind 失败根因（按发现顺序）
+1. **客户端 EOF 空转**：agent 对握手拒绝（桥占用 CONFLICT、uid 不符、方法表不符）
+   静默关连接且只记 debug 日志；客户端 `rf()` 无 EOF 检查时 `recv()` 返回空字节
+   死循环，表现成 120s 超时。修复两处：agent 393051e 将拒绝日志升为 warn；
+   部署脚本 `rf()` 加 `if not ch: raise RuntimeError(...)`。
+2. **stage 从未发生**（新机进度误记）：机器重建后 `/tmp/enroll` 只有 keygen 三件套，
+   stage 脚本必需的 `leaf.pem/issuer-ca.pem/console-ca.pem` 缺失即不会产生 slot。
+   **机器重建后必须从 keygen→签发→注册→stage 全链重做**，不能复用旧机器材料。
+3. **leaf 公钥不匹配**：`/tmp/deploy/materials` 的 leaf 由重建前旧机 CSR 签发
+   （bind INVALID_ARGUMENT 的真实来源，console pinned 也会一起错）。已用
+   `POST /api/v1/gateways/{id}/certificate`（previousCertificateSha256+新 leaf PEM，
+   admin+X-CSRF-Token）原子轮换 pinned 指纹，再以新 CSR 重签 leaf。
+
+### 操作要点（本轮实证）
+- stage manifest 的 `endpoint` **必须带 `https://` 前缀**（如
+  `https://heyoulin-MacProM3.local:18444`），bind 校验 `endpoint()` 会拒绝裸 host:port。
+- enroll-final 顺序：relay 两 socket `enable --now` → 停 kura 释放 bridge 槽位 →
+  kurad register+bind（kura-uid 收据）→ root `remote.set-enabled` → 启 kura →
+  轮询 `remote.status` 至 `CONNECTED`（Java 启动到上线约 60–90s）。
+- 重建机器的 enroll-final 卡死排查顺序：`journalctl -u kura-management-agent-v2`
+  是否有 `local control peer rejected`（393051e 起）；kura.service 是否在运行
+  （桥占用）；slot 与 stage sha 是否与参数一致；leaf 是否来自本机 CSR。
+- prlctl exec 会把参数按空格重切、只执行第一个词：复合命令必须先以单文件脚本
+  curl 进 VM 再 `prlctl exec <id> bash /tmp/x.sh` 执行。
+- agent deb 重建管线（393051e 实跑）：
+  1. `python3 packaging/build.py source --protocol <yofc-management-protocol-0.1.0.crate>
+     --sha256 <crate sha> --destination <新目录>`（crate pin c1304333…）；
+  2. `rust:1.95-bookworm` 容器 `cargo test`（807/0/0）+ `cargo build --release`；
+  3. `yofc-agent-packager` 容器 `build.py deb --runtime-profile native-nonroot-v1
+     --bridge-bundle … --bridge-sha256 532c124e… --core-loader-sha256 547a54ef…`。
+- Parallels VM 挂起恢复后 agent 自动重连（本轮 yofc-vm-1 identity 在快照还原后的
+  升级批次中保留，pinned a472c3e1 与机器 leaf 一致，未重做 enrollment）；
+  该机 agent 版本为 c3da8ad-1（LoadCredential 注入路径不需要 5c8ba36 的 0750
+  兼容），第 2 轮全新部署统一使用 393051e-1。
+
