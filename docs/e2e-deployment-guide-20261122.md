@@ -362,4 +362,28 @@ Chrome headless 截图命令：
 | Identity Bundle | console API → 网关 | ✅ 已部署 |
 | Kura Peer 配对 | runtime_setup | ✅ 3/3 APPLIED |
 | Transport Endpoint | runtime_setup | ⏳ 需要完整 enrollment 流程 |
-| 网关在线连接 | gRPC mTLS | ⏳ 需要 transport 完成 |
+| 网关在线连接 | gRPC mTLS | ⏳ 需要 enrollment 完整流程 |
+
+## OrbStack LXC 环境限制
+
+在 OrbStack Linux machine 上运行 kura.service 遇到以下固有限制：
+
+1. **systemd LoadCredential 不可用**：OrbStack 的 LXC 内核无法正确注入 systemd
+   LoadCredential 文件。kura.service 的 ExecStartPre `check-loaded-managed`
+   无法找到凭据文件。在物理网关或完整 VM 上此功能正常。
+
+2. **全局 service.d drop-in**：OrbStack 在 `/run/systemd/system/service.d/`
+   放置 `zzz-lxc-service.conf`（禁用所有安全限制以适配容器环境）。该文件出现在
+   每个 unit 的 `DropInPaths` 中，触发多处安全检查拒绝。已在以下位置修复：
+   - kura preinst（e886e82f12）：接受 agent 创建的 key-service drop-in
+   - kura_key_store.py（63b960b7dd）：跳过 zzz-lxc-service.conf
+   - kura_clock_broker.py（dcca188962 + 9ec0042862）：跳过 generic drop-in
+   - kura_reboot_broker.py（1b61790561 + 678ea4698f）：跳过 generic drop-in
+   - agent runtime_setup.py（54544d7 + ac88f23）：4 处检查跳过 adapter
+
+3. **Enrollment 流程**：网关的完整 enrollment 需要通过 kura.service 首次启动
+   创建 enrollment context。在 OrbStack 上因 LoadCredential 限制无法完成。
+
+**结论**：OrbStack machine 适合验证 console 管理能力和网关 agent 安装配置，
+但 kura.service 的完整启动和 gRPC 在线连接需要在物理网关或 Parallels/VMware
+等完整虚拟化环境上进行。
