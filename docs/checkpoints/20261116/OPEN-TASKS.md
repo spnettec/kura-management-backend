@@ -1,3 +1,9 @@
+## 2026-11-25 正式 watchdog 设备及原生维护
+
+隔离 Parallels ARM64 Root `2049:2` 正式 Main 以 kurad、NNP 1 和 CapEff 0x400 持有真实 Linux 软件 watchdog。同包原生解包的设备调用实证保活及 Magic Close，Core 进入 unpacked，正常关机后在原 Root 一次续配。实际关键组件超时使 Main 进入 REBOOT_REQUESTED，代理不可达返回 UNKNOWN，300.8214 秒后停止保活，内核软件 watchdog 到期且按设置抑制重启。另测 nowayout=1 时原生 dpkg 拒绝解包，原 Main PID 和五份文件保持。两包 installed、原 modem 三份文件和两份凭据保持，Main disabled/inactive，VM 正常停放，停机冷读重复一致。Core `64316e9c7b` 补齐现行 Main recovery 条件的严格测试期望，7 项定向通过。
+
+另发现正式 firewall 初始模型 CONFLICT 后，发布 worker 在两次 Main 启动均触及 64 MiB cgroup 限额，保留实际内核与 systemd 日志，列为 #6、#10 内部待查。 补父项 #3、#12。冻结 **0/12**，外部延期仅原三项。 [实装、清理和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/watchdog-formal-device-20261125/HANDOFF.md)
+
 ## 2026-11-25 SQLCipher ARM64 跨 ABI 热维护
 
 Core `5a31199e23` 使用 SQLCipher SDK 的 pkg-config 编译和链接参数。Debian .so.1 JNI 与原发行件逐字节一致，Ubuntu .so.2 DP 由 Git/JDK 21 构建。首次 DP 更新事件成功时，实装 Felix 对相同 Bundle-Version 跳过驱动替换。Core `21b4a09f8c` 以发布限定符和 JNI 摘要区分驱动版本。
