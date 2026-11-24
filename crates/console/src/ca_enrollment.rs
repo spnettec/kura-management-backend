@@ -1,5 +1,5 @@
 //! Bulk enrollment of external, public client certificates under the active CA and custody policy.
-use crate::{auth::Principal, ca_policy, db, gateway_registration};
+use crate::{auth::Principal, ca_policy, ca_signing, db, gateway_registration};
 use anyhow::{Context, Result, ensure};
 use rustls::{pki_types::UnixTime, server::danger::ClientCertVerifier};
 use serde::{Deserialize, Serialize};
@@ -7,7 +7,7 @@ use sqlx::{Acquire, PgConnection, PgPool, Postgres, Transaction, types::Json};
 use std::{collections::HashSet, sync::Arc};
 use uuid::Uuid;
 
-const MAX_ENTRIES: usize = 32;
+pub(crate) const MAX_ENTRIES: usize = 32;
 pub(crate) const MAX_BODY: usize = 2 * 1024 * 1024;
 
 #[derive(Deserialize)]
@@ -46,6 +46,10 @@ pub(crate) struct Batch {
 }
 
 impl Request {
+    pub(crate) fn operation_id(&self) -> Uuid {
+        self.operation_id
+    }
+
     pub(crate) fn validate(mut self, tenant: &str) -> Result<Batch> {
         ensure!(!self.operation_id.is_nil(), "non-nil operation ID required");
         ensure!(
@@ -125,6 +129,7 @@ struct Proposal {
     entries: Json<Vec<Entry>>,
     decision_approver_ids: Option<Vec<Uuid>>,
     rejection_code: Option<String>,
+    signing_manifest_sha256: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -141,6 +146,7 @@ pub(crate) struct Status {
     state: &'static str,
     decision_approver_ids: Option<Vec<Uuid>>,
     rejection_code: Option<String>,
+    signing_manifest_sha256: Option<String>,
 }
 
 impl Proposal {
@@ -182,6 +188,7 @@ impl Proposal {
             state,
             decision_approver_ids: self.decision_approver_ids,
             rejection_code: self.rejection_code,
+            signing_manifest_sha256: self.signing_manifest_sha256,
         }
     }
 }
@@ -193,7 +200,7 @@ async fn find(
     write: bool,
 ) -> Result<Option<Proposal>> {
     let query = "SELECT operation_id,ca_fingerprint,ca_generation,policy_revision,required_count,
-                  entries,decision_approver_ids,rejection_code
+                  entries,decision_approver_ids,rejection_code,signing_manifest_sha256
                  FROM ca_enrollment_batches WHERE tenant_id=$1 AND operation_id=$2";
     let locking;
     let query = if write {
@@ -269,6 +276,7 @@ pub(crate) enum Submission {
     Recorded(Status),
     Conflict,
     InvalidCertificate,
+    SigningMismatch,
 }
 
 pub(crate) async fn propose(
@@ -276,12 +284,17 @@ pub(crate) async fn propose(
     actor: &Principal,
     batch: Batch,
     trust: &Trust,
+    require_signing: bool,
 ) -> Result<Submission> {
     let id = batch.operation_id;
     let tenant = &actor.tenant_id;
     let mut tx = pool.begin().await?;
     let policy = ca_policy::lock_for_activation(&mut tx, tenant).await?;
+    ca_signing::lock_id(&mut tx, id).await?;
     if let Some(original) = find(&mut tx, tenant, id, false).await? {
+        if require_signing && original.signing_manifest_sha256.is_none() {
+            return Ok(Submission::SigningMismatch);
+        }
         if original
             .entries
             .0
@@ -298,14 +311,33 @@ pub(crate) async fn propose(
     if !policy.permits(actor.id) || !ca_policy::eligible(&mut tx, tenant, &[actor.id]).await? {
         return Ok(Submission::Conflict);
     }
+    let signing_manifest = match ca_signing::lookup(&mut tx, tenant, id).await? {
+        ca_signing::Lookup::Missing if !require_signing => None,
+        ca_signing::Lookup::Missing => return Ok(Submission::SigningMismatch),
+        ca_signing::Lookup::Foreign => return Ok(Submission::Conflict),
+        ca_signing::Lookup::Original(original, digest) => {
+            let signed = batch.entries.iter().map(|entry| {
+                (
+                    entry.gateway.id.as_str(),
+                    entry.gateway.name.as_str(),
+                    entry.pem.as_str(),
+                )
+            });
+            if !original.matches(signed)? {
+                return Ok(Submission::SigningMismatch);
+            }
+            Some(digest)
+        }
+    };
     if trust.verify(&batch.entries).is_err() {
         return Ok(Submission::InvalidCertificate);
     }
     let inserted = sqlx::query(
-        "INSERT INTO ca_enrollment_batches(operation_id,tenant_id,ca_fingerprint,ca_generation,policy_revision,required_count,entries)
-         VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT DO NOTHING",
+        "INSERT INTO ca_enrollment_batches(operation_id,tenant_id,ca_fingerprint,ca_generation,policy_revision,
+            required_count,entries,signing_manifest_sha256)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING",
     ).bind(id).bind(tenant).bind(&trust.fingerprint).bind(trust.generation).bind(policy.revision).bind(policy.required_count)
-        .bind(Json(&batch.entries)).execute(&mut *tx).await?;
+        .bind(Json(&batch.entries)).bind(signing_manifest).execute(&mut *tx).await?;
     if inserted.rows_affected() != 1 {
         return Ok(Submission::Conflict);
     }
@@ -512,6 +544,7 @@ mod tests {
             entries: Json(batch.entries),
             decision_approver_ids: None,
             rejection_code: None,
+            signing_manifest_sha256: None,
         };
         let policy = ca_policy::Policy::default();
         assert!(!proposal.stale(&policy, &trust));

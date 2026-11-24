@@ -99,6 +99,10 @@ pub fn build_identity_bundle(
         ("agent.pem", cert_pem.as_bytes()),
         ("agent.key", key_pem.as_bytes()),
     ];
+    archive_members(members)
+}
+
+pub(crate) fn archive_members<'a>(members: impl IntoIterator<Item = (&'a str, &'a [u8])>) -> Result<Vec<u8>> {
     let mut archive: Vec<u8> = Vec::new();
     for (name, content) in members {
         archive.extend_from_slice(&ustar_header(name, content.len())?);

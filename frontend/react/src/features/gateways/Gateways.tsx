@@ -1,5 +1,6 @@
 import { RegisterGateway } from "./RegisterGateway";
 import { BulkEnrollment } from "./BulkEnrollment";
+import { BulkSigningRequest } from "./BulkSigningRequest";
 import { RotateCertificate } from "./RotateCertificate";
 import { Button, Drawer, Empty, Space, Table, Tag } from "antd";
 import { useState } from "react";
@@ -29,12 +30,14 @@ export function Gateways({
 }) {
   const { t, dateTime } = useI18n();
   const [selectedId, setSelectedId] = useState<string>();
+  const [reviewBatchId, setReviewBatchId] = useState<string>();
   const selected = items.find(g => g.id === selectedId);
   const canOperate = ["operator", "admin"].includes(user.role);
   return (
     <>
       <RegisterGateway key={user.id} user={user} onRegistered={onRegistered} />
-      <BulkEnrollment key={`bulk:${user.id}`} user={user} onRegistered={onRegistered} />
+      <BulkEnrollment key={`bulk:${user.id}`} user={user} onRegistered={onRegistered} reviewId={reviewBatchId} />
+      <BulkSigningRequest key={`signing:${user.id}`} user={user} onReview={setReviewBatchId} />
       <Table<Gateway>
         rowKey="id"
         dataSource={items}

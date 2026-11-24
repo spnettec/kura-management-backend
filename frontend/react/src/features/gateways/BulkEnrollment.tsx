@@ -13,7 +13,7 @@ const uuidPattern = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}
 const publicPem = /^-----BEGIN CERTIFICATE-----[A-Za-z0-9+/=\s]+-----END CERTIFICATE-----$/;
 const maximum = 32;
 
-export function BulkEnrollment({ user, onRegistered }: { user: Session; onRegistered: () => void }) {
+export function BulkEnrollment({ user, onRegistered, reviewId }: { user: Session; onRegistered: () => void; reviewId?: string }) {
   const { t } = useI18n();
   const label = useId();
   const key = `yofc.console.gateway-enrollment-batch.v1:${user.id}`;
@@ -137,6 +137,15 @@ export function BulkEnrollment({ user, onRegistered }: { user: Session; onRegist
     if (open && error) document.getElementById(`${label}-error`)?.focus();
   }, [open, error, label]);
 
+  const canReview = saved !== undefined && !saved?.pending;
+  useEffect(() => {
+    if (!reviewId || !canReview) return;
+    setOpen(true);
+    setId(reviewId);
+    setReceipt(undefined);
+    setError(undefined);
+  }, [reviewId, canReview]);
+
   if (user.role !== "admin") return null;
   const disabled = busy || saved === undefined || !!saved?.pending || user.mustChangePassword;
   return <>
@@ -185,6 +194,9 @@ export function BulkEnrollment({ user, onRegistered }: { user: Session; onRegist
               <p><Typography.Text copyable code>{receipt.operationId}</Typography.Text></p>
               <p>{t(`batchEnroll.${receipt.state}`)} · {receipt.approvedCount}/{receipt.requiredCount}</p>
               <p>{t("batchEnroll.anchor")} <Typography.Text code style={{ overflowWrap: "anywhere" }}>{receipt.caFingerprint}</Typography.Text></p>
+              {receipt.signingManifestSha256 && <p>{t("caSigning.manifest")}{" "}
+                <Typography.Text code style={{overflowWrap: "anywhere"}}>{receipt.signingManifestSha256}</Typography.Text>
+              </p>}
               <ul>{receipt.entries.map(entry => <li key={entry.id}>{entry.name} ({entry.id}){" "}
                 <Typography.Text code style={{ overflowWrap: "anywhere" }}>{entry.certificateSha256}</Typography.Text></li>)}</ul>
               {receipt.rejectionCode && <p>{t(`batchEnroll.${receipt.rejectionCode}`)}</p>}
