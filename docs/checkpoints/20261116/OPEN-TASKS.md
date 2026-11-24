@@ -1,3 +1,9 @@
+## 2026-11-24 正式 Main 的 NoNewPrivs 和写租约
+
+Core `898e4565fa` 在共同启动入口于凭据和写租约请求之前设置 Linux NoNewPrivs。Root 密钥服务校验非 root 申请者内核标志及原进程身份。ARM64 定向单测 99 项通过。正式包按源码更新两个 Python 入口和校验清单，233 个 JDK 21 运行时 JAR 字节一致。
+
+独立 ARM64 Root `211:257` 通过 Agent-first 六包首装和合并启动验证。正式 JVM 与 agent 均实测 NoNewPrivs 1，JVM FD 9 与原 boot 的 Root 写租约和锁 inode 相符，回环 HTTPS 302，密钥指纹保持。三个授权在正常停放后同号只读为 READY，远程 OFF、未绑定。工作区清理 208.09 MiB，清理时宿主可用实增 208.08 MiB，隔离夹具缓存另清理 151.84 MiB。保留正式制品与新夹具，本轮宿主可用净减 1.23 GiB。冻结闭环 **0/12**，外部延期仅原三项。[全链证据与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-main-no-new-privs-20261124/HANDOFF.md)
+
 ## 2026-11-24 Core 密钥服务的 systemd 配对
 
 Core `0737f63e38` 把密钥服务覆盖检查约束到正式单元和准确的 LXC 适配，Agent 存在不再放行同类型、层级和单元覆盖。97 项 ARM64 定向测试通过，前两项基线失败修复。正式制品只改变两份策略、校验清单和必要控制脚本，233 个 JDK 21 运行时 JAR 与基线一致。
