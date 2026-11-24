@@ -1,3 +1,9 @@
+## 2026-11-24 时钟与重启代理的 systemd 配对
+
+Core `8dc92abf7f` 将时钟和重启代理的容器兼容入口限定于已核验的运行时路径、Root 保护、完整摘要和 LXC 环境。ARM64 定向测试 79 项通过；本轮原生合同合计 ARM64/JDK 21 通过 1265 项，另补 7 个 Node 合同。12 个独立 systemd 或宿主场景其他入口单列。
+
+独立 ARM64 Root `212:257` 正式 Core 首装通过，两个 socket active。实际策略核对已装代码、时钟 actor 副本及有效单元通过，未登记类型覆盖使两边均拒绝，撤回后配对恢复。原适配文件摘要一致，操作目录为空，Main disabled，夹具正常停放。233 个 JDK 21 运行时 JAR 与上版逐个相同。工作区清理 698.33 MiB，宿主当时实增 698.30 MiB，夹具另清 151.84 MiB；本轮保留正式包与夹具，宿主可用净减 1.03 GiB。冻结 **0/12**，外部延期仅原三项。[证据与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-native-current-contracts-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式 Main 的 NoNewPrivs 和写租约
 
 Core `898e4565fa` 在共同启动入口于凭据和写租约请求之前设置 Linux NoNewPrivs。Root 密钥服务校验非 root 申请者内核标志及原进程身份。ARM64 定向单测 99 项通过。正式包按源码更新两个 Python 入口和校验清单，233 个 JDK 21 运行时 JAR 字节一致。
