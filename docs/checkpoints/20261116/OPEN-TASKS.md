@@ -1,3 +1,13 @@
+## 2026-11-24 Chrony 与 modem 准入和时钟代理内核约束
+
+Core `91cbb30eef` 将 Chrony 和 modem 的 systemd 适配核对收口至既有准确路径、内容和 LXC 校验。ARM64 143 项通过。正式包在原隔离 Root `213:257` 升级后，正式 Main 的 modem readiness 通过。实际 NetworkManager D-Bus 与 daemon 配对后，以 `NOT_A_MODEM_DEVICE` 拒绝 veth，未生成写入意图。ModemManager 的发行单元按 `ConditionVirtualization=!container` 保持停用。
+
+Core `8dbf60c0ce` 为四个时钟服务在进程入口设置 NoNewPrivs。ARM64 154 项通过。原 Root 同 boot 续升，实际 clock actor 以 UID 993、内核 NoNewPrivs 1、五组 capability 均仅 CAP_SYS_TIME 运行。两版实装分别核对 42 和 9 个更新成员，233 个运行时 JAR 字节相同。
+
+正式 Main 的 Chrony STOP 仅派发一次，原号 `00658861-c2df-49eb-8a71-171f3c22b670` 已有 prepare、提交意图和发送标记，终态缺失，按 UNKNOWN 保留。独立 pkcheck 返回未授权。Polkit 按 systemd 单元属性核对 NoNewPrivileges，当前 LXC 适配置为 no。内核进程标志已恢复，授权链修复仍待验证。Chrony 一直 inactive，启动时间戳为 0。原重启、BIND 和 DHCP 回执保持。Main disabled，原 Root 正常停放。
+
+工作区清理 418.70 MiB，宿主清理时实增 418.52 MiB，夹具另清重复包和探针 391.44 MiB。保留两份正式包后，宿主本轮可用净减 401.80 MiB。 继续保留真实 modem reset、Chrony 授权和完整安装维护矩阵。冻结 **0/12**，外部延期仅原三项。 [交接与只读核验](../../../../.management-close-20261116/core-rtc-hotplug-20261120/native-chrony-modem-pairing-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式 Main 的 DHCP 租约与 BIND 转发及回退
 
 72 项 ARM64 单元测试通过。保留已安装 Core `ff1364d6e4` 与 Networking `83f237e`，直接复用独立 Root `213:257`，本轮沿原包和隔离围栏验证。
