@@ -236,7 +236,7 @@ export function BulkSigningRequest({ user, onReview, gateways }:
             <p>{t("caSigning.manifest")} <Typography.Text code style={{overflowWrap: "anywhere"}}>{signing.manifestSha256}</Typography.Text></p>
             <ul>{signing.entries.map(entry => <li key={entry.id}>{entry.name} ({entry.id}) · {entry.path}{" "}
               <Typography.Text code style={{overflowWrap: "anywhere"}}>{entry.publicKeySha256}</Typography.Text>
-              {entry.renewal && <div>{t("caSigning.oldGeneration")} {entry.renewal.previousBindingGeneration}{" "}
+              {entry.renewal && <div>{t("batchEnroll.pinnedGeneration")} {entry.renewal.previousBindingGeneration}{" "}
                 <Typography.Text code style={{overflowWrap: "anywhere"}}>{entry.renewal.previousCertificateSha256}</Typography.Text>
               </div>}
             </li>)}</ul>

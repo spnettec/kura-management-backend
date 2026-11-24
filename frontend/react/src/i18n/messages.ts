@@ -761,6 +761,8 @@ export const messages = {
   "batchEnroll.GATEWAY_CONFLICT": ["网关编号或证书已被登记，整批未写入。", "A gateway ID or certificate is already registered. The batch wrote no registrations."],
   "batchEnroll.RENEWAL_FENCED": ["网关代际、证书、历史回执或未决任务阻止了整批续期。", "A gateway generation, certificate, prior receipt, or pending task blocked the entire renewal."],
   "batchEnroll.downloadRenewal": ["下载本机续期回执", "Download local renewal receipt"],
+  "batchEnroll.pinnedGeneration": ["原绑定代际", "Pinned binding generation"],
+  "batchEnroll.receiptGeneration": ["回执绑定代际", "Receipt binding generation"],
   "batchEnroll.CERTIFICATE_INVALID": ["提交时证书校验失败，整批未写入。", "Certificate verification failed at publication. The batch wrote no registrations."],
   "batchEnroll.approve": ["批准此批次", "Approve this batch"],
   "caSigning.title": ["批量证书签发交接", "Batch certificate signing handoff"],

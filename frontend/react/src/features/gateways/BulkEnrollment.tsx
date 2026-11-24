@@ -223,7 +223,8 @@ export function BulkEnrollment({ user, onRegistered, reviewId }: { user: Session
               <ul>{receipt.entries.map(entry => <li key={entry.id}>{entry.name} ({entry.id}){" "}
                 <Typography.Text code style={{ overflowWrap: "anywhere" }}>{entry.certificateSha256}</Typography.Text>
                 {entry.renewal && <div>
-                  {t("caSigning.oldGeneration")} {entry.renewal.binding.previousBindingGeneration}{" "}
+                  {t("batchEnroll.pinnedGeneration")} {entry.renewal.binding.previousBindingGeneration}{" "}
+                  {entry.renewal.operationId && <>· {t("batchEnroll.receiptGeneration")} {entry.renewal.binding.previousBindingGeneration + 1}{" "}</>}
                   <Typography.Text code style={{overflowWrap: "anywhere"}}>{entry.renewal.binding.previousCertificateSha256}</Typography.Text>
                   {entry.renewal.operationId && <Button disabled={busy} onClick={() => void downloadRenewal(entry)}>
                     {t("batchEnroll.downloadRenewal")} · {entry.id}
