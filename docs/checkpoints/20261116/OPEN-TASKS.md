@@ -1,3 +1,9 @@
+## 2026-11-24 Docker 启动器首装 HTTPS 凭据中断恢复
+
+Docker `766590c` 将未发布的 keytool 输出放在原卷 Root 私有目录，启动器在既有锁下将文件单次改名发布。旧版 ARM64 回归复现中断后的拒绝，修复版 30 项通过。JDK 21、Maven 3.10.2 正式 ARM64 镜像使用当前 Core `0823d14779`、三个附加 deb 和四份 YOFC DP。隔离 Root `39:9800421` 实际首装和移除后的同卷重部署，四个业务 bundle ACTIVE，后继正式 Main 的 HTTPS 登录入口返回 200，11 个保护对象指纹一致，容器与原卷正常停放。补父项 #3 和 #12，冻结 **0/12**。
+
+[交接、正式镜像和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/docker-tls-bootstrap-recovery-20261124/HANDOFF.md)
+
 ## 2026-11-24 未绑定且 OFF 网关的六组件联合维护
 
 Agent `6c1977c` 支持保留已发布的原远程开关授权。88 项 ARM64 单元测试通过。独立 ARM64 Root `215:257` 六组件首装通过，随后沿同一维护号 `72db3290-afa5-49c6-8974-417375394adc` 实装 Core `0823d14779` 与 Networking `83f237e-2`。验收脚本修正准备回执的字段假设后只读确认原意图，续办尚未开始的包操作。终态 APPLIED，原配对、快照、AES 凭据与 OFF 决策保持。正式 Main/Agent 显式启动均为 NoNewPrivs 1，实载的 8 个 ACTIVE bundle 与正式包核对，Agent 保持 OFF / UNBOUND。两服务 disabled 并正常停放。父项 #3、#9、#12 补充实装证据，其余边界沿原合同，冻结 **0/12**。
