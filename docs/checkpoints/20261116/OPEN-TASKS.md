@@ -1,3 +1,9 @@
+## 2026-11-24 已初始化六组件保留重装跨关机续配
+
+原 ARM64 Root `215:257` 的正式 Main 创建独立 PKCS12。当前六组件实际移除，Agent 和四附加包经 purge，Core 沿原签名围栏保留数据。Core 与四附加包解包后正常停机。新 boot 同 Root 核对四个围栏对象，先配 Core 和四附加包，再沿原 Agent 号重装。六包 installed，dpkg audit 清洁。原数据 inode、四份 provider 文件、三份快照和原三授权保持，正式 Main 冷启从原库验签，Agent OFF / UNBOUND。56 项 Core/Deployment ARM64 单测通过，Agent 引用同版 107 项。补父项 #1、#3、#9、#12，冻结 **0/12**。
+
+[六组件、原围栏和实际 provider](../../../../.management-close-20261116/core-rtc-hotplug-20261120/six-cohort-retained-peer-20261124/HANDOFF.md)
+
 ## 2026-11-24 未绑定网关原授权随 Agent 清除和重装保留
 
 Agent `e473e02` 提供未绑定且有正式本机 peer 的保留移除准入。107 项 ARM64 单元测试通过。原 Root `215:257` 先实际升级后继 Agent，原 Core/Networking 回执保持。使用同一新归档完成一次 remove、purge、解包和原号续配。58 个受保护路径，原号五份阶段回执同意图绑定，最终 REINSTALLED。三份授权 READY，Main 与 Agent 显式启动后仍 OFF / UNBOUND，六包 installed，原 Root 正常停放。补父项 #3、#9、#12，冻结 **0/12**。
