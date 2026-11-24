@@ -1,3 +1,9 @@
+## 2026-11-25 当前 Core 原生合同与 Core/OSGi 制品一致性
+
+Core `dc1b0cbbf4` 从 Git 导出到无网络 Debian ARM64/JDK 21 夹具，84 个原生合同模块共 1,294 项通过，macOS ARM64 生成规则另有 7 项通过。需独立 systemd 或宿主编排的 12 个入口逐项保留。相较已验 Core `0823d14779`，Git 差异仅在发行目录，Core 打包 POM 仅新增两个 systemd 单元映射。原 `219:257` 专用前向包及 `225:257` 三代正式包与 82 模块、2,173 项既有 Core/Equinox 基线的配对发行包有 233 个逐字节相同的 JAR。当前 Git 的 13 项运行时改动在 `225:257` 实装全部匹配。原 `219:257` 停机读回确认保留专用续接载荷。两处保持停放。
+
+补父项 #3、#12。冻结 **0/12**，外部延期仅原三项。 [原生合同、发行一致性及停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-current-native-and-osgi-parity-20261125/HANDOFF.md)
+
 ## 2026-11-25 Wires 缺席时保存快照并从新快照恢复原图
 
 隔离 ARM64 Root `225:257` 使用正式 Wires `277954b`。正式 Main 只提交一次 Timer→Logger 测试图并实际送达，原图快照 `1795544874310`。原生 purge 后两个 provider bundle、工厂服务和图服务缺席，Core 一次保存新快照 `1795544897896`，图摘要、Timer 间隔、Logger 设置保持，缺席期间零送达。VM 正常关机后读回 Wires `not-installed` 和新快照。新 boot 同一 Root 重装同一正式归档，只读显示从新快照恢复原节点与 `0→0` 边，Logger 实际收到事件，两份实装 provider JAR 与 deb 一致。原快照、33 份保护记录、两笔 Deployment 原回执及 Agent READY/OFF 保持。六包 installed，正常停放。
