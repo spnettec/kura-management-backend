@@ -1,3 +1,9 @@
+## 2026-11-25 SoftHSM 原件归位后的进程内失效
+
+独立 Debian ARM64 以签名索引取得的 SoftHSM `2.6.1-3` 与 JDK 21，使用两个临时不可导出 RSA 令牌。目标目录短暂缺席期间仅读同库另一槽时，目标原 inode 归位后原 JVM 可继续验签。缺席时访问目标则复现槽仍呈 present、`C_GetTokenInfo` 返回 `CKR_GENERAL_ERROR`、证书枚举为零。同 inode 归位后原 JVM 保持该状态，新建 SunPKCS11 provider 初始化同样失败。原 JVM 仍运行时，子进程可按原证书公钥验签，原 JVM 随后仍失败，另一槽各阶段持续验签。匹配的 Debian 源码表明文件目录刷新失败后 OSToken 保留无效状态。原 Root `207:257` 全程停机，上一轮正式 Main 冷读仍逐字节通过。
+
+补父项 #1、#3、#12。产品同 JVM 热恢复及令牌替换继续内部待验。冻结 **0/12**，外部延期仅原三项。 [独立探针、发行源码与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-cache-boundary-20261125/HANDOFF.md)
+
 ## 2026-11-25 三代快照下 PKCS#11 软件令牌运行期缺席和原件恢复
 
 原 ARM64 Root `207:257` 的正式 Core `87328bb-1` 中，实际 Main 在三份原快照及发布凭据下通过原 SoftHSM 不可导出私钥验签。保持同一 JVM、调用和 OSGi 服务，移存软件令牌目录时重新取钥为 NO_ENTRY，旧句柄签名返回 JCA ProviderException。同 inode 归位后原 JVM 仍为 NO_ENTRY，正常重启一次后用原证书恢复签名验签。原 data 与令牌 inode 保持，20 份保护记录、三份快照和原密钥、重加密回执保持。六份令牌文件完整指纹保持，token.object 摘要变化并留证。Main disabled/inactive，VM 正常停放，provider JAR 与原发行包一致并通过冷读。
