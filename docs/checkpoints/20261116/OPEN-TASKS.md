@@ -1,3 +1,9 @@
+## 2026-11-25 正式 modem Reset 与原号结算
+
+独立 Parallels ARM64 审查副本 Root `2050:2` 联合实装 Core `b75eb19368-1` 和 Networking `98ce41482f-1`，原 Agent 的 43 份文件保持。正式 Main 的 ACTIVE OSGi provider 经发行版 ModemManager 向仅在回环中的 CDC ACM 虚拟设备派发一次 Reset。原号 `18cc1bd8-2cab-4b38-bbc3-711317c2a936` 返回 UNKNOWN，后继正式 Main 在同一 Root 只查原结果 APPLIED 并确认送达。原 intent 和 result 的 inode、权限及摘要保持，虚拟端合计只收到一次 Reset。副本正常停放，原 Ubuntu 保持挂起。
+
+补父项 #3、#6、#9、#12。真实未决 modem 回执下的 Core/Networking 联合包维护矩阵待验。冻结 **0/12**，外部延期仅原三项。 [实装和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/modem-installed-virtual-20261125/HANDOFF.md)
+
 ## 2026-11-25 防火墙配对升级与 Networking 保留维护
 
 隔离 ARM64 Root `229:257` 的旧 Core 实际允许普通 Depends 候选解包，configure 和 Main 启动均拒绝。Networking `fa4a4e9afc` 的 Pre-Depends 将门禁提前。旧 Core 下原生解包被拒，原已装 JAR 保持。正式 APT 联合升级确认 Core `b75eb19368` 先 configured，八份阶段含 READY 验签，随后 Networking 解包并安装。
