@@ -1,3 +1,13 @@
+## 2026-11-24 正式 Main 的 Chrony 启动、热重启与回环源切换
+
+97 项 ARM64 单元测试通过。复用原隔离 Root `214:257` 和已安装的正式 Core `0823d14779`，同 Root 旧 STOP 回执先行核对。
+
+同一正式 Main PID 712 先发布回环源 A，再启动 Chrony。实际 chronyd PID 1488 收到 127.0.0.2 的有效回复。配置发布为源 B 后，实际 daemon 单次热重启至 PID 1909，读回 127.0.0.3 的有效回复。两个进程均带 `-x` 且实际权限集没有 CAP_SYS_TIME。typed STOP 结束 daemon，随后经原配置入口恢复配置字节，试验用启动选项也已复原。
+
+原 STOP 回执保持逐字节一致。五笔新操作全部 APPLIED，actor 与 caller 冷读一致，无 pending。Main 和 Chrony disabled，独立夹具正常停放，试验中生成的 Chrony drift 文件和配置原件保留。Root `213:257` 的 UNKNOWN 继续封存。
+
+工作区清理 2164 KiB，宿主清理时实增 2152 KiB，夹具另清 8 KiB；整轮宿主可用净减 4872 KiB。 实际正向校时、其他平台与整套维护矩阵继续待验。冻结 **0/12**，外部延期仅原三项。 [交接与核验](../../../../.management-close-20261116/core-rtc-hotplug-20261120/chrony-active-source-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式 Main 的 Chrony 授权与 Core 清除重装
 
 Core `0823d14779` 将只针对时钟代理的 NoNewPrivileges 配置交给正式 deb 管理。Chrony 准备服务操作前核对 PID 1 有效属性，Polkit 规则内容及授权范围保持。ARM64 157 项单元测试通过，39 个现有成员及一个新配置与实装逐项核对，233 个运行时 JAR 字节一致。
