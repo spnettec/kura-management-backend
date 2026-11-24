@@ -82,6 +82,8 @@ Core `dc1b0cbbf4` 从 Git 导出到无网络 Debian ARM64/JDK 21 夹具，84 个
 
 补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [正式拒绝与同号只读结算](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)
 
+停机复核确认 `57225` 原归档和终态回执摘要保持。当前在装的是 `c012586-2`，四份维护脚本、发布门禁 helper 和四个 Deployment JAR 与实测 `c012586-1` 一致。六包仍为 installed，保留原停机状态。 [当前停机读回](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/current-stopped.json)
+
 ## 2026-11-25 原 219 已签发布局正式同号续配
 
 在独立 Root `226:257` 通过正式包联合验收后，Core `dc1b0cbbf4` 已在原 Root `219:257` 沿 `b372aa65-d749-4af0-9a28-eb934b4ed978` 和原围栏正式 unpack、configure 到 `ii`。原三份签名的字节和 inode、23 份保护文件、原数据 inode `219:23851` 保持。追踪确认原 layout 零重派，原 returned／complete 缺席，历史结果 UNRESOLVED，独立效果证明、READY 和 configured 验签通过。正式 JDK 21 Main 读回两代密文，三个 OSGi bundle ACTIVE，回环 HTTPS 404。Main disabled、VM 正常停机，停机文件复核了版本、postinst 和七份记录。
