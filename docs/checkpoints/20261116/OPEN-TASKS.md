@@ -1,3 +1,11 @@
+## 2026-11-24 正式 Main 的 DHCP 租约与 BIND 转发及回退
+
+72 项 ARM64 单元测试通过。保留已安装 Core `ff1364d6e4` 与 Networking `83f237e`，直接复用独立 Root `213:257`，本轮沿原包和隔离围栏验证。
+
+同一正式 Main 内的 OSGi 探针经生产 typed broker 发布 BIND LAN 配置和专用 DHCP。两个网络 namespace 由专用 veth 连接，真实客户端收到 DHCPACK、租约 198.51.100.104、网关与 DNS 198.51.100.1，并用 DHCP 提供的 DNS 地址经 BIND 转发读回测试答复。named 仅对测试 LAN 监听。两份配置随后恢复到原字节，恢复 stock named active 和 DHCP inactive。五笔新操作按各自原号配对读回并确认交付。旧 DHCP、重启回执均保持，Main disabled 并正常停放。
+
+工作区清理 1588 KiB，宿主清理时实增 1564 KiB，夹具另清探针重复件 16 KiB。整轮宿主可用净减 28972 KiB。 完整网络矩阵和生产调用方验证继续内部待办，接口验收范围为正式 Main 到生产 broker 和服务。冻结 **0/12**，外部延期仍仅原三项。 [实装与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/native-bind-dhcp-lan-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式 Main 的 BIND 状态与专用 DHCP 生命周期
 
 Core `ff1364d6e4` 为 BIND 接入精确的已核验 LXC 适配及原 Debian 包核对，专用 DHCP 单元用固定只读挂载向 dnsmasq 提供配置，保留 NoNewPrivs 与原账号。96 项 ARM64 单元测试通过。
