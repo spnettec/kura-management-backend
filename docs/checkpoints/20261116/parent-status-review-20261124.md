@@ -80,3 +80,7 @@ Core `07a5b74b8f` 严格核验 Root 0400 凭据声明，`de68644b3b` 允许已�
 Core `c8e04fa570` 通过 ARM64 定向 87 项。PID 1 将专用 Root 0600 核验连接交给低权限 worker。Root 绑定 PIDFD、实际 worker 身份、vendor unit、cgroup 和 Main invocation，核对正在使用的私有声明。隔离 Root `225:257` 沿 `89d10916-8b4f-45c9-a79f-2b586508b041` 原位升级，六包 installed，READY/configured 及原 data 交接均验签。正式 OSGi Main 读回两代密文，ownership、Journal、IPv4/IPv6 回环与普通执行器有实际通过证据。普通执行器的私有工作目录被内核拒绝，使用其可遍历的 `/usr` 补证成功。专用 socket 拒绝直接 kurad 和非配对 Root，Main/Agent 与验证 VM 已停放。
 
 补父项 #1、#3、#9、#12。独立 reboot broker 的发布代 actor 和 client 配对仍拒绝。原 `219:257` 已签发布局仍未决。冻结 **0/12**，外部延期仅原三项。 [低权限 broker 正式证据与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/typed-generation-proof-20261124/HANDOFF.md)
+
+Core `b992c87a39` 对发布代 Main 核对 Root 0400 私有声明和 systemd 加载状态。ARM64 118 项通过。独立 Debian ARM64 Root `225:257` 正式升级六包共存场景，READY/configured 和原数据交接验签。正式 Main 的同 UID 外部进程先被拒绝，随后正向只派发一次重启。首个新 boot 冷读原号 `6b29f751-8c48-474d-b3b1-70f4584ccf4f` 为 ACCEPTED。正常恢复 OrbStack 命令通道后，正式 Main 只读结算原号，原 actor intent 和回执的 inode、字节未变，pending 清除。Main disabled，VM 正常停放。
+
+补父项 #3、#9、#12。原 `219:257` 仍为签发后未决，原号和原围栏保留。其余 typed broker、provider/launcher 与完整六组件矩阵仍待。冻结 **0/12**，外部延期仅原三项。[正式已发布代重启、原号结算和停放](../../../../.management-close-20261116/core-rtc-hotplug-20261120/reboot-published-layout-20261125/HANDOFF.md)
