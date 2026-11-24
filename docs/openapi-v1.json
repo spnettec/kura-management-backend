@@ -589,7 +589,7 @@
     "/api/v1/gateway-enrollment-batches/{id}/approve": {
       "post": {
         "operationId": "approveGatewayEnrollmentBatch",
-        "summary": "Approve the original batch as a current custodian. A quorum atomically commits all enrollments or records an all-or-none rejection. Requires CSRF.",
+        "summary": "Approve the original batch as a current custodian. A quorum atomically commits all first enrollments or all pinned renewals, or records an all-or-none rejection. Requires CSRF.",
         "parameters": [
           {
             "name": "id",
@@ -668,7 +668,7 @@
     "/api/v1/gateway-enrollment-batches/signing-requests": {
       "post": {
         "operationId": "prepareGatewaySigningRequest",
-        "summary": "Record 2–32 validated public PKCS#10 requests under one immutable operation ID. Requires a current custodian and CSRF.",
+        "summary": "Record 2–32 original public PKCS#10 requests. For renewal, bind each request to the exact existing fingerprint and generation. Requires a current custodian and CSRF.",
         "requestBody": {
           "required": true,
           "content": {
@@ -915,7 +915,7 @@
     "/api/v1/gateway-enrollment-batches/signing-requests/{id}/certificates": {
       "post": {
         "operationId": "submitGatewaySigningResults",
-        "summary": "Match all external certificates to the original request and recorded public keys, then record the batch for existing quorum approval. Requires CSRF.",
+        "summary": "Bind external certificates to the exact signing manifest. Existing gateway renewals retain their pinned bindings through quorum approval. Requires CSRF.",
         "parameters": [
           {
             "name": "id",
@@ -5636,6 +5636,22 @@
                 "certificateSha256": {
                   "type": "string",
                   "pattern": "^[0-9a-f]{64}$"
+                },
+                "renewal": {
+                  "type": "object",
+                  "required": [
+                    "binding"
+                  ],
+                  "properties": {
+                    "binding": {
+                      "$ref": "#/components/schemas/GatewayRenewalBinding"
+                    },
+                    "operationId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Original per-gateway V2 rotation receipt ID, present after APPLIED."
+                    }
+                  }
                 }
               }
             }
@@ -5676,6 +5692,7 @@
             "enum": [
               "GATEWAY_CONFLICT",
               "CERTIFICATE_INVALID",
+              "RENEWAL_FENCED",
               null
             ]
           },
@@ -5688,6 +5705,24 @@
             "description": "Original public CSR bundle digest for a signing handoff. Null for direct certificate enrollment."
           }
         }
+      },
+      "GatewayRenewalBinding": {
+        "type": "object",
+        "required": [
+          "previousCertificateSha256",
+          "previousBindingGeneration"
+        ],
+        "properties": {
+          "previousCertificateSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "previousBindingGeneration": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
       },
       "PrepareGatewaySigningRequest": {
         "type": "object",
@@ -5726,13 +5761,17 @@
                   "type": "string",
                   "minLength": 1,
                   "maxLength": 32768
+                },
+                "renewal": {
+                  "$ref": "#/components/schemas/GatewayRenewalBinding"
                 }
               },
               "additionalProperties": false
             }
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Use the renewal binding on every entry for renewal. Omit it on every entry for first enrollment."
       },
       "GatewaySigningRequest": {
         "type": "object",
@@ -5790,6 +5829,9 @@
                 "publicKeySha256": {
                   "type": "string",
                   "pattern": "^[0-9a-f]{64}$"
+                },
+                "renewal": {
+                  "$ref": "#/components/schemas/GatewayRenewalBinding"
                 }
               }
             }

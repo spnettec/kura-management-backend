@@ -31,7 +31,7 @@ async fn lock_gateway(
     tenant: &str,
     gateway: &str,
 ) -> Result<sqlx::postgres::PgRow, ApiError> {
-    sqlx::query("SELECT certificate_sha256,binding_generation,certificate_rotation_operation_id,certificate_rotation_pending_id,revision FROM mgmt_gateways WHERE id=$1 AND tenant_id=$2 FOR UPDATE")
+    sqlx::query("SELECT certificate_sha256,binding_generation,certificate_rotation_operation_id,certificate_rotation_pending_id,revision,identity_bundle_ciphertext IS NOT NULL AS undelivered_bundle FROM mgmt_gateways WHERE id=$1 AND tenant_id=$2 FOR UPDATE")
         .bind(gateway).bind(tenant).fetch_optional(&mut **tx).await?
         .ok_or_else(|| ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"))
 }
@@ -90,21 +90,33 @@ pub(crate) async fn reserve(
     invalid: Option<&'static str>,
 ) -> Result<bool, ApiError> {
     let mut tx = pool.begin().await?;
+    let result = reserve_in_transaction(&mut tx, input, actor, invalid, false).await?;
+    tx.commit().await?;
+    Ok(result)
+}
+
+pub(crate) async fn reserve_in_transaction(
+    tx: &mut Transaction<'_, Postgres>,
+    input: &Request,
+    actor: &str,
+    invalid: Option<&'static str>,
+    require_no_undelivered_bundle: bool,
+) -> Result<bool, ApiError> {
     // Serialize only short reservations, so two gateways cannot both reserve one new credential.
     sqlx::query("SELECT pg_advisory_xact_lock(794654,2)")
-        .execute(&mut *tx)
+        .execute(&mut **tx)
         .await?;
-    let current = lock_gateway(&mut tx, &input.tenant, &input.gateway).await?;
+    let current = lock_gateway(tx, &input.tenant, &input.gateway).await?;
     let exists: bool = sqlx::query_scalar(
         "SELECT EXISTS(SELECT 1 FROM mgmt_gateway_certificate_rotation_ids WHERE operation_id=$1 UNION ALL SELECT 1 FROM mgmt_gateway_certificate_rotations WHERE operation_id=$1 UNION ALL SELECT 1 FROM mgmt_gateways WHERE certificate_rotation_operation_id=$1 OR certificate_rotation_pending_id=$1)",
     )
     .bind(input.operation)
-    .fetch_one(&mut *tx)
+    .fetch_one(&mut **tx)
     .await?;
     if exists {
         return Err(ApiError::new(StatusCode::CONFLICT, "CONFLICT"));
     }
-    let intact = history_intact(&mut tx, &input.tenant, &input.gateway, &current).await?;
+    let intact = history_intact(tx, &input.tenant, &input.gateway, &current).await?;
     // A generation pin explicitly selects the new renewal contract. Existing
     // setup tools rotate certificates without changing their local generation.
     let previous_generation = input.previous_generation;
@@ -114,8 +126,10 @@ pub(crate) async fn reserve(
     let generation = previous_generation.and_then(|value| value.checked_add(1));
     let receipt_version: i16 = if previous_generation.is_some() { 2 } else { 1 };
     let duplicate:bool=sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways WHERE certificate_sha256=$1 AND id<>$2 UNION ALL SELECT 1 FROM mgmt_gateway_certificate_rotations WHERE certificate_sha256=$1 AND gateway_id<>$2 AND state='PENDING')")
-        .bind(&input.certificate).bind(&input.gateway).fetch_one(&mut *tx).await?;
-    let reason = if !intact {
+        .bind(&input.certificate).bind(&input.gateway).fetch_one(&mut **tx).await?;
+    let reason = if !intact
+        || (require_no_undelivered_bundle && current.get::<bool, _>("undelivered_bundle"))
+    {
         Some("RECOVERY_REQUIRED")
     } else if current.get::<String, _>("certificate_sha256") != input.previous
         || previous_generation.is_some_and(|value| {
@@ -123,23 +137,23 @@ pub(crate) async fn reserve(
         })
         || duplicate
         || input.certificate.as_deref() == Some(input.previous.as_str())
-        || pending_writes(&mut tx, &input.gateway).await?
+        || pending_writes(tx, &input.gateway).await?
     {
         Some("CONFLICT")
     } else {
         invalid
     };
     sqlx::query("INSERT INTO mgmt_gateway_certificate_rotation_ids(operation_id,gateway_id,tenant_id) VALUES($1,$2,$3)")
-        .bind(input.operation).bind(&input.gateway).bind(&input.tenant).execute(&mut *tx).await?;
+        .bind(input.operation).bind(&input.gateway).bind(&input.tenant).execute(&mut **tx).await?;
     sqlx::query("INSERT INTO mgmt_gateway_certificate_rotations(operation_id,gateway_id,tenant_id,previous_certificate_sha256,certificate_sha256,certificate_pem_sha256,bundle_requested,state,rejection_code,actor,receipt_version,previous_binding_generation,binding_generation) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)")
         .bind(input.operation).bind(&input.gateway).bind(&input.tenant).bind(&input.previous)
         .bind(&input.certificate).bind(&input.pem_hash).bind(input.bundle)
         .bind(if reason.is_some() {"REJECTED"} else {"PENDING"}).bind(reason).bind(actor)
           .bind(receipt_version).bind(previous_generation).bind(generation)
-        .execute(&mut *tx).await?;
+        .execute(&mut **tx).await?;
     if reason.is_some() {
         crate::db::audit(
-            &mut *tx,
+            &mut **tx,
             &input.tenant,
             actor,
             "gateway.certificate.rotate",
@@ -150,9 +164,8 @@ pub(crate) async fn reserve(
     }
     if reason.is_none() {
         sqlx::query("UPDATE mgmt_gateways SET certificate_rotation_pending_id=$2 WHERE id=$1 AND tenant_id=$3")
-            .bind(&input.gateway).bind(input.operation).bind(&input.tenant).execute(&mut *tx).await?;
+            .bind(&input.gateway).bind(input.operation).bind(&input.tenant).execute(&mut **tx).await?;
     }
-    tx.commit().await?;
     Ok(reason.is_none())
 }
 
@@ -200,6 +213,44 @@ pub(crate) async fn applied(
     if changed.rows_affected() != 1 {
         return Err(ApiError::new(StatusCode::CONFLICT, "RECOVERY_REQUIRED"));
     }
+    Ok(())
+}
+
+pub(crate) async fn publish(
+    tx: &mut Transaction<'_, Postgres>,
+    input: &Request,
+    actor: &str,
+) -> Result<(), ApiError> {
+    let fingerprint = input
+        .certificate
+        .as_deref()
+        .ok_or(ApiError::new(StatusCode::BAD_REQUEST, "INVALID_ARGUMENT"))?;
+    let revision: i64 = sqlx::query_scalar(
+        "UPDATE mgmt_gateways SET certificate_sha256=$2,connection_epoch=NULL,last_seen=NULL,
+            online_reported=false,kura_available=false,revision=revision+1
+         WHERE id=$1 AND tenant_id=$3 AND certificate_sha256=$4 AND certificate_sha256<>$2 RETURNING revision",
+    )
+        .bind(&input.gateway).bind(fingerprint).bind(&input.tenant).bind(&input.previous)
+        .fetch_optional(&mut **tx).await?.ok_or(ApiError::new(StatusCode::CONFLICT, "CONFLICT"))?;
+    applied(tx, input, revision).await?;
+    crate::db::audit(
+        &mut **tx,
+        &input.tenant,
+        actor,
+        "gateway.certificate.rotate",
+        &input.gateway,
+        "SUCCEEDED",
+    )
+    .await?;
+    crate::db::event(
+        &mut **tx,
+        &input.tenant,
+        "gateway",
+        &input.gateway,
+        revision,
+        json!({"online":false,"identityChanged":true}),
+    )
+    .await?;
     Ok(())
 }
 

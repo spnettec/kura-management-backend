@@ -81,6 +81,9 @@ impl ApiError {
     pub fn new(status: StatusCode, code: &'static str) -> Self {
         Self(status, code)
     }
+    pub(crate) fn code(&self) -> &'static str {
+        self.1
+    }
     pub fn unauthorized() -> Self {
         Self(StatusCode::UNAUTHORIZED, "UNAUTHENTICATED")
     }
@@ -1480,7 +1483,6 @@ async fn rotate_gateway_certificate(
         if client_operation { return Ok(Json(receipt)); }
         return Err(ApiError::new(StatusCode::CONFLICT,"CONFLICT"));
     }
-    let new_fingerprint=original.certificate.clone().ok_or_else(||ApiError::new(StatusCode::BAD_REQUEST,"INVALID_ARGUMENT"))?;
     let cipher = app.cipher.read().await;
     let mut tx = app.pool.begin().await?;
     cipher.lock_storage(&mut tx).await?;
@@ -1515,23 +1517,7 @@ async fn rotate_gateway_certificate(
             auth::hash(token.as_bytes()),
         ));
     }
-    // Same admission as the CLI rotate-gateway-certificate: fingerprint swap,
-    // connection reset, audit + identityChanged event in one transaction.
-    let row = sqlx::query(
-        "UPDATE mgmt_gateways SET certificate_sha256=$2,connection_epoch=NULL,last_seen=NULL,online_reported=false,kura_available=false,revision=revision+1 \
-         WHERE id=$1 AND tenant_id=$3 AND certificate_sha256=$4 AND certificate_sha256<>$2 RETURNING revision",
-    )
-    .bind(&id)
-    .bind(&new_fingerprint)
-    .bind(&p.tenant_id)
-    .bind(&original.previous)
-    .fetch_optional(&mut *tx)
-    .await?
-    .ok_or(ApiError::new(StatusCode::CONFLICT, "CONFLICT"))?;
-    let revision: i64 = row.get("revision");
-    crate::gateway_certificate::applied(&mut tx,&original,revision).await?;
-    db::audit(&mut *tx, &p.tenant_id, &p.username, "gateway.certificate.rotate", &id, "SUCCEEDED").await?;
-    db::event(&mut *tx, &p.tenant_id, "gateway", &id, revision, json!({"online":false,"identityChanged":true})).await?;
+    crate::gateway_certificate::publish(&mut tx, &original, &p.username).await?;
     let mut issued_token = None;
     if let Some((token, issued_at, ciphertext, token_hash)) = bundle {
         issued_token = Some(token);

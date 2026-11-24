@@ -1,7 +1,7 @@
 //! Public PKCS#10 handoffs from gateway-local identities to an external signer.
 use crate::{
     auth::{self, Principal},
-    ca_policy, db, gateway_registration, provisioning,
+    ca_policy, db, gateway_certificate, gateway_registration, provisioning,
 };
 use anyhow::{Context, Result, anyhow, ensure};
 use base64::{Engine, engine::general_purpose::STANDARD};
@@ -117,6 +117,25 @@ struct Input {
     id: String,
     name: String,
     csr_pem: String,
+    renewal: Option<RenewalBinding>,
+}
+
+#[derive(Clone, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub(crate) struct RenewalBinding {
+    pub previous_certificate_sha256: String,
+    pub previous_binding_generation: i64,
+}
+
+impl RenewalBinding {
+    fn valid(&self) -> bool {
+        (1..i64::MAX).contains(&self.previous_binding_generation)
+            && self.previous_certificate_sha256.len() == 64
+            && self
+                .previous_certificate_sha256
+                .bytes()
+                .all(|c| c.is_ascii_digit() || (b'a'..=b'f').contains(&c))
+    }
 }
 
 #[derive(Clone, Deserialize, Serialize, PartialEq, Eq)]
@@ -127,6 +146,8 @@ struct PublicEntry {
     path: String,
     csr_sha256: String,
     public_key_sha256: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    renewal: Option<RenewalBinding>,
 }
 #[derive(Deserialize, Serialize)]
 struct Entry {
@@ -162,6 +183,14 @@ impl Request {
             (2..=crate::ca_enrollment::MAX_ENTRIES).contains(&self.entries.len()),
             "invalid signing batch size"
         );
+        let renewal = self.entries[0].renewal.is_some();
+        ensure!(
+            self.entries
+                .iter()
+                .all(|entry| entry.renewal.is_some() == renewal
+                    && entry.renewal.as_ref().is_none_or(RenewalBinding::valid)),
+            "invalid or mixed renewal bindings"
+        );
         self.entries.sort_unstable_by(|a, b| a.id.cmp(&b.id));
         ensure!(
             self.entries.windows(2).all(|pair| pair[0].id != pair[1].id),
@@ -183,6 +212,7 @@ impl Request {
                     path: format!("requests/{:02}.csr.pem", index + 1),
                     csr_sha256,
                     public_key_sha256,
+                    renewal: input.renewal,
                 },
                 pem: input.csr_pem.trim().into(),
             });
@@ -195,6 +225,12 @@ impl Request {
 }
 
 impl Batch {
+    pub(crate) fn renewal_bindings(&self) -> impl Iterator<Item = Option<&RenewalBinding>> {
+        self.entries
+            .iter()
+            .map(|entry| entry.public.renewal.as_ref())
+    }
+
     fn manifest(&self) -> Manifest {
         Manifest {
             schema_version: 1,
@@ -322,6 +358,26 @@ pub(crate) async fn create(
     if occupied {
         return Ok(None);
     }
+    for entry in &batch.entries {
+        if let Some(binding) = &entry.public.renewal {
+            if let Err(error) =
+                gateway_certificate::maintenance_guard(&mut tx, tenant, &entry.public.id).await
+            {
+                if matches!(error.code(), "NOT_FOUND" | "RECOVERY_REQUIRED") {
+                    return Ok(None);
+                }
+                return Err(anyhow!("renewal admission failed: {}", error.code()));
+            }
+            let current: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM mgmt_gateways
+                WHERE id=$1 AND tenant_id=$2 AND name=$3 AND certificate_sha256=$4 AND binding_generation=$5)")
+                .bind(&entry.public.id).bind(tenant).bind(&entry.public.name)
+                .bind(&binding.previous_certificate_sha256).bind(binding.previous_binding_generation)
+                .fetch_one(&mut *tx).await?;
+            if !current {
+                return Ok(None);
+            }
+        }
+    }
     sqlx::query(
         "INSERT INTO ca_signing_requests(operation_id,tenant_id,manifest_sha256,entries)
         VALUES($1,$2,$3,$4)",
@@ -379,6 +435,7 @@ mod tests {
                     path: "requests/01.csr.pem".into(),
                     csr_sha256,
                     public_key_sha256,
+                    renewal: None,
                 },
                 pem: CSR.to_owned(),
             }],
@@ -400,5 +457,40 @@ mod tests {
         );
         assert!(!batch.matches(std::iter::empty()).unwrap());
         assert_eq!(batch.archive().unwrap(), batch.archive().unwrap());
+    }
+
+    #[test]
+    fn renewal_pin_is_explicit_and_changes_the_signing_manifest() {
+        let (csr_sha256, public_key_sha256) = check_csr("localhost", CSR).unwrap();
+        let mut batch = Batch {
+            id: Uuid::new_v4(),
+            entries: vec![Entry {
+                public: PublicEntry {
+                    id: "localhost".into(),
+                    name: "Fixture".into(),
+                    path: "requests/01.csr.pem".into(),
+                    csr_sha256,
+                    public_key_sha256,
+                    renewal: None,
+                },
+                pem: CSR.into(),
+            }],
+        };
+        let earlier = batch.status().unwrap();
+        let earlier_json = serde_json::to_value(&earlier).unwrap();
+        assert!(earlier_json["entries"][0].get("renewal").is_none());
+        let binding = RenewalBinding {
+            previous_certificate_sha256: "a".repeat(64),
+            previous_binding_generation: 1,
+        };
+        assert!(binding.valid());
+        batch.entries[0].public.renewal = Some(binding);
+        assert_ne!(
+            batch.status().unwrap().manifest_sha256,
+            earlier.manifest_sha256
+        );
+        let binding = batch.entries[0].public.renewal.as_mut().unwrap();
+        binding.previous_binding_generation = i64::MAX;
+        assert!(!binding.valid());
     }
 }

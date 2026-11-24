@@ -37,7 +37,7 @@ export function Gateways({
     <>
       <RegisterGateway key={user.id} user={user} onRegistered={onRegistered} />
       <BulkEnrollment key={`bulk:${user.id}`} user={user} onRegistered={onRegistered} reviewId={reviewBatchId} />
-      <BulkSigningRequest key={`signing:${user.id}`} user={user} onReview={setReviewBatchId} />
+      <BulkSigningRequest key={`signing:${user.id}`} user={user} onReview={setReviewBatchId} gateways={items} />
       <Table<Gateway>
         rowKey="id"
         dataSource={items}

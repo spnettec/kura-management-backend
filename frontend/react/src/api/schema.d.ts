@@ -437,7 +437,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Approve the original batch as a current custodian. A quorum atomically commits all enrollments or records an all-or-none rejection. Requires CSRF. */
+        /** Approve the original batch as a current custodian. A quorum atomically commits all first enrollments or all pinned renewals, or records an all-or-none rejection. Requires CSRF. */
         post: operations["approveGatewayEnrollmentBatch"];
         delete?: never;
         options?: never;
@@ -454,7 +454,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Record 2–32 validated public PKCS#10 requests under one immutable operation ID. Requires a current custodian and CSRF. */
+        /** Record 2–32 original public PKCS#10 requests. For renewal, bind each request to the exact existing fingerprint and generation. Requires a current custodian and CSRF. */
         post: operations["prepareGatewaySigningRequest"];
         delete?: never;
         options?: never;
@@ -505,7 +505,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Match all external certificates to the original request and recorded public keys, then record the batch for existing quorum approval. Requires CSRF. */
+        /** Bind external certificates to the exact signing manifest. Existing gateway renewals retain their pinned bindings through quorum approval. Requires CSRF. */
         post: operations["submitGatewaySigningResults"];
         delete?: never;
         options?: never;
@@ -3331,6 +3331,14 @@ export interface components {
                 id: string;
                 name: string;
                 certificateSha256: string;
+                renewal?: {
+                    binding: components["schemas"]["GatewayRenewalBinding"];
+                    /**
+                     * Format: uuid
+                     * @description Original per-gateway V2 rotation receipt ID, present after APPLIED.
+                     */
+                    operationId?: string;
+                };
             }[];
             approvedCount: number;
             viewerApproved: boolean;
@@ -3338,10 +3346,15 @@ export interface components {
             state: "PENDING" | "APPLIED" | "REJECTED" | "STALE";
             decisionApproverIds: string[] | null;
             /** @enum {string|null} */
-            rejectionCode: "GATEWAY_CONFLICT" | "CERTIFICATE_INVALID" | null;
+            rejectionCode: "GATEWAY_CONFLICT" | "CERTIFICATE_INVALID" | "RENEWAL_FENCED" | null;
             /** @description Original public CSR bundle digest for a signing handoff. Null for direct certificate enrollment. */
             signingManifestSha256: string | null;
         };
+        GatewayRenewalBinding: {
+            previousCertificateSha256: string;
+            previousBindingGeneration: number;
+        };
+        /** @description Use the renewal binding on every entry for renewal. Omit it on every entry for first enrollment. */
         PrepareGatewaySigningRequest: {
             /** Format: uuid */
             operationId: string;
@@ -3349,6 +3362,7 @@ export interface components {
                 id: string;
                 name: string;
                 csrPem: string;
+                renewal?: components["schemas"]["GatewayRenewalBinding"];
             }[];
         };
         GatewaySigningRequest: {
@@ -3363,6 +3377,7 @@ export interface components {
                 path: string;
                 csrSha256: string;
                 publicKeySha256: string;
+                renewal?: components["schemas"]["GatewayRenewalBinding"];
             }[];
         };
         RegisterGateway: {

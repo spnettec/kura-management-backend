@@ -1,5 +1,7 @@
 //! Bulk enrollment of external, public client certificates under the active CA and custody policy.
-use crate::{auth::Principal, ca_policy, ca_signing, db, gateway_registration};
+use crate::{
+    auth, auth::Principal, ca_policy, ca_signing, db, gateway_certificate, gateway_registration,
+};
 use anyhow::{Context, Result, ensure};
 use rustls::{pki_types::UnixTime, server::danger::ClientCertVerifier};
 use serde::{Deserialize, Serialize};
@@ -31,6 +33,24 @@ struct Gateway {
     id: String,
     name: String,
     certificate_sha256: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    renewal: Option<Renewal>,
+}
+
+#[derive(Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+struct Renewal {
+    binding: ca_signing::RenewalBinding,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    operation_id: Option<Uuid>,
+}
+
+impl Gateway {
+    fn same_certificate(&self, incoming: &Self) -> bool {
+        self.id == incoming.id
+            && self.name == incoming.name
+            && self.certificate_sha256 == incoming.certificate_sha256
+    }
 }
 
 #[derive(Deserialize, Serialize)]
@@ -76,8 +96,9 @@ impl Request {
                     id: input.id,
                     name: input.name,
                     certificate_sha256: fingerprint,
+                    renewal: None,
                 },
-                pem: input.client_certificate_pem.trim().into(),
+                pem: input.client_certificate_pem,
             });
         }
         Ok(Batch {
@@ -181,7 +202,15 @@ impl Proposal {
                 .entries
                 .0
                 .into_iter()
-                .map(|entry| entry.gateway)
+                .map(|entry| {
+                    let mut gateway = entry.gateway;
+                    if state != "APPLIED"
+                        && let Some(renewal) = &mut gateway.renewal
+                    {
+                        renewal.operation_id = None;
+                    }
+                    gateway
+                })
                 .collect(),
             approved_count: self.decision_approver_ids.as_ref().map_or(count, Vec::len),
             viewer_approved,
@@ -282,7 +311,7 @@ pub(crate) enum Submission {
 pub(crate) async fn propose(
     pool: &PgPool,
     actor: &Principal,
-    batch: Batch,
+    mut batch: Batch,
     trust: &Trust,
     require_signing: bool,
 ) -> Result<Submission> {
@@ -295,12 +324,13 @@ pub(crate) async fn propose(
         if require_signing && original.signing_manifest_sha256.is_none() {
             return Ok(Submission::SigningMismatch);
         }
-        if original
-            .entries
-            .0
-            .iter()
-            .map(|entry| &entry.gateway)
-            .ne(batch.entries.iter().map(|entry| &entry.gateway))
+        if original.entries.0.len() != batch.entries.len()
+            || !original
+                .entries
+                .0
+                .iter()
+                .zip(&batch.entries)
+                .all(|(prior, incoming)| prior.gateway.same_certificate(&incoming.gateway))
         {
             return Ok(Submission::Conflict);
         }
@@ -325,6 +355,12 @@ pub(crate) async fn propose(
             });
             if !original.matches(signed)? {
                 return Ok(Submission::SigningMismatch);
+            }
+            for (entry, binding) in batch.entries.iter_mut().zip(original.renewal_bindings()) {
+                entry.gateway.renewal = binding.map(|binding| Renewal {
+                    binding: binding.clone(),
+                    operation_id: Some(Uuid::new_v4()),
+                });
             }
             Some(digest)
         }
@@ -403,6 +439,15 @@ pub(crate) async fn approve(
     if count >= proposal.required_count as usize {
         if trust.verify(&proposal.entries.0).is_err() {
             proposal.rejection_code = Some("CERTIFICATE_INVALID".into());
+        } else if proposal
+            .entries
+            .0
+            .iter()
+            .any(|entry| entry.gateway.renewal.is_some())
+        {
+            if !renew_all(&mut tx, actor, &proposal.entries.0).await? {
+                proposal.rejection_code = Some("RENEWAL_FENCED".into());
+            }
         } else if !register_all(&mut tx, actor, &proposal.entries.0).await? {
             proposal.rejection_code = Some("GATEWAY_CONFLICT".into());
         }
@@ -457,6 +502,67 @@ async fn register_all(
                 return Ok(false);
             }
             return Err(error.into());
+        }
+    }
+    batch.commit().await?;
+    Ok(true)
+}
+
+async fn renew_all(
+    tx: &mut Transaction<'_, Postgres>,
+    actor: &Principal,
+    entries: &[Entry],
+) -> Result<bool> {
+    let mut batch = tx.begin().await?;
+    for entry in entries {
+        let gateway = &entry.gateway;
+        let renewal = gateway
+            .renewal
+            .as_ref()
+            .context("missing original renewal binding")?;
+        let request = gateway_certificate::Request {
+            operation: renewal
+                .operation_id
+                .context("missing original rotation ID")?,
+            gateway: gateway.id.clone(),
+            tenant: actor.tenant_id.clone(),
+            previous: renewal.binding.previous_certificate_sha256.clone(),
+            previous_generation: Some(renewal.binding.previous_binding_generation),
+            certificate: Some(gateway.certificate_sha256.clone()),
+            pem_hash: auth::hash(entry.pem.as_bytes()),
+            bundle: false,
+        };
+        let outcome = async {
+            if !gateway_certificate::reserve_in_transaction(
+                &mut batch,
+                &request,
+                &actor.username,
+                None,
+                true,
+            )
+            .await?
+                || !gateway_certificate::begin_application(&mut batch, &request).await?
+            {
+                return Ok(false);
+            }
+            gateway_certificate::publish(&mut batch, &request, &actor.username).await?;
+            Ok::<bool, crate::http::ApiError>(true)
+        }
+        .await;
+        match outcome {
+            Ok(true) => {}
+            Err(error)
+                if !matches!(error.code(), "CONFLICT" | "NOT_FOUND" | "RECOVERY_REQUIRED") =>
+            {
+                return Err(anyhow::anyhow!(
+                    "batch certificate renewal failed: {}",
+                    error.code()
+                ));
+            }
+            _ => {
+                batch.rollback().await?;
+                return Ok(false);
+            }
         }
     }
     batch.commit().await?;

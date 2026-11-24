@@ -1,6 +1,6 @@
 import { Alert, Button, Card, Input, Space, Typography } from "antd";
 import { useEffect, useId, useState, type FormEvent } from "react";
-import { api, apiDownload, ApiError, saveBlob, type Session } from "../../api/client";
+import { api, apiDownload, ApiError, saveBlob, type Gateway, type Session } from "../../api/client";
 import type { components } from "../../api/schema";
 import { errorText, useI18n } from "../../i18n/I18n";
 
@@ -8,6 +8,7 @@ type Signing = components["schemas"]["GatewaySigningRequest"];
 type PublicCertificates = components["schemas"]["GatewayEnrollmentBatch"];
 type CsrEntries = components["schemas"]["PrepareGatewaySigningRequest"]["entries"];
 type CertificateEntries = components["schemas"]["GatewayEnrollmentBatchRequest"]["entries"];
+type RenewalChoice = { id: string; name: string; renewal: components["schemas"]["GatewayRenewalBinding"] };
 type Marker = { id: string; pending?: "prepare" | "certificates" };
 const batchPath = "/gateway-enrollment-batches";
 const signingPath = `${batchPath}/signing-requests`;
@@ -16,18 +17,21 @@ const uuidPattern = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}
 async function publicPem(data: FormData, name: string, label: "CERTIFICATE REQUEST" | "CERTIFICATE") {
   const file = data.get(name);
   if (!(file instanceof File) || file.size > 32768) throw new ApiError("CA_SIGNING_FILE", 400);
-  const value = (await file.text()).trim();
+  const value = await file.text();
   const pattern = new RegExp(`^-----BEGIN ${label}-----[A-Za-z0-9+/=\\s]+-----END ${label}-----$`);
-  if (!pattern.test(value)) throw new ApiError("CA_SIGNING_FILE", 400);
+  if (!pattern.test(value.trim())) throw new ApiError("CA_SIGNING_FILE", 400);
   return value;
 }
 
-export function BulkSigningRequest({ user, onReview }: { user: Session; onReview: (id: string) => void }) {
+export function BulkSigningRequest({ user, onReview, gateways }:
+  { user: Session; onReview: (id: string) => void; gateways: Gateway[] }) {
   const { t } = useI18n();
   const label = useId();
   const key = `yofc.console.gateway-signing.v1:${user.id}`;
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState(() => [crypto.randomUUID(), crypto.randomUUID()]);
+  const [renewal, setRenewal] = useState(false);
+  const [choices, setChoices] = useState<Record<string, RenewalChoice | undefined>>({});
   const [marker, setMarker] = useState<Marker | null>();
   const [id, setId] = useState("");
   const [signing, setSigning] = useState<Signing>();
@@ -101,6 +105,20 @@ export function BulkSigningRequest({ user, onReview }: { user: Session; onReview
     }
   }
 
+  function chooseGateway(row: string, id: string) {
+    const gateway = gateways.find(item => item.id === id);
+    const generation = gateway?.bindingGeneration;
+    const certificate = gateway?.certificateSha256;
+    let selected: RenewalChoice | undefined;
+    if (gateway && typeof generation === "number" && Number.isSafeInteger(generation) && generation >= 1
+      && typeof certificate === "string" && /^[0-9a-f]{64}$/.test(certificate)) {
+      selected = { id: gateway.id, name: gateway.name, renewal: {
+        previousCertificateSha256: certificate, previousBindingGeneration: generation,
+      }};
+    }
+    setChoices(current => ({...current, [row]: selected}));
+  }
+
   function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -108,11 +126,14 @@ export function BulkSigningRequest({ user, onReview }: { user: Session; onReview
     void run(async () => {
       const entries: CsrEntries = [];
       for (const row of rows) {
-        entries.push({
-          id: String(data.get(`id-${row}`)),
-          name: String(data.get(`name-${row}`)),
-          csrPem: await publicPem(data, row, "CERTIFICATE REQUEST"),
-        });
+        const csrPem = await publicPem(data, row, "CERTIFICATE REQUEST");
+        const selected = choices[row];
+        if (renewal) {
+          if (!selected) throw new ApiError("INVALID_ARGUMENT", 400);
+          entries.push({ ...selected, csrPem });
+        } else {
+          entries.push({ id: String(data.get(`id-${row}`)), name: String(data.get(`name-${row}`)), csrPem });
+        }
       }
       const operationId = crypto.randomUUID();
       await dispatch({id: operationId, pending: "prepare"}, async () => {
@@ -165,14 +186,36 @@ export function BulkSigningRequest({ user, onReview }: { user: Session; onReview
         {marker?.pending && <Alert type="warning" title={t("batchEnroll.unknown")} />}
         {!signing && <form method="post" action={`/api/v1${signingPath}`} aria-label={t("caSigning.prepare")} onSubmit={prepare}>
           <Space direction="vertical">
+            <fieldset disabled={locked}>
+              <legend>{t("caSigning.purpose")}</legend>
+              <Space wrap>
+                <label><input name="purpose" type="radio" value="enrollment" checked={!renewal}
+                  onChange={() => { setRenewal(false); setChoices({}); }} /> {t("caSigning.newGateways")}</label>
+                <label><input name="purpose" type="radio" value="renewal" checked={renewal}
+                  onChange={() => { setRenewal(true); setChoices({}); }} /> {t("caSigning.renewGateways")}</label>
+              </Space>
+            </fieldset>
+            {renewal && <p>{t("caSigning.renewHelp")}</p>}
             {rows.map((row, index) => <fieldset key={row} disabled={locked}>
               <legend>{t("batchEnroll.gateway")} {index + 1}</legend>
               <Space direction="vertical">
-                <label htmlFor={`${row}-id`}>{t("registration.id")}</label>
-                <Input id={`${row}-id`} name={`id-${row}`} required pattern="[A-Za-z0-9_\-]{1,128}"
-                  autoCorrect="off" autoCapitalize="none" spellCheck={false} />
-                <label htmlFor={`${row}-name`}>{t("registration.name")}</label>
-                <Input id={`${row}-name`} name={`name-${row}`} required maxLength={256} />
+                {renewal ? <>
+                  <label htmlFor={`${row}-existing`}>{t("caSigning.existing")}</label>
+                  <select id={`${row}-existing`} name={`existing-${row}`} value={choices[row]?.id ?? ""} required
+                    onChange={event => chooseGateway(row, event.target.value)}>
+                    <option value="">{t("caSigning.selectGateway")}</option>
+                    {gateways.map(item => <option key={item.id} value={item.id}>{item.name} ({item.id})</option>)}
+                  </select>
+                  {choices[row] && <p>{t("caSigning.oldGeneration")} {choices[row].renewal.previousBindingGeneration}{" "}
+                    <Typography.Text code style={{overflowWrap: "anywhere"}}>{choices[row].renewal.previousCertificateSha256}</Typography.Text>
+                  </p>}
+                </> : <>
+                  <label htmlFor={`${row}-id`}>{t("registration.id")}</label>
+                  <Input id={`${row}-id`} name={`id-${row}`} required pattern="[A-Za-z0-9_\-]{1,128}"
+                    autoCorrect="off" autoCapitalize="none" spellCheck={false} />
+                  <label htmlFor={`${row}-name`}>{t("registration.name")}</label>
+                  <Input id={`${row}-name`} name={`name-${row}`} required maxLength={256} />
+                </>}
                 <label htmlFor={`${row}-request`}>{t("caSigning.csrFile")}</label>
                 <input id={`${row}-request`} name={row} type="file" required accept=".pem,.csr" />
                 {rows.length > 2 && <Button htmlType="button" onClick={() => setRows(current => current.filter(value => value !== row))}>
@@ -193,8 +236,12 @@ export function BulkSigningRequest({ user, onReview }: { user: Session; onReview
             <p>{t("caSigning.manifest")} <Typography.Text code style={{overflowWrap: "anywhere"}}>{signing.manifestSha256}</Typography.Text></p>
             <ul>{signing.entries.map(entry => <li key={entry.id}>{entry.name} ({entry.id}) · {entry.path}{" "}
               <Typography.Text code style={{overflowWrap: "anywhere"}}>{entry.publicKeySha256}</Typography.Text>
+              {entry.renewal && <div>{t("caSigning.oldGeneration")} {entry.renewal.previousBindingGeneration}{" "}
+                <Typography.Text code style={{overflowWrap: "anywhere"}}>{entry.renewal.previousCertificateSha256}</Typography.Text>
+              </div>}
             </li>)}</ul>
-            {proposal && <p>{t(`batchEnroll.${proposal.state}`)} · {proposal.approvedCount}/{proposal.requiredCount}</p>}
+            {proposal && <p>{t(proposal.state === "APPLIED" && signing.entries.some(entry => entry.renewal)
+              ? "batchEnroll.RENEWED" : `batchEnroll.${proposal.state}`)} · {proposal.approvedCount}/{proposal.requiredCount}</p>}
           </div>
           <Space wrap>
             <Button disabled={busy} onClick={() => void run(async () => {

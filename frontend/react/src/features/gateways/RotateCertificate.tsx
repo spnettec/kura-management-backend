@@ -14,7 +14,7 @@ type Intent = {
   bundleDownloadStarted?: boolean;
   bundleReceived?: boolean;
 };
-type RotationReceipt = {
+export type RotationReceipt = {
   id: string;
   operationId: string;
   state: "APPLIED" | "REJECTED" | "UNKNOWN";
@@ -45,6 +45,18 @@ function safeGeneration(value: unknown): value is number {
 function generationReceipt(value: RotationReceipt): boolean {
   return value.receiptVersion === 2 && safeGeneration(value.previousBindingGeneration)
     && value.bindingGeneration === value.previousBindingGeneration + 1;
+}
+
+export function savePublicRotationReceipt(receipt: RotationReceipt) {
+  if (receipt.state !== "APPLIED" || !generationReceipt(receipt)) throw new Error("Original renewal receipt required");
+  // A public allowlist also strips the one-time private token from POST responses.
+  const value = { schema: "yofc.console.gateway-certificate-rotation.v2", receiptVersion: 2,
+    id: receipt.id, operationId: receipt.operationId, state: receipt.state,
+    previousCertificateSha256: receipt.previousCertificateSha256, certificateSha256: receipt.certificateSha256,
+    certificatePemSha256: receipt.certificatePemSha256, previousBindingGeneration: receipt.previousBindingGeneration,
+    bindingGeneration: receipt.bindingGeneration, revision: receipt.revision, bundleRequested: receipt.bundleRequested,
+    identityBundleTokenRecoverable: false };
+  saveBlob(new Blob([JSON.stringify(value, null, 2) + "\n"], { type: "application/json" }), `${receipt.id}-${receipt.operationId}-certificate-receipt.json`);
 }
 
 export function RotateCertificate({ gateway, user }: { gateway: Gateway; user: Session }) {
@@ -190,14 +202,7 @@ export function RotateCertificate({ gateway, user }: { gateway: Gateway; user: S
   function downloadReceipt() {
     if (busy || uncertain || receipt?.state !== "APPLIED" || !generationReceipt(receipt) || !intent
       || !isCurrentOperation(receipt.operationId)) return;
-    // A public allowlist also strips the one-time private token from POST responses.
-    const value = { schema: "yofc.console.gateway-certificate-rotation.v2", receiptVersion: 2,
-      id: receipt.id, operationId: receipt.operationId, state: receipt.state,
-      previousCertificateSha256: receipt.previousCertificateSha256, certificateSha256: receipt.certificateSha256,
-      certificatePemSha256: receipt.certificatePemSha256, previousBindingGeneration: receipt.previousBindingGeneration,
-      bindingGeneration: receipt.bindingGeneration, revision: receipt.revision, bundleRequested: receipt.bundleRequested,
-      identityBundleTokenRecoverable: false };
-    saveBlob(new Blob([JSON.stringify(value, null, 2) + "\n"], { type: "application/json" }), `${receipt.id}-${receipt.operationId}-certificate-receipt.json`);
+    savePublicRotationReceipt(receipt);
   }
   async function again() {
     if (writer.current || uncertain || !receipt || receipt.state === "UNKNOWN" || bundleUnavailable || receipt.state === "APPLIED" && intent?.bundleRequested && !delivered) return;

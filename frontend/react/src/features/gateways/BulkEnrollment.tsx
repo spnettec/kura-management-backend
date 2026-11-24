@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import { api, ApiError, type Session } from "../../api/client";
 import type { components } from "../../api/schema";
 import { errorText, useI18n } from "../../i18n/I18n";
+import { savePublicRotationReceipt, type RotationReceipt } from "./RotateCertificate";
 
 type Receipt = components["schemas"]["GatewayEnrollmentBatch"];
 type Request = components["schemas"]["GatewayEnrollmentBatchRequest"];
@@ -133,6 +134,27 @@ export function BulkEnrollment({ user, onRegistered, reviewId }: { user: Session
     finally { setBusy(false); }
   }
 
+  async function downloadRenewal(entry: Receipt["entries"][number]) {
+    const renewal = entry.renewal;
+    const operationId = renewal?.operationId;
+    if (busy || receipt?.state !== "APPLIED" || !renewal || !operationId) return;
+    setBusy(true);
+    setError(undefined);
+    try {
+      const original = await api<RotationReceipt>(
+        `/gateways/${encodeURIComponent(entry.id)}/certificate-operations/${operationId}`);
+      const previous = renewal.binding;
+      if (original.id !== entry.id || original.operationId !== operationId
+        || original.previousCertificateSha256 !== previous.previousCertificateSha256
+        || original.previousBindingGeneration !== previous.previousBindingGeneration
+        || original.certificateSha256 !== entry.certificateSha256 || original.bundleRequested !== false) {
+        throw new ApiError("RECOVERY_REQUIRED", 409);
+      }
+      savePublicRotationReceipt(original);
+    } catch (problem) { setError(problem); }
+    finally { setBusy(false); }
+  }
+
   useEffect(() => {
     if (open && error) document.getElementById(`${label}-error`)?.focus();
   }, [open, error, label]);
@@ -192,13 +214,22 @@ export function BulkEnrollment({ user, onRegistered, reviewId }: { user: Session
           {receipt && <>
             <div role="status">
               <p><Typography.Text copyable code>{receipt.operationId}</Typography.Text></p>
-              <p>{t(`batchEnroll.${receipt.state}`)} · {receipt.approvedCount}/{receipt.requiredCount}</p>
+              <p>{t(receipt.state === "APPLIED" && receipt.entries.some(entry => entry.renewal)
+                ? "batchEnroll.RENEWED" : `batchEnroll.${receipt.state}`)} · {receipt.approvedCount}/{receipt.requiredCount}</p>
               <p>{t("batchEnroll.anchor")} <Typography.Text code style={{ overflowWrap: "anywhere" }}>{receipt.caFingerprint}</Typography.Text></p>
               {receipt.signingManifestSha256 && <p>{t("caSigning.manifest")}{" "}
                 <Typography.Text code style={{overflowWrap: "anywhere"}}>{receipt.signingManifestSha256}</Typography.Text>
               </p>}
               <ul>{receipt.entries.map(entry => <li key={entry.id}>{entry.name} ({entry.id}){" "}
-                <Typography.Text code style={{ overflowWrap: "anywhere" }}>{entry.certificateSha256}</Typography.Text></li>)}</ul>
+                <Typography.Text code style={{ overflowWrap: "anywhere" }}>{entry.certificateSha256}</Typography.Text>
+                {entry.renewal && <div>
+                  {t("caSigning.oldGeneration")} {entry.renewal.binding.previousBindingGeneration}{" "}
+                  <Typography.Text code style={{overflowWrap: "anywhere"}}>{entry.renewal.binding.previousCertificateSha256}</Typography.Text>
+                  {entry.renewal.operationId && <Button disabled={busy} onClick={() => void downloadRenewal(entry)}>
+                    {t("batchEnroll.downloadRenewal")} · {entry.id}
+                  </Button>}
+                </div>}
+              </li>)}</ul>
               {receipt.rejectionCode && <p>{t(`batchEnroll.${receipt.rejectionCode}`)}</p>}
             </div>
             {receipt.state === "PENDING" && !receipt.viewerApproved &&
