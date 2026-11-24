@@ -394,6 +394,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/gateway-enrollment-batches": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Record 2–32 external, public client certificates for distinct gateway IDs. Requires an eligible custodian and CSRF. */
+        post: operations["proposeGatewayEnrollmentBatch"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gateway-enrollment-batches/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read the original tenant-scoped enrollment batch and its outcome. No registration is dispatched. */
+        get: operations["getGatewayEnrollmentBatch"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/gateway-enrollment-batches/{id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Approve the original batch as a current custodian. A quorum atomically commits all enrollments or records an all-or-none rejection. Requires CSRF. */
+        post: operations["approveGatewayEnrollmentBatch"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/tasks": {
         parameters: {
             query?: never;
@@ -3187,6 +3238,40 @@ export interface components {
             /** @description 12..256 bytes; ends the forced first-login rotation. */
             newPassword: string;
         };
+        GatewayEnrollmentBatchRequest: {
+            /** Format: uuid */
+            operationId: string;
+            entries: {
+                id: string;
+                name: string;
+                /** @description One externally signed PEM client leaf certificate. */
+                clientCertificatePem: string;
+            }[];
+        };
+        GatewayEnrollmentBatch: {
+            /** Format: uuid */
+            operationId: string;
+            caFingerprint: string;
+            /**
+             * Format: uuid
+             * @description Null indicates the original bootstrap CA.
+             */
+            caGeneration: string | null;
+            policyRevision: number;
+            requiredCount: number;
+            entries: {
+                id: string;
+                name: string;
+                certificateSha256: string;
+            }[];
+            approvedCount: number;
+            viewerApproved: boolean;
+            /** @enum {string} */
+            state: "PENDING" | "APPLIED" | "REJECTED" | "STALE";
+            decisionApproverIds: string[] | null;
+            /** @enum {string|null} */
+            rejectionCode: "GATEWAY_CONFLICT" | "CERTIFICATE_INVALID" | null;
+        };
         RegisterGateway: {
             id: string;
             name: string;
@@ -3704,6 +3789,218 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    proposeGatewayEnrollmentBatch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GatewayEnrollmentBatchRequest"];
+            };
+        };
+        responses: {
+            /** @description Original enrollment proposal and outcome */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayEnrollmentBatch"];
+                };
+            };
+            /** @description Typed API error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    getGatewayEnrollmentBatch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Original enrollment proposal and outcome */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayEnrollmentBatch"];
+                };
+            };
+            /** @description Typed API error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    approveGatewayEnrollmentBatch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Original enrollment proposal and outcome */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GatewayEnrollmentBatch"];
+                };
+            };
+            /** @description Typed API error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
     getTask: {
         parameters: {
             query?: never;

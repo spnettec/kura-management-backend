@@ -19,6 +19,7 @@ mod settings_files;
 mod client_ca_store;
 mod ca_policy;
 mod ca_quorum;
+mod ca_enrollment;
 mod tls_store;
 mod server_csr;
 mod tls_runtime;

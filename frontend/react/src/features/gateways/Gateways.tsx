@@ -1,4 +1,5 @@
 import { RegisterGateway } from "./RegisterGateway";
+import { BulkEnrollment } from "./BulkEnrollment";
 import { RotateCertificate } from "./RotateCertificate";
 import { Button, Drawer, Empty, Space, Table, Tag } from "antd";
 import { useState } from "react";
@@ -33,6 +34,7 @@ export function Gateways({
   return (
     <>
       <RegisterGateway key={user.id} user={user} onRegistered={onRegistered} />
+      <BulkEnrollment key={`bulk:${user.id}`} user={user} onRegistered={onRegistered} />
       <Table<Gateway>
         rowKey="id"
         dataSource={items}

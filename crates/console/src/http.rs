@@ -2,6 +2,8 @@
 mod server_csr_http;
 #[path = "ca_policy_http.rs"]
 mod ca_policy_http;
+#[path = "ca_enrollment_http.rs"]
+mod ca_enrollment_http;
 use crate::{
     auth,
     config::Config,
@@ -140,6 +142,9 @@ pub fn router(app: App) -> Router {
         .route("/api/v1/auth/logout",post(logout))
         .route("/api/v1/session",get(session))
         .route("/api/v1/gateways",get(gateways).post(register_gateway))
+        .route("/api/v1/gateway-enrollment-batches", post(ca_enrollment_http::propose).layer(DefaultBodyLimit::max(crate::ca_enrollment::MAX_BODY)))
+        .route("/api/v1/gateway-enrollment-batches/{id}", get(ca_enrollment_http::status))
+        .route("/api/v1/gateway-enrollment-batches/{id}/approve", post(ca_enrollment_http::approve))
         .route("/api/v1/gateways/{id}",get(gateway))
         .route("/api/v1/gateways/{id}/identity-bundle",get(identity_bundle))
         .route("/api/v1/gateways/{id}/certificate",post(rotate_gateway_certificate))

@@ -62,7 +62,7 @@ pub(super) async fn approve(
     Ok(Json(status))
 }
 
-async fn policy_writer(app: &App, headers: &HeaderMap) -> Result<auth::Principal, ApiError> {
+pub(super) async fn policy_writer(app: &App, headers: &HeaderMap) -> Result<auth::Principal, ApiError> {
     let actor = auth::principal(&app.pool, headers).await?;
     require_admin(&actor)?;
     auth::csrf(headers, &actor, &app.config.origin)?;

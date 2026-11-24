@@ -74,6 +74,7 @@ struct Active {
     grpc_epoch: CancellationToken,
     certificate_fingerprint: String,
     ca_fingerprint: String,
+    client_verifier: Arc<dyn rustls::server::danger::ClientCertVerifier>,
 }
 
 pub(crate) struct TlsRuntime {
@@ -133,7 +134,7 @@ fn resolve(base: &Config, manifest: &Manifest) -> Result<Active> {
     }
     let verifier = rustls::server::WebPkiClientVerifier::builder(Arc::new(roots)).build()?;
     let mut grpc = rustls::ServerConfig::builder()
-        .with_client_cert_verifier(verifier)
+        .with_client_cert_verifier(verifier.clone())
         .with_single_cert(certs, parse_key()?)?;
     grpc.alpn_protocols = vec![b"h2".to_vec()];
     let mut manifest = manifest.clone();
@@ -147,6 +148,7 @@ fn resolve(base: &Config, manifest: &Manifest) -> Result<Active> {
         grpc_epoch: CancellationToken::new(),
         certificate_fingerprint,
         ca_fingerprint,
+        client_verifier: verifier,
     })
 }
 
@@ -212,6 +214,15 @@ impl TlsRuntime {
 
     pub fn config(&self) -> Config {
         self.active.read().unwrap().config.clone()
+    }
+
+    pub(crate) fn client_ca_authority(&self) -> crate::ca_enrollment::Trust {
+        let active = self.active.read().unwrap();
+        crate::ca_enrollment::Trust::new(
+            active.manifest.client_ca.as_ref().map(|generation| generation.id),
+            active.ca_fingerprint.clone(),
+            active.client_verifier.clone(),
+        )
     }
 
     pub fn healthy(&self) -> bool {
