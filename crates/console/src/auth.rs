@@ -81,10 +81,45 @@ pub async fn principal(pool: &PgPool, headers: &HeaderMap) -> Result<Principal, 
     })
 }
 pub fn origin(headers: &HeaderMap, expected: &str) -> Result<(), ApiError> {
-    if headers.get("origin").and_then(|v| v.to_str().ok()) != Some(expected) {
+    let mut origins = headers.get_all("origin").iter();
+    let received = origins.next().and_then(|v| v.to_str().ok());
+    if origins.next().is_some() || !received.is_some_and(|value| same_origin(value, expected)) {
         return Err(ApiError::new(StatusCode::FORBIDDEN, "FORBIDDEN"));
     }
     Ok(())
+}
+
+fn same_origin(received: &str, expected: &str) -> bool {
+    use axum::http::Uri;
+    let (Ok(received), Ok(expected)) = (received.parse::<Uri>(), expected.parse::<Uri>()) else {
+        return false;
+    };
+    let genuine_origin = |uri: &Uri| {
+        matches!(uri.scheme_str(), Some("http" | "https"))
+            && uri.authority().is_some_and(|authority| !authority.as_str().contains('@'))
+            && uri.path() == "/"
+            && uri.query().is_none()
+    };
+    genuine_origin(&received)
+        && genuine_origin(&expected)
+        && received.scheme() == expected.scheme()
+        && received.port_u16() == expected.port_u16()
+        && received.host().zip(expected.host()).is_some_and(|(a, b)| a.eq_ignore_ascii_case(b))
+}
+
+#[test]
+fn browser_origin_normalizes_dns_case_without_changing_authority() {
+    let expected = "https://Example-Gateway.local:19443";
+    assert!(same_origin("https://example-gateway.local:19443", expected));
+    for other in [
+        "http://example-gateway.local:19443",
+        "https://example-gateway.local:19444",
+        "https://other.local:19443",
+        "https://example-gateway.local:19443/settings",
+        "null",
+    ] {
+        assert!(!same_origin(other, expected), "{other}");
+    }
 }
 pub fn csrf(headers: &HeaderMap, p: &Principal, expected: &str) -> Result<(), ApiError> {
     origin(headers, expected)?;
