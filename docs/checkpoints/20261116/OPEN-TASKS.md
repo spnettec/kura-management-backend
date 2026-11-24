@@ -6,7 +6,7 @@ Core `0823d14779` 从 Git 导出，在隔离 Debian ARM64、JDK 21.0.12.1、Mave
 
 旧 Chrony 及组件回执沿原交接。当前 OrbStack 查不到原 7fd，Docker Desktop 连接不可用，旧归档仍记录最后正常停放的 41 输入、16 回执。本轮未切换引擎。
 
-已回收本轮构建器的 0.95 GiB 可写层。宿主清理当时可用实增 1076 KiB，整轮可用净减 983.09 MiB。历史 Core target 下 116 个 deb 目录计量约 22.13 GiB，未发现逐字节相同的归档。 Chrony 实际正向校时、当前完整六组件矩阵及原有其余父项继续内部待办。冻结 **0/12**，外部延期仅原三项。 [交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/current-core-osgi-0823d14-20261124/HANDOFF.md)
+已回收本轮构建器的 0.95 GiB 可写层。宿主清理当时可用实增 1076 KiB，后台回收后的复测相对清理前实增 980.48 MiB，整轮可用空间净减 3744 KiB。历史 Core target 下 116 个 deb 目录计量约 22.13 GiB，未发现逐字节相同的归档。 Chrony 实际正向校时、当前完整六组件矩阵及原有其余父项继续内部待办。冻结 **0/12**，外部延期仅原三项。 [交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/current-core-osgi-0823d14-20261124/HANDOFF.md)
 
 ## 2026-11-24 正式 Main 的 Chrony 启动、热重启与回环源切换
 
