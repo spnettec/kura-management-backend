@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+父项 #1、#3、#9、#12 补证。三代凭据 ARM64 Root `225:257` 用 GWT `b881a3a-2`、Wires `277954b-2` 正式联合升级。两个维护修订的业务载荷与 Git 来源正式归档逐字节一致。联合解包后 GWT 配置成功，Wires 的真实 postinst 注册锁等待 30 秒超时，留下半配置。正常关机冷读 89 项后，同 Root 新 boot 仅续配 Wires 一次。正式 Main 读取三代密文，九个 ACTIVE bundle 对包，原 Wires 快照 `1795544897896` 再送达，GWT 回环 HTTPS 302。原注册表、三快照、四个皮肤 conffile 和 43 份保护记录保持，含两笔 Deployment 原归档和回执。六包 installed，VM 正常停放，终态冷读 89 项。 [联合升级及冷读证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-gwt-wires-upgrade-20261125/HANDOFF.md)
+
 父项 #3、#9、#12 补证。隔离 ARM64 Root `225:257` 的正式 Core `dc1b0cbbf4-3` 中，实际 Java API `UnprivilegedExecutorService` 核对 `kura` 身份、工作目录、环境、字面参数与标准流。12 秒超时返回 143、`timedOut=true`，原命令与 worker 两个 PIDFD 均确认退出。实际 Main 正常停服回收另一异步命令及 worker，两个 socket inactive，同 UID 独立进程保持，回调返回 `EXECUTOR_RESULT_UNAVAILABLE`。四份正式执行器文件对包，六包 installed，原 Deployment 两笔归档与回执所在的 43 份保护记录及三个快照保持。VM 正常停放并通过冷读。 [Java API、原进程和冷读证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/typed-executor-lifecycle-20261125/HANDOFF.md)
 
 父项 #1、#3、#9、#12 补证。Core `dc1b0cbbf4` 使用 Git、JDK 21、Maven 与原 Bundle-Version 限定符 `202611230517` 生成 ARM64 `-3`。7 个受保护 JAR 和全部 233 个运行时 JAR 逐字节匹配，标准发行清单绑定 `225:257` 原前驱，专用布局计划为空。实装沿 `db47e1ec-2991-40b7-97ab-fd4d64b75b7a` 解包、正常关机、停机读回和同 Root 新 boot 续配，8 份阶段记录含 READY/configured 验签通过。数据和 Deployment 目录原 inode、43 份保护记录保持，三份快照内容和权限保持且 inode 随恢复复制更新。正式 Main 读回三代密文，9 个 ACTIVE bundle 对包，原 Wires 图继续送达，HTTPS 302，Agent 原号 READY/OFF。六包 installed，VM 正常停放，停机读回 73 项。 [原位升级、验签和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-standard-published-successor-20261125/HANDOFF.md)
