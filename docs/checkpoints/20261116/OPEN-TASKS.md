@@ -1,3 +1,13 @@
+## 2026-11-24 当前 Core 在 ARM64 上的完整 Core/OSGi 与发行包核对
+
+Core `0823d14779` 从 Git 导出，在隔离 Debian ARM64、JDK 21.0.12.1、Maven 3.10.2 下以普通用户离线执行 `-Posgi-it verify`。82 个模块成功，259 份 XML 与 Maven 输出均为 2173 项通过，含 68 项真实 Equinox，失败、错误和跳过均为零。
+
+实际 Equinox JVM 7368 的 3449 条打开记录覆盖全部 69 份暂存 bundle，配置与密钥库 bundle 同本轮模块产物逐字节一致。正式 ARM64 deb 中 41 个 Core 插件的 1210 个 class 全部一致，其他归档差异仅有 Bundle-Version 时间限定符，另外 176 个第三方插件与两个只读 Maven 缓存逐项相同。离线恢复工具同一组 84 项用例另用正式包内四个依赖 JAR 验证，重建工具的 14 个 class 和全部其他归档条目一致。
+
+旧 Chrony 及组件回执沿原交接。当前 OrbStack 查不到原 7fd，Docker Desktop 连接不可用，旧归档仍记录最后正常停放的 41 输入、16 回执。本轮未切换引擎。
+
+已回收本轮构建器的 0.95 GiB 可写层。宿主清理当时可用实增 1076 KiB，整轮可用净减 983.09 MiB。历史 Core target 下 116 个 deb 目录计量约 22.13 GiB，未发现逐字节相同的归档。 Chrony 实际正向校时、当前完整六组件矩阵及原有其余父项继续内部待办。冻结 **0/12**，外部延期仅原三项。 [交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/current-core-osgi-0823d14-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式 Main 的 Chrony 启动、热重启与回环源切换
 
 97 项 ARM64 单元测试通过。复用原隔离 Root `214:257` 和已安装的正式 Core `0823d14779`，同 Root 旧 STOP 回执先行核对。
