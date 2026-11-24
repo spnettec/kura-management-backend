@@ -1,3 +1,9 @@
+## 2026-11-24 当前六组件 Networking 移除、purge 与配置中断
+
+独立 ARM64 Root `204:257` 用修复后的 agent `bd6b3d0`、Core `fd67e48f5c` 和四个 addon 完成首次 APT。正式 Main 实载 8 个 bundle。已有本地配对下，Networking 实际 `remove → purge → unpack` 后原回执 `APPLIED`、当前 `REFUSED`、远程 OFF，正式 agent 启动被拒绝。终止同一注册锁的 postinst 等待者，dpkg 进入 `half-configured`。沿同一 Root 一次 `dpkg --configure`，正式 drop-in 恢复，原配对号重新 `READY`。普通快照、业务标记、原回执和选定元数据保持，Core AES 从 purge 前开始核对。再次实际加载的 8 个 JAR 与正式包逐项一致。agent UID 499、五组 capabilities 全零、NNP 1。两服务与新实例正常停放。夹具可重建缓存减少 151.84 MiB，宿主同期波动 −464 KiB。
+
+第 3、9、12 项各补子场景证据，冻结闭环 **0/12**。外部延期仍仅原三项。[实装交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/six-networking-purge-20261124/HANDOFF.md)。
+
 ## 2026-11-24 当前 ARM64 六组件配对与 Wires 分阶段续接
 
 独立 Root `203:257` 首次 APT 安装六组件通过。修复 agent 提前清空 `DropInPaths` 导致 Networking 合法 drop-in 校验失败的缺陷，agent 本地 `bd6b3d007f`，ARM64 定向 29 项通过。同 Root agent 在原号下从 `unpacked`、运行时 mask、`UNKNOWN` 续配到 `APPLIED`，留存原初始化。原配对号确认 `NOT_FOUND` 后获 `READY`、远程 OFF。正式 Main 两次实载 8 个 Equinox bundle，续配后的实装 JAR 与相应正式 deb 逐项字节一致。OrbStack 实测 UID 999、`CAP_NET_BIND_SERVICE`、`NoNewPrivs=0`。
