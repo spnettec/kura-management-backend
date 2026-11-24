@@ -1,8 +1,14 @@
+## 2026-11-24 Deployment 门禁交接、原号续配与六组件 purge
+
+Deployment `1642074` 用可核对的 systemd 启动断言阻止 Main，同时保留真实启用状态。旧掩码迁移绑定原 Root、transition 和锚点。Core `93bba1d8c4` 修复保留静态 Main 的属性比较并只承认精确的维护断言。ARM64 Deployment 4 项、Core 50 项单测通过。本场继续用已解包的 Core `f9cebce8af`，只引入后继 Deployment 制品。
+
+独立 ARM64 Root `209:257` 沿 `c26d7bfa-5505-4c10-9442-1676c49f1432` 从 PREPARED 续配，原目录交接回执和历史相同。Core 解除围栏后 Deployment 断言仍实测拒绝 Main 启动。随后四个 addon 配置成功，六包 installed，Main disabled，dpkg 审计为空。原 `data/` inode、provider 文件和快照保持，正式 Main PID 3701 使用同一原 PKCS12 签名验签。测试夹具六包一次 purge，应用目录清除，原历史与交接回执保持，新 purge 围栏保留，网关正常停放。宿主实增 420 KiB，夹具清除先前计量 373224 KiB 的 Core 安装树。冻结闭环 **0/12**，外部延期仍原三项。[全链证据与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/deployment-assertion-resume-20261124/HANDOFF.md)
+
 ## 2026-11-24 Core 保留重装原 provider 数据与联合维护卡点
 
 Core `f9cebce8af` 使移除签名围栏保留原 `data/` 目录，保留重装在同一文件系统原子交换，沿原号恢复。ARM64 定向 41 项通过。扩展 77 项有两项既有 systemd drop-in 合同失败，前一提交复现同名两项。
 
-独立 ARM64 Root `209:257` 六组件首装、正式 Main 创建业务夹具 PKCS12 并验签、Core 与四个 addon 移除通过。原维护 `c26d7bfa-5505-4c10-9442-1676c49f1432` 已签原目录交接，`data/` inode 及四份 provider 文件的完整指纹保持，三份快照的摘要和主要元数据保持。联合重装停在 Core PREPARED，Deployment preinst 的临时掩码与 Core 保留的 disabled 状态冲突，Core half-configured，四个 addon unpacked，无 READY 或终态历史。原号、原 Deployment 门禁及数据完整，夹具正常停放。冷启动验签、purge 和联合门禁生产修复内部待办。宿主实增 3.87 MiB，夹具 APT 缓存少 151.84 MiB。冻结闭环 **0/12**，外部延期仍仅原三项。[制品、现场及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-retained-provider-20261124/HANDOFF.md)
+独立 ARM64 Root `209:257` 六组件首装、正式 Main 创建业务夹具 PKCS12 并验签、Core 与四个 addon 移除通过。原维护 `c26d7bfa-5505-4c10-9442-1676c49f1432` 已签原目录交接，`data/` inode 及四份 provider 文件的完整指纹保持，三份快照的摘要和主要元数据保持。联合重装停在 Core PREPARED，Deployment preinst 的临时掩码与 Core 保留的 disabled 状态冲突，Core half-configured，四个 addon unpacked，无 READY 或终态历史。原号、原 Deployment 门禁及数据完整，夹具正常停放。本场后续续配、验签和 purge 见本页首项。宿主实增 3.87 MiB，夹具 APT 缓存少 151.84 MiB。冻结闭环 **0/12**，外部延期仍仅原三项。[制品、现场及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-retained-provider-20261124/HANDOFF.md)
 
 ## 2026-11-24 已绑定网关联合升级合并验收
 
