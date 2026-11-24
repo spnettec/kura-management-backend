@@ -64,3 +64,7 @@
 父项 #1、#3、#12 补证。Core `1202b49461` 允许带原 purge 完成签名、两份受审前序 manifest 和同一发布原启动回执的后继 reader。ARM64 81 项通过。705 个发行载荷成员只有 manifest 列表变更，233 个 JAR 保持。隔离 Root `225:257` 沿新号 `327316f8-83dc-4afc-b3be-b5f2af93687d` 完成真实 remove、purge、后继解包配置和 READY。合成数据先归档，再正常走 purge。22 份原凭据及历史、三个原 launcher 保持，正式 Main 实际读回原两代密文，正常 disabled 停放。
 
 原 `219:257` 已签发意图仍缺可信返回，保持原号未决。跨代保留重装与其它 typed brokers、六组件、provider/launcher 尚待。冻结 **0/12**，外部延期仍仅原三项。 [跨 reader manifest 的正式实装与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/cross-cohort-purge-20261124/HANDOFF.md)
+
+父项 #1、#3、#12 补证。Core `4b7531d437` 把已核验的双前序 manifest 和原启动回执门禁接入保留重装，ARM64 104 项通过。隔离 ARM64 Root `225:257` 的被移除 reader 与原发布 reader 摘要不同，后继正式包沿新号 `f4f9930d-70ca-4751-a222-785d7ea37090` 解包后正常停机，再沿原围栏续配至 ii。原保留签名、数据 inode 225:25464、四份原数据文件、23 份保护记录及三个 launcher 保持。实际 READY/configured 验签，正式 OSGi Main 读回两代密文，Main disabled，VM 已停放。已修正通用首装尾注对自动启动的错误承诺。
+
+原 `219:257` 签发后的布局停点仍缺可信返回，保留原号、数据和围栏。typed brokers、六组件及 provider/launcher 继续内部待验。冻结 **0/12**，外部延期仍仅原三项。 [跨 reader manifest 保留重装、原围栏和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/cross-cohort-retained-20261124/HANDOFF.md)
