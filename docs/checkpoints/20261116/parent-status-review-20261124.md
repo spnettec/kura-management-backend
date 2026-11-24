@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+父项 #3、#6、#9、#12 补证。隔离 Root `229:257` 的 Networking 普通 Depends 候选原生解包后旧 Core 拒绝 configure，正式 Main 在 JVM 前拒绝。 `fa4a4e9afc` 将初始化能力移至 Pre-Depends。旧 Core 实测在解包前拒绝，随后正式 APT 按 Core configured、Networking 解包的顺序完成升级，Core 八个阶段验签。八笔原 firewall 回执和模型跨实际 remove、purge、unpack、同 Root 新 boot 续配保持，新 boot 两份 ACK 读回。修复无变化发布更换文件 inode 的 `98ce41482f` 通过 88 项 JDK 21 定向测试，正式后继 Main 六笔零内核命令保持模型原 inode 和时间戳。九个 ACTIVE bundle 对包、22 笔冷读通过，六包正常停放。 [包维护、原号及停机读回](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-capability-upgrade-20261125/HANDOFF.md)
+
 父项 #3、#6、#12 补证。Networking `0ff9d17989` 与 Core `b75eb19368` 配对首装 firewall 发布。86 项 JDK 21 和 15 项 ARM64 测试通过。隔离 Root `224:257` 正式六包首装、Main 双族首次发布，veth 每族只允许指定来源的 UDP。沿同 Root 保留两笔首发回执，仅实施两笔撤回，基线规则及站点保护核对通过。正常关机后同 Root 新 boot 由正式 firewall 服务恢复两族原模型，Main 停用，18 笔旧回执保持，最终 20 笔冷读通过。原 `223:257` 保持停放。 [双栈实装、撤回、启动恢复及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-managed-initial-model-20261125/HANDOFF.md)
 
 父项 #3、#6、#12 补负向证据。隔离 ARM64 Root `223:257` 的正式 Core `78b75b44ad-1` 与 Networking `83f237e-2` 上，独立 veth 双族各两个来源均未通过基线 UDP。正式 Main 的一次 IPv4 规则在 typed broker PREPARE 被拒绝。首装仅配置链框架，Java 仍用内存默认规则作为预期前态。没有新 receiver 意图或结果，原配置快照和内核基线保留，VM 正常停放。首次发布及允许、拒绝、撤回的实际流量继续待验。 [正式拒绝与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-typed-packets-20261125/HANDOFF.md)

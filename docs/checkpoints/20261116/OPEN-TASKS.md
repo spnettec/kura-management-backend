@@ -1,3 +1,9 @@
+## 2026-11-25 防火墙配对升级与 Networking 保留维护
+
+隔离 ARM64 Root `229:257` 的旧 Core 实际允许普通 Depends 候选解包，configure 和 Main 启动均拒绝。Networking `fa4a4e9afc` 的 Pre-Depends 将门禁提前。旧 Core 下原生解包被拒，原已装 JAR 保持。正式 APT 联合升级确认 Core `b75eb19368` 先 configured，八份阶段含 READY 验签，随后 Networking 解包并安装。
+
+正式 Main 发布双栈后，Networking 实际 remove、purge、unpack 和同 Root 跨正常关机续配。八笔旧回执、模型与原 Core 证据始终保持。新 boot 两笔 firewall 恢复 ACK。Main 的零内核命令发布原先替换模型 inode，后继 `98ce41482f` 修复并通过 88 项 JDK 21 定向测试。正式实装后六笔 UNCHANGED 保持模型 inode 和时间戳。最终 22 笔操作、9 个 ACTIVE bundle 与六包冷读通过，VM 正常停放。冻结 **0/12**。 [实装及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-capability-upgrade-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式防火墙首装及双栈流量验证
 
 Networking `0ff9d17989` 将首装模型交给 typed broker。Core `b75eb19368` 配对 receiver `7ea511e`，核对同代内核链、标准跳转、站点与原历史。86 项 JDK 21 和 15 项 ARM64 源码包测试通过。与前版相比，正式 Core 233 个运行时 JAR 字节一致。
