@@ -1,6 +1,16 @@
+## 2026-11-24 PKCS#11 软件令牌跨代发布与快照重加密
+
+Core `87328bbb6d` 将正式换代校验接入已审查的 LXC systemd 适配配对。ARM64 定向 81 项通过、2 项跳过，正式 deb 的 233 个运行时 JAR 与先前版本字节一致。原 ARM64 Root `207:257` 按已核对的原准备和备份验证发布新 keyring。首次启动接受后因 OrbStack 的运行凭据副本停在旧代被正式准入拒绝。停机用正式本地入口同步副本，保留原启动和发布回执后正常启动实际 Main，写新代快照并从同一软件令牌验签。
+
+同 Root 正式重加密 `d487b019-0eb7-4890-922e-cf4de4c01d93` 成功。旧代快照 `1795525159966` 的原密文归档，40,953 字节 XML 原样恢复，结果仅用新代 active key 可读。重启后的合法 Main 读回旧代、新代及重加密快照，原 PIN 等值、同一令牌签名通过。原数据及 slot inode 保持，七份令牌文件中六份摘要不变，`token.object` 摘要变化的原因未归因。原始快照 `1795524804668` 在前轮验收时是 XML，PIN 字段为 Base64 编码，本轮才经正式入口转为整文件加密。
+
+Main disabled，隔离 VM 正常停放，临时构建已清理。关闭缺口仍包括正式换代自动同步运行凭据及其中断恢复、运行期间令牌拔出/替换、其他 provider 和完整维护矩阵。补父项 #1、#3、#12，全部 12 父项保留，冻结 **0/12**，外部延期仅原三项。
+
+[本轮原号、只读证据和停放](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-generation-rewrap-20261124/HANDOFF.md)
+
 ## 2026-11-24 PKCS#11 软件令牌保留重装与缺席恢复
 
-沿既有 Debian ARM64 Root `207:257`，用当前正式 Core `0823d14779`、Deployment `2bdb66d` 完成新 PKCS#11 provider 场景。独立 SoftHSM2 令牌一次配置并以不可导出私钥验签。软件令牌停机移存后，原号 `5b4779f6-86a4-46bd-b6b2-469c6bfac251` 实际 remove、unpack、configure 并保存 READY。原数据 inode、七份令牌文件与原加密快照 `1795524804668` 保持。缺席时实际 OSGi provider 取钥报 SERVICE_UNAVAILABLE；迁回同一 inode 后正式 Main 从同一快照读取原 PIN 并再次验签。旧独立静态 Main 维护回执仍可读。
+沿既有 Debian ARM64 Root `207:257`，用当前正式 Core `0823d14779`、Deployment `2bdb66d` 完成新 PKCS#11 provider 场景。独立 SoftHSM2 令牌一次配置并以不可导出私钥验签。软件令牌停机移存后，原号 `5b4779f6-86a4-46bd-b6b2-469c6bfac251` 实际 remove、unpack、configure 并保存 READY。原数据 inode、七份令牌文件与原 XML 快照 `1795524804668` 保持。缺席时实际 OSGi provider 取钥报 SERVICE_UNAVAILABLE；迁回同一 inode 后正式 Main 从同一快照读取原 PIN 并再次验签。旧独立静态 Main 维护回执仍可读。
 
 同发行的 97 项 Keystore 单测与 13 项集成测试沿用，一次实际联合验收完成，正式 provider JAR 配对。复用现成 VM，清理可重建缓存。Main disabled、正常停放。补父项 #1、#3、#12，运行期拔出/替换及跨代重加密仍待验。全部父项保留，冻结 **0/12**，外部延期仅原三项。
 
