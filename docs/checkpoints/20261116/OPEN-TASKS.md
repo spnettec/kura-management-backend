@@ -1,3 +1,9 @@
+## 2026-11-25 三代凭据现场 Agent 保留式清除和跨关机续配
+
+三代凭据 ARM64 Root `225:257` 的正式 Agent `f78610a-1` 未授权 remove 被原 prerm 拒绝。随后沿 `e2e8e0ef-3344-4ceb-bfc9-70864901183c` 保留式 remove/purge，Agent 缺席时正式 Main 读回三代原密文和九个 ACTIVE bundle，Wires 原图继续送达，HTTPS 302。同一原归档解包 INSTALL_ADMITTED 后正常关机，停机读回 120 份文件。新 boot 同 Root 一次续配至 REINSTALLED。55 条 Agent 状态路径和另外核对的 69 份保护文件保持，原本机 peer、材料、远程开关三授权仍 READY，实装 Agent 保持同代次 OFF/UNBOUND、五组能力为零。六包 installed，VM 正常停放并通过终态冷读。
+
+补父项 #1、#3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [原 Agent 维护、独立 Main 和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/published-generation-agent-retained-20261125/HANDOFF.md)
+
 ## 2026-11-25 三代凭据正式 Main 的 BIND 双栈发布与恢复
 
 隔离 ARM64 Root `225:257` 用当前三代 Core `dc1b0cbbf4-3`、Networking `83f237e-2` 的正式 OSGi provider 发布 BIND 双栈 LAN。named 实际仅监听获准的两个 LAN 地址，IPv4/IPv6 客户端四次 TCP/UDP 查询都到达同一独立 IPv6 上游并取得预期 A/AAAA 响应。通过正式 provider 撤回并恢复原 named 配置，内容、权限和属主保持，替换更新主配置 inode。三组原 intent/result/delivered 同 Root 停机读回。原六份 DHCP 文件、两笔 Deployment 回执等 56 份保护文件保持。六包 installed，Main 和 Agent disabled/inactive，VM 正常停放。
