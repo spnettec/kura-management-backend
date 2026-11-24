@@ -1,3 +1,9 @@
+## 2026-11-24 未绑定网关原授权随 Agent 清除和重装保留
+
+Agent `e473e02` 提供未绑定且有正式本机 peer 的保留移除准入。107 项 ARM64 单元测试通过。原 Root `215:257` 先实际升级后继 Agent，原 Core/Networking 回执保持。使用同一新归档完成一次 remove、purge、解包和原号续配。58 个受保护路径，原号五份阶段回执同意图绑定，最终 REINSTALLED。三份授权 READY，Main 与 Agent 显式启动后仍 OFF / UNBOUND，六包 installed，原 Root 正常停放。补父项 #3、#9、#12，冻结 **0/12**。
+
+[同 Root 合并验收、制品和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/unbound-peer-retained-removal-20261124/HANDOFF.md)
+
 ## 2026-11-24 Docker 启动器首装 HTTPS 凭据中断恢复
 
 Docker `766590c` 将未发布的 keytool 输出放在原卷 Root 私有目录，启动器在既有锁下将文件单次改名发布。旧版 ARM64 回归复现中断后的拒绝，修复版 30 项通过。JDK 21、Maven 3.10.2 正式 ARM64 镜像使用当前 Core `0823d14779`、三个附加 deb 和四份 YOFC DP。隔离 Root `39:9800421` 实际首装和移除后的同卷重部署，四个业务 bundle ACTIVE，后继正式 Main 的 HTTPS 登录入口返回 200，11 个保护对象指纹一致，容器与原卷正常停放。补父项 #3 和 #12，冻结 **0/12**。
