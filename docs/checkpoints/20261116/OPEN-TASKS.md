@@ -1,3 +1,9 @@
+## 2026-11-25 Deployment 升级拒绝、同号结算及 config-files 清除门禁
+
+三代凭据六组件 Root `225:257` 的新业务号 `57226` 仅派发一次。Java 正式归档落盘后保留 `phase=returned`，待发布注册表仍未交换。实际 `dpkg --unpack` 候选 `c012586-2` 在旧版 `prerm upgrade` 和候选 `prerm failed-upgrade` 均拒绝。旧版 `-1` 保持 installed，17 份已装文件、四份发布材料及 33 份保护记录通过原位核对。正式 Main 启动恢复后，同 Root 同号仅 GET 确认 `COMPLETED`，同一 `-2` 归档随后正式升级至 installed。原 `57225` 的归档和终态回执保持。Main、Agent 和六包夹具正常停放，停机冷读通过。独立 ARM64 Debian 以合成存在标记实测 `config-files` 的 `postrm` 拒绝直接 purge，撤除标记后原生 purge 通过。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [正式验收与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-upgrade-20261125/HANDOFF.md)
+
 ## 2026-11-25 真实待结算 Deployment 发布拒绝原生包维护
 
 三代凭据六组件 Root `225:257` 正式升级 Deployment 至 `c012586`。实际 Java 发布原号 `57225` 已写入 `phase=returned`，归档已提交，注册表仍待交换时中断该 JVM。原生 `dpkg --remove` 和 `dpkg --purge` 各一次均由 Deployment 钩子退出 1，包负载仍 installed，四份现场文件及 33 份保护记录保持。显式启动正式 Main 后，启动恢复将原回执和待发布注册表以原 inode 落位。只含 GET 的 OSGi 探针对同一原号查得 COMPLETED，Felix 读回原包版本。Main 和 Agent 正常停放，六包 installed，停机读回通过。
