@@ -1,3 +1,13 @@
+## 2026-11-24 正式 Main 的 Chrony 授权与 Core 清除重装
+
+Core `0823d14779` 将只针对时钟代理的 NoNewPrivileges 配置交给正式 deb 管理。Chrony 准备服务操作前核对 PID 1 有效属性，Polkit 规则内容及授权范围保持。ARM64 157 项单元测试通过，39 个现有成员及一个新配置与实装逐项核对，233 个运行时 JAR 字节一致。
+
+新独立 ARM64 LXC Root `214:257` 从干净环境首装。正式时钟代理实际 NoNewPrivs 1，五组 capability 仅 CAP_SYS_TIME。PIDFD 查询证实 Polkit 允许停止 Chrony，拒绝停止 named。正式 Main PID 10927 只派发一次 STOP，原号 `5bb0660e-b1a6-41bc-ad1e-c3dfc686785f` 为 APPLIED / CHRONY_STOPPED，发送方无 pending，Chrony 启动时间戳始终为 0。
+
+同一 Root 实际 remove 和 purge，deb 所有的配置和 Polkit 规则消失，时钟意图及回执仍在。原 deb 重新解包后停在 unpacked 检查点，再正常 configure，原编号和 namespace、actor 文件字节及 inode、发送方两份记录、授权配置均重新核对。原 Root `213:257` 的 UNKNOWN 只读取既有证据，现场始终停放。新现场 Main disabled 且正常停放。
+
+工作区清理 210.66 MiB，宿主清理时实增 210.65 MiB，夹具另清 256.79 MiB。保留新夹具和正式包后，宿主可用本轮净减 1.13 GiB。 Chrony 启动、step、配置热重启，以及全量组件维护与真实 modem 仍属原矩阵。冻结 **0/12**，外部延期仅原三项。 [交接与只读核验](../../../../.management-close-20261116/core-rtc-hotplug-20261120/chrony-service-authority-20261124/HANDOFF.md)
+
 ## 2026-11-24 Chrony 与 modem 准入和时钟代理内核约束
 
 Core `91cbb30eef` 将 Chrony 和 modem 的 systemd 适配核对收口至既有准确路径、内容和 LXC 校验。ARM64 143 项通过。正式包在原隔离 Root `213:257` 升级后，正式 Main 的 modem readiness 通过。实际 NetworkManager D-Bus 与 daemon 配对后，以 `NOT_A_MODEM_DEVICE` 拒绝 veth，未生成写入意图。ModemManager 的发行单元按 `ConditionVirtualization=!container` 保持停用。
