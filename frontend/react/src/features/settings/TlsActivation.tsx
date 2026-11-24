@@ -1,6 +1,6 @@
 import { Alert, Button, Card, Checkbox, Input, Space, Typography } from "antd";
 import { useCallback, useEffect, useId, useState } from "react";
-import { api, type Session } from "../../api/client";
+import { api, ApiError, type Session } from "../../api/client";
 import { errorText, useI18n } from "../../i18n/I18n";
 
 type ActivationStatus = {
@@ -134,7 +134,17 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
       setOperation(result);
       if (result.state === "APPLIED") onApplied();
       await refresh();
-    } catch (e) { setError(e); }
+    } catch (e) {
+      setError(e);
+      if (e instanceof ApiError && e.code === "CA_QUORUM_REQUIRED") {
+        // The server explicitly refused before writing any activation intent.
+        try {
+          localStorage.removeItem(storageKey);
+          setRequest(null);
+          setApproval(undefined);
+        } catch (storageError) { setError(storageError); }
+      }
+    }
     finally { setBusy(false); }
   }
   function finish() {
