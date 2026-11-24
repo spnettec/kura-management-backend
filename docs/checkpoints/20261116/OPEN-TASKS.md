@@ -1,3 +1,9 @@
+## 2026-11-25 历史配置 API 1.2 和 1.8 消费者接入正式 1.9
+
+隔离 ARM64 Root `225:257` 的正式 Core `dc1b0cbbf4-3` 导出配置 API `1.9.0`。从原 Git 1.2/1.8 配置 API 子集编译两个 Java 11 目标消费者，分别核对 59/106 个公开 JVM 描述符，再在同一正式 Main 实接线读取原 Wires 快照和两项修订。1.9 消费者经正式 provider 核对存储图、逻辑读及配置边界拒绝。实录 45 个发行消费者和三份观测 bundle 的正式包接线，含当前 GWT、Networking、Wires、Deployment 和 Agent bridge。六包、原 69 份保护文件及 Agent 原号阶段保持。VM 正常停放，停机核对原 120 项及匹配正式包的 API JAR。
+
+补父项 #4、#12。冻结 **0/12**，外部延期仅原三项。 [历史编译、正式接线和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/installed-config-api-compatibility-20261125/HANDOFF.md)
+
 ## 2026-11-25 三代凭据现场 Agent 保留式清除和跨关机续配
 
 三代凭据 ARM64 Root `225:257` 的正式 Agent `f78610a-1` 未授权 remove 被原 prerm 拒绝。随后沿 `e2e8e0ef-3344-4ceb-bfc9-70864901183c` 保留式 remove/purge，Agent 缺席时正式 Main 读回三代原密文和九个 ACTIVE bundle，Wires 原图继续送达，HTTPS 302。同一原归档解包 INSTALL_ADMITTED 后正常关机，停机读回 120 份文件。新 boot 同 Root 一次续配至 REINSTALLED。55 条 Agent 状态路径和另外核对的 69 份保护文件保持，原本机 peer、材料、远程开关三授权仍 READY，实装 Agent 保持同代次 OFF/UNBOUND、五组能力为零。六包 installed，VM 正常停放并通过终态冷读。
