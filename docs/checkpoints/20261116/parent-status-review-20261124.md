@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+父项 #1、#3、#12 补证。在独立 Root `226:257` 通过正式包联合验收后，Core `dc1b0cbbf4` 已在原 Root `219:257` 沿 `b372aa65-d749-4af0-9a28-eb934b4ed978` 和原围栏正式 unpack、configure 到 `ii`。原三份签名的字节和 inode、23 份保护文件、原数据 inode `219:23851` 保持。追踪确认原 layout 零重派，原 returned／complete 缺席，历史结果 UNRESOLVED，独立效果证明、READY 和 configured 验签通过。正式 JDK 21 Main 读回两代密文，三个 OSGi bundle ACTIVE，回环 HTTPS 404。Main disabled、VM 正常停机，停机文件复核了版本、postinst 和七份记录。 [原号联合验收及停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-forward-20261125/HANDOFF.md)
+
 父项 #3、#12 补证。Core `dc1b0cbbf4` 增加 Root、原号、原三份签名、旧控制与候选控制绑定的 forward 包路径。新效果证明保留原 layout 结果为 UNRESOLVED，原 returned／complete 保持缺席。108 项 ARM64 测试及原生小包 dpkg 状态探针通过，正式候选数据归档与 `22e54511df` 完全一致。原 `219:257` 停放，原包续接和 READY、Main、OSGi、provider 联合验收仍待。 [同号正式候选与实证范围](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-forward-20261125/HANDOFF.md)
 
 父项 #3、#12 补证。Core `55c973efc2` 在发布配对 vendor unit 并刷新 PID 1 后核验 LoadState，再允许签发布局意图。106 项 ARM64 定向测试通过。原 `219:257` 停机实读仍 iF，正式 postinst 和 14 个 vendor unit 对包匹配，六个 shell 文件仍是 0644，`.data`、`data` 缺席。原号、原围栏和原历史保持。前向效果核定的准入与允许写入已列出，续接包和原号 READY、Main、OSGi、provider 待验。 [停机原包实读与原号前向续接设计](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-review-20261125/HANDOFF.md)
