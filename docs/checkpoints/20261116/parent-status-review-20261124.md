@@ -56,3 +56,7 @@
 [原号升级、保留移除与 iF 停点](../../../../.management-close-20261116/core-rtc-hotplug-20261120/published-cohort-successor-20261124/HANDOFF.md)
 
 [原签名意图、正式续配和只读证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/retained-layout-control-repair-20261124/HANDOFF.md)
+
+父项 #1、#3、#12 补证。Core `419d1e5578` 在已配对 vendor unit 持久发布后、layout 意图签发前执行 PID 1 刷新。ARM64 定向 76 项通过，正式 deb 按 Git 重建且原数据归档逐字节一致。隔离 ARM64 Root `225:257` 沿独立原号 `085bb890-38af-45c3-8243-a2f20ac116a3` 完成真实保留重装。追踪核对 vendor 发布、刷新返回 0、签发和一次派发的先后，dpkg ii、READY/configured 验签。显式 Main PID 15472 实载 Crypto、配置 facade、快照 provider 并读回两代密文。原数据 inode、23 份凭据和历史记录保持，Main disabled，VM 正常停放。
+
+原 Root `219:257` 的 `b372aa65-d749-4af0-9a28-eb934b4ed978` 仍为 iF，原 layout 意图和围栏保留。现有签名缺可信阶段返回，原号前向续接待审查。完整 typed brokers、六组件和 provider/launcher 的维护矩阵仍待。冻结 **0/12**，外部延期仍仅原三项。 [本轮正式联合链和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/retained-layout-pid1-20261124/HANDOFF.md)
