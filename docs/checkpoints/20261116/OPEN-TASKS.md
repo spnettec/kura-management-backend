@@ -1,3 +1,9 @@
+## 2026-11-24 typed broker 共用启动和单元配对
+
+Core `e119ff5794` 为十个 worker 保留内核 NoNewPrivs，统一校验已核验的 LXC 适配，配对和角色范围保持。110 项 ARM64 定向测试通过。后继正式包在原 ARM64 Root `213:257` 标准升级，77 项更新成员实装验同，233 个 JDK 21 运行时 JAR 字节一致。
+
+同一正式 JVM 验过所有权标记、回环 IPv4 ICMP 和只读日志导出。所有权代理内核 NoNewPrivs 1、capability 全零。原重启意图、actor 终态、本地完成回执及 data inode 保持，dpkg 审计为空。原 Root 正常停放，测试探针移除。工作区清理 209.79 MiB，宿主当时增加 209.77 MiB，夹具另清 195.71 MiB，保留正式包后本轮宿主可用净减 199.02 MiB。冻结 **0/12**，外部延期仅原三项。[实装与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/broker-common-pairing-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式重启持久回执及跨 boot 结算
 
 原隔离 Root `212:257` 的正式 OSGi 调用触发系统重启，关机中断留下原号 `fd4fe58c-095f-489a-92f9-3156191edafc` 的意图与 pending，终态缺失按 UNKNOWN 封存。Core `806ad2e97a` 以可控的 systemd 停止顺序保护在途回执，ARM64 定向 74 项通过。后继 40 个关联包成员重新配对，233 个运行时 JAR 字节保持。
