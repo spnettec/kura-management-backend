@@ -1,3 +1,9 @@
+## 2026-11-24 CA 激活持锁与原审批证明
+
+Console `25c2239` 在正式 CA 联合切换期间持 PostgreSQL 提案、审批、账号和策略锁。新 v2 意图归档原租户、门槛和批准者，既有 v1 与 HTTP 回执延续原合同。11 项 ARM64 单测和两项真实 PostgreSQL／HTTPS／mTLS 验证通过。并发策略写入和禁用审批人等待事务，原号意图、数据库两份审批和原回执一致。Linux ARM64 release 可冷读。补父项 #2、#12，冻结 **0/12**。
+
+[正式源码、回执及真实整链](../../../../.management-close-20261116/core-rtc-hotplug-20261120/ca-quorum-publication-20261124/HANDOFF.md)
+
 ## 2026-11-24 已初始化六组件保留重装跨关机续配
 
 原 ARM64 Root `215:257` 的正式 Main 创建独立 PKCS12。当前六组件实际移除，Agent 和四附加包经 purge，Core 沿原签名围栏保留数据。Core 与四附加包解包后正常停机。新 boot 同 Root 核对四个围栏对象，先配 Core 和四附加包，再沿原 Agent 号重装。六包 installed，dpkg audit 清洁。原数据 inode、四份 provider 文件、三份快照和原三授权保持，正式 Main 冷启从原库验签，Agent OFF / UNBOUND。56 项 Core/Deployment ARM64 单测通过，Agent 引用同版 107 项。补父项 #1、#3、#9、#12，冻结 **0/12**。
