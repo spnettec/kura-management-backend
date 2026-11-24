@@ -1,3 +1,11 @@
+## 2026-11-24 签名保留重装的 dpkg 控制脚本发布中断
+
+真实 Debian ARM64 dpkg 1.22.22 在独立小包数据库中复现候选 postinst 已发布而旧 Version 仍为 half-installed。进程中断后沿原小包和测试回执续至 iU、ii。Core `22e54511df` 先核对同 Root 原签名 intent 与精确续接回执，再接受此唯一错位，拒绝缺签名、篡改、其它状态及未知或反向错配控制。旧版同一回归失败，修复后 64 项 ARM64 单测通过；Git 重建的 ARM64 候选维护控制已核对，原数据归档字节保持。正式 Core 的此停点并入后续联合验收。原 `218:257` 完成记录和四网关归档再次冷读通过，独立 runner 与重复候选已清理，宿主清理段实增 197.58 MiB。
+
+补父项 #3、#12。冻结 **0/12**，外部延期仍仅原三项。
+
+[独立 dpkg 中断、候选与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/retained-layout-dpkg-interruption-20261124/HANDOFF.md)
+
 ## 2026-11-24 保留重装原签名意图的受控续配
 
 Core `2cbb34996b` 的正式 ARM64 控制脚本修复沿原 `218:257` 和 `134c4a66-1da1-4e65-9453-1f9b4b1399a1`，只允许精确前序 deb 且完全相同的数据载荷、原 HMAC intent、未发布的 Main 布局。正式 preinst 追加签名续接回执，原 intent 字节保持，正式 dpkg 续配 ii，READY 和 configured HMAC 通过。63 项定向通过。实装 Main PID 3507 读回两代密文并写读同代 KURA2，回环 HTTPS 404。原数据 inode 和 25 份原凭据及回执保持，正常 disabled 停放。清理段宿主实增 589.89 MiB，正式包和原证据归档。
