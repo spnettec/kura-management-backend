@@ -1,3 +1,9 @@
+## 2026-11-25 原 219 布局效果核对与 PID 1 签发门禁
+
+Core `55c973efc2` 在发布配对 vendor unit 并刷新 PID 1 后核验 LoadState，再允许签发布局意图。106 项 ARM64 定向测试通过。原 `219:257` 停机实读仍 iF，正式 postinst 和 14 个 vendor unit 对包匹配，六个 shell 文件仍是 0644，`.data`、`data` 缺席。原号、原围栏和原历史保持。前向效果核定的准入与允许写入已列出，续接包和原号 READY、Main、OSGi、provider 待验。
+
+补父项 #3、#12，冻结 **0/12**。其余 typed brokers、六组件和 provider/launcher 矩阵保持内部待验，外部延期仅原三项。 [停机原包实读与原号前向续接设计](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-review-20261125/HANDOFF.md)
+
 ## 2026-11-25 三代凭据的 Networking 移除及配置中断续接
 
 正式 Core `7a176edd6a` 的三代凭据 Root `225:257` 以原 Networking `83f237e-2` 正式 remove、purge、解包和中断续配。Networking 缺席时实际 Agent 依原配对拒绝，独立 Main 读回三代密文并返回 HTTPS 302。精确终止注册锁等待者后 dpkg 为 half-configured，同 Root 一次续配恢复原 vendor、唯一注册表行及原号 READY/OFF。33 份原记录、原 data inode 和第三代均保持。恢复后 OSGi 实装 8 个 ACTIVE bundle 逐一与正式 deb 匹配，Agent 实际无能力且 OFF/UNBOUND。两服务及 VM 正常停放。
