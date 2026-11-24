@@ -1,3 +1,11 @@
+## 2026-11-24 PKCS#11 软件令牌保留重装与缺席恢复
+
+沿既有 Debian ARM64 Root `207:257`，用当前正式 Core `0823d14779`、Deployment `2bdb66d` 完成新 PKCS#11 provider 场景。独立 SoftHSM2 令牌一次配置并以不可导出私钥验签。软件令牌停机移存后，原号 `5b4779f6-86a4-46bd-b6b2-469c6bfac251` 实际 remove、unpack、configure 并保存 READY。原数据 inode、七份令牌文件与原加密快照 `1795524804668` 保持。缺席时实际 OSGi provider 取钥报 SERVICE_UNAVAILABLE；迁回同一 inode 后正式 Main 从同一快照读取原 PIN 并再次验签。旧独立静态 Main 维护回执仍可读。
+
+同发行的 97 项 Keystore 单测与 13 项集成测试沿用，一次实际联合验收完成，正式 provider JAR 配对。复用现成 VM，清理可重建缓存。Main disabled、正常停放。补父项 #1、#3、#12，运行期拔出/替换及跨代重加密仍待验。全部父项保留，冻结 **0/12**，外部延期仅原三项。
+
+[本轮证据、冷读和停放](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-retained-software-token-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式静态 Main 保留重装与 Deployment 提前断言
 
 Deployment `2bdb66d` 在 vendor Main 仍为 not-found 时即可建立同 Root 的启动断言，覆盖 Core 解包后到 Deployment 配置结束的启动窗口。5 项 ARM64 Deployment 单测通过，Core `0823d14779` 的 65 项同版定向单测沿用。新隔离 Root `207:257` 的原移除号 `63edb403-9239-4d9d-b65c-d4db32a6c2ae` 从静态 Main 完成正式保留重装。Core READY 后仍由独立 Deployment 门禁拒绝启动，配置完成后门禁正常退役。原数据身份和摘要保持，Main 显式启动为 JDK 21 Equinox，HTTPS 实测，正常 disabled 停机。
