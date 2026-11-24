@@ -1,3 +1,11 @@
+## 2026-11-24 正式静态 Main 保留重装与 Deployment 提前断言
+
+Deployment `2bdb66d` 在 vendor Main 仍为 not-found 时即可建立同 Root 的启动断言，覆盖 Core 解包后到 Deployment 配置结束的启动窗口。5 项 ARM64 Deployment 单测通过，Core `0823d14779` 的 65 项同版定向单测沿用。新隔离 Root `207:257` 的原移除号 `63edb403-9239-4d9d-b65c-d4db32a6c2ae` 从静态 Main 完成正式保留重装。Core READY 后仍由独立 Deployment 门禁拒绝启动，配置完成后门禁正常退役。原数据身份和摘要保持，Main 显式启动为 JDK 21 Equinox，HTTPS 实测，正常 disabled 停机。
+
+前一独立 Root `217:257` 的 `bee7dc1d-75e8-42b6-9d1f-47d22c74b266` 仍保留只有 layout 意图、无成功凭证的原停点，只读核定实际断言与保留数据。用户批准的三台四网关测试 VM 已删除，正式归档、原回执及截图冷读一致，删除时实增 2.63 GiB。以上为独立证据，父项 #3、#12 补证，全部 12 父项继续保留，冻结 **0/12**，外部延期仍限原三项。
+
+[正式包、原号、主进程及停机](../../../../.management-close-20261116/core-rtc-hotplug-20261120/deployment-early-main-assertion-20261124/HANDOFF.md) · [早期 layout 停点和清理](../../../../.management-close-20261116/core-rtc-hotplug-20261120/static-main-deployment-20261124/HANDOFF.md)
+
 ## 2026-11-24 两台正式 Agent 导入批量续期回执
 
 复用同发行的 10 项中心定向单测和 Agent 107 项打包单测，运行一条隔离 Debian ARM64 全链。当前中心正式 deb、独立外部测试 CA、两位管理员和两个正式 Agent 同属批次 `3853039d-617d-4cd0-913a-1ae641424868`。两个真实本机入口分别可读各自原 v2 收据，按原 Root 从第 1 代到第 2 代，APPLIED 时保持 OFF。其后各显式开启，中心观测新证书和新会话，两个 `agent.status` 均 SUCCEEDED 且 Main 可用。正常 OFF 停机，冷读原批次、两代本机证据、中心子回执及任务。
