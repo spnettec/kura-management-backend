@@ -1,3 +1,9 @@
+## 2026-11-25 真实待结算 Deployment 发布拒绝原生包维护
+
+三代凭据六组件 Root `225:257` 正式升级 Deployment 至 `c012586`。实际 Java 发布原号 `57225` 已写入 `phase=returned`，归档已提交，注册表仍待交换时中断该 JVM。原生 `dpkg --remove` 和 `dpkg --purge` 各一次均由 Deployment 钩子退出 1，包负载仍 installed，四份现场文件及 33 份保护记录保持。显式启动正式 Main 后，启动恢复将原回执和待发布注册表以原 inode 落位。只含 GET 的 OSGi 探针对同一原号查得 COMPLETED，Felix 读回原包版本。Main 和 Agent 正常停放，六包 installed，停机读回通过。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [正式拒绝与同号只读结算](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)
+
 ## 2026-11-25 原 219 已签发布局正式同号续配
 
 在独立 Root `226:257` 通过正式包联合验收后，Core `dc1b0cbbf4` 已在原 Root `219:257` 沿 `b372aa65-d749-4af0-9a28-eb934b4ed978` 和原围栏正式 unpack、configure 到 `ii`。原三份签名的字节和 inode、23 份保护文件、原数据 inode `219:23851` 保持。追踪确认原 layout 零重派，原 returned／complete 缺席，历史结果 UNRESOLVED，独立效果证明、READY 和 configured 验签通过。正式 JDK 21 Main 读回两代密文，三个 OSGi bundle ACTIVE，回环 HTTPS 404。Main disabled、VM 正常停机，停机文件复核了版本、postinst 和七份记录。
