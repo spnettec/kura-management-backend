@@ -1,3 +1,9 @@
+## 2026-11-25 正式 Docker 同卷升级与 PKCS#11 归位恢复
+
+Docker `766590c` 从 Git 用 JDK 21 和 Maven 重建正式 ARM64 前驱与候选，Core 由 `dc1b0cbbf4-3` 升到 `78b75b44ad-1`，GWT、Deployment、Wires 摘要保持。隔离同卷 Root `39:10057850` 的首个 PID 1 Main 保存两份 PKCS#11 原快照。候选 Main 同卷读回，注册缓存失配和同名占用均被拒绝，另一槽及原槽重取得到原证书验签。Alpine SoftHSM `2.7.0-r0` 的目标令牌缺席、同 inode 归位后，原 JVM 的取钥均为 `NO_ENTRY`，旧句柄均失败，另一槽持续验签。同一候选镜像新进程通过只读 OSGi 探针再次用两份原证书验签。两份快照、TLS 和 16 份持久文件完整指纹保持，8 个 ACTIVE bundle 对包通过。
+
+正常停放并通过只读冷读。补父项 #1、#3、#12，冻结 **0/12**。同 JVM 热恢复仍待，外部延期仅原三项。 [Docker 联合验收与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/docker-pkcs11-current-20261125/HANDOFF.md)
+
 ## 2026-11-25 PKCS#11 注册修复的六包实装与同号跨关机续配
 
 隔离 Debian ARM64 Root `222:257` 先以六组件正式装入 Core `dc1b0cbbf4-3`，在正式 Main 保存两个 PKCS#11 工厂配置、写入两份原快照并按原证书完成验签。Core 候选 `78b75b44ad-1` 一次解包并正常关机，停机读回 `unpacked` 及原围栏，新 boot 沿 `368dc18b-cb86-450d-8666-57069b270e97` 一次续配，8 份阶段记录验签通过。正式 JDK 21 Main 读回原两份快照，同名 JCA 注册占用和缓存失配均返回 `SERVICE_UNAVAILABLE`，外部占用保持，独立同库槽的旧句柄与新取钥验签通过。释放占用后原 OSGi 服务继续用原钥验签。10 个 ACTIVE bundle 与正式包匹配，AES 往返、Main 写租约、HTTPS 302、Agent 原号 READY/OFF 均通过。
