@@ -743,6 +743,7 @@ export const messages = {
   "settings.caPolicy.title": ["客户端 CA 保管策略", "Client CA custody policy"],
   "settings.caPolicy.current": ["当前版本 / 所需批准数", "Current revision / approvals required"],
   "settings.caPolicy.defaultRoster": ["当前所有符合条件的管理员", "All currently eligible administrators"],
+  "settings.caPolicy.refresh": ["刷新当前策略", "Refresh current policy"],
   "settings.caPolicy.propose": ["提出策略变更", "Propose a policy change"],
   "settings.caPolicy.requiredCount": ["新策略所需批准数", "Approvals required by the new policy"],
   "settings.caPolicy.roster": ["拟任保管人员", "Proposed custodians"],

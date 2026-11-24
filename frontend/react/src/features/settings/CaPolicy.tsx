@@ -109,7 +109,7 @@ export function CaPolicy({ user, onPublished }: { user: Session; onPublished: ()
         <p>{t("settings.caPolicy.current")}{` ${data.policy.revision} · ${data.policy.requiredCount}`}</p>
         <p>{data.policy.custodianIds ? names(data.policy.custodianIds) : t("settings.caPolicy.defaultRoster")}</p>
         <Button disabled={busy} onClick={() => { setError(undefined); void refresh().catch(setError); }}>
-          {t("settings.activation.refresh")}
+          {t("settings.caPolicy.refresh")}
         </Button>
         {data.viewerCanPropose && <form method="post" action={`/api/v1${path}/proposals`}
           aria-label={t("settings.caPolicy.propose")} onSubmit={event => {
@@ -125,6 +125,7 @@ export function CaPolicy({ user, onPublished }: { user: Session; onPublished: ()
           <Space direction="vertical" style={{ width: "100%" }}>
             <label htmlFor={`${label}-count`}>{t("settings.caPolicy.requiredCount")}</label>
             <Input id={`${label}-count`} name="requiredCount" type="number" min={2} max={32767} step={1}
+              style={{ maxWidth: "8rem" }}
               required disabled={formBusy} value={Number.isFinite(count) ? count : ""}
               onChange={event => { setCount(event.target.valueAsNumber); setInvalid(false); }} />
             <fieldset disabled={formBusy} aria-describedby={invalid ? `${label}-roster-error` : undefined}>
@@ -144,7 +145,7 @@ export function CaPolicy({ user, onPublished }: { user: Session; onPublished: ()
       </>}
       <form method="get" action={`/api/v1${path}/proposals/${id}`} aria-labelledby={`${label}-id-label`}
         onSubmit={event => { event.preventDefault(); void observe(); }}>
-        <Space direction="vertical">
+        <Space direction="vertical" style={{ width: "100%", maxWidth: "24rem" }}>
           <label id={`${label}-id-label`} htmlFor={`${label}-id`}>{t("settings.caPolicy.proposalId")}</label>
           <Input id={`${label}-id`} name="operationId" required pattern={uuidPattern}
             autoCorrect="off" autoCapitalize="none" spellCheck={false}
