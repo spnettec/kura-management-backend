@@ -1,3 +1,9 @@
+## 2026-11-24 当前配对下 Core 与 Networking 后继联合升级
+
+Agent `48f7310f3f` 补齐无额外能力的受审 Networking drop-in 后继升级。允许 Core unit 字节相同，两个 Debian 版本仍分别递增，继续核对原 Root、boot、归档、脚本、loader、授权与能力范围。43 项 ARM64 单元测试通过，覆盖连续代次、拒绝与部分发布续接。按用户调整，单项路径通过单测覆盖，实际发行做一次合并全链。
+
+独立 ARM64 Root `210:257` 完成六包首装、原配对、Core 与 Networking 本地候选 `-1 → -2` 联合换版、原号 `APPLIED` 与 Main/agent 启停。两份候选仅 Debian 修订变化，载荷和维护脚本保持。原配对 READY/OFF、原快照与原 AES 保持。正式 Main 实载 8 个所选 bundle。新夹具正常停放，宿主可用增 261.60 MiB。第 3、9、12 项继续补充证据，冻结闭环 **0/12**，外部延期维持原三项。[合并链、停放与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/six-companion-current-update-20261124/HANDOFF.md)。
+
 ## 2026-11-24 当前六组件 Networking 移除、purge 与配置中断
 
 独立 ARM64 Root `204:257` 用修复后的 agent `bd6b3d0`、Core `fd67e48f5c` 和四个 addon 完成首次 APT。正式 Main 实载 8 个 bundle。已有本地配对下，Networking 实际 `remove → purge → unpack` 后原回执 `APPLIED`、当前 `REFUSED`、远程 OFF，正式 agent 启动被拒绝。终止同一注册锁的 postinst 等待者，dpkg 进入 `half-configured`。沿同一 Root 一次 `dpkg --configure`，正式 drop-in 恢复，原配对号重新 `READY`。普通快照、业务标记、原回执和选定元数据保持，Core AES 从 purge 前开始核对。再次实际加载的 8 个 JAR 与正式包逐项一致。agent UID 499、五组 capabilities 全零、NNP 1。两服务与新实例正常停放。夹具可重建缓存减少 151.84 MiB，宿主同期波动 −464 KiB。
