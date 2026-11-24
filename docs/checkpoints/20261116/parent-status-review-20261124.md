@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+父项 #1、#3、#12 补证。原 ARM64 Root `207:257` 的正式 Core `87328bb-1` 中，实际 Main 在三份原快照及发布凭据下通过原 SoftHSM 不可导出私钥验签。保持同一 JVM、调用和 OSGi 服务，移存软件令牌目录时重新取钥为 NO_ENTRY，旧句柄签名返回 JCA ProviderException。同 inode 归位后原 JVM 仍为 NO_ENTRY，正常重启一次后用原证书恢复签名验签。原 data 与令牌 inode 保持，20 份保护记录、三份快照和原密钥、重加密回执保持。六份令牌文件完整指纹保持，token.object 摘要变化并留证。Main disabled/inactive，VM 正常停放，provider JAR 与原发行包一致并通过冷读。 [原令牌、同 JVM 观察与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-runtime-absence-20261125/HANDOFF.md)
+
 父项 #4、#12 补证。隔离 ARM64 Root `225:257` 的正式 Core `dc1b0cbbf4-3` 导出配置 API `1.9.0`。从原 Git 1.2/1.8 配置 API 子集编译两个 Java 11 目标消费者，分别核对 59/106 个公开 JVM 描述符，再在同一正式 Main 实接线读取原 Wires 快照和两项修订。1.9 消费者经正式 provider 核对存储图、逻辑读及配置边界拒绝。实录 45 个发行消费者和三份观测 bundle 的正式包接线，含当前 GWT、Networking、Wires、Deployment 和 Agent bridge。六包、原 69 份保护文件及 Agent 原号阶段保持。VM 正常停放，停机核对原 120 项及匹配正式包的 API JAR。 [历史编译、正式接线和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/installed-config-api-compatibility-20261125/HANDOFF.md)
 
 父项 #1、#3、#9、#12 补证。三代凭据 ARM64 Root `225:257` 的正式 Agent `f78610a-1` 未授权 remove 被原 prerm 拒绝。随后沿 `e2e8e0ef-3344-4ceb-bfc9-70864901183c` 保留式 remove/purge，Agent 缺席时正式 Main 读回三代原密文和九个 ACTIVE bundle，Wires 原图继续送达，HTTPS 302。同一原归档解包 INSTALL_ADMITTED 后正常关机，停机读回 120 份文件。新 boot 同 Root 一次续配至 REINSTALLED。55 条 Agent 状态路径和另外核对的 69 份保护文件保持，原本机 peer、材料、远程开关三授权仍 READY，实装 Agent 保持同代次 OFF/UNBOUND、五组能力为零。六包 installed，VM 正常停放并通过终态冷读。 [原 Agent 维护、独立 Main 和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/published-generation-agent-retained-20261125/HANDOFF.md)
