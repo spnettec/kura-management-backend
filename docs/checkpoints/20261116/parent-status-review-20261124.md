@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+父项 #3、#6、#12 补证。Networking `0ff9d17989` 与 Core `b75eb19368` 配对首装 firewall 发布。86 项 JDK 21 和 15 项 ARM64 测试通过。隔离 Root `224:257` 正式六包首装、Main 双族首次发布，veth 每族只允许指定来源的 UDP。沿同 Root 保留两笔首发回执，仅实施两笔撤回，基线规则及站点保护核对通过。正常关机后同 Root 新 boot 由正式 firewall 服务恢复两族原模型，Main 停用，18 笔旧回执保持，最终 20 笔冷读通过。原 `223:257` 保持停放。 [双栈实装、撤回、启动恢复及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-managed-initial-model-20261125/HANDOFF.md)
+
 父项 #3、#6、#12 补负向证据。隔离 ARM64 Root `223:257` 的正式 Core `78b75b44ad-1` 与 Networking `83f237e-2` 上，独立 veth 双族各两个来源均未通过基线 UDP。正式 Main 的一次 IPv4 规则在 typed broker PREPARE 被拒绝。首装仅配置链框架，Java 仍用内存默认规则作为预期前态。没有新 receiver 意图或结果，原配置快照和内核基线保留，VM 正常停放。首次发布及允许、拒绝、撤回的实际流量继续待验。 [正式拒绝与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-typed-packets-20261125/HANDOFF.md)
 
 父项 #1、#3、#12 补证。Docker `766590c` 从 Git 用 JDK 21 和 Maven 重建正式 ARM64 前驱与候选，Core 由 `dc1b0cbbf4-3` 升到 `78b75b44ad-1`，GWT、Deployment、Wires 摘要保持。隔离同卷 Root `39:10057850` 的首个 PID 1 Main 保存两份 PKCS#11 原快照。候选 Main 同卷读回，注册缓存失配和同名占用均被拒绝，另一槽及原槽重取得到原证书验签。Alpine SoftHSM `2.7.0-r0` 的目标令牌缺席、同 inode 归位后，原 JVM 的取钥均为 `NO_ENTRY`，旧句柄均失败，另一槽持续验签。同一候选镜像新进程通过只读 OSGi 探针再次用两份原证书验签。两份快照、TLS 和 16 份持久文件完整指纹保持，8 个 ACTIVE bundle 对包通过。 同 JVM 热恢复仍待。 [Docker 联合验收与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/docker-pkcs11-current-20261125/HANDOFF.md)

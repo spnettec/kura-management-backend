@@ -1,3 +1,11 @@
+## 2026-11-25 正式防火墙首装及双栈流量验证
+
+Networking `0ff9d17989` 将首装模型交给 typed broker。Core `b75eb19368` 配对 receiver `7ea511e`，核对同代内核链、标准跳转、站点与原历史。86 项 JDK 21 和 15 项 ARM64 源码包测试通过。与前版相比，正式 Core 233 个运行时 JAR 字节一致。
+
+隔离 ARM64 Root `224:257` 六包首装。正式 Main 首次发布双栈模型，实际 veth UDP 仅放行每族指定来源。探针计数器断言提前停服后，沿同 Root、同 boot 读回原规则和回执，后继 Main 的启动回执均为零内核命令。原始放行各派发一次，两笔撤回经独立 ACK 验证，全部来源恢复阻断，站点规则保持。正常关机后同 Root 新 boot 由正式 firewall 服务恢复两族模型，Main 停用，原回执保持。六包 installed，正常停放，20 份原号冷读通过。
+
+补父项 #3、#6、#12。冻结 **0/12**，外部延期仅原三项。原 `223:257` 继续保留首次拒绝现场。 [正式实装与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-managed-initial-model-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式防火墙首装前态拒绝
 
 隔离 ARM64 Root `223:257` 正式首装六包，Core `78b75b44ad-1`、Networking `83f237e-2` 由 systemd Main 实载。独立 veth 上 IPv4 与 IPv6 各两个源地址在基线均无法投递 UDP。正式 OSGi 的一次 IPv4 配置提交在 typed broker PREPARE 被拒绝，默认规则也遇到同类冲突。内核只有首装链框架，Java 前态却包含默认规则。保留原配置快照，内核规则保持，receiver 无新意图或结果，Root 正常停放。
