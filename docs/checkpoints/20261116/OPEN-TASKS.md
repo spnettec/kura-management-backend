@@ -1,3 +1,9 @@
+## 2026-11-25 SQLCipher ARM64 跨 ABI 热维护
+
+Core `5a31199e23` 使用 SQLCipher SDK 的 pkg-config 编译和链接参数。Debian .so.1 JNI 与原发行件逐字节一致，Ubuntu .so.2 DP 由 Git/JDK 21 构建。首次 DP 更新事件成功时，实装 Felix 对相同 Bundle-Version 跳过驱动替换。Core `21b4a09f8c` 以发布限定符和 JNI 摘要区分驱动版本。
+
+隔离 ARM64 Root `230:257` 六包正式实装。两次热转换各在同一正式 JVM 实读 4.13.0→4.6.1 和 4.6.1→4.13.0。原生 remove 旧系统库后同 Root 冷启，新引擎读回原明文、密文及页完整性。后续 purge 报告旧库已缺席。两库、三份快照和 AES 原凭据完整指纹保持，六包 installed，VM 正常停放，重复冷读一致。补 #1、#3、#12，冻结 **0/12**。 [实装、冷读和清理](../../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlcipher-abi-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 真实待结算 modem Reset 跨联合 purge
 
 新 Parallels ARM64 Root `2049:2` 从验签的 Ubuntu 26.04 镜像联合实装正式 Core `b75eb19368-1`、Networking `98ce41482f-1`。正式 Main 通过真实 ModemManager 对回环虚拟 CDC ACM 派发一次 Reset，原号 `0d00e0b2-e0f3-464b-a6e3-500c0f341206` 等待结果中断并返回 UNKNOWN。真实两包 remove 和 purge 均成功，原 actor intent/result 与 sender 保留归档保持。Core 解包并正常关机后，在同 Root 新 boot 一次续配，装回 Networking，原 sender 按原号和原字节恢复。后继正式 Main 在无临时 modem 的条件下只读原号 APPLIED 并确认送达。原 receiver 两份文件 inode、权限和摘要保持，两份凭据及测试数据归档保持。两包 installed，Main disabled/inactive，VM 正常停放，冷读复跑一致。
@@ -1572,7 +1578,7 @@ Equinox 异步注册期间曾在生产代码复现 ConcurrentModificationExcepti
 
 ## 2026-11-21 系统 SQLCipher 库 purge 与解包后续配
 
-六组件原 Root 停服后实际 purge libsqlcipher1，链接器缓存和已安装库文件均已核对。重新解包原 4.6.1-2 后，在 configure 之前正常停机；卷上冷读确认该包为 unpacked，六组件为 installed，原 83 份文件精确匹配。同 Root 续配并执行 libc-bin 触发器，dpkg 审计为空。正式 Main 经原夹具 provider 读回两个数据库和加密页。首次观察在取服务前等待 lazy bundle 进入 ACTIVE 超时；复测证实 STARTING 时已有服务引用，经正常入口即可读回，全程无需显式启动 bundle。停机只读入口更新为 sqlcipher-native-maintenance/parked-readback.py。不同系统库版本升级和维护脚本内部被中断仍待验。冻结 0/12。[dpkg、冷卷与正式 Main 记录](actual-native-wires-retained-reinstall-checkpoint.json)
+六组件原 Root 停服后实际 purge libsqlcipher1，链接器缓存和已安装库文件均已核对。重新解包原 4.6.1-2 后，在 configure 之前正常停机；卷上冷读确认该包为 unpacked，六组件为 installed，原 83 份文件精确匹配。同 Root 续配并执行 libc-bin 触发器，dpkg 审计为空。正式 Main 经原夹具 provider 读回两个数据库和加密页。首次观察在取服务前等待 lazy bundle 进入 ACTIVE 超时；复测证实 STARTING 时已有服务引用，经正常入口即可读回，全程无需显式启动 bundle。停机只读入口更新为 sqlcipher-native-maintenance/parked-readback.py。不同系统库版本升级随后在隔离 Root 230:257 实测。维护脚本内部中断仍待验。冻结 0/12。[dpkg、冷卷与正式 Main 记录](actual-native-wires-retained-reinstall-checkpoint.json)
 
 ## 2026-11-21 加密 SQLite provider 的发行包与维护
 
