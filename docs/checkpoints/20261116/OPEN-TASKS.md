@@ -1,3 +1,9 @@
+## 2026-11-24 正式 Main 的 BIND 状态与专用 DHCP 生命周期
+
+Core `ff1364d6e4` 为 BIND 接入精确的已核验 LXC 适配及原 Debian 包核对，专用 DHCP 单元用固定只读挂载向 dnsmasq 提供配置，保留 NoNewPrivs 与原账号。96 项 ARM64 单元测试通过。
+
+在原独立 ARM64 Root `213:257` 标准升级 Core 并首装 Networking `83f237e`。同一正式 Main 读回 BIND active 且当次 named 未重启，实际经 typed broker 在独立测试接口启用 DHCP，校验 daemon 装载的只读配置与受保护源逐字节相同，再停用。两笔操作同 Root 各自原号完成配对读回和交付确认，停放后冷读验证两代回执。原重启回执、安装状态与数据 inode 保持，Main disabled；另一 Root `212:257` 的 UNKNOWN 保持停机封存。 工作区清理 209.61 MiB，宿主清理时实增 209.59 MiB，夹具另清重复发行包 204.69 MiB。保留正式包后，宿主本轮可用净减 222.18 MiB。BIND 带写入的业务路径、DHCP 客户端互通及完整网络和组件维护矩阵仍属内部待验。冻结 **0/12**，外部延期仅原三项。 [证据与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/native-bind-dhcp-projection-20261124/HANDOFF.md)
+
 ## 2026-11-24 typed broker 共用启动和单元配对
 
 Core `e119ff5794` 为十个 worker 保留内核 NoNewPrivs，统一校验已核验的 LXC 适配，配对和角色范围保持。110 项 ARM64 定向测试通过。后继正式包在原 ARM64 Root `213:257` 标准升级，77 项更新成员实装验同，233 个 JDK 21 运行时 JAR 字节一致。
