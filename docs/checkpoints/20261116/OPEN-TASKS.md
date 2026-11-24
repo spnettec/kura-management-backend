@@ -1,3 +1,9 @@
+## 2026-11-24 未绑定且 OFF 网关的六组件联合维护
+
+Agent `6c1977c` 支持保留已发布的原远程开关授权。88 项 ARM64 单元测试通过。独立 ARM64 Root `215:257` 六组件首装通过，随后沿同一维护号 `72db3290-afa5-49c6-8974-417375394adc` 实装 Core `0823d14779` 与 Networking `83f237e-2`。验收脚本修正准备回执的字段假设后只读确认原意图，续办尚未开始的包操作。终态 APPLIED，原配对、快照、AES 凭据与 OFF 决策保持。正式 Main/Agent 显式启动均为 NoNewPrivs 1，实载的 8 个 ACTIVE bundle 与正式包核对，Agent 保持 OFF / UNBOUND。两服务 disabled 并正常停放。父项 #3、#9、#12 补充实装证据，其余边界沿原合同，冻结 **0/12**。
+
+[交接与制品、回执和停放证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/unbound-switch-companion-20261124/HANDOFF.md)
+
 ## 2026-11-24 当前 Core 在 ARM64 上的完整 Core/OSGi 与发行包核对
 
 Core `0823d14779` 从 Git 导出，在隔离 Debian ARM64、JDK 21.0.12.1、Maven 3.10.2 下以普通用户离线执行 `-Posgi-it verify`。82 个模块成功，259 份 XML 与 Maven 输出均为 2173 项通过，含 68 项真实 Equinox，失败、错误和跳过均为零。
