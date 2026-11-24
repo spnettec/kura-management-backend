@@ -1,3 +1,9 @@
+## 2026-11-25 已发布代下一代发布和同号恢复
+
+Core `9e962dc502` 接入正式 Networking 依赖声明，`7a176edd6a` 接入现代 Agent 包中准确且未启用、未配置的旧服务文件。ARM64/JDK 21 最终 60 项通过。隔离 Root `225:257` 两次正式原位升级，六包 installed，READY/configured 和原数据交接验签。原准备与验证两号跨后继版按 inode、摘要保持。正式新发布 `47b3d57c-b80c-4496-90a2-36a4c80e8d84` 在首份 LXC 投影已落盘后中断，经原签名检查点沿原号恢复，保留原两代条目并增至三代。独立启动门禁和实际 OSGi 新旧密文读回通过。Agent 保持原 READY/OFF，原数据与 reboot 回执保持，Main 与 VM 正常停放。
+
+补父项 #1、#3、#12。原 `219:257` 的布局意图仍缺可信返回，原号和围栏保留。完整 typed brokers、provider/launcher 及六组件矩阵仍待。冻结 **0/12**，外部延期仅原三项。 [同 Root 原号发布、正式启动及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/generation-networking-20261125/HANDOFF.md)
+
 ## 2026-11-25 已发布代正式重启及原号结算
 
 Core `b992c87a39` 对发布代 Main 核对 Root 0400 私有声明和 systemd 加载状态。ARM64 118 项通过。独立 Debian ARM64 Root `225:257` 正式升级六包共存场景，READY/configured 和原数据交接验签。正式 Main 的同 UID 外部进程先被拒绝，随后正向只派发一次重启。首个新 boot 冷读原号 `6b29f751-8c48-474d-b3b1-70f4584ccf4f` 为 ACCEPTED。正常恢复 OrbStack 命令通道后，正式 Main 只读结算原号，原 actor intent 和回执的 inode、字节未变，pending 清除。Main disabled，VM 正常停放。
