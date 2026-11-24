@@ -1,8 +1,14 @@
+## 2026-11-24 已绑定网关联合升级合并验收
+
+独立 ARM64 Root `206:257` 干净首装六组件，完成正式绑定与 mTLS。Core `3db1687127` 包含 `fd67e48f5c` 及原目录交接修复，agent 为 `0227dc9937`。显式 OFF 后，同一 Root 和维护 `0ce55235-7cf3-4ab8-833e-126bc3f4283c` 完成 Core 与 Networking 联合换版，原号 `APPLIED`、无 pending。签名原目录交接通过，`data/` inode 和登记子树元数据保持。原四份授权 READY，原加密 SQLite 及非空 WAL 经正式检查器认证。
+
+显式启动 Main 和 agent 后，中心用同一证书建立新会话，原配置任务 `0f87a2db-1f21-4ed1-ae14-61d421c43dfd` 同号 `SUCCEEDED`，数据库只有原一条派发。远程切回 OFF，两个服务及隔离中心正常停放。旧 `205:257` 原 UNKNOWN 封存。宿主实际可用增 241.76 MiB，独立网关减少 356.53 MiB 的可重建缓存和暂存重复件。第 3、9、12 项补证据，冻结闭环 **0/12**，外部延期仍仅原三项。[验收、制品与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/companion-bound-fixed-20261124/HANDOFF.md)
+
 ## 2026-11-24 已绑定联合维护实装与 Core 原目录交接修复
 
 独立 ARM64 Root `205:257` 六包首次安装、真实绑定、mTLS 和一笔已认证配置任务通过。维护 `2fb3356c-4f2f-418c-af8d-385902cc12f0` 以正式检查器认证原 SQLite 与 WAL，两个后继包已配置。完成入口拒绝，因为旧 Core 从恢复副本重建了 `data/` 中 16 个 inode，全部内容和其余 65 项一致。原号 UNKNOWN、无 source result、无当前指针。原任务一次成功，现场和独立中心正常停放。
 
-Core `91975c537d` 增加同物理路径的原目录原子交换和签名交接，Agent `0227dc9` 校验入站支持并只接受证明所列的 `data/` ctime。26 项 Core 单测、87 项 Agent 回归通过，最终又核对 9 项联合维护单测。修复正式包纳入下一次合并全链。父项闭环 **0/12**，外部延期保持原三项。[实装差异与修复交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/companion-bound-full-chain-20261124/HANDOFF.md)。
+Core `91975c537d` 增加同物理路径的原目录原子交换和签名交接，Agent `0227dc9` 校验入站支持并只接受证明所列的 `data/` ctime。26 项 Core 单测、87 项 Agent 回归通过，最终又核对 9 项联合维护单测。修复正式包的后续合并验收见本页首项。父项闭环 **0/12**，外部延期保持原三项。[实装差异与修复交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/companion-bound-full-chain-20261124/HANDOFF.md)。
 
 ## 2026-11-24 已绑定网关的后继联合维护实现
 
