@@ -1,8 +1,14 @@
+## 2026-11-25 真实待结算 modem Reset 跨联合 purge
+
+新 Parallels ARM64 Root `2049:2` 从验签的 Ubuntu 26.04 镜像联合实装正式 Core `b75eb19368-1`、Networking `98ce41482f-1`。正式 Main 通过真实 ModemManager 对回环虚拟 CDC ACM 派发一次 Reset，原号 `0d00e0b2-e0f3-464b-a6e3-500c0f341206` 等待结果中断并返回 UNKNOWN。真实两包 remove 和 purge 均成功，原 actor intent/result 与 sender 保留归档保持。Core 解包并正常关机后，在同 Root 新 boot 一次续配，装回 Networking，原 sender 按原号和原字节恢复。后继正式 Main 在无临时 modem 的条件下只读原号 APPLIED 并确认送达。原 receiver 两份文件 inode、权限和摘要保持，两份凭据及测试数据归档保持。两包 installed，Main disabled/inactive，VM 正常停放，冷读复跑一致。
+
+补父项 #3、#6、#9、#12。冻结 **0/12**，外部延期仅原三项。 [跨包实装与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/modem-joint-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式 modem Reset 与原号结算
 
 独立 Parallels ARM64 审查副本 Root `2050:2` 联合实装 Core `b75eb19368-1` 和 Networking `98ce41482f-1`，原 Agent 的 43 份文件保持。正式 Main 的 ACTIVE OSGi provider 经发行版 ModemManager 向仅在回环中的 CDC ACM 虚拟设备派发一次 Reset。原号 `18cc1bd8-2cab-4b38-bbc3-711317c2a936` 返回 UNKNOWN，后继正式 Main 在同一 Root 只查原结果 APPLIED 并确认送达。原 intent 和 result 的 inode、权限及摘要保持，虚拟端合计只收到一次 Reset。副本正常停放，原 Ubuntu 保持挂起。
 
-补父项 #3、#6、#9、#12。真实未决 modem 回执下的 Core/Networking 联合包维护矩阵待验。冻结 **0/12**，外部延期仅原三项。 [实装和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/modem-installed-virtual-20261125/HANDOFF.md)
+补父项 #3、#6、#9、#12。真实未决 modem Reset 的两包联合维护随后在独立 Root 2049:2 实测。冻结 **0/12**，外部延期仅原三项。 [实装和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/modem-installed-virtual-20261125/HANDOFF.md)
 
 ## 2026-11-25 防火墙配对升级与 Networking 保留维护
 
