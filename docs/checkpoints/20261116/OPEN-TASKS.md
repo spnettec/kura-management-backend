@@ -1,3 +1,9 @@
+## 2026-11-25 三代凭据的 Networking 移除及配置中断续接
+
+正式 Core `7a176edd6a` 的三代凭据 Root `225:257` 以原 Networking `83f237e-2` 正式 remove、purge、解包和中断续配。Networking 缺席时实际 Agent 依原配对拒绝，独立 Main 读回三代密文并返回 HTTPS 302。精确终止注册锁等待者后 dpkg 为 half-configured，同 Root 一次续配恢复原 vendor、唯一注册表行及原号 READY/OFF。33 份原记录、原 data inode 和第三代均保持。恢复后 OSGi 实装 8 个 ACTIVE bundle 逐一与正式 deb 匹配，Agent 实际无能力且 OFF/UNBOUND。两服务及 VM 正常停放。
+
+补父项 #1、#3、#9、#12。原 `219:257` 官方停机回读实证 iF，原三份签名和围栏在，仍无可信返回。其余 typed brokers、provider/launcher 与六组件矩阵仍待。冻结 **0/12**，外部延期仅原三项。 [三代现场 Networking 原生维护与停机读回](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-networking-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 已发布代下一代发布和同号恢复
 
 Core `9e962dc502` 接入正式 Networking 依赖声明，`7a176edd6a` 接入现代 Agent 包中准确且未启用、未配置的旧服务文件。ARM64/JDK 21 最终 60 项通过。隔离 Root `225:257` 两次正式原位升级，六包 installed，READY/configured 和原数据交接验签。原准备与验证两号跨后继版按 inode、摘要保持。正式新发布 `47b3d57c-b80c-4496-90a2-36a4c80e8d84` 在首份 LXC 投影已落盘后中断，经原签名检查点沿原号恢复，保留原两代条目并增至三代。独立启动门禁和实际 OSGi 新旧密文读回通过。Agent 保持原 READY/OFF，原数据与 reboot 回执保持，Main 与 VM 正常停放。
