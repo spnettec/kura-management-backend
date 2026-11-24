@@ -1,3 +1,9 @@
+## 2026-11-24 Core 密钥服务的 systemd 配对
+
+Core `0737f63e38` 把密钥服务覆盖检查约束到正式单元和准确的 LXC 适配，Agent 存在不再放行同类型、层级和单元覆盖。97 项 ARM64 定向测试通过，前两项基线失败修复。正式制品只改变两份策略、校验清单和必要控制脚本，233 个 JDK 21 运行时 JAR 与基线一致。
+
+独立 ARM64 Root `208:257` 先安装 Agent 后首装六包成功。正式 Main 和 agent 启动，Root 密钥状态可读，回环 HTTPS 302，原密钥指纹保持。原三授权在停机后均 READY，远程 OFF、未绑定，密钥操作表为空。Main 与 agent disabled，夹具正常停放。OrbStack Main 仍实际 NNP 0，Agent NNP 1。宿主实增 612.87 MiB，夹具缓存少 151.84 MiB。冻结闭环 **0/12**，外部延期仅原三项。[实装、包配对与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-unit-admission-20261124/HANDOFF.md)
+
 ## 2026-11-24 Deployment 门禁交接、原号续配与六组件 purge
 
 Deployment `1642074` 用可核对的 systemd 启动断言阻止 Main，同时保留真实启用状态。旧掩码迁移绑定原 Root、transition 和锚点。Core `93bba1d8c4` 修复保留静态 Main 的属性比较并只承认精确的维护断言。ARM64 Deployment 4 项、Core 50 项单测通过。本场继续用已解包的 Core `f9cebce8af`，只引入后继 Deployment 制品。
