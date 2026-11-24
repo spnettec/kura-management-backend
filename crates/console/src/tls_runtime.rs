@@ -42,6 +42,19 @@ struct Intent {
     request: ActivationRequest,
     actor: String,
     target: Manifest,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    ca_approval: Option<ca_quorum::Evidence>,
+}
+
+impl Intent {
+    fn valid(&self, id: Uuid) -> bool {
+        self.request.operation_id == id && self.target.id == id
+            && match (self.schema_version, &self.ca_approval) {
+                (1, None) => true,
+                (2, Some(proof)) => self.target.client_ca.is_some() && proof.valid(),
+                _ => false,
+            }
+    }
 }
 
 #[derive(Serialize, Deserialize)]
@@ -327,12 +340,7 @@ impl TlsRuntime {
             return Ok(None);
         }
         let intent: Intent = serde_json::from_slice(&files::read_private(&path)?)?;
-        ensure!(
-            intent.schema_version == 1
-                && intent.request.operation_id == id
-                && intent.target.id == id,
-            "invalid TLS activation intent"
-        );
+        ensure!(intent.valid(id), "invalid TLS activation intent");
         let receipt = self.operation_path(id, "receipt");
         let applied = files::read_private(&receipt)
             .ok()
@@ -406,11 +414,13 @@ impl TlsRuntime {
                 "client CA activation requires current quorum for this operation"
             );
         }
+        let ca_approval = grant.and_then(ca_quorum::Authorization::evidence).cloned();
         let intent = Intent {
-            schema_version: 1,
+            schema_version: if ca_approval.is_some() { 2 } else { 1 },
             request: request.clone(),
             actor: actor.into(),
             target: candidate.manifest.clone(),
+            ca_approval,
         };
         if files::publish_new(
             &self.operation_path(request.operation_id, "intent"),
@@ -507,10 +517,7 @@ pub(crate) fn maintenance_records(directory: &Path) -> Result<()> {
                     .context("unsettled TLS activation forbids package maintenance")?,
             )?;
             ensure!(
-                intent.schema_version == 1
-                    && intent.request.operation_id == id
-                    && intent.target.id == id
-                    && receipt == intent.request,
+                intent.valid(id) && receipt == intent.request,
                 "invalid TLS receipt forbids package maintenance"
             );
         }
@@ -539,6 +546,7 @@ fn platform_maintenance_requires_the_exact_tls_receipt_not_just_a_file() {
                 client_ca: None,
                 material_digest: "test-only-digest".into(),
             },
+            ca_approval: None,
         };
         files::publish_new(
             &directory.path().join(format!("{id}.intent.json")),

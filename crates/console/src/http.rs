@@ -1249,16 +1249,23 @@ async fn settings_tls_activate(State(app): State<App>, headers: HeaderMap,
         }
         return Ok(Json(record));
     }
-    let grant = match runtime.activation_approval_target(&input) {
-        Ok(Some(target)) => {
-            let grant = crate::ca_quorum::check_activation_quorum(&app.pool, &p.tenant_id, target).await?
-                .ok_or(ApiError::new(StatusCode::CONFLICT, "CA_QUORUM_REQUIRED"))?;
-            Some(grant)
+    // A stale or invalid request still reaches the existing durable rejection.
+    let target = runtime.activation_approval_target(&input).ok().flatten();
+    let quorum_required = || ApiError::new(StatusCode::CONFLICT, "CA_QUORUM_REQUIRED");
+    if let Some(target) = &target {
+        let status = crate::ca_quorum::status(&app.pool, &p.tenant_id, target.operation_id).await?;
+        if !status.is_some_and(|status| status.authorizes(target)) {
+            return Err(quorum_required());
         }
-        // Preserve the existing durable rejection for stale or invalid requests.
-        Ok(None) | Err(_) => None,
-    };
+    }
+    // Commit REQUESTED first so it survives a crash before publishing the TLS
+    // intent. Only the subsequent locked quorum can authorize publication.
     db::audit(&app.pool, &p.tenant_id, &p.username, "settings.tls.activate", &input.operation_id.to_string(), "REQUESTED").await?;
+    let grant = match target {
+        Some(target) => Some(crate::ca_quorum::check_activation_quorum(&app.pool, &p, target).await?
+            .ok_or_else(quorum_required)?),
+        None => None,
+    };
     let result = runtime.activate_authorized(input, &p.username, grant.as_ref())
         .map_err(|_| ApiError::new(StatusCode::CONFLICT, "CONFLICT"))?;
     Ok(Json(result))

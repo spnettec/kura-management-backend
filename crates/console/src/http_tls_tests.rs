@@ -523,6 +523,25 @@ async fn tls_runtime_http_and_real_grpc_activation_are_joint_and_idempotent() {
     assert_eq!(f.client.post(&activation).json(&request).send().await.unwrap().status(), reqwest::StatusCode::CONFLICT);
     assert!(f.app.tls.as_ref().unwrap().operation(request.operation_id).unwrap().is_none());
     sqlx::query("UPDATE mgmt_users SET enabled=true WHERE id=$1").bind(second_id).execute(&f.app.pool).await.unwrap();
+    let target = f.app.tls.as_ref().unwrap().activation_approval_target(&request).unwrap().unwrap();
+    let principal = auth::Principal {
+        id: second_id, tenant_id: "tls-review".into(), username: "tls-second-admin".into(),
+        role: "admin".into(), csrf: String::new(), must_change_password: false,
+    };
+    let locked = crate::ca_quorum::check_activation_quorum(&f.app.pool, &principal, target)
+        .await.unwrap().unwrap();
+    for mutation in [
+        "UPDATE mgmt_users SET enabled=false WHERE id=$1",
+        "INSERT INTO ca_quorum_policy(tenant_id,quorum_size,total_approvers)
+         SELECT tenant_id,3,3 FROM mgmt_users WHERE id=$1",
+    ] {
+        let mut concurrent = f.app.pool.begin().await.unwrap();
+        sqlx::query("SET LOCAL lock_timeout='200ms'").execute(&mut *concurrent).await.unwrap();
+        let error = sqlx::query(mutation).bind(second_id).execute(&mut *concurrent).await.unwrap_err();
+        assert_eq!(error.as_database_error().unwrap().code().as_deref(), Some("55P03"));
+        concurrent.rollback().await.unwrap();
+    }
+    drop(locked);
     // The activation closes the very HTTPS connection carrying this POST.
     let _ = f
         .client
@@ -534,6 +553,15 @@ async fn tls_runtime_http_and_real_grpc_activation_are_joint_and_idempotent() {
     let receipt = read(&f, &original).await;
     assert_eq!(receipt["state"], "APPLIED");
     assert_eq!(receipt["observedActive"], true);
+    let intent_path = f.root.join(format!("state/tls-operations/{}.intent.json", request.operation_id));
+    let intent_raw = fs::read(&intent_path).unwrap();
+    let intent: Value = serde_json::from_slice(&intent_raw).unwrap();
+    assert_eq!(intent["schemaVersion"], 2);
+    let first_id: Uuid = sqlx::query_scalar("SELECT id FROM mgmt_users WHERE username='tls-review-admin'")
+        .fetch_one(&f.app.pool).await.unwrap();
+    let mut approvers = vec![first_id, second_id];
+    approvers.sort_unstable();
+    assert_eq!(intent["caApproval"], json!({"tenantId":"tls-review", "requiredCount":2, "approverIds":approvers}));
     assert!(
         tokio::time::timeout(Duration::from_secs(3), old.message())
             .await
@@ -560,6 +588,7 @@ async fn tls_runtime_http_and_real_grpc_activation_are_joint_and_idempotent() {
         .await
         .unwrap();
     assert_eq!(duplicate, receipt);
+    assert_eq!(fs::read(intent_path).unwrap(), intent_raw);
     assert_eq!(
         pointer,
         fs::read(f.root.join("state/tls-runtime-active.json")).unwrap()

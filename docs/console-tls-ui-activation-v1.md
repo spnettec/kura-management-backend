@@ -18,6 +18,8 @@
 
 界面先持久保存 operationId、已核对的 active generation 与 pending revision，再发一次 POST。服务器先认证管理员并验证 CSRF，记录 REQUESTED 审计，再写原意图、发布联合指针、交换内存配置，最后记录回执并关闭旧连接。文件为当前用户私有、拒绝 symlink，采用不可覆盖的原意图/回执和 fsync/原子发布；旧代和失败文件保留。
 
+自 2026-11-24 起，变更客户端 CA 需要对该项原提案取得足额本租户管理员批准。正式切换在 PostgreSQL 中锁定提案、有效策略、计入审批的记录和账号，持锁至发布结束。缺省策略同样在锁定范围内。私有激活意图 v2 将门槛、审批账号 ID 和租户与原提案一起保存，可在原号结果核验时读取。旧 v1 意图仍按原格式核验，HTTP 原回执格式延续原合同。
+
 `GET /api/v1/settings/tls-activation` 返回当前/待生效指纹和 server-side blockingOperationId；POST 带 operationId/expectedGeneration/pendingRevision；`GET .../tls-activation/{id}` 只读原记录。三种原结果：APPLIED 有原回执；REJECTED 有执行前拒绝记录且无生效意图，必须重新核对；UNKNOWN 缺失/无效/发布未核定的回执。observedActive 只是当前进程正在使用该精确联合 manifest 的观察，不补造回执。联合指针发布不确定时停止网关通道，保留 HTTPS 供认证查询。
 
 回执丢失、连接断开、404 都不授权重发。重复 POST 相同 ID 只是观察；改变相同 ID 的请求被拒绝。原 UNKNOWN 从服务端阻止后续暂存和生效，另一个管理员或浏览器也不能用新 ID 绕过。新浏览器会从服务端恢复原 ID 并只查询；未实现的人工核定/恢复界面仍属内部 pending，不能伪造 APPLIED 或偷偷清除原记录。

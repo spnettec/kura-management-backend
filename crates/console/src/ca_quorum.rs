@@ -1,8 +1,8 @@
 //! Approval of a specific client CA activation. The CA signing key stays external.
 use crate::{auth::Principal, db, tls_runtime::ActivationRequest};
-use anyhow::{Result, ensure};
-use serde::Serialize;
-use sqlx::PgPool;
+use anyhow::Result;
+use serde::{Deserialize, Serialize};
+use sqlx::{PgPool, Postgres, Transaction};
 use uuid::Uuid;
 
 #[derive(Clone, Debug, PartialEq, Eq, sqlx::FromRow)]
@@ -36,17 +36,51 @@ pub(crate) struct Status {
     quorum_met: bool,
 }
 
-/// Only an exact proposal with a current quorum can yield this grant.
-pub(crate) struct Authorization(Target);
+impl Status {
+    pub fn authorizes(&self, target: &Target) -> bool {
+        self.operation_id == target.operation_id
+            && self.generation_id == target.generation_id
+            && self.expected_generation == target.expected_generation
+            && self.pending_revision == target.pending_revision
+            && self.quorum_met
+    }
+}
+
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub(crate) struct Evidence {
+    tenant_id: String,
+    required_count: i16,
+    approver_ids: Vec<Uuid>,
+}
+
+impl Evidence {
+    pub fn valid(&self) -> bool {
+        self.required_count >= 2
+            && self.approver_ids.len() >= self.required_count as usize
+            && self.approver_ids.windows(2).all(|ids| ids[0] < ids[1])
+    }
+}
+
+/// Owns the database locks through durable publication of the exact TLS target.
+pub(crate) struct Authorization {
+    target: Target,
+    evidence: Option<Evidence>,
+    _locks: Option<Transaction<'static, Postgres>>,
+}
 
 impl Authorization {
     pub fn matches(&self, target: &Target) -> bool {
-        self.0 == *target
+        self.target == *target
+    }
+
+    pub fn evidence(&self) -> Option<&Evidence> {
+        self.evidence.as_ref()
     }
 
     #[cfg(test)]
     pub fn for_fixture(target: Target) -> Self {
-        Self(target)
+        Self { target, evidence: None, _locks: None }
     }
 }
 
@@ -131,17 +165,57 @@ pub(crate) async fn status(pool: &PgPool, tenant: &str, id: Uuid) -> Result<Opti
 
 pub(crate) async fn check_activation_quorum(
     pool: &PgPool,
-    tenant: &str,
+    actor: &Principal,
     target: Target,
 ) -> Result<Option<Authorization>> {
-    let Some(proposal) = status(pool, tenant, target.operation_id).await? else {
+    let tenant = &actor.tenant_id;
+    let mut tx = pool.begin().await?;
+    // Missing policy rows use the default. A row lock alone cannot protect
+    // against a concurrent INSERT of a policy for this tenant.
+    sqlx::query("LOCK TABLE ca_quorum_policy IN SHARE MODE")
+        .execute(&mut *tx).await?;
+    let proposal: Option<Target> = sqlx::query_as(
+        "SELECT operation_id,generation_id,expected_generation,pending_revision
+         FROM ca_activation_proposals WHERE operation_id=$1 AND tenant_id=$2 FOR SHARE",
+    )
+    .bind(target.operation_id)
+    .bind(tenant)
+    .fetch_optional(&mut *tx).await?;
+    if proposal.as_ref() != Some(&target) {
         return Ok(None);
-    };
-    ensure!(
-        proposal.generation_id == target.generation_id
-            && proposal.expected_generation == target.expected_generation
-            && proposal.pending_revision == target.pending_revision,
-        "CA activation approval targets another proposal"
-    );
-    Ok(proposal.quorum_met.then_some(Authorization(target)))
+    }
+    let required_count: i16 = sqlx::query_scalar(
+        "SELECT GREATEST(COALESCE((SELECT quorum_size FROM ca_quorum_policy WHERE tenant_id=$1),2),2)::smallint",
+    )
+    .bind(tenant)
+    .fetch_one(&mut *tx).await?;
+    let approver_ids: Vec<Uuid> = sqlx::query_scalar(
+        "SELECT u.id FROM ca_operation_approvals a JOIN mgmt_users u ON u.id=a.approver_id
+         WHERE a.tenant_id=$1 AND a.operation_id=$2 AND a.generation_id=$3
+           AND a.operation_kind='generation-activate' AND a.status='approved'
+           AND u.tenant_id=$1 AND u.enabled AND u.role='admin' AND NOT u.must_change_password
+         ORDER BY u.id FOR SHARE OF a,u",
+    )
+    .bind(tenant)
+    .bind(target.operation_id)
+    .bind(target.generation_id)
+    .fetch_all(&mut *tx).await?;
+    if approver_ids.len() < required_count as usize {
+        return Ok(None);
+    }
+    let eligible_actor: Option<Uuid> = sqlx::query_scalar(
+        "SELECT id FROM mgmt_users WHERE id=$1 AND tenant_id=$2
+         AND enabled AND role='admin' AND NOT must_change_password FOR SHARE",
+    )
+    .bind(actor.id)
+    .bind(tenant)
+    .fetch_optional(&mut *tx).await?;
+    if eligible_actor.is_none() {
+        return Ok(None);
+    }
+    Ok(Some(Authorization {
+        target,
+        evidence: Some(Evidence { tenant_id: tenant.clone(), required_count, approver_ids }),
+        _locks: Some(tx),
+    }))
 }
