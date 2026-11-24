@@ -1,3 +1,9 @@
+## 2026-11-24 正式重启代理启动与 Networking 配对
+
+Core `2140aa546a` 的正式单元在进程启动时设置内核 NoNewPrivs，并与已配置 Networking 的受审 vendor drop-in 精确配对。73 项 ARM64 定向单测通过。后继包同步了九组 broker 辅助代码与清单，233 个运行时 JAR 字节保持。
+
+原隔离 ARM64 Root `212:257` 当前 boot 内完成 Core 后继升级、Networking 首装和合并验证。正式 Root actor 实际 NoNewPrivs 1、能力全零，继承原监听 FD；正式 Main JVM 从只读挂载视图配对，同 UID 独立进程连接后被拒。原重启 namespace、密钥和授权保留；出厂快照字节和权限保持，inode 变化。无新操作，Main disabled，现场正常停放。清理工作区 208.72 MiB，宿主当时实增 208.71 MiB，夹具另清重复包 204.68 MiB。保留正式包，宿主本轮可用净减 214.59 MiB。冻结 **0/12**，外部延期仅原三项。[全链证据与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/reboot-projection-20261124/HANDOFF.md)
+
 ## 2026-11-24 时钟与重启代理的 systemd 配对
 
 Core `8dc92abf7f` 将时钟和重启代理的容器兼容入口限定于已核验的运行时路径、Root 保护、完整摘要和 LXC 环境。ARM64 定向测试 79 项通过；本轮原生合同合计 ARM64/JDK 21 通过 1265 项，另补 7 个 Node 合同。12 个独立 systemd 或宿主场景其他入口单列。
