@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+父项 #3、#12 补证。Core `dc1b0cbbf4` 增加 Root、原号、原三份签名、旧控制与候选控制绑定的 forward 包路径。新效果证明保留原 layout 结果为 UNRESOLVED，原 returned／complete 保持缺席。108 项 ARM64 测试及原生小包 dpkg 状态探针通过，正式候选数据归档与 `22e54511df` 完全一致。原 `219:257` 停放，原包续接和 READY、Main、OSGi、provider 联合验收仍待。 [同号正式候选与实证范围](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-forward-20261125/HANDOFF.md)
+
 父项 #3、#12 补证。Core `55c973efc2` 在发布配对 vendor unit 并刷新 PID 1 后核验 LoadState，再允许签发布局意图。106 项 ARM64 定向测试通过。原 `219:257` 停机实读仍 iF，正式 postinst 和 14 个 vendor unit 对包匹配，六个 shell 文件仍是 0644，`.data`、`data` 缺席。原号、原围栏和原历史保持。前向效果核定的准入与允许写入已列出，续接包和原号 READY、Main、OSGi、provider 待验。 [停机原包实读与原号前向续接设计](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-review-20261125/HANDOFF.md)
 
 父项 #3、#12 新增正式 ARM64 证据。Root `219:257` 的候选 `22e54511df` 真实复现 dpkg 发布顺序中断，按原号续解包至 iU，原签名与 inode 保持。后续 iF 停点已归因于 PID 1 中同一 vendor recovery unit 的 EBUSY，刷新后 loaded，原签名 layout 意图待受控续接，READY／后继 Main 仍待。 [正式原号、验证边界和停放](../../../../.management-close-20261116/core-rtc-hotplug-20261120/native-dpkg-control-resume-20261124/HANDOFF.md)

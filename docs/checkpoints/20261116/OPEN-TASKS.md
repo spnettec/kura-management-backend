@@ -1,3 +1,9 @@
+## 2026-11-25 原已签发布局的同号前向续接包
+
+Core `dc1b0cbbf4` 增加 Root、原号、原三份签名、旧控制与候选控制绑定的 forward 包路径。新效果证明保留原 layout 结果为 UNRESOLVED，原 returned／complete 保持缺席。108 项 ARM64 测试及原生小包 dpkg 状态探针通过，正式候选数据归档与 `22e54511df` 完全一致。原 `219:257` 停放，原包续接和 READY、Main、OSGi、provider 联合验收仍待。
+
+补父项 #3、#12，冻结 **0/12**，外部延期仅原三项。 [正式候选与证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/issued-layout-forward-20261125/HANDOFF.md)
+
 ## 2026-11-25 原 219 布局效果核对与 PID 1 签发门禁
 
 Core `55c973efc2` 在发布配对 vendor unit 并刷新 PID 1 后核验 LoadState，再允许签发布局意图。106 项 ARM64 定向测试通过。原 `219:257` 停机实读仍 iF，正式 postinst 和 14 个 vendor unit 对包匹配，六个 shell 文件仍是 0644，`.data`、`data` 缺席。原号、原围栏和原历史保持。前向效果核定的准入与允许写入已列出，续接包和原号 READY、Main、OSGi、provider 待验。
