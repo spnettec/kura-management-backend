@@ -1,3 +1,9 @@
+## 2026-11-25 正式防火墙首装前态拒绝
+
+隔离 ARM64 Root `223:257` 正式首装六包，Core `78b75b44ad-1`、Networking `83f237e-2` 由 systemd Main 实载。独立 veth 上 IPv4 与 IPv6 各两个源地址在基线均无法投递 UDP。正式 OSGi 的一次 IPv4 配置提交在 typed broker PREPARE 被拒绝，默认规则也遇到同类冲突。内核只有首装链框架，Java 前态却包含默认规则。保留原配置快照，内核规则保持，receiver 无新意图或结果，Root 正常停放。
+
+补父项 #3、#6、#12 的负向证据。首次托管规则的前态准入、正向流量及撤回待验。冻结 **0/12**，外部延期仅原三项。 [正式拒绝与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-typed-packets-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式 Docker 同卷升级与 PKCS#11 归位恢复
 
 Docker `766590c` 从 Git 用 JDK 21 和 Maven 重建正式 ARM64 前驱与候选，Core 由 `dc1b0cbbf4-3` 升到 `78b75b44ad-1`，GWT、Deployment、Wires 摘要保持。隔离同卷 Root `39:10057850` 的首个 PID 1 Main 保存两份 PKCS#11 原快照。候选 Main 同卷读回，注册缓存失配和同名占用均被拒绝，另一槽及原槽重取得到原证书验签。Alpine SoftHSM `2.7.0-r0` 的目标令牌缺席、同 inode 归位后，原 JVM 的取钥均为 `NO_ENTRY`，旧句柄均失败，另一槽持续验签。同一候选镜像新进程通过只读 OSGi 探针再次用两份原证书验签。两份快照、TLS 和 16 份持久文件完整指纹保持，8 个 ACTIVE bundle 对包通过。
