@@ -1,3 +1,9 @@
+## 2026-11-25 正式 Main 普通执行器的超时与停服回收
+
+隔离 ARM64 Root `225:257` 的正式 Core `dc1b0cbbf4-3` 中，实际 Java API `UnprivilegedExecutorService` 核对 `kura` 身份、工作目录、环境、字面参数与标准流。12 秒超时返回 143、`timedOut=true`，原命令与 worker 两个 PIDFD 均确认退出。实际 Main 正常停服回收另一异步命令及 worker，两个 socket inactive，同 UID 独立进程保持，回调返回 `EXECUTOR_RESULT_UNAVAILABLE`。四份正式执行器文件对包，六包 installed，原 Deployment 两笔归档与回执所在的 43 份保护记录及三个快照保持。VM 正常停放并通过冷读。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [Java API、原进程和冷读证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/typed-executor-lifecycle-20261125/HANDOFF.md)
+
 ## 2026-11-25 已发布代通用 Core 的原位升级与跨关机续配
 
 Core `dc1b0cbbf4` 使用 Git、JDK 21、Maven 与原 Bundle-Version 限定符 `202611230517` 生成 ARM64 `-3`。7 个受保护 JAR 和全部 233 个运行时 JAR 逐字节匹配，标准发行清单绑定 `225:257` 原前驱，专用布局计划为空。实装沿 `db47e1ec-2991-40b7-97ab-fd4d64b75b7a` 解包、正常关机、停机读回和同 Root 新 boot 续配，8 份阶段记录含 READY/configured 验签通过。数据和 Deployment 目录原 inode、43 份保护记录保持，三份快照内容和权限保持且 inode 随恢复复制更新。正式 Main 读回三代密文，9 个 ACTIVE bundle 对包，原 Wires 图继续送达，HTTPS 302，Agent 原号 READY/OFF。六包 installed，VM 正常停放，停机读回 73 项。
