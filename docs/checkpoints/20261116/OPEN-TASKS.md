@@ -1,3 +1,9 @@
+## 2026-11-25 PKCS#11 注册修复的六包实装与同号跨关机续配
+
+隔离 Debian ARM64 Root `222:257` 先以六组件正式装入 Core `dc1b0cbbf4-3`，在正式 Main 保存两个 PKCS#11 工厂配置、写入两份原快照并按原证书完成验签。Core 候选 `78b75b44ad-1` 一次解包并正常关机，停机读回 `unpacked` 及原围栏，新 boot 沿 `368dc18b-cb86-450d-8666-57069b270e97` 一次续配，8 份阶段记录验签通过。正式 JDK 21 Main 读回原两份快照，同名 JCA 注册占用和缓存失配均返回 `SERVICE_UNAVAILABLE`，外部占用保持，独立同库槽的旧句柄与新取钥验签通过。释放占用后原 OSGi 服务继续用原钥验签。10 个 ACTIVE bundle 与正式包匹配，AES 往返、Main 写租约、HTTPS 302、Agent 原号 READY/OFF 均通过。
+
+原 data 与令牌目录保持，两份原快照字节和权限保持，inode 随恢复更新。空 Deployment 注册目录重建。Main 和 Agent 及 VM 正常停放，停机复核 21 份文件。补父项 #1、#3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [联合实装与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-formal-main-20261125/HANDOFF.md)
+
 ## 2026-11-25 PKCS#11 provider 注册归属及同库隔离
 
 Core `78b75b44ad` 校验 JCA 进程级注册的实际对象。名称已被占用时返回 `SERVICE_UNAVAILABLE`，缓存发现注册被替换时拒绝读取，停用只释放仍归属本服务的对象。101 项 Keystore 单测通过。独立 Debian ARM64 / JDK 21 的两个 SoftHSM 槽实测旧版接受同名冲突并移除了原注册。修复版拒绝，原句柄和新取钥均继续验签，同库另一槽与受控替换后的注册保留，当前所有者可以正常释放。正式 ARM64 候选 `78b75b44ad-1` 由 Git 构建，Keystore 35 个类与动态实测逐字节一致，其余 232 个 JAR、原 7 个受保护 JAR 和 13 个原生载荷不变。
