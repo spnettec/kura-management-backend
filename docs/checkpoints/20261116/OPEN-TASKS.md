@@ -1,3 +1,9 @@
+## 2026-11-24 当前 ARM64 六组件配对与 Wires 分阶段续接
+
+独立 Root `203:257` 首次 APT 安装六组件通过。修复 agent 提前清空 `DropInPaths` 导致 Networking 合法 drop-in 校验失败的缺陷，agent 本地 `bd6b3d007f`，ARM64 定向 29 项通过。同 Root agent 在原号下从 `unpacked`、运行时 mask、`UNKNOWN` 续配到 `APPLIED`，留存原初始化。原配对号确认 `NOT_FOUND` 后获 `READY`、远程 OFF。正式 Main 两次实载 8 个 Equinox bundle，续配后的实装 JAR 与相应正式 deb 逐项字节一致。OrbStack 实测 UID 999、`CAP_NET_BIND_SERVICE`、`NoNewPrivs=0`。
+
+停机将 Wires `4f13cf1 → 277954b` 分两阶段续接至已配置，原快照、组件注册顺序及 agent 指针保持。两服务正常停止，新夹具已停放。按轮清理可重建副本 46.04 MiB，宿主可用实测增 46.03 MiB。第 3、9、12 项补充子场景证据，冻结闭环 **0/12**。完整升级、移除、purge 与其余中断组合继续内部待办。原三项外部延期不变。[现场与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/six-current-native-20261124/HANDOFF.md)。
+
 ## 2026-11-24 ZCode 审查后的实际修复与父项重核
 
 正式 CA 激活接入独立管理员 quorum，审批绑定原编号、CA 代次、当前代与待发布版本。隔离真实 HTTPS、mTLS、PostgreSQL 定向测试通过。跨格式快照冷读恢复，ARM64 agent 重建归档与四现场的 18 个已装资产逐项相同，原 deb 档案摘要保留。
