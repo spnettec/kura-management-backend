@@ -1,0 +1,26 @@
+[
+  {
+    "id": "yofc-review-gw-1",
+    "online": true,
+    "kuraAvailable": true,
+    "lastSeen": "2026-11-24T05:23:29.280841Z"
+  },
+  {
+    "id": "yofc-review-gw-2",
+    "online": true,
+    "kuraAvailable": true,
+    "lastSeen": "2026-11-24T05:23:29.158872Z"
+  },
+  {
+    "id": "yofc-review-gw-3",
+    "online": true,
+    "kuraAvailable": true,
+    "lastSeen": "2026-11-24T05:23:29.116427Z"
+  },
+  {
+    "id": "yofc-review-vm-1",
+    "online": true,
+    "kuraAvailable": true,
+    "lastSeen": "2026-11-24T05:23:29.427401Z"
+  }
+]

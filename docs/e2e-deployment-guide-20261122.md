@@ -656,3 +656,14 @@ orb delete ×3 → Parallels snapshot-switch 还原 ce60c087（2026-11-01 初始
   `docker_console-data`；全清时按实际前缀删卷。
 
 
+## 第十阶段：2026-11-24 审查后四网关复验
+
+本轮在三个新 Debian ARM64 OrbStack machine 和一个从 Ubuntu ARM64 原空白快照恢复的 Parallels 测试副本安装。原 Parallels 及既有网关另保留。中心由项目 Compose 启动 Rust/React 镜像，独立 PostgreSQL 容器提供空库。中心和网关分别使用独立的新测试证书，严格核对中心 CA 与主机名以及网关 leaf DER pin。
+
+四台先安装 agent 393051e，后安装 Core fd67e48f5c。预先用 APT 安装公共依赖，再分别用 APT 安装这两个本地 deb，让 APT 在同一次事务内解算软件包的 Depends 与 Pre-Depends。四台每个包的首次事务均退出 0，dpkg audit 为空，并逐台核对已安装凭据探测脚本的 SHA-256。三台 OrbStack 使用凭据兼容副本，Parallels 使用 systemd 注入。现场经正式安装的 systemd 单元、initialize、peer 与 reader 授权、中心登记及安装的 agent 协议完成首次绑定。夹具脚本准备 CSR 和暂存材料，随后沿正式 relay/bind 取得每台的 kura-uid 回执；本轮按离线测试注入物料的方式验收。
+
+第一次中心准备提交携带两张证书，触发单证书合同 REJECTED，原号留存。之后用独立新卷、单张服务端 leaf 初始化，沿原号查得 APPLIED。真实浏览器将主机名转为小写时先出现 403，修复见 6de1743。沿同一中心卷更新镜像后，原初始化回执和已登记 pin 均可读，四台建立了新连接代次。实际浏览器登录 200，中心 API 四行均为 online=true、kuraAvailable=true。最后正常停放本轮现场。
+
+- 四张新截图各自通过 Chrome 页面的登录、内容及状态断言。[登录](e2e-screenshots/01-login-page.png) · [首页](e2e-screenshots/02-console-home.png) · [四网关](e2e-screenshots/03-gateway-list.png) · [TLS 设置](e2e-screenshots/04-settings-tls.png)
+- 同一认证浏览器会话捕获 [四机 API 状态](e2e-screenshots/gateway-api-status.json)。完整日志及包/镜像摘要见 [本轮交接](../../.management-close-20261116/core-rtc-hotplug-20261120/review-fixes-20261124/HANDOFF.md)。
+- CA 更换使用 TLS 设置页。第一位管理员核对指纹并提交批准，向同租户第二位管理员传递提案 UUID。第二人读取原提案并核对当前版本，再确认批准。达到 quorum 后沿原 UUID 发布，按原回执查结果。默认至少两位有效管理员。单独更换服务端证书和初始系统安装走各自现有入口。[父项复核](checkpoints/20261116/parent-status-review-20261124.md)
