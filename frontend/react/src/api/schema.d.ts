@@ -2330,6 +2330,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/settings/client-ca/policy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read the current tenant policy and its eligible administrators. */
+        get: operations["getClientCaCustodyPolicy"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/client-ca/policy/proposals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Record an immutable roster and threshold for approval under the current policy. Requires CSRF. */
+        post: operations["proposeClientCaCustodyPolicy"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/client-ca/policy/proposals/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read the original tenant-scoped proposal and any published revision. */
+        get: operations["getClientCaCustodyProposal"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/client-ca/policy/proposals/{id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Approve the exact proposal as a current custodian. The quorum publishes the revision atomically. Requires CSRF. */
+        post: operations["approveClientCaCustodyProposal"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/settings/task-key": {
         parameters: {
             query?: never;
@@ -3392,6 +3460,36 @@ export interface components {
             /** Format: uuid */
             originalTaskId: string;
         };
+        CaPolicyOverview: {
+            policy: {
+                revision: number;
+                requiredCount: number;
+                /** @description Null means all currently eligible administrators. */
+                custodianIds: string[] | null;
+            };
+            eligibleAdmins: {
+                /** Format: uuid */
+                id: string;
+                username: string;
+            }[];
+            viewerCanPropose: boolean;
+        };
+        CaPolicyChange: {
+            /** Format: uuid */
+            operationId: string;
+            expectedRevision: number;
+            requiredCount: number;
+            custodianIds: string[];
+        };
+        CaPolicyProposal: {
+            change: components["schemas"]["CaPolicyChange"];
+            approvalRequiredCount: number;
+            approvedCount: number;
+            appliedApproverIds: string[] | null;
+            appliedRevision: number | null;
+            viewerApproved: boolean;
+            stale: boolean;
+        };
         CaActivationApproval: {
             /** Format: uuid */
             operationId: string;
@@ -3403,6 +3501,8 @@ export interface components {
             approvedCount: number;
             requiredCount: number;
             quorumMet: boolean;
+            policyRevision: number;
+            stale: boolean;
         };
         TlsActivationRequest: {
             /** Format: uuid */
@@ -3758,6 +3858,220 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    getClientCaCustodyPolicy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CaPolicyOverview"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    proposeClientCaCustodyPolicy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CaPolicyChange"];
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CaPolicyProposal"];
+                };
+            };
+            /** @description Typed API error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    getClientCaCustodyProposal: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CaPolicyProposal"];
+                };
+            };
+            /** @description Typed API error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    approveClientCaCustodyProposal: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CaPolicyProposal"];
+                };
+            };
+            /** @description Typed API error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            /** @description Typed API error */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
             };
         };
     };

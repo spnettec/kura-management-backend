@@ -2357,6 +2357,250 @@
         }
       }
     },
+    "/api/v1/settings/client-ca/policy": {
+      "get": {
+        "operationId": "getClientCaCustodyPolicy",
+        "summary": "Read the current tenant policy and its eligible administrators.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaPolicyOverview"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/settings/client-ca/policy/proposals": {
+      "post": {
+        "operationId": "proposeClientCaCustodyPolicy",
+        "summary": "Record an immutable roster and threshold for approval under the current policy. Requires CSRF.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaPolicyChange"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaPolicyProposal"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/settings/client-ca/policy/proposals/{id}": {
+      "get": {
+        "operationId": "getClientCaCustodyProposal",
+        "summary": "Read the original tenant-scoped proposal and any published revision.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaPolicyProposal"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/settings/client-ca/policy/proposals/{id}/approve": {
+      "post": {
+        "operationId": "approveClientCaCustodyProposal",
+        "summary": "Approve the exact proposal as a current custodian. The quorum publishes the revision atomically. Requires CSRF.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaPolicyProposal"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Typed API error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/settings/task-key": {
       "get": {
         "operationId": "getTaskKeyStatus",
@@ -5855,6 +6099,158 @@
         ],
         "description": "Strict imported operation request. No owner key, confirmation token, UID, unit, path or native command is accepted. The center generates owner capabilities and stores them only inside encrypted task inputs. Original queries and pre-dispatch cancellation remain available without new write authorization. UNKNOWN never creates a replacement operation."
       },
+      "CaPolicyOverview": {
+        "type": "object",
+        "required": [
+          "policy",
+          "eligibleAdmins",
+          "viewerCanPropose"
+        ],
+        "properties": {
+          "policy": {
+            "type": "object",
+            "required": [
+              "revision",
+              "requiredCount",
+              "custodianIds"
+            ],
+            "properties": {
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requiredCount": {
+                "type": "integer",
+                "minimum": 2,
+                "maximum": 32767
+              },
+              "custodianIds": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 2,
+                "maxItems": 32767,
+                "uniqueItems": true,
+                "description": "Null means all currently eligible administrators."
+              }
+            }
+          },
+          "eligibleAdmins": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "username"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "username": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "viewerCanPropose": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CaPolicyChange": {
+        "type": "object",
+        "required": [
+          "operationId",
+          "expectedRevision",
+          "requiredCount",
+          "custodianIds"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "requiredCount": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 32767
+          },
+          "custodianIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 2,
+            "maxItems": 32767,
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CaPolicyProposal": {
+        "type": "object",
+        "required": [
+          "change",
+          "approvalRequiredCount",
+          "approvedCount",
+          "appliedApproverIds",
+          "appliedRevision",
+          "viewerApproved",
+          "stale"
+        ],
+        "properties": {
+          "change": {
+            "$ref": "#/components/schemas/CaPolicyChange"
+          },
+          "approvalRequiredCount": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 32767
+          },
+          "approvedCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "appliedApproverIds": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 2,
+            "maxItems": 32767,
+            "uniqueItems": true
+          },
+          "appliedRevision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "viewerApproved": {
+            "type": "boolean"
+          },
+          "stale": {
+            "type": "boolean"
+          }
+        }
+      },
       "CaActivationApproval": {
         "type": "object",
         "required": [
@@ -5864,7 +6260,9 @@
           "pendingRevision",
           "approvedCount",
           "requiredCount",
-          "quorumMet"
+          "quorumMet",
+          "policyRevision",
+          "stale"
         ],
         "properties": {
           "operationId": {
@@ -5891,6 +6289,13 @@
             "minimum": 2
           },
           "quorumMet": {
+            "type": "boolean"
+          },
+          "policyRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "stale": {
             "type": "boolean"
           }
         }

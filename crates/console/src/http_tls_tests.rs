@@ -243,6 +243,90 @@ async fn approve_ca(f: &Fixture, request: &ActivationRequest, session: Option<&s
     call.json(request).send().await.unwrap()
 }
 
+#[tokio::test]
+#[ignore = "requires a fresh private YOFC_REVIEW_PG_URL"]
+async fn configured_custody_policy_controls_https_publication_and_grpc_trust() {
+    let f = fixture().await;
+    let first_id: Uuid = sqlx::query_scalar("SELECT id FROM mgmt_users WHERE username='tls-review-admin'")
+        .fetch_one(&f.app.pool).await.unwrap();
+    let (second_id, second) = approval_admin(&f, "custody-second", "tls-review").await;
+    let (third_id, third) = approval_admin(&f, "custody-third", "tls-review").await;
+    let (_, outsider) = approval_admin(&f, "custody-outsider", "tls-review").await;
+    for (gateway, pem) in [
+        ("custody-one", include_str!("../tests/fixtures/tls-live/client-one.pem")),
+        ("custody-two", include_str!("../tests/fixtures/tls-live/client-two.pem")),
+    ] {
+        sqlx::query(
+            "INSERT INTO mgmt_gateways(id,tenant_id,name,certificate_sha256,enabled)
+             VALUES($1,'tls-review',$1,$2,true)",
+        ).bind(gateway).bind(crate::settings::certificate_fingerprint(pem).unwrap())
+            .execute(&f.app.pool).await.unwrap();
+    }
+    let (_old_sender, mut old) = hello(&f, "one", "custody-one").await.unwrap();
+    assert!(matches!(old.message().await.unwrap().unwrap().payload, Some(console_frame::Payload::Welcome(_))));
+    let settings = format!("{}/api/v1/settings", f.origin);
+    f.client.put(format!("{settings}/client-ca")).json(&json!({"clientCaPem": CA2}))
+        .send().await.unwrap().error_for_status().unwrap();
+    let tls = read(&f, "/settings/tls-activation").await;
+    let superseded = ActivationRequest {
+        operation_id: Uuid::new_v4(),
+        expected_generation: serde_json::from_value(tls["generation"].clone()).unwrap(),
+        pending_revision: tls["pendingRevision"].as_str().unwrap().into(),
+    };
+    approve_ca(&f, &superseded, None).await.error_for_status().unwrap();
+    let old_approval: Value = approve_ca(&f, &superseded, Some(&second)).await
+        .error_for_status().unwrap().json().await.unwrap();
+    assert_eq!(old_approval["quorumMet"], true);
+
+    let policy_id = Uuid::new_v4();
+    let policy_path = "/settings/client-ca/policy";
+    let proposal_path = format!("{policy_path}/proposals/{policy_id}");
+    let mut roster = vec![first_id, second_id, third_id];
+    roster.sort_unstable();
+    f.client.post(format!("{settings}/client-ca/policy/proposals")).json(&json!({
+        "operationId": policy_id, "expectedRevision": 0, "requiredCount": 3, "custodianIds": roster,
+    })).send().await.unwrap().error_for_status().unwrap();
+    let vote = format!("{}/api/v1{proposal_path}/approve", f.origin);
+    let first: Value = f.client.post(&vote).send().await.unwrap()
+        .error_for_status().unwrap().json().await.unwrap();
+    assert_eq!(first["approvedCount"], 1);
+    assert_eq!(read(&f, policy_path).await["policy"]["revision"], 0);
+    f.client.post(&vote).header(reqwest::header::COOKIE, &second).send().await.unwrap()
+        .error_for_status().unwrap();
+    let published = read(&f, &proposal_path).await;
+    assert_eq!(published["approvalRequiredCount"], 2);
+    assert_eq!(published["appliedRevision"], 1);
+    assert_eq!(published["appliedApproverIds"].as_array().unwrap().len(), 2);
+    assert_eq!(read(&f, policy_path).await["policy"],
+        json!({"revision": 1, "requiredCount": 3, "custodianIds": roster}));
+    let retired = read(&f, &format!("/settings/tls-activation/approvals/{}", superseded.operation_id)).await;
+    assert_eq!(retired["stale"], true);
+    assert_eq!(retired["quorumMet"], false);
+
+    let activation = ActivationRequest { operation_id: Uuid::new_v4(), ..superseded };
+    assert_eq!(approve_ca(&f, &activation, Some(&outsider)).await.status(), reqwest::StatusCode::CONFLICT);
+    for session in [None, Some(second.as_str()), Some(third.as_str())] {
+        approve_ca(&f, &activation, session).await.error_for_status().unwrap();
+    }
+    let _response = f.client.post(format!("{settings}/tls-activation")).json(&activation).send().await;
+    let receipt = read(&f, &format!("/settings/tls-activation/{}", activation.operation_id)).await;
+    assert_eq!(receipt["state"], "APPLIED");
+    assert_eq!(receipt["observedActive"], true);
+    let intent_path = f.root.join(format!("state/tls-operations/{}.intent.json", activation.operation_id));
+    let intent: Value = serde_json::from_slice(&fs::read(intent_path).unwrap()).unwrap();
+    assert_eq!(intent["caApproval"], json!({"tenantId":"tls-review","requiredCount":3,"approverIds":roster}));
+    assert!(tokio::time::timeout(Duration::from_secs(3), old.message()).await.unwrap().is_err());
+    // A client CA-only rollout must leave the server's certification chain intact.
+    let (_new_sender, mut new) = hello_with_trust(&f, "two", "custody-two", &[], Some(CA1)).await.unwrap();
+    assert!(matches!(new.message().await.unwrap().unwrap().payload, Some(console_frame::Payload::Welcome(_))));
+    assert!(hello(&f, "one", "custody-one").await.is_err());
+
+    fs::write(f.root.join("custody-policy-proof.json"), serde_json::to_vec_pretty(&json!({
+        "policy": published, "superseded": retired, "activation": receipt, "approval": intent["caApproval"],
+    })).unwrap()).unwrap();
+    println!("CA_CUSTODY_CHAIN_ACCEPTED policy_id={policy_id} tls_id={} previous_id={}", activation.operation_id, superseded.operation_id);
+}
+
 async fn hello(
     f: &Fixture,
     cohort: &str,
@@ -269,6 +353,22 @@ async fn hello_with_capabilities(
     ),
     tonic::Status,
 > {
+    hello_with_trust(f, cohort, gateway, capabilities, None).await
+}
+
+async fn hello_with_trust(
+    f: &Fixture,
+    cohort: &str,
+    gateway: &str,
+    capabilities: &[&str],
+    server_ca: Option<&str>,
+) -> Result<
+    (
+        tokio::sync::mpsc::Sender<AgentFrame>,
+        tonic::Streaming<yofc_management_protocol::v1::ConsoleFrame>,
+    ),
+    tonic::Status,
+> {
     use tonic::transport::{Certificate, ClientTlsConfig, Endpoint, Identity};
     let (ca, cert, key) = if cohort == "one" {
         (
@@ -287,7 +387,7 @@ async fn hello_with_capabilities(
         .unwrap()
         .tls_config(
             ClientTlsConfig::new()
-                .ca_certificate(Certificate::from_pem(ca))
+                .ca_certificate(Certificate::from_pem(server_ca.unwrap_or(ca)))
                 .identity(Identity::from_pem(cert, key)),
         )
         .unwrap()

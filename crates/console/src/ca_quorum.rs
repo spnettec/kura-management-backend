@@ -1,5 +1,5 @@
 //! Approval of a specific client CA activation. The CA signing key stays external.
-use crate::{auth::Principal, db, tls_runtime::ActivationRequest};
+use crate::{auth::Principal, ca_policy, db, tls_runtime::ActivationRequest};
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
 use sqlx::{PgPool, Postgres, Transaction};
@@ -31,6 +31,8 @@ pub(crate) struct Status {
     generation_id: Uuid,
     expected_generation: Uuid,
     pending_revision: String,
+    policy_revision: i64,
+    stale: bool,
     approved_count: i64,
     required_count: i16,
     quorum_met: bool,
@@ -86,32 +88,30 @@ impl Authorization {
 
 pub(crate) async fn approve(pool: &PgPool, actor: &Principal, target: &Target) -> Result<Option<Status>> {
     let mut tx = pool.begin().await?;
+    let policy = ca_policy::lock_for_activation(&mut tx, &actor.tenant_id).await?;
+    if !policy.permits(actor.id) || !ca_policy::eligible(&mut tx, &actor.tenant_id, &[actor.id]).await? {
+        return Ok(None);
+    }
     sqlx::query(
-        "INSERT INTO ca_activation_proposals(operation_id,tenant_id,generation_id,expected_generation,pending_revision)
-         VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING",
+        "INSERT INTO ca_activation_proposals(operation_id,tenant_id,generation_id,expected_generation,pending_revision,policy_revision)
+         VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT DO NOTHING",
     )
     .bind(target.operation_id)
     .bind(&actor.tenant_id)
     .bind(target.generation_id)
     .bind(target.expected_generation)
     .bind(&target.pending_revision)
+    .bind(policy.revision)
     .execute(&mut *tx)
     .await?;
-    let recorded: Option<Target> = sqlx::query_as(
-        "SELECT operation_id,generation_id,expected_generation,pending_revision
-         FROM ca_activation_proposals WHERE operation_id=$1 AND tenant_id=$2",
-    )
-    .bind(target.operation_id)
-    .bind(&actor.tenant_id)
-    .fetch_optional(&mut *tx)
-    .await?;
+    let recorded = matching_revision(&mut tx, &actor.tenant_id, target.operation_id, policy.revision).await?;
     if recorded.as_ref() != Some(target) {
         return Ok(None);
     }
     let written = sqlx::query(
         "INSERT INTO ca_operation_approvals(tenant_id,operation_id,operation_kind,generation_id,approver,approver_id,status)
          SELECT tenant_id,$1,'generation-activate',$2,username,id,'approved'
-         FROM mgmt_users WHERE id=$3 AND tenant_id=$4 AND enabled AND role='admin' AND NOT must_change_password
+         FROM mgmt_users WHERE id=$3 AND tenant_id=$4
          ON CONFLICT DO NOTHING",
     )
     .bind(target.operation_id)
@@ -136,15 +136,17 @@ pub(crate) async fn approve(pool: &PgPool, actor: &Principal, target: &Target) -
 }
 
 pub(crate) async fn status(pool: &PgPool, tenant: &str, id: Uuid) -> Result<Option<Status>> {
-    let row: Option<(Uuid, Uuid, String, i16, i64)> = sqlx::query_as(
+    let row: Option<(Uuid, Uuid, String, i64, bool, i16, i64)> = sqlx::query_as(
         "SELECT p.generation_id,p.expected_generation,p.pending_revision,
+             p.policy_revision,p.policy_revision<>COALESCE(q.revision,0),
              GREATEST(COALESCE(q.quorum_size,2),2)::smallint,
              (SELECT COUNT(DISTINCT a.approver_id)
               FROM ca_operation_approvals a JOIN mgmt_users u ON u.id=a.approver_id
               WHERE a.tenant_id=p.tenant_id AND a.operation_id=p.operation_id
                 AND a.generation_id=p.generation_id AND a.operation_kind='generation-activate'
                 AND a.status='approved' AND u.tenant_id=p.tenant_id AND u.enabled
-                AND u.role='admin' AND NOT u.must_change_password)
+                AND u.role='admin' AND NOT u.must_change_password
+                AND (q.custodian_ids IS NULL OR u.id=ANY(q.custodian_ids)))
          FROM ca_activation_proposals p LEFT JOIN ca_quorum_policy q ON q.tenant_id=p.tenant_id
          WHERE p.operation_id=$1 AND p.tenant_id=$2",
     )
@@ -152,15 +154,31 @@ pub(crate) async fn status(pool: &PgPool, tenant: &str, id: Uuid) -> Result<Opti
     .bind(tenant)
     .fetch_optional(pool)
     .await?;
-    Ok(row.map(|(generation_id, expected_generation, pending_revision, required_count, approved_count)| Status {
+    Ok(row.map(|(generation_id, expected_generation, pending_revision, policy_revision, stale, required_count, approved_count)| Status {
         operation_id: id,
         generation_id,
         expected_generation,
         pending_revision,
+        policy_revision,
+        stale,
         approved_count,
         required_count,
-        quorum_met: approved_count >= i64::from(required_count),
+        quorum_met: !stale && approved_count >= i64::from(required_count),
     }))
+}
+
+async fn matching_revision(
+    conn: &mut sqlx::PgConnection, tenant: &str, id: Uuid, revision: i64,
+) -> Result<Option<Target>> {
+    Ok(sqlx::query_as(
+        "SELECT operation_id,generation_id,expected_generation,pending_revision FROM ca_activation_proposals
+         WHERE operation_id=$1 AND tenant_id=$2 AND policy_revision=$3 FOR SHARE",
+    )
+    .bind(id)
+    .bind(tenant)
+    .bind(revision)
+    .fetch_optional(conn)
+    .await?)
 }
 
 pub(crate) async fn check_activation_quorum(
@@ -170,36 +188,25 @@ pub(crate) async fn check_activation_quorum(
 ) -> Result<Option<Authorization>> {
     let tenant = &actor.tenant_id;
     let mut tx = pool.begin().await?;
-    // Missing policy rows use the default. A row lock alone cannot protect
-    // against a concurrent INSERT of a policy for this tenant.
-    sqlx::query("LOCK TABLE ca_quorum_policy IN SHARE MODE")
-        .execute(&mut *tx).await?;
-    let proposal: Option<Target> = sqlx::query_as(
-        "SELECT operation_id,generation_id,expected_generation,pending_revision
-         FROM ca_activation_proposals WHERE operation_id=$1 AND tenant_id=$2 FOR SHARE",
-    )
-    .bind(target.operation_id)
-    .bind(tenant)
-    .fetch_optional(&mut *tx).await?;
+    let policy = ca_policy::lock_for_activation(&mut tx, tenant).await?;
+    let proposal = matching_revision(&mut tx, tenant, target.operation_id, policy.revision).await?;
     if proposal.as_ref() != Some(&target) {
         return Ok(None);
     }
-    let required_count: i16 = sqlx::query_scalar(
-        "SELECT GREATEST(COALESCE((SELECT quorum_size FROM ca_quorum_policy WHERE tenant_id=$1),2),2)::smallint",
-    )
-    .bind(tenant)
-    .fetch_one(&mut *tx).await?;
     let approver_ids: Vec<Uuid> = sqlx::query_scalar(
         "SELECT u.id FROM ca_operation_approvals a JOIN mgmt_users u ON u.id=a.approver_id
          WHERE a.tenant_id=$1 AND a.operation_id=$2 AND a.generation_id=$3
            AND a.operation_kind='generation-activate' AND a.status='approved'
            AND u.tenant_id=$1 AND u.enabled AND u.role='admin' AND NOT u.must_change_password
+           AND ($4::uuid[] IS NULL OR u.id=ANY($4))
          ORDER BY u.id FOR SHARE OF a,u",
     )
     .bind(tenant)
     .bind(target.operation_id)
     .bind(target.generation_id)
+    .bind(&policy.custodian_ids)
     .fetch_all(&mut *tx).await?;
+    let required_count = policy.required_count;
     if approver_ids.len() < required_count as usize {
         return Ok(None);
     }

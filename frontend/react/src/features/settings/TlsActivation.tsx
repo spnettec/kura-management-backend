@@ -17,7 +17,7 @@ type ActivationStatus = {
   blockingCsrRequestId?: string | null;
 };
 type ActivationRequest = { operationId: string; expectedGeneration: string; pendingRevision: string };
-type Approval = ActivationRequest & { approvedCount: number; requiredCount: number; quorumMet: boolean };
+type Approval = ActivationRequest & { approvedCount: number; requiredCount: number; quorumMet: boolean; stale?: boolean };
 type Operation = { operationId: string; state: "APPLIED" | "UNKNOWN" | "REJECTED"; observedActive: boolean; request: ActivationRequest };
 const activationPath = "/settings/tls-activation";
 const uuidPattern = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}";
@@ -49,7 +49,7 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
       await refresh();
     } catch (e) { setError(e); }
   }, [refresh, onApplied]);
-  useEffect(() => { void refresh(); }, [refresh, revision]);
+  useEffect(() => { setApproval(undefined); void refresh(); }, [refresh, revision]);
   useEffect(() => {
     if (!status?.blockingOperationId || request !== null) return;
     let cancelled = false;
@@ -82,7 +82,7 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
 
   const canReview = !busy && request === null && status?.healthy && status.activationRequired
     && !status.blockingOperationId && !status.blockingCsrRequestId;
-  const currentApproval = approval?.operationId === proposalId
+  const currentApproval = !approval?.stale && approval?.operationId === proposalId
     && approval.expectedGeneration === status?.generation
     && approval.pendingRevision === status?.pendingRevision ? approval : undefined;
 

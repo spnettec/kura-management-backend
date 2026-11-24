@@ -1,5 +1,7 @@
 #[path = "server_csr_http.rs"]
 mod server_csr_http;
+#[path = "ca_policy_http.rs"]
+mod ca_policy_http;
 use crate::{
     auth,
     config::Config,
@@ -154,6 +156,10 @@ pub fn router(app: App) -> Router {
           .route("/api/v1/settings/tls-activation/approvals",post(settings_tls_approve))
           .route("/api/v1/settings/tls-activation/approvals/{id}",get(settings_tls_approvals))
           .route("/api/v1/settings/tls-activation/{id}",get(settings_tls_operation))
+          .route("/api/v1/settings/client-ca/policy",get(ca_policy_http::overview))
+          .route("/api/v1/settings/client-ca/policy/proposals",post(ca_policy_http::propose))
+          .route("/api/v1/settings/client-ca/policy/proposals/{id}",get(ca_policy_http::status))
+          .route("/api/v1/settings/client-ca/policy/proposals/{id}/approve",post(ca_policy_http::approve))
         .route("/api/v1/settings/task-key",get(settings_task_key).post(settings_task_key_backup))
         .route("/api/v1/settings/task-key/rotate",post(settings_task_key_rotate))
         .route("/api/v1/settings/task-key/restore",post(settings_task_key_restore))

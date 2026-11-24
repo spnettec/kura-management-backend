@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { api, apiDownload, ApiError, certificateFingerprint, saveBlob, type Session } from "../../api/client";
 import { errorText, LanguageSwitcher, useI18n } from "../../i18n/I18n";
 import { TlsActivation } from "./TlsActivation";
+import { CaPolicy } from "./CaPolicy";
 import { ServerCsr, type CsrSelection } from "./ServerCsr";
 
 type TlsStatus = {
@@ -385,6 +386,7 @@ export function Settings({ user }: { user: Session }) {
       <Alert type="info" title={t("settings.description")} />
       <TlsCard user={user} revision={revision} onStaged={changed} />
       <CaCard user={user} revision={revision} onStaged={changed} />
+      <CaPolicy user={user} onPublished={changed} />
       <TlsActivation user={user} revision={revision} onApplied={changed} />
       <TaskKeyCard user={user} />
     </Space>

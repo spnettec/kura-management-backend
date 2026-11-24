@@ -17,6 +17,7 @@ mod provisioning;
 mod settings;
 mod settings_files;
 mod client_ca_store;
+mod ca_policy;
 mod ca_quorum;
 mod tls_store;
 mod server_csr;
