@@ -1,3 +1,9 @@
+## 2026-11-25 PKCS#11 provider 注册归属及同库隔离
+
+Core `78b75b44ad` 校验 JCA 进程级注册的实际对象。名称已被占用时返回 `SERVICE_UNAVAILABLE`，缓存发现注册被替换时拒绝读取，停用只释放仍归属本服务的对象。101 项 Keystore 单测通过。独立 Debian ARM64 / JDK 21 的两个 SoftHSM 槽实测旧版接受同名冲突并移除了原注册。修复版拒绝，原句柄和新取钥均继续验签，同库另一槽与受控替换后的注册保留，当前所有者可以正常释放。正式 ARM64 候选 `78b75b44ad-1` 由 Git 构建，Keystore 35 个类与动态实测逐字节一致，其余 232 个 JAR、原 7 个受保护 JAR 和 13 个原生载荷不变。
+
+补父项 #1、#3、#12。候选实际 systemd Main、六组件联合包维护和 provider 热恢复还需继续。冻结 **0/12**，外部延期仅原三项。 [候选制品、原生对照与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-provider-registration-20261125/HANDOFF.md)
+
 ## 2026-11-25 SoftHSM 原件归位后的进程内失效
 
 独立 Debian ARM64 以签名索引取得的 SoftHSM `2.6.1-3` 与 JDK 21，使用两个临时不可导出 RSA 令牌。目标目录短暂缺席期间仅读同库另一槽时，目标原 inode 归位后原 JVM 可继续验签。缺席时访问目标则复现槽仍呈 present、`C_GetTokenInfo` 返回 `CKR_GENERAL_ERROR`、证书枚举为零。同 inode 归位后原 JVM 保持该状态，新建 SunPKCS11 provider 初始化同样失败。原 JVM 仍运行时，子进程可按原证书公钥验签，原 JVM 随后仍失败，另一槽各阶段持续验签。匹配的 Debian 源码表明文件目录刷新失败后 OSToken 保留无效状态。原 Root `207:257` 全程停机，上一轮正式 Main 冷读仍逐字节通过。
