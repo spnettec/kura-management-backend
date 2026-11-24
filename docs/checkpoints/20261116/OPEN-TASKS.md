@@ -1,3 +1,9 @@
+## 2026-11-25 已发布代低权限 Journal、执行器及双族 ICMP
+
+Core `c8e04fa570` 通过 ARM64 定向 87 项。PID 1 将专用 Root 0600 核验连接交给低权限 worker。Root 绑定 PIDFD、实际 worker 身份、vendor unit、cgroup 和 Main invocation，核对正在使用的私有声明。隔离 Root `225:257` 沿 `89d10916-8b4f-45c9-a79f-2b586508b041` 原位升级，六包 installed，READY/configured 及原 data 交接均验签。正式 OSGi Main 读回两代密文，ownership、Journal、IPv4/IPv6 回环与普通执行器有实际通过证据。普通执行器的私有工作目录被内核拒绝，使用其可遍历的 `/usr` 补证成功。专用 socket 拒绝直接 kurad 和非配对 Root，Main/Agent 与验证 VM 已停放。
+
+补父项 #1、#3、#9、#12。独立 reboot broker 的发布代 actor 和 client 配对仍拒绝。原 `219:257` 已签发布局仍未决。冻结 **0/12**，外部延期仅原三项。 [低权限 broker 正式证据与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/typed-generation-proof-20261124/HANDOFF.md)
+
 ## 2026-11-24 已发布代 Core 与 Networking 原位升级、ownership 恢复
 
 Core `07a5b74b8f` 严格核验 Root 0400 凭据声明，`de68644b3b` 允许已发布代凭据预检配对实际 Networking 的 vendor 依赖声明。ARM64 定向 87 项及发布/恢复 58 项通过。隔离 Root `225:257` 的首候选在生成升级副本和签发布局前明确拒绝，旧版仍 installed。同 Root 沿 `2fcbddca-4a83-4bf4-b659-0255b7450aea` 由后继正式包解包配置，READY、configured 和原数据交接验签。原 data inode、四份数据、23 份保护文件和 Agent READY/OFF 授权保持。正式 OSGi Main 读回两代密文，ownership 通过。低权限 journal 和 IPv4/IPv6 回环 ICMP 仍拒绝，Main/Agent 与 VM 正常停放。
