@@ -1,3 +1,9 @@
+## 2026-11-24 Core 保留重装原 provider 数据与联合维护卡点
+
+Core `f9cebce8af` 使移除签名围栏保留原 `data/` 目录，保留重装在同一文件系统原子交换，沿原号恢复。ARM64 定向 41 项通过。扩展 77 项有两项既有 systemd drop-in 合同失败，前一提交复现同名两项。
+
+独立 ARM64 Root `209:257` 六组件首装、正式 Main 创建业务夹具 PKCS12 并验签、Core 与四个 addon 移除通过。原维护 `c26d7bfa-5505-4c10-9442-1676c49f1432` 已签原目录交接，`data/` inode 及四份 provider 文件的完整指纹保持，三份快照的摘要和主要元数据保持。联合重装停在 Core PREPARED，Deployment preinst 的临时掩码与 Core 保留的 disabled 状态冲突，Core half-configured，四个 addon unpacked，无 READY 或终态历史。原号、原 Deployment 门禁及数据完整，夹具正常停放。冷启动验签、purge 和联合门禁生产修复内部待办。宿主实增 3.87 MiB，夹具 APT 缓存少 151.84 MiB。冻结闭环 **0/12**，外部延期仍仅原三项。[制品、现场及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-retained-provider-20261124/HANDOFF.md)
+
 ## 2026-11-24 已绑定网关联合升级合并验收
 
 独立 ARM64 Root `206:257` 干净首装六组件，完成正式绑定与 mTLS。Core `3db1687127` 包含 `fd67e48f5c` 及原目录交接修复，agent 为 `0227dc9937`。显式 OFF 后，同一 Root 和维护 `0ce55235-7cf3-4ab8-833e-126bc3f4283c` 完成 Core 与 Networking 联合换版，原号 `APPLIED`、无 pending。签名原目录交接通过，`data/` inode 和登记子树元数据保持。原四份授权 READY，原加密 SQLite 及非空 WAL 经正式检查器认证。
