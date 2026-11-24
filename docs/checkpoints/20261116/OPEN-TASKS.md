@@ -1,3 +1,9 @@
+## 2026-11-25 已发布三代凭据的 DHCP 原号交接与 BIND 状态
+
+隔离 ARM64 Root `225:257` 的当前已发布三代 Core `dc1b0cbbf4-3` 与 Networking `83f237e-2` 验证 DHCP 原号交接。原 apply `91d07fe8-82cd-4d77-a13f-59471b18614e` 仅派发一次。正式 Main 正常停服前后，原 dnsmasq 的 PID、invocation、启动 ticks、配置保持，隔离客户端两次实际 DORA 均获 `192.0.2.83`。后继 Main 的通用 compare 在未确认送达阶段返回 UNKNOWN，pair 查询后原号确认一次，原意图与结果保留原 inode 和摘要，未重发。独立 inverse 还原配置及 DHCP inactive。两次正式 OSGi Main 均只读核对同一 named 实例，未写 BIND。六包 installed，50 份保护文件保持，VM 正常停放，官方冷读原 89 项、两笔新操作的六份文件和十个实装载荷。
+
+补父项 #3、#6、#12。冻结 **0/12**，外部延期仅原三项。 [DHCP 原号、两次租约和停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/published-generation-dns-dhcp-20261125/HANDOFF.md)
+
 ## 2026-11-25 三代凭据的 GWT 与 Wires 联合升级和半配置续办
 
 三代凭据 ARM64 Root `225:257` 用 GWT `b881a3a-2`、Wires `277954b-2` 正式联合升级。两个维护修订的业务载荷与 Git 来源正式归档逐字节一致。联合解包后 GWT 配置成功，Wires 的真实 postinst 注册锁等待 30 秒超时，留下半配置。正常关机冷读 89 项后，同 Root 新 boot 仅续配 Wires 一次。正式 Main 读取三代密文，九个 ACTIVE bundle 对包，原 Wires 快照 `1795544897896` 再送达，GWT 回环 HTTPS 302。原注册表、三快照、四个皮肤 conffile 和 43 份保护记录保持，含两笔 Deployment 原归档和回执。六包 installed，VM 正常停放，终态冷读 89 项。
