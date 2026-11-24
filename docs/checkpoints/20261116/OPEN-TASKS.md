@@ -1,3 +1,9 @@
+## 2026-11-24 已发布代 Core 的六组件加装与 Deployment 独立升级
+
+Core `4b7531d437` 的已发布代 Root `225:257` 正式加装五组件。Agent `f78610a` 加入配对 Core 0400 凭据 drop-in 核验，ARM64 定向共 150 项通过。正式 Agent 新维护 APPLIED，原初始化保持，原配对号检查 NOT_FOUND 后落盘 READY，三份本机授权保持 OFF。Deployment `1642074 → 2bdb66d` 独立升级，解包时实际断言拒绝启动，配置后退役。升级前后正式 OSGi Main 各核对 8 个 ACTIVE bundle，23 份原保护记录、原 data inode 和授权保持，Main/Agent 停放。
+
+补父项 #3、#9、#12。同一后继 JVM 的 ownership、journal 和双族回环 ICMP 读请求因共用单元核定拒绝。原 219:257 的布局意图仍缺可信返回。冻结 **0/12**，typed brokers、六组件及 provider/launcher 其余矩阵继续内部待验，外部延期仅原三项。 [六包、Deployment 断言和 typed broker 拒绝](../../../../.management-close-20261116/core-rtc-hotplug-20261120/six-published-companion-20261124/HANDOFF.md)
+
 ## 2026-11-24 跨 reader manifest 保留重装及跨关机续配
 
 Core `4b7531d437` 把已核验的双前序 manifest 和原启动回执门禁接入保留重装，ARM64 104 项通过。隔离 ARM64 Root `225:257` 的被移除 reader 与原发布 reader 摘要不同，后继正式包沿新号 `f4f9930d-70ca-4751-a222-785d7ea37090` 解包后正常停机，再沿原围栏续配至 ii。原保留签名、数据 inode 225:25464、四份原数据文件、23 份保护记录及三个 launcher 保持。实际 READY/configured 验签，正式 OSGi Main 读回两代密文，Main disabled，VM 已停放。已修正通用首装尾注对自动启动的错误承诺。
