@@ -1,5 +1,5 @@
-import { Alert, Button, Card, Checkbox, Space, Typography } from "antd";
-import { useCallback, useEffect, useState } from "react";
+import { Alert, Button, Card, Checkbox, Input, Space, Typography } from "antd";
+import { useCallback, useEffect, useId, useState } from "react";
 import { api, type Session } from "../../api/client";
 import { errorText, useI18n } from "../../i18n/I18n";
 
@@ -17,7 +17,10 @@ type ActivationStatus = {
   blockingCsrRequestId?: string | null;
 };
 type ActivationRequest = { operationId: string; expectedGeneration: string; pendingRevision: string };
+type Approval = ActivationRequest & { approvedCount: number; requiredCount: number; quorumMet: boolean };
 type Operation = { operationId: string; state: "APPLIED" | "UNKNOWN" | "REJECTED"; observedActive: boolean; request: ActivationRequest };
+const activationPath = "/settings/tls-activation";
+const uuidPattern = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}";
 
 export function TlsActivation({ user, revision, onApplied }: { user: Session; revision: number; onApplied: () => void }) {
   const { t } = useI18n();
@@ -29,6 +32,9 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
   const [confirmed, setConfirmed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<unknown>();
+  const [proposalId, setProposalId] = useState("");
+  const [approval, setApproval] = useState<Approval>();
+  const proposalInput = useId();
   const refresh = useCallback(async () => {
     setConfirmed(false);
     try { setStatus(await api<ActivationStatus>("/settings/tls-activation")); }
@@ -61,7 +67,7 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
         const raw = localStorage.getItem(storageKey);
         if (!raw) { setRequest(null); return; }
         const saved: ActivationRequest = JSON.parse(raw);
-        const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+        const uuid = new RegExp(`^${uuidPattern}$`);
         if (!saved || !uuid.test(saved.operationId) || !uuid.test(saved.expectedGeneration)
           || !/^[0-9a-f]{64}$/.test(saved.pendingRevision)) throw new Error("Invalid saved activation");
         setRequest(saved);
@@ -74,12 +80,51 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
     return () => window.removeEventListener("storage", changed);
   }, [storageKey, observe]);
 
-  async function activate() {
-    if (!status?.healthy || status.blockingOperationId || status.blockingCsrRequestId || !status.activationRequired || !confirmed || request !== null || busy) return;
+  const canReview = !busy && request === null && status?.healthy && status.activationRequired
+    && !status.blockingOperationId && !status.blockingCsrRequestId;
+  const currentApproval = approval?.operationId === proposalId
+    && approval.expectedGeneration === status?.generation
+    && approval.pendingRevision === status?.pendingRevision ? approval : undefined;
+
+  async function reviewApproval() {
     setBusy(true);
     setError(undefined);
     setConfirmed(false);
-    const saved = { operationId: crypto.randomUUID(), expectedGeneration: status.generation, pendingRevision: status.pendingRevision };
+    try {
+      const review = await api<Approval>(`${activationPath}/approvals/${proposalId}`);
+      setProposalId(review.operationId);
+      setApproval(review);
+    } catch (e) { setError(e); }
+    finally { setBusy(false); }
+  }
+
+  async function approve() {
+    if (!canReview || !status?.pendingCaFingerprint || !confirmed || (proposalId && !currentApproval)) return;
+    setBusy(true);
+    setError(undefined);
+    setConfirmed(false);
+    const proposal = {
+      operationId: currentApproval?.operationId ?? crypto.randomUUID(),
+      expectedGeneration: status.generation,
+      pendingRevision: status.pendingRevision,
+    };
+    setProposalId(proposal.operationId);
+    try {
+      setApproval(await api<Approval>(`${activationPath}/approvals`, "POST", proposal, user.csrf));
+    } catch (e) { setError(e); }
+    finally { setBusy(false); }
+  }
+
+  async function activate() {
+    if (!status || !canReview || !confirmed || (status.pendingCaFingerprint && !currentApproval?.quorumMet)) return;
+    setBusy(true);
+    setError(undefined);
+    setConfirmed(false);
+    const saved = {
+      operationId: status.pendingCaFingerprint ? currentApproval!.operationId : crypto.randomUUID(),
+      expectedGeneration: status.generation,
+      pendingRevision: status.pendingRevision,
+    };
     try {
       // Saving must succeed before dispatch. A lost response keeps this id across
       // reloads; even a subsequent 404 never authorizes a second activation.
@@ -99,6 +144,8 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
       setRequest(null);
       setOperation(undefined);
       setError(undefined);
+      setProposalId("");
+      setApproval(undefined);
       void refresh();
       onApplied();
     } catch (e) { setError(e); }
@@ -117,9 +164,30 @@ export function TlsActivation({ user, revision, onApplied }: { user: Session; re
           {status.blockingCsrRequestId && <Alert type="warning" title={t("csr.UNKNOWN")} description={status.blockingCsrRequestId} />}
       </>}
       <Button disabled={busy} onClick={() => void refresh()}>{t("settings.activation.refresh")}</Button>
-        <Checkbox checked={confirmed} disabled={busy || request !== null || !status?.healthy || !!status.blockingOperationId || !!status.blockingCsrRequestId || !status.activationRequired}
+      {status?.pendingCaFingerprint && request === null && <>
+        <form method="get" action={`/api/v1${activationPath}/approvals/${proposalId}`}
+          onSubmit={event => { event.preventDefault(); void reviewApproval(); }}>
+          <Space direction="vertical">
+            <label htmlFor={proposalInput}>{t("settings.activation.proposalId")}</label>
+            <Input id={proposalInput} name="operationId" value={proposalId} required pattern={uuidPattern}
+              autoCorrect="off" autoCapitalize="none" spellCheck={false} disabled={busy}
+              onChange={event => { setProposalId(event.target.value); setApproval(undefined); setConfirmed(false); }} />
+            <Button htmlType="submit" disabled={busy}>{t("settings.activation.reviewApproval")}</Button>
+          </Space>
+        </form>
+        {proposalId && currentApproval && <p role="status">
+          <Typography.Text copyable code>{proposalId}</Typography.Text>{" "}
+          {t("settings.activation.approvalCount")}: {currentApproval.approvedCount}/{currentApproval.requiredCount}
+        </p>}
+        {approval && !currentApproval && <Alert type="warning" title={t("settings.activation.approvalStale")} />}
+      </>}
+      <Checkbox checked={confirmed} disabled={!canReview}
         onChange={event => setConfirmed(event.target.checked)}>{t("settings.activation.confirm")}</Checkbox>
-        <Button type="primary" loading={busy} disabled={busy || request !== null || !confirmed || !status?.healthy || !!status.blockingOperationId || !!status.blockingCsrRequestId || !status.activationRequired}
+      {status?.pendingCaFingerprint && request === null &&
+        <Button disabled={!canReview || !confirmed || !!(proposalId && !currentApproval)} onClick={() => void approve()}>
+          {t("settings.activation.approve")}
+        </Button>}
+      <Button type="primary" loading={busy} disabled={!canReview || !confirmed || !!(status?.pendingCaFingerprint && !currentApproval?.quorumMet)}
         onClick={() => void activate()}>{t("settings.activation.apply")}</Button>
       {request && <>
         <Typography.Text copyable code>{request.operationId}</Typography.Text>

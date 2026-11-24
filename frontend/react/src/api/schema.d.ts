@@ -2417,6 +2417,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/settings/tls-activation/approvals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Approve the exact staged client CA activation as the authenticated administrator. Separate administrators use one proposal ID. Requires CSRF. */
+        post: operations["approveClientCaActivation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/settings/tls-activation/approvals/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read the original proposal and current quorum for the administrator tenant. */
+        get: operations["getClientCaActivationApproval"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/settings/tls-activation/{id}": {
         parameters: {
             query?: never;
@@ -3358,6 +3392,18 @@ export interface components {
             /** Format: uuid */
             originalTaskId: string;
         };
+        CaActivationApproval: {
+            /** Format: uuid */
+            operationId: string;
+            /** Format: uuid */
+            generationId: string;
+            /** Format: uuid */
+            expectedGeneration: string;
+            pendingRevision: string;
+            approvedCount: number;
+            requiredCount: number;
+            quorumMet: boolean;
+        };
         TlsActivationRequest: {
             /** Format: uuid */
             operationId: string;
@@ -3886,6 +3932,80 @@ export interface operations {
                 };
             };
             /** @description Authentication, authorization, CSRF, input, operation binding or storage error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    approveClientCaActivation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TlsActivationRequest"];
+            };
+        };
+        responses: {
+            /** @description Current quorum of the exact proposal */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CaActivationApproval"];
+                };
+            };
+            /** @description Proposal or staged certificate selection changed */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Authentication, authorization, or storage error */
+            default: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getClientCaActivationApproval: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Original proposal with current approvals */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CaActivationApproval"];
+                };
+            };
+            /** @description No proposal for this tenant */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Authentication, authorization, or storage error */
             default: {
                 headers: {
                     [name: string]: unknown;

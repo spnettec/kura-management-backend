@@ -151,6 +151,8 @@ pub fn router(app: App) -> Router {
         .route("/api/v1/settings/server-csr/{id}/stage",post(server_csr_http::stage))
         .route("/api/v1/settings/client-ca",get(settings_client_ca).put(settings_client_ca_put))
           .route("/api/v1/settings/tls-activation",get(settings_tls_activation).post(settings_tls_activate))
+          .route("/api/v1/settings/tls-activation/approvals",post(settings_tls_approve))
+          .route("/api/v1/settings/tls-activation/approvals/{id}",get(settings_tls_approvals))
           .route("/api/v1/settings/tls-activation/{id}",get(settings_tls_operation))
         .route("/api/v1/settings/task-key",get(settings_task_key).post(settings_task_key_backup))
         .route("/api/v1/settings/task-key/rotate",post(settings_task_key_rotate))
@@ -1200,6 +1202,38 @@ async fn settings_tls_operation(State(app): State<App>, headers: HeaderMap,
     Ok(Json(runtime.operation(id)?.ok_or(ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"))?))
 }
 
+async fn settings_tls_approvals(State(app): State<App>, headers: HeaderMap,
+    path: Result<Path<Uuid>, PathRejection>) -> Result<Json<crate::ca_quorum::Status>, ApiError> {
+    let p = auth::principal(&app.pool, &headers).await?;
+    require_admin(&p)?;
+    let Path(id) = path?;
+    let status = crate::ca_quorum::status(&app.pool, &p.tenant_id, id).await?
+        .ok_or(ApiError::new(StatusCode::NOT_FOUND, "NOT_FOUND"))?;
+    Ok(Json(status))
+}
+
+async fn settings_tls_approve(State(app): State<App>, headers: HeaderMap,
+    input: Result<Json<crate::tls_runtime::ActivationRequest>, JsonRejection>)
+    -> Result<Json<crate::ca_quorum::Status>, ApiError> {
+    let p = auth::principal(&app.pool, &headers).await?;
+    require_admin(&p)?;
+    auth::csrf(&headers, &p, &app.config.origin)?;
+    if p.must_change_password {
+        return Err(ApiError::forbidden());
+    }
+    let Json(input) = input?;
+    let runtime = app.tls.as_ref().ok_or(ApiError::new(StatusCode::SERVICE_UNAVAILABLE, "UNSUPPORTED"))?;
+    let _guard = runtime.changes.lock().await;
+    let conflict = || ApiError::new(StatusCode::CONFLICT, "CONFLICT");
+    if runtime.operation(input.operation_id)?.is_some() {
+        return Err(conflict());
+    }
+    let target = runtime.activation_approval_target(&input)
+        .map_err(|_| conflict())?.ok_or_else(conflict)?;
+    let status = crate::ca_quorum::approve(&app.pool, &p, &target).await?.ok_or_else(conflict)?;
+    Ok(Json(status))
+}
+
 async fn settings_tls_activate(State(app): State<App>, headers: HeaderMap,
     input: Result<Json<crate::tls_runtime::ActivationRequest>, JsonRejection>) -> Result<Json<Value>, ApiError> {
     let p = auth::principal(&app.pool, &headers).await?;
@@ -1215,8 +1249,17 @@ async fn settings_tls_activate(State(app): State<App>, headers: HeaderMap,
         }
         return Ok(Json(record));
     }
+    let grant = match runtime.activation_approval_target(&input) {
+        Ok(Some(target)) => {
+            let grant = crate::ca_quorum::check_activation_quorum(&app.pool, &p.tenant_id, target).await?
+                .ok_or(ApiError::new(StatusCode::CONFLICT, "CA_QUORUM_REQUIRED"))?;
+            Some(grant)
+        }
+        // Preserve the existing durable rejection for stale or invalid requests.
+        Ok(None) | Err(_) => None,
+    };
     db::audit(&app.pool, &p.tenant_id, &p.username, "settings.tls.activate", &input.operation_id.to_string(), "REQUESTED").await?;
-    let result = runtime.activate(input, &p.username)
+    let result = runtime.activate_authorized(input, &p.username, grant.as_ref())
         .map_err(|_| ApiError::new(StatusCode::CONFLICT, "CONFLICT"))?;
     Ok(Json(result))
 }

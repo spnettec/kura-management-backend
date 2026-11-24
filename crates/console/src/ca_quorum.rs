@@ -1,163 +1,147 @@
-//! Multi-person CA operation quorum. Scheme A: the center never stores a CA
-//! private key; this module gates trust-anchor generation activation behind
-//! N-of-M distinct admin approvals recorded in `ca_operation_approvals`.
-use crate::db;
-use anyhow::{Context, Result, ensure};
-use serde::{Deserialize, Serialize};
+//! Approval of a specific client CA activation. The CA signing key stays external.
+use crate::{auth::Principal, db, tls_runtime::ActivationRequest};
+use anyhow::{Result, ensure};
+use serde::Serialize;
 use sqlx::PgPool;
 use uuid::Uuid;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct QuorumPolicy {
-    pub quorum_size: i16,
-    pub total_approvers: i16,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Approval {
-    pub id: Uuid,
+#[derive(Clone, Debug, PartialEq, Eq, sqlx::FromRow)]
+pub(crate) struct Target {
     pub operation_id: Uuid,
-    pub operation_kind: String,
-    pub generation_id: Option<Uuid>,
-    pub approver: String,
-    pub status: String,
-    pub approved_at: String,
+    pub generation_id: Uuid,
+    pub expected_generation: Uuid,
+    pub pending_revision: String,
 }
 
-#[derive(Debug, Serialize)]
-#[serde(rename_all = "camelCase")]
-pub struct QuorumStatus {
-    pub operation_id: Uuid,
-    pub operation_kind: String,
-    pub approved_count: i64,
-    pub required_count: i16,
-    pub quorum_met: bool,
-    pub approvals: Vec<Approval>,
-}
-
-pub async fn policy(pool: &PgPool, tenant: &str) -> Result<QuorumPolicy> {
-    let row: Option<(i16, i16)> =
-        sqlx::query_as("SELECT quorum_size, total_approvers FROM ca_quorum_policy WHERE tenant_id = $1")
-            .bind(tenant)
-            .fetch_optional(pool)
-            .await?;
-    Ok(match row {
-        Some((q, t)) => QuorumPolicy { quorum_size: q, total_approvers: t },
-        None => QuorumPolicy { quorum_size: 2, total_approvers: 3 },
-    })
-}
-
-pub async fn set_policy(pool: &PgPool, tenant: &str, quorum_size: i16, total_approvers: i16) -> Result<()> {
-    ensure!(
-        quorum_size >= 1 && total_approvers >= quorum_size,
-        "quorum_size must be >= 1 and <= total_approvers"
-    );
-    sqlx::query(
-        "INSERT INTO ca_quorum_policy(tenant_id,quorum_size,total_approvers) VALUES($1,$2,$3) \
-         ON CONFLICT(tenant_id) DO UPDATE SET quorum_size=$2,total_approvers=$3",
-    )
-    .bind(tenant)
-    .bind(quorum_size)
-    .bind(total_approvers)
-    .execute(pool)
-    .await?;
-    Ok(())
-}
-
-pub async fn submit_approval(
-    pool: &PgPool,
-    tenant: &str,
-    operation_id: Uuid,
-    operation_kind: &str,
-    generation_id: Option<Uuid>,
-    approver: &str,
-) -> Result<QuorumStatus> {
-    let pol = policy(pool, tenant).await?;
-    sqlx::query(
-        "INSERT INTO ca_operation_approvals(tenant_id,operation_id,operation_kind,generation_id,approver,status) \
-         VALUES($1,$2,$3,$4,$5,'approved') \
-         ON CONFLICT(tenant_id,operation_id,approver,operation_kind) DO NOTHING",
-    )
-    .bind(tenant)
-    .bind(operation_id)
-    .bind(operation_kind)
-    .bind(generation_id)
-    .bind(approver)
-    .execute(pool)
-    .await?;
-    status(pool, tenant, operation_id, operation_kind).await
-}
-
-pub async fn status(pool: &PgPool, tenant: &str, operation_id: Uuid, operation_kind: &str) -> Result<QuorumStatus> {
-    let pol = policy(pool, tenant).await?;
-    let approvals: Vec<(Uuid, Option<Uuid>, String, String, String)> = sqlx::query_as(
-        "SELECT id,generation_id,operation_kind,approver,status \
-         FROM ca_operation_approvals \
-         WHERE tenant_id=$1 AND operation_id=$2 AND operation_kind=$3 AND status='approved' \
-         ORDER BY approved_at",
-    )
-    .bind(tenant)
-    .bind(operation_id)
-    .bind(operation_kind)
-    .fetch_all(pool)
-    .await?;
-    let approved_count = approvals.len() as i64;
-    let quorum_met = approved_count >= pol.quorum_size as i64;
-    Ok(QuorumStatus {
-        operation_id,
-        operation_kind: operation_kind.to_string(),
-        approved_count,
-        required_count: pol.quorum_size,
-        quorum_met,
-        approvals: approvals
-            .into_iter()
-            .map(|(id, generation, kind, approver, status)| Approval {
-                id,
-                operation_id,
-                operation_kind: kind,
-                generation_id: generation,
-                approver,
-                status,
-                approved_at: String::new(),
-            })
-            .collect(),
-    })
-}
-
-/// Check whether a CA generation activation has met quorum before promoting it.
-pub async fn check_activation_quorum(
-    pool: &PgPool,
-    tenant: &str,
-    generation_id: Uuid,
-) -> Result<bool> {
-    let pol = policy(pool, tenant).await?;
-    let count: (i64,) = sqlx::query_as(
-        "SELECT COUNT(DISTINCT approver) FROM ca_operation_approvals \
-         WHERE tenant_id=$1 AND generation_id=$2 \
-         AND operation_kind='generation-activate' AND status='approved'",
-    )
-    .bind(tenant)
-    .bind(generation_id)
-    .fetch_one(pool)
-    .await?;
-    Ok(count.0 >= pol.quorum_size as i64)
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    // The quorum logic is exercised through the migration schema constraints
-    // and the status/check functions against a live PG instance. The minimum
-    // viable test verifies the policy defaults and the quorum arithmetic.
-    #[test]
-    fn quorum_arithmetic() {
-        let pol = QuorumPolicy { quorum_size: 2, total_approvers: 3 };
-        assert!(2 >= pol.quorum_size);
-        assert!(1 < pol.quorum_size);
-        assert!(3 >= pol.quorum_size);
-        assert!(pol.quorum_size <= pol.total_approvers);
+impl Target {
+    pub fn new(request: &ActivationRequest, generation_id: Uuid) -> Self {
+        Self {
+            operation_id: request.operation_id,
+            generation_id,
+            expected_generation: request.expected_generation,
+            pending_revision: request.pending_revision.clone(),
+        }
     }
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct Status {
+    operation_id: Uuid,
+    generation_id: Uuid,
+    expected_generation: Uuid,
+    pending_revision: String,
+    approved_count: i64,
+    required_count: i16,
+    quorum_met: bool,
+}
+
+/// Only an exact proposal with a current quorum can yield this grant.
+pub(crate) struct Authorization(Target);
+
+impl Authorization {
+    pub fn matches(&self, target: &Target) -> bool {
+        self.0 == *target
+    }
+
+    #[cfg(test)]
+    pub fn for_fixture(target: Target) -> Self {
+        Self(target)
+    }
+}
+
+pub(crate) async fn approve(pool: &PgPool, actor: &Principal, target: &Target) -> Result<Option<Status>> {
+    let mut tx = pool.begin().await?;
+    sqlx::query(
+        "INSERT INTO ca_activation_proposals(operation_id,tenant_id,generation_id,expected_generation,pending_revision)
+         VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING",
+    )
+    .bind(target.operation_id)
+    .bind(&actor.tenant_id)
+    .bind(target.generation_id)
+    .bind(target.expected_generation)
+    .bind(&target.pending_revision)
+    .execute(&mut *tx)
+    .await?;
+    let recorded: Option<Target> = sqlx::query_as(
+        "SELECT operation_id,generation_id,expected_generation,pending_revision
+         FROM ca_activation_proposals WHERE operation_id=$1 AND tenant_id=$2",
+    )
+    .bind(target.operation_id)
+    .bind(&actor.tenant_id)
+    .fetch_optional(&mut *tx)
+    .await?;
+    if recorded.as_ref() != Some(target) {
+        return Ok(None);
+    }
+    let written = sqlx::query(
+        "INSERT INTO ca_operation_approvals(tenant_id,operation_id,operation_kind,generation_id,approver,approver_id,status)
+         SELECT tenant_id,$1,'generation-activate',$2,username,id,'approved'
+         FROM mgmt_users WHERE id=$3 AND tenant_id=$4 AND enabled AND role='admin' AND NOT must_change_password
+         ON CONFLICT DO NOTHING",
+    )
+    .bind(target.operation_id)
+    .bind(target.generation_id)
+    .bind(actor.id)
+    .bind(&actor.tenant_id)
+    .execute(&mut *tx)
+    .await?;
+    if written.rows_affected() == 1 {
+        db::audit(
+            &mut *tx,
+            &actor.tenant_id,
+            &actor.username,
+            "settings.client-ca.approve",
+            &target.operation_id.to_string(),
+            "SUCCEEDED",
+        )
+        .await?;
+    }
+    tx.commit().await?;
+    status(pool, &actor.tenant_id, target.operation_id).await
+}
+
+pub(crate) async fn status(pool: &PgPool, tenant: &str, id: Uuid) -> Result<Option<Status>> {
+    let row: Option<(Uuid, Uuid, String, i16, i64)> = sqlx::query_as(
+        "SELECT p.generation_id,p.expected_generation,p.pending_revision,
+             GREATEST(COALESCE(q.quorum_size,2),2)::smallint,
+             (SELECT COUNT(DISTINCT a.approver_id)
+              FROM ca_operation_approvals a JOIN mgmt_users u ON u.id=a.approver_id
+              WHERE a.tenant_id=p.tenant_id AND a.operation_id=p.operation_id
+                AND a.generation_id=p.generation_id AND a.operation_kind='generation-activate'
+                AND a.status='approved' AND u.tenant_id=p.tenant_id AND u.enabled
+                AND u.role='admin' AND NOT u.must_change_password)
+         FROM ca_activation_proposals p LEFT JOIN ca_quorum_policy q ON q.tenant_id=p.tenant_id
+         WHERE p.operation_id=$1 AND p.tenant_id=$2",
+    )
+    .bind(id)
+    .bind(tenant)
+    .fetch_optional(pool)
+    .await?;
+    Ok(row.map(|(generation_id, expected_generation, pending_revision, required_count, approved_count)| Status {
+        operation_id: id,
+        generation_id,
+        expected_generation,
+        pending_revision,
+        approved_count,
+        required_count,
+        quorum_met: approved_count >= i64::from(required_count),
+    }))
+}
+
+pub(crate) async fn check_activation_quorum(
+    pool: &PgPool,
+    tenant: &str,
+    target: Target,
+) -> Result<Option<Authorization>> {
+    let Some(proposal) = status(pool, tenant, target.operation_id).await? else {
+        return Ok(None);
+    };
+    ensure!(
+        proposal.generation_id == target.generation_id
+            && proposal.expected_generation == target.expected_generation
+            && proposal.pending_revision == target.pending_revision,
+        "CA activation approval targets another proposal"
+    );
+    Ok(proposal.quorum_met.then_some(Authorization(target)))
 }

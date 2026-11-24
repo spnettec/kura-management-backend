@@ -225,6 +225,24 @@ async fn read(f: &Fixture, path: &str) -> Value {
         .unwrap()
 }
 
+async fn approval_admin(f: &Fixture, username: &str, tenant: &str) -> (Uuid, String) {
+    let id = Uuid::new_v4();
+    let token = auth::random_token();
+    sqlx::query("INSERT INTO mgmt_users(id,tenant_id,username,password_hash,role,must_change_password) VALUES($1,$2,$3,'unused','admin',false)")
+        .bind(id).bind(tenant).bind(username).execute(&f.app.pool).await.unwrap();
+    sqlx::query("INSERT INTO mgmt_sessions(token_hash,user_id,csrf,expires_at) VALUES($1,$2,'tls-review-csrf',now()+interval '1 hour')")
+        .bind(auth::hash(token.as_bytes())).bind(id).execute(&f.app.pool).await.unwrap();
+    (id, format!("kura_session={token}"))
+}
+
+async fn approve_ca(f: &Fixture, request: &ActivationRequest, session: Option<&str>) -> reqwest::Response {
+    let mut call = f.client.post(format!("{}/api/v1/settings/tls-activation/approvals", f.origin));
+    if let Some(session) = session {
+        call = call.header(reqwest::header::COOKIE, session);
+    }
+    call.json(request).send().await.unwrap()
+}
+
 async fn hello(
     f: &Fixture,
     cohort: &str,
@@ -481,6 +499,30 @@ async fn tls_runtime_http_and_real_grpc_activation_are_joint_and_idempotent() {
         expected_generation: serde_json::from_value(status["generation"].clone()).unwrap(),
         pending_revision: status["pendingRevision"].as_str().unwrap().into(),
     };
+    let activation = format!("{}/api/v1/settings/tls-activation", f.origin);
+    for _ in 0..2 {
+        let missing = f.client.post(&activation).json(&request).send().await.unwrap();
+        assert_eq!(missing.status(), reqwest::StatusCode::CONFLICT);
+        assert!(missing.text().await.unwrap().contains("CA_QUORUM_REQUIRED"));
+        let approval: Value = approve_ca(&f, &request, None).await.error_for_status().unwrap().json().await.unwrap();
+        assert_eq!(approval["approvedCount"], 1);
+        assert_eq!(approval["quorumMet"], false);
+        assert!(f.app.tls.as_ref().unwrap().operation(request.operation_id).unwrap().is_none());
+    }
+    let (_, foreign) = approval_admin(&f, "tls-foreign-admin", "other-tenant").await;
+    assert_eq!(approve_ca(&f, &request, Some(&foreign)).await.status(), reqwest::StatusCode::CONFLICT);
+    let (second_id, second) = approval_admin(&f, "tls-second-admin", "tls-review").await;
+    let stale = ActivationRequest { pending_revision: "a".repeat(64), ..request.clone() };
+    assert_eq!(approve_ca(&f, &stale, Some(&second)).await.status(), reqwest::StatusCode::CONFLICT);
+    let approval: Value = approve_ca(&f, &request, Some(&second)).await.error_for_status().unwrap().json().await.unwrap();
+    assert_eq!(approval["approvedCount"], 2);
+    assert_eq!(approval["quorumMet"], true);
+    let query = format!("/settings/tls-activation/approvals/{}", request.operation_id);
+    assert_eq!(read(&f, &query).await, approval);
+    sqlx::query("UPDATE mgmt_users SET enabled=false WHERE id=$1").bind(second_id).execute(&f.app.pool).await.unwrap();
+    assert_eq!(f.client.post(&activation).json(&request).send().await.unwrap().status(), reqwest::StatusCode::CONFLICT);
+    assert!(f.app.tls.as_ref().unwrap().operation(request.operation_id).unwrap().is_none());
+    sqlx::query("UPDATE mgmt_users SET enabled=true WHERE id=$1").bind(second_id).execute(&f.app.pool).await.unwrap();
     // The activation closes the very HTTPS connection carrying this POST.
     let _ = f
         .client
@@ -604,6 +646,9 @@ async fn tls_runtime_http_auth_csrf_and_missing_receipt_do_not_repeat_activation
         expected_generation: serde_json::from_value(status["generation"].clone()).unwrap(),
         pending_revision: status["pendingRevision"].as_str().unwrap().into(),
     };
+    let (_, second) = approval_admin(&f, "tls-second-admin", "tls-review").await;
+    approve_ca(&f, &req, None).await.error_for_status().unwrap();
+    approve_ca(&f, &req, Some(&second)).await.error_for_status().unwrap();
     let _ = f
         .client
         .post(format!("{}/api/v1/settings/tls-activation", f.origin))

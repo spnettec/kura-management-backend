@@ -22,7 +22,7 @@ use x509_cert::{
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub(crate) struct Generation {
     schema_version: u8,
-    id: uuid::Uuid,
+    pub(crate) id: uuid::Uuid,
     fingerprint: String,
     previous_fingerprint: String,
     actor: String,
@@ -186,6 +186,7 @@ pub fn pending_fingerprint(config: &Config) -> Result<Option<String>> {
     Ok(Some(generation.fingerprint))
 }
 
+#[cfg(test)]
 #[cfg(test)]
 pub fn activate(config: &mut Config) -> Result<()> {
     ensure!(

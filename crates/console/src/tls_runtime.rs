@@ -1,6 +1,6 @@
 //! Joint, explicitly approved HTTPS/mTLS generations. An original activation
 //! intent is never replayed, including after a crash or a lost HTTP response.
-use crate::{auth, client_ca_store, config::Config, settings_files as files, tls_store};
+use crate::{auth, ca_quorum, client_ca_store, config::Config, settings_files as files, tls_store};
 use anyhow::{Context, Result, ensure};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
@@ -347,7 +347,32 @@ impl TlsRuntime {
         ))
     }
 
-    pub fn activate(&self, request: ActivationRequest, actor: &str) -> Result<Value> {
+    pub fn activation_approval_target(
+        &self,
+        request: &ActivationRequest,
+    ) -> Result<Option<ca_quorum::Target>> {
+        let (_, pending_ca, _) = self.pending()?;
+        let Some(ca) = pending_ca else {
+            return Ok(None);
+        };
+        ensure!(!request.operation_id.is_nil(), "activation operation id required");
+        self.candidate(request)?;
+        Ok(Some(ca_quorum::Target::new(request, ca.id)))
+    }
+
+    #[cfg(test)]
+    pub(crate) fn activate(&self, request: ActivationRequest, actor: &str) -> Result<Value> {
+        let grant = self.activation_approval_target(&request).ok().flatten()
+            .map(ca_quorum::Authorization::for_fixture);
+        self.activate_authorized(request, actor, grant.as_ref())
+    }
+
+    pub fn activate_authorized(
+        &self,
+        request: ActivationRequest,
+        actor: &str,
+        grant: Option<&ca_quorum::Authorization>,
+    ) -> Result<Value> {
         if let Some(record) = self.operation(request.operation_id)? {
             ensure!(
                 record["request"] == serde_json::to_value(&request)?,
@@ -372,6 +397,15 @@ impl TlsRuntime {
                     .context("rejected operation missing");
             }
         };
+        let active_ca = self.active.read().unwrap().manifest.client_ca.clone();
+        if candidate.manifest.client_ca != active_ca {
+            let ca = candidate.manifest.client_ca.as_ref().context("missing client CA generation")?;
+            let target = ca_quorum::Target::new(&request, ca.id);
+            ensure!(
+                grant.is_some_and(|grant| grant.matches(&target)),
+                "client CA activation requires current quorum for this operation"
+            );
+        }
         let intent = Intent {
             schema_version: 1,
             request: request.clone(),

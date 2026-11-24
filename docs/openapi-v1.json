@@ -2538,6 +2538,75 @@
         }
       }
     },
+    "/api/v1/settings/tls-activation/approvals": {
+      "post": {
+        "operationId": "approveClientCaActivation",
+        "summary": "Approve the exact staged client CA activation as the authenticated administrator. Separate administrators use one proposal ID. Requires CSRF.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TlsActivationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Current quorum of the exact proposal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaActivationApproval"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Proposal or staged certificate selection changed"
+          },
+          "default": {
+            "description": "Authentication, authorization, or storage error"
+          }
+        }
+      }
+    },
+    "/api/v1/settings/tls-activation/approvals/{id}": {
+      "get": {
+        "operationId": "getClientCaActivationApproval",
+        "summary": "Read the original proposal and current quorum for the administrator tenant.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Original proposal with current approvals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaActivationApproval"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No proposal for this tenant"
+          },
+          "default": {
+            "description": "Authentication, authorization, or storage error"
+          }
+        }
+      }
+    },
     "/api/v1/settings/tls-activation/{id}": {
       "get": {
         "operationId": "getTlsActivationOperation",
@@ -5785,6 +5854,46 @@
           }
         ],
         "description": "Strict imported operation request. No owner key, confirmation token, UID, unit, path or native command is accepted. The center generates owner capabilities and stores them only inside encrypted task inputs. Original queries and pre-dispatch cancellation remain available without new write authorization. UNKNOWN never creates a replacement operation."
+      },
+      "CaActivationApproval": {
+        "type": "object",
+        "required": [
+          "operationId",
+          "generationId",
+          "expectedGeneration",
+          "pendingRevision",
+          "approvedCount",
+          "requiredCount",
+          "quorumMet"
+        ],
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "generationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expectedGeneration": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "pendingRevision": {
+            "type": "string"
+          },
+          "approvedCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "requiredCount": {
+            "type": "integer",
+            "minimum": 2
+          },
+          "quorumMet": {
+            "type": "boolean"
+          }
+        }
       },
       "TlsActivationRequest": {
         "type": "object",
