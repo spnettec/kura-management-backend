@@ -1,3 +1,9 @@
+## 2026-11-24 正式重启持久回执及跨 boot 结算
+
+原隔离 Root `212:257` 的正式 OSGi 调用触发系统重启，关机中断留下原号 `fd4fe58c-095f-489a-92f9-3156191edafc` 的意图与 pending，终态缺失按 UNKNOWN 封存。Core `806ad2e97a` 以可控的 systemd 停止顺序保护在途回执，ARM64 定向 74 项通过。后继 40 个关联包成员重新配对，233 个运行时 JAR 字节保持。
+
+新独立 ARM64 LXC Root `213:257` 正式 Main 单次提交 `a643ae0b-a395-428b-954a-2fc79e6ef6ff`，实际重启后首个新 boot 读回原号 ACCEPTED/MANAGER_ACCEPTED。随后在同 Root 正常启动，由正式 Main 核定同号、落盘本地完成回执并清除 pending。原 actor 回执的字节与 inode 保持，操作目录只有此笔。两 Root 均正常停放。工作区清理 208.15 MiB，宿主当时实增 208.14 MiB，正向夹具另清 151.84 MiB；保留正式包和夹具后，本轮宿主可用净减 1.05 GiB。冻结 **0/12**，外部延期仅原三项。[证据与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/reboot-systemd-accepted-20261124/HANDOFF.md)
+
 ## 2026-11-24 正式重启代理启动与 Networking 配对
 
 Core `2140aa546a` 的正式单元在进程启动时设置内核 NoNewPrivs，并与已配置 Networking 的受审 vendor drop-in 精确配对。73 项 ARM64 定向单测通过。后继包同步了九组 broker 辅助代码与清单，233 个运行时 JAR 字节保持。
