@@ -1,3 +1,9 @@
+## 2026-11-24 已发布代 Core 与 Networking 原位升级、ownership 恢复
+
+Core `07a5b74b8f` 严格核验 Root 0400 凭据声明，`de68644b3b` 允许已发布代凭据预检配对实际 Networking 的 vendor 依赖声明。ARM64 定向 87 项及发布/恢复 58 项通过。隔离 Root `225:257` 的首候选在生成升级副本和签发布局前明确拒绝，旧版仍 installed。同 Root 沿 `2fcbddca-4a83-4bf4-b659-0255b7450aea` 由后继正式包解包配置，READY、configured 和原数据交接验签。原 data inode、四份数据、23 份保护文件和 Agent READY/OFF 授权保持。正式 OSGi Main 读回两代密文，ownership 通过。低权限 journal 和 IPv4/IPv6 回环 ICMP 仍拒绝，Main/Agent 与 VM 正常停放。
+
+补父项 #1、#3、#9、#12。原 `219:257` 布局意图保持未决。typed brokers、六组件及 provider/launcher 的完整矩阵仍待，冻结 **0/12**，外部延期仍仅原三项。 [同围栏原位升级、ownership 与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/broker-published-main-20261124/HANDOFF.md)
+
 ## 2026-11-24 已发布代 Core 的六组件加装与 Deployment 独立升级
 
 Core `4b7531d437` 的已发布代 Root `225:257` 正式加装五组件。Agent `f78610a` 加入配对 Core 0400 凭据 drop-in 核验，ARM64 定向共 150 项通过。正式 Agent 新维护 APPLIED，原初始化保持，原配对号检查 NOT_FOUND 后落盘 READY，三份本机授权保持 OFF。Deployment `1642074 → 2bdb66d` 独立升级，解包时实际断言拒绝启动，配置后退役。升级前后正式 OSGi Main 各核对 8 个 ACTIVE bundle，23 份原保护记录、原 data inode 和授权保持，Main/Agent 停放。
