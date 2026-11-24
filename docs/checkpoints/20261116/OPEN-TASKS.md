@@ -1,3 +1,11 @@
+## 2026-11-24 正式 ARM64 Core 原号解包续接与 layout 停点
+
+独立 Root `219:257` 以正式 `9de1c6201e` 首装、实际两代密文与 provider 配对读写，再沿保留号 `b372aa65-d749-4af0-9a28-eb934b4ed978` 实际中断候选 `22e54511df` 的 postinst 发布。dpkg 保持旧 Version / half-installed，原 HMAC 续接在正式重试中达 iU，原两份签名记录的字节及 inode 保持。后续 configure 在 layout 退至 iF，停于原签名 layout 意图。确认同一配对 vendor unit 在 PID 1 为 LoadState=error / EBUSY，单独 daemon-reload 恢复 loaded，原意图保持，READY 与后继 Main 仍待。
+
+原数据 inode、两代密文、23 份原记录及四个密钥操作保持，新夹具 Main disabled、正常停放。临时产物清理并核对候选可重建。补父项 #3、#12，冻结 **0/12**，外部延期仍仅原三项。
+
+[正式解包与原 layout 停点](../../../../.management-close-20261116/core-rtc-hotplug-20261120/native-dpkg-control-resume-20261124/HANDOFF.md)
+
 ## 2026-11-24 签名保留重装的 dpkg 控制脚本发布中断
 
 真实 Debian ARM64 dpkg 1.22.22 在独立小包数据库中复现候选 postinst 已发布而旧 Version 仍为 half-installed。进程中断后沿原小包和测试回执续至 iU、ii。Core `22e54511df` 先核对同 Root 原签名 intent 与精确续接回执，再接受此唯一错位，拒绝缺签名、篡改、其它状态及未知或反向错配控制。旧版同一回归失败，修复后 64 项 ARM64 单测通过；Git 重建的 ARM64 候选维护控制已核对，原数据归档字节保持。正式 Core 的此停点并入后续联合验收。原 `218:257` 完成记录和四网关归档再次冷读通过，独立 runner 与重复候选已清理，宿主清理段实增 197.58 MiB。
