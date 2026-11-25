@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Artemis 双向 TLS 跨密钥发布、快照重加密和包维护
+
+隔离 Debian ARM64 Root `1048592:257` 以 Git 构建的 Core `c65c04741e`、Networking `98ce41482f-1` 和 Artemis `1bcdc5d-1` 实装独立 Core 模式。合法 Main 只提交一次 Artemis XML 设置，原加密快照 `1795596925259`。正式密钥发布 `86421b1e-13f4-44e2-8472-511cfb4e4d24` 排空旧 Main，另行批准后 OSGi CryptoService 用新活动钥写读 KURA2，原用户表与双向 TLS 仍可用。
+
+Main 停止后，正式快照重加密 `17a89193-b45a-425b-8972-dec0d9ba6570` 发布原快照的新代 KURA2 密文，原密文归档 `original.save` 为 Root 0400，原摘要保持。独立 Java reader 使用原 ring 读归档，只用新活动钥读重加密件，两份 42,662 字节 XML 逐字节一致。原生 remove、独立 purge 后，合法 Main 仍读到该快照，Artemis XML bundle 和监听缺席。同包解包正常停机，同 Root 新 boot 一次 configure，三个包恢复 installed。后继合法 Main 的实际 TLS 1.2 证书指纹和 MQTT 用户表与原件相符，验证两种 TLS 拒绝及错误 MQTT 口令，恢复主题实际收到新 QoS 1。原四个密钥号和重加密号均只读回原终态，原密文及 19 份 Core 维护签名保持。Main disabled/inactive，VM 正常停放，重复冷读一致。
+
+补父项 #1、#3、#4、#9、#12，冻结 **0/12**。本轮覆盖独立 Core 模式的 Artemis XML 双向 TLS 和加密快照。Agent 共装时的安全重加密、其他协议及余下 typed brokers、六组件与 provider/launcher 矩阵仍为内部待办。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-mtls-rewrap-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Artemis XML 双向 TLS 跨原生清除与冷续配
 
 隔离 Debian ARM64 Root `1048591:257` 实装 Git 构建的 Core `c65c04741e`、Artemis `1bcdc5d-1` 和配对五包。JDK 21 下合法 Main 只提交一次 XML broker 配置，保存加密快照 `1795596595869`。实际 TLS 1.2 双向认证核对原服务端和客户端证书指纹，服务端拒绝缺客户端证书，客户端拒绝不受信任的服务端，正确双向 TLS 下 MQTT 仍拒绝错误口令。正确凭据经独立 Paho 客户端在回环完成一条 QoS 1 送达。
