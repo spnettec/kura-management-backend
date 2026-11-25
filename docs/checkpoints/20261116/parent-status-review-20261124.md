@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+Core `f5f978f491` 和 Docker `ff4ed22` 用同一份 Git 固定源码构建可选原生模块。ARM64 Alpine CTest 7/7，原正式镜像入口和四份 deb 清单保持。独立同卷 Root `39:10164771` 在正式 PID 1 JVM 用原快照和原证书验签。目标令牌缺席时原槽拒绝，另一槽持续可用。同 inode 归位后原、新句柄在同 JVM 均恢复。换回基础镜像时两槽明确返回 `SERVICE_UNAVAILABLE`，切回可选镜像后两份原证书验签。19 份文件指纹、14 个令牌文件的 inode 和权限保持，四个容器正常停放，冷读一致。Debian 新修订 `-5` 的 CTest 7/7，和原版对照的成员字节相同，provenance 归档权限由 0666 收紧至 0644，新修订待实装。 补父项 #1、#3、#12。冻结 **0/12**，外部延期仅原三项。 [镜像、原卷和停机核对](../../../../.management-close-20261116/core-rtc-hotplug-20261120/softhsm-alpine-release-20261125/HANDOFF.md)
+
 Core `424175c489` 的可选 SoftHSM 文件令牌模块从 Git/JDK 21 构建出 ARM64 `-3`、`-4` 两版，CTest 均 7/7。隔离 Root `232:257` 初次实装的低权限 Main 无法遍历 `/etc/kura`，修正到独立配置目录后沿原两份迁移快照只读续验。实际 dpkg 升级、移除与重装完成。移除后独立 purge 确认包已缺席，两个原 OSGi 配置均返回 `SERVICE_UNAVAILABLE`。重装后正式 Main 用原两份证书验签，16 个令牌条目、四份快照、原试验库和发行版库保持。六组件 installed，Main 与 Agent disabled/inactive，VM 正常停放，冷读通过。 补父项 #1、#3、#12。冻结 **0/12**，外部延期仅原三项。 [构建、实装、冷读和清理](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-module-release-20261125/HANDOFF.md)
 
 SoftHSM 2.6.1 原测试的两个 fork 子进程在父令牌目录继续执行套件。同环境上游和候选未修正版各输出四份 77 项报告。上游 `c1b7273` 和候选 `670e97d` 只改同一份测试，等待并核对子进程退出。同条件下两边各两轮 CTest 均 7/7，p11test 每轮 77 项通过，运行库摘要在测试修复前后保持。复刻构建的运行库与 Root `232:257` 正式 Main 实装候选逐字节相同，这次完整 CTest 也通过。100 次原生初始化和结束后，候选每次释放所有四个令牌描述符。原正式现场仍停放并冷读。 补父项 #1、#10、#12。SoftHSM 正式发行接入继续内部待办。冻结 **0/12**，外部延期仅原三项。 [回归、原制品和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-native-regression-20261125/HANDOFF.md)
