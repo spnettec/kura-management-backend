@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Core 原生解包、跨停机续配与四份 YOFC DP 保全
+
+隔离 Debian ARM64 Root `250:257` 在四份正式 YOFC DP 已实装的 Main 运行中，原生解包同版 Core `f8c61e4e27-1`。实际旧 prerm 有序停服，返回 0 时原 Main PIDFD 已退出。原维护号 `ce41c531-999b-4aed-b13e-70b71bdabc98` 停在 unpacked。正常停机冷读确认原围栏及注册表、四份 DP、四份终态回执均保持。
+
+同 Root 新 boot 核对原围栏 inode 和摘要后只续配一次。同号 21 份记录验签，40 份前序记录保持，14 包 installed 且 dpkg audit 为空。原 packages 和 data 目录及受保护文件 inode 保持。合法 Main 只读查得 `25025001` 至 `25025004` 均 COMPLETED，四个 bundle 均 ACTIVE 并接线 API 2.0.0。Main、Agent disabled/inactive，VM 正常停放，官方冷读重复一致。
+
+补父项 #3、#4、#9、#11、#12，冻结 **0/12**。含正式 DP 的独立 remove/purge、其他中断和剩余包维护矩阵继续内部待办，外部延期仅原三项。 [本轮交接和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-dp-core-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 四个 YOFC API2 DP 正式实装与同 Root 只读复验
 
 隔离 Debian ARM64 Root `250:257` 在已配对的 14 包正式 Main 下，从 YOFC Git `a652e29910` 构建的 api-comp、apps-abplc、apps-comp 和 apps-opcuaserver 四个 DP 各派发一次。首号 `25025001` 的早到 GET 返回 NOT_FOUND，有原归档和已落盘终态回执后沿原号只读确认。其余三号分别为 `25025002` 至 `25025004`。四个 Felix bundle 均 ACTIVE，四条 channel 和三条 driver 接至实际 API 2.0.0。
