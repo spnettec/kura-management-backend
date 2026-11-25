@@ -1,3 +1,15 @@
+## 2026-11-26 正式 Core/Networking 新 v2 Root 联合链
+
+隔离Core6341906、Networking15ebcda按Git/JDK21构建并实装同一ARM64 Root1048585:257。Core固定新域CLI校验Core/actor资产和PID1配对idle Main，持dpkg/admission/exclusive writer围栏、继承FD3；运行/启动中Main不能借缺席锁被绕过。两包控制与helper锁定同一native0.1.17/F11归档。36项Linux定向通过，旧F11的207hash冷读保持，未推送。
+
+Core19份HMAC含READY验核，Agent安装前正式初始化v2域，绑定跨后继五包APT保持。合法Main实际Crypto/配置及10provider/JAR与正式包配对，UID/NNP1/0x400/FD9和HTTPS302通过；运行Main时初始化入口实际拒绝且绑定保持。正确firewall引导后同Scope产生8组正式记录。正常停机冷启先核验原绑定与当前内核对象，再同Root原8号只读确认，43文件inode/摘要/属主/模式保持。冷Main读回原密文，10原provider/JAR保持；最后16组native全终态（6APPLIED/10UNCHANGED），原8号保持。device仍1048585，未计为重分配实证。
+
+Main/Agent disabled/inactive、测试JAR移出后留档，VM正常停放，62保护文件、19签名、完整manifest/units/控制及10JAR可冷读。控制器的APT前/Main前及只读观察错误均原样留档，只继续未发起阶段，没有补造成功回执。仅清理确认闲置的本轮缓存和编译组装输出，目录减1,860,972,544字节，宿主清理区间可用增1,424,924,672字节；源码/归档/夹具/共享缓存保留。
+
+本轮显式apply/inverse任务为0，真实未决FW下的原生remove/purge及中断仍待，不能用本轮全终态或前轮合成标记替代。原Core219、Deployment225/57225、137、229均未重放；18主仓台账前保持，原三网关仍运行，个人数据/运行集/六组件/rtc0及7fd封存保留。补#3/#6/#9/#12，完整目标active，冻结 **0/12**；12父项、typed brokers、六组件、provider/launcher全维护矩阵继续。外部延期仍仅真实NM/cloud-init/物理交接、amd64、磁盘满/硬断电。
+
+[正式新域联合链及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-root-domain-core-20261126/HANDOFF.md)
+
 ## 2026-11-26 新现场持久 Root 域 native 候选
 
 隔离Agent工作树本地f11d66f生成0.1.17 source crate，标准Cargo归档的VCS及全部Git源码核对，复用同一ARM64缓存。新格式只在空历史、固定Core FD3排他writer围栏下显式初始化，绑定当前Root/publication内核对象；原v1公式、opaque wire和已签发意图保持，不接受调用方Root或旧号。原暂存字节以RENAME_NOREPLACE发布，普通构造器在操作路径前检查未完/外来绑定；独立Python包维护门禁不依赖worker。
