@@ -1,5 +1,13 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 API2 六组件内 GWT 与 Wires 独立清除和原图续配
+
+新隔离 Debian ARM64 Root `1048578:257` 实装 Core `f8c61e4e27`、GWT `9f226c0`、Wires `f0a95c6` 等六份正式包。Core READY/configured 共 19 份记录验签，Agent 原配对号 READY/OFF。JDK 21 正式 Main 只提交一次 Timer→Logger 图，原快照 `1795589035000` 实际送达。
+
+GWT 与 Wires 各自原生 remove 到 config-files，再独立 purge。GWT 缺席时 HTTPS 404，Wires 原图仍实际送达。GWT 先重装后 HTTPS 200，Wires bundle、工厂和图服务缺席且无送达，Core 仍读到原快照。四个 GWT conffile 在 remove 后保留、purge 后撤下、重装后与原摘要一致。Wires 解包后正常停机，同 Root 新 boot 核对注册锁和原图，只 configure 一次。六包恢复 installed，实际 Main 和两类 provider 恢复，GWT 与 Wires 五条选定导入接线 API 2.0.0，原图再次送达。原快照和提交标记、14 份保护条目、19 份 Core 记录以及 Agent 原配对保持，VM 正常停放，重复冷读一致。
+
+补父项 #3、#4、#9、#12，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [本轮交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-six-gwt-wires-20261125/HANDOFF.md)
+
 ## 2026-11-25 ARM64 Alpine API2 镜像内 YOFC DP 与同卷换容器
 
 从 Git 构建 Docker `ad4b77f`，使用正式 Core `f8c61e4e27`、Deployment `8da586b` 及配对 GWT、Wires 四份 deb。默认四份镜像内 DP 为 YOFC runtime、api-comp、apps-comp、apps-opcuaserver。首次启动四个 bundle 均 ACTIVE，归档与构建输入同摘要。原卷 Root `39:10239737` 正常停放后换容器，Felix DeploymentAdmin 再次读到原四份 DP，五条 channel／driver 接线均为 API 2.0.0。
