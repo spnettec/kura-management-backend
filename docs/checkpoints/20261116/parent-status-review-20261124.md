@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+既有隔离 Parallels ARM64 Root `2049:2` 使用 Docker 29.1.3、委派的 systemd 用户服务和实际 runc。原系统级 rootless 对象因无用户 cgroup 明确拒绝并保留。新独立对象经正式 Container `9a7cda7-1` OSGi provider 一次启动，原 PID 和启动时刻跨 Main 停服、provider remove/purge、缺席启动和正式重装保持。后继实际 Main 沿原容器号和快照查回，单次 TERM 停止、exit 0。原五份保护文件、快照及网络保持，临时引擎、用户及 AppArmor 配置清理。VM 正常停放，停机档案读回一致。 补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [实际 OCI、包装维护与停机核对](../../../../.management-close-20261116/core-rtc-hotplug-20261120/container-oci-positive-parallels-20261125/HANDOFF.md)
+
 Root `232:257` 正式从 `-4` 原生解包 `-5`，正常关机冷读为 unpacked。同 Root 新 boot 只续配一次并达到 installed。实际 `build-origin` 权限由 0666 收紧至 0644，模块字节保持。正式 Main 用原两张证书验签，四份快照、16 项令牌的文件身份、发行版库和试验库、原站点配置与六组件保持。Main 和 Agent disabled/inactive，正常停放，重复冷读一致。 补父项 #1、#3、#12。冻结 **0/12**，外部延期仅原三项。 [实装和停机读回](../../../../.management-close-20261116/core-rtc-hotplug-20261120/softhsm-debian-mode-upgrade-20261125/HANDOFF.md)
 
 从 Git 构建 ARM64 双库过渡镜像，完整 CTest 7/7。独立 Compose Root `39:10180694` 从 Alpine SoftHSM `2.7.0-r0` 生成并保存两个原文件令牌。正式 Main 经双库镜像将两个原配置合批切换至可选库，仅可选镜像同卷重开并用原证书验签。再经双库镜像一次合批切回发行版库，原镜像同卷重开及原证书验签通过。两份新快照与 19 份原文件保持，14 个令牌文件的 inode 和权限保持，只有两份 `token.object` 字节随库重开变化。五次正常停机，最终原版容器停放，冷读一致。 补父项 #1、#3、#12。冻结 **0/12**，外部延期仅原三项。 [实际 Compose、原卷与停机核对](../../../../.management-close-20261116/core-rtc-hotplug-20261120/softhsm-alpine-stock-migration-20261125/HANDOFF.md)
