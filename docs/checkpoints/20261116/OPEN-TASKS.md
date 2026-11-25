@@ -1,3 +1,9 @@
+## 2026-11-25 typed Journal 跨 Core API1 → API2 原位升级
+
+隔离 Debian ARM64 Root `1048580:257` 在 JDK 21 的正式 Main 运行中，以一次 APT 联合升级将 Core `df5ae00aac` 换为 `f8c61e4e27`，同步升级 Deployment、GWT 和 Wires。旧 Main 已有序退出。六包 installed，dpkg audit 为空，原 19 份和新 21 份 Core 阶段记录通过核对。正常停机后同 Root 新 boot，由后继正式 Main 通过 typed Journal 只读导出原 boot 的唯一消息。原 8 MiB 归档 inode、SHA-256、消息 cursor 和两份凭据指纹保持。实际 OSGi channel、comm、driver、message 均导出 `2.0.0`，Journal worker 为 UID 987、NNP 1、五组 capability 全零。Main、Agent disabled/inactive，VM 正常停放，停机冷读两次一致。
+
+补父项 #3、#4、#9、#12，冻结 **0/12**。APT 模拟报 `Conf Broken kura-core:arm64`，实际联合升级返回 0，并经 dpkg 候选 `failed-upgrade` 钩子处理旧 Deployment `prerm` 的警告。其余 typed brokers、六组件与 provider/launcher 矩阵继续内部待验。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式升级、原归档与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-api2-upgrade-20261125/HANDOFF.md)
+
 ## 2026-11-25 typed Journal 跨 Core 独立 purge 与同号重装
 
 隔离 Debian ARM64 Root `1048579:257` 沿原 Journal 归档继续。依赖的四个 addon 正式 remove 后，Core 原生 remove 至 config-files，再独立 purge 至 not-installed，Journal 客户端、actor 和 socket 实际缺席。原归档、原消息和同 Root 的应用数据备份保持。沿原围栏 `bf0c811d-a0f2-4bef-abd6-5c606370624a` 重新解包、正常关机并在新 boot 一次续配，19 份新记录含 READY/configured 验签，原 40 份记录及两份凭据指纹保持。

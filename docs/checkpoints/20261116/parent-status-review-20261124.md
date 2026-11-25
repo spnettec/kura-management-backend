@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 typed Journal 跨 Core API1 → API2 原位升级
+
+父项 #3、#4、#9、#12 补证。隔离 ARM64 Root `1048580:257` 一次正式 APT 联合升级 Core、Deployment、GWT、Wires。正常停放后同 Root 新 boot，正式 Main 经低权限 typed Journal 读回原 boot 的唯一消息，原归档、inode、摘要和 cursor 保持。四项实际 OSGi 导出均为 2.0.0。原 19 份与新 21 份 Core 记录、两份凭据均核对，六包 installed 且正常停放，冷读重复一致。冻结 **0/12**。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-api2-upgrade-20261125/HANDOFF.md)
+
 ## 2026-11-25 typed Journal 跨 Core 独立 purge 与同号重装
 
 父项 #3、#9、#12 补证。隔离 ARM64 Root `1048579:257` 原生 remove 配对依赖与 Core 后，独立 purge Core，再沿同一围栏解包和跨正常停机一次续配。正式后继 Main 只读取得原 journald 消息，原日志 inode、SHA-256 和 cursor 保持。40 份既有和 19 份新签名记录、两份凭据及原应用数据备份均通过核对。六包 installed 且停放，重复冷读一致。冻结 **0/12**。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-core-maintenance-20261125/HANDOFF-PURGE.md)
