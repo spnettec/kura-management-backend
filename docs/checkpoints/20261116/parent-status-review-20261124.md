@@ -344,3 +344,13 @@ Core `ab25377373` 及十二个 sibling 的候选包和重建的 YOFC 产物，�
 真实归档的 APT 模拟分别放行 API1 Core 配 API2 siblings、API1 Wires 配 API2 Core。旧 ABI Core 的 Debian 版本排序更高。双向混装拒绝、原位换版、跨停机续配、remove/purge 仍待。原 Deployment ARM64 Root `225:257` 停机复核一致，沿用原号 `57225` 真实的 installed prerm 拒绝和同 Root 同号 GET COMPLETED，原归档、终态回执保留。
 
 补父项 #3、#4、#11、#12。冻结 **0/12**，仅原三项外部延期。 [实装、APT 门禁对照与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-cohort-20261125/HANDOFF.md)
+
+## 2026-11-25 API2 Artemis XML 跨正式发布代与原生续配
+
+隔离 Debian ARM64 Root `1048590:257` 实装 Core `c65c04741e`、Artemis `1bcdc5d-1` 及其余五包。JDK 21 的合法 Main 只提交一次 XML broker 配置，生成加密快照 `1795596044567`。正式密钥发布 `fe7085bd-d44b-448a-8058-192857b02242` 排空原 Main 并要求显式启动。另行批准启动后，正式 OSGi CryptoService 写读新活动钥的 KURA2 样本，Artemis 仍可凭原加密快照中的原用户表运行。
+
+包内快照重加密入口对原号 `dbbe0e5f-bfb1-444e-b2fe-c7b55dc0c3a8` 返回 `AGENT_GENERATION_UNAVAILABLE`。同 Root 同号只读返回 `NOT_FOUND`，无操作目录，原快照保留原 inode 和摘要。保留共装 Agent 和原意图，后续包维护使用原密文。一次原生解包后正常停机，同 Root 新 boot 一次 configure，七包 installed，dpkg audit 为空。正式 Main 在首装、密钥发布后及续配后三次均拒绝错误口令，原用户以不同主题分别完成一次实际 MQTT 3.1.1 QoS 1 送达。19 份 Core 签名保持，四个密钥操作在新 boot 仅按原号查询且均为 SUCCEEDED。两服务 disabled/inactive，VM 正常停放，清理前后冷读一致。
+
+Deployment 原 Root `225:257` 继续停放。原号 `57225` 的真实 installed prerm 对 remove、purge 的退出 1 和同 Root 同号 GET COMPLETED 已冷读复核，原归档、原回执和六包保持。原号未重发。独立 config-files 的 postrm 拒绝仍限于合成标记。
+
+补父项 #1、#3、#4、#9、#12，冻结 **0/12**。Artemis 与 Agent 共装的快照重加密、TLS/其他协议及余下 typed brokers、六组件与 provider/launcher 矩阵仍为内部待办。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-generation-20261125/HANDOFF.md)
