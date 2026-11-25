@@ -1,3 +1,15 @@
+## 2026-11-26 新现场持久 Root 域 native 候选
+
+隔离Agent工作树本地f11d66f生成0.1.17 source crate，标准Cargo归档的VCS及全部Git源码核对，复用同一ARM64缓存。新格式只在空历史、固定Core FD3排他writer围栏下显式初始化，绑定当前Root/publication内核对象；原v1公式、opaque wire和已签发意图保持，不接受调用方Root或旧号。原暂存字节以RENAME_NOREPLACE发布，普通构造器在操作路径前检查未完/外来绑定；独立Python包维护门禁不依赖worker。
+
+Git归档完整15项crate回归和11项ARM64合成文件系统场景通过，含实际renameat2 EINTR与原暂存inode续接、共享租约拒绝、非空v1拒绝及worker缺席的remove/purge helper门禁。没有真实业务派发或成功回执。新原机146:257正常停机重启后Scope/绑定/合成哨兵保持；整机克隆保留machine-id和inode但内核身份不同，无操作号的scope/inspect及独立门禁均拒绝，trace未读哨兵。两台已正常停放并cold核对。原机device未变，不计为同源重分配实证；OverlayFS显式拒绝且未写marker，持久支持仍内部待验。
+
+正式Core/Networking仍是原pin，本轮未实装新格式。下一步另开源码与全新Root，完成正式入口、配对包及Core/OSGi、READY、合法Main/provider和真实回执联合链。原229不追认、不迁移、不跨Root查询；Core219和Deployment225已闭环场景不重跑。旧e155观察夹具冷读保持，原18仓除台账外17仓保持，原三网关仍运行，个人数据/运行集/六组件/rtc0和原7fd封存记录保留。
+
+仅清理确认闲置的本轮构建副本，目录减少1,122,304字节，宿主清理区间实际可用增加1,146,880字节；源码、归档、ELF、夹具与共享缓存保留。首轮FD3 harness、tmpfs模式和完整workspace离线打包失败均留档，后继验证通过。补#3/#6/#9/#12，完整目标active，冻结 **0/12**。其余12父项、typed brokers、六组件、provider/launcher维护矩阵继续；外部延期仍仅真实NM/cloud-init/物理交接、amd64、磁盘满/硬断电。
+
+[新格式、合成边界与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-root-domain-v2-20261126/HANDOFF.md)
+
 ## 2026-11-26 RootScope 持久身份审查与只读观察候选
 
 正式 worker 的v1 Scope绑定machine-id及Root/publication的device/inode，原号比较在操作路径读取前。Root229复机变78会改变真实Scope，仍禁止查询原号、重派或换号。原现场保持停放；当前观测不能追认旧意图的授权。
