@@ -1,3 +1,9 @@
+## 2026-11-25 FileMove 跨完整内核重启的原号结算与包维护
+
+隔离 Parallels ARM64 ext4 Root `2049:2` 实装 Deployment `c012586-2`。实际 Main 通过正式 OSGi provider 单次派发 MOVE `120252948901`。原目标与回执落盘后丢失回复，Main 收到 UNKNOWN，源文件仍在。实际 remove 与 purge 均由原 prerm 退出 1。正常关机并重新开机后，新 boot ID 下原目标 inode、源文件和回执保持。原号经包内低权限恢复与本机确认到 ALREADY_APPLIED。随后独立 remove、purge、同包解包与配置通过，14 项原号文件、另 6 份保护文件及 rtc0 复核通过。Main 和 FileMove socket disabled/inactive，VM 正常停放。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [实装与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/filemove-kernel-reboot-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式 GWT 批量续期子回执与第 2 代 mTLS
 
 同一 ARM64 Root `245:257` 以正式中心和 PostgreSQL 17 接通第 1 代，双管理员审批真实签发批次。现装 GWT 对中心原样子回执的浏览器拒绝已复现。后继 `cafc758` 的 JDK 21 共 539 项测试与 ARM64 实装通过，实际 GWT 原样提交一次。Agent 与 GWT 对原号 `880c92cd-0c33-4d8e-a31c-d0fb0eaea028` 只读查得 APPLIED，提交时远程 OFF。随后第 2 代在原独立端口与正式中心 mTLS 成功，真实 `agent.status` 同号查得 SUCCEEDED。再次明确 OFF，原证书与回执保留，Main、Agent、中心、PostgreSQL 及 VM 正常停放，冷读重复一致。
