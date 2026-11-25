@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Deployment 原生 remove、独立 purge 与原围栏重装
+
+隔离 ARM64 Root `250:257` 对已装正式 Deployment `8da586b-1` 执行一次 remove 到 config-files，再独立 purge 到 not-installed。其余 13 包保持 installed。缺包时合法 Main 的 Core ConfigurationService ACTIVE，四份 Deployment bundle 和正式 handler 均缺席。原四个 DP 归档、终态回执和数据指纹保持。
+
+同包解包到 unpacked 后，正常停机前后均由同一原锚点和 PID 1 正式断言拒绝 Main。新 boot 核对原围栏后一次 configure 恢复 14 包 installed，dpkg audit 为空。四个发行 JAR 与原 deb 同摘要，实际 Deployment Core 和 REST provider ACTIVE。后继 Main 只读查询 `25025001` 至 `25025004` 均为 COMPLETED，四个 YOFC bundle 均 ACTIVE 并实际接线 API 2.0.0。原归档和回执 inode 与摘要保持。Main、Agent disabled/inactive，VM 正常停放并重复冷读。
+
+补父项 #3、#4、#9、#11、#12，冻结 **0/12**。本次覆盖已结算 DP 的 Deployment 独立 purge。其余包维护矩阵继续内部待办，外部延期仅原三项。 [本轮交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-dp-deployment-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Core 原生解包、跨停机续配与四份 YOFC DP 保全
 
 隔离 Debian ARM64 Root `250:257` 在四份正式 YOFC DP 已实装的 Main 运行中，原生解包同版 Core `f8c61e4e27-1`。实际旧 prerm 有序停服，返回 0 时原 Main PIDFD 已退出。原维护号 `ce41c531-999b-4aed-b13e-70b71bdabc98` 停在 unpacked。正常停机冷读确认原围栏及注册表、四份 DP、四份终态回执均保持。
