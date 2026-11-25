@@ -1,3 +1,9 @@
+## 2026-11-25 API2 Position 正式 HTTPS 与 Core REST bundle 修复
+
+隔离 ARM64 Root `1048581:257` 的实装配置关闭 Basic，三条 Position 路径匿名及 Basic 均返回 401。正式会话登录曾因 REST 请求体限流器的 OSGi 导入缺项返回 500。Core `c65c04741e` 显式导入 Commons IO 的 function 包，JDK 21 下 REST 模块 150 项通过。ARM64 正式 deb 与旧包逐项比对，载荷仅 REST JAR 的 manifest 变动。原 Root 一次原生升级，七包 installed，dpkg audit 为空，新维护号 `fd7a11f0-b86b-491b-8063-840e5000056c` 的 21 份记录验签。 [原生升级、测试及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/HANDOFF.md)
+
+合法 Main 的三路 Position GET 在会话认证后、授权前均为 403，授权后实际 GPSD 定位、锁状态和与 GPSD 报文一致的毫秒 UTC 均为 200。锁失效后 `isLocked=false`，定位和时间返回现有的 500 未锁定响应。删除身份后旧会话三路均为 401，最新快照已确认清除全部探针身份。Core 升级时四份历史快照及快照目录重新落盘，快照字节、权限及数据目录 inode 保持。原锁文件撤下，注册表顺序保持。原 19 份 Core 记录与 Agent 原号 READY/OFF 保持，VM 正常停放。补父项 #3、#4、#9、#12，冻结 **0/12**。外部延期仅原三项。 [停机核对](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/rest-fixed-cold.json)
+
 ## 2026-11-25 API2 Position 独立 purge、跨停机续配及 GPSD 定位恢复
 
 隔离 Debian ARM64 Root `1048581:257` 以 JDK 21 实装 Core `f8c61e4e27`、Position `284058a-1` 和其余五个网关包。正式 Main 只提交一次 GPSD 配置，原快照 `1795590907086` 读到伪终端经真实 gpsd 提供的定位。原生 remove 到 config-files，再独立 purge 至 not-installed。缺包时合法 Main 仍读得原快照，PositionService 和三条 Position bundle 均缺席。同包解包后正常停机冷读，同 Root 新 boot 一次 configure，恢复七包 installed，dpkg audit 为空。后继 Main 从原快照恢复并读到一组新定位和毫秒 UTC，随后定位锁正常失效。四条实际 OSGi 接线均指向 API 2.0.0，四个实装 JAR 与原 deb 成员匹配。原快照 inode 与摘要、19 份 Core 签名记录、14 项保护条目和 Agent 原号 READY/OFF 保持。Main、Agent、gpsd disabled/inactive，VM 正常停放，重复冷读一致。

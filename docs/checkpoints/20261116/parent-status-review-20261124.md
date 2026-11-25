@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 API2 Position 正式 HTTPS 与 Core REST bundle 修复
+
+父项 #3、#4、#9、#12 补证。ARM64 Root `1048581:257` 一次升级到 Core `c65c04741e`，补齐 REST bundle 对 Commons IO function 的导入。JDK 21 下 150 项通过，21 份新记录含 READY/configured 验签，七包 installed。合法 Main 实测三路匿名 401、登录后未授权 403、授权后定位及毫秒 UTC 200、撤销身份后旧会话 401，定位锁失效后的三路状态与实装合同一致。四份原快照保持原字节和权限，Core 升级更换其 inode。原运行时数据目录和 19 份历史记录保持，隔离 VM 已正常停放。冻结 **0/12**。 [正式证据和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Position 独立 purge、跨停机续配及 GPSD 定位恢复
 
 父项 #3、#4、#9、#12 补证。隔离 ARM64 Root `1048581:257` 将正式 API2 Position `284058a-1` 独立 remove、purge，再解包和跨正常停机一次续配。缺包时 Core 仍读原快照。后继合法 Main 通过实际 gpsd 和伪终端取得新定位，毫秒 UTC、定位锁失效和四条实际 API 2.0.0 接线通过。原快照 inode、摘要、Agent READY/OFF 配对和 19 份 Core 记录保持。七包 installed，VM 正常停放并重复冷读。冻结 **0/12**。 [正式包和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/HANDOFF.md)
