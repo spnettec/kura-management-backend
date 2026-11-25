@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 typed Journal 跨 Core 独立 purge 与同号重装
+
+父项 #3、#9、#12 补证。隔离 ARM64 Root `1048579:257` 原生 remove 配对依赖与 Core 后，独立 purge Core，再沿同一围栏解包和跨正常停机一次续配。正式后继 Main 只读取得原 journald 消息，原日志 inode、SHA-256 和 cursor 保持。40 份既有和 19 份新签名记录、两份凭据及原应用数据备份均通过核对。六包 installed 且停放，重复冷读一致。冻结 **0/12**。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-core-maintenance-20261125/HANDOFF-PURGE.md)
+
 ## 2026-11-25 typed Journal 跨正式 Core 解包与新 boot 续配
 
 父项 #3、#9、#12 补证。隔离 ARM64 Root `1048579:257` 的正式 typed Journal 原生归档和唯一消息跨同版 Core unpack、正常关机及同 Root 原号一次 configure 保持，前后合法 Main 实际低权限读回，非 Main 同 UID 请求被拒。40 份 Core 签名记录、六个实装载荷及原两份凭据通过核对。六包 installed，VM 正常停放并重复冷读。冻结 **0/12**。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-core-maintenance-20261125/HANDOFF.md)

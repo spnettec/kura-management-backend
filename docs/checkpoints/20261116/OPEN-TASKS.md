@@ -1,3 +1,9 @@
+## 2026-11-25 typed Journal 跨 Core 独立 purge 与同号重装
+
+隔离 Debian ARM64 Root `1048579:257` 沿原 Journal 归档继续。依赖的四个 addon 正式 remove 后，Core 原生 remove 至 config-files，再独立 purge 至 not-installed，Journal 客户端、actor 和 socket 实际缺席。原归档、原消息和同 Root 的应用数据备份保持。沿原围栏 `bf0c811d-a0f2-4bef-abd6-5c606370624a` 重新解包、正常关机并在新 boot 一次续配，19 份新记录含 READY/configured 验签，原 40 份记录及两份凭据指纹保持。
+
+APT 本地归档路径报错发生在四个依赖改动前，同 Root 用四份原 deb 一次原生安装恢复。后继正式 JDK 21 Main 通过 typed Journal 只读查到原 boot 的唯一消息，原归档 inode、摘要、消息 cursor 保持。worker 实际 UID 987、NNP 1、五组 capability 全零。六包均 installed，Main、Agent disabled/inactive，VM 正常停放并重复冷读。补 #3、#9、#12，冻结 **0/12**。跨 Core 版本验证继续内部待办，外部延期仅原三项。 [完整证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-core-maintenance-20261125/HANDOFF-PURGE.md)
+
 ## 2026-11-25 typed Journal 跨正式 Core 解包与新 boot 续配
 
 隔离 Debian ARM64 Root `1048579:257` 实装 Git 构建的 Core `f8c61e4e27-1` 等六份配对包，使用 JDK 21。合法 Main 通过正式 typed Journal 导出一次写入的夹具消息。封存的原生 journal 保留同一 inode、摘要及消息 cursor。同版实际 `dpkg --unpack` 有序回收旧 Main 和 Journal socket，包在同一维护围栏内停于 unpacked。正常关机冷读后，在同 Root 新 boot 沿 `def33172-fa7a-42ee-8dfe-7fc5131e08f1` 一次续配。新 Main 通过同一正式 broker 只读查到原 boot 的唯一消息。同 UID 的非 Main 调用明确拒绝。两次实际 worker 均为 UID 987、NNP 1、五组 capability 全零。原 19 份签名记录、两份凭据指纹及六份实装部件保持，新 21 份记录含 READY/configured 验签。六包 installed，Main、Agent disabled/inactive，VM 正常停放，重复冷读一致。
