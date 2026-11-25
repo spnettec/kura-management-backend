@@ -1,3 +1,9 @@
+## 2026-11-25 普通执行器在正式 Core 解包期间回收
+
+隔离 Debian ARM64 六组件 Root `232:257` 实装 Core `df5ae00aac-1`。正式 Main 通过 OSGi 普通执行器派发一条长运行命令，实际命令和 worker 同属 `kura`、NNP 1、能力全零。命令运行中原生 `dpkg --unpack` 同一正式包，真实旧 prerm 管理停服，返回 0 时两个 PIDFD 均就绪，两个 socket 已撤下，原回调为 `EXECUTOR_RESULT_UNAVAILABLE`。沿 `8450a592-51b2-4980-90cc-095d4b706793` 正常关机并在同 Root 新 boot 一次续配。READY/configured 验签，新 Main 经同一 API 运行独立的 `id -un`，返回 `kura` 和退出 0。六包与可选 SoftHSM installed，Main、Agent disabled/inactive，VM 正常停放，停机读回一致。
+
+25 项受保护条目逐项核对。两份既有 `token.object` 在两次 Main 运行阶段内容摘要变化，文件身份、属主和权限保持。四份快照随包恢复复制更新 inode，内容及权限保持。原长命令只派发一次。补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [正式取证与停机读回](../../../../.management-close-20261116/core-rtc-hotplug-20261120/executor-core-unpack-20261125/HANDOFF.md)
+
 ## 2026-11-25 RTC 原成功回执跨 Core 移除、清除和重装
 
 隔离 Parallels ARM64 子 Root `2049:263807` 的正式 Main 使用已装 ClockService 客户端单次写入虚拟 DS1307。原号 `1d6f9778-af64-4dcb-ae6d-13641aa732ad` 已为 APPLIED / RTC_SET_RETURNED，本地保留 pending。正式 Core `df5ae00aac-1` 原生 remove、purge、同包 unpack，子机与外层 VM 正常停机。新 boot 校验同 Root、两套原维护围栏、原 sender 归档和原 actor 回执后，一次 configure。后继 Main 在试验 RTC 缺席时结算原号，五份原 actor 文件保持，仍只有一笔操作。两份子 Root 原凭据、外层 27 份保护文件和共享 rtc0 保持。Main disabled/inactive，子机及 VM 正常停放，停机冷读一致。
