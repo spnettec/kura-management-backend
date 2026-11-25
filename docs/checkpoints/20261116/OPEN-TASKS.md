@@ -1,3 +1,13 @@
+## 2026-11-25 API2 正式发行门禁、原位联合升级与跨停放续配
+
+八个 Git 候选的实际 Debian 控制档带 `+api2`。Core `f8c61e4e27` 与七个 sibling 的版本、Breaks、Pre-Depends、Conflicts 按真实 ARM64 归档核对，独立 Netplan 包版本格式保持。正式归档与 YOFC 构建产物合计 286 个 Equinox bundle 和 34 个直接消费者解析通过。Core launcher 18 项、Deployment ARM64 维护 9 项通过。
+
+隔离 Root `249:257` 正式拒绝不允许移除的单升 Core，旧 Core 也拒绝 API2 Wires 的预依赖。首轮联合升级停在旧 Deployment 的 `deconfigure` 围栏冲突，标准 dpkg abort 已释放原围栏。正常停放后沿同 Root 正式解包 Deployment `8da586b` 并续配 14 包。另一个隔离 Root `250:257` 用修复后的候选一次 APT 升级完成，在原两个 deconfigure 围栏上续办，保留原数据和历史回执。两处各 21 份 Core 配置记录验签、正式 Main 独占写租约、30 个实载 API2 直连消费者和九个选定 provider 检查通过。
+
+`250:257` 的旧 Core 反向解包被 dpkg 拒绝。旧 Wires 手工解包可到 iU，configure 被拒绝，PID 1 的正式 Main 在发布 Equinox 配置前拒绝实际 API1 导入。原配置 inode 和摘要一致，恢复匹配包后 Main 复验通过。两处 VM 均 disabled、inactive 后正常停放，冷读通过。ARM64 Alpine 镜像拒绝两个混装方向，同代镜像的无 DP 运行通过。四个 YOFC 直接消费者的 DP 实装仍是内部待办。
+
+原 `225:257` 只做停机读回，`57225` 原归档、COMPLETED 回执和装包记录一致。真实 remove／purge 拒绝的范围为 installed prerm，独立 config-files postrm 沿用合成标记试验。补父项 #3、#4、#11、#12，冻结 **0/12**，外部延期仅原三项。 [当前交接和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-admission-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 联合 Debian 实装与混装门禁缺口
 
 Core `ab25377373` 及十二个 sibling 的候选包和重建的 YOFC 产物，在隔离 Equinox 中解析 286 个 bundle、34 个 API2 直接消费者。首轮 Position 因旧快照 Comm SPI 被拒绝，使用配对 Core 发行输入重新组装通过。JDK 21 Core 宿主报告 2177 项（2 项跳过），ARM64 2177 项（零跳过），均零失败、零错误，包含 81 项 Failsafe。

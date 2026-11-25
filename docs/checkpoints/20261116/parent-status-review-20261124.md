@@ -1,5 +1,11 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 API2 正式发行准入与原位联合升级补证
+
+父项 #3、#4、#11、#12 补充真实 ARM64 Debian 和 Alpine 发行证据。八包的实际 Debian 控制档采用 `+api2`。隔离 Root `249:257` 的初次联合升级在维护钩子拒绝后跨正常停放按原 Root 续配。隔离 Root `250:257` 用 Deployment `8da586b` 一次完成旧包到 API2 的联合升级，原两份 `deconfigure` 围栏保留至成功关闭。
+
+两个 Debian Root 各有 14 包 installed、21 份配置验签、合法 Main 和 30 个实载 API2 直接消费者及九个选定 provider 证据。旧 Core 反向解包及旧 Wires configure 被 dpkg 拒绝。旧 Wires 未配置载荷在 PID 1 正式 Main 启动时被 launcher 拒绝，原 Equinox 配置保持，恢复匹配包后 Main 通过。两个 Root 均正常停放并冷读。Alpine 双向混装构建拒绝与同代无 DP 运行通过，YOFC DP 实装和完整场景矩阵继续内部待办。冻结 **0/12**，外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [当前交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-admission-20261125/HANDOFF.md)
+
 沿用 11 月 22 日暂停时的 12 项合同。复核以当时的完整冻结台账、可读检查点、实装版本和新增终验证据为依据。按子场景确认已有工作，整个父项满足原合同后才记闭环。
 
 | # | 父项 | 已验收的范围 | 仍待的证据或实现 |
