@@ -1,4 +1,8 @@
 
+## 2026-11-25 Deployment 原号 57225 定向复核
+
+按同一机器 ID 从停机的 ARM64 Root `225:257` 读取，`verify-current-stopped.py` 输出与已留档 JSON 逐字节一致。原实装 `c012586-1` 的真实待结算发布使原生 `dpkg --remove` 和 `dpkg --purge` 各由 `prerm` 退出 1。随后同 Root 对原号 `57225` 仅 GET 得到 `COMPLETED`。原 DP 与终态回执摘要保持，现装 `c012586-2` 的四份维护脚本、门禁 helper 和四个 JAR 与实测载荷一致，六包均为 installed。现场全程停机，未重放发布或包维护。临时冷读副本已自动清理。独立 config-files 状态的 postrm 拒绝证据仍使用合成标记。冻结 **0/12**。 [原生实证与停机复核](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Artemis 与运行中 Native Agent 的快照重加密
 
 隔离 Debian 13 ARM64 Root `136:257` 实装 Git 构建的 Core `a047e63a77`、Agent `f78610a-1`、Artemis `1bcdc5d-1` 等七包，实际 JDK 21。Core 持 dpkg 后端锁、Agent 初始化锁及原 `system-change.lock`，校验正式 unit、运行进程、挂载视图并检查恢复引用。新签名意图绑定原 Agent profile、状态目录及锁 inode，保留独立 Core 旧意图续办。60 项 ARM64 合同测试通过。正式发布代的快照重加密 `faf94ff5-74f5-46a1-998d-d3fcfedc10f9` 返回 SUCCEEDED，Agent PID、invocation 和两项 inode 保持，原密文归档为 Root 0400。两份 43,412 字节 XML 逐字节一致，新件仅靠新活动钥读取。

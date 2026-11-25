@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 Deployment 225:257 定向复核
+
+父项 #3、#9、#12。保持同 Root `225:257` 正常停机，只读核对原号 `57225` 的业务归档、终态回执、已安装载荷及同号 GET `COMPLETED` 留档。冷读输出逐字节一致，原生 remove 与 purge 的真实拒绝覆盖已安装包的 `prerm`。独立 config-files 的 `postrm` 仍使用原合成标记证据。冻结 **0/12**。 [停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/current-stopped.json)
+
 ## 2026-11-25 API2 Artemis 与运行中 Native Agent 的快照重加密
 
 隔离 Debian 13 ARM64 Root `136:257` 实装 Git 构建的 Core `a047e63a77`、Agent `f78610a-1`、Artemis `1bcdc5d-1` 等七包，实际 JDK 21。Core 持 dpkg 后端锁、Agent 初始化锁及原 `system-change.lock`，校验正式 unit、运行进程、挂载视图并检查恢复引用。新签名意图绑定原 Agent profile、状态目录及锁 inode，保留独立 Core 旧意图续办。60 项 ARM64 合同测试通过。正式发布代的快照重加密 `faf94ff5-74f5-46a1-998d-d3fcfedc10f9` 返回 SUCCEEDED，Agent PID、invocation 和两项 inode 保持，原密文归档为 Root 0400。两份 43,412 字节 XML 逐字节一致，新件仅靠新活动钥读取。
