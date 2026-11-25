@@ -1,3 +1,11 @@
+## 2026-11-25 API2 OPC UA 独立清除、跨停机续配与原工厂恢复
+
+隔离 ARM64 Root `1048582:257` 的正式 Core `c65c04741e` 与 API2 OPC UA `62c5514-1` 在 JDK 21 下实装。合法 Main 只创建一次工厂 `fixture.api2.opcua.purge`，原快照 `1795593886179`。一次原生 remove 到 config-files，独立 purge 到 not-installed。缺包时正式 Main 的 ConfigurationService 能读原快照，provider bundle 与 Driver 服务缺席。
+
+同包解包正常停机，冷读两次一致。新 boot 同 Root 一次 configure 恢复七包 installed。后继合法 Main 恢复原工厂，实际 OSGi channel 接线 API 2.0.0，经隔离 Milo 回环读取原产品名及更新后的服务器 UTC。原快照、两份提交标记、78 份 Core 签名、两份凭据及两个应用归档保持。Main 和 Agent disabled/inactive，隔离 VM 正常停放，清理前后冷读一致。
+
+补父项 #3、#4、#9、#12，冻结 **0/12**。签名加密和订阅仍内部待验。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-opcua-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 执行器与 ownership 跨正式 Core 移除、独立 purge 和原号重装
 
 隔离 ARM64 Root `1048582:257` 的正式 Core `c65c04741e` 真实 OSGi 执行器运行一条长命令时进行原生 remove。返回时原 Main、命令、执行器 worker、ownership reader 的四个 PIDFD 均确认退出，原回调为 `EXECUTOR_RESULT_UNAVAILABLE`，三个 socket 已撤下。旧命令仅实际派发一次。随后独立 purge、正式解包与正常停机，同 Root 新 boot 沿 `33b4116b-6983-46f2-b665-712be604df31` 一次续配。六包 installed，新增 19 份验签，59 份既有签名、两项凭据和原应用数据归档保持。
