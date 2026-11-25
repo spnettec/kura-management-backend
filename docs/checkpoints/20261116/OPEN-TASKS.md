@@ -1,3 +1,13 @@
+## 2026-11-25 typed reboot 跨 Core API1 → API2 联合升级
+
+隔离 Debian ARM64 Root `1048593:257` 在 Git 发行 API1 Core `df5ae00aac` 上由 JDK 21 正式 OSGi Main 单次触发重启。首个新 boot 取得原号 `738c16f4-5178-4141-a330-4d1ee33d88ef` 的 ACCEPTED/MANAGER_ACCEPTED，原 intent、pending 和 actor 回执封存。OrbStack 命令通道恢复后在同 Root 的后续 boot，以正式 Main 只读结算同号，sender 落盘 completed 并清除 pending。
+
+正式 APT 一次换版 Core `f8c61e4e27`、Deployment、GWT 和 Wires。旧 Deployment 的 FileMove `prerm` 退出 1，候选 `failed-upgrade` 接管。六包 installed，dpkg audit 空，原 19 份记录及新维护号 `aed2b23e-f432-4ee0-8b10-df4afc34973e` 的 21 份记录含 READY/configured 核对。后继正式 Main 实际四项 OSGi API 均为 2.0.0。原 actor intent、actor receipt、sender completed 的 inode、摘要保持，只有一笔原 actor 操作且无 pending。Main 和 Agent disabled/inactive，VM 正常停放，清理前后冷读一致。
+
+Deployment 原 Root `225:257` 的原号 `57225` 再次停机读回与留档一致。真实 remove、purge 的拒绝覆盖已安装包的 prerm，同 Root 同号 GET COMPLETED；独立 config-files 的 postrm 证据使用合成标记。补父项 #3、#4、#9、#12，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[正式实装和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/reboot-api2-upgrade-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Artemis 双向 TLS 跨密钥发布、快照重加密和包维护
 
 隔离 Debian ARM64 Root `1048592:257` 以 Git 构建的 Core `c65c04741e`、Networking `98ce41482f-1` 和 Artemis `1bcdc5d-1` 实装独立 Core 模式。合法 Main 只提交一次 Artemis XML 设置，原加密快照 `1795596925259`。正式密钥发布 `86421b1e-13f4-44e2-8472-511cfb4e4d24` 排空旧 Main，另行批准后 OSGi CryptoService 用新活动钥写读 KURA2，原用户表与双向 TLS 仍可用。
