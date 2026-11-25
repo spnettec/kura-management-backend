@@ -1,3 +1,9 @@
+## 2026-11-25 Firewall 正式发布代理拒绝路径内存
+
+隔离 ARM64 Root `2049:2` 同 boot 实测旧 Core 两族 PREPARE 的预期 CONFLICT 触发 Ubuntu Python Apport 路径，两个发布实例触及 64 MiB cgroup 限额并被内核终止。Core `df5ae00aac` 将预期拒绝收口为固定日志和退出 1。3 项定向测试通过，Git/JDK 21 构建候选的 233 个 JAR、原 Rust worker 和单元保持。原生解包、续配后实际 Main 两笔 SCOPE 成功，两族同类 CONFLICT 均正常拒绝，四实例保持 64 MiB，内核无 OOM。直接峰值仅采到一个实例。无新发布意图或回执，原 modem 三文件及两份凭据保持。两包 installed，Main disabled/inactive，VM 正常停放并重复冷读。
+
+补父项 #3、#6、#10、#12。冻结 **0/12**，外部延期仅原三项。 [正式候选、运行日志和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-worker-memory-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式 watchdog 设备及原生维护
 
 隔离 Parallels ARM64 Root `2049:2` 正式 Main 以 kurad、NNP 1 和 CapEff 0x400 持有真实 Linux 软件 watchdog。同包原生解包的设备调用实证保活及 Magic Close，Core 进入 unpacked，正常关机后在原 Root 一次续配。实际关键组件超时使 Main 进入 REBOOT_REQUESTED，代理不可达返回 UNKNOWN，300.8214 秒后停止保活，内核软件 watchdog 到期且按设置抑制重启。另测 nowayout=1 时原生 dpkg 拒绝解包，原 Main PID 和五份文件保持。两包 installed、原 modem 三份文件和两份凭据保持，Main disabled/inactive，VM 正常停放，停机冷读重复一致。Core `64316e9c7b` 补齐现行 Main recovery 条件的严格测试期望，7 项定向通过。

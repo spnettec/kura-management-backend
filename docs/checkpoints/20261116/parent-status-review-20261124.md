@@ -21,6 +21,8 @@
 
 **冻结闭环 0/12。** 外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。其余按原合同内部待办。
 
+隔离 ARM64 Root `2049:2` 同 boot 实测旧 Core 两族 PREPARE 的预期 CONFLICT 触发 Ubuntu Python Apport 路径，两个发布实例触及 64 MiB cgroup 限额并被内核终止。Core `df5ae00aac` 将预期拒绝收口为固定日志和退出 1。3 项定向测试通过，Git/JDK 21 构建候选的 233 个 JAR、原 Rust worker 和单元保持。原生解包、续配后实际 Main 两笔 SCOPE 成功，两族同类 CONFLICT 均正常拒绝，四实例保持 64 MiB，内核无 OOM。直接峰值仅采到一个实例。无新发布意图或回执，原 modem 三文件及两份凭据保持。两包 installed，Main disabled/inactive，VM 正常停放并重复冷读。 补父项 #3、#6、#10、#12。冻结 **0/12**，外部延期仅原三项。 [正式候选、运行日志和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-worker-memory-20261125/HANDOFF.md)
+
 隔离 Parallels ARM64 Root `2049:2` 正式 Main 以 kurad、NNP 1 和 CapEff 0x400 持有真实 Linux 软件 watchdog。同包原生解包的设备调用实证保活及 Magic Close，Core 进入 unpacked，正常关机后在原 Root 一次续配。实际关键组件超时使 Main 进入 REBOOT_REQUESTED，代理不可达返回 UNKNOWN，300.8214 秒后停止保活，内核软件 watchdog 到期且按设置抑制重启。另测 nowayout=1 时原生 dpkg 拒绝解包，原 Main PID 和五份文件保持。两包 installed、原 modem 三份文件和两份凭据保持，Main disabled/inactive，VM 正常停放，停机冷读重复一致。Core `64316e9c7b` 补齐现行 Main recovery 条件的严格测试期望，7 项定向通过。 另发现正式 firewall 初始模型 CONFLICT 后，发布 worker 在两次 Main 启动均触及 64 MiB cgroup 限额，保留实际内核与 systemd 日志，列为 #6、#10 内部待查。 补父项 #3、#12。冻结 **0/12**，外部延期仅原三项。 [实装、清理和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/watchdog-formal-device-20261125/HANDOFF.md)
 
 父项 #1、#3、#12 补证。Core `5a31199e23` 支持 Ubuntu SQLCipher SDK，其 Debian JNI 与原发行件一致。Core `21b4a09f8c` 用发行限定符和 JNI 摘要形成独立驱动版本，使正式 Felix 热更新替换运行中的 JDBC bundle。ARM64 Root `230:257` 六包实装，在各自同一 JVM 完成引擎双向切换，移除 .so.1 后用 .so.2 冷启读回原库及页完整性。原两库、三份快照与原 AES 凭据指纹保持，正常停机冷读通过。 [实装与发行](../../../../.management-close-20261116/core-rtc-hotplug-20261120/sqlcipher-abi-maintenance-20261125/HANDOFF.md)
