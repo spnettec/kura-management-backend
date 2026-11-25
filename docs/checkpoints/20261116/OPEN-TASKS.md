@@ -1,3 +1,9 @@
+## 2026-11-25 Deployment 原号 57225 停机复核
+
+隔离 ARM64 Root `225:257` 的正式 Deployment `c012586-1` 已用真实待结算发布验证原生 `remove` 和 `purge`。两次均由已安装包的 `prerm` 退出 1，包载荷仍为 installed。原发布只派发一次，正式 Main 恢复后在同 Root 对原号 `57225` 仅执行 GET，结果为 COMPLETED。独立 config-files 的 postrm 拒绝证据仍限于合成标记。 [原生拒绝与原号结算](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)
+
+本轮按机器 ID 在停机态复核，输出与留档逐字节一致。原 DP 和终态回执摘要保持。当前 `c012586-2` 的四份维护脚本、门禁 helper 和四个 JAR 与实测版本相同，六包均 installed。夹具保持正常停放，原三网关运行。补父项 #3、#9、#12，冻结 **0/12**。 [停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/current-stopped.json)
+
 ## 2026-11-25 API2 六组件内 GWT 与 Wires 独立清除和原图续配
 
 新隔离 Debian ARM64 Root `1048578:257` 实装 Core `f8c61e4e27`、GWT `9f226c0`、Wires `f0a95c6` 等六份正式包。Core READY/configured 共 19 份记录验签，Agent 原配对号 READY/OFF。JDK 21 正式 Main 只提交一次 Timer→Logger 图，原快照 `1795589035000` 实际送达。

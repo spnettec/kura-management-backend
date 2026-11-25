@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 Deployment 原号 57225 停机复核
+
+父项 #3、#9、#12。ARM64 Root `225:257` 已在正式 `c012586-1` 验证真实待结算发布使原生 remove、purge 均由 installed prerm 拒绝。原号 `57225` 只派发一次，随后同 Root 同号只读 GET 为 COMPLETED。本轮冷读与留档一致，原 DP 和回执摘要保持，六包 installed，VM 保持正常停放。独立 config-files postrm 拒绝仍沿用合成标记证据。冻结 **0/12**。 [原生实测与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 六组件内 GWT 与 Wires 独立清除和原图续配
 
 新隔离 Debian ARM64 Root `1048578:257` 实装 Core `f8c61e4e27`、GWT `9f226c0`、Wires `f0a95c6` 等六份正式包。Core READY/configured 共 19 份记录验签，Agent 原配对号 READY/OFF。JDK 21 正式 Main 只提交一次 Timer→Logger 图，原快照 `1795589035000` 实际送达。
