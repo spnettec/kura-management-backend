@@ -1,3 +1,17 @@
+## 2026-11-26 有效 typed firewall 跨 Core API1→API2 联合升级
+
+独立 Debian 13 ARM64 Root `143:257` 用保留的 Git/JDK21 正式包建立六组件 API1 基线，再实装 Core `18380316cc-2`、Deployment `8da586b`、GWT `9f226c0`、Wires `f0a95c6` 的四包 API2 联合升级。Networking `98ce414`、Agent `f78610a` 保持。维护号 `b75f24fc-5c43-4b9c-a776-72089b1018ba` 有 21 份新签名含 READY/configured，原 19 份保持，总 40 份 HMAC 冷验通过。合法 Main 的 UID/NNP/0x400/FD9 writer 租约、九个实际 JAR 与包、完整 manifest 与控制脚本已核对，HTTPS302，六包 installed，audit 空。
+
+实际 ConfigurationService 各发布一次双栈新用途 UDP49526 放行，原号 `340c8f43-164b-438f-be70-37580475c7e7`、`8fd400c0-b408-4f87-975e-89f1f535f0ce` 只有一次 apply。探针误判 IPv6 压缩/展开文本后停 Main，保留原 failure 及缺失结果文件；同 Root 原号 native outcome 均为 APPLIED，实际批准源 ECHO、其他源 TIMEOUT。按正式依据只继续未派发的维护和撤回。新 Main 恢复原快照 `1795627476348`，有效模型文件身份和正反向流量跨升级保持；两个新撤回各 APPLIED，四源全拒绝，模型内容恢复基线，总 24 组意图/结果齐全，原十号保持。
+
+首次 APT 的 --no-download 本地路径解析在解包前明确返回100，原包及签名组保持；随后标准绝对路径 APT 实装成功。本轮升级从 inactive/disabled Main 开始，不计为包维护停止运行中 Main 的因果证据。原四份用户/安全/初始快照文件在包复制后 inode 更换，字节/属主/模式/mtime 保持；原数据目录在配置完成时核验保持。收尾即时 veth 检查失败后仅补只读观察确认已消失，业务步骤没有重跑。Main/Agent disabled/inactive，VM 正常停放，清理后冷读一致。
+
+原机器 `229:257` 复机预检发现实际 Root 为 `78:257`，机器 ID 和 machine-id 摘要保持。已在业务前停止，零业务派发、零原号查询，正常停放后原 22 组记录及冷读覆盖的 8 份升级签名保持。持久 Root 身份与正式续接依据仍内部 pending；停机字节审计不能替代运行态 Root 准入，不迁移旧回执或重标 Root。新143没有借用原密钥、配置、意图或回执。
+
+仅清理确认闲置的重复别名和编译输出，目录计量减少 738,529,280 字节，宿主清理区间实际可用增加 363,655,168 字节；95份未配对的OS缓存包保留。原三网关、其他原现场及原7fd封存记录保持。补 #3、#4、#6、#9、#12，完整目标 active，冻结 **0/12**；其余 typed brokers、六组件、provider/launcher 与12父项全矩阵继续内部待办，外部延期仍仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[正式联合链、失败边界和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-firewall-live-model-20261126/HANDOFF.md)
+
 ## 2026-11-26 原发布代跨 Core 原生解包、冷续配与 provider 恢复
 
 原 ARM64 Root `137:257` 将正式 Core 从 `a047e63a77` 原生升级至 Git `18380316cc` 的 `-2` 包。构建对已审查的 service 摘要对加入精确单向兼容关系，仍需实际原 manifest pin，其他 service 改动、逆向迁移及稳定 reader/unit/protocol 差异拒绝。111 项 ARM64 Linux/JDK 21 定向通过，按 Git 构建成功。原生 unpack 后旧 Main PIDFD 确认退出，14 份文件在实际暂存树保持；正常停机冷读后同 Root 新 boot 沿 `2f4990fc-f063-4970-ba5f-de7133698bc0` 一次 configure，新增 21 份签名含 READY/configured，旧 19 份保持，七包 installed，dpkg audit 空。
