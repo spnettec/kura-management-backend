@@ -1,3 +1,11 @@
+## 2026-11-25 四个 YOFC API2 DP 正式实装与同 Root 只读复验
+
+隔离 Debian ARM64 Root `250:257` 在已配对的 14 包正式 Main 下，从 YOFC Git `a652e29910` 构建的 api-comp、apps-abplc、apps-comp 和 apps-opcuaserver 四个 DP 各派发一次。首号 `25025001` 的早到 GET 返回 NOT_FOUND，有原归档和已落盘终态回执后沿原号只读确认。其余三号分别为 `25025002` 至 `25025004`。四个 Felix bundle 均 ACTIVE，四条 channel 和三条 driver 接至实际 API 2.0.0。
+
+同 Root 正常停机后重新启动，原四号只读均为 COMPLETED，四个 bundle 仍 ACTIVE。21 份 Core 签名记录、四份归档和四份回执摘要保持，归档和回执 inode 保持。Main 与 Agent disabled/inactive，隔离 VM 再次正常停放并重复冷读。原 `225:257` 的 `57225` 仅做停机复核，原实测拒绝和回执保持。
+
+补父项 #3、#4、#11、#12，冻结 **0/12**。含 DP 的 Alpine、依赖现场配置的 DS 行为及剩余包维护矩阵继续内部待办。外部延期仅原三项。 [本轮交接和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-yofc-dp-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 正式发行门禁、原位联合升级与跨停放续配
 
 八个 Git 候选的实际 Debian 控制档带 `+api2`。Core `f8c61e4e27` 与七个 sibling 的版本、Breaks、Pre-Depends、Conflicts 按真实 ARM64 归档核对，独立 Netplan 包版本格式保持。正式归档与 YOFC 构建产物合计 286 个 Equinox bundle 和 34 个直接消费者解析通过。Core launcher 18 项、Deployment ARM64 维护 9 项通过。
