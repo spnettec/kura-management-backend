@@ -1,0 +1,386 @@
+{
+  "cleanup": {
+    "actualHostAvailableDelta": 282624,
+    "after": {
+      "directoryBytes": 10510336,
+      "hostAvailable": 166045851648
+    },
+    "before": {
+      "directoryBytes": 10792960,
+      "hostAvailable": 166045569024
+    },
+    "directoryReduction": 282624,
+    "metadataFixturesKeptStopped": true,
+    "rebuildFromGit": "e155065040c9790c671e1faf644c60b15428a806",
+    "removed": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-test-source",
+    "sharedArm64CacheKept": "/Users/heyoulin/.cache/kura-native-build",
+    "sourceManifestRetained": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/test-source-manifest.json"
+  },
+  "date": "2026-11-26",
+  "evidence": [
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/AUDIT.md",
+      "sha256": "1392216c1c5e5c039fc60e577bd9900d78675b77d5ac1080b23c46f8481d463f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/HANDOFF.md",
+      "sha256": "5ef33e950d825896eca5d82aea234ff9e71c48c9678fd5d00e84db387fef8a06"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/NEXT.md",
+      "sha256": "f87cfc59300eb5aaa11f513e833469bb4784730b5a1ed78c0bfe9d53030e9501"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/build-observation.py",
+      "sha256": "2a3d9a5471a9039ced20296d73c4d3cc9c3fd465c4936c0d9a4fd1f2c3f9a2cc"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/cleanup.json",
+      "sha256": "227d54b5b79f9365a329401856d59adb1fdf3320f159a1d761ff0b3bd0e98b2a"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/clone-first.json",
+      "sha256": "2182bb3687f1039760f62fa6756f1a90fa1b9ed941886f0b5d9f35215cb1efd0"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/clone-issued.json",
+      "sha256": "86612d900a57863f87a4e4731f9a23b1af9ae7f73988575906e12e5df3465258"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/clone-machine-id-original",
+      "sha256": "97383c8764effcb2111357d2bab0713a12eea65b301171d2782ab90d22c21f17"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/clone-machine.json",
+      "sha256": "76738fee9e8d58734017eff247667c09dfb36b272936da12887563f9436310dc"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/cold.json",
+      "sha256": "4be140cdfefabbb91af8400e3b6f1f6c9994d2df107197261ec17a5494c7779f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/cold.py",
+      "sha256": "bb3db35be80d4df1324aca17fc36f7fa97d6e94c50a1c1ca091e4b24a9f47bc4"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/current-stopped.json",
+      "sha256": "4be140cdfefabbb91af8400e3b6f1f6c9994d2df107197261ec17a5494c7779f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/git-build.json",
+      "sha256": "cd7833d6c748249ff33ece3d5e31229e9a1715b3f8b50611c9664110aafcc339"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/git-build.log",
+      "sha256": "980be0a83211ef63ddf0de27dc4687ec97d78577508d489289376b298bfa495e"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/git-native-live.json",
+      "sha256": "92bdf64df27c58eccff29bcf9ce0c2f4120b3f3595ed8175641fe1cc68d91a62"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/identity-comparison.json",
+      "sha256": "cc733877449446a0d39e9f5d148e0ec5f2571ed49156c80f6537a3ddc22c4436"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/knowledge-entry.md",
+      "sha256": "44e0fcdb42de96fd520f3e7e55f55c551792024d7b062f39c2df3ab7b38f076d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/knowledge-readback.json",
+      "sha256": "98c8760a9475dd53623cdc79498aee309b0e0cc6b9a95a810c003c95e9322de2"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/knowledge-sessions-issued.json",
+      "sha256": "264bf1883b82431007e9e23862e8beb152cdf0258e6f411f7c3b605a8dbeb926"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/knowledge-sessions-readback.json",
+      "sha256": "486cafff191c4854c3a43932ab06df99ef7c7e8ba7dbd91752bee1f109096c3d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/knowledge-tasks-issued.json",
+      "sha256": "d618864e3e7f9e23cdeb3bde5fcfde440dea737c9f1123d61f8fc39432f62059"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/knowledge-tasks-readback.json",
+      "sha256": "6e887b502f51c2959ccaffecabfb15c9be0879db3872d898522da0cd2b6f0dab"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/ledger-entry.md",
+      "sha256": "1e045a2de7722802ef01e1f3e149b874197ad1315fd50da1b7a85149892f074f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-after-second-shutdown-observed.json",
+      "sha256": "e00450e92432841e4cfe86f8960015cb2ed951a6b8d284bc7d8435ec1e31cb64"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-after-second-shutdown.json",
+      "sha256": "e0b4b3b6980629f14ce30f08f1d1f51ff28c2df2baf5e3f410625c017944d88c"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-commit.txt",
+      "sha256": "0a6d58636f05ee11f771768fc6fd84998c7bef109668a8b6805b92344412668b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-full-build-command.json",
+      "sha256": "eaeceb07d5285d81ff7ab477e8e7399b634d8843f7a367d3a45256d563b631dd"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-full-build-returned.json",
+      "sha256": "ba5906e888adc2bc8d9ff519df92c9b1416aff0db6621746f978bf45514259eb"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-full-build.log",
+      "sha256": "56f63bcea47b5968a013aeaabe767e960fc0ebaacafac8abe4be5d6fe71b8710"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-observation-integration.json",
+      "sha256": "a84c0943926ccb38b75c4e01628cef22e3af5734509d5b8349044dc885c47e2a"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-overlay-missing-machine-id.json",
+      "sha256": "959c0c09616b67fae91e3451b49aa698ed8c12ae48361dfa919c012fbd5c502c"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-overlay-refusal.json",
+      "sha256": "dfb2b35ab68bbcb781478a361505dcce5709ceffc329dbe10bde6fa474dbe2b5"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-standalone-tests-command.json",
+      "sha256": "e405061b4cf5c4781f8aa731279cc39d136313a409eeaf84b49c519a7637d2e3"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-standalone-tests-returned.json",
+      "sha256": "ba5906e888adc2bc8d9ff519df92c9b1416aff0db6621746f978bf45514259eb"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-standalone-tests.log",
+      "sha256": "7dcaee11dbf5233b5217919b085ea78cf2f36ca27d74f7e6ed3686b9bfe3724b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-tests-command.json",
+      "sha256": "e0c2680bdcb342bd940a5a72c57f964f787ca3865e827105b53997d5ebc6ef91"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-tests-returned.json",
+      "sha256": "48624892cc6df93fc45a92a9d14e05b46e6e10cba9f3cc503938b8ff2f79d4b9"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/native-tests.log",
+      "sha256": "fefc9d4c37c4bd607c09a3865920d8d2ff4cc1ef0476f4214013c53fe36fcfba"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-create-issued.json",
+      "sha256": "ba99635c2825ff1b4cfddb5781770d8e3d467c398b87fcff5be2dea2bc7a8d0c"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-create.log",
+      "sha256": "1a776a5c1e93fc36e564fc8fcd60ca85d1020ab3450aa80bb88d8cdd2f588db0"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-create2-issued.json",
+      "sha256": "1710ab3dbe0337f2c67ffe0ab34426212f9fb502a56cc071fb3a771b8782b21d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-create2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-creating-console.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-first-stopped.json",
+      "sha256": "d68130bde260bbb631d984097bb3e79caa3e5b02c5663a9c6af411c33c29f811"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-first.json",
+      "sha256": "bb5bfec3678bc7e487e87caf54bee4863f577f93dfee8fdfea610f430b6047ac"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-machine-id-original",
+      "sha256": "97383c8764effcb2111357d2bab0713a12eea65b301171d2782ab90d22c21f17"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-machine.json",
+      "sha256": "41efe570a294eb7b7987412f02712288c79b0b7655b5ebd79cc52413cea98854"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/origin-second.json",
+      "sha256": "46b7b5a2b049dde7f34097dadcc46411c93a7a79f51612a301a1baebe4ec2659"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/overlay-probe.json",
+      "sha256": "7a7c4161f485222e1b051acd8f350fca8d6c01710879967a63a50c042d236ef1"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/parked-machines.json",
+      "sha256": "0aae1ca6ac37b7301054b2e829019f5b8abb8035a9a57415d603089ebe644bb9"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/probe-build.json",
+      "sha256": "418f5778c679d23abe17dd3c322ac2120f8ca514b3cf12acbb115b2180ae3ac5"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/probe-build.log",
+      "sha256": "8c59c3b7b9051484db9a6b6576edf12a3aca7381a06a174a2d4dbfd6ce08681f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/share/identity-probe",
+      "sha256": "1f2846021e16255cd6dfadce1269e7dab814ca6f12ec92de82638539f664207b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/share/identity-probe.c",
+      "sha256": "117560a7069487e07472a0cfa189af6e53f105a1a427d69baf67a48fb37de4ef"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/share/synthetic-unreadable-intent",
+      "sha256": "471162242f165e6b461c67464fea478fe214d4df0a8f164c3fc4fcadd9567951"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/share/worker-from-git",
+      "sha256": "3ab9d514450e5545a96f2746cb9c6e60f41de7680cf85fceea3a2e46b6296af0"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/share/worker-observation",
+      "sha256": "3ab9d514450e5545a96f2746cb9c6e60f41de7680cf85fceea3a2e46b6296af0"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/source/kura-management-agent/crates/firewall-policy/ROOT-IDENTITY.md",
+      "sha256": "5fd30224b71b006128d3d6706ecc552394a976153ae28272431535c430379d5f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/source/kura-management-agent/crates/firewall-policy/src/bin/kura-firewall-publish/journal.rs",
+      "sha256": "5b6f740fe24481b31167e5442bf37cc2fb87ad1127a5c16c712f65d3bc7e4f2c"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/source/kura-management-agent/crates/firewall-policy/src/bin/kura-firewall-publish/root_identity.rs",
+      "sha256": "12cf6b625ad31232ec70da3c12deadcf01ca5fde6d9236e36e16221fdc333c3a"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/source/kura-management-agent/crates/firewall-policy/src/bin/kura-firewall-publish.rs",
+      "sha256": "f9078646c9504637562e30f1e86ffa4cd6c67d56f424873d6f876cb652b7d45f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/source-baseline.json",
+      "sha256": "6d78cde1c378ddc5a399c743f3cfb60f1f2f1c41c5dfc7b39f6a31eb1e7300d9"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/test-source-manifest.json",
+      "sha256": "16c7d3519979e230d040d533a921b802e9f63d813627de7620af2a3a7a3c5a18"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/update-knowledge.py",
+      "sha256": "aad71e61c865ab13f31a22d2347256a4d170132aae735bf7a3c77b064e9f9ef1"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/verify-live.py",
+      "sha256": "0453806aa0a6b4ef9706df6d5edb25debe00f7b9d65c4a7867ed14a5bd000594"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/workspace-final-before-ledger.json",
+      "sha256": "3bcbd048c1417cffd14f17a05f19c04ff45466805494bc6d887da53169d60301"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/worktree.json",
+      "sha256": "031496903a6972d660460edf75844c566d7161553022b8359c1f9e52cdded31e"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/session-handoff/HANDOFF.md",
+      "sha256": "faacee926fb45fa9f1ea73595de46676941b0f0d2bfc06946e6e829ba751a55c"
+    }
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "fixtures": {
+    "architecture": "ARM64",
+    "clonedPrivateDirectoryInode": 16076,
+    "count": 2,
+    "kuraInstalled": false,
+    "nativeBusinessDispatches": 0,
+    "normalShutdowns": true,
+    "publicationDirectoriesCreatedSeparately": true,
+    "sameMachineIdClone": true,
+    "syntheticUnreadableIntent": true
+  },
+  "formalCorePackageChanged": false,
+  "goalStatus": "active",
+  "kernelResults": {
+    "NoNewPrivs": 1,
+    "capabilities": "none",
+    "cloneFilesystemObjectsDiffer": true,
+    "deviceRemapReproduced": false,
+    "independentCOracleMatches": true,
+    "normalRestartIdentityEqual": true,
+    "overlay": "UNSUPPORTED_ROOT_IDENTITY; no fallback"
+  },
+  "knowledge": {
+    "notes": [
+      {
+        "afterBytes": 1048770,
+        "afterSha256": "daa4994278ec3fc194053db29a514e3f57c2972e05e6d6dd0f25667fd8f9ed2d",
+        "beforeBytes": 1046274,
+        "beforeSha256": "8e586c8a5b90941faf5e22f410b595c80ddbe932274202a25360e683274f9c0d",
+        "completePrefixAndEntryMatch": true,
+        "entrySha256": "44e0fcdb42de96fd520f3e7e55f55c551792024d7b062f39c2df3ab7b38f076d",
+        "path": "Tasks.md",
+        "vault": "vault=f9b864007dcd8a44"
+      },
+      {
+        "afterBytes": 1064068,
+        "afterSha256": "dc703048821e82a325a142102f85fc14b08c16456e59db2866d3c0e5213e1424",
+        "beforeBytes": 1061572,
+        "beforeSha256": "0daac3003ae5c95faf5ccd6a21ec00c1a56399c3541534486847c6be167e8fb8",
+        "completePrefixAndEntryMatch": true,
+        "entrySha256": "44e0fcdb42de96fd520f3e7e55f55c551792024d7b062f39c2df3ab7b38f076d",
+        "path": "Session Summaries.md",
+        "vault": "vault=f9b864007dcd8a44"
+      }
+    ],
+    "officialCli": true,
+    "scope": "parent workspace",
+    "vault": "vault=f9b864007dcd8a44"
+  },
+  "legacyScopeFormulaAndWirePreserved": true,
+  "observationalOnly": true,
+  "parentsClosed": 0,
+  "parentsSupplemented": [
+    3,
+    6,
+    9,
+    12
+  ],
+  "parentsTotal": 12,
+  "persistentScopeEnabled": false,
+  "purpose": "Audit legacy Root device dependency and implement a non-authorizing kernel-object observation",
+  "remainingInternal": [
+    "Versioned persistent Scope and original-format compatibility contract",
+    "No adoption of old Root229 from current observations",
+    "Paired Core/Networking source archive and formal package/runtime/provider chain",
+    "Full original 12-parent and typed-broker/six-component/provider/launcher maintenance matrix",
+    "Unsupported OverlayFS and other launcher identity coverage"
+  ],
+  "root229": {
+    "businessDispatches": 0,
+    "formalContinuation": "unproven",
+    "originalOutcomeQueries": 0,
+    "state": "stopped"
+  },
+  "sameStoppedOutputAfterCleanup": true,
+  "source": {
+    "branch": "wip/root-scope-persistence-20261126",
+    "clean": true,
+    "commit": "e155065040c9790c671e1faf644c60b15428a806",
+    "path": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/source/kura-management-agent"
+  },
+  "tests": {
+    "completeCratePassed": 15,
+    "ignored": 0,
+    "sourceAndBinaryMatchGitBuild": true,
+    "wrongScopeRefusedBeforeSyntheticUnreadableRecord": true
+  }
+}

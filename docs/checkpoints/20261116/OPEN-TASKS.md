@@ -1,3 +1,17 @@
+## 2026-11-26 RootScope 持久身份审查与只读观察候选
+
+正式 worker 的v1 Scope绑定machine-id及Root/publication的device/inode，原号比较在操作路径读取前。Root229复机变78会改变真实Scope，仍禁止查询原号、重派或换号。原现场保持停放；当前观测不能追认旧意图的授权。
+
+Agent隔离工作树本地 `e155065` 增加 --inspect-root-identity，只持目录锁读取Root和publication FD的filesystem type/fsid/不透明句柄，不读操作文件、不派发Netlink；legacy-v1 Scope公式和wire保持，输出authorizesMigration=false，不接受调用方Root或句柄。15项完整crate回归通过，按Git构建与测试源码及ELF一致；复用同一ARM64缓存。正式Core包仍沿原worker，持久Scope协议尚未启用。
+
+新建两台无Kura业务的隔离ARM64元数据夹具。克隆保持同一machine-id、Root inode257及私有控制目录inode16076，内核文件系统身份不同；原机正常停机重启后观察保持。两台另建的publication目录与独立C探针一致，cap清空、NNP1；合成mode000哨兵证明观察不读操作文件、错Scope在哨兵前拒绝。它不是真实待结算回执，业务派发0。Docker OverlayFS的C和native观察均明确不支持、无替代身份。本次正常启动未复现device重分配，不能记成该边界已验，也不影响原三网关以制造条件。
+
+两台均正常停放并cold复核，原始观察、合成哨兵、源码和ELF保留；清除确认闲置、可从Git和原锁文件重建的测试副本，目录计量及清理区间宿主可用均改善282,624字节。原三网关、六组件夹具、原219/223/224/225/137、个人数据和共享rtc0保留，7fd沿用最后disabled/正常停机/41输入16回执封存。
+
+补#3/#6/#9/#12的有限源代码与内核证据。完整12父项及typed brokers、六组件、provider/launcher矩阵继续，目标active，冻结 **0/12**。下一步是版本化持久Scope的正式合同、未知/克隆/对象替换/不支持边界以及配对Core/Networking打包与Core/OSGi、READY、合法Main/provider联合实装，不能把观察工具记作续接修复。OverlayFS覆盖仍内部pending；外部延期仅真实NM/cloud-init/物理交接、amd64、磁盘满/硬断电。
+
+[源代码、观察边界与冷读交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/root-scope-persistence-20261126/HANDOFF.md)
+
 ## 2026-11-26 有效 typed firewall 跨 Core API1→API2 联合升级
 
 独立 Debian 13 ARM64 Root `143:257` 用保留的 Git/JDK21 正式包建立六组件 API1 基线，再实装 Core `18380316cc-2`、Deployment `8da586b`、GWT `9f226c0`、Wires `f0a95c6` 的四包 API2 联合升级。Networking `98ce414`、Agent `f78610a` 保持。维护号 `b75f24fc-5c43-4b9c-a776-72089b1018ba` 有 21 份新签名含 READY/configured，原 19 份保持，总 40 份 HMAC 冷验通过。合法 Main 的 UID/NNP/0x400/FD9 writer 租约、九个实际 JAR 与包、完整 manifest 与控制脚本已核对，HTTPS302，六包 installed，audit 空。
