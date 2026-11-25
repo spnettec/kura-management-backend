@@ -1,3 +1,13 @@
+## 2026-11-25 API2 联合 Debian 实装与混装门禁缺口
+
+Core `ab25377373` 及十二个 sibling 的候选包和重建的 YOFC 产物，在隔离 Equinox 中解析 286 个 bundle、34 个 API2 直接消费者。首轮 Position 因旧快照 Comm SPI 被拒绝，使用配对 Core 发行输入重新组装通过。JDK 21 Core 宿主报告 2177 项（2 项跳过），ARM64 2177 项（零跳过），均零失败、零错误，包含 81 项 Failsafe。
+
+独立 Debian ARM64 Root `251:257` 一次正式 APT 安装 13 个候选 deb 加 Agent，14 包 installed。Core `32c25d68-cf3a-4ecc-96cf-5e3566f270c4` 的 READY、configured 等 19 份记录验签。正式 Main PID 12200、UID 995、NNP 1、内核独占写租约通过。30 个在装消费者 JAR 对包且均 ACTIVE，实际接线至 API 2.0.0，九个选定 provider ACTIVE，配置 API 1.9 仍有 65 个消费者。四个 YOFC 直接消费者已有构建和解析，实际 DP 安装激活待验。Main 与 Agent disabled/inactive，VM 正常停放，两次冷读一致。
+
+真实归档的 APT 模拟分别放行 API1 Core 配 API2 siblings、API1 Wires 配 API2 Core。旧 ABI Core 的 Debian 版本排序更高。双向混装拒绝、原位换版、跨停机续配、remove/purge 仍待。原 Deployment ARM64 Root `225:257` 停机复核一致，沿用原号 `57225` 真实的 installed prerm 拒绝和同 Root 同号 GET COMPLETED，原归档、终态回执保留。
+
+补父项 #3、#4、#11、#12。冻结 **0/12**，仅原三项外部延期。 [实装、APT 门禁对照与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-cohort-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 正式归档解析与 YOFC 消费者
 
 以七份正式 deb 为输入，隔离 JDK 21 Equinox 的九个选定消费者在发行组合全部解析，仅替换 API2 实验 JAR 后全部解析失败。核定四个受影响的包导出及两类、七个公开描述符的删除，记录 28 个正式归档 JAR 的相关导入和引用检查。Position REST 实装 JAR 直接导入 message，Comm 导入缺席。
