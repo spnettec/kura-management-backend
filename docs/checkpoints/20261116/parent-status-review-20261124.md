@@ -1,5 +1,13 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 API2 Cloud Raw MQTT 独立清除与跨停机恢复
+
+隔离 ARM64 Root `1048584:257` 以正式 Core `c65c04741e` 和 Cloud `329d420-1` 实装，JDK 21。合法 Main 只创建一次 Raw MQTT 工厂，保留原工厂和 broker 设置快照。独立订阅端通过隔离 Mosquitto 实际收到一条 QoS 1 消息。原生 remove 到 config-files，独立 purge 到 not-installed。缺包时正式 Main 仍读得原快照，Raw MQTT bundle、endpoint 和工厂服务均缺席。
+
+同包解包后正常停机，重复冷读一致。同 Root 新 boot 一次 configure，七包 installed 且 dpkg audit 为空。后继正式 Main 经 OSGi message API 2.0.0 接线，以原工厂和原 DataService、DataTransport PID 向恢复主题实际送达一条。两份原快照、原标记、19 份 Core 签名和两份凭据保持，站点属性精确保全。Main 和 Agent disabled/inactive，隔离 VM 正常停放，清理前后冷读一致。
+
+Deployment Root `225:257` 的 `57225` 原生 installed prerm 对 remove、purge 的拒绝与同号 GET COMPLETED 证据再次冷读一致，原文件和回执保持。补父项 #3、#4、#9、#12，冻结 **0/12**。本轮覆盖 Raw MQTT 回环 QoS 1，其他 Cloud provider、TLS MQTT 及原矩阵继续内部待验。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-cloud-mqtt-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Camel 独立清除、注册锁超时与跨停机原路由恢复
 
 隔离 ARM64 Root `1048582:257` 用正式 Core `c65c04741e` 和 API2 Camel `b999d44-1` 实装，JDK 21。合法 Main 只创建一次 XML 路由工厂 `fixture.api2.camel.retained`，原快照 `1795594257048`，Timer→File 实际送达一条。原生 remove 进入 config-files，独立 purge 进入 not-installed。Camel bundle 和工厂缺席时，合法 Main 保存新快照 `1795594289434`，六个配置字段保持，消息文件无新增。
