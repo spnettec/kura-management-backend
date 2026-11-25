@@ -1,3 +1,9 @@
+## 2026-11-25 活跃 Chrony 的正式 Core 包维护
+
+隔离 Debian ARM64 Root `214:257` 的正式 Core `0823d14779-1` 实测 chronyd 正在接收回环 NTP 时同版原生解包。原 PID 1622 的 PIDFD 未退出，有效回包从 1 增至 13。沿原维护围栏 `383addd3-fbb6-498c-beb5-d3783a76d22d` 一次 configure 返回 0，已装包的 broker 配置阶段有序停止 chronyd 并维持 disabled。21 份原号阶段记录验签通过。后继正式 Main 通过原 ClockService 恢复配置，三笔新操作均 APPLIED。38 份旧文件的字节与身份保持。Core 和 Chrony installed，两服务 disabled/inactive，VM 正常停放，冷读 84 项重复一致。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/chrony-running-core-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 普通执行器在正式 Core 解包期间回收
 
 隔离 Debian ARM64 六组件 Root `232:257` 实装 Core `df5ae00aac-1`。正式 Main 通过 OSGi 普通执行器派发一条长运行命令，实际命令和 worker 同属 `kura`、NNP 1、能力全零。命令运行中原生 `dpkg --unpack` 同一正式包，真实旧 prerm 管理停服，返回 0 时两个 PIDFD 均就绪，两个 socket 已撤下，原回调为 `EXECUTOR_RESULT_UNAVAILABLE`。沿 `8450a592-51b2-4980-90cc-095d4b706793` 正常关机并在同 Root 新 boot 一次续配。READY/configured 验签，新 Main 经同一 API 运行独立的 `id -un`，返回 `kura` 和退出 0。六包与可选 SoftHSM installed，Main、Agent disabled/inactive，VM 正常停放，停机读回一致。

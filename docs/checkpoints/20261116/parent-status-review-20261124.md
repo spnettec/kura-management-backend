@@ -198,3 +198,9 @@ Core `9e962dc502` 接入正式 Networking 依赖声明，`7a176edd6a` 接入现�
 正式 Core `7a176edd6a` 的三代凭据 Root `225:257` 以原 Networking `83f237e-2` 正式 remove、purge、解包和中断续配。Networking 缺席时实际 Agent 依原配对拒绝，独立 Main 读回三代密文并返回 HTTPS 302。精确终止注册锁等待者后 dpkg 为 half-configured，同 Root 一次续配恢复原 vendor、唯一注册表行及原号 READY/OFF。33 份原记录、原 data inode 和第三代均保持。恢复后 OSGi 实装 8 个 ACTIVE bundle 逐一与正式 deb 匹配，Agent 实际无能力且 OFF/UNBOUND。两服务及 VM 正常停放。
 
 补父项 #1、#3、#9、#12。原 `219:257` 官方停机回读实证 iF，原三份签名和围栏在，仍无可信返回。其余 typed brokers、provider/launcher 与六组件矩阵仍待。冻结 **0/12**，外部延期仅原三项。 [三代现场 Networking 原生维护与停机读回](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-networking-maintenance-20261125/HANDOFF.md)
+
+## 2026-11-25 活跃 Chrony 的正式 Core 包维护
+
+隔离 Debian ARM64 Root `214:257` 的正式 Core `0823d14779-1` 实测 chronyd 正在接收回环 NTP 时同版原生解包。原 PID 1622 的 PIDFD 未退出，有效回包从 1 增至 13。沿原维护围栏 `383addd3-fbb6-498c-beb5-d3783a76d22d` 一次 configure 返回 0，已装包的 broker 配置阶段有序停止 chronyd 并维持 disabled。21 份原号阶段记录验签通过。后继正式 Main 通过原 ClockService 恢复配置，三笔新操作均 APPLIED。38 份旧文件的字节与身份保持。Core 和 Chrony installed，两服务 disabled/inactive，VM 正常停放，冷读 84 项重复一致。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [实装与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/chrony-running-core-maintenance-20261125/HANDOFF.md)
