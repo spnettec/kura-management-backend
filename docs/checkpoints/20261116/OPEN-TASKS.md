@@ -1,3 +1,9 @@
+## 2026-11-25 API2 Position 独立 purge、跨停机续配及 GPSD 定位恢复
+
+隔离 Debian ARM64 Root `1048581:257` 以 JDK 21 实装 Core `f8c61e4e27`、Position `284058a-1` 和其余五个网关包。正式 Main 只提交一次 GPSD 配置，原快照 `1795590907086` 读到伪终端经真实 gpsd 提供的定位。原生 remove 到 config-files，再独立 purge 至 not-installed。缺包时合法 Main 仍读得原快照，PositionService 和三条 Position bundle 均缺席。同包解包后正常停机冷读，同 Root 新 boot 一次 configure，恢复七包 installed，dpkg audit 为空。后继 Main 从原快照恢复并读到一组新定位和毫秒 UTC，随后定位锁正常失效。四条实际 OSGi 接线均指向 API 2.0.0，四个实装 JAR 与原 deb 成员匹配。原快照 inode 与摘要、19 份 Core 签名记录、14 项保护条目和 Agent 原号 READY/OFF 保持。Main、Agent、gpsd disabled/inactive，VM 正常停放，重复冷读一致。
+
+补父项 #3、#4、#9、#12，冻结 **0/12**。实际 gpsd 使用夹具伪终端，Position REST 已核对 ACTIVE 和接线，HTTP 请求继续内部待验。外部延期仅原三项。 [正式包维护和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 typed Journal 跨 Core API1 → API2 原位升级
 
 隔离 Debian ARM64 Root `1048580:257` 在 JDK 21 的正式 Main 运行中，以一次 APT 联合升级将 Core `df5ae00aac` 换为 `f8c61e4e27`，同步升级 Deployment、GWT 和 Wires。旧 Main 已有序退出。六包 installed，dpkg audit 为空，原 19 份和新 21 份 Core 阶段记录通过核对。正常停机后同 Root 新 boot，由后继正式 Main 通过 typed Journal 只读导出原 boot 的唯一消息。原 8 MiB 归档 inode、SHA-256、消息 cursor 和两份凭据指纹保持。实际 OSGi channel、comm、driver、message 均导出 `2.0.0`，Journal worker 为 UID 987、NNP 1、五组 capability 全零。Main、Agent disabled/inactive，VM 正常停放，停机冷读两次一致。
