@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Camel 独立清除、注册锁超时与跨停机原路由恢复
+
+隔离 ARM64 Root `1048582:257` 用正式 Core `c65c04741e` 和 API2 Camel `b999d44-1` 实装，JDK 21。合法 Main 只创建一次 XML 路由工厂 `fixture.api2.camel.retained`，原快照 `1795594257048`，Timer→File 实际送达一条。原生 remove 进入 config-files，独立 purge 进入 not-installed。Camel bundle 和工厂缺席时，合法 Main 保存新快照 `1795594289434`，六个配置字段保持，消息文件无新增。
+
+同包解包后在实装注册锁上出现实际等待和约 30 秒超时，dpkg 为 half-configured。正常停机，两次冷读一致。新 boot 同 Root 核对原锁和注册表后只成功续配一次，八包 installed，dpkg audit 为空。正式 Main 恢复原路由，经实际 OSGi message API 2.0.0 接线送达第二条。两份快照、原提交、78 份 Core 签名和此前 OPC UA 的原快照及实装载荷保持，Main 和 Agent disabled/inactive，VM 正常停放。
+
+补父项 #3、#4、#9、#12，冻结 **0/12**。本次覆盖 XML Timer→File 路由。其余 provider/launcher 和六组件矩阵继续内部待验。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-camel-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 OPC UA 独立清除、跨停机续配与原工厂恢复
 
 隔离 ARM64 Root `1048582:257` 的正式 Core `c65c04741e` 与 API2 OPC UA `62c5514-1` 在 JDK 21 下实装。合法 Main 只创建一次工厂 `fixture.api2.opcua.purge`，原快照 `1795593886179`。一次原生 remove 到 config-files，独立 purge 到 not-installed。缺包时正式 Main 的 ConfigurationService 能读原快照，provider bundle 与 Driver 服务缺席。
