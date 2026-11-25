@@ -1,3 +1,13 @@
+## 2026-11-26 原发布代跨 Core 原生解包、冷续配与 provider 恢复
+
+原 ARM64 Root `137:257` 将正式 Core 从 `a047e63a77` 原生升级至 Git `18380316cc` 的 `-2` 包。构建对已审查的 service 摘要对加入精确单向兼容关系，仍需实际原 manifest pin，其他 service 改动、逆向迁移及稳定 reader/unit/protocol 差异拒绝。111 项 ARM64 Linux/JDK 21 定向通过，按 Git 构建成功。原生 unpack 后旧 Main PIDFD 确认退出，14 份文件在实际暂存树保持；正常停机冷读后同 Root 新 boot 沿 `2f4990fc-f063-4970-ba5f-de7133698bc0` 一次 configure，新增 21 份签名含 READY/configured，旧 19 份保持，七包 installed，dpkg audit 空。
+
+实装代码在 Main 首启前建立 Root 0600 空 writer 锁，后继合法 Main FD 9 持有同一 inode，维护独占申请被阻止。只读探针经真实 CryptoService 解出原 KURA2 样本，经原 ConfigurationService 恢复原快照；原证书 TLS 1.2 双向握手、两种 TLS 拒绝、错误 MQTT 口令拒绝及新主题 QoS 1 送达通过。原重加密及四个密钥号仅只读保持原 SUCCEEDED。包维护更换 site、snapshot_0、原业务快照三份文件 inode，字节/属主/模式/mtime 保持；原 intent/archive/completed 和凭据保持。Main/Agent disabled/inactive，VM 正常停放，40 份 Core HMAC 和保护文件停机核对。仅移除确认重复且无占用的候选输入硬链接，清理后读回与终态逐字节一致。
+
+Root 137 最新入口改为本轮 `cold.py final`，旧 `api2-artemis-rewrap-interrupt` 的入口属于升级前历史，不能对当前 Root 重跑。18 仓盘点发现 Camel、Container、Wires 有未提交内容，本轮未修改或提交这些仓。补 #1、#3、#4、#9、#12，冻结 **0/12**，目标 active。其余 typed brokers、六组件、provider/launcher 及原 12 父项全矩阵继续内部待办；外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[原生联合链、精确兼容边界与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/HANDOFF.md)
+
 ## 2026-11-26 Artemis 快照实际替换后中断与原号冷续办
 
 隔离 Debian 13 ARM64 Root `137:257` 以原 Core `a047e63a77`、Agent `f78610a-1`、Artemis `1bcdc5d-1` 等七包在 JDK 21 下实装。正式重加密 `81095c06-4449-44ea-905d-68de5022ca69` 仅 apply 一次，实际快照替换成功后 SIGKILL，原暂存 inode 已发布、完成回执缺席。观察器 PIDFD 五秒等待失败后仅补观察，原签名、pending 和归档保持，正常停机冷读 UNKNOWN。首次新 boot 续办在准入阶段因 `/run/kura-key-service/writers` 缺失拒绝，trace 无 Java 和 rename，原号保持。

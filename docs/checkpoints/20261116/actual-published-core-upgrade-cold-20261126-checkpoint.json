@@ -1,0 +1,347 @@
+{
+  "candidateSha256": "b7aa5df77b06773f12575c99f40a275320bb0ed2d6a707648dbbdce286b582ba",
+  "changedInodes": {
+    "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/user/kura_custom.properties": {
+      "after": [
+        137,
+        24116
+      ],
+      "before": [
+        137,
+        22944
+      ]
+    },
+    "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/user/snapshots/snapshot_0.xml": {
+      "after": [
+        137,
+        23735
+      ],
+      "before": [
+        137,
+        23049
+      ]
+    },
+    "/opt/eclipse/kura_6.0.0-SNAPSHOT_linux/user/snapshots/snapshot_1795622242294.xml": {
+      "after": [
+        137,
+        24233
+      ],
+      "before": [
+        137,
+        23175
+      ]
+    }
+  },
+  "coreSignatures": 40,
+  "cryptoRead": "org.eclipse.kura.core.crypto|initial@reference:file:../kura/plugins/3s/org.eclipse.kura.core.crypto-2.0.0-SNAPSHOT.jar",
+  "date": "2026-11-26",
+  "evidence": [
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/HANDOFF.md",
+      "sha256": "c744e540a00c313a58e2c5edd3f44cad62ebf96f6598c6253d20051c34254f43"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/build-core.py",
+      "sha256": "0277851d185925a1adb7c29cb5e3d77db1d5b9ff812d705e96fa19da23b86593"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/build-core-initial.py",
+      "sha256": "4e6fe1015825768e746221f0fb7eed40b089a37f17171e4cf0dd13adfa3bd92d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/core-build.log",
+      "sha256": "bd52c874690f2cc17deb8f9487f8c0fc1fbf32f75d4eeab3900523295b733430"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/core-build-reviewed.log",
+      "sha256": "fa807e33e7b083d35e2121a7d05deedafba3ad8baafdc79cf9d4f20260f470cf"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/core-release.json",
+      "sha256": "b44fc68ffb7dc597f089c1745648fc23ee03fc9407f72d63b42eb1a798c833de"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/release.json",
+      "sha256": "a449909df151b8d4fbbbe98bc89106ec78019623a66d7a4a78d4dc24cf2f4940"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/manifest.json",
+      "sha256": "121e847ba99a129d7f187f637262922e26321fbc72c906cadf9e8d8f1c8c74f2"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/manifest-differences.json",
+      "sha256": "4b2fd13dcfc5577e1fc7699c6dd4341652884b0520fdaf75625281758f32750d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/predecessor-manifest.json",
+      "sha256": "1b955874720d64197961968886c2517b33559c563ad811fc05c614a4118216ff"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/predecessor-source.json",
+      "sha256": "79dbee98b8a0bfbc7a19179cf7876383f56b2c8e212d8f7ac0f1f82296473c77"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/service-compatibility-tests.log",
+      "sha256": "1da6480d732958a759f3bd016b903fdd08da7669eaff02cae5bb0f191fdc4393"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/test-runtime.py",
+      "sha256": "96ce6ef8a8b4bf68031c9314eeb692b52dd13e4c4feae79c0bdea1580a3631e5"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/Probe.java",
+      "sha256": "a61c45009a6f8b7a365e9eaf4826dc518277419f16a86e38af10c884d0875cde"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/observer.jar",
+      "sha256": "bbed076059a0520c5537fd6cab916bc81cd77b769518e8e41e7251aa8dd7a195"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/probe-bytecode.txt",
+      "sha256": "2d763d7c0f7c58d482f34da377fb238ec26a498c927ade506926de9c2b968596"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/prepare-release.py",
+      "sha256": "0b00d8044ca38b2473f93c48f1db3319677a356a36dbaf6c3d6aaf1dafd74512"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/upgrade.py",
+      "sha256": "1eb73665a5ce862c67b6859816ab9d4092484602b37aba05c57222a20eebe339"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/cold.py",
+      "sha256": "c6e42c67a58d96d961685f70cd6266af386994c11b108b5b4fe46a52da286d40"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/unpacked-cold.json",
+      "sha256": "8fbe77f9452e21c1f6c7a23e44ded390b666f2c4a300b5f948ba295a9847dd5b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/final-cold.json",
+      "sha256": "5d81238a9e5999d970c3b1d26e5ed9a2ea2492fdb2036188fdd0dfb3bc15079a"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/current-stopped.json",
+      "sha256": "5d81238a9e5999d970c3b1d26e5ed9a2ea2492fdb2036188fdd0dfb3bc15079a"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/native-unpack.log",
+      "sha256": "0716f319c8d9a69f3e128cf352981947498558bbbdc1730c9ce7020afffc98a1"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/native-configure.log",
+      "sha256": "22abde0c0dddac39fdab5f1d5888edaaf0048f94241918ed6f3098c4b7572dc7"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/cleanup.py",
+      "sha256": "83e488faa5de1ae44bed300cb039711fe115116d0ef43f321776687908c444e7"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/cleanup.json",
+      "sha256": "c3e54f38f47bfddf6e8bac9f89ee1be3a3f6dbc10c5d161c874c41d0933bc252"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/cleanup-first-refusal.json",
+      "sha256": "02e3ff281b2152a297573d763ca0a4736bac0400b2d047c899a5a4d90150b493"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/workspace-repositories.json",
+      "sha256": "0b4a5bab7c4bdfb01df7d6957afd3a71893b7d9318f76edde981f5afcdb9c2a9"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/knowledge-readback.json",
+      "sha256": "a9ea29b3cb51a501c9d4ee374d369c27bffdee14931f1218dfabebfe07ab9b7d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/knowledge-entry.md",
+      "sha256": "c70963560a510ba9f1e3ea85e535ac6bd02d922704a8604295836db37c4d28b8"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/update-knowledge.py",
+      "sha256": "b41d661ed11419c6ddbe1407027c44f148f810c5c906586ee6ae54ba33b699f4"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/before.json",
+      "sha256": "79c2e571d011e27f208452a62eb3bef4aad79409a55f4d16f218422ced6922ef"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/main-before-unpack.json",
+      "sha256": "d55f0da1d4ea24c496dac2aeb465b64fcb1b3ed7e65aece389743db7c6a31264"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/unpacked.json",
+      "sha256": "aa37ece75286be46b430319fbb9859726fbb2acfaf32e362d69d5e1ad3cbf2b8"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/configured.json",
+      "sha256": "e2f701c38e764e98d55301e88016d987e5fcf4be80a898af5317402e4641ac7c"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/provider.json",
+      "sha256": "6ab5a43c7e6bad321e127126b26a97b46cedebdf848fb1d20a55496e5d166ee4"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/final.json",
+      "sha256": "8b4ce06b2cbfbc3d2a0b850380724d7cd0fd718dde4ac463c01e15ed19543fb1"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/unpack-intent.json",
+      "sha256": "a921f5867f5c995b7c5ae90cb5569dd796c98e614f212b26863151f8443ce54e"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/unpack-returned.json",
+      "sha256": "fd95732f71e4cb4a07d859206b6353cdf016e792b401f43764f2746accde1ecb"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/configure-intent.json",
+      "sha256": "1ea2823c3122c589a416512fc7dfc55f42fbf535bce89af0bb7ebb4f2c4d88b8"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/configure-returned.json",
+      "sha256": "7e78f0baa48463e674f235654650a40efb840b7e30eb369d41e7f26c43175b84"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/unpack.log",
+      "sha256": "456d1599854f36021fa7ec4a26a2b64f044bc8b470b672c86011843f5425db96"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-core-upgrade-20261126/share/configure.log",
+      "sha256": "6babb046b72933f9212afbbefba26b18d07207b80de20b22cab2bb0f2597eccb"
+    }
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "goalStatus": "active",
+  "homeBytesOwnershipModeMtimePreserved": true,
+  "java": 21,
+  "knowledge": {
+    "completePrefixAndEntryReadback": true,
+    "officialCli": true,
+    "vault": "f9b864007dcd8a44"
+  },
+  "machineId": "01M89PCG63W2B85XXMV4MCMFDQ",
+  "maintenanceId": "2f4990fc-f063-4970-ba5f-de7133698bc0",
+  "manifestDifferences": [
+    {
+      "after": "75c499643ffc7d85f6e7658895fe0b0a5e9417b9a5ce0d47d875b13fff984cdd",
+      "before": "9b2f1f00e89faf169a16d918a26697b6691f4904f98c1737f762e988215623f2",
+      "path": "/files/bin/kura_key_service.py"
+    },
+    {
+      "after": [
+        "1b955874720d64197961968886c2517b33559c563ad811fc05c614a4118216ff"
+      ],
+      "before": null,
+      "path": "/generation/publishedPredecessorManifestSha256s"
+    }
+  ],
+  "nativeConfigureCalls": 1,
+  "nativeUnpackCalls": 1,
+  "newCoreSignatures": 21,
+  "normalShutdownBetween": true,
+  "oldCoreSignaturesKept": 19,
+  "originalRewrapReadOnly": {
+    "changed": true,
+    "currentSha256": "b4a16dfee5d790941da82975299cb6ad4e8988116ef9e4f9eda425baff428a26",
+    "intentSha256": "6ccd6567ce442efa8c2813584ce21a99d8b1040e137e1d8f57748eb4927b9522",
+    "namespaceSha256": "929035b1c02285de9841a519260bc8b384c47716b54ef3aaec72b8cee20f1198",
+    "operationId": "81095c06-4449-44ea-905d-68de5022ca69",
+    "originalSha256": "063192524cbb87c3c20c1a8ebdfb0a8d2165f454cd2f7005ed8770dcca55f0c9",
+    "publicationId": "1e5bfb68-26b5-47c5-b168-00a793ab8d2f",
+    "schema": 1,
+    "snapshotId": "1795622242294",
+    "state": "SUCCEEDED"
+  },
+  "packages": {
+    "kura-artemis": [
+      "1.0.0~git202611250526.1bcdc5d-1",
+      "installed"
+    ],
+    "kura-core": [
+      "6.0.0+api2~git20261125163400.1838031-2",
+      "installed"
+    ],
+    "kura-deployment": [
+      "2.0.0+api2~git202611250602.8da586b-1",
+      "installed"
+    ],
+    "kura-management-agent": [
+      "0.1.0~cohort20261124232919.f78610a-1",
+      "installed"
+    ],
+    "kura-management-ui": [
+      "3.0.0+api2~git202611250555.9f226c0-1",
+      "installed"
+    ],
+    "kura-networking": [
+      "3.0.0~git20261125044831.98ce41482f-1",
+      "installed"
+    ],
+    "kura-wires": [
+      "3.0.0+api2~git202611250557.f0a95c6-1",
+      "installed"
+    ]
+  },
+  "parentsClosed": 0,
+  "parentsSupplemented": [
+    1,
+    3,
+    4,
+    9,
+    12
+  ],
+  "parentsTotal": 12,
+  "parked": true,
+  "provider": [
+    "ACTIVE",
+    "org.eclipse.kura.broker.artemis.xml.BrokerInstance",
+    "1795622242294",
+    "org.eclipse.kura.api|2.0.0",
+    "initial@reference:file:../kura/siblings/artemis/4s/org.eclipse.kura.broker.artemis.xml-2.0.0-SNAPSHOT.jar",
+    "org.eclipse.kura.api|1.9.0",
+    "5",
+    "fixture/api2-artemis-rewrap/upgraded|artemis-rewrap-upgraded-v1",
+    "TLSv1.2",
+    "2e3ef37bd0e2fbb687dd4dcf93b87e4d1e712f46cfb3ff29cd23b7aca8b5de61",
+    "4e7b0a2236fa60d1d405e378041bf1d767b065f30d2ec7dd6d36f8026aff0926",
+    "missing-client-rejected",
+    "untrusted-server-rejected"
+  ],
+  "purpose": "published-generation-native-Core-upgrade-with-cold-original-configure",
+  "regularUpgradeVerified": true,
+  "remainingInternal": [
+    "remaining typed broker, six-component and provider/launcher matrices",
+    "all original 12 parents"
+  ],
+  "rewrapApplyOrContinueCallsThisRound": 0,
+  "root": [
+    137,
+    257
+  ],
+  "sameStoppedOutputAfterCleanup": true,
+  "source": {
+    "clean": true,
+    "commit": "18380316cc1dbd1c2cf3032f96349d87d16c1774",
+    "repository": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/api2-cohort-20261125/source/kura",
+    "tree": "25f7ed03b72511d43498fd7d566e4a070799285b"
+  },
+  "tests": {
+    "count": 111,
+    "errors": 0,
+    "failures": 0,
+    "platform": "ARM64 Linux",
+    "skipped": 0
+  },
+  "writerCoordinator": [
+    1048585,
+    698,
+    0,
+    0,
+    384,
+    0,
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  ]
+}
