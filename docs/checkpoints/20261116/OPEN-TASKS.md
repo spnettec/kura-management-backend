@@ -1,3 +1,9 @@
+## 2026-11-25 正式 GWT 批量续期子回执与第 2 代 mTLS
+
+同一 ARM64 Root `245:257` 以正式中心和 PostgreSQL 17 接通第 1 代，双管理员审批真实签发批次。现装 GWT 对中心原样子回执的浏览器拒绝已复现。后继 `cafc758` 的 JDK 21 共 539 项测试与 ARM64 实装通过，实际 GWT 原样提交一次。Agent 与 GWT 对原号 `880c92cd-0c33-4d8e-a31c-d0fb0eaea028` 只读查得 APPLIED，提交时远程 OFF。随后第 2 代在原独立端口与正式中心 mTLS 成功，真实 `agent.status` 同号查得 SUCCEEDED。再次明确 OFF，原证书与回执保留，Main、Agent、中心、PostgreSQL 及 VM 正常停放，冷读重复一致。
+
+补父项 #2、#3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [正式浏览器、中心与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/gwt-bulk-renewal-live-20261125/HANDOFF.md)
+
 ## 2026-11-25 GWT 正式首绑、独立端口与后继证书暂存
 
 同一 ARM64 Root `245:257` 由正式浏览器生成原 CSR、暂存、首次绑定，Agent 原回执的 actor 为 `kura-uid:995`。原号分端口配置 APPLIED/READY。实际 Agent 重启后连接地址为 41744，原登记地址保持 41743。GWT `6501d1b` 补齐正式无 schema 的 v2 API 回执，539 项回归通过，候选原位升级。正式浏览器已暂存后继 CSR 与证书，原身份第 1 代、远程 OFF，续期尚未派发。六包 installed、Main/Agent/socket disabled/inactive，VM 正常停放并冷读。
