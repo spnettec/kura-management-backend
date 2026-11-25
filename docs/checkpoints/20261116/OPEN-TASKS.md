@@ -1,3 +1,9 @@
+## 2026-11-25 SoftHSM 文件令牌原件归位后同 JVM 恢复
+
+SoftHSM 原生候选 `b6388cf372` 固定 Linux 原目录与 token.object，缺席和同字节异 inode 替换均拒绝，原件归位后同 JVM 新取钥及旧句柄均恢复验签，另一槽持续可用。隔离 Debian ARM64 Root `232:257` 正式六包 Main 以 UID 995、NNP 1 和 CapEff 0x400 实测同一 JVM、同一 OSGi 服务及原证书。两份配置各创建一次，两份快照和先前 Deployment 三份保护材料保持。候选仅在夹具实装。上游与候选完整 CTest 仍有 p11test 失败和差异，四个隔离差异用例均通过。Main 和 Agent disabled/inactive，VM 正常停放、重复冷读。
+
+补父项 #1、#3、#12。冻结 **0/12**，外部延期仅原三项。 [Git、原生候选和正式 Main](../../../../.management-close-20261116/core-rtc-hotplug-20261120/pkcs11-native-hot-return-20261125/HANDOFF.md)
+
 ## 2026-11-25 Deployment 载荷移除后原 postrm 跨关机续办
 
 隔离 Debian ARM64 Root `232:257` 实装六包，Core `df5ae00aac-1`、Deployment `c012586-2`。持真实 sibling 注册表锁，原生 remove 已删除 Deployment 载荷，postrm 锁超时使 dpkg 退出 1 并保留 half-installed。原 postrm、注册表、围栏和锚点保持，Main 被断言拒绝。正常关机冷读后，同 Root 新 boot 仍由原断言拒绝 Main。一次续办只触发原 postrm，进入 config-files，独立 purge 到 not-installed。同一归档原生解包、配置后六包 installed，两个发行 Deployment bundle ACTIVE，REST 服务由原 provider 注册。三份保护材料保持，Main 与 Agent disabled/inactive，VM 正常停放、冷读重复一致。
