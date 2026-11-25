@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Artemis XML 双向 TLS 跨原生清除与冷续配
+
+隔离 Debian ARM64 Root `1048591:257` 实装 Git 构建的 Core `c65c04741e`、Artemis `1bcdc5d-1` 和配对五包。JDK 21 下合法 Main 只提交一次 XML broker 配置，保存加密快照 `1795596595869`。实际 TLS 1.2 双向认证核对原服务端和客户端证书指纹，服务端拒绝缺客户端证书，客户端拒绝不受信任的服务端，正确双向 TLS 下 MQTT 仍拒绝错误口令。正确凭据经独立 Paho 客户端在回环完成一条 QoS 1 送达。
+
+正式 remove 到 config-files，独立 purge 到 not-installed。缺包时合法 Main 仍读原加密快照，Artemis XML bundle 与监听均缺席。一次同包解包并正常停机，同 Root 新 boot 一次 configure。后继 Main 的 XML provider ACTIVE，恢复原快照、原 TLS 配置和原用户表，重复验证双向证书及 MQTT 鉴权，并在恢复主题送达一条新消息。原快照、两套密钥库和信任库、原提交及 19 份 Core 维护签名保持。七包 installed，dpkg audit 为空，Main 和 Agent disabled/inactive，VM 正常停放，重复冷读一致。
+
+补父项 #1、#3、#4、#9、#12，冻结 **0/12**。本轮覆盖 Artemis XML 的 MQTT 3.1.1 与双向 TLS 1.2。共装 Agent 的快照重加密、其他协议及余下 typed brokers、六组件与 provider/launcher 矩阵保持内部待办。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-mtls-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Artemis XML 跨正式发布代与原生续配
 
 隔离 Debian ARM64 Root `1048590:257` 实装 Core `c65c04741e`、Artemis `1bcdc5d-1` 及其余五包。JDK 21 的合法 Main 只提交一次 XML broker 配置，生成加密快照 `1795596044567`。正式密钥发布 `fe7085bd-d44b-448a-8058-192857b02242` 排空原 Main 并要求显式启动。另行批准启动后，正式 OSGi CryptoService 写读新活动钥的 KURA2 样本，Artemis 仍可凭原加密快照中的原用户表运行。
