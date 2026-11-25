@@ -1,5 +1,16 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-26 Artemis 快照实际替换后中断与原号冷续办
+
+隔离 Debian 13 ARM64 Root `137:257` 以原 Core `a047e63a77`、Agent `f78610a-1`、Artemis `1bcdc5d-1` 等七包在 JDK 21 下实装。正式重加密 `81095c06-4449-44ea-905d-68de5022ca69` 仅 apply 一次，实际快照替换成功后 SIGKILL，原暂存 inode 已发布、完成回执缺席。观察器 PIDFD 五秒等待失败后仅补观察，原签名、pending 和归档保持，正常停机冷读 UNKNOWN。首次新 boot 续办在准入阶段因 `/run/kura-key-service/writers` 缺失拒绝，trace 无 Java 和 rename，原号保持。
+
+Core 本地 `d016e78cbe` 修复独占维护锁的冷启动初始化，108 项 ARM64 Linux/JDK 21 定向通过。Git 候选与原包的 50 份 Python 文件仅 service 文件不同。保留原安装包及 cohort，按正式续接依据使用候选兼容 CLI 沿同一 Root、同号结算 SUCCEEDED。零 Java 重加密、零快照替换，一次正式完成回执；原 snapshot/intent/archive inode 和摘要保持。两份 43,412 字节 XML 逐字节相同，新件仅凭新活动钥读取。合法 Main 用原证书和用户完成 TLS 1.2 双向认证及 MQTT QoS 1。原 Agent 状态、锁 inode、profile、远程 OFF 保持，19 份 Core 签名保持，七包 installed，Main/Agent disabled/inactive，VM 正常停放。清理后冷读与终态留档逐字节一致。
+
+仅清除七份确认重复且无占用的包硬链接，目录计量减 390,250,496 字节；宿主清理区间可用变化 −40,960 字节，原证据与候选保留。本轮候选仅用于兼容 CLI 续办，正常 dpkg 升级、READY/Main/provider 联合实装仍待。补父项 #1、#3、#4、#9、#12，冻结 **0/12**。原 Deployment `225:257` 的 `57225` 已闭环证据保持，本轮不重放。其余 typed brokers、六组件与 provider/launcher 全矩阵继续内部待办，外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[实际中断、Git 修复、正式续接与停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/HANDOFF.md)
+
+
 ## 2026-11-25 Deployment 225:257 定向复核
 
 父项 #3、#9、#12。保持同 Root `225:257` 正常停机，只读核对原号 `57225` 的业务归档、终态回执、已安装载荷及同号 GET `COMPLETED` 留档。冷读输出逐字节一致，原生 remove 与 purge 的真实拒绝覆盖已安装包的 `prerm`。独立 config-files 的 `postrm` 仍使用原合成标记证据。冻结 **0/12**。 [停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/current-stopped.json)

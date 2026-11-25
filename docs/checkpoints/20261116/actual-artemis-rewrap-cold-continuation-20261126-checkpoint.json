@@ -1,0 +1,236 @@
+{
+  "applyCalls": 1,
+  "candidateContinuation": {
+    "completionPublications": 1,
+    "javaRewraps": 0,
+    "snapshotReplacements": 0
+  },
+  "candidateContinuationCalls": 1,
+  "candidateUse": "verified compatible extracted CLI; normal package upgrade remains pending",
+  "coreSignatures": 19,
+  "date": "2026-11-26",
+  "evidence": [
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/HANDOFF.md",
+      "sha256": "7c5606ca07263e55e8b89abfe9f46d759d119c8d8bfb9b13aa055d2190ab426d"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/RESUME-BASIS.md",
+      "sha256": "d0ada15c0e93bd82cc2fdd765a61d8edd846edbae4e16b55755a35f7703f1ea4"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/core-release.json",
+      "sha256": "04a2601bcfbd83cd5ee69eea309d56a5def4805cae8feb3f16b36b10a61cd5f6"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/recovery-release.json",
+      "sha256": "130f2e18874133a06f7003167d5bf5bd0f3e43394c9559d12827e77a54fbe3bd"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/build-core.py",
+      "sha256": "064d74b41ef83f5b7fdf07a3f610d1ac7db6173dae89a8e17bb248d48a6e5f09"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/test-runtime.py",
+      "sha256": "04ab1cd0aeb22a82763257aed0270699dbce2de62ddb7697bb575d983d6afa65"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/writer-runtime-tests-third.log",
+      "sha256": "403393a2e66a8f8ef3d5f716800730a0d2332efd8e9a5cf2a6c968799861971e"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/interrupt.log",
+      "sha256": "43ec1cc5baebe209b54881365c06ce4f618e9b2c6f7bd39d53d16c04e5fdcb53"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/interruption.py",
+      "sha256": "51f4441bb70284d5d7ce4e20ebe2a4a1b71748c9df0b929174e10cf6cea2458b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/observe-existing.py",
+      "sha256": "4b3b1248d59407b3755f9b45d81bde64a710b0e7d865325ac8cacc2c57ba352e"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/observe-existing.log",
+      "sha256": "98f424c13df9e3dca71a1762e0fec0cd6d03cb3ce95d6046bfede5fe9d4cfa33"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/interrupted-cold.json",
+      "sha256": "02b84eda7621b530cb158ae8de78d9b13e33c2d0296e69ca86ce2356ad59b28f"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/continue-original.log",
+      "sha256": "e7be39482d6d5d46b78d6b0872f0df72a2d1f4961d1b2dfee7bbabed11b4a104"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/refused-cold.json",
+      "sha256": "74407963ad8d3d0aff0704841c7b134e44cab80fe3ccb43c3ac758100a8b62f6"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/continue-candidate.py",
+      "sha256": "25f52b2cdaf08ee66b5436a394550a1e18e269a29c2058017d11690deec4b1d6"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/continue-candidate.log",
+      "sha256": "ec70cefef151185501323b76993675aeb58d1c2fe6b704bc0660dc9ccce3f9a8"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/final-cold.json",
+      "sha256": "b6e3c03a66fb2adbc3f4b698bd76a088bf5becc8267e5564f8c0dc717d0c2314"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/current-stopped.json",
+      "sha256": "b6e3c03a66fb2adbc3f4b698bd76a088bf5becc8267e5564f8c0dc717d0c2314"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/cleanup.json",
+      "sha256": "53663d9e6c32de9a998bfe7fb703bf85b930ee61b30f96859aa6ee3dd3c911ca"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/rewrap-intent.json",
+      "sha256": "4d62a78a45ba1d51fc187c404638b032e99813a15c14cba819978e38c7e85a1b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/interrupted.json",
+      "sha256": "d6cf5c8ed4c68f708baf1ab344c430591a71e57ba4a27bbfda53a8762bbf07a4"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/continue-refused.json",
+      "sha256": "ae677c28a3506f5b9d38857df4ad8fe6495891d2319e98a02fdcf2d176ed0f08"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/candidate-continue-intent.json",
+      "sha256": "34b7f88ff7bb0076be52e4f3b95efd904c0175ed7b746bc499e3e2b125ccc01b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/candidate-continue-returned.json",
+      "sha256": "09a7693bf2a2cbdf2fda5270e17268c5af21ee1478c8bf0d92f306790228c478"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/continued.json",
+      "sha256": "dae40191eae6969311a0e98562bad949f92a5a254853fa8ad4b1028d1435a7aa"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/provider-after-continue.json",
+      "sha256": "b0eb960121764176f71191df7e9a3e030c45edbbde924bfa4c0be07b3ba27a59"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/final-interruption.json",
+      "sha256": "05afe966bd753a8961e00970a21762dee08d3819e2a0d01e51bee0e3961bfb2c"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/apply-syscalls.log",
+      "sha256": "9712ed32938cbf66f3d97de396de9c98a745c47b9882bbbcfb19e6d926c0349b"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/continue-syscalls.log",
+      "sha256": "88e438bee409d82bf031471dd28949b33dfe3b80092b0148723fc733b57cfff9"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/share/candidate-continue-syscalls.log",
+      "sha256": "f4b6fe564227e9df8310cb0f5c0158ff53bf1779d6e41c1853cb2064327453d9"
+    },
+    {
+      "path": ".management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-rewrap-interrupt-20261125/cold.py",
+      "sha256": "cfac1f289da588e7ab873636e22b8d736e2535dd114f58c4d69faed5a5c13cb4"
+    }
+  ],
+  "externalDeferred": [
+    "NM/cloud-init/physical hardware",
+    "amd64",
+    "disk-full/hard-power"
+  ],
+  "goalStatus": "active",
+  "installedContinuationRefusals": 1,
+  "installedCore": "a047e63a7788e8ed4cdfd772221161297a7c8ea4",
+  "machineId": "01M89PCG63W2B85XXMV4MCMFDQ",
+  "operation": {
+    "changed": true,
+    "currentSha256": "b4a16dfee5d790941da82975299cb6ad4e8988116ef9e4f9eda425baff428a26",
+    "intentSha256": "6ccd6567ce442efa8c2813584ce21a99d8b1040e137e1d8f57748eb4927b9522",
+    "namespaceSha256": "929035b1c02285de9841a519260bc8b384c47716b54ef3aaec72b8cee20f1198",
+    "operationId": "81095c06-4449-44ea-905d-68de5022ca69",
+    "originalSha256": "063192524cbb87c3c20c1a8ebdfb0a8d2165f454cd2f7005ed8770dcca55f0c9",
+    "publicationId": "1e5bfb68-26b5-47c5-b168-00a793ab8d2f",
+    "schema": 1,
+    "snapshotId": "1795622242294",
+    "state": "SUCCEEDED"
+  },
+  "packages": {
+    "kura-artemis": [
+      "1.0.0~git202611250526.1bcdc5d-1",
+      "installed"
+    ],
+    "kura-core": [
+      "6.0.0+api2~git20261125154201.a047e63-1",
+      "installed"
+    ],
+    "kura-deployment": [
+      "2.0.0+api2~git202611250602.8da586b-1",
+      "installed"
+    ],
+    "kura-management-agent": [
+      "0.1.0~cohort20261124232919.f78610a-1",
+      "installed"
+    ],
+    "kura-management-ui": [
+      "3.0.0+api2~git202611250555.9f226c0-1",
+      "installed"
+    ],
+    "kura-networking": [
+      "3.0.0~git20261125044831.98ce41482f-1",
+      "installed"
+    ],
+    "kura-wires": [
+      "3.0.0+api2~git202611250557.f0a95c6-1",
+      "installed"
+    ]
+  },
+  "parentsClosed": 0,
+  "parentsSupplemented": [
+    1,
+    3,
+    4,
+    9,
+    12
+  ],
+  "parentsTotal": 12,
+  "parked": true,
+  "plaintextEquality": {
+    "exactXml": true,
+    "plaintextBytes": 43412,
+    "readWithActiveKeyAlone": true
+  },
+  "preservation": {
+    "original7fd": "not located at current OrbStack endpoint; Desktop unavailable; retain historical disabled/normal-stop 41 inputs 16 receipts",
+    "originalThreeGateways": "running",
+    "otherRoots": "not started or mutated this round",
+    "sharedRtc0": "untouched"
+  },
+  "purpose": "native-snapshot-rewrap-after-replacement-interruption",
+  "remainingInternal": [
+    "normal candidate package upgrade and joint READY/Main/provider verification",
+    "typed broker, six-component and full provider/launcher matrices",
+    "all original 12 parents"
+  ],
+  "root": [
+    137,
+    257
+  ],
+  "sameStoppedOutputAfterCleanup": true,
+  "source": {
+    "clean": true,
+    "commit": "d016e78cbe0f5bb79ba905ed825977acaa5b65c6",
+    "repository": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/api2-cohort-20261125/source/kura",
+    "tree": "c0ce810f6ca68cc88a9b96ea8772c970b6970492"
+  },
+  "tests": {
+    "count": 108,
+    "errors": 0,
+    "failed": 0,
+    "firstTwoRunnerFailuresRetained": true,
+    "java": 21,
+    "platform": "Linux ARM64",
+    "skipped": 0
+  }
+}
