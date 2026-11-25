@@ -1,8 +1,14 @@
+## 2026-11-25 RTC 原成功回执跨 Core 移除、清除和重装
+
+隔离 Parallels ARM64 子 Root `2049:263807` 的正式 Main 使用已装 ClockService 客户端单次写入虚拟 DS1307。原号 `1d6f9778-af64-4dcb-ae6d-13641aa732ad` 已为 APPLIED / RTC_SET_RETURNED，本地保留 pending。正式 Core `df5ae00aac-1` 原生 remove、purge、同包 unpack，子机与外层 VM 正常停机。新 boot 校验同 Root、两套原维护围栏、原 sender 归档和原 actor 回执后，一次 configure。后继 Main 在试验 RTC 缺席时结算原号，五份原 actor 文件保持，仍只有一笔操作。两份子 Root 原凭据、外层 27 份保护文件和共享 rtc0 保持。Main disabled/inactive，子机及 VM 正常停放，停机冷读一致。
+
+补父项 #3、#9、#12。冻结 **0/12**，外部延期仅原三项。 [实装与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/rtc-applied-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式 RTC 成功回执跨 Core 解包与完整内核重启
 
 隔离 ARM64 ext4 Root `2049:2` 的正式 Main 用已装 OSGi ClockService 的客户端单次写入虚拟 DS1307。原号 `1bff9494-6fce-4c24-949a-e347024cf9a4` 已为 APPLIED / RTC_SET_RETURNED，sender 保留 pending。Core `df5ae00aac-1` 同版原生解包后正常关机，同 Root 新 boot 核对两套原维护围栏后一次续配。后继 Main 在试验设备缺席时只结算该原号。actor 仍只有一笔操作，五份原 actor 文件保持。20 项保护文件核对通过，OCI 快照由包恢复复制后 inode 更新。四包 installed，Main disabled/inactive，VM 正常停放，重复冷读一致。
 
-补父项 #3、#9、#12。本次正向 RTC 停点的 remove/purge 组合仍待。冻结 **0/12**，外部延期仅原三项。 [实装与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/rtc-applied-package-maintenance-20261125/HANDOFF.md)
+补父项 #3、#9、#12。正向 RTC 回执的 remove/purge 组合已在独立子 Root 补验，见上节。冻结 **0/12**，外部延期仅原三项。 [实装与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/rtc-applied-package-maintenance-20261125/HANDOFF.md)
 
 ## 2026-11-25 FileMove 跨完整内核重启的原号结算与包维护
 
