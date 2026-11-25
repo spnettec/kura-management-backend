@@ -1,3 +1,11 @@
+## 2026-11-25 API2 正式归档解析与 YOFC 消费者
+
+以七份正式 deb 为输入，隔离 JDK 21 Equinox 的九个选定消费者在发行组合全部解析，仅替换 API2 实验 JAR 后全部解析失败。核定四个受影响的包导出及两类、七个公开描述符的删除，记录 28 个正式归档 JAR 的相关导入和引用检查。Position REST 实装 JAR 直接导入 message，Comm 导入缺席。
+
+从 YOFC Git `a652e29910` 构建四个 JAR 及四个 DP。javac 实际加载的 API JAR 与正式归档同摘要，四个 channel 导入为 `[1.4,2)`，其中三个另有 driver `[1.0,1.1)`。这四个 JAR 的精确常量池和 DS XML 检查未发现已删项的直接引用。四个 Core、OPC UA、Position Comm、Wires 共七个冻结变更的正式联合切换、完整消费者和 provider 激活继续内部待验。关联父项 #4、#11、#12。
+
+停机复核再次核对 Deployment `225:257` 原号 `57225` 的归档和回执。真实 remove、purge 拒绝覆盖 installed 的 prerm。独立 config-files 的 postrm 拒绝证据使用合成存在标记。当前正式钩子在建立围栏前和锁内检查发布回执，尚无受支持的现场转换可将同一真实未结算发布带入 config-files。保留该组合的证据边界。冻结 **0/12**，外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [核对与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-release-resolver-20261125/HANDOFF.md)
+
 ## 2026-11-25 活跃 Chrony 的正式 Core 包维护
 
 隔离 Debian ARM64 Root `214:257` 的正式 Core `0823d14779-1` 实测 chronyd 正在接收回环 NTP 时同版原生解包。原 PID 1622 的 PIDFD 未退出，有效回包从 1 增至 13。沿原维护围栏 `383addd3-fbb6-498c-beb5-d3783a76d22d` 一次 configure 返回 0，已装包的 broker 配置阶段有序停止 chronyd 并维持 disabled。21 份原号阶段记录验签通过。后继正式 Main 通过原 ClockService 恢复配置，三笔新操作均 APPLIED。38 份旧文件的字节与身份保持。Core 和 Chrony installed，两服务 disabled/inactive，VM 正常停放，冷读 84 项重复一致。
