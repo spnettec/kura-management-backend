@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Artemis XML 独立清除与原加密快照恢复
+
+隔离 ARM64 Root `1048585:257` 正式实装 Core `c65c04741e` 和 Artemis `1bcdc5d-1`。JDK 21 合法 Main 只提交一次 XML broker 设置，原加密快照 `1795595635374` 保留用户表。首次探针在 QoS 1 读回后的监听字面断言处退出。只读观察核对 IPv4 映射回环地址和 Main 的 socket inode，原发布标记保持。
+
+正式 remove、独立 purge 后，合法 Main 仍能读取原加密快照，Artemis XML bundle 和监听缺席。同包解包并正常停机，同 Root 新 boot 一次 configure。后继 Main 用原用户表拒绝错误口令，两个 Paho 客户端实际完成恢复主题 QoS 1。有效配置接线 1.9.0，同 JVM 的 message API 2.0.0。七包 installed，原快照和 19 份 Core 签名保持，Main 与 Agent disabled/inactive，VM 正常停放并重复冷读一致。
+
+补父项 #1、#3、#4、#9、#12，冻结 **0/12**。Artemis 跨代换钥、TLS/其他协议及其余 typed brokers、六组件与 provider/launcher 矩阵继续内部待验。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [正式证据和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-artemis-xml-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Cloud Raw MQTT 独立清除与跨停机恢复
 
 隔离 ARM64 Root `1048584:257` 以正式 Core `c65c04741e` 和 Cloud `329d420-1` 实装，JDK 21。合法 Main 只创建一次 Raw MQTT 工厂，保留原工厂和 broker 设置快照。独立订阅端通过隔离 Mosquitto 实际收到一条 QoS 1 消息。原生 remove 到 config-files，独立 purge 到 not-installed。缺包时正式 Main 仍读得原快照，Raw MQTT bundle、endpoint 和工厂服务均缺席。
