@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 typed ICMP 跨正式 Core 独立 purge 与同号重装
+
+隔离 Debian ARM64 Root `1048582:257` 保持 Agent installed，按正式依赖顺序移除四个组件，Core `c65c04741e` 原生 remove 后独立 purge。实际 ICMP 单元和客户端缺席。新围栏 `a31a36df-5991-4fed-a374-9fe2338cb414` 跨 purge、原生解包及正常停机保持，原 40 份签名和两项凭据保留。新 boot 同 Root 一次续配，19 份新记录含 READY/configured 验签，六包恢复 installed。 正式 Core ConfigurationService ACTIVE，实际 Main 通过 writer lease 和双族 ICMP，同 UID 外部进程被拒。原应用数据 tar 保持，重装后逐项比对见证据。Main/Agent disabled/inactive，VM 正常停放，重复冷读一致。补父项 #3、#9、#12，冻结 **0/12**。外部延期仅原三项。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/icmp-core-maintenance-20261125/HANDOFF-PURGE.md)
+
 ## 2026-11-25 typed ICMP 跨 Core 原生解包与新 boot 原号续配
 
 隔离 Debian ARM64 Root `1048582:257` 实装 Core `f8c61e4e27` 等六包。JDK 21 正式 Main 活跃时原生解包后继 Core `c65c04741e`，旧 Main PIDFD 证实退出，ICMP worker 和 socket 回收。正常停机后，同 Root 新 boot 沿同一围栏 `f91e8d96-24ea-4ed6-8157-cbbf7ee63276` 一次续配。六包 installed，dpkg audit 为空，21 份新记录含 READY/configured 验签，19 份原签名与两项凭据 inode 和摘要保持。 前后正式 Main 的 Core ConfigurationService 均 ACTIVE，FD 9 匹配实际 writer lease，独立非阻塞独占申请被拒。双族回环通过，同 UID 非 Main 均拒绝。worker UID 986、NNP 1、仅 `CAP_NET_RAW`。Main 和 Agent disabled/inactive，VM 正常停放，重复冷读一致。补父项 #3、#9、#12，冻结 **0/12**。外部延期仅原三项。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/icmp-core-maintenance-20261125/HANDOFF.md)
