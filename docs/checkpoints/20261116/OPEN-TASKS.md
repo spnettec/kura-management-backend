@@ -1,3 +1,9 @@
+## 2026-11-25 正式 RTC 成功回执跨 Core 解包与完整内核重启
+
+隔离 ARM64 ext4 Root `2049:2` 的正式 Main 用已装 OSGi ClockService 的客户端单次写入虚拟 DS1307。原号 `1bff9494-6fce-4c24-949a-e347024cf9a4` 已为 APPLIED / RTC_SET_RETURNED，sender 保留 pending。Core `df5ae00aac-1` 同版原生解包后正常关机，同 Root 新 boot 核对两套原维护围栏后一次续配。后继 Main 在试验设备缺席时只结算该原号。actor 仍只有一笔操作，五份原 actor 文件保持。20 项保护文件核对通过，OCI 快照由包恢复复制后 inode 更新。四包 installed，Main disabled/inactive，VM 正常停放，重复冷读一致。
+
+补父项 #3、#9、#12。本次正向 RTC 停点的 remove/purge 组合仍待。冻结 **0/12**，外部延期仅原三项。 [实装与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/rtc-applied-package-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 FileMove 跨完整内核重启的原号结算与包维护
 
 隔离 Parallels ARM64 ext4 Root `2049:2` 实装 Deployment `c012586-2`。实际 Main 通过正式 OSGi provider 单次派发 MOVE `120252948901`。原目标与回执落盘后丢失回复，Main 收到 UNKNOWN，源文件仍在。实际 remove 与 purge 均由原 prerm 退出 1。正常关机并重新开机后，新 boot ID 下原目标 inode、源文件和回执保持。原号经包内低权限恢复与本机确认到 ALREADY_APPLIED。随后独立 remove、purge、同包解包与配置通过，14 项原号文件、另 6 份保护文件及 rtc0 复核通过。Main 和 FileMove socket disabled/inactive，VM 正常停放。
