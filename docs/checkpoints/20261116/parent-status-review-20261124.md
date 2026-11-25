@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 typed ICMP 跨 Core 原生解包与新 boot 原号续配
+
+隔离 Debian ARM64 Root `1048582:257` 实装 Core `f8c61e4e27` 等六包。JDK 21 正式 Main 活跃时原生解包后继 Core `c65c04741e`，旧 Main PIDFD 证实退出，ICMP worker 和 socket 回收。正常停机后，同 Root 新 boot 沿同一围栏 `f91e8d96-24ea-4ed6-8157-cbbf7ee63276` 一次续配。六包 installed，dpkg audit 为空，21 份新记录含 READY/configured 验签，19 份原签名与两项凭据 inode 和摘要保持。 前后正式 Main 的 Core ConfigurationService 均 ACTIVE，FD 9 匹配实际 writer lease，独立非阻塞独占申请被拒。双族回环通过，同 UID 非 Main 均拒绝。worker UID 986、NNP 1、仅 `CAP_NET_RAW`。Main 和 Agent disabled/inactive，VM 正常停放，重复冷读一致。补父项 #3、#9、#12，冻结 **0/12**。外部延期仅原三项。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/icmp-core-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Position 正式 HTTPS 与 Core REST bundle 修复
 
 父项 #3、#4、#9、#12 补证。ARM64 Root `1048581:257` 一次升级到 Core `c65c04741e`，补齐 REST bundle 对 Commons IO function 的导入。JDK 21 下 150 项通过，21 份新记录含 READY/configured 验签，七包 installed。合法 Main 实测三路匿名 401、登录后未授权 403、授权后定位及毫秒 UTC 200、撤销身份后旧会话 401，定位锁失效后的三路状态与实装合同一致。四份原快照保持原字节和权限，Core 升级更换其 inode。原运行时数据目录和 19 份历史记录保持，隔离 VM 已正常停放。冻结 **0/12**。 [正式证据和冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/HANDOFF.md)

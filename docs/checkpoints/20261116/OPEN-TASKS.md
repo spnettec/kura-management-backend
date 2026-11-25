@@ -1,3 +1,9 @@
+## 2026-11-25 typed ICMP 跨 Core 原生解包与新 boot 原号续配
+
+隔离 Debian ARM64 Root `1048582:257` 实装 Core `f8c61e4e27` 等六包。JDK 21 正式 Main 活跃时原生解包后继 Core `c65c04741e`，旧 Main PIDFD 证实退出，ICMP worker 和 socket 回收。正常停机后，同 Root 新 boot 沿同一围栏 `f91e8d96-24ea-4ed6-8157-cbbf7ee63276` 一次续配。六包 installed，dpkg audit 为空，21 份新记录含 READY/configured 验签，19 份原签名与两项凭据 inode 和摘要保持。
+
+前后正式 Main 的 Core ConfigurationService 均 ACTIVE，FD 9 匹配实际 writer lease，独立非阻塞独占申请被拒。双族回环通过，同 UID 非 Main 均拒绝。worker UID 986、NNP 1、仅 `CAP_NET_RAW`。Main 和 Agent disabled/inactive，VM 正常停放，重复冷读一致。补父项 #3、#9、#12，冻结 **0/12**。外部延期仅原三项。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/icmp-core-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Position 正式 HTTPS 与 Core REST bundle 修复
 
 隔离 ARM64 Root `1048581:257` 的实装配置关闭 Basic，三条 Position 路径匿名及 Basic 均返回 401。正式会话登录曾因 REST 请求体限流器的 OSGi 导入缺项返回 500。Core `c65c04741e` 显式导入 Commons IO 的 function 包，JDK 21 下 REST 模块 150 项通过。ARM64 正式 deb 与旧包逐项比对，载荷仅 REST JAR 的 manifest 变动。原 Root 一次原生升级，七包 installed，dpkg audit 为空，新维护号 `fd7a11f0-b86b-491b-8063-840e5000056c` 的 21 份记录验签。 [原生升级、测试及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-position-gpsd-maintenance-20261125/HANDOFF.md)
