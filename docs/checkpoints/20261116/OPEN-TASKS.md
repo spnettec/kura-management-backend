@@ -1,3 +1,9 @@
+## 2026-11-25 GWT 正式首绑、独立端口与后继证书暂存
+
+同一 ARM64 Root `245:257` 由正式浏览器生成原 CSR、暂存、首次绑定，Agent 原回执的 actor 为 `kura-uid:995`。原号分端口配置 APPLIED/READY。实际 Agent 重启后连接地址为 41744，原登记地址保持 41743。GWT `6501d1b` 补齐正式无 schema 的 v2 API 回执，539 项回归通过，候选原位升级。正式浏览器已暂存后继 CSR 与证书，原身份第 1 代、远程 OFF，续期尚未派发。六包 installed、Main/Agent/socket disabled/inactive，VM 正常停放并冷读。
+
+补父项 #2、#3、#9、#12。新中心回执的浏览器提交及真实 mTLS 继续内部待办。冻结 **0/12**，外部延期仅原三项。 [实装、浏览器与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/gwt-enrollment-transport-20261125/HANDOFF.md)
+
 ## 2026-11-25 GWT 接受中心实际 v2 续期回执
 
 中心原生 v2 APPLIED 回执含 `rejectionCode: null`，旧包解析两份真实回执均拒绝。GWT `3ffb80e` 接纳该字段为 null，仍拒绝非 null 或额外字段。JDK 21 共 537 项测试通过，正式 deb 实装隔离 ARM64 Root `245:257`，实际 Main 的 ACTIVE web2 bundle 对包并读入两份原回执，没有续期写入。六组件 installed，两服务 disabled/inactive，正常停放及重复冷读通过。
