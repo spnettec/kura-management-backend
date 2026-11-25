@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 执行器与 ownership 跨正式 Core 移除、独立 purge 和原号重装
+
+隔离 ARM64 Root `1048582:257` 的正式 Core `c65c04741e` 真实 OSGi 执行器运行一条长命令时进行原生 remove。返回时原 Main、命令、执行器 worker、ownership reader 的四个 PIDFD 均确认退出，原回调为 `EXECUTOR_RESULT_UNAVAILABLE`，三个 socket 已撤下。旧命令仅实际派发一次。随后独立 purge、正式解包与正常停机，同 Root 新 boot 沿 `33b4116b-6983-46f2-b665-712be604df31` 一次续配。六包 installed，新增 19 份验签，59 份既有签名、两项凭据和原应用数据归档保持。 后继合法 Main 的正式 OSGi 执行器 `id -un` 返回 `kura`。维护前后 ownership 两个只读请求均返回缺席，同 UID 非 Main 均被拒。Main 与 Agent disabled/inactive，VM 正常停放，两次冷读一致。补 #3、#9、#12，冻结 **0/12**。外部延期仅原三项。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/icmp-core-maintenance-20261125/HANDOFF-EXECUTOR-PURGE.md)
+
 ## 2026-11-25 typed ICMP 跨正式 Core 独立 purge 与同号重装
 
 隔离 Debian ARM64 Root `1048582:257` 保持 Agent installed，按正式依赖顺序移除四个组件，Core `c65c04741e` 原生 remove 后独立 purge。实际 ICMP 单元和客户端缺席。新围栏 `a31a36df-5991-4fed-a374-9fe2338cb414` 跨 purge、原生解包及正常停机保持，原 40 份签名和两项凭据保留。新 boot 同 Root 一次续配，19 份新记录含 READY/configured 验签，六包恢复 installed。 正式 Core ConfigurationService ACTIVE，实际 Main 通过 writer lease 和双族 ICMP，同 UID 外部进程被拒。原应用数据 tar 保持，重装后逐项比对见证据。Main/Agent disabled/inactive，VM 正常停放，重复冷读一致。补父项 #3、#9、#12，冻结 **0/12**。外部延期仅原三项。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/icmp-core-maintenance-20261125/HANDOFF-PURGE.md)
