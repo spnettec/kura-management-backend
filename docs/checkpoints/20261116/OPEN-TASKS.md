@@ -1,3 +1,9 @@
+## 2026-11-25 GWT 接受中心实际 v2 续期回执
+
+中心原生 v2 APPLIED 回执含 `rejectionCode: null`，旧包解析两份真实回执均拒绝。GWT `3ffb80e` 接纳该字段为 null，仍拒绝非 null 或额外字段。JDK 21 共 537 项测试通过，正式 deb 实装隔离 ARM64 Root `245:257`，实际 Main 的 ACTIVE web2 bundle 对包并读入两份原回执，没有续期写入。六组件 installed，两服务 disabled/inactive，正常停放及重复冷读通过。
+
+补父项 #2、#3、#9、#12。真实浏览器、分端口与 mTLS 联合验收继续内部待办。冻结 **0/12**，外部延期仅原三项。 [正式回执、实装与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/gwt-center-renewal-receipt-20261125/HANDOFF.md)
+
 ## 2026-11-25 正式 Main 的 rootless OCI 启停与 Container 包维护
 
 既有隔离 Parallels ARM64 Root `2049:2` 使用 Docker 29.1.3、委派的 systemd 用户服务和实际 runc。原系统级 rootless 对象因无用户 cgroup 明确拒绝并保留。新独立对象经正式 Container `9a7cda7-1` OSGi provider 一次启动，原 PID 和启动时刻跨 Main 停服、provider remove/purge、缺席启动和正式重装保持。后继实际 Main 沿原容器号和快照查回，单次 TERM 停止、exit 0。原五份保护文件、快照及网络保持，临时引擎、用户及 AppArmor 配置清理。VM 正常停放，停机档案读回一致。
