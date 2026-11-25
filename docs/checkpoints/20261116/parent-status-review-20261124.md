@@ -1,5 +1,13 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 ARM64 Alpine API2 镜像内 YOFC DP 与同卷换容器
+
+从 Git 构建 Docker `ad4b77f`，使用正式 Core `f8c61e4e27`、Deployment `8da586b` 及配对 GWT、Wires 四份 deb。默认四份镜像内 DP 为 YOFC runtime、api-comp、apps-comp、apps-opcuaserver。首次启动四个 bundle 均 ACTIVE，归档与构建输入同摘要。原卷 Root `39:10239737` 正常停放后换容器，Felix DeploymentAdmin 再次读到原四份 DP，五条 channel／driver 接线均为 API 2.0.0。
+
+复核容器 PID 1 为 JDK 21 Java、UID 122、NNP 1、CapEff 0，回环 HTTPS 200，原卷实例锁在运行时拒绝独立非阻塞取锁，停机后可取得。原注册表、TLS keystore 和凭据共七份文件的 inode、权限与摘要保持，两容器正常停放，重复冷读一致。默认镜像的 Cloud handler 和所需 MQTT transport 均未注册，此处覆盖本地 DeploymentAdmin 与镜像内 DP，远程 provider 和依赖现场配置的 DS 行为继续内部待验。
+
+补父项 #3、#4、#9、#11、#12，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [本轮交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-alpine-dp-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Triton 独立 purge、跨停机续配与原工厂配置恢复
 
 隔离 Debian ARM64 Root `249:257` 实装 Core `f8c61e4e27` 和正式 Triton `5abdd65-1`，使用 JDK 21。合法 Main 通过 ConfigurationService 只创建一次 `fixture.api2.triton.remote`，原快照 `1795588222040`。同 Root 原生 remove 到 config-files，独立 purge 到 not-installed。缺包期间 Core 仍读到原快照，Triton bundle 与原实例服务缺席，回环测试端点无新增 RPC。
