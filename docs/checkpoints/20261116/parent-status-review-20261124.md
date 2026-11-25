@@ -1,5 +1,9 @@
 # 2026-11-24 冻结父项复核
 
+## 2026-11-25 typed Journal 跨正式 Core 解包与新 boot 续配
+
+父项 #3、#9、#12 补证。隔离 ARM64 Root `1048579:257` 的正式 typed Journal 原生归档和唯一消息跨同版 Core unpack、正常关机及同 Root 原号一次 configure 保持，前后合法 Main 实际低权限读回，非 Main 同 UID 请求被拒。40 份 Core 签名记录、六个实装载荷及原两份凭据通过核对。六包 installed，VM 正常停放并重复冷读。冻结 **0/12**。 [正式证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-core-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 Deployment 原号 57225 停机复核
 
 父项 #3、#9、#12。ARM64 Root `225:257` 已在正式 `c012586-1` 验证真实待结算发布使原生 remove、purge 均由 installed prerm 拒绝。原号 `57225` 只派发一次，随后同 Root 同号只读 GET 为 COMPLETED。本轮冷读与留档一致，原 DP 和回执摘要保持，六包 installed，VM 保持正常停放。独立 config-files postrm 拒绝仍沿用合成标记证据。冻结 **0/12**。 [原生实测与停机证据](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)

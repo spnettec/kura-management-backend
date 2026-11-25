@@ -1,3 +1,9 @@
+## 2026-11-25 typed Journal 跨正式 Core 解包与新 boot 续配
+
+隔离 Debian ARM64 Root `1048579:257` 实装 Git 构建的 Core `f8c61e4e27-1` 等六份配对包，使用 JDK 21。合法 Main 通过正式 typed Journal 导出一次写入的夹具消息。封存的原生 journal 保留同一 inode、摘要及消息 cursor。同版实际 `dpkg --unpack` 有序回收旧 Main 和 Journal socket，包在同一维护围栏内停于 unpacked。正常关机冷读后，在同 Root 新 boot 沿 `def33172-fa7a-42ee-8dfe-7fc5131e08f1` 一次续配。新 Main 通过同一正式 broker 只读查到原 boot 的唯一消息。同 UID 的非 Main 调用明确拒绝。两次实际 worker 均为 UID 987、NNP 1、五组 capability 全零。原 19 份签名记录、两份凭据指纹及六份实装部件保持，新 21 份记录含 READY/configured 验签。六包 installed，Main、Agent disabled/inactive，VM 正常停放，重复冷读一致。
+
+补父项 #3、#9、#12，冻结 **0/12**。Journal 的不同版本与 remove／purge 组合继续内部待验，外部延期仅原三项。 [原生归档、验签及冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/journal-core-maintenance-20261125/HANDOFF.md)
+
 ## 2026-11-25 Deployment 原号 57225 停机复核
 
 隔离 ARM64 Root `225:257` 的正式 Deployment `c012586-1` 已用真实待结算发布验证原生 `remove` 和 `purge`。两次均由已安装包的 `prerm` 退出 1，包载荷仍为 installed。原发布只派发一次，正式 Main 恢复后在同 Root 对原号 `57225` 仅执行 GET，结果为 COMPLETED。独立 config-files 的 postrm 拒绝证据仍限于合成标记。 [原生拒绝与原号结算](../../../../.management-close-20261116/core-rtc-hotplug-20261120/three-generation-deployment-receipt-20261125/HANDOFF.md)
