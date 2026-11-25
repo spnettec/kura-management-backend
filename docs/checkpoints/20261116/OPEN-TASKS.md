@@ -1,3 +1,11 @@
+## 2026-11-25 API2 Triton 独立 purge、跨停机续配与原工厂配置恢复
+
+隔离 Debian ARM64 Root `249:257` 实装 Core `f8c61e4e27` 和正式 Triton `5abdd65-1`，使用 JDK 21。合法 Main 通过 ConfigurationService 只创建一次 `fixture.api2.triton.remote`，原快照 `1795588222040`。同 Root 原生 remove 到 config-files，独立 purge 到 not-installed。缺包期间 Core 仍读到原快照，Triton bundle 与原实例服务缺席，回环测试端点无新增 RPC。
+
+同包原生 unpack 后正常停机，新 boot 核对同 Root 和原快照、提交标记后一次 configure。恢复 14 包 installed，已装 JAR 与正式 deb 成员同摘要。合法 Main 自动恢复同一实例，实际 InferenceEngineService 对隔离回环 gRPC 的三项读回与维护前一致。21 份 Core 记录摘要和三份保护文件的 inode、权限与摘要保持。Main、Agent disabled/inactive，VM 正常停放，重复冷读一致。
+
+首次启动测试端点因夹具目录权限失败，修正前未调用配置 API 或执行包维护。覆盖 Triton 的包生命周期和回环 gRPC，NVIDIA 服务及 GPU 推理继续内部待验。补父项 #3、#9、#12，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。 [本轮交接与冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/api2-triton-purge-20261125/HANDOFF.md)
+
 ## 2026-11-25 API2 Deployment 原生 remove、独立 purge 与原围栏重装
 
 隔离 ARM64 Root `250:257` 对已装正式 Deployment `8da586b-1` 执行一次 remove 到 config-files，再独立 purge 到 not-installed。其余 13 包保持 installed。缺包时合法 Main 的 Core ConfigurationService ACTIVE，四份 Deployment bundle 和正式 handler 均缺席。原四个 DP 归档、终态回执和数据指纹保持。
