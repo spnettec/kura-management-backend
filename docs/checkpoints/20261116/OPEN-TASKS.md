@@ -1,3 +1,17 @@
+## 2026-11-26 真实未决防火墙发布的原生拒绝与原号结算
+
+原隔离ARM64机器复机先核验Root仍1048585:257及原kernel-fh-v2绑定。沿已装Git Core6341906、Networking15ebcda和配对native0.1.17，正式Main924经原ConfigurationService只触发一次IPv4 UDP49528。worker1849实际完成1条Netlink命令并生成真实ACK/staged后，在结果rename入口中断，原号886f19b4-e32c-48b8-a795-88eceb090342及sender pending保留。
+
+真实dpkg remove、purge kura-networking均由installed prerm退出1，日志为原发布pending。81保护文件及原staged/意图/sender保持，Main924和InvocationID保持active。dpkg desired选择变为deinstall/purge的实际记录保留，随后只恢复install选择，六包实际installed保持。
+
+正式worker沿同Root/Scope/原号/摘要将原staged inode23295及原字节发布为APPLIED，trace无Netlink写。随后终态只读查询无Netlink/rename。原Main正常退出后，同boot合法Main2835经已装构造器只查询原pending号、恢复原candidate并完成sender。新增6个启动记录均UNCHANGED/0命令。10provider/JAR配对、原密文、writer租约、HTTPS302通过，最终31终态（9APPLIED/22UNCHANGED）。本轮无报文流量实测，原ConfigService读取超时及控制器比较断言错误均原样留档，未补写成功文件或重派任务。
+
+Main/Agent disabled/inactive，VM正常停放。cold核验94保护文件、31原生记录、19份Core签名含READY、完整manifest/units/控制/native cohort和10JAR、六包installed。当前机器的最新冷读改用firewall-pending-maintenance-20261126/cold.py，前轮62文件/16记录入口属于历史。清理32字节可再生自测文件，真实目录分配减4096字节，宿主清理区间可用增4096字节，符号链接du的原计量错误和修正均留档。
+
+原三网关继续运行，18主仓台账前保持，Core219、Deployment225/57225、137和旧229未重放。原7fd沿最后disabled、正常停机、41输入/16回执封存，个人配置/凭据/数据、运行集、六组件和rtc0保留。补#3/#6/#9/#12，完整12父项及typed brokers、六组件、provider/launcher全维护矩阵继续，目标active，冻结 **0/12**。独立config-files、其他中断点及平台仍按原范围待验，外部延期仍仅真实NM/cloud-init/物理交接、amd64、磁盘满/硬断电。
+
+[真实未决、原号结算与最新冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-pending-maintenance-20261126/HANDOFF.md)
+
 ## 2026-11-26 正式 Core/Networking 新 v2 Root 联合链
 
 隔离Core6341906、Networking15ebcda按Git/JDK21构建并实装同一ARM64 Root1048585:257。Core固定新域CLI校验Core/actor资产和PID1配对idle Main，持dpkg/admission/exclusive writer围栏、继承FD3；运行/启动中Main不能借缺席锁被绕过。两包控制与helper锁定同一native0.1.17/F11归档。36项Linux定向通过，旧F11的207hash冷读保持，未推送。
