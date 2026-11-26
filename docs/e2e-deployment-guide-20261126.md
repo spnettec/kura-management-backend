@@ -1,5 +1,7 @@
 # YOFC Kura 管理体系——全链部署操作手册（2026-11-26 版）
 
+> **已被替代（2026-11-27）**：现行手册是 [`manual/e2e-deployment-manual-20261127.html`](manual/e2e-deployment-manual-20261127.html)（同目录有可编辑的 `.pptx`）。本文件保留为 11-26 当天的记录。其中“`dpkg -i` 失败后用 `apt-get install -f` 收敛”的安装写法已改为由 apt 直接安装本地 deb；第四台（Parallels）网关部分以新手册“迭代记录”“过程中撤回的两个结论”两节为准：同一台虚拟机按现行脚本一次装通。
+
 2026-11-26 全新重部署实录。本手册描述从零开始部署完整 YOFC Kura 管理体系：管理中心（Docker 容器，端口 18443/18444）+ IoT 网关（OrbStack VM 和 Parallels VM）。本版全部步骤于 2026-11-26 在清理后的环境中实际重跑验证：3 台 OrbStack 网关全链 CONNECTED 并在控制台 online=true + kura_available=true。
 
 ## 架构概览

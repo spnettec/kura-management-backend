@@ -1,3 +1,11 @@
+## 2026-11-27 合并后源码四网关 E2E 一次跑通与 HTML 手册
+
+18 个仓库归一为 heyoulin-kura 后，从合并后的源码重新编译三个交付物（Core `56f59db2`：`kura/build-all.sh` 17 次 Maven 调用全部成功、195 个模块结果 0 失败；agent `3a713f5`；管理中心 `871f60f`），在清空的环境中由 `docs/e2e-scripts-20261126/00-run-all.sh` 一次跑完：12 步全部 OK，3 台 OrbStack（Debian 13）+ 1 台 Parallels（Ubuntu 26.04）网关全部 online=true 且 kuraAvailable=true，用时 18 分 25 秒。全部日志扫描错误类 0 行，警告类 20 行均出自第三方依赖包的维护脚本（setserial、chrony、ca-certificates）。证据与截图在 `docs/manual/evidence-e2e-20261127/`、`docs/manual/screenshots-e2e-20261127/`，手册为 `docs/manual/e2e-deployment-manual-20261127.html`（同目录有 `.pptx`）。
+
+本轮产品改动一项：agent 启动子进程遇 ETXTBSY 即失败（`src/process.rs`，由并发测试偶发暴露；修复前 5 轮全量并发有 4 轮出现偶发失败、新增回归测试必败，修复后 5 轮每轮 808 通过 0 失败）。其余都是脚本修正：网关两个 deb 改由 apt 直接安装本地 deb（不再 `dpkg -i` 报错后用 `apt-get install -f` 收敛）；04/05 脚本在 OrbStack 网关上成功后退出码为 1；Parallels 文本终端切换时按需启动的 getty 冲掉刚写的内容；OrbStack 创建虚拟机取镜像索引的瞬时 EOF 加 3 次重试。
+
+此前“Ubuntu 上 bind 的 INVALID_ARGUMENT 是平台问题”“snapshot-switch 延迟生效”两个结论已撤回，见手册“过程中撤回的两个结论”。本记录只覆盖从零安装与登记这一条链；Root/防火墙、网络事务、配置写入、升级/移除矩阵、12 父项的其余缺项与 external deferred 均不变。
+
 ## 2026-11-26 OPC UA 与 Position 秒级时间戳后继同代换版
 
 补齐此前未入场的两笔同代换版，均改用已入场 API2 配对（基线为 `wip/api2-admission-20261125` tip：OPC UA `62c5514-1`、Position `284058a-1`，Core `c65c047` 七包组合与 `api2-opcua-purge` 一致）。两个 API2 tip 均无后继，各自新建本地分支 cherry-pick 时间戳修复构建后继（`4f2fbd1`、`462c8df`，均未推送）。

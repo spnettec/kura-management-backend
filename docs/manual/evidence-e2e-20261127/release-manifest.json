@@ -1,0 +1,24 @@
+{
+  "failed": 0,
+  "buildQualifier": "202611261644",
+  "core": {
+    "deb": "/Users/heyoulin/iot-kura-develop/git/kura/kura/distrib/kura-core/target/kura_6.0.0+api2~git20261126165524.56f59db-1_arm64.deb",
+    "sha256": "8514725f9297a7be69b2d93d7a35a23a0649097752c57a5dc1e8bf196375c517",
+    "revision": "56f59db2da2f50f0ee6a1ef1db6305a32c27601f"
+  },
+  "agent": {
+    "deb": "/Users/heyoulin/iot-kura-develop/git/.management-close-20261116/core-rtc-hotplug-20261120/clean-redeploy-20261126/agent/release/release/kura-management-agent_0.1.0~cohort20261126164221.3a713f5-1_arm64.deb",
+    "sha256": "773c53d9089f7e998730ba3f271a2af9aa2a98c16d285ed43e3c2b814d650a93",
+    "revision": "3a713f549c740177da8c7be58660869e812aa685",
+    "bridgeVersion": "1.0.0.202611261644",
+    "bridgeSha256": "f5721e796e2c4fc9177c4ef08f96adb7fbb895287660a05d5c3d964bf145c3c8",
+    "coreLoaderSha256": "547a54ef690cb38f4895bfd659883c32a0003addb53bd633a236daffc706b033"
+  },
+  "console": {
+    "image": "sha256:9f4ee47496eeabd6f759e5accfed1e12f560303542c3bcc84711ccf70ae1ecff",
+    "revision": "871f60f58ee44deb6f28ab5e48b4999eb54405c1"
+  },
+  "networking": {
+    "revision": "c91295a6a3001ae8ef93a1a32292b614747172fd"
+  }
+}

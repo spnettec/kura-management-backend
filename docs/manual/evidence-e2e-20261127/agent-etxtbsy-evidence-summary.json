@@ -1,0 +1,125 @@
+{
+  "prefixRevision": "f11d66f44ec8eadb54abd922a85f085ca79d5ef5",
+  "prefixRegression": {
+    "passed": 0,
+    "failed": 1,
+    "ignored": 0,
+    "failing": [
+      "process::tests::transient_text_file_busy_from_a_concurrent_writer_is_waited_out"
+    ],
+    "errors": [
+      "Text file busy (os error 26)"
+    ],
+    "exit": 101
+  },
+  "prefixRuns": [
+    {
+      "passed": 806,
+      "failed": 2,
+      "ignored": 50,
+      "failing": [
+        "nm::handover::startup::tests::startup_execution_lease_missing_unsafe_or_foreign_binding_denies_new_publication_before_intent",
+        "process::tests::transient_text_file_busy_from_a_concurrent_writer_is_waited_out"
+      ],
+      "errors": [
+        "Text file busy (os error 26)"
+      ],
+      "exit": 101
+    },
+    {
+      "passed": 806,
+      "failed": 2,
+      "ignored": 50,
+      "failing": [
+        "nm::handover::startup::tests::runtime_cases::stopped_current_context_is_a_read_only_distinct_observation_without_a_jvm_witness_or_owner_grant",
+        "process::tests::transient_text_file_busy_from_a_concurrent_writer_is_waited_out"
+      ],
+      "errors": [
+        "Text file busy (os error 26)"
+      ],
+      "exit": 101
+    },
+    {
+      "passed": 805,
+      "failed": 3,
+      "ignored": 50,
+      "failing": [
+        "nm::handover::startup::tests::startup_files_alias_between_arguments_and_a_retained_fence_is_refused_before_admission",
+        "nm::handover::startup::tests::startup_start_never_replays_unentered_or_lost_ack_intents_and_never_uses_a_later_active_unit_as_a_receipt",
+        "process::tests::transient_text_file_busy_from_a_concurrent_writer_is_waited_out"
+      ],
+      "errors": [
+        "Text file busy (os error 26)"
+      ],
+      "exit": 101
+    },
+    {
+      "passed": 807,
+      "failed": 1,
+      "ignored": 50,
+      "failing": [
+        "process::tests::transient_text_file_busy_from_a_concurrent_writer_is_waited_out"
+      ],
+      "errors": [
+        "Text file busy (os error 26)"
+      ],
+      "exit": 101
+    },
+    {
+      "passed": 806,
+      "failed": 2,
+      "ignored": 50,
+      "failing": [
+        "nm::handover::startup::tests::runtime_cases::current_os_context_is_read_only_and_process_boot_or_credential_changes_invalidate_a_sampled_challenge",
+        "process::tests::transient_text_file_busy_from_a_concurrent_writer_is_waited_out"
+      ],
+      "errors": [
+        "Text file busy (os error 26)"
+      ],
+      "exit": 101
+    }
+  ],
+  "postfixRuns": [
+    {
+      "passed": 808,
+      "failed": 0,
+      "ignored": 50,
+      "failing": [],
+      "errors": [],
+      "exit": 0
+    },
+    {
+      "passed": 808,
+      "failed": 0,
+      "ignored": 50,
+      "failing": [],
+      "errors": [],
+      "exit": 0
+    },
+    {
+      "passed": 808,
+      "failed": 0,
+      "ignored": 50,
+      "failing": [],
+      "errors": [],
+      "exit": 0
+    },
+    {
+      "passed": 808,
+      "failed": 0,
+      "ignored": 50,
+      "failing": [],
+      "errors": [],
+      "exit": 0
+    },
+    {
+      "passed": 808,
+      "failed": 0,
+      "ignored": 50,
+      "failing": [],
+      "errors": [],
+      "exit": 0
+    }
+  ],
+  "postfixRevision": "3a713f549c740177da8c7be58660869e812aa685"
+}

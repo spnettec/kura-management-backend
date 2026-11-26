@@ -1,0 +1,12 @@
+01:33:20	OK	wipe	上一轮环境已清空
+01:33:20	OK	ca	证书体系已生成
+01:33:34	OK	console	初始化完成，管理员可登录
+01:41:03	OK	install-yofc-gw-1	 active active 
+01:41:17	OK	enroll-yofc-gw-1	FINAL: CONNECTED | bound: True | enabled: True receipt actor: kura-uid:999
+01:44:52	OK	install-yofc-gw-2	 active active 
+01:45:06	OK	enroll-yofc-gw-2	FINAL: CONNECTED | bound: True | enabled: True receipt actor: kura-uid:999
+01:47:24	OK	install-yofc-gw-3	 active active 
+01:47:38	OK	enroll-yofc-gw-3	FINAL: CONNECTED | bound: True | enabled: True receipt actor: kura-uid:999
+01:50:02	OK	install-yofc-gw-4	 active active 
+01:51:42	OK	enroll-yofc-gw-4	FINAL: CONNECTED | bound: True | enabled: True receipt actor: kura-uid:994
+01:51:44	OK	verify	4/4 online + kuraAvailable

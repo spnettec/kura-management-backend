@@ -1,0 +1,5 @@
+yofc-gw-1    online=True  kuraAvailable=True  agent=0.1.0
+yofc-gw-2    online=True  kuraAvailable=True  agent=0.1.0
+yofc-gw-3    online=True  kuraAvailable=True  agent=0.1.0
+yofc-gw-4    online=True  kuraAvailable=True  agent=0.1.0
+total=4 online=4 kura_available=4
