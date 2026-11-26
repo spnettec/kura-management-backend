@@ -1,3 +1,19 @@
+## 2026-11-26 IPv6真实未决发布的包维护拒绝与原号结算
+
+固定隔离ARM64 Root1048585:257，先通过该Root前轮1832摘要/373文件/117终态/103HMAC停机cold，继承独立Core purge轮2072摘要。复用Git Core6341906、Networking15ebcda、native0.1.17及原七包/JDK21探针。13份原user/data/packages文件完整归档，原IPv4模型及Scope保持。
+
+本boot合法Main924经原ConfigurationService只触发一次IPv6 UDP49528/source fd7a:d0c0:128::2/128/interface yfd0。正式worker完成1条真实Netlink命令和ACK、sync原staged后，在rename入口中断。原号1f17114d-09cf-4e80-bf62-c8bd4796c4ff、原staged inode29915及原sender/意图四字段配对。真实dpkg remove、purge kura-networking各一次，由已装prerm返回1，日志均为原发布pending。393保护文件、同Main/Invocation、内核规则及七包实际installed保持，dpkg desired选择变化据实记录。
+
+一次正式outcome沿同Root/Scope/原号发布原staged inode和精确原字节为APPLIED，trace无Netlink写。后继终态查询无Netlink及rename。恢复install选择后，原Main正常stop且PIDFD退出，同boot后继合法Main2452经已装IPv6构造器结算原sender并发布原candidate。原密文、READY、10provider/JAR、kurad/NNP1/五cap集合0x400/FD9租约/HTTPS302通过。
+
+原ConfigurationService调用记录Provider read deadline expired，原failure保持。早期观察器在成功续接后比较内部bootModel，以及恢复后压缩IPv6字符串匹配的两次断言失败均留档。后继只读完成对外字段合同和IPv6网络地址类型核对，包动作、任务和Main启动各一次。所有执行cohort按SHA配对到Root私有0400快照。
+
+最终130全终态为32 APPLIED/98 UNCHANGED，原117组完整stamp保持，新增12组自动启动为2 APPLIED/10 UNCHANGED。401保护文件中旧373基线仅正式IPv6模型改变，其余372份stamp保持。旧IPv6原文由真实sender.previous完整留存，摘要对原基线。103份Core HMAC及完整manifest/units/控制/native cohort/10JAR/应用归档停机cold通过。Main/Agent disabled/inactive、VM正常停放。显式配置1、inverse0，IPv6报文数据面继续待验。
+
+仅清理32字节自测输出宿主重复副本，guest原观察副本保留。目录分配减4096字节，宿主同区间可用变化-4096字节。18主仓台账前保持，54台VM身份/状态恢复初态，原三网关running。个人配置/密钥/数据、原现场、运行集、六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保持。
+
+补#3/#6/#9/#12，完整目标active，冻结 **0/12**。实际版本转换、更多中断点、完成Deployment历史purge及完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 独立 Core 已发布代跨 remove、purge 与原围栏冷重装
 
 前轮1832摘要cold先通过。按完整矩阵新建独立Debian13 ARM64 Root1048586:257，仅正式安装Git Core6341906，JDK21。初始合法Main9885经真实CryptoService/ConfigurationService产生原密文。prepare77b3aafc、verify967f32b1、publish6f1534ec、explicit-start3ebb6bbb各一次，真实SUCCEEDED。发布代Main10660解回原密文，发布原文及敏感响应留Root私有目录。
