@@ -1,3 +1,19 @@
+## 2026-11-26 已结算防火墙跨 Core remove 与原数据冷重装
+
+固定 ARM64 Root1048585:257，复用 Git Core6341906、Networking15ebcda 和 native0.1.17。前轮620hash cold通过，实际依赖核验四包后，Networking/Deployment/Wires/GWT 的移除作为 Core remove 前置。合法 Main945 经正式 Networking prerm 同步停止，PIDFD确认退出。一次 Core remove 返回0并进入config-files，正式原维护号235ad522-4ce2-44ff-abf6-8cef8c2708bc、removal-home 和 Main-state 原件保留。
+
+192份维护前完整基线覆盖 user/data/packages 与原191文件，原data目录按正式holder停放，inode22539保持。228文件/71终态/原40份Core签名中间cold通过后，同Root新boot沿原remove围栏一次unpack和一次configure均返回0，新增21份正式签名含READY/configured及retained-data交接，累计61份。四依赖按原注册顺序各安装一次，六包installed，audit空。
+
+后继合法 Main4543 读回原密文、49528快照，10provider/JAR对包、UID/NNP1/五cap集合0x400、FD9 writer租约和HTTPS302通过。维护前、依赖移除后、Core removed、恢复后四阶段原UDP规则实测指定源ECHO、其他源TIMEOUT。192份原文件最终字节/UID/GID/mode全部匹配，data身份保持，packages按正式COPY从inode24034到25555，dpa.properties逐文件原字节保持。custom/registry/Networking drop-in的正式原子重建使inode和mtime更新，差异完整留档。
+
+两boot新增16组正式自动启动回执，4APPLIED/12UNCHANGED，最终79终态（21APPLIED/58UNCHANGED），原63组精确保持。显式业务配置和撤回任务均0，原886f19b4及8a9ab5ee保持封存。Core移除期间身份观察使用同包原ELF仅检查当前Root内核身份。初版观察器遗漏包属drop-in正常删除及共享脚本首次导入SyntaxError均原样留档，后继脚本经12份宿主/guest编译与摘要配对，只继续尚未派发阶段。
+
+247保护文件、61份Core签名、完整manifest/units/控制/native cohort及10JAR已最终停机cold核验。Main/Agent disabled/inactive，VM正常停放。复用正式包，无新构建/字节码缓存可清，删除0，目录减少0、同区间宿主可用变化0，末次162594590720字节。18主仓台账前保持，原三网关仍running，其他原VM和Core219/Deployment225等原场景保持。个人配置/密钥/数据、运行集、六组件、rtc0及7fd最后disabled/正常停机/41输入16回执封存保留。
+
+补父项#3/#6/#9/#12，完整目标active，冻结 **0/12**。本轮完成Core remove的保留数据冷重装。Core purge、实际换版、完成Deployment历史的完整维护、IPv6真实未决中断和完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仍仅真实NM/cloud-init/物理交接、amd64、磁盘满/硬断电。
+
+[原号冷重装与最新停机入口](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-core-remove-retained-20261126/HANDOFF.md)
+
 ## 2026-11-26 已结算防火墙跨 Core 同包解包与原维护号冷续配
 
 固定隔离ARM64 Root1048585:257，在前轮516hash/47终态/136文件基础上，复用Git Core6341906、Networking15eb和native0.1.17。合法Main913实际运行时，一次dpkg --unpack同版Core634包返回0，PIDFD确认Main退出。正式preinst生成原维护号8a9ab5ee-d53c-4e7e-87fb-03f411b20920、Root私有围栏及签名capture，原136文件在正式.old-home或原外部路径按inode/摘要精确核对。55终态及156文件中间cold通过后，同Root新boot只一次configure返回0。
