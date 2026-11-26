@@ -1,3 +1,23 @@
+## 2026-11-26 正式恢复输入跨Core独立purge与原围栏冷续配
+
+前轮3624摘要cold通过后，复用独立ARM64 Root141:257、VM yofc-core-published-upgrade-20261126、ID01M8B2WK54GHEFX4ZDDDGJY2BF，新增VM为0。正式Git/JDK21七包保持，生产源码改动0。准入核对264文件、59份Core HMAC、17份凭据/history和原binding完整stamp。
+
+复制真实23712字节factory snapshot到Root私有目录，经已装Core正式Root UDS及只读FD预检。唯一rec-3a502d0d-0895-4979-93d6-90d2e0eb5fac只执行一次正式stage，返回RECOVERY_INPUT_STAGED。原receipt.json、snapshot和源副本双侧归档。模式plain、策略legacy，恢复应用请求0。
+
+五个依赖各一次remove，Core一次remove返回0到config-files。原data inode25472停放并保持原文件完整stamp，当前packages无完成回执，正式钩子复制dpa.properties至retained。原维护fb6a4f6e-2ff6-48c0-a57b-cacccd48a090及packageTag HMAC配对本Root。正常关机cold后，第二boot沿原围栏一次独立purge返回0，再次正常关机cold。第三boot同Root同原围栏一次unpack/configure正式结算，五依赖一次联合重装，七包installed且audit空。
+
+三个阶段的恢复输入原件、回执和源副本完整stamp保持。重装后仅同Root同rec号original只读返回原STAGED回执。新增19份Core HMAC，累计78份含READY/configured。17份凭据/history及binding inode22731完整stamp保持，原published launcher/drop-in字节恢复。6份应用文件在维护前与依赖移除后各双侧归档，共12份应用归档及19份retained归档保留。
+
+合法Main4443读取原legacy和发布代密文，以原活动钥写读新KURA2，10provider/JAR、Cloud transport、原client/job/name/requester/publisher作用域和GET原1412601的NOT_FOUND通过。原COMPLETED回执继续从历史双侧归档冷读，实际EXEC lifetime仍为1。本轮业务派发0、key mutation0，原四个key UUID仅只读SUCCEEDED。UID995、NNP1、五cap集合0x400、真实FD9 writer租约及HTTPS302通过。Main正常stop并PIDFD退出，Main/Agent disabled/inactive，VM正常停放。最终293保护文件、78份Core HMAC和74份companion/provider资产与控制纳入cold。
+
+准备阶段all-clean断言遇到三个仓库九份Finder元数据，逐份记录并保留。首次Agent setup inventory在stage前返回FileNotFoundError，后继使用已装Core正式Root验证协议完成预检。Core remove成功后继承观察器误要求无完成回执的packages也进入holder，依据正式capture_history/retained_trees/park源码改为独立只读核验真实原围栏和复制原件，包动作重放0。原错误、日志和内容寻址控制器保留。
+
+复用封存JDK21探针，新增编译及字节码缓存0。本轮可删除构建产物0，目录减少0，宿主可用空间独立计量见cleanup.json。18份既有输出按原消费者保留，18主仓按真实初态复核，完整57台身份/状态及原三网关running保持。原Root1048585/1048587/1048588的不可变cold执行，原452文件/154终态/103HMAC及既有业务闭环保持。所有原现场、个人配置/密钥/数据、运行集、六组件/rtc0和7fd最后disabled、正常停机、41输入16回执封存保留。本地台账提交，推送0，父vault双笔记官方CLI追加并精确全文读回。
+
+补父项#1/#3/#9/#12，覆盖已发布代、七包共装下plain/legacy恢复输入跨Core remove、独立purge与原围栏冷续配保全。六组件自身实际换版、更多进程中断点、其他恢复模式、完整typed brokers/provider/launcher与十二父项继续内部待验。Networking managed model初始化和真实接管链仍内部待验。完整目标active，冻结 **0/12**。外部延期仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[本轮正式恢复输入保全及停机入口](../../../../.management-close-20261116/core-rtc-hotplug-20261120/core-staged-recovery-input-maintenance-20261126/HANDOFF.md)。
+
 ## 2026-11-26 发布代携带完成Deployment历史的Core独立purge与原围栏冷续配
 
 前轮3370摘要cold通过后，复用独立Debian13 ARM64 Root141:257、VM yofc-core-published-upgrade-20261126、ID01M8B2WK54GHEFX4ZDDDGJY2BF，新增VM为0。正式Git/JDK21 Core6341906、Networking15ebcda、Deployment8da586b、Cloud329d420及同批UI/Wires/Agent七包输入保持，生产源码改动0。本轮新增业务派发0、key mutation0，原业务1412601和四个key UUID保持历史闭环且仅按原号读取。
