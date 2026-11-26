@@ -1,3 +1,21 @@
+## 2026-11-26 独立Core带完成业务历史的purge与原围栏冷续配
+
+前轮2742摘要联合cold通过后，补矩阵新建Debian13 ARM64 Root1048588:257，VM yofc-core-history-purge-20261126，ID01M8B1FAENWET0FKVTK7HW3SMX。复用封存Git/JDK21 Core6341906、Networking15ebcda、Deployment8da586b、Cloud329d420及同批UI/Wires/Agent七包，生产源码改动0。
+
+原业务号10485882601唯一一次实际EXEC完成，独立同Root GET确认COMPLETED，Felix DP/payload ACTIVE、Cloud transport及10provider/JAR配对。首版探针在EXEC前失败，原日志、JAR/源、go及/tmp载荷保留。原线程终止、两个严格先于doExec的持久标记均缺席及发布/完成回执缺席，构成同Root正式非准入依据。正常stop/PIDFD退出后补齐listener导入，沿原号和原host意图继续首次实际EXEC，随后仅GET，原失败保持留档。
+
+10份user/data/packages原文件及metadata双侧归档。移除五个Core依赖包后一次Core remove返回0，原data inode22487、packages inode21242及完成回执完整stamp保持。正式remove记录的packageTag验签，原维护5ccc483a-b898-4e1c-8842-723610ad5809绑定本Root和两个目录。正常关机cold通过58保护文件及19份HMAC。
+
+第二boot沿原Root/原围栏一次独立purge返回0，正式删除此新现场的应用树与完成历史，双侧原件及4份canonical/journal凭据和Root binding保持。再次正常关机cold后，第三boot同Root、同原围栏一次unpack/configure完成正式结算，恢复七包installed、audit空。新增19份签名，累计38份含READY/configured。
+
+后继合法Main4418解回原密文，10provider ACTIVE且JAR对包，UID995/NNP1/五cap集合0x400/真实FD9 writer租约和HTTPS302通过。补充只读Main5152从实际DataTransportService读取clientId，逐项对原完成回执的client/job/name/requester/publisher，GET原号返回NOT_FOUND，Felix原业务缺席。原号维持历史闭环，原COMPLETED从双侧归档冷读。两个Main均正常stop并PIDFD退出。
+
+最终213保护文件、38份HMAC、79份配对companion/provider资产及控制脚本、原10份应用原件和前Core remove归档各双侧核验。原4份凭据及kernel-fh-v2 binding inode22731完整stamp保持。Main/Agent disabled/inactive，VM正常停放。原55台身份/状态保持，原三网关running，18主仓台账前与初态一致。只读准入核验完整56台后执行原不可变Root1048585和1048587 cold，原452文件/154终态/103HMAC及原完成历史、前轮真实换版保持。
+
+仅清理本轮5个观察类及3份输入等9文件的编译目录，先逐类对保留JAR、输入对正式包、lsof无占用及VM挂载核验。目录分配减2367488字节，宿主同期可用增2359296字节，清理后158788354048字节。18份既有输出按实际消费者保留。所有原现场、个人配置/密钥/数据、运行集、六组件/rtc0和原7fd封存保留。本地台账提交，推送0，父vault双笔记经官方CLI追加及精确全文回读。
+
+补父项#3/#9/#12，本轮闭环独立默认Core凭据模式、六组件加Cloud共装时的完成历史purge及跨remove/purge两个正常停机点续配。发布代携带业务历史的purge、实际换版、更多中断点和完整typed brokers/六组件/provider/launcher矩阵继续内部待验。Networking初始managed model未初始化的FW/NM警告已留档，网络接管矩阵继续内部待验。完整目标active，冻结 **0/12**。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 独立Core真实Git换版与原维护号冷续配
 
 前轮2563摘要cold通过后，新建独立Debian13 ARM64 Root1048587:257，正式安装Git99ffac0包，再一次dpkg --unpack升级到直接后继6341906。两个真实Debian版本、控制脚本、初始化CLI、配对manifest和相同provider/JAR均预先对原Git包核验，JDK21观察bundle编译通过。完整目标active，冻结0/12。
