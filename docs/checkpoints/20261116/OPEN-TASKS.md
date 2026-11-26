@@ -1,3 +1,15 @@
+## 2026-11-26 Triton 同代直接后继换版与确认不用的缓存清理
+
+隔离 ARM64 VM yofc-triton-samegen-20261126，ID 01M8BB6BGSY628KECK8GMBJSPD，Root 191:257。API2 Core c65c047 不 Breaks Triton。旧包 1b6d15b 一次首装后，直接后继 bea8871 一次 unpack 返回 0。正常关机后新 boot 只 configure 一次，返回 0，installed 2.0.0~git202611211325.bea8871-1，审计空。注册表 inode 191:22964 和 SHA-256 fef68eb9955076dafc321e3b4dae1278af8a6a925fed9c4adf2f5ab2d7241896 保持。合法 Main PID 824 只读确认 org.eclipse.kura.ai.triton.server 2.0.0.202611201423 ACTIVE，bundle 数 246。探针撤下，Main/Agent disabled/inactive，VM 正常停放。业务派发 0。
+
+同日已闭环但此前未入官方台账的两笔不重跑：Deployment Root 142:257 后继 8da586b，Main PID 1534，deployment.agent ACTIVE；Artemis Root 145:257 后继 1bcdc5d，Main PID 1749，artemis.xml ACTIVE。两台均已停放。
+
+确认不用项只删除无挂载容器 unruffled_beaver，并 prune 未使用 Docker 构建缓存。60 台 VM、115 个数据卷、个人 MariaDB/Redis、证据容器和镜像保留。docker builder prune 报告 5.66GB。宿主可用空间从 158496616448 增至 163672588288，实际增加 5175971840 字节。
+
+补父项 #3/#12。完整目标 active，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[Triton 交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/triton-same-generation-upgrade-20261126/HANDOFF.md)
+
 ## 2026-11-26 正式恢复输入跨Core独立purge与原围栏冷续配
 
 前轮3624摘要cold通过后，复用独立ARM64 Root141:257、VM yofc-core-published-upgrade-20261126、ID01M8B2WK54GHEFX4ZDDDGJY2BF，新增VM为0。正式Git/JDK21七包保持，生产源码改动0。准入核对264文件、59份Core HMAC、17份凭据/history和原binding完整stamp。
