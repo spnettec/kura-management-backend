@@ -1,3 +1,11 @@
+## 2026-11-26 秒级 Networking 后继包构建与版本比较
+
+Networking e4ae919 按 Git/JDK21 构建为 3.0.0~git20261126081718.e4ae919-1，SHA-256 308ff7aa18dd6eba8b6ea84fa64be6b6d1155ac835c33a589cec1e9c22b0b4fb。Debian dpkg 确认它大于 14 位旧版 20261125044831.98ce41482f 和 12 位旧版 202611251924.15ebcda。OrbStack VM 启动等待超时，正式 unpack/configure 尚未执行；原现场未动。
+
+完整目标 active，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[构建回执](../../../../.management-close-20261116/core-rtc-hotplug-20261120/debian-snapshot-timestamp-20261126/build-receipt.json)
+
 ## 2026-11-26 Debian 发行快照改为秒级时间戳
 
 Networking 98ce414 到 15ebcda 的同代替换已停放，不重跑。dpkg 把后继判成降级，因为 12 位 `202611251924` 的数值小于历史 14 位 `20261125044831`。各 sibling 的 debugBuild 发行快照改为 `yyyyMMddHHmmss`，与 Core 发行包一致。OSGi 的 `kura.build.qualifier` 仍是 12 位，本轮不改 bundle 限定符宽度。定向测试 2 项通过。新包尚未实装。本地提交未推送。
