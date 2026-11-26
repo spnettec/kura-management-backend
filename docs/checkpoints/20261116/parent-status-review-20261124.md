@@ -1,3 +1,19 @@
+## 2026-11-26 已结算防火墙跨 Networking remove、purge 与冷续配
+
+固定隔离 ARM64 Root1048585:257 先通过前轮398hash cold，两次复机均核验原 machine-id、kernel-fh-v2 绑定及原文件。沿原 Git Core6341906、Networking15ebcda和native0.1.17，仅使用被动probe，显式配置/撤回任务均0。原号886f19b4-e32c-48b8-a795-88eceb090342及原31组终态的意图、回执、模型、绑定和sender原文归档保持。
+
+合法 Main912 实际运行时一次 dpkg remove 成功，原控制器的PIDFD确认该Main退出，Networking进入config-files。独立purge成功到not-installed，同一正式包一次unpack后正常关机。中间停机cold核对114保护文件、39终态及19份Core签名。新boot沿同Root一次configure成功，原capability token正式退役，custom原字节/属主/模式恢复，唯一networking注册项和配对vendor drop-in恢复。custom原子编辑inode23025→23438→23578，三个Networking provider JAR重装inode更换，原摘要/属主/模式保持。
+
+只建本VM虚拟yfd0/yfd1与无默认路由namespace，复用原UDP49528规则。维护前、remove后、purge后、unpack后及冷续配后五阶段均实测指定源198.18.28.2回包、其他源198.18.28.3超时，原模型/回执和site规则保持。自有UDP服务、site规则和netns均按归属回收。原Main停止后，观察器曾把IPv6路由expires倒计时误作配置变化，原失败与源码留档；只修正只读规范化，再继续尚未签发的purge/unpack，没有重跑remove。
+
+冷续配后的合法Main1121读回原密文和快照，10个provider/JAR对包、UID/NNP1/五cap集合0x400、FD9 writer租约及HTTPS302通过。两boot正式启动新增16组记录，为4 APPLIED/12 UNCHANGED，最终47组全部终态（13 APPLIED/34 UNCHANGED），原31组完整元数据保持。136保护文件、19份Core HMAC含READY、完整manifest/units/四控制/native cohort及六包installed已停机cold核对，audit空。Main/Agent disabled/inactive，VM正常停放。当前冷读入口为firewall-networking-retained-20261126/cold.py。
+
+本轮复用Git正式包，无新增构建/字节码缓存可清，清理复核删除0，真实目录减少0、宿主同区间可用变化0，末次162664779776字节。原始含审计写入的计量另行保留。18主仓台账前与原状态一致，原三网关仍running，Core219、Deployment225/57225、137和旧229保持停放。个人配置/密钥/数据、运行集、六组件夹具、rtc0及原7fd最后disabled/正常停机/41输入16回执留档保留。
+
+补父项#3/#6/#9/#12，目标active，冻结 **0/12**。本轮正常停机边界为Networking unpack后冷续配。Core维护、IPv6真实未决中断及其他typed brokers、六组件、provider/launcher完整矩阵继续内部待办。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[原生维护、报文与最新停机冷读](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-networking-retained-20261126/HANDOFF.md)
+
 ## 2026-11-26 真实未决防火墙发布的原生拒绝与原号结算
 
 原隔离ARM64机器复机先核验Root仍1048585:257及原kernel-fh-v2绑定。沿已装Git Core6341906、Networking15ebcda和配对native0.1.17，正式Main924经原ConfigurationService只触发一次IPv4 UDP49528。worker1849实际完成1条Netlink命令并生成真实ACK/staged后，在结果rename入口中断，原号886f19b4-e32c-48b8-a795-88eceb090342及sender pending保留。
