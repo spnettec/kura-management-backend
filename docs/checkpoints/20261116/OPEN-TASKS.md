@@ -1,3 +1,17 @@
+## 2026-11-26 独立 Core 已发布代跨 remove、purge 与原围栏冷重装
+
+前轮1832摘要cold先通过。按完整矩阵新建独立Debian13 ARM64 Root1048586:257，仅正式安装Git Core6341906，JDK21。初始合法Main9885经真实CryptoService/ConfigurationService产生原密文。prepare77b3aafc、verify967f32b1、publish6f1534ec、explicit-start3ebb6bbb各一次，真实SUCCEEDED。发布代Main10660解回原密文，发布原文及敏感响应留Root私有目录。
+
+新现场七份应用文件在维护前完整归档，17份canonical凭据/history建基线。Main运行时一次dpkg remove返回0，PIDFD确认退出，Core为config-files。原维护32a1fe66-0fe8-4c18-82f9-6fd31e215508、firstAction=remove及retained签名保留。正常停机cold后，第二boot沿同Root/围栏一次独立purge返回0，正式captured/completed HMAC对绑定原publication、retained receipt及三个launcher/drop-in cohort。应用HOME/retained实际清除，原应用归档及17份凭据/history完整stamp保持。
+
+再次正常停机cold后，第三boot沿同Root/原围栏一次unpack及configure均0，Core installed且audit空，真实完成purge签名驱动原发布代恢复。后继合法Main3092解回原密文，两个Core provider ACTIVE且JAR对包，三个实际JVM的kurad/NNP1/五cap集合0x400/FD9租约通过。四个原key UUID仅只读SUCCEEDED。三份launcher及generation drop-in字节与原签名cohort保持。
+
+观测修正完整留档，涉及镜像缺Python、重复JAR扫描、默认enabled/inactive、purge签名目录及平台全局drop-in。平台manager NoNewPrivileges=no，正式exec-java以prctl设置NNP，实际三个JVM均NNP1。所有失败控制器、issued/returned及日志保留，包动作及任务各一次。最终79保护文件、38份Core持久HMAC及另存purge签名对cold通过，Main disabled/inactive，VM正常停放。显式key任务4、FW0、Deployment0。
+
+仅清理配对原包且lsof无占用的本轮build，目录分配减2215936字节，宿主同期可用增2211840字节。18主仓台账前保持，既有53台VM身份/状态保持，唯一新增VM已stopped。原三网关running，Root1048585及所有原现场、个人配置/密钥/数据、运行集、六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保持。
+
+补父项#1/#3/#9/#12，目标active，冻结 **0/12**。本轮覆盖独立Core两个provider。实际版本转换、更多purge中断点、完成Deployment历史purge、IPv6真实未决中断及完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 原完成 Deployment 历史跨 Core remove 与原围栏冷重装
 
 固定隔离 ARM64 Root1048585:257，保留原 kernel-fh-v2 绑定及七份 Git 正式包。原 FW886f19b4、业务10485852601均已结算，本轮显式业务派发0，仅 GET 原业务号。实际 APT 模拟及 installed 控制配对后，Networking、Deployment、Wires、GWT、Cloud 各一次正式 remove，Networking prerm 停止合法 Main 且 PIDFD 确认退出。一次 Core remove 返回0，进入 config-files，原维护号 d87f0c17-a1ce-410b-86ef-c102956ecf60、签名 removal-home 和 Main-state 原件保留。
