@@ -1,3 +1,21 @@
+## 2026-11-26 原完成 Deployment 历史跨 Core 正式冷续配
+
+固定隔离ARM64 Root1048585:257、原machine-id和kernel-fh-v2绑定保持。原真实未决防火墙号886f19b4已经结算，本轮沿原模型被动验证。补齐Git329d420的正式Cloud API2包后，原生七包组合中的真实Deployment handler经JDK21探针仅派发一次新测试号10485852601，Felix安装fixture.corehistory.1048585 1.0.0，产品完成通知、归档、注册表和.done均实际生成，无pending。
+
+251份完整维护前基线覆盖user/data/packages及原文件。运行Main时一次Core6341906正式unpack返回0、PIDFD证明Main退出。原维护号3dd1059f-c7b7-4f1c-b82e-5b49d14076fe的签名capture声明原data及packageHistoryDirectory。283文件/93终态/61份Core签名中间cold通过后，同Root新boot沿同围栏一次configure返回0，新增21份签名含READY/configured，累计82份。
+
+后继合法Main3365以独立GET-only JAR只读原业务号COMPLETED，Felix原DP及payload bundle ACTIVE，实际Cloud MQTT transport provider ACTIVE且JAR对包。data inode22539、packages inode25555保持，原归档/完成回执/注册表/Job文件的inode、摘要、属主、模式保持。251份原文件的字节/UID/GID/mode保持，其中HOME下14份维护前mtime保持，六份配置/keystore/快照文件随正式复制更换inode。
+
+原密文、49528快照、10provider/JAR、kurad/NNP1/五cap集合0x400/FD9共享writer租约/HTTPS302联合通过。维护前、unpacked、恢复后三阶段原UDP规则实测指定源ECHO、其他源TIMEOUT。两boot及一次前置Main重启新增22组自动启动记录，4APPLIED/18UNCHANGED，最终101终态（25APPLIED/76UNCHANGED），原79组保持，显式FW apply/inverse均0。
+
+初次Cloud前置误选ABI版本标记更新前归档，被Core Breaks拒绝配置，后继使用正式+api2包完成标准升级。初版unpack观察遗漏ctimeNs字段及cold使用Cloud逻辑路径的错误均保留，修正观察后只继续未执行阶段。一次业务派发、一次Core解包、一次原围栏configure均有原始日志。无补造成功回执。
+
+最终cold核验318保护文件、101终态、82份HMAC、完整manifest/units/控制/native cohort和Cloud八JAR、七包installed且audit空。Main/Agent disabled/inactive，VM正常停放。清除已对原包/JAR且lsof确认闲置的本轮编译输出，目录分配减2338816字节，宿主同区间可用增2322432字节。18主仓台账前状态相同，其他VM状态与原三网关running保持。原现场/个人配置/密钥/数据/运行集/六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保持。
+
+补#3/#6/#9/#12，目标active，冻结 **0/12**。实际换版、完成Deployment历史的Core remove/purge、IPv6真实未决中断及完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仅真实NM/cloud-init/物理交接、amd64、磁盘满/硬断电。
+
+[原完成历史、正式围栏和最新停机入口](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-deployment-history-core-20261126/HANDOFF.md)
+
 ## 2026-11-26 已结算防火墙跨 Core remove 与原数据冷重装
 
 固定 ARM64 Root1048585:257，复用 Git Core6341906、Networking15ebcda 和 native0.1.17。前轮620hash cold通过，实际依赖核验四包后，Networking/Deployment/Wires/GWT 的移除作为 Core remove 前置。合法 Main945 经正式 Networking prerm 同步停止，PIDFD确认退出。一次 Core remove 返回0并进入config-files，正式原维护号235ad522-4ce2-44ff-abf6-8cef8c2708bc、removal-home 和 Main-state 原件保留。
