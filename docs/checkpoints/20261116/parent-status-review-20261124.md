@@ -1,3 +1,19 @@
+## 2026-11-26 独立Core真实Git换版与原维护号冷续配
+
+前轮2563摘要cold通过后，新建独立Debian13 ARM64 Root1048587:257，正式安装Git99ffac0包，再一次dpkg --unpack升级到直接后继6341906。两个真实Debian版本、控制脚本、初始化CLI、配对manifest和相同provider/JAR均预先对原Git包核验，JDK21观察bundle编译通过。完整目标active，冻结0/12。
+
+初始合法Main9879经真实CryptoService/ConfigurationService产生独立样本后正常stop并PIDFD退出。7份原应用文件双侧完整归档，凭据与journal key共4份建完整stamp基线。正式preinst签发原维护9a2c8aae-e485-46c4-9c93-21dc2339f6b8，签名capture绑定Root、旧/新版本及新preinst摘要。解包后正常关机，中间cold核验34文件、19份Core签名及原capture/围栏。
+
+同Root新boot仅一次configure返回0，正式结算原围栏并产生21份新签名，累计40份含READY/configured。原7文件字节/UID/GID/mode/mtime保持，5份经正式COPY改变inode和ctime，data inode22487保持，packages目录inode21242→22986据实记录。原4份凭据及kernel-fh-v2 binding inode22732完整stamp保持。初始化固定CLI在旧版返回INITIALIZED，新版沿同域返回EXISTS，原Scope3994f2043ec1913100345e4a3cea0c41d630326563c592a8ab63f527864dca34保持。
+
+后继合法Main3076解回原密文，两个Core provider ACTIVE且JAR对包，实际UID995/NNP1/五cap集合0x400/FD9 writer租约通过，随后正常stop且PIDFD确认退出。143保护文件、40份Core HMAC、原签名capture、两包四控制/完整manifest/units/native cohort及控制器私有源快照已停机cold通过。Core installed、audit空，Main disabled/inactive、VM正常停放。显式key/FW/Deployment任务均0。
+
+创建新VM首次等候镜像索引约九分钟，原create随后成功。原Root1048585的旧cold直接执行因全局清单54→55数量断言退出，失败保留。INVENTORY-ADMISSION.md及只读适配先核验完整55台身份/状态，再执行原Root全部检查，452保护文件、154终态、103HMAC及原完成业务历史通过。原检查器/回执保持。18主仓台账前与初态一致，原54台身份/状态保持，原三网关running。所有原现场、个人配置/密钥/数据、运行集、六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保留。
+
+仅清理对原包/JAR且lsof确认闲置的本轮probe编译目录，目录分配减2215936字节，宿主同期可用增2195456字节。18份既有构建输出按原消费者保留，全部原包/源码/档案/控制器保留。本地台账提交，推送0。
+
+补父项#3/#9/#12，覆盖独立Core默认凭据模式及两个provider的99ff→634真实换版和unpacked后正常停机续配。发布代换版、六组件实际换版、完成Deployment历史的Core purge、更多中断点及完整typed brokers/provider/launcher矩阵继续内部待验。完整目标active，冻结 **0/12**。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 完成Deployment历史跨独立purge与原门禁冷续配
 
 固定ARM64 Root1048585:257、原machine-id及kernel-fh-v2 Scope，先通过前轮2383摘要cold。复用Git Core6341906、Networking15ebcda、Deployment8da586b和原七包/JDK21探针。原业务10485852601只读GET，本轮显式FW apply/inverse及业务派发均0。
