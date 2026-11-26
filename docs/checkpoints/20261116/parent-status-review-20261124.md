@@ -1,3 +1,9 @@
+## 2026-11-26 Debian 发行快照改为秒级时间戳
+
+Networking 98ce414 到 15ebcda 的同代替换已停放，不重跑。dpkg 把后继判成降级，因为 12 位 `202611251924` 的数值小于历史 14 位 `20261125044831`。各 sibling 的 debugBuild 发行快照改为 `yyyyMMddHHmmss`，与 Core 发行包一致。OSGi 的 `kura.build.qualifier` 仍是 12 位，本轮不改 bundle 限定符宽度。定向测试 2 项通过。新包尚未实装。本地提交未推送。
+
+补父项 #3/#12。完整目标 active，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 Networking 同代直接后继换版
 
 隔离 ARM64 VM yofc-net-samegen-20261126，ID 01M8BCDBHMTT8S0RGGMR84DWBT，Root 192:257。Core 6341906 上首装 Networking 98ce414，Git 直接后继 15ebcda 一次 unpack 返回 0。dpkg 警告这是降级，因为后继时间戳 202611251924 的数值小于前版 20261125044831。正常关机后新 boot 只 configure 一次，返回 0，installed 3.0.0~git202611251924.15ebcda-1，审计空。注册表 inode 192:22941 和 SHA-256 de4cff488db2c46543d27bfe8a0697562c2ed02d35e3d1dd1a8abf6b838466cd 保持。合法 Main PID 933 只读确认 org.eclipse.kura.nm 2.0.0.202611251924 ACTIVE，bundle 数 245。探针撤下，Main/Agent disabled/inactive，VM 正常停放。业务派发 0。
