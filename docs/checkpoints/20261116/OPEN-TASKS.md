@@ -1,3 +1,17 @@
+## 2026-11-26 完成Deployment历史跨独立purge与原门禁冷续配
+
+固定ARM64 Root1048585:257、原machine-id及kernel-fh-v2 Scope，先通过前轮2383摘要cold。复用Git Core6341906、Networking15ebcda、Deployment8da586b和原七包/JDK21探针。原业务10485852601只读GET，本轮显式FW apply/inverse及业务派发均0。
+
+合法Main973读原COMPLETED/Felix DP/payload/真实Cloud transport、原密文和10provider后正常stop且PIDFD确认。已装Deployment四控制及11载荷对原包。实际dpkg remove一次返回0到config-files，独立purge一次返回0到not-installed，原data inode22539、packages inode25555及完成回执/归档/Job原件保持，FileMove原remove围栏跨purge保持。
+
+同包一次unpack返回0，产品原Main transition锚点90442139525a420596b7f8fa54a56b64和generator inode30367保持，真实Main启动被断言拒绝。正常关机中间cold通过417文件、146终态、103HMAC及原transition/FileMove围栏。新boot同Root核验原记录完整stamp，再次真实断言拒绝后，一次configure返回0并正式结算原门禁和FileMove围栏。后继合法Main1497 GET原业务仍COMPLETED，原payload/transport、原密文/快照、10provider/JAR、kurad/NNP1/五cap集合0x400/FD9租约/HTTPS302通过。
+
+418份原基线中417份完整stamp保持。注册表原字节归档，正式remove删除deployment行，configure标准追加到末尾，最终顺序变化据实记录。两boot自动新增16组（4 APPLIED/12 UNCHANGED），最终154终态（38 APPLIED/116 UNCHANGED）、452保护文件及103份Core HMAC停机cold通过。首次两次只读prepare误用归档权限和kurad主组而失败，均在Main/包动作前。后继按正式Core代码权限root/kura-key-control、0750/0640核验，原失败及全部cohort保留。
+
+Main/Agent disabled/inactive，VM正常停放。新编译/字节码缓存0，18份既有构建输出按原消费者保留，删除0、目录减少0。宿主同期可用变化-16384字节。18主仓台账前保持，54台VM身份/状态恢复初态，原三网关running。所有原现场、个人配置/密钥/数据、运行集、六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保持。
+
+补#3/#6/#9/#12，完整目标active，冻结 **0/12**。本轮补齐当前v2组合的Deployment完成历史独立purge。Core带完成业务历史的purge、实际版本转换、更多中断点及完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 原IPv6规则实际报文与联合冷启动
 
 固定ARM64 Root1048585:257及原kernel-fh-v2 Scope，前轮2259摘要cold通过后，仅一次正式firewall restore及合法Main925。原IPv6号1f17114d-09cf-4e80-bf62-c8bd4796c4ff、IPv4号886f19b4和Deployment10485852601均已闭环，本轮显式apply/inverse与业务派发均0。七份Git包和JDK21探针复用。
