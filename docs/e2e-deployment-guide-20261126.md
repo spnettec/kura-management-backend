@@ -136,11 +136,11 @@ GET /api/v1/gateways → online=true, kuraAvailable=true
 - `prlctl exec` 按空格重切参数：复合命令必须先 `curl -o` 单文件再 `bash` 执行，不能内联。
 - 快照还原：`prlctl snapshot-switch <vm> --id <snapshot>`。对运行中的 VM 切换可能延迟生效——切换后必须核实状态再操作。
 
-### 已知阻塞（2026-11-26 实测）
+### 已知阻塞（2026-11-26 实测，已源码级排查）
 
-Ubuntu 26.04 + agent 393051e 的本地 enrollment bind 稳定返回 `INVALID_ARGUMENT`（干净快照、全新注册、正确证书链、单次 stage 均复现；Debian 13 的 OrbStack 网关同流程 3/3 通过）。阻塞点在 agent 本地校验内部，无日志输出，需要源码级排查（`kura-management-agent/src/enrollment/mod.rs` 的 bind 链）。Scheme A（identity-bundle）路径同样受阻于 `configure-native-transport-endpoint` 的状态机拒绝（retained enrollment 需单独维护流程）。
+Ubuntu 26.04 + agent 393051e 的本地 enrollment bind 稳定返回 `INVALID_ARGUMENT`（干净快照还原 5+ 次、全新注册、正确证书链、单次 stage、python3 -I 均复现；Debian 13 的 OrbStack 网关同流程 3/3 通过）。已构建带行号诊断的 agent（393051e+诊断补丁，debug/bind-diag-20261126 分支）确认：**拒绝发生在 `BindInput` 反序列化之前的本地分发校验**（非证书/材料/签名问题——全部 openssl 校验逐项手工复测通过）。同时 agent 状态机保留 authority 绑定旧二进制摘要，使任何重装/换版路径（purge 重装、retained-successor、Scheme A identity-bundle、configure-native-transport-endpoint）均被 "requires its original migration / differs from original Root proof" 类门禁拒绝。
 
-当日处置：Parallels VM 已按快照还原到干净基线并停放（`YOFC Review ARM64 20261124`，快照 ce60c087），控制台保留 yofc-vm-1/yofc-parallels-1 两条 enabled+offline 记录。恢复路径： Debian 化该 VM（重装 Debian 13），或升级 agent 修复 Ubuntu 校验分歧后，按第三阶段流程重跑。
+当日处置：Parallels VM 已还原干净基线 ce60c087 并停放（`YOFC Review ARM64 20261124`，内含 diag20261126134045 诊断版 agent）。控制台保留 yofc-vm-1/yofc-parallels-1/yofc-parallels-1-leaf 轮换记录（enabled+offline）。恢复路径：Debian 13 arm64 重装该 VM（Parallels 无 CLI 自动装 Debian 模板，需 ISO 半自动安装），或修复 agent 对 Ubuntu OpenSSL/systemd 的校验分歧。诊断分支 debug/bind-diag-20261126 与构建驱动 build-agent-diag.py 已保留。
 
 ## 第五阶段：环境清理（每轮收尾）
 
