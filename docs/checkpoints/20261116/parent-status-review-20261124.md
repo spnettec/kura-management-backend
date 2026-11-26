@@ -1,3 +1,15 @@
+## 2026-11-26 原IPv6规则实际报文与联合冷启动
+
+固定ARM64 Root1048585:257及原kernel-fh-v2 Scope，前轮2259摘要cold通过后，仅一次正式firewall restore及合法Main925。原IPv6号1f17114d-09cf-4e80-bf62-c8bd4796c4ff、IPv4号886f19b4和Deployment10485852601均已闭环，本轮显式apply/inverse与业务派发均0。七份Git包和JDK21探针复用。
+
+原IPv6 UDP49528/source fd7a:d0c0:128::2/128/interface yfd0，经自有无默认路由netns/veth完成正常DAD及ND。两笔唯一载荷分别得到指定源ECHO、其他源TIMEOUT，私有尾部drop计数增1，server仅收到指定源载荷。原接受规则没有counter，该计数不可观测。首服务tentative时bind失败、原脚本要求接受计数1以及只读观察器state语法差异三处失败全部留档。后继只继续缺失服务与只读核对，额外报文0。
+
+Main925读原密文、原IPv6快照，READY、10provider/JAR、kurad/NNP1/五cap集合0x400/FD9租约/HTTPS302联合通过。GET-only只读原业务10485852601为COMPLETED，原Felix DP/payload及真实Cloud transport ACTIVE。原401文件及130组终态完整stamp保持，自动启动新增8组，为2 APPLIED/6 UNCHANGED。最终418保护文件、138终态（34 APPLIED/104 UNCHANGED）及103份Core HMAC停机cold通过，完整manifest/units/控制/native cohort/Cloud JAR和各执行源码配对。
+
+自有进程PIDFD确认退出，私有drop/table/netns回收，原nft结构及默认路由保持。Main/Agent disabled/inactive，VM正常停放。18份既有构建输出按原消费者保留，新编译/字节码缓存0，删除0、目录减少0，宿主同区间可用变化+65536字节。18主仓台账前保持，54台VM身份/状态恢复初态，原三网关running。全部原现场、个人配置/密钥/数据、运行集、六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保持。
+
+补#3/#6/#9/#12，完整目标active，冻结 **0/12**。实际版本转换、更多中断点、完成Deployment历史purge及完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 IPv6真实未决发布的包维护拒绝与原号结算
 
 固定隔离ARM64 Root1048585:257，先通过该Root前轮1832摘要/373文件/117终态/103HMAC停机cold，继承独立Core purge轮2072摘要。复用Git Core6341906、Networking15ebcda、native0.1.17及原七包/JDK21探针。13份原user/data/packages文件完整归档，原IPv4模型及Scope保持。
