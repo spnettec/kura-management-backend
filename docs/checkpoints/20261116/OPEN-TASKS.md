@@ -1,3 +1,19 @@
+## 2026-11-26 已结算防火墙跨 Core 同包解包与原维护号冷续配
+
+固定隔离ARM64 Root1048585:257，在前轮516hash/47终态/136文件基础上，复用Git Core6341906、Networking15eb和native0.1.17。合法Main913实际运行时，一次dpkg --unpack同版Core634包返回0，PIDFD确认Main退出。正式preinst生成原维护号8a9ab5ee-d53c-4e7e-87fb-03f411b20920、Root私有围栏及签名capture，原136文件在正式.old-home或原外部路径按inode/摘要精确核对。55终态及156文件中间cold通过后，同Root新boot只一次configure返回0。
+
+新维护号有21份真实签名含READY/configured和runtime-data交接，原19份保持，累计40份HMAC。后继合法Main3386读回原密文和原快照，10provider/JAR与正式包配对，UID/NNP1/五cap集合0x400、FD9 writer租约和HTTPS302通过。原规则UDP49528在维护前、解包后和冷续配后三阶段实际验证指定源回包、其他源超时。原47组原生意图/回执和模型/绑定精确，两个boot新增16组正式启动记录，最终63终态（17APPLIED/46UNCHANGED）。显式配置及撤回任务均0，原886f19b4未重发。
+
+原data目录inode22539保持。六份HOME文件含custom、两份keystore、两份快照和registry随正式复制更换inode，字节/属主/模式及mtime保持。控制器初次把packages目录也要求inode连续，configure成功后在观察阶段退出。原签名capture仅声明runtimeDataDirectory，源码仅对已有完成Deployment发布哨兵声明packageHistoryDirectory，当前按正式COPY路径使packages inode21303→24034、UID/GID/mode保持。原失败/源码/补充依据保留，只继续未派发的Main。本控制器未为packages建立新的维护前逐文件基线，该目录逐文件保持与完整已有Deployment历史的Core维护仍按矩阵待验。
+
+最终停机cold核验191保护文件、63终态及原47组、40份Core签名、完整manifest/units/Core与Networking四控制/native cohort、10JAR和六包installed，audit空。自有UDP/site/netns按归属回收，Main/Agent disabled/inactive、VM正常停放。当前最新入口为firewall-core-unpack-20261126/cold.py。前轮Networking及真实pending的cold入口均转为各自历史状态。
+
+本轮复用Git包，无新构建/字节码缓存可清，删除0，真实目录减少0、宿主同区间可用变化0，末次162657546240字节。18主仓台账前保持，原三网关仍running，Core219、Deployment225/57225、137和旧229保持停放。个人配置/密钥/数据、运行集、六组件夹具、rtc0及原7fd最后disabled/正常停机/41输入16回执封存保持。
+
+补父项#3/#6/#9/#12，完整目标active，冻结 **0/12**。本轮为同版本dpkg upgrade路径及unpack后正常停机续配。实际换版、Core remove/purge、其他中断点以及全部typed brokers、六组件、provider/launcher完整矩阵继续内部待办。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[同包解包、原围栏冷续配与最新停机入口](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-core-unpack-20261126/HANDOFF.md)
+
 ## 2026-11-26 已结算防火墙跨 Networking remove、purge 与冷续配
 
 固定隔离 ARM64 Root1048585:257 先通过前轮398hash cold，两次复机均核验原 machine-id、kernel-fh-v2 绑定及原文件。沿原 Git Core6341906、Networking15ebcda和native0.1.17，仅使用被动probe，显式配置/撤回任务均0。原号886f19b4-e32c-48b8-a795-88eceb090342及原31组终态的意图、回执、模型、绑定和sender原文归档保持。
