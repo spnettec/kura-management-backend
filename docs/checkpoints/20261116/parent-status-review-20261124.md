@@ -1,3 +1,11 @@
+## 2026-11-26 Networking 同代直接后继换版
+
+隔离 ARM64 VM yofc-net-samegen-20261126，ID 01M8BCDBHMTT8S0RGGMR84DWBT，Root 192:257。Core 6341906 上首装 Networking 98ce414，Git 直接后继 15ebcda 一次 unpack 返回 0。dpkg 警告这是降级，因为后继时间戳 202611251924 的数值小于前版 20261125044831。正常关机后新 boot 只 configure 一次，返回 0，installed 3.0.0~git202611251924.15ebcda-1，审计空。注册表 inode 192:22941 和 SHA-256 de4cff488db2c46543d27bfe8a0697562c2ed02d35e3d1dd1a8abf6b838466cd 保持。合法 Main PID 933 只读确认 org.eclipse.kura.nm 2.0.0.202611251924 ACTIVE，bundle 数 245。探针撤下，Main/Agent disabled/inactive，VM 正常停放。业务派发 0。
+
+补父项 #3/#6/#12。完整目标 active，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[Networking 交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/networking-same-generation-upgrade-20261126/HANDOFF.md)
+
 ## 2026-11-26 Triton 同代直接后继换版与确认不用的缓存清理
 
 隔离 ARM64 VM yofc-triton-samegen-20261126，ID 01M8BB6BGSY628KECK8GMBJSPD，Root 191:257。API2 Core c65c047 不 Breaks Triton。旧包 1b6d15b 一次首装后，直接后继 bea8871 一次 unpack 返回 0。正常关机后新 boot 只 configure 一次，返回 0，installed 2.0.0~git202611211325.bea8871-1，审计空。注册表 inode 191:22964 和 SHA-256 fef68eb9955076dafc321e3b4dae1278af8a6a925fed9c4adf2f5ab2d7241896 保持。合法 Main PID 824 只读确认 org.eclipse.kura.ai.triton.server 2.0.0.202611201423 ACTIVE，bundle 数 246。探针撤下，Main/Agent disabled/inactive，VM 正常停放。业务派发 0。
