@@ -1,3 +1,23 @@
+## 2026-11-26 OPC UA 与 Position 秒级时间戳后继同代换版
+
+补齐此前未入场的两笔同代换版，均改用已入场 API2 配对（基线为 `wip/api2-admission-20261125` tip：OPC UA `62c5514-1`、Position `284058a-1`，Core `c65c047` 七包组合与 `api2-opcua-purge` 一致）。两个 API2 tip 均无后继，各自新建本地分支 cherry-pick 时间戳修复构建后继（`4f2fbd1`、`462c8df`，均未推送）。
+
+**OPC UA** `2.0.0+api2~git20261126090823.4f2fbd1-1`（SHA-256 `2c8dad8d…`）：VM `yofc-opcua-tsfix-20261126`（Root `204:257`）unpack 返回 0 无降级警告，一次 configure 后 installed、audit 空，注册表 `204:22970` 与 SHA `5f9a669f…` 保持，合法 Main（PID 802）探针确认 `org.eclipse.kura.driver.opcua.provider 2.0.0.202611260908` ACTIVE×251，VM 停放。与新包唯一 JAR 差异为 Bundle-Version qualifier（reactor 新鲜构建）。
+
+**Position** 首次构建嵌入过期缓存 spi（API1 comm `[1.0,2.0)`），现场 Main 在 Equinox 配置发布处拒绝（证据 stale-spi-attempt-0912/）。从 cohort release-source 恢复配对 spi（与旧包内嵌逐字节一致）重建为 `2.0.0+api2~git20261126091631.462c8df-1`（SHA-256 `dbd36b7c…`）：VM `yofc-position-tsfix-20261126`（Root `193:257`）unpack 返回 0 无降级警告，一次 configure 后 installed、audit 空，注册表 `193:22968` 与 SHA `cfef5eee…` 保持，合法 Main（PID 831）探针确认 `org.eclipse.kura.linux.position 2.0.0.202611260916` ACTIVE×249，VM 停放。脚本断言曾停留旧构建时间戳（configure 成功后修正，仅补只读取证，包动作重放 0）。
+
+两轮无业务派发，构建 target 已清理。完整目标 active，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[OPC UA 交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/opcua-tsfix-samegen-20261126/HANDOFF.md) · [Position 交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/position-tsfix-samegen-20261126/HANDOFF.md)
+
+## 2026-11-26 秒级 Networking 后继包实装验证与错误 lineage 修正
+
+上节"尚未执行"已完成。e4ae919 属 heyoulin-kura 主线而非 firewall lineage 后继（与 98ce414 的 merge-base 为 81534f1），实装被 Core cohort 围栏正确拒绝（Generation-reader package is not paired，证据 wrong-lineage-e4ae919-refusal/）；误用 c65c047 基线的首现场同样被拒（baseline-c65c047-refusal/），两现场删除留证。修正为 15ebcda + cherry-pick = 8f921f8（本地分支 wip/net-tsfix-samegen-20261126，未推送），构建 3.0.0~git20261126084746.8f921f8-1（SHA-256 94fb00f2…，已归档）。
+
+隔离 ARM64 VM yofc-net-tsfix-20261126（Root 203:257，machine-id SHA b37e9294…）六包首装（旧 Networking 98ce41482f，Core 6341906）后：unpack 返回 0 无降级警告（dpkg 真实判定为升级），一次 configure 后 installed 新版、audit 空，注册表 203:22941 与 SHA de4cff48… 保持，合法 Main（PID 3436）探针确认 org.eclipse.kura.nm 2.0.0.202611260847 ACTIVE、bundle 245，探针撤下，Main/Agent disabled，VM 正常停放。前两次观察因旧探针 jar 硬编码路径未落盘，记录保留。清理：现场构建 target 约 44MB 删除，worktree 保留。本轮无业务派发。完整目标 active，冻结 **0/12**。外部延期仅真实 NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[本轮交接](../../../../.management-close-20261116/core-rtc-hotplug-20261120/debian-snapshot-timestamp-20261126/HANDOFF.md)
+
 ## 2026-11-26 秒级 Networking 后继包构建与版本比较
 
 Networking e4ae919 按 Git/JDK21 构建为 3.0.0~git20261126081718.e4ae919-1，SHA-256 308ff7aa18dd6eba8b6ea84fa64be6b6d1155ac835c33a589cec1e9c22b0b4fb。Debian dpkg 确认它大于 14 位旧版 20261125044831.98ce41482f 和 12 位旧版 202611251924.15ebcda。OrbStack VM 启动等待超时，正式 unpack/configure 尚未执行；原现场未动。
