@@ -1,3 +1,21 @@
+## 2026-11-26 原完成 Deployment 历史跨 Core remove 与原围栏冷重装
+
+固定隔离 ARM64 Root1048585:257，保留原 kernel-fh-v2 绑定及七份 Git 正式包。原 FW886f19b4、业务10485852601均已结算，本轮显式业务派发0，仅 GET 原业务号。实际 APT 模拟及 installed 控制配对后，Networking、Deployment、Wires、GWT、Cloud 各一次正式 remove，Networking prerm 停止合法 Main 且 PIDFD 确认退出。一次 Core remove 返回0，进入 config-files，原维护号 d87f0c17-a1ce-410b-86ef-c102956ecf60、签名 removal-home 和 Main-state 原件保留。
+
+原 data inode22539、packages inode25555 经正式 holder 停放，318文件原始基线及移除态359文件归档保留。移除后正常停机 cold 通过。新 boot 先验同 Root/Scope/原围栏及原文件，再沿该围栏一次 unpack、一次 configure，均返回0。只读 inotify 捕获产品临时 package-history-handoff 原件及签名，HMAC、captureTag 与原 packages 身份核对通过。累计103份持久 Core phase HMAC，含21份新增及 READY/configured。前轮将临时 package-history 签名计入持久 phase 组的 prose 错误在本轮单独澄清，原封存证据保持。
+
+五依赖各一次正式 install 恢复原注册顺序。Cloud 包配置追加36字节，为4个LF及 kura.have.cloud.connection=true 加LF。原888字节是现924字节的精确完整前缀，原末值与新增值均true，UID/GID/mode保持。其余317份基线文件字节及属主/模式保持，data/packages目录和原发布文件完整stamp保持。差异及原文件留档，无手工改写custom。七份文件随正式复制/重建更换inode，custom/registry/drop-in三份mtime变化均记录。
+
+后继合法 Main4699 以 GET-only JAR 读原10485852601为COMPLETED，Felix原DP1.0.0、payload及真实Cloud transport ACTIVE。原密文/49528快照、10provider/JAR、UIDkurad/NNP1/五cap集合0x400/FD9 writer租约/HTTPS302联合通过。维护前、依赖移除后、Core removed、恢复后四阶段实测原UDP规则指定源ECHO、其他源TIMEOUT。两boot新增16组自动启动记录，为4 APPLIED/12 UNCHANGED，最终117终态（29 APPLIED/88 UNCHANGED），原101组保持，显式FW apply/inverse均0。
+
+原观察器的custom全文件相等断言、共享模块导入及首版native runner语法失败均保留。后继执行源以完整SHA配对到Root私有0400快照，只推进未发起阶段，全部包动作和任务均未重跑。最终停机cold核验373保护文件、117终态、103持久HMAC及另存的真实临时签名、完整manifest/units/控制/native cohort、Cloud八JAR和七包installed，audit空。Main/Agent disabled/inactive，VM正常停放，自有报文资源及探针磁盘载荷按归属收回留档。
+
+本轮复用正式包，无新构建或字节码缓存可清，删除0、目录减少0。宿主计量区间可用变化+151552字节，末次162557583360字节，单列观测。18主仓台账前保持，其他VM身份/状态与初始一致，原三网关running。原现场、个人配置/密钥/数据、运行集、六组件/rtc0及7fd最后disabled、正常停机、41输入16回执封存保持。
+
+补#3/#6/#9/#12，完整目标active，冻结 **0/12**。Core purge、实际换版、IPv6真实未决中断及完整typed brokers/六组件/provider/launcher矩阵继续内部待验。外部延期仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+[Core remove retained-history evidence](../../../../.management-close-20261116/core-rtc-hotplug-20261120/firewall-deployment-history-remove-20261126/HANDOFF.md)
+
 ## 2026-11-26 原完成 Deployment 历史跨 Core 正式冷续配
 
 固定隔离ARM64 Root1048585:257、原machine-id和kernel-fh-v2绑定保持。原真实未决防火墙号886f19b4已经结算，本轮沿原模型被动验证。补齐Git329d420的正式Cloud API2包后，原生七包组合中的真实Deployment handler经JDK21探针仅派发一次新测试号10485852601，Felix安装fixture.corehistory.1048585 1.0.0，产品完成通知、归档、注册表和.done均实际生成，无pending。
