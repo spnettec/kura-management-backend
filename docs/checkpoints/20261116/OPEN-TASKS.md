@@ -1,3 +1,21 @@
+## 2026-11-26 发布代携带完成Deployment历史的Core独立purge与原围栏冷续配
+
+前轮3370摘要cold通过后，复用独立Debian13 ARM64 Root141:257、VM yofc-core-published-upgrade-20261126、ID01M8B2WK54GHEFX4ZDDDGJY2BF，新增VM为0。正式Git/JDK21 Core6341906、Networking15ebcda、Deployment8da586b、Cloud329d420及同批UI/Wires/Agent七包输入保持，生产源码改动0。本轮新增业务派发0、key mutation0，原业务1412601和四个key UUID保持历史闭环且仅按原号读取。
+
+准入核对原251保护文件、40份Core HMAC、17份凭据/history及binding完整stamp。10份user/data/packages原件在维护前和五个依赖移除后各双侧归档。五个依赖各一次remove返回0，Core一次remove返回0到config-files，原data inode22487、packages inode21242及其原文件完整stamp保持。原维护800bae04-70bd-43d8-90b1-24310fe89ab7及packageTag HMAC绑定本Root和原目录。末尾观察器误要求已删vendor unit的UnitFileState为disabled而退出1，原Core动作已成功。修正后独立只读观察要求空UnitFileState、vendor缺席、PID0/inactive，完整核验原围栏/记录和27份retained双侧归档，包动作重放0。
+
+正常停机cold通过后，新boot沿原Root、原维护号和原围栏一次独立purge返回0，正式清除该合成夹具应用树及产品完成历史。captured/completed两份HMAC配对原publication6f2e56ca、三个launcher及drop-in cohort，17份凭据/history、原40份Core签名和Root binding保持，全部应用原件双侧保留。第二次正常停机cold通过后，第三boot同Root原围栏一次unpack/configure返回0，正式结算原维护号，五个依赖一次联合重装，七包installed且audit空。新增19份Core签名，累计59份含READY/configured，原published launcher/drop-in字节恢复。
+
+后继合法Main4440通过原legacy及发布代密文读取，以原活动钥写读新KURA2。10provider ACTIVE且JAR逐项对正式包，实际UID995/NNP1/五cap集合0x400/真实FD9共享writer租约及HTTPS302通过。GET-only观察器逐项对原client E6:5F:9F:FC:F5:D8、job/name/requester/publisher，GET原1412601返回NOT_FOUND且Felix原业务缺席，原COMPLETED和returned-phase完成凭证从双侧归档读取。原四个key UUID只读SUCCEEDED，原实际EXEC lifetime仍为1。Main正常stop并PIDFD确认退出，观察bundle及runtime按原归档后退役。
+
+最终264保护文件、59份Core HMAC、74份companion/provider资产与控制脚本、20份应用归档副本及27份retained归档停机cold通过。17份凭据/history及binding inode22731完整stamp保持。Main/Agent disabled/inactive，VM正常停放。完整57台身份/状态保持，原三网关running，18主仓台账前与初态一致，原Root1048585/1048587/1048588的不可变cold全部执行，原452文件/154终态/103HMAC及既有真实换版/默认完成历史purge保持。
+
+初始host准备调用macOS缺席的dpkg-deb，在guest产品动作前失败，改用ar/tarfile继续。首次cold误在returned-phase原凭证查找COMPLETED文本，已修正为分别校验原凭证字段和封存正式GET。三处观察/准备失败、原输出与源码均保留，实际业务和包动作没有因观察失败重派。
+
+仅清理本轮1个观察类及3份正式classpath输入的4文件编译目录，逐文件对保留JAR/正式输入、lsof及VM挂载核验。目录分配减2322432字节，宿主同期可用增2318336字节，清理后157377024000字节。18份既有输出按原消费者保留，原现场、个人配置/密钥/数据、运行集、六组件/rtc0及原7fd最后disabled、正常停机、41输入16回执封存保持。本地台账提交，推送0，父vault双笔记经官方CLI追加并精确全文回读。
+
+补父项#1/#3/#9/#12，本轮闭环发布代携带完成Deployment历史的Core独立purge和跨两个正常停机点的原围栏重装。六组件自身实际换版、更多进程中断点、完整typed brokers/provider/launcher及十二父项继续内部待验。Networking managed model初始化及真实接管链仍内部待验。Agent共装、remoteOFF且无旧恢复引用的重加密已在Root136及替换后中断Root137闭环，已有恢复引用等余下组合按原证据继续。完整目标active，冻结 **0/12**。外部延期仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
 ## 2026-11-26 发布代和完成Deployment历史跨Core真实换版
 
 前轮3105摘要cold通过后，新建独立Debian13 ARM64 Root141:257，VM yofc-core-published-upgrade-20261126，ID01M8B2WK54GHEFX4ZDDDGJY2BF。复用Git/JDK21 Core99ffac0→直接后继6341906、Networking15ebcda、Deployment8da586b、Cloud329d420及同批UI/Wires/Agent七包，生产源码改动0。两版generation manifest对象和provider输入相同，实际Debian/Git版本迁移已验证，其他manifest/ABI组合继续内部待验。
