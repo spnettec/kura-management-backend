@@ -1,3 +1,19 @@
+## 2026-11-26 发布代和完成Deployment历史跨Core真实换版
+
+前轮3105摘要cold通过后，新建独立Debian13 ARM64 Root141:257，VM yofc-core-published-upgrade-20261126，ID01M8B2WK54GHEFX4ZDDDGJY2BF。复用Git/JDK21 Core99ffac0→直接后继6341906、Networking15ebcda、Deployment8da586b、Cloud329d420及同批UI/Wires/Agent七包，生产源码改动0。两版generation manifest对象和provider输入相同，实际Debian/Git版本迁移已验证，其他manifest/ABI组合继续内部待验。
+
+合法Main11385沿新现场唯一业务号1412601执行一次真实EXEC并完成。只读Main12105确认原COMPLETED、Felix DP/payload ACTIVE和实际Cloud transport，逐项对原回执client/job/name/requester/publisher。prepare1dc999e4、verifyd70e0956、publish6f2e56ca和explicit-start64abce90各一次且SUCCEEDED。发布正式排空Main12105并PIDFD确认，后继Main13050读取原密文、原业务及活动代KURA2。敏感原响应和口令仅留Root私有目录，四个原号后续只读。
+
+10份原user/data/packages文件及metadata双侧归档，17份凭据/history、原启动器和registry建基线。一次Core unpack返回0，签名capture绑定Root、旧/新版本、新preinst和原data/packages身份。原维护7a167f17-bc43-42bf-9353-6d2c8ed35559保持。正常关机cold核验50保护文件、19份HMAC、原围栏和3105摘要。新boot同Root、同原围栏一次configure返回0，正式恢复发布代launcher并结算维护，新增21份HMAC含READY/configured，累计40份。
+
+后继合法Main3154读回原密文和原发布代密文，使用原活动钥写读新KURA2，原1412601只读COMPLETED。10provider ACTIVE且JAR逐项对包，Cloud transport、原连接身份、UID995/NNP1/五cap集合0x400/真实FD9共享writer租约及HTTPS302通过。原data inode22487、packages inode21242及其文件完整stamp保持，17份凭据/history和binding inode22731完整stamp保持。原10文件字节/UID/GID/mode/mtime均保持，4份user文件经正式COPY改变inode/ctime，差异留档。三个发布代launcher和drop-in原字节恢复，registry原字节保持。
+
+最终251保护文件、40份Core HMAC及74份companion/provider资产和控制脚本停机cold核验，七包installed、audit空。Main/Agent disabled/inactive，VM正常停放。完整57台准入后执行原不可变Root1048585/1048587/1048588 cold，原452文件/154终态/103HMAC、前轮真实换版及完成历史purge保持。首版builder局部变量重名及只读适配argv误传的失败均保留，分别在实装和产品操作前修正，实际包动作和业务各一次。
+
+补父项#1/#3/#9/#12，完整目标active，冻结 **0/12**。发布代携带完成历史的Core purge、六组件自身实际换版、更多中断点及完整typed brokers/provider/launcher矩阵继续内部待验。Networking未初始化managed model的FW/NM警告保留，真实网络接管链继续内部待验。外部延期仍仅真实NM/cloud-init/物理硬件交接、amd64、磁盘满/硬断电。
+
+仅清理本轮3个观察类、3个正式classpath输入及fixture.dp的7文件编译目录，逐文件对保留JAR/正式输入、lsof及VM挂载核验。目录分配减2347008字节，宿主同期可用增2334720字节，清理后157392654336字节。18份既有输出按消费者保留，18主仓台账前保持，原56台身份/状态及原三网关running保持。所有原现场、个人配置/密钥/数据、运行集、六组件/rtc0和原7fd封存保留。本地台账提交，推送0，父vault双笔记官方CLI全文精确回读。
+
 ## 2026-11-26 独立Core带完成业务历史的purge与原围栏冷续配
 
 前轮2742摘要联合cold通过后，补矩阵新建Debian13 ARM64 Root1048588:257，VM yofc-core-history-purge-20261126，ID01M8B1FAENWET0FKVTK7HW3SMX。复用封存Git/JDK21 Core6341906、Networking15ebcda、Deployment8da586b、Cloud329d420及同批UI/Wires/Agent七包，生产源码改动0。
