@@ -11,8 +11,9 @@
 - 最新续接入口为 `docs/management-redesign-handoff-20261101.md`。本轮受限远程配置update和中英文编辑器
   已接通（默认关闭、审核PID显式开启），见 `docs/phase2-configuration-update-validation-20261101.md`。
   本轮收尾后用户要求暂停goal；后续pending以最新交接为准，下段按增量保留历史范围。
-- 旧基线为 Java/Spring Boot + Vue/MQTT。2026-11-01 已实现 Rust/Axum/Tonic + React/TypeScript
-  的独立只读闭环和受限 Netplan 网络事务原型；并非全方案完成。续接先读
+- 迁移期 Java/Spring Boot + Vue/MQTT 基线已于 2026-11-28 移除（src/、根 pom.xml、frontend 的 Vue 应用、
+  scripts/build-with-frontend.sh；git 历史保留旧实现）。当前唯一实现为 Rust/Axum/Tonic + React/TypeScript；
+  过渡期验证文档与 `docs/checkpoints/` 证据保留不变，续接先读
   `docs/phase1-validation-20261101.md`、`docs/phase2-validation-20261101.md`、
   `docs/phase2-takeover-validation-20261101.md`、`docs/phase2-writers-validation-20261101.md`
   与 `docs/phase2-provider-coordination-20261101.md`、网络契约，避免重做整合。
@@ -74,6 +75,7 @@
 - `kura-management-agent` 保持独立进程和独立仓库，不进入 Kura JVM。
 - 使用父工作空间的知识库，显式 `--scope ws --dir=/Users/heyoulin/iot-kura-develop/git`。
 - 代码发现优先 codebase-memory，选择本仓库真实 root_path；改名后旧 backend 索引不是当前证据。
-- 当前统一构建：`./scripts/build-with-frontend.sh -Dmaven.repo.local=/Users/heyoulin/.m2/repository`。
+- 当前统一构建：服务端 `cargo build --workspace --locked`；前端 `cd frontend/react && npm ci && npm run build`；
+  容器 `cd docker && docker compose build`。端点测试与操作手册见 `docs/e2e-scripts-20261126/` 与 `docs/manual/`。
 - 当前本地 `origin` 仍指向原 backend 远端；旧 console 远端已有独立历史。
   远端整理须保留两套历史，不能将新项目直接强推覆盖旧前端远端。

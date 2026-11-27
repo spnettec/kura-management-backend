@@ -1,17 +1,16 @@
 # Management Console 前端
 
-此目录由原独立 `kura-management-console` 前端迁入，现在属于统一管理中心仓库。
-当前 Vue 3 + TypeScript 代码用于迁移基线；目标为 React + TypeScript + Vite，
-详细模块、编辑器扩展机制和迁移工作量见
-[完整改造方案](../docs/management-redesign-plan.md)。
+当前前端是 **React + TypeScript + Vite**（本目录的 `react/`），多阶段
+Dockerfile 的 web 阶段直接从这里构建，产物由服务端在 `/ui` 下托管。
 
 ```bash
+cd react
 npm ci
-npm run typecheck
-npm run dev
+npm run dev     # 热更新开发，默认指向本机中心 HTTPS API
+npm run build   # TypeScript 类型检查 + Vite 构建
 ```
 
-开发时 `/api` 代理到 `http://localhost:8081`。
-包含前端的发布构建从仓库根目录执行 `./scripts/build-with-frontend.sh`。
-React 重写时保留现有业务清单和中英文文案，逐项验证后再替换 Vue 页面，
-不将目录迁移记为 React 迁移完成。
+- 中英文词库与扩展约定见 [../docs/console-i18n-20261101.md](../docs/console-i18n-20261101.md)。
+- 依赖的 OpenAPI 契约：[../docs/openapi-v1.json](../docs/openapi-v1.json)。
+
+迁移期的 Vue 3 基线已于 2026-11-28 随 Java 后端一并移除（见 git 历史与仓库 README）。
